@@ -83,6 +83,23 @@ public sealed class VkAttachmentSampleLocationsEXT extends GroupType {
     /// @return the allocated `VkAttachmentSampleLocationsEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkAttachmentSampleLocationsEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param attachmentIndex `attachmentIndex`
+    /// @param sampleLocationsInfo `sampleLocationsInfo`
+    /// @return the allocated `VkAttachmentSampleLocationsEXT`
+    public static VkAttachmentSampleLocationsEXT allocInit(SegmentAllocator allocator, int attachmentIndex, MemorySegment sampleLocationsInfo) {
+        return alloc(allocator).attachmentIndex(attachmentIndex).sampleLocationsInfo(sampleLocationsInfo);
+    }
+
+    /// Allocates a `VkAttachmentSampleLocationsEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param attachmentIndex `attachmentIndex`
+    /// @return the allocated `VkAttachmentSampleLocationsEXT`
+    public static VkAttachmentSampleLocationsEXT allocInit(SegmentAllocator allocator, int attachmentIndex) {
+        return alloc(allocator).attachmentIndex(attachmentIndex);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkPerformanceOverrideInfoINTEL extends GroupType {
     /// @return the allocated `VkPerformanceOverrideInfoINTEL`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPerformanceOverrideInfoINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param type `type`
+    /// @param enable `enable`
+    /// @param parameter `parameter`
+    /// @return the allocated `VkPerformanceOverrideInfoINTEL`
+    public static VkPerformanceOverrideInfoINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int type, int enable, long parameter) {
+        return alloc(allocator).sType(sType).pNext(pNext).type(type).enable(enable).parameter(parameter);
+    }
+
+    /// Allocates a `VkPerformanceOverrideInfoINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param type `type`
+    /// @param enable `enable`
+    /// @return the allocated `VkPerformanceOverrideInfoINTEL`
+    public static VkPerformanceOverrideInfoINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int type, int enable) {
+        return alloc(allocator).sType(sType).pNext(pNext).type(type).enable(enable);
+    }
+
+    /// Allocates a `VkPerformanceOverrideInfoINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param type `type`
+    /// @return the allocated `VkPerformanceOverrideInfoINTEL`
+    public static VkPerformanceOverrideInfoINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int type) {
+        return alloc(allocator).sType(sType).pNext(pNext).type(type);
+    }
+
+    /// Allocates a `VkPerformanceOverrideInfoINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPerformanceOverrideInfoINTEL`
+    public static VkPerformanceOverrideInfoINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPerformanceOverrideInfoINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPerformanceOverrideInfoINTEL`
+    public static VkPerformanceOverrideInfoINTEL allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -117,6 +117,69 @@ public sealed class StdVideoH265ScalingLists extends GroupType {
     /// @return the allocated `StdVideoH265ScalingLists`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoH265ScalingLists` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param ScalingList4x4 `ScalingList4x4`
+    /// @param ScalingList8x8 `ScalingList8x8`
+    /// @param ScalingList16x16 `ScalingList16x16`
+    /// @param ScalingList32x32 `ScalingList32x32`
+    /// @param ScalingListDCCoef16x16 `ScalingListDCCoef16x16`
+    /// @param ScalingListDCCoef32x32 `ScalingListDCCoef32x32`
+    /// @return the allocated `StdVideoH265ScalingLists`
+    public static StdVideoH265ScalingLists allocInit(SegmentAllocator allocator, MemorySegment ScalingList4x4, MemorySegment ScalingList8x8, MemorySegment ScalingList16x16, MemorySegment ScalingList32x32, MemorySegment ScalingListDCCoef16x16, MemorySegment ScalingListDCCoef32x32) {
+        return alloc(allocator).ScalingList4x4(ScalingList4x4).ScalingList8x8(ScalingList8x8).ScalingList16x16(ScalingList16x16).ScalingList32x32(ScalingList32x32).ScalingListDCCoef16x16(ScalingListDCCoef16x16).ScalingListDCCoef32x32(ScalingListDCCoef32x32);
+    }
+
+    /// Allocates a `StdVideoH265ScalingLists` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param ScalingList4x4 `ScalingList4x4`
+    /// @param ScalingList8x8 `ScalingList8x8`
+    /// @param ScalingList16x16 `ScalingList16x16`
+    /// @param ScalingList32x32 `ScalingList32x32`
+    /// @param ScalingListDCCoef16x16 `ScalingListDCCoef16x16`
+    /// @return the allocated `StdVideoH265ScalingLists`
+    public static StdVideoH265ScalingLists allocInit(SegmentAllocator allocator, MemorySegment ScalingList4x4, MemorySegment ScalingList8x8, MemorySegment ScalingList16x16, MemorySegment ScalingList32x32, MemorySegment ScalingListDCCoef16x16) {
+        return alloc(allocator).ScalingList4x4(ScalingList4x4).ScalingList8x8(ScalingList8x8).ScalingList16x16(ScalingList16x16).ScalingList32x32(ScalingList32x32).ScalingListDCCoef16x16(ScalingListDCCoef16x16);
+    }
+
+    /// Allocates a `StdVideoH265ScalingLists` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param ScalingList4x4 `ScalingList4x4`
+    /// @param ScalingList8x8 `ScalingList8x8`
+    /// @param ScalingList16x16 `ScalingList16x16`
+    /// @param ScalingList32x32 `ScalingList32x32`
+    /// @return the allocated `StdVideoH265ScalingLists`
+    public static StdVideoH265ScalingLists allocInit(SegmentAllocator allocator, MemorySegment ScalingList4x4, MemorySegment ScalingList8x8, MemorySegment ScalingList16x16, MemorySegment ScalingList32x32) {
+        return alloc(allocator).ScalingList4x4(ScalingList4x4).ScalingList8x8(ScalingList8x8).ScalingList16x16(ScalingList16x16).ScalingList32x32(ScalingList32x32);
+    }
+
+    /// Allocates a `StdVideoH265ScalingLists` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param ScalingList4x4 `ScalingList4x4`
+    /// @param ScalingList8x8 `ScalingList8x8`
+    /// @param ScalingList16x16 `ScalingList16x16`
+    /// @return the allocated `StdVideoH265ScalingLists`
+    public static StdVideoH265ScalingLists allocInit(SegmentAllocator allocator, MemorySegment ScalingList4x4, MemorySegment ScalingList8x8, MemorySegment ScalingList16x16) {
+        return alloc(allocator).ScalingList4x4(ScalingList4x4).ScalingList8x8(ScalingList8x8).ScalingList16x16(ScalingList16x16);
+    }
+
+    /// Allocates a `StdVideoH265ScalingLists` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param ScalingList4x4 `ScalingList4x4`
+    /// @param ScalingList8x8 `ScalingList8x8`
+    /// @return the allocated `StdVideoH265ScalingLists`
+    public static StdVideoH265ScalingLists allocInit(SegmentAllocator allocator, MemorySegment ScalingList4x4, MemorySegment ScalingList8x8) {
+        return alloc(allocator).ScalingList4x4(ScalingList4x4).ScalingList8x8(ScalingList8x8);
+    }
+
+    /// Allocates a `StdVideoH265ScalingLists` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param ScalingList4x4 `ScalingList4x4`
+    /// @return the allocated `StdVideoH265ScalingLists`
+    public static StdVideoH265ScalingLists allocInit(SegmentAllocator allocator, MemorySegment ScalingList4x4) {
+        return alloc(allocator).ScalingList4x4(ScalingList4x4);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

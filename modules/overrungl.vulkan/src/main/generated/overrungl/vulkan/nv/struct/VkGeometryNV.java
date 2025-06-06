@@ -107,6 +107,56 @@ public sealed class VkGeometryNV extends GroupType {
     /// @return the allocated `VkGeometryNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkGeometryNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param geometryType `geometryType`
+    /// @param geometry `geometry`
+    /// @param flags `flags`
+    /// @return the allocated `VkGeometryNV`
+    public static VkGeometryNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int geometryType, MemorySegment geometry, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).geometryType(geometryType).geometry(geometry).flags(flags);
+    }
+
+    /// Allocates a `VkGeometryNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param geometryType `geometryType`
+    /// @param geometry `geometry`
+    /// @return the allocated `VkGeometryNV`
+    public static VkGeometryNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int geometryType, MemorySegment geometry) {
+        return alloc(allocator).sType(sType).pNext(pNext).geometryType(geometryType).geometry(geometry);
+    }
+
+    /// Allocates a `VkGeometryNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param geometryType `geometryType`
+    /// @return the allocated `VkGeometryNV`
+    public static VkGeometryNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int geometryType) {
+        return alloc(allocator).sType(sType).pNext(pNext).geometryType(geometryType);
+    }
+
+    /// Allocates a `VkGeometryNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkGeometryNV`
+    public static VkGeometryNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkGeometryNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkGeometryNV`
+    public static VkGeometryNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkBindImageMemoryInfo extends GroupType {
     /// @return the allocated `VkBindImageMemoryInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBindImageMemoryInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param image `image`
+    /// @param memory `memory`
+    /// @param memoryOffset `memoryOffset`
+    /// @return the allocated `VkBindImageMemoryInfo`
+    public static VkBindImageMemoryInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long image, long memory, long memoryOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).image(image).memory(memory).memoryOffset(memoryOffset);
+    }
+
+    /// Allocates a `VkBindImageMemoryInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param image `image`
+    /// @param memory `memory`
+    /// @return the allocated `VkBindImageMemoryInfo`
+    public static VkBindImageMemoryInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long image, long memory) {
+        return alloc(allocator).sType(sType).pNext(pNext).image(image).memory(memory);
+    }
+
+    /// Allocates a `VkBindImageMemoryInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param image `image`
+    /// @return the allocated `VkBindImageMemoryInfo`
+    public static VkBindImageMemoryInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long image) {
+        return alloc(allocator).sType(sType).pNext(pNext).image(image);
+    }
+
+    /// Allocates a `VkBindImageMemoryInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkBindImageMemoryInfo`
+    public static VkBindImageMemoryInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkBindImageMemoryInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkBindImageMemoryInfo`
+    public static VkBindImageMemoryInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

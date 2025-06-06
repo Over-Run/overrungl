@@ -187,6 +187,231 @@ public sealed class VkImageCreateInfo extends GroupType {
     /// @return the allocated `VkImageCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @param mipLevels `mipLevels`
+    /// @param arrayLayers `arrayLayers`
+    /// @param samples `samples`
+    /// @param tiling `tiling`
+    /// @param usage `usage`
+    /// @param sharingMode `sharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
+    /// @param initialLayout `initialLayout`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent, int mipLevels, int arrayLayers, int samples, int tiling, int usage, int sharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices, int initialLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels).arrayLayers(arrayLayers).samples(samples).tiling(tiling).usage(usage).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices).initialLayout(initialLayout);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @param mipLevels `mipLevels`
+    /// @param arrayLayers `arrayLayers`
+    /// @param samples `samples`
+    /// @param tiling `tiling`
+    /// @param usage `usage`
+    /// @param sharingMode `sharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent, int mipLevels, int arrayLayers, int samples, int tiling, int usage, int sharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels).arrayLayers(arrayLayers).samples(samples).tiling(tiling).usage(usage).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @param mipLevels `mipLevels`
+    /// @param arrayLayers `arrayLayers`
+    /// @param samples `samples`
+    /// @param tiling `tiling`
+    /// @param usage `usage`
+    /// @param sharingMode `sharingMode`
+    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent, int mipLevels, int arrayLayers, int samples, int tiling, int usage, int sharingMode, int queueFamilyIndexCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels).arrayLayers(arrayLayers).samples(samples).tiling(tiling).usage(usage).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @param mipLevels `mipLevels`
+    /// @param arrayLayers `arrayLayers`
+    /// @param samples `samples`
+    /// @param tiling `tiling`
+    /// @param usage `usage`
+    /// @param sharingMode `sharingMode`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent, int mipLevels, int arrayLayers, int samples, int tiling, int usage, int sharingMode) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels).arrayLayers(arrayLayers).samples(samples).tiling(tiling).usage(usage).sharingMode(sharingMode);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @param mipLevels `mipLevels`
+    /// @param arrayLayers `arrayLayers`
+    /// @param samples `samples`
+    /// @param tiling `tiling`
+    /// @param usage `usage`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent, int mipLevels, int arrayLayers, int samples, int tiling, int usage) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels).arrayLayers(arrayLayers).samples(samples).tiling(tiling).usage(usage);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @param mipLevels `mipLevels`
+    /// @param arrayLayers `arrayLayers`
+    /// @param samples `samples`
+    /// @param tiling `tiling`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent, int mipLevels, int arrayLayers, int samples, int tiling) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels).arrayLayers(arrayLayers).samples(samples).tiling(tiling);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @param mipLevels `mipLevels`
+    /// @param arrayLayers `arrayLayers`
+    /// @param samples `samples`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent, int mipLevels, int arrayLayers, int samples) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels).arrayLayers(arrayLayers).samples(samples);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @param mipLevels `mipLevels`
+    /// @param arrayLayers `arrayLayers`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent, int mipLevels, int arrayLayers) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels).arrayLayers(arrayLayers);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @param mipLevels `mipLevels`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent, int mipLevels) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent).mipLevels(mipLevels);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @param extent `extent`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format, MemorySegment extent) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format).extent(extent);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @param format `format`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType, int format) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType).format(format);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param imageType `imageType`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imageType) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imageType(imageType);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImageCreateInfo`
+    public static VkImageCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

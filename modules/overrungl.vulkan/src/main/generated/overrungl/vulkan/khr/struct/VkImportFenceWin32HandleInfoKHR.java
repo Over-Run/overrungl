@@ -125,6 +125,83 @@ public sealed class VkImportFenceWin32HandleInfoKHR extends GroupType {
     /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @param flags `flags`
+    /// @param handleType `handleType`
+    /// @param handle `handle`
+    /// @param name `name`
+    /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
+    public static VkImportFenceWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int flags, int handleType, MemorySegment handle, MemorySegment name) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).flags(flags).handleType(handleType).handle(handle).name(name);
+    }
+
+    /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @param flags `flags`
+    /// @param handleType `handleType`
+    /// @param handle `handle`
+    /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
+    public static VkImportFenceWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int flags, int handleType, MemorySegment handle) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).flags(flags).handleType(handleType).handle(handle);
+    }
+
+    /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @param flags `flags`
+    /// @param handleType `handleType`
+    /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
+    public static VkImportFenceWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int flags, int handleType) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).flags(flags).handleType(handleType);
+    }
+
+    /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @param flags `flags`
+    /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
+    public static VkImportFenceWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).flags(flags);
+    }
+
+    /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
+    public static VkImportFenceWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence);
+    }
+
+    /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
+    public static VkImportFenceWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
+    public static VkImportFenceWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

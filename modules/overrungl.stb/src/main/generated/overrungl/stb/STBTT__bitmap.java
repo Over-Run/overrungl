@@ -101,6 +101,44 @@ public sealed class STBTT__bitmap extends GroupType {
     /// @return the allocated `STBTT__bitmap`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `STBTT__bitmap` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param w `w`
+    /// @param h `h`
+    /// @param stride `stride`
+    /// @param pixels `pixels`
+    /// @return the allocated `STBTT__bitmap`
+    public static STBTT__bitmap allocInit(SegmentAllocator allocator, int w, int h, int stride, MemorySegment pixels) {
+        return alloc(allocator).w(w).h(h).stride(stride).pixels(pixels);
+    }
+
+    /// Allocates a `STBTT__bitmap` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param w `w`
+    /// @param h `h`
+    /// @param stride `stride`
+    /// @return the allocated `STBTT__bitmap`
+    public static STBTT__bitmap allocInit(SegmentAllocator allocator, int w, int h, int stride) {
+        return alloc(allocator).w(w).h(h).stride(stride);
+    }
+
+    /// Allocates a `STBTT__bitmap` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param w `w`
+    /// @param h `h`
+    /// @return the allocated `STBTT__bitmap`
+    public static STBTT__bitmap allocInit(SegmentAllocator allocator, int w, int h) {
+        return alloc(allocator).w(w).h(h);
+    }
+
+    /// Allocates a `STBTT__bitmap` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param w `w`
+    /// @return the allocated `STBTT__bitmap`
+    public static STBTT__bitmap allocInit(SegmentAllocator allocator, int w) {
+        return alloc(allocator).w(w);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

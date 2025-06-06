@@ -357,6 +357,924 @@ public sealed class STBIR_RESIZE extends GroupType {
     /// @return the allocated `STBIR_RESIZE`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @param horizontal_filter `horizontal_filter`
+    /// @param vertical_filter `vertical_filter`
+    /// @param horizontal_edge `horizontal_edge`
+    /// @param vertical_edge `vertical_edge`
+    /// @param horizontal_filter_kernel `horizontal_filter_kernel`
+    /// @param horizontal_filter_support `horizontal_filter_support`
+    /// @param vertical_filter_kernel `vertical_filter_kernel`
+    /// @param vertical_filter_support `vertical_filter_support`
+    /// @param samplers `samplers`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type, int horizontal_filter, int vertical_filter, int horizontal_edge, int vertical_edge, MemorySegment horizontal_filter_kernel, MemorySegment horizontal_filter_support, MemorySegment vertical_filter_kernel, MemorySegment vertical_filter_support, MemorySegment samplers) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter).horizontal_edge(horizontal_edge).vertical_edge(vertical_edge).horizontal_filter_kernel(horizontal_filter_kernel).horizontal_filter_support(horizontal_filter_support).vertical_filter_kernel(vertical_filter_kernel).vertical_filter_support(vertical_filter_support).samplers(samplers);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @param horizontal_filter `horizontal_filter`
+    /// @param vertical_filter `vertical_filter`
+    /// @param horizontal_edge `horizontal_edge`
+    /// @param vertical_edge `vertical_edge`
+    /// @param horizontal_filter_kernel `horizontal_filter_kernel`
+    /// @param horizontal_filter_support `horizontal_filter_support`
+    /// @param vertical_filter_kernel `vertical_filter_kernel`
+    /// @param vertical_filter_support `vertical_filter_support`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type, int horizontal_filter, int vertical_filter, int horizontal_edge, int vertical_edge, MemorySegment horizontal_filter_kernel, MemorySegment horizontal_filter_support, MemorySegment vertical_filter_kernel, MemorySegment vertical_filter_support) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter).horizontal_edge(horizontal_edge).vertical_edge(vertical_edge).horizontal_filter_kernel(horizontal_filter_kernel).horizontal_filter_support(horizontal_filter_support).vertical_filter_kernel(vertical_filter_kernel).vertical_filter_support(vertical_filter_support);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @param horizontal_filter `horizontal_filter`
+    /// @param vertical_filter `vertical_filter`
+    /// @param horizontal_edge `horizontal_edge`
+    /// @param vertical_edge `vertical_edge`
+    /// @param horizontal_filter_kernel `horizontal_filter_kernel`
+    /// @param horizontal_filter_support `horizontal_filter_support`
+    /// @param vertical_filter_kernel `vertical_filter_kernel`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type, int horizontal_filter, int vertical_filter, int horizontal_edge, int vertical_edge, MemorySegment horizontal_filter_kernel, MemorySegment horizontal_filter_support, MemorySegment vertical_filter_kernel) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter).horizontal_edge(horizontal_edge).vertical_edge(vertical_edge).horizontal_filter_kernel(horizontal_filter_kernel).horizontal_filter_support(horizontal_filter_support).vertical_filter_kernel(vertical_filter_kernel);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @param horizontal_filter `horizontal_filter`
+    /// @param vertical_filter `vertical_filter`
+    /// @param horizontal_edge `horizontal_edge`
+    /// @param vertical_edge `vertical_edge`
+    /// @param horizontal_filter_kernel `horizontal_filter_kernel`
+    /// @param horizontal_filter_support `horizontal_filter_support`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type, int horizontal_filter, int vertical_filter, int horizontal_edge, int vertical_edge, MemorySegment horizontal_filter_kernel, MemorySegment horizontal_filter_support) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter).horizontal_edge(horizontal_edge).vertical_edge(vertical_edge).horizontal_filter_kernel(horizontal_filter_kernel).horizontal_filter_support(horizontal_filter_support);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @param horizontal_filter `horizontal_filter`
+    /// @param vertical_filter `vertical_filter`
+    /// @param horizontal_edge `horizontal_edge`
+    /// @param vertical_edge `vertical_edge`
+    /// @param horizontal_filter_kernel `horizontal_filter_kernel`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type, int horizontal_filter, int vertical_filter, int horizontal_edge, int vertical_edge, MemorySegment horizontal_filter_kernel) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter).horizontal_edge(horizontal_edge).vertical_edge(vertical_edge).horizontal_filter_kernel(horizontal_filter_kernel);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @param horizontal_filter `horizontal_filter`
+    /// @param vertical_filter `vertical_filter`
+    /// @param horizontal_edge `horizontal_edge`
+    /// @param vertical_edge `vertical_edge`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type, int horizontal_filter, int vertical_filter, int horizontal_edge, int vertical_edge) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter).horizontal_edge(horizontal_edge).vertical_edge(vertical_edge);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @param horizontal_filter `horizontal_filter`
+    /// @param vertical_filter `vertical_filter`
+    /// @param horizontal_edge `horizontal_edge`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type, int horizontal_filter, int vertical_filter, int horizontal_edge) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter).horizontal_edge(horizontal_edge);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @param horizontal_filter `horizontal_filter`
+    /// @param vertical_filter `vertical_filter`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type, int horizontal_filter, int vertical_filter) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter).vertical_filter(vertical_filter);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @param horizontal_filter `horizontal_filter`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type, int horizontal_filter) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type).horizontal_filter(horizontal_filter);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @param output_data_type `output_data_type`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type, int output_data_type) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type).output_data_type(output_data_type);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @param input_data_type `input_data_type`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public, int input_data_type) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public).input_data_type(input_data_type);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @param output_pixel_layout_public `output_pixel_layout_public`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public, int output_pixel_layout_public) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public).output_pixel_layout_public(output_pixel_layout_public);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @param input_pixel_layout_public `input_pixel_layout_public`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc, int input_pixel_layout_public) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc).input_pixel_layout_public(input_pixel_layout_public);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @param called_alloc `called_alloc`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild, int called_alloc) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild).called_alloc(called_alloc);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @param needs_rebuild `needs_rebuild`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha, int needs_rebuild) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha).needs_rebuild(needs_rebuild);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @param fast_alpha `fast_alpha`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits, int fast_alpha) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits).fast_alpha(fast_alpha);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @param splits `splits`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes, int splits) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes).splits(splits);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @param output_stride_in_bytes `output_stride_in_bytes`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes, int output_stride_in_bytes) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes).output_stride_in_bytes(output_stride_in_bytes);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @param input_stride_in_bytes `input_stride_in_bytes`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb, int input_stride_in_bytes) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb).input_stride_in_bytes(input_stride_in_bytes);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @param output_cb `output_cb`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh, MemorySegment output_cb) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh).output_cb(output_cb);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @param output_subh `output_subh`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw, int output_subh) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw).output_subh(output_subh);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @param output_subw `output_subw`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby, int output_subw) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby).output_subw(output_subw);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @param output_suby `output_suby`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx, int output_suby) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx).output_suby(output_suby);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @param output_subx `output_subx`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h, int output_subx) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h).output_subx(output_subx);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @param output_h `output_h`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w, int output_h) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w).output_h(output_h);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @param output_w `output_w`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels, int output_w) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels).output_w(output_w);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @param output_pixels `output_pixels`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb, MemorySegment output_pixels) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb).output_pixels(output_pixels);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @param input_cb `input_cb`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1, MemorySegment input_cb) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1).input_cb(input_cb);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @param input_t1 `input_t1`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1, double input_t1) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1).input_t1(input_t1);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @param input_s1 `input_s1`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0, double input_s1) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0).input_s1(input_s1);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @param input_t0 `input_t0`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0, double input_t0) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0).input_t0(input_t0);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @param input_s0 `input_s0`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h, double input_s0) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h).input_s0(input_s0);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @param input_h `input_h`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w, int input_h) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w).input_h(input_h);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @param input_w `input_w`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels, int input_w) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels).input_w(input_w);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @param input_pixels `input_pixels`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data, MemorySegment input_pixels) {
+        return alloc(allocator).user_data(user_data).input_pixels(input_pixels);
+    }
+
+    /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param user_data `user_data`
+    /// @return the allocated `STBIR_RESIZE`
+    public static STBIR_RESIZE allocInit(SegmentAllocator allocator, MemorySegment user_data) {
+        return alloc(allocator).user_data(user_data);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

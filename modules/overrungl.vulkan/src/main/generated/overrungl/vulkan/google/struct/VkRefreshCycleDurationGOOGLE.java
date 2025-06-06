@@ -77,6 +77,14 @@ public sealed class VkRefreshCycleDurationGOOGLE extends GroupType {
     /// @return the allocated `VkRefreshCycleDurationGOOGLE`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRefreshCycleDurationGOOGLE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param refreshDuration `refreshDuration`
+    /// @return the allocated `VkRefreshCycleDurationGOOGLE`
+    public static VkRefreshCycleDurationGOOGLE allocInit(SegmentAllocator allocator, long refreshDuration) {
+        return alloc(allocator).refreshDuration(refreshDuration);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

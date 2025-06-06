@@ -123,6 +123,83 @@ public sealed class VkClusterAccelerationStructureInputInfoNV extends GroupType 
     /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxAccelerationStructureCount `maxAccelerationStructureCount`
+    /// @param flags `flags`
+    /// @param opType `opType`
+    /// @param opMode `opMode`
+    /// @param opInput `opInput`
+    /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
+    public static VkClusterAccelerationStructureInputInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxAccelerationStructureCount, int flags, int opType, int opMode, MemorySegment opInput) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxAccelerationStructureCount(maxAccelerationStructureCount).flags(flags).opType(opType).opMode(opMode).opInput(opInput);
+    }
+
+    /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxAccelerationStructureCount `maxAccelerationStructureCount`
+    /// @param flags `flags`
+    /// @param opType `opType`
+    /// @param opMode `opMode`
+    /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
+    public static VkClusterAccelerationStructureInputInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxAccelerationStructureCount, int flags, int opType, int opMode) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxAccelerationStructureCount(maxAccelerationStructureCount).flags(flags).opType(opType).opMode(opMode);
+    }
+
+    /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxAccelerationStructureCount `maxAccelerationStructureCount`
+    /// @param flags `flags`
+    /// @param opType `opType`
+    /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
+    public static VkClusterAccelerationStructureInputInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxAccelerationStructureCount, int flags, int opType) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxAccelerationStructureCount(maxAccelerationStructureCount).flags(flags).opType(opType);
+    }
+
+    /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxAccelerationStructureCount `maxAccelerationStructureCount`
+    /// @param flags `flags`
+    /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
+    public static VkClusterAccelerationStructureInputInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxAccelerationStructureCount, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxAccelerationStructureCount(maxAccelerationStructureCount).flags(flags);
+    }
+
+    /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxAccelerationStructureCount `maxAccelerationStructureCount`
+    /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
+    public static VkClusterAccelerationStructureInputInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxAccelerationStructureCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxAccelerationStructureCount(maxAccelerationStructureCount);
+    }
+
+    /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
+    public static VkClusterAccelerationStructureInputInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
+    public static VkClusterAccelerationStructureInputInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

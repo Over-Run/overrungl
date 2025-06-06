@@ -93,6 +93,33 @@ public sealed class VkMemoryZirconHandlePropertiesFUCHSIA extends GroupType {
     /// @return the allocated `VkMemoryZirconHandlePropertiesFUCHSIA`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkMemoryZirconHandlePropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryTypeBits `memoryTypeBits`
+    /// @return the allocated `VkMemoryZirconHandlePropertiesFUCHSIA`
+    public static VkMemoryZirconHandlePropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits);
+    }
+
+    /// Allocates a `VkMemoryZirconHandlePropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkMemoryZirconHandlePropertiesFUCHSIA`
+    public static VkMemoryZirconHandlePropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkMemoryZirconHandlePropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkMemoryZirconHandlePropertiesFUCHSIA`
+    public static VkMemoryZirconHandlePropertiesFUCHSIA allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

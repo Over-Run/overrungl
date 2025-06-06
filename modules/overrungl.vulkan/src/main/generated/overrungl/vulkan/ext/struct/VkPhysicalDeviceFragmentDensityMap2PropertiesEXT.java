@@ -117,6 +117,69 @@ public sealed class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Gro
     /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subsampledLoads `subsampledLoads`
+    /// @param subsampledCoarseReconstructionEarlyAccess `subsampledCoarseReconstructionEarlyAccess`
+    /// @param maxSubsampledArrayLayers `maxSubsampledArrayLayers`
+    /// @param maxDescriptorSetSubsampledSamplers `maxDescriptorSetSubsampledSamplers`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subsampledLoads, int subsampledCoarseReconstructionEarlyAccess, int maxSubsampledArrayLayers, int maxDescriptorSetSubsampledSamplers) {
+        return alloc(allocator).sType(sType).pNext(pNext).subsampledLoads(subsampledLoads).subsampledCoarseReconstructionEarlyAccess(subsampledCoarseReconstructionEarlyAccess).maxSubsampledArrayLayers(maxSubsampledArrayLayers).maxDescriptorSetSubsampledSamplers(maxDescriptorSetSubsampledSamplers);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subsampledLoads `subsampledLoads`
+    /// @param subsampledCoarseReconstructionEarlyAccess `subsampledCoarseReconstructionEarlyAccess`
+    /// @param maxSubsampledArrayLayers `maxSubsampledArrayLayers`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subsampledLoads, int subsampledCoarseReconstructionEarlyAccess, int maxSubsampledArrayLayers) {
+        return alloc(allocator).sType(sType).pNext(pNext).subsampledLoads(subsampledLoads).subsampledCoarseReconstructionEarlyAccess(subsampledCoarseReconstructionEarlyAccess).maxSubsampledArrayLayers(maxSubsampledArrayLayers);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subsampledLoads `subsampledLoads`
+    /// @param subsampledCoarseReconstructionEarlyAccess `subsampledCoarseReconstructionEarlyAccess`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subsampledLoads, int subsampledCoarseReconstructionEarlyAccess) {
+        return alloc(allocator).sType(sType).pNext(pNext).subsampledLoads(subsampledLoads).subsampledCoarseReconstructionEarlyAccess(subsampledCoarseReconstructionEarlyAccess);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subsampledLoads `subsampledLoads`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subsampledLoads) {
+        return alloc(allocator).sType(sType).pNext(pNext).subsampledLoads(subsampledLoads);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

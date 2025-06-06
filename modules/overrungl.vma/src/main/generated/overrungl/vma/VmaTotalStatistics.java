@@ -89,6 +89,33 @@ public sealed class VmaTotalStatistics extends GroupType {
     /// @return the allocated `VmaTotalStatistics`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VmaTotalStatistics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @param memoryHeap `memoryHeap`
+    /// @param total `total`
+    /// @return the allocated `VmaTotalStatistics`
+    public static VmaTotalStatistics allocInit(SegmentAllocator allocator, MemorySegment memoryType, MemorySegment memoryHeap, MemorySegment total) {
+        return alloc(allocator).memoryType(memoryType).memoryHeap(memoryHeap).total(total);
+    }
+
+    /// Allocates a `VmaTotalStatistics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @param memoryHeap `memoryHeap`
+    /// @return the allocated `VmaTotalStatistics`
+    public static VmaTotalStatistics allocInit(SegmentAllocator allocator, MemorySegment memoryType, MemorySegment memoryHeap) {
+        return alloc(allocator).memoryType(memoryType).memoryHeap(memoryHeap);
+    }
+
+    /// Allocates a `VmaTotalStatistics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param memoryType `memoryType`
+    /// @return the allocated `VmaTotalStatistics`
+    public static VmaTotalStatistics allocInit(SegmentAllocator allocator, MemorySegment memoryType) {
+        return alloc(allocator).memoryType(memoryType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

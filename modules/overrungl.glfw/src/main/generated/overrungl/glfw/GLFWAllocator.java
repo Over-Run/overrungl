@@ -101,6 +101,44 @@ public sealed class GLFWAllocator extends GroupType {
     /// @return the allocated `GLFWAllocator`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `GLFWAllocator` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param allocate `allocate`
+    /// @param reallocate `reallocate`
+    /// @param deallocate `deallocate`
+    /// @param user `user`
+    /// @return the allocated `GLFWAllocator`
+    public static GLFWAllocator allocInit(SegmentAllocator allocator, MemorySegment allocate, MemorySegment reallocate, MemorySegment deallocate, MemorySegment user) {
+        return alloc(allocator).allocate(allocate).reallocate(reallocate).deallocate(deallocate).user(user);
+    }
+
+    /// Allocates a `GLFWAllocator` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param allocate `allocate`
+    /// @param reallocate `reallocate`
+    /// @param deallocate `deallocate`
+    /// @return the allocated `GLFWAllocator`
+    public static GLFWAllocator allocInit(SegmentAllocator allocator, MemorySegment allocate, MemorySegment reallocate, MemorySegment deallocate) {
+        return alloc(allocator).allocate(allocate).reallocate(reallocate).deallocate(deallocate);
+    }
+
+    /// Allocates a `GLFWAllocator` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param allocate `allocate`
+    /// @param reallocate `reallocate`
+    /// @return the allocated `GLFWAllocator`
+    public static GLFWAllocator allocInit(SegmentAllocator allocator, MemorySegment allocate, MemorySegment reallocate) {
+        return alloc(allocator).allocate(allocate).reallocate(reallocate);
+    }
+
+    /// Allocates a `GLFWAllocator` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param allocate `allocate`
+    /// @return the allocated `GLFWAllocator`
+    public static GLFWAllocator allocInit(SegmentAllocator allocator, MemorySegment allocate) {
+        return alloc(allocator).allocate(allocate);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

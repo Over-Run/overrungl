@@ -157,6 +157,149 @@ public sealed class VkRenderPassCreateInfo2 extends GroupType {
     /// @return the allocated `VkRenderPassCreateInfo2`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @param subpassCount `subpassCount`
+    /// @param pSubpasses `pSubpasses`
+    /// @param dependencyCount `dependencyCount`
+    /// @param pDependencies `pDependencies`
+    /// @param correlatedViewMaskCount `correlatedViewMaskCount`
+    /// @param pCorrelatedViewMasks `pCorrelatedViewMasks`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int attachmentCount, MemorySegment pAttachments, int subpassCount, MemorySegment pSubpasses, int dependencyCount, MemorySegment pDependencies, int correlatedViewMaskCount, MemorySegment pCorrelatedViewMasks) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).attachmentCount(attachmentCount).pAttachments(pAttachments).subpassCount(subpassCount).pSubpasses(pSubpasses).dependencyCount(dependencyCount).pDependencies(pDependencies).correlatedViewMaskCount(correlatedViewMaskCount).pCorrelatedViewMasks(pCorrelatedViewMasks);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @param subpassCount `subpassCount`
+    /// @param pSubpasses `pSubpasses`
+    /// @param dependencyCount `dependencyCount`
+    /// @param pDependencies `pDependencies`
+    /// @param correlatedViewMaskCount `correlatedViewMaskCount`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int attachmentCount, MemorySegment pAttachments, int subpassCount, MemorySegment pSubpasses, int dependencyCount, MemorySegment pDependencies, int correlatedViewMaskCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).attachmentCount(attachmentCount).pAttachments(pAttachments).subpassCount(subpassCount).pSubpasses(pSubpasses).dependencyCount(dependencyCount).pDependencies(pDependencies).correlatedViewMaskCount(correlatedViewMaskCount);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @param subpassCount `subpassCount`
+    /// @param pSubpasses `pSubpasses`
+    /// @param dependencyCount `dependencyCount`
+    /// @param pDependencies `pDependencies`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int attachmentCount, MemorySegment pAttachments, int subpassCount, MemorySegment pSubpasses, int dependencyCount, MemorySegment pDependencies) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).attachmentCount(attachmentCount).pAttachments(pAttachments).subpassCount(subpassCount).pSubpasses(pSubpasses).dependencyCount(dependencyCount).pDependencies(pDependencies);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @param subpassCount `subpassCount`
+    /// @param pSubpasses `pSubpasses`
+    /// @param dependencyCount `dependencyCount`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int attachmentCount, MemorySegment pAttachments, int subpassCount, MemorySegment pSubpasses, int dependencyCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).attachmentCount(attachmentCount).pAttachments(pAttachments).subpassCount(subpassCount).pSubpasses(pSubpasses).dependencyCount(dependencyCount);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @param subpassCount `subpassCount`
+    /// @param pSubpasses `pSubpasses`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int attachmentCount, MemorySegment pAttachments, int subpassCount, MemorySegment pSubpasses) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).attachmentCount(attachmentCount).pAttachments(pAttachments).subpassCount(subpassCount).pSubpasses(pSubpasses);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @param subpassCount `subpassCount`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int attachmentCount, MemorySegment pAttachments, int subpassCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).attachmentCount(attachmentCount).pAttachments(pAttachments).subpassCount(subpassCount);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int attachmentCount, MemorySegment pAttachments) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).attachmentCount(attachmentCount).pAttachments(pAttachments);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param attachmentCount `attachmentCount`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int attachmentCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).attachmentCount(attachmentCount);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderPassCreateInfo2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderPassCreateInfo2`
+    public static VkRenderPassCreateInfo2 allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

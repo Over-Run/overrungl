@@ -85,6 +85,23 @@ public sealed class VkMultiDrawInfoEXT extends GroupType {
     /// @return the allocated `VkMultiDrawInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkMultiDrawInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param firstVertex `firstVertex`
+    /// @param vertexCount `vertexCount`
+    /// @return the allocated `VkMultiDrawInfoEXT`
+    public static VkMultiDrawInfoEXT allocInit(SegmentAllocator allocator, int firstVertex, int vertexCount) {
+        return alloc(allocator).firstVertex(firstVertex).vertexCount(vertexCount);
+    }
+
+    /// Allocates a `VkMultiDrawInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param firstVertex `firstVertex`
+    /// @return the allocated `VkMultiDrawInfoEXT`
+    public static VkMultiDrawInfoEXT allocInit(SegmentAllocator allocator, int firstVertex) {
+        return alloc(allocator).firstVertex(firstVertex);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

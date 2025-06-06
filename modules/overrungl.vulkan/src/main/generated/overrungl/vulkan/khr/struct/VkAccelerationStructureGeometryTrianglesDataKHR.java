@@ -135,6 +135,114 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
     /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexFormat `vertexFormat`
+    /// @param vertexData `vertexData`
+    /// @param vertexStride `vertexStride`
+    /// @param maxVertex `maxVertex`
+    /// @param indexType `indexType`
+    /// @param indexData `indexData`
+    /// @param transformData `transformData`
+    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexFormat, MemorySegment vertexData, long vertexStride, int maxVertex, int indexType, MemorySegment indexData, MemorySegment transformData) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexFormat(vertexFormat).vertexData(vertexData).vertexStride(vertexStride).maxVertex(maxVertex).indexType(indexType).indexData(indexData).transformData(transformData);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexFormat `vertexFormat`
+    /// @param vertexData `vertexData`
+    /// @param vertexStride `vertexStride`
+    /// @param maxVertex `maxVertex`
+    /// @param indexType `indexType`
+    /// @param indexData `indexData`
+    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexFormat, MemorySegment vertexData, long vertexStride, int maxVertex, int indexType, MemorySegment indexData) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexFormat(vertexFormat).vertexData(vertexData).vertexStride(vertexStride).maxVertex(maxVertex).indexType(indexType).indexData(indexData);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexFormat `vertexFormat`
+    /// @param vertexData `vertexData`
+    /// @param vertexStride `vertexStride`
+    /// @param maxVertex `maxVertex`
+    /// @param indexType `indexType`
+    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexFormat, MemorySegment vertexData, long vertexStride, int maxVertex, int indexType) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexFormat(vertexFormat).vertexData(vertexData).vertexStride(vertexStride).maxVertex(maxVertex).indexType(indexType);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexFormat `vertexFormat`
+    /// @param vertexData `vertexData`
+    /// @param vertexStride `vertexStride`
+    /// @param maxVertex `maxVertex`
+    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexFormat, MemorySegment vertexData, long vertexStride, int maxVertex) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexFormat(vertexFormat).vertexData(vertexData).vertexStride(vertexStride).maxVertex(maxVertex);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexFormat `vertexFormat`
+    /// @param vertexData `vertexData`
+    /// @param vertexStride `vertexStride`
+    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexFormat, MemorySegment vertexData, long vertexStride) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexFormat(vertexFormat).vertexData(vertexData).vertexStride(vertexStride);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexFormat `vertexFormat`
+    /// @param vertexData `vertexData`
+    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexFormat, MemorySegment vertexData) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexFormat(vertexFormat).vertexData(vertexData);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexFormat `vertexFormat`
+    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexFormat) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexFormat(vertexFormat);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public static VkAccelerationStructureGeometryTrianglesDataKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

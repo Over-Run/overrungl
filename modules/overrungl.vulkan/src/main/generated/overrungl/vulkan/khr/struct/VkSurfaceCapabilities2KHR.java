@@ -91,6 +91,33 @@ public sealed class VkSurfaceCapabilities2KHR extends GroupType {
     /// @return the allocated `VkSurfaceCapabilities2KHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSurfaceCapabilities2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param surfaceCapabilities `surfaceCapabilities`
+    /// @return the allocated `VkSurfaceCapabilities2KHR`
+    public static VkSurfaceCapabilities2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment surfaceCapabilities) {
+        return alloc(allocator).sType(sType).pNext(pNext).surfaceCapabilities(surfaceCapabilities);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSurfaceCapabilities2KHR`
+    public static VkSurfaceCapabilities2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSurfaceCapabilities2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSurfaceCapabilities2KHR`
+    public static VkSurfaceCapabilities2KHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

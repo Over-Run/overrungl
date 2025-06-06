@@ -93,6 +93,33 @@ public sealed class VmaVirtualAllocationInfo extends GroupType {
     /// @return the allocated `VmaVirtualAllocationInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VmaVirtualAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @param pUserData `pUserData`
+    /// @return the allocated `VmaVirtualAllocationInfo`
+    public static VmaVirtualAllocationInfo allocInit(SegmentAllocator allocator, long offset, long size, MemorySegment pUserData) {
+        return alloc(allocator).offset(offset).size(size).pUserData(pUserData);
+    }
+
+    /// Allocates a `VmaVirtualAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @return the allocated `VmaVirtualAllocationInfo`
+    public static VmaVirtualAllocationInfo allocInit(SegmentAllocator allocator, long offset, long size) {
+        return alloc(allocator).offset(offset).size(size);
+    }
+
+    /// Allocates a `VmaVirtualAllocationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param offset `offset`
+    /// @return the allocated `VmaVirtualAllocationInfo`
+    public static VmaVirtualAllocationInfo allocInit(SegmentAllocator allocator, long offset) {
+        return alloc(allocator).offset(offset);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

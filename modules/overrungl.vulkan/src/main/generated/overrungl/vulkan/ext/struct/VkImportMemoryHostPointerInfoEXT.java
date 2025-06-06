@@ -101,6 +101,44 @@ public sealed class VkImportMemoryHostPointerInfoEXT extends GroupType {
     /// @return the allocated `VkImportMemoryHostPointerInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImportMemoryHostPointerInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handleType `handleType`
+    /// @param pHostPointer `pHostPointer`
+    /// @return the allocated `VkImportMemoryHostPointerInfoEXT`
+    public static VkImportMemoryHostPointerInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleType, MemorySegment pHostPointer) {
+        return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType).pHostPointer(pHostPointer);
+    }
+
+    /// Allocates a `VkImportMemoryHostPointerInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handleType `handleType`
+    /// @return the allocated `VkImportMemoryHostPointerInfoEXT`
+    public static VkImportMemoryHostPointerInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleType) {
+        return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType);
+    }
+
+    /// Allocates a `VkImportMemoryHostPointerInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImportMemoryHostPointerInfoEXT`
+    public static VkImportMemoryHostPointerInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImportMemoryHostPointerInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImportMemoryHostPointerInfoEXT`
+    public static VkImportMemoryHostPointerInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

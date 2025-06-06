@@ -93,6 +93,33 @@ public sealed class VkDrawIndirectCountIndirectCommandEXT extends GroupType {
     /// @return the allocated `VkDrawIndirectCountIndirectCommandEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDrawIndirectCountIndirectCommandEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferAddress `bufferAddress`
+    /// @param stride `stride`
+    /// @param commandCount `commandCount`
+    /// @return the allocated `VkDrawIndirectCountIndirectCommandEXT`
+    public static VkDrawIndirectCountIndirectCommandEXT allocInit(SegmentAllocator allocator, long bufferAddress, int stride, int commandCount) {
+        return alloc(allocator).bufferAddress(bufferAddress).stride(stride).commandCount(commandCount);
+    }
+
+    /// Allocates a `VkDrawIndirectCountIndirectCommandEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferAddress `bufferAddress`
+    /// @param stride `stride`
+    /// @return the allocated `VkDrawIndirectCountIndirectCommandEXT`
+    public static VkDrawIndirectCountIndirectCommandEXT allocInit(SegmentAllocator allocator, long bufferAddress, int stride) {
+        return alloc(allocator).bufferAddress(bufferAddress).stride(stride);
+    }
+
+    /// Allocates a `VkDrawIndirectCountIndirectCommandEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param bufferAddress `bufferAddress`
+    /// @return the allocated `VkDrawIndirectCountIndirectCommandEXT`
+    public static VkDrawIndirectCountIndirectCommandEXT allocInit(SegmentAllocator allocator, long bufferAddress) {
+        return alloc(allocator).bufferAddress(bufferAddress);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

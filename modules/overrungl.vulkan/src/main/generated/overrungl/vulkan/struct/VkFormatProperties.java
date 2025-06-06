@@ -93,6 +93,33 @@ public sealed class VkFormatProperties extends GroupType {
     /// @return the allocated `VkFormatProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkFormatProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param linearTilingFeatures `linearTilingFeatures`
+    /// @param optimalTilingFeatures `optimalTilingFeatures`
+    /// @param bufferFeatures `bufferFeatures`
+    /// @return the allocated `VkFormatProperties`
+    public static VkFormatProperties allocInit(SegmentAllocator allocator, int linearTilingFeatures, int optimalTilingFeatures, int bufferFeatures) {
+        return alloc(allocator).linearTilingFeatures(linearTilingFeatures).optimalTilingFeatures(optimalTilingFeatures).bufferFeatures(bufferFeatures);
+    }
+
+    /// Allocates a `VkFormatProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param linearTilingFeatures `linearTilingFeatures`
+    /// @param optimalTilingFeatures `optimalTilingFeatures`
+    /// @return the allocated `VkFormatProperties`
+    public static VkFormatProperties allocInit(SegmentAllocator allocator, int linearTilingFeatures, int optimalTilingFeatures) {
+        return alloc(allocator).linearTilingFeatures(linearTilingFeatures).optimalTilingFeatures(optimalTilingFeatures);
+    }
+
+    /// Allocates a `VkFormatProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param linearTilingFeatures `linearTilingFeatures`
+    /// @return the allocated `VkFormatProperties`
+    public static VkFormatProperties allocInit(SegmentAllocator allocator, int linearTilingFeatures) {
+        return alloc(allocator).linearTilingFeatures(linearTilingFeatures);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

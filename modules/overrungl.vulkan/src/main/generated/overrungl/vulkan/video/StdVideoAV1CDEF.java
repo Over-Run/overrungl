@@ -117,6 +117,69 @@ public sealed class StdVideoAV1CDEF extends GroupType {
     /// @return the allocated `StdVideoAV1CDEF`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoAV1CDEF` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cdef_damping_minus_3 `cdef_damping_minus_3`
+    /// @param cdef_bits `cdef_bits`
+    /// @param cdef_y_pri_strength `cdef_y_pri_strength`
+    /// @param cdef_y_sec_strength `cdef_y_sec_strength`
+    /// @param cdef_uv_pri_strength `cdef_uv_pri_strength`
+    /// @param cdef_uv_sec_strength `cdef_uv_sec_strength`
+    /// @return the allocated `StdVideoAV1CDEF`
+    public static StdVideoAV1CDEF allocInit(SegmentAllocator allocator, byte cdef_damping_minus_3, byte cdef_bits, MemorySegment cdef_y_pri_strength, MemorySegment cdef_y_sec_strength, MemorySegment cdef_uv_pri_strength, MemorySegment cdef_uv_sec_strength) {
+        return alloc(allocator).cdef_damping_minus_3(cdef_damping_minus_3).cdef_bits(cdef_bits).cdef_y_pri_strength(cdef_y_pri_strength).cdef_y_sec_strength(cdef_y_sec_strength).cdef_uv_pri_strength(cdef_uv_pri_strength).cdef_uv_sec_strength(cdef_uv_sec_strength);
+    }
+
+    /// Allocates a `StdVideoAV1CDEF` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cdef_damping_minus_3 `cdef_damping_minus_3`
+    /// @param cdef_bits `cdef_bits`
+    /// @param cdef_y_pri_strength `cdef_y_pri_strength`
+    /// @param cdef_y_sec_strength `cdef_y_sec_strength`
+    /// @param cdef_uv_pri_strength `cdef_uv_pri_strength`
+    /// @return the allocated `StdVideoAV1CDEF`
+    public static StdVideoAV1CDEF allocInit(SegmentAllocator allocator, byte cdef_damping_minus_3, byte cdef_bits, MemorySegment cdef_y_pri_strength, MemorySegment cdef_y_sec_strength, MemorySegment cdef_uv_pri_strength) {
+        return alloc(allocator).cdef_damping_minus_3(cdef_damping_minus_3).cdef_bits(cdef_bits).cdef_y_pri_strength(cdef_y_pri_strength).cdef_y_sec_strength(cdef_y_sec_strength).cdef_uv_pri_strength(cdef_uv_pri_strength);
+    }
+
+    /// Allocates a `StdVideoAV1CDEF` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cdef_damping_minus_3 `cdef_damping_minus_3`
+    /// @param cdef_bits `cdef_bits`
+    /// @param cdef_y_pri_strength `cdef_y_pri_strength`
+    /// @param cdef_y_sec_strength `cdef_y_sec_strength`
+    /// @return the allocated `StdVideoAV1CDEF`
+    public static StdVideoAV1CDEF allocInit(SegmentAllocator allocator, byte cdef_damping_minus_3, byte cdef_bits, MemorySegment cdef_y_pri_strength, MemorySegment cdef_y_sec_strength) {
+        return alloc(allocator).cdef_damping_minus_3(cdef_damping_minus_3).cdef_bits(cdef_bits).cdef_y_pri_strength(cdef_y_pri_strength).cdef_y_sec_strength(cdef_y_sec_strength);
+    }
+
+    /// Allocates a `StdVideoAV1CDEF` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cdef_damping_minus_3 `cdef_damping_minus_3`
+    /// @param cdef_bits `cdef_bits`
+    /// @param cdef_y_pri_strength `cdef_y_pri_strength`
+    /// @return the allocated `StdVideoAV1CDEF`
+    public static StdVideoAV1CDEF allocInit(SegmentAllocator allocator, byte cdef_damping_minus_3, byte cdef_bits, MemorySegment cdef_y_pri_strength) {
+        return alloc(allocator).cdef_damping_minus_3(cdef_damping_minus_3).cdef_bits(cdef_bits).cdef_y_pri_strength(cdef_y_pri_strength);
+    }
+
+    /// Allocates a `StdVideoAV1CDEF` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cdef_damping_minus_3 `cdef_damping_minus_3`
+    /// @param cdef_bits `cdef_bits`
+    /// @return the allocated `StdVideoAV1CDEF`
+    public static StdVideoAV1CDEF allocInit(SegmentAllocator allocator, byte cdef_damping_minus_3, byte cdef_bits) {
+        return alloc(allocator).cdef_damping_minus_3(cdef_damping_minus_3).cdef_bits(cdef_bits);
+    }
+
+    /// Allocates a `StdVideoAV1CDEF` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param cdef_damping_minus_3 `cdef_damping_minus_3`
+    /// @return the allocated `StdVideoAV1CDEF`
+    public static StdVideoAV1CDEF allocInit(SegmentAllocator allocator, byte cdef_damping_minus_3) {
+        return alloc(allocator).cdef_damping_minus_3(cdef_damping_minus_3);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

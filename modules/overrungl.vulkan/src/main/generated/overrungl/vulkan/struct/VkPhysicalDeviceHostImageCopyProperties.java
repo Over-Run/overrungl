@@ -133,6 +133,98 @@ public sealed class VkPhysicalDeviceHostImageCopyProperties extends GroupType {
     /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param copySrcLayoutCount `copySrcLayoutCount`
+    /// @param pCopySrcLayouts `pCopySrcLayouts`
+    /// @param copyDstLayoutCount `copyDstLayoutCount`
+    /// @param pCopyDstLayouts `pCopyDstLayouts`
+    /// @param optimalTilingLayoutUUID `optimalTilingLayoutUUID`
+    /// @param identicalMemoryTypeRequirements `identicalMemoryTypeRequirements`
+    /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
+    public static VkPhysicalDeviceHostImageCopyProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int copySrcLayoutCount, MemorySegment pCopySrcLayouts, int copyDstLayoutCount, MemorySegment pCopyDstLayouts, MemorySegment optimalTilingLayoutUUID, int identicalMemoryTypeRequirements) {
+        return alloc(allocator).sType(sType).pNext(pNext).copySrcLayoutCount(copySrcLayoutCount).pCopySrcLayouts(pCopySrcLayouts).copyDstLayoutCount(copyDstLayoutCount).pCopyDstLayouts(pCopyDstLayouts).optimalTilingLayoutUUID(optimalTilingLayoutUUID).identicalMemoryTypeRequirements(identicalMemoryTypeRequirements);
+    }
+
+    /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param copySrcLayoutCount `copySrcLayoutCount`
+    /// @param pCopySrcLayouts `pCopySrcLayouts`
+    /// @param copyDstLayoutCount `copyDstLayoutCount`
+    /// @param pCopyDstLayouts `pCopyDstLayouts`
+    /// @param optimalTilingLayoutUUID `optimalTilingLayoutUUID`
+    /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
+    public static VkPhysicalDeviceHostImageCopyProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int copySrcLayoutCount, MemorySegment pCopySrcLayouts, int copyDstLayoutCount, MemorySegment pCopyDstLayouts, MemorySegment optimalTilingLayoutUUID) {
+        return alloc(allocator).sType(sType).pNext(pNext).copySrcLayoutCount(copySrcLayoutCount).pCopySrcLayouts(pCopySrcLayouts).copyDstLayoutCount(copyDstLayoutCount).pCopyDstLayouts(pCopyDstLayouts).optimalTilingLayoutUUID(optimalTilingLayoutUUID);
+    }
+
+    /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param copySrcLayoutCount `copySrcLayoutCount`
+    /// @param pCopySrcLayouts `pCopySrcLayouts`
+    /// @param copyDstLayoutCount `copyDstLayoutCount`
+    /// @param pCopyDstLayouts `pCopyDstLayouts`
+    /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
+    public static VkPhysicalDeviceHostImageCopyProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int copySrcLayoutCount, MemorySegment pCopySrcLayouts, int copyDstLayoutCount, MemorySegment pCopyDstLayouts) {
+        return alloc(allocator).sType(sType).pNext(pNext).copySrcLayoutCount(copySrcLayoutCount).pCopySrcLayouts(pCopySrcLayouts).copyDstLayoutCount(copyDstLayoutCount).pCopyDstLayouts(pCopyDstLayouts);
+    }
+
+    /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param copySrcLayoutCount `copySrcLayoutCount`
+    /// @param pCopySrcLayouts `pCopySrcLayouts`
+    /// @param copyDstLayoutCount `copyDstLayoutCount`
+    /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
+    public static VkPhysicalDeviceHostImageCopyProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int copySrcLayoutCount, MemorySegment pCopySrcLayouts, int copyDstLayoutCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).copySrcLayoutCount(copySrcLayoutCount).pCopySrcLayouts(pCopySrcLayouts).copyDstLayoutCount(copyDstLayoutCount);
+    }
+
+    /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param copySrcLayoutCount `copySrcLayoutCount`
+    /// @param pCopySrcLayouts `pCopySrcLayouts`
+    /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
+    public static VkPhysicalDeviceHostImageCopyProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int copySrcLayoutCount, MemorySegment pCopySrcLayouts) {
+        return alloc(allocator).sType(sType).pNext(pNext).copySrcLayoutCount(copySrcLayoutCount).pCopySrcLayouts(pCopySrcLayouts);
+    }
+
+    /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param copySrcLayoutCount `copySrcLayoutCount`
+    /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
+    public static VkPhysicalDeviceHostImageCopyProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int copySrcLayoutCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).copySrcLayoutCount(copySrcLayoutCount);
+    }
+
+    /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
+    public static VkPhysicalDeviceHostImageCopyProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
+    public static VkPhysicalDeviceHostImageCopyProperties allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

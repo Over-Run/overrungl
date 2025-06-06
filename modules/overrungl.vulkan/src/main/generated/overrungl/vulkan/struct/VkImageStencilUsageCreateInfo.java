@@ -93,6 +93,33 @@ public sealed class VkImageStencilUsageCreateInfo extends GroupType {
     /// @return the allocated `VkImageStencilUsageCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageStencilUsageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stencilUsage `stencilUsage`
+    /// @return the allocated `VkImageStencilUsageCreateInfo`
+    public static VkImageStencilUsageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stencilUsage) {
+        return alloc(allocator).sType(sType).pNext(pNext).stencilUsage(stencilUsage);
+    }
+
+    /// Allocates a `VkImageStencilUsageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImageStencilUsageCreateInfo`
+    public static VkImageStencilUsageCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImageStencilUsageCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImageStencilUsageCreateInfo`
+    public static VkImageStencilUsageCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

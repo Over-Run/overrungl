@@ -103,6 +103,56 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
     /// @return the allocated `VkTilePropertiesQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tileSize `tileSize`
+    /// @param apronSize `apronSize`
+    /// @param origin `origin`
+    /// @return the allocated `VkTilePropertiesQCOM`
+    public static VkTilePropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment tileSize, MemorySegment apronSize, MemorySegment origin) {
+        return alloc(allocator).sType(sType).pNext(pNext).tileSize(tileSize).apronSize(apronSize).origin(origin);
+    }
+
+    /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tileSize `tileSize`
+    /// @param apronSize `apronSize`
+    /// @return the allocated `VkTilePropertiesQCOM`
+    public static VkTilePropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment tileSize, MemorySegment apronSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).tileSize(tileSize).apronSize(apronSize);
+    }
+
+    /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tileSize `tileSize`
+    /// @return the allocated `VkTilePropertiesQCOM`
+    public static VkTilePropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment tileSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).tileSize(tileSize);
+    }
+
+    /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkTilePropertiesQCOM`
+    public static VkTilePropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkTilePropertiesQCOM`
+    public static VkTilePropertiesQCOM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

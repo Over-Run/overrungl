@@ -101,6 +101,44 @@ public sealed class VkDebugUtilsLabelEXT extends GroupType {
     /// @return the allocated `VkDebugUtilsLabelEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDebugUtilsLabelEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pLabelName `pLabelName`
+    /// @param color `color`
+    /// @return the allocated `VkDebugUtilsLabelEXT`
+    public static VkDebugUtilsLabelEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pLabelName, MemorySegment color) {
+        return alloc(allocator).sType(sType).pNext(pNext).pLabelName(pLabelName).color(color);
+    }
+
+    /// Allocates a `VkDebugUtilsLabelEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pLabelName `pLabelName`
+    /// @return the allocated `VkDebugUtilsLabelEXT`
+    public static VkDebugUtilsLabelEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pLabelName) {
+        return alloc(allocator).sType(sType).pNext(pNext).pLabelName(pLabelName);
+    }
+
+    /// Allocates a `VkDebugUtilsLabelEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDebugUtilsLabelEXT`
+    public static VkDebugUtilsLabelEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDebugUtilsLabelEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDebugUtilsLabelEXT`
+    public static VkDebugUtilsLabelEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

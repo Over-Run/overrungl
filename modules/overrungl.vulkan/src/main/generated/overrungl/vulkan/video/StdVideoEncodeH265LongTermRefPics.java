@@ -125,6 +125,83 @@ public sealed class StdVideoEncodeH265LongTermRefPics extends GroupType {
     /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param num_long_term_sps `num_long_term_sps`
+    /// @param num_long_term_pics `num_long_term_pics`
+    /// @param lt_idx_sps `lt_idx_sps`
+    /// @param poc_lsb_lt `poc_lsb_lt`
+    /// @param used_by_curr_pic_lt_flag `used_by_curr_pic_lt_flag`
+    /// @param delta_poc_msb_present_flag `delta_poc_msb_present_flag`
+    /// @param delta_poc_msb_cycle_lt `delta_poc_msb_cycle_lt`
+    /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
+    public static StdVideoEncodeH265LongTermRefPics allocInit(SegmentAllocator allocator, byte num_long_term_sps, byte num_long_term_pics, MemorySegment lt_idx_sps, MemorySegment poc_lsb_lt, short used_by_curr_pic_lt_flag, MemorySegment delta_poc_msb_present_flag, MemorySegment delta_poc_msb_cycle_lt) {
+        return alloc(allocator).num_long_term_sps(num_long_term_sps).num_long_term_pics(num_long_term_pics).lt_idx_sps(lt_idx_sps).poc_lsb_lt(poc_lsb_lt).used_by_curr_pic_lt_flag(used_by_curr_pic_lt_flag).delta_poc_msb_present_flag(delta_poc_msb_present_flag).delta_poc_msb_cycle_lt(delta_poc_msb_cycle_lt);
+    }
+
+    /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param num_long_term_sps `num_long_term_sps`
+    /// @param num_long_term_pics `num_long_term_pics`
+    /// @param lt_idx_sps `lt_idx_sps`
+    /// @param poc_lsb_lt `poc_lsb_lt`
+    /// @param used_by_curr_pic_lt_flag `used_by_curr_pic_lt_flag`
+    /// @param delta_poc_msb_present_flag `delta_poc_msb_present_flag`
+    /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
+    public static StdVideoEncodeH265LongTermRefPics allocInit(SegmentAllocator allocator, byte num_long_term_sps, byte num_long_term_pics, MemorySegment lt_idx_sps, MemorySegment poc_lsb_lt, short used_by_curr_pic_lt_flag, MemorySegment delta_poc_msb_present_flag) {
+        return alloc(allocator).num_long_term_sps(num_long_term_sps).num_long_term_pics(num_long_term_pics).lt_idx_sps(lt_idx_sps).poc_lsb_lt(poc_lsb_lt).used_by_curr_pic_lt_flag(used_by_curr_pic_lt_flag).delta_poc_msb_present_flag(delta_poc_msb_present_flag);
+    }
+
+    /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param num_long_term_sps `num_long_term_sps`
+    /// @param num_long_term_pics `num_long_term_pics`
+    /// @param lt_idx_sps `lt_idx_sps`
+    /// @param poc_lsb_lt `poc_lsb_lt`
+    /// @param used_by_curr_pic_lt_flag `used_by_curr_pic_lt_flag`
+    /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
+    public static StdVideoEncodeH265LongTermRefPics allocInit(SegmentAllocator allocator, byte num_long_term_sps, byte num_long_term_pics, MemorySegment lt_idx_sps, MemorySegment poc_lsb_lt, short used_by_curr_pic_lt_flag) {
+        return alloc(allocator).num_long_term_sps(num_long_term_sps).num_long_term_pics(num_long_term_pics).lt_idx_sps(lt_idx_sps).poc_lsb_lt(poc_lsb_lt).used_by_curr_pic_lt_flag(used_by_curr_pic_lt_flag);
+    }
+
+    /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param num_long_term_sps `num_long_term_sps`
+    /// @param num_long_term_pics `num_long_term_pics`
+    /// @param lt_idx_sps `lt_idx_sps`
+    /// @param poc_lsb_lt `poc_lsb_lt`
+    /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
+    public static StdVideoEncodeH265LongTermRefPics allocInit(SegmentAllocator allocator, byte num_long_term_sps, byte num_long_term_pics, MemorySegment lt_idx_sps, MemorySegment poc_lsb_lt) {
+        return alloc(allocator).num_long_term_sps(num_long_term_sps).num_long_term_pics(num_long_term_pics).lt_idx_sps(lt_idx_sps).poc_lsb_lt(poc_lsb_lt);
+    }
+
+    /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param num_long_term_sps `num_long_term_sps`
+    /// @param num_long_term_pics `num_long_term_pics`
+    /// @param lt_idx_sps `lt_idx_sps`
+    /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
+    public static StdVideoEncodeH265LongTermRefPics allocInit(SegmentAllocator allocator, byte num_long_term_sps, byte num_long_term_pics, MemorySegment lt_idx_sps) {
+        return alloc(allocator).num_long_term_sps(num_long_term_sps).num_long_term_pics(num_long_term_pics).lt_idx_sps(lt_idx_sps);
+    }
+
+    /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param num_long_term_sps `num_long_term_sps`
+    /// @param num_long_term_pics `num_long_term_pics`
+    /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
+    public static StdVideoEncodeH265LongTermRefPics allocInit(SegmentAllocator allocator, byte num_long_term_sps, byte num_long_term_pics) {
+        return alloc(allocator).num_long_term_sps(num_long_term_sps).num_long_term_pics(num_long_term_pics);
+    }
+
+    /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param num_long_term_sps `num_long_term_sps`
+    /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
+    public static StdVideoEncodeH265LongTermRefPics allocInit(SegmentAllocator allocator, byte num_long_term_sps) {
+        return alloc(allocator).num_long_term_sps(num_long_term_sps);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

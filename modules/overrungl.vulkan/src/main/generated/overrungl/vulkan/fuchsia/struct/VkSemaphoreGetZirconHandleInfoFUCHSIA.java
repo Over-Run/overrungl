@@ -101,6 +101,44 @@ public sealed class VkSemaphoreGetZirconHandleInfoFUCHSIA extends GroupType {
     /// @return the allocated `VkSemaphoreGetZirconHandleInfoFUCHSIA`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSemaphoreGetZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @param handleType `handleType`
+    /// @return the allocated `VkSemaphoreGetZirconHandleInfoFUCHSIA`
+    public static VkSemaphoreGetZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, int handleType) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).handleType(handleType);
+    }
+
+    /// Allocates a `VkSemaphoreGetZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @return the allocated `VkSemaphoreGetZirconHandleInfoFUCHSIA`
+    public static VkSemaphoreGetZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore);
+    }
+
+    /// Allocates a `VkSemaphoreGetZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSemaphoreGetZirconHandleInfoFUCHSIA`
+    public static VkSemaphoreGetZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSemaphoreGetZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSemaphoreGetZirconHandleInfoFUCHSIA`
+    public static VkSemaphoreGetZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

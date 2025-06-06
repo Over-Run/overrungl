@@ -117,6 +117,69 @@ public sealed class STBRPRect extends GroupType {
     /// @return the allocated `STBRPRect`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `STBRPRect` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param id `id`
+    /// @param w `w`
+    /// @param h `h`
+    /// @param x `x`
+    /// @param y `y`
+    /// @param was_packed `was_packed`
+    /// @return the allocated `STBRPRect`
+    public static STBRPRect allocInit(SegmentAllocator allocator, int id, int w, int h, int x, int y, int was_packed) {
+        return alloc(allocator).id(id).w(w).h(h).x(x).y(y).was_packed(was_packed);
+    }
+
+    /// Allocates a `STBRPRect` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param id `id`
+    /// @param w `w`
+    /// @param h `h`
+    /// @param x `x`
+    /// @param y `y`
+    /// @return the allocated `STBRPRect`
+    public static STBRPRect allocInit(SegmentAllocator allocator, int id, int w, int h, int x, int y) {
+        return alloc(allocator).id(id).w(w).h(h).x(x).y(y);
+    }
+
+    /// Allocates a `STBRPRect` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param id `id`
+    /// @param w `w`
+    /// @param h `h`
+    /// @param x `x`
+    /// @return the allocated `STBRPRect`
+    public static STBRPRect allocInit(SegmentAllocator allocator, int id, int w, int h, int x) {
+        return alloc(allocator).id(id).w(w).h(h).x(x);
+    }
+
+    /// Allocates a `STBRPRect` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param id `id`
+    /// @param w `w`
+    /// @param h `h`
+    /// @return the allocated `STBRPRect`
+    public static STBRPRect allocInit(SegmentAllocator allocator, int id, int w, int h) {
+        return alloc(allocator).id(id).w(w).h(h);
+    }
+
+    /// Allocates a `STBRPRect` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param id `id`
+    /// @param w `w`
+    /// @return the allocated `STBRPRect`
+    public static STBRPRect allocInit(SegmentAllocator allocator, int id, int w) {
+        return alloc(allocator).id(id).w(w);
+    }
+
+    /// Allocates a `STBRPRect` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param id `id`
+    /// @return the allocated `STBRPRect`
+    public static STBRPRect allocInit(SegmentAllocator allocator, int id) {
+        return alloc(allocator).id(id);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -133,6 +133,98 @@ public sealed class STBTTVertex extends GroupType {
     /// @return the allocated `STBTTVertex`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `STBTTVertex` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @param cx `cx`
+    /// @param cy `cy`
+    /// @param cx1 `cx1`
+    /// @param cy1 `cy1`
+    /// @param type `type`
+    /// @param padding `padding`
+    /// @return the allocated `STBTTVertex`
+    public static STBTTVertex allocInit(SegmentAllocator allocator, short x, short y, short cx, short cy, short cx1, short cy1, byte type, byte padding) {
+        return alloc(allocator).x(x).y(y).cx(cx).cy(cy).cx1(cx1).cy1(cy1).type(type).padding(padding);
+    }
+
+    /// Allocates a `STBTTVertex` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @param cx `cx`
+    /// @param cy `cy`
+    /// @param cx1 `cx1`
+    /// @param cy1 `cy1`
+    /// @param type `type`
+    /// @return the allocated `STBTTVertex`
+    public static STBTTVertex allocInit(SegmentAllocator allocator, short x, short y, short cx, short cy, short cx1, short cy1, byte type) {
+        return alloc(allocator).x(x).y(y).cx(cx).cy(cy).cx1(cx1).cy1(cy1).type(type);
+    }
+
+    /// Allocates a `STBTTVertex` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @param cx `cx`
+    /// @param cy `cy`
+    /// @param cx1 `cx1`
+    /// @param cy1 `cy1`
+    /// @return the allocated `STBTTVertex`
+    public static STBTTVertex allocInit(SegmentAllocator allocator, short x, short y, short cx, short cy, short cx1, short cy1) {
+        return alloc(allocator).x(x).y(y).cx(cx).cy(cy).cx1(cx1).cy1(cy1);
+    }
+
+    /// Allocates a `STBTTVertex` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @param cx `cx`
+    /// @param cy `cy`
+    /// @param cx1 `cx1`
+    /// @return the allocated `STBTTVertex`
+    public static STBTTVertex allocInit(SegmentAllocator allocator, short x, short y, short cx, short cy, short cx1) {
+        return alloc(allocator).x(x).y(y).cx(cx).cy(cy).cx1(cx1);
+    }
+
+    /// Allocates a `STBTTVertex` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @param cx `cx`
+    /// @param cy `cy`
+    /// @return the allocated `STBTTVertex`
+    public static STBTTVertex allocInit(SegmentAllocator allocator, short x, short y, short cx, short cy) {
+        return alloc(allocator).x(x).y(y).cx(cx).cy(cy);
+    }
+
+    /// Allocates a `STBTTVertex` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @param cx `cx`
+    /// @return the allocated `STBTTVertex`
+    public static STBTTVertex allocInit(SegmentAllocator allocator, short x, short y, short cx) {
+        return alloc(allocator).x(x).y(y).cx(cx);
+    }
+
+    /// Allocates a `STBTTVertex` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @return the allocated `STBTTVertex`
+    public static STBTTVertex allocInit(SegmentAllocator allocator, short x, short y) {
+        return alloc(allocator).x(x).y(y);
+    }
+
+    /// Allocates a `STBTTVertex` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @return the allocated `STBTTVertex`
+    public static STBTTVertex allocInit(SegmentAllocator allocator, short x) {
+        return alloc(allocator).x(x);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

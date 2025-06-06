@@ -149,6 +149,131 @@ public sealed class VkDescriptorDataEXT extends GroupType {
     /// @return the allocated `VkDescriptorDataEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @param pInputAttachmentImage `pInputAttachmentImage`
+    /// @param pSampledImage `pSampledImage`
+    /// @param pStorageImage `pStorageImage`
+    /// @param pUniformTexelBuffer `pUniformTexelBuffer`
+    /// @param pStorageTexelBuffer `pStorageTexelBuffer`
+    /// @param pUniformBuffer `pUniformBuffer`
+    /// @param pStorageBuffer `pStorageBuffer`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler, MemorySegment pCombinedImageSampler, MemorySegment pInputAttachmentImage, MemorySegment pSampledImage, MemorySegment pStorageImage, MemorySegment pUniformTexelBuffer, MemorySegment pStorageTexelBuffer, MemorySegment pUniformBuffer, MemorySegment pStorageBuffer, long accelerationStructure) {
+        return alloc(allocator).pSampler(pSampler).pCombinedImageSampler(pCombinedImageSampler).pInputAttachmentImage(pInputAttachmentImage).pSampledImage(pSampledImage).pStorageImage(pStorageImage).pUniformTexelBuffer(pUniformTexelBuffer).pStorageTexelBuffer(pStorageTexelBuffer).pUniformBuffer(pUniformBuffer).pStorageBuffer(pStorageBuffer).accelerationStructure(accelerationStructure);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @param pInputAttachmentImage `pInputAttachmentImage`
+    /// @param pSampledImage `pSampledImage`
+    /// @param pStorageImage `pStorageImage`
+    /// @param pUniformTexelBuffer `pUniformTexelBuffer`
+    /// @param pStorageTexelBuffer `pStorageTexelBuffer`
+    /// @param pUniformBuffer `pUniformBuffer`
+    /// @param pStorageBuffer `pStorageBuffer`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler, MemorySegment pCombinedImageSampler, MemorySegment pInputAttachmentImage, MemorySegment pSampledImage, MemorySegment pStorageImage, MemorySegment pUniformTexelBuffer, MemorySegment pStorageTexelBuffer, MemorySegment pUniformBuffer, MemorySegment pStorageBuffer) {
+        return alloc(allocator).pSampler(pSampler).pCombinedImageSampler(pCombinedImageSampler).pInputAttachmentImage(pInputAttachmentImage).pSampledImage(pSampledImage).pStorageImage(pStorageImage).pUniformTexelBuffer(pUniformTexelBuffer).pStorageTexelBuffer(pStorageTexelBuffer).pUniformBuffer(pUniformBuffer).pStorageBuffer(pStorageBuffer);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @param pInputAttachmentImage `pInputAttachmentImage`
+    /// @param pSampledImage `pSampledImage`
+    /// @param pStorageImage `pStorageImage`
+    /// @param pUniformTexelBuffer `pUniformTexelBuffer`
+    /// @param pStorageTexelBuffer `pStorageTexelBuffer`
+    /// @param pUniformBuffer `pUniformBuffer`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler, MemorySegment pCombinedImageSampler, MemorySegment pInputAttachmentImage, MemorySegment pSampledImage, MemorySegment pStorageImage, MemorySegment pUniformTexelBuffer, MemorySegment pStorageTexelBuffer, MemorySegment pUniformBuffer) {
+        return alloc(allocator).pSampler(pSampler).pCombinedImageSampler(pCombinedImageSampler).pInputAttachmentImage(pInputAttachmentImage).pSampledImage(pSampledImage).pStorageImage(pStorageImage).pUniformTexelBuffer(pUniformTexelBuffer).pStorageTexelBuffer(pStorageTexelBuffer).pUniformBuffer(pUniformBuffer);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @param pInputAttachmentImage `pInputAttachmentImage`
+    /// @param pSampledImage `pSampledImage`
+    /// @param pStorageImage `pStorageImage`
+    /// @param pUniformTexelBuffer `pUniformTexelBuffer`
+    /// @param pStorageTexelBuffer `pStorageTexelBuffer`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler, MemorySegment pCombinedImageSampler, MemorySegment pInputAttachmentImage, MemorySegment pSampledImage, MemorySegment pStorageImage, MemorySegment pUniformTexelBuffer, MemorySegment pStorageTexelBuffer) {
+        return alloc(allocator).pSampler(pSampler).pCombinedImageSampler(pCombinedImageSampler).pInputAttachmentImage(pInputAttachmentImage).pSampledImage(pSampledImage).pStorageImage(pStorageImage).pUniformTexelBuffer(pUniformTexelBuffer).pStorageTexelBuffer(pStorageTexelBuffer);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @param pInputAttachmentImage `pInputAttachmentImage`
+    /// @param pSampledImage `pSampledImage`
+    /// @param pStorageImage `pStorageImage`
+    /// @param pUniformTexelBuffer `pUniformTexelBuffer`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler, MemorySegment pCombinedImageSampler, MemorySegment pInputAttachmentImage, MemorySegment pSampledImage, MemorySegment pStorageImage, MemorySegment pUniformTexelBuffer) {
+        return alloc(allocator).pSampler(pSampler).pCombinedImageSampler(pCombinedImageSampler).pInputAttachmentImage(pInputAttachmentImage).pSampledImage(pSampledImage).pStorageImage(pStorageImage).pUniformTexelBuffer(pUniformTexelBuffer);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @param pInputAttachmentImage `pInputAttachmentImage`
+    /// @param pSampledImage `pSampledImage`
+    /// @param pStorageImage `pStorageImage`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler, MemorySegment pCombinedImageSampler, MemorySegment pInputAttachmentImage, MemorySegment pSampledImage, MemorySegment pStorageImage) {
+        return alloc(allocator).pSampler(pSampler).pCombinedImageSampler(pCombinedImageSampler).pInputAttachmentImage(pInputAttachmentImage).pSampledImage(pSampledImage).pStorageImage(pStorageImage);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @param pInputAttachmentImage `pInputAttachmentImage`
+    /// @param pSampledImage `pSampledImage`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler, MemorySegment pCombinedImageSampler, MemorySegment pInputAttachmentImage, MemorySegment pSampledImage) {
+        return alloc(allocator).pSampler(pSampler).pCombinedImageSampler(pCombinedImageSampler).pInputAttachmentImage(pInputAttachmentImage).pSampledImage(pSampledImage);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @param pInputAttachmentImage `pInputAttachmentImage`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler, MemorySegment pCombinedImageSampler, MemorySegment pInputAttachmentImage) {
+        return alloc(allocator).pSampler(pSampler).pCombinedImageSampler(pCombinedImageSampler).pInputAttachmentImage(pInputAttachmentImage);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @param pCombinedImageSampler `pCombinedImageSampler`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler, MemorySegment pCombinedImageSampler) {
+        return alloc(allocator).pSampler(pSampler).pCombinedImageSampler(pCombinedImageSampler);
+    }
+
+    /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pSampler `pSampler`
+    /// @return the allocated `VkDescriptorDataEXT`
+    public static VkDescriptorDataEXT allocInit(SegmentAllocator allocator, MemorySegment pSampler) {
+        return alloc(allocator).pSampler(pSampler);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT exte
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDensityMapDescriptorSize `combinedImageSamplerDensityMapDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long combinedImageSamplerDensityMapDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDensityMapDescriptorSize(combinedImageSamplerDensityMapDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferDensityMapPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

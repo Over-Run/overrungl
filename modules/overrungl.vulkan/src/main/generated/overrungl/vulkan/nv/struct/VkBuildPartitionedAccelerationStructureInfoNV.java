@@ -131,6 +131,98 @@ public sealed class VkBuildPartitionedAccelerationStructureInfoNV extends GroupT
     /// @return the allocated `VkBuildPartitionedAccelerationStructureInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBuildPartitionedAccelerationStructureInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param input `input`
+    /// @param srcAccelerationStructureData `srcAccelerationStructureData`
+    /// @param dstAccelerationStructureData `dstAccelerationStructureData`
+    /// @param scratchData `scratchData`
+    /// @param srcInfos `srcInfos`
+    /// @param srcInfosCount `srcInfosCount`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureInfoNV`
+    public static VkBuildPartitionedAccelerationStructureInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment input, long srcAccelerationStructureData, long dstAccelerationStructureData, long scratchData, long srcInfos, long srcInfosCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).input(input).srcAccelerationStructureData(srcAccelerationStructureData).dstAccelerationStructureData(dstAccelerationStructureData).scratchData(scratchData).srcInfos(srcInfos).srcInfosCount(srcInfosCount);
+    }
+
+    /// Allocates a `VkBuildPartitionedAccelerationStructureInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param input `input`
+    /// @param srcAccelerationStructureData `srcAccelerationStructureData`
+    /// @param dstAccelerationStructureData `dstAccelerationStructureData`
+    /// @param scratchData `scratchData`
+    /// @param srcInfos `srcInfos`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureInfoNV`
+    public static VkBuildPartitionedAccelerationStructureInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment input, long srcAccelerationStructureData, long dstAccelerationStructureData, long scratchData, long srcInfos) {
+        return alloc(allocator).sType(sType).pNext(pNext).input(input).srcAccelerationStructureData(srcAccelerationStructureData).dstAccelerationStructureData(dstAccelerationStructureData).scratchData(scratchData).srcInfos(srcInfos);
+    }
+
+    /// Allocates a `VkBuildPartitionedAccelerationStructureInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param input `input`
+    /// @param srcAccelerationStructureData `srcAccelerationStructureData`
+    /// @param dstAccelerationStructureData `dstAccelerationStructureData`
+    /// @param scratchData `scratchData`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureInfoNV`
+    public static VkBuildPartitionedAccelerationStructureInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment input, long srcAccelerationStructureData, long dstAccelerationStructureData, long scratchData) {
+        return alloc(allocator).sType(sType).pNext(pNext).input(input).srcAccelerationStructureData(srcAccelerationStructureData).dstAccelerationStructureData(dstAccelerationStructureData).scratchData(scratchData);
+    }
+
+    /// Allocates a `VkBuildPartitionedAccelerationStructureInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param input `input`
+    /// @param srcAccelerationStructureData `srcAccelerationStructureData`
+    /// @param dstAccelerationStructureData `dstAccelerationStructureData`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureInfoNV`
+    public static VkBuildPartitionedAccelerationStructureInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment input, long srcAccelerationStructureData, long dstAccelerationStructureData) {
+        return alloc(allocator).sType(sType).pNext(pNext).input(input).srcAccelerationStructureData(srcAccelerationStructureData).dstAccelerationStructureData(dstAccelerationStructureData);
+    }
+
+    /// Allocates a `VkBuildPartitionedAccelerationStructureInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param input `input`
+    /// @param srcAccelerationStructureData `srcAccelerationStructureData`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureInfoNV`
+    public static VkBuildPartitionedAccelerationStructureInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment input, long srcAccelerationStructureData) {
+        return alloc(allocator).sType(sType).pNext(pNext).input(input).srcAccelerationStructureData(srcAccelerationStructureData);
+    }
+
+    /// Allocates a `VkBuildPartitionedAccelerationStructureInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param input `input`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureInfoNV`
+    public static VkBuildPartitionedAccelerationStructureInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment input) {
+        return alloc(allocator).sType(sType).pNext(pNext).input(input);
+    }
+
+    /// Allocates a `VkBuildPartitionedAccelerationStructureInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureInfoNV`
+    public static VkBuildPartitionedAccelerationStructureInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkBuildPartitionedAccelerationStructureInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureInfoNV`
+    public static VkBuildPartitionedAccelerationStructureInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

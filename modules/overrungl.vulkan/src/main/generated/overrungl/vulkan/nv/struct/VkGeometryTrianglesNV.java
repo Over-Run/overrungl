@@ -173,6 +173,188 @@ public sealed class VkGeometryTrianglesNV extends GroupType {
     /// @return the allocated `VkGeometryTrianglesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @param vertexCount `vertexCount`
+    /// @param vertexStride `vertexStride`
+    /// @param vertexFormat `vertexFormat`
+    /// @param indexData `indexData`
+    /// @param indexOffset `indexOffset`
+    /// @param indexCount `indexCount`
+    /// @param indexType `indexType`
+    /// @param transformData `transformData`
+    /// @param transformOffset `transformOffset`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset, int vertexCount, long vertexStride, int vertexFormat, long indexData, long indexOffset, int indexCount, int indexType, long transformData, long transformOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount).vertexStride(vertexStride).vertexFormat(vertexFormat).indexData(indexData).indexOffset(indexOffset).indexCount(indexCount).indexType(indexType).transformData(transformData).transformOffset(transformOffset);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @param vertexCount `vertexCount`
+    /// @param vertexStride `vertexStride`
+    /// @param vertexFormat `vertexFormat`
+    /// @param indexData `indexData`
+    /// @param indexOffset `indexOffset`
+    /// @param indexCount `indexCount`
+    /// @param indexType `indexType`
+    /// @param transformData `transformData`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset, int vertexCount, long vertexStride, int vertexFormat, long indexData, long indexOffset, int indexCount, int indexType, long transformData) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount).vertexStride(vertexStride).vertexFormat(vertexFormat).indexData(indexData).indexOffset(indexOffset).indexCount(indexCount).indexType(indexType).transformData(transformData);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @param vertexCount `vertexCount`
+    /// @param vertexStride `vertexStride`
+    /// @param vertexFormat `vertexFormat`
+    /// @param indexData `indexData`
+    /// @param indexOffset `indexOffset`
+    /// @param indexCount `indexCount`
+    /// @param indexType `indexType`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset, int vertexCount, long vertexStride, int vertexFormat, long indexData, long indexOffset, int indexCount, int indexType) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount).vertexStride(vertexStride).vertexFormat(vertexFormat).indexData(indexData).indexOffset(indexOffset).indexCount(indexCount).indexType(indexType);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @param vertexCount `vertexCount`
+    /// @param vertexStride `vertexStride`
+    /// @param vertexFormat `vertexFormat`
+    /// @param indexData `indexData`
+    /// @param indexOffset `indexOffset`
+    /// @param indexCount `indexCount`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset, int vertexCount, long vertexStride, int vertexFormat, long indexData, long indexOffset, int indexCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount).vertexStride(vertexStride).vertexFormat(vertexFormat).indexData(indexData).indexOffset(indexOffset).indexCount(indexCount);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @param vertexCount `vertexCount`
+    /// @param vertexStride `vertexStride`
+    /// @param vertexFormat `vertexFormat`
+    /// @param indexData `indexData`
+    /// @param indexOffset `indexOffset`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset, int vertexCount, long vertexStride, int vertexFormat, long indexData, long indexOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount).vertexStride(vertexStride).vertexFormat(vertexFormat).indexData(indexData).indexOffset(indexOffset);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @param vertexCount `vertexCount`
+    /// @param vertexStride `vertexStride`
+    /// @param vertexFormat `vertexFormat`
+    /// @param indexData `indexData`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset, int vertexCount, long vertexStride, int vertexFormat, long indexData) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount).vertexStride(vertexStride).vertexFormat(vertexFormat).indexData(indexData);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @param vertexCount `vertexCount`
+    /// @param vertexStride `vertexStride`
+    /// @param vertexFormat `vertexFormat`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset, int vertexCount, long vertexStride, int vertexFormat) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount).vertexStride(vertexStride).vertexFormat(vertexFormat);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @param vertexCount `vertexCount`
+    /// @param vertexStride `vertexStride`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset, int vertexCount, long vertexStride) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount).vertexStride(vertexStride);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @param vertexCount `vertexCount`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset, int vertexCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset).vertexCount(vertexCount);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @param vertexOffset `vertexOffset`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData, long vertexOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData).vertexOffset(vertexOffset);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vertexData `vertexData`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long vertexData) {
+        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkGeometryTrianglesNV`
+    public static VkGeometryTrianglesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

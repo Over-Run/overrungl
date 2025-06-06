@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceFragmentDensityMapFeaturesEXT extends GroupT
     /// @return the allocated `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fragmentDensityMap `fragmentDensityMap`
+    /// @param fragmentDensityMapDynamic `fragmentDensityMapDynamic`
+    /// @param fragmentDensityMapNonSubsampledImages `fragmentDensityMapNonSubsampledImages`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentDensityMap, int fragmentDensityMapDynamic, int fragmentDensityMapNonSubsampledImages) {
+        return alloc(allocator).sType(sType).pNext(pNext).fragmentDensityMap(fragmentDensityMap).fragmentDensityMapDynamic(fragmentDensityMapDynamic).fragmentDensityMapNonSubsampledImages(fragmentDensityMapNonSubsampledImages);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fragmentDensityMap `fragmentDensityMap`
+    /// @param fragmentDensityMapDynamic `fragmentDensityMapDynamic`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentDensityMap, int fragmentDensityMapDynamic) {
+        return alloc(allocator).sType(sType).pNext(pNext).fragmentDensityMap(fragmentDensityMap).fragmentDensityMapDynamic(fragmentDensityMapDynamic);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fragmentDensityMap `fragmentDensityMap`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentDensityMap) {
+        return alloc(allocator).sType(sType).pNext(pNext).fragmentDensityMap(fragmentDensityMap);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentDensityMapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapFeaturesEXT`
+    public static VkPhysicalDeviceFragmentDensityMapFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

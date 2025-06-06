@@ -101,6 +101,44 @@ public sealed class VkPipelineBinaryInfoKHR extends GroupType {
     /// @return the allocated `VkPipelineBinaryInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineBinaryInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param binaryCount `binaryCount`
+    /// @param pPipelineBinaries `pPipelineBinaries`
+    /// @return the allocated `VkPipelineBinaryInfoKHR`
+    public static VkPipelineBinaryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int binaryCount, MemorySegment pPipelineBinaries) {
+        return alloc(allocator).sType(sType).pNext(pNext).binaryCount(binaryCount).pPipelineBinaries(pPipelineBinaries);
+    }
+
+    /// Allocates a `VkPipelineBinaryInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param binaryCount `binaryCount`
+    /// @return the allocated `VkPipelineBinaryInfoKHR`
+    public static VkPipelineBinaryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int binaryCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).binaryCount(binaryCount);
+    }
+
+    /// Allocates a `VkPipelineBinaryInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineBinaryInfoKHR`
+    public static VkPipelineBinaryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineBinaryInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineBinaryInfoKHR`
+    public static VkPipelineBinaryInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

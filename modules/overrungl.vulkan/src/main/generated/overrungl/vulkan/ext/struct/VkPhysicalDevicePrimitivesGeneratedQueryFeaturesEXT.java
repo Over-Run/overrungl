@@ -109,6 +109,56 @@ public sealed class VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT extends 
     /// @return the allocated `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param primitivesGeneratedQuery `primitivesGeneratedQuery`
+    /// @param primitivesGeneratedQueryWithRasterizerDiscard `primitivesGeneratedQueryWithRasterizerDiscard`
+    /// @param primitivesGeneratedQueryWithNonZeroStreams `primitivesGeneratedQueryWithNonZeroStreams`
+    /// @return the allocated `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT`
+    public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int primitivesGeneratedQuery, int primitivesGeneratedQueryWithRasterizerDiscard, int primitivesGeneratedQueryWithNonZeroStreams) {
+        return alloc(allocator).sType(sType).pNext(pNext).primitivesGeneratedQuery(primitivesGeneratedQuery).primitivesGeneratedQueryWithRasterizerDiscard(primitivesGeneratedQueryWithRasterizerDiscard).primitivesGeneratedQueryWithNonZeroStreams(primitivesGeneratedQueryWithNonZeroStreams);
+    }
+
+    /// Allocates a `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param primitivesGeneratedQuery `primitivesGeneratedQuery`
+    /// @param primitivesGeneratedQueryWithRasterizerDiscard `primitivesGeneratedQueryWithRasterizerDiscard`
+    /// @return the allocated `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT`
+    public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int primitivesGeneratedQuery, int primitivesGeneratedQueryWithRasterizerDiscard) {
+        return alloc(allocator).sType(sType).pNext(pNext).primitivesGeneratedQuery(primitivesGeneratedQuery).primitivesGeneratedQueryWithRasterizerDiscard(primitivesGeneratedQueryWithRasterizerDiscard);
+    }
+
+    /// Allocates a `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param primitivesGeneratedQuery `primitivesGeneratedQuery`
+    /// @return the allocated `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT`
+    public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int primitivesGeneratedQuery) {
+        return alloc(allocator).sType(sType).pNext(pNext).primitivesGeneratedQuery(primitivesGeneratedQuery);
+    }
+
+    /// Allocates a `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT`
+    public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT`
+    public static VkPhysicalDevicePrimitivesGeneratedQueryFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

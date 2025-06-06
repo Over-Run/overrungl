@@ -101,6 +101,44 @@ public sealed class VkPresentIdKHR extends GroupType {
     /// @return the allocated `VkPresentIdKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPresentIdKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param swapchainCount `swapchainCount`
+    /// @param pPresentIds `pPresentIds`
+    /// @return the allocated `VkPresentIdKHR`
+    public static VkPresentIdKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainCount, MemorySegment pPresentIds) {
+        return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pPresentIds(pPresentIds);
+    }
+
+    /// Allocates a `VkPresentIdKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param swapchainCount `swapchainCount`
+    /// @return the allocated `VkPresentIdKHR`
+    public static VkPresentIdKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount);
+    }
+
+    /// Allocates a `VkPresentIdKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPresentIdKHR`
+    public static VkPresentIdKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPresentIdKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPresentIdKHR`
+    public static VkPresentIdKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

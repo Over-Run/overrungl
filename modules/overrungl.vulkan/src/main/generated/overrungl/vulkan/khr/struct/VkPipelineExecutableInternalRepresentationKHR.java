@@ -125,6 +125,83 @@ public sealed class VkPipelineExecutableInternalRepresentationKHR extends GroupT
     /// @return the allocated `VkPipelineExecutableInternalRepresentationKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineExecutableInternalRepresentationKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param name `name`
+    /// @param description `description`
+    /// @param isText `isText`
+    /// @param dataSize `dataSize`
+    /// @param pData `pData`
+    /// @return the allocated `VkPipelineExecutableInternalRepresentationKHR`
+    public static VkPipelineExecutableInternalRepresentationKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment name, MemorySegment description, int isText, long dataSize, MemorySegment pData) {
+        return alloc(allocator).sType(sType).pNext(pNext).name(name).description(description).isText(isText).dataSize(dataSize).pData(pData);
+    }
+
+    /// Allocates a `VkPipelineExecutableInternalRepresentationKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param name `name`
+    /// @param description `description`
+    /// @param isText `isText`
+    /// @param dataSize `dataSize`
+    /// @return the allocated `VkPipelineExecutableInternalRepresentationKHR`
+    public static VkPipelineExecutableInternalRepresentationKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment name, MemorySegment description, int isText, long dataSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).name(name).description(description).isText(isText).dataSize(dataSize);
+    }
+
+    /// Allocates a `VkPipelineExecutableInternalRepresentationKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param name `name`
+    /// @param description `description`
+    /// @param isText `isText`
+    /// @return the allocated `VkPipelineExecutableInternalRepresentationKHR`
+    public static VkPipelineExecutableInternalRepresentationKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment name, MemorySegment description, int isText) {
+        return alloc(allocator).sType(sType).pNext(pNext).name(name).description(description).isText(isText);
+    }
+
+    /// Allocates a `VkPipelineExecutableInternalRepresentationKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param name `name`
+    /// @param description `description`
+    /// @return the allocated `VkPipelineExecutableInternalRepresentationKHR`
+    public static VkPipelineExecutableInternalRepresentationKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment name, MemorySegment description) {
+        return alloc(allocator).sType(sType).pNext(pNext).name(name).description(description);
+    }
+
+    /// Allocates a `VkPipelineExecutableInternalRepresentationKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param name `name`
+    /// @return the allocated `VkPipelineExecutableInternalRepresentationKHR`
+    public static VkPipelineExecutableInternalRepresentationKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment name) {
+        return alloc(allocator).sType(sType).pNext(pNext).name(name);
+    }
+
+    /// Allocates a `VkPipelineExecutableInternalRepresentationKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineExecutableInternalRepresentationKHR`
+    public static VkPipelineExecutableInternalRepresentationKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineExecutableInternalRepresentationKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineExecutableInternalRepresentationKHR`
+    public static VkPipelineExecutableInternalRepresentationKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

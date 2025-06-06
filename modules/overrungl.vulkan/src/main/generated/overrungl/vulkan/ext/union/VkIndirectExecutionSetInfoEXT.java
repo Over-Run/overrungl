@@ -85,6 +85,23 @@ public sealed class VkIndirectExecutionSetInfoEXT extends GroupType {
     /// @return the allocated `VkIndirectExecutionSetInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkIndirectExecutionSetInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pPipelineInfo `pPipelineInfo`
+    /// @param pShaderInfo `pShaderInfo`
+    /// @return the allocated `VkIndirectExecutionSetInfoEXT`
+    public static VkIndirectExecutionSetInfoEXT allocInit(SegmentAllocator allocator, MemorySegment pPipelineInfo, MemorySegment pShaderInfo) {
+        return alloc(allocator).pPipelineInfo(pPipelineInfo).pShaderInfo(pShaderInfo);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pPipelineInfo `pPipelineInfo`
+    /// @return the allocated `VkIndirectExecutionSetInfoEXT`
+    public static VkIndirectExecutionSetInfoEXT allocInit(SegmentAllocator allocator, MemorySegment pPipelineInfo) {
+        return alloc(allocator).pPipelineInfo(pPipelineInfo);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

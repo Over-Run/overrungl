@@ -109,6 +109,56 @@ public sealed class VkCommandBufferAllocateInfo extends GroupType {
     /// @return the allocated `VkCommandBufferAllocateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkCommandBufferAllocateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param commandPool `commandPool`
+    /// @param level `level`
+    /// @param commandBufferCount `commandBufferCount`
+    /// @return the allocated `VkCommandBufferAllocateInfo`
+    public static VkCommandBufferAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long commandPool, int level, int commandBufferCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).commandPool(commandPool).level(level).commandBufferCount(commandBufferCount);
+    }
+
+    /// Allocates a `VkCommandBufferAllocateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param commandPool `commandPool`
+    /// @param level `level`
+    /// @return the allocated `VkCommandBufferAllocateInfo`
+    public static VkCommandBufferAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long commandPool, int level) {
+        return alloc(allocator).sType(sType).pNext(pNext).commandPool(commandPool).level(level);
+    }
+
+    /// Allocates a `VkCommandBufferAllocateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param commandPool `commandPool`
+    /// @return the allocated `VkCommandBufferAllocateInfo`
+    public static VkCommandBufferAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long commandPool) {
+        return alloc(allocator).sType(sType).pNext(pNext).commandPool(commandPool);
+    }
+
+    /// Allocates a `VkCommandBufferAllocateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkCommandBufferAllocateInfo`
+    public static VkCommandBufferAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkCommandBufferAllocateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkCommandBufferAllocateInfo`
+    public static VkCommandBufferAllocateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

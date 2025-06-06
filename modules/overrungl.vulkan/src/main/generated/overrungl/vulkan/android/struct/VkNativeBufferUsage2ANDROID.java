@@ -85,6 +85,23 @@ public sealed class VkNativeBufferUsage2ANDROID extends GroupType {
     /// @return the allocated `VkNativeBufferUsage2ANDROID`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkNativeBufferUsage2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param consumer `consumer`
+    /// @param producer `producer`
+    /// @return the allocated `VkNativeBufferUsage2ANDROID`
+    public static VkNativeBufferUsage2ANDROID allocInit(SegmentAllocator allocator, long consumer, long producer) {
+        return alloc(allocator).consumer(consumer).producer(producer);
+    }
+
+    /// Allocates a `VkNativeBufferUsage2ANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param consumer `consumer`
+    /// @return the allocated `VkNativeBufferUsage2ANDROID`
+    public static VkNativeBufferUsage2ANDROID allocInit(SegmentAllocator allocator, long consumer) {
+        return alloc(allocator).consumer(consumer);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

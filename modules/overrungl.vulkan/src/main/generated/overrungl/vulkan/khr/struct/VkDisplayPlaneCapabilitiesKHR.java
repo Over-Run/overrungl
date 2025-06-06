@@ -125,6 +125,114 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param supportedAlpha `supportedAlpha`
+    /// @param minSrcPosition `minSrcPosition`
+    /// @param maxSrcPosition `maxSrcPosition`
+    /// @param minSrcExtent `minSrcExtent`
+    /// @param maxSrcExtent `maxSrcExtent`
+    /// @param minDstPosition `minDstPosition`
+    /// @param maxDstPosition `maxDstPosition`
+    /// @param minDstExtent `minDstExtent`
+    /// @param maxDstExtent `maxDstExtent`
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, int supportedAlpha, MemorySegment minSrcPosition, MemorySegment maxSrcPosition, MemorySegment minSrcExtent, MemorySegment maxSrcExtent, MemorySegment minDstPosition, MemorySegment maxDstPosition, MemorySegment minDstExtent, MemorySegment maxDstExtent) {
+        return alloc(allocator).supportedAlpha(supportedAlpha).minSrcPosition(minSrcPosition).maxSrcPosition(maxSrcPosition).minSrcExtent(minSrcExtent).maxSrcExtent(maxSrcExtent).minDstPosition(minDstPosition).maxDstPosition(maxDstPosition).minDstExtent(minDstExtent).maxDstExtent(maxDstExtent);
+    }
+
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param supportedAlpha `supportedAlpha`
+    /// @param minSrcPosition `minSrcPosition`
+    /// @param maxSrcPosition `maxSrcPosition`
+    /// @param minSrcExtent `minSrcExtent`
+    /// @param maxSrcExtent `maxSrcExtent`
+    /// @param minDstPosition `minDstPosition`
+    /// @param maxDstPosition `maxDstPosition`
+    /// @param minDstExtent `minDstExtent`
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, int supportedAlpha, MemorySegment minSrcPosition, MemorySegment maxSrcPosition, MemorySegment minSrcExtent, MemorySegment maxSrcExtent, MemorySegment minDstPosition, MemorySegment maxDstPosition, MemorySegment minDstExtent) {
+        return alloc(allocator).supportedAlpha(supportedAlpha).minSrcPosition(minSrcPosition).maxSrcPosition(maxSrcPosition).minSrcExtent(minSrcExtent).maxSrcExtent(maxSrcExtent).minDstPosition(minDstPosition).maxDstPosition(maxDstPosition).minDstExtent(minDstExtent);
+    }
+
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param supportedAlpha `supportedAlpha`
+    /// @param minSrcPosition `minSrcPosition`
+    /// @param maxSrcPosition `maxSrcPosition`
+    /// @param minSrcExtent `minSrcExtent`
+    /// @param maxSrcExtent `maxSrcExtent`
+    /// @param minDstPosition `minDstPosition`
+    /// @param maxDstPosition `maxDstPosition`
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, int supportedAlpha, MemorySegment minSrcPosition, MemorySegment maxSrcPosition, MemorySegment minSrcExtent, MemorySegment maxSrcExtent, MemorySegment minDstPosition, MemorySegment maxDstPosition) {
+        return alloc(allocator).supportedAlpha(supportedAlpha).minSrcPosition(minSrcPosition).maxSrcPosition(maxSrcPosition).minSrcExtent(minSrcExtent).maxSrcExtent(maxSrcExtent).minDstPosition(minDstPosition).maxDstPosition(maxDstPosition);
+    }
+
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param supportedAlpha `supportedAlpha`
+    /// @param minSrcPosition `minSrcPosition`
+    /// @param maxSrcPosition `maxSrcPosition`
+    /// @param minSrcExtent `minSrcExtent`
+    /// @param maxSrcExtent `maxSrcExtent`
+    /// @param minDstPosition `minDstPosition`
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, int supportedAlpha, MemorySegment minSrcPosition, MemorySegment maxSrcPosition, MemorySegment minSrcExtent, MemorySegment maxSrcExtent, MemorySegment minDstPosition) {
+        return alloc(allocator).supportedAlpha(supportedAlpha).minSrcPosition(minSrcPosition).maxSrcPosition(maxSrcPosition).minSrcExtent(minSrcExtent).maxSrcExtent(maxSrcExtent).minDstPosition(minDstPosition);
+    }
+
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param supportedAlpha `supportedAlpha`
+    /// @param minSrcPosition `minSrcPosition`
+    /// @param maxSrcPosition `maxSrcPosition`
+    /// @param minSrcExtent `minSrcExtent`
+    /// @param maxSrcExtent `maxSrcExtent`
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, int supportedAlpha, MemorySegment minSrcPosition, MemorySegment maxSrcPosition, MemorySegment minSrcExtent, MemorySegment maxSrcExtent) {
+        return alloc(allocator).supportedAlpha(supportedAlpha).minSrcPosition(minSrcPosition).maxSrcPosition(maxSrcPosition).minSrcExtent(minSrcExtent).maxSrcExtent(maxSrcExtent);
+    }
+
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param supportedAlpha `supportedAlpha`
+    /// @param minSrcPosition `minSrcPosition`
+    /// @param maxSrcPosition `maxSrcPosition`
+    /// @param minSrcExtent `minSrcExtent`
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, int supportedAlpha, MemorySegment minSrcPosition, MemorySegment maxSrcPosition, MemorySegment minSrcExtent) {
+        return alloc(allocator).supportedAlpha(supportedAlpha).minSrcPosition(minSrcPosition).maxSrcPosition(maxSrcPosition).minSrcExtent(minSrcExtent);
+    }
+
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param supportedAlpha `supportedAlpha`
+    /// @param minSrcPosition `minSrcPosition`
+    /// @param maxSrcPosition `maxSrcPosition`
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, int supportedAlpha, MemorySegment minSrcPosition, MemorySegment maxSrcPosition) {
+        return alloc(allocator).supportedAlpha(supportedAlpha).minSrcPosition(minSrcPosition).maxSrcPosition(maxSrcPosition);
+    }
+
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param supportedAlpha `supportedAlpha`
+    /// @param minSrcPosition `minSrcPosition`
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, int supportedAlpha, MemorySegment minSrcPosition) {
+        return alloc(allocator).supportedAlpha(supportedAlpha).minSrcPosition(minSrcPosition);
+    }
+
+    /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param supportedAlpha `supportedAlpha`
+    /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
+    public static VkDisplayPlaneCapabilitiesKHR allocInit(SegmentAllocator allocator, int supportedAlpha) {
+        return alloc(allocator).supportedAlpha(supportedAlpha);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

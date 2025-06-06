@@ -91,6 +91,33 @@ public sealed class VkClearRect extends GroupType {
     /// @return the allocated `VkClearRect`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkClearRect` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param rect `rect`
+    /// @param baseArrayLayer `baseArrayLayer`
+    /// @param layerCount `layerCount`
+    /// @return the allocated `VkClearRect`
+    public static VkClearRect allocInit(SegmentAllocator allocator, MemorySegment rect, int baseArrayLayer, int layerCount) {
+        return alloc(allocator).rect(rect).baseArrayLayer(baseArrayLayer).layerCount(layerCount);
+    }
+
+    /// Allocates a `VkClearRect` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param rect `rect`
+    /// @param baseArrayLayer `baseArrayLayer`
+    /// @return the allocated `VkClearRect`
+    public static VkClearRect allocInit(SegmentAllocator allocator, MemorySegment rect, int baseArrayLayer) {
+        return alloc(allocator).rect(rect).baseArrayLayer(baseArrayLayer);
+    }
+
+    /// Allocates a `VkClearRect` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param rect `rect`
+    /// @return the allocated `VkClearRect`
+    public static VkClearRect allocInit(SegmentAllocator allocator, MemorySegment rect) {
+        return alloc(allocator).rect(rect);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

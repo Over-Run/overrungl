@@ -109,6 +109,56 @@ public sealed class VkPastPresentationTimingGOOGLE extends GroupType {
     /// @return the allocated `VkPastPresentationTimingGOOGLE`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param presentID `presentID`
+    /// @param desiredPresentTime `desiredPresentTime`
+    /// @param actualPresentTime `actualPresentTime`
+    /// @param earliestPresentTime `earliestPresentTime`
+    /// @param presentMargin `presentMargin`
+    /// @return the allocated `VkPastPresentationTimingGOOGLE`
+    public static VkPastPresentationTimingGOOGLE allocInit(SegmentAllocator allocator, int presentID, long desiredPresentTime, long actualPresentTime, long earliestPresentTime, long presentMargin) {
+        return alloc(allocator).presentID(presentID).desiredPresentTime(desiredPresentTime).actualPresentTime(actualPresentTime).earliestPresentTime(earliestPresentTime).presentMargin(presentMargin);
+    }
+
+    /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param presentID `presentID`
+    /// @param desiredPresentTime `desiredPresentTime`
+    /// @param actualPresentTime `actualPresentTime`
+    /// @param earliestPresentTime `earliestPresentTime`
+    /// @return the allocated `VkPastPresentationTimingGOOGLE`
+    public static VkPastPresentationTimingGOOGLE allocInit(SegmentAllocator allocator, int presentID, long desiredPresentTime, long actualPresentTime, long earliestPresentTime) {
+        return alloc(allocator).presentID(presentID).desiredPresentTime(desiredPresentTime).actualPresentTime(actualPresentTime).earliestPresentTime(earliestPresentTime);
+    }
+
+    /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param presentID `presentID`
+    /// @param desiredPresentTime `desiredPresentTime`
+    /// @param actualPresentTime `actualPresentTime`
+    /// @return the allocated `VkPastPresentationTimingGOOGLE`
+    public static VkPastPresentationTimingGOOGLE allocInit(SegmentAllocator allocator, int presentID, long desiredPresentTime, long actualPresentTime) {
+        return alloc(allocator).presentID(presentID).desiredPresentTime(desiredPresentTime).actualPresentTime(actualPresentTime);
+    }
+
+    /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param presentID `presentID`
+    /// @param desiredPresentTime `desiredPresentTime`
+    /// @return the allocated `VkPastPresentationTimingGOOGLE`
+    public static VkPastPresentationTimingGOOGLE allocInit(SegmentAllocator allocator, int presentID, long desiredPresentTime) {
+        return alloc(allocator).presentID(presentID).desiredPresentTime(desiredPresentTime);
+    }
+
+    /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param presentID `presentID`
+    /// @return the allocated `VkPastPresentationTimingGOOGLE`
+    public static VkPastPresentationTimingGOOGLE allocInit(SegmentAllocator allocator, int presentID) {
+        return alloc(allocator).presentID(presentID);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

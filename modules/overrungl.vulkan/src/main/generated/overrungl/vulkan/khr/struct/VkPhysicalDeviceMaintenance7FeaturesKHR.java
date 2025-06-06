@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceMaintenance7FeaturesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMaintenance7FeaturesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceMaintenance7FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maintenance7 `maintenance7`
+    /// @return the allocated `VkPhysicalDeviceMaintenance7FeaturesKHR`
+    public static VkPhysicalDeviceMaintenance7FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maintenance7) {
+        return alloc(allocator).sType(sType).pNext(pNext).maintenance7(maintenance7);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMaintenance7FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceMaintenance7FeaturesKHR`
+    public static VkPhysicalDeviceMaintenance7FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMaintenance7FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceMaintenance7FeaturesKHR`
+    public static VkPhysicalDeviceMaintenance7FeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceMeshShaderFeaturesNV extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMeshShaderFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceMeshShaderFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param taskShader `taskShader`
+    /// @param meshShader `meshShader`
+    /// @return the allocated `VkPhysicalDeviceMeshShaderFeaturesNV`
+    public static VkPhysicalDeviceMeshShaderFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int taskShader, int meshShader) {
+        return alloc(allocator).sType(sType).pNext(pNext).taskShader(taskShader).meshShader(meshShader);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMeshShaderFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param taskShader `taskShader`
+    /// @return the allocated `VkPhysicalDeviceMeshShaderFeaturesNV`
+    public static VkPhysicalDeviceMeshShaderFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int taskShader) {
+        return alloc(allocator).sType(sType).pNext(pNext).taskShader(taskShader);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMeshShaderFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceMeshShaderFeaturesNV`
+    public static VkPhysicalDeviceMeshShaderFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMeshShaderFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceMeshShaderFeaturesNV`
+    public static VkPhysicalDeviceMeshShaderFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

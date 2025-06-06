@@ -123,6 +123,83 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param operating_point_idc `operating_point_idc`
+    /// @param seq_level_idx `seq_level_idx`
+    /// @param seq_tier `seq_tier`
+    /// @param decoder_buffer_delay `decoder_buffer_delay`
+    /// @param encoder_buffer_delay `encoder_buffer_delay`
+    /// @param initial_display_delay_minus_1 `initial_display_delay_minus_1`
+    /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
+    public static StdVideoEncodeAV1OperatingPointInfo allocInit(SegmentAllocator allocator, MemorySegment flags, short operating_point_idc, byte seq_level_idx, byte seq_tier, int decoder_buffer_delay, int encoder_buffer_delay, byte initial_display_delay_minus_1) {
+        return alloc(allocator).flags(flags).operating_point_idc(operating_point_idc).seq_level_idx(seq_level_idx).seq_tier(seq_tier).decoder_buffer_delay(decoder_buffer_delay).encoder_buffer_delay(encoder_buffer_delay).initial_display_delay_minus_1(initial_display_delay_minus_1);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param operating_point_idc `operating_point_idc`
+    /// @param seq_level_idx `seq_level_idx`
+    /// @param seq_tier `seq_tier`
+    /// @param decoder_buffer_delay `decoder_buffer_delay`
+    /// @param encoder_buffer_delay `encoder_buffer_delay`
+    /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
+    public static StdVideoEncodeAV1OperatingPointInfo allocInit(SegmentAllocator allocator, MemorySegment flags, short operating_point_idc, byte seq_level_idx, byte seq_tier, int decoder_buffer_delay, int encoder_buffer_delay) {
+        return alloc(allocator).flags(flags).operating_point_idc(operating_point_idc).seq_level_idx(seq_level_idx).seq_tier(seq_tier).decoder_buffer_delay(decoder_buffer_delay).encoder_buffer_delay(encoder_buffer_delay);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param operating_point_idc `operating_point_idc`
+    /// @param seq_level_idx `seq_level_idx`
+    /// @param seq_tier `seq_tier`
+    /// @param decoder_buffer_delay `decoder_buffer_delay`
+    /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
+    public static StdVideoEncodeAV1OperatingPointInfo allocInit(SegmentAllocator allocator, MemorySegment flags, short operating_point_idc, byte seq_level_idx, byte seq_tier, int decoder_buffer_delay) {
+        return alloc(allocator).flags(flags).operating_point_idc(operating_point_idc).seq_level_idx(seq_level_idx).seq_tier(seq_tier).decoder_buffer_delay(decoder_buffer_delay);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param operating_point_idc `operating_point_idc`
+    /// @param seq_level_idx `seq_level_idx`
+    /// @param seq_tier `seq_tier`
+    /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
+    public static StdVideoEncodeAV1OperatingPointInfo allocInit(SegmentAllocator allocator, MemorySegment flags, short operating_point_idc, byte seq_level_idx, byte seq_tier) {
+        return alloc(allocator).flags(flags).operating_point_idc(operating_point_idc).seq_level_idx(seq_level_idx).seq_tier(seq_tier);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param operating_point_idc `operating_point_idc`
+    /// @param seq_level_idx `seq_level_idx`
+    /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
+    public static StdVideoEncodeAV1OperatingPointInfo allocInit(SegmentAllocator allocator, MemorySegment flags, short operating_point_idc, byte seq_level_idx) {
+        return alloc(allocator).flags(flags).operating_point_idc(operating_point_idc).seq_level_idx(seq_level_idx);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param operating_point_idc `operating_point_idc`
+    /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
+    public static StdVideoEncodeAV1OperatingPointInfo allocInit(SegmentAllocator allocator, MemorySegment flags, short operating_point_idc) {
+        return alloc(allocator).flags(flags).operating_point_idc(operating_point_idc);
+    }
+
+    /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
+    public static StdVideoEncodeAV1OperatingPointInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

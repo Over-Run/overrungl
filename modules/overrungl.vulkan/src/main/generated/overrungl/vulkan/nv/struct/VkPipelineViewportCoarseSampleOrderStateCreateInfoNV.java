@@ -109,6 +109,56 @@ public sealed class VkPipelineViewportCoarseSampleOrderStateCreateInfoNV extends
     /// @return the allocated `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param sampleOrderType `sampleOrderType`
+    /// @param customSampleOrderCount `customSampleOrderCount`
+    /// @param pCustomSampleOrders `pCustomSampleOrders`
+    /// @return the allocated `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV`
+    public static VkPipelineViewportCoarseSampleOrderStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sampleOrderType, int customSampleOrderCount, MemorySegment pCustomSampleOrders) {
+        return alloc(allocator).sType(sType).pNext(pNext).sampleOrderType(sampleOrderType).customSampleOrderCount(customSampleOrderCount).pCustomSampleOrders(pCustomSampleOrders);
+    }
+
+    /// Allocates a `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param sampleOrderType `sampleOrderType`
+    /// @param customSampleOrderCount `customSampleOrderCount`
+    /// @return the allocated `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV`
+    public static VkPipelineViewportCoarseSampleOrderStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sampleOrderType, int customSampleOrderCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).sampleOrderType(sampleOrderType).customSampleOrderCount(customSampleOrderCount);
+    }
+
+    /// Allocates a `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param sampleOrderType `sampleOrderType`
+    /// @return the allocated `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV`
+    public static VkPipelineViewportCoarseSampleOrderStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sampleOrderType) {
+        return alloc(allocator).sType(sType).pNext(pNext).sampleOrderType(sampleOrderType);
+    }
+
+    /// Allocates a `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV`
+    public static VkPipelineViewportCoarseSampleOrderStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineViewportCoarseSampleOrderStateCreateInfoNV`
+    public static VkPipelineViewportCoarseSampleOrderStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -125,6 +125,83 @@ public sealed class VkPhysicalDeviceAccelerationStructureFeaturesKHR extends Gro
     /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @param accelerationStructureCaptureReplay `accelerationStructureCaptureReplay`
+    /// @param accelerationStructureIndirectBuild `accelerationStructureIndirectBuild`
+    /// @param accelerationStructureHostCommands `accelerationStructureHostCommands`
+    /// @param descriptorBindingAccelerationStructureUpdateAfterBind `descriptorBindingAccelerationStructureUpdateAfterBind`
+    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int accelerationStructure, int accelerationStructureCaptureReplay, int accelerationStructureIndirectBuild, int accelerationStructureHostCommands, int descriptorBindingAccelerationStructureUpdateAfterBind) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).accelerationStructureCaptureReplay(accelerationStructureCaptureReplay).accelerationStructureIndirectBuild(accelerationStructureIndirectBuild).accelerationStructureHostCommands(accelerationStructureHostCommands).descriptorBindingAccelerationStructureUpdateAfterBind(descriptorBindingAccelerationStructureUpdateAfterBind);
+    }
+
+    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @param accelerationStructureCaptureReplay `accelerationStructureCaptureReplay`
+    /// @param accelerationStructureIndirectBuild `accelerationStructureIndirectBuild`
+    /// @param accelerationStructureHostCommands `accelerationStructureHostCommands`
+    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int accelerationStructure, int accelerationStructureCaptureReplay, int accelerationStructureIndirectBuild, int accelerationStructureHostCommands) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).accelerationStructureCaptureReplay(accelerationStructureCaptureReplay).accelerationStructureIndirectBuild(accelerationStructureIndirectBuild).accelerationStructureHostCommands(accelerationStructureHostCommands);
+    }
+
+    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @param accelerationStructureCaptureReplay `accelerationStructureCaptureReplay`
+    /// @param accelerationStructureIndirectBuild `accelerationStructureIndirectBuild`
+    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int accelerationStructure, int accelerationStructureCaptureReplay, int accelerationStructureIndirectBuild) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).accelerationStructureCaptureReplay(accelerationStructureCaptureReplay).accelerationStructureIndirectBuild(accelerationStructureIndirectBuild);
+    }
+
+    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @param accelerationStructureCaptureReplay `accelerationStructureCaptureReplay`
+    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int accelerationStructure, int accelerationStructureCaptureReplay) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure).accelerationStructureCaptureReplay(accelerationStructureCaptureReplay);
+    }
+
+    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param accelerationStructure `accelerationStructure`
+    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int accelerationStructure) {
+        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructure(accelerationStructure);
+    }
+
+    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceAccelerationStructureFeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceAccelerationStructureFeaturesKHR`
+    public static VkPhysicalDeviceAccelerationStructureFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

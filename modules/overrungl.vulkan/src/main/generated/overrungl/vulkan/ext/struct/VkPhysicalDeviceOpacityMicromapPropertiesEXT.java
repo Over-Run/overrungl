@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceOpacityMicromapPropertiesEXT extends GroupTy
     /// @return the allocated `VkPhysicalDeviceOpacityMicromapPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceOpacityMicromapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxOpacity2StateSubdivisionLevel `maxOpacity2StateSubdivisionLevel`
+    /// @param maxOpacity4StateSubdivisionLevel `maxOpacity4StateSubdivisionLevel`
+    /// @return the allocated `VkPhysicalDeviceOpacityMicromapPropertiesEXT`
+    public static VkPhysicalDeviceOpacityMicromapPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxOpacity2StateSubdivisionLevel, int maxOpacity4StateSubdivisionLevel) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxOpacity2StateSubdivisionLevel(maxOpacity2StateSubdivisionLevel).maxOpacity4StateSubdivisionLevel(maxOpacity4StateSubdivisionLevel);
+    }
+
+    /// Allocates a `VkPhysicalDeviceOpacityMicromapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxOpacity2StateSubdivisionLevel `maxOpacity2StateSubdivisionLevel`
+    /// @return the allocated `VkPhysicalDeviceOpacityMicromapPropertiesEXT`
+    public static VkPhysicalDeviceOpacityMicromapPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxOpacity2StateSubdivisionLevel) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxOpacity2StateSubdivisionLevel(maxOpacity2StateSubdivisionLevel);
+    }
+
+    /// Allocates a `VkPhysicalDeviceOpacityMicromapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceOpacityMicromapPropertiesEXT`
+    public static VkPhysicalDeviceOpacityMicromapPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceOpacityMicromapPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceOpacityMicromapPropertiesEXT`
+    public static VkPhysicalDeviceOpacityMicromapPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

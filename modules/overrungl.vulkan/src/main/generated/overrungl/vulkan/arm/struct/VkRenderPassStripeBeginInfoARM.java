@@ -101,6 +101,44 @@ public sealed class VkRenderPassStripeBeginInfoARM extends GroupType {
     /// @return the allocated `VkRenderPassStripeBeginInfoARM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderPassStripeBeginInfoARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stripeInfoCount `stripeInfoCount`
+    /// @param pStripeInfos `pStripeInfos`
+    /// @return the allocated `VkRenderPassStripeBeginInfoARM`
+    public static VkRenderPassStripeBeginInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stripeInfoCount, MemorySegment pStripeInfos) {
+        return alloc(allocator).sType(sType).pNext(pNext).stripeInfoCount(stripeInfoCount).pStripeInfos(pStripeInfos);
+    }
+
+    /// Allocates a `VkRenderPassStripeBeginInfoARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stripeInfoCount `stripeInfoCount`
+    /// @return the allocated `VkRenderPassStripeBeginInfoARM`
+    public static VkRenderPassStripeBeginInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stripeInfoCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).stripeInfoCount(stripeInfoCount);
+    }
+
+    /// Allocates a `VkRenderPassStripeBeginInfoARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderPassStripeBeginInfoARM`
+    public static VkRenderPassStripeBeginInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderPassStripeBeginInfoARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderPassStripeBeginInfoARM`
+    public static VkRenderPassStripeBeginInfoARM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

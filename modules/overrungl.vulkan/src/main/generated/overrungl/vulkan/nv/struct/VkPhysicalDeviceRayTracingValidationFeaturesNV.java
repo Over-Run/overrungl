@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceRayTracingValidationFeaturesNV extends Group
     /// @return the allocated `VkPhysicalDeviceRayTracingValidationFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceRayTracingValidationFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param rayTracingValidation `rayTracingValidation`
+    /// @return the allocated `VkPhysicalDeviceRayTracingValidationFeaturesNV`
+    public static VkPhysicalDeviceRayTracingValidationFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingValidation) {
+        return alloc(allocator).sType(sType).pNext(pNext).rayTracingValidation(rayTracingValidation);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingValidationFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceRayTracingValidationFeaturesNV`
+    public static VkPhysicalDeviceRayTracingValidationFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRayTracingValidationFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceRayTracingValidationFeaturesNV`
+    public static VkPhysicalDeviceRayTracingValidationFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

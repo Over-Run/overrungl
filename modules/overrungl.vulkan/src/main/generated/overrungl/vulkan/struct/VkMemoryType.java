@@ -85,6 +85,23 @@ public sealed class VkMemoryType extends GroupType {
     /// @return the allocated `VkMemoryType`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkMemoryType` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param propertyFlags `propertyFlags`
+    /// @param heapIndex `heapIndex`
+    /// @return the allocated `VkMemoryType`
+    public static VkMemoryType allocInit(SegmentAllocator allocator, int propertyFlags, int heapIndex) {
+        return alloc(allocator).propertyFlags(propertyFlags).heapIndex(heapIndex);
+    }
+
+    /// Allocates a `VkMemoryType` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param propertyFlags `propertyFlags`
+    /// @return the allocated `VkMemoryType`
+    public static VkMemoryType allocInit(SegmentAllocator allocator, int propertyFlags) {
+        return alloc(allocator).propertyFlags(propertyFlags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

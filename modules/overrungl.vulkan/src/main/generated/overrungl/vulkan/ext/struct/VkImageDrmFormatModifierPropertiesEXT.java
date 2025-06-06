@@ -93,6 +93,33 @@ public sealed class VkImageDrmFormatModifierPropertiesEXT extends GroupType {
     /// @return the allocated `VkImageDrmFormatModifierPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageDrmFormatModifierPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param drmFormatModifier `drmFormatModifier`
+    /// @return the allocated `VkImageDrmFormatModifierPropertiesEXT`
+    public static VkImageDrmFormatModifierPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long drmFormatModifier) {
+        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier);
+    }
+
+    /// Allocates a `VkImageDrmFormatModifierPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImageDrmFormatModifierPropertiesEXT`
+    public static VkImageDrmFormatModifierPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImageDrmFormatModifierPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImageDrmFormatModifierPropertiesEXT`
+    public static VkImageDrmFormatModifierPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

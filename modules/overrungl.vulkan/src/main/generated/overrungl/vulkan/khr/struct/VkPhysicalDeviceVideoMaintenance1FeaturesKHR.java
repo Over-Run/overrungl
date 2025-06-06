@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceVideoMaintenance1FeaturesKHR extends GroupTy
     /// @return the allocated `VkPhysicalDeviceVideoMaintenance1FeaturesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceVideoMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param videoMaintenance1 `videoMaintenance1`
+    /// @return the allocated `VkPhysicalDeviceVideoMaintenance1FeaturesKHR`
+    public static VkPhysicalDeviceVideoMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int videoMaintenance1) {
+        return alloc(allocator).sType(sType).pNext(pNext).videoMaintenance1(videoMaintenance1);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVideoMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceVideoMaintenance1FeaturesKHR`
+    public static VkPhysicalDeviceVideoMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVideoMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceVideoMaintenance1FeaturesKHR`
+    public static VkPhysicalDeviceVideoMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

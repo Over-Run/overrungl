@@ -267,6 +267,506 @@ public sealed class StdVideoH264SequenceParameterSet extends GroupType {
     /// @return the allocated `StdVideoH264SequenceParameterSet`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @param pic_height_in_map_units_minus1 `pic_height_in_map_units_minus1`
+    /// @param frame_crop_left_offset `frame_crop_left_offset`
+    /// @param frame_crop_right_offset `frame_crop_right_offset`
+    /// @param frame_crop_top_offset `frame_crop_top_offset`
+    /// @param frame_crop_bottom_offset `frame_crop_bottom_offset`
+    /// @param reserved2 `reserved2`
+    /// @param pOffsetForRefFrame `pOffsetForRefFrame`
+    /// @param pScalingLists `pScalingLists`
+    /// @param pSequenceParameterSetVui `pSequenceParameterSetVui`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1, int pic_height_in_map_units_minus1, int frame_crop_left_offset, int frame_crop_right_offset, int frame_crop_top_offset, int frame_crop_bottom_offset, int reserved2, MemorySegment pOffsetForRefFrame, MemorySegment pScalingLists, MemorySegment pSequenceParameterSetVui) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1).pic_height_in_map_units_minus1(pic_height_in_map_units_minus1).frame_crop_left_offset(frame_crop_left_offset).frame_crop_right_offset(frame_crop_right_offset).frame_crop_top_offset(frame_crop_top_offset).frame_crop_bottom_offset(frame_crop_bottom_offset).reserved2(reserved2).pOffsetForRefFrame(pOffsetForRefFrame).pScalingLists(pScalingLists).pSequenceParameterSetVui(pSequenceParameterSetVui);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @param pic_height_in_map_units_minus1 `pic_height_in_map_units_minus1`
+    /// @param frame_crop_left_offset `frame_crop_left_offset`
+    /// @param frame_crop_right_offset `frame_crop_right_offset`
+    /// @param frame_crop_top_offset `frame_crop_top_offset`
+    /// @param frame_crop_bottom_offset `frame_crop_bottom_offset`
+    /// @param reserved2 `reserved2`
+    /// @param pOffsetForRefFrame `pOffsetForRefFrame`
+    /// @param pScalingLists `pScalingLists`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1, int pic_height_in_map_units_minus1, int frame_crop_left_offset, int frame_crop_right_offset, int frame_crop_top_offset, int frame_crop_bottom_offset, int reserved2, MemorySegment pOffsetForRefFrame, MemorySegment pScalingLists) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1).pic_height_in_map_units_minus1(pic_height_in_map_units_minus1).frame_crop_left_offset(frame_crop_left_offset).frame_crop_right_offset(frame_crop_right_offset).frame_crop_top_offset(frame_crop_top_offset).frame_crop_bottom_offset(frame_crop_bottom_offset).reserved2(reserved2).pOffsetForRefFrame(pOffsetForRefFrame).pScalingLists(pScalingLists);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @param pic_height_in_map_units_minus1 `pic_height_in_map_units_minus1`
+    /// @param frame_crop_left_offset `frame_crop_left_offset`
+    /// @param frame_crop_right_offset `frame_crop_right_offset`
+    /// @param frame_crop_top_offset `frame_crop_top_offset`
+    /// @param frame_crop_bottom_offset `frame_crop_bottom_offset`
+    /// @param reserved2 `reserved2`
+    /// @param pOffsetForRefFrame `pOffsetForRefFrame`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1, int pic_height_in_map_units_minus1, int frame_crop_left_offset, int frame_crop_right_offset, int frame_crop_top_offset, int frame_crop_bottom_offset, int reserved2, MemorySegment pOffsetForRefFrame) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1).pic_height_in_map_units_minus1(pic_height_in_map_units_minus1).frame_crop_left_offset(frame_crop_left_offset).frame_crop_right_offset(frame_crop_right_offset).frame_crop_top_offset(frame_crop_top_offset).frame_crop_bottom_offset(frame_crop_bottom_offset).reserved2(reserved2).pOffsetForRefFrame(pOffsetForRefFrame);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @param pic_height_in_map_units_minus1 `pic_height_in_map_units_minus1`
+    /// @param frame_crop_left_offset `frame_crop_left_offset`
+    /// @param frame_crop_right_offset `frame_crop_right_offset`
+    /// @param frame_crop_top_offset `frame_crop_top_offset`
+    /// @param frame_crop_bottom_offset `frame_crop_bottom_offset`
+    /// @param reserved2 `reserved2`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1, int pic_height_in_map_units_minus1, int frame_crop_left_offset, int frame_crop_right_offset, int frame_crop_top_offset, int frame_crop_bottom_offset, int reserved2) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1).pic_height_in_map_units_minus1(pic_height_in_map_units_minus1).frame_crop_left_offset(frame_crop_left_offset).frame_crop_right_offset(frame_crop_right_offset).frame_crop_top_offset(frame_crop_top_offset).frame_crop_bottom_offset(frame_crop_bottom_offset).reserved2(reserved2);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @param pic_height_in_map_units_minus1 `pic_height_in_map_units_minus1`
+    /// @param frame_crop_left_offset `frame_crop_left_offset`
+    /// @param frame_crop_right_offset `frame_crop_right_offset`
+    /// @param frame_crop_top_offset `frame_crop_top_offset`
+    /// @param frame_crop_bottom_offset `frame_crop_bottom_offset`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1, int pic_height_in_map_units_minus1, int frame_crop_left_offset, int frame_crop_right_offset, int frame_crop_top_offset, int frame_crop_bottom_offset) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1).pic_height_in_map_units_minus1(pic_height_in_map_units_minus1).frame_crop_left_offset(frame_crop_left_offset).frame_crop_right_offset(frame_crop_right_offset).frame_crop_top_offset(frame_crop_top_offset).frame_crop_bottom_offset(frame_crop_bottom_offset);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @param pic_height_in_map_units_minus1 `pic_height_in_map_units_minus1`
+    /// @param frame_crop_left_offset `frame_crop_left_offset`
+    /// @param frame_crop_right_offset `frame_crop_right_offset`
+    /// @param frame_crop_top_offset `frame_crop_top_offset`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1, int pic_height_in_map_units_minus1, int frame_crop_left_offset, int frame_crop_right_offset, int frame_crop_top_offset) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1).pic_height_in_map_units_minus1(pic_height_in_map_units_minus1).frame_crop_left_offset(frame_crop_left_offset).frame_crop_right_offset(frame_crop_right_offset).frame_crop_top_offset(frame_crop_top_offset);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @param pic_height_in_map_units_minus1 `pic_height_in_map_units_minus1`
+    /// @param frame_crop_left_offset `frame_crop_left_offset`
+    /// @param frame_crop_right_offset `frame_crop_right_offset`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1, int pic_height_in_map_units_minus1, int frame_crop_left_offset, int frame_crop_right_offset) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1).pic_height_in_map_units_minus1(pic_height_in_map_units_minus1).frame_crop_left_offset(frame_crop_left_offset).frame_crop_right_offset(frame_crop_right_offset);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @param pic_height_in_map_units_minus1 `pic_height_in_map_units_minus1`
+    /// @param frame_crop_left_offset `frame_crop_left_offset`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1, int pic_height_in_map_units_minus1, int frame_crop_left_offset) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1).pic_height_in_map_units_minus1(pic_height_in_map_units_minus1).frame_crop_left_offset(frame_crop_left_offset);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @param pic_height_in_map_units_minus1 `pic_height_in_map_units_minus1`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1, int pic_height_in_map_units_minus1) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1).pic_height_in_map_units_minus1(pic_height_in_map_units_minus1);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @param pic_width_in_mbs_minus1 `pic_width_in_mbs_minus1`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1, int pic_width_in_mbs_minus1) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1).pic_width_in_mbs_minus1(pic_width_in_mbs_minus1);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames, byte reserved1) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @param max_num_ref_frames `max_num_ref_frames`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle, byte max_num_ref_frames) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle).max_num_ref_frames(max_num_ref_frames);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @param num_ref_frames_in_pic_order_cnt_cycle `num_ref_frames_in_pic_order_cnt_cycle`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4, byte num_ref_frames_in_pic_order_cnt_cycle) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4).num_ref_frames_in_pic_order_cnt_cycle(num_ref_frames_in_pic_order_cnt_cycle);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @param log2_max_pic_order_cnt_lsb_minus4 `log2_max_pic_order_cnt_lsb_minus4`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field, byte log2_max_pic_order_cnt_lsb_minus4) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field).log2_max_pic_order_cnt_lsb_minus4(log2_max_pic_order_cnt_lsb_minus4);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @param offset_for_top_to_bottom_field `offset_for_top_to_bottom_field`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic, int offset_for_top_to_bottom_field) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic).offset_for_top_to_bottom_field(offset_for_top_to_bottom_field);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @param offset_for_non_ref_pic `offset_for_non_ref_pic`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type, int offset_for_non_ref_pic) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type).offset_for_non_ref_pic(offset_for_non_ref_pic);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @param pic_order_cnt_type `pic_order_cnt_type`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4, int pic_order_cnt_type) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4).pic_order_cnt_type(pic_order_cnt_type);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @param log2_max_frame_num_minus4 `log2_max_frame_num_minus4`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8, byte log2_max_frame_num_minus4) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8).log2_max_frame_num_minus4(log2_max_frame_num_minus4);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @param bit_depth_chroma_minus8 `bit_depth_chroma_minus8`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8, byte bit_depth_chroma_minus8) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8).bit_depth_chroma_minus8(bit_depth_chroma_minus8);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @param bit_depth_luma_minus8 `bit_depth_luma_minus8`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id, byte bit_depth_luma_minus8) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id).bit_depth_luma_minus8(bit_depth_luma_minus8);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @param seq_parameter_set_id `seq_parameter_set_id`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc, byte seq_parameter_set_id) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc).seq_parameter_set_id(seq_parameter_set_id);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @param chroma_format_idc `chroma_format_idc`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc, int chroma_format_idc) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc).chroma_format_idc(chroma_format_idc);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @param level_idc `level_idc`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc, int level_idc) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc).level_idc(level_idc);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param profile_idc `profile_idc`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, int profile_idc) {
+        return alloc(allocator).flags(flags).profile_idc(profile_idc);
+    }
+
+    /// Allocates a `StdVideoH264SequenceParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoH264SequenceParameterSet`
+    public static StdVideoH264SequenceParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

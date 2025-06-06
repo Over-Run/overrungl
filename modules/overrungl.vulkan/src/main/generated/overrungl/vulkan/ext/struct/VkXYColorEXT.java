@@ -85,6 +85,23 @@ public sealed class VkXYColorEXT extends GroupType {
     /// @return the allocated `VkXYColorEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkXYColorEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @return the allocated `VkXYColorEXT`
+    public static VkXYColorEXT allocInit(SegmentAllocator allocator, float x, float y) {
+        return alloc(allocator).x(x).y(y);
+    }
+
+    /// Allocates a `VkXYColorEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @return the allocated `VkXYColorEXT`
+    public static VkXYColorEXT allocInit(SegmentAllocator allocator, float x) {
+        return alloc(allocator).x(x);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

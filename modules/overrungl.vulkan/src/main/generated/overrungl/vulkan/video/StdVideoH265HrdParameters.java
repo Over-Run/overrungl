@@ -187,6 +187,231 @@ public sealed class StdVideoH265HrdParameters extends GroupType {
     /// @return the allocated `StdVideoH265HrdParameters`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param cpb_size_du_scale `cpb_size_du_scale`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param au_cpb_removal_delay_length_minus1 `au_cpb_removal_delay_length_minus1`
+    /// @param dpb_output_delay_length_minus1 `dpb_output_delay_length_minus1`
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param elemental_duration_in_tc_minus1 `elemental_duration_in_tc_minus1`
+    /// @param reserved `reserved`
+    /// @param pSubLayerHrdParametersNal `pSubLayerHrdParametersNal`
+    /// @param pSubLayerHrdParametersVcl `pSubLayerHrdParametersVcl`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale, byte cpb_size_du_scale, byte initial_cpb_removal_delay_length_minus1, byte au_cpb_removal_delay_length_minus1, byte dpb_output_delay_length_minus1, MemorySegment cpb_cnt_minus1, MemorySegment elemental_duration_in_tc_minus1, MemorySegment reserved, MemorySegment pSubLayerHrdParametersNal, MemorySegment pSubLayerHrdParametersVcl) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).au_cpb_removal_delay_length_minus1(au_cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1).cpb_cnt_minus1(cpb_cnt_minus1).elemental_duration_in_tc_minus1(elemental_duration_in_tc_minus1).reserved(reserved).pSubLayerHrdParametersNal(pSubLayerHrdParametersNal).pSubLayerHrdParametersVcl(pSubLayerHrdParametersVcl);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param cpb_size_du_scale `cpb_size_du_scale`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param au_cpb_removal_delay_length_minus1 `au_cpb_removal_delay_length_minus1`
+    /// @param dpb_output_delay_length_minus1 `dpb_output_delay_length_minus1`
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param elemental_duration_in_tc_minus1 `elemental_duration_in_tc_minus1`
+    /// @param reserved `reserved`
+    /// @param pSubLayerHrdParametersNal `pSubLayerHrdParametersNal`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale, byte cpb_size_du_scale, byte initial_cpb_removal_delay_length_minus1, byte au_cpb_removal_delay_length_minus1, byte dpb_output_delay_length_minus1, MemorySegment cpb_cnt_minus1, MemorySegment elemental_duration_in_tc_minus1, MemorySegment reserved, MemorySegment pSubLayerHrdParametersNal) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).au_cpb_removal_delay_length_minus1(au_cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1).cpb_cnt_minus1(cpb_cnt_minus1).elemental_duration_in_tc_minus1(elemental_duration_in_tc_minus1).reserved(reserved).pSubLayerHrdParametersNal(pSubLayerHrdParametersNal);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param cpb_size_du_scale `cpb_size_du_scale`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param au_cpb_removal_delay_length_minus1 `au_cpb_removal_delay_length_minus1`
+    /// @param dpb_output_delay_length_minus1 `dpb_output_delay_length_minus1`
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param elemental_duration_in_tc_minus1 `elemental_duration_in_tc_minus1`
+    /// @param reserved `reserved`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale, byte cpb_size_du_scale, byte initial_cpb_removal_delay_length_minus1, byte au_cpb_removal_delay_length_minus1, byte dpb_output_delay_length_minus1, MemorySegment cpb_cnt_minus1, MemorySegment elemental_duration_in_tc_minus1, MemorySegment reserved) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).au_cpb_removal_delay_length_minus1(au_cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1).cpb_cnt_minus1(cpb_cnt_minus1).elemental_duration_in_tc_minus1(elemental_duration_in_tc_minus1).reserved(reserved);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param cpb_size_du_scale `cpb_size_du_scale`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param au_cpb_removal_delay_length_minus1 `au_cpb_removal_delay_length_minus1`
+    /// @param dpb_output_delay_length_minus1 `dpb_output_delay_length_minus1`
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @param elemental_duration_in_tc_minus1 `elemental_duration_in_tc_minus1`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale, byte cpb_size_du_scale, byte initial_cpb_removal_delay_length_minus1, byte au_cpb_removal_delay_length_minus1, byte dpb_output_delay_length_minus1, MemorySegment cpb_cnt_minus1, MemorySegment elemental_duration_in_tc_minus1) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).au_cpb_removal_delay_length_minus1(au_cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1).cpb_cnt_minus1(cpb_cnt_minus1).elemental_duration_in_tc_minus1(elemental_duration_in_tc_minus1);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param cpb_size_du_scale `cpb_size_du_scale`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param au_cpb_removal_delay_length_minus1 `au_cpb_removal_delay_length_minus1`
+    /// @param dpb_output_delay_length_minus1 `dpb_output_delay_length_minus1`
+    /// @param cpb_cnt_minus1 `cpb_cnt_minus1`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale, byte cpb_size_du_scale, byte initial_cpb_removal_delay_length_minus1, byte au_cpb_removal_delay_length_minus1, byte dpb_output_delay_length_minus1, MemorySegment cpb_cnt_minus1) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).au_cpb_removal_delay_length_minus1(au_cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1).cpb_cnt_minus1(cpb_cnt_minus1);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param cpb_size_du_scale `cpb_size_du_scale`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param au_cpb_removal_delay_length_minus1 `au_cpb_removal_delay_length_minus1`
+    /// @param dpb_output_delay_length_minus1 `dpb_output_delay_length_minus1`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale, byte cpb_size_du_scale, byte initial_cpb_removal_delay_length_minus1, byte au_cpb_removal_delay_length_minus1, byte dpb_output_delay_length_minus1) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).au_cpb_removal_delay_length_minus1(au_cpb_removal_delay_length_minus1).dpb_output_delay_length_minus1(dpb_output_delay_length_minus1);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param cpb_size_du_scale `cpb_size_du_scale`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @param au_cpb_removal_delay_length_minus1 `au_cpb_removal_delay_length_minus1`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale, byte cpb_size_du_scale, byte initial_cpb_removal_delay_length_minus1, byte au_cpb_removal_delay_length_minus1) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1).au_cpb_removal_delay_length_minus1(au_cpb_removal_delay_length_minus1);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param cpb_size_du_scale `cpb_size_du_scale`
+    /// @param initial_cpb_removal_delay_length_minus1 `initial_cpb_removal_delay_length_minus1`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale, byte cpb_size_du_scale, byte initial_cpb_removal_delay_length_minus1) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale).initial_cpb_removal_delay_length_minus1(initial_cpb_removal_delay_length_minus1);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @param cpb_size_du_scale `cpb_size_du_scale`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale, byte cpb_size_du_scale) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale).cpb_size_du_scale(cpb_size_du_scale);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @param cpb_size_scale `cpb_size_scale`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale, byte cpb_size_scale) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale).cpb_size_scale(cpb_size_scale);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @param bit_rate_scale `bit_rate_scale`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1, byte bit_rate_scale) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1).bit_rate_scale(bit_rate_scale);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @param dpb_output_delay_du_length_minus1 `dpb_output_delay_du_length_minus1`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1, byte dpb_output_delay_du_length_minus1) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1).dpb_output_delay_du_length_minus1(dpb_output_delay_du_length_minus1);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @param du_cpb_removal_delay_increment_length_minus1 `du_cpb_removal_delay_increment_length_minus1`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2, byte du_cpb_removal_delay_increment_length_minus1) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2).du_cpb_removal_delay_increment_length_minus1(du_cpb_removal_delay_increment_length_minus1);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param tick_divisor_minus2 `tick_divisor_minus2`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags, byte tick_divisor_minus2) {
+        return alloc(allocator).flags(flags).tick_divisor_minus2(tick_divisor_minus2);
+    }
+
+    /// Allocates a `StdVideoH265HrdParameters` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoH265HrdParameters`
+    public static StdVideoH265HrdParameters allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

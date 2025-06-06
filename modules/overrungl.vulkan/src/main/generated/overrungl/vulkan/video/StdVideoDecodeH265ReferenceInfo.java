@@ -83,6 +83,23 @@ public sealed class StdVideoDecodeH265ReferenceInfo extends GroupType {
     /// @return the allocated `StdVideoDecodeH265ReferenceInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoDecodeH265ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param PicOrderCntVal `PicOrderCntVal`
+    /// @return the allocated `StdVideoDecodeH265ReferenceInfo`
+    public static StdVideoDecodeH265ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int PicOrderCntVal) {
+        return alloc(allocator).flags(flags).PicOrderCntVal(PicOrderCntVal);
+    }
+
+    /// Allocates a `StdVideoDecodeH265ReferenceInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoDecodeH265ReferenceInfo`
+    public static StdVideoDecodeH265ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

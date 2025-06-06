@@ -77,6 +77,14 @@ public sealed class NFDPathSetEnum extends GroupType {
     /// @return the allocated `NFDPathSetEnum`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `NFDPathSetEnum` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param ptr `ptr`
+    /// @return the allocated `NFDPathSetEnum`
+    public static NFDPathSetEnum allocInit(SegmentAllocator allocator, MemorySegment ptr) {
+        return alloc(allocator).ptr(ptr);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

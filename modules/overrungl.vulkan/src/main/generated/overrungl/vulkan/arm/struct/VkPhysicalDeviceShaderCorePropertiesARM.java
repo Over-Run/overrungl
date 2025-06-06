@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceShaderCorePropertiesARM extends GroupType {
     /// @return the allocated `VkPhysicalDeviceShaderCorePropertiesARM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShaderCorePropertiesARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pixelRate `pixelRate`
+    /// @param texelRate `texelRate`
+    /// @param fmaRate `fmaRate`
+    /// @return the allocated `VkPhysicalDeviceShaderCorePropertiesARM`
+    public static VkPhysicalDeviceShaderCorePropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pixelRate, int texelRate, int fmaRate) {
+        return alloc(allocator).sType(sType).pNext(pNext).pixelRate(pixelRate).texelRate(texelRate).fmaRate(fmaRate);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderCorePropertiesARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pixelRate `pixelRate`
+    /// @param texelRate `texelRate`
+    /// @return the allocated `VkPhysicalDeviceShaderCorePropertiesARM`
+    public static VkPhysicalDeviceShaderCorePropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pixelRate, int texelRate) {
+        return alloc(allocator).sType(sType).pNext(pNext).pixelRate(pixelRate).texelRate(texelRate);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderCorePropertiesARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pixelRate `pixelRate`
+    /// @return the allocated `VkPhysicalDeviceShaderCorePropertiesARM`
+    public static VkPhysicalDeviceShaderCorePropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pixelRate) {
+        return alloc(allocator).sType(sType).pNext(pNext).pixelRate(pixelRate);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderCorePropertiesARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShaderCorePropertiesARM`
+    public static VkPhysicalDeviceShaderCorePropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderCorePropertiesARM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShaderCorePropertiesARM`
+    public static VkPhysicalDeviceShaderCorePropertiesARM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

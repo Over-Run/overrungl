@@ -111,6 +111,69 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
     /// @return the allocated `VkPhysicalDeviceImageProcessingPropertiesQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxWeightFilterPhases `maxWeightFilterPhases`
+    /// @param maxWeightFilterDimension `maxWeightFilterDimension`
+    /// @param maxBlockMatchRegion `maxBlockMatchRegion`
+    /// @param maxBoxFilterBlockSize `maxBoxFilterBlockSize`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingPropertiesQCOM`
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxWeightFilterPhases, MemorySegment maxWeightFilterDimension, MemorySegment maxBlockMatchRegion, MemorySegment maxBoxFilterBlockSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxWeightFilterPhases(maxWeightFilterPhases).maxWeightFilterDimension(maxWeightFilterDimension).maxBlockMatchRegion(maxBlockMatchRegion).maxBoxFilterBlockSize(maxBoxFilterBlockSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxWeightFilterPhases `maxWeightFilterPhases`
+    /// @param maxWeightFilterDimension `maxWeightFilterDimension`
+    /// @param maxBlockMatchRegion `maxBlockMatchRegion`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingPropertiesQCOM`
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxWeightFilterPhases, MemorySegment maxWeightFilterDimension, MemorySegment maxBlockMatchRegion) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxWeightFilterPhases(maxWeightFilterPhases).maxWeightFilterDimension(maxWeightFilterDimension).maxBlockMatchRegion(maxBlockMatchRegion);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxWeightFilterPhases `maxWeightFilterPhases`
+    /// @param maxWeightFilterDimension `maxWeightFilterDimension`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingPropertiesQCOM`
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxWeightFilterPhases, MemorySegment maxWeightFilterDimension) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxWeightFilterPhases(maxWeightFilterPhases).maxWeightFilterDimension(maxWeightFilterDimension);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxWeightFilterPhases `maxWeightFilterPhases`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingPropertiesQCOM`
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxWeightFilterPhases) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxWeightFilterPhases(maxWeightFilterPhases);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingPropertiesQCOM`
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceImageProcessingPropertiesQCOM`
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

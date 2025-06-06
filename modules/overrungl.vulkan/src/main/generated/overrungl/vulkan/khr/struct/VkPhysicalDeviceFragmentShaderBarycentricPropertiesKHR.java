@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR exten
     /// @return the allocated `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param triStripVertexOrderIndependentOfProvokingVertex `triStripVertexOrderIndependentOfProvokingVertex`
+    /// @return the allocated `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR`
+    public static VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int triStripVertexOrderIndependentOfProvokingVertex) {
+        return alloc(allocator).sType(sType).pNext(pNext).triStripVertexOrderIndependentOfProvokingVertex(triStripVertexOrderIndependentOfProvokingVertex);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR`
+    public static VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR`
+    public static VkPhysicalDeviceFragmentShaderBarycentricPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

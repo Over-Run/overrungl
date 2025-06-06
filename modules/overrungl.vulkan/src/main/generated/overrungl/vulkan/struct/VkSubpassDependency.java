@@ -125,6 +125,83 @@ public sealed class VkSubpassDependency extends GroupType {
     /// @return the allocated `VkSubpassDependency`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSubpassDependency` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @param dstStageMask `dstStageMask`
+    /// @param srcAccessMask `srcAccessMask`
+    /// @param dstAccessMask `dstAccessMask`
+    /// @param dependencyFlags `dependencyFlags`
+    /// @return the allocated `VkSubpassDependency`
+    public static VkSubpassDependency allocInit(SegmentAllocator allocator, int srcSubpass, int dstSubpass, int srcStageMask, int dstStageMask, int srcAccessMask, int dstAccessMask, int dependencyFlags) {
+        return alloc(allocator).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask).dstStageMask(dstStageMask).srcAccessMask(srcAccessMask).dstAccessMask(dstAccessMask).dependencyFlags(dependencyFlags);
+    }
+
+    /// Allocates a `VkSubpassDependency` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @param dstStageMask `dstStageMask`
+    /// @param srcAccessMask `srcAccessMask`
+    /// @param dstAccessMask `dstAccessMask`
+    /// @return the allocated `VkSubpassDependency`
+    public static VkSubpassDependency allocInit(SegmentAllocator allocator, int srcSubpass, int dstSubpass, int srcStageMask, int dstStageMask, int srcAccessMask, int dstAccessMask) {
+        return alloc(allocator).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask).dstStageMask(dstStageMask).srcAccessMask(srcAccessMask).dstAccessMask(dstAccessMask);
+    }
+
+    /// Allocates a `VkSubpassDependency` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @param dstStageMask `dstStageMask`
+    /// @param srcAccessMask `srcAccessMask`
+    /// @return the allocated `VkSubpassDependency`
+    public static VkSubpassDependency allocInit(SegmentAllocator allocator, int srcSubpass, int dstSubpass, int srcStageMask, int dstStageMask, int srcAccessMask) {
+        return alloc(allocator).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask).dstStageMask(dstStageMask).srcAccessMask(srcAccessMask);
+    }
+
+    /// Allocates a `VkSubpassDependency` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @param dstStageMask `dstStageMask`
+    /// @return the allocated `VkSubpassDependency`
+    public static VkSubpassDependency allocInit(SegmentAllocator allocator, int srcSubpass, int dstSubpass, int srcStageMask, int dstStageMask) {
+        return alloc(allocator).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask).dstStageMask(dstStageMask);
+    }
+
+    /// Allocates a `VkSubpassDependency` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @param srcStageMask `srcStageMask`
+    /// @return the allocated `VkSubpassDependency`
+    public static VkSubpassDependency allocInit(SegmentAllocator allocator, int srcSubpass, int dstSubpass, int srcStageMask) {
+        return alloc(allocator).srcSubpass(srcSubpass).dstSubpass(dstSubpass).srcStageMask(srcStageMask);
+    }
+
+    /// Allocates a `VkSubpassDependency` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcSubpass `srcSubpass`
+    /// @param dstSubpass `dstSubpass`
+    /// @return the allocated `VkSubpassDependency`
+    public static VkSubpassDependency allocInit(SegmentAllocator allocator, int srcSubpass, int dstSubpass) {
+        return alloc(allocator).srcSubpass(srcSubpass).dstSubpass(dstSubpass);
+    }
+
+    /// Allocates a `VkSubpassDependency` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param srcSubpass `srcSubpass`
+    /// @return the allocated `VkSubpassDependency`
+    public static VkSubpassDependency allocInit(SegmentAllocator allocator, int srcSubpass) {
+        return alloc(allocator).srcSubpass(srcSubpass);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

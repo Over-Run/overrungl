@@ -109,6 +109,56 @@ public sealed class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// @return the allocated `VkDeviceGroupRenderPassBeginInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceGroupRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceMask `deviceMask`
+    /// @param deviceRenderAreaCount `deviceRenderAreaCount`
+    /// @param pDeviceRenderAreas `pDeviceRenderAreas`
+    /// @return the allocated `VkDeviceGroupRenderPassBeginInfo`
+    public static VkDeviceGroupRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceMask, int deviceRenderAreaCount, MemorySegment pDeviceRenderAreas) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceMask(deviceMask).deviceRenderAreaCount(deviceRenderAreaCount).pDeviceRenderAreas(pDeviceRenderAreas);
+    }
+
+    /// Allocates a `VkDeviceGroupRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceMask `deviceMask`
+    /// @param deviceRenderAreaCount `deviceRenderAreaCount`
+    /// @return the allocated `VkDeviceGroupRenderPassBeginInfo`
+    public static VkDeviceGroupRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceMask, int deviceRenderAreaCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceMask(deviceMask).deviceRenderAreaCount(deviceRenderAreaCount);
+    }
+
+    /// Allocates a `VkDeviceGroupRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceMask `deviceMask`
+    /// @return the allocated `VkDeviceGroupRenderPassBeginInfo`
+    public static VkDeviceGroupRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceMask(deviceMask);
+    }
+
+    /// Allocates a `VkDeviceGroupRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDeviceGroupRenderPassBeginInfo`
+    public static VkDeviceGroupRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDeviceGroupRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDeviceGroupRenderPassBeginInfo`
+    public static VkDeviceGroupRenderPassBeginInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceExternalBufferInfo extends GroupType {
     /// @return the allocated `VkPhysicalDeviceExternalBufferInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceExternalBufferInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param usage `usage`
+    /// @param handleType `handleType`
+    /// @return the allocated `VkPhysicalDeviceExternalBufferInfo`
+    public static VkPhysicalDeviceExternalBufferInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int usage, int handleType) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).usage(usage).handleType(handleType);
+    }
+
+    /// Allocates a `VkPhysicalDeviceExternalBufferInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param usage `usage`
+    /// @return the allocated `VkPhysicalDeviceExternalBufferInfo`
+    public static VkPhysicalDeviceExternalBufferInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int usage) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).usage(usage);
+    }
+
+    /// Allocates a `VkPhysicalDeviceExternalBufferInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkPhysicalDeviceExternalBufferInfo`
+    public static VkPhysicalDeviceExternalBufferInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkPhysicalDeviceExternalBufferInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceExternalBufferInfo`
+    public static VkPhysicalDeviceExternalBufferInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceExternalBufferInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceExternalBufferInfo`
+    public static VkPhysicalDeviceExternalBufferInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

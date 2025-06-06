@@ -157,6 +157,149 @@ public sealed class VkCooperativeMatrixPropertiesKHR extends GroupType {
     /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param MSize `MSize`
+    /// @param NSize `NSize`
+    /// @param KSize `KSize`
+    /// @param AType `AType`
+    /// @param BType `BType`
+    /// @param CType `CType`
+    /// @param ResultType `ResultType`
+    /// @param saturatingAccumulation `saturatingAccumulation`
+    /// @param scope `scope`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int MSize, int NSize, int KSize, int AType, int BType, int CType, int ResultType, int saturatingAccumulation, int scope) {
+        return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize).NSize(NSize).KSize(KSize).AType(AType).BType(BType).CType(CType).ResultType(ResultType).saturatingAccumulation(saturatingAccumulation).scope(scope);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param MSize `MSize`
+    /// @param NSize `NSize`
+    /// @param KSize `KSize`
+    /// @param AType `AType`
+    /// @param BType `BType`
+    /// @param CType `CType`
+    /// @param ResultType `ResultType`
+    /// @param saturatingAccumulation `saturatingAccumulation`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int MSize, int NSize, int KSize, int AType, int BType, int CType, int ResultType, int saturatingAccumulation) {
+        return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize).NSize(NSize).KSize(KSize).AType(AType).BType(BType).CType(CType).ResultType(ResultType).saturatingAccumulation(saturatingAccumulation);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param MSize `MSize`
+    /// @param NSize `NSize`
+    /// @param KSize `KSize`
+    /// @param AType `AType`
+    /// @param BType `BType`
+    /// @param CType `CType`
+    /// @param ResultType `ResultType`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int MSize, int NSize, int KSize, int AType, int BType, int CType, int ResultType) {
+        return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize).NSize(NSize).KSize(KSize).AType(AType).BType(BType).CType(CType).ResultType(ResultType);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param MSize `MSize`
+    /// @param NSize `NSize`
+    /// @param KSize `KSize`
+    /// @param AType `AType`
+    /// @param BType `BType`
+    /// @param CType `CType`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int MSize, int NSize, int KSize, int AType, int BType, int CType) {
+        return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize).NSize(NSize).KSize(KSize).AType(AType).BType(BType).CType(CType);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param MSize `MSize`
+    /// @param NSize `NSize`
+    /// @param KSize `KSize`
+    /// @param AType `AType`
+    /// @param BType `BType`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int MSize, int NSize, int KSize, int AType, int BType) {
+        return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize).NSize(NSize).KSize(KSize).AType(AType).BType(BType);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param MSize `MSize`
+    /// @param NSize `NSize`
+    /// @param KSize `KSize`
+    /// @param AType `AType`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int MSize, int NSize, int KSize, int AType) {
+        return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize).NSize(NSize).KSize(KSize).AType(AType);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param MSize `MSize`
+    /// @param NSize `NSize`
+    /// @param KSize `KSize`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int MSize, int NSize, int KSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize).NSize(NSize).KSize(KSize);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param MSize `MSize`
+    /// @param NSize `NSize`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int MSize, int NSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize).NSize(NSize);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param MSize `MSize`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int MSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).MSize(MSize);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkCooperativeMatrixPropertiesKHR`
+    public static VkCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

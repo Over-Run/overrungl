@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV extends
     /// @return the allocated `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param representativeFragmentTest `representativeFragmentTest`
+    /// @return the allocated `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`
+    public static VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int representativeFragmentTest) {
+        return alloc(allocator).sType(sType).pNext(pNext).representativeFragmentTest(representativeFragmentTest);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`
+    public static VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV`
+    public static VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -93,6 +93,33 @@ public sealed class VkDrmFormatModifierProperties2EXT extends GroupType {
     /// @return the allocated `VkDrmFormatModifierProperties2EXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDrmFormatModifierProperties2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param drmFormatModifier `drmFormatModifier`
+    /// @param drmFormatModifierPlaneCount `drmFormatModifierPlaneCount`
+    /// @param drmFormatModifierTilingFeatures `drmFormatModifierTilingFeatures`
+    /// @return the allocated `VkDrmFormatModifierProperties2EXT`
+    public static VkDrmFormatModifierProperties2EXT allocInit(SegmentAllocator allocator, long drmFormatModifier, int drmFormatModifierPlaneCount, long drmFormatModifierTilingFeatures) {
+        return alloc(allocator).drmFormatModifier(drmFormatModifier).drmFormatModifierPlaneCount(drmFormatModifierPlaneCount).drmFormatModifierTilingFeatures(drmFormatModifierTilingFeatures);
+    }
+
+    /// Allocates a `VkDrmFormatModifierProperties2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param drmFormatModifier `drmFormatModifier`
+    /// @param drmFormatModifierPlaneCount `drmFormatModifierPlaneCount`
+    /// @return the allocated `VkDrmFormatModifierProperties2EXT`
+    public static VkDrmFormatModifierProperties2EXT allocInit(SegmentAllocator allocator, long drmFormatModifier, int drmFormatModifierPlaneCount) {
+        return alloc(allocator).drmFormatModifier(drmFormatModifier).drmFormatModifierPlaneCount(drmFormatModifierPlaneCount);
+    }
+
+    /// Allocates a `VkDrmFormatModifierProperties2EXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param drmFormatModifier `drmFormatModifier`
+    /// @return the allocated `VkDrmFormatModifierProperties2EXT`
+    public static VkDrmFormatModifierProperties2EXT allocInit(SegmentAllocator allocator, long drmFormatModifier) {
+        return alloc(allocator).drmFormatModifier(drmFormatModifier);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

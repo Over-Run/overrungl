@@ -101,6 +101,44 @@ public sealed class VkFenceGetFdInfoKHR extends GroupType {
     /// @return the allocated `VkFenceGetFdInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkFenceGetFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @param handleType `handleType`
+    /// @return the allocated `VkFenceGetFdInfoKHR`
+    public static VkFenceGetFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int handleType) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).handleType(handleType);
+    }
+
+    /// Allocates a `VkFenceGetFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fence `fence`
+    /// @return the allocated `VkFenceGetFdInfoKHR`
+    public static VkFenceGetFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence) {
+        return alloc(allocator).sType(sType).pNext(pNext).fence(fence);
+    }
+
+    /// Allocates a `VkFenceGetFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkFenceGetFdInfoKHR`
+    public static VkFenceGetFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkFenceGetFdInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkFenceGetFdInfoKHR`
+    public static VkFenceGetFdInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

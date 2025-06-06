@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT extends Group
     /// @return the allocated `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param bufferDeviceAddress `bufferDeviceAddress`
+    /// @param bufferDeviceAddressCaptureReplay `bufferDeviceAddressCaptureReplay`
+    /// @param bufferDeviceAddressMultiDevice `bufferDeviceAddressMultiDevice`
+    /// @return the allocated `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int bufferDeviceAddress, int bufferDeviceAddressCaptureReplay, int bufferDeviceAddressMultiDevice) {
+        return alloc(allocator).sType(sType).pNext(pNext).bufferDeviceAddress(bufferDeviceAddress).bufferDeviceAddressCaptureReplay(bufferDeviceAddressCaptureReplay).bufferDeviceAddressMultiDevice(bufferDeviceAddressMultiDevice);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param bufferDeviceAddress `bufferDeviceAddress`
+    /// @param bufferDeviceAddressCaptureReplay `bufferDeviceAddressCaptureReplay`
+    /// @return the allocated `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int bufferDeviceAddress, int bufferDeviceAddressCaptureReplay) {
+        return alloc(allocator).sType(sType).pNext(pNext).bufferDeviceAddress(bufferDeviceAddress).bufferDeviceAddressCaptureReplay(bufferDeviceAddressCaptureReplay);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param bufferDeviceAddress `bufferDeviceAddress`
+    /// @return the allocated `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int bufferDeviceAddress) {
+        return alloc(allocator).sType(sType).pNext(pNext).bufferDeviceAddress(bufferDeviceAddress);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

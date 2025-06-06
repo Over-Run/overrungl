@@ -269,6 +269,539 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @param bidirectionalCompoundReferenceNameMask `bidirectionalCompoundReferenceNameMask`
+    /// @param maxTemporalLayerCount `maxTemporalLayerCount`
+    /// @param maxSpatialLayerCount `maxSpatialLayerCount`
+    /// @param maxOperatingPoints `maxOperatingPoints`
+    /// @param minQIndex `minQIndex`
+    /// @param maxQIndex `maxQIndex`
+    /// @param prefersGopRemainingFrames `prefersGopRemainingFrames`
+    /// @param requiresGopRemainingFrames `requiresGopRemainingFrames`
+    /// @param stdSyntaxFlags `stdSyntaxFlags`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount, int bidirectionalCompoundReferenceNameMask, int maxTemporalLayerCount, int maxSpatialLayerCount, int maxOperatingPoints, int minQIndex, int maxQIndex, int prefersGopRemainingFrames, int requiresGopRemainingFrames, int stdSyntaxFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount).maxOperatingPoints(maxOperatingPoints).minQIndex(minQIndex).maxQIndex(maxQIndex).prefersGopRemainingFrames(prefersGopRemainingFrames).requiresGopRemainingFrames(requiresGopRemainingFrames).stdSyntaxFlags(stdSyntaxFlags);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @param bidirectionalCompoundReferenceNameMask `bidirectionalCompoundReferenceNameMask`
+    /// @param maxTemporalLayerCount `maxTemporalLayerCount`
+    /// @param maxSpatialLayerCount `maxSpatialLayerCount`
+    /// @param maxOperatingPoints `maxOperatingPoints`
+    /// @param minQIndex `minQIndex`
+    /// @param maxQIndex `maxQIndex`
+    /// @param prefersGopRemainingFrames `prefersGopRemainingFrames`
+    /// @param requiresGopRemainingFrames `requiresGopRemainingFrames`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount, int bidirectionalCompoundReferenceNameMask, int maxTemporalLayerCount, int maxSpatialLayerCount, int maxOperatingPoints, int minQIndex, int maxQIndex, int prefersGopRemainingFrames, int requiresGopRemainingFrames) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount).maxOperatingPoints(maxOperatingPoints).minQIndex(minQIndex).maxQIndex(maxQIndex).prefersGopRemainingFrames(prefersGopRemainingFrames).requiresGopRemainingFrames(requiresGopRemainingFrames);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @param bidirectionalCompoundReferenceNameMask `bidirectionalCompoundReferenceNameMask`
+    /// @param maxTemporalLayerCount `maxTemporalLayerCount`
+    /// @param maxSpatialLayerCount `maxSpatialLayerCount`
+    /// @param maxOperatingPoints `maxOperatingPoints`
+    /// @param minQIndex `minQIndex`
+    /// @param maxQIndex `maxQIndex`
+    /// @param prefersGopRemainingFrames `prefersGopRemainingFrames`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount, int bidirectionalCompoundReferenceNameMask, int maxTemporalLayerCount, int maxSpatialLayerCount, int maxOperatingPoints, int minQIndex, int maxQIndex, int prefersGopRemainingFrames) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount).maxOperatingPoints(maxOperatingPoints).minQIndex(minQIndex).maxQIndex(maxQIndex).prefersGopRemainingFrames(prefersGopRemainingFrames);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @param bidirectionalCompoundReferenceNameMask `bidirectionalCompoundReferenceNameMask`
+    /// @param maxTemporalLayerCount `maxTemporalLayerCount`
+    /// @param maxSpatialLayerCount `maxSpatialLayerCount`
+    /// @param maxOperatingPoints `maxOperatingPoints`
+    /// @param minQIndex `minQIndex`
+    /// @param maxQIndex `maxQIndex`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount, int bidirectionalCompoundReferenceNameMask, int maxTemporalLayerCount, int maxSpatialLayerCount, int maxOperatingPoints, int minQIndex, int maxQIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount).maxOperatingPoints(maxOperatingPoints).minQIndex(minQIndex).maxQIndex(maxQIndex);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @param bidirectionalCompoundReferenceNameMask `bidirectionalCompoundReferenceNameMask`
+    /// @param maxTemporalLayerCount `maxTemporalLayerCount`
+    /// @param maxSpatialLayerCount `maxSpatialLayerCount`
+    /// @param maxOperatingPoints `maxOperatingPoints`
+    /// @param minQIndex `minQIndex`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount, int bidirectionalCompoundReferenceNameMask, int maxTemporalLayerCount, int maxSpatialLayerCount, int maxOperatingPoints, int minQIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount).maxOperatingPoints(maxOperatingPoints).minQIndex(minQIndex);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @param bidirectionalCompoundReferenceNameMask `bidirectionalCompoundReferenceNameMask`
+    /// @param maxTemporalLayerCount `maxTemporalLayerCount`
+    /// @param maxSpatialLayerCount `maxSpatialLayerCount`
+    /// @param maxOperatingPoints `maxOperatingPoints`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount, int bidirectionalCompoundReferenceNameMask, int maxTemporalLayerCount, int maxSpatialLayerCount, int maxOperatingPoints) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount).maxOperatingPoints(maxOperatingPoints);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @param bidirectionalCompoundReferenceNameMask `bidirectionalCompoundReferenceNameMask`
+    /// @param maxTemporalLayerCount `maxTemporalLayerCount`
+    /// @param maxSpatialLayerCount `maxSpatialLayerCount`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount, int bidirectionalCompoundReferenceNameMask, int maxTemporalLayerCount, int maxSpatialLayerCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount).maxSpatialLayerCount(maxSpatialLayerCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @param bidirectionalCompoundReferenceNameMask `bidirectionalCompoundReferenceNameMask`
+    /// @param maxTemporalLayerCount `maxTemporalLayerCount`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount, int bidirectionalCompoundReferenceNameMask, int maxTemporalLayerCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask).maxTemporalLayerCount(maxTemporalLayerCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @param bidirectionalCompoundReferenceNameMask `bidirectionalCompoundReferenceNameMask`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount, int bidirectionalCompoundReferenceNameMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount).bidirectionalCompoundReferenceNameMask(bidirectionalCompoundReferenceNameMask);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @param maxBidirectionalCompoundGroup2ReferenceCount `maxBidirectionalCompoundGroup2ReferenceCount`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount, int maxBidirectionalCompoundGroup2ReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount).maxBidirectionalCompoundGroup2ReferenceCount(maxBidirectionalCompoundGroup2ReferenceCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @param maxBidirectionalCompoundGroup1ReferenceCount `maxBidirectionalCompoundGroup1ReferenceCount`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount, int maxBidirectionalCompoundGroup1ReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount).maxBidirectionalCompoundGroup1ReferenceCount(maxBidirectionalCompoundGroup1ReferenceCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @param maxBidirectionalCompoundReferenceCount `maxBidirectionalCompoundReferenceCount`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask, int maxBidirectionalCompoundReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask).maxBidirectionalCompoundReferenceCount(maxBidirectionalCompoundReferenceCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @param unidirectionalCompoundReferenceNameMask `unidirectionalCompoundReferenceNameMask`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount, int unidirectionalCompoundReferenceNameMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount).unidirectionalCompoundReferenceNameMask(unidirectionalCompoundReferenceNameMask);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @param maxUnidirectionalCompoundGroup1ReferenceCount `maxUnidirectionalCompoundGroup1ReferenceCount`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount, int maxUnidirectionalCompoundGroup1ReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount).maxUnidirectionalCompoundGroup1ReferenceCount(maxUnidirectionalCompoundGroup1ReferenceCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @param maxUnidirectionalCompoundReferenceCount `maxUnidirectionalCompoundReferenceCount`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask, int maxUnidirectionalCompoundReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask).maxUnidirectionalCompoundReferenceCount(maxUnidirectionalCompoundReferenceCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @param singleReferenceNameMask `singleReferenceNameMask`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount, int singleReferenceNameMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount).singleReferenceNameMask(singleReferenceNameMask);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @param maxSingleReferenceCount `maxSingleReferenceCount`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes, int maxSingleReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes).maxSingleReferenceCount(maxSingleReferenceCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @param superblockSizes `superblockSizes`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize, int superblockSizes) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize).superblockSizes(superblockSizes);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @param maxTileSize `maxTileSize`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize, MemorySegment maxTileSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize).maxTileSize(maxTileSize);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @param minTileSize `minTileSize`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles, MemorySegment minTileSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles).minTileSize(minTileSize);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @param maxTiles `maxTiles`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment, MemorySegment maxTiles) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment).maxTiles(maxTiles);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @param codedPictureAlignment `codedPictureAlignment`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel, MemorySegment codedPictureAlignment) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel).codedPictureAlignment(codedPictureAlignment);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevel `maxLevel`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevel) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevel(maxLevel);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeAV1CapabilitiesKHR`
+    public static VkVideoEncodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

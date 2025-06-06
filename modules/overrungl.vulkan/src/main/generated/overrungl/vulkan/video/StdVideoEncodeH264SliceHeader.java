@@ -147,6 +147,131 @@ public sealed class StdVideoEncodeH264SliceHeader extends GroupType {
     /// @return the allocated `StdVideoEncodeH264SliceHeader`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param first_mb_in_slice `first_mb_in_slice`
+    /// @param slice_type `slice_type`
+    /// @param slice_alpha_c0_offset_div2 `slice_alpha_c0_offset_div2`
+    /// @param slice_beta_offset_div2 `slice_beta_offset_div2`
+    /// @param slice_qp_delta `slice_qp_delta`
+    /// @param reserved1 `reserved1`
+    /// @param cabac_init_idc `cabac_init_idc`
+    /// @param disable_deblocking_filter_idc `disable_deblocking_filter_idc`
+    /// @param pWeightTable `pWeightTable`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags, int first_mb_in_slice, int slice_type, byte slice_alpha_c0_offset_div2, byte slice_beta_offset_div2, byte slice_qp_delta, byte reserved1, int cabac_init_idc, int disable_deblocking_filter_idc, MemorySegment pWeightTable) {
+        return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice).slice_type(slice_type).slice_alpha_c0_offset_div2(slice_alpha_c0_offset_div2).slice_beta_offset_div2(slice_beta_offset_div2).slice_qp_delta(slice_qp_delta).reserved1(reserved1).cabac_init_idc(cabac_init_idc).disable_deblocking_filter_idc(disable_deblocking_filter_idc).pWeightTable(pWeightTable);
+    }
+
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param first_mb_in_slice `first_mb_in_slice`
+    /// @param slice_type `slice_type`
+    /// @param slice_alpha_c0_offset_div2 `slice_alpha_c0_offset_div2`
+    /// @param slice_beta_offset_div2 `slice_beta_offset_div2`
+    /// @param slice_qp_delta `slice_qp_delta`
+    /// @param reserved1 `reserved1`
+    /// @param cabac_init_idc `cabac_init_idc`
+    /// @param disable_deblocking_filter_idc `disable_deblocking_filter_idc`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags, int first_mb_in_slice, int slice_type, byte slice_alpha_c0_offset_div2, byte slice_beta_offset_div2, byte slice_qp_delta, byte reserved1, int cabac_init_idc, int disable_deblocking_filter_idc) {
+        return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice).slice_type(slice_type).slice_alpha_c0_offset_div2(slice_alpha_c0_offset_div2).slice_beta_offset_div2(slice_beta_offset_div2).slice_qp_delta(slice_qp_delta).reserved1(reserved1).cabac_init_idc(cabac_init_idc).disable_deblocking_filter_idc(disable_deblocking_filter_idc);
+    }
+
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param first_mb_in_slice `first_mb_in_slice`
+    /// @param slice_type `slice_type`
+    /// @param slice_alpha_c0_offset_div2 `slice_alpha_c0_offset_div2`
+    /// @param slice_beta_offset_div2 `slice_beta_offset_div2`
+    /// @param slice_qp_delta `slice_qp_delta`
+    /// @param reserved1 `reserved1`
+    /// @param cabac_init_idc `cabac_init_idc`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags, int first_mb_in_slice, int slice_type, byte slice_alpha_c0_offset_div2, byte slice_beta_offset_div2, byte slice_qp_delta, byte reserved1, int cabac_init_idc) {
+        return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice).slice_type(slice_type).slice_alpha_c0_offset_div2(slice_alpha_c0_offset_div2).slice_beta_offset_div2(slice_beta_offset_div2).slice_qp_delta(slice_qp_delta).reserved1(reserved1).cabac_init_idc(cabac_init_idc);
+    }
+
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param first_mb_in_slice `first_mb_in_slice`
+    /// @param slice_type `slice_type`
+    /// @param slice_alpha_c0_offset_div2 `slice_alpha_c0_offset_div2`
+    /// @param slice_beta_offset_div2 `slice_beta_offset_div2`
+    /// @param slice_qp_delta `slice_qp_delta`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags, int first_mb_in_slice, int slice_type, byte slice_alpha_c0_offset_div2, byte slice_beta_offset_div2, byte slice_qp_delta, byte reserved1) {
+        return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice).slice_type(slice_type).slice_alpha_c0_offset_div2(slice_alpha_c0_offset_div2).slice_beta_offset_div2(slice_beta_offset_div2).slice_qp_delta(slice_qp_delta).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param first_mb_in_slice `first_mb_in_slice`
+    /// @param slice_type `slice_type`
+    /// @param slice_alpha_c0_offset_div2 `slice_alpha_c0_offset_div2`
+    /// @param slice_beta_offset_div2 `slice_beta_offset_div2`
+    /// @param slice_qp_delta `slice_qp_delta`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags, int first_mb_in_slice, int slice_type, byte slice_alpha_c0_offset_div2, byte slice_beta_offset_div2, byte slice_qp_delta) {
+        return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice).slice_type(slice_type).slice_alpha_c0_offset_div2(slice_alpha_c0_offset_div2).slice_beta_offset_div2(slice_beta_offset_div2).slice_qp_delta(slice_qp_delta);
+    }
+
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param first_mb_in_slice `first_mb_in_slice`
+    /// @param slice_type `slice_type`
+    /// @param slice_alpha_c0_offset_div2 `slice_alpha_c0_offset_div2`
+    /// @param slice_beta_offset_div2 `slice_beta_offset_div2`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags, int first_mb_in_slice, int slice_type, byte slice_alpha_c0_offset_div2, byte slice_beta_offset_div2) {
+        return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice).slice_type(slice_type).slice_alpha_c0_offset_div2(slice_alpha_c0_offset_div2).slice_beta_offset_div2(slice_beta_offset_div2);
+    }
+
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param first_mb_in_slice `first_mb_in_slice`
+    /// @param slice_type `slice_type`
+    /// @param slice_alpha_c0_offset_div2 `slice_alpha_c0_offset_div2`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags, int first_mb_in_slice, int slice_type, byte slice_alpha_c0_offset_div2) {
+        return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice).slice_type(slice_type).slice_alpha_c0_offset_div2(slice_alpha_c0_offset_div2);
+    }
+
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param first_mb_in_slice `first_mb_in_slice`
+    /// @param slice_type `slice_type`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags, int first_mb_in_slice, int slice_type) {
+        return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice).slice_type(slice_type);
+    }
+
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param first_mb_in_slice `first_mb_in_slice`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags, int first_mb_in_slice) {
+        return alloc(allocator).flags(flags).first_mb_in_slice(first_mb_in_slice);
+    }
+
+    /// Allocates a `StdVideoEncodeH264SliceHeader` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoEncodeH264SliceHeader`
+    public static StdVideoEncodeH264SliceHeader allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

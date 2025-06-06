@@ -91,6 +91,33 @@ public sealed class VkFormatProperties2 extends GroupType {
     /// @return the allocated `VkFormatProperties2`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkFormatProperties2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param formatProperties `formatProperties`
+    /// @return the allocated `VkFormatProperties2`
+    public static VkFormatProperties2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment formatProperties) {
+        return alloc(allocator).sType(sType).pNext(pNext).formatProperties(formatProperties);
+    }
+
+    /// Allocates a `VkFormatProperties2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkFormatProperties2`
+    public static VkFormatProperties2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkFormatProperties2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkFormatProperties2`
+    public static VkFormatProperties2 allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

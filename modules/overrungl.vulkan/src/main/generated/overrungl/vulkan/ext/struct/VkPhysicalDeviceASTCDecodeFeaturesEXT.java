@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceASTCDecodeFeaturesEXT extends GroupType {
     /// @return the allocated `VkPhysicalDeviceASTCDecodeFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceASTCDecodeFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param decodeModeSharedExponent `decodeModeSharedExponent`
+    /// @return the allocated `VkPhysicalDeviceASTCDecodeFeaturesEXT`
+    public static VkPhysicalDeviceASTCDecodeFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int decodeModeSharedExponent) {
+        return alloc(allocator).sType(sType).pNext(pNext).decodeModeSharedExponent(decodeModeSharedExponent);
+    }
+
+    /// Allocates a `VkPhysicalDeviceASTCDecodeFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceASTCDecodeFeaturesEXT`
+    public static VkPhysicalDeviceASTCDecodeFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceASTCDecodeFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceASTCDecodeFeaturesEXT`
+    public static VkPhysicalDeviceASTCDecodeFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

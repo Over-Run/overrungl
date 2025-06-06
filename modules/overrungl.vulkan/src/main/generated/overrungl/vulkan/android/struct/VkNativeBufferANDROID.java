@@ -123,6 +123,83 @@ public sealed class VkNativeBufferANDROID extends GroupType {
     /// @return the allocated `VkNativeBufferANDROID`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkNativeBufferANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handle `handle`
+    /// @param stride `stride`
+    /// @param format `format`
+    /// @param usage `usage`
+    /// @param usage2 `usage2`
+    /// @return the allocated `VkNativeBufferANDROID`
+    public static VkNativeBufferANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment handle, int stride, int format, int usage, MemorySegment usage2) {
+        return alloc(allocator).sType(sType).pNext(pNext).handle(handle).stride(stride).format(format).usage(usage).usage2(usage2);
+    }
+
+    /// Allocates a `VkNativeBufferANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handle `handle`
+    /// @param stride `stride`
+    /// @param format `format`
+    /// @param usage `usage`
+    /// @return the allocated `VkNativeBufferANDROID`
+    public static VkNativeBufferANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment handle, int stride, int format, int usage) {
+        return alloc(allocator).sType(sType).pNext(pNext).handle(handle).stride(stride).format(format).usage(usage);
+    }
+
+    /// Allocates a `VkNativeBufferANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handle `handle`
+    /// @param stride `stride`
+    /// @param format `format`
+    /// @return the allocated `VkNativeBufferANDROID`
+    public static VkNativeBufferANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment handle, int stride, int format) {
+        return alloc(allocator).sType(sType).pNext(pNext).handle(handle).stride(stride).format(format);
+    }
+
+    /// Allocates a `VkNativeBufferANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handle `handle`
+    /// @param stride `stride`
+    /// @return the allocated `VkNativeBufferANDROID`
+    public static VkNativeBufferANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment handle, int stride) {
+        return alloc(allocator).sType(sType).pNext(pNext).handle(handle).stride(stride);
+    }
+
+    /// Allocates a `VkNativeBufferANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param handle `handle`
+    /// @return the allocated `VkNativeBufferANDROID`
+    public static VkNativeBufferANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment handle) {
+        return alloc(allocator).sType(sType).pNext(pNext).handle(handle);
+    }
+
+    /// Allocates a `VkNativeBufferANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkNativeBufferANDROID`
+    public static VkNativeBufferANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkNativeBufferANDROID` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkNativeBufferANDROID`
+    public static VkNativeBufferANDROID allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

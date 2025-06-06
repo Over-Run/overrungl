@@ -109,6 +109,56 @@ public sealed class VkDepthBiasInfoEXT extends GroupType {
     /// @return the allocated `VkDepthBiasInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDepthBiasInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param depthBiasConstantFactor `depthBiasConstantFactor`
+    /// @param depthBiasClamp `depthBiasClamp`
+    /// @param depthBiasSlopeFactor `depthBiasSlopeFactor`
+    /// @return the allocated `VkDepthBiasInfoEXT`
+    public static VkDepthBiasInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, float depthBiasConstantFactor, float depthBiasClamp, float depthBiasSlopeFactor) {
+        return alloc(allocator).sType(sType).pNext(pNext).depthBiasConstantFactor(depthBiasConstantFactor).depthBiasClamp(depthBiasClamp).depthBiasSlopeFactor(depthBiasSlopeFactor);
+    }
+
+    /// Allocates a `VkDepthBiasInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param depthBiasConstantFactor `depthBiasConstantFactor`
+    /// @param depthBiasClamp `depthBiasClamp`
+    /// @return the allocated `VkDepthBiasInfoEXT`
+    public static VkDepthBiasInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, float depthBiasConstantFactor, float depthBiasClamp) {
+        return alloc(allocator).sType(sType).pNext(pNext).depthBiasConstantFactor(depthBiasConstantFactor).depthBiasClamp(depthBiasClamp);
+    }
+
+    /// Allocates a `VkDepthBiasInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param depthBiasConstantFactor `depthBiasConstantFactor`
+    /// @return the allocated `VkDepthBiasInfoEXT`
+    public static VkDepthBiasInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, float depthBiasConstantFactor) {
+        return alloc(allocator).sType(sType).pNext(pNext).depthBiasConstantFactor(depthBiasConstantFactor);
+    }
+
+    /// Allocates a `VkDepthBiasInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDepthBiasInfoEXT`
+    public static VkDepthBiasInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDepthBiasInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDepthBiasInfoEXT`
+    public static VkDepthBiasInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

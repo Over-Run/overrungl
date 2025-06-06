@@ -77,6 +77,14 @@ public sealed class VkSetStateFlagsIndirectCommandNV extends GroupType {
     /// @return the allocated `VkSetStateFlagsIndirectCommandNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSetStateFlagsIndirectCommandNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param data `data`
+    /// @return the allocated `VkSetStateFlagsIndirectCommandNV`
+    public static VkSetStateFlagsIndirectCommandNV allocInit(SegmentAllocator allocator, int data) {
+        return alloc(allocator).data(data);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

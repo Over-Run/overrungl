@@ -85,6 +85,23 @@ public sealed class VkOffset2D extends GroupType {
     /// @return the allocated `VkOffset2D`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkOffset2D` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @return the allocated `VkOffset2D`
+    public static VkOffset2D allocInit(SegmentAllocator allocator, int x, int y) {
+        return alloc(allocator).x(x).y(y);
+    }
+
+    /// Allocates a `VkOffset2D` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @return the allocated `VkOffset2D`
+    public static VkOffset2D allocInit(SegmentAllocator allocator, int x) {
+        return alloc(allocator).x(x);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceSurfaceInfo2KHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceSurfaceInfo2KHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceSurfaceInfo2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param surface `surface`
+    /// @return the allocated `VkPhysicalDeviceSurfaceInfo2KHR`
+    public static VkPhysicalDeviceSurfaceInfo2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long surface) {
+        return alloc(allocator).sType(sType).pNext(pNext).surface(surface);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSurfaceInfo2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceSurfaceInfo2KHR`
+    public static VkPhysicalDeviceSurfaceInfo2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSurfaceInfo2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceSurfaceInfo2KHR`
+    public static VkPhysicalDeviceSurfaceInfo2KHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -349,6 +349,881 @@ public sealed class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupT
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @param storageBufferDescriptorSize `storageBufferDescriptorSize`
+    /// @param robustStorageBufferDescriptorSize `robustStorageBufferDescriptorSize`
+    /// @param inputAttachmentDescriptorSize `inputAttachmentDescriptorSize`
+    /// @param accelerationStructureDescriptorSize `accelerationStructureDescriptorSize`
+    /// @param maxSamplerDescriptorBufferRange `maxSamplerDescriptorBufferRange`
+    /// @param maxResourceDescriptorBufferRange `maxResourceDescriptorBufferRange`
+    /// @param samplerDescriptorBufferAddressSpaceSize `samplerDescriptorBufferAddressSpaceSize`
+    /// @param resourceDescriptorBufferAddressSpaceSize `resourceDescriptorBufferAddressSpaceSize`
+    /// @param descriptorBufferAddressSpaceSize `descriptorBufferAddressSpaceSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize, long storageBufferDescriptorSize, long robustStorageBufferDescriptorSize, long inputAttachmentDescriptorSize, long accelerationStructureDescriptorSize, long maxSamplerDescriptorBufferRange, long maxResourceDescriptorBufferRange, long samplerDescriptorBufferAddressSpaceSize, long resourceDescriptorBufferAddressSpaceSize, long descriptorBufferAddressSpaceSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize).robustStorageBufferDescriptorSize(robustStorageBufferDescriptorSize).inputAttachmentDescriptorSize(inputAttachmentDescriptorSize).accelerationStructureDescriptorSize(accelerationStructureDescriptorSize).maxSamplerDescriptorBufferRange(maxSamplerDescriptorBufferRange).maxResourceDescriptorBufferRange(maxResourceDescriptorBufferRange).samplerDescriptorBufferAddressSpaceSize(samplerDescriptorBufferAddressSpaceSize).resourceDescriptorBufferAddressSpaceSize(resourceDescriptorBufferAddressSpaceSize).descriptorBufferAddressSpaceSize(descriptorBufferAddressSpaceSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @param storageBufferDescriptorSize `storageBufferDescriptorSize`
+    /// @param robustStorageBufferDescriptorSize `robustStorageBufferDescriptorSize`
+    /// @param inputAttachmentDescriptorSize `inputAttachmentDescriptorSize`
+    /// @param accelerationStructureDescriptorSize `accelerationStructureDescriptorSize`
+    /// @param maxSamplerDescriptorBufferRange `maxSamplerDescriptorBufferRange`
+    /// @param maxResourceDescriptorBufferRange `maxResourceDescriptorBufferRange`
+    /// @param samplerDescriptorBufferAddressSpaceSize `samplerDescriptorBufferAddressSpaceSize`
+    /// @param resourceDescriptorBufferAddressSpaceSize `resourceDescriptorBufferAddressSpaceSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize, long storageBufferDescriptorSize, long robustStorageBufferDescriptorSize, long inputAttachmentDescriptorSize, long accelerationStructureDescriptorSize, long maxSamplerDescriptorBufferRange, long maxResourceDescriptorBufferRange, long samplerDescriptorBufferAddressSpaceSize, long resourceDescriptorBufferAddressSpaceSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize).robustStorageBufferDescriptorSize(robustStorageBufferDescriptorSize).inputAttachmentDescriptorSize(inputAttachmentDescriptorSize).accelerationStructureDescriptorSize(accelerationStructureDescriptorSize).maxSamplerDescriptorBufferRange(maxSamplerDescriptorBufferRange).maxResourceDescriptorBufferRange(maxResourceDescriptorBufferRange).samplerDescriptorBufferAddressSpaceSize(samplerDescriptorBufferAddressSpaceSize).resourceDescriptorBufferAddressSpaceSize(resourceDescriptorBufferAddressSpaceSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @param storageBufferDescriptorSize `storageBufferDescriptorSize`
+    /// @param robustStorageBufferDescriptorSize `robustStorageBufferDescriptorSize`
+    /// @param inputAttachmentDescriptorSize `inputAttachmentDescriptorSize`
+    /// @param accelerationStructureDescriptorSize `accelerationStructureDescriptorSize`
+    /// @param maxSamplerDescriptorBufferRange `maxSamplerDescriptorBufferRange`
+    /// @param maxResourceDescriptorBufferRange `maxResourceDescriptorBufferRange`
+    /// @param samplerDescriptorBufferAddressSpaceSize `samplerDescriptorBufferAddressSpaceSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize, long storageBufferDescriptorSize, long robustStorageBufferDescriptorSize, long inputAttachmentDescriptorSize, long accelerationStructureDescriptorSize, long maxSamplerDescriptorBufferRange, long maxResourceDescriptorBufferRange, long samplerDescriptorBufferAddressSpaceSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize).robustStorageBufferDescriptorSize(robustStorageBufferDescriptorSize).inputAttachmentDescriptorSize(inputAttachmentDescriptorSize).accelerationStructureDescriptorSize(accelerationStructureDescriptorSize).maxSamplerDescriptorBufferRange(maxSamplerDescriptorBufferRange).maxResourceDescriptorBufferRange(maxResourceDescriptorBufferRange).samplerDescriptorBufferAddressSpaceSize(samplerDescriptorBufferAddressSpaceSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @param storageBufferDescriptorSize `storageBufferDescriptorSize`
+    /// @param robustStorageBufferDescriptorSize `robustStorageBufferDescriptorSize`
+    /// @param inputAttachmentDescriptorSize `inputAttachmentDescriptorSize`
+    /// @param accelerationStructureDescriptorSize `accelerationStructureDescriptorSize`
+    /// @param maxSamplerDescriptorBufferRange `maxSamplerDescriptorBufferRange`
+    /// @param maxResourceDescriptorBufferRange `maxResourceDescriptorBufferRange`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize, long storageBufferDescriptorSize, long robustStorageBufferDescriptorSize, long inputAttachmentDescriptorSize, long accelerationStructureDescriptorSize, long maxSamplerDescriptorBufferRange, long maxResourceDescriptorBufferRange) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize).robustStorageBufferDescriptorSize(robustStorageBufferDescriptorSize).inputAttachmentDescriptorSize(inputAttachmentDescriptorSize).accelerationStructureDescriptorSize(accelerationStructureDescriptorSize).maxSamplerDescriptorBufferRange(maxSamplerDescriptorBufferRange).maxResourceDescriptorBufferRange(maxResourceDescriptorBufferRange);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @param storageBufferDescriptorSize `storageBufferDescriptorSize`
+    /// @param robustStorageBufferDescriptorSize `robustStorageBufferDescriptorSize`
+    /// @param inputAttachmentDescriptorSize `inputAttachmentDescriptorSize`
+    /// @param accelerationStructureDescriptorSize `accelerationStructureDescriptorSize`
+    /// @param maxSamplerDescriptorBufferRange `maxSamplerDescriptorBufferRange`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize, long storageBufferDescriptorSize, long robustStorageBufferDescriptorSize, long inputAttachmentDescriptorSize, long accelerationStructureDescriptorSize, long maxSamplerDescriptorBufferRange) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize).robustStorageBufferDescriptorSize(robustStorageBufferDescriptorSize).inputAttachmentDescriptorSize(inputAttachmentDescriptorSize).accelerationStructureDescriptorSize(accelerationStructureDescriptorSize).maxSamplerDescriptorBufferRange(maxSamplerDescriptorBufferRange);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @param storageBufferDescriptorSize `storageBufferDescriptorSize`
+    /// @param robustStorageBufferDescriptorSize `robustStorageBufferDescriptorSize`
+    /// @param inputAttachmentDescriptorSize `inputAttachmentDescriptorSize`
+    /// @param accelerationStructureDescriptorSize `accelerationStructureDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize, long storageBufferDescriptorSize, long robustStorageBufferDescriptorSize, long inputAttachmentDescriptorSize, long accelerationStructureDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize).robustStorageBufferDescriptorSize(robustStorageBufferDescriptorSize).inputAttachmentDescriptorSize(inputAttachmentDescriptorSize).accelerationStructureDescriptorSize(accelerationStructureDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @param storageBufferDescriptorSize `storageBufferDescriptorSize`
+    /// @param robustStorageBufferDescriptorSize `robustStorageBufferDescriptorSize`
+    /// @param inputAttachmentDescriptorSize `inputAttachmentDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize, long storageBufferDescriptorSize, long robustStorageBufferDescriptorSize, long inputAttachmentDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize).robustStorageBufferDescriptorSize(robustStorageBufferDescriptorSize).inputAttachmentDescriptorSize(inputAttachmentDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @param storageBufferDescriptorSize `storageBufferDescriptorSize`
+    /// @param robustStorageBufferDescriptorSize `robustStorageBufferDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize, long storageBufferDescriptorSize, long robustStorageBufferDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize).robustStorageBufferDescriptorSize(robustStorageBufferDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @param storageBufferDescriptorSize `storageBufferDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize, long storageBufferDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize).storageBufferDescriptorSize(storageBufferDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @param robustUniformBufferDescriptorSize `robustUniformBufferDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize, long robustUniformBufferDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize).robustUniformBufferDescriptorSize(robustUniformBufferDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @param uniformBufferDescriptorSize `uniformBufferDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize, long uniformBufferDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize).uniformBufferDescriptorSize(uniformBufferDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @param robustStorageTexelBufferDescriptorSize `robustStorageTexelBufferDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize, long robustStorageTexelBufferDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize).robustStorageTexelBufferDescriptorSize(robustStorageTexelBufferDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @param storageTexelBufferDescriptorSize `storageTexelBufferDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize, long storageTexelBufferDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize).storageTexelBufferDescriptorSize(storageTexelBufferDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @param robustUniformTexelBufferDescriptorSize `robustUniformTexelBufferDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize, long robustUniformTexelBufferDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize).robustUniformTexelBufferDescriptorSize(robustUniformTexelBufferDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @param uniformTexelBufferDescriptorSize `uniformTexelBufferDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize, long uniformTexelBufferDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize).uniformTexelBufferDescriptorSize(uniformTexelBufferDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @param storageImageDescriptorSize `storageImageDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize, long storageImageDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize).storageImageDescriptorSize(storageImageDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @param sampledImageDescriptorSize `sampledImageDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize, long sampledImageDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize).sampledImageDescriptorSize(sampledImageDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @param combinedImageSamplerDescriptorSize `combinedImageSamplerDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize, long combinedImageSamplerDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize).combinedImageSamplerDescriptorSize(combinedImageSamplerDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @param samplerDescriptorSize `samplerDescriptorSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize, long samplerDescriptorSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize).samplerDescriptorSize(samplerDescriptorSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @param accelerationStructureCaptureReplayDescriptorDataSize `accelerationStructureCaptureReplayDescriptorDataSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize, long accelerationStructureCaptureReplayDescriptorDataSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize).accelerationStructureCaptureReplayDescriptorDataSize(accelerationStructureCaptureReplayDescriptorDataSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @param samplerCaptureReplayDescriptorDataSize `samplerCaptureReplayDescriptorDataSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize, long samplerCaptureReplayDescriptorDataSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize).samplerCaptureReplayDescriptorDataSize(samplerCaptureReplayDescriptorDataSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @param imageViewCaptureReplayDescriptorDataSize `imageViewCaptureReplayDescriptorDataSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize, long imageViewCaptureReplayDescriptorDataSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize).imageViewCaptureReplayDescriptorDataSize(imageViewCaptureReplayDescriptorDataSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @param imageCaptureReplayDescriptorDataSize `imageCaptureReplayDescriptorDataSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize, long imageCaptureReplayDescriptorDataSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize).imageCaptureReplayDescriptorDataSize(imageCaptureReplayDescriptorDataSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @param bufferCaptureReplayDescriptorDataSize `bufferCaptureReplayDescriptorDataSize`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers, long bufferCaptureReplayDescriptorDataSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers).bufferCaptureReplayDescriptorDataSize(bufferCaptureReplayDescriptorDataSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @param maxEmbeddedImmutableSamplers `maxEmbeddedImmutableSamplers`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings, int maxEmbeddedImmutableSamplers) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings).maxEmbeddedImmutableSamplers(maxEmbeddedImmutableSamplers);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @param maxEmbeddedImmutableSamplerBindings `maxEmbeddedImmutableSamplerBindings`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings, int maxEmbeddedImmutableSamplerBindings) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings).maxEmbeddedImmutableSamplerBindings(maxEmbeddedImmutableSamplerBindings);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @param maxSamplerDescriptorBufferBindings `maxSamplerDescriptorBufferBindings`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings, int maxSamplerDescriptorBufferBindings) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings).maxSamplerDescriptorBufferBindings(maxSamplerDescriptorBufferBindings);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @param maxResourceDescriptorBufferBindings `maxResourceDescriptorBufferBindings`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings, int maxResourceDescriptorBufferBindings) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings).maxResourceDescriptorBufferBindings(maxResourceDescriptorBufferBindings);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @param maxDescriptorBufferBindings `maxDescriptorBufferBindings`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment, int maxDescriptorBufferBindings) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment).maxDescriptorBufferBindings(maxDescriptorBufferBindings);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @param descriptorBufferOffsetAlignment `descriptorBufferOffsetAlignment`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation, long descriptorBufferOffsetAlignment) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation).descriptorBufferOffsetAlignment(descriptorBufferOffsetAlignment);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @param allowSamplerImageViewPostSubmitCreation `allowSamplerImageViewPostSubmitCreation`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors, int allowSamplerImageViewPostSubmitCreation) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors).allowSamplerImageViewPostSubmitCreation(allowSamplerImageViewPostSubmitCreation);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @param bufferlessPushDescriptors `bufferlessPushDescriptors`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray, int bufferlessPushDescriptors) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray).bufferlessPushDescriptors(bufferlessPushDescriptors);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param combinedImageSamplerDescriptorSingleArray `combinedImageSamplerDescriptorSingleArray`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorSingleArray) {
+        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorSingleArray(combinedImageSamplerDescriptorSingleArray);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

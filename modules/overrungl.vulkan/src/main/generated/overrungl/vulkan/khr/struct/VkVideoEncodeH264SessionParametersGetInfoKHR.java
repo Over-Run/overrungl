@@ -117,6 +117,69 @@ public sealed class VkVideoEncodeH264SessionParametersGetInfoKHR extends GroupTy
     /// @return the allocated `VkVideoEncodeH264SessionParametersGetInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeH264SessionParametersGetInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param writeStdSPS `writeStdSPS`
+    /// @param writeStdPPS `writeStdPPS`
+    /// @param stdSPSId `stdSPSId`
+    /// @param stdPPSId `stdPPSId`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersGetInfoKHR`
+    public static VkVideoEncodeH264SessionParametersGetInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int writeStdSPS, int writeStdPPS, int stdSPSId, int stdPPSId) {
+        return alloc(allocator).sType(sType).pNext(pNext).writeStdSPS(writeStdSPS).writeStdPPS(writeStdPPS).stdSPSId(stdSPSId).stdPPSId(stdPPSId);
+    }
+
+    /// Allocates a `VkVideoEncodeH264SessionParametersGetInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param writeStdSPS `writeStdSPS`
+    /// @param writeStdPPS `writeStdPPS`
+    /// @param stdSPSId `stdSPSId`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersGetInfoKHR`
+    public static VkVideoEncodeH264SessionParametersGetInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int writeStdSPS, int writeStdPPS, int stdSPSId) {
+        return alloc(allocator).sType(sType).pNext(pNext).writeStdSPS(writeStdSPS).writeStdPPS(writeStdPPS).stdSPSId(stdSPSId);
+    }
+
+    /// Allocates a `VkVideoEncodeH264SessionParametersGetInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param writeStdSPS `writeStdSPS`
+    /// @param writeStdPPS `writeStdPPS`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersGetInfoKHR`
+    public static VkVideoEncodeH264SessionParametersGetInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int writeStdSPS, int writeStdPPS) {
+        return alloc(allocator).sType(sType).pNext(pNext).writeStdSPS(writeStdSPS).writeStdPPS(writeStdPPS);
+    }
+
+    /// Allocates a `VkVideoEncodeH264SessionParametersGetInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param writeStdSPS `writeStdSPS`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersGetInfoKHR`
+    public static VkVideoEncodeH264SessionParametersGetInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int writeStdSPS) {
+        return alloc(allocator).sType(sType).pNext(pNext).writeStdSPS(writeStdSPS);
+    }
+
+    /// Allocates a `VkVideoEncodeH264SessionParametersGetInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersGetInfoKHR`
+    public static VkVideoEncodeH264SessionParametersGetInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeH264SessionParametersGetInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeH264SessionParametersGetInfoKHR`
+    public static VkVideoEncodeH264SessionParametersGetInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

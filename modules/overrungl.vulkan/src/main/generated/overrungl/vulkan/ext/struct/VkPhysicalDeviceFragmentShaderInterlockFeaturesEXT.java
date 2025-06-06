@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT extends G
     /// @return the allocated `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fragmentShaderSampleInterlock `fragmentShaderSampleInterlock`
+    /// @param fragmentShaderPixelInterlock `fragmentShaderPixelInterlock`
+    /// @param fragmentShaderShadingRateInterlock `fragmentShaderShadingRateInterlock`
+    /// @return the allocated `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentShaderSampleInterlock, int fragmentShaderPixelInterlock, int fragmentShaderShadingRateInterlock) {
+        return alloc(allocator).sType(sType).pNext(pNext).fragmentShaderSampleInterlock(fragmentShaderSampleInterlock).fragmentShaderPixelInterlock(fragmentShaderPixelInterlock).fragmentShaderShadingRateInterlock(fragmentShaderShadingRateInterlock);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fragmentShaderSampleInterlock `fragmentShaderSampleInterlock`
+    /// @param fragmentShaderPixelInterlock `fragmentShaderPixelInterlock`
+    /// @return the allocated `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentShaderSampleInterlock, int fragmentShaderPixelInterlock) {
+        return alloc(allocator).sType(sType).pNext(pNext).fragmentShaderSampleInterlock(fragmentShaderSampleInterlock).fragmentShaderPixelInterlock(fragmentShaderPixelInterlock);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fragmentShaderSampleInterlock `fragmentShaderSampleInterlock`
+    /// @return the allocated `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentShaderSampleInterlock) {
+        return alloc(allocator).sType(sType).pNext(pNext).fragmentShaderSampleInterlock(fragmentShaderSampleInterlock);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT`
+    public static VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

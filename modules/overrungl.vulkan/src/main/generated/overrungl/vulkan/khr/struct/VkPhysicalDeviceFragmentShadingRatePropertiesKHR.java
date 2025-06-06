@@ -215,6 +215,329 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @param maxFragmentShadingRateCoverageSamples `maxFragmentShadingRateCoverageSamples`
+    /// @param maxFragmentShadingRateRasterizationSamples `maxFragmentShadingRateRasterizationSamples`
+    /// @param fragmentShadingRateWithShaderDepthStencilWrites `fragmentShadingRateWithShaderDepthStencilWrites`
+    /// @param fragmentShadingRateWithSampleMask `fragmentShadingRateWithSampleMask`
+    /// @param fragmentShadingRateWithShaderSampleMask `fragmentShadingRateWithShaderSampleMask`
+    /// @param fragmentShadingRateWithConservativeRasterization `fragmentShadingRateWithConservativeRasterization`
+    /// @param fragmentShadingRateWithFragmentShaderInterlock `fragmentShadingRateWithFragmentShaderInterlock`
+    /// @param fragmentShadingRateWithCustomSampleLocations `fragmentShadingRateWithCustomSampleLocations`
+    /// @param fragmentShadingRateStrictMultiplyCombiner `fragmentShadingRateStrictMultiplyCombiner`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio, int maxFragmentShadingRateCoverageSamples, int maxFragmentShadingRateRasterizationSamples, int fragmentShadingRateWithShaderDepthStencilWrites, int fragmentShadingRateWithSampleMask, int fragmentShadingRateWithShaderSampleMask, int fragmentShadingRateWithConservativeRasterization, int fragmentShadingRateWithFragmentShaderInterlock, int fragmentShadingRateWithCustomSampleLocations, int fragmentShadingRateStrictMultiplyCombiner) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites).fragmentShadingRateWithSampleMask(fragmentShadingRateWithSampleMask).fragmentShadingRateWithShaderSampleMask(fragmentShadingRateWithShaderSampleMask).fragmentShadingRateWithConservativeRasterization(fragmentShadingRateWithConservativeRasterization).fragmentShadingRateWithFragmentShaderInterlock(fragmentShadingRateWithFragmentShaderInterlock).fragmentShadingRateWithCustomSampleLocations(fragmentShadingRateWithCustomSampleLocations).fragmentShadingRateStrictMultiplyCombiner(fragmentShadingRateStrictMultiplyCombiner);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @param maxFragmentShadingRateCoverageSamples `maxFragmentShadingRateCoverageSamples`
+    /// @param maxFragmentShadingRateRasterizationSamples `maxFragmentShadingRateRasterizationSamples`
+    /// @param fragmentShadingRateWithShaderDepthStencilWrites `fragmentShadingRateWithShaderDepthStencilWrites`
+    /// @param fragmentShadingRateWithSampleMask `fragmentShadingRateWithSampleMask`
+    /// @param fragmentShadingRateWithShaderSampleMask `fragmentShadingRateWithShaderSampleMask`
+    /// @param fragmentShadingRateWithConservativeRasterization `fragmentShadingRateWithConservativeRasterization`
+    /// @param fragmentShadingRateWithFragmentShaderInterlock `fragmentShadingRateWithFragmentShaderInterlock`
+    /// @param fragmentShadingRateWithCustomSampleLocations `fragmentShadingRateWithCustomSampleLocations`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio, int maxFragmentShadingRateCoverageSamples, int maxFragmentShadingRateRasterizationSamples, int fragmentShadingRateWithShaderDepthStencilWrites, int fragmentShadingRateWithSampleMask, int fragmentShadingRateWithShaderSampleMask, int fragmentShadingRateWithConservativeRasterization, int fragmentShadingRateWithFragmentShaderInterlock, int fragmentShadingRateWithCustomSampleLocations) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites).fragmentShadingRateWithSampleMask(fragmentShadingRateWithSampleMask).fragmentShadingRateWithShaderSampleMask(fragmentShadingRateWithShaderSampleMask).fragmentShadingRateWithConservativeRasterization(fragmentShadingRateWithConservativeRasterization).fragmentShadingRateWithFragmentShaderInterlock(fragmentShadingRateWithFragmentShaderInterlock).fragmentShadingRateWithCustomSampleLocations(fragmentShadingRateWithCustomSampleLocations);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @param maxFragmentShadingRateCoverageSamples `maxFragmentShadingRateCoverageSamples`
+    /// @param maxFragmentShadingRateRasterizationSamples `maxFragmentShadingRateRasterizationSamples`
+    /// @param fragmentShadingRateWithShaderDepthStencilWrites `fragmentShadingRateWithShaderDepthStencilWrites`
+    /// @param fragmentShadingRateWithSampleMask `fragmentShadingRateWithSampleMask`
+    /// @param fragmentShadingRateWithShaderSampleMask `fragmentShadingRateWithShaderSampleMask`
+    /// @param fragmentShadingRateWithConservativeRasterization `fragmentShadingRateWithConservativeRasterization`
+    /// @param fragmentShadingRateWithFragmentShaderInterlock `fragmentShadingRateWithFragmentShaderInterlock`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio, int maxFragmentShadingRateCoverageSamples, int maxFragmentShadingRateRasterizationSamples, int fragmentShadingRateWithShaderDepthStencilWrites, int fragmentShadingRateWithSampleMask, int fragmentShadingRateWithShaderSampleMask, int fragmentShadingRateWithConservativeRasterization, int fragmentShadingRateWithFragmentShaderInterlock) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites).fragmentShadingRateWithSampleMask(fragmentShadingRateWithSampleMask).fragmentShadingRateWithShaderSampleMask(fragmentShadingRateWithShaderSampleMask).fragmentShadingRateWithConservativeRasterization(fragmentShadingRateWithConservativeRasterization).fragmentShadingRateWithFragmentShaderInterlock(fragmentShadingRateWithFragmentShaderInterlock);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @param maxFragmentShadingRateCoverageSamples `maxFragmentShadingRateCoverageSamples`
+    /// @param maxFragmentShadingRateRasterizationSamples `maxFragmentShadingRateRasterizationSamples`
+    /// @param fragmentShadingRateWithShaderDepthStencilWrites `fragmentShadingRateWithShaderDepthStencilWrites`
+    /// @param fragmentShadingRateWithSampleMask `fragmentShadingRateWithSampleMask`
+    /// @param fragmentShadingRateWithShaderSampleMask `fragmentShadingRateWithShaderSampleMask`
+    /// @param fragmentShadingRateWithConservativeRasterization `fragmentShadingRateWithConservativeRasterization`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio, int maxFragmentShadingRateCoverageSamples, int maxFragmentShadingRateRasterizationSamples, int fragmentShadingRateWithShaderDepthStencilWrites, int fragmentShadingRateWithSampleMask, int fragmentShadingRateWithShaderSampleMask, int fragmentShadingRateWithConservativeRasterization) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites).fragmentShadingRateWithSampleMask(fragmentShadingRateWithSampleMask).fragmentShadingRateWithShaderSampleMask(fragmentShadingRateWithShaderSampleMask).fragmentShadingRateWithConservativeRasterization(fragmentShadingRateWithConservativeRasterization);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @param maxFragmentShadingRateCoverageSamples `maxFragmentShadingRateCoverageSamples`
+    /// @param maxFragmentShadingRateRasterizationSamples `maxFragmentShadingRateRasterizationSamples`
+    /// @param fragmentShadingRateWithShaderDepthStencilWrites `fragmentShadingRateWithShaderDepthStencilWrites`
+    /// @param fragmentShadingRateWithSampleMask `fragmentShadingRateWithSampleMask`
+    /// @param fragmentShadingRateWithShaderSampleMask `fragmentShadingRateWithShaderSampleMask`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio, int maxFragmentShadingRateCoverageSamples, int maxFragmentShadingRateRasterizationSamples, int fragmentShadingRateWithShaderDepthStencilWrites, int fragmentShadingRateWithSampleMask, int fragmentShadingRateWithShaderSampleMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites).fragmentShadingRateWithSampleMask(fragmentShadingRateWithSampleMask).fragmentShadingRateWithShaderSampleMask(fragmentShadingRateWithShaderSampleMask);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @param maxFragmentShadingRateCoverageSamples `maxFragmentShadingRateCoverageSamples`
+    /// @param maxFragmentShadingRateRasterizationSamples `maxFragmentShadingRateRasterizationSamples`
+    /// @param fragmentShadingRateWithShaderDepthStencilWrites `fragmentShadingRateWithShaderDepthStencilWrites`
+    /// @param fragmentShadingRateWithSampleMask `fragmentShadingRateWithSampleMask`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio, int maxFragmentShadingRateCoverageSamples, int maxFragmentShadingRateRasterizationSamples, int fragmentShadingRateWithShaderDepthStencilWrites, int fragmentShadingRateWithSampleMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites).fragmentShadingRateWithSampleMask(fragmentShadingRateWithSampleMask);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @param maxFragmentShadingRateCoverageSamples `maxFragmentShadingRateCoverageSamples`
+    /// @param maxFragmentShadingRateRasterizationSamples `maxFragmentShadingRateRasterizationSamples`
+    /// @param fragmentShadingRateWithShaderDepthStencilWrites `fragmentShadingRateWithShaderDepthStencilWrites`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio, int maxFragmentShadingRateCoverageSamples, int maxFragmentShadingRateRasterizationSamples, int fragmentShadingRateWithShaderDepthStencilWrites) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples).fragmentShadingRateWithShaderDepthStencilWrites(fragmentShadingRateWithShaderDepthStencilWrites);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @param maxFragmentShadingRateCoverageSamples `maxFragmentShadingRateCoverageSamples`
+    /// @param maxFragmentShadingRateRasterizationSamples `maxFragmentShadingRateRasterizationSamples`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio, int maxFragmentShadingRateCoverageSamples, int maxFragmentShadingRateRasterizationSamples) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples).maxFragmentShadingRateRasterizationSamples(maxFragmentShadingRateRasterizationSamples);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @param maxFragmentShadingRateCoverageSamples `maxFragmentShadingRateCoverageSamples`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio, int maxFragmentShadingRateCoverageSamples) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio).maxFragmentShadingRateCoverageSamples(maxFragmentShadingRateCoverageSamples);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @param maxFragmentSizeAspectRatio `maxFragmentSizeAspectRatio`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize, int maxFragmentSizeAspectRatio) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize).maxFragmentSizeAspectRatio(maxFragmentSizeAspectRatio);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @param maxFragmentSize `maxFragmentSize`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps, MemorySegment maxFragmentSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps).maxFragmentSize(maxFragmentSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @param fragmentShadingRateNonTrivialCombinerOps `fragmentShadingRateNonTrivialCombinerOps`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments, int fragmentShadingRateNonTrivialCombinerOps) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments).fragmentShadingRateNonTrivialCombinerOps(fragmentShadingRateNonTrivialCombinerOps);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @param layeredShadingRateAttachments `layeredShadingRateAttachments`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports, int layeredShadingRateAttachments) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports).layeredShadingRateAttachments(layeredShadingRateAttachments);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @param primitiveFragmentShadingRateWithMultipleViewports `primitiveFragmentShadingRateWithMultipleViewports`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio, int primitiveFragmentShadingRateWithMultipleViewports) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio).primitiveFragmentShadingRateWithMultipleViewports(primitiveFragmentShadingRateWithMultipleViewports);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSizeAspectRatio `maxFragmentShadingRateAttachmentTexelSizeAspectRatio`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize, int maxFragmentShadingRateAttachmentTexelSizeAspectRatio) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSizeAspectRatio(maxFragmentShadingRateAttachmentTexelSizeAspectRatio);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @param maxFragmentShadingRateAttachmentTexelSize `maxFragmentShadingRateAttachmentTexelSize`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize, MemorySegment maxFragmentShadingRateAttachmentTexelSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize).maxFragmentShadingRateAttachmentTexelSize(maxFragmentShadingRateAttachmentTexelSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minFragmentShadingRateAttachmentTexelSize `minFragmentShadingRateAttachmentTexelSize`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment minFragmentShadingRateAttachmentTexelSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).minFragmentShadingRateAttachmentTexelSize(minFragmentShadingRateAttachmentTexelSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

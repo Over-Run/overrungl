@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceInheritedViewportScissorFeaturesNV extends G
     /// @return the allocated `VkPhysicalDeviceInheritedViewportScissorFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceInheritedViewportScissorFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param inheritedViewportScissor2D `inheritedViewportScissor2D`
+    /// @return the allocated `VkPhysicalDeviceInheritedViewportScissorFeaturesNV`
+    public static VkPhysicalDeviceInheritedViewportScissorFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int inheritedViewportScissor2D) {
+        return alloc(allocator).sType(sType).pNext(pNext).inheritedViewportScissor2D(inheritedViewportScissor2D);
+    }
+
+    /// Allocates a `VkPhysicalDeviceInheritedViewportScissorFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceInheritedViewportScissorFeaturesNV`
+    public static VkPhysicalDeviceInheritedViewportScissorFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceInheritedViewportScissorFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceInheritedViewportScissorFeaturesNV`
+    public static VkPhysicalDeviceInheritedViewportScissorFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

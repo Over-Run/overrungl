@@ -117,6 +117,69 @@ public sealed class VkPipelineExecutablePropertiesKHR extends GroupType {
     /// @return the allocated `VkPipelineExecutablePropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineExecutablePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stages `stages`
+    /// @param name `name`
+    /// @param description `description`
+    /// @param subgroupSize `subgroupSize`
+    /// @return the allocated `VkPipelineExecutablePropertiesKHR`
+    public static VkPipelineExecutablePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stages, MemorySegment name, MemorySegment description, int subgroupSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).stages(stages).name(name).description(description).subgroupSize(subgroupSize);
+    }
+
+    /// Allocates a `VkPipelineExecutablePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stages `stages`
+    /// @param name `name`
+    /// @param description `description`
+    /// @return the allocated `VkPipelineExecutablePropertiesKHR`
+    public static VkPipelineExecutablePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stages, MemorySegment name, MemorySegment description) {
+        return alloc(allocator).sType(sType).pNext(pNext).stages(stages).name(name).description(description);
+    }
+
+    /// Allocates a `VkPipelineExecutablePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stages `stages`
+    /// @param name `name`
+    /// @return the allocated `VkPipelineExecutablePropertiesKHR`
+    public static VkPipelineExecutablePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stages, MemorySegment name) {
+        return alloc(allocator).sType(sType).pNext(pNext).stages(stages).name(name);
+    }
+
+    /// Allocates a `VkPipelineExecutablePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param stages `stages`
+    /// @return the allocated `VkPipelineExecutablePropertiesKHR`
+    public static VkPipelineExecutablePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stages) {
+        return alloc(allocator).sType(sType).pNext(pNext).stages(stages);
+    }
+
+    /// Allocates a `VkPipelineExecutablePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineExecutablePropertiesKHR`
+    public static VkPipelineExecutablePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineExecutablePropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineExecutablePropertiesKHR`
+    public static VkPipelineExecutablePropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

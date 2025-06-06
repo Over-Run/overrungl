@@ -83,6 +83,23 @@ public sealed class VkPerformanceValueINTEL extends GroupType {
     /// @return the allocated `VkPerformanceValueINTEL`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPerformanceValueINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param type `type`
+    /// @param data `data`
+    /// @return the allocated `VkPerformanceValueINTEL`
+    public static VkPerformanceValueINTEL allocInit(SegmentAllocator allocator, int type, MemorySegment data) {
+        return alloc(allocator).type(type).data(data);
+    }
+
+    /// Allocates a `VkPerformanceValueINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param type `type`
+    /// @return the allocated `VkPerformanceValueINTEL`
+    public static VkPerformanceValueINTEL allocInit(SegmentAllocator allocator, int type) {
+        return alloc(allocator).type(type);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

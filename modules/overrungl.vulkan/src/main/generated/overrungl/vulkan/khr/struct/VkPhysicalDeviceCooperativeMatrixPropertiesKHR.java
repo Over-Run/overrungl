@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceCooperativeMatrixPropertiesKHR extends Group
     /// @return the allocated `VkPhysicalDeviceCooperativeMatrixPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param cooperativeMatrixSupportedStages `cooperativeMatrixSupportedStages`
+    /// @return the allocated `VkPhysicalDeviceCooperativeMatrixPropertiesKHR`
+    public static VkPhysicalDeviceCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeMatrixSupportedStages) {
+        return alloc(allocator).sType(sType).pNext(pNext).cooperativeMatrixSupportedStages(cooperativeMatrixSupportedStages);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceCooperativeMatrixPropertiesKHR`
+    public static VkPhysicalDeviceCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeMatrixPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceCooperativeMatrixPropertiesKHR`
+    public static VkPhysicalDeviceCooperativeMatrixPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

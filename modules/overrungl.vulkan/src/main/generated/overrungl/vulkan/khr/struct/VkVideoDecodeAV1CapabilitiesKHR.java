@@ -93,6 +93,33 @@ public sealed class VkVideoDecodeAV1CapabilitiesKHR extends GroupType {
     /// @return the allocated `VkVideoDecodeAV1CapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoDecodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxLevel `maxLevel`
+    /// @return the allocated `VkVideoDecodeAV1CapabilitiesKHR`
+    public static VkVideoDecodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxLevel) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxLevel(maxLevel);
+    }
+
+    /// Allocates a `VkVideoDecodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoDecodeAV1CapabilitiesKHR`
+    public static VkVideoDecodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoDecodeAV1CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoDecodeAV1CapabilitiesKHR`
+    public static VkVideoDecodeAV1CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

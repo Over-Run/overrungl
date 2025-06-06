@@ -109,6 +109,56 @@ public sealed class VkPipelineInputAssemblyStateCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineInputAssemblyStateCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineInputAssemblyStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param topology `topology`
+    /// @param primitiveRestartEnable `primitiveRestartEnable`
+    /// @return the allocated `VkPipelineInputAssemblyStateCreateInfo`
+    public static VkPipelineInputAssemblyStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int topology, int primitiveRestartEnable) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).topology(topology).primitiveRestartEnable(primitiveRestartEnable);
+    }
+
+    /// Allocates a `VkPipelineInputAssemblyStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param topology `topology`
+    /// @return the allocated `VkPipelineInputAssemblyStateCreateInfo`
+    public static VkPipelineInputAssemblyStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int topology) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).topology(topology);
+    }
+
+    /// Allocates a `VkPipelineInputAssemblyStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkPipelineInputAssemblyStateCreateInfo`
+    public static VkPipelineInputAssemblyStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkPipelineInputAssemblyStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineInputAssemblyStateCreateInfo`
+    public static VkPipelineInputAssemblyStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineInputAssemblyStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineInputAssemblyStateCreateInfo`
+    public static VkPipelineInputAssemblyStateCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

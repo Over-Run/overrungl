@@ -177,6 +177,209 @@ public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
     /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @param dstData `dstData`
+    /// @param srcComponentType `srcComponentType`
+    /// @param dstComponentType `dstComponentType`
+    /// @param numRows `numRows`
+    /// @param numColumns `numColumns`
+    /// @param srcLayout `srcLayout`
+    /// @param srcStride `srcStride`
+    /// @param dstLayout `dstLayout`
+    /// @param dstStride `dstStride`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize, MemorySegment dstData, int srcComponentType, int dstComponentType, int numRows, int numColumns, int srcLayout, long srcStride, int dstLayout, long dstStride) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize).dstData(dstData).srcComponentType(srcComponentType).dstComponentType(dstComponentType).numRows(numRows).numColumns(numColumns).srcLayout(srcLayout).srcStride(srcStride).dstLayout(dstLayout).dstStride(dstStride);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @param dstData `dstData`
+    /// @param srcComponentType `srcComponentType`
+    /// @param dstComponentType `dstComponentType`
+    /// @param numRows `numRows`
+    /// @param numColumns `numColumns`
+    /// @param srcLayout `srcLayout`
+    /// @param srcStride `srcStride`
+    /// @param dstLayout `dstLayout`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize, MemorySegment dstData, int srcComponentType, int dstComponentType, int numRows, int numColumns, int srcLayout, long srcStride, int dstLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize).dstData(dstData).srcComponentType(srcComponentType).dstComponentType(dstComponentType).numRows(numRows).numColumns(numColumns).srcLayout(srcLayout).srcStride(srcStride).dstLayout(dstLayout);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @param dstData `dstData`
+    /// @param srcComponentType `srcComponentType`
+    /// @param dstComponentType `dstComponentType`
+    /// @param numRows `numRows`
+    /// @param numColumns `numColumns`
+    /// @param srcLayout `srcLayout`
+    /// @param srcStride `srcStride`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize, MemorySegment dstData, int srcComponentType, int dstComponentType, int numRows, int numColumns, int srcLayout, long srcStride) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize).dstData(dstData).srcComponentType(srcComponentType).dstComponentType(dstComponentType).numRows(numRows).numColumns(numColumns).srcLayout(srcLayout).srcStride(srcStride);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @param dstData `dstData`
+    /// @param srcComponentType `srcComponentType`
+    /// @param dstComponentType `dstComponentType`
+    /// @param numRows `numRows`
+    /// @param numColumns `numColumns`
+    /// @param srcLayout `srcLayout`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize, MemorySegment dstData, int srcComponentType, int dstComponentType, int numRows, int numColumns, int srcLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize).dstData(dstData).srcComponentType(srcComponentType).dstComponentType(dstComponentType).numRows(numRows).numColumns(numColumns).srcLayout(srcLayout);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @param dstData `dstData`
+    /// @param srcComponentType `srcComponentType`
+    /// @param dstComponentType `dstComponentType`
+    /// @param numRows `numRows`
+    /// @param numColumns `numColumns`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize, MemorySegment dstData, int srcComponentType, int dstComponentType, int numRows, int numColumns) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize).dstData(dstData).srcComponentType(srcComponentType).dstComponentType(dstComponentType).numRows(numRows).numColumns(numColumns);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @param dstData `dstData`
+    /// @param srcComponentType `srcComponentType`
+    /// @param dstComponentType `dstComponentType`
+    /// @param numRows `numRows`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize, MemorySegment dstData, int srcComponentType, int dstComponentType, int numRows) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize).dstData(dstData).srcComponentType(srcComponentType).dstComponentType(dstComponentType).numRows(numRows);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @param dstData `dstData`
+    /// @param srcComponentType `srcComponentType`
+    /// @param dstComponentType `dstComponentType`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize, MemorySegment dstData, int srcComponentType, int dstComponentType) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize).dstData(dstData).srcComponentType(srcComponentType).dstComponentType(dstComponentType);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @param dstData `dstData`
+    /// @param srcComponentType `srcComponentType`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize, MemorySegment dstData, int srcComponentType) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize).dstData(dstData).srcComponentType(srcComponentType);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @param dstData `dstData`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize, MemorySegment dstData) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize).dstData(dstData);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @param pDstSize `pDstSize`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData, MemorySegment pDstSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData).pDstSize(pDstSize);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @param srcData `srcData`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize, MemorySegment srcData) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize).srcData(srcData);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSize `srcSize`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSize(srcSize);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
+    public static VkConvertCooperativeVectorMatrixInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

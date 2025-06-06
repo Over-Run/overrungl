@@ -101,6 +101,44 @@ public sealed class VkIndirectExecutionSetPipelineInfoEXT extends GroupType {
     /// @return the allocated `VkIndirectExecutionSetPipelineInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkIndirectExecutionSetPipelineInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param initialPipeline `initialPipeline`
+    /// @param maxPipelineCount `maxPipelineCount`
+    /// @return the allocated `VkIndirectExecutionSetPipelineInfoEXT`
+    public static VkIndirectExecutionSetPipelineInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long initialPipeline, int maxPipelineCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).initialPipeline(initialPipeline).maxPipelineCount(maxPipelineCount);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetPipelineInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param initialPipeline `initialPipeline`
+    /// @return the allocated `VkIndirectExecutionSetPipelineInfoEXT`
+    public static VkIndirectExecutionSetPipelineInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long initialPipeline) {
+        return alloc(allocator).sType(sType).pNext(pNext).initialPipeline(initialPipeline);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetPipelineInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkIndirectExecutionSetPipelineInfoEXT`
+    public static VkIndirectExecutionSetPipelineInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkIndirectExecutionSetPipelineInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkIndirectExecutionSetPipelineInfoEXT`
+    public static VkIndirectExecutionSetPipelineInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

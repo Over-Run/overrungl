@@ -93,6 +93,33 @@ public sealed class VkExtent3D extends GroupType {
     /// @return the allocated `VkExtent3D`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExtent3D` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @param depth `depth`
+    /// @return the allocated `VkExtent3D`
+    public static VkExtent3D allocInit(SegmentAllocator allocator, int width, int height, int depth) {
+        return alloc(allocator).width(width).height(height).depth(depth);
+    }
+
+    /// Allocates a `VkExtent3D` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @param height `height`
+    /// @return the allocated `VkExtent3D`
+    public static VkExtent3D allocInit(SegmentAllocator allocator, int width, int height) {
+        return alloc(allocator).width(width).height(height);
+    }
+
+    /// Allocates a `VkExtent3D` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param width `width`
+    /// @return the allocated `VkExtent3D`
+    public static VkExtent3D allocInit(SegmentAllocator allocator, int width) {
+        return alloc(allocator).width(width);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

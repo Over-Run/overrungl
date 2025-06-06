@@ -117,6 +117,69 @@ public sealed class VkPhysicalDeviceLayeredApiPropertiesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vendorID `vendorID`
+    /// @param deviceID `deviceID`
+    /// @param layeredAPI `layeredAPI`
+    /// @param deviceName `deviceName`
+    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesKHR`
+    public static VkPhysicalDeviceLayeredApiPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vendorID, int deviceID, int layeredAPI, MemorySegment deviceName) {
+        return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID).deviceID(deviceID).layeredAPI(layeredAPI).deviceName(deviceName);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vendorID `vendorID`
+    /// @param deviceID `deviceID`
+    /// @param layeredAPI `layeredAPI`
+    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesKHR`
+    public static VkPhysicalDeviceLayeredApiPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vendorID, int deviceID, int layeredAPI) {
+        return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID).deviceID(deviceID).layeredAPI(layeredAPI);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vendorID `vendorID`
+    /// @param deviceID `deviceID`
+    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesKHR`
+    public static VkPhysicalDeviceLayeredApiPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vendorID, int deviceID) {
+        return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID).deviceID(deviceID);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param vendorID `vendorID`
+    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesKHR`
+    public static VkPhysicalDeviceLayeredApiPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vendorID) {
+        return alloc(allocator).sType(sType).pNext(pNext).vendorID(vendorID);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesKHR`
+    public static VkPhysicalDeviceLayeredApiPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesKHR`
+    public static VkPhysicalDeviceLayeredApiPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

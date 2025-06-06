@@ -221,6 +221,329 @@ public sealed class VkGraphicsPipelineCreateInfo extends GroupType {
     /// @return the allocated `VkGraphicsPipelineCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @param pMultisampleState `pMultisampleState`
+    /// @param pDepthStencilState `pDepthStencilState`
+    /// @param pColorBlendState `pColorBlendState`
+    /// @param pDynamicState `pDynamicState`
+    /// @param layout `layout`
+    /// @param renderPass `renderPass`
+    /// @param subpass `subpass`
+    /// @param basePipelineHandle `basePipelineHandle`
+    /// @param basePipelineIndex `basePipelineIndex`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState, MemorySegment pMultisampleState, MemorySegment pDepthStencilState, MemorySegment pColorBlendState, MemorySegment pDynamicState, long layout, long renderPass, int subpass, long basePipelineHandle, int basePipelineIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState).pDepthStencilState(pDepthStencilState).pColorBlendState(pColorBlendState).pDynamicState(pDynamicState).layout(layout).renderPass(renderPass).subpass(subpass).basePipelineHandle(basePipelineHandle).basePipelineIndex(basePipelineIndex);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @param pMultisampleState `pMultisampleState`
+    /// @param pDepthStencilState `pDepthStencilState`
+    /// @param pColorBlendState `pColorBlendState`
+    /// @param pDynamicState `pDynamicState`
+    /// @param layout `layout`
+    /// @param renderPass `renderPass`
+    /// @param subpass `subpass`
+    /// @param basePipelineHandle `basePipelineHandle`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState, MemorySegment pMultisampleState, MemorySegment pDepthStencilState, MemorySegment pColorBlendState, MemorySegment pDynamicState, long layout, long renderPass, int subpass, long basePipelineHandle) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState).pDepthStencilState(pDepthStencilState).pColorBlendState(pColorBlendState).pDynamicState(pDynamicState).layout(layout).renderPass(renderPass).subpass(subpass).basePipelineHandle(basePipelineHandle);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @param pMultisampleState `pMultisampleState`
+    /// @param pDepthStencilState `pDepthStencilState`
+    /// @param pColorBlendState `pColorBlendState`
+    /// @param pDynamicState `pDynamicState`
+    /// @param layout `layout`
+    /// @param renderPass `renderPass`
+    /// @param subpass `subpass`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState, MemorySegment pMultisampleState, MemorySegment pDepthStencilState, MemorySegment pColorBlendState, MemorySegment pDynamicState, long layout, long renderPass, int subpass) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState).pDepthStencilState(pDepthStencilState).pColorBlendState(pColorBlendState).pDynamicState(pDynamicState).layout(layout).renderPass(renderPass).subpass(subpass);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @param pMultisampleState `pMultisampleState`
+    /// @param pDepthStencilState `pDepthStencilState`
+    /// @param pColorBlendState `pColorBlendState`
+    /// @param pDynamicState `pDynamicState`
+    /// @param layout `layout`
+    /// @param renderPass `renderPass`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState, MemorySegment pMultisampleState, MemorySegment pDepthStencilState, MemorySegment pColorBlendState, MemorySegment pDynamicState, long layout, long renderPass) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState).pDepthStencilState(pDepthStencilState).pColorBlendState(pColorBlendState).pDynamicState(pDynamicState).layout(layout).renderPass(renderPass);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @param pMultisampleState `pMultisampleState`
+    /// @param pDepthStencilState `pDepthStencilState`
+    /// @param pColorBlendState `pColorBlendState`
+    /// @param pDynamicState `pDynamicState`
+    /// @param layout `layout`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState, MemorySegment pMultisampleState, MemorySegment pDepthStencilState, MemorySegment pColorBlendState, MemorySegment pDynamicState, long layout) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState).pDepthStencilState(pDepthStencilState).pColorBlendState(pColorBlendState).pDynamicState(pDynamicState).layout(layout);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @param pMultisampleState `pMultisampleState`
+    /// @param pDepthStencilState `pDepthStencilState`
+    /// @param pColorBlendState `pColorBlendState`
+    /// @param pDynamicState `pDynamicState`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState, MemorySegment pMultisampleState, MemorySegment pDepthStencilState, MemorySegment pColorBlendState, MemorySegment pDynamicState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState).pDepthStencilState(pDepthStencilState).pColorBlendState(pColorBlendState).pDynamicState(pDynamicState);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @param pMultisampleState `pMultisampleState`
+    /// @param pDepthStencilState `pDepthStencilState`
+    /// @param pColorBlendState `pColorBlendState`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState, MemorySegment pMultisampleState, MemorySegment pDepthStencilState, MemorySegment pColorBlendState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState).pDepthStencilState(pDepthStencilState).pColorBlendState(pColorBlendState);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @param pMultisampleState `pMultisampleState`
+    /// @param pDepthStencilState `pDepthStencilState`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState, MemorySegment pMultisampleState, MemorySegment pDepthStencilState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState).pDepthStencilState(pDepthStencilState);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @param pMultisampleState `pMultisampleState`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState, MemorySegment pMultisampleState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState).pMultisampleState(pMultisampleState);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @param pRasterizationState `pRasterizationState`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState, MemorySegment pRasterizationState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState).pRasterizationState(pRasterizationState);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @param pViewportState `pViewportState`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState, MemorySegment pViewportState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState).pViewportState(pViewportState);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @param pTessellationState `pTessellationState`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState, MemorySegment pTessellationState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState).pTessellationState(pTessellationState);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @param pInputAssemblyState `pInputAssemblyState`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState, MemorySegment pInputAssemblyState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState).pInputAssemblyState(pInputAssemblyState);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @param pVertexInputState `pVertexInputState`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages, MemorySegment pVertexInputState) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages).pVertexInputState(pVertexInputState);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @param pStages `pStages`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount, MemorySegment pStages) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount).pStages(pStages);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param stageCount `stageCount`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int stageCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).stageCount(stageCount);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkGraphicsPipelineCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkGraphicsPipelineCreateInfo`
+    public static VkGraphicsPipelineCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

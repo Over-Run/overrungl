@@ -101,6 +101,44 @@ public sealed class VkViewportSwizzleNV extends GroupType {
     /// @return the allocated `VkViewportSwizzleNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkViewportSwizzleNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @param z `z`
+    /// @param w `w`
+    /// @return the allocated `VkViewportSwizzleNV`
+    public static VkViewportSwizzleNV allocInit(SegmentAllocator allocator, int x, int y, int z, int w) {
+        return alloc(allocator).x(x).y(y).z(z).w(w);
+    }
+
+    /// Allocates a `VkViewportSwizzleNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @param z `z`
+    /// @return the allocated `VkViewportSwizzleNV`
+    public static VkViewportSwizzleNV allocInit(SegmentAllocator allocator, int x, int y, int z) {
+        return alloc(allocator).x(x).y(y).z(z);
+    }
+
+    /// Allocates a `VkViewportSwizzleNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @param y `y`
+    /// @return the allocated `VkViewportSwizzleNV`
+    public static VkViewportSwizzleNV allocInit(SegmentAllocator allocator, int x, int y) {
+        return alloc(allocator).x(x).y(y);
+    }
+
+    /// Allocates a `VkViewportSwizzleNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x `x`
+    /// @return the allocated `VkViewportSwizzleNV`
+    public static VkViewportSwizzleNV allocInit(SegmentAllocator allocator, int x) {
+        return alloc(allocator).x(x);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

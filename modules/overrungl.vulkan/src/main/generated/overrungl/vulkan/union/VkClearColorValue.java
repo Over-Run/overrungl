@@ -93,6 +93,33 @@ public sealed class VkClearColorValue extends GroupType {
     /// @return the allocated `VkClearColorValue`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkClearColorValue` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param float32 `float32`
+    /// @param int32 `int32`
+    /// @param uint32 `uint32`
+    /// @return the allocated `VkClearColorValue`
+    public static VkClearColorValue allocInit(SegmentAllocator allocator, MemorySegment float32, MemorySegment int32, MemorySegment uint32) {
+        return alloc(allocator).float32(float32).int32(int32).uint32(uint32);
+    }
+
+    /// Allocates a `VkClearColorValue` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param float32 `float32`
+    /// @param int32 `int32`
+    /// @return the allocated `VkClearColorValue`
+    public static VkClearColorValue allocInit(SegmentAllocator allocator, MemorySegment float32, MemorySegment int32) {
+        return alloc(allocator).float32(float32).int32(int32);
+    }
+
+    /// Allocates a `VkClearColorValue` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param float32 `float32`
+    /// @return the allocated `VkClearColorValue`
+    public static VkClearColorValue allocInit(SegmentAllocator allocator, MemorySegment float32) {
+        return alloc(allocator).float32(float32);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

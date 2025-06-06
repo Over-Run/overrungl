@@ -93,6 +93,33 @@ public sealed class VkRenderPassSubpassFeedbackCreateInfoEXT extends GroupType {
     /// @return the allocated `VkRenderPassSubpassFeedbackCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderPassSubpassFeedbackCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pSubpassFeedback `pSubpassFeedback`
+    /// @return the allocated `VkRenderPassSubpassFeedbackCreateInfoEXT`
+    public static VkRenderPassSubpassFeedbackCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pSubpassFeedback) {
+        return alloc(allocator).sType(sType).pNext(pNext).pSubpassFeedback(pSubpassFeedback);
+    }
+
+    /// Allocates a `VkRenderPassSubpassFeedbackCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderPassSubpassFeedbackCreateInfoEXT`
+    public static VkRenderPassSubpassFeedbackCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderPassSubpassFeedbackCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderPassSubpassFeedbackCreateInfoEXT`
+    public static VkRenderPassSubpassFeedbackCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

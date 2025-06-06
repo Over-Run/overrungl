@@ -93,6 +93,33 @@ public sealed class VkPipelineBinaryKeysAndDataKHR extends GroupType {
     /// @return the allocated `VkPipelineBinaryKeysAndDataKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineBinaryKeysAndDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param binaryCount `binaryCount`
+    /// @param pPipelineBinaryKeys `pPipelineBinaryKeys`
+    /// @param pPipelineBinaryData `pPipelineBinaryData`
+    /// @return the allocated `VkPipelineBinaryKeysAndDataKHR`
+    public static VkPipelineBinaryKeysAndDataKHR allocInit(SegmentAllocator allocator, int binaryCount, MemorySegment pPipelineBinaryKeys, MemorySegment pPipelineBinaryData) {
+        return alloc(allocator).binaryCount(binaryCount).pPipelineBinaryKeys(pPipelineBinaryKeys).pPipelineBinaryData(pPipelineBinaryData);
+    }
+
+    /// Allocates a `VkPipelineBinaryKeysAndDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param binaryCount `binaryCount`
+    /// @param pPipelineBinaryKeys `pPipelineBinaryKeys`
+    /// @return the allocated `VkPipelineBinaryKeysAndDataKHR`
+    public static VkPipelineBinaryKeysAndDataKHR allocInit(SegmentAllocator allocator, int binaryCount, MemorySegment pPipelineBinaryKeys) {
+        return alloc(allocator).binaryCount(binaryCount).pPipelineBinaryKeys(pPipelineBinaryKeys);
+    }
+
+    /// Allocates a `VkPipelineBinaryKeysAndDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param binaryCount `binaryCount`
+    /// @return the allocated `VkPipelineBinaryKeysAndDataKHR`
+    public static VkPipelineBinaryKeysAndDataKHR allocInit(SegmentAllocator allocator, int binaryCount) {
+        return alloc(allocator).binaryCount(binaryCount);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

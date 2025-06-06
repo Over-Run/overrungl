@@ -101,6 +101,44 @@ public sealed class VkDeviceGroupPresentCapabilitiesKHR extends GroupType {
     /// @return the allocated `VkDeviceGroupPresentCapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceGroupPresentCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param presentMask `presentMask`
+    /// @param modes `modes`
+    /// @return the allocated `VkDeviceGroupPresentCapabilitiesKHR`
+    public static VkDeviceGroupPresentCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment presentMask, int modes) {
+        return alloc(allocator).sType(sType).pNext(pNext).presentMask(presentMask).modes(modes);
+    }
+
+    /// Allocates a `VkDeviceGroupPresentCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param presentMask `presentMask`
+    /// @return the allocated `VkDeviceGroupPresentCapabilitiesKHR`
+    public static VkDeviceGroupPresentCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment presentMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).presentMask(presentMask);
+    }
+
+    /// Allocates a `VkDeviceGroupPresentCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDeviceGroupPresentCapabilitiesKHR`
+    public static VkDeviceGroupPresentCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDeviceGroupPresentCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDeviceGroupPresentCapabilitiesKHR`
+    public static VkDeviceGroupPresentCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -149,6 +149,131 @@ public sealed class VkDeviceCreateInfo extends GroupType {
     /// @return the allocated `VkDeviceCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queueCreateInfoCount `queueCreateInfoCount`
+    /// @param pQueueCreateInfos `pQueueCreateInfos`
+    /// @param enabledLayerCount `enabledLayerCount`
+    /// @param ppEnabledLayerNames `ppEnabledLayerNames`
+    /// @param enabledExtensionCount `enabledExtensionCount`
+    /// @param ppEnabledExtensionNames `ppEnabledExtensionNames`
+    /// @param pEnabledFeatures `pEnabledFeatures`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueCreateInfoCount, MemorySegment pQueueCreateInfos, int enabledLayerCount, MemorySegment ppEnabledLayerNames, int enabledExtensionCount, MemorySegment ppEnabledExtensionNames, MemorySegment pEnabledFeatures) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueCreateInfoCount(queueCreateInfoCount).pQueueCreateInfos(pQueueCreateInfos).enabledLayerCount(enabledLayerCount).ppEnabledLayerNames(ppEnabledLayerNames).enabledExtensionCount(enabledExtensionCount).ppEnabledExtensionNames(ppEnabledExtensionNames).pEnabledFeatures(pEnabledFeatures);
+    }
+
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queueCreateInfoCount `queueCreateInfoCount`
+    /// @param pQueueCreateInfos `pQueueCreateInfos`
+    /// @param enabledLayerCount `enabledLayerCount`
+    /// @param ppEnabledLayerNames `ppEnabledLayerNames`
+    /// @param enabledExtensionCount `enabledExtensionCount`
+    /// @param ppEnabledExtensionNames `ppEnabledExtensionNames`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueCreateInfoCount, MemorySegment pQueueCreateInfos, int enabledLayerCount, MemorySegment ppEnabledLayerNames, int enabledExtensionCount, MemorySegment ppEnabledExtensionNames) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueCreateInfoCount(queueCreateInfoCount).pQueueCreateInfos(pQueueCreateInfos).enabledLayerCount(enabledLayerCount).ppEnabledLayerNames(ppEnabledLayerNames).enabledExtensionCount(enabledExtensionCount).ppEnabledExtensionNames(ppEnabledExtensionNames);
+    }
+
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queueCreateInfoCount `queueCreateInfoCount`
+    /// @param pQueueCreateInfos `pQueueCreateInfos`
+    /// @param enabledLayerCount `enabledLayerCount`
+    /// @param ppEnabledLayerNames `ppEnabledLayerNames`
+    /// @param enabledExtensionCount `enabledExtensionCount`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueCreateInfoCount, MemorySegment pQueueCreateInfos, int enabledLayerCount, MemorySegment ppEnabledLayerNames, int enabledExtensionCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueCreateInfoCount(queueCreateInfoCount).pQueueCreateInfos(pQueueCreateInfos).enabledLayerCount(enabledLayerCount).ppEnabledLayerNames(ppEnabledLayerNames).enabledExtensionCount(enabledExtensionCount);
+    }
+
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queueCreateInfoCount `queueCreateInfoCount`
+    /// @param pQueueCreateInfos `pQueueCreateInfos`
+    /// @param enabledLayerCount `enabledLayerCount`
+    /// @param ppEnabledLayerNames `ppEnabledLayerNames`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueCreateInfoCount, MemorySegment pQueueCreateInfos, int enabledLayerCount, MemorySegment ppEnabledLayerNames) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueCreateInfoCount(queueCreateInfoCount).pQueueCreateInfos(pQueueCreateInfos).enabledLayerCount(enabledLayerCount).ppEnabledLayerNames(ppEnabledLayerNames);
+    }
+
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queueCreateInfoCount `queueCreateInfoCount`
+    /// @param pQueueCreateInfos `pQueueCreateInfos`
+    /// @param enabledLayerCount `enabledLayerCount`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueCreateInfoCount, MemorySegment pQueueCreateInfos, int enabledLayerCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueCreateInfoCount(queueCreateInfoCount).pQueueCreateInfos(pQueueCreateInfos).enabledLayerCount(enabledLayerCount);
+    }
+
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queueCreateInfoCount `queueCreateInfoCount`
+    /// @param pQueueCreateInfos `pQueueCreateInfos`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueCreateInfoCount, MemorySegment pQueueCreateInfos) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueCreateInfoCount(queueCreateInfoCount).pQueueCreateInfos(pQueueCreateInfos);
+    }
+
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param queueCreateInfoCount `queueCreateInfoCount`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueCreateInfoCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueCreateInfoCount(queueCreateInfoCount);
+    }
+
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDeviceCreateInfo`
+    public static VkDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

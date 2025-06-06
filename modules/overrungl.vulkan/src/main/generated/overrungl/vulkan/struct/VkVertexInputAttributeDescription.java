@@ -101,6 +101,44 @@ public sealed class VkVertexInputAttributeDescription extends GroupType {
     /// @return the allocated `VkVertexInputAttributeDescription`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVertexInputAttributeDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param location `location`
+    /// @param binding `binding`
+    /// @param format `format`
+    /// @param offset `offset`
+    /// @return the allocated `VkVertexInputAttributeDescription`
+    public static VkVertexInputAttributeDescription allocInit(SegmentAllocator allocator, int location, int binding, int format, int offset) {
+        return alloc(allocator).location(location).binding(binding).format(format).offset(offset);
+    }
+
+    /// Allocates a `VkVertexInputAttributeDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param location `location`
+    /// @param binding `binding`
+    /// @param format `format`
+    /// @return the allocated `VkVertexInputAttributeDescription`
+    public static VkVertexInputAttributeDescription allocInit(SegmentAllocator allocator, int location, int binding, int format) {
+        return alloc(allocator).location(location).binding(binding).format(format);
+    }
+
+    /// Allocates a `VkVertexInputAttributeDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param location `location`
+    /// @param binding `binding`
+    /// @return the allocated `VkVertexInputAttributeDescription`
+    public static VkVertexInputAttributeDescription allocInit(SegmentAllocator allocator, int location, int binding) {
+        return alloc(allocator).location(location).binding(binding);
+    }
+
+    /// Allocates a `VkVertexInputAttributeDescription` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param location `location`
+    /// @return the allocated `VkVertexInputAttributeDescription`
+    public static VkVertexInputAttributeDescription allocInit(SegmentAllocator allocator, int location) {
+        return alloc(allocator).location(location);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

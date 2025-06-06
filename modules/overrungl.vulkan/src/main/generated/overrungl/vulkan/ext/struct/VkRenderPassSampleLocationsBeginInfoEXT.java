@@ -117,6 +117,69 @@ public sealed class VkRenderPassSampleLocationsBeginInfoEXT extends GroupType {
     /// @return the allocated `VkRenderPassSampleLocationsBeginInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param attachmentInitialSampleLocationsCount `attachmentInitialSampleLocationsCount`
+    /// @param pAttachmentInitialSampleLocations `pAttachmentInitialSampleLocations`
+    /// @param postSubpassSampleLocationsCount `postSubpassSampleLocationsCount`
+    /// @param pPostSubpassSampleLocations `pPostSubpassSampleLocations`
+    /// @return the allocated `VkRenderPassSampleLocationsBeginInfoEXT`
+    public static VkRenderPassSampleLocationsBeginInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachmentInitialSampleLocationsCount, MemorySegment pAttachmentInitialSampleLocations, int postSubpassSampleLocationsCount, MemorySegment pPostSubpassSampleLocations) {
+        return alloc(allocator).sType(sType).pNext(pNext).attachmentInitialSampleLocationsCount(attachmentInitialSampleLocationsCount).pAttachmentInitialSampleLocations(pAttachmentInitialSampleLocations).postSubpassSampleLocationsCount(postSubpassSampleLocationsCount).pPostSubpassSampleLocations(pPostSubpassSampleLocations);
+    }
+
+    /// Allocates a `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param attachmentInitialSampleLocationsCount `attachmentInitialSampleLocationsCount`
+    /// @param pAttachmentInitialSampleLocations `pAttachmentInitialSampleLocations`
+    /// @param postSubpassSampleLocationsCount `postSubpassSampleLocationsCount`
+    /// @return the allocated `VkRenderPassSampleLocationsBeginInfoEXT`
+    public static VkRenderPassSampleLocationsBeginInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachmentInitialSampleLocationsCount, MemorySegment pAttachmentInitialSampleLocations, int postSubpassSampleLocationsCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).attachmentInitialSampleLocationsCount(attachmentInitialSampleLocationsCount).pAttachmentInitialSampleLocations(pAttachmentInitialSampleLocations).postSubpassSampleLocationsCount(postSubpassSampleLocationsCount);
+    }
+
+    /// Allocates a `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param attachmentInitialSampleLocationsCount `attachmentInitialSampleLocationsCount`
+    /// @param pAttachmentInitialSampleLocations `pAttachmentInitialSampleLocations`
+    /// @return the allocated `VkRenderPassSampleLocationsBeginInfoEXT`
+    public static VkRenderPassSampleLocationsBeginInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachmentInitialSampleLocationsCount, MemorySegment pAttachmentInitialSampleLocations) {
+        return alloc(allocator).sType(sType).pNext(pNext).attachmentInitialSampleLocationsCount(attachmentInitialSampleLocationsCount).pAttachmentInitialSampleLocations(pAttachmentInitialSampleLocations);
+    }
+
+    /// Allocates a `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param attachmentInitialSampleLocationsCount `attachmentInitialSampleLocationsCount`
+    /// @return the allocated `VkRenderPassSampleLocationsBeginInfoEXT`
+    public static VkRenderPassSampleLocationsBeginInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachmentInitialSampleLocationsCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).attachmentInitialSampleLocationsCount(attachmentInitialSampleLocationsCount);
+    }
+
+    /// Allocates a `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderPassSampleLocationsBeginInfoEXT`
+    public static VkRenderPassSampleLocationsBeginInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderPassSampleLocationsBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderPassSampleLocationsBeginInfoEXT`
+    public static VkRenderPassSampleLocationsBeginInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

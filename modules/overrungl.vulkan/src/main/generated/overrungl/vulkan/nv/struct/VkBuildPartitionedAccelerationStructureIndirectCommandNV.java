@@ -91,6 +91,33 @@ public sealed class VkBuildPartitionedAccelerationStructureIndirectCommandNV ext
     /// @return the allocated `VkBuildPartitionedAccelerationStructureIndirectCommandNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBuildPartitionedAccelerationStructureIndirectCommandNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param opType `opType`
+    /// @param argCount `argCount`
+    /// @param argData `argData`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureIndirectCommandNV`
+    public static VkBuildPartitionedAccelerationStructureIndirectCommandNV allocInit(SegmentAllocator allocator, int opType, int argCount, MemorySegment argData) {
+        return alloc(allocator).opType(opType).argCount(argCount).argData(argData);
+    }
+
+    /// Allocates a `VkBuildPartitionedAccelerationStructureIndirectCommandNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param opType `opType`
+    /// @param argCount `argCount`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureIndirectCommandNV`
+    public static VkBuildPartitionedAccelerationStructureIndirectCommandNV allocInit(SegmentAllocator allocator, int opType, int argCount) {
+        return alloc(allocator).opType(opType).argCount(argCount);
+    }
+
+    /// Allocates a `VkBuildPartitionedAccelerationStructureIndirectCommandNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param opType `opType`
+    /// @return the allocated `VkBuildPartitionedAccelerationStructureIndirectCommandNV`
+    public static VkBuildPartitionedAccelerationStructureIndirectCommandNV allocInit(SegmentAllocator allocator, int opType) {
+        return alloc(allocator).opType(opType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

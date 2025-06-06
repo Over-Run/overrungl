@@ -101,6 +101,44 @@ public sealed class VkMutableDescriptorTypeCreateInfoEXT extends GroupType {
     /// @return the allocated `VkMutableDescriptorTypeCreateInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkMutableDescriptorTypeCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param mutableDescriptorTypeListCount `mutableDescriptorTypeListCount`
+    /// @param pMutableDescriptorTypeLists `pMutableDescriptorTypeLists`
+    /// @return the allocated `VkMutableDescriptorTypeCreateInfoEXT`
+    public static VkMutableDescriptorTypeCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int mutableDescriptorTypeListCount, MemorySegment pMutableDescriptorTypeLists) {
+        return alloc(allocator).sType(sType).pNext(pNext).mutableDescriptorTypeListCount(mutableDescriptorTypeListCount).pMutableDescriptorTypeLists(pMutableDescriptorTypeLists);
+    }
+
+    /// Allocates a `VkMutableDescriptorTypeCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param mutableDescriptorTypeListCount `mutableDescriptorTypeListCount`
+    /// @return the allocated `VkMutableDescriptorTypeCreateInfoEXT`
+    public static VkMutableDescriptorTypeCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int mutableDescriptorTypeListCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).mutableDescriptorTypeListCount(mutableDescriptorTypeListCount);
+    }
+
+    /// Allocates a `VkMutableDescriptorTypeCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkMutableDescriptorTypeCreateInfoEXT`
+    public static VkMutableDescriptorTypeCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkMutableDescriptorTypeCreateInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkMutableDescriptorTypeCreateInfoEXT`
+    public static VkMutableDescriptorTypeCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

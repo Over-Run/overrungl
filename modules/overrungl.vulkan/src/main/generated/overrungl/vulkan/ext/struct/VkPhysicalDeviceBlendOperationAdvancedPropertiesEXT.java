@@ -133,6 +133,98 @@ public sealed class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends 
     /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param advancedBlendMaxColorAttachments `advancedBlendMaxColorAttachments`
+    /// @param advancedBlendIndependentBlend `advancedBlendIndependentBlend`
+    /// @param advancedBlendNonPremultipliedSrcColor `advancedBlendNonPremultipliedSrcColor`
+    /// @param advancedBlendNonPremultipliedDstColor `advancedBlendNonPremultipliedDstColor`
+    /// @param advancedBlendCorrelatedOverlap `advancedBlendCorrelatedOverlap`
+    /// @param advancedBlendAllOperations `advancedBlendAllOperations`
+    /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int advancedBlendMaxColorAttachments, int advancedBlendIndependentBlend, int advancedBlendNonPremultipliedSrcColor, int advancedBlendNonPremultipliedDstColor, int advancedBlendCorrelatedOverlap, int advancedBlendAllOperations) {
+        return alloc(allocator).sType(sType).pNext(pNext).advancedBlendMaxColorAttachments(advancedBlendMaxColorAttachments).advancedBlendIndependentBlend(advancedBlendIndependentBlend).advancedBlendNonPremultipliedSrcColor(advancedBlendNonPremultipliedSrcColor).advancedBlendNonPremultipliedDstColor(advancedBlendNonPremultipliedDstColor).advancedBlendCorrelatedOverlap(advancedBlendCorrelatedOverlap).advancedBlendAllOperations(advancedBlendAllOperations);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param advancedBlendMaxColorAttachments `advancedBlendMaxColorAttachments`
+    /// @param advancedBlendIndependentBlend `advancedBlendIndependentBlend`
+    /// @param advancedBlendNonPremultipliedSrcColor `advancedBlendNonPremultipliedSrcColor`
+    /// @param advancedBlendNonPremultipliedDstColor `advancedBlendNonPremultipliedDstColor`
+    /// @param advancedBlendCorrelatedOverlap `advancedBlendCorrelatedOverlap`
+    /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int advancedBlendMaxColorAttachments, int advancedBlendIndependentBlend, int advancedBlendNonPremultipliedSrcColor, int advancedBlendNonPremultipliedDstColor, int advancedBlendCorrelatedOverlap) {
+        return alloc(allocator).sType(sType).pNext(pNext).advancedBlendMaxColorAttachments(advancedBlendMaxColorAttachments).advancedBlendIndependentBlend(advancedBlendIndependentBlend).advancedBlendNonPremultipliedSrcColor(advancedBlendNonPremultipliedSrcColor).advancedBlendNonPremultipliedDstColor(advancedBlendNonPremultipliedDstColor).advancedBlendCorrelatedOverlap(advancedBlendCorrelatedOverlap);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param advancedBlendMaxColorAttachments `advancedBlendMaxColorAttachments`
+    /// @param advancedBlendIndependentBlend `advancedBlendIndependentBlend`
+    /// @param advancedBlendNonPremultipliedSrcColor `advancedBlendNonPremultipliedSrcColor`
+    /// @param advancedBlendNonPremultipliedDstColor `advancedBlendNonPremultipliedDstColor`
+    /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int advancedBlendMaxColorAttachments, int advancedBlendIndependentBlend, int advancedBlendNonPremultipliedSrcColor, int advancedBlendNonPremultipliedDstColor) {
+        return alloc(allocator).sType(sType).pNext(pNext).advancedBlendMaxColorAttachments(advancedBlendMaxColorAttachments).advancedBlendIndependentBlend(advancedBlendIndependentBlend).advancedBlendNonPremultipliedSrcColor(advancedBlendNonPremultipliedSrcColor).advancedBlendNonPremultipliedDstColor(advancedBlendNonPremultipliedDstColor);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param advancedBlendMaxColorAttachments `advancedBlendMaxColorAttachments`
+    /// @param advancedBlendIndependentBlend `advancedBlendIndependentBlend`
+    /// @param advancedBlendNonPremultipliedSrcColor `advancedBlendNonPremultipliedSrcColor`
+    /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int advancedBlendMaxColorAttachments, int advancedBlendIndependentBlend, int advancedBlendNonPremultipliedSrcColor) {
+        return alloc(allocator).sType(sType).pNext(pNext).advancedBlendMaxColorAttachments(advancedBlendMaxColorAttachments).advancedBlendIndependentBlend(advancedBlendIndependentBlend).advancedBlendNonPremultipliedSrcColor(advancedBlendNonPremultipliedSrcColor);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param advancedBlendMaxColorAttachments `advancedBlendMaxColorAttachments`
+    /// @param advancedBlendIndependentBlend `advancedBlendIndependentBlend`
+    /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int advancedBlendMaxColorAttachments, int advancedBlendIndependentBlend) {
+        return alloc(allocator).sType(sType).pNext(pNext).advancedBlendMaxColorAttachments(advancedBlendMaxColorAttachments).advancedBlendIndependentBlend(advancedBlendIndependentBlend);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param advancedBlendMaxColorAttachments `advancedBlendMaxColorAttachments`
+    /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int advancedBlendMaxColorAttachments) {
+        return alloc(allocator).sType(sType).pNext(pNext).advancedBlendMaxColorAttachments(advancedBlendMaxColorAttachments);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

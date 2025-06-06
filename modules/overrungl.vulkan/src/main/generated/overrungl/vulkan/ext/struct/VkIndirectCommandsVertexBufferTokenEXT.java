@@ -77,6 +77,14 @@ public sealed class VkIndirectCommandsVertexBufferTokenEXT extends GroupType {
     /// @return the allocated `VkIndirectCommandsVertexBufferTokenEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkIndirectCommandsVertexBufferTokenEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @return the allocated `VkIndirectCommandsVertexBufferTokenEXT`
+    public static VkIndirectCommandsVertexBufferTokenEXT allocInit(SegmentAllocator allocator, int vertexBindingUnit) {
+        return alloc(allocator).vertexBindingUnit(vertexBindingUnit);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

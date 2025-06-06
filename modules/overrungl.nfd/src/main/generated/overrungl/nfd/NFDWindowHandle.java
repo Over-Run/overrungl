@@ -85,6 +85,23 @@ public sealed class NFDWindowHandle extends GroupType {
     /// @return the allocated `NFDWindowHandle`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `NFDWindowHandle` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param type `type`
+    /// @param handle `handle`
+    /// @return the allocated `NFDWindowHandle`
+    public static NFDWindowHandle allocInit(SegmentAllocator allocator, long type, MemorySegment handle) {
+        return alloc(allocator).type(type).handle(handle);
+    }
+
+    /// Allocates a `NFDWindowHandle` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param type `type`
+    /// @return the allocated `NFDWindowHandle`
+    public static NFDWindowHandle allocInit(SegmentAllocator allocator, long type) {
+        return alloc(allocator).type(type);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

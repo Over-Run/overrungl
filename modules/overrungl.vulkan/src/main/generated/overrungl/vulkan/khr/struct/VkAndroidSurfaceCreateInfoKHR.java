@@ -101,6 +101,44 @@ public sealed class VkAndroidSurfaceCreateInfoKHR extends GroupType {
     /// @return the allocated `VkAndroidSurfaceCreateInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkAndroidSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param window `window`
+    /// @return the allocated `VkAndroidSurfaceCreateInfoKHR`
+    public static VkAndroidSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment window) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).window(window);
+    }
+
+    /// Allocates a `VkAndroidSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkAndroidSurfaceCreateInfoKHR`
+    public static VkAndroidSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkAndroidSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkAndroidSurfaceCreateInfoKHR`
+    public static VkAndroidSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkAndroidSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkAndroidSurfaceCreateInfoKHR`
+    public static VkAndroidSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

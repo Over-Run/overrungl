@@ -189,6 +189,231 @@ public sealed class VkIndirectCommandsLayoutTokenNV extends GroupType {
     /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @param vertexDynamicStride `vertexDynamicStride`
+    /// @param pushconstantPipelineLayout `pushconstantPipelineLayout`
+    /// @param pushconstantShaderStageFlags `pushconstantShaderStageFlags`
+    /// @param pushconstantOffset `pushconstantOffset`
+    /// @param pushconstantSize `pushconstantSize`
+    /// @param indirectStateFlags `indirectStateFlags`
+    /// @param indexTypeCount `indexTypeCount`
+    /// @param pIndexTypes `pIndexTypes`
+    /// @param pIndexTypeValues `pIndexTypeValues`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit, int vertexDynamicStride, long pushconstantPipelineLayout, int pushconstantShaderStageFlags, int pushconstantOffset, int pushconstantSize, int indirectStateFlags, int indexTypeCount, MemorySegment pIndexTypes, MemorySegment pIndexTypeValues) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride).pushconstantPipelineLayout(pushconstantPipelineLayout).pushconstantShaderStageFlags(pushconstantShaderStageFlags).pushconstantOffset(pushconstantOffset).pushconstantSize(pushconstantSize).indirectStateFlags(indirectStateFlags).indexTypeCount(indexTypeCount).pIndexTypes(pIndexTypes).pIndexTypeValues(pIndexTypeValues);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @param vertexDynamicStride `vertexDynamicStride`
+    /// @param pushconstantPipelineLayout `pushconstantPipelineLayout`
+    /// @param pushconstantShaderStageFlags `pushconstantShaderStageFlags`
+    /// @param pushconstantOffset `pushconstantOffset`
+    /// @param pushconstantSize `pushconstantSize`
+    /// @param indirectStateFlags `indirectStateFlags`
+    /// @param indexTypeCount `indexTypeCount`
+    /// @param pIndexTypes `pIndexTypes`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit, int vertexDynamicStride, long pushconstantPipelineLayout, int pushconstantShaderStageFlags, int pushconstantOffset, int pushconstantSize, int indirectStateFlags, int indexTypeCount, MemorySegment pIndexTypes) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride).pushconstantPipelineLayout(pushconstantPipelineLayout).pushconstantShaderStageFlags(pushconstantShaderStageFlags).pushconstantOffset(pushconstantOffset).pushconstantSize(pushconstantSize).indirectStateFlags(indirectStateFlags).indexTypeCount(indexTypeCount).pIndexTypes(pIndexTypes);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @param vertexDynamicStride `vertexDynamicStride`
+    /// @param pushconstantPipelineLayout `pushconstantPipelineLayout`
+    /// @param pushconstantShaderStageFlags `pushconstantShaderStageFlags`
+    /// @param pushconstantOffset `pushconstantOffset`
+    /// @param pushconstantSize `pushconstantSize`
+    /// @param indirectStateFlags `indirectStateFlags`
+    /// @param indexTypeCount `indexTypeCount`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit, int vertexDynamicStride, long pushconstantPipelineLayout, int pushconstantShaderStageFlags, int pushconstantOffset, int pushconstantSize, int indirectStateFlags, int indexTypeCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride).pushconstantPipelineLayout(pushconstantPipelineLayout).pushconstantShaderStageFlags(pushconstantShaderStageFlags).pushconstantOffset(pushconstantOffset).pushconstantSize(pushconstantSize).indirectStateFlags(indirectStateFlags).indexTypeCount(indexTypeCount);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @param vertexDynamicStride `vertexDynamicStride`
+    /// @param pushconstantPipelineLayout `pushconstantPipelineLayout`
+    /// @param pushconstantShaderStageFlags `pushconstantShaderStageFlags`
+    /// @param pushconstantOffset `pushconstantOffset`
+    /// @param pushconstantSize `pushconstantSize`
+    /// @param indirectStateFlags `indirectStateFlags`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit, int vertexDynamicStride, long pushconstantPipelineLayout, int pushconstantShaderStageFlags, int pushconstantOffset, int pushconstantSize, int indirectStateFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride).pushconstantPipelineLayout(pushconstantPipelineLayout).pushconstantShaderStageFlags(pushconstantShaderStageFlags).pushconstantOffset(pushconstantOffset).pushconstantSize(pushconstantSize).indirectStateFlags(indirectStateFlags);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @param vertexDynamicStride `vertexDynamicStride`
+    /// @param pushconstantPipelineLayout `pushconstantPipelineLayout`
+    /// @param pushconstantShaderStageFlags `pushconstantShaderStageFlags`
+    /// @param pushconstantOffset `pushconstantOffset`
+    /// @param pushconstantSize `pushconstantSize`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit, int vertexDynamicStride, long pushconstantPipelineLayout, int pushconstantShaderStageFlags, int pushconstantOffset, int pushconstantSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride).pushconstantPipelineLayout(pushconstantPipelineLayout).pushconstantShaderStageFlags(pushconstantShaderStageFlags).pushconstantOffset(pushconstantOffset).pushconstantSize(pushconstantSize);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @param vertexDynamicStride `vertexDynamicStride`
+    /// @param pushconstantPipelineLayout `pushconstantPipelineLayout`
+    /// @param pushconstantShaderStageFlags `pushconstantShaderStageFlags`
+    /// @param pushconstantOffset `pushconstantOffset`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit, int vertexDynamicStride, long pushconstantPipelineLayout, int pushconstantShaderStageFlags, int pushconstantOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride).pushconstantPipelineLayout(pushconstantPipelineLayout).pushconstantShaderStageFlags(pushconstantShaderStageFlags).pushconstantOffset(pushconstantOffset);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @param vertexDynamicStride `vertexDynamicStride`
+    /// @param pushconstantPipelineLayout `pushconstantPipelineLayout`
+    /// @param pushconstantShaderStageFlags `pushconstantShaderStageFlags`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit, int vertexDynamicStride, long pushconstantPipelineLayout, int pushconstantShaderStageFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride).pushconstantPipelineLayout(pushconstantPipelineLayout).pushconstantShaderStageFlags(pushconstantShaderStageFlags);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @param vertexDynamicStride `vertexDynamicStride`
+    /// @param pushconstantPipelineLayout `pushconstantPipelineLayout`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit, int vertexDynamicStride, long pushconstantPipelineLayout) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride).pushconstantPipelineLayout(pushconstantPipelineLayout);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @param vertexDynamicStride `vertexDynamicStride`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit, int vertexDynamicStride) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit).vertexDynamicStride(vertexDynamicStride);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @param vertexBindingUnit `vertexBindingUnit`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset, int vertexBindingUnit) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset).vertexBindingUnit(vertexBindingUnit);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @param offset `offset`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream, int offset) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream).offset(offset);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @param stream `stream`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType, int stream) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType).stream(stream);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param tokenType `tokenType`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tokenType) {
+        return alloc(allocator).sType(sType).pNext(pNext).tokenType(tokenType);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkIndirectCommandsLayoutTokenNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkIndirectCommandsLayoutTokenNV`
+    public static VkIndirectCommandsLayoutTokenNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

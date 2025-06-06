@@ -163,6 +163,168 @@ public sealed class StdVideoEncodeH265PictureInfo extends GroupType {
     /// @return the allocated `StdVideoEncodeH265PictureInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param short_term_ref_pic_set_idx `short_term_ref_pic_set_idx`
+    /// @param PicOrderCntVal `PicOrderCntVal`
+    /// @param TemporalId `TemporalId`
+    /// @param reserved1 `reserved1`
+    /// @param pRefLists `pRefLists`
+    /// @param pShortTermRefPicSet `pShortTermRefPicSet`
+    /// @param pLongTermRefPics `pLongTermRefPics`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id, byte pps_seq_parameter_set_id, byte pps_pic_parameter_set_id, byte short_term_ref_pic_set_idx, int PicOrderCntVal, byte TemporalId, MemorySegment reserved1, MemorySegment pRefLists, MemorySegment pShortTermRefPicSet, MemorySegment pLongTermRefPics) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).pps_pic_parameter_set_id(pps_pic_parameter_set_id).short_term_ref_pic_set_idx(short_term_ref_pic_set_idx).PicOrderCntVal(PicOrderCntVal).TemporalId(TemporalId).reserved1(reserved1).pRefLists(pRefLists).pShortTermRefPicSet(pShortTermRefPicSet).pLongTermRefPics(pLongTermRefPics);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param short_term_ref_pic_set_idx `short_term_ref_pic_set_idx`
+    /// @param PicOrderCntVal `PicOrderCntVal`
+    /// @param TemporalId `TemporalId`
+    /// @param reserved1 `reserved1`
+    /// @param pRefLists `pRefLists`
+    /// @param pShortTermRefPicSet `pShortTermRefPicSet`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id, byte pps_seq_parameter_set_id, byte pps_pic_parameter_set_id, byte short_term_ref_pic_set_idx, int PicOrderCntVal, byte TemporalId, MemorySegment reserved1, MemorySegment pRefLists, MemorySegment pShortTermRefPicSet) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).pps_pic_parameter_set_id(pps_pic_parameter_set_id).short_term_ref_pic_set_idx(short_term_ref_pic_set_idx).PicOrderCntVal(PicOrderCntVal).TemporalId(TemporalId).reserved1(reserved1).pRefLists(pRefLists).pShortTermRefPicSet(pShortTermRefPicSet);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param short_term_ref_pic_set_idx `short_term_ref_pic_set_idx`
+    /// @param PicOrderCntVal `PicOrderCntVal`
+    /// @param TemporalId `TemporalId`
+    /// @param reserved1 `reserved1`
+    /// @param pRefLists `pRefLists`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id, byte pps_seq_parameter_set_id, byte pps_pic_parameter_set_id, byte short_term_ref_pic_set_idx, int PicOrderCntVal, byte TemporalId, MemorySegment reserved1, MemorySegment pRefLists) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).pps_pic_parameter_set_id(pps_pic_parameter_set_id).short_term_ref_pic_set_idx(short_term_ref_pic_set_idx).PicOrderCntVal(PicOrderCntVal).TemporalId(TemporalId).reserved1(reserved1).pRefLists(pRefLists);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param short_term_ref_pic_set_idx `short_term_ref_pic_set_idx`
+    /// @param PicOrderCntVal `PicOrderCntVal`
+    /// @param TemporalId `TemporalId`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id, byte pps_seq_parameter_set_id, byte pps_pic_parameter_set_id, byte short_term_ref_pic_set_idx, int PicOrderCntVal, byte TemporalId, MemorySegment reserved1) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).pps_pic_parameter_set_id(pps_pic_parameter_set_id).short_term_ref_pic_set_idx(short_term_ref_pic_set_idx).PicOrderCntVal(PicOrderCntVal).TemporalId(TemporalId).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param short_term_ref_pic_set_idx `short_term_ref_pic_set_idx`
+    /// @param PicOrderCntVal `PicOrderCntVal`
+    /// @param TemporalId `TemporalId`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id, byte pps_seq_parameter_set_id, byte pps_pic_parameter_set_id, byte short_term_ref_pic_set_idx, int PicOrderCntVal, byte TemporalId) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).pps_pic_parameter_set_id(pps_pic_parameter_set_id).short_term_ref_pic_set_idx(short_term_ref_pic_set_idx).PicOrderCntVal(PicOrderCntVal).TemporalId(TemporalId);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param short_term_ref_pic_set_idx `short_term_ref_pic_set_idx`
+    /// @param PicOrderCntVal `PicOrderCntVal`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id, byte pps_seq_parameter_set_id, byte pps_pic_parameter_set_id, byte short_term_ref_pic_set_idx, int PicOrderCntVal) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).pps_pic_parameter_set_id(pps_pic_parameter_set_id).short_term_ref_pic_set_idx(short_term_ref_pic_set_idx).PicOrderCntVal(PicOrderCntVal);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param short_term_ref_pic_set_idx `short_term_ref_pic_set_idx`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id, byte pps_seq_parameter_set_id, byte pps_pic_parameter_set_id, byte short_term_ref_pic_set_idx) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).pps_pic_parameter_set_id(pps_pic_parameter_set_id).short_term_ref_pic_set_idx(short_term_ref_pic_set_idx);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id, byte pps_seq_parameter_set_id, byte pps_pic_parameter_set_id) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).pps_pic_parameter_set_id(pps_pic_parameter_set_id);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id, byte pps_seq_parameter_set_id) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, byte sps_video_parameter_set_id) {
+        return alloc(allocator).flags(flags).pic_type(pic_type).sps_video_parameter_set_id(sps_video_parameter_set_id);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pic_type `pic_type`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type) {
+        return alloc(allocator).flags(flags).pic_type(pic_type);
+    }
+
+    /// Allocates a `StdVideoEncodeH265PictureInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoEncodeH265PictureInfo`
+    public static StdVideoEncodeH265PictureInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

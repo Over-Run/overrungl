@@ -93,6 +93,33 @@ public sealed class STBIIOCallbacks extends GroupType {
     /// @return the allocated `STBIIOCallbacks`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `STBIIOCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param read `read`
+    /// @param skip `skip`
+    /// @param eof `eof`
+    /// @return the allocated `STBIIOCallbacks`
+    public static STBIIOCallbacks allocInit(SegmentAllocator allocator, MemorySegment read, MemorySegment skip, MemorySegment eof) {
+        return alloc(allocator).read(read).skip(skip).eof(eof);
+    }
+
+    /// Allocates a `STBIIOCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param read `read`
+    /// @param skip `skip`
+    /// @return the allocated `STBIIOCallbacks`
+    public static STBIIOCallbacks allocInit(SegmentAllocator allocator, MemorySegment read, MemorySegment skip) {
+        return alloc(allocator).read(read).skip(skip);
+    }
+
+    /// Allocates a `STBIIOCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param read `read`
+    /// @return the allocated `STBIIOCallbacks`
+    public static STBIIOCallbacks allocInit(SegmentAllocator allocator, MemorySegment read) {
+        return alloc(allocator).read(read);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

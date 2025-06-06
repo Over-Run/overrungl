@@ -133,6 +133,98 @@ public sealed class VkInstanceCreateInfo extends GroupType {
     /// @return the allocated `VkInstanceCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pApplicationInfo `pApplicationInfo`
+    /// @param enabledLayerCount `enabledLayerCount`
+    /// @param ppEnabledLayerNames `ppEnabledLayerNames`
+    /// @param enabledExtensionCount `enabledExtensionCount`
+    /// @param ppEnabledExtensionNames `ppEnabledExtensionNames`
+    /// @return the allocated `VkInstanceCreateInfo`
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pApplicationInfo, int enabledLayerCount, MemorySegment ppEnabledLayerNames, int enabledExtensionCount, MemorySegment ppEnabledExtensionNames) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pApplicationInfo(pApplicationInfo).enabledLayerCount(enabledLayerCount).ppEnabledLayerNames(ppEnabledLayerNames).enabledExtensionCount(enabledExtensionCount).ppEnabledExtensionNames(ppEnabledExtensionNames);
+    }
+
+    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pApplicationInfo `pApplicationInfo`
+    /// @param enabledLayerCount `enabledLayerCount`
+    /// @param ppEnabledLayerNames `ppEnabledLayerNames`
+    /// @param enabledExtensionCount `enabledExtensionCount`
+    /// @return the allocated `VkInstanceCreateInfo`
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pApplicationInfo, int enabledLayerCount, MemorySegment ppEnabledLayerNames, int enabledExtensionCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pApplicationInfo(pApplicationInfo).enabledLayerCount(enabledLayerCount).ppEnabledLayerNames(ppEnabledLayerNames).enabledExtensionCount(enabledExtensionCount);
+    }
+
+    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pApplicationInfo `pApplicationInfo`
+    /// @param enabledLayerCount `enabledLayerCount`
+    /// @param ppEnabledLayerNames `ppEnabledLayerNames`
+    /// @return the allocated `VkInstanceCreateInfo`
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pApplicationInfo, int enabledLayerCount, MemorySegment ppEnabledLayerNames) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pApplicationInfo(pApplicationInfo).enabledLayerCount(enabledLayerCount).ppEnabledLayerNames(ppEnabledLayerNames);
+    }
+
+    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pApplicationInfo `pApplicationInfo`
+    /// @param enabledLayerCount `enabledLayerCount`
+    /// @return the allocated `VkInstanceCreateInfo`
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pApplicationInfo, int enabledLayerCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pApplicationInfo(pApplicationInfo).enabledLayerCount(enabledLayerCount);
+    }
+
+    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param pApplicationInfo `pApplicationInfo`
+    /// @return the allocated `VkInstanceCreateInfo`
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pApplicationInfo) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pApplicationInfo(pApplicationInfo);
+    }
+
+    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkInstanceCreateInfo`
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkInstanceCreateInfo`
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkInstanceCreateInfo`
+    public static VkInstanceCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

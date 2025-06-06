@@ -101,6 +101,44 @@ public sealed class VkPipelineExecutableInfoKHR extends GroupType {
     /// @return the allocated `VkPipelineExecutableInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineExecutableInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pipeline `pipeline`
+    /// @param executableIndex `executableIndex`
+    /// @return the allocated `VkPipelineExecutableInfoKHR`
+    public static VkPipelineExecutableInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long pipeline, int executableIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).pipeline(pipeline).executableIndex(executableIndex);
+    }
+
+    /// Allocates a `VkPipelineExecutableInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pipeline `pipeline`
+    /// @return the allocated `VkPipelineExecutableInfoKHR`
+    public static VkPipelineExecutableInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long pipeline) {
+        return alloc(allocator).sType(sType).pNext(pNext).pipeline(pipeline);
+    }
+
+    /// Allocates a `VkPipelineExecutableInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineExecutableInfoKHR`
+    public static VkPipelineExecutableInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineExecutableInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineExecutableInfoKHR`
+    public static VkPipelineExecutableInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

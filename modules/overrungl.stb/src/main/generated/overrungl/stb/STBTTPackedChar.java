@@ -141,6 +141,114 @@ public sealed class STBTTPackedChar extends GroupType {
     /// @return the allocated `STBTTPackedChar`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x0 `x0`
+    /// @param y0 `y0`
+    /// @param x1 `x1`
+    /// @param y1 `y1`
+    /// @param xoff `xoff`
+    /// @param yoff `yoff`
+    /// @param xadvance `xadvance`
+    /// @param xoff2 `xoff2`
+    /// @param yoff2 `yoff2`
+    /// @return the allocated `STBTTPackedChar`
+    public static STBTTPackedChar allocInit(SegmentAllocator allocator, short x0, short y0, short x1, short y1, float xoff, float yoff, float xadvance, float xoff2, float yoff2) {
+        return alloc(allocator).x0(x0).y0(y0).x1(x1).y1(y1).xoff(xoff).yoff(yoff).xadvance(xadvance).xoff2(xoff2).yoff2(yoff2);
+    }
+
+    /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x0 `x0`
+    /// @param y0 `y0`
+    /// @param x1 `x1`
+    /// @param y1 `y1`
+    /// @param xoff `xoff`
+    /// @param yoff `yoff`
+    /// @param xadvance `xadvance`
+    /// @param xoff2 `xoff2`
+    /// @return the allocated `STBTTPackedChar`
+    public static STBTTPackedChar allocInit(SegmentAllocator allocator, short x0, short y0, short x1, short y1, float xoff, float yoff, float xadvance, float xoff2) {
+        return alloc(allocator).x0(x0).y0(y0).x1(x1).y1(y1).xoff(xoff).yoff(yoff).xadvance(xadvance).xoff2(xoff2);
+    }
+
+    /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x0 `x0`
+    /// @param y0 `y0`
+    /// @param x1 `x1`
+    /// @param y1 `y1`
+    /// @param xoff `xoff`
+    /// @param yoff `yoff`
+    /// @param xadvance `xadvance`
+    /// @return the allocated `STBTTPackedChar`
+    public static STBTTPackedChar allocInit(SegmentAllocator allocator, short x0, short y0, short x1, short y1, float xoff, float yoff, float xadvance) {
+        return alloc(allocator).x0(x0).y0(y0).x1(x1).y1(y1).xoff(xoff).yoff(yoff).xadvance(xadvance);
+    }
+
+    /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x0 `x0`
+    /// @param y0 `y0`
+    /// @param x1 `x1`
+    /// @param y1 `y1`
+    /// @param xoff `xoff`
+    /// @param yoff `yoff`
+    /// @return the allocated `STBTTPackedChar`
+    public static STBTTPackedChar allocInit(SegmentAllocator allocator, short x0, short y0, short x1, short y1, float xoff, float yoff) {
+        return alloc(allocator).x0(x0).y0(y0).x1(x1).y1(y1).xoff(xoff).yoff(yoff);
+    }
+
+    /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x0 `x0`
+    /// @param y0 `y0`
+    /// @param x1 `x1`
+    /// @param y1 `y1`
+    /// @param xoff `xoff`
+    /// @return the allocated `STBTTPackedChar`
+    public static STBTTPackedChar allocInit(SegmentAllocator allocator, short x0, short y0, short x1, short y1, float xoff) {
+        return alloc(allocator).x0(x0).y0(y0).x1(x1).y1(y1).xoff(xoff);
+    }
+
+    /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x0 `x0`
+    /// @param y0 `y0`
+    /// @param x1 `x1`
+    /// @param y1 `y1`
+    /// @return the allocated `STBTTPackedChar`
+    public static STBTTPackedChar allocInit(SegmentAllocator allocator, short x0, short y0, short x1, short y1) {
+        return alloc(allocator).x0(x0).y0(y0).x1(x1).y1(y1);
+    }
+
+    /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x0 `x0`
+    /// @param y0 `y0`
+    /// @param x1 `x1`
+    /// @return the allocated `STBTTPackedChar`
+    public static STBTTPackedChar allocInit(SegmentAllocator allocator, short x0, short y0, short x1) {
+        return alloc(allocator).x0(x0).y0(y0).x1(x1);
+    }
+
+    /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x0 `x0`
+    /// @param y0 `y0`
+    /// @return the allocated `STBTTPackedChar`
+    public static STBTTPackedChar allocInit(SegmentAllocator allocator, short x0, short y0) {
+        return alloc(allocator).x0(x0).y0(y0);
+    }
+
+    /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param x0 `x0`
+    /// @return the allocated `STBTTPackedChar`
+    public static STBTTPackedChar allocInit(SegmentAllocator allocator, short x0) {
+        return alloc(allocator).x0(x0);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

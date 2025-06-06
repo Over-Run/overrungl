@@ -109,6 +109,56 @@ public sealed class VkConditionalRenderingBeginInfoEXT extends GroupType {
     /// @return the allocated `VkConditionalRenderingBeginInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkConditionalRenderingBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param buffer `buffer`
+    /// @param offset `offset`
+    /// @param flags `flags`
+    /// @return the allocated `VkConditionalRenderingBeginInfoEXT`
+    public static VkConditionalRenderingBeginInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long buffer, long offset, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).buffer(buffer).offset(offset).flags(flags);
+    }
+
+    /// Allocates a `VkConditionalRenderingBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param buffer `buffer`
+    /// @param offset `offset`
+    /// @return the allocated `VkConditionalRenderingBeginInfoEXT`
+    public static VkConditionalRenderingBeginInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long buffer, long offset) {
+        return alloc(allocator).sType(sType).pNext(pNext).buffer(buffer).offset(offset);
+    }
+
+    /// Allocates a `VkConditionalRenderingBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param buffer `buffer`
+    /// @return the allocated `VkConditionalRenderingBeginInfoEXT`
+    public static VkConditionalRenderingBeginInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long buffer) {
+        return alloc(allocator).sType(sType).pNext(pNext).buffer(buffer);
+    }
+
+    /// Allocates a `VkConditionalRenderingBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkConditionalRenderingBeginInfoEXT`
+    public static VkConditionalRenderingBeginInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkConditionalRenderingBeginInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkConditionalRenderingBeginInfoEXT`
+    public static VkConditionalRenderingBeginInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

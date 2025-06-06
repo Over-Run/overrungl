@@ -253,6 +253,443 @@ public sealed class VkPhysicalDeviceVulkan14Features extends GroupType {
     /// @return the allocated `VkPhysicalDeviceVulkan14Features`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @param indexTypeUint8 `indexTypeUint8`
+    /// @param dynamicRenderingLocalRead `dynamicRenderingLocalRead`
+    /// @param maintenance5 `maintenance5`
+    /// @param maintenance6 `maintenance6`
+    /// @param pipelineProtectedAccess `pipelineProtectedAccess`
+    /// @param pipelineRobustness `pipelineRobustness`
+    /// @param hostImageCopy `hostImageCopy`
+    /// @param pushDescriptor `pushDescriptor`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor, int indexTypeUint8, int dynamicRenderingLocalRead, int maintenance5, int maintenance6, int pipelineProtectedAccess, int pipelineRobustness, int hostImageCopy, int pushDescriptor) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8).dynamicRenderingLocalRead(dynamicRenderingLocalRead).maintenance5(maintenance5).maintenance6(maintenance6).pipelineProtectedAccess(pipelineProtectedAccess).pipelineRobustness(pipelineRobustness).hostImageCopy(hostImageCopy).pushDescriptor(pushDescriptor);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @param indexTypeUint8 `indexTypeUint8`
+    /// @param dynamicRenderingLocalRead `dynamicRenderingLocalRead`
+    /// @param maintenance5 `maintenance5`
+    /// @param maintenance6 `maintenance6`
+    /// @param pipelineProtectedAccess `pipelineProtectedAccess`
+    /// @param pipelineRobustness `pipelineRobustness`
+    /// @param hostImageCopy `hostImageCopy`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor, int indexTypeUint8, int dynamicRenderingLocalRead, int maintenance5, int maintenance6, int pipelineProtectedAccess, int pipelineRobustness, int hostImageCopy) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8).dynamicRenderingLocalRead(dynamicRenderingLocalRead).maintenance5(maintenance5).maintenance6(maintenance6).pipelineProtectedAccess(pipelineProtectedAccess).pipelineRobustness(pipelineRobustness).hostImageCopy(hostImageCopy);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @param indexTypeUint8 `indexTypeUint8`
+    /// @param dynamicRenderingLocalRead `dynamicRenderingLocalRead`
+    /// @param maintenance5 `maintenance5`
+    /// @param maintenance6 `maintenance6`
+    /// @param pipelineProtectedAccess `pipelineProtectedAccess`
+    /// @param pipelineRobustness `pipelineRobustness`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor, int indexTypeUint8, int dynamicRenderingLocalRead, int maintenance5, int maintenance6, int pipelineProtectedAccess, int pipelineRobustness) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8).dynamicRenderingLocalRead(dynamicRenderingLocalRead).maintenance5(maintenance5).maintenance6(maintenance6).pipelineProtectedAccess(pipelineProtectedAccess).pipelineRobustness(pipelineRobustness);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @param indexTypeUint8 `indexTypeUint8`
+    /// @param dynamicRenderingLocalRead `dynamicRenderingLocalRead`
+    /// @param maintenance5 `maintenance5`
+    /// @param maintenance6 `maintenance6`
+    /// @param pipelineProtectedAccess `pipelineProtectedAccess`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor, int indexTypeUint8, int dynamicRenderingLocalRead, int maintenance5, int maintenance6, int pipelineProtectedAccess) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8).dynamicRenderingLocalRead(dynamicRenderingLocalRead).maintenance5(maintenance5).maintenance6(maintenance6).pipelineProtectedAccess(pipelineProtectedAccess);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @param indexTypeUint8 `indexTypeUint8`
+    /// @param dynamicRenderingLocalRead `dynamicRenderingLocalRead`
+    /// @param maintenance5 `maintenance5`
+    /// @param maintenance6 `maintenance6`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor, int indexTypeUint8, int dynamicRenderingLocalRead, int maintenance5, int maintenance6) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8).dynamicRenderingLocalRead(dynamicRenderingLocalRead).maintenance5(maintenance5).maintenance6(maintenance6);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @param indexTypeUint8 `indexTypeUint8`
+    /// @param dynamicRenderingLocalRead `dynamicRenderingLocalRead`
+    /// @param maintenance5 `maintenance5`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor, int indexTypeUint8, int dynamicRenderingLocalRead, int maintenance5) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8).dynamicRenderingLocalRead(dynamicRenderingLocalRead).maintenance5(maintenance5);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @param indexTypeUint8 `indexTypeUint8`
+    /// @param dynamicRenderingLocalRead `dynamicRenderingLocalRead`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor, int indexTypeUint8, int dynamicRenderingLocalRead) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8).dynamicRenderingLocalRead(dynamicRenderingLocalRead);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @param indexTypeUint8 `indexTypeUint8`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor, int indexTypeUint8) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor).indexTypeUint8(indexTypeUint8);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @param vertexAttributeInstanceRateZeroDivisor `vertexAttributeInstanceRateZeroDivisor`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor, int vertexAttributeInstanceRateZeroDivisor) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor).vertexAttributeInstanceRateZeroDivisor(vertexAttributeInstanceRateZeroDivisor);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @param vertexAttributeInstanceRateDivisor `vertexAttributeInstanceRateDivisor`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines, int vertexAttributeInstanceRateDivisor) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines).vertexAttributeInstanceRateDivisor(vertexAttributeInstanceRateDivisor);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @param stippledSmoothLines `stippledSmoothLines`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines, int stippledSmoothLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines).stippledSmoothLines(stippledSmoothLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @param stippledBresenhamLines `stippledBresenhamLines`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines, int stippledBresenhamLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines).stippledBresenhamLines(stippledBresenhamLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @param stippledRectangularLines `stippledRectangularLines`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines, int stippledRectangularLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines).stippledRectangularLines(stippledRectangularLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @param smoothLines `smoothLines`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines, int smoothLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines).smoothLines(smoothLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @param bresenhamLines `bresenhamLines`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines, int bresenhamLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines).bresenhamLines(bresenhamLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @param rectangularLines `rectangularLines`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume, int rectangularLines) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume).rectangularLines(rectangularLines);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @param shaderExpectAssume `shaderExpectAssume`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2, int shaderExpectAssume) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2).shaderExpectAssume(shaderExpectAssume);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @param shaderFloatControls2 `shaderFloatControls2`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered, int shaderFloatControls2) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered).shaderFloatControls2(shaderFloatControls2);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate, int shaderSubgroupRotateClustered) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery, int shaderSubgroupRotate) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery).shaderSubgroupRotate(shaderSubgroupRotate);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param globalPriorityQuery `globalPriorityQuery`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery) {
+        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan14Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceVulkan14Features`
+    public static VkPhysicalDeviceVulkan14Features allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

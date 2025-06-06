@@ -93,6 +93,33 @@ public sealed class VkMicromapUsageEXT extends GroupType {
     /// @return the allocated `VkMicromapUsageEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkMicromapUsageEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param count `count`
+    /// @param subdivisionLevel `subdivisionLevel`
+    /// @param format `format`
+    /// @return the allocated `VkMicromapUsageEXT`
+    public static VkMicromapUsageEXT allocInit(SegmentAllocator allocator, int count, int subdivisionLevel, int format) {
+        return alloc(allocator).count(count).subdivisionLevel(subdivisionLevel).format(format);
+    }
+
+    /// Allocates a `VkMicromapUsageEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param count `count`
+    /// @param subdivisionLevel `subdivisionLevel`
+    /// @return the allocated `VkMicromapUsageEXT`
+    public static VkMicromapUsageEXT allocInit(SegmentAllocator allocator, int count, int subdivisionLevel) {
+        return alloc(allocator).count(count).subdivisionLevel(subdivisionLevel);
+    }
+
+    /// Allocates a `VkMicromapUsageEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param count `count`
+    /// @return the allocated `VkMicromapUsageEXT`
+    public static VkMicromapUsageEXT allocInit(SegmentAllocator allocator, int count) {
+        return alloc(allocator).count(count);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

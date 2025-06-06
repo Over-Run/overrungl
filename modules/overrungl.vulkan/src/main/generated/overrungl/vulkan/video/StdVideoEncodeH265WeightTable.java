@@ -155,6 +155,149 @@ public sealed class StdVideoEncodeH265WeightTable extends GroupType {
     /// @return the allocated `StdVideoEncodeH265WeightTable`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param delta_chroma_log2_weight_denom `delta_chroma_log2_weight_denom`
+    /// @param delta_luma_weight_l0 `delta_luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param delta_chroma_weight_l0 `delta_chroma_weight_l0`
+    /// @param delta_chroma_offset_l0 `delta_chroma_offset_l0`
+    /// @param delta_luma_weight_l1 `delta_luma_weight_l1`
+    /// @param luma_offset_l1 `luma_offset_l1`
+    /// @param delta_chroma_weight_l1 `delta_chroma_weight_l1`
+    /// @param delta_chroma_offset_l1 `delta_chroma_offset_l1`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte delta_chroma_log2_weight_denom, MemorySegment delta_luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment delta_chroma_weight_l0, MemorySegment delta_chroma_offset_l0, MemorySegment delta_luma_weight_l1, MemorySegment luma_offset_l1, MemorySegment delta_chroma_weight_l1, MemorySegment delta_chroma_offset_l1) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0).luma_offset_l0(luma_offset_l0).delta_chroma_weight_l0(delta_chroma_weight_l0).delta_chroma_offset_l0(delta_chroma_offset_l0).delta_luma_weight_l1(delta_luma_weight_l1).luma_offset_l1(luma_offset_l1).delta_chroma_weight_l1(delta_chroma_weight_l1).delta_chroma_offset_l1(delta_chroma_offset_l1);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param delta_chroma_log2_weight_denom `delta_chroma_log2_weight_denom`
+    /// @param delta_luma_weight_l0 `delta_luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param delta_chroma_weight_l0 `delta_chroma_weight_l0`
+    /// @param delta_chroma_offset_l0 `delta_chroma_offset_l0`
+    /// @param delta_luma_weight_l1 `delta_luma_weight_l1`
+    /// @param luma_offset_l1 `luma_offset_l1`
+    /// @param delta_chroma_weight_l1 `delta_chroma_weight_l1`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte delta_chroma_log2_weight_denom, MemorySegment delta_luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment delta_chroma_weight_l0, MemorySegment delta_chroma_offset_l0, MemorySegment delta_luma_weight_l1, MemorySegment luma_offset_l1, MemorySegment delta_chroma_weight_l1) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0).luma_offset_l0(luma_offset_l0).delta_chroma_weight_l0(delta_chroma_weight_l0).delta_chroma_offset_l0(delta_chroma_offset_l0).delta_luma_weight_l1(delta_luma_weight_l1).luma_offset_l1(luma_offset_l1).delta_chroma_weight_l1(delta_chroma_weight_l1);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param delta_chroma_log2_weight_denom `delta_chroma_log2_weight_denom`
+    /// @param delta_luma_weight_l0 `delta_luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param delta_chroma_weight_l0 `delta_chroma_weight_l0`
+    /// @param delta_chroma_offset_l0 `delta_chroma_offset_l0`
+    /// @param delta_luma_weight_l1 `delta_luma_weight_l1`
+    /// @param luma_offset_l1 `luma_offset_l1`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte delta_chroma_log2_weight_denom, MemorySegment delta_luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment delta_chroma_weight_l0, MemorySegment delta_chroma_offset_l0, MemorySegment delta_luma_weight_l1, MemorySegment luma_offset_l1) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0).luma_offset_l0(luma_offset_l0).delta_chroma_weight_l0(delta_chroma_weight_l0).delta_chroma_offset_l0(delta_chroma_offset_l0).delta_luma_weight_l1(delta_luma_weight_l1).luma_offset_l1(luma_offset_l1);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param delta_chroma_log2_weight_denom `delta_chroma_log2_weight_denom`
+    /// @param delta_luma_weight_l0 `delta_luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param delta_chroma_weight_l0 `delta_chroma_weight_l0`
+    /// @param delta_chroma_offset_l0 `delta_chroma_offset_l0`
+    /// @param delta_luma_weight_l1 `delta_luma_weight_l1`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte delta_chroma_log2_weight_denom, MemorySegment delta_luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment delta_chroma_weight_l0, MemorySegment delta_chroma_offset_l0, MemorySegment delta_luma_weight_l1) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0).luma_offset_l0(luma_offset_l0).delta_chroma_weight_l0(delta_chroma_weight_l0).delta_chroma_offset_l0(delta_chroma_offset_l0).delta_luma_weight_l1(delta_luma_weight_l1);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param delta_chroma_log2_weight_denom `delta_chroma_log2_weight_denom`
+    /// @param delta_luma_weight_l0 `delta_luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param delta_chroma_weight_l0 `delta_chroma_weight_l0`
+    /// @param delta_chroma_offset_l0 `delta_chroma_offset_l0`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte delta_chroma_log2_weight_denom, MemorySegment delta_luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment delta_chroma_weight_l0, MemorySegment delta_chroma_offset_l0) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0).luma_offset_l0(luma_offset_l0).delta_chroma_weight_l0(delta_chroma_weight_l0).delta_chroma_offset_l0(delta_chroma_offset_l0);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param delta_chroma_log2_weight_denom `delta_chroma_log2_weight_denom`
+    /// @param delta_luma_weight_l0 `delta_luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @param delta_chroma_weight_l0 `delta_chroma_weight_l0`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte delta_chroma_log2_weight_denom, MemorySegment delta_luma_weight_l0, MemorySegment luma_offset_l0, MemorySegment delta_chroma_weight_l0) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0).luma_offset_l0(luma_offset_l0).delta_chroma_weight_l0(delta_chroma_weight_l0);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param delta_chroma_log2_weight_denom `delta_chroma_log2_weight_denom`
+    /// @param delta_luma_weight_l0 `delta_luma_weight_l0`
+    /// @param luma_offset_l0 `luma_offset_l0`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte delta_chroma_log2_weight_denom, MemorySegment delta_luma_weight_l0, MemorySegment luma_offset_l0) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0).luma_offset_l0(luma_offset_l0);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param delta_chroma_log2_weight_denom `delta_chroma_log2_weight_denom`
+    /// @param delta_luma_weight_l0 `delta_luma_weight_l0`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte delta_chroma_log2_weight_denom, MemorySegment delta_luma_weight_l0) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom).delta_luma_weight_l0(delta_luma_weight_l0);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @param delta_chroma_log2_weight_denom `delta_chroma_log2_weight_denom`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom, byte delta_chroma_log2_weight_denom) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom).delta_chroma_log2_weight_denom(delta_chroma_log2_weight_denom);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param luma_log2_weight_denom `luma_log2_weight_denom`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags, byte luma_log2_weight_denom) {
+        return alloc(allocator).flags(flags).luma_log2_weight_denom(luma_log2_weight_denom);
+    }
+
+    /// Allocates a `StdVideoEncodeH265WeightTable` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoEncodeH265WeightTable`
+    public static StdVideoEncodeH265WeightTable allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

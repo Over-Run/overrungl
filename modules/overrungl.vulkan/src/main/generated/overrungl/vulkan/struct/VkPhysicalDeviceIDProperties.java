@@ -125,6 +125,83 @@ public sealed class VkPhysicalDeviceIDProperties extends GroupType {
     /// @return the allocated `VkPhysicalDeviceIDProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceIDProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceUUID `deviceUUID`
+    /// @param driverUUID `driverUUID`
+    /// @param deviceLUID `deviceLUID`
+    /// @param deviceNodeMask `deviceNodeMask`
+    /// @param deviceLUIDValid `deviceLUIDValid`
+    /// @return the allocated `VkPhysicalDeviceIDProperties`
+    public static VkPhysicalDeviceIDProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment deviceUUID, MemorySegment driverUUID, MemorySegment deviceLUID, int deviceNodeMask, int deviceLUIDValid) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceUUID(deviceUUID).driverUUID(driverUUID).deviceLUID(deviceLUID).deviceNodeMask(deviceNodeMask).deviceLUIDValid(deviceLUIDValid);
+    }
+
+    /// Allocates a `VkPhysicalDeviceIDProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceUUID `deviceUUID`
+    /// @param driverUUID `driverUUID`
+    /// @param deviceLUID `deviceLUID`
+    /// @param deviceNodeMask `deviceNodeMask`
+    /// @return the allocated `VkPhysicalDeviceIDProperties`
+    public static VkPhysicalDeviceIDProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment deviceUUID, MemorySegment driverUUID, MemorySegment deviceLUID, int deviceNodeMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceUUID(deviceUUID).driverUUID(driverUUID).deviceLUID(deviceLUID).deviceNodeMask(deviceNodeMask);
+    }
+
+    /// Allocates a `VkPhysicalDeviceIDProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceUUID `deviceUUID`
+    /// @param driverUUID `driverUUID`
+    /// @param deviceLUID `deviceLUID`
+    /// @return the allocated `VkPhysicalDeviceIDProperties`
+    public static VkPhysicalDeviceIDProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment deviceUUID, MemorySegment driverUUID, MemorySegment deviceLUID) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceUUID(deviceUUID).driverUUID(driverUUID).deviceLUID(deviceLUID);
+    }
+
+    /// Allocates a `VkPhysicalDeviceIDProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceUUID `deviceUUID`
+    /// @param driverUUID `driverUUID`
+    /// @return the allocated `VkPhysicalDeviceIDProperties`
+    public static VkPhysicalDeviceIDProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment deviceUUID, MemorySegment driverUUID) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceUUID(deviceUUID).driverUUID(driverUUID);
+    }
+
+    /// Allocates a `VkPhysicalDeviceIDProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param deviceUUID `deviceUUID`
+    /// @return the allocated `VkPhysicalDeviceIDProperties`
+    public static VkPhysicalDeviceIDProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment deviceUUID) {
+        return alloc(allocator).sType(sType).pNext(pNext).deviceUUID(deviceUUID);
+    }
+
+    /// Allocates a `VkPhysicalDeviceIDProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceIDProperties`
+    public static VkPhysicalDeviceIDProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceIDProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceIDProperties`
+    public static VkPhysicalDeviceIDProperties allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

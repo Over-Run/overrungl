@@ -141,6 +141,114 @@ public sealed class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxExecutionGraphDepth `maxExecutionGraphDepth`
+    /// @param maxExecutionGraphShaderOutputNodes `maxExecutionGraphShaderOutputNodes`
+    /// @param maxExecutionGraphShaderPayloadSize `maxExecutionGraphShaderPayloadSize`
+    /// @param maxExecutionGraphShaderPayloadCount `maxExecutionGraphShaderPayloadCount`
+    /// @param executionGraphDispatchAddressAlignment `executionGraphDispatchAddressAlignment`
+    /// @param maxExecutionGraphWorkgroupCount `maxExecutionGraphWorkgroupCount`
+    /// @param maxExecutionGraphWorkgroups `maxExecutionGraphWorkgroups`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxExecutionGraphDepth, int maxExecutionGraphShaderOutputNodes, int maxExecutionGraphShaderPayloadSize, int maxExecutionGraphShaderPayloadCount, int executionGraphDispatchAddressAlignment, MemorySegment maxExecutionGraphWorkgroupCount, int maxExecutionGraphWorkgroups) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxExecutionGraphDepth(maxExecutionGraphDepth).maxExecutionGraphShaderOutputNodes(maxExecutionGraphShaderOutputNodes).maxExecutionGraphShaderPayloadSize(maxExecutionGraphShaderPayloadSize).maxExecutionGraphShaderPayloadCount(maxExecutionGraphShaderPayloadCount).executionGraphDispatchAddressAlignment(executionGraphDispatchAddressAlignment).maxExecutionGraphWorkgroupCount(maxExecutionGraphWorkgroupCount).maxExecutionGraphWorkgroups(maxExecutionGraphWorkgroups);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxExecutionGraphDepth `maxExecutionGraphDepth`
+    /// @param maxExecutionGraphShaderOutputNodes `maxExecutionGraphShaderOutputNodes`
+    /// @param maxExecutionGraphShaderPayloadSize `maxExecutionGraphShaderPayloadSize`
+    /// @param maxExecutionGraphShaderPayloadCount `maxExecutionGraphShaderPayloadCount`
+    /// @param executionGraphDispatchAddressAlignment `executionGraphDispatchAddressAlignment`
+    /// @param maxExecutionGraphWorkgroupCount `maxExecutionGraphWorkgroupCount`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxExecutionGraphDepth, int maxExecutionGraphShaderOutputNodes, int maxExecutionGraphShaderPayloadSize, int maxExecutionGraphShaderPayloadCount, int executionGraphDispatchAddressAlignment, MemorySegment maxExecutionGraphWorkgroupCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxExecutionGraphDepth(maxExecutionGraphDepth).maxExecutionGraphShaderOutputNodes(maxExecutionGraphShaderOutputNodes).maxExecutionGraphShaderPayloadSize(maxExecutionGraphShaderPayloadSize).maxExecutionGraphShaderPayloadCount(maxExecutionGraphShaderPayloadCount).executionGraphDispatchAddressAlignment(executionGraphDispatchAddressAlignment).maxExecutionGraphWorkgroupCount(maxExecutionGraphWorkgroupCount);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxExecutionGraphDepth `maxExecutionGraphDepth`
+    /// @param maxExecutionGraphShaderOutputNodes `maxExecutionGraphShaderOutputNodes`
+    /// @param maxExecutionGraphShaderPayloadSize `maxExecutionGraphShaderPayloadSize`
+    /// @param maxExecutionGraphShaderPayloadCount `maxExecutionGraphShaderPayloadCount`
+    /// @param executionGraphDispatchAddressAlignment `executionGraphDispatchAddressAlignment`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxExecutionGraphDepth, int maxExecutionGraphShaderOutputNodes, int maxExecutionGraphShaderPayloadSize, int maxExecutionGraphShaderPayloadCount, int executionGraphDispatchAddressAlignment) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxExecutionGraphDepth(maxExecutionGraphDepth).maxExecutionGraphShaderOutputNodes(maxExecutionGraphShaderOutputNodes).maxExecutionGraphShaderPayloadSize(maxExecutionGraphShaderPayloadSize).maxExecutionGraphShaderPayloadCount(maxExecutionGraphShaderPayloadCount).executionGraphDispatchAddressAlignment(executionGraphDispatchAddressAlignment);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxExecutionGraphDepth `maxExecutionGraphDepth`
+    /// @param maxExecutionGraphShaderOutputNodes `maxExecutionGraphShaderOutputNodes`
+    /// @param maxExecutionGraphShaderPayloadSize `maxExecutionGraphShaderPayloadSize`
+    /// @param maxExecutionGraphShaderPayloadCount `maxExecutionGraphShaderPayloadCount`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxExecutionGraphDepth, int maxExecutionGraphShaderOutputNodes, int maxExecutionGraphShaderPayloadSize, int maxExecutionGraphShaderPayloadCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxExecutionGraphDepth(maxExecutionGraphDepth).maxExecutionGraphShaderOutputNodes(maxExecutionGraphShaderOutputNodes).maxExecutionGraphShaderPayloadSize(maxExecutionGraphShaderPayloadSize).maxExecutionGraphShaderPayloadCount(maxExecutionGraphShaderPayloadCount);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxExecutionGraphDepth `maxExecutionGraphDepth`
+    /// @param maxExecutionGraphShaderOutputNodes `maxExecutionGraphShaderOutputNodes`
+    /// @param maxExecutionGraphShaderPayloadSize `maxExecutionGraphShaderPayloadSize`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxExecutionGraphDepth, int maxExecutionGraphShaderOutputNodes, int maxExecutionGraphShaderPayloadSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxExecutionGraphDepth(maxExecutionGraphDepth).maxExecutionGraphShaderOutputNodes(maxExecutionGraphShaderOutputNodes).maxExecutionGraphShaderPayloadSize(maxExecutionGraphShaderPayloadSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxExecutionGraphDepth `maxExecutionGraphDepth`
+    /// @param maxExecutionGraphShaderOutputNodes `maxExecutionGraphShaderOutputNodes`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxExecutionGraphDepth, int maxExecutionGraphShaderOutputNodes) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxExecutionGraphDepth(maxExecutionGraphDepth).maxExecutionGraphShaderOutputNodes(maxExecutionGraphShaderOutputNodes);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxExecutionGraphDepth `maxExecutionGraphDepth`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxExecutionGraphDepth) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxExecutionGraphDepth(maxExecutionGraphDepth);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

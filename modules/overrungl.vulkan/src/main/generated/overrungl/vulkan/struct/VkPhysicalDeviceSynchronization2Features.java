@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceSynchronization2Features extends GroupType {
     /// @return the allocated `VkPhysicalDeviceSynchronization2Features`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceSynchronization2Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param synchronization2 `synchronization2`
+    /// @return the allocated `VkPhysicalDeviceSynchronization2Features`
+    public static VkPhysicalDeviceSynchronization2Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int synchronization2) {
+        return alloc(allocator).sType(sType).pNext(pNext).synchronization2(synchronization2);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSynchronization2Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceSynchronization2Features`
+    public static VkPhysicalDeviceSynchronization2Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSynchronization2Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceSynchronization2Features`
+    public static VkPhysicalDeviceSynchronization2Features allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

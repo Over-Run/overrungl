@@ -355,6 +355,924 @@ public sealed class StdVideoH265PictureParameterSet extends GroupType {
     /// @return the allocated `StdVideoH265PictureParameterSet`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @param num_tile_columns_minus1 `num_tile_columns_minus1`
+    /// @param num_tile_rows_minus1 `num_tile_rows_minus1`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param column_width_minus1 `column_width_minus1`
+    /// @param row_height_minus1 `row_height_minus1`
+    /// @param reserved3 `reserved3`
+    /// @param pScalingLists `pScalingLists`
+    /// @param pPredictorPaletteEntries `pPredictorPaletteEntries`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8, byte num_tile_columns_minus1, byte num_tile_rows_minus1, byte reserved1, byte reserved2, MemorySegment column_width_minus1, MemorySegment row_height_minus1, int reserved3, MemorySegment pScalingLists, MemorySegment pPredictorPaletteEntries) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1).reserved1(reserved1).reserved2(reserved2).column_width_minus1(column_width_minus1).row_height_minus1(row_height_minus1).reserved3(reserved3).pScalingLists(pScalingLists).pPredictorPaletteEntries(pPredictorPaletteEntries);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @param num_tile_columns_minus1 `num_tile_columns_minus1`
+    /// @param num_tile_rows_minus1 `num_tile_rows_minus1`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param column_width_minus1 `column_width_minus1`
+    /// @param row_height_minus1 `row_height_minus1`
+    /// @param reserved3 `reserved3`
+    /// @param pScalingLists `pScalingLists`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8, byte num_tile_columns_minus1, byte num_tile_rows_minus1, byte reserved1, byte reserved2, MemorySegment column_width_minus1, MemorySegment row_height_minus1, int reserved3, MemorySegment pScalingLists) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1).reserved1(reserved1).reserved2(reserved2).column_width_minus1(column_width_minus1).row_height_minus1(row_height_minus1).reserved3(reserved3).pScalingLists(pScalingLists);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @param num_tile_columns_minus1 `num_tile_columns_minus1`
+    /// @param num_tile_rows_minus1 `num_tile_rows_minus1`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param column_width_minus1 `column_width_minus1`
+    /// @param row_height_minus1 `row_height_minus1`
+    /// @param reserved3 `reserved3`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8, byte num_tile_columns_minus1, byte num_tile_rows_minus1, byte reserved1, byte reserved2, MemorySegment column_width_minus1, MemorySegment row_height_minus1, int reserved3) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1).reserved1(reserved1).reserved2(reserved2).column_width_minus1(column_width_minus1).row_height_minus1(row_height_minus1).reserved3(reserved3);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @param num_tile_columns_minus1 `num_tile_columns_minus1`
+    /// @param num_tile_rows_minus1 `num_tile_rows_minus1`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param column_width_minus1 `column_width_minus1`
+    /// @param row_height_minus1 `row_height_minus1`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8, byte num_tile_columns_minus1, byte num_tile_rows_minus1, byte reserved1, byte reserved2, MemorySegment column_width_minus1, MemorySegment row_height_minus1) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1).reserved1(reserved1).reserved2(reserved2).column_width_minus1(column_width_minus1).row_height_minus1(row_height_minus1);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @param num_tile_columns_minus1 `num_tile_columns_minus1`
+    /// @param num_tile_rows_minus1 `num_tile_rows_minus1`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @param column_width_minus1 `column_width_minus1`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8, byte num_tile_columns_minus1, byte num_tile_rows_minus1, byte reserved1, byte reserved2, MemorySegment column_width_minus1) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1).reserved1(reserved1).reserved2(reserved2).column_width_minus1(column_width_minus1);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @param num_tile_columns_minus1 `num_tile_columns_minus1`
+    /// @param num_tile_rows_minus1 `num_tile_rows_minus1`
+    /// @param reserved1 `reserved1`
+    /// @param reserved2 `reserved2`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8, byte num_tile_columns_minus1, byte num_tile_rows_minus1, byte reserved1, byte reserved2) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1).reserved1(reserved1).reserved2(reserved2);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @param num_tile_columns_minus1 `num_tile_columns_minus1`
+    /// @param num_tile_rows_minus1 `num_tile_rows_minus1`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8, byte num_tile_columns_minus1, byte num_tile_rows_minus1, byte reserved1) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @param num_tile_columns_minus1 `num_tile_columns_minus1`
+    /// @param num_tile_rows_minus1 `num_tile_rows_minus1`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8, byte num_tile_columns_minus1, byte num_tile_rows_minus1) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1).num_tile_rows_minus1(num_tile_rows_minus1);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @param num_tile_columns_minus1 `num_tile_columns_minus1`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8, byte num_tile_columns_minus1) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8).num_tile_columns_minus1(num_tile_columns_minus1);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @param chroma_bit_depth_entry_minus8 `chroma_bit_depth_entry_minus8`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8, byte chroma_bit_depth_entry_minus8) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8).chroma_bit_depth_entry_minus8(chroma_bit_depth_entry_minus8);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @param luma_bit_depth_entry_minus8 `luma_bit_depth_entry_minus8`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers, byte luma_bit_depth_entry_minus8) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers).luma_bit_depth_entry_minus8(luma_bit_depth_entry_minus8);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @param pps_num_palette_predictor_initializers `pps_num_palette_predictor_initializers`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3, byte pps_num_palette_predictor_initializers) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3).pps_num_palette_predictor_initializers(pps_num_palette_predictor_initializers);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @param pps_act_cr_qp_offset_plus3 `pps_act_cr_qp_offset_plus3`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5, byte pps_act_cr_qp_offset_plus3) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5).pps_act_cr_qp_offset_plus3(pps_act_cr_qp_offset_plus3);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @param pps_act_cb_qp_offset_plus5 `pps_act_cb_qp_offset_plus5`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5, byte pps_act_cb_qp_offset_plus5) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5).pps_act_cb_qp_offset_plus5(pps_act_cb_qp_offset_plus5);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @param pps_act_y_qp_offset_plus5 `pps_act_y_qp_offset_plus5`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma, byte pps_act_y_qp_offset_plus5) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma).pps_act_y_qp_offset_plus5(pps_act_y_qp_offset_plus5);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @param log2_sao_offset_scale_chroma `log2_sao_offset_scale_chroma`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma, byte log2_sao_offset_scale_chroma) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma).log2_sao_offset_scale_chroma(log2_sao_offset_scale_chroma);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @param log2_sao_offset_scale_luma `log2_sao_offset_scale_luma`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list, byte log2_sao_offset_scale_luma) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list).log2_sao_offset_scale_luma(log2_sao_offset_scale_luma);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @param cr_qp_offset_list `cr_qp_offset_list`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list, MemorySegment cr_qp_offset_list) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list).cr_qp_offset_list(cr_qp_offset_list);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @param cb_qp_offset_list `cb_qp_offset_list`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1, MemorySegment cb_qp_offset_list) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1).cb_qp_offset_list(cb_qp_offset_list);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @param chroma_qp_offset_list_len_minus1 `chroma_qp_offset_list_len_minus1`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth, byte chroma_qp_offset_list_len_minus1) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth).chroma_qp_offset_list_len_minus1(chroma_qp_offset_list_len_minus1);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @param diff_cu_chroma_qp_offset_depth `diff_cu_chroma_qp_offset_depth`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2, byte diff_cu_chroma_qp_offset_depth) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2).diff_cu_chroma_qp_offset_depth(diff_cu_chroma_qp_offset_depth);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @param log2_max_transform_skip_block_size_minus2 `log2_max_transform_skip_block_size_minus2`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2, byte log2_max_transform_skip_block_size_minus2) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2).log2_max_transform_skip_block_size_minus2(log2_max_transform_skip_block_size_minus2);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @param log2_parallel_merge_level_minus2 `log2_parallel_merge_level_minus2`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2, byte log2_parallel_merge_level_minus2) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2).log2_parallel_merge_level_minus2(log2_parallel_merge_level_minus2);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @param pps_tc_offset_div2 `pps_tc_offset_div2`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2, byte pps_tc_offset_div2) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2).pps_tc_offset_div2(pps_tc_offset_div2);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @param pps_beta_offset_div2 `pps_beta_offset_div2`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset, byte pps_beta_offset_div2) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset).pps_beta_offset_div2(pps_beta_offset_div2);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @param pps_cr_qp_offset `pps_cr_qp_offset`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset, byte pps_cr_qp_offset) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset).pps_cr_qp_offset(pps_cr_qp_offset);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @param pps_cb_qp_offset `pps_cb_qp_offset`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth, byte pps_cb_qp_offset) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth).pps_cb_qp_offset(pps_cb_qp_offset);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @param diff_cu_qp_delta_depth `diff_cu_qp_delta_depth`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26, byte diff_cu_qp_delta_depth) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26).diff_cu_qp_delta_depth(diff_cu_qp_delta_depth);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @param init_qp_minus26 `init_qp_minus26`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1, byte init_qp_minus26) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1).init_qp_minus26(init_qp_minus26);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @param num_ref_idx_l1_default_active_minus1 `num_ref_idx_l1_default_active_minus1`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1, byte num_ref_idx_l1_default_active_minus1) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1).num_ref_idx_l1_default_active_minus1(num_ref_idx_l1_default_active_minus1);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @param num_ref_idx_l0_default_active_minus1 `num_ref_idx_l0_default_active_minus1`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits, byte num_ref_idx_l0_default_active_minus1) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits).num_ref_idx_l0_default_active_minus1(num_ref_idx_l0_default_active_minus1);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @param num_extra_slice_header_bits `num_extra_slice_header_bits`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id, byte num_extra_slice_header_bits) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id).num_extra_slice_header_bits(num_extra_slice_header_bits);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @param sps_video_parameter_set_id `sps_video_parameter_set_id`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id, byte sps_video_parameter_set_id) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id).sps_video_parameter_set_id(sps_video_parameter_set_id);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @param pps_seq_parameter_set_id `pps_seq_parameter_set_id`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id, byte pps_seq_parameter_set_id) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id).pps_seq_parameter_set_id(pps_seq_parameter_set_id);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param pps_pic_parameter_set_id `pps_pic_parameter_set_id`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags, byte pps_pic_parameter_set_id) {
+        return alloc(allocator).flags(flags).pps_pic_parameter_set_id(pps_pic_parameter_set_id);
+    }
+
+    /// Allocates a `StdVideoH265PictureParameterSet` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoH265PictureParameterSet`
+    public static StdVideoH265PictureParameterSet allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

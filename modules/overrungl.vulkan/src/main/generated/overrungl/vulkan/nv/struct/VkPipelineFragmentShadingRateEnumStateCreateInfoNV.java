@@ -109,6 +109,56 @@ public sealed class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends G
     /// @return the allocated `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateType `shadingRateType`
+    /// @param shadingRate `shadingRate`
+    /// @param combinerOps `combinerOps`
+    /// @return the allocated `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shadingRateType, int shadingRate, MemorySegment combinerOps) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateType(shadingRateType).shadingRate(shadingRate).combinerOps(combinerOps);
+    }
+
+    /// Allocates a `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateType `shadingRateType`
+    /// @param shadingRate `shadingRate`
+    /// @return the allocated `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shadingRateType, int shadingRate) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateType(shadingRateType).shadingRate(shadingRate);
+    }
+
+    /// Allocates a `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param shadingRateType `shadingRateType`
+    /// @return the allocated `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shadingRateType) {
+        return alloc(allocator).sType(sType).pNext(pNext).shadingRateType(shadingRateType);
+    }
+
+    /// Allocates a `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

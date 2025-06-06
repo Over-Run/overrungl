@@ -81,6 +81,23 @@ public sealed class VkClearValue extends GroupType {
     /// @return the allocated `VkClearValue`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkClearValue` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param color `color`
+    /// @param depthStencil `depthStencil`
+    /// @return the allocated `VkClearValue`
+    public static VkClearValue allocInit(SegmentAllocator allocator, MemorySegment color, MemorySegment depthStencil) {
+        return alloc(allocator).color(color).depthStencil(depthStencil);
+    }
+
+    /// Allocates a `VkClearValue` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param color `color`
+    /// @return the allocated `VkClearValue`
+    public static VkClearValue allocInit(SegmentAllocator allocator, MemorySegment color) {
+        return alloc(allocator).color(color);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

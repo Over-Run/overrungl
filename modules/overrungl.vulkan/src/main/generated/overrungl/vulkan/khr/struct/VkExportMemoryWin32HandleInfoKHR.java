@@ -109,6 +109,56 @@ public sealed class VkExportMemoryWin32HandleInfoKHR extends GroupType {
     /// @return the allocated `VkExportMemoryWin32HandleInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkExportMemoryWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pAttributes `pAttributes`
+    /// @param dwAccess `dwAccess`
+    /// @param name `name`
+    /// @return the allocated `VkExportMemoryWin32HandleInfoKHR`
+    public static VkExportMemoryWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pAttributes, long dwAccess, MemorySegment name) {
+        return alloc(allocator).sType(sType).pNext(pNext).pAttributes(pAttributes).dwAccess(dwAccess).name(name);
+    }
+
+    /// Allocates a `VkExportMemoryWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pAttributes `pAttributes`
+    /// @param dwAccess `dwAccess`
+    /// @return the allocated `VkExportMemoryWin32HandleInfoKHR`
+    public static VkExportMemoryWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pAttributes, long dwAccess) {
+        return alloc(allocator).sType(sType).pNext(pNext).pAttributes(pAttributes).dwAccess(dwAccess);
+    }
+
+    /// Allocates a `VkExportMemoryWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param pAttributes `pAttributes`
+    /// @return the allocated `VkExportMemoryWin32HandleInfoKHR`
+    public static VkExportMemoryWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pAttributes) {
+        return alloc(allocator).sType(sType).pNext(pNext).pAttributes(pAttributes);
+    }
+
+    /// Allocates a `VkExportMemoryWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkExportMemoryWin32HandleInfoKHR`
+    public static VkExportMemoryWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkExportMemoryWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkExportMemoryWin32HandleInfoKHR`
+    public static VkExportMemoryWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

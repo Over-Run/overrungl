@@ -141,6 +141,114 @@ public sealed class VkFramebufferCreateInfo extends GroupType {
     /// @return the allocated `VkFramebufferCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param renderPass `renderPass`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @param width `width`
+    /// @param height `height`
+    /// @param layers `layers`
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long renderPass, int attachmentCount, MemorySegment pAttachments, int width, int height, int layers) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).renderPass(renderPass).attachmentCount(attachmentCount).pAttachments(pAttachments).width(width).height(height).layers(layers);
+    }
+
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param renderPass `renderPass`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @param width `width`
+    /// @param height `height`
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long renderPass, int attachmentCount, MemorySegment pAttachments, int width, int height) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).renderPass(renderPass).attachmentCount(attachmentCount).pAttachments(pAttachments).width(width).height(height);
+    }
+
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param renderPass `renderPass`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @param width `width`
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long renderPass, int attachmentCount, MemorySegment pAttachments, int width) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).renderPass(renderPass).attachmentCount(attachmentCount).pAttachments(pAttachments).width(width);
+    }
+
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param renderPass `renderPass`
+    /// @param attachmentCount `attachmentCount`
+    /// @param pAttachments `pAttachments`
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long renderPass, int attachmentCount, MemorySegment pAttachments) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).renderPass(renderPass).attachmentCount(attachmentCount).pAttachments(pAttachments);
+    }
+
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param renderPass `renderPass`
+    /// @param attachmentCount `attachmentCount`
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long renderPass, int attachmentCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).renderPass(renderPass).attachmentCount(attachmentCount);
+    }
+
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param renderPass `renderPass`
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long renderPass) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).renderPass(renderPass);
+    }
+
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkFramebufferCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkFramebufferCreateInfo`
+    public static VkFramebufferCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

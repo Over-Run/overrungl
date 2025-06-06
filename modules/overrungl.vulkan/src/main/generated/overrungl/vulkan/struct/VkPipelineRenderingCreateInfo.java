@@ -125,6 +125,83 @@ public sealed class VkPipelineRenderingCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineRenderingCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineRenderingCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewMask `viewMask`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @param pColorAttachmentFormats `pColorAttachmentFormats`
+    /// @param depthAttachmentFormat `depthAttachmentFormat`
+    /// @param stencilAttachmentFormat `stencilAttachmentFormat`
+    /// @return the allocated `VkPipelineRenderingCreateInfo`
+    public static VkPipelineRenderingCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewMask, int colorAttachmentCount, MemorySegment pColorAttachmentFormats, int depthAttachmentFormat, int stencilAttachmentFormat) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewMask(viewMask).colorAttachmentCount(colorAttachmentCount).pColorAttachmentFormats(pColorAttachmentFormats).depthAttachmentFormat(depthAttachmentFormat).stencilAttachmentFormat(stencilAttachmentFormat);
+    }
+
+    /// Allocates a `VkPipelineRenderingCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewMask `viewMask`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @param pColorAttachmentFormats `pColorAttachmentFormats`
+    /// @param depthAttachmentFormat `depthAttachmentFormat`
+    /// @return the allocated `VkPipelineRenderingCreateInfo`
+    public static VkPipelineRenderingCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewMask, int colorAttachmentCount, MemorySegment pColorAttachmentFormats, int depthAttachmentFormat) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewMask(viewMask).colorAttachmentCount(colorAttachmentCount).pColorAttachmentFormats(pColorAttachmentFormats).depthAttachmentFormat(depthAttachmentFormat);
+    }
+
+    /// Allocates a `VkPipelineRenderingCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewMask `viewMask`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @param pColorAttachmentFormats `pColorAttachmentFormats`
+    /// @return the allocated `VkPipelineRenderingCreateInfo`
+    public static VkPipelineRenderingCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewMask, int colorAttachmentCount, MemorySegment pColorAttachmentFormats) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewMask(viewMask).colorAttachmentCount(colorAttachmentCount).pColorAttachmentFormats(pColorAttachmentFormats);
+    }
+
+    /// Allocates a `VkPipelineRenderingCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewMask `viewMask`
+    /// @param colorAttachmentCount `colorAttachmentCount`
+    /// @return the allocated `VkPipelineRenderingCreateInfo`
+    public static VkPipelineRenderingCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewMask, int colorAttachmentCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewMask(viewMask).colorAttachmentCount(colorAttachmentCount);
+    }
+
+    /// Allocates a `VkPipelineRenderingCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewMask `viewMask`
+    /// @return the allocated `VkPipelineRenderingCreateInfo`
+    public static VkPipelineRenderingCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewMask(viewMask);
+    }
+
+    /// Allocates a `VkPipelineRenderingCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineRenderingCreateInfo`
+    public static VkPipelineRenderingCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineRenderingCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineRenderingCreateInfo`
+    public static VkPipelineRenderingCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

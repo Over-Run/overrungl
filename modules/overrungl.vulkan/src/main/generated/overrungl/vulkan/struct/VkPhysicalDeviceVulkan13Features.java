@@ -205,6 +205,278 @@ public sealed class VkPhysicalDeviceVulkan13Features extends GroupType {
     /// @return the allocated `VkPhysicalDeviceVulkan13Features`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @param shaderTerminateInvocation `shaderTerminateInvocation`
+    /// @param subgroupSizeControl `subgroupSizeControl`
+    /// @param computeFullSubgroups `computeFullSubgroups`
+    /// @param synchronization2 `synchronization2`
+    /// @param textureCompressionASTC_HDR `textureCompressionASTC_HDR`
+    /// @param shaderZeroInitializeWorkgroupMemory `shaderZeroInitializeWorkgroupMemory`
+    /// @param dynamicRendering `dynamicRendering`
+    /// @param shaderIntegerDotProduct `shaderIntegerDotProduct`
+    /// @param maintenance4 `maintenance4`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation, int shaderTerminateInvocation, int subgroupSizeControl, int computeFullSubgroups, int synchronization2, int textureCompressionASTC_HDR, int shaderZeroInitializeWorkgroupMemory, int dynamicRendering, int shaderIntegerDotProduct, int maintenance4) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups).synchronization2(synchronization2).textureCompressionASTC_HDR(textureCompressionASTC_HDR).shaderZeroInitializeWorkgroupMemory(shaderZeroInitializeWorkgroupMemory).dynamicRendering(dynamicRendering).shaderIntegerDotProduct(shaderIntegerDotProduct).maintenance4(maintenance4);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @param shaderTerminateInvocation `shaderTerminateInvocation`
+    /// @param subgroupSizeControl `subgroupSizeControl`
+    /// @param computeFullSubgroups `computeFullSubgroups`
+    /// @param synchronization2 `synchronization2`
+    /// @param textureCompressionASTC_HDR `textureCompressionASTC_HDR`
+    /// @param shaderZeroInitializeWorkgroupMemory `shaderZeroInitializeWorkgroupMemory`
+    /// @param dynamicRendering `dynamicRendering`
+    /// @param shaderIntegerDotProduct `shaderIntegerDotProduct`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation, int shaderTerminateInvocation, int subgroupSizeControl, int computeFullSubgroups, int synchronization2, int textureCompressionASTC_HDR, int shaderZeroInitializeWorkgroupMemory, int dynamicRendering, int shaderIntegerDotProduct) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups).synchronization2(synchronization2).textureCompressionASTC_HDR(textureCompressionASTC_HDR).shaderZeroInitializeWorkgroupMemory(shaderZeroInitializeWorkgroupMemory).dynamicRendering(dynamicRendering).shaderIntegerDotProduct(shaderIntegerDotProduct);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @param shaderTerminateInvocation `shaderTerminateInvocation`
+    /// @param subgroupSizeControl `subgroupSizeControl`
+    /// @param computeFullSubgroups `computeFullSubgroups`
+    /// @param synchronization2 `synchronization2`
+    /// @param textureCompressionASTC_HDR `textureCompressionASTC_HDR`
+    /// @param shaderZeroInitializeWorkgroupMemory `shaderZeroInitializeWorkgroupMemory`
+    /// @param dynamicRendering `dynamicRendering`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation, int shaderTerminateInvocation, int subgroupSizeControl, int computeFullSubgroups, int synchronization2, int textureCompressionASTC_HDR, int shaderZeroInitializeWorkgroupMemory, int dynamicRendering) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups).synchronization2(synchronization2).textureCompressionASTC_HDR(textureCompressionASTC_HDR).shaderZeroInitializeWorkgroupMemory(shaderZeroInitializeWorkgroupMemory).dynamicRendering(dynamicRendering);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @param shaderTerminateInvocation `shaderTerminateInvocation`
+    /// @param subgroupSizeControl `subgroupSizeControl`
+    /// @param computeFullSubgroups `computeFullSubgroups`
+    /// @param synchronization2 `synchronization2`
+    /// @param textureCompressionASTC_HDR `textureCompressionASTC_HDR`
+    /// @param shaderZeroInitializeWorkgroupMemory `shaderZeroInitializeWorkgroupMemory`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation, int shaderTerminateInvocation, int subgroupSizeControl, int computeFullSubgroups, int synchronization2, int textureCompressionASTC_HDR, int shaderZeroInitializeWorkgroupMemory) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups).synchronization2(synchronization2).textureCompressionASTC_HDR(textureCompressionASTC_HDR).shaderZeroInitializeWorkgroupMemory(shaderZeroInitializeWorkgroupMemory);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @param shaderTerminateInvocation `shaderTerminateInvocation`
+    /// @param subgroupSizeControl `subgroupSizeControl`
+    /// @param computeFullSubgroups `computeFullSubgroups`
+    /// @param synchronization2 `synchronization2`
+    /// @param textureCompressionASTC_HDR `textureCompressionASTC_HDR`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation, int shaderTerminateInvocation, int subgroupSizeControl, int computeFullSubgroups, int synchronization2, int textureCompressionASTC_HDR) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups).synchronization2(synchronization2).textureCompressionASTC_HDR(textureCompressionASTC_HDR);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @param shaderTerminateInvocation `shaderTerminateInvocation`
+    /// @param subgroupSizeControl `subgroupSizeControl`
+    /// @param computeFullSubgroups `computeFullSubgroups`
+    /// @param synchronization2 `synchronization2`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation, int shaderTerminateInvocation, int subgroupSizeControl, int computeFullSubgroups, int synchronization2) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups).synchronization2(synchronization2);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @param shaderTerminateInvocation `shaderTerminateInvocation`
+    /// @param subgroupSizeControl `subgroupSizeControl`
+    /// @param computeFullSubgroups `computeFullSubgroups`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation, int shaderTerminateInvocation, int subgroupSizeControl, int computeFullSubgroups) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @param shaderTerminateInvocation `shaderTerminateInvocation`
+    /// @param subgroupSizeControl `subgroupSizeControl`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation, int shaderTerminateInvocation, int subgroupSizeControl) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation).subgroupSizeControl(subgroupSizeControl);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @param shaderTerminateInvocation `shaderTerminateInvocation`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation, int shaderTerminateInvocation) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation).shaderTerminateInvocation(shaderTerminateInvocation);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @param shaderDemoteToHelperInvocation `shaderDemoteToHelperInvocation`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData, int shaderDemoteToHelperInvocation) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData).shaderDemoteToHelperInvocation(shaderDemoteToHelperInvocation);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @param privateData `privateData`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl, int privateData) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl).privateData(privateData);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind, int pipelineCreationCacheControl) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind).pipelineCreationCacheControl(pipelineCreationCacheControl);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @param inlineUniformBlock `inlineUniformBlock`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess, int inlineUniformBlock) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess).inlineUniformBlock(inlineUniformBlock);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceVulkan13Features` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceVulkan13Features`
+    public static VkPhysicalDeviceVulkan13Features allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -117,6 +117,69 @@ public sealed class VkAllocationCallbacks extends GroupType {
     /// @return the allocated `VkAllocationCallbacks`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkAllocationCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pUserData `pUserData`
+    /// @param pfnAllocation `pfnAllocation`
+    /// @param pfnReallocation `pfnReallocation`
+    /// @param pfnFree `pfnFree`
+    /// @param pfnInternalAllocation `pfnInternalAllocation`
+    /// @param pfnInternalFree `pfnInternalFree`
+    /// @return the allocated `VkAllocationCallbacks`
+    public static VkAllocationCallbacks allocInit(SegmentAllocator allocator, MemorySegment pUserData, MemorySegment pfnAllocation, MemorySegment pfnReallocation, MemorySegment pfnFree, MemorySegment pfnInternalAllocation, MemorySegment pfnInternalFree) {
+        return alloc(allocator).pUserData(pUserData).pfnAllocation(pfnAllocation).pfnReallocation(pfnReallocation).pfnFree(pfnFree).pfnInternalAllocation(pfnInternalAllocation).pfnInternalFree(pfnInternalFree);
+    }
+
+    /// Allocates a `VkAllocationCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pUserData `pUserData`
+    /// @param pfnAllocation `pfnAllocation`
+    /// @param pfnReallocation `pfnReallocation`
+    /// @param pfnFree `pfnFree`
+    /// @param pfnInternalAllocation `pfnInternalAllocation`
+    /// @return the allocated `VkAllocationCallbacks`
+    public static VkAllocationCallbacks allocInit(SegmentAllocator allocator, MemorySegment pUserData, MemorySegment pfnAllocation, MemorySegment pfnReallocation, MemorySegment pfnFree, MemorySegment pfnInternalAllocation) {
+        return alloc(allocator).pUserData(pUserData).pfnAllocation(pfnAllocation).pfnReallocation(pfnReallocation).pfnFree(pfnFree).pfnInternalAllocation(pfnInternalAllocation);
+    }
+
+    /// Allocates a `VkAllocationCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pUserData `pUserData`
+    /// @param pfnAllocation `pfnAllocation`
+    /// @param pfnReallocation `pfnReallocation`
+    /// @param pfnFree `pfnFree`
+    /// @return the allocated `VkAllocationCallbacks`
+    public static VkAllocationCallbacks allocInit(SegmentAllocator allocator, MemorySegment pUserData, MemorySegment pfnAllocation, MemorySegment pfnReallocation, MemorySegment pfnFree) {
+        return alloc(allocator).pUserData(pUserData).pfnAllocation(pfnAllocation).pfnReallocation(pfnReallocation).pfnFree(pfnFree);
+    }
+
+    /// Allocates a `VkAllocationCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pUserData `pUserData`
+    /// @param pfnAllocation `pfnAllocation`
+    /// @param pfnReallocation `pfnReallocation`
+    /// @return the allocated `VkAllocationCallbacks`
+    public static VkAllocationCallbacks allocInit(SegmentAllocator allocator, MemorySegment pUserData, MemorySegment pfnAllocation, MemorySegment pfnReallocation) {
+        return alloc(allocator).pUserData(pUserData).pfnAllocation(pfnAllocation).pfnReallocation(pfnReallocation);
+    }
+
+    /// Allocates a `VkAllocationCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pUserData `pUserData`
+    /// @param pfnAllocation `pfnAllocation`
+    /// @return the allocated `VkAllocationCallbacks`
+    public static VkAllocationCallbacks allocInit(SegmentAllocator allocator, MemorySegment pUserData, MemorySegment pfnAllocation) {
+        return alloc(allocator).pUserData(pUserData).pfnAllocation(pfnAllocation);
+    }
+
+    /// Allocates a `VkAllocationCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pUserData `pUserData`
+    /// @return the allocated `VkAllocationCallbacks`
+    public static VkAllocationCallbacks allocInit(SegmentAllocator allocator, MemorySegment pUserData) {
+        return alloc(allocator).pUserData(pUserData);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

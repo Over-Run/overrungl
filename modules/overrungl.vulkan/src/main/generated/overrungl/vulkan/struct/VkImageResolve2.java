@@ -115,6 +115,83 @@ public sealed class VkImageResolve2 extends GroupType {
     /// @return the allocated `VkImageResolve2`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkImageResolve2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubresource `srcSubresource`
+    /// @param srcOffset `srcOffset`
+    /// @param dstSubresource `dstSubresource`
+    /// @param dstOffset `dstOffset`
+    /// @param extent `extent`
+    /// @return the allocated `VkImageResolve2`
+    public static VkImageResolve2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcSubresource, MemorySegment srcOffset, MemorySegment dstSubresource, MemorySegment dstOffset, MemorySegment extent) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource).dstOffset(dstOffset).extent(extent);
+    }
+
+    /// Allocates a `VkImageResolve2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubresource `srcSubresource`
+    /// @param srcOffset `srcOffset`
+    /// @param dstSubresource `dstSubresource`
+    /// @param dstOffset `dstOffset`
+    /// @return the allocated `VkImageResolve2`
+    public static VkImageResolve2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcSubresource, MemorySegment srcOffset, MemorySegment dstSubresource, MemorySegment dstOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource).dstOffset(dstOffset);
+    }
+
+    /// Allocates a `VkImageResolve2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubresource `srcSubresource`
+    /// @param srcOffset `srcOffset`
+    /// @param dstSubresource `dstSubresource`
+    /// @return the allocated `VkImageResolve2`
+    public static VkImageResolve2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcSubresource, MemorySegment srcOffset, MemorySegment dstSubresource) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource);
+    }
+
+    /// Allocates a `VkImageResolve2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubresource `srcSubresource`
+    /// @param srcOffset `srcOffset`
+    /// @return the allocated `VkImageResolve2`
+    public static VkImageResolve2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcSubresource, MemorySegment srcOffset) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubresource(srcSubresource).srcOffset(srcOffset);
+    }
+
+    /// Allocates a `VkImageResolve2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param srcSubresource `srcSubresource`
+    /// @return the allocated `VkImageResolve2`
+    public static VkImageResolve2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcSubresource) {
+        return alloc(allocator).sType(sType).pNext(pNext).srcSubresource(srcSubresource);
+    }
+
+    /// Allocates a `VkImageResolve2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkImageResolve2`
+    public static VkImageResolve2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkImageResolve2` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkImageResolve2`
+    public static VkImageResolve2 allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

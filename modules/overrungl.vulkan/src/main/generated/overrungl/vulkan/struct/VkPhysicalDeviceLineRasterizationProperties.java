@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceLineRasterizationProperties extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceLineRasterizationProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceLineRasterizationProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param lineSubPixelPrecisionBits `lineSubPixelPrecisionBits`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationProperties`
+    public static VkPhysicalDeviceLineRasterizationProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int lineSubPixelPrecisionBits) {
+        return alloc(allocator).sType(sType).pNext(pNext).lineSubPixelPrecisionBits(lineSubPixelPrecisionBits);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLineRasterizationProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationProperties`
+    public static VkPhysicalDeviceLineRasterizationProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceLineRasterizationProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceLineRasterizationProperties`
+    public static VkPhysicalDeviceLineRasterizationProperties allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

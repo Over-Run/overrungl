@@ -109,6 +109,56 @@ public sealed class VkMicromapBuildSizesInfoEXT extends GroupType {
     /// @return the allocated `VkMicromapBuildSizesInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkMicromapBuildSizesInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param micromapSize `micromapSize`
+    /// @param buildScratchSize `buildScratchSize`
+    /// @param discardable `discardable`
+    /// @return the allocated `VkMicromapBuildSizesInfoEXT`
+    public static VkMicromapBuildSizesInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long micromapSize, long buildScratchSize, int discardable) {
+        return alloc(allocator).sType(sType).pNext(pNext).micromapSize(micromapSize).buildScratchSize(buildScratchSize).discardable(discardable);
+    }
+
+    /// Allocates a `VkMicromapBuildSizesInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param micromapSize `micromapSize`
+    /// @param buildScratchSize `buildScratchSize`
+    /// @return the allocated `VkMicromapBuildSizesInfoEXT`
+    public static VkMicromapBuildSizesInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long micromapSize, long buildScratchSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).micromapSize(micromapSize).buildScratchSize(buildScratchSize);
+    }
+
+    /// Allocates a `VkMicromapBuildSizesInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param micromapSize `micromapSize`
+    /// @return the allocated `VkMicromapBuildSizesInfoEXT`
+    public static VkMicromapBuildSizesInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long micromapSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).micromapSize(micromapSize);
+    }
+
+    /// Allocates a `VkMicromapBuildSizesInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkMicromapBuildSizesInfoEXT`
+    public static VkMicromapBuildSizesInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkMicromapBuildSizesInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkMicromapBuildSizesInfoEXT`
+    public static VkMicromapBuildSizesInfoEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

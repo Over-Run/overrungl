@@ -117,6 +117,69 @@ public sealed class VkValidationFeaturesEXT extends GroupType {
     /// @return the allocated `VkValidationFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param enabledValidationFeatureCount `enabledValidationFeatureCount`
+    /// @param pEnabledValidationFeatures `pEnabledValidationFeatures`
+    /// @param disabledValidationFeatureCount `disabledValidationFeatureCount`
+    /// @param pDisabledValidationFeatures `pDisabledValidationFeatures`
+    /// @return the allocated `VkValidationFeaturesEXT`
+    public static VkValidationFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int enabledValidationFeatureCount, MemorySegment pEnabledValidationFeatures, int disabledValidationFeatureCount, MemorySegment pDisabledValidationFeatures) {
+        return alloc(allocator).sType(sType).pNext(pNext).enabledValidationFeatureCount(enabledValidationFeatureCount).pEnabledValidationFeatures(pEnabledValidationFeatures).disabledValidationFeatureCount(disabledValidationFeatureCount).pDisabledValidationFeatures(pDisabledValidationFeatures);
+    }
+
+    /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param enabledValidationFeatureCount `enabledValidationFeatureCount`
+    /// @param pEnabledValidationFeatures `pEnabledValidationFeatures`
+    /// @param disabledValidationFeatureCount `disabledValidationFeatureCount`
+    /// @return the allocated `VkValidationFeaturesEXT`
+    public static VkValidationFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int enabledValidationFeatureCount, MemorySegment pEnabledValidationFeatures, int disabledValidationFeatureCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).enabledValidationFeatureCount(enabledValidationFeatureCount).pEnabledValidationFeatures(pEnabledValidationFeatures).disabledValidationFeatureCount(disabledValidationFeatureCount);
+    }
+
+    /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param enabledValidationFeatureCount `enabledValidationFeatureCount`
+    /// @param pEnabledValidationFeatures `pEnabledValidationFeatures`
+    /// @return the allocated `VkValidationFeaturesEXT`
+    public static VkValidationFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int enabledValidationFeatureCount, MemorySegment pEnabledValidationFeatures) {
+        return alloc(allocator).sType(sType).pNext(pNext).enabledValidationFeatureCount(enabledValidationFeatureCount).pEnabledValidationFeatures(pEnabledValidationFeatures);
+    }
+
+    /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param enabledValidationFeatureCount `enabledValidationFeatureCount`
+    /// @return the allocated `VkValidationFeaturesEXT`
+    public static VkValidationFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int enabledValidationFeatureCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).enabledValidationFeatureCount(enabledValidationFeatureCount);
+    }
+
+    /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkValidationFeaturesEXT`
+    public static VkValidationFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkValidationFeaturesEXT`
+    public static VkValidationFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends GroupType {
     /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param b32 `b32`
+    /// @param i64 `i64`
+    /// @param u64 `u64`
+    /// @param f64 `f64`
+    /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
+    public static VkPipelineExecutableStatisticValueKHR allocInit(SegmentAllocator allocator, int b32, long i64, long u64, double f64) {
+        return alloc(allocator).b32(b32).i64(i64).u64(u64).f64(f64);
+    }
+
+    /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param b32 `b32`
+    /// @param i64 `i64`
+    /// @param u64 `u64`
+    /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
+    public static VkPipelineExecutableStatisticValueKHR allocInit(SegmentAllocator allocator, int b32, long i64, long u64) {
+        return alloc(allocator).b32(b32).i64(i64).u64(u64);
+    }
+
+    /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param b32 `b32`
+    /// @param i64 `i64`
+    /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
+    public static VkPipelineExecutableStatisticValueKHR allocInit(SegmentAllocator allocator, int b32, long i64) {
+        return alloc(allocator).b32(b32).i64(i64);
+    }
+
+    /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param b32 `b32`
+    /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
+    public static VkPipelineExecutableStatisticValueKHR allocInit(SegmentAllocator allocator, int b32) {
+        return alloc(allocator).b32(b32);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

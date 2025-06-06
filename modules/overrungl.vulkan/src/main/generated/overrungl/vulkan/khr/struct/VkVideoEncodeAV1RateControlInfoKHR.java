@@ -125,6 +125,83 @@ public sealed class VkVideoEncodeAV1RateControlInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeAV1RateControlInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeAV1RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param gopFrameCount `gopFrameCount`
+    /// @param keyFramePeriod `keyFramePeriod`
+    /// @param consecutiveBipredictiveFrameCount `consecutiveBipredictiveFrameCount`
+    /// @param temporalLayerCount `temporalLayerCount`
+    /// @return the allocated `VkVideoEncodeAV1RateControlInfoKHR`
+    public static VkVideoEncodeAV1RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int gopFrameCount, int keyFramePeriod, int consecutiveBipredictiveFrameCount, int temporalLayerCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).gopFrameCount(gopFrameCount).keyFramePeriod(keyFramePeriod).consecutiveBipredictiveFrameCount(consecutiveBipredictiveFrameCount).temporalLayerCount(temporalLayerCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param gopFrameCount `gopFrameCount`
+    /// @param keyFramePeriod `keyFramePeriod`
+    /// @param consecutiveBipredictiveFrameCount `consecutiveBipredictiveFrameCount`
+    /// @return the allocated `VkVideoEncodeAV1RateControlInfoKHR`
+    public static VkVideoEncodeAV1RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int gopFrameCount, int keyFramePeriod, int consecutiveBipredictiveFrameCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).gopFrameCount(gopFrameCount).keyFramePeriod(keyFramePeriod).consecutiveBipredictiveFrameCount(consecutiveBipredictiveFrameCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param gopFrameCount `gopFrameCount`
+    /// @param keyFramePeriod `keyFramePeriod`
+    /// @return the allocated `VkVideoEncodeAV1RateControlInfoKHR`
+    public static VkVideoEncodeAV1RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int gopFrameCount, int keyFramePeriod) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).gopFrameCount(gopFrameCount).keyFramePeriod(keyFramePeriod);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param gopFrameCount `gopFrameCount`
+    /// @return the allocated `VkVideoEncodeAV1RateControlInfoKHR`
+    public static VkVideoEncodeAV1RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int gopFrameCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).gopFrameCount(gopFrameCount);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkVideoEncodeAV1RateControlInfoKHR`
+    public static VkVideoEncodeAV1RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeAV1RateControlInfoKHR`
+    public static VkVideoEncodeAV1RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeAV1RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeAV1RateControlInfoKHR`
+    public static VkVideoEncodeAV1RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

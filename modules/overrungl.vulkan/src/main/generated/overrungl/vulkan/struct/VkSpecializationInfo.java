@@ -101,6 +101,44 @@ public sealed class VkSpecializationInfo extends GroupType {
     /// @return the allocated `VkSpecializationInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSpecializationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param mapEntryCount `mapEntryCount`
+    /// @param pMapEntries `pMapEntries`
+    /// @param dataSize `dataSize`
+    /// @param pData `pData`
+    /// @return the allocated `VkSpecializationInfo`
+    public static VkSpecializationInfo allocInit(SegmentAllocator allocator, int mapEntryCount, MemorySegment pMapEntries, long dataSize, MemorySegment pData) {
+        return alloc(allocator).mapEntryCount(mapEntryCount).pMapEntries(pMapEntries).dataSize(dataSize).pData(pData);
+    }
+
+    /// Allocates a `VkSpecializationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param mapEntryCount `mapEntryCount`
+    /// @param pMapEntries `pMapEntries`
+    /// @param dataSize `dataSize`
+    /// @return the allocated `VkSpecializationInfo`
+    public static VkSpecializationInfo allocInit(SegmentAllocator allocator, int mapEntryCount, MemorySegment pMapEntries, long dataSize) {
+        return alloc(allocator).mapEntryCount(mapEntryCount).pMapEntries(pMapEntries).dataSize(dataSize);
+    }
+
+    /// Allocates a `VkSpecializationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param mapEntryCount `mapEntryCount`
+    /// @param pMapEntries `pMapEntries`
+    /// @return the allocated `VkSpecializationInfo`
+    public static VkSpecializationInfo allocInit(SegmentAllocator allocator, int mapEntryCount, MemorySegment pMapEntries) {
+        return alloc(allocator).mapEntryCount(mapEntryCount).pMapEntries(pMapEntries);
+    }
+
+    /// Allocates a `VkSpecializationInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param mapEntryCount `mapEntryCount`
+    /// @return the allocated `VkSpecializationInfo`
+    public static VkSpecializationInfo allocInit(SegmentAllocator allocator, int mapEntryCount) {
+        return alloc(allocator).mapEntryCount(mapEntryCount);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

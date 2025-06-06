@@ -117,6 +117,69 @@ public sealed class VkSemaphoreSubmitInfo extends GroupType {
     /// @return the allocated `VkSemaphoreSubmitInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSemaphoreSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @param value `value`
+    /// @param stageMask `stageMask`
+    /// @param deviceIndex `deviceIndex`
+    /// @return the allocated `VkSemaphoreSubmitInfo`
+    public static VkSemaphoreSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, long value, long stageMask, int deviceIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).value(value).stageMask(stageMask).deviceIndex(deviceIndex);
+    }
+
+    /// Allocates a `VkSemaphoreSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @param value `value`
+    /// @param stageMask `stageMask`
+    /// @return the allocated `VkSemaphoreSubmitInfo`
+    public static VkSemaphoreSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, long value, long stageMask) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).value(value).stageMask(stageMask);
+    }
+
+    /// Allocates a `VkSemaphoreSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @param value `value`
+    /// @return the allocated `VkSemaphoreSubmitInfo`
+    public static VkSemaphoreSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, long value) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).value(value);
+    }
+
+    /// Allocates a `VkSemaphoreSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphore `semaphore`
+    /// @return the allocated `VkSemaphoreSubmitInfo`
+    public static VkSemaphoreSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore);
+    }
+
+    /// Allocates a `VkSemaphoreSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSemaphoreSubmitInfo`
+    public static VkSemaphoreSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSemaphoreSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSemaphoreSubmitInfo`
+    public static VkSemaphoreSubmitInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

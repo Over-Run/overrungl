@@ -93,6 +93,33 @@ public sealed class VkRefreshObjectKHR extends GroupType {
     /// @return the allocated `VkRefreshObjectKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRefreshObjectKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param objectType `objectType`
+    /// @param objectHandle `objectHandle`
+    /// @param flags `flags`
+    /// @return the allocated `VkRefreshObjectKHR`
+    public static VkRefreshObjectKHR allocInit(SegmentAllocator allocator, int objectType, long objectHandle, int flags) {
+        return alloc(allocator).objectType(objectType).objectHandle(objectHandle).flags(flags);
+    }
+
+    /// Allocates a `VkRefreshObjectKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param objectType `objectType`
+    /// @param objectHandle `objectHandle`
+    /// @return the allocated `VkRefreshObjectKHR`
+    public static VkRefreshObjectKHR allocInit(SegmentAllocator allocator, int objectType, long objectHandle) {
+        return alloc(allocator).objectType(objectType).objectHandle(objectHandle);
+    }
+
+    /// Allocates a `VkRefreshObjectKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param objectType `objectType`
+    /// @return the allocated `VkRefreshObjectKHR`
+    public static VkRefreshObjectKHR allocInit(SegmentAllocator allocator, int objectType) {
+        return alloc(allocator).objectType(objectType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

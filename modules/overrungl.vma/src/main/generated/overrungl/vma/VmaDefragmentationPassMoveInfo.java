@@ -85,6 +85,23 @@ public sealed class VmaDefragmentationPassMoveInfo extends GroupType {
     /// @return the allocated `VmaDefragmentationPassMoveInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VmaDefragmentationPassMoveInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param moveCount `moveCount`
+    /// @param pMoves `pMoves`
+    /// @return the allocated `VmaDefragmentationPassMoveInfo`
+    public static VmaDefragmentationPassMoveInfo allocInit(SegmentAllocator allocator, int moveCount, MemorySegment pMoves) {
+        return alloc(allocator).moveCount(moveCount).pMoves(pMoves);
+    }
+
+    /// Allocates a `VmaDefragmentationPassMoveInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param moveCount `moveCount`
+    /// @return the allocated `VmaDefragmentationPassMoveInfo`
+    public static VmaDefragmentationPassMoveInfo allocInit(SegmentAllocator allocator, int moveCount) {
+        return alloc(allocator).moveCount(moveCount);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

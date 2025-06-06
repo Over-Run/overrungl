@@ -93,6 +93,33 @@ public sealed class VkSharedPresentSurfaceCapabilitiesKHR extends GroupType {
     /// @return the allocated `VkSharedPresentSurfaceCapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSharedPresentSurfaceCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param sharedPresentSupportedUsageFlags `sharedPresentSupportedUsageFlags`
+    /// @return the allocated `VkSharedPresentSurfaceCapabilitiesKHR`
+    public static VkSharedPresentSurfaceCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sharedPresentSupportedUsageFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).sharedPresentSupportedUsageFlags(sharedPresentSupportedUsageFlags);
+    }
+
+    /// Allocates a `VkSharedPresentSurfaceCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSharedPresentSurfaceCapabilitiesKHR`
+    public static VkSharedPresentSurfaceCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSharedPresentSurfaceCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSharedPresentSurfaceCapabilitiesKHR`
+    public static VkSharedPresentSurfaceCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

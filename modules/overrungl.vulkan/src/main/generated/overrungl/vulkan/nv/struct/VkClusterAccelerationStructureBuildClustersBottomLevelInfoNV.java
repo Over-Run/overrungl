@@ -93,6 +93,33 @@ public sealed class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV
     /// @return the allocated `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param clusterReferencesCount `clusterReferencesCount`
+    /// @param clusterReferencesStride `clusterReferencesStride`
+    /// @param clusterReferences `clusterReferences`
+    /// @return the allocated `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
+    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV allocInit(SegmentAllocator allocator, int clusterReferencesCount, int clusterReferencesStride, long clusterReferences) {
+        return alloc(allocator).clusterReferencesCount(clusterReferencesCount).clusterReferencesStride(clusterReferencesStride).clusterReferences(clusterReferences);
+    }
+
+    /// Allocates a `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param clusterReferencesCount `clusterReferencesCount`
+    /// @param clusterReferencesStride `clusterReferencesStride`
+    /// @return the allocated `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
+    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV allocInit(SegmentAllocator allocator, int clusterReferencesCount, int clusterReferencesStride) {
+        return alloc(allocator).clusterReferencesCount(clusterReferencesCount).clusterReferencesStride(clusterReferencesStride);
+    }
+
+    /// Allocates a `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param clusterReferencesCount `clusterReferencesCount`
+    /// @return the allocated `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
+    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV allocInit(SegmentAllocator allocator, int clusterReferencesCount) {
+        return alloc(allocator).clusterReferencesCount(clusterReferencesCount);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

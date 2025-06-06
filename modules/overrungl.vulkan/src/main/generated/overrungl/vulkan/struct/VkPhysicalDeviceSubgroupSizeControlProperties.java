@@ -117,6 +117,69 @@ public sealed class VkPhysicalDeviceSubgroupSizeControlProperties extends GroupT
     /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlProperties`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minSubgroupSize `minSubgroupSize`
+    /// @param maxSubgroupSize `maxSubgroupSize`
+    /// @param maxComputeWorkgroupSubgroups `maxComputeWorkgroupSubgroups`
+    /// @param requiredSubgroupSizeStages `requiredSubgroupSizeStages`
+    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlProperties`
+    public static VkPhysicalDeviceSubgroupSizeControlProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minSubgroupSize, int maxSubgroupSize, int maxComputeWorkgroupSubgroups, int requiredSubgroupSizeStages) {
+        return alloc(allocator).sType(sType).pNext(pNext).minSubgroupSize(minSubgroupSize).maxSubgroupSize(maxSubgroupSize).maxComputeWorkgroupSubgroups(maxComputeWorkgroupSubgroups).requiredSubgroupSizeStages(requiredSubgroupSizeStages);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minSubgroupSize `minSubgroupSize`
+    /// @param maxSubgroupSize `maxSubgroupSize`
+    /// @param maxComputeWorkgroupSubgroups `maxComputeWorkgroupSubgroups`
+    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlProperties`
+    public static VkPhysicalDeviceSubgroupSizeControlProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minSubgroupSize, int maxSubgroupSize, int maxComputeWorkgroupSubgroups) {
+        return alloc(allocator).sType(sType).pNext(pNext).minSubgroupSize(minSubgroupSize).maxSubgroupSize(maxSubgroupSize).maxComputeWorkgroupSubgroups(maxComputeWorkgroupSubgroups);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minSubgroupSize `minSubgroupSize`
+    /// @param maxSubgroupSize `maxSubgroupSize`
+    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlProperties`
+    public static VkPhysicalDeviceSubgroupSizeControlProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minSubgroupSize, int maxSubgroupSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).minSubgroupSize(minSubgroupSize).maxSubgroupSize(maxSubgroupSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minSubgroupSize `minSubgroupSize`
+    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlProperties`
+    public static VkPhysicalDeviceSubgroupSizeControlProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minSubgroupSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).minSubgroupSize(minSubgroupSize);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlProperties`
+    public static VkPhysicalDeviceSubgroupSizeControlProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlProperties` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlProperties`
+    public static VkPhysicalDeviceSubgroupSizeControlProperties allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -85,6 +85,23 @@ public sealed class VkDeviceOrHostAddressConstAMDX extends GroupType {
     /// @return the allocated `VkDeviceOrHostAddressConstAMDX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceOrHostAddressConstAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param deviceAddress `deviceAddress`
+    /// @param hostAddress `hostAddress`
+    /// @return the allocated `VkDeviceOrHostAddressConstAMDX`
+    public static VkDeviceOrHostAddressConstAMDX allocInit(SegmentAllocator allocator, long deviceAddress, MemorySegment hostAddress) {
+        return alloc(allocator).deviceAddress(deviceAddress).hostAddress(hostAddress);
+    }
+
+    /// Allocates a `VkDeviceOrHostAddressConstAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param deviceAddress `deviceAddress`
+    /// @return the allocated `VkDeviceOrHostAddressConstAMDX`
+    public static VkDeviceOrHostAddressConstAMDX allocInit(SegmentAllocator allocator, long deviceAddress) {
+        return alloc(allocator).deviceAddress(deviceAddress);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,6 +101,44 @@ public sealed class VkPhysicalDeviceMemoryDecompressionPropertiesNV extends Grou
     /// @return the allocated `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param decompressionMethods `decompressionMethods`
+    /// @param maxDecompressionIndirectCount `maxDecompressionIndirectCount`
+    /// @return the allocated `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
+    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long decompressionMethods, long maxDecompressionIndirectCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).decompressionMethods(decompressionMethods).maxDecompressionIndirectCount(maxDecompressionIndirectCount);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param decompressionMethods `decompressionMethods`
+    /// @return the allocated `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
+    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long decompressionMethods) {
+        return alloc(allocator).sType(sType).pNext(pNext).decompressionMethods(decompressionMethods);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
+    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
+    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

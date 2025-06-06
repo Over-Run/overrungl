@@ -93,6 +93,33 @@ public sealed class VkPipelineTessellationDomainOriginStateCreateInfo extends Gr
     /// @return the allocated `VkPipelineTessellationDomainOriginStateCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPipelineTessellationDomainOriginStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param domainOrigin `domainOrigin`
+    /// @return the allocated `VkPipelineTessellationDomainOriginStateCreateInfo`
+    public static VkPipelineTessellationDomainOriginStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int domainOrigin) {
+        return alloc(allocator).sType(sType).pNext(pNext).domainOrigin(domainOrigin);
+    }
+
+    /// Allocates a `VkPipelineTessellationDomainOriginStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPipelineTessellationDomainOriginStateCreateInfo`
+    public static VkPipelineTessellationDomainOriginStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPipelineTessellationDomainOriginStateCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPipelineTessellationDomainOriginStateCreateInfo`
+    public static VkPipelineTessellationDomainOriginStateCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

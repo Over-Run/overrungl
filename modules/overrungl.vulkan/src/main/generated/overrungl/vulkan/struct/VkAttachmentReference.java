@@ -85,6 +85,23 @@ public sealed class VkAttachmentReference extends GroupType {
     /// @return the allocated `VkAttachmentReference`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkAttachmentReference` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param attachment `attachment`
+    /// @param layout `layout`
+    /// @return the allocated `VkAttachmentReference`
+    public static VkAttachmentReference allocInit(SegmentAllocator allocator, int attachment, int layout) {
+        return alloc(allocator).attachment(attachment).layout(layout);
+    }
+
+    /// Allocates a `VkAttachmentReference` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param attachment `attachment`
+    /// @return the allocated `VkAttachmentReference`
+    public static VkAttachmentReference allocInit(SegmentAllocator allocator, int attachment) {
+        return alloc(allocator).attachment(attachment);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

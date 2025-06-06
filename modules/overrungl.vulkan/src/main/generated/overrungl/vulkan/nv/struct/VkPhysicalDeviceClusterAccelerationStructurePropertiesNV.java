@@ -149,6 +149,131 @@ public sealed class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV ext
     /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxVerticesPerCluster `maxVerticesPerCluster`
+    /// @param maxTrianglesPerCluster `maxTrianglesPerCluster`
+    /// @param clusterScratchByteAlignment `clusterScratchByteAlignment`
+    /// @param clusterByteAlignment `clusterByteAlignment`
+    /// @param clusterTemplateByteAlignment `clusterTemplateByteAlignment`
+    /// @param clusterBottomLevelByteAlignment `clusterBottomLevelByteAlignment`
+    /// @param clusterTemplateBoundsByteAlignment `clusterTemplateBoundsByteAlignment`
+    /// @param maxClusterGeometryIndex `maxClusterGeometryIndex`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVerticesPerCluster, int maxTrianglesPerCluster, int clusterScratchByteAlignment, int clusterByteAlignment, int clusterTemplateByteAlignment, int clusterBottomLevelByteAlignment, int clusterTemplateBoundsByteAlignment, int maxClusterGeometryIndex) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxVerticesPerCluster(maxVerticesPerCluster).maxTrianglesPerCluster(maxTrianglesPerCluster).clusterScratchByteAlignment(clusterScratchByteAlignment).clusterByteAlignment(clusterByteAlignment).clusterTemplateByteAlignment(clusterTemplateByteAlignment).clusterBottomLevelByteAlignment(clusterBottomLevelByteAlignment).clusterTemplateBoundsByteAlignment(clusterTemplateBoundsByteAlignment).maxClusterGeometryIndex(maxClusterGeometryIndex);
+    }
+
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxVerticesPerCluster `maxVerticesPerCluster`
+    /// @param maxTrianglesPerCluster `maxTrianglesPerCluster`
+    /// @param clusterScratchByteAlignment `clusterScratchByteAlignment`
+    /// @param clusterByteAlignment `clusterByteAlignment`
+    /// @param clusterTemplateByteAlignment `clusterTemplateByteAlignment`
+    /// @param clusterBottomLevelByteAlignment `clusterBottomLevelByteAlignment`
+    /// @param clusterTemplateBoundsByteAlignment `clusterTemplateBoundsByteAlignment`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVerticesPerCluster, int maxTrianglesPerCluster, int clusterScratchByteAlignment, int clusterByteAlignment, int clusterTemplateByteAlignment, int clusterBottomLevelByteAlignment, int clusterTemplateBoundsByteAlignment) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxVerticesPerCluster(maxVerticesPerCluster).maxTrianglesPerCluster(maxTrianglesPerCluster).clusterScratchByteAlignment(clusterScratchByteAlignment).clusterByteAlignment(clusterByteAlignment).clusterTemplateByteAlignment(clusterTemplateByteAlignment).clusterBottomLevelByteAlignment(clusterBottomLevelByteAlignment).clusterTemplateBoundsByteAlignment(clusterTemplateBoundsByteAlignment);
+    }
+
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxVerticesPerCluster `maxVerticesPerCluster`
+    /// @param maxTrianglesPerCluster `maxTrianglesPerCluster`
+    /// @param clusterScratchByteAlignment `clusterScratchByteAlignment`
+    /// @param clusterByteAlignment `clusterByteAlignment`
+    /// @param clusterTemplateByteAlignment `clusterTemplateByteAlignment`
+    /// @param clusterBottomLevelByteAlignment `clusterBottomLevelByteAlignment`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVerticesPerCluster, int maxTrianglesPerCluster, int clusterScratchByteAlignment, int clusterByteAlignment, int clusterTemplateByteAlignment, int clusterBottomLevelByteAlignment) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxVerticesPerCluster(maxVerticesPerCluster).maxTrianglesPerCluster(maxTrianglesPerCluster).clusterScratchByteAlignment(clusterScratchByteAlignment).clusterByteAlignment(clusterByteAlignment).clusterTemplateByteAlignment(clusterTemplateByteAlignment).clusterBottomLevelByteAlignment(clusterBottomLevelByteAlignment);
+    }
+
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxVerticesPerCluster `maxVerticesPerCluster`
+    /// @param maxTrianglesPerCluster `maxTrianglesPerCluster`
+    /// @param clusterScratchByteAlignment `clusterScratchByteAlignment`
+    /// @param clusterByteAlignment `clusterByteAlignment`
+    /// @param clusterTemplateByteAlignment `clusterTemplateByteAlignment`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVerticesPerCluster, int maxTrianglesPerCluster, int clusterScratchByteAlignment, int clusterByteAlignment, int clusterTemplateByteAlignment) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxVerticesPerCluster(maxVerticesPerCluster).maxTrianglesPerCluster(maxTrianglesPerCluster).clusterScratchByteAlignment(clusterScratchByteAlignment).clusterByteAlignment(clusterByteAlignment).clusterTemplateByteAlignment(clusterTemplateByteAlignment);
+    }
+
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxVerticesPerCluster `maxVerticesPerCluster`
+    /// @param maxTrianglesPerCluster `maxTrianglesPerCluster`
+    /// @param clusterScratchByteAlignment `clusterScratchByteAlignment`
+    /// @param clusterByteAlignment `clusterByteAlignment`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVerticesPerCluster, int maxTrianglesPerCluster, int clusterScratchByteAlignment, int clusterByteAlignment) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxVerticesPerCluster(maxVerticesPerCluster).maxTrianglesPerCluster(maxTrianglesPerCluster).clusterScratchByteAlignment(clusterScratchByteAlignment).clusterByteAlignment(clusterByteAlignment);
+    }
+
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxVerticesPerCluster `maxVerticesPerCluster`
+    /// @param maxTrianglesPerCluster `maxTrianglesPerCluster`
+    /// @param clusterScratchByteAlignment `clusterScratchByteAlignment`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVerticesPerCluster, int maxTrianglesPerCluster, int clusterScratchByteAlignment) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxVerticesPerCluster(maxVerticesPerCluster).maxTrianglesPerCluster(maxTrianglesPerCluster).clusterScratchByteAlignment(clusterScratchByteAlignment);
+    }
+
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxVerticesPerCluster `maxVerticesPerCluster`
+    /// @param maxTrianglesPerCluster `maxTrianglesPerCluster`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVerticesPerCluster, int maxTrianglesPerCluster) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxVerticesPerCluster(maxVerticesPerCluster).maxTrianglesPerCluster(maxTrianglesPerCluster);
+    }
+
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param maxVerticesPerCluster `maxVerticesPerCluster`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVerticesPerCluster) {
+        return alloc(allocator).sType(sType).pNext(pNext).maxVerticesPerCluster(maxVerticesPerCluster);
+    }
+
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

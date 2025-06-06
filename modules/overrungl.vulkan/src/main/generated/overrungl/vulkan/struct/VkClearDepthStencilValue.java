@@ -85,6 +85,23 @@ public sealed class VkClearDepthStencilValue extends GroupType {
     /// @return the allocated `VkClearDepthStencilValue`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkClearDepthStencilValue` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param depth `depth`
+    /// @param stencil `stencil`
+    /// @return the allocated `VkClearDepthStencilValue`
+    public static VkClearDepthStencilValue allocInit(SegmentAllocator allocator, float depth, int stencil) {
+        return alloc(allocator).depth(depth).stencil(stencil);
+    }
+
+    /// Allocates a `VkClearDepthStencilValue` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param depth `depth`
+    /// @return the allocated `VkClearDepthStencilValue`
+    public static VkClearDepthStencilValue allocInit(SegmentAllocator allocator, float depth) {
+        return alloc(allocator).depth(depth);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

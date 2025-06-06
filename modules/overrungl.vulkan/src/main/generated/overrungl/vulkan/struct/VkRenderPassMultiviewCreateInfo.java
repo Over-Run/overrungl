@@ -133,6 +133,98 @@ public sealed class VkRenderPassMultiviewCreateInfo extends GroupType {
     /// @return the allocated `VkRenderPassMultiviewCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subpassCount `subpassCount`
+    /// @param pViewMasks `pViewMasks`
+    /// @param dependencyCount `dependencyCount`
+    /// @param pViewOffsets `pViewOffsets`
+    /// @param correlationMaskCount `correlationMaskCount`
+    /// @param pCorrelationMasks `pCorrelationMasks`
+    /// @return the allocated `VkRenderPassMultiviewCreateInfo`
+    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subpassCount, MemorySegment pViewMasks, int dependencyCount, MemorySegment pViewOffsets, int correlationMaskCount, MemorySegment pCorrelationMasks) {
+        return alloc(allocator).sType(sType).pNext(pNext).subpassCount(subpassCount).pViewMasks(pViewMasks).dependencyCount(dependencyCount).pViewOffsets(pViewOffsets).correlationMaskCount(correlationMaskCount).pCorrelationMasks(pCorrelationMasks);
+    }
+
+    /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subpassCount `subpassCount`
+    /// @param pViewMasks `pViewMasks`
+    /// @param dependencyCount `dependencyCount`
+    /// @param pViewOffsets `pViewOffsets`
+    /// @param correlationMaskCount `correlationMaskCount`
+    /// @return the allocated `VkRenderPassMultiviewCreateInfo`
+    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subpassCount, MemorySegment pViewMasks, int dependencyCount, MemorySegment pViewOffsets, int correlationMaskCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).subpassCount(subpassCount).pViewMasks(pViewMasks).dependencyCount(dependencyCount).pViewOffsets(pViewOffsets).correlationMaskCount(correlationMaskCount);
+    }
+
+    /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subpassCount `subpassCount`
+    /// @param pViewMasks `pViewMasks`
+    /// @param dependencyCount `dependencyCount`
+    /// @param pViewOffsets `pViewOffsets`
+    /// @return the allocated `VkRenderPassMultiviewCreateInfo`
+    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subpassCount, MemorySegment pViewMasks, int dependencyCount, MemorySegment pViewOffsets) {
+        return alloc(allocator).sType(sType).pNext(pNext).subpassCount(subpassCount).pViewMasks(pViewMasks).dependencyCount(dependencyCount).pViewOffsets(pViewOffsets);
+    }
+
+    /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subpassCount `subpassCount`
+    /// @param pViewMasks `pViewMasks`
+    /// @param dependencyCount `dependencyCount`
+    /// @return the allocated `VkRenderPassMultiviewCreateInfo`
+    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subpassCount, MemorySegment pViewMasks, int dependencyCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).subpassCount(subpassCount).pViewMasks(pViewMasks).dependencyCount(dependencyCount);
+    }
+
+    /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subpassCount `subpassCount`
+    /// @param pViewMasks `pViewMasks`
+    /// @return the allocated `VkRenderPassMultiviewCreateInfo`
+    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subpassCount, MemorySegment pViewMasks) {
+        return alloc(allocator).sType(sType).pNext(pNext).subpassCount(subpassCount).pViewMasks(pViewMasks);
+    }
+
+    /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param subpassCount `subpassCount`
+    /// @return the allocated `VkRenderPassMultiviewCreateInfo`
+    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subpassCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).subpassCount(subpassCount);
+    }
+
+    /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkRenderPassMultiviewCreateInfo`
+    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkRenderPassMultiviewCreateInfo`
+    public static VkRenderPassMultiviewCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

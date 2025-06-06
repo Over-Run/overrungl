@@ -121,6 +121,83 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends GroupType {
     /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param supportedPresentScaling `supportedPresentScaling`
+    /// @param supportedPresentGravityX `supportedPresentGravityX`
+    /// @param supportedPresentGravityY `supportedPresentGravityY`
+    /// @param minScaledImageExtent `minScaledImageExtent`
+    /// @param maxScaledImageExtent `maxScaledImageExtent`
+    /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
+    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportedPresentScaling, int supportedPresentGravityX, int supportedPresentGravityY, MemorySegment minScaledImageExtent, MemorySegment maxScaledImageExtent) {
+        return alloc(allocator).sType(sType).pNext(pNext).supportedPresentScaling(supportedPresentScaling).supportedPresentGravityX(supportedPresentGravityX).supportedPresentGravityY(supportedPresentGravityY).minScaledImageExtent(minScaledImageExtent).maxScaledImageExtent(maxScaledImageExtent);
+    }
+
+    /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param supportedPresentScaling `supportedPresentScaling`
+    /// @param supportedPresentGravityX `supportedPresentGravityX`
+    /// @param supportedPresentGravityY `supportedPresentGravityY`
+    /// @param minScaledImageExtent `minScaledImageExtent`
+    /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
+    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportedPresentScaling, int supportedPresentGravityX, int supportedPresentGravityY, MemorySegment minScaledImageExtent) {
+        return alloc(allocator).sType(sType).pNext(pNext).supportedPresentScaling(supportedPresentScaling).supportedPresentGravityX(supportedPresentGravityX).supportedPresentGravityY(supportedPresentGravityY).minScaledImageExtent(minScaledImageExtent);
+    }
+
+    /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param supportedPresentScaling `supportedPresentScaling`
+    /// @param supportedPresentGravityX `supportedPresentGravityX`
+    /// @param supportedPresentGravityY `supportedPresentGravityY`
+    /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
+    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportedPresentScaling, int supportedPresentGravityX, int supportedPresentGravityY) {
+        return alloc(allocator).sType(sType).pNext(pNext).supportedPresentScaling(supportedPresentScaling).supportedPresentGravityX(supportedPresentGravityX).supportedPresentGravityY(supportedPresentGravityY);
+    }
+
+    /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param supportedPresentScaling `supportedPresentScaling`
+    /// @param supportedPresentGravityX `supportedPresentGravityX`
+    /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
+    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportedPresentScaling, int supportedPresentGravityX) {
+        return alloc(allocator).sType(sType).pNext(pNext).supportedPresentScaling(supportedPresentScaling).supportedPresentGravityX(supportedPresentGravityX);
+    }
+
+    /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param supportedPresentScaling `supportedPresentScaling`
+    /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
+    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportedPresentScaling) {
+        return alloc(allocator).sType(sType).pNext(pNext).supportedPresentScaling(supportedPresentScaling);
+    }
+
+    /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
+    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSurfacePresentScalingCapabilitiesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSurfacePresentScalingCapabilitiesEXT`
+    public static VkSurfacePresentScalingCapabilitiesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

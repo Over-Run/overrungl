@@ -91,6 +91,33 @@ public sealed class VkDispatchGraphCountInfoAMDX extends GroupType {
     /// @return the allocated `VkDispatchGraphCountInfoAMDX`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDispatchGraphCountInfoAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param count `count`
+    /// @param infos `infos`
+    /// @param stride `stride`
+    /// @return the allocated `VkDispatchGraphCountInfoAMDX`
+    public static VkDispatchGraphCountInfoAMDX allocInit(SegmentAllocator allocator, int count, MemorySegment infos, long stride) {
+        return alloc(allocator).count(count).infos(infos).stride(stride);
+    }
+
+    /// Allocates a `VkDispatchGraphCountInfoAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param count `count`
+    /// @param infos `infos`
+    /// @return the allocated `VkDispatchGraphCountInfoAMDX`
+    public static VkDispatchGraphCountInfoAMDX allocInit(SegmentAllocator allocator, int count, MemorySegment infos) {
+        return alloc(allocator).count(count).infos(infos);
+    }
+
+    /// Allocates a `VkDispatchGraphCountInfoAMDX` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param count `count`
+    /// @return the allocated `VkDispatchGraphCountInfoAMDX`
+    public static VkDispatchGraphCountInfoAMDX allocInit(SegmentAllocator allocator, int count) {
+        return alloc(allocator).count(count);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

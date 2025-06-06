@@ -211,6 +211,303 @@ public sealed class VkVideoEncodeH265CapabilitiesKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @param maxBPictureL0ReferenceCount `maxBPictureL0ReferenceCount`
+    /// @param maxL1ReferenceCount `maxL1ReferenceCount`
+    /// @param maxSubLayerCount `maxSubLayerCount`
+    /// @param expectDyadicTemporalSubLayerPattern `expectDyadicTemporalSubLayerPattern`
+    /// @param minQp `minQp`
+    /// @param maxQp `maxQp`
+    /// @param prefersGopRemainingFrames `prefersGopRemainingFrames`
+    /// @param requiresGopRemainingFrames `requiresGopRemainingFrames`
+    /// @param stdSyntaxFlags `stdSyntaxFlags`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount, int maxBPictureL0ReferenceCount, int maxL1ReferenceCount, int maxSubLayerCount, int expectDyadicTemporalSubLayerPattern, int minQp, int maxQp, int prefersGopRemainingFrames, int requiresGopRemainingFrames, int stdSyntaxFlags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount).maxBPictureL0ReferenceCount(maxBPictureL0ReferenceCount).maxL1ReferenceCount(maxL1ReferenceCount).maxSubLayerCount(maxSubLayerCount).expectDyadicTemporalSubLayerPattern(expectDyadicTemporalSubLayerPattern).minQp(minQp).maxQp(maxQp).prefersGopRemainingFrames(prefersGopRemainingFrames).requiresGopRemainingFrames(requiresGopRemainingFrames).stdSyntaxFlags(stdSyntaxFlags);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @param maxBPictureL0ReferenceCount `maxBPictureL0ReferenceCount`
+    /// @param maxL1ReferenceCount `maxL1ReferenceCount`
+    /// @param maxSubLayerCount `maxSubLayerCount`
+    /// @param expectDyadicTemporalSubLayerPattern `expectDyadicTemporalSubLayerPattern`
+    /// @param minQp `minQp`
+    /// @param maxQp `maxQp`
+    /// @param prefersGopRemainingFrames `prefersGopRemainingFrames`
+    /// @param requiresGopRemainingFrames `requiresGopRemainingFrames`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount, int maxBPictureL0ReferenceCount, int maxL1ReferenceCount, int maxSubLayerCount, int expectDyadicTemporalSubLayerPattern, int minQp, int maxQp, int prefersGopRemainingFrames, int requiresGopRemainingFrames) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount).maxBPictureL0ReferenceCount(maxBPictureL0ReferenceCount).maxL1ReferenceCount(maxL1ReferenceCount).maxSubLayerCount(maxSubLayerCount).expectDyadicTemporalSubLayerPattern(expectDyadicTemporalSubLayerPattern).minQp(minQp).maxQp(maxQp).prefersGopRemainingFrames(prefersGopRemainingFrames).requiresGopRemainingFrames(requiresGopRemainingFrames);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @param maxBPictureL0ReferenceCount `maxBPictureL0ReferenceCount`
+    /// @param maxL1ReferenceCount `maxL1ReferenceCount`
+    /// @param maxSubLayerCount `maxSubLayerCount`
+    /// @param expectDyadicTemporalSubLayerPattern `expectDyadicTemporalSubLayerPattern`
+    /// @param minQp `minQp`
+    /// @param maxQp `maxQp`
+    /// @param prefersGopRemainingFrames `prefersGopRemainingFrames`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount, int maxBPictureL0ReferenceCount, int maxL1ReferenceCount, int maxSubLayerCount, int expectDyadicTemporalSubLayerPattern, int minQp, int maxQp, int prefersGopRemainingFrames) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount).maxBPictureL0ReferenceCount(maxBPictureL0ReferenceCount).maxL1ReferenceCount(maxL1ReferenceCount).maxSubLayerCount(maxSubLayerCount).expectDyadicTemporalSubLayerPattern(expectDyadicTemporalSubLayerPattern).minQp(minQp).maxQp(maxQp).prefersGopRemainingFrames(prefersGopRemainingFrames);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @param maxBPictureL0ReferenceCount `maxBPictureL0ReferenceCount`
+    /// @param maxL1ReferenceCount `maxL1ReferenceCount`
+    /// @param maxSubLayerCount `maxSubLayerCount`
+    /// @param expectDyadicTemporalSubLayerPattern `expectDyadicTemporalSubLayerPattern`
+    /// @param minQp `minQp`
+    /// @param maxQp `maxQp`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount, int maxBPictureL0ReferenceCount, int maxL1ReferenceCount, int maxSubLayerCount, int expectDyadicTemporalSubLayerPattern, int minQp, int maxQp) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount).maxBPictureL0ReferenceCount(maxBPictureL0ReferenceCount).maxL1ReferenceCount(maxL1ReferenceCount).maxSubLayerCount(maxSubLayerCount).expectDyadicTemporalSubLayerPattern(expectDyadicTemporalSubLayerPattern).minQp(minQp).maxQp(maxQp);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @param maxBPictureL0ReferenceCount `maxBPictureL0ReferenceCount`
+    /// @param maxL1ReferenceCount `maxL1ReferenceCount`
+    /// @param maxSubLayerCount `maxSubLayerCount`
+    /// @param expectDyadicTemporalSubLayerPattern `expectDyadicTemporalSubLayerPattern`
+    /// @param minQp `minQp`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount, int maxBPictureL0ReferenceCount, int maxL1ReferenceCount, int maxSubLayerCount, int expectDyadicTemporalSubLayerPattern, int minQp) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount).maxBPictureL0ReferenceCount(maxBPictureL0ReferenceCount).maxL1ReferenceCount(maxL1ReferenceCount).maxSubLayerCount(maxSubLayerCount).expectDyadicTemporalSubLayerPattern(expectDyadicTemporalSubLayerPattern).minQp(minQp);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @param maxBPictureL0ReferenceCount `maxBPictureL0ReferenceCount`
+    /// @param maxL1ReferenceCount `maxL1ReferenceCount`
+    /// @param maxSubLayerCount `maxSubLayerCount`
+    /// @param expectDyadicTemporalSubLayerPattern `expectDyadicTemporalSubLayerPattern`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount, int maxBPictureL0ReferenceCount, int maxL1ReferenceCount, int maxSubLayerCount, int expectDyadicTemporalSubLayerPattern) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount).maxBPictureL0ReferenceCount(maxBPictureL0ReferenceCount).maxL1ReferenceCount(maxL1ReferenceCount).maxSubLayerCount(maxSubLayerCount).expectDyadicTemporalSubLayerPattern(expectDyadicTemporalSubLayerPattern);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @param maxBPictureL0ReferenceCount `maxBPictureL0ReferenceCount`
+    /// @param maxL1ReferenceCount `maxL1ReferenceCount`
+    /// @param maxSubLayerCount `maxSubLayerCount`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount, int maxBPictureL0ReferenceCount, int maxL1ReferenceCount, int maxSubLayerCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount).maxBPictureL0ReferenceCount(maxBPictureL0ReferenceCount).maxL1ReferenceCount(maxL1ReferenceCount).maxSubLayerCount(maxSubLayerCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @param maxBPictureL0ReferenceCount `maxBPictureL0ReferenceCount`
+    /// @param maxL1ReferenceCount `maxL1ReferenceCount`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount, int maxBPictureL0ReferenceCount, int maxL1ReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount).maxBPictureL0ReferenceCount(maxBPictureL0ReferenceCount).maxL1ReferenceCount(maxL1ReferenceCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @param maxBPictureL0ReferenceCount `maxBPictureL0ReferenceCount`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount, int maxBPictureL0ReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount).maxBPictureL0ReferenceCount(maxBPictureL0ReferenceCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @param maxPPictureL0ReferenceCount `maxPPictureL0ReferenceCount`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes, int maxPPictureL0ReferenceCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes).maxPPictureL0ReferenceCount(maxPPictureL0ReferenceCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @param transformBlockSizes `transformBlockSizes`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes, int transformBlockSizes) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes).transformBlockSizes(transformBlockSizes);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @param ctbSizes `ctbSizes`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles, int ctbSizes) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles).ctbSizes(ctbSizes);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @param maxTiles `maxTiles`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount, MemorySegment maxTiles) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount).maxTiles(maxTiles);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @param maxSliceSegmentCount `maxSliceSegmentCount`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc, int maxSliceSegmentCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc).maxSliceSegmentCount(maxSliceSegmentCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param maxLevelIdc `maxLevelIdc`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int maxLevelIdc) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).maxLevelIdc(maxLevelIdc);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeH265CapabilitiesKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeH265CapabilitiesKHR`
+    public static VkVideoEncodeH265CapabilitiesKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

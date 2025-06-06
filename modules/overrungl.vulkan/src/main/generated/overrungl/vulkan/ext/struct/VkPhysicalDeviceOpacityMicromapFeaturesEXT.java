@@ -109,6 +109,56 @@ public sealed class VkPhysicalDeviceOpacityMicromapFeaturesEXT extends GroupType
     /// @return the allocated `VkPhysicalDeviceOpacityMicromapFeaturesEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceOpacityMicromapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param micromap `micromap`
+    /// @param micromapCaptureReplay `micromapCaptureReplay`
+    /// @param micromapHostCommands `micromapHostCommands`
+    /// @return the allocated `VkPhysicalDeviceOpacityMicromapFeaturesEXT`
+    public static VkPhysicalDeviceOpacityMicromapFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int micromap, int micromapCaptureReplay, int micromapHostCommands) {
+        return alloc(allocator).sType(sType).pNext(pNext).micromap(micromap).micromapCaptureReplay(micromapCaptureReplay).micromapHostCommands(micromapHostCommands);
+    }
+
+    /// Allocates a `VkPhysicalDeviceOpacityMicromapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param micromap `micromap`
+    /// @param micromapCaptureReplay `micromapCaptureReplay`
+    /// @return the allocated `VkPhysicalDeviceOpacityMicromapFeaturesEXT`
+    public static VkPhysicalDeviceOpacityMicromapFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int micromap, int micromapCaptureReplay) {
+        return alloc(allocator).sType(sType).pNext(pNext).micromap(micromap).micromapCaptureReplay(micromapCaptureReplay);
+    }
+
+    /// Allocates a `VkPhysicalDeviceOpacityMicromapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param micromap `micromap`
+    /// @return the allocated `VkPhysicalDeviceOpacityMicromapFeaturesEXT`
+    public static VkPhysicalDeviceOpacityMicromapFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int micromap) {
+        return alloc(allocator).sType(sType).pNext(pNext).micromap(micromap);
+    }
+
+    /// Allocates a `VkPhysicalDeviceOpacityMicromapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceOpacityMicromapFeaturesEXT`
+    public static VkPhysicalDeviceOpacityMicromapFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceOpacityMicromapFeaturesEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceOpacityMicromapFeaturesEXT`
+    public static VkPhysicalDeviceOpacityMicromapFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

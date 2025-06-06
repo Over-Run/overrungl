@@ -101,6 +101,44 @@ public sealed class VkSemaphoreSciSyncCreateInfoNV extends GroupType {
     /// @return the allocated `VkSemaphoreSciSyncCreateInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSemaphoreSciSyncCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphorePool `semaphorePool`
+    /// @param pFence `pFence`
+    /// @return the allocated `VkSemaphoreSciSyncCreateInfoNV`
+    public static VkSemaphoreSciSyncCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphorePool, MemorySegment pFence) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphorePool(semaphorePool).pFence(pFence);
+    }
+
+    /// Allocates a `VkSemaphoreSciSyncCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param semaphorePool `semaphorePool`
+    /// @return the allocated `VkSemaphoreSciSyncCreateInfoNV`
+    public static VkSemaphoreSciSyncCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphorePool) {
+        return alloc(allocator).sType(sType).pNext(pNext).semaphorePool(semaphorePool);
+    }
+
+    /// Allocates a `VkSemaphoreSciSyncCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSemaphoreSciSyncCreateInfoNV`
+    public static VkSemaphoreSciSyncCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSemaphoreSciSyncCreateInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSemaphoreSciSyncCreateInfoNV`
+    public static VkSemaphoreSciSyncCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

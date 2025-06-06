@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceMemoryDecompressionFeaturesNV extends GroupT
     /// @return the allocated `VkPhysicalDeviceMemoryDecompressionFeaturesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceMemoryDecompressionFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param memoryDecompression `memoryDecompression`
+    /// @return the allocated `VkPhysicalDeviceMemoryDecompressionFeaturesNV`
+    public static VkPhysicalDeviceMemoryDecompressionFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryDecompression) {
+        return alloc(allocator).sType(sType).pNext(pNext).memoryDecompression(memoryDecompression);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMemoryDecompressionFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceMemoryDecompressionFeaturesNV`
+    public static VkPhysicalDeviceMemoryDecompressionFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceMemoryDecompressionFeaturesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceMemoryDecompressionFeaturesNV`
+    public static VkPhysicalDeviceMemoryDecompressionFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

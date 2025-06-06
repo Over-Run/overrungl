@@ -93,6 +93,33 @@ public sealed class VkSparseImageOpaqueMemoryBindInfo extends GroupType {
     /// @return the allocated `VkSparseImageOpaqueMemoryBindInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSparseImageOpaqueMemoryBindInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param image `image`
+    /// @param bindCount `bindCount`
+    /// @param pBinds `pBinds`
+    /// @return the allocated `VkSparseImageOpaqueMemoryBindInfo`
+    public static VkSparseImageOpaqueMemoryBindInfo allocInit(SegmentAllocator allocator, long image, int bindCount, MemorySegment pBinds) {
+        return alloc(allocator).image(image).bindCount(bindCount).pBinds(pBinds);
+    }
+
+    /// Allocates a `VkSparseImageOpaqueMemoryBindInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param image `image`
+    /// @param bindCount `bindCount`
+    /// @return the allocated `VkSparseImageOpaqueMemoryBindInfo`
+    public static VkSparseImageOpaqueMemoryBindInfo allocInit(SegmentAllocator allocator, long image, int bindCount) {
+        return alloc(allocator).image(image).bindCount(bindCount);
+    }
+
+    /// Allocates a `VkSparseImageOpaqueMemoryBindInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param image `image`
+    /// @return the allocated `VkSparseImageOpaqueMemoryBindInfo`
+    public static VkSparseImageOpaqueMemoryBindInfo allocInit(SegmentAllocator allocator, long image) {
+        return alloc(allocator).image(image);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

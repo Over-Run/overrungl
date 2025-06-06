@@ -99,6 +99,44 @@ public sealed class VkAccelerationStructureGeometryInstancesDataKHR extends Grou
     /// @return the allocated `VkAccelerationStructureGeometryInstancesDataKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param arrayOfPointers `arrayOfPointers`
+    /// @param data `data`
+    /// @return the allocated `VkAccelerationStructureGeometryInstancesDataKHR`
+    public static VkAccelerationStructureGeometryInstancesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int arrayOfPointers, MemorySegment data) {
+        return alloc(allocator).sType(sType).pNext(pNext).arrayOfPointers(arrayOfPointers).data(data);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param arrayOfPointers `arrayOfPointers`
+    /// @return the allocated `VkAccelerationStructureGeometryInstancesDataKHR`
+    public static VkAccelerationStructureGeometryInstancesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int arrayOfPointers) {
+        return alloc(allocator).sType(sType).pNext(pNext).arrayOfPointers(arrayOfPointers);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkAccelerationStructureGeometryInstancesDataKHR`
+    public static VkAccelerationStructureGeometryInstancesDataKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkAccelerationStructureGeometryInstancesDataKHR`
+    public static VkAccelerationStructureGeometryInstancesDataKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

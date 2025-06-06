@@ -93,6 +93,33 @@ public sealed class VmaDeviceMemoryCallbacks extends GroupType {
     /// @return the allocated `VmaDeviceMemoryCallbacks`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VmaDeviceMemoryCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pfnAllocate `pfnAllocate`
+    /// @param pfnFree `pfnFree`
+    /// @param pUserData `pUserData`
+    /// @return the allocated `VmaDeviceMemoryCallbacks`
+    public static VmaDeviceMemoryCallbacks allocInit(SegmentAllocator allocator, MemorySegment pfnAllocate, MemorySegment pfnFree, MemorySegment pUserData) {
+        return alloc(allocator).pfnAllocate(pfnAllocate).pfnFree(pfnFree).pUserData(pUserData);
+    }
+
+    /// Allocates a `VmaDeviceMemoryCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pfnAllocate `pfnAllocate`
+    /// @param pfnFree `pfnFree`
+    /// @return the allocated `VmaDeviceMemoryCallbacks`
+    public static VmaDeviceMemoryCallbacks allocInit(SegmentAllocator allocator, MemorySegment pfnAllocate, MemorySegment pfnFree) {
+        return alloc(allocator).pfnAllocate(pfnAllocate).pfnFree(pfnFree);
+    }
+
+    /// Allocates a `VmaDeviceMemoryCallbacks` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param pfnAllocate `pfnAllocate`
+    /// @return the allocated `VmaDeviceMemoryCallbacks`
+    public static VmaDeviceMemoryCallbacks allocInit(SegmentAllocator allocator, MemorySegment pfnAllocate) {
+        return alloc(allocator).pfnAllocate(pfnAllocate);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

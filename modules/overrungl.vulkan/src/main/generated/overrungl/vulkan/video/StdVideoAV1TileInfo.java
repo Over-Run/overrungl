@@ -147,6 +147,131 @@ public sealed class StdVideoAV1TileInfo extends GroupType {
     /// @return the allocated `StdVideoAV1TileInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param TileCols `TileCols`
+    /// @param TileRows `TileRows`
+    /// @param context_update_tile_id `context_update_tile_id`
+    /// @param tile_size_bytes_minus_1 `tile_size_bytes_minus_1`
+    /// @param reserved1 `reserved1`
+    /// @param pMiColStarts `pMiColStarts`
+    /// @param pMiRowStarts `pMiRowStarts`
+    /// @param pWidthInSbsMinus1 `pWidthInSbsMinus1`
+    /// @param pHeightInSbsMinus1 `pHeightInSbsMinus1`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte TileCols, byte TileRows, short context_update_tile_id, byte tile_size_bytes_minus_1, MemorySegment reserved1, MemorySegment pMiColStarts, MemorySegment pMiRowStarts, MemorySegment pWidthInSbsMinus1, MemorySegment pHeightInSbsMinus1) {
+        return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows).context_update_tile_id(context_update_tile_id).tile_size_bytes_minus_1(tile_size_bytes_minus_1).reserved1(reserved1).pMiColStarts(pMiColStarts).pMiRowStarts(pMiRowStarts).pWidthInSbsMinus1(pWidthInSbsMinus1).pHeightInSbsMinus1(pHeightInSbsMinus1);
+    }
+
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param TileCols `TileCols`
+    /// @param TileRows `TileRows`
+    /// @param context_update_tile_id `context_update_tile_id`
+    /// @param tile_size_bytes_minus_1 `tile_size_bytes_minus_1`
+    /// @param reserved1 `reserved1`
+    /// @param pMiColStarts `pMiColStarts`
+    /// @param pMiRowStarts `pMiRowStarts`
+    /// @param pWidthInSbsMinus1 `pWidthInSbsMinus1`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte TileCols, byte TileRows, short context_update_tile_id, byte tile_size_bytes_minus_1, MemorySegment reserved1, MemorySegment pMiColStarts, MemorySegment pMiRowStarts, MemorySegment pWidthInSbsMinus1) {
+        return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows).context_update_tile_id(context_update_tile_id).tile_size_bytes_minus_1(tile_size_bytes_minus_1).reserved1(reserved1).pMiColStarts(pMiColStarts).pMiRowStarts(pMiRowStarts).pWidthInSbsMinus1(pWidthInSbsMinus1);
+    }
+
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param TileCols `TileCols`
+    /// @param TileRows `TileRows`
+    /// @param context_update_tile_id `context_update_tile_id`
+    /// @param tile_size_bytes_minus_1 `tile_size_bytes_minus_1`
+    /// @param reserved1 `reserved1`
+    /// @param pMiColStarts `pMiColStarts`
+    /// @param pMiRowStarts `pMiRowStarts`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte TileCols, byte TileRows, short context_update_tile_id, byte tile_size_bytes_minus_1, MemorySegment reserved1, MemorySegment pMiColStarts, MemorySegment pMiRowStarts) {
+        return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows).context_update_tile_id(context_update_tile_id).tile_size_bytes_minus_1(tile_size_bytes_minus_1).reserved1(reserved1).pMiColStarts(pMiColStarts).pMiRowStarts(pMiRowStarts);
+    }
+
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param TileCols `TileCols`
+    /// @param TileRows `TileRows`
+    /// @param context_update_tile_id `context_update_tile_id`
+    /// @param tile_size_bytes_minus_1 `tile_size_bytes_minus_1`
+    /// @param reserved1 `reserved1`
+    /// @param pMiColStarts `pMiColStarts`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte TileCols, byte TileRows, short context_update_tile_id, byte tile_size_bytes_minus_1, MemorySegment reserved1, MemorySegment pMiColStarts) {
+        return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows).context_update_tile_id(context_update_tile_id).tile_size_bytes_minus_1(tile_size_bytes_minus_1).reserved1(reserved1).pMiColStarts(pMiColStarts);
+    }
+
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param TileCols `TileCols`
+    /// @param TileRows `TileRows`
+    /// @param context_update_tile_id `context_update_tile_id`
+    /// @param tile_size_bytes_minus_1 `tile_size_bytes_minus_1`
+    /// @param reserved1 `reserved1`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte TileCols, byte TileRows, short context_update_tile_id, byte tile_size_bytes_minus_1, MemorySegment reserved1) {
+        return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows).context_update_tile_id(context_update_tile_id).tile_size_bytes_minus_1(tile_size_bytes_minus_1).reserved1(reserved1);
+    }
+
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param TileCols `TileCols`
+    /// @param TileRows `TileRows`
+    /// @param context_update_tile_id `context_update_tile_id`
+    /// @param tile_size_bytes_minus_1 `tile_size_bytes_minus_1`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte TileCols, byte TileRows, short context_update_tile_id, byte tile_size_bytes_minus_1) {
+        return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows).context_update_tile_id(context_update_tile_id).tile_size_bytes_minus_1(tile_size_bytes_minus_1);
+    }
+
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param TileCols `TileCols`
+    /// @param TileRows `TileRows`
+    /// @param context_update_tile_id `context_update_tile_id`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte TileCols, byte TileRows, short context_update_tile_id) {
+        return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows).context_update_tile_id(context_update_tile_id);
+    }
+
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param TileCols `TileCols`
+    /// @param TileRows `TileRows`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte TileCols, byte TileRows) {
+        return alloc(allocator).flags(flags).TileCols(TileCols).TileRows(TileRows);
+    }
+
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @param TileCols `TileCols`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte TileCols) {
+        return alloc(allocator).flags(flags).TileCols(TileCols);
+    }
+
+    /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param flags `flags`
+    /// @return the allocated `StdVideoAV1TileInfo`
+    public static StdVideoAV1TileInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
+        return alloc(allocator).flags(flags);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

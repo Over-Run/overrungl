@@ -109,6 +109,56 @@ public sealed class VkCommandBufferInheritanceViewportScissorInfoNV extends Grou
     /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewportScissor2D `viewportScissor2D`
+    /// @param viewportDepthCount `viewportDepthCount`
+    /// @param pViewportDepths `pViewportDepths`
+    /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
+    public static VkCommandBufferInheritanceViewportScissorInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewportScissor2D, int viewportDepthCount, MemorySegment pViewportDepths) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewportScissor2D(viewportScissor2D).viewportDepthCount(viewportDepthCount).pViewportDepths(pViewportDepths);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewportScissor2D `viewportScissor2D`
+    /// @param viewportDepthCount `viewportDepthCount`
+    /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
+    public static VkCommandBufferInheritanceViewportScissorInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewportScissor2D, int viewportDepthCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewportScissor2D(viewportScissor2D).viewportDepthCount(viewportDepthCount);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param viewportScissor2D `viewportScissor2D`
+    /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
+    public static VkCommandBufferInheritanceViewportScissorInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewportScissor2D) {
+        return alloc(allocator).sType(sType).pNext(pNext).viewportScissor2D(viewportScissor2D);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
+    public static VkCommandBufferInheritanceViewportScissorInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkCommandBufferInheritanceViewportScissorInfoNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkCommandBufferInheritanceViewportScissorInfoNV`
+    public static VkCommandBufferInheritanceViewportScissorInfoNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

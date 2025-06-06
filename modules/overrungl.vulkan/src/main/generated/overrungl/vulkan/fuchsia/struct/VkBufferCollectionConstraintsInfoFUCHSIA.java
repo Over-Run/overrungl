@@ -125,6 +125,83 @@ public sealed class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minBufferCount `minBufferCount`
+    /// @param maxBufferCount `maxBufferCount`
+    /// @param minBufferCountForCamping `minBufferCountForCamping`
+    /// @param minBufferCountForDedicatedSlack `minBufferCountForDedicatedSlack`
+    /// @param minBufferCountForSharedSlack `minBufferCountForSharedSlack`
+    /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public static VkBufferCollectionConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minBufferCount, int maxBufferCount, int minBufferCountForCamping, int minBufferCountForDedicatedSlack, int minBufferCountForSharedSlack) {
+        return alloc(allocator).sType(sType).pNext(pNext).minBufferCount(minBufferCount).maxBufferCount(maxBufferCount).minBufferCountForCamping(minBufferCountForCamping).minBufferCountForDedicatedSlack(minBufferCountForDedicatedSlack).minBufferCountForSharedSlack(minBufferCountForSharedSlack);
+    }
+
+    /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minBufferCount `minBufferCount`
+    /// @param maxBufferCount `maxBufferCount`
+    /// @param minBufferCountForCamping `minBufferCountForCamping`
+    /// @param minBufferCountForDedicatedSlack `minBufferCountForDedicatedSlack`
+    /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public static VkBufferCollectionConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minBufferCount, int maxBufferCount, int minBufferCountForCamping, int minBufferCountForDedicatedSlack) {
+        return alloc(allocator).sType(sType).pNext(pNext).minBufferCount(minBufferCount).maxBufferCount(maxBufferCount).minBufferCountForCamping(minBufferCountForCamping).minBufferCountForDedicatedSlack(minBufferCountForDedicatedSlack);
+    }
+
+    /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minBufferCount `minBufferCount`
+    /// @param maxBufferCount `maxBufferCount`
+    /// @param minBufferCountForCamping `minBufferCountForCamping`
+    /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public static VkBufferCollectionConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minBufferCount, int maxBufferCount, int minBufferCountForCamping) {
+        return alloc(allocator).sType(sType).pNext(pNext).minBufferCount(minBufferCount).maxBufferCount(maxBufferCount).minBufferCountForCamping(minBufferCountForCamping);
+    }
+
+    /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minBufferCount `minBufferCount`
+    /// @param maxBufferCount `maxBufferCount`
+    /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public static VkBufferCollectionConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minBufferCount, int maxBufferCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).minBufferCount(minBufferCount).maxBufferCount(maxBufferCount);
+    }
+
+    /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param minBufferCount `minBufferCount`
+    /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public static VkBufferCollectionConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minBufferCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).minBufferCount(minBufferCount);
+    }
+
+    /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public static VkBufferCollectionConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public static VkBufferCollectionConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

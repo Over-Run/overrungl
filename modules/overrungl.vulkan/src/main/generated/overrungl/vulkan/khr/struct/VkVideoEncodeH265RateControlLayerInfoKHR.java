@@ -127,6 +127,98 @@ public sealed class VkVideoEncodeH265RateControlLayerInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeH265RateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param useMinQp `useMinQp`
+    /// @param minQp `minQp`
+    /// @param useMaxQp `useMaxQp`
+    /// @param maxQp `maxQp`
+    /// @param useMaxFrameSize `useMaxFrameSize`
+    /// @param maxFrameSize `maxFrameSize`
+    /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public static VkVideoEncodeH265RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useMinQp, MemorySegment minQp, int useMaxQp, MemorySegment maxQp, int useMaxFrameSize, MemorySegment maxFrameSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).useMinQp(useMinQp).minQp(minQp).useMaxQp(useMaxQp).maxQp(maxQp).useMaxFrameSize(useMaxFrameSize).maxFrameSize(maxFrameSize);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param useMinQp `useMinQp`
+    /// @param minQp `minQp`
+    /// @param useMaxQp `useMaxQp`
+    /// @param maxQp `maxQp`
+    /// @param useMaxFrameSize `useMaxFrameSize`
+    /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public static VkVideoEncodeH265RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useMinQp, MemorySegment minQp, int useMaxQp, MemorySegment maxQp, int useMaxFrameSize) {
+        return alloc(allocator).sType(sType).pNext(pNext).useMinQp(useMinQp).minQp(minQp).useMaxQp(useMaxQp).maxQp(maxQp).useMaxFrameSize(useMaxFrameSize);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param useMinQp `useMinQp`
+    /// @param minQp `minQp`
+    /// @param useMaxQp `useMaxQp`
+    /// @param maxQp `maxQp`
+    /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public static VkVideoEncodeH265RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useMinQp, MemorySegment minQp, int useMaxQp, MemorySegment maxQp) {
+        return alloc(allocator).sType(sType).pNext(pNext).useMinQp(useMinQp).minQp(minQp).useMaxQp(useMaxQp).maxQp(maxQp);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param useMinQp `useMinQp`
+    /// @param minQp `minQp`
+    /// @param useMaxQp `useMaxQp`
+    /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public static VkVideoEncodeH265RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useMinQp, MemorySegment minQp, int useMaxQp) {
+        return alloc(allocator).sType(sType).pNext(pNext).useMinQp(useMinQp).minQp(minQp).useMaxQp(useMaxQp);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param useMinQp `useMinQp`
+    /// @param minQp `minQp`
+    /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public static VkVideoEncodeH265RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useMinQp, MemorySegment minQp) {
+        return alloc(allocator).sType(sType).pNext(pNext).useMinQp(useMinQp).minQp(minQp);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param useMinQp `useMinQp`
+    /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public static VkVideoEncodeH265RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useMinQp) {
+        return alloc(allocator).sType(sType).pNext(pNext).useMinQp(useMinQp);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public static VkVideoEncodeH265RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeH265RateControlLayerInfoKHR`
+    public static VkVideoEncodeH265RateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

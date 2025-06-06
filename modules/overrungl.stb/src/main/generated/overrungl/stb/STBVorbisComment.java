@@ -93,6 +93,33 @@ public sealed class STBVorbisComment extends GroupType {
     /// @return the allocated `STBVorbisComment`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `STBVorbisComment` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param vendor `vendor`
+    /// @param comment_list_length `comment_list_length`
+    /// @param comment_list `comment_list`
+    /// @return the allocated `STBVorbisComment`
+    public static STBVorbisComment allocInit(SegmentAllocator allocator, MemorySegment vendor, int comment_list_length, MemorySegment comment_list) {
+        return alloc(allocator).vendor(vendor).comment_list_length(comment_list_length).comment_list(comment_list);
+    }
+
+    /// Allocates a `STBVorbisComment` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param vendor `vendor`
+    /// @param comment_list_length `comment_list_length`
+    /// @return the allocated `STBVorbisComment`
+    public static STBVorbisComment allocInit(SegmentAllocator allocator, MemorySegment vendor, int comment_list_length) {
+        return alloc(allocator).vendor(vendor).comment_list_length(comment_list_length);
+    }
+
+    /// Allocates a `STBVorbisComment` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param vendor `vendor`
+    /// @return the allocated `STBVorbisComment`
+    public static STBVorbisComment allocInit(SegmentAllocator allocator, MemorySegment vendor) {
+        return alloc(allocator).vendor(vendor);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

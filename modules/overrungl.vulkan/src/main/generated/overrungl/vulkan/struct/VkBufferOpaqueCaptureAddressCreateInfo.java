@@ -93,6 +93,33 @@ public sealed class VkBufferOpaqueCaptureAddressCreateInfo extends GroupType {
     /// @return the allocated `VkBufferOpaqueCaptureAddressCreateInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkBufferOpaqueCaptureAddressCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param opaqueCaptureAddress `opaqueCaptureAddress`
+    /// @return the allocated `VkBufferOpaqueCaptureAddressCreateInfo`
+    public static VkBufferOpaqueCaptureAddressCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long opaqueCaptureAddress) {
+        return alloc(allocator).sType(sType).pNext(pNext).opaqueCaptureAddress(opaqueCaptureAddress);
+    }
+
+    /// Allocates a `VkBufferOpaqueCaptureAddressCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkBufferOpaqueCaptureAddressCreateInfo`
+    public static VkBufferOpaqueCaptureAddressCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkBufferOpaqueCaptureAddressCreateInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkBufferOpaqueCaptureAddressCreateInfo`
+    public static VkBufferOpaqueCaptureAddressCreateInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

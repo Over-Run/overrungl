@@ -93,6 +93,33 @@ public sealed class VkPhysicalDeviceImageRobustnessFeatures extends GroupType {
     /// @return the allocated `VkPhysicalDeviceImageRobustnessFeatures`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceImageRobustnessFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param robustImageAccess `robustImageAccess`
+    /// @return the allocated `VkPhysicalDeviceImageRobustnessFeatures`
+    public static VkPhysicalDeviceImageRobustnessFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustImageAccess) {
+        return alloc(allocator).sType(sType).pNext(pNext).robustImageAccess(robustImageAccess);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageRobustnessFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceImageRobustnessFeatures`
+    public static VkPhysicalDeviceImageRobustnessFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceImageRobustnessFeatures` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceImageRobustnessFeatures`
+    public static VkPhysicalDeviceImageRobustnessFeatures allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

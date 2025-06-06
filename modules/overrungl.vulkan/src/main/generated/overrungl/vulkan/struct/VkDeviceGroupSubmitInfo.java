@@ -133,6 +133,98 @@ public sealed class VkDeviceGroupSubmitInfo extends GroupType {
     /// @return the allocated `VkDeviceGroupSubmitInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceGroupSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param waitSemaphoreCount `waitSemaphoreCount`
+    /// @param pWaitSemaphoreDeviceIndices `pWaitSemaphoreDeviceIndices`
+    /// @param commandBufferCount `commandBufferCount`
+    /// @param pCommandBufferDeviceMasks `pCommandBufferDeviceMasks`
+    /// @param signalSemaphoreCount `signalSemaphoreCount`
+    /// @param pSignalSemaphoreDeviceIndices `pSignalSemaphoreDeviceIndices`
+    /// @return the allocated `VkDeviceGroupSubmitInfo`
+    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreCount, MemorySegment pWaitSemaphoreDeviceIndices, int commandBufferCount, MemorySegment pCommandBufferDeviceMasks, int signalSemaphoreCount, MemorySegment pSignalSemaphoreDeviceIndices) {
+        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount).pWaitSemaphoreDeviceIndices(pWaitSemaphoreDeviceIndices).commandBufferCount(commandBufferCount).pCommandBufferDeviceMasks(pCommandBufferDeviceMasks).signalSemaphoreCount(signalSemaphoreCount).pSignalSemaphoreDeviceIndices(pSignalSemaphoreDeviceIndices);
+    }
+
+    /// Allocates a `VkDeviceGroupSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param waitSemaphoreCount `waitSemaphoreCount`
+    /// @param pWaitSemaphoreDeviceIndices `pWaitSemaphoreDeviceIndices`
+    /// @param commandBufferCount `commandBufferCount`
+    /// @param pCommandBufferDeviceMasks `pCommandBufferDeviceMasks`
+    /// @param signalSemaphoreCount `signalSemaphoreCount`
+    /// @return the allocated `VkDeviceGroupSubmitInfo`
+    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreCount, MemorySegment pWaitSemaphoreDeviceIndices, int commandBufferCount, MemorySegment pCommandBufferDeviceMasks, int signalSemaphoreCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount).pWaitSemaphoreDeviceIndices(pWaitSemaphoreDeviceIndices).commandBufferCount(commandBufferCount).pCommandBufferDeviceMasks(pCommandBufferDeviceMasks).signalSemaphoreCount(signalSemaphoreCount);
+    }
+
+    /// Allocates a `VkDeviceGroupSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param waitSemaphoreCount `waitSemaphoreCount`
+    /// @param pWaitSemaphoreDeviceIndices `pWaitSemaphoreDeviceIndices`
+    /// @param commandBufferCount `commandBufferCount`
+    /// @param pCommandBufferDeviceMasks `pCommandBufferDeviceMasks`
+    /// @return the allocated `VkDeviceGroupSubmitInfo`
+    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreCount, MemorySegment pWaitSemaphoreDeviceIndices, int commandBufferCount, MemorySegment pCommandBufferDeviceMasks) {
+        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount).pWaitSemaphoreDeviceIndices(pWaitSemaphoreDeviceIndices).commandBufferCount(commandBufferCount).pCommandBufferDeviceMasks(pCommandBufferDeviceMasks);
+    }
+
+    /// Allocates a `VkDeviceGroupSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param waitSemaphoreCount `waitSemaphoreCount`
+    /// @param pWaitSemaphoreDeviceIndices `pWaitSemaphoreDeviceIndices`
+    /// @param commandBufferCount `commandBufferCount`
+    /// @return the allocated `VkDeviceGroupSubmitInfo`
+    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreCount, MemorySegment pWaitSemaphoreDeviceIndices, int commandBufferCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount).pWaitSemaphoreDeviceIndices(pWaitSemaphoreDeviceIndices).commandBufferCount(commandBufferCount);
+    }
+
+    /// Allocates a `VkDeviceGroupSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param waitSemaphoreCount `waitSemaphoreCount`
+    /// @param pWaitSemaphoreDeviceIndices `pWaitSemaphoreDeviceIndices`
+    /// @return the allocated `VkDeviceGroupSubmitInfo`
+    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreCount, MemorySegment pWaitSemaphoreDeviceIndices) {
+        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount).pWaitSemaphoreDeviceIndices(pWaitSemaphoreDeviceIndices);
+    }
+
+    /// Allocates a `VkDeviceGroupSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param waitSemaphoreCount `waitSemaphoreCount`
+    /// @return the allocated `VkDeviceGroupSubmitInfo`
+    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreCount(waitSemaphoreCount);
+    }
+
+    /// Allocates a `VkDeviceGroupSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDeviceGroupSubmitInfo`
+    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDeviceGroupSubmitInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDeviceGroupSubmitInfo`
+    public static VkDeviceGroupSubmitInfo allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

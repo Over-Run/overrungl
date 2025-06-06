@@ -93,6 +93,33 @@ public sealed class VkSurfaceCapabilitiesFullScreenExclusiveEXT extends GroupTyp
     /// @return the allocated `VkSurfaceCapabilitiesFullScreenExclusiveEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSurfaceCapabilitiesFullScreenExclusiveEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param fullScreenExclusiveSupported `fullScreenExclusiveSupported`
+    /// @return the allocated `VkSurfaceCapabilitiesFullScreenExclusiveEXT`
+    public static VkSurfaceCapabilitiesFullScreenExclusiveEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fullScreenExclusiveSupported) {
+        return alloc(allocator).sType(sType).pNext(pNext).fullScreenExclusiveSupported(fullScreenExclusiveSupported);
+    }
+
+    /// Allocates a `VkSurfaceCapabilitiesFullScreenExclusiveEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSurfaceCapabilitiesFullScreenExclusiveEXT`
+    public static VkSurfaceCapabilitiesFullScreenExclusiveEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSurfaceCapabilitiesFullScreenExclusiveEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSurfaceCapabilitiesFullScreenExclusiveEXT`
+    public static VkSurfaceCapabilitiesFullScreenExclusiveEXT allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

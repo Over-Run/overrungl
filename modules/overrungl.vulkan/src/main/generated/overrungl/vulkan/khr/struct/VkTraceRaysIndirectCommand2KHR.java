@@ -181,6 +181,209 @@ public sealed class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @param hitShaderBindingTableAddress `hitShaderBindingTableAddress`
+    /// @param hitShaderBindingTableSize `hitShaderBindingTableSize`
+    /// @param hitShaderBindingTableStride `hitShaderBindingTableStride`
+    /// @param callableShaderBindingTableAddress `callableShaderBindingTableAddress`
+    /// @param callableShaderBindingTableSize `callableShaderBindingTableSize`
+    /// @param callableShaderBindingTableStride `callableShaderBindingTableStride`
+    /// @param width `width`
+    /// @param height `height`
+    /// @param depth `depth`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride, long hitShaderBindingTableAddress, long hitShaderBindingTableSize, long hitShaderBindingTableStride, long callableShaderBindingTableAddress, long callableShaderBindingTableSize, long callableShaderBindingTableStride, int width, int height, int depth) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress).hitShaderBindingTableSize(hitShaderBindingTableSize).hitShaderBindingTableStride(hitShaderBindingTableStride).callableShaderBindingTableAddress(callableShaderBindingTableAddress).callableShaderBindingTableSize(callableShaderBindingTableSize).callableShaderBindingTableStride(callableShaderBindingTableStride).width(width).height(height).depth(depth);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @param hitShaderBindingTableAddress `hitShaderBindingTableAddress`
+    /// @param hitShaderBindingTableSize `hitShaderBindingTableSize`
+    /// @param hitShaderBindingTableStride `hitShaderBindingTableStride`
+    /// @param callableShaderBindingTableAddress `callableShaderBindingTableAddress`
+    /// @param callableShaderBindingTableSize `callableShaderBindingTableSize`
+    /// @param callableShaderBindingTableStride `callableShaderBindingTableStride`
+    /// @param width `width`
+    /// @param height `height`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride, long hitShaderBindingTableAddress, long hitShaderBindingTableSize, long hitShaderBindingTableStride, long callableShaderBindingTableAddress, long callableShaderBindingTableSize, long callableShaderBindingTableStride, int width, int height) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress).hitShaderBindingTableSize(hitShaderBindingTableSize).hitShaderBindingTableStride(hitShaderBindingTableStride).callableShaderBindingTableAddress(callableShaderBindingTableAddress).callableShaderBindingTableSize(callableShaderBindingTableSize).callableShaderBindingTableStride(callableShaderBindingTableStride).width(width).height(height);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @param hitShaderBindingTableAddress `hitShaderBindingTableAddress`
+    /// @param hitShaderBindingTableSize `hitShaderBindingTableSize`
+    /// @param hitShaderBindingTableStride `hitShaderBindingTableStride`
+    /// @param callableShaderBindingTableAddress `callableShaderBindingTableAddress`
+    /// @param callableShaderBindingTableSize `callableShaderBindingTableSize`
+    /// @param callableShaderBindingTableStride `callableShaderBindingTableStride`
+    /// @param width `width`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride, long hitShaderBindingTableAddress, long hitShaderBindingTableSize, long hitShaderBindingTableStride, long callableShaderBindingTableAddress, long callableShaderBindingTableSize, long callableShaderBindingTableStride, int width) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress).hitShaderBindingTableSize(hitShaderBindingTableSize).hitShaderBindingTableStride(hitShaderBindingTableStride).callableShaderBindingTableAddress(callableShaderBindingTableAddress).callableShaderBindingTableSize(callableShaderBindingTableSize).callableShaderBindingTableStride(callableShaderBindingTableStride).width(width);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @param hitShaderBindingTableAddress `hitShaderBindingTableAddress`
+    /// @param hitShaderBindingTableSize `hitShaderBindingTableSize`
+    /// @param hitShaderBindingTableStride `hitShaderBindingTableStride`
+    /// @param callableShaderBindingTableAddress `callableShaderBindingTableAddress`
+    /// @param callableShaderBindingTableSize `callableShaderBindingTableSize`
+    /// @param callableShaderBindingTableStride `callableShaderBindingTableStride`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride, long hitShaderBindingTableAddress, long hitShaderBindingTableSize, long hitShaderBindingTableStride, long callableShaderBindingTableAddress, long callableShaderBindingTableSize, long callableShaderBindingTableStride) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress).hitShaderBindingTableSize(hitShaderBindingTableSize).hitShaderBindingTableStride(hitShaderBindingTableStride).callableShaderBindingTableAddress(callableShaderBindingTableAddress).callableShaderBindingTableSize(callableShaderBindingTableSize).callableShaderBindingTableStride(callableShaderBindingTableStride);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @param hitShaderBindingTableAddress `hitShaderBindingTableAddress`
+    /// @param hitShaderBindingTableSize `hitShaderBindingTableSize`
+    /// @param hitShaderBindingTableStride `hitShaderBindingTableStride`
+    /// @param callableShaderBindingTableAddress `callableShaderBindingTableAddress`
+    /// @param callableShaderBindingTableSize `callableShaderBindingTableSize`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride, long hitShaderBindingTableAddress, long hitShaderBindingTableSize, long hitShaderBindingTableStride, long callableShaderBindingTableAddress, long callableShaderBindingTableSize) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress).hitShaderBindingTableSize(hitShaderBindingTableSize).hitShaderBindingTableStride(hitShaderBindingTableStride).callableShaderBindingTableAddress(callableShaderBindingTableAddress).callableShaderBindingTableSize(callableShaderBindingTableSize);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @param hitShaderBindingTableAddress `hitShaderBindingTableAddress`
+    /// @param hitShaderBindingTableSize `hitShaderBindingTableSize`
+    /// @param hitShaderBindingTableStride `hitShaderBindingTableStride`
+    /// @param callableShaderBindingTableAddress `callableShaderBindingTableAddress`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride, long hitShaderBindingTableAddress, long hitShaderBindingTableSize, long hitShaderBindingTableStride, long callableShaderBindingTableAddress) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress).hitShaderBindingTableSize(hitShaderBindingTableSize).hitShaderBindingTableStride(hitShaderBindingTableStride).callableShaderBindingTableAddress(callableShaderBindingTableAddress);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @param hitShaderBindingTableAddress `hitShaderBindingTableAddress`
+    /// @param hitShaderBindingTableSize `hitShaderBindingTableSize`
+    /// @param hitShaderBindingTableStride `hitShaderBindingTableStride`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride, long hitShaderBindingTableAddress, long hitShaderBindingTableSize, long hitShaderBindingTableStride) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress).hitShaderBindingTableSize(hitShaderBindingTableSize).hitShaderBindingTableStride(hitShaderBindingTableStride);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @param hitShaderBindingTableAddress `hitShaderBindingTableAddress`
+    /// @param hitShaderBindingTableSize `hitShaderBindingTableSize`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride, long hitShaderBindingTableAddress, long hitShaderBindingTableSize) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress).hitShaderBindingTableSize(hitShaderBindingTableSize);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @param hitShaderBindingTableAddress `hitShaderBindingTableAddress`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride, long hitShaderBindingTableAddress) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride).hitShaderBindingTableAddress(hitShaderBindingTableAddress);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @param missShaderBindingTableStride `missShaderBindingTableStride`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize, long missShaderBindingTableStride) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize).missShaderBindingTableStride(missShaderBindingTableStride);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @param missShaderBindingTableSize `missShaderBindingTableSize`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress, long missShaderBindingTableSize) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress).missShaderBindingTableSize(missShaderBindingTableSize);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @param missShaderBindingTableAddress `missShaderBindingTableAddress`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize, long missShaderBindingTableAddress) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize).missShaderBindingTableAddress(missShaderBindingTableAddress);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @param raygenShaderRecordSize `raygenShaderRecordSize`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress, long raygenShaderRecordSize) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress).raygenShaderRecordSize(raygenShaderRecordSize);
+    }
+
+    /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param raygenShaderRecordAddress `raygenShaderRecordAddress`
+    /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
+    public static VkTraceRaysIndirectCommand2KHR allocInit(SegmentAllocator allocator, long raygenShaderRecordAddress) {
+        return alloc(allocator).raygenShaderRecordAddress(raygenShaderRecordAddress);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

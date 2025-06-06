@@ -93,6 +93,33 @@ public sealed class VkDeviceFaultAddressInfoEXT extends GroupType {
     /// @return the allocated `VkDeviceFaultAddressInfoEXT`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDeviceFaultAddressInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param addressType `addressType`
+    /// @param reportedAddress `reportedAddress`
+    /// @param addressPrecision `addressPrecision`
+    /// @return the allocated `VkDeviceFaultAddressInfoEXT`
+    public static VkDeviceFaultAddressInfoEXT allocInit(SegmentAllocator allocator, int addressType, long reportedAddress, long addressPrecision) {
+        return alloc(allocator).addressType(addressType).reportedAddress(reportedAddress).addressPrecision(addressPrecision);
+    }
+
+    /// Allocates a `VkDeviceFaultAddressInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param addressType `addressType`
+    /// @param reportedAddress `reportedAddress`
+    /// @return the allocated `VkDeviceFaultAddressInfoEXT`
+    public static VkDeviceFaultAddressInfoEXT allocInit(SegmentAllocator allocator, int addressType, long reportedAddress) {
+        return alloc(allocator).addressType(addressType).reportedAddress(reportedAddress);
+    }
+
+    /// Allocates a `VkDeviceFaultAddressInfoEXT` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param addressType `addressType`
+    /// @return the allocated `VkDeviceFaultAddressInfoEXT`
+    public static VkDeviceFaultAddressInfoEXT allocInit(SegmentAllocator allocator, int addressType) {
+        return alloc(allocator).addressType(addressType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

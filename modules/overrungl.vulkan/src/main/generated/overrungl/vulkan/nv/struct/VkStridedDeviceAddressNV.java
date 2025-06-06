@@ -85,6 +85,23 @@ public sealed class VkStridedDeviceAddressNV extends GroupType {
     /// @return the allocated `VkStridedDeviceAddressNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkStridedDeviceAddressNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param startAddress `startAddress`
+    /// @param strideInBytes `strideInBytes`
+    /// @return the allocated `VkStridedDeviceAddressNV`
+    public static VkStridedDeviceAddressNV allocInit(SegmentAllocator allocator, long startAddress, long strideInBytes) {
+        return alloc(allocator).startAddress(startAddress).strideInBytes(strideInBytes);
+    }
+
+    /// Allocates a `VkStridedDeviceAddressNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param startAddress `startAddress`
+    /// @return the allocated `VkStridedDeviceAddressNV`
+    public static VkStridedDeviceAddressNV allocInit(SegmentAllocator allocator, long startAddress) {
+        return alloc(allocator).startAddress(startAddress);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

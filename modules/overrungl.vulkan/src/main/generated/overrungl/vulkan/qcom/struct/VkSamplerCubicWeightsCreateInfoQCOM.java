@@ -93,6 +93,33 @@ public sealed class VkSamplerCubicWeightsCreateInfoQCOM extends GroupType {
     /// @return the allocated `VkSamplerCubicWeightsCreateInfoQCOM`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSamplerCubicWeightsCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param cubicWeights `cubicWeights`
+    /// @return the allocated `VkSamplerCubicWeightsCreateInfoQCOM`
+    public static VkSamplerCubicWeightsCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cubicWeights) {
+        return alloc(allocator).sType(sType).pNext(pNext).cubicWeights(cubicWeights);
+    }
+
+    /// Allocates a `VkSamplerCubicWeightsCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkSamplerCubicWeightsCreateInfoQCOM`
+    public static VkSamplerCubicWeightsCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkSamplerCubicWeightsCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkSamplerCubicWeightsCreateInfoQCOM`
+    public static VkSamplerCubicWeightsCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -117,6 +117,69 @@ public sealed class VkPhysicalDeviceCooperativeVectorPropertiesNV extends GroupT
     /// @return the allocated `VkPhysicalDeviceCooperativeVectorPropertiesNV`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPhysicalDeviceCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param cooperativeVectorSupportedStages `cooperativeVectorSupportedStages`
+    /// @param cooperativeVectorTrainingFloat16Accumulation `cooperativeVectorTrainingFloat16Accumulation`
+    /// @param cooperativeVectorTrainingFloat32Accumulation `cooperativeVectorTrainingFloat32Accumulation`
+    /// @param maxCooperativeVectorComponents `maxCooperativeVectorComponents`
+    /// @return the allocated `VkPhysicalDeviceCooperativeVectorPropertiesNV`
+    public static VkPhysicalDeviceCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeVectorSupportedStages, int cooperativeVectorTrainingFloat16Accumulation, int cooperativeVectorTrainingFloat32Accumulation, int maxCooperativeVectorComponents) {
+        return alloc(allocator).sType(sType).pNext(pNext).cooperativeVectorSupportedStages(cooperativeVectorSupportedStages).cooperativeVectorTrainingFloat16Accumulation(cooperativeVectorTrainingFloat16Accumulation).cooperativeVectorTrainingFloat32Accumulation(cooperativeVectorTrainingFloat32Accumulation).maxCooperativeVectorComponents(maxCooperativeVectorComponents);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param cooperativeVectorSupportedStages `cooperativeVectorSupportedStages`
+    /// @param cooperativeVectorTrainingFloat16Accumulation `cooperativeVectorTrainingFloat16Accumulation`
+    /// @param cooperativeVectorTrainingFloat32Accumulation `cooperativeVectorTrainingFloat32Accumulation`
+    /// @return the allocated `VkPhysicalDeviceCooperativeVectorPropertiesNV`
+    public static VkPhysicalDeviceCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeVectorSupportedStages, int cooperativeVectorTrainingFloat16Accumulation, int cooperativeVectorTrainingFloat32Accumulation) {
+        return alloc(allocator).sType(sType).pNext(pNext).cooperativeVectorSupportedStages(cooperativeVectorSupportedStages).cooperativeVectorTrainingFloat16Accumulation(cooperativeVectorTrainingFloat16Accumulation).cooperativeVectorTrainingFloat32Accumulation(cooperativeVectorTrainingFloat32Accumulation);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param cooperativeVectorSupportedStages `cooperativeVectorSupportedStages`
+    /// @param cooperativeVectorTrainingFloat16Accumulation `cooperativeVectorTrainingFloat16Accumulation`
+    /// @return the allocated `VkPhysicalDeviceCooperativeVectorPropertiesNV`
+    public static VkPhysicalDeviceCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeVectorSupportedStages, int cooperativeVectorTrainingFloat16Accumulation) {
+        return alloc(allocator).sType(sType).pNext(pNext).cooperativeVectorSupportedStages(cooperativeVectorSupportedStages).cooperativeVectorTrainingFloat16Accumulation(cooperativeVectorTrainingFloat16Accumulation);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param cooperativeVectorSupportedStages `cooperativeVectorSupportedStages`
+    /// @return the allocated `VkPhysicalDeviceCooperativeVectorPropertiesNV`
+    public static VkPhysicalDeviceCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeVectorSupportedStages) {
+        return alloc(allocator).sType(sType).pNext(pNext).cooperativeVectorSupportedStages(cooperativeVectorSupportedStages);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkPhysicalDeviceCooperativeVectorPropertiesNV`
+    public static VkPhysicalDeviceCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkPhysicalDeviceCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkPhysicalDeviceCooperativeVectorPropertiesNV`
+    public static VkPhysicalDeviceCooperativeVectorPropertiesNV allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

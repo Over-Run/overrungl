@@ -109,6 +109,56 @@ public sealed class VkWin32SurfaceCreateInfoKHR extends GroupType {
     /// @return the allocated `VkWin32SurfaceCreateInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkWin32SurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param hinstance `hinstance`
+    /// @param hwnd `hwnd`
+    /// @return the allocated `VkWin32SurfaceCreateInfoKHR`
+    public static VkWin32SurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment hinstance, MemorySegment hwnd) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).hinstance(hinstance).hwnd(hwnd);
+    }
+
+    /// Allocates a `VkWin32SurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param hinstance `hinstance`
+    /// @return the allocated `VkWin32SurfaceCreateInfoKHR`
+    public static VkWin32SurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment hinstance) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).hinstance(hinstance);
+    }
+
+    /// Allocates a `VkWin32SurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkWin32SurfaceCreateInfoKHR`
+    public static VkWin32SurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkWin32SurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkWin32SurfaceCreateInfoKHR`
+    public static VkWin32SurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkWin32SurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkWin32SurfaceCreateInfoKHR`
+    public static VkWin32SurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

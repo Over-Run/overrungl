@@ -109,6 +109,56 @@ public sealed class VkDirectDriverLoadingListLUNARG extends GroupType {
     /// @return the allocated `VkDirectDriverLoadingListLUNARG`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDirectDriverLoadingListLUNARG` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param mode `mode`
+    /// @param driverCount `driverCount`
+    /// @param pDrivers `pDrivers`
+    /// @return the allocated `VkDirectDriverLoadingListLUNARG`
+    public static VkDirectDriverLoadingListLUNARG allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int mode, int driverCount, MemorySegment pDrivers) {
+        return alloc(allocator).sType(sType).pNext(pNext).mode(mode).driverCount(driverCount).pDrivers(pDrivers);
+    }
+
+    /// Allocates a `VkDirectDriverLoadingListLUNARG` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param mode `mode`
+    /// @param driverCount `driverCount`
+    /// @return the allocated `VkDirectDriverLoadingListLUNARG`
+    public static VkDirectDriverLoadingListLUNARG allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int mode, int driverCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).mode(mode).driverCount(driverCount);
+    }
+
+    /// Allocates a `VkDirectDriverLoadingListLUNARG` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param mode `mode`
+    /// @return the allocated `VkDirectDriverLoadingListLUNARG`
+    public static VkDirectDriverLoadingListLUNARG allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int mode) {
+        return alloc(allocator).sType(sType).pNext(pNext).mode(mode);
+    }
+
+    /// Allocates a `VkDirectDriverLoadingListLUNARG` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkDirectDriverLoadingListLUNARG`
+    public static VkDirectDriverLoadingListLUNARG allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkDirectDriverLoadingListLUNARG` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkDirectDriverLoadingListLUNARG`
+    public static VkDirectDriverLoadingListLUNARG allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

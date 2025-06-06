@@ -93,6 +93,33 @@ public sealed class VkSpecializationMapEntry extends GroupType {
     /// @return the allocated `VkSpecializationMapEntry`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkSpecializationMapEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param constantID `constantID`
+    /// @param offset `offset`
+    /// @param size `size`
+    /// @return the allocated `VkSpecializationMapEntry`
+    public static VkSpecializationMapEntry allocInit(SegmentAllocator allocator, int constantID, int offset, long size) {
+        return alloc(allocator).constantID(constantID).offset(offset).size(size);
+    }
+
+    /// Allocates a `VkSpecializationMapEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param constantID `constantID`
+    /// @param offset `offset`
+    /// @return the allocated `VkSpecializationMapEntry`
+    public static VkSpecializationMapEntry allocInit(SegmentAllocator allocator, int constantID, int offset) {
+        return alloc(allocator).constantID(constantID).offset(offset);
+    }
+
+    /// Allocates a `VkSpecializationMapEntry` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param constantID `constantID`
+    /// @return the allocated `VkSpecializationMapEntry`
+    public static VkSpecializationMapEntry allocInit(SegmentAllocator allocator, int constantID) {
+        return alloc(allocator).constantID(constantID);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

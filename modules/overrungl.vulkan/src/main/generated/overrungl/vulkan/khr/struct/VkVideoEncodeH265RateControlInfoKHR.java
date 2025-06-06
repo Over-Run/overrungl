@@ -125,6 +125,83 @@ public sealed class VkVideoEncodeH265RateControlInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeH265RateControlInfoKHR`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkVideoEncodeH265RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param gopFrameCount `gopFrameCount`
+    /// @param idrPeriod `idrPeriod`
+    /// @param consecutiveBFrameCount `consecutiveBFrameCount`
+    /// @param subLayerCount `subLayerCount`
+    /// @return the allocated `VkVideoEncodeH265RateControlInfoKHR`
+    public static VkVideoEncodeH265RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int gopFrameCount, int idrPeriod, int consecutiveBFrameCount, int subLayerCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).gopFrameCount(gopFrameCount).idrPeriod(idrPeriod).consecutiveBFrameCount(consecutiveBFrameCount).subLayerCount(subLayerCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param gopFrameCount `gopFrameCount`
+    /// @param idrPeriod `idrPeriod`
+    /// @param consecutiveBFrameCount `consecutiveBFrameCount`
+    /// @return the allocated `VkVideoEncodeH265RateControlInfoKHR`
+    public static VkVideoEncodeH265RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int gopFrameCount, int idrPeriod, int consecutiveBFrameCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).gopFrameCount(gopFrameCount).idrPeriod(idrPeriod).consecutiveBFrameCount(consecutiveBFrameCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param gopFrameCount `gopFrameCount`
+    /// @param idrPeriod `idrPeriod`
+    /// @return the allocated `VkVideoEncodeH265RateControlInfoKHR`
+    public static VkVideoEncodeH265RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int gopFrameCount, int idrPeriod) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).gopFrameCount(gopFrameCount).idrPeriod(idrPeriod);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @param gopFrameCount `gopFrameCount`
+    /// @return the allocated `VkVideoEncodeH265RateControlInfoKHR`
+    public static VkVideoEncodeH265RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int gopFrameCount) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).gopFrameCount(gopFrameCount);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @param flags `flags`
+    /// @return the allocated `VkVideoEncodeH265RateControlInfoKHR`
+    public static VkVideoEncodeH265RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
+        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @param pNext `pNext`
+    /// @return the allocated `VkVideoEncodeH265RateControlInfoKHR`
+    public static VkVideoEncodeH265RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
+        return alloc(allocator).sType(sType).pNext(pNext);
+    }
+
+    /// Allocates a `VkVideoEncodeH265RateControlInfoKHR` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sType `sType`
+    /// @return the allocated `VkVideoEncodeH265RateControlInfoKHR`
+    public static VkVideoEncodeH265RateControlInfoKHR allocInit(SegmentAllocator allocator, int sType) {
+        return alloc(allocator).sType(sType);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -93,6 +93,33 @@ public sealed class VkDescriptorImageInfo extends GroupType {
     /// @return the allocated `VkDescriptorImageInfo`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkDescriptorImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sampler `sampler`
+    /// @param imageView `imageView`
+    /// @param imageLayout `imageLayout`
+    /// @return the allocated `VkDescriptorImageInfo`
+    public static VkDescriptorImageInfo allocInit(SegmentAllocator allocator, long sampler, long imageView, int imageLayout) {
+        return alloc(allocator).sampler(sampler).imageView(imageView).imageLayout(imageLayout);
+    }
+
+    /// Allocates a `VkDescriptorImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sampler `sampler`
+    /// @param imageView `imageView`
+    /// @return the allocated `VkDescriptorImageInfo`
+    public static VkDescriptorImageInfo allocInit(SegmentAllocator allocator, long sampler, long imageView) {
+        return alloc(allocator).sampler(sampler).imageView(imageView);
+    }
+
+    /// Allocates a `VkDescriptorImageInfo` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param sampler `sampler`
+    /// @return the allocated `VkDescriptorImageInfo`
+    public static VkDescriptorImageInfo allocInit(SegmentAllocator allocator, long sampler) {
+        return alloc(allocator).sampler(sampler);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

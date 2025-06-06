@@ -109,6 +109,56 @@ public sealed class VkPerformanceValueDataINTEL extends GroupType {
     /// @return the allocated `VkPerformanceValueDataINTEL`
     public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
 
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param value32 `value32`
+    /// @param value64 `value64`
+    /// @param valueFloat `valueFloat`
+    /// @param valueBool `valueBool`
+    /// @param valueString `valueString`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocInit(SegmentAllocator allocator, int value32, long value64, float valueFloat, int valueBool, MemorySegment valueString) {
+        return alloc(allocator).value32(value32).value64(value64).valueFloat(valueFloat).valueBool(valueBool).valueString(valueString);
+    }
+
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param value32 `value32`
+    /// @param value64 `value64`
+    /// @param valueFloat `valueFloat`
+    /// @param valueBool `valueBool`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocInit(SegmentAllocator allocator, int value32, long value64, float valueFloat, int valueBool) {
+        return alloc(allocator).value32(value32).value64(value64).valueFloat(valueFloat).valueBool(valueBool);
+    }
+
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param value32 `value32`
+    /// @param value64 `value64`
+    /// @param valueFloat `valueFloat`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocInit(SegmentAllocator allocator, int value32, long value64, float valueFloat) {
+        return alloc(allocator).value32(value32).value64(value64).valueFloat(valueFloat);
+    }
+
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param value32 `value32`
+    /// @param value64 `value64`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocInit(SegmentAllocator allocator, int value32, long value64) {
+        return alloc(allocator).value32(value32).value64(value64);
+    }
+
+    /// Allocates a `VkPerformanceValueDataINTEL` with the given segment allocator and arguments like initializer list.
+    /// @param allocator the segment allocator
+    /// @param value32 `value32`
+    /// @return the allocated `VkPerformanceValueDataINTEL`
+    public static VkPerformanceValueDataINTEL allocInit(SegmentAllocator allocator, int value32) {
+        return alloc(allocator).value32(value32);
+    }
+
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
