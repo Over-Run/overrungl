@@ -399,7 +399,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             sb.append("    public static $className allocInit(SegmentAllocator allocator")
             for (i in 0 until n) {
                 val member = groupClass.members[i]
-                sb.append(", ${member.pair.type.javaType} ${member.pair.name}")
+                if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
+                    sb.append(", MemorySegment ${member.pair.name}")
+                } else {
+                    sb.append(", ${member.pair.type.javaType} ${member.pair.name}")
+                }
             }
             sb.appendLine(") {")
             sb.append("        return alloc(allocator)")
