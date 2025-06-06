@@ -18,11 +18,9 @@ package overrungl.util;
 
 import overrungl.OverrunGLConfigurations;
 
-import java.lang.foreign.Arena;
-import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SegmentAllocator;
-import java.lang.foreign.ValueLayout;
+import java.lang.foreign.*;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * <h2>Memory stack</h2>
@@ -54,6 +52,29 @@ import java.util.Arrays;
  * <h3>Type-specialized allocating methods</h3>
  * Allocating methods of primitive types (except {@code boolean}) and {@link MemorySegment} are provided
  * to avoid requiring a memory layout.
+ *
+ * <h3>Segment allocator of method parameter</h3>
+ * Do <strong>NOT</strong> use other {@link SegmentAllocator} provided by method parameter
+ * within try-block of memory stack.
+ * The method parameter might be a same instance as the memory stack,
+ * thus causes memory segment allocated by {@link SegmentAllocator} invalid after method returns.
+ *
+ * <pre>{@code
+ * void createSomething() {
+ *     try (var stack = MemoryStack.pushLocal()) {
+ *         var out = stack.allocate(4);
+ *         doSomething(createInfo(stack), out);
+ *     }
+ * }
+ *
+ * MemorySegment createInfo(SegmentAllocator allocator) {
+ *     try (var stack = MemoryStack.pushLocal()) {
+ *         var seg = stack.allocate(LAYOUT);
+ *         nativeFunction(seg);
+ *         return allocator.allocate(LAYOUT).copyFrom(seg); // using "allocator" which is same as variable "stack"
+ *     }
+ *     // the allocated segment invalid before returning
+ * }}</pre>
  *
  * @author squid233
  * @since 0.1.0
@@ -176,13 +197,55 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
      */
     @Override
     public MemorySegment allocate(long byteSize, long byteAlignment) {
+        return malloc(byteSize, byteAlignment).fill((byte) 0);
+    }
+
+    /**
+     * Like {@link #allocate(long, long)}, but it doesn't initialize with zero.
+     *
+     * @param byteSize      the size (in bytes) of the block of memory to be allocated
+     * @param byteAlignment the alignment (in bytes) of the block of memory to be allocated
+     * @return a new memory segment with the given {@code byteSize} and {@code byteAlignment}
+     */
+    public MemorySegment malloc(long byteSize, long byteAlignment) {
         if (byteSize < 0) {
             throw new IllegalArgumentException("The provided allocation size is negative: " + byteSize);
         }
         if (byteAlignment <= 0 || ((byteAlignment & (byteAlignment - 1)) != 0L)) {
             throw new IllegalArgumentException("Invalid alignment constraint: " + byteAlignment);
         }
-        return trySlice(byteSize, byteAlignment).fill((byte) 0);
+        return trySlice(byteSize, byteAlignment);
+    }
+
+    /**
+     * Like {@link #allocate(long)}, but it doesn't initialize with zero.
+     *
+     * @param byteSize the size (in bytes) of the block of memory to be allocated
+     * @return a new memory segment with the given {@code byteSize}
+     */
+    public MemorySegment malloc(long byteSize) {
+        return malloc(byteSize, 1);
+    }
+
+    /**
+     * Like {@link #allocate(MemoryLayout)}, but it doesn't initialize with zero.
+     *
+     * @param layout the layout of the block of memory to be allocated
+     * @return a new memory segment with the given layout
+     */
+    public MemorySegment malloc(MemoryLayout layout) {
+        return malloc(layout.byteSize(), layout.byteAlignment());
+    }
+
+    /**
+     * Like {@link #allocate(MemoryLayout, long)}, but it doesn't initialize with zero.
+     *
+     * @param elementLayout the array element layout
+     * @param count         the array element count
+     * @return a new memory segment with the given {@code elementLayout} and {@code count}
+     */
+    public MemorySegment malloc(MemoryLayout elementLayout, long count) {
+        return malloc(MemoryLayout.sequenceLayout(count, elementLayout));
     }
 
     /**
@@ -257,6 +320,85 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
      */
     public MemorySegment segment() {
         return segment;
+    }
+
+    @Override
+    public MemorySegment allocateFrom(ValueLayout.OfByte layout, byte value) {
+        Objects.requireNonNull(layout);
+        MemorySegment seg = malloc(layout);
+        seg.set(layout, 0, value);
+        return seg;
+    }
+
+    @Override
+    public MemorySegment allocateFrom(ValueLayout.OfChar layout, char value) {
+        Objects.requireNonNull(layout);
+        MemorySegment seg = malloc(layout);
+        seg.set(layout, 0, value);
+        return seg;
+    }
+
+    @Override
+    public MemorySegment allocateFrom(ValueLayout.OfShort layout, short value) {
+        Objects.requireNonNull(layout);
+        MemorySegment seg = malloc(layout);
+        seg.set(layout, 0, value);
+        return seg;
+    }
+
+    @Override
+    public MemorySegment allocateFrom(ValueLayout.OfInt layout, int value) {
+        Objects.requireNonNull(layout);
+        MemorySegment seg = malloc(layout);
+        seg.set(layout, 0, value);
+        return seg;
+    }
+
+    @Override
+    public MemorySegment allocateFrom(ValueLayout.OfFloat layout, float value) {
+        Objects.requireNonNull(layout);
+        MemorySegment seg = malloc(layout);
+        seg.set(layout, 0, value);
+        return seg;
+    }
+
+    @Override
+    public MemorySegment allocateFrom(ValueLayout.OfLong layout, long value) {
+        Objects.requireNonNull(layout);
+        MemorySegment seg = malloc(layout);
+        seg.set(layout, 0, value);
+        return seg;
+    }
+
+    @Override
+    public MemorySegment allocateFrom(ValueLayout.OfDouble layout, double value) {
+        Objects.requireNonNull(layout);
+        MemorySegment seg = malloc(layout);
+        seg.set(layout, 0, value);
+        return seg;
+    }
+
+    @Override
+    public MemorySegment allocateFrom(AddressLayout layout, MemorySegment value) {
+        Objects.requireNonNull(value);
+        Objects.requireNonNull(layout);
+        MemorySegment seg = malloc(layout);
+        seg.set(layout, 0, value);
+        return seg;
+    }
+
+    @Override
+    public MemorySegment allocateFrom(ValueLayout elementLayout,
+                                      MemorySegment source,
+                                      ValueLayout sourceElementLayout,
+                                      long sourceOffset,
+                                      long elementCount) {
+        Objects.requireNonNull(source);
+        Objects.requireNonNull(sourceElementLayout);
+        Objects.requireNonNull(elementLayout);
+        MemorySegment dst = malloc(elementLayout, elementCount);
+        MemorySegment.copy(source, sourceElementLayout, sourceOffset, dst, elementLayout, 0, elementCount);
+        return dst;
     }
 
     //region ---[BEGIN GENERATOR BEGIN]---
