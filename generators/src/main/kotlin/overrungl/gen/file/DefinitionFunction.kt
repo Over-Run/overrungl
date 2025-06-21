@@ -26,7 +26,8 @@ data class DefinitionFunction(
     val parameters: List<DefTypeNamePair>,
     val optional: Boolean,
     val entrypoint: String,
-    val body: String?
+    val body: String?,
+    val symbolNotFoundError: String = "SymbolNotFoundError"
 ) {
     val requireAllocator: Boolean
         get() = returnType is GroupLayoutType

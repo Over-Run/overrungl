@@ -240,7 +240,7 @@ fun main() {
 
         method(
             (commandsFile.interpreter.functions()[command.name] ?: error(command.name))
-                .copy(name = command.name.substring(2), entrypoint = command.name)
+                .copy(name = command.name.substring(2), entrypoint = command.name, symbolNotFoundError = "GLSymbolNotFoundError")
         )
     }
 

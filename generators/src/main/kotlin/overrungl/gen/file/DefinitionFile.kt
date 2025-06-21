@@ -918,7 +918,7 @@ fun writeFunction(
         sb.appendLine(func.body.prependIndent("        "))
     } else {
         if (func.optional) {
-            sb.appendLine("""        if (MemoryUtil.isNullPointer($handlesInstance.PFN_${func.entrypoint})) throw new SymbolNotFoundError("Symbol not found: ${func.entrypoint}");""")
+            sb.appendLine("""        if (MemoryUtil.isNullPointer($handlesInstance.PFN_${func.entrypoint})) throw new ${func.symbolNotFoundError}("Symbol not found: ${func.entrypoint}");""")
         }
         sb.append("        try { ")
         if (func.returnType !is VoidType) {
