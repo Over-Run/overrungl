@@ -76,6 +76,11 @@ import java.util.Objects;
  *     // the allocated segment invalid before returning
  * }}</pre>
  *
+ * <h3>Short-lived threads</h3>
+ * Do not use {@linkplain #ofLocal() local stacks} on short-lived threads
+ * because they will not be released after the thread terminated.
+ * Instead, use {@link Arena}.
+ *
  * @author squid233
  * @since 0.1.0
  */

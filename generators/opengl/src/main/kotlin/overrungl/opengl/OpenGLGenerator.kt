@@ -380,9 +380,13 @@ fun main() {
         // generate module-info.java
         writeString(Path("src/main/generated/module-info.java"), buildString {
             appendLine(commentedFileHeader)
+            appendLine()
             appendLine(
                 """
                     /// The OpenGL binding.
+                    ///
+                    /// - [References](https://registry.khronos.org/OpenGL-Refpages/gl4/)
+                    /// - [Registry](https://github.com/KhronosGroup/OpenGL-Registry)
                     module overrungl.opengl {
                         exports overrungl.opengl;
                 """.trimIndent()

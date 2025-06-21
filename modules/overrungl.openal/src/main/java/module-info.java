@@ -16,6 +16,11 @@
 
 /// The OpenAL binding.
 ///
+/// OverrunGL uses [openal-soft](https://openal-soft.org/).
+///
+/// - [Website](https://www.openal.org/)
+/// - [Source](https://github.com/kcat/openal-soft)
+///
 /// @author squid233
 /// @since 0.1.0
 module overrungl.openal {

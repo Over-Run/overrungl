@@ -17,6 +17,12 @@
 // This file is auto-generated. DO NOT EDIT!
 
 /// The Vulkan binding.
+///
+/// - [Website](https://www.vulkan.org)
+/// - [LunarG](https://vulkan.lunarg.com/)
+/// - [References](https://registry.khronos.org/vulkan/specs/latest/man/html/)
+/// - [Specification](https://registry.khronos.org/vulkan/specs/latest/html/vkspec.html)
+/// - [Vulkan-Docs](https://github.com/KhronosGroup/Vulkan-Docs)
 module overrungl.vulkan {
     exports overrungl.vulkan;
     exports overrungl.vulkan.amd;
