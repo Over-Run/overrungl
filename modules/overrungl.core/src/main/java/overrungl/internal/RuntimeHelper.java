@@ -36,7 +36,7 @@ import java.util.Objects;
  */
 public final class RuntimeHelper {
     private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
-        .resolve("overrungl" + System.getProperty("user.name"));
+        .resolve("overrungl-" + System.getProperty("user.name"));
     private static final Linker LINKER = Linker.nativeLinker();
 
     /**
@@ -85,8 +85,11 @@ public final class RuntimeHelper {
         Path uri;
         // 1. Load from natives directory
         var localFile = Path.of(System.getProperty("overrungl.natives", "."), path);
+        var localJLPFile = Path.of(System.getProperty("java.library.path"), path);
         if (Files.exists(localFile)) {
             uri = localFile;
+        } else if (Files.exists(localJLPFile)) {
+            uri = localJLPFile;
         } else {
             // 2. Load from classpath
             try {
@@ -100,7 +103,7 @@ public final class RuntimeHelper {
                     Files.createDirectories(tmpdir);
                 }
             } catch (IOException e) {
-                throw new IllegalStateException("Couldn't create directory: " + tmpdir + "; try setting -Doverrungl.natives to a valid path", e);
+                throw new IllegalStateException("Couldn't create directory: " + tmpdir + "; try setting -Doverrungl.natives or -Djava.library.path to a valid path", e);
             }
             var libFile = tmpdir.resolve(basename + "-" + version + suffix);
             if (!Files.exists(libFile)) {
@@ -109,7 +112,7 @@ public final class RuntimeHelper {
                 try (var is = ClassLoader.getSystemResourceAsStream(fromPath)) {
                     Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
                 } catch (Exception e) {
-                    throw new IllegalStateException("Couldn't load file: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives to a valid path", e);
+                    throw new IllegalStateException("Couldn't load file: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives or -Djava.library.path to a valid path", e);
                 }
             }
             uri = libFile;
