@@ -779,7 +779,17 @@ fun main(args: Array<String>) {
     writeString(Path("src/main/generated/module-info.java"), buildString {
         appendLine(commentedFileHeader)
         appendLine()
-        appendLine("/// The Vulkan binding.")
+        appendLine(
+            """
+                /// The Vulkan binding.
+                ///
+                /// - [Website](https://www.vulkan.org)
+                /// - [LunarG](https://vulkan.lunarg.com/)
+                /// - [References](https://registry.khronos.org/vulkan/specs/latest/man/html/)
+                /// - [Specification](https://registry.khronos.org/vulkan/specs/latest/html/vkspec.html)
+                /// - [Vulkan-Docs](https://github.com/KhronosGroup/Vulkan-Docs)
+            """.trimIndent()
+        )
         appendLine("module overrungl.vulkan {")
         appendLine("    exports $vulkanPackage;")
         extensionVendors.sorted().forEach { appendLine("    exports $vulkanPackage.$it;") }
