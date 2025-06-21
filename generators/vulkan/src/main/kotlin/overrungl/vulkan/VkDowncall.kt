@@ -106,7 +106,8 @@ class VkDowncall(
                                 )
                             )
                         }
-                    else cmd.parameters
+                    else cmd.parameters,
+                symbolNotFoundError = "VKSymbolNotFoundError"
             )
             methods.add(
                 VkFunction(

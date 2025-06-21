@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVGpuProgram5 {
     public static final int GL_MAX_GEOMETRY_PROGRAM_INVOCATIONS_NV = 0x8E5A;
@@ -51,7 +52,7 @@ public final class GLNVGpuProgram5 {
     /// void glProgramSubroutineParametersuivNV((unsigned int) GLenum target, (int) GLsizei count, const GLuint* params);
     /// ```
     public void ProgramSubroutineParametersuivNV(int target, int count, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glProgramSubroutineParametersuivNV)) throw new SymbolNotFoundError("Symbol not found: glProgramSubroutineParametersuivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramSubroutineParametersuivNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramSubroutineParametersuivNV");
         try { Handles.MH_glProgramSubroutineParametersuivNV.invokeExact(handles.PFN_glProgramSubroutineParametersuivNV, target, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramSubroutineParametersuivNV", e); }
     }
@@ -60,7 +61,7 @@ public final class GLNVGpuProgram5 {
     /// void glGetProgramSubroutineParameteruivNV((unsigned int) GLenum target, (unsigned int) GLuint index, GLuint* param);
     /// ```
     public void GetProgramSubroutineParameteruivNV(int target, int index, MemorySegment param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramSubroutineParameteruivNV)) throw new SymbolNotFoundError("Symbol not found: glGetProgramSubroutineParameteruivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramSubroutineParameteruivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramSubroutineParameteruivNV");
         try { Handles.MH_glGetProgramSubroutineParameteruivNV.invokeExact(handles.PFN_glGetProgramSubroutineParameteruivNV, target, index, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramSubroutineParameteruivNV", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLATISeparateStencil {
     public static final int GL_STENCIL_BACK_FUNC_ATI = 0x8800;
@@ -47,7 +48,7 @@ public final class GLATISeparateStencil {
     /// void glStencilOpSeparateATI((unsigned int) GLenum face, (unsigned int) GLenum sfail, (unsigned int) GLenum dpfail, (unsigned int) GLenum dppass);
     /// ```
     public void StencilOpSeparateATI(int face, int sfail, int dpfail, int dppass) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glStencilOpSeparateATI)) throw new SymbolNotFoundError("Symbol not found: glStencilOpSeparateATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glStencilOpSeparateATI)) throw new GLSymbolNotFoundError("Symbol not found: glStencilOpSeparateATI");
         try { Handles.MH_glStencilOpSeparateATI.invokeExact(handles.PFN_glStencilOpSeparateATI, face, sfail, dpfail, dppass); }
         catch (Throwable e) { throw new RuntimeException("error in StencilOpSeparateATI", e); }
     }
@@ -56,7 +57,7 @@ public final class GLATISeparateStencil {
     /// void glStencilFuncSeparateATI((unsigned int) GLenum frontfunc, (unsigned int) GLenum backfunc, (int) GLint ref, (unsigned int) GLuint mask);
     /// ```
     public void StencilFuncSeparateATI(int frontfunc, int backfunc, int ref, int mask) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glStencilFuncSeparateATI)) throw new SymbolNotFoundError("Symbol not found: glStencilFuncSeparateATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glStencilFuncSeparateATI)) throw new GLSymbolNotFoundError("Symbol not found: glStencilFuncSeparateATI");
         try { Handles.MH_glStencilFuncSeparateATI.invokeExact(handles.PFN_glStencilFuncSeparateATI, frontfunc, backfunc, ref, mask); }
         catch (Throwable e) { throw new RuntimeException("error in StencilFuncSeparateATI", e); }
     }

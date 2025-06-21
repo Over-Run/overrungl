@@ -36,7 +36,7 @@ public final class VKKHRDrawIndirectCount {
     /// void vkCmdDrawIndirectCountKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkBuffer countBuffer, (uint64_t) VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride);
     /// ```
     public static void vkCmdDrawIndirectCountKHR(VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCountKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawIndirectCountKHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCountKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndirectCountKHR");
         try { Handles.MH_vkCmdDrawIndirectCountKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCountKHR, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndirectCountKHR", e); }
     }
@@ -45,7 +45,7 @@ public final class VKKHRDrawIndirectCount {
     /// void vkCmdDrawIndexedIndirectCountKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkBuffer countBuffer, (uint64_t) VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride);
     /// ```
     public static void vkCmdDrawIndexedIndirectCountKHR(VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCountKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawIndexedIndirectCountKHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCountKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndexedIndirectCountKHR");
         try { Handles.MH_vkCmdDrawIndexedIndirectCountKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCountKHR, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndexedIndirectCountKHR", e); }
     }

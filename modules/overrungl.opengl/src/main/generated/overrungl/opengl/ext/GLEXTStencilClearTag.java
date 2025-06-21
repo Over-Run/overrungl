@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTStencilClearTag {
     public static final int GL_STENCIL_TAG_BITS_EXT = 0x88F2;
@@ -42,7 +43,7 @@ public final class GLEXTStencilClearTag {
     /// void glStencilClearTagEXT((int) GLsizei stencilTagBits, (unsigned int) GLuint stencilClearTag);
     /// ```
     public void StencilClearTagEXT(int stencilTagBits, int stencilClearTag) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glStencilClearTagEXT)) throw new SymbolNotFoundError("Symbol not found: glStencilClearTagEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glStencilClearTagEXT)) throw new GLSymbolNotFoundError("Symbol not found: glStencilClearTagEXT");
         try { Handles.MH_glStencilClearTagEXT.invokeExact(handles.PFN_glStencilClearTagEXT, stencilTagBits, stencilClearTag); }
         catch (Throwable e) { throw new RuntimeException("error in StencilClearTagEXT", e); }
     }

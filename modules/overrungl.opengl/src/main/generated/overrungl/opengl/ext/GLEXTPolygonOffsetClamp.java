@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTPolygonOffsetClamp {
     public static final int GL_POLYGON_OFFSET_CLAMP_EXT = 0x8E1B;
@@ -41,7 +42,7 @@ public final class GLEXTPolygonOffsetClamp {
     /// void glPolygonOffsetClampEXT(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat units, ((float) khronos_float_t) GLfloat clamp);
     /// ```
     public void PolygonOffsetClampEXT(float factor, float units, float clamp) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetClampEXT)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClampEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetClampEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPolygonOffsetClampEXT");
         try { Handles.MH_glPolygonOffsetClampEXT.invokeExact(handles.PFN_glPolygonOffsetClampEXT, factor, units, clamp); }
         catch (Throwable e) { throw new RuntimeException("error in PolygonOffsetClampEXT", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBInstancedArrays {
     public static final int GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB = 0x88FE;
@@ -41,7 +42,7 @@ public final class GLARBInstancedArrays {
     /// void glVertexAttribDivisorARB((unsigned int) GLuint index, (unsigned int) GLuint divisor);
     /// ```
     public void VertexAttribDivisorARB(int index, int divisor) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribDivisorARB)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribDivisorARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribDivisorARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribDivisorARB");
         try { Handles.MH_glVertexAttribDivisorARB.invokeExact(handles.PFN_glVertexAttribDivisorARB, index, divisor); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribDivisorARB", e); }
     }

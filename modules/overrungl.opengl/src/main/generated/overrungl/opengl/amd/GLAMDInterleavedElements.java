@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAMDInterleavedElements {
     public static final int GL_VERTEX_ELEMENT_SWIZZLE_AMD = 0x91A4;
@@ -49,7 +50,7 @@ public final class GLAMDInterleavedElements {
     /// void glVertexAttribParameteriAMD((unsigned int) GLuint index, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void VertexAttribParameteriAMD(int index, int pname, int param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribParameteriAMD)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribParameteriAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribParameteriAMD)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribParameteriAMD");
         try { Handles.MH_glVertexAttribParameteriAMD.invokeExact(handles.PFN_glVertexAttribParameteriAMD, index, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribParameteriAMD", e); }
     }

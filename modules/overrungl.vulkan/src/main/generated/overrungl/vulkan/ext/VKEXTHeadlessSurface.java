@@ -36,7 +36,7 @@ public final class VKEXTHeadlessSurface {
     /// (int) VkResult vkCreateHeadlessSurfaceEXT((struct VkInstance*) VkInstance instance, const VkHeadlessSurfaceCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateHeadlessSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateHeadlessSurfaceEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateHeadlessSurfaceEXT");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateHeadlessSurfaceEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateHeadlessSurfaceEXT");
         try { return (int) Handles.MH_vkCreateHeadlessSurfaceEXT.invokeExact(instance.capabilities().PFN_vkCreateHeadlessSurfaceEXT, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateHeadlessSurfaceEXT", e); }
     }

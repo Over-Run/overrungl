@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBClEvent {
     public static final int GL_SYNC_CL_EVENT_ARB = 0x8240;
@@ -42,7 +43,7 @@ public final class GLARBClEvent {
     /// (struct __GLsync *) GLsync glCreateSyncFromCLeventARB(struct _cl_context * context, struct _cl_event * event, (unsigned int) GLbitfield flags);
     /// ```
     public MemorySegment CreateSyncFromCLeventARB(MemorySegment context, MemorySegment event, int flags) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glCreateSyncFromCLeventARB)) throw new SymbolNotFoundError("Symbol not found: glCreateSyncFromCLeventARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glCreateSyncFromCLeventARB)) throw new GLSymbolNotFoundError("Symbol not found: glCreateSyncFromCLeventARB");
         try { return (MemorySegment) Handles.MH_glCreateSyncFromCLeventARB.invokeExact(handles.PFN_glCreateSyncFromCLeventARB, context, event, flags); }
         catch (Throwable e) { throw new RuntimeException("error in CreateSyncFromCLeventARB", e); }
     }

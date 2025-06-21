@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTSubtexture {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLEXTSubtexture {
     /// void glTexSubImage1DEXT((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLsizei width, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
     public void TexSubImage1DEXT(int target, int level, int xoffset, int width, int format, int type, MemorySegment pixels) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage1DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage1DEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexSubImage1DEXT");
         try { Handles.MH_glTexSubImage1DEXT.invokeExact(handles.PFN_glTexSubImage1DEXT, target, level, xoffset, width, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexSubImage1DEXT", e); }
     }
@@ -52,7 +53,7 @@ public final class GLEXTSubtexture {
     /// void glTexSubImage2DEXT((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
     public void TexSubImage2DEXT(int target, int level, int xoffset, int yoffset, int width, int height, int format, int type, MemorySegment pixels) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage2DEXT)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage2DEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexSubImage2DEXT");
         try { Handles.MH_glTexSubImage2DEXT.invokeExact(handles.PFN_glTexSubImage2DEXT, target, level, xoffset, yoffset, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexSubImage2DEXT", e); }
     }

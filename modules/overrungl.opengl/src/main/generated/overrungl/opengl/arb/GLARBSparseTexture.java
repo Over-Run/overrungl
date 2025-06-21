@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBSparseTexture {
     public static final int GL_TEXTURE_SPARSE_ARB = 0x91A6;
@@ -51,7 +52,7 @@ public final class GLARBSparseTexture {
     /// void glTexPageCommitmentARB((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean commit);
     /// ```
     public void TexPageCommitmentARB(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, boolean commit) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexPageCommitmentARB)) throw new SymbolNotFoundError("Symbol not found: glTexPageCommitmentARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexPageCommitmentARB)) throw new GLSymbolNotFoundError("Symbol not found: glTexPageCommitmentARB");
         try { Handles.MH_glTexPageCommitmentARB.invokeExact(handles.PFN_glTexPageCommitmentARB, target, level, xoffset, yoffset, zoffset, width, height, depth, ((commit) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TexPageCommitmentARB", e); }
     }

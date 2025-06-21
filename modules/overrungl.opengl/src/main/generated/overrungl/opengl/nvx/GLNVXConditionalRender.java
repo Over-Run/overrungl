@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVXConditionalRender {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLNVXConditionalRender {
     /// void glBeginConditionalRenderNVX((unsigned int) GLuint id);
     /// ```
     public void BeginConditionalRenderNVX(int id) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBeginConditionalRenderNVX)) throw new SymbolNotFoundError("Symbol not found: glBeginConditionalRenderNVX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBeginConditionalRenderNVX)) throw new GLSymbolNotFoundError("Symbol not found: glBeginConditionalRenderNVX");
         try { Handles.MH_glBeginConditionalRenderNVX.invokeExact(handles.PFN_glBeginConditionalRenderNVX, id); }
         catch (Throwable e) { throw new RuntimeException("error in BeginConditionalRenderNVX", e); }
     }
@@ -52,7 +53,7 @@ public final class GLNVXConditionalRender {
     /// void glEndConditionalRenderNVX();
     /// ```
     public void EndConditionalRenderNVX() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glEndConditionalRenderNVX)) throw new SymbolNotFoundError("Symbol not found: glEndConditionalRenderNVX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEndConditionalRenderNVX)) throw new GLSymbolNotFoundError("Symbol not found: glEndConditionalRenderNVX");
         try { Handles.MH_glEndConditionalRenderNVX.invokeExact(handles.PFN_glEndConditionalRenderNVX); }
         catch (Throwable e) { throw new RuntimeException("error in EndConditionalRenderNVX", e); }
     }

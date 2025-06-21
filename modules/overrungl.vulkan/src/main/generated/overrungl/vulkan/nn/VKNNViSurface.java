@@ -36,7 +36,7 @@ public final class VKNNViSurface {
     /// (int) VkResult vkCreateViSurfaceNN((struct VkInstance*) VkInstance instance, const VkViSurfaceCreateInfoNN* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateViSurfaceNN(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateViSurfaceNN)) throw new SymbolNotFoundError("Symbol not found: vkCreateViSurfaceNN");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateViSurfaceNN)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateViSurfaceNN");
         try { return (int) Handles.MH_vkCreateViSurfaceNN.invokeExact(instance.capabilities().PFN_vkCreateViSurfaceNN, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateViSurfaceNN", e); }
     }

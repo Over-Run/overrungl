@@ -45,7 +45,7 @@ public final class VKNVMeshShader {
     /// void vkCmdDrawMeshTasksNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t taskCount, uint32_t firstTask);
     /// ```
     public static void vkCmdDrawMeshTasksNV(VkCommandBuffer commandBuffer, int taskCount, int firstTask) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksNV");
         try { Handles.MH_vkCmdDrawMeshTasksNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksNV, commandBuffer.segment(), taskCount, firstTask); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMeshTasksNV", e); }
     }
@@ -54,7 +54,7 @@ public final class VKNVMeshShader {
     /// void vkCmdDrawMeshTasksIndirectNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, uint32_t drawCount, uint32_t stride);
     /// ```
     public static void vkCmdDrawMeshTasksIndirectNV(VkCommandBuffer commandBuffer, long buffer, long offset, int drawCount, int stride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksIndirectNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectNV");
         try { Handles.MH_vkCmdDrawMeshTasksIndirectNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksIndirectNV, commandBuffer.segment(), buffer, offset, drawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMeshTasksIndirectNV", e); }
     }
@@ -63,7 +63,7 @@ public final class VKNVMeshShader {
     /// void vkCmdDrawMeshTasksIndirectCountNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkBuffer countBuffer, (uint64_t) VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride);
     /// ```
     public static void vkCmdDrawMeshTasksIndirectCountNV(VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectCountNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksIndirectCountNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawMeshTasksIndirectCountNV");
         try { Handles.MH_vkCmdDrawMeshTasksIndirectCountNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawMeshTasksIndirectCountNV, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMeshTasksIndirectCountNV", e); }
     }

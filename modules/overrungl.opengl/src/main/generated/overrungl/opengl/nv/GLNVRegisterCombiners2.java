@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVRegisterCombiners2 {
     public static final int GL_PER_STAGE_CONSTANTS_NV = 0x8535;
@@ -44,7 +45,7 @@ public final class GLNVRegisterCombiners2 {
     /// void glCombinerStageParameterfvNV((unsigned int) GLenum stage, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void CombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glCombinerStageParameterfvNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glCombinerStageParameterfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glCombinerStageParameterfvNV");
         try { Handles.MH_glCombinerStageParameterfvNV.invokeExact(handles.PFN_glCombinerStageParameterfvNV, stage, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in CombinerStageParameterfvNV", e); }
     }
@@ -53,7 +54,7 @@ public final class GLNVRegisterCombiners2 {
     /// void glGetCombinerStageParameterfvNV((unsigned int) GLenum stage, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void GetCombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetCombinerStageParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetCombinerStageParameterfvNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetCombinerStageParameterfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetCombinerStageParameterfvNV");
         try { Handles.MH_glGetCombinerStageParameterfvNV.invokeExact(handles.PFN_glGetCombinerStageParameterfvNV, stage, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetCombinerStageParameterfvNV", e); }
     }

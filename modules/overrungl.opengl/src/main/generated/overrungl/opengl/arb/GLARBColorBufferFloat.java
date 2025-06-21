@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBColorBufferFloat {
     public static final int GL_RGBA_FLOAT_MODE_ARB = 0x8820;
@@ -45,7 +46,7 @@ public final class GLARBColorBufferFloat {
     /// void glClampColorARB((unsigned int) GLenum target, (unsigned int) GLenum clamp);
     /// ```
     public void ClampColorARB(int target, int clamp) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glClampColorARB)) throw new SymbolNotFoundError("Symbol not found: glClampColorARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glClampColorARB)) throw new GLSymbolNotFoundError("Symbol not found: glClampColorARB");
         try { Handles.MH_glClampColorARB.invokeExact(handles.PFN_glClampColorARB, target, clamp); }
         catch (Throwable e) { throw new RuntimeException("error in ClampColorARB", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLATIPnTriangles {
     public static final int GL_PN_TRIANGLES_ATI = 0x87F0;
@@ -52,7 +53,7 @@ public final class GLATIPnTriangles {
     /// void glPNTrianglesiATI((unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void PNTrianglesiATI(int pname, int param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPNTrianglesiATI)) throw new SymbolNotFoundError("Symbol not found: glPNTrianglesiATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPNTrianglesiATI)) throw new GLSymbolNotFoundError("Symbol not found: glPNTrianglesiATI");
         try { Handles.MH_glPNTrianglesiATI.invokeExact(handles.PFN_glPNTrianglesiATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PNTrianglesiATI", e); }
     }
@@ -61,7 +62,7 @@ public final class GLATIPnTriangles {
     /// void glPNTrianglesfATI((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void PNTrianglesfATI(int pname, float param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPNTrianglesfATI)) throw new SymbolNotFoundError("Symbol not found: glPNTrianglesfATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPNTrianglesfATI)) throw new GLSymbolNotFoundError("Symbol not found: glPNTrianglesfATI");
         try { Handles.MH_glPNTrianglesfATI.invokeExact(handles.PFN_glPNTrianglesfATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PNTrianglesfATI", e); }
     }

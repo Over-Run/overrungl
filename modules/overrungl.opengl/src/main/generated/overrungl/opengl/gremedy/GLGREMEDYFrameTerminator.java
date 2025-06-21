@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLGREMEDYFrameTerminator {
     private final Handles handles;
@@ -40,7 +41,7 @@ public final class GLGREMEDYFrameTerminator {
     /// void glFrameTerminatorGREMEDY();
     /// ```
     public void FrameTerminatorGREMEDY() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFrameTerminatorGREMEDY)) throw new SymbolNotFoundError("Symbol not found: glFrameTerminatorGREMEDY");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFrameTerminatorGREMEDY)) throw new GLSymbolNotFoundError("Symbol not found: glFrameTerminatorGREMEDY");
         try { Handles.MH_glFrameTerminatorGREMEDY.invokeExact(handles.PFN_glFrameTerminatorGREMEDY); }
         catch (Throwable e) { throw new RuntimeException("error in FrameTerminatorGREMEDY", e); }
     }

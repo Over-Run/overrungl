@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAPPLEFlushBufferRange {
     public static final int GL_BUFFER_SERIALIZED_MODIFY_APPLE = 0x8A12;
@@ -45,7 +46,7 @@ public final class GLAPPLEFlushBufferRange {
     /// void glBufferParameteriAPPLE((unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void BufferParameteriAPPLE(int target, int pname, int param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBufferParameteriAPPLE)) throw new SymbolNotFoundError("Symbol not found: glBufferParameteriAPPLE");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBufferParameteriAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glBufferParameteriAPPLE");
         try { Handles.MH_glBufferParameteriAPPLE.invokeExact(handles.PFN_glBufferParameteriAPPLE, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in BufferParameteriAPPLE", e); }
     }
@@ -54,7 +55,7 @@ public final class GLAPPLEFlushBufferRange {
     /// void glFlushMappedBufferRangeAPPLE((unsigned int) GLenum target, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
     public void FlushMappedBufferRangeAPPLE(int target, long offset, long size) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedBufferRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glFlushMappedBufferRangeAPPLE");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedBufferRangeAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glFlushMappedBufferRangeAPPLE");
         try { Handles.MH_glFlushMappedBufferRangeAPPLE.invokeExact(handles.PFN_glFlushMappedBufferRangeAPPLE, target, offset, size); }
         catch (Throwable e) { throw new RuntimeException("error in FlushMappedBufferRangeAPPLE", e); }
     }

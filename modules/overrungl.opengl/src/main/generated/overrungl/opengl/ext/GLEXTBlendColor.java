@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTBlendColor {
     public static final int GL_CONSTANT_COLOR_EXT = 0x8001;
@@ -45,7 +46,7 @@ public final class GLEXTBlendColor {
     /// void glBlendColorEXT(((float) khronos_float_t) GLfloat red, ((float) khronos_float_t) GLfloat green, ((float) khronos_float_t) GLfloat blue, ((float) khronos_float_t) GLfloat alpha);
     /// ```
     public void BlendColorEXT(float red, float green, float blue, float alpha) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBlendColorEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendColorEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendColorEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBlendColorEXT");
         try { Handles.MH_glBlendColorEXT.invokeExact(handles.PFN_glBlendColorEXT, red, green, blue, alpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendColorEXT", e); }
     }

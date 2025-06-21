@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTPointParameters {
     public static final int GL_POINT_SIZE_MIN_EXT = 0x8126;
@@ -47,7 +48,7 @@ public final class GLEXTPointParameters {
     /// void glPointParameterfEXT((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void PointParameterfEXT(int pname, float param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfEXT");
         try { Handles.MH_glPointParameterfEXT.invokeExact(handles.PFN_glPointParameterfEXT, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfEXT", e); }
     }
@@ -56,7 +57,7 @@ public final class GLEXTPointParameters {
     /// void glPointParameterfvEXT((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void PointParameterfvEXT(int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfvEXT");
         try { Handles.MH_glPointParameterfvEXT.invokeExact(handles.PFN_glPointParameterfvEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfvEXT", e); }
     }

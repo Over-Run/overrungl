@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTMemoryObjectWin32 {
     public static final int GL_HANDLE_TYPE_OPAQUE_WIN32_EXT = 0x9587;
@@ -52,7 +53,7 @@ public final class GLEXTMemoryObjectWin32 {
     /// void glImportMemoryWin32HandleEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, void* handle);
     /// ```
     public void ImportMemoryWin32HandleEXT(int memory, long size, int handleType, MemorySegment handle) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32HandleEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32HandleEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32HandleEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportMemoryWin32HandleEXT");
         try { Handles.MH_glImportMemoryWin32HandleEXT.invokeExact(handles.PFN_glImportMemoryWin32HandleEXT, memory, size, handleType, handle); }
         catch (Throwable e) { throw new RuntimeException("error in ImportMemoryWin32HandleEXT", e); }
     }
@@ -61,7 +62,7 @@ public final class GLEXTMemoryObjectWin32 {
     /// void glImportMemoryWin32NameEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, const void* name);
     /// ```
     public void ImportMemoryWin32NameEXT(int memory, long size, int handleType, MemorySegment name) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32NameEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryWin32NameEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryWin32NameEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportMemoryWin32NameEXT");
         try { Handles.MH_glImportMemoryWin32NameEXT.invokeExact(handles.PFN_glImportMemoryWin32NameEXT, memory, size, handleType, name); }
         catch (Throwable e) { throw new RuntimeException("error in ImportMemoryWin32NameEXT", e); }
     }

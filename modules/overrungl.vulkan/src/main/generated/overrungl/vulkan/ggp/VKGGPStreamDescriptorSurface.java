@@ -36,7 +36,7 @@ public final class VKGGPStreamDescriptorSurface {
     /// (int) VkResult vkCreateStreamDescriptorSurfaceGGP((struct VkInstance*) VkInstance instance, const VkStreamDescriptorSurfaceCreateInfoGGP* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateStreamDescriptorSurfaceGGP(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateStreamDescriptorSurfaceGGP)) throw new SymbolNotFoundError("Symbol not found: vkCreateStreamDescriptorSurfaceGGP");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateStreamDescriptorSurfaceGGP)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateStreamDescriptorSurfaceGGP");
         try { return (int) Handles.MH_vkCreateStreamDescriptorSurfaceGGP.invokeExact(instance.capabilities().PFN_vkCreateStreamDescriptorSurfaceGGP, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateStreamDescriptorSurfaceGGP", e); }
     }

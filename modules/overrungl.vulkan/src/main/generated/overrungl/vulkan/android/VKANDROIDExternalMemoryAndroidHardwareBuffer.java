@@ -44,7 +44,7 @@ public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     /// (int) VkResult vkGetAndroidHardwareBufferPropertiesANDROID((struct VkDevice*) VkDevice device, const struct AHardwareBuffer * buffer, VkAndroidHardwareBufferPropertiesANDROID* pProperties);
     /// ```
     public static int vkGetAndroidHardwareBufferPropertiesANDROID(VkDevice device, MemorySegment buffer, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetAndroidHardwareBufferPropertiesANDROID");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAndroidHardwareBufferPropertiesANDROID");
         try { return (int) Handles.MH_vkGetAndroidHardwareBufferPropertiesANDROID.invokeExact(device.capabilities().PFN_vkGetAndroidHardwareBufferPropertiesANDROID, device.segment(), buffer, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetAndroidHardwareBufferPropertiesANDROID", e); }
     }
@@ -53,7 +53,7 @@ public final class VKANDROIDExternalMemoryAndroidHardwareBuffer {
     /// (int) VkResult vkGetMemoryAndroidHardwareBufferANDROID((struct VkDevice*) VkDevice device, const VkMemoryGetAndroidHardwareBufferInfoANDROID* pInfo, struct AHardwareBuffer ** pBuffer);
     /// ```
     public static int vkGetMemoryAndroidHardwareBufferANDROID(VkDevice device, MemorySegment pInfo, MemorySegment pBuffer) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryAndroidHardwareBufferANDROID");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryAndroidHardwareBufferANDROID");
         try { return (int) Handles.MH_vkGetMemoryAndroidHardwareBufferANDROID.invokeExact(device.capabilities().PFN_vkGetMemoryAndroidHardwareBufferANDROID, device.segment(), pInfo, pBuffer); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryAndroidHardwareBufferANDROID", e); }
     }

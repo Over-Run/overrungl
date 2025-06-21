@@ -40,7 +40,7 @@ public final class VKKHRExternalSemaphoreWin32 {
     /// (int) VkResult vkImportSemaphoreWin32HandleKHR((struct VkDevice*) VkDevice device, const VkImportSemaphoreWin32HandleInfoKHR* pImportSemaphoreWin32HandleInfo);
     /// ```
     public static int vkImportSemaphoreWin32HandleKHR(VkDevice device, MemorySegment pImportSemaphoreWin32HandleInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreWin32HandleKHR)) throw new SymbolNotFoundError("Symbol not found: vkImportSemaphoreWin32HandleKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportSemaphoreWin32HandleKHR");
         try { return (int) Handles.MH_vkImportSemaphoreWin32HandleKHR.invokeExact(device.capabilities().PFN_vkImportSemaphoreWin32HandleKHR, device.segment(), pImportSemaphoreWin32HandleInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportSemaphoreWin32HandleKHR", e); }
     }
@@ -49,7 +49,7 @@ public final class VKKHRExternalSemaphoreWin32 {
     /// (int) VkResult vkGetSemaphoreWin32HandleKHR((struct VkDevice*) VkDevice device, const VkSemaphoreGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
     /// ```
     public static int vkGetSemaphoreWin32HandleKHR(VkDevice device, MemorySegment pGetWin32HandleInfo, MemorySegment pHandle) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreWin32HandleKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreWin32HandleKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreWin32HandleKHR");
         try { return (int) Handles.MH_vkGetSemaphoreWin32HandleKHR.invokeExact(device.capabilities().PFN_vkGetSemaphoreWin32HandleKHR, device.segment(), pGetWin32HandleInfo, pHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreWin32HandleKHR", e); }
     }

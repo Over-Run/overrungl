@@ -60,7 +60,7 @@ public final class VKKHRVideoDecodeQueue {
     /// void vkCmdDecodeVideoKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkVideoDecodeInfoKHR* pDecodeInfo);
     /// ```
     public static void vkCmdDecodeVideoKHR(VkCommandBuffer commandBuffer, MemorySegment pDecodeInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecodeVideoKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdDecodeVideoKHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecodeVideoKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDecodeVideoKHR");
         try { Handles.MH_vkCmdDecodeVideoKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecodeVideoKHR, commandBuffer.segment(), pDecodeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDecodeVideoKHR", e); }
     }

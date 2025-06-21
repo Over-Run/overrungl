@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTTextureObject {
     public static final int GL_TEXTURE_PRIORITY_EXT = 0x8066;
@@ -60,7 +61,7 @@ public final class GLEXTTextureObject {
     /// GLboolean glAreTexturesResidentEXT((int) GLsizei n, const GLuint* textures, GLboolean* residences);
     /// ```
     public boolean AreTexturesResidentEXT(int n, MemorySegment textures, MemorySegment residences) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glAreTexturesResidentEXT)) throw new SymbolNotFoundError("Symbol not found: glAreTexturesResidentEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glAreTexturesResidentEXT)) throw new GLSymbolNotFoundError("Symbol not found: glAreTexturesResidentEXT");
         try { return (((byte) Handles.MH_glAreTexturesResidentEXT.invokeExact(handles.PFN_glAreTexturesResidentEXT, n, textures, residences)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in AreTexturesResidentEXT", e); }
     }
@@ -69,7 +70,7 @@ public final class GLEXTTextureObject {
     /// void glBindTextureEXT((unsigned int) GLenum target, (unsigned int) GLuint texture);
     /// ```
     public void BindTextureEXT(int target, int texture) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBindTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glBindTextureEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindTextureEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBindTextureEXT");
         try { Handles.MH_glBindTextureEXT.invokeExact(handles.PFN_glBindTextureEXT, target, texture); }
         catch (Throwable e) { throw new RuntimeException("error in BindTextureEXT", e); }
     }
@@ -78,7 +79,7 @@ public final class GLEXTTextureObject {
     /// void glDeleteTexturesEXT((int) GLsizei n, const GLuint* textures);
     /// ```
     public void DeleteTexturesEXT(int n, MemorySegment textures) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTexturesEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteTexturesEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteTexturesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteTexturesEXT");
         try { Handles.MH_glDeleteTexturesEXT.invokeExact(handles.PFN_glDeleteTexturesEXT, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteTexturesEXT", e); }
     }
@@ -87,7 +88,7 @@ public final class GLEXTTextureObject {
     /// void glGenTexturesEXT((int) GLsizei n, GLuint* textures);
     /// ```
     public void GenTexturesEXT(int n, MemorySegment textures) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGenTexturesEXT)) throw new SymbolNotFoundError("Symbol not found: glGenTexturesEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenTexturesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenTexturesEXT");
         try { Handles.MH_glGenTexturesEXT.invokeExact(handles.PFN_glGenTexturesEXT, n, textures); }
         catch (Throwable e) { throw new RuntimeException("error in GenTexturesEXT", e); }
     }
@@ -96,7 +97,7 @@ public final class GLEXTTextureObject {
     /// GLboolean glIsTextureEXT((unsigned int) GLuint texture);
     /// ```
     public boolean IsTextureEXT(int texture) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glIsTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glIsTextureEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsTextureEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIsTextureEXT");
         try { return (((byte) Handles.MH_glIsTextureEXT.invokeExact(handles.PFN_glIsTextureEXT, texture)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsTextureEXT", e); }
     }
@@ -105,7 +106,7 @@ public final class GLEXTTextureObject {
     /// void glPrioritizeTexturesEXT((int) GLsizei n, const GLuint* textures, const GLclampf* priorities);
     /// ```
     public void PrioritizeTexturesEXT(int n, MemorySegment textures, MemorySegment priorities) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPrioritizeTexturesEXT)) throw new SymbolNotFoundError("Symbol not found: glPrioritizeTexturesEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPrioritizeTexturesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPrioritizeTexturesEXT");
         try { Handles.MH_glPrioritizeTexturesEXT.invokeExact(handles.PFN_glPrioritizeTexturesEXT, n, textures, priorities); }
         catch (Throwable e) { throw new RuntimeException("error in PrioritizeTexturesEXT", e); }
     }

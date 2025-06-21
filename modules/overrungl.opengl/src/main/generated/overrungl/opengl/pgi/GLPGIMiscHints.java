@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLPGIMiscHints {
     public static final int GL_PREFER_DOUBLEBUFFER_HINT_PGI = 0x1A1F8;
@@ -60,7 +61,7 @@ public final class GLPGIMiscHints {
     /// void glHintPGI((unsigned int) GLenum target, (int) GLint mode);
     /// ```
     public void HintPGI(int target, int mode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glHintPGI)) throw new SymbolNotFoundError("Symbol not found: glHintPGI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glHintPGI)) throw new GLSymbolNotFoundError("Symbol not found: glHintPGI");
         try { Handles.MH_glHintPGI.invokeExact(handles.PFN_glHintPGI, target, mode); }
         catch (Throwable e) { throw new RuntimeException("error in HintPGI", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTTextureBufferObject {
     public static final int GL_TEXTURE_BUFFER_EXT = 0x8C2A;
@@ -45,7 +46,7 @@ public final class GLEXTTextureBufferObject {
     /// void glTexBufferEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer);
     /// ```
     public void TexBufferEXT(int target, int internalformat, int buffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glTexBufferEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexBufferEXT");
         try { Handles.MH_glTexBufferEXT.invokeExact(handles.PFN_glTexBufferEXT, target, internalformat, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in TexBufferEXT", e); }
     }

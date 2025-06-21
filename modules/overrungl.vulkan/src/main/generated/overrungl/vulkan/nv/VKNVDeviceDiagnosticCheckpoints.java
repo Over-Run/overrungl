@@ -41,7 +41,7 @@ public final class VKNVDeviceDiagnosticCheckpoints {
     /// void vkCmdSetCheckpointNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const void* pCheckpointMarker);
     /// ```
     public static void vkCmdSetCheckpointNV(VkCommandBuffer commandBuffer, MemorySegment pCheckpointMarker) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCheckpointNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCheckpointNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCheckpointNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCheckpointNV");
         try { Handles.MH_vkCmdSetCheckpointNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCheckpointNV, commandBuffer.segment(), pCheckpointMarker); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCheckpointNV", e); }
     }
@@ -50,7 +50,7 @@ public final class VKNVDeviceDiagnosticCheckpoints {
     /// void vkGetQueueCheckpointDataNV((struct VkQueue*) VkQueue queue, uint32_t* pCheckpointDataCount, VkCheckpointDataNV* pCheckpointData);
     /// ```
     public static void vkGetQueueCheckpointDataNV(VkQueue queue, MemorySegment pCheckpointDataCount, MemorySegment pCheckpointData) {
-        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkGetQueueCheckpointDataNV)) throw new SymbolNotFoundError("Symbol not found: vkGetQueueCheckpointDataNV");
+        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkGetQueueCheckpointDataNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetQueueCheckpointDataNV");
         try { Handles.MH_vkGetQueueCheckpointDataNV.invokeExact(queue.capabilities().PFN_vkGetQueueCheckpointDataNV, queue.segment(), pCheckpointDataCount, pCheckpointData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetQueueCheckpointDataNV", e); }
     }
@@ -59,7 +59,7 @@ public final class VKNVDeviceDiagnosticCheckpoints {
     /// void vkGetQueueCheckpointData2NV((struct VkQueue*) VkQueue queue, uint32_t* pCheckpointDataCount, VkCheckpointData2NV* pCheckpointData);
     /// ```
     public static void vkGetQueueCheckpointData2NV(VkQueue queue, MemorySegment pCheckpointDataCount, MemorySegment pCheckpointData) {
-        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkGetQueueCheckpointData2NV)) throw new SymbolNotFoundError("Symbol not found: vkGetQueueCheckpointData2NV");
+        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkGetQueueCheckpointData2NV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetQueueCheckpointData2NV");
         try { Handles.MH_vkGetQueueCheckpointData2NV.invokeExact(queue.capabilities().PFN_vkGetQueueCheckpointData2NV, queue.segment(), pCheckpointDataCount, pCheckpointData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetQueueCheckpointData2NV", e); }
     }

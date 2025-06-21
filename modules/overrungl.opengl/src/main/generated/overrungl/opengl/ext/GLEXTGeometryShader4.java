@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTGeometryShader4 {
     public static final int GL_GEOMETRY_SHADER_EXT = 0x8DD9;
@@ -60,7 +61,7 @@ public final class GLEXTGeometryShader4 {
     /// void glProgramParameteriEXT((unsigned int) GLuint program, (unsigned int) GLenum pname, (int) GLint value);
     /// ```
     public void ProgramParameteriEXT(int program, int pname, int value) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteriEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramParameteriEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteriEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramParameteriEXT");
         try { Handles.MH_glProgramParameteriEXT.invokeExact(handles.PFN_glProgramParameteriEXT, program, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramParameteriEXT", e); }
     }

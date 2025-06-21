@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLKHRRobustness {
     public static final int GL_NO_ERROR = 0;
@@ -83,7 +84,7 @@ public final class GLKHRRobustness {
     /// (unsigned int) GLenum glGetGraphicsResetStatus();
     /// ```
     public int GetGraphicsResetStatus() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetGraphicsResetStatus)) throw new SymbolNotFoundError("Symbol not found: glGetGraphicsResetStatus");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetGraphicsResetStatus)) throw new GLSymbolNotFoundError("Symbol not found: glGetGraphicsResetStatus");
         try { return (int) Handles.MH_glGetGraphicsResetStatus.invokeExact(handles.PFN_glGetGraphicsResetStatus); }
         catch (Throwable e) { throw new RuntimeException("error in GetGraphicsResetStatus", e); }
     }
@@ -92,7 +93,7 @@ public final class GLKHRRobustness {
     /// void glReadnPixels((int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei bufSize, void* data);
     /// ```
     public void ReadnPixels(int x, int y, int width, int height, int format, int type, int bufSize, MemorySegment data) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glReadnPixels)) throw new SymbolNotFoundError("Symbol not found: glReadnPixels");
+        if (MemoryUtil.isNullPointer(handles.PFN_glReadnPixels)) throw new GLSymbolNotFoundError("Symbol not found: glReadnPixels");
         try { Handles.MH_glReadnPixels.invokeExact(handles.PFN_glReadnPixels, x, y, width, height, format, type, bufSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in ReadnPixels", e); }
     }
@@ -101,7 +102,7 @@ public final class GLKHRRobustness {
     /// void glGetnUniformfv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLfloat* params);
     /// ```
     public void GetnUniformfv(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformfv)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformfv");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformfv)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformfv");
         try { Handles.MH_glGetnUniformfv.invokeExact(handles.PFN_glGetnUniformfv, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformfv", e); }
     }
@@ -110,7 +111,7 @@ public final class GLKHRRobustness {
     /// void glGetnUniformiv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLint* params);
     /// ```
     public void GetnUniformiv(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformiv)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformiv");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformiv");
         try { Handles.MH_glGetnUniformiv.invokeExact(handles.PFN_glGetnUniformiv, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformiv", e); }
     }
@@ -119,7 +120,7 @@ public final class GLKHRRobustness {
     /// void glGetnUniformuiv((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLuint* params);
     /// ```
     public void GetnUniformuiv(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformuiv)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformuiv");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformuiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformuiv");
         try { Handles.MH_glGetnUniformuiv.invokeExact(handles.PFN_glGetnUniformuiv, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformuiv", e); }
     }
@@ -128,7 +129,7 @@ public final class GLKHRRobustness {
     /// (unsigned int) GLenum glGetGraphicsResetStatusKHR();
     /// ```
     public int GetGraphicsResetStatusKHR() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetGraphicsResetStatusKHR)) throw new SymbolNotFoundError("Symbol not found: glGetGraphicsResetStatusKHR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetGraphicsResetStatusKHR)) throw new GLSymbolNotFoundError("Symbol not found: glGetGraphicsResetStatusKHR");
         try { return (int) Handles.MH_glGetGraphicsResetStatusKHR.invokeExact(handles.PFN_glGetGraphicsResetStatusKHR); }
         catch (Throwable e) { throw new RuntimeException("error in GetGraphicsResetStatusKHR", e); }
     }
@@ -137,7 +138,7 @@ public final class GLKHRRobustness {
     /// void glReadnPixelsKHR((int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei bufSize, void* data);
     /// ```
     public void ReadnPixelsKHR(int x, int y, int width, int height, int format, int type, int bufSize, MemorySegment data) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glReadnPixelsKHR)) throw new SymbolNotFoundError("Symbol not found: glReadnPixelsKHR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glReadnPixelsKHR)) throw new GLSymbolNotFoundError("Symbol not found: glReadnPixelsKHR");
         try { Handles.MH_glReadnPixelsKHR.invokeExact(handles.PFN_glReadnPixelsKHR, x, y, width, height, format, type, bufSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in ReadnPixelsKHR", e); }
     }
@@ -146,7 +147,7 @@ public final class GLKHRRobustness {
     /// void glGetnUniformfvKHR((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLfloat* params);
     /// ```
     public void GetnUniformfvKHR(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformfvKHR)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformfvKHR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformfvKHR)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformfvKHR");
         try { Handles.MH_glGetnUniformfvKHR.invokeExact(handles.PFN_glGetnUniformfvKHR, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformfvKHR", e); }
     }
@@ -155,7 +156,7 @@ public final class GLKHRRobustness {
     /// void glGetnUniformivKHR((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLint* params);
     /// ```
     public void GetnUniformivKHR(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformivKHR)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformivKHR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformivKHR)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformivKHR");
         try { Handles.MH_glGetnUniformivKHR.invokeExact(handles.PFN_glGetnUniformivKHR, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformivKHR", e); }
     }
@@ -164,7 +165,7 @@ public final class GLKHRRobustness {
     /// void glGetnUniformuivKHR((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLuint* params);
     /// ```
     public void GetnUniformuivKHR(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformuivKHR)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformuivKHR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformuivKHR)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformuivKHR");
         try { Handles.MH_glGetnUniformuivKHR.invokeExact(handles.PFN_glGetnUniformuivKHR, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformuivKHR", e); }
     }

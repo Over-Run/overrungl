@@ -36,7 +36,7 @@ public final class VKEXTHostQueryReset {
     /// void vkResetQueryPoolEXT((struct VkDevice*) VkDevice device, (uint64_t) VkQueryPool queryPool, uint32_t firstQuery, uint32_t queryCount);
     /// ```
     public static void vkResetQueryPoolEXT(VkDevice device, long queryPool, int firstQuery, int queryCount) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkResetQueryPoolEXT)) throw new SymbolNotFoundError("Symbol not found: vkResetQueryPoolEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkResetQueryPoolEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkResetQueryPoolEXT");
         try { Handles.MH_vkResetQueryPoolEXT.invokeExact(device.capabilities().PFN_vkResetQueryPoolEXT, device.segment(), queryPool, firstQuery, queryCount); }
         catch (Throwable e) { throw new RuntimeException("error in vkResetQueryPoolEXT", e); }
     }

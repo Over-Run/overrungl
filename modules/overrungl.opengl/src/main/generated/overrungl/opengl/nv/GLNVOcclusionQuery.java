@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVOcclusionQuery {
     public static final int GL_PIXEL_COUNTER_BITS_NV = 0x8864;
@@ -62,7 +63,7 @@ public final class GLNVOcclusionQuery {
     /// void glGenOcclusionQueriesNV((int) GLsizei n, GLuint* ids);
     /// ```
     public void GenOcclusionQueriesNV(int n, MemorySegment ids) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGenOcclusionQueriesNV)) throw new SymbolNotFoundError("Symbol not found: glGenOcclusionQueriesNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenOcclusionQueriesNV)) throw new GLSymbolNotFoundError("Symbol not found: glGenOcclusionQueriesNV");
         try { Handles.MH_glGenOcclusionQueriesNV.invokeExact(handles.PFN_glGenOcclusionQueriesNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in GenOcclusionQueriesNV", e); }
     }
@@ -71,7 +72,7 @@ public final class GLNVOcclusionQuery {
     /// void glDeleteOcclusionQueriesNV((int) GLsizei n, const GLuint* ids);
     /// ```
     public void DeleteOcclusionQueriesNV(int n, MemorySegment ids) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteOcclusionQueriesNV)) throw new SymbolNotFoundError("Symbol not found: glDeleteOcclusionQueriesNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteOcclusionQueriesNV)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteOcclusionQueriesNV");
         try { Handles.MH_glDeleteOcclusionQueriesNV.invokeExact(handles.PFN_glDeleteOcclusionQueriesNV, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteOcclusionQueriesNV", e); }
     }
@@ -80,7 +81,7 @@ public final class GLNVOcclusionQuery {
     /// GLboolean glIsOcclusionQueryNV((unsigned int) GLuint id);
     /// ```
     public boolean IsOcclusionQueryNV(int id) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glIsOcclusionQueryNV)) throw new SymbolNotFoundError("Symbol not found: glIsOcclusionQueryNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsOcclusionQueryNV)) throw new GLSymbolNotFoundError("Symbol not found: glIsOcclusionQueryNV");
         try { return (((byte) Handles.MH_glIsOcclusionQueryNV.invokeExact(handles.PFN_glIsOcclusionQueryNV, id)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsOcclusionQueryNV", e); }
     }
@@ -89,7 +90,7 @@ public final class GLNVOcclusionQuery {
     /// void glBeginOcclusionQueryNV((unsigned int) GLuint id);
     /// ```
     public void BeginOcclusionQueryNV(int id) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBeginOcclusionQueryNV)) throw new SymbolNotFoundError("Symbol not found: glBeginOcclusionQueryNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBeginOcclusionQueryNV)) throw new GLSymbolNotFoundError("Symbol not found: glBeginOcclusionQueryNV");
         try { Handles.MH_glBeginOcclusionQueryNV.invokeExact(handles.PFN_glBeginOcclusionQueryNV, id); }
         catch (Throwable e) { throw new RuntimeException("error in BeginOcclusionQueryNV", e); }
     }
@@ -98,7 +99,7 @@ public final class GLNVOcclusionQuery {
     /// void glEndOcclusionQueryNV();
     /// ```
     public void EndOcclusionQueryNV() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glEndOcclusionQueryNV)) throw new SymbolNotFoundError("Symbol not found: glEndOcclusionQueryNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEndOcclusionQueryNV)) throw new GLSymbolNotFoundError("Symbol not found: glEndOcclusionQueryNV");
         try { Handles.MH_glEndOcclusionQueryNV.invokeExact(handles.PFN_glEndOcclusionQueryNV); }
         catch (Throwable e) { throw new RuntimeException("error in EndOcclusionQueryNV", e); }
     }
@@ -107,7 +108,7 @@ public final class GLNVOcclusionQuery {
     /// void glGetOcclusionQueryivNV((unsigned int) GLuint id, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetOcclusionQueryivNV(int id, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetOcclusionQueryivNV)) throw new SymbolNotFoundError("Symbol not found: glGetOcclusionQueryivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetOcclusionQueryivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetOcclusionQueryivNV");
         try { Handles.MH_glGetOcclusionQueryivNV.invokeExact(handles.PFN_glGetOcclusionQueryivNV, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetOcclusionQueryivNV", e); }
     }
@@ -116,7 +117,7 @@ public final class GLNVOcclusionQuery {
     /// void glGetOcclusionQueryuivNV((unsigned int) GLuint id, (unsigned int) GLenum pname, GLuint* params);
     /// ```
     public void GetOcclusionQueryuivNV(int id, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetOcclusionQueryuivNV)) throw new SymbolNotFoundError("Symbol not found: glGetOcclusionQueryuivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetOcclusionQueryuivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetOcclusionQueryuivNV");
         try { Handles.MH_glGetOcclusionQueryuivNV.invokeExact(handles.PFN_glGetOcclusionQueryuivNV, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetOcclusionQueryuivNV", e); }
     }

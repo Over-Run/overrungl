@@ -41,7 +41,7 @@ public final class VKEXTDepthBiasControl {
     /// void vkCmdSetDepthBias2EXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDepthBiasInfoEXT* pDepthBiasInfo);
     /// ```
     public static void vkCmdSetDepthBias2EXT(VkCommandBuffer commandBuffer, MemorySegment pDepthBiasInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthBias2EXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDepthBias2EXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDepthBias2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDepthBias2EXT");
         try { Handles.MH_vkCmdSetDepthBias2EXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDepthBias2EXT, commandBuffer.segment(), pDepthBiasInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDepthBias2EXT", e); }
     }

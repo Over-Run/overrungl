@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLINGRBlendFuncSeparate {
     private final Handles handles;
@@ -40,7 +41,7 @@ public final class GLINGRBlendFuncSeparate {
     /// void glBlendFuncSeparateINGR((unsigned int) GLenum sfactorRGB, (unsigned int) GLenum dfactorRGB, (unsigned int) GLenum sfactorAlpha, (unsigned int) GLenum dfactorAlpha);
     /// ```
     public void BlendFuncSeparateINGR(int sfactorRGB, int dfactorRGB, int sfactorAlpha, int dfactorAlpha) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateINGR)) throw new SymbolNotFoundError("Symbol not found: glBlendFuncSeparateINGR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendFuncSeparateINGR)) throw new GLSymbolNotFoundError("Symbol not found: glBlendFuncSeparateINGR");
         try { Handles.MH_glBlendFuncSeparateINGR.invokeExact(handles.PFN_glBlendFuncSeparateINGR, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendFuncSeparateINGR", e); }
     }

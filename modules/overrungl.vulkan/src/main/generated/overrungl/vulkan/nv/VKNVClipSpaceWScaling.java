@@ -37,7 +37,7 @@ public final class VKNVClipSpaceWScaling {
     /// void vkCmdSetViewportWScalingNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkViewportWScalingNV* pViewportWScalings);
     /// ```
     public static void vkCmdSetViewportWScalingNV(VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, MemorySegment pViewportWScalings) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetViewportWScalingNV");
         try { Handles.MH_vkCmdSetViewportWScalingNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportWScalingNV, commandBuffer.segment(), firstViewport, viewportCount, pViewportWScalings); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportWScalingNV", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVSampleLocations {
     public static final int GL_SAMPLE_LOCATION_SUBPIXEL_BITS_NV = 0x933D;
@@ -54,7 +55,7 @@ public final class GLNVSampleLocations {
     /// void glFramebufferSampleLocationsfvNV((unsigned int) GLenum target, (unsigned int) GLuint start, (int) GLsizei count, const GLfloat* v);
     /// ```
     public void FramebufferSampleLocationsfvNV(int target, int start, int count, MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvNV");
         try { Handles.MH_glFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glFramebufferSampleLocationsfvNV, target, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferSampleLocationsfvNV", e); }
     }
@@ -63,7 +64,7 @@ public final class GLNVSampleLocations {
     /// void glNamedFramebufferSampleLocationsfvNV((unsigned int) GLuint framebuffer, (unsigned int) GLuint start, (int) GLsizei count, const GLfloat* v);
     /// ```
     public void NamedFramebufferSampleLocationsfvNV(int framebuffer, int start, int count, MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvNV)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvNV");
         try { Handles.MH_glNamedFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glNamedFramebufferSampleLocationsfvNV, framebuffer, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferSampleLocationsfvNV", e); }
     }
@@ -72,7 +73,7 @@ public final class GLNVSampleLocations {
     /// void glResolveDepthValuesNV();
     /// ```
     public void ResolveDepthValuesNV() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glResolveDepthValuesNV)) throw new SymbolNotFoundError("Symbol not found: glResolveDepthValuesNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glResolveDepthValuesNV)) throw new GLSymbolNotFoundError("Symbol not found: glResolveDepthValuesNV");
         try { Handles.MH_glResolveDepthValuesNV.invokeExact(handles.PFN_glResolveDepthValuesNV); }
         catch (Throwable e) { throw new RuntimeException("error in ResolveDepthValuesNV", e); }
     }

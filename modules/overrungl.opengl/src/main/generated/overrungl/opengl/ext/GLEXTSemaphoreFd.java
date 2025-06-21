@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTSemaphoreFd {
     public static final int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
@@ -41,7 +42,7 @@ public final class GLEXTSemaphoreFd {
     /// void glImportSemaphoreFdEXT((unsigned int) GLuint semaphore, (unsigned int) GLenum handleType, (int) GLint fd);
     /// ```
     public void ImportSemaphoreFdEXT(int semaphore, int handleType, int fd) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glImportSemaphoreFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportSemaphoreFdEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportSemaphoreFdEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportSemaphoreFdEXT");
         try { Handles.MH_glImportSemaphoreFdEXT.invokeExact(handles.PFN_glImportSemaphoreFdEXT, semaphore, handleType, fd); }
         catch (Throwable e) { throw new RuntimeException("error in ImportSemaphoreFdEXT", e); }
     }

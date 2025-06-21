@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBBlendFuncExtended {
     public static final int GL_SRC1_COLOR = 0x88F9;
@@ -48,7 +49,7 @@ public final class GLARBBlendFuncExtended {
     /// void glBindFragDataLocationIndexed((unsigned int) GLuint program, (unsigned int) GLuint colorNumber, (unsigned int) GLuint index, const GLchar* name);
     /// ```
     public void BindFragDataLocationIndexed(int program, int colorNumber, int index, MemorySegment name) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBindFragDataLocationIndexed)) throw new SymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindFragDataLocationIndexed)) throw new GLSymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
         try { Handles.MH_glBindFragDataLocationIndexed.invokeExact(handles.PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name); }
         catch (Throwable e) { throw new RuntimeException("error in BindFragDataLocationIndexed", e); }
     }
@@ -57,7 +58,7 @@ public final class GLARBBlendFuncExtended {
     /// (int) GLint glGetFragDataIndex((unsigned int) GLuint program, const GLchar* name);
     /// ```
     public int GetFragDataIndex(int program, MemorySegment name) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetFragDataIndex)) throw new SymbolNotFoundError("Symbol not found: glGetFragDataIndex");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFragDataIndex)) throw new GLSymbolNotFoundError("Symbol not found: glGetFragDataIndex");
         try { return (int) Handles.MH_glGetFragDataIndex.invokeExact(handles.PFN_glGetFragDataIndex, program, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetFragDataIndex", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGIXTagSampleBuffer {
     private final Handles handles;
@@ -40,7 +41,7 @@ public final class GLSGIXTagSampleBuffer {
     /// void glTagSampleBufferSGIX();
     /// ```
     public void TagSampleBufferSGIX() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTagSampleBufferSGIX)) throw new SymbolNotFoundError("Symbol not found: glTagSampleBufferSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTagSampleBufferSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glTagSampleBufferSGIX");
         try { Handles.MH_glTagSampleBufferSGIX.invokeExact(handles.PFN_glTagSampleBufferSGIX); }
         catch (Throwable e) { throw new RuntimeException("error in TagSampleBufferSGIX", e); }
     }

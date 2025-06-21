@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLINTELParallelArrays {
     public static final int GL_PARALLEL_ARRAYS_INTEL = 0x83F4;
@@ -54,7 +55,7 @@ public final class GLINTELParallelArrays {
     /// void glVertexPointervINTEL((int) GLint size, (unsigned int) GLenum type, const void** pointer);
     /// ```
     public void VertexPointervINTEL(int size, int type, MemorySegment pointer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexPointervINTEL)) throw new SymbolNotFoundError("Symbol not found: glVertexPointervINTEL");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexPointervINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glVertexPointervINTEL");
         try { Handles.MH_glVertexPointervINTEL.invokeExact(handles.PFN_glVertexPointervINTEL, size, type, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in VertexPointervINTEL", e); }
     }
@@ -63,7 +64,7 @@ public final class GLINTELParallelArrays {
     /// void glNormalPointervINTEL((unsigned int) GLenum type, const void** pointer);
     /// ```
     public void NormalPointervINTEL(int type, MemorySegment pointer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glNormalPointervINTEL)) throw new SymbolNotFoundError("Symbol not found: glNormalPointervINTEL");
+        if (MemoryUtil.isNullPointer(handles.PFN_glNormalPointervINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glNormalPointervINTEL");
         try { Handles.MH_glNormalPointervINTEL.invokeExact(handles.PFN_glNormalPointervINTEL, type, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in NormalPointervINTEL", e); }
     }
@@ -72,7 +73,7 @@ public final class GLINTELParallelArrays {
     /// void glColorPointervINTEL((int) GLint size, (unsigned int) GLenum type, const void** pointer);
     /// ```
     public void ColorPointervINTEL(int size, int type, MemorySegment pointer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glColorPointervINTEL)) throw new SymbolNotFoundError("Symbol not found: glColorPointervINTEL");
+        if (MemoryUtil.isNullPointer(handles.PFN_glColorPointervINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glColorPointervINTEL");
         try { Handles.MH_glColorPointervINTEL.invokeExact(handles.PFN_glColorPointervINTEL, size, type, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in ColorPointervINTEL", e); }
     }
@@ -81,7 +82,7 @@ public final class GLINTELParallelArrays {
     /// void glTexCoordPointervINTEL((int) GLint size, (unsigned int) GLenum type, const void** pointer);
     /// ```
     public void TexCoordPointervINTEL(int size, int type, MemorySegment pointer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordPointervINTEL)) throw new SymbolNotFoundError("Symbol not found: glTexCoordPointervINTEL");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordPointervINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordPointervINTEL");
         try { Handles.MH_glTexCoordPointervINTEL.invokeExact(handles.PFN_glTexCoordPointervINTEL, size, type, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordPointervINTEL", e); }
     }

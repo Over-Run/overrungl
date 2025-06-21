@@ -40,7 +40,7 @@ public final class VKNVCoverageReductionMode {
     /// (int) VkResult vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pCombinationCount, VkFramebufferMixedSamplesCombinationNV* pCombinations);
     /// ```
     public static int vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV(VkPhysicalDevice physicalDevice, MemorySegment pCombinationCount, MemorySegment pCombinations) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV");
         try { return (int) Handles.MH_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV, physicalDevice.segment(), pCombinationCount, pCombinations); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSupportedFramebufferMixedSamplesCombinationsNV", e); }
     }

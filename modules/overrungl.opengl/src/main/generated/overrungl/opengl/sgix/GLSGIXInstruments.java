@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGIXInstruments {
     public static final int GL_INSTRUMENT_BUFFER_POINTER_SGIX = 0x8180;
@@ -57,7 +58,7 @@ public final class GLSGIXInstruments {
     /// (int) GLint glGetInstrumentsSGIX();
     /// ```
     public int GetInstrumentsSGIX() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glGetInstrumentsSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glGetInstrumentsSGIX");
         try { return (int) Handles.MH_glGetInstrumentsSGIX.invokeExact(handles.PFN_glGetInstrumentsSGIX); }
         catch (Throwable e) { throw new RuntimeException("error in GetInstrumentsSGIX", e); }
     }
@@ -66,7 +67,7 @@ public final class GLSGIXInstruments {
     /// void glInstrumentsBufferSGIX((int) GLsizei size, GLint* buffer);
     /// ```
     public void InstrumentsBufferSGIX(int size, MemorySegment buffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glInstrumentsBufferSGIX)) throw new SymbolNotFoundError("Symbol not found: glInstrumentsBufferSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glInstrumentsBufferSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glInstrumentsBufferSGIX");
         try { Handles.MH_glInstrumentsBufferSGIX.invokeExact(handles.PFN_glInstrumentsBufferSGIX, size, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in InstrumentsBufferSGIX", e); }
     }
@@ -75,7 +76,7 @@ public final class GLSGIXInstruments {
     /// (int) GLint glPollInstrumentsSGIX(GLint* marker_p);
     /// ```
     public int PollInstrumentsSGIX(MemorySegment marker_p) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPollInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glPollInstrumentsSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPollInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glPollInstrumentsSGIX");
         try { return (int) Handles.MH_glPollInstrumentsSGIX.invokeExact(handles.PFN_glPollInstrumentsSGIX, marker_p); }
         catch (Throwable e) { throw new RuntimeException("error in PollInstrumentsSGIX", e); }
     }
@@ -84,7 +85,7 @@ public final class GLSGIXInstruments {
     /// void glReadInstrumentsSGIX((int) GLint marker);
     /// ```
     public void ReadInstrumentsSGIX(int marker) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glReadInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glReadInstrumentsSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glReadInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glReadInstrumentsSGIX");
         try { Handles.MH_glReadInstrumentsSGIX.invokeExact(handles.PFN_glReadInstrumentsSGIX, marker); }
         catch (Throwable e) { throw new RuntimeException("error in ReadInstrumentsSGIX", e); }
     }
@@ -93,7 +94,7 @@ public final class GLSGIXInstruments {
     /// void glStartInstrumentsSGIX();
     /// ```
     public void StartInstrumentsSGIX() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glStartInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glStartInstrumentsSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glStartInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glStartInstrumentsSGIX");
         try { Handles.MH_glStartInstrumentsSGIX.invokeExact(handles.PFN_glStartInstrumentsSGIX); }
         catch (Throwable e) { throw new RuntimeException("error in StartInstrumentsSGIX", e); }
     }
@@ -102,7 +103,7 @@ public final class GLSGIXInstruments {
     /// void glStopInstrumentsSGIX((int) GLint marker);
     /// ```
     public void StopInstrumentsSGIX(int marker) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glStopInstrumentsSGIX)) throw new SymbolNotFoundError("Symbol not found: glStopInstrumentsSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glStopInstrumentsSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glStopInstrumentsSGIX");
         try { Handles.MH_glStopInstrumentsSGIX.invokeExact(handles.PFN_glStopInstrumentsSGIX, marker); }
         catch (Throwable e) { throw new RuntimeException("error in StopInstrumentsSGIX", e); }
     }

@@ -62,7 +62,7 @@ public final class VKNVLowLatency2 {
     /// (int) VkResult vkSetLatencySleepModeNV((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, const VkLatencySleepModeInfoNV* pSleepModeInfo);
     /// ```
     public static int vkSetLatencySleepModeNV(VkDevice device, long swapchain, MemorySegment pSleepModeInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLatencySleepModeNV)) throw new SymbolNotFoundError("Symbol not found: vkSetLatencySleepModeNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLatencySleepModeNV)) throw new VKSymbolNotFoundError("Symbol not found: vkSetLatencySleepModeNV");
         try { return (int) Handles.MH_vkSetLatencySleepModeNV.invokeExact(device.capabilities().PFN_vkSetLatencySleepModeNV, device.segment(), swapchain, pSleepModeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetLatencySleepModeNV", e); }
     }
@@ -71,7 +71,7 @@ public final class VKNVLowLatency2 {
     /// (int) VkResult vkLatencySleepNV((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, const VkLatencySleepInfoNV* pSleepInfo);
     /// ```
     public static int vkLatencySleepNV(VkDevice device, long swapchain, MemorySegment pSleepInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkLatencySleepNV)) throw new SymbolNotFoundError("Symbol not found: vkLatencySleepNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkLatencySleepNV)) throw new VKSymbolNotFoundError("Symbol not found: vkLatencySleepNV");
         try { return (int) Handles.MH_vkLatencySleepNV.invokeExact(device.capabilities().PFN_vkLatencySleepNV, device.segment(), swapchain, pSleepInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkLatencySleepNV", e); }
     }
@@ -80,7 +80,7 @@ public final class VKNVLowLatency2 {
     /// void vkSetLatencyMarkerNV((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, const VkSetLatencyMarkerInfoNV* pLatencyMarkerInfo);
     /// ```
     public static void vkSetLatencyMarkerNV(VkDevice device, long swapchain, MemorySegment pLatencyMarkerInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLatencyMarkerNV)) throw new SymbolNotFoundError("Symbol not found: vkSetLatencyMarkerNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLatencyMarkerNV)) throw new VKSymbolNotFoundError("Symbol not found: vkSetLatencyMarkerNV");
         try { Handles.MH_vkSetLatencyMarkerNV.invokeExact(device.capabilities().PFN_vkSetLatencyMarkerNV, device.segment(), swapchain, pLatencyMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetLatencyMarkerNV", e); }
     }
@@ -89,7 +89,7 @@ public final class VKNVLowLatency2 {
     /// void vkGetLatencyTimingsNV((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, VkGetLatencyMarkerInfoNV* pLatencyMarkerInfo);
     /// ```
     public static void vkGetLatencyTimingsNV(VkDevice device, long swapchain, MemorySegment pLatencyMarkerInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetLatencyTimingsNV)) throw new SymbolNotFoundError("Symbol not found: vkGetLatencyTimingsNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetLatencyTimingsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetLatencyTimingsNV");
         try { Handles.MH_vkGetLatencyTimingsNV.invokeExact(device.capabilities().PFN_vkGetLatencyTimingsNV, device.segment(), swapchain, pLatencyMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetLatencyTimingsNV", e); }
     }
@@ -98,7 +98,7 @@ public final class VKNVLowLatency2 {
     /// void vkQueueNotifyOutOfBandNV((struct VkQueue*) VkQueue queue, const VkOutOfBandQueueTypeInfoNV* pQueueTypeInfo);
     /// ```
     public static void vkQueueNotifyOutOfBandNV(VkQueue queue, MemorySegment pQueueTypeInfo) {
-        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueNotifyOutOfBandNV)) throw new SymbolNotFoundError("Symbol not found: vkQueueNotifyOutOfBandNV");
+        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueNotifyOutOfBandNV)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueNotifyOutOfBandNV");
         try { Handles.MH_vkQueueNotifyOutOfBandNV.invokeExact(queue.capabilities().PFN_vkQueueNotifyOutOfBandNV, queue.segment(), pQueueTypeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueNotifyOutOfBandNV", e); }
     }

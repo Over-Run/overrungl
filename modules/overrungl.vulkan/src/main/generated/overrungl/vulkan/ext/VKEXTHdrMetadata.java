@@ -36,7 +36,7 @@ public final class VKEXTHdrMetadata {
     /// void vkSetHdrMetadataEXT((struct VkDevice*) VkDevice device, uint32_t swapchainCount, const VkSwapchainKHR* pSwapchains, const VkHdrMetadataEXT* pMetadata);
     /// ```
     public static void vkSetHdrMetadataEXT(VkDevice device, int swapchainCount, MemorySegment pSwapchains, MemorySegment pMetadata) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetHdrMetadataEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetHdrMetadataEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetHdrMetadataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetHdrMetadataEXT");
         try { Handles.MH_vkSetHdrMetadataEXT.invokeExact(device.capabilities().PFN_vkSetHdrMetadataEXT, device.segment(), swapchainCount, pSwapchains, pMetadata); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetHdrMetadataEXT", e); }
     }

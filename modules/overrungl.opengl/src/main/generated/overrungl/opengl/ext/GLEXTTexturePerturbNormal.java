@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTTexturePerturbNormal {
     public static final int GL_PERTURB_EXT = 0x85AE;
@@ -42,7 +43,7 @@ public final class GLEXTTexturePerturbNormal {
     /// void glTextureNormalEXT((unsigned int) GLenum mode);
     /// ```
     public void TextureNormalEXT(int mode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTextureNormalEXT)) throw new SymbolNotFoundError("Symbol not found: glTextureNormalEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureNormalEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTextureNormalEXT");
         try { Handles.MH_glTextureNormalEXT.invokeExact(handles.PFN_glTextureNormalEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in TextureNormalEXT", e); }
     }

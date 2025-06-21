@@ -36,7 +36,7 @@ public final class VKEXTAcquireXlibDisplay {
     /// (int) VkResult vkAcquireXlibDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, Display* dpy, (uint64_t) VkDisplayKHR display);
     /// ```
     public static int vkAcquireXlibDisplayEXT(VkPhysicalDevice physicalDevice, MemorySegment dpy, long display) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireXlibDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireXlibDisplayEXT");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireXlibDisplayEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireXlibDisplayEXT");
         try { return (int) Handles.MH_vkAcquireXlibDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkAcquireXlibDisplayEXT, physicalDevice.segment(), dpy, display); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireXlibDisplayEXT", e); }
     }
@@ -45,7 +45,7 @@ public final class VKEXTAcquireXlibDisplay {
     /// (int) VkResult vkGetRandROutputDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, Display* dpy, ((unsigned long) XID) RROutput rrOutput, VkDisplayKHR* pDisplay);
     /// ```
     public static int vkGetRandROutputDisplayEXT(VkPhysicalDevice physicalDevice, MemorySegment dpy, long rrOutput, MemorySegment pDisplay) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetRandROutputDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetRandROutputDisplayEXT");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetRandROutputDisplayEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetRandROutputDisplayEXT");
         try { return (int) Handles.MH_vkGetRandROutputDisplayEXT.invoke(physicalDevice.capabilities().PFN_vkGetRandROutputDisplayEXT, physicalDevice.segment(), dpy, MemoryUtil.narrowingLong(CanonicalTypes.C_LONG, rrOutput), pDisplay); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRandROutputDisplayEXT", e); }
     }

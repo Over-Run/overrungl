@@ -38,7 +38,7 @@ public final class VKAMDDisplayNativeHdr {
     /// void vkSetLocalDimmingAMD((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapChain, (uint32_t) VkBool32 localDimmingEnable);
     /// ```
     public static void vkSetLocalDimmingAMD(VkDevice device, long swapChain, int localDimmingEnable) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLocalDimmingAMD)) throw new SymbolNotFoundError("Symbol not found: vkSetLocalDimmingAMD");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLocalDimmingAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkSetLocalDimmingAMD");
         try { Handles.MH_vkSetLocalDimmingAMD.invokeExact(device.capabilities().PFN_vkSetLocalDimmingAMD, device.segment(), swapChain, localDimmingEnable); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetLocalDimmingAMD", e); }
     }

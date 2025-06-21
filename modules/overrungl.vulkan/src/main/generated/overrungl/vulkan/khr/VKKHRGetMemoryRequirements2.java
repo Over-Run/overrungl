@@ -42,7 +42,7 @@ public final class VKKHRGetMemoryRequirements2 {
     /// void vkGetImageMemoryRequirements2KHR((struct VkDevice*) VkDevice device, const VkImageMemoryRequirementsInfo2* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetImageMemoryRequirements2KHR(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageMemoryRequirements2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetImageMemoryRequirements2KHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageMemoryRequirements2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageMemoryRequirements2KHR");
         try { Handles.MH_vkGetImageMemoryRequirements2KHR.invokeExact(device.capabilities().PFN_vkGetImageMemoryRequirements2KHR, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageMemoryRequirements2KHR", e); }
     }
@@ -51,7 +51,7 @@ public final class VKKHRGetMemoryRequirements2 {
     /// void vkGetBufferMemoryRequirements2KHR((struct VkDevice*) VkDevice device, const VkBufferMemoryRequirementsInfo2* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetBufferMemoryRequirements2KHR(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferMemoryRequirements2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferMemoryRequirements2KHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferMemoryRequirements2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferMemoryRequirements2KHR");
         try { Handles.MH_vkGetBufferMemoryRequirements2KHR.invokeExact(device.capabilities().PFN_vkGetBufferMemoryRequirements2KHR, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferMemoryRequirements2KHR", e); }
     }
@@ -60,7 +60,7 @@ public final class VKKHRGetMemoryRequirements2 {
     /// void vkGetImageSparseMemoryRequirements2KHR((struct VkDevice*) VkDevice device, const VkImageSparseMemoryRequirementsInfo2* pInfo, uint32_t* pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements2* pSparseMemoryRequirements);
     /// ```
     public static void vkGetImageSparseMemoryRequirements2KHR(VkDevice device, MemorySegment pInfo, MemorySegment pSparseMemoryRequirementCount, MemorySegment pSparseMemoryRequirements) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSparseMemoryRequirements2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSparseMemoryRequirements2KHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSparseMemoryRequirements2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageSparseMemoryRequirements2KHR");
         try { Handles.MH_vkGetImageSparseMemoryRequirements2KHR.invokeExact(device.capabilities().PFN_vkGetImageSparseMemoryRequirements2KHR, device.segment(), pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageSparseMemoryRequirements2KHR", e); }
     }

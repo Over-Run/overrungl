@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBGeometryShader4 {
     public static final int GL_LINES_ADJACENCY_ARB = 0x000A;
@@ -69,7 +70,7 @@ public final class GLARBGeometryShader4 {
     /// void glProgramParameteriARB((unsigned int) GLuint program, (unsigned int) GLenum pname, (int) GLint value);
     /// ```
     public void ProgramParameteriARB(int program, int pname, int value) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteriARB)) throw new SymbolNotFoundError("Symbol not found: glProgramParameteriARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteriARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramParameteriARB");
         try { Handles.MH_glProgramParameteriARB.invokeExact(handles.PFN_glProgramParameteriARB, program, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramParameteriARB", e); }
     }
@@ -78,7 +79,7 @@ public final class GLARBGeometryShader4 {
     /// void glFramebufferTextureARB((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
     public void FramebufferTextureARB(int target, int attachment, int texture, int level) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureARB)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureARB)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureARB");
         try { Handles.MH_glFramebufferTextureARB.invokeExact(handles.PFN_glFramebufferTextureARB, target, attachment, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureARB", e); }
     }
@@ -87,7 +88,7 @@ public final class GLARBGeometryShader4 {
     /// void glFramebufferTextureLayerARB((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint layer);
     /// ```
     public void FramebufferTextureLayerARB(int target, int attachment, int texture, int level, int layer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerARB)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerARB)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureLayerARB");
         try { Handles.MH_glFramebufferTextureLayerARB.invokeExact(handles.PFN_glFramebufferTextureLayerARB, target, attachment, texture, level, layer); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureLayerARB", e); }
     }
@@ -96,7 +97,7 @@ public final class GLARBGeometryShader4 {
     /// void glFramebufferTextureFaceARB((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum face);
     /// ```
     public void FramebufferTextureFaceARB(int target, int attachment, int texture, int level, int face) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureFaceARB)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureFaceARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureFaceARB)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureFaceARB");
         try { Handles.MH_glFramebufferTextureFaceARB.invokeExact(handles.PFN_glFramebufferTextureFaceARB, target, attachment, texture, level, face); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureFaceARB", e); }
     }

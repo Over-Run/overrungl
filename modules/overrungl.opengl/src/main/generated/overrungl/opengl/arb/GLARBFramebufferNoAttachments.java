@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBFramebufferNoAttachments {
     public static final int GL_FRAMEBUFFER_DEFAULT_WIDTH = 0x9310;
@@ -52,7 +53,7 @@ public final class GLARBFramebufferNoAttachments {
     /// void glFramebufferParameteri((unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void FramebufferParameteri(int target, int pname, int param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteri)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteri");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteri)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferParameteri");
         try { Handles.MH_glFramebufferParameteri.invokeExact(handles.PFN_glFramebufferParameteri, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferParameteri", e); }
     }
@@ -61,7 +62,7 @@ public final class GLARBFramebufferNoAttachments {
     /// void glGetFramebufferParameteriv((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetFramebufferParameteriv(int target, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameteriv)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameteriv");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferParameteriv");
         try { Handles.MH_glGetFramebufferParameteriv.invokeExact(handles.PFN_glGetFramebufferParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFramebufferParameteriv", e); }
     }

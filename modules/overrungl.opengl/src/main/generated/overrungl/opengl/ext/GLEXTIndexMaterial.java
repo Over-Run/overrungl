@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTIndexMaterial {
     public static final int GL_INDEX_MATERIAL_EXT = 0x81B8;
@@ -43,7 +44,7 @@ public final class GLEXTIndexMaterial {
     /// void glIndexMaterialEXT((unsigned int) GLenum face, (unsigned int) GLenum mode);
     /// ```
     public void IndexMaterialEXT(int face, int mode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glIndexMaterialEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexMaterialEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glIndexMaterialEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIndexMaterialEXT");
         try { Handles.MH_glIndexMaterialEXT.invokeExact(handles.PFN_glIndexMaterialEXT, face, mode); }
         catch (Throwable e) { throw new RuntimeException("error in IndexMaterialEXT", e); }
     }

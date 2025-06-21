@@ -39,7 +39,7 @@ public final class VKNVExternalMemoryRdma {
     /// (int) VkResult vkGetMemoryRemoteAddressNV((struct VkDevice*) VkDevice device, const VkMemoryGetRemoteAddressInfoNV* pMemoryGetRemoteAddressInfo, VkRemoteAddressNV* pAddress);
     /// ```
     public static int vkGetMemoryRemoteAddressNV(VkDevice device, MemorySegment pMemoryGetRemoteAddressInfo, MemorySegment pAddress) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryRemoteAddressNV)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryRemoteAddressNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryRemoteAddressNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryRemoteAddressNV");
         try { return (int) Handles.MH_vkGetMemoryRemoteAddressNV.invokeExact(device.capabilities().PFN_vkGetMemoryRemoteAddressNV, device.segment(), pMemoryGetRemoteAddressInfo, pAddress); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryRemoteAddressNV", e); }
     }

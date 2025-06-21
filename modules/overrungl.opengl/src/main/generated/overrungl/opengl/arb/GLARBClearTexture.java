@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBClearTexture {
     public static final int GL_CLEAR_TEXTURE = 0x9365;
@@ -44,7 +45,7 @@ public final class GLARBClearTexture {
     /// void glClearTexImage((unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
     /// ```
     public void ClearTexImage(int texture, int level, int format, int type, MemorySegment data) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glClearTexImage)) throw new SymbolNotFoundError("Symbol not found: glClearTexImage");
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearTexImage)) throw new GLSymbolNotFoundError("Symbol not found: glClearTexImage");
         try { Handles.MH_glClearTexImage.invokeExact(handles.PFN_glClearTexImage, texture, level, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearTexImage", e); }
     }
@@ -53,7 +54,7 @@ public final class GLARBClearTexture {
     /// void glClearTexSubImage((unsigned int) GLuint texture, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
     /// ```
     public void ClearTexSubImage(int texture, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment data) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glClearTexSubImage)) throw new SymbolNotFoundError("Symbol not found: glClearTexSubImage");
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearTexSubImage)) throw new GLSymbolNotFoundError("Symbol not found: glClearTexSubImage");
         try { Handles.MH_glClearTexSubImage.invokeExact(handles.PFN_glClearTexSubImage, texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearTexSubImage", e); }
     }

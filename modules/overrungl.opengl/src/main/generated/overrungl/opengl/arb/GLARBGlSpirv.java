@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBGlSpirv {
     public static final int GL_SHADER_BINARY_FORMAT_SPIR_V_ARB = 0x9551;
@@ -42,7 +43,7 @@ public final class GLARBGlSpirv {
     /// void glSpecializeShaderARB((unsigned int) GLuint shader, const GLchar* pEntryPoint, (unsigned int) GLuint numSpecializationConstants, const GLuint* pConstantIndex, const GLuint* pConstantValue);
     /// ```
     public void SpecializeShaderARB(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSpecializeShaderARB)) throw new SymbolNotFoundError("Symbol not found: glSpecializeShaderARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSpecializeShaderARB)) throw new GLSymbolNotFoundError("Symbol not found: glSpecializeShaderARB");
         try { Handles.MH_glSpecializeShaderARB.invokeExact(handles.PFN_glSpecializeShaderARB, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
         catch (Throwable e) { throw new RuntimeException("error in SpecializeShaderARB", e); }
     }

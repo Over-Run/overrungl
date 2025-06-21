@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVBindlessMultiDrawIndirectCount {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLNVBindlessMultiDrawIndirectCount {
     /// void glMultiDrawArraysIndirectBindlessCountNV((unsigned int) GLenum mode, const void* indirect, (int) GLsizei drawCount, (int) GLsizei maxDrawCount, (int) GLsizei stride, (int) GLint vertexBufferCount);
     /// ```
     public void MultiDrawArraysIndirectBindlessCountNV(int mode, MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectBindlessCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectBindlessCountNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectBindlessCountNV)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectBindlessCountNV");
         try { Handles.MH_glMultiDrawArraysIndirectBindlessCountNV.invokeExact(handles.PFN_glMultiDrawArraysIndirectBindlessCountNV, mode, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirectBindlessCountNV", e); }
     }
@@ -52,7 +53,7 @@ public final class GLNVBindlessMultiDrawIndirectCount {
     /// void glMultiDrawElementsIndirectBindlessCountNV((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, (int) GLsizei drawCount, (int) GLsizei maxDrawCount, (int) GLsizei stride, (int) GLint vertexBufferCount);
     /// ```
     public void MultiDrawElementsIndirectBindlessCountNV(int mode, int type, MemorySegment indirect, int drawCount, int maxDrawCount, int stride, int vertexBufferCount) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectBindlessCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectBindlessCountNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectBindlessCountNV)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectBindlessCountNV");
         try { Handles.MH_glMultiDrawElementsIndirectBindlessCountNV.invokeExact(handles.PFN_glMultiDrawElementsIndirectBindlessCountNV, mode, type, indirect, drawCount, maxDrawCount, stride, vertexBufferCount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsIndirectBindlessCountNV", e); }
     }

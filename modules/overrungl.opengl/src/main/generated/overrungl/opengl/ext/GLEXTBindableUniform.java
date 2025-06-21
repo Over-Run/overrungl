@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTBindableUniform {
     public static final int GL_MAX_VERTEX_BINDABLE_UNIFORMS_EXT = 0x8DE2;
@@ -52,7 +53,7 @@ public final class GLEXTBindableUniform {
     /// void glUniformBufferEXT((unsigned int) GLuint program, (int) GLint location, (unsigned int) GLuint buffer);
     /// ```
     public void UniformBufferEXT(int program, int location, int buffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glUniformBufferEXT)) throw new SymbolNotFoundError("Symbol not found: glUniformBufferEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glUniformBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glUniformBufferEXT");
         try { Handles.MH_glUniformBufferEXT.invokeExact(handles.PFN_glUniformBufferEXT, program, location, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in UniformBufferEXT", e); }
     }
@@ -61,7 +62,7 @@ public final class GLEXTBindableUniform {
     /// (int) GLint glGetUniformBufferSizeEXT((unsigned int) GLuint program, (int) GLint location);
     /// ```
     public int GetUniformBufferSizeEXT(int program, int location) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformBufferSizeEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUniformBufferSizeEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformBufferSizeEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetUniformBufferSizeEXT");
         try { return (int) Handles.MH_glGetUniformBufferSizeEXT.invokeExact(handles.PFN_glGetUniformBufferSizeEXT, program, location); }
         catch (Throwable e) { throw new RuntimeException("error in GetUniformBufferSizeEXT", e); }
     }
@@ -70,7 +71,7 @@ public final class GLEXTBindableUniform {
     /// ((signed long long) khronos_intptr_t) GLintptr glGetUniformOffsetEXT((unsigned int) GLuint program, (int) GLint location);
     /// ```
     public long GetUniformOffsetEXT(int program, int location) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glGetUniformOffsetEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetUniformOffsetEXT");
         try { return (long) Handles.MH_glGetUniformOffsetEXT.invokeExact(handles.PFN_glGetUniformOffsetEXT, program, location); }
         catch (Throwable e) { throw new RuntimeException("error in GetUniformOffsetEXT", e); }
     }

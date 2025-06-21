@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTMultiDrawArrays {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLEXTMultiDrawArrays {
     /// void glMultiDrawArraysEXT((unsigned int) GLenum mode, const GLint* first, const GLsizei* count, (int) GLsizei primcount);
     /// ```
     public void MultiDrawArraysEXT(int mode, MemorySegment first, MemorySegment count, int primcount) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysEXT");
         try { Handles.MH_glMultiDrawArraysEXT.invokeExact(handles.PFN_glMultiDrawArraysEXT, mode, first, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysEXT", e); }
     }
@@ -52,7 +53,7 @@ public final class GLEXTMultiDrawArrays {
     /// void glMultiDrawElementsEXT((unsigned int) GLenum mode, const GLsizei* count, (unsigned int) GLenum type, const void* const * indices, (int) GLsizei primcount);
     /// ```
     public void MultiDrawElementsEXT(int mode, MemorySegment count, int type, MemorySegment indices, int primcount) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsEXT");
         try { Handles.MH_glMultiDrawElementsEXT.invokeExact(handles.PFN_glMultiDrawElementsEXT, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsEXT", e); }
     }

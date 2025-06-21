@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVDrawVulkanImage {
     private final Handles handles;
@@ -52,7 +53,7 @@ public final class GLNVDrawVulkanImage {
     /// void glDrawVkImageNV(((uint64_t) khronos_uint64_t) GLuint64 vkImage, (unsigned int) GLuint sampler, ((float) khronos_float_t) GLfloat x0, ((float) khronos_float_t) GLfloat y0, ((float) khronos_float_t) GLfloat x1, ((float) khronos_float_t) GLfloat y1, ((float) khronos_float_t) GLfloat z, ((float) khronos_float_t) GLfloat s0, ((float) khronos_float_t) GLfloat t0, ((float) khronos_float_t) GLfloat s1, ((float) khronos_float_t) GLfloat t1);
     /// ```
     public void DrawVkImageNV(long vkImage, int sampler, float x0, float y0, float x1, float y1, float z, float s0, float t0, float s1, float t1) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawVkImageNV)) throw new SymbolNotFoundError("Symbol not found: glDrawVkImageNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawVkImageNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawVkImageNV");
         try { Handles.MH_glDrawVkImageNV.invokeExact(handles.PFN_glDrawVkImageNV, vkImage, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1); }
         catch (Throwable e) { throw new RuntimeException("error in DrawVkImageNV", e); }
     }
@@ -61,7 +62,7 @@ public final class GLNVDrawVulkanImage {
     /// (void*) GLVULKANPROCNV glGetVkProcAddrNV(const GLchar* name);
     /// ```
     public MemorySegment GetVkProcAddrNV(MemorySegment name) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetVkProcAddrNV)) throw new SymbolNotFoundError("Symbol not found: glGetVkProcAddrNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVkProcAddrNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetVkProcAddrNV");
         try { return (MemorySegment) Handles.MH_glGetVkProcAddrNV.invokeExact(handles.PFN_glGetVkProcAddrNV, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetVkProcAddrNV", e); }
     }
@@ -70,7 +71,7 @@ public final class GLNVDrawVulkanImage {
     /// void glWaitVkSemaphoreNV(((uint64_t) khronos_uint64_t) GLuint64 vkSemaphore);
     /// ```
     public void WaitVkSemaphoreNV(long vkSemaphore) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWaitVkSemaphoreNV)) throw new SymbolNotFoundError("Symbol not found: glWaitVkSemaphoreNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWaitVkSemaphoreNV)) throw new GLSymbolNotFoundError("Symbol not found: glWaitVkSemaphoreNV");
         try { Handles.MH_glWaitVkSemaphoreNV.invokeExact(handles.PFN_glWaitVkSemaphoreNV, vkSemaphore); }
         catch (Throwable e) { throw new RuntimeException("error in WaitVkSemaphoreNV", e); }
     }
@@ -79,7 +80,7 @@ public final class GLNVDrawVulkanImage {
     /// void glSignalVkSemaphoreNV(((uint64_t) khronos_uint64_t) GLuint64 vkSemaphore);
     /// ```
     public void SignalVkSemaphoreNV(long vkSemaphore) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSignalVkSemaphoreNV)) throw new SymbolNotFoundError("Symbol not found: glSignalVkSemaphoreNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSignalVkSemaphoreNV)) throw new GLSymbolNotFoundError("Symbol not found: glSignalVkSemaphoreNV");
         try { Handles.MH_glSignalVkSemaphoreNV.invokeExact(handles.PFN_glSignalVkSemaphoreNV, vkSemaphore); }
         catch (Throwable e) { throw new RuntimeException("error in SignalVkSemaphoreNV", e); }
     }
@@ -88,7 +89,7 @@ public final class GLNVDrawVulkanImage {
     /// void glSignalVkFenceNV(((uint64_t) khronos_uint64_t) GLuint64 vkFence);
     /// ```
     public void SignalVkFenceNV(long vkFence) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSignalVkFenceNV)) throw new SymbolNotFoundError("Symbol not found: glSignalVkFenceNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSignalVkFenceNV)) throw new GLSymbolNotFoundError("Symbol not found: glSignalVkFenceNV");
         try { Handles.MH_glSignalVkFenceNV.invokeExact(handles.PFN_glSignalVkFenceNV, vkFence); }
         catch (Throwable e) { throw new RuntimeException("error in SignalVkFenceNV", e); }
     }

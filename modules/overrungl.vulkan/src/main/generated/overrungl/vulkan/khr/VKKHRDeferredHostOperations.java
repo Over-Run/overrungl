@@ -44,7 +44,7 @@ public final class VKKHRDeferredHostOperations {
     /// (int) VkResult vkCreateDeferredOperationKHR((struct VkDevice*) VkDevice device, const VkAllocationCallbacks* pAllocator, VkDeferredOperationKHR* pDeferredOperation);
     /// ```
     public static int vkCreateDeferredOperationKHR(VkDevice device, MemorySegment pAllocator, MemorySegment pDeferredOperation) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDeferredOperationKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateDeferredOperationKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDeferredOperationKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDeferredOperationKHR");
         try { return (int) Handles.MH_vkCreateDeferredOperationKHR.invokeExact(device.capabilities().PFN_vkCreateDeferredOperationKHR, device.segment(), pAllocator, pDeferredOperation); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDeferredOperationKHR", e); }
     }
@@ -53,7 +53,7 @@ public final class VKKHRDeferredHostOperations {
     /// void vkDestroyDeferredOperationKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyDeferredOperationKHR(VkDevice device, long operation, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyDeferredOperationKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDeferredOperationKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyDeferredOperationKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDeferredOperationKHR");
         try { Handles.MH_vkDestroyDeferredOperationKHR.invokeExact(device.capabilities().PFN_vkDestroyDeferredOperationKHR, device.segment(), operation, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDeferredOperationKHR", e); }
     }
@@ -62,7 +62,7 @@ public final class VKKHRDeferredHostOperations {
     /// uint32_t vkGetDeferredOperationMaxConcurrencyKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation);
     /// ```
     public static int vkGetDeferredOperationMaxConcurrencyKHR(VkDevice device, long operation) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationMaxConcurrencyKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeferredOperationMaxConcurrencyKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationMaxConcurrencyKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeferredOperationMaxConcurrencyKHR");
         try { return (int) Handles.MH_vkGetDeferredOperationMaxConcurrencyKHR.invokeExact(device.capabilities().PFN_vkGetDeferredOperationMaxConcurrencyKHR, device.segment(), operation); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeferredOperationMaxConcurrencyKHR", e); }
     }
@@ -71,7 +71,7 @@ public final class VKKHRDeferredHostOperations {
     /// (int) VkResult vkGetDeferredOperationResultKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation);
     /// ```
     public static int vkGetDeferredOperationResultKHR(VkDevice device, long operation) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationResultKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDeferredOperationResultKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeferredOperationResultKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeferredOperationResultKHR");
         try { return (int) Handles.MH_vkGetDeferredOperationResultKHR.invokeExact(device.capabilities().PFN_vkGetDeferredOperationResultKHR, device.segment(), operation); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeferredOperationResultKHR", e); }
     }
@@ -80,7 +80,7 @@ public final class VKKHRDeferredHostOperations {
     /// (int) VkResult vkDeferredOperationJoinKHR((struct VkDevice*) VkDevice device, (uint64_t) VkDeferredOperationKHR operation);
     /// ```
     public static int vkDeferredOperationJoinKHR(VkDevice device, long operation) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDeferredOperationJoinKHR)) throw new SymbolNotFoundError("Symbol not found: vkDeferredOperationJoinKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDeferredOperationJoinKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDeferredOperationJoinKHR");
         try { return (int) Handles.MH_vkDeferredOperationJoinKHR.invokeExact(device.capabilities().PFN_vkDeferredOperationJoinKHR, device.segment(), operation); }
         catch (Throwable e) { throw new RuntimeException("error in vkDeferredOperationJoinKHR", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBTextureBarrier {
     private final Handles handles;
@@ -40,7 +41,7 @@ public final class GLARBTextureBarrier {
     /// void glTextureBarrier();
     /// ```
     public void TextureBarrier() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTextureBarrier)) throw new SymbolNotFoundError("Symbol not found: glTextureBarrier");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureBarrier)) throw new GLSymbolNotFoundError("Symbol not found: glTextureBarrier");
         try { Handles.MH_glTextureBarrier.invokeExact(handles.PFN_glTextureBarrier); }
         catch (Throwable e) { throw new RuntimeException("error in TextureBarrier", e); }
     }

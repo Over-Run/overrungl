@@ -72,7 +72,7 @@ public class GL46 extends GL45 {
     /// void glSpecializeShader((unsigned int) GLuint shader, const GLchar* pEntryPoint, (unsigned int) GLuint numSpecializationConstants, const GLuint* pConstantIndex, const GLuint* pConstantValue);
     /// ```
     public void SpecializeShader(int shader, MemorySegment pEntryPoint, int numSpecializationConstants, MemorySegment pConstantIndex, MemorySegment pConstantValue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSpecializeShader)) throw new SymbolNotFoundError("Symbol not found: glSpecializeShader");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSpecializeShader)) throw new GLSymbolNotFoundError("Symbol not found: glSpecializeShader");
         try { Handles.MH_glSpecializeShader.invokeExact(handles.PFN_glSpecializeShader, shader, pEntryPoint, numSpecializationConstants, pConstantIndex, pConstantValue); }
         catch (Throwable e) { throw new RuntimeException("error in SpecializeShader", e); }
     }
@@ -81,7 +81,7 @@ public class GL46 extends GL45 {
     /// void glMultiDrawArraysIndirectCount((unsigned int) GLenum mode, const void* indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawArraysIndirectCount(int mode, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCount)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCount");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCount)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCount");
         try { Handles.MH_glMultiDrawArraysIndirectCount.invokeExact(handles.PFN_glMultiDrawArraysIndirectCount, mode, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirectCount", e); }
     }
@@ -90,7 +90,7 @@ public class GL46 extends GL45 {
     /// void glMultiDrawElementsIndirectCount((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawElementsIndirectCount(int mode, int type, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCount)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCount");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCount)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCount");
         try { Handles.MH_glMultiDrawElementsIndirectCount.invokeExact(handles.PFN_glMultiDrawElementsIndirectCount, mode, type, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsIndirectCount", e); }
     }
@@ -99,7 +99,7 @@ public class GL46 extends GL45 {
     /// void glPolygonOffsetClamp(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat units, ((float) khronos_float_t) GLfloat clamp);
     /// ```
     public void PolygonOffsetClamp(float factor, float units, float clamp) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetClamp)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetClamp");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetClamp)) throw new GLSymbolNotFoundError("Symbol not found: glPolygonOffsetClamp");
         try { Handles.MH_glPolygonOffsetClamp.invokeExact(handles.PFN_glPolygonOffsetClamp, factor, units, clamp); }
         catch (Throwable e) { throw new RuntimeException("error in PolygonOffsetClamp", e); }
     }

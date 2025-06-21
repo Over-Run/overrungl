@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTDepthBoundsTest {
     public static final int GL_DEPTH_BOUNDS_TEST_EXT = 0x8890;
@@ -42,7 +43,7 @@ public final class GLEXTDepthBoundsTest {
     /// void glDepthBoundsEXT((double) GLclampd zmin, (double) GLclampd zmax);
     /// ```
     public void DepthBoundsEXT(double zmin, double zmax) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDepthBoundsEXT)) throw new SymbolNotFoundError("Symbol not found: glDepthBoundsEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDepthBoundsEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDepthBoundsEXT");
         try { Handles.MH_glDepthBoundsEXT.invokeExact(handles.PFN_glDepthBoundsEXT, zmin, zmax); }
         catch (Throwable e) { throw new RuntimeException("error in DepthBoundsEXT", e); }
     }

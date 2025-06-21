@@ -39,7 +39,7 @@ public final class VKNVXImageViewHandle {
     /// uint32_t vkGetImageViewHandleNVX((struct VkDevice*) VkDevice device, const VkImageViewHandleInfoNVX* pInfo);
     /// ```
     public static int vkGetImageViewHandleNVX(VkDevice device, MemorySegment pInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewHandleNVX)) throw new SymbolNotFoundError("Symbol not found: vkGetImageViewHandleNVX");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewHandleNVX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageViewHandleNVX");
         try { return (int) Handles.MH_vkGetImageViewHandleNVX.invokeExact(device.capabilities().PFN_vkGetImageViewHandleNVX, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageViewHandleNVX", e); }
     }
@@ -48,7 +48,7 @@ public final class VKNVXImageViewHandle {
     /// uint64_t vkGetImageViewHandle64NVX((struct VkDevice*) VkDevice device, const VkImageViewHandleInfoNVX* pInfo);
     /// ```
     public static long vkGetImageViewHandle64NVX(VkDevice device, MemorySegment pInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewHandle64NVX)) throw new SymbolNotFoundError("Symbol not found: vkGetImageViewHandle64NVX");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewHandle64NVX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageViewHandle64NVX");
         try { return (long) Handles.MH_vkGetImageViewHandle64NVX.invokeExact(device.capabilities().PFN_vkGetImageViewHandle64NVX, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageViewHandle64NVX", e); }
     }
@@ -57,7 +57,7 @@ public final class VKNVXImageViewHandle {
     /// (int) VkResult vkGetImageViewAddressNVX((struct VkDevice*) VkDevice device, (uint64_t) VkImageView imageView, VkImageViewAddressPropertiesNVX* pProperties);
     /// ```
     public static int vkGetImageViewAddressNVX(VkDevice device, long imageView, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewAddressNVX)) throw new SymbolNotFoundError("Symbol not found: vkGetImageViewAddressNVX");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewAddressNVX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageViewAddressNVX");
         try { return (int) Handles.MH_vkGetImageViewAddressNVX.invokeExact(device.capabilities().PFN_vkGetImageViewAddressNVX, device.segment(), imageView, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageViewAddressNVX", e); }
     }

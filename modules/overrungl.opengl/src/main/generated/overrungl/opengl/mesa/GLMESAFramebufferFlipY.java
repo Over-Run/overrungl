@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLMESAFramebufferFlipY {
     public static final int GL_FRAMEBUFFER_FLIP_Y_MESA = 0x8BBB;
@@ -44,7 +45,7 @@ public final class GLMESAFramebufferFlipY {
     /// void glFramebufferParameteriMESA((unsigned int) GLenum target, (unsigned int) GLenum pname, (int) GLint param);
     /// ```
     public void FramebufferParameteriMESA(int target, int pname, int param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteriMESA)) throw new SymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferParameteriMESA)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferParameteriMESA");
         try { Handles.MH_glFramebufferParameteriMESA.invokeExact(handles.PFN_glFramebufferParameteriMESA, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferParameteriMESA", e); }
     }
@@ -53,7 +54,7 @@ public final class GLMESAFramebufferFlipY {
     /// void glGetFramebufferParameterivMESA((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetFramebufferParameterivMESA(int target, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterivMESA)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterivMESA)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferParameterivMESA");
         try { Handles.MH_glGetFramebufferParameterivMESA.invokeExact(handles.PFN_glGetFramebufferParameterivMESA, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFramebufferParameterivMESA", e); }
     }

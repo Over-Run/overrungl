@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVDepthBufferFloat {
     public static final int GL_DEPTH_COMPONENT32F_NV = 0x8DAB;
@@ -50,7 +51,7 @@ public final class GLNVDepthBufferFloat {
     /// void glDepthRangedNV((double) GLdouble zNear, (double) GLdouble zFar);
     /// ```
     public void DepthRangedNV(double zNear, double zFar) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangedNV)) throw new SymbolNotFoundError("Symbol not found: glDepthRangedNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangedNV)) throw new GLSymbolNotFoundError("Symbol not found: glDepthRangedNV");
         try { Handles.MH_glDepthRangedNV.invokeExact(handles.PFN_glDepthRangedNV, zNear, zFar); }
         catch (Throwable e) { throw new RuntimeException("error in DepthRangedNV", e); }
     }
@@ -59,7 +60,7 @@ public final class GLNVDepthBufferFloat {
     /// void glClearDepthdNV((double) GLdouble depth);
     /// ```
     public void ClearDepthdNV(double depth) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthdNV)) throw new SymbolNotFoundError("Symbol not found: glClearDepthdNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthdNV)) throw new GLSymbolNotFoundError("Symbol not found: glClearDepthdNV");
         try { Handles.MH_glClearDepthdNV.invokeExact(handles.PFN_glClearDepthdNV, depth); }
         catch (Throwable e) { throw new RuntimeException("error in ClearDepthdNV", e); }
     }
@@ -68,7 +69,7 @@ public final class GLNVDepthBufferFloat {
     /// void glDepthBoundsdNV((double) GLdouble zmin, (double) GLdouble zmax);
     /// ```
     public void DepthBoundsdNV(double zmin, double zmax) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDepthBoundsdNV)) throw new SymbolNotFoundError("Symbol not found: glDepthBoundsdNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDepthBoundsdNV)) throw new GLSymbolNotFoundError("Symbol not found: glDepthBoundsdNV");
         try { Handles.MH_glDepthBoundsdNV.invokeExact(handles.PFN_glDepthBoundsdNV, zmin, zmax); }
         catch (Throwable e) { throw new RuntimeException("error in DepthBoundsdNV", e); }
     }

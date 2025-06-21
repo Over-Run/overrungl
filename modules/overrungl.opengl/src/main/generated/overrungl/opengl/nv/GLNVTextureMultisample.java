@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVTextureMultisample {
     public static final int GL_TEXTURE_COVERAGE_SAMPLES_NV = 0x9045;
@@ -56,7 +57,7 @@ public final class GLNVTextureMultisample {
     /// void glTexImage2DMultisampleCoverageNV((unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedSampleLocations);
     /// ```
     public void TexImage2DMultisampleCoverageNV(int target, int coverageSamples, int colorSamples, int internalFormat, int width, int height, boolean fixedSampleLocations) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexImage2DMultisampleCoverageNV)) throw new SymbolNotFoundError("Symbol not found: glTexImage2DMultisampleCoverageNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexImage2DMultisampleCoverageNV)) throw new GLSymbolNotFoundError("Symbol not found: glTexImage2DMultisampleCoverageNV");
         try { Handles.MH_glTexImage2DMultisampleCoverageNV.invokeExact(handles.PFN_glTexImage2DMultisampleCoverageNV, target, coverageSamples, colorSamples, internalFormat, width, height, ((fixedSampleLocations) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TexImage2DMultisampleCoverageNV", e); }
     }
@@ -65,7 +66,7 @@ public final class GLNVTextureMultisample {
     /// void glTexImage3DMultisampleCoverageNV((unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedSampleLocations);
     /// ```
     public void TexImage3DMultisampleCoverageNV(int target, int coverageSamples, int colorSamples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3DMultisampleCoverageNV)) throw new SymbolNotFoundError("Symbol not found: glTexImage3DMultisampleCoverageNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3DMultisampleCoverageNV)) throw new GLSymbolNotFoundError("Symbol not found: glTexImage3DMultisampleCoverageNV");
         try { Handles.MH_glTexImage3DMultisampleCoverageNV.invokeExact(handles.PFN_glTexImage3DMultisampleCoverageNV, target, coverageSamples, colorSamples, internalFormat, width, height, depth, ((fixedSampleLocations) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TexImage3DMultisampleCoverageNV", e); }
     }
@@ -74,7 +75,7 @@ public final class GLNVTextureMultisample {
     /// void glTextureImage2DMultisampleNV((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei samples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedSampleLocations);
     /// ```
     public void TextureImage2DMultisampleNV(int texture, int target, int samples, int internalFormat, int width, int height, boolean fixedSampleLocations) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage2DMultisampleNV)) throw new SymbolNotFoundError("Symbol not found: glTextureImage2DMultisampleNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage2DMultisampleNV)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage2DMultisampleNV");
         try { Handles.MH_glTextureImage2DMultisampleNV.invokeExact(handles.PFN_glTextureImage2DMultisampleNV, texture, target, samples, internalFormat, width, height, ((fixedSampleLocations) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage2DMultisampleNV", e); }
     }
@@ -83,7 +84,7 @@ public final class GLNVTextureMultisample {
     /// void glTextureImage3DMultisampleNV((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei samples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedSampleLocations);
     /// ```
     public void TextureImage3DMultisampleNV(int texture, int target, int samples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage3DMultisampleNV)) throw new SymbolNotFoundError("Symbol not found: glTextureImage3DMultisampleNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage3DMultisampleNV)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage3DMultisampleNV");
         try { Handles.MH_glTextureImage3DMultisampleNV.invokeExact(handles.PFN_glTextureImage3DMultisampleNV, texture, target, samples, internalFormat, width, height, depth, ((fixedSampleLocations) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage3DMultisampleNV", e); }
     }
@@ -92,7 +93,7 @@ public final class GLNVTextureMultisample {
     /// void glTextureImage2DMultisampleCoverageNV((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, GLboolean fixedSampleLocations);
     /// ```
     public void TextureImage2DMultisampleCoverageNV(int texture, int target, int coverageSamples, int colorSamples, int internalFormat, int width, int height, boolean fixedSampleLocations) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage2DMultisampleCoverageNV)) throw new SymbolNotFoundError("Symbol not found: glTextureImage2DMultisampleCoverageNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage2DMultisampleCoverageNV)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage2DMultisampleCoverageNV");
         try { Handles.MH_glTextureImage2DMultisampleCoverageNV.invokeExact(handles.PFN_glTextureImage2DMultisampleCoverageNV, texture, target, coverageSamples, colorSamples, internalFormat, width, height, ((fixedSampleLocations) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage2DMultisampleCoverageNV", e); }
     }
@@ -101,7 +102,7 @@ public final class GLNVTextureMultisample {
     /// void glTextureImage3DMultisampleCoverageNV((unsigned int) GLuint texture, (unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (int) GLint internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, GLboolean fixedSampleLocations);
     /// ```
     public void TextureImage3DMultisampleCoverageNV(int texture, int target, int coverageSamples, int colorSamples, int internalFormat, int width, int height, int depth, boolean fixedSampleLocations) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage3DMultisampleCoverageNV)) throw new SymbolNotFoundError("Symbol not found: glTextureImage3DMultisampleCoverageNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureImage3DMultisampleCoverageNV)) throw new GLSymbolNotFoundError("Symbol not found: glTextureImage3DMultisampleCoverageNV");
         try { Handles.MH_glTextureImage3DMultisampleCoverageNV.invokeExact(handles.PFN_glTextureImage3DMultisampleCoverageNV, texture, target, coverageSamples, colorSamples, internalFormat, width, height, depth, ((fixedSampleLocations) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TextureImage3DMultisampleCoverageNV", e); }
     }

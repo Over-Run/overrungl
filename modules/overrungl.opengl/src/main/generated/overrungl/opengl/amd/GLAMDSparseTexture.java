@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAMDSparseTexture {
     public static final int GL_VIRTUAL_PAGE_SIZE_X_AMD = 0x9195;
@@ -52,7 +53,7 @@ public final class GLAMDSparseTexture {
     /// void glTexStorageSparseAMD((unsigned int) GLenum target, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLsizei layers, (unsigned int) GLbitfield flags);
     /// ```
     public void TexStorageSparseAMD(int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageSparseAMD)) throw new SymbolNotFoundError("Symbol not found: glTexStorageSparseAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorageSparseAMD)) throw new GLSymbolNotFoundError("Symbol not found: glTexStorageSparseAMD");
         try { Handles.MH_glTexStorageSparseAMD.invokeExact(handles.PFN_glTexStorageSparseAMD, target, internalFormat, width, height, depth, layers, flags); }
         catch (Throwable e) { throw new RuntimeException("error in TexStorageSparseAMD", e); }
     }
@@ -61,7 +62,7 @@ public final class GLAMDSparseTexture {
     /// void glTextureStorageSparseAMD((unsigned int) GLuint texture, (unsigned int) GLenum target, (unsigned int) GLenum internalFormat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLsizei layers, (unsigned int) GLbitfield flags);
     /// ```
     public void TextureStorageSparseAMD(int texture, int target, int internalFormat, int width, int height, int depth, int layers, int flags) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageSparseAMD)) throw new SymbolNotFoundError("Symbol not found: glTextureStorageSparseAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureStorageSparseAMD)) throw new GLSymbolNotFoundError("Symbol not found: glTextureStorageSparseAMD");
         try { Handles.MH_glTextureStorageSparseAMD.invokeExact(handles.PFN_glTextureStorageSparseAMD, texture, target, internalFormat, width, height, depth, layers, flags); }
         catch (Throwable e) { throw new RuntimeException("error in TextureStorageSparseAMD", e); }
     }

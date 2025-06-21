@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGISTextureColorMask {
     public static final int GL_TEXTURE_COLOR_WRITEMASK_SGIS = 0x81EF;
@@ -41,7 +42,7 @@ public final class GLSGISTextureColorMask {
     /// void glTextureColorMaskSGIS(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
     /// ```
     public void TextureColorMaskSGIS(boolean red, boolean green, boolean blue, boolean alpha) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTextureColorMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glTextureColorMaskSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureColorMaskSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glTextureColorMaskSGIS");
         try { Handles.MH_glTextureColorMaskSGIS.invokeExact(handles.PFN_glTextureColorMaskSGIS, ((red) ? (byte)1 : (byte)0), ((green) ? (byte)1 : (byte)0), ((blue) ? (byte)1 : (byte)0), ((alpha) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TextureColorMaskSGIS", e); }
     }

@@ -65,7 +65,7 @@ public final class VKNVDeviceGeneratedCommands {
     /// void vkGetGeneratedCommandsMemoryRequirementsNV((struct VkDevice*) VkDevice device, const VkGeneratedCommandsMemoryRequirementsInfoNV* pInfo, VkMemoryRequirements2* pMemoryRequirements);
     /// ```
     public static void vkGetGeneratedCommandsMemoryRequirementsNV(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetGeneratedCommandsMemoryRequirementsNV)) throw new SymbolNotFoundError("Symbol not found: vkGetGeneratedCommandsMemoryRequirementsNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetGeneratedCommandsMemoryRequirementsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetGeneratedCommandsMemoryRequirementsNV");
         try { Handles.MH_vkGetGeneratedCommandsMemoryRequirementsNV.invokeExact(device.capabilities().PFN_vkGetGeneratedCommandsMemoryRequirementsNV, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetGeneratedCommandsMemoryRequirementsNV", e); }
     }
@@ -74,7 +74,7 @@ public final class VKNVDeviceGeneratedCommands {
     /// void vkCmdPreprocessGeneratedCommandsNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo);
     /// ```
     public static void vkCmdPreprocessGeneratedCommandsNV(VkCommandBuffer commandBuffer, MemorySegment pGeneratedCommandsInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPreprocessGeneratedCommandsNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdPreprocessGeneratedCommandsNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPreprocessGeneratedCommandsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPreprocessGeneratedCommandsNV");
         try { Handles.MH_vkCmdPreprocessGeneratedCommandsNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdPreprocessGeneratedCommandsNV, commandBuffer.segment(), pGeneratedCommandsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPreprocessGeneratedCommandsNV", e); }
     }
@@ -83,7 +83,7 @@ public final class VKNVDeviceGeneratedCommands {
     /// void vkCmdExecuteGeneratedCommandsNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint32_t) VkBool32 isPreprocessed, const VkGeneratedCommandsInfoNV* pGeneratedCommandsInfo);
     /// ```
     public static void vkCmdExecuteGeneratedCommandsNV(VkCommandBuffer commandBuffer, int isPreprocessed, MemorySegment pGeneratedCommandsInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdExecuteGeneratedCommandsNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdExecuteGeneratedCommandsNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdExecuteGeneratedCommandsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdExecuteGeneratedCommandsNV");
         try { Handles.MH_vkCmdExecuteGeneratedCommandsNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdExecuteGeneratedCommandsNV, commandBuffer.segment(), isPreprocessed, pGeneratedCommandsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdExecuteGeneratedCommandsNV", e); }
     }
@@ -92,7 +92,7 @@ public final class VKNVDeviceGeneratedCommands {
     /// void vkCmdBindPipelineShaderGroupNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineBindPoint pipelineBindPoint, (uint64_t) VkPipeline pipeline, uint32_t groupIndex);
     /// ```
     public static void vkCmdBindPipelineShaderGroupNV(VkCommandBuffer commandBuffer, int pipelineBindPoint, long pipeline, int groupIndex) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindPipelineShaderGroupNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindPipelineShaderGroupNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindPipelineShaderGroupNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindPipelineShaderGroupNV");
         try { Handles.MH_vkCmdBindPipelineShaderGroupNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindPipelineShaderGroupNV, commandBuffer.segment(), pipelineBindPoint, pipeline, groupIndex); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindPipelineShaderGroupNV", e); }
     }
@@ -101,7 +101,7 @@ public final class VKNVDeviceGeneratedCommands {
     /// (int) VkResult vkCreateIndirectCommandsLayoutNV((struct VkDevice*) VkDevice device, const VkIndirectCommandsLayoutCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkIndirectCommandsLayoutNV* pIndirectCommandsLayout);
     /// ```
     public static int vkCreateIndirectCommandsLayoutNV(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pIndirectCommandsLayout) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateIndirectCommandsLayoutNV)) throw new SymbolNotFoundError("Symbol not found: vkCreateIndirectCommandsLayoutNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateIndirectCommandsLayoutNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateIndirectCommandsLayoutNV");
         try { return (int) Handles.MH_vkCreateIndirectCommandsLayoutNV.invokeExact(device.capabilities().PFN_vkCreateIndirectCommandsLayoutNV, device.segment(), pCreateInfo, pAllocator, pIndirectCommandsLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateIndirectCommandsLayoutNV", e); }
     }
@@ -110,7 +110,7 @@ public final class VKNVDeviceGeneratedCommands {
     /// void vkDestroyIndirectCommandsLayoutNV((struct VkDevice*) VkDevice device, (uint64_t) VkIndirectCommandsLayoutNV indirectCommandsLayout, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyIndirectCommandsLayoutNV(VkDevice device, long indirectCommandsLayout, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyIndirectCommandsLayoutNV)) throw new SymbolNotFoundError("Symbol not found: vkDestroyIndirectCommandsLayoutNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyIndirectCommandsLayoutNV)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyIndirectCommandsLayoutNV");
         try { Handles.MH_vkDestroyIndirectCommandsLayoutNV.invokeExact(device.capabilities().PFN_vkDestroyIndirectCommandsLayoutNV, device.segment(), indirectCommandsLayout, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyIndirectCommandsLayoutNV", e); }
     }

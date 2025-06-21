@@ -36,7 +36,7 @@ public final class VKMVKIosSurface {
     /// (int) VkResult vkCreateIOSSurfaceMVK((struct VkInstance*) VkInstance instance, const VkIOSSurfaceCreateInfoMVK* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateIOSSurfaceMVK(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateIOSSurfaceMVK)) throw new SymbolNotFoundError("Symbol not found: vkCreateIOSSurfaceMVK");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateIOSSurfaceMVK)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateIOSSurfaceMVK");
         try { return (int) Handles.MH_vkCreateIOSSurfaceMVK.invokeExact(instance.capabilities().PFN_vkCreateIOSSurfaceMVK, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateIOSSurfaceMVK", e); }
     }

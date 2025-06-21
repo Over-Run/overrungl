@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLINTELMapTexture {
     public static final int GL_TEXTURE_MEMORY_LAYOUT_INTEL = 0x83FF;
@@ -50,7 +51,7 @@ public final class GLINTELMapTexture {
     /// void glSyncTextureINTEL((unsigned int) GLuint texture);
     /// ```
     public void SyncTextureINTEL(int texture) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSyncTextureINTEL)) throw new SymbolNotFoundError("Symbol not found: glSyncTextureINTEL");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSyncTextureINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glSyncTextureINTEL");
         try { Handles.MH_glSyncTextureINTEL.invokeExact(handles.PFN_glSyncTextureINTEL, texture); }
         catch (Throwable e) { throw new RuntimeException("error in SyncTextureINTEL", e); }
     }
@@ -59,7 +60,7 @@ public final class GLINTELMapTexture {
     /// void glUnmapTexture2DINTEL((unsigned int) GLuint texture, (int) GLint level);
     /// ```
     public void UnmapTexture2DINTEL(int texture, int level) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glUnmapTexture2DINTEL)) throw new SymbolNotFoundError("Symbol not found: glUnmapTexture2DINTEL");
+        if (MemoryUtil.isNullPointer(handles.PFN_glUnmapTexture2DINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glUnmapTexture2DINTEL");
         try { Handles.MH_glUnmapTexture2DINTEL.invokeExact(handles.PFN_glUnmapTexture2DINTEL, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in UnmapTexture2DINTEL", e); }
     }
@@ -68,7 +69,7 @@ public final class GLINTELMapTexture {
     /// void* glMapTexture2DINTEL((unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLbitfield access, GLint* stride, GLenum* layout);
     /// ```
     public MemorySegment MapTexture2DINTEL(int texture, int level, int access, MemorySegment stride, MemorySegment layout) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMapTexture2DINTEL)) throw new SymbolNotFoundError("Symbol not found: glMapTexture2DINTEL");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapTexture2DINTEL)) throw new GLSymbolNotFoundError("Symbol not found: glMapTexture2DINTEL");
         try { return (MemorySegment) Handles.MH_glMapTexture2DINTEL.invokeExact(handles.PFN_glMapTexture2DINTEL, texture, level, access, stride, layout); }
         catch (Throwable e) { throw new RuntimeException("error in MapTexture2DINTEL", e); }
     }

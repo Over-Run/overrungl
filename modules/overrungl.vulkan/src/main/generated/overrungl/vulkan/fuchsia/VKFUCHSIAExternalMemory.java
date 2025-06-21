@@ -40,7 +40,7 @@ public final class VKFUCHSIAExternalMemory {
     /// (int) VkResult vkGetMemoryZirconHandleFUCHSIA((struct VkDevice*) VkDevice device, const VkMemoryGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, zx_handle_t* pZirconHandle);
     /// ```
     public static int vkGetMemoryZirconHandleFUCHSIA(VkDevice device, MemorySegment pGetZirconHandleInfo, MemorySegment pZirconHandle) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryZirconHandleFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandleFUCHSIA");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryZirconHandleFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandleFUCHSIA");
         try { return (int) Handles.MH_vkGetMemoryZirconHandleFUCHSIA.invokeExact(device.capabilities().PFN_vkGetMemoryZirconHandleFUCHSIA, device.segment(), pGetZirconHandleInfo, pZirconHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryZirconHandleFUCHSIA", e); }
     }
@@ -49,7 +49,7 @@ public final class VKFUCHSIAExternalMemory {
     /// (int) VkResult vkGetMemoryZirconHandlePropertiesFUCHSIA((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, (int32_t) zx_handle_t zirconHandle, VkMemoryZirconHandlePropertiesFUCHSIA* pMemoryZirconHandleProperties);
     /// ```
     public static int vkGetMemoryZirconHandlePropertiesFUCHSIA(VkDevice device, int handleType, int zirconHandle, MemorySegment pMemoryZirconHandleProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandlePropertiesFUCHSIA");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryZirconHandlePropertiesFUCHSIA");
         try { return (int) Handles.MH_vkGetMemoryZirconHandlePropertiesFUCHSIA.invokeExact(device.capabilities().PFN_vkGetMemoryZirconHandlePropertiesFUCHSIA, device.segment(), handleType, zirconHandle, pMemoryZirconHandleProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryZirconHandlePropertiesFUCHSIA", e); }
     }

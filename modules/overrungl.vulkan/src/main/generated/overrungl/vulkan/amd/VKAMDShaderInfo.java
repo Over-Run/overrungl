@@ -38,7 +38,7 @@ public final class VKAMDShaderInfo {
     /// (int) VkResult vkGetShaderInfoAMD((struct VkDevice*) VkDevice device, (uint64_t) VkPipeline pipeline, (int) VkShaderStageFlagBits shaderStage, (int) VkShaderInfoTypeAMD infoType, size_t* pInfoSize, void* pInfo);
     /// ```
     public static int vkGetShaderInfoAMD(VkDevice device, long pipeline, int shaderStage, int infoType, MemorySegment pInfoSize, MemorySegment pInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderInfoAMD)) throw new SymbolNotFoundError("Symbol not found: vkGetShaderInfoAMD");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderInfoAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkGetShaderInfoAMD");
         try { return (int) Handles.MH_vkGetShaderInfoAMD.invokeExact(device.capabilities().PFN_vkGetShaderInfoAMD, device.segment(), pipeline, shaderStage, infoType, pInfoSize, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetShaderInfoAMD", e); }
     }

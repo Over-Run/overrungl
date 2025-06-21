@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBPointParameters {
     public static final int GL_POINT_SIZE_MIN_ARB = 0x8126;
@@ -47,7 +48,7 @@ public final class GLARBPointParameters {
     /// void glPointParameterfARB((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void PointParameterfARB(int pname, float param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfARB)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfARB)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfARB");
         try { Handles.MH_glPointParameterfARB.invokeExact(handles.PFN_glPointParameterfARB, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfARB", e); }
     }
@@ -56,7 +57,7 @@ public final class GLARBPointParameters {
     /// void glPointParameterfvARB((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void PointParameterfvARB(int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvARB)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfvARB");
         try { Handles.MH_glPointParameterfvARB.invokeExact(handles.PFN_glPointParameterfvARB, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfvARB", e); }
     }

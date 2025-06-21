@@ -43,7 +43,7 @@ public final class VKEXTLineRasterization {
     /// void vkCmdSetLineStippleEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t lineStippleFactor, uint16_t lineStipplePattern);
     /// ```
     public static void vkCmdSetLineStippleEXT(VkCommandBuffer commandBuffer, int lineStippleFactor, short lineStipplePattern) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStippleEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineStippleEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStippleEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetLineStippleEXT");
         try { Handles.MH_vkCmdSetLineStippleEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLineStippleEXT, commandBuffer.segment(), lineStippleFactor, lineStipplePattern); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetLineStippleEXT", e); }
     }

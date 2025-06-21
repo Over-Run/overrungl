@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTWin32KeyedMutex {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLEXTWin32KeyedMutex {
     /// GLboolean glAcquireKeyedMutexWin32EXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 key, (unsigned int) GLuint timeout);
     /// ```
     public boolean AcquireKeyedMutexWin32EXT(int memory, long key, int timeout) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glAcquireKeyedMutexWin32EXT)) throw new SymbolNotFoundError("Symbol not found: glAcquireKeyedMutexWin32EXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glAcquireKeyedMutexWin32EXT)) throw new GLSymbolNotFoundError("Symbol not found: glAcquireKeyedMutexWin32EXT");
         try { return (((byte) Handles.MH_glAcquireKeyedMutexWin32EXT.invokeExact(handles.PFN_glAcquireKeyedMutexWin32EXT, memory, key, timeout)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in AcquireKeyedMutexWin32EXT", e); }
     }
@@ -52,7 +53,7 @@ public final class GLEXTWin32KeyedMutex {
     /// GLboolean glReleaseKeyedMutexWin32EXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 key);
     /// ```
     public boolean ReleaseKeyedMutexWin32EXT(int memory, long key) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glReleaseKeyedMutexWin32EXT)) throw new SymbolNotFoundError("Symbol not found: glReleaseKeyedMutexWin32EXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glReleaseKeyedMutexWin32EXT)) throw new GLSymbolNotFoundError("Symbol not found: glReleaseKeyedMutexWin32EXT");
         try { return (((byte) Handles.MH_glReleaseKeyedMutexWin32EXT.invokeExact(handles.PFN_glReleaseKeyedMutexWin32EXT, memory, key)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in ReleaseKeyedMutexWin32EXT", e); }
     }

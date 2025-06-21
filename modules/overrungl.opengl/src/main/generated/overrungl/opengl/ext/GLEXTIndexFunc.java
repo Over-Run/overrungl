@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTIndexFunc {
     public static final int GL_INDEX_TEST_EXT = 0x81B5;
@@ -43,7 +44,7 @@ public final class GLEXTIndexFunc {
     /// void glIndexFuncEXT((unsigned int) GLenum func, ((float) khronos_float_t) GLclampf ref);
     /// ```
     public void IndexFuncEXT(int func, float ref) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glIndexFuncEXT)) throw new SymbolNotFoundError("Symbol not found: glIndexFuncEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glIndexFuncEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIndexFuncEXT");
         try { Handles.MH_glIndexFuncEXT.invokeExact(handles.PFN_glIndexFuncEXT, func, ref); }
         catch (Throwable e) { throw new RuntimeException("error in IndexFuncEXT", e); }
     }

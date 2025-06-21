@@ -41,7 +41,7 @@ public final class VKKHRRayTracingMaintenance1 {
     /// void vkCmdTraceRaysIndirect2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress indirectDeviceAddress);
     /// ```
     public static void vkCmdTraceRaysIndirect2KHR(VkCommandBuffer commandBuffer, long indirectDeviceAddress) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdTraceRaysIndirect2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdTraceRaysIndirect2KHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdTraceRaysIndirect2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdTraceRaysIndirect2KHR");
         try { Handles.MH_vkCmdTraceRaysIndirect2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdTraceRaysIndirect2KHR, commandBuffer.segment(), indirectDeviceAddress); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdTraceRaysIndirect2KHR", e); }
     }

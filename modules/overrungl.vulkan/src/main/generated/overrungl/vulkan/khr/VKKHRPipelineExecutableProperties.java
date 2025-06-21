@@ -49,7 +49,7 @@ public final class VKKHRPipelineExecutableProperties {
     /// (int) VkResult vkGetPipelineExecutablePropertiesKHR((struct VkDevice*) VkDevice device, const VkPipelineInfoKHR* pPipelineInfo, uint32_t* pExecutableCount, VkPipelineExecutablePropertiesKHR* pProperties);
     /// ```
     public static int vkGetPipelineExecutablePropertiesKHR(VkDevice device, MemorySegment pPipelineInfo, MemorySegment pExecutableCount, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineExecutablePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineExecutablePropertiesKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineExecutablePropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineExecutablePropertiesKHR");
         try { return (int) Handles.MH_vkGetPipelineExecutablePropertiesKHR.invokeExact(device.capabilities().PFN_vkGetPipelineExecutablePropertiesKHR, device.segment(), pPipelineInfo, pExecutableCount, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineExecutablePropertiesKHR", e); }
     }
@@ -58,7 +58,7 @@ public final class VKKHRPipelineExecutableProperties {
     /// (int) VkResult vkGetPipelineExecutableStatisticsKHR((struct VkDevice*) VkDevice device, const VkPipelineExecutableInfoKHR* pExecutableInfo, uint32_t* pStatisticCount, VkPipelineExecutableStatisticKHR* pStatistics);
     /// ```
     public static int vkGetPipelineExecutableStatisticsKHR(VkDevice device, MemorySegment pExecutableInfo, MemorySegment pStatisticCount, MemorySegment pStatistics) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineExecutableStatisticsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineExecutableStatisticsKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineExecutableStatisticsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineExecutableStatisticsKHR");
         try { return (int) Handles.MH_vkGetPipelineExecutableStatisticsKHR.invokeExact(device.capabilities().PFN_vkGetPipelineExecutableStatisticsKHR, device.segment(), pExecutableInfo, pStatisticCount, pStatistics); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineExecutableStatisticsKHR", e); }
     }
@@ -67,7 +67,7 @@ public final class VKKHRPipelineExecutableProperties {
     /// (int) VkResult vkGetPipelineExecutableInternalRepresentationsKHR((struct VkDevice*) VkDevice device, const VkPipelineExecutableInfoKHR* pExecutableInfo, uint32_t* pInternalRepresentationCount, VkPipelineExecutableInternalRepresentationKHR* pInternalRepresentations);
     /// ```
     public static int vkGetPipelineExecutableInternalRepresentationsKHR(VkDevice device, MemorySegment pExecutableInfo, MemorySegment pInternalRepresentationCount, MemorySegment pInternalRepresentations) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineExecutableInternalRepresentationsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineExecutableInternalRepresentationsKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineExecutableInternalRepresentationsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineExecutableInternalRepresentationsKHR");
         try { return (int) Handles.MH_vkGetPipelineExecutableInternalRepresentationsKHR.invokeExact(device.capabilities().PFN_vkGetPipelineExecutableInternalRepresentationsKHR, device.segment(), pExecutableInfo, pInternalRepresentationCount, pInternalRepresentations); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineExecutableInternalRepresentationsKHR", e); }
     }

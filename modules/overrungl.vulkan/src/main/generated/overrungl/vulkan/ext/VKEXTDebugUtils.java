@@ -58,7 +58,7 @@ public final class VKEXTDebugUtils {
     /// (int) VkResult vkSetDebugUtilsObjectNameEXT((struct VkDevice*) VkDevice device, const VkDebugUtilsObjectNameInfoEXT* pNameInfo);
     /// ```
     public static int vkSetDebugUtilsObjectNameEXT(VkDevice device, MemorySegment pNameInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDebugUtilsObjectNameEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectNameEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDebugUtilsObjectNameEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectNameEXT");
         try { return (int) Handles.MH_vkSetDebugUtilsObjectNameEXT.invokeExact(device.capabilities().PFN_vkSetDebugUtilsObjectNameEXT, device.segment(), pNameInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetDebugUtilsObjectNameEXT", e); }
     }
@@ -67,7 +67,7 @@ public final class VKEXTDebugUtils {
     /// (int) VkResult vkSetDebugUtilsObjectTagEXT((struct VkDevice*) VkDevice device, const VkDebugUtilsObjectTagInfoEXT* pTagInfo);
     /// ```
     public static int vkSetDebugUtilsObjectTagEXT(VkDevice device, MemorySegment pTagInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDebugUtilsObjectTagEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectTagEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDebugUtilsObjectTagEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetDebugUtilsObjectTagEXT");
         try { return (int) Handles.MH_vkSetDebugUtilsObjectTagEXT.invokeExact(device.capabilities().PFN_vkSetDebugUtilsObjectTagEXT, device.segment(), pTagInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetDebugUtilsObjectTagEXT", e); }
     }
@@ -76,7 +76,7 @@ public final class VKEXTDebugUtils {
     /// void vkQueueBeginDebugUtilsLabelEXT((struct VkQueue*) VkQueue queue, const VkDebugUtilsLabelEXT* pLabelInfo);
     /// ```
     public static void vkQueueBeginDebugUtilsLabelEXT(VkQueue queue, MemorySegment pLabelInfo) {
-        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueBeginDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkQueueBeginDebugUtilsLabelEXT");
+        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueBeginDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueBeginDebugUtilsLabelEXT");
         try { Handles.MH_vkQueueBeginDebugUtilsLabelEXT.invokeExact(queue.capabilities().PFN_vkQueueBeginDebugUtilsLabelEXT, queue.segment(), pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueBeginDebugUtilsLabelEXT", e); }
     }
@@ -85,7 +85,7 @@ public final class VKEXTDebugUtils {
     /// void vkQueueEndDebugUtilsLabelEXT((struct VkQueue*) VkQueue queue);
     /// ```
     public static void vkQueueEndDebugUtilsLabelEXT(VkQueue queue) {
-        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueEndDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkQueueEndDebugUtilsLabelEXT");
+        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueEndDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueEndDebugUtilsLabelEXT");
         try { Handles.MH_vkQueueEndDebugUtilsLabelEXT.invokeExact(queue.capabilities().PFN_vkQueueEndDebugUtilsLabelEXT, queue.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueEndDebugUtilsLabelEXT", e); }
     }
@@ -94,7 +94,7 @@ public final class VKEXTDebugUtils {
     /// void vkQueueInsertDebugUtilsLabelEXT((struct VkQueue*) VkQueue queue, const VkDebugUtilsLabelEXT* pLabelInfo);
     /// ```
     public static void vkQueueInsertDebugUtilsLabelEXT(VkQueue queue, MemorySegment pLabelInfo) {
-        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueInsertDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkQueueInsertDebugUtilsLabelEXT");
+        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueInsertDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueInsertDebugUtilsLabelEXT");
         try { Handles.MH_vkQueueInsertDebugUtilsLabelEXT.invokeExact(queue.capabilities().PFN_vkQueueInsertDebugUtilsLabelEXT, queue.segment(), pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueInsertDebugUtilsLabelEXT", e); }
     }
@@ -103,7 +103,7 @@ public final class VKEXTDebugUtils {
     /// void vkCmdBeginDebugUtilsLabelEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDebugUtilsLabelEXT* pLabelInfo);
     /// ```
     public static void vkCmdBeginDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, MemorySegment pLabelInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginDebugUtilsLabelEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginDebugUtilsLabelEXT");
         try { Handles.MH_vkCmdBeginDebugUtilsLabelEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginDebugUtilsLabelEXT, commandBuffer.segment(), pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginDebugUtilsLabelEXT", e); }
     }
@@ -112,7 +112,7 @@ public final class VKEXTDebugUtils {
     /// void vkCmdEndDebugUtilsLabelEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
     /// ```
     public static void vkCmdEndDebugUtilsLabelEXT(VkCommandBuffer commandBuffer) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndDebugUtilsLabelEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndDebugUtilsLabelEXT");
         try { Handles.MH_vkCmdEndDebugUtilsLabelEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndDebugUtilsLabelEXT, commandBuffer.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndDebugUtilsLabelEXT", e); }
     }
@@ -121,7 +121,7 @@ public final class VKEXTDebugUtils {
     /// void vkCmdInsertDebugUtilsLabelEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkDebugUtilsLabelEXT* pLabelInfo);
     /// ```
     public static void vkCmdInsertDebugUtilsLabelEXT(VkCommandBuffer commandBuffer, MemorySegment pLabelInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdInsertDebugUtilsLabelEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdInsertDebugUtilsLabelEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdInsertDebugUtilsLabelEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdInsertDebugUtilsLabelEXT");
         try { Handles.MH_vkCmdInsertDebugUtilsLabelEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdInsertDebugUtilsLabelEXT, commandBuffer.segment(), pLabelInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdInsertDebugUtilsLabelEXT", e); }
     }
@@ -130,7 +130,7 @@ public final class VKEXTDebugUtils {
     /// (int) VkResult vkCreateDebugUtilsMessengerEXT((struct VkInstance*) VkInstance instance, const VkDebugUtilsMessengerCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugUtilsMessengerEXT* pMessenger);
     /// ```
     public static int vkCreateDebugUtilsMessengerEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pMessenger) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDebugUtilsMessengerEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateDebugUtilsMessengerEXT");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDebugUtilsMessengerEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDebugUtilsMessengerEXT");
         try { return (int) Handles.MH_vkCreateDebugUtilsMessengerEXT.invokeExact(instance.capabilities().PFN_vkCreateDebugUtilsMessengerEXT, instance.segment(), pCreateInfo, pAllocator, pMessenger); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDebugUtilsMessengerEXT", e); }
     }
@@ -139,7 +139,7 @@ public final class VKEXTDebugUtils {
     /// void vkDestroyDebugUtilsMessengerEXT((struct VkInstance*) VkInstance instance, (uint64_t) VkDebugUtilsMessengerEXT messenger, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyDebugUtilsMessengerEXT(VkInstance instance, long messenger, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDestroyDebugUtilsMessengerEXT)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDebugUtilsMessengerEXT");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDestroyDebugUtilsMessengerEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDebugUtilsMessengerEXT");
         try { Handles.MH_vkDestroyDebugUtilsMessengerEXT.invokeExact(instance.capabilities().PFN_vkDestroyDebugUtilsMessengerEXT, instance.segment(), messenger, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDebugUtilsMessengerEXT", e); }
     }
@@ -148,7 +148,7 @@ public final class VKEXTDebugUtils {
     /// void vkSubmitDebugUtilsMessageEXT((struct VkInstance*) VkInstance instance, (int) VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity, ((uint32_t) VkFlags) VkDebugUtilsMessageTypeFlagsEXT messageTypes, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData);
     /// ```
     public static void vkSubmitDebugUtilsMessageEXT(VkInstance instance, int messageSeverity, int messageTypes, MemorySegment pCallbackData) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkSubmitDebugUtilsMessageEXT)) throw new SymbolNotFoundError("Symbol not found: vkSubmitDebugUtilsMessageEXT");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkSubmitDebugUtilsMessageEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSubmitDebugUtilsMessageEXT");
         try { Handles.MH_vkSubmitDebugUtilsMessageEXT.invokeExact(instance.capabilities().PFN_vkSubmitDebugUtilsMessageEXT, instance.segment(), messageSeverity, messageTypes, pCallbackData); }
         catch (Throwable e) { throw new RuntimeException("error in vkSubmitDebugUtilsMessageEXT", e); }
     }

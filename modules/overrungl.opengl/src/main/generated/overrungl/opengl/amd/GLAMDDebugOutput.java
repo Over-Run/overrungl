@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAMDDebugOutput {
     public static final int GL_MAX_DEBUG_MESSAGE_LENGTH_AMD = 0x9143;
@@ -63,7 +64,7 @@ public final class GLAMDDebugOutput {
     /// void glDebugMessageEnableAMD((unsigned int) GLenum category, (unsigned int) GLenum severity, (int) GLsizei count, const GLuint* ids, GLboolean enabled);
     /// ```
     public void DebugMessageEnableAMD(int category, int severity, int count, MemorySegment ids, boolean enabled) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageEnableAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageEnableAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageEnableAMD)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageEnableAMD");
         try { Handles.MH_glDebugMessageEnableAMD.invokeExact(handles.PFN_glDebugMessageEnableAMD, category, severity, count, ids, ((enabled) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageEnableAMD", e); }
     }
@@ -72,7 +73,7 @@ public final class GLAMDDebugOutput {
     /// void glDebugMessageInsertAMD((unsigned int) GLenum category, (unsigned int) GLenum severity, (unsigned int) GLuint id, (int) GLsizei length, const GLchar* buf);
     /// ```
     public void DebugMessageInsertAMD(int category, int severity, int id, int length, MemorySegment buf) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageInsertAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageInsertAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageInsertAMD)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageInsertAMD");
         try { Handles.MH_glDebugMessageInsertAMD.invokeExact(handles.PFN_glDebugMessageInsertAMD, category, severity, id, length, buf); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageInsertAMD", e); }
     }
@@ -81,7 +82,7 @@ public final class GLAMDDebugOutput {
     /// void glDebugMessageCallbackAMD((void (*GLDebugProcAMD)((unsigned int) GLuint id, (unsigned int) GLenum category, (unsigned int) GLenum severity, (int) GLsizei length, const GLchar* message, void* userParam)) GLDEBUGPROCAMD callback, void* userParam);
     /// ```
     public void DebugMessageCallbackAMD(MemorySegment callback, MemorySegment userParam) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageCallbackAMD)) throw new SymbolNotFoundError("Symbol not found: glDebugMessageCallbackAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDebugMessageCallbackAMD)) throw new GLSymbolNotFoundError("Symbol not found: glDebugMessageCallbackAMD");
         try { Handles.MH_glDebugMessageCallbackAMD.invokeExact(handles.PFN_glDebugMessageCallbackAMD, callback, userParam); }
         catch (Throwable e) { throw new RuntimeException("error in DebugMessageCallbackAMD", e); }
     }
@@ -90,7 +91,7 @@ public final class GLAMDDebugOutput {
     /// (unsigned int) GLuint glGetDebugMessageLogAMD((unsigned int) GLuint count, (int) GLsizei bufSize, GLenum* categories, GLenum* severities, GLuint* ids, GLsizei* lengths, GLchar* message);
     /// ```
     public int GetDebugMessageLogAMD(int count, int bufSize, MemorySegment categories, MemorySegment severities, MemorySegment ids, MemorySegment lengths, MemorySegment message) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetDebugMessageLogAMD)) throw new SymbolNotFoundError("Symbol not found: glGetDebugMessageLogAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetDebugMessageLogAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGetDebugMessageLogAMD");
         try { return (int) Handles.MH_glGetDebugMessageLogAMD.invokeExact(handles.PFN_glGetDebugMessageLogAMD, count, bufSize, categories, severities, ids, lengths, message); }
         catch (Throwable e) { throw new RuntimeException("error in GetDebugMessageLogAMD", e); }
     }

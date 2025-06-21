@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLMESAWindowPos {
     private final Handles handles;
@@ -109,7 +110,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos2dMESA((double) GLdouble x, (double) GLdouble y);
     /// ```
     public void WindowPos2dMESA(double x, double y) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2dMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2dMESA");
         try { Handles.MH_glWindowPos2dMESA.invokeExact(handles.PFN_glWindowPos2dMESA, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2dMESA", e); }
     }
@@ -118,7 +119,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos2dvMESA(const GLdouble* v);
     /// ```
     public void WindowPos2dvMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2dvMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2dvMESA");
         try { Handles.MH_glWindowPos2dvMESA.invokeExact(handles.PFN_glWindowPos2dvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2dvMESA", e); }
     }
@@ -127,7 +128,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos2fMESA(((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y);
     /// ```
     public void WindowPos2fMESA(float x, float y) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2fMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2fMESA");
         try { Handles.MH_glWindowPos2fMESA.invokeExact(handles.PFN_glWindowPos2fMESA, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2fMESA", e); }
     }
@@ -136,7 +137,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos2fvMESA(const GLfloat* v);
     /// ```
     public void WindowPos2fvMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2fvMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2fvMESA");
         try { Handles.MH_glWindowPos2fvMESA.invokeExact(handles.PFN_glWindowPos2fvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2fvMESA", e); }
     }
@@ -145,7 +146,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos2iMESA((int) GLint x, (int) GLint y);
     /// ```
     public void WindowPos2iMESA(int x, int y) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2iMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2iMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2iMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2iMESA");
         try { Handles.MH_glWindowPos2iMESA.invokeExact(handles.PFN_glWindowPos2iMESA, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2iMESA", e); }
     }
@@ -154,7 +155,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos2ivMESA(const GLint* v);
     /// ```
     public void WindowPos2ivMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2ivMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2ivMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2ivMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2ivMESA");
         try { Handles.MH_glWindowPos2ivMESA.invokeExact(handles.PFN_glWindowPos2ivMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2ivMESA", e); }
     }
@@ -163,7 +164,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos2sMESA(((signed short) khronos_int16_t) GLshort x, ((signed short) khronos_int16_t) GLshort y);
     /// ```
     public void WindowPos2sMESA(short x, short y) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2sMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2sMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2sMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2sMESA");
         try { Handles.MH_glWindowPos2sMESA.invokeExact(handles.PFN_glWindowPos2sMESA, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2sMESA", e); }
     }
@@ -172,7 +173,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos2svMESA(const GLshort* v);
     /// ```
     public void WindowPos2svMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2svMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2svMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2svMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2svMESA");
         try { Handles.MH_glWindowPos2svMESA.invokeExact(handles.PFN_glWindowPos2svMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2svMESA", e); }
     }
@@ -181,7 +182,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos3dMESA((double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
     public void WindowPos3dMESA(double x, double y, double z) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3dMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3dMESA");
         try { Handles.MH_glWindowPos3dMESA.invokeExact(handles.PFN_glWindowPos3dMESA, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3dMESA", e); }
     }
@@ -190,7 +191,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos3dvMESA(const GLdouble* v);
     /// ```
     public void WindowPos3dvMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3dvMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3dvMESA");
         try { Handles.MH_glWindowPos3dvMESA.invokeExact(handles.PFN_glWindowPos3dvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3dvMESA", e); }
     }
@@ -199,7 +200,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos3fMESA(((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z);
     /// ```
     public void WindowPos3fMESA(float x, float y, float z) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3fMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3fMESA");
         try { Handles.MH_glWindowPos3fMESA.invokeExact(handles.PFN_glWindowPos3fMESA, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3fMESA", e); }
     }
@@ -208,7 +209,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos3fvMESA(const GLfloat* v);
     /// ```
     public void WindowPos3fvMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3fvMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3fvMESA");
         try { Handles.MH_glWindowPos3fvMESA.invokeExact(handles.PFN_glWindowPos3fvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3fvMESA", e); }
     }
@@ -217,7 +218,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos3iMESA((int) GLint x, (int) GLint y, (int) GLint z);
     /// ```
     public void WindowPos3iMESA(int x, int y, int z) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3iMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3iMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3iMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3iMESA");
         try { Handles.MH_glWindowPos3iMESA.invokeExact(handles.PFN_glWindowPos3iMESA, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3iMESA", e); }
     }
@@ -226,7 +227,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos3ivMESA(const GLint* v);
     /// ```
     public void WindowPos3ivMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3ivMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3ivMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3ivMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3ivMESA");
         try { Handles.MH_glWindowPos3ivMESA.invokeExact(handles.PFN_glWindowPos3ivMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3ivMESA", e); }
     }
@@ -235,7 +236,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos3sMESA(((signed short) khronos_int16_t) GLshort x, ((signed short) khronos_int16_t) GLshort y, ((signed short) khronos_int16_t) GLshort z);
     /// ```
     public void WindowPos3sMESA(short x, short y, short z) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3sMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3sMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3sMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3sMESA");
         try { Handles.MH_glWindowPos3sMESA.invokeExact(handles.PFN_glWindowPos3sMESA, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3sMESA", e); }
     }
@@ -244,7 +245,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos3svMESA(const GLshort* v);
     /// ```
     public void WindowPos3svMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3svMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3svMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3svMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3svMESA");
         try { Handles.MH_glWindowPos3svMESA.invokeExact(handles.PFN_glWindowPos3svMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3svMESA", e); }
     }
@@ -253,7 +254,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos4dMESA((double) GLdouble x, (double) GLdouble y, (double) GLdouble z, (double) GLdouble w);
     /// ```
     public void WindowPos4dMESA(double x, double y, double z, double w) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4dMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4dMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4dMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4dMESA");
         try { Handles.MH_glWindowPos4dMESA.invokeExact(handles.PFN_glWindowPos4dMESA, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4dMESA", e); }
     }
@@ -262,7 +263,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos4dvMESA(const GLdouble* v);
     /// ```
     public void WindowPos4dvMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4dvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4dvMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4dvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4dvMESA");
         try { Handles.MH_glWindowPos4dvMESA.invokeExact(handles.PFN_glWindowPos4dvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4dvMESA", e); }
     }
@@ -271,7 +272,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos4fMESA(((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z, ((float) khronos_float_t) GLfloat w);
     /// ```
     public void WindowPos4fMESA(float x, float y, float z, float w) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4fMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4fMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4fMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4fMESA");
         try { Handles.MH_glWindowPos4fMESA.invokeExact(handles.PFN_glWindowPos4fMESA, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4fMESA", e); }
     }
@@ -280,7 +281,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos4fvMESA(const GLfloat* v);
     /// ```
     public void WindowPos4fvMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4fvMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4fvMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4fvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4fvMESA");
         try { Handles.MH_glWindowPos4fvMESA.invokeExact(handles.PFN_glWindowPos4fvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4fvMESA", e); }
     }
@@ -289,7 +290,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos4iMESA((int) GLint x, (int) GLint y, (int) GLint z, (int) GLint w);
     /// ```
     public void WindowPos4iMESA(int x, int y, int z, int w) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4iMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4iMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4iMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4iMESA");
         try { Handles.MH_glWindowPos4iMESA.invokeExact(handles.PFN_glWindowPos4iMESA, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4iMESA", e); }
     }
@@ -298,7 +299,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos4ivMESA(const GLint* v);
     /// ```
     public void WindowPos4ivMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4ivMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4ivMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4ivMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4ivMESA");
         try { Handles.MH_glWindowPos4ivMESA.invokeExact(handles.PFN_glWindowPos4ivMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4ivMESA", e); }
     }
@@ -307,7 +308,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos4sMESA(((signed short) khronos_int16_t) GLshort x, ((signed short) khronos_int16_t) GLshort y, ((signed short) khronos_int16_t) GLshort z, ((signed short) khronos_int16_t) GLshort w);
     /// ```
     public void WindowPos4sMESA(short x, short y, short z, short w) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4sMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4sMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4sMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4sMESA");
         try { Handles.MH_glWindowPos4sMESA.invokeExact(handles.PFN_glWindowPos4sMESA, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4sMESA", e); }
     }
@@ -316,7 +317,7 @@ public final class GLMESAWindowPos {
     /// void glWindowPos4svMESA(const GLshort* v);
     /// ```
     public void WindowPos4svMESA(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4svMESA)) throw new SymbolNotFoundError("Symbol not found: glWindowPos4svMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4svMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4svMESA");
         try { Handles.MH_glWindowPos4svMESA.invokeExact(handles.PFN_glWindowPos4svMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4svMESA", e); }
     }

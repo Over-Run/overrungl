@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGIXFramezoom {
     public static final int GL_FRAMEZOOM_SGIX = 0x818B;
@@ -43,7 +44,7 @@ public final class GLSGIXFramezoom {
     /// void glFrameZoomSGIX((int) GLint factor);
     /// ```
     public void FrameZoomSGIX(int factor) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFrameZoomSGIX)) throw new SymbolNotFoundError("Symbol not found: glFrameZoomSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFrameZoomSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glFrameZoomSGIX");
         try { Handles.MH_glFrameZoomSGIX.invokeExact(handles.PFN_glFrameZoomSGIX, factor); }
         catch (Throwable e) { throw new RuntimeException("error in FrameZoomSGIX", e); }
     }

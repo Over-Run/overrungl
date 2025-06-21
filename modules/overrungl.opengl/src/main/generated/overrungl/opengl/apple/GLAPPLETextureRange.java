@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAPPLETextureRange {
     public static final int GL_TEXTURE_RANGE_LENGTH_APPLE = 0x85B7;
@@ -49,7 +50,7 @@ public final class GLAPPLETextureRange {
     /// void glTextureRangeAPPLE((unsigned int) GLenum target, (int) GLsizei length, const void* pointer);
     /// ```
     public void TextureRangeAPPLE(int target, int length, MemorySegment pointer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTextureRangeAPPLE)) throw new SymbolNotFoundError("Symbol not found: glTextureRangeAPPLE");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTextureRangeAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glTextureRangeAPPLE");
         try { Handles.MH_glTextureRangeAPPLE.invokeExact(handles.PFN_glTextureRangeAPPLE, target, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in TextureRangeAPPLE", e); }
     }
@@ -58,7 +59,7 @@ public final class GLAPPLETextureRange {
     /// void glGetTexParameterPointervAPPLE((unsigned int) GLenum target, (unsigned int) GLenum pname, void** params);
     /// ```
     public void GetTexParameterPointervAPPLE(int target, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterPointervAPPLE)) throw new SymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterPointervAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE");
         try { Handles.MH_glGetTexParameterPointervAPPLE.invokeExact(handles.PFN_glGetTexParameterPointervAPPLE, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexParameterPointervAPPLE", e); }
     }

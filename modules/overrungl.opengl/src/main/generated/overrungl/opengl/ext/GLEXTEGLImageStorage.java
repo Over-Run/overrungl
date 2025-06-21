@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTEGLImageStorage {
     private final Handles handles;
@@ -42,7 +43,7 @@ public final class GLEXTEGLImageStorage {
     /// void glEGLImageTargetTexStorageEXT((unsigned int) GLenum target, (void*) GLeglImageOES image, const GLint* attrib_list);
     /// ```
     public void EGLImageTargetTexStorageEXT(int target, MemorySegment image, MemorySegment attrib_list) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTexStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTexStorageEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTexStorageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glEGLImageTargetTexStorageEXT");
         try { Handles.MH_glEGLImageTargetTexStorageEXT.invokeExact(handles.PFN_glEGLImageTargetTexStorageEXT, target, image, attrib_list); }
         catch (Throwable e) { throw new RuntimeException("error in EGLImageTargetTexStorageEXT", e); }
     }
@@ -51,7 +52,7 @@ public final class GLEXTEGLImageStorage {
     /// void glEGLImageTargetTextureStorageEXT((unsigned int) GLuint texture, (void*) GLeglImageOES image, const GLint* attrib_list);
     /// ```
     public void EGLImageTargetTextureStorageEXT(int texture, MemorySegment image, MemorySegment attrib_list) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTextureStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glEGLImageTargetTextureStorageEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEGLImageTargetTextureStorageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glEGLImageTargetTextureStorageEXT");
         try { Handles.MH_glEGLImageTargetTextureStorageEXT.invokeExact(handles.PFN_glEGLImageTargetTextureStorageEXT, texture, image, attrib_list); }
         catch (Throwable e) { throw new RuntimeException("error in EGLImageTargetTextureStorageEXT", e); }
     }

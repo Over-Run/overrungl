@@ -39,7 +39,7 @@ public final class VKHUAWEIInvocationMask {
     /// void vkCmdBindInvocationMaskHUAWEI((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkImageView imageView, (int) VkImageLayout imageLayout);
     /// ```
     public static void vkCmdBindInvocationMaskHUAWEI(VkCommandBuffer commandBuffer, long imageView, int imageLayout) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindInvocationMaskHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindInvocationMaskHUAWEI");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindInvocationMaskHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindInvocationMaskHUAWEI");
         try { Handles.MH_vkCmdBindInvocationMaskHUAWEI.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindInvocationMaskHUAWEI, commandBuffer.segment(), imageView, imageLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindInvocationMaskHUAWEI", e); }
     }

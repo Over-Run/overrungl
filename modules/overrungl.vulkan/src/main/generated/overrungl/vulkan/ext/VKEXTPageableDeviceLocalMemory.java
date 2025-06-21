@@ -36,7 +36,7 @@ public final class VKEXTPageableDeviceLocalMemory {
     /// void vkSetDeviceMemoryPriorityEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDeviceMemory memory, float priority);
     /// ```
     public static void vkSetDeviceMemoryPriorityEXT(VkDevice device, long memory, float priority) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDeviceMemoryPriorityEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetDeviceMemoryPriorityEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetDeviceMemoryPriorityEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetDeviceMemoryPriorityEXT");
         try { Handles.MH_vkSetDeviceMemoryPriorityEXT.invokeExact(device.capabilities().PFN_vkSetDeviceMemoryPriorityEXT, device.segment(), memory, priority); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetDeviceMemoryPriorityEXT", e); }
     }

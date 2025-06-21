@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTPolygonOffset {
     public static final int GL_POLYGON_OFFSET_EXT = 0x8037;
@@ -43,7 +44,7 @@ public final class GLEXTPolygonOffset {
     /// void glPolygonOffsetEXT(((float) khronos_float_t) GLfloat factor, ((float) khronos_float_t) GLfloat bias);
     /// ```
     public void PolygonOffsetEXT(float factor, float bias) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetEXT)) throw new SymbolNotFoundError("Symbol not found: glPolygonOffsetEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPolygonOffsetEXT");
         try { Handles.MH_glPolygonOffsetEXT.invokeExact(handles.PFN_glPolygonOffsetEXT, factor, bias); }
         catch (Throwable e) { throw new RuntimeException("error in PolygonOffsetEXT", e); }
     }

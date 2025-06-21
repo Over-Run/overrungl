@@ -50,7 +50,7 @@ public final class VKEXTTransformFeedback {
     /// void vkCmdBindTransformFeedbackBuffersEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstBinding, uint32_t bindingCount, const VkBuffer* pBuffers, const VkDeviceSize* pOffsets, const VkDeviceSize* pSizes);
     /// ```
     public static void vkCmdBindTransformFeedbackBuffersEXT(VkCommandBuffer commandBuffer, int firstBinding, int bindingCount, MemorySegment pBuffers, MemorySegment pOffsets, MemorySegment pSizes) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindTransformFeedbackBuffersEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindTransformFeedbackBuffersEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindTransformFeedbackBuffersEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindTransformFeedbackBuffersEXT");
         try { Handles.MH_vkCmdBindTransformFeedbackBuffersEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindTransformFeedbackBuffersEXT, commandBuffer.segment(), firstBinding, bindingCount, pBuffers, pOffsets, pSizes); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindTransformFeedbackBuffersEXT", e); }
     }
@@ -59,7 +59,7 @@ public final class VKEXTTransformFeedback {
     /// void vkCmdBeginTransformFeedbackEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstCounterBuffer, uint32_t counterBufferCount, const VkBuffer* pCounterBuffers, const VkDeviceSize* pCounterBufferOffsets);
     /// ```
     public static void vkCmdBeginTransformFeedbackEXT(VkCommandBuffer commandBuffer, int firstCounterBuffer, int counterBufferCount, MemorySegment pCounterBuffers, MemorySegment pCounterBufferOffsets) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginTransformFeedbackEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginTransformFeedbackEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginTransformFeedbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginTransformFeedbackEXT");
         try { Handles.MH_vkCmdBeginTransformFeedbackEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginTransformFeedbackEXT, commandBuffer.segment(), firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginTransformFeedbackEXT", e); }
     }
@@ -68,7 +68,7 @@ public final class VKEXTTransformFeedback {
     /// void vkCmdEndTransformFeedbackEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstCounterBuffer, uint32_t counterBufferCount, const VkBuffer* pCounterBuffers, const VkDeviceSize* pCounterBufferOffsets);
     /// ```
     public static void vkCmdEndTransformFeedbackEXT(VkCommandBuffer commandBuffer, int firstCounterBuffer, int counterBufferCount, MemorySegment pCounterBuffers, MemorySegment pCounterBufferOffsets) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndTransformFeedbackEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndTransformFeedbackEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndTransformFeedbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndTransformFeedbackEXT");
         try { Handles.MH_vkCmdEndTransformFeedbackEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndTransformFeedbackEXT, commandBuffer.segment(), firstCounterBuffer, counterBufferCount, pCounterBuffers, pCounterBufferOffsets); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndTransformFeedbackEXT", e); }
     }
@@ -77,7 +77,7 @@ public final class VKEXTTransformFeedback {
     /// void vkCmdBeginQueryIndexedEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkQueryPool queryPool, uint32_t query, ((uint32_t) VkFlags) VkQueryControlFlags flags, uint32_t index);
     /// ```
     public static void vkCmdBeginQueryIndexedEXT(VkCommandBuffer commandBuffer, long queryPool, int query, int flags, int index) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginQueryIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginQueryIndexedEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginQueryIndexedEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginQueryIndexedEXT");
         try { Handles.MH_vkCmdBeginQueryIndexedEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginQueryIndexedEXT, commandBuffer.segment(), queryPool, query, flags, index); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginQueryIndexedEXT", e); }
     }
@@ -86,7 +86,7 @@ public final class VKEXTTransformFeedback {
     /// void vkCmdEndQueryIndexedEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkQueryPool queryPool, uint32_t query, uint32_t index);
     /// ```
     public static void vkCmdEndQueryIndexedEXT(VkCommandBuffer commandBuffer, long queryPool, int query, int index) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndQueryIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndQueryIndexedEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndQueryIndexedEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndQueryIndexedEXT");
         try { Handles.MH_vkCmdEndQueryIndexedEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndQueryIndexedEXT, commandBuffer.segment(), queryPool, query, index); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndQueryIndexedEXT", e); }
     }
@@ -95,7 +95,7 @@ public final class VKEXTTransformFeedback {
     /// void vkCmdDrawIndirectByteCountEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t instanceCount, uint32_t firstInstance, (uint64_t) VkBuffer counterBuffer, (uint64_t) VkDeviceSize counterBufferOffset, uint32_t counterOffset, uint32_t vertexStride);
     /// ```
     public static void vkCmdDrawIndirectByteCountEXT(VkCommandBuffer commandBuffer, int instanceCount, int firstInstance, long counterBuffer, long counterBufferOffset, int counterOffset, int vertexStride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectByteCountEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawIndirectByteCountEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectByteCountEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndirectByteCountEXT");
         try { Handles.MH_vkCmdDrawIndirectByteCountEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndirectByteCountEXT, commandBuffer.segment(), instanceCount, firstInstance, counterBuffer, counterBufferOffset, counterOffset, vertexStride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndirectByteCountEXT", e); }
     }

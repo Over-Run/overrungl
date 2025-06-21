@@ -47,7 +47,7 @@ public final class VKEXTImageDrmFormatModifier {
     /// (int) VkResult vkGetImageDrmFormatModifierPropertiesEXT((struct VkDevice*) VkDevice device, (uint64_t) VkImage image, VkImageDrmFormatModifierPropertiesEXT* pProperties);
     /// ```
     public static int vkGetImageDrmFormatModifierPropertiesEXT(VkDevice device, long image, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageDrmFormatModifierPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageDrmFormatModifierPropertiesEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageDrmFormatModifierPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageDrmFormatModifierPropertiesEXT");
         try { return (int) Handles.MH_vkGetImageDrmFormatModifierPropertiesEXT.invokeExact(device.capabilities().PFN_vkGetImageDrmFormatModifierPropertiesEXT, device.segment(), image, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageDrmFormatModifierPropertiesEXT", e); }
     }

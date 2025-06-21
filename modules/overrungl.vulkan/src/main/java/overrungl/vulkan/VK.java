@@ -72,7 +72,7 @@ public final class VK {
         private GlobalCommands(VKLoadFunc func) {
             PFN_vkGetInstanceProcAddr = func.invoke(MemorySegment.NULL, "vkGetInstanceProcAddr");
             if (MemoryUtil.isNullPointer(PFN_vkGetInstanceProcAddr)) {
-                throw exception();
+                throw exception("vkGetInstanceProcAddr");
             }
             PFN_vkCreateInstance = getFunctionAddress("vkCreateInstance");
             PFN_vkEnumerateInstanceExtensionProperties = getFunctionAddress("vkEnumerateInstanceExtensionProperties");
@@ -80,8 +80,8 @@ public final class VK {
             PFN_vkEnumerateInstanceVersion = getFunctionAddress("vkEnumerateInstanceVersion", false);
         }
 
-        private static IllegalArgumentException exception() {
-            return new IllegalArgumentException("A critical function is missing. Make sure that Vulkan is available.");
+        private static IllegalArgumentException exception(String name) {
+            return new IllegalArgumentException("A critical function " + name + " is missing. Make sure that Vulkan is available.");
         }
 
         private MemorySegment getFunctionAddress(String name) {
@@ -100,7 +100,7 @@ public final class VK {
                 throw new RuntimeException(e);
             }
             if (MemoryUtil.isNullPointer(segment) && required) {
-                throw exception();
+                throw exception(name);
             }
             return segment;
         }
@@ -108,6 +108,9 @@ public final class VK {
 
     /// {@return instance of [GlobalCommands]}
     public static GlobalCommands globalCommands() {
+        if (globalCommands == null) {
+            throw new NullPointerException("globalCommands is null; call VK::create first");
+        }
         return globalCommands;
     }
 }

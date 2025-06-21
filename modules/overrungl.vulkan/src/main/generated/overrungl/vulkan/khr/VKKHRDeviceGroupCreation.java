@@ -39,7 +39,7 @@ public final class VKKHRDeviceGroupCreation {
     /// (int) VkResult vkEnumeratePhysicalDeviceGroupsKHR((struct VkInstance*) VkInstance instance, uint32_t* pPhysicalDeviceGroupCount, VkPhysicalDeviceGroupProperties* pPhysicalDeviceGroupProperties);
     /// ```
     public static int vkEnumeratePhysicalDeviceGroupsKHR(VkInstance instance, MemorySegment pPhysicalDeviceGroupCount, MemorySegment pPhysicalDeviceGroupProperties) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkEnumeratePhysicalDeviceGroupsKHR)) throw new SymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceGroupsKHR");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkEnumeratePhysicalDeviceGroupsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkEnumeratePhysicalDeviceGroupsKHR");
         try { return (int) Handles.MH_vkEnumeratePhysicalDeviceGroupsKHR.invokeExact(instance.capabilities().PFN_vkEnumeratePhysicalDeviceGroupsKHR, instance.segment(), pPhysicalDeviceGroupCount, pPhysicalDeviceGroupProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkEnumeratePhysicalDeviceGroupsKHR", e); }
     }

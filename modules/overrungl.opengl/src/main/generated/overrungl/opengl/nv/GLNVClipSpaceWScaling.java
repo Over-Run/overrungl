@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVClipSpaceWScaling {
     public static final int GL_VIEWPORT_POSITION_W_SCALE_NV = 0x937C;
@@ -43,7 +44,7 @@ public final class GLNVClipSpaceWScaling {
     /// void glViewportPositionWScaleNV((unsigned int) GLuint index, ((float) khronos_float_t) GLfloat xcoeff, ((float) khronos_float_t) GLfloat ycoeff);
     /// ```
     public void ViewportPositionWScaleNV(int index, float xcoeff, float ycoeff) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glViewportPositionWScaleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportPositionWScaleNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glViewportPositionWScaleNV)) throw new GLSymbolNotFoundError("Symbol not found: glViewportPositionWScaleNV");
         try { Handles.MH_glViewportPositionWScaleNV.invokeExact(handles.PFN_glViewportPositionWScaleNV, index, xcoeff, ycoeff); }
         catch (Throwable e) { throw new RuntimeException("error in ViewportPositionWScaleNV", e); }
     }

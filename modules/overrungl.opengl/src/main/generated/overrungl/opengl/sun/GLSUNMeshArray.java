@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSUNMeshArray {
     public static final int GL_QUAD_MESH_SUN = 0x8614;
@@ -42,7 +43,7 @@ public final class GLSUNMeshArray {
     /// void glDrawMeshArraysSUN((unsigned int) GLenum mode, (int) GLint first, (int) GLsizei count, (int) GLsizei width);
     /// ```
     public void DrawMeshArraysSUN(int mode, int first, int count, int width) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshArraysSUN)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshArraysSUN");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshArraysSUN)) throw new GLSymbolNotFoundError("Symbol not found: glDrawMeshArraysSUN");
         try { Handles.MH_glDrawMeshArraysSUN.invokeExact(handles.PFN_glDrawMeshArraysSUN, mode, first, count, width); }
         catch (Throwable e) { throw new RuntimeException("error in DrawMeshArraysSUN", e); }
     }

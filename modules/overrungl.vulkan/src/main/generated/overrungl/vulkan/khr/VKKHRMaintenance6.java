@@ -49,7 +49,7 @@ public final class VKKHRMaintenance6 {
     /// void vkCmdBindDescriptorSets2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBindDescriptorSetsInfo* pBindDescriptorSetsInfo);
     /// ```
     public static void vkCmdBindDescriptorSets2KHR(VkCommandBuffer commandBuffer, MemorySegment pBindDescriptorSetsInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorSets2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindDescriptorSets2KHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorSets2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorSets2KHR");
         try { Handles.MH_vkCmdBindDescriptorSets2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorSets2KHR, commandBuffer.segment(), pBindDescriptorSetsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindDescriptorSets2KHR", e); }
     }
@@ -58,7 +58,7 @@ public final class VKKHRMaintenance6 {
     /// void vkCmdPushConstants2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPushConstantsInfo* pPushConstantsInfo);
     /// ```
     public static void vkCmdPushConstants2KHR(VkCommandBuffer commandBuffer, MemorySegment pPushConstantsInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushConstants2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushConstants2KHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushConstants2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushConstants2KHR");
         try { Handles.MH_vkCmdPushConstants2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushConstants2KHR, commandBuffer.segment(), pPushConstantsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushConstants2KHR", e); }
     }
@@ -67,7 +67,7 @@ public final class VKKHRMaintenance6 {
     /// void vkCmdPushDescriptorSet2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPushDescriptorSetInfo* pPushDescriptorSetInfo);
     /// ```
     public static void vkCmdPushDescriptorSet2KHR(VkCommandBuffer commandBuffer, MemorySegment pPushDescriptorSetInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSet2KHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSet2KHR");
         try { Handles.MH_vkCmdPushDescriptorSet2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSet2KHR, commandBuffer.segment(), pPushDescriptorSetInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushDescriptorSet2KHR", e); }
     }
@@ -76,7 +76,7 @@ public final class VKKHRMaintenance6 {
     /// void vkCmdPushDescriptorSetWithTemplate2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPushDescriptorSetWithTemplateInfo* pPushDescriptorSetWithTemplateInfo);
     /// ```
     public static void vkCmdPushDescriptorSetWithTemplate2KHR(VkCommandBuffer commandBuffer, MemorySegment pPushDescriptorSetWithTemplateInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSetWithTemplate2KHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSetWithTemplate2KHR");
         try { Handles.MH_vkCmdPushDescriptorSetWithTemplate2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplate2KHR, commandBuffer.segment(), pPushDescriptorSetWithTemplateInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushDescriptorSetWithTemplate2KHR", e); }
     }
@@ -85,7 +85,7 @@ public final class VKKHRMaintenance6 {
     /// void vkCmdSetDescriptorBufferOffsets2EXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSetDescriptorBufferOffsetsInfoEXT* pSetDescriptorBufferOffsetsInfo);
     /// ```
     public static void vkCmdSetDescriptorBufferOffsets2EXT(VkCommandBuffer commandBuffer, MemorySegment pSetDescriptorBufferOffsetsInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsets2EXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetDescriptorBufferOffsets2EXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsets2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDescriptorBufferOffsets2EXT");
         try { Handles.MH_vkCmdSetDescriptorBufferOffsets2EXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsets2EXT, commandBuffer.segment(), pSetDescriptorBufferOffsetsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDescriptorBufferOffsets2EXT", e); }
     }
@@ -94,7 +94,7 @@ public final class VKKHRMaintenance6 {
     /// void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBindDescriptorBufferEmbeddedSamplersInfoEXT* pBindDescriptorBufferEmbeddedSamplersInfo);
     /// ```
     public static void vkCmdBindDescriptorBufferEmbeddedSamplers2EXT(VkCommandBuffer commandBuffer, MemorySegment pBindDescriptorBufferEmbeddedSamplersInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindDescriptorBufferEmbeddedSamplers2EXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorBufferEmbeddedSamplers2EXT");
         try { Handles.MH_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplers2EXT, commandBuffer.segment(), pBindDescriptorBufferEmbeddedSamplersInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindDescriptorBufferEmbeddedSamplers2EXT", e); }
     }

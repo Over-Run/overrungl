@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGISPointParameters {
     public static final int GL_POINT_SIZE_MIN_SGIS = 0x8126;
@@ -47,7 +48,7 @@ public final class GLSGISPointParameters {
     /// void glPointParameterfSGIS((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat param);
     /// ```
     public void PointParameterfSGIS(int pname, float param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfSGIS");
         try { Handles.MH_glPointParameterfSGIS.invokeExact(handles.PFN_glPointParameterfSGIS, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfSGIS", e); }
     }
@@ -56,7 +57,7 @@ public final class GLSGISPointParameters {
     /// void glPointParameterfvSGIS((unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void PointParameterfvSGIS(int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvSGIS)) throw new SymbolNotFoundError("Symbol not found: glPointParameterfvSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfvSGIS");
         try { Handles.MH_glPointParameterfvSGIS.invokeExact(handles.PFN_glPointParameterfvSGIS, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfvSGIS", e); }
     }

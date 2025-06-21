@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLATIFragmentShader {
     public static final int GL_FRAGMENT_SHADER_ATI = 0x8920;
@@ -183,7 +184,7 @@ public final class GLATIFragmentShader {
     /// (unsigned int) GLuint glGenFragmentShadersATI((unsigned int) GLuint range);
     /// ```
     public int GenFragmentShadersATI(int range) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGenFragmentShadersATI)) throw new SymbolNotFoundError("Symbol not found: glGenFragmentShadersATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenFragmentShadersATI)) throw new GLSymbolNotFoundError("Symbol not found: glGenFragmentShadersATI");
         try { return (int) Handles.MH_glGenFragmentShadersATI.invokeExact(handles.PFN_glGenFragmentShadersATI, range); }
         catch (Throwable e) { throw new RuntimeException("error in GenFragmentShadersATI", e); }
     }
@@ -192,7 +193,7 @@ public final class GLATIFragmentShader {
     /// void glBindFragmentShaderATI((unsigned int) GLuint id);
     /// ```
     public void BindFragmentShaderATI(int id) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBindFragmentShaderATI)) throw new SymbolNotFoundError("Symbol not found: glBindFragmentShaderATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindFragmentShaderATI)) throw new GLSymbolNotFoundError("Symbol not found: glBindFragmentShaderATI");
         try { Handles.MH_glBindFragmentShaderATI.invokeExact(handles.PFN_glBindFragmentShaderATI, id); }
         catch (Throwable e) { throw new RuntimeException("error in BindFragmentShaderATI", e); }
     }
@@ -201,7 +202,7 @@ public final class GLATIFragmentShader {
     /// void glDeleteFragmentShaderATI((unsigned int) GLuint id);
     /// ```
     public void DeleteFragmentShaderATI(int id) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFragmentShaderATI)) throw new SymbolNotFoundError("Symbol not found: glDeleteFragmentShaderATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFragmentShaderATI)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteFragmentShaderATI");
         try { Handles.MH_glDeleteFragmentShaderATI.invokeExact(handles.PFN_glDeleteFragmentShaderATI, id); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteFragmentShaderATI", e); }
     }
@@ -210,7 +211,7 @@ public final class GLATIFragmentShader {
     /// void glBeginFragmentShaderATI();
     /// ```
     public void BeginFragmentShaderATI() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBeginFragmentShaderATI)) throw new SymbolNotFoundError("Symbol not found: glBeginFragmentShaderATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBeginFragmentShaderATI)) throw new GLSymbolNotFoundError("Symbol not found: glBeginFragmentShaderATI");
         try { Handles.MH_glBeginFragmentShaderATI.invokeExact(handles.PFN_glBeginFragmentShaderATI); }
         catch (Throwable e) { throw new RuntimeException("error in BeginFragmentShaderATI", e); }
     }
@@ -219,7 +220,7 @@ public final class GLATIFragmentShader {
     /// void glEndFragmentShaderATI();
     /// ```
     public void EndFragmentShaderATI() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glEndFragmentShaderATI)) throw new SymbolNotFoundError("Symbol not found: glEndFragmentShaderATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEndFragmentShaderATI)) throw new GLSymbolNotFoundError("Symbol not found: glEndFragmentShaderATI");
         try { Handles.MH_glEndFragmentShaderATI.invokeExact(handles.PFN_glEndFragmentShaderATI); }
         catch (Throwable e) { throw new RuntimeException("error in EndFragmentShaderATI", e); }
     }
@@ -228,7 +229,7 @@ public final class GLATIFragmentShader {
     /// void glPassTexCoordATI((unsigned int) GLuint dst, (unsigned int) GLuint coord, (unsigned int) GLenum swizzle);
     /// ```
     public void PassTexCoordATI(int dst, int coord, int swizzle) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPassTexCoordATI)) throw new SymbolNotFoundError("Symbol not found: glPassTexCoordATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPassTexCoordATI)) throw new GLSymbolNotFoundError("Symbol not found: glPassTexCoordATI");
         try { Handles.MH_glPassTexCoordATI.invokeExact(handles.PFN_glPassTexCoordATI, dst, coord, swizzle); }
         catch (Throwable e) { throw new RuntimeException("error in PassTexCoordATI", e); }
     }
@@ -237,7 +238,7 @@ public final class GLATIFragmentShader {
     /// void glSampleMapATI((unsigned int) GLuint dst, (unsigned int) GLuint interp, (unsigned int) GLenum swizzle);
     /// ```
     public void SampleMapATI(int dst, int interp, int swizzle) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMapATI)) throw new SymbolNotFoundError("Symbol not found: glSampleMapATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMapATI)) throw new GLSymbolNotFoundError("Symbol not found: glSampleMapATI");
         try { Handles.MH_glSampleMapATI.invokeExact(handles.PFN_glSampleMapATI, dst, interp, swizzle); }
         catch (Throwable e) { throw new RuntimeException("error in SampleMapATI", e); }
     }
@@ -246,7 +247,7 @@ public final class GLATIFragmentShader {
     /// void glColorFragmentOp1ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMask, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod);
     /// ```
     public void ColorFragmentOp1ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp1ATI)) throw new SymbolNotFoundError("Symbol not found: glColorFragmentOp1ATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp1ATI)) throw new GLSymbolNotFoundError("Symbol not found: glColorFragmentOp1ATI");
         try { Handles.MH_glColorFragmentOp1ATI.invokeExact(handles.PFN_glColorFragmentOp1ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod); }
         catch (Throwable e) { throw new RuntimeException("error in ColorFragmentOp1ATI", e); }
     }
@@ -255,7 +256,7 @@ public final class GLATIFragmentShader {
     /// void glColorFragmentOp2ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMask, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod);
     /// ```
     public void ColorFragmentOp2ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp2ATI)) throw new SymbolNotFoundError("Symbol not found: glColorFragmentOp2ATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp2ATI)) throw new GLSymbolNotFoundError("Symbol not found: glColorFragmentOp2ATI");
         try { Handles.MH_glColorFragmentOp2ATI.invokeExact(handles.PFN_glColorFragmentOp2ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod); }
         catch (Throwable e) { throw new RuntimeException("error in ColorFragmentOp2ATI", e); }
     }
@@ -264,7 +265,7 @@ public final class GLATIFragmentShader {
     /// void glColorFragmentOp3ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMask, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod, (unsigned int) GLuint arg3, (unsigned int) GLuint arg3Rep, (unsigned int) GLuint arg3Mod);
     /// ```
     public void ColorFragmentOp3ATI(int op, int dst, int dstMask, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp3ATI)) throw new SymbolNotFoundError("Symbol not found: glColorFragmentOp3ATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glColorFragmentOp3ATI)) throw new GLSymbolNotFoundError("Symbol not found: glColorFragmentOp3ATI");
         try { Handles.MH_glColorFragmentOp3ATI.invokeExact(handles.PFN_glColorFragmentOp3ATI, op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod); }
         catch (Throwable e) { throw new RuntimeException("error in ColorFragmentOp3ATI", e); }
     }
@@ -273,7 +274,7 @@ public final class GLATIFragmentShader {
     /// void glAlphaFragmentOp1ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod);
     /// ```
     public void AlphaFragmentOp1ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp1ATI)) throw new SymbolNotFoundError("Symbol not found: glAlphaFragmentOp1ATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp1ATI)) throw new GLSymbolNotFoundError("Symbol not found: glAlphaFragmentOp1ATI");
         try { Handles.MH_glAlphaFragmentOp1ATI.invokeExact(handles.PFN_glAlphaFragmentOp1ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod); }
         catch (Throwable e) { throw new RuntimeException("error in AlphaFragmentOp1ATI", e); }
     }
@@ -282,7 +283,7 @@ public final class GLATIFragmentShader {
     /// void glAlphaFragmentOp2ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod);
     /// ```
     public void AlphaFragmentOp2ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp2ATI)) throw new SymbolNotFoundError("Symbol not found: glAlphaFragmentOp2ATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp2ATI)) throw new GLSymbolNotFoundError("Symbol not found: glAlphaFragmentOp2ATI");
         try { Handles.MH_glAlphaFragmentOp2ATI.invokeExact(handles.PFN_glAlphaFragmentOp2ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod); }
         catch (Throwable e) { throw new RuntimeException("error in AlphaFragmentOp2ATI", e); }
     }
@@ -291,7 +292,7 @@ public final class GLATIFragmentShader {
     /// void glAlphaFragmentOp3ATI((unsigned int) GLenum op, (unsigned int) GLuint dst, (unsigned int) GLuint dstMod, (unsigned int) GLuint arg1, (unsigned int) GLuint arg1Rep, (unsigned int) GLuint arg1Mod, (unsigned int) GLuint arg2, (unsigned int) GLuint arg2Rep, (unsigned int) GLuint arg2Mod, (unsigned int) GLuint arg3, (unsigned int) GLuint arg3Rep, (unsigned int) GLuint arg3Mod);
     /// ```
     public void AlphaFragmentOp3ATI(int op, int dst, int dstMod, int arg1, int arg1Rep, int arg1Mod, int arg2, int arg2Rep, int arg2Mod, int arg3, int arg3Rep, int arg3Mod) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp3ATI)) throw new SymbolNotFoundError("Symbol not found: glAlphaFragmentOp3ATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaFragmentOp3ATI)) throw new GLSymbolNotFoundError("Symbol not found: glAlphaFragmentOp3ATI");
         try { Handles.MH_glAlphaFragmentOp3ATI.invokeExact(handles.PFN_glAlphaFragmentOp3ATI, op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod); }
         catch (Throwable e) { throw new RuntimeException("error in AlphaFragmentOp3ATI", e); }
     }
@@ -300,7 +301,7 @@ public final class GLATIFragmentShader {
     /// void glSetFragmentShaderConstantATI((unsigned int) GLuint dst, const GLfloat* value);
     /// ```
     public void SetFragmentShaderConstantATI(int dst, MemorySegment value) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSetFragmentShaderConstantATI)) throw new SymbolNotFoundError("Symbol not found: glSetFragmentShaderConstantATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSetFragmentShaderConstantATI)) throw new GLSymbolNotFoundError("Symbol not found: glSetFragmentShaderConstantATI");
         try { Handles.MH_glSetFragmentShaderConstantATI.invokeExact(handles.PFN_glSetFragmentShaderConstantATI, dst, value); }
         catch (Throwable e) { throw new RuntimeException("error in SetFragmentShaderConstantATI", e); }
     }

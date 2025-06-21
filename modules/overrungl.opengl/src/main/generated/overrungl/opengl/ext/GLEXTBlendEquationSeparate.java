@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTBlendEquationSeparate {
     public static final int GL_BLEND_EQUATION_RGB_EXT = 0x8009;
@@ -42,7 +43,7 @@ public final class GLEXTBlendEquationSeparate {
     /// void glBlendEquationSeparateEXT((unsigned int) GLenum modeRGB, (unsigned int) GLenum modeAlpha);
     /// ```
     public void BlendEquationSeparateEXT(int modeRGB, int modeAlpha) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateEXT)) throw new SymbolNotFoundError("Symbol not found: glBlendEquationSeparateEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBlendEquationSeparateEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBlendEquationSeparateEXT");
         try { Handles.MH_glBlendEquationSeparateEXT.invokeExact(handles.PFN_glBlendEquationSeparateEXT, modeRGB, modeAlpha); }
         catch (Throwable e) { throw new RuntimeException("error in BlendEquationSeparateEXT", e); }
     }

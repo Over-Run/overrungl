@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBTessellationShader {
     public static final int GL_PATCHES = 0x000E;
@@ -80,7 +81,7 @@ public final class GLARBTessellationShader {
     /// void glPatchParameteri((unsigned int) GLenum pname, (int) GLint value);
     /// ```
     public void PatchParameteri(int pname, int value) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameteri)) throw new SymbolNotFoundError("Symbol not found: glPatchParameteri");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameteri)) throw new GLSymbolNotFoundError("Symbol not found: glPatchParameteri");
         try { Handles.MH_glPatchParameteri.invokeExact(handles.PFN_glPatchParameteri, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in PatchParameteri", e); }
     }
@@ -89,7 +90,7 @@ public final class GLARBTessellationShader {
     /// void glPatchParameterfv((unsigned int) GLenum pname, const GLfloat* values);
     /// ```
     public void PatchParameterfv(int pname, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameterfv)) throw new SymbolNotFoundError("Symbol not found: glPatchParameterfv");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPatchParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glPatchParameterfv");
         try { Handles.MH_glPatchParameterfv.invokeExact(handles.PFN_glPatchParameterfv, pname, values); }
         catch (Throwable e) { throw new RuntimeException("error in PatchParameterfv", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLIBMStaticData {
     public static final int GL_ALL_STATIC_DATA_IBM = 103060;
@@ -42,7 +43,7 @@ public final class GLIBMStaticData {
     /// void glFlushStaticDataIBM((unsigned int) GLenum target);
     /// ```
     public void FlushStaticDataIBM(int target) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFlushStaticDataIBM)) throw new SymbolNotFoundError("Symbol not found: glFlushStaticDataIBM");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFlushStaticDataIBM)) throw new GLSymbolNotFoundError("Symbol not found: glFlushStaticDataIBM");
         try { Handles.MH_glFlushStaticDataIBM.invokeExact(handles.PFN_glFlushStaticDataIBM, target); }
         catch (Throwable e) { throw new RuntimeException("error in FlushStaticDataIBM", e); }
     }

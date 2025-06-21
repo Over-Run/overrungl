@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLOESQueryMatrix {
     private final Handles handles;
@@ -40,7 +41,7 @@ public final class GLOESQueryMatrix {
     /// (unsigned int) GLbitfield glQueryMatrixxOES(GLfixed* mantissa, GLint* exponent);
     /// ```
     public int QueryMatrixxOES(MemorySegment mantissa, MemorySegment exponent) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glQueryMatrixxOES)) throw new SymbolNotFoundError("Symbol not found: glQueryMatrixxOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glQueryMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glQueryMatrixxOES");
         try { return (int) Handles.MH_glQueryMatrixxOES.invokeExact(handles.PFN_glQueryMatrixxOES, mantissa, exponent); }
         catch (Throwable e) { throw new RuntimeException("error in QueryMatrixxOES", e); }
     }

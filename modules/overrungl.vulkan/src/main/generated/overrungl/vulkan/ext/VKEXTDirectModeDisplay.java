@@ -35,7 +35,7 @@ public final class VKEXTDirectModeDisplay {
     /// (int) VkResult vkReleaseDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkDisplayKHR display);
     /// ```
     public static int vkReleaseDisplayEXT(VkPhysicalDevice physicalDevice, long display) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkReleaseDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkReleaseDisplayEXT");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkReleaseDisplayEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkReleaseDisplayEXT");
         try { return (int) Handles.MH_vkReleaseDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkReleaseDisplayEXT, physicalDevice.segment(), display); }
         catch (Throwable e) { throw new RuntimeException("error in vkReleaseDisplayEXT", e); }
     }

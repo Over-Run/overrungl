@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTDrawRangeElements {
     public static final int GL_MAX_ELEMENTS_VERTICES_EXT = 0x80E8;
@@ -42,7 +43,7 @@ public final class GLEXTDrawRangeElements {
     /// void glDrawRangeElementsEXT((unsigned int) GLenum mode, (unsigned int) GLuint start, (unsigned int) GLuint end, (int) GLsizei count, (unsigned int) GLenum type, const void* indices);
     /// ```
     public void DrawRangeElementsEXT(int mode, int start, int end, int count, int type, MemorySegment indices) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementsEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawRangeElementsEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementsEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDrawRangeElementsEXT");
         try { Handles.MH_glDrawRangeElementsEXT.invokeExact(handles.PFN_glDrawRangeElementsEXT, mode, start, end, count, type, indices); }
         catch (Throwable e) { throw new RuntimeException("error in DrawRangeElementsEXT", e); }
     }

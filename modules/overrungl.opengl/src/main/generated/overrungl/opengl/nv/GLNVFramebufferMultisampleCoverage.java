@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVFramebufferMultisampleCoverage {
     public static final int GL_RENDERBUFFER_COVERAGE_SAMPLES_NV = 0x8CAB;
@@ -44,7 +45,7 @@ public final class GLNVFramebufferMultisampleCoverage {
     /// void glRenderbufferStorageMultisampleCoverageNV((unsigned int) GLenum target, (int) GLsizei coverageSamples, (int) GLsizei colorSamples, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void RenderbufferStorageMultisampleCoverageNV(int target, int coverageSamples, int colorSamples, int internalformat, int width, int height) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleCoverageNV)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleCoverageNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleCoverageNV)) throw new GLSymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleCoverageNV");
         try { Handles.MH_glRenderbufferStorageMultisampleCoverageNV.invokeExact(handles.PFN_glRenderbufferStorageMultisampleCoverageNV, target, coverageSamples, colorSamples, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageMultisampleCoverageNV", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBVertexAttribBinding {
     public static final int GL_VERTEX_ATTRIB_BINDING = 0x82D4;
@@ -62,7 +63,7 @@ public final class GLARBVertexAttribBinding {
     /// void glBindVertexBuffer((unsigned int) GLuint bindingindex, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, (int) GLsizei stride);
     /// ```
     public void BindVertexBuffer(int bindingindex, int buffer, long offset, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexBuffer)) throw new SymbolNotFoundError("Symbol not found: glBindVertexBuffer");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexBuffer)) throw new GLSymbolNotFoundError("Symbol not found: glBindVertexBuffer");
         try { Handles.MH_glBindVertexBuffer.invokeExact(handles.PFN_glBindVertexBuffer, bindingindex, buffer, offset, stride); }
         catch (Throwable e) { throw new RuntimeException("error in BindVertexBuffer", e); }
     }
@@ -71,7 +72,7 @@ public final class GLARBVertexAttribBinding {
     /// void glVertexAttribFormat((unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, GLboolean normalized, (unsigned int) GLuint relativeoffset);
     /// ```
     public void VertexAttribFormat(int attribindex, int size, int type, boolean normalized, int relativeoffset) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribFormat");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribFormat)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribFormat");
         try { Handles.MH_glVertexAttribFormat.invokeExact(handles.PFN_glVertexAttribFormat, attribindex, size, type, ((normalized) ? (byte)1 : (byte)0), relativeoffset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribFormat", e); }
     }
@@ -80,7 +81,7 @@ public final class GLARBVertexAttribBinding {
     /// void glVertexAttribIFormat((unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
     public void VertexAttribIFormat(int attribindex, int size, int type, int relativeoffset) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribIFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribIFormat");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribIFormat)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribIFormat");
         try { Handles.MH_glVertexAttribIFormat.invokeExact(handles.PFN_glVertexAttribIFormat, attribindex, size, type, relativeoffset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribIFormat", e); }
     }
@@ -89,7 +90,7 @@ public final class GLARBVertexAttribBinding {
     /// void glVertexAttribLFormat((unsigned int) GLuint attribindex, (int) GLint size, (unsigned int) GLenum type, (unsigned int) GLuint relativeoffset);
     /// ```
     public void VertexAttribLFormat(int attribindex, int size, int type, int relativeoffset) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribLFormat)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribLFormat");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribLFormat)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribLFormat");
         try { Handles.MH_glVertexAttribLFormat.invokeExact(handles.PFN_glVertexAttribLFormat, attribindex, size, type, relativeoffset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribLFormat", e); }
     }
@@ -98,7 +99,7 @@ public final class GLARBVertexAttribBinding {
     /// void glVertexAttribBinding((unsigned int) GLuint attribindex, (unsigned int) GLuint bindingindex);
     /// ```
     public void VertexAttribBinding(int attribindex, int bindingindex) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribBinding)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribBinding");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribBinding)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribBinding");
         try { Handles.MH_glVertexAttribBinding.invokeExact(handles.PFN_glVertexAttribBinding, attribindex, bindingindex); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribBinding", e); }
     }
@@ -107,7 +108,7 @@ public final class GLARBVertexAttribBinding {
     /// void glVertexBindingDivisor((unsigned int) GLuint bindingindex, (unsigned int) GLuint divisor);
     /// ```
     public void VertexBindingDivisor(int bindingindex, int divisor) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexBindingDivisor)) throw new SymbolNotFoundError("Symbol not found: glVertexBindingDivisor");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexBindingDivisor)) throw new GLSymbolNotFoundError("Symbol not found: glVertexBindingDivisor");
         try { Handles.MH_glVertexBindingDivisor.invokeExact(handles.PFN_glVertexBindingDivisor, bindingindex, divisor); }
         catch (Throwable e) { throw new RuntimeException("error in VertexBindingDivisor", e); }
     }

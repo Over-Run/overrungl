@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTColorSubtable {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLEXTColorSubtable {
     /// void glColorSubTableEXT((unsigned int) GLenum target, (int) GLsizei start, (int) GLsizei count, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* data);
     /// ```
     public void ColorSubTableEXT(int target, int start, int count, int format, int type, MemorySegment data) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glColorSubTableEXT)) throw new SymbolNotFoundError("Symbol not found: glColorSubTableEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glColorSubTableEXT)) throw new GLSymbolNotFoundError("Symbol not found: glColorSubTableEXT");
         try { Handles.MH_glColorSubTableEXT.invokeExact(handles.PFN_glColorSubTableEXT, target, start, count, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ColorSubTableEXT", e); }
     }
@@ -52,7 +53,7 @@ public final class GLEXTColorSubtable {
     /// void glCopyColorSubTableEXT((unsigned int) GLenum target, (int) GLsizei start, (int) GLint x, (int) GLint y, (int) GLsizei width);
     /// ```
     public void CopyColorSubTableEXT(int target, int start, int x, int y, int width) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glCopyColorSubTableEXT)) throw new SymbolNotFoundError("Symbol not found: glCopyColorSubTableEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glCopyColorSubTableEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyColorSubTableEXT");
         try { Handles.MH_glCopyColorSubTableEXT.invokeExact(handles.PFN_glCopyColorSubTableEXT, target, start, x, y, width); }
         catch (Throwable e) { throw new RuntimeException("error in CopyColorSubTableEXT", e); }
     }

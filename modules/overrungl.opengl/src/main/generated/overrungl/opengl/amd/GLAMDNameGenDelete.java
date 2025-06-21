@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAMDNameGenDelete {
     public static final int GL_DATA_BUFFER_AMD = 0x9151;
@@ -51,7 +52,7 @@ public final class GLAMDNameGenDelete {
     /// void glGenNamesAMD((unsigned int) GLenum identifier, (unsigned int) GLuint num, GLuint* names);
     /// ```
     public void GenNamesAMD(int identifier, int num, MemorySegment names) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGenNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glGenNamesAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenNamesAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGenNamesAMD");
         try { Handles.MH_glGenNamesAMD.invokeExact(handles.PFN_glGenNamesAMD, identifier, num, names); }
         catch (Throwable e) { throw new RuntimeException("error in GenNamesAMD", e); }
     }
@@ -60,7 +61,7 @@ public final class GLAMDNameGenDelete {
     /// void glDeleteNamesAMD((unsigned int) GLenum identifier, (unsigned int) GLuint num, const GLuint* names);
     /// ```
     public void DeleteNamesAMD(int identifier, int num, MemorySegment names) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteNamesAMD)) throw new SymbolNotFoundError("Symbol not found: glDeleteNamesAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteNamesAMD)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteNamesAMD");
         try { Handles.MH_glDeleteNamesAMD.invokeExact(handles.PFN_glDeleteNamesAMD, identifier, num, names); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteNamesAMD", e); }
     }
@@ -69,7 +70,7 @@ public final class GLAMDNameGenDelete {
     /// GLboolean glIsNameAMD((unsigned int) GLenum identifier, (unsigned int) GLuint name);
     /// ```
     public boolean IsNameAMD(int identifier, int name) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glIsNameAMD)) throw new SymbolNotFoundError("Symbol not found: glIsNameAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsNameAMD)) throw new GLSymbolNotFoundError("Symbol not found: glIsNameAMD");
         try { return (((byte) Handles.MH_glIsNameAMD.invokeExact(handles.PFN_glIsNameAMD, identifier, name)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsNameAMD", e); }
     }

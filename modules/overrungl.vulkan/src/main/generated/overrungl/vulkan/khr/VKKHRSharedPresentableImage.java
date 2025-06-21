@@ -39,7 +39,7 @@ public final class VKKHRSharedPresentableImage {
     /// (int) VkResult vkGetSwapchainStatusKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain);
     /// ```
     public static int vkGetSwapchainStatusKHR(VkDevice device, long swapchain) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainStatusKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetSwapchainStatusKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainStatusKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSwapchainStatusKHR");
         try { return (int) Handles.MH_vkGetSwapchainStatusKHR.invokeExact(device.capabilities().PFN_vkGetSwapchainStatusKHR, device.segment(), swapchain); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSwapchainStatusKHR", e); }
     }

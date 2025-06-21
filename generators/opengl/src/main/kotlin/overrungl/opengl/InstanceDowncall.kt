@@ -72,9 +72,10 @@ class InstanceDowncall(
                     import java.lang.invoke.*;
                     import overrungl.internal.RuntimeHelper;
                     import overrungl.util.*;
-
                 """.trimIndent()
             )
+            if (packageName != openglPackage) sb.appendLine("import overrungl.opengl.*;")
+            sb.appendLine()
         }
         sb.append("public")
         if (modifier != null) {

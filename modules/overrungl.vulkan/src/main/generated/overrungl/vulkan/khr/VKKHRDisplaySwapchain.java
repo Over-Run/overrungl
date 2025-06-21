@@ -37,7 +37,7 @@ public final class VKKHRDisplaySwapchain {
     /// (int) VkResult vkCreateSharedSwapchainsKHR((struct VkDevice*) VkDevice device, uint32_t swapchainCount, const VkSwapchainCreateInfoKHR* pCreateInfos, const VkAllocationCallbacks* pAllocator, VkSwapchainKHR* pSwapchains);
     /// ```
     public static int vkCreateSharedSwapchainsKHR(VkDevice device, int swapchainCount, MemorySegment pCreateInfos, MemorySegment pAllocator, MemorySegment pSwapchains) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSharedSwapchainsKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateSharedSwapchainsKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSharedSwapchainsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateSharedSwapchainsKHR");
         try { return (int) Handles.MH_vkCreateSharedSwapchainsKHR.invokeExact(device.capabilities().PFN_vkCreateSharedSwapchainsKHR, device.segment(), swapchainCount, pCreateInfos, pAllocator, pSwapchains); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateSharedSwapchainsKHR", e); }
     }

@@ -42,7 +42,7 @@ public final class VKHUAWEIClusterCullingShader {
     /// void vkCmdDrawClusterHUAWEI((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t groupCountX, uint32_t groupCountY, uint32_t groupCountZ);
     /// ```
     public static void vkCmdDrawClusterHUAWEI(VkCommandBuffer commandBuffer, int groupCountX, int groupCountY, int groupCountZ) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawClusterHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawClusterHUAWEI");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawClusterHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawClusterHUAWEI");
         try { Handles.MH_vkCmdDrawClusterHUAWEI.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawClusterHUAWEI, commandBuffer.segment(), groupCountX, groupCountY, groupCountZ); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawClusterHUAWEI", e); }
     }
@@ -51,7 +51,7 @@ public final class VKHUAWEIClusterCullingShader {
     /// void vkCmdDrawClusterIndirectHUAWEI((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset);
     /// ```
     public static void vkCmdDrawClusterIndirectHUAWEI(VkCommandBuffer commandBuffer, long buffer, long offset) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawClusterIndirectHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawClusterIndirectHUAWEI");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawClusterIndirectHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawClusterIndirectHUAWEI");
         try { Handles.MH_vkCmdDrawClusterIndirectHUAWEI.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawClusterIndirectHUAWEI, commandBuffer.segment(), buffer, offset); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawClusterIndirectHUAWEI", e); }
     }

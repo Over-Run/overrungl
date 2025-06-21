@@ -37,7 +37,7 @@ public final class VKEXTAttachmentFeedbackLoopDynamicState {
     /// void vkCmdSetAttachmentFeedbackLoopEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint32_t) VkFlags) VkImageAspectFlags aspectMask);
     /// ```
     public static void vkCmdSetAttachmentFeedbackLoopEnableEXT(VkCommandBuffer commandBuffer, int aspectMask) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetAttachmentFeedbackLoopEnableEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetAttachmentFeedbackLoopEnableEXT");
         try { Handles.MH_vkCmdSetAttachmentFeedbackLoopEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetAttachmentFeedbackLoopEnableEXT, commandBuffer.segment(), aspectMask); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetAttachmentFeedbackLoopEnableEXT", e); }
     }

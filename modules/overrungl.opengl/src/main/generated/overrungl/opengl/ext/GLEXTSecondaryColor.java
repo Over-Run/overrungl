@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTSecondaryColor {
     public static final int GL_COLOR_SUM_EXT = 0x8458;
@@ -95,7 +96,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3bEXT(((signed char) khronos_int8_t) GLbyte red, ((signed char) khronos_int8_t) GLbyte green, ((signed char) khronos_int8_t) GLbyte blue);
     /// ```
     public void SecondaryColor3bEXT(byte red, byte green, byte blue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3bEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3bEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3bEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3bEXT");
         try { Handles.MH_glSecondaryColor3bEXT.invokeExact(handles.PFN_glSecondaryColor3bEXT, red, green, blue); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3bEXT", e); }
     }
@@ -104,7 +105,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3bvEXT(const GLbyte* v);
     /// ```
     public void SecondaryColor3bvEXT(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3bvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3bvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3bvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3bvEXT");
         try { Handles.MH_glSecondaryColor3bvEXT.invokeExact(handles.PFN_glSecondaryColor3bvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3bvEXT", e); }
     }
@@ -113,7 +114,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3dEXT((double) GLdouble red, (double) GLdouble green, (double) GLdouble blue);
     /// ```
     public void SecondaryColor3dEXT(double red, double green, double blue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3dEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3dEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3dEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3dEXT");
         try { Handles.MH_glSecondaryColor3dEXT.invokeExact(handles.PFN_glSecondaryColor3dEXT, red, green, blue); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3dEXT", e); }
     }
@@ -122,7 +123,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3dvEXT(const GLdouble* v);
     /// ```
     public void SecondaryColor3dvEXT(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3dvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3dvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3dvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3dvEXT");
         try { Handles.MH_glSecondaryColor3dvEXT.invokeExact(handles.PFN_glSecondaryColor3dvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3dvEXT", e); }
     }
@@ -131,7 +132,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3fEXT(((float) khronos_float_t) GLfloat red, ((float) khronos_float_t) GLfloat green, ((float) khronos_float_t) GLfloat blue);
     /// ```
     public void SecondaryColor3fEXT(float red, float green, float blue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3fEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3fEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3fEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3fEXT");
         try { Handles.MH_glSecondaryColor3fEXT.invokeExact(handles.PFN_glSecondaryColor3fEXT, red, green, blue); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3fEXT", e); }
     }
@@ -140,7 +141,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3fvEXT(const GLfloat* v);
     /// ```
     public void SecondaryColor3fvEXT(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3fvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3fvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3fvEXT");
         try { Handles.MH_glSecondaryColor3fvEXT.invokeExact(handles.PFN_glSecondaryColor3fvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3fvEXT", e); }
     }
@@ -149,7 +150,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3iEXT((int) GLint red, (int) GLint green, (int) GLint blue);
     /// ```
     public void SecondaryColor3iEXT(int red, int green, int blue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3iEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3iEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3iEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3iEXT");
         try { Handles.MH_glSecondaryColor3iEXT.invokeExact(handles.PFN_glSecondaryColor3iEXT, red, green, blue); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3iEXT", e); }
     }
@@ -158,7 +159,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3ivEXT(const GLint* v);
     /// ```
     public void SecondaryColor3ivEXT(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3ivEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ivEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3ivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3ivEXT");
         try { Handles.MH_glSecondaryColor3ivEXT.invokeExact(handles.PFN_glSecondaryColor3ivEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3ivEXT", e); }
     }
@@ -167,7 +168,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3sEXT(((signed short) khronos_int16_t) GLshort red, ((signed short) khronos_int16_t) GLshort green, ((signed short) khronos_int16_t) GLshort blue);
     /// ```
     public void SecondaryColor3sEXT(short red, short green, short blue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3sEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3sEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3sEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3sEXT");
         try { Handles.MH_glSecondaryColor3sEXT.invokeExact(handles.PFN_glSecondaryColor3sEXT, red, green, blue); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3sEXT", e); }
     }
@@ -176,7 +177,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3svEXT(const GLshort* v);
     /// ```
     public void SecondaryColor3svEXT(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3svEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3svEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3svEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3svEXT");
         try { Handles.MH_glSecondaryColor3svEXT.invokeExact(handles.PFN_glSecondaryColor3svEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3svEXT", e); }
     }
@@ -185,7 +186,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3ubEXT(((unsigned char) khronos_uint8_t) GLubyte red, ((unsigned char) khronos_uint8_t) GLubyte green, ((unsigned char) khronos_uint8_t) GLubyte blue);
     /// ```
     public void SecondaryColor3ubEXT(byte red, byte green, byte blue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3ubEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ubEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3ubEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3ubEXT");
         try { Handles.MH_glSecondaryColor3ubEXT.invokeExact(handles.PFN_glSecondaryColor3ubEXT, red, green, blue); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3ubEXT", e); }
     }
@@ -194,7 +195,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3ubvEXT(const GLubyte* v);
     /// ```
     public void SecondaryColor3ubvEXT(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3ubvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3ubvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3ubvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3ubvEXT");
         try { Handles.MH_glSecondaryColor3ubvEXT.invokeExact(handles.PFN_glSecondaryColor3ubvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3ubvEXT", e); }
     }
@@ -203,7 +204,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3uiEXT((unsigned int) GLuint red, (unsigned int) GLuint green, (unsigned int) GLuint blue);
     /// ```
     public void SecondaryColor3uiEXT(int red, int green, int blue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3uiEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3uiEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3uiEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3uiEXT");
         try { Handles.MH_glSecondaryColor3uiEXT.invokeExact(handles.PFN_glSecondaryColor3uiEXT, red, green, blue); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3uiEXT", e); }
     }
@@ -212,7 +213,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3uivEXT(const GLuint* v);
     /// ```
     public void SecondaryColor3uivEXT(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3uivEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3uivEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3uivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3uivEXT");
         try { Handles.MH_glSecondaryColor3uivEXT.invokeExact(handles.PFN_glSecondaryColor3uivEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3uivEXT", e); }
     }
@@ -221,7 +222,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3usEXT(((unsigned short) khronos_uint16_t) GLushort red, ((unsigned short) khronos_uint16_t) GLushort green, ((unsigned short) khronos_uint16_t) GLushort blue);
     /// ```
     public void SecondaryColor3usEXT(short red, short green, short blue) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3usEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3usEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3usEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3usEXT");
         try { Handles.MH_glSecondaryColor3usEXT.invokeExact(handles.PFN_glSecondaryColor3usEXT, red, green, blue); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3usEXT", e); }
     }
@@ -230,7 +231,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColor3usvEXT(const GLushort* v);
     /// ```
     public void SecondaryColor3usvEXT(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3usvEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColor3usvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColor3usvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColor3usvEXT");
         try { Handles.MH_glSecondaryColor3usvEXT.invokeExact(handles.PFN_glSecondaryColor3usvEXT, v); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColor3usvEXT", e); }
     }
@@ -239,7 +240,7 @@ public final class GLEXTSecondaryColor {
     /// void glSecondaryColorPointerEXT((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, const void* pointer);
     /// ```
     public void SecondaryColorPointerEXT(int size, int type, int stride, MemorySegment pointer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorPointerEXT)) throw new SymbolNotFoundError("Symbol not found: glSecondaryColorPointerEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColorPointerEXT");
         try { Handles.MH_glSecondaryColorPointerEXT.invokeExact(handles.PFN_glSecondaryColorPointerEXT, size, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColorPointerEXT", e); }
     }

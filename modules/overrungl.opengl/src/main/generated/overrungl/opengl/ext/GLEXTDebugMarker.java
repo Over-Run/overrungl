@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTDebugMarker {
     private final Handles handles;
@@ -46,7 +47,7 @@ public final class GLEXTDebugMarker {
     /// void glInsertEventMarkerEXT((int) GLsizei length, const GLchar* marker);
     /// ```
     public void InsertEventMarkerEXT(int length, MemorySegment marker) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glInsertEventMarkerEXT)) throw new SymbolNotFoundError("Symbol not found: glInsertEventMarkerEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glInsertEventMarkerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glInsertEventMarkerEXT");
         try { Handles.MH_glInsertEventMarkerEXT.invokeExact(handles.PFN_glInsertEventMarkerEXT, length, marker); }
         catch (Throwable e) { throw new RuntimeException("error in InsertEventMarkerEXT", e); }
     }
@@ -55,7 +56,7 @@ public final class GLEXTDebugMarker {
     /// void glPushGroupMarkerEXT((int) GLsizei length, const GLchar* marker);
     /// ```
     public void PushGroupMarkerEXT(int length, MemorySegment marker) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPushGroupMarkerEXT)) throw new SymbolNotFoundError("Symbol not found: glPushGroupMarkerEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPushGroupMarkerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPushGroupMarkerEXT");
         try { Handles.MH_glPushGroupMarkerEXT.invokeExact(handles.PFN_glPushGroupMarkerEXT, length, marker); }
         catch (Throwable e) { throw new RuntimeException("error in PushGroupMarkerEXT", e); }
     }
@@ -64,7 +65,7 @@ public final class GLEXTDebugMarker {
     /// void glPopGroupMarkerEXT();
     /// ```
     public void PopGroupMarkerEXT() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPopGroupMarkerEXT)) throw new SymbolNotFoundError("Symbol not found: glPopGroupMarkerEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPopGroupMarkerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPopGroupMarkerEXT");
         try { Handles.MH_glPopGroupMarkerEXT.invokeExact(handles.PFN_glPopGroupMarkerEXT); }
         catch (Throwable e) { throw new RuntimeException("error in PopGroupMarkerEXT", e); }
     }

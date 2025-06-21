@@ -39,7 +39,7 @@ public final class VKNVMemoryDecompression {
     /// void vkCmdDecompressMemoryNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t decompressRegionCount, const VkDecompressMemoryRegionNV* pDecompressMemoryRegions);
     /// ```
     public static void vkCmdDecompressMemoryNV(VkCommandBuffer commandBuffer, int decompressRegionCount, MemorySegment pDecompressMemoryRegions) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDecompressMemoryNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDecompressMemoryNV");
         try { Handles.MH_vkCmdDecompressMemoryNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryNV, commandBuffer.segment(), decompressRegionCount, pDecompressMemoryRegions); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDecompressMemoryNV", e); }
     }
@@ -48,7 +48,7 @@ public final class VKNVMemoryDecompression {
     /// void vkCmdDecompressMemoryIndirectCountNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress indirectCommandsAddress, (uint64_t) VkDeviceAddress indirectCommandsCountAddress, uint32_t stride);
     /// ```
     public static void vkCmdDecompressMemoryIndirectCountNV(VkCommandBuffer commandBuffer, long indirectCommandsAddress, long indirectCommandsCountAddress, int stride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdDecompressMemoryIndirectCountNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryIndirectCountNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDecompressMemoryIndirectCountNV");
         try { Handles.MH_vkCmdDecompressMemoryIndirectCountNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryIndirectCountNV, commandBuffer.segment(), indirectCommandsAddress, indirectCommandsCountAddress, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDecompressMemoryIndirectCountNV", e); }
     }
