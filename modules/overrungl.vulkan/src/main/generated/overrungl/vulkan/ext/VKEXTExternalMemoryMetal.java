@@ -42,7 +42,7 @@ public final class VKEXTExternalMemoryMetal {
     /// (int) VkResult vkGetMemoryMetalHandleEXT((struct VkDevice*) VkDevice device, const VkMemoryGetMetalHandleInfoEXT* pGetMetalHandleInfo, void** pHandle);
     /// ```
     public static int vkGetMemoryMetalHandleEXT(VkDevice device, MemorySegment pGetMetalHandleInfo, MemorySegment pHandle) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryMetalHandleEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryMetalHandleEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryMetalHandleEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryMetalHandleEXT");
         try { return (int) Handles.MH_vkGetMemoryMetalHandleEXT.invokeExact(device.capabilities().PFN_vkGetMemoryMetalHandleEXT, device.segment(), pGetMetalHandleInfo, pHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryMetalHandleEXT", e); }
     }
@@ -51,7 +51,7 @@ public final class VKEXTExternalMemoryMetal {
     /// (int) VkResult vkGetMemoryMetalHandlePropertiesEXT((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, const void* pHandle, VkMemoryMetalHandlePropertiesEXT* pMemoryMetalHandleProperties);
     /// ```
     public static int vkGetMemoryMetalHandlePropertiesEXT(VkDevice device, int handleType, MemorySegment pHandle, MemorySegment pMemoryMetalHandleProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryMetalHandlePropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryMetalHandlePropertiesEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryMetalHandlePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryMetalHandlePropertiesEXT");
         try { return (int) Handles.MH_vkGetMemoryMetalHandlePropertiesEXT.invokeExact(device.capabilities().PFN_vkGetMemoryMetalHandlePropertiesEXT, device.segment(), handleType, pHandle, pMemoryMetalHandleProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryMetalHandlePropertiesEXT", e); }
     }

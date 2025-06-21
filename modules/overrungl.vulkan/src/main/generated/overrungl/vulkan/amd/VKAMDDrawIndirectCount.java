@@ -36,7 +36,7 @@ public final class VKAMDDrawIndirectCount {
     /// void vkCmdDrawIndirectCountAMD((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkBuffer countBuffer, (uint64_t) VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride);
     /// ```
     public static void vkCmdDrawIndirectCountAMD(VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCountAMD)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawIndirectCountAMD");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCountAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndirectCountAMD");
         try { Handles.MH_vkCmdDrawIndirectCountAMD.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndirectCountAMD, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndirectCountAMD", e); }
     }
@@ -45,7 +45,7 @@ public final class VKAMDDrawIndirectCount {
     /// void vkCmdDrawIndexedIndirectCountAMD((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkBuffer buffer, (uint64_t) VkDeviceSize offset, (uint64_t) VkBuffer countBuffer, (uint64_t) VkDeviceSize countBufferOffset, uint32_t maxDrawCount, uint32_t stride);
     /// ```
     public static void vkCmdDrawIndexedIndirectCountAMD(VkCommandBuffer commandBuffer, long buffer, long offset, long countBuffer, long countBufferOffset, int maxDrawCount, int stride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCountAMD)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawIndexedIndirectCountAMD");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCountAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawIndexedIndirectCountAMD");
         try { Handles.MH_vkCmdDrawIndexedIndirectCountAMD.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawIndexedIndirectCountAMD, commandBuffer.segment(), buffer, offset, countBuffer, countBufferOffset, maxDrawCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawIndexedIndirectCountAMD", e); }
     }

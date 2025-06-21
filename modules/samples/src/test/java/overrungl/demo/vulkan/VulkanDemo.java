@@ -681,10 +681,10 @@ public class VulkanDemo {
                     .segment())
                 .clearValueCount(1)
                 .pClearValues(VkClearValue.allocWith_color(stack,
-                        VkClearColorValue.allocWith_float32(stack,
-                            stack.floats(0.0f, 0.0f, 0.0f, 1.0f)
-                        ).segment()
-                    ).segment());
+                    VkClearColorValue.allocWith_float32(stack,
+                        stack.floats(0.0f, 0.0f, 0.0f, 1.0f)
+                    ).segment()
+                ).segment());
             vkCmdBeginRenderPass(commandBuffer, beginInfo.segment(), VK_SUBPASS_CONTENTS_INLINE);
         }
         vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);

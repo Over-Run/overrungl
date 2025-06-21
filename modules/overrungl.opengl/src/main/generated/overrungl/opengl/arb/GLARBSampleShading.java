@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBSampleShading {
     public static final int GL_SAMPLE_SHADING_ARB = 0x8C36;
@@ -42,7 +43,7 @@ public final class GLARBSampleShading {
     /// void glMinSampleShadingARB(((float) khronos_float_t) GLfloat value);
     /// ```
     public void MinSampleShadingARB(float value) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMinSampleShadingARB)) throw new SymbolNotFoundError("Symbol not found: glMinSampleShadingARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMinSampleShadingARB)) throw new GLSymbolNotFoundError("Symbol not found: glMinSampleShadingARB");
         try { Handles.MH_glMinSampleShadingARB.invokeExact(handles.PFN_glMinSampleShadingARB, value); }
         catch (Throwable e) { throw new RuntimeException("error in MinSampleShadingARB", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVConservativeRasterDilate {
     public static final int GL_CONSERVATIVE_RASTER_DILATE_NV = 0x9379;
@@ -43,7 +44,7 @@ public final class GLNVConservativeRasterDilate {
     /// void glConservativeRasterParameterfNV((unsigned int) GLenum pname, ((float) khronos_float_t) GLfloat value);
     /// ```
     public void ConservativeRasterParameterfNV(int pname, float value) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glConservativeRasterParameterfNV)) throw new SymbolNotFoundError("Symbol not found: glConservativeRasterParameterfNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glConservativeRasterParameterfNV)) throw new GLSymbolNotFoundError("Symbol not found: glConservativeRasterParameterfNV");
         try { Handles.MH_glConservativeRasterParameterfNV.invokeExact(handles.PFN_glConservativeRasterParameterfNV, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in ConservativeRasterParameterfNV", e); }
     }

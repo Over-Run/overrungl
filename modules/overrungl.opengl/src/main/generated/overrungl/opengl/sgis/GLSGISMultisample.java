@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGISMultisample {
     public static final int GL_MULTISAMPLE_SGIS = 0x809D;
@@ -59,7 +60,7 @@ public final class GLSGISMultisample {
     /// void glSampleMaskSGIS(((float) khronos_float_t) GLclampf value, GLboolean invert);
     /// ```
     public void SampleMaskSGIS(float value, boolean invert) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskSGIS)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glSampleMaskSGIS");
         try { Handles.MH_glSampleMaskSGIS.invokeExact(handles.PFN_glSampleMaskSGIS, value, ((invert) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in SampleMaskSGIS", e); }
     }
@@ -68,7 +69,7 @@ public final class GLSGISMultisample {
     /// void glSamplePatternSGIS((unsigned int) GLenum pattern);
     /// ```
     public void SamplePatternSGIS(int pattern) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSamplePatternSGIS)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplePatternSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glSamplePatternSGIS");
         try { Handles.MH_glSamplePatternSGIS.invokeExact(handles.PFN_glSamplePatternSGIS, pattern); }
         catch (Throwable e) { throw new RuntimeException("error in SamplePatternSGIS", e); }
     }

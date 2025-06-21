@@ -43,7 +43,7 @@ public final class VKKHRLineRasterization {
     /// void vkCmdSetLineStippleKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t lineStippleFactor, uint16_t lineStipplePattern);
     /// ```
     public static void vkCmdSetLineStippleKHR(VkCommandBuffer commandBuffer, int lineStippleFactor, short lineStipplePattern) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStippleKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetLineStippleKHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStippleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetLineStippleKHR");
         try { Handles.MH_vkCmdSetLineStippleKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLineStippleKHR, commandBuffer.segment(), lineStippleFactor, lineStipplePattern); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetLineStippleKHR", e); }
     }

@@ -38,7 +38,7 @@ public final class VKNVCopyMemoryIndirect {
     /// void vkCmdCopyMemoryIndirectNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress copyBufferAddress, uint32_t copyCount, uint32_t stride);
     /// ```
     public static void vkCmdCopyMemoryIndirectNV(VkCommandBuffer commandBuffer, long copyBufferAddress, int copyCount, int stride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyMemoryIndirectNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryIndirectNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMemoryIndirectNV");
         try { Handles.MH_vkCmdCopyMemoryIndirectNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryIndirectNV, commandBuffer.segment(), copyBufferAddress, copyCount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMemoryIndirectNV", e); }
     }
@@ -47,7 +47,7 @@ public final class VKNVCopyMemoryIndirect {
     /// void vkCmdCopyMemoryToImageIndirectNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkDeviceAddress copyBufferAddress, uint32_t copyCount, uint32_t stride, (uint64_t) VkImage dstImage, (int) VkImageLayout dstImageLayout, const VkImageSubresourceLayers* pImageSubresources);
     /// ```
     public static void vkCmdCopyMemoryToImageIndirectNV(VkCommandBuffer commandBuffer, long copyBufferAddress, int copyCount, int stride, long dstImage, int dstImageLayout, MemorySegment pImageSubresources) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToImageIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdCopyMemoryToImageIndirectNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToImageIndirectNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMemoryToImageIndirectNV");
         try { Handles.MH_vkCmdCopyMemoryToImageIndirectNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToImageIndirectNV, commandBuffer.segment(), copyBufferAddress, copyCount, stride, dstImage, dstImageLayout, pImageSubresources); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMemoryToImageIndirectNV", e); }
     }

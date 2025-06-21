@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTFramebufferObject {
     public static final int GL_INVALID_FRAMEBUFFER_OPERATION_EXT = 0x0506;
@@ -139,7 +140,7 @@ public final class GLEXTFramebufferObject {
     /// GLboolean glIsRenderbufferEXT((unsigned int) GLuint renderbuffer);
     /// ```
     public boolean IsRenderbufferEXT(int renderbuffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glIsRenderbufferEXT)) throw new SymbolNotFoundError("Symbol not found: glIsRenderbufferEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsRenderbufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIsRenderbufferEXT");
         try { return (((byte) Handles.MH_glIsRenderbufferEXT.invokeExact(handles.PFN_glIsRenderbufferEXT, renderbuffer)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsRenderbufferEXT", e); }
     }
@@ -148,7 +149,7 @@ public final class GLEXTFramebufferObject {
     /// void glBindRenderbufferEXT((unsigned int) GLenum target, (unsigned int) GLuint renderbuffer);
     /// ```
     public void BindRenderbufferEXT(int target, int renderbuffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBindRenderbufferEXT)) throw new SymbolNotFoundError("Symbol not found: glBindRenderbufferEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindRenderbufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBindRenderbufferEXT");
         try { Handles.MH_glBindRenderbufferEXT.invokeExact(handles.PFN_glBindRenderbufferEXT, target, renderbuffer); }
         catch (Throwable e) { throw new RuntimeException("error in BindRenderbufferEXT", e); }
     }
@@ -157,7 +158,7 @@ public final class GLEXTFramebufferObject {
     /// void glDeleteRenderbuffersEXT((int) GLsizei n, const GLuint* renderbuffers);
     /// ```
     public void DeleteRenderbuffersEXT(int n, MemorySegment renderbuffers) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteRenderbuffersEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteRenderbuffersEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteRenderbuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteRenderbuffersEXT");
         try { Handles.MH_glDeleteRenderbuffersEXT.invokeExact(handles.PFN_glDeleteRenderbuffersEXT, n, renderbuffers); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteRenderbuffersEXT", e); }
     }
@@ -166,7 +167,7 @@ public final class GLEXTFramebufferObject {
     /// void glGenRenderbuffersEXT((int) GLsizei n, GLuint* renderbuffers);
     /// ```
     public void GenRenderbuffersEXT(int n, MemorySegment renderbuffers) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGenRenderbuffersEXT)) throw new SymbolNotFoundError("Symbol not found: glGenRenderbuffersEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenRenderbuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenRenderbuffersEXT");
         try { Handles.MH_glGenRenderbuffersEXT.invokeExact(handles.PFN_glGenRenderbuffersEXT, n, renderbuffers); }
         catch (Throwable e) { throw new RuntimeException("error in GenRenderbuffersEXT", e); }
     }
@@ -175,7 +176,7 @@ public final class GLEXTFramebufferObject {
     /// void glRenderbufferStorageEXT((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void RenderbufferStorageEXT(int target, int internalformat, int width, int height) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageEXT)) throw new SymbolNotFoundError("Symbol not found: glRenderbufferStorageEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageEXT)) throw new GLSymbolNotFoundError("Symbol not found: glRenderbufferStorageEXT");
         try { Handles.MH_glRenderbufferStorageEXT.invokeExact(handles.PFN_glRenderbufferStorageEXT, target, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageEXT", e); }
     }
@@ -184,7 +185,7 @@ public final class GLEXTFramebufferObject {
     /// void glGetRenderbufferParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetRenderbufferParameterivEXT(int target, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetRenderbufferParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetRenderbufferParameterivEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetRenderbufferParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetRenderbufferParameterivEXT");
         try { Handles.MH_glGetRenderbufferParameterivEXT.invokeExact(handles.PFN_glGetRenderbufferParameterivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetRenderbufferParameterivEXT", e); }
     }
@@ -193,7 +194,7 @@ public final class GLEXTFramebufferObject {
     /// GLboolean glIsFramebufferEXT((unsigned int) GLuint framebuffer);
     /// ```
     public boolean IsFramebufferEXT(int framebuffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glIsFramebufferEXT)) throw new SymbolNotFoundError("Symbol not found: glIsFramebufferEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsFramebufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIsFramebufferEXT");
         try { return (((byte) Handles.MH_glIsFramebufferEXT.invokeExact(handles.PFN_glIsFramebufferEXT, framebuffer)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsFramebufferEXT", e); }
     }
@@ -202,7 +203,7 @@ public final class GLEXTFramebufferObject {
     /// void glBindFramebufferEXT((unsigned int) GLenum target, (unsigned int) GLuint framebuffer);
     /// ```
     public void BindFramebufferEXT(int target, int framebuffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBindFramebufferEXT)) throw new SymbolNotFoundError("Symbol not found: glBindFramebufferEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindFramebufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBindFramebufferEXT");
         try { Handles.MH_glBindFramebufferEXT.invokeExact(handles.PFN_glBindFramebufferEXT, target, framebuffer); }
         catch (Throwable e) { throw new RuntimeException("error in BindFramebufferEXT", e); }
     }
@@ -211,7 +212,7 @@ public final class GLEXTFramebufferObject {
     /// void glDeleteFramebuffersEXT((int) GLsizei n, const GLuint* framebuffers);
     /// ```
     public void DeleteFramebuffersEXT(int n, MemorySegment framebuffers) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFramebuffersEXT)) throw new SymbolNotFoundError("Symbol not found: glDeleteFramebuffersEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFramebuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteFramebuffersEXT");
         try { Handles.MH_glDeleteFramebuffersEXT.invokeExact(handles.PFN_glDeleteFramebuffersEXT, n, framebuffers); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteFramebuffersEXT", e); }
     }
@@ -220,7 +221,7 @@ public final class GLEXTFramebufferObject {
     /// void glGenFramebuffersEXT((int) GLsizei n, GLuint* framebuffers);
     /// ```
     public void GenFramebuffersEXT(int n, MemorySegment framebuffers) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGenFramebuffersEXT)) throw new SymbolNotFoundError("Symbol not found: glGenFramebuffersEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenFramebuffersEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenFramebuffersEXT");
         try { Handles.MH_glGenFramebuffersEXT.invokeExact(handles.PFN_glGenFramebuffersEXT, n, framebuffers); }
         catch (Throwable e) { throw new RuntimeException("error in GenFramebuffersEXT", e); }
     }
@@ -229,7 +230,7 @@ public final class GLEXTFramebufferObject {
     /// (unsigned int) GLenum glCheckFramebufferStatusEXT((unsigned int) GLenum target);
     /// ```
     public int CheckFramebufferStatusEXT(int target) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glCheckFramebufferStatusEXT)) throw new SymbolNotFoundError("Symbol not found: glCheckFramebufferStatusEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glCheckFramebufferStatusEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCheckFramebufferStatusEXT");
         try { return (int) Handles.MH_glCheckFramebufferStatusEXT.invokeExact(handles.PFN_glCheckFramebufferStatusEXT, target); }
         catch (Throwable e) { throw new RuntimeException("error in CheckFramebufferStatusEXT", e); }
     }
@@ -238,7 +239,7 @@ public final class GLEXTFramebufferObject {
     /// void glFramebufferTexture1DEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum textarget, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
     public void FramebufferTexture1DEXT(int target, int attachment, int textarget, int texture, int level) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture1DEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTexture1DEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture1DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTexture1DEXT");
         try { Handles.MH_glFramebufferTexture1DEXT.invokeExact(handles.PFN_glFramebufferTexture1DEXT, target, attachment, textarget, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture1DEXT", e); }
     }
@@ -247,7 +248,7 @@ public final class GLEXTFramebufferObject {
     /// void glFramebufferTexture2DEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum textarget, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
     public void FramebufferTexture2DEXT(int target, int attachment, int textarget, int texture, int level) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture2DEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTexture2DEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture2DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTexture2DEXT");
         try { Handles.MH_glFramebufferTexture2DEXT.invokeExact(handles.PFN_glFramebufferTexture2DEXT, target, attachment, textarget, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture2DEXT", e); }
     }
@@ -256,7 +257,7 @@ public final class GLEXTFramebufferObject {
     /// void glFramebufferTexture3DEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum textarget, (unsigned int) GLuint texture, (int) GLint level, (int) GLint zoffset);
     /// ```
     public void FramebufferTexture3DEXT(int target, int attachment, int textarget, int texture, int level, int zoffset) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture3DEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTexture3DEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTexture3DEXT");
         try { Handles.MH_glFramebufferTexture3DEXT.invokeExact(handles.PFN_glFramebufferTexture3DEXT, target, attachment, textarget, texture, level, zoffset); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture3DEXT", e); }
     }
@@ -265,7 +266,7 @@ public final class GLEXTFramebufferObject {
     /// void glFramebufferRenderbufferEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum renderbuffertarget, (unsigned int) GLuint renderbuffer);
     /// ```
     public void FramebufferRenderbufferEXT(int target, int attachment, int renderbuffertarget, int renderbuffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferRenderbufferEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferRenderbufferEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferRenderbufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferRenderbufferEXT");
         try { Handles.MH_glFramebufferRenderbufferEXT.invokeExact(handles.PFN_glFramebufferRenderbufferEXT, target, attachment, renderbuffertarget, renderbuffer); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferRenderbufferEXT", e); }
     }
@@ -274,7 +275,7 @@ public final class GLEXTFramebufferObject {
     /// void glGetFramebufferAttachmentParameterivEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetFramebufferAttachmentParameterivEXT(int target, int attachment, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferAttachmentParameterivEXT)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferAttachmentParameterivEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferAttachmentParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferAttachmentParameterivEXT");
         try { Handles.MH_glGetFramebufferAttachmentParameterivEXT.invokeExact(handles.PFN_glGetFramebufferAttachmentParameterivEXT, target, attachment, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFramebufferAttachmentParameterivEXT", e); }
     }
@@ -283,7 +284,7 @@ public final class GLEXTFramebufferObject {
     /// void glGenerateMipmapEXT((unsigned int) GLenum target);
     /// ```
     public void GenerateMipmapEXT(int target) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGenerateMipmapEXT)) throw new SymbolNotFoundError("Symbol not found: glGenerateMipmapEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenerateMipmapEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGenerateMipmapEXT");
         try { Handles.MH_glGenerateMipmapEXT.invokeExact(handles.PFN_glGenerateMipmapEXT, target); }
         catch (Throwable e) { throw new RuntimeException("error in GenerateMipmapEXT", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAMDFramebufferSamplePositions {
     public static final int GL_SUBSAMPLE_DISTANCE_AMD = 0x883F;
@@ -53,7 +54,7 @@ public final class GLAMDFramebufferSamplePositions {
     /// void glFramebufferSamplePositionsfvAMD((unsigned int) GLenum target, (unsigned int) GLuint numsamples, (unsigned int) GLuint pixelindex, const GLfloat* values);
     /// ```
     public void FramebufferSamplePositionsfvAMD(int target, int numsamples, int pixelindex, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSamplePositionsfvAMD)) throw new SymbolNotFoundError("Symbol not found: glFramebufferSamplePositionsfvAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSamplePositionsfvAMD)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferSamplePositionsfvAMD");
         try { Handles.MH_glFramebufferSamplePositionsfvAMD.invokeExact(handles.PFN_glFramebufferSamplePositionsfvAMD, target, numsamples, pixelindex, values); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferSamplePositionsfvAMD", e); }
     }
@@ -62,7 +63,7 @@ public final class GLAMDFramebufferSamplePositions {
     /// void glNamedFramebufferSamplePositionsfvAMD((unsigned int) GLuint framebuffer, (unsigned int) GLuint numsamples, (unsigned int) GLuint pixelindex, const GLfloat* values);
     /// ```
     public void NamedFramebufferSamplePositionsfvAMD(int framebuffer, int numsamples, int pixelindex, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSamplePositionsfvAMD)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSamplePositionsfvAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSamplePositionsfvAMD)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferSamplePositionsfvAMD");
         try { Handles.MH_glNamedFramebufferSamplePositionsfvAMD.invokeExact(handles.PFN_glNamedFramebufferSamplePositionsfvAMD, framebuffer, numsamples, pixelindex, values); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferSamplePositionsfvAMD", e); }
     }
@@ -71,7 +72,7 @@ public final class GLAMDFramebufferSamplePositions {
     /// void glGetFramebufferParameterfvAMD((unsigned int) GLenum target, (unsigned int) GLenum pname, (unsigned int) GLuint numsamples, (unsigned int) GLuint pixelindex, (int) GLsizei size, GLfloat* values);
     /// ```
     public void GetFramebufferParameterfvAMD(int target, int pname, int numsamples, int pixelindex, int size, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterfvAMD)) throw new SymbolNotFoundError("Symbol not found: glGetFramebufferParameterfvAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferParameterfvAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferParameterfvAMD");
         try { Handles.MH_glGetFramebufferParameterfvAMD.invokeExact(handles.PFN_glGetFramebufferParameterfvAMD, target, pname, numsamples, pixelindex, size, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetFramebufferParameterfvAMD", e); }
     }
@@ -80,7 +81,7 @@ public final class GLAMDFramebufferSamplePositions {
     /// void glGetNamedFramebufferParameterfvAMD((unsigned int) GLuint framebuffer, (unsigned int) GLenum pname, (unsigned int) GLuint numsamples, (unsigned int) GLuint pixelindex, (int) GLsizei size, GLfloat* values);
     /// ```
     public void GetNamedFramebufferParameterfvAMD(int framebuffer, int pname, int numsamples, int pixelindex, int size, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferParameterfvAMD)) throw new SymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameterfvAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedFramebufferParameterfvAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedFramebufferParameterfvAMD");
         try { Handles.MH_glGetNamedFramebufferParameterfvAMD.invokeExact(handles.PFN_glGetNamedFramebufferParameterfvAMD, framebuffer, pname, numsamples, pixelindex, size, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedFramebufferParameterfvAMD", e); }
     }

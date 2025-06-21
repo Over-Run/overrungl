@@ -36,7 +36,7 @@ public final class VKAMDBufferMarker {
     /// void vkCmdWriteBufferMarkerAMD((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkPipelineStageFlagBits pipelineStage, (uint64_t) VkBuffer dstBuffer, (uint64_t) VkDeviceSize dstOffset, uint32_t marker);
     /// ```
     public static void vkCmdWriteBufferMarkerAMD(VkCommandBuffer commandBuffer, int pipelineStage, long dstBuffer, long dstOffset, int marker) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteBufferMarkerAMD)) throw new SymbolNotFoundError("Symbol not found: vkCmdWriteBufferMarkerAMD");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteBufferMarkerAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWriteBufferMarkerAMD");
         try { Handles.MH_vkCmdWriteBufferMarkerAMD.invokeExact(commandBuffer.capabilities().PFN_vkCmdWriteBufferMarkerAMD, commandBuffer.segment(), pipelineStage, dstBuffer, dstOffset, marker); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdWriteBufferMarkerAMD", e); }
     }
@@ -45,7 +45,7 @@ public final class VKAMDBufferMarker {
     /// void vkCmdWriteBufferMarker2AMD((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, ((uint64_t) VkFlags64) VkPipelineStageFlags2 stage, (uint64_t) VkBuffer dstBuffer, (uint64_t) VkDeviceSize dstOffset, uint32_t marker);
     /// ```
     public static void vkCmdWriteBufferMarker2AMD(VkCommandBuffer commandBuffer, long stage, long dstBuffer, long dstOffset, int marker) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteBufferMarker2AMD)) throw new SymbolNotFoundError("Symbol not found: vkCmdWriteBufferMarker2AMD");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteBufferMarker2AMD)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWriteBufferMarker2AMD");
         try { Handles.MH_vkCmdWriteBufferMarker2AMD.invokeExact(commandBuffer.capabilities().PFN_vkCmdWriteBufferMarker2AMD, commandBuffer.segment(), stage, dstBuffer, dstOffset, marker); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdWriteBufferMarker2AMD", e); }
     }

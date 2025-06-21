@@ -37,7 +37,7 @@ public final class VKQNXScreenSurface {
     /// (int) VkResult vkCreateScreenSurfaceQNX((struct VkInstance*) VkInstance instance, const VkScreenSurfaceCreateInfoQNX* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateScreenSurfaceQNX(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateScreenSurfaceQNX)) throw new SymbolNotFoundError("Symbol not found: vkCreateScreenSurfaceQNX");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateScreenSurfaceQNX)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateScreenSurfaceQNX");
         try { return (int) Handles.MH_vkCreateScreenSurfaceQNX.invokeExact(instance.capabilities().PFN_vkCreateScreenSurfaceQNX, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateScreenSurfaceQNX", e); }
     }
@@ -46,7 +46,7 @@ public final class VKQNXScreenSurface {
     /// (uint32_t) VkBool32 vkGetPhysicalDeviceScreenPresentationSupportQNX((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, struct _screen_window * window);
     /// ```
     public static int vkGetPhysicalDeviceScreenPresentationSupportQNX(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment window) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceScreenPresentationSupportQNX");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceScreenPresentationSupportQNX");
         try { return (int) Handles.MH_vkGetPhysicalDeviceScreenPresentationSupportQNX.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX, physicalDevice.segment(), queueFamilyIndex, window); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceScreenPresentationSupportQNX", e); }
     }

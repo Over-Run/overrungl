@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVEvaluators {
     public static final int GL_EVAL_2D_NV = 0x86C0;
@@ -88,7 +89,7 @@ public final class GLNVEvaluators {
     /// void glMapControlPointsNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLenum type, (int) GLsizei ustride, (int) GLsizei vstride, (int) GLint uorder, (int) GLint vorder, GLboolean packed, const void* points);
     /// ```
     public void MapControlPointsNV(int target, int index, int type, int ustride, int vstride, int uorder, int vorder, boolean packed, MemorySegment points) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMapControlPointsNV)) throw new SymbolNotFoundError("Symbol not found: glMapControlPointsNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapControlPointsNV)) throw new GLSymbolNotFoundError("Symbol not found: glMapControlPointsNV");
         try { Handles.MH_glMapControlPointsNV.invokeExact(handles.PFN_glMapControlPointsNV, target, index, type, ustride, vstride, uorder, vorder, ((packed) ? (byte)1 : (byte)0), points); }
         catch (Throwable e) { throw new RuntimeException("error in MapControlPointsNV", e); }
     }
@@ -97,7 +98,7 @@ public final class GLNVEvaluators {
     /// void glMapParameterivNV((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLint* params);
     /// ```
     public void MapParameterivNV(int target, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMapParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glMapParameterivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapParameterivNV)) throw new GLSymbolNotFoundError("Symbol not found: glMapParameterivNV");
         try { Handles.MH_glMapParameterivNV.invokeExact(handles.PFN_glMapParameterivNV, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MapParameterivNV", e); }
     }
@@ -106,7 +107,7 @@ public final class GLNVEvaluators {
     /// void glMapParameterfvNV((unsigned int) GLenum target, (unsigned int) GLenum pname, const GLfloat* params);
     /// ```
     public void MapParameterfvNV(int target, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMapParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glMapParameterfvNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMapParameterfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glMapParameterfvNV");
         try { Handles.MH_glMapParameterfvNV.invokeExact(handles.PFN_glMapParameterfvNV, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in MapParameterfvNV", e); }
     }
@@ -115,7 +116,7 @@ public final class GLNVEvaluators {
     /// void glGetMapControlPointsNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLenum type, (int) GLsizei ustride, (int) GLsizei vstride, GLboolean packed, void* points);
     /// ```
     public void GetMapControlPointsNV(int target, int index, int type, int ustride, int vstride, boolean packed, MemorySegment points) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapControlPointsNV)) throw new SymbolNotFoundError("Symbol not found: glGetMapControlPointsNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapControlPointsNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMapControlPointsNV");
         try { Handles.MH_glGetMapControlPointsNV.invokeExact(handles.PFN_glGetMapControlPointsNV, target, index, type, ustride, vstride, ((packed) ? (byte)1 : (byte)0), points); }
         catch (Throwable e) { throw new RuntimeException("error in GetMapControlPointsNV", e); }
     }
@@ -124,7 +125,7 @@ public final class GLNVEvaluators {
     /// void glGetMapParameterivNV((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetMapParameterivNV(int target, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetMapParameterivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapParameterivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMapParameterivNV");
         try { Handles.MH_glGetMapParameterivNV.invokeExact(handles.PFN_glGetMapParameterivNV, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMapParameterivNV", e); }
     }
@@ -133,7 +134,7 @@ public final class GLNVEvaluators {
     /// void glGetMapParameterfvNV((unsigned int) GLenum target, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void GetMapParameterfvNV(int target, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetMapParameterfvNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapParameterfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMapParameterfvNV");
         try { Handles.MH_glGetMapParameterfvNV.invokeExact(handles.PFN_glGetMapParameterfvNV, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMapParameterfvNV", e); }
     }
@@ -142,7 +143,7 @@ public final class GLNVEvaluators {
     /// void glGetMapAttribParameterivNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetMapAttribParameterivNV(int target, int index, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapAttribParameterivNV)) throw new SymbolNotFoundError("Symbol not found: glGetMapAttribParameterivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapAttribParameterivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMapAttribParameterivNV");
         try { Handles.MH_glGetMapAttribParameterivNV.invokeExact(handles.PFN_glGetMapAttribParameterivNV, target, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMapAttribParameterivNV", e); }
     }
@@ -151,7 +152,7 @@ public final class GLNVEvaluators {
     /// void glGetMapAttribParameterfvNV((unsigned int) GLenum target, (unsigned int) GLuint index, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void GetMapAttribParameterfvNV(int target, int index, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapAttribParameterfvNV)) throw new SymbolNotFoundError("Symbol not found: glGetMapAttribParameterfvNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMapAttribParameterfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMapAttribParameterfvNV");
         try { Handles.MH_glGetMapAttribParameterfvNV.invokeExact(handles.PFN_glGetMapAttribParameterfvNV, target, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMapAttribParameterfvNV", e); }
     }
@@ -160,7 +161,7 @@ public final class GLNVEvaluators {
     /// void glEvalMapsNV((unsigned int) GLenum target, (unsigned int) GLenum mode);
     /// ```
     public void EvalMapsNV(int target, int mode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glEvalMapsNV)) throw new SymbolNotFoundError("Symbol not found: glEvalMapsNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEvalMapsNV)) throw new GLSymbolNotFoundError("Symbol not found: glEvalMapsNV");
         try { Handles.MH_glEvalMapsNV.invokeExact(handles.PFN_glEvalMapsNV, target, mode); }
         catch (Throwable e) { throw new RuntimeException("error in EvalMapsNV", e); }
     }

@@ -63,7 +63,7 @@ public final class VKINTELPerformanceQuery {
     /// (int) VkResult vkInitializePerformanceApiINTEL((struct VkDevice*) VkDevice device, const VkInitializePerformanceApiInfoINTEL* pInitializeInfo);
     /// ```
     public static int vkInitializePerformanceApiINTEL(VkDevice device, MemorySegment pInitializeInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkInitializePerformanceApiINTEL)) throw new SymbolNotFoundError("Symbol not found: vkInitializePerformanceApiINTEL");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkInitializePerformanceApiINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkInitializePerformanceApiINTEL");
         try { return (int) Handles.MH_vkInitializePerformanceApiINTEL.invokeExact(device.capabilities().PFN_vkInitializePerformanceApiINTEL, device.segment(), pInitializeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkInitializePerformanceApiINTEL", e); }
     }
@@ -72,7 +72,7 @@ public final class VKINTELPerformanceQuery {
     /// void vkUninitializePerformanceApiINTEL((struct VkDevice*) VkDevice device);
     /// ```
     public static void vkUninitializePerformanceApiINTEL(VkDevice device) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUninitializePerformanceApiINTEL)) throw new SymbolNotFoundError("Symbol not found: vkUninitializePerformanceApiINTEL");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUninitializePerformanceApiINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkUninitializePerformanceApiINTEL");
         try { Handles.MH_vkUninitializePerformanceApiINTEL.invokeExact(device.capabilities().PFN_vkUninitializePerformanceApiINTEL, device.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkUninitializePerformanceApiINTEL", e); }
     }
@@ -81,7 +81,7 @@ public final class VKINTELPerformanceQuery {
     /// (int) VkResult vkCmdSetPerformanceMarkerINTEL((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPerformanceMarkerInfoINTEL* pMarkerInfo);
     /// ```
     public static int vkCmdSetPerformanceMarkerINTEL(VkCommandBuffer commandBuffer, MemorySegment pMarkerInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPerformanceMarkerINTEL)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPerformanceMarkerINTEL");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPerformanceMarkerINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPerformanceMarkerINTEL");
         try { return (int) Handles.MH_vkCmdSetPerformanceMarkerINTEL.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPerformanceMarkerINTEL, commandBuffer.segment(), pMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPerformanceMarkerINTEL", e); }
     }
@@ -90,7 +90,7 @@ public final class VKINTELPerformanceQuery {
     /// (int) VkResult vkCmdSetPerformanceStreamMarkerINTEL((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPerformanceStreamMarkerInfoINTEL* pMarkerInfo);
     /// ```
     public static int vkCmdSetPerformanceStreamMarkerINTEL(VkCommandBuffer commandBuffer, MemorySegment pMarkerInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPerformanceStreamMarkerINTEL)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPerformanceStreamMarkerINTEL");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPerformanceStreamMarkerINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPerformanceStreamMarkerINTEL");
         try { return (int) Handles.MH_vkCmdSetPerformanceStreamMarkerINTEL.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPerformanceStreamMarkerINTEL, commandBuffer.segment(), pMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPerformanceStreamMarkerINTEL", e); }
     }
@@ -99,7 +99,7 @@ public final class VKINTELPerformanceQuery {
     /// (int) VkResult vkCmdSetPerformanceOverrideINTEL((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkPerformanceOverrideInfoINTEL* pOverrideInfo);
     /// ```
     public static int vkCmdSetPerformanceOverrideINTEL(VkCommandBuffer commandBuffer, MemorySegment pOverrideInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPerformanceOverrideINTEL)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetPerformanceOverrideINTEL");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetPerformanceOverrideINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetPerformanceOverrideINTEL");
         try { return (int) Handles.MH_vkCmdSetPerformanceOverrideINTEL.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetPerformanceOverrideINTEL, commandBuffer.segment(), pOverrideInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetPerformanceOverrideINTEL", e); }
     }
@@ -108,7 +108,7 @@ public final class VKINTELPerformanceQuery {
     /// (int) VkResult vkAcquirePerformanceConfigurationINTEL((struct VkDevice*) VkDevice device, const VkPerformanceConfigurationAcquireInfoINTEL* pAcquireInfo, VkPerformanceConfigurationINTEL* pConfiguration);
     /// ```
     public static int vkAcquirePerformanceConfigurationINTEL(VkDevice device, MemorySegment pAcquireInfo, MemorySegment pConfiguration) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquirePerformanceConfigurationINTEL)) throw new SymbolNotFoundError("Symbol not found: vkAcquirePerformanceConfigurationINTEL");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquirePerformanceConfigurationINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquirePerformanceConfigurationINTEL");
         try { return (int) Handles.MH_vkAcquirePerformanceConfigurationINTEL.invokeExact(device.capabilities().PFN_vkAcquirePerformanceConfigurationINTEL, device.segment(), pAcquireInfo, pConfiguration); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquirePerformanceConfigurationINTEL", e); }
     }
@@ -117,7 +117,7 @@ public final class VKINTELPerformanceQuery {
     /// (int) VkResult vkReleasePerformanceConfigurationINTEL((struct VkDevice*) VkDevice device, (uint64_t) VkPerformanceConfigurationINTEL configuration);
     /// ```
     public static int vkReleasePerformanceConfigurationINTEL(VkDevice device, long configuration) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleasePerformanceConfigurationINTEL)) throw new SymbolNotFoundError("Symbol not found: vkReleasePerformanceConfigurationINTEL");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleasePerformanceConfigurationINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkReleasePerformanceConfigurationINTEL");
         try { return (int) Handles.MH_vkReleasePerformanceConfigurationINTEL.invokeExact(device.capabilities().PFN_vkReleasePerformanceConfigurationINTEL, device.segment(), configuration); }
         catch (Throwable e) { throw new RuntimeException("error in vkReleasePerformanceConfigurationINTEL", e); }
     }
@@ -126,7 +126,7 @@ public final class VKINTELPerformanceQuery {
     /// (int) VkResult vkQueueSetPerformanceConfigurationINTEL((struct VkQueue*) VkQueue queue, (uint64_t) VkPerformanceConfigurationINTEL configuration);
     /// ```
     public static int vkQueueSetPerformanceConfigurationINTEL(VkQueue queue, long configuration) {
-        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueSetPerformanceConfigurationINTEL)) throw new SymbolNotFoundError("Symbol not found: vkQueueSetPerformanceConfigurationINTEL");
+        if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueSetPerformanceConfigurationINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueSetPerformanceConfigurationINTEL");
         try { return (int) Handles.MH_vkQueueSetPerformanceConfigurationINTEL.invokeExact(queue.capabilities().PFN_vkQueueSetPerformanceConfigurationINTEL, queue.segment(), configuration); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueSetPerformanceConfigurationINTEL", e); }
     }
@@ -135,7 +135,7 @@ public final class VKINTELPerformanceQuery {
     /// (int) VkResult vkGetPerformanceParameterINTEL((struct VkDevice*) VkDevice device, (int) VkPerformanceParameterTypeINTEL parameter, VkPerformanceValueINTEL* pValue);
     /// ```
     public static int vkGetPerformanceParameterINTEL(VkDevice device, int parameter, MemorySegment pValue) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPerformanceParameterINTEL)) throw new SymbolNotFoundError("Symbol not found: vkGetPerformanceParameterINTEL");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPerformanceParameterINTEL)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPerformanceParameterINTEL");
         try { return (int) Handles.MH_vkGetPerformanceParameterINTEL.invokeExact(device.capabilities().PFN_vkGetPerformanceParameterINTEL, device.segment(), parameter, pValue); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPerformanceParameterINTEL", e); }
     }

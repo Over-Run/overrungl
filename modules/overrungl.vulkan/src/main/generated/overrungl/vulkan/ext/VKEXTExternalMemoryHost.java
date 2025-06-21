@@ -40,7 +40,7 @@ public final class VKEXTExternalMemoryHost {
     /// (int) VkResult vkGetMemoryHostPointerPropertiesEXT((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, const void* pHostPointer, VkMemoryHostPointerPropertiesEXT* pMemoryHostPointerProperties);
     /// ```
     public static int vkGetMemoryHostPointerPropertiesEXT(VkDevice device, int handleType, MemorySegment pHostPointer, MemorySegment pMemoryHostPointerProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryHostPointerPropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryHostPointerPropertiesEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryHostPointerPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryHostPointerPropertiesEXT");
         try { return (int) Handles.MH_vkGetMemoryHostPointerPropertiesEXT.invokeExact(device.capabilities().PFN_vkGetMemoryHostPointerPropertiesEXT, device.segment(), handleType, pHostPointer, pMemoryHostPointerProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryHostPointerPropertiesEXT", e); }
     }

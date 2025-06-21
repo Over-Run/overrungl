@@ -63,7 +63,7 @@ public final class VKNVShadingRateImage {
     /// void vkCmdBindShadingRateImageNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (uint64_t) VkImageView imageView, (int) VkImageLayout imageLayout);
     /// ```
     public static void vkCmdBindShadingRateImageNV(VkCommandBuffer commandBuffer, long imageView, int imageLayout) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindShadingRateImageNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindShadingRateImageNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindShadingRateImageNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindShadingRateImageNV");
         try { Handles.MH_vkCmdBindShadingRateImageNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindShadingRateImageNV, commandBuffer.segment(), imageView, imageLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindShadingRateImageNV", e); }
     }
@@ -72,7 +72,7 @@ public final class VKNVShadingRateImage {
     /// void vkCmdSetViewportShadingRatePaletteNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstViewport, uint32_t viewportCount, const VkShadingRatePaletteNV* pShadingRatePalettes);
     /// ```
     public static void vkCmdSetViewportShadingRatePaletteNV(VkCommandBuffer commandBuffer, int firstViewport, int viewportCount, MemorySegment pShadingRatePalettes) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportShadingRatePaletteNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetViewportShadingRatePaletteNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetViewportShadingRatePaletteNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetViewportShadingRatePaletteNV");
         try { Handles.MH_vkCmdSetViewportShadingRatePaletteNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetViewportShadingRatePaletteNV, commandBuffer.segment(), firstViewport, viewportCount, pShadingRatePalettes); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetViewportShadingRatePaletteNV", e); }
     }
@@ -81,7 +81,7 @@ public final class VKNVShadingRateImage {
     /// void vkCmdSetCoarseSampleOrderNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, (int) VkCoarseSampleOrderTypeNV sampleOrderType, uint32_t customSampleOrderCount, const VkCoarseSampleOrderCustomNV* pCustomSampleOrders);
     /// ```
     public static void vkCmdSetCoarseSampleOrderNV(VkCommandBuffer commandBuffer, int sampleOrderType, int customSampleOrderCount, MemorySegment pCustomSampleOrders) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoarseSampleOrderNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetCoarseSampleOrderNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCoarseSampleOrderNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCoarseSampleOrderNV");
         try { Handles.MH_vkCmdSetCoarseSampleOrderNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCoarseSampleOrderNV, commandBuffer.segment(), sampleOrderType, customSampleOrderCount, pCustomSampleOrders); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCoarseSampleOrderNV", e); }
     }

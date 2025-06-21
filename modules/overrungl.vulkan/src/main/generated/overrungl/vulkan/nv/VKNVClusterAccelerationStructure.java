@@ -69,7 +69,7 @@ public final class VKNVClusterAccelerationStructure {
     /// void vkGetClusterAccelerationStructureBuildSizesNV((struct VkDevice*) VkDevice device, const VkClusterAccelerationStructureInputInfoNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
     /// ```
     public static void vkGetClusterAccelerationStructureBuildSizesNV(VkDevice device, MemorySegment pInfo, MemorySegment pSizeInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetClusterAccelerationStructureBuildSizesNV)) throw new SymbolNotFoundError("Symbol not found: vkGetClusterAccelerationStructureBuildSizesNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetClusterAccelerationStructureBuildSizesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetClusterAccelerationStructureBuildSizesNV");
         try { Handles.MH_vkGetClusterAccelerationStructureBuildSizesNV.invokeExact(device.capabilities().PFN_vkGetClusterAccelerationStructureBuildSizesNV, device.segment(), pInfo, pSizeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetClusterAccelerationStructureBuildSizesNV", e); }
     }
@@ -78,7 +78,7 @@ public final class VKNVClusterAccelerationStructure {
     /// void vkCmdBuildClusterAccelerationStructureIndirectNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkClusterAccelerationStructureCommandsInfoNV* pCommandInfos);
     /// ```
     public static void vkCmdBuildClusterAccelerationStructureIndirectNV(VkCommandBuffer commandBuffer, MemorySegment pCommandInfos) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildClusterAccelerationStructureIndirectNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdBuildClusterAccelerationStructureIndirectNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildClusterAccelerationStructureIndirectNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildClusterAccelerationStructureIndirectNV");
         try { Handles.MH_vkCmdBuildClusterAccelerationStructureIndirectNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildClusterAccelerationStructureIndirectNV, commandBuffer.segment(), pCommandInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBuildClusterAccelerationStructureIndirectNV", e); }
     }

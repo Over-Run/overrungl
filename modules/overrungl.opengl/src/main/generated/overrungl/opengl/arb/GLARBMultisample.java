@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBMultisample {
     public static final int GL_MULTISAMPLE_ARB = 0x809D;
@@ -49,7 +50,7 @@ public final class GLARBMultisample {
     /// void glSampleCoverageARB(((float) khronos_float_t) GLfloat value, GLboolean invert);
     /// ```
     public void SampleCoverageARB(float value, boolean invert) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoverageARB)) throw new SymbolNotFoundError("Symbol not found: glSampleCoverageARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoverageARB)) throw new GLSymbolNotFoundError("Symbol not found: glSampleCoverageARB");
         try { Handles.MH_glSampleCoverageARB.invokeExact(handles.PFN_glSampleCoverageARB, value, ((invert) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in SampleCoverageARB", e); }
     }

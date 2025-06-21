@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBTextureBufferRange {
     public static final int GL_TEXTURE_BUFFER_OFFSET = 0x919D;
@@ -43,7 +44,7 @@ public final class GLARBTextureBufferRange {
     /// void glTexBufferRange((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (unsigned int) GLuint buffer, ((signed long long) khronos_intptr_t) GLintptr offset, ((signed long long) khronos_ssize_t) GLsizeiptr size);
     /// ```
     public void TexBufferRange(int target, int internalformat, int buffer, long offset, long size) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferRange)) throw new SymbolNotFoundError("Symbol not found: glTexBufferRange");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferRange)) throw new GLSymbolNotFoundError("Symbol not found: glTexBufferRange");
         try { Handles.MH_glTexBufferRange.invokeExact(handles.PFN_glTexBufferRange, target, internalformat, buffer, offset, size); }
         catch (Throwable e) { throw new RuntimeException("error in TexBufferRange", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLKHRParallelShaderCompile {
     public static final int GL_MAX_SHADER_COMPILER_THREADS_KHR = 0x91B0;
@@ -42,7 +43,7 @@ public final class GLKHRParallelShaderCompile {
     /// void glMaxShaderCompilerThreadsKHR((unsigned int) GLuint count);
     /// ```
     public void MaxShaderCompilerThreadsKHR(int count) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMaxShaderCompilerThreadsKHR)) throw new SymbolNotFoundError("Symbol not found: glMaxShaderCompilerThreadsKHR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMaxShaderCompilerThreadsKHR)) throw new GLSymbolNotFoundError("Symbol not found: glMaxShaderCompilerThreadsKHR");
         try { Handles.MH_glMaxShaderCompilerThreadsKHR.invokeExact(handles.PFN_glMaxShaderCompilerThreadsKHR, count); }
         catch (Throwable e) { throw new RuntimeException("error in MaxShaderCompilerThreadsKHR", e); }
     }

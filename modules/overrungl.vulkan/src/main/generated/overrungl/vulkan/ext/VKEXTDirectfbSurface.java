@@ -37,7 +37,7 @@ public final class VKEXTDirectfbSurface {
     /// (int) VkResult vkCreateDirectFBSurfaceEXT((struct VkInstance*) VkInstance instance, const VkDirectFBSurfaceCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateDirectFBSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDirectFBSurfaceEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateDirectFBSurfaceEXT");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDirectFBSurfaceEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDirectFBSurfaceEXT");
         try { return (int) Handles.MH_vkCreateDirectFBSurfaceEXT.invokeExact(instance.capabilities().PFN_vkCreateDirectFBSurfaceEXT, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDirectFBSurfaceEXT", e); }
     }
@@ -46,7 +46,7 @@ public final class VKEXTDirectfbSurface {
     /// (uint32_t) VkBool32 vkGetPhysicalDeviceDirectFBPresentationSupportEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, IDirectFB* dfb);
     /// ```
     public static int vkGetPhysicalDeviceDirectFBPresentationSupportEXT(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment dfb) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceDirectFBPresentationSupportEXT");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceDirectFBPresentationSupportEXT");
         try { return (int) Handles.MH_vkGetPhysicalDeviceDirectFBPresentationSupportEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT, physicalDevice.segment(), queueFamilyIndex, dfb); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceDirectFBPresentationSupportEXT", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLOVRMultiview {
     public static final int GL_FRAMEBUFFER_ATTACHMENT_TEXTURE_NUM_VIEWS_OVR = 0x9630;
@@ -46,7 +47,7 @@ public final class GLOVRMultiview {
     /// void glFramebufferTextureMultiviewOVR((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint baseViewIndex, (int) GLsizei numViews);
     /// ```
     public void FramebufferTextureMultiviewOVR(int target, int attachment, int texture, int level, int baseViewIndex, int numViews) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureMultiviewOVR)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureMultiviewOVR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureMultiviewOVR)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureMultiviewOVR");
         try { Handles.MH_glFramebufferTextureMultiviewOVR.invokeExact(handles.PFN_glFramebufferTextureMultiviewOVR, target, attachment, texture, level, baseViewIndex, numViews); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureMultiviewOVR", e); }
     }
@@ -55,7 +56,7 @@ public final class GLOVRMultiview {
     /// void glNamedFramebufferTextureMultiviewOVR((unsigned int) GLuint framebuffer, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint baseViewIndex, (int) GLsizei numViews);
     /// ```
     public void NamedFramebufferTextureMultiviewOVR(int framebuffer, int attachment, int texture, int level, int baseViewIndex, int numViews) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureMultiviewOVR)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferTextureMultiviewOVR");
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferTextureMultiviewOVR)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferTextureMultiviewOVR");
         try { Handles.MH_glNamedFramebufferTextureMultiviewOVR.invokeExact(handles.PFN_glNamedFramebufferTextureMultiviewOVR, framebuffer, attachment, texture, level, baseViewIndex, numViews); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferTextureMultiviewOVR", e); }
     }

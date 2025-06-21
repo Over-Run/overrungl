@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVFragmentCoverageToColor {
     public static final int GL_FRAGMENT_COVERAGE_TO_COLOR_NV = 0x92DD;
@@ -42,7 +43,7 @@ public final class GLNVFragmentCoverageToColor {
     /// void glFragmentCoverageColorNV((unsigned int) GLuint color);
     /// ```
     public void FragmentCoverageColorNV(int color) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFragmentCoverageColorNV)) throw new SymbolNotFoundError("Symbol not found: glFragmentCoverageColorNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFragmentCoverageColorNV)) throw new GLSymbolNotFoundError("Symbol not found: glFragmentCoverageColorNV");
         try { Handles.MH_glFragmentCoverageColorNV.invokeExact(handles.PFN_glFragmentCoverageColorNV, color); }
         catch (Throwable e) { throw new RuntimeException("error in FragmentCoverageColorNV", e); }
     }

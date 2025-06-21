@@ -50,7 +50,7 @@ public final class VKKHRGetPhysicalDeviceProperties2 {
     /// void vkGetPhysicalDeviceFeatures2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, VkPhysicalDeviceFeatures2* pFeatures);
     /// ```
     public static void vkGetPhysicalDeviceFeatures2KHR(VkPhysicalDevice physicalDevice, MemorySegment pFeatures) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceFeatures2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFeatures2KHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceFeatures2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFeatures2KHR");
         try { Handles.MH_vkGetPhysicalDeviceFeatures2KHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceFeatures2KHR, physicalDevice.segment(), pFeatures); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceFeatures2KHR", e); }
     }
@@ -59,7 +59,7 @@ public final class VKKHRGetPhysicalDeviceProperties2 {
     /// void vkGetPhysicalDeviceProperties2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, VkPhysicalDeviceProperties2* pProperties);
     /// ```
     public static void vkGetPhysicalDeviceProperties2KHR(VkPhysicalDevice physicalDevice, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceProperties2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceProperties2KHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceProperties2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceProperties2KHR");
         try { Handles.MH_vkGetPhysicalDeviceProperties2KHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceProperties2KHR, physicalDevice.segment(), pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceProperties2KHR", e); }
     }
@@ -68,7 +68,7 @@ public final class VKKHRGetPhysicalDeviceProperties2 {
     /// void vkGetPhysicalDeviceFormatProperties2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (int) VkFormat format, VkFormatProperties2* pFormatProperties);
     /// ```
     public static void vkGetPhysicalDeviceFormatProperties2KHR(VkPhysicalDevice physicalDevice, int format, MemorySegment pFormatProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceFormatProperties2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFormatProperties2KHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceFormatProperties2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceFormatProperties2KHR");
         try { Handles.MH_vkGetPhysicalDeviceFormatProperties2KHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceFormatProperties2KHR, physicalDevice.segment(), format, pFormatProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceFormatProperties2KHR", e); }
     }
@@ -77,7 +77,7 @@ public final class VKKHRGetPhysicalDeviceProperties2 {
     /// (int) VkResult vkGetPhysicalDeviceImageFormatProperties2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceImageFormatInfo2* pImageFormatInfo, VkImageFormatProperties2* pImageFormatProperties);
     /// ```
     public static int vkGetPhysicalDeviceImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, MemorySegment pImageFormatInfo, MemorySegment pImageFormatProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceImageFormatProperties2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceImageFormatProperties2KHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceImageFormatProperties2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceImageFormatProperties2KHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceImageFormatProperties2KHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceImageFormatProperties2KHR, physicalDevice.segment(), pImageFormatInfo, pImageFormatProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceImageFormatProperties2KHR", e); }
     }
@@ -86,7 +86,7 @@ public final class VKKHRGetPhysicalDeviceProperties2 {
     /// void vkGetPhysicalDeviceQueueFamilyProperties2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pQueueFamilyPropertyCount, VkQueueFamilyProperties2* pQueueFamilyProperties);
     /// ```
     public static void vkGetPhysicalDeviceQueueFamilyProperties2KHR(VkPhysicalDevice physicalDevice, MemorySegment pQueueFamilyPropertyCount, MemorySegment pQueueFamilyProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyProperties2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyProperties2KHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyProperties2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceQueueFamilyProperties2KHR");
         try { Handles.MH_vkGetPhysicalDeviceQueueFamilyProperties2KHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceQueueFamilyProperties2KHR, physicalDevice.segment(), pQueueFamilyPropertyCount, pQueueFamilyProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceQueueFamilyProperties2KHR", e); }
     }
@@ -95,7 +95,7 @@ public final class VKKHRGetPhysicalDeviceProperties2 {
     /// void vkGetPhysicalDeviceMemoryProperties2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, VkPhysicalDeviceMemoryProperties2* pMemoryProperties);
     /// ```
     public static void vkGetPhysicalDeviceMemoryProperties2KHR(VkPhysicalDevice physicalDevice, MemorySegment pMemoryProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceMemoryProperties2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceMemoryProperties2KHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceMemoryProperties2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceMemoryProperties2KHR");
         try { Handles.MH_vkGetPhysicalDeviceMemoryProperties2KHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceMemoryProperties2KHR, physicalDevice.segment(), pMemoryProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceMemoryProperties2KHR", e); }
     }
@@ -104,7 +104,7 @@ public final class VKKHRGetPhysicalDeviceProperties2 {
     /// void vkGetPhysicalDeviceSparseImageFormatProperties2KHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceSparseImageFormatInfo2* pFormatInfo, uint32_t* pPropertyCount, VkSparseImageFormatProperties2* pProperties);
     /// ```
     public static void vkGetPhysicalDeviceSparseImageFormatProperties2KHR(VkPhysicalDevice physicalDevice, MemorySegment pFormatInfo, MemorySegment pPropertyCount, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSparseImageFormatProperties2KHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSparseImageFormatProperties2KHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSparseImageFormatProperties2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSparseImageFormatProperties2KHR");
         try { Handles.MH_vkGetPhysicalDeviceSparseImageFormatProperties2KHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSparseImageFormatProperties2KHR, physicalDevice.segment(), pFormatInfo, pPropertyCount, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSparseImageFormatProperties2KHR", e); }
     }

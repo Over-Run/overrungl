@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTWindowRectangles {
     public static final int GL_INCLUSIVE_EXT = 0x8F10;
@@ -46,7 +47,7 @@ public final class GLEXTWindowRectangles {
     /// void glWindowRectanglesEXT((unsigned int) GLenum mode, (int) GLsizei count, const GLint* box);
     /// ```
     public void WindowRectanglesEXT(int mode, int count, MemorySegment box) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowRectanglesEXT)) throw new SymbolNotFoundError("Symbol not found: glWindowRectanglesEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowRectanglesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glWindowRectanglesEXT");
         try { Handles.MH_glWindowRectanglesEXT.invokeExact(handles.PFN_glWindowRectanglesEXT, mode, count, box); }
         catch (Throwable e) { throw new RuntimeException("error in WindowRectanglesEXT", e); }
     }

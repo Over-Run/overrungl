@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBIndirectParameters {
     public static final int GL_PARAMETER_BUFFER_ARB = 0x80EE;
@@ -45,7 +46,7 @@ public final class GLARBIndirectParameters {
     /// void glMultiDrawArraysIndirectCountARB((unsigned int) GLenum mode, const void* indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawArraysIndirectCountARB(int mode, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCountARB)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCountARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectCountARB)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectCountARB");
         try { Handles.MH_glMultiDrawArraysIndirectCountARB.invokeExact(handles.PFN_glMultiDrawArraysIndirectCountARB, mode, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirectCountARB", e); }
     }
@@ -54,7 +55,7 @@ public final class GLARBIndirectParameters {
     /// void glMultiDrawElementsIndirectCountARB((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawElementsIndirectCountARB(int mode, int type, MemorySegment indirect, long drawcount, int maxdrawcount, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCountARB)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCountARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectCountARB)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectCountARB");
         try { Handles.MH_glMultiDrawElementsIndirectCountARB.invokeExact(handles.PFN_glMultiDrawElementsIndirectCountARB, mode, type, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsIndirectCountARB", e); }
     }

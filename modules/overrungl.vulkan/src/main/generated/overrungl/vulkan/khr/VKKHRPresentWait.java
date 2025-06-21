@@ -36,7 +36,7 @@ public final class VKKHRPresentWait {
     /// (int) VkResult vkWaitForPresentKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, uint64_t presentId, uint64_t timeout);
     /// ```
     public static int vkWaitForPresentKHR(VkDevice device, long swapchain, long presentId, long timeout) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWaitForPresentKHR)) throw new SymbolNotFoundError("Symbol not found: vkWaitForPresentKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWaitForPresentKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkWaitForPresentKHR");
         try { return (int) Handles.MH_vkWaitForPresentKHR.invokeExact(device.capabilities().PFN_vkWaitForPresentKHR, device.segment(), swapchain, presentId, timeout); }
         catch (Throwable e) { throw new RuntimeException("error in vkWaitForPresentKHR", e); }
     }

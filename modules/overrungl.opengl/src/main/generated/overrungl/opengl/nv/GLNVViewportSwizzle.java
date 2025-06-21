@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVViewportSwizzle {
     public static final int GL_VIEWPORT_SWIZZLE_POSITIVE_X_NV = 0x9350;
@@ -52,7 +53,7 @@ public final class GLNVViewportSwizzle {
     /// void glViewportSwizzleNV((unsigned int) GLuint index, (unsigned int) GLenum swizzlex, (unsigned int) GLenum swizzley, (unsigned int) GLenum swizzlez, (unsigned int) GLenum swizzlew);
     /// ```
     public void ViewportSwizzleNV(int index, int swizzlex, int swizzley, int swizzlez, int swizzlew) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glViewportSwizzleNV)) throw new SymbolNotFoundError("Symbol not found: glViewportSwizzleNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glViewportSwizzleNV)) throw new GLSymbolNotFoundError("Symbol not found: glViewportSwizzleNV");
         try { Handles.MH_glViewportSwizzleNV.invokeExact(handles.PFN_glViewportSwizzleNV, index, swizzlex, swizzley, swizzlez, swizzlew); }
         catch (Throwable e) { throw new RuntimeException("error in ViewportSwizzleNV", e); }
     }

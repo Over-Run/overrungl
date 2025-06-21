@@ -38,7 +38,7 @@ public final class VKEXTMultiDraw {
     /// void vkCmdDrawMultiEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t drawCount, const VkMultiDrawInfoEXT* pVertexInfo, uint32_t instanceCount, uint32_t firstInstance, uint32_t stride);
     /// ```
     public static void vkCmdDrawMultiEXT(VkCommandBuffer commandBuffer, int drawCount, MemorySegment pVertexInfo, int instanceCount, int firstInstance, int stride) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMultiEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMultiEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMultiEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawMultiEXT");
         try { Handles.MH_vkCmdDrawMultiEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawMultiEXT, commandBuffer.segment(), drawCount, pVertexInfo, instanceCount, firstInstance, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMultiEXT", e); }
     }
@@ -47,7 +47,7 @@ public final class VKEXTMultiDraw {
     /// void vkCmdDrawMultiIndexedEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t drawCount, const VkMultiDrawIndexedInfoEXT* pIndexInfo, uint32_t instanceCount, uint32_t firstInstance, uint32_t stride, const int32_t* pVertexOffset);
     /// ```
     public static void vkCmdDrawMultiIndexedEXT(VkCommandBuffer commandBuffer, int drawCount, MemorySegment pIndexInfo, int instanceCount, int firstInstance, int stride, MemorySegment pVertexOffset) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMultiIndexedEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdDrawMultiIndexedEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDrawMultiIndexedEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDrawMultiIndexedEXT");
         try { Handles.MH_vkCmdDrawMultiIndexedEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdDrawMultiIndexedEXT, commandBuffer.segment(), drawCount, pIndexInfo, instanceCount, firstInstance, stride, pVertexOffset); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDrawMultiIndexedEXT", e); }
     }

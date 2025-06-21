@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBTextureStorage {
     public static final int GL_TEXTURE_IMMUTABLE_FORMAT = 0x912F;
@@ -47,7 +48,7 @@ public final class GLARBTextureStorage {
     /// void glTexStorage1D((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width);
     /// ```
     public void TexStorage1D(int target, int levels, int internalformat, int width) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage1D)) throw new SymbolNotFoundError("Symbol not found: glTexStorage1D");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage1D)) throw new GLSymbolNotFoundError("Symbol not found: glTexStorage1D");
         try { Handles.MH_glTexStorage1D.invokeExact(handles.PFN_glTexStorage1D, target, levels, internalformat, width); }
         catch (Throwable e) { throw new RuntimeException("error in TexStorage1D", e); }
     }
@@ -56,7 +57,7 @@ public final class GLARBTextureStorage {
     /// void glTexStorage2D((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height);
     /// ```
     public void TexStorage2D(int target, int levels, int internalformat, int width, int height) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage2D)) throw new SymbolNotFoundError("Symbol not found: glTexStorage2D");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage2D)) throw new GLSymbolNotFoundError("Symbol not found: glTexStorage2D");
         try { Handles.MH_glTexStorage2D.invokeExact(handles.PFN_glTexStorage2D, target, levels, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in TexStorage2D", e); }
     }
@@ -65,7 +66,7 @@ public final class GLARBTextureStorage {
     /// void glTexStorage3D((unsigned int) GLenum target, (int) GLsizei levels, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth);
     /// ```
     public void TexStorage3D(int target, int levels, int internalformat, int width, int height, int depth) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage3D)) throw new SymbolNotFoundError("Symbol not found: glTexStorage3D");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexStorage3D)) throw new GLSymbolNotFoundError("Symbol not found: glTexStorage3D");
         try { Handles.MH_glTexStorage3D.invokeExact(handles.PFN_glTexStorage3D, target, levels, internalformat, width, height, depth); }
         catch (Throwable e) { throw new RuntimeException("error in TexStorage3D", e); }
     }

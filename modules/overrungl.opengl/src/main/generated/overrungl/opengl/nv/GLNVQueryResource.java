@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVQueryResource {
     public static final int GL_QUERY_RESOURCE_TYPE_VIDMEM_ALLOC_NV = 0x9540;
@@ -46,7 +47,7 @@ public final class GLNVQueryResource {
     /// (int) GLint glQueryResourceNV((unsigned int) GLenum queryType, (int) GLint tagId, (unsigned int) GLuint count, GLint* buffer);
     /// ```
     public int QueryResourceNV(int queryType, int tagId, int count, MemorySegment buffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glQueryResourceNV)) throw new SymbolNotFoundError("Symbol not found: glQueryResourceNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glQueryResourceNV)) throw new GLSymbolNotFoundError("Symbol not found: glQueryResourceNV");
         try { return (int) Handles.MH_glQueryResourceNV.invokeExact(handles.PFN_glQueryResourceNV, queryType, tagId, count, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in QueryResourceNV", e); }
     }

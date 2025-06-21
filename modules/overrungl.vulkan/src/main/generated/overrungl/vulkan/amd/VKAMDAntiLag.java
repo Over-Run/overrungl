@@ -43,7 +43,7 @@ public final class VKAMDAntiLag {
     /// void vkAntiLagUpdateAMD((struct VkDevice*) VkDevice device, const VkAntiLagDataAMD* pData);
     /// ```
     public static void vkAntiLagUpdateAMD(VkDevice device, MemorySegment pData) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAntiLagUpdateAMD)) throw new SymbolNotFoundError("Symbol not found: vkAntiLagUpdateAMD");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAntiLagUpdateAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkAntiLagUpdateAMD");
         try { Handles.MH_vkAntiLagUpdateAMD.invokeExact(device.capabilities().PFN_vkAntiLagUpdateAMD, device.segment(), pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkAntiLagUpdateAMD", e); }
     }

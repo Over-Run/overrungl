@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTCullVertex {
     public static final int GL_CULL_VERTEX_EXT = 0x81AA;
@@ -46,7 +47,7 @@ public final class GLEXTCullVertex {
     /// void glCullParameterdvEXT((unsigned int) GLenum pname, GLdouble* params);
     /// ```
     public void CullParameterdvEXT(int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterdvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterdvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterdvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCullParameterdvEXT");
         try { Handles.MH_glCullParameterdvEXT.invokeExact(handles.PFN_glCullParameterdvEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in CullParameterdvEXT", e); }
     }
@@ -55,7 +56,7 @@ public final class GLEXTCullVertex {
     /// void glCullParameterfvEXT((unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void CullParameterfvEXT(int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterfvEXT)) throw new SymbolNotFoundError("Symbol not found: glCullParameterfvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glCullParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCullParameterfvEXT");
         try { Handles.MH_glCullParameterfvEXT.invokeExact(handles.PFN_glCullParameterfvEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in CullParameterfvEXT", e); }
     }

@@ -37,7 +37,7 @@ public final class VKKHRWaylandSurface {
     /// (int) VkResult vkCreateWaylandSurfaceKHR((struct VkInstance*) VkInstance instance, const VkWaylandSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateWaylandSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateWaylandSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateWaylandSurfaceKHR");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateWaylandSurfaceKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateWaylandSurfaceKHR");
         try { return (int) Handles.MH_vkCreateWaylandSurfaceKHR.invokeExact(instance.capabilities().PFN_vkCreateWaylandSurfaceKHR, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateWaylandSurfaceKHR", e); }
     }
@@ -46,7 +46,7 @@ public final class VKKHRWaylandSurface {
     /// (uint32_t) VkBool32 vkGetPhysicalDeviceWaylandPresentationSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, struct wl_display * display);
     /// ```
     public static int vkGetPhysicalDeviceWaylandPresentationSupportKHR(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment display) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceWaylandPresentationSupportKHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceWaylandPresentationSupportKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceWaylandPresentationSupportKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR, physicalDevice.segment(), queueFamilyIndex, display); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceWaylandPresentationSupportKHR", e); }
     }

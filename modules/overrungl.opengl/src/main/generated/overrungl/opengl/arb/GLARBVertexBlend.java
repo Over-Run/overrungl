@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBVertexBlend {
     public static final int GL_MAX_VERTEX_UNITS_ARB = 0x86A4;
@@ -109,7 +110,7 @@ public final class GLARBVertexBlend {
     /// void glWeightbvARB((int) GLint size, const GLbyte* weights);
     /// ```
     public void WeightbvARB(int size, MemorySegment weights) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWeightbvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightbvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWeightbvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWeightbvARB");
         try { Handles.MH_glWeightbvARB.invokeExact(handles.PFN_glWeightbvARB, size, weights); }
         catch (Throwable e) { throw new RuntimeException("error in WeightbvARB", e); }
     }
@@ -118,7 +119,7 @@ public final class GLARBVertexBlend {
     /// void glWeightsvARB((int) GLint size, const GLshort* weights);
     /// ```
     public void WeightsvARB(int size, MemorySegment weights) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWeightsvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightsvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWeightsvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWeightsvARB");
         try { Handles.MH_glWeightsvARB.invokeExact(handles.PFN_glWeightsvARB, size, weights); }
         catch (Throwable e) { throw new RuntimeException("error in WeightsvARB", e); }
     }
@@ -127,7 +128,7 @@ public final class GLARBVertexBlend {
     /// void glWeightivARB((int) GLint size, const GLint* weights);
     /// ```
     public void WeightivARB(int size, MemorySegment weights) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWeightivARB)) throw new SymbolNotFoundError("Symbol not found: glWeightivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWeightivARB)) throw new GLSymbolNotFoundError("Symbol not found: glWeightivARB");
         try { Handles.MH_glWeightivARB.invokeExact(handles.PFN_glWeightivARB, size, weights); }
         catch (Throwable e) { throw new RuntimeException("error in WeightivARB", e); }
     }
@@ -136,7 +137,7 @@ public final class GLARBVertexBlend {
     /// void glWeightfvARB((int) GLint size, const GLfloat* weights);
     /// ```
     public void WeightfvARB(int size, MemorySegment weights) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWeightfvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightfvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWeightfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWeightfvARB");
         try { Handles.MH_glWeightfvARB.invokeExact(handles.PFN_glWeightfvARB, size, weights); }
         catch (Throwable e) { throw new RuntimeException("error in WeightfvARB", e); }
     }
@@ -145,7 +146,7 @@ public final class GLARBVertexBlend {
     /// void glWeightdvARB((int) GLint size, const GLdouble* weights);
     /// ```
     public void WeightdvARB(int size, MemorySegment weights) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWeightdvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightdvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWeightdvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWeightdvARB");
         try { Handles.MH_glWeightdvARB.invokeExact(handles.PFN_glWeightdvARB, size, weights); }
         catch (Throwable e) { throw new RuntimeException("error in WeightdvARB", e); }
     }
@@ -154,7 +155,7 @@ public final class GLARBVertexBlend {
     /// void glWeightubvARB((int) GLint size, const GLubyte* weights);
     /// ```
     public void WeightubvARB(int size, MemorySegment weights) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWeightubvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightubvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWeightubvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWeightubvARB");
         try { Handles.MH_glWeightubvARB.invokeExact(handles.PFN_glWeightubvARB, size, weights); }
         catch (Throwable e) { throw new RuntimeException("error in WeightubvARB", e); }
     }
@@ -163,7 +164,7 @@ public final class GLARBVertexBlend {
     /// void glWeightusvARB((int) GLint size, const GLushort* weights);
     /// ```
     public void WeightusvARB(int size, MemorySegment weights) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWeightusvARB)) throw new SymbolNotFoundError("Symbol not found: glWeightusvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWeightusvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWeightusvARB");
         try { Handles.MH_glWeightusvARB.invokeExact(handles.PFN_glWeightusvARB, size, weights); }
         catch (Throwable e) { throw new RuntimeException("error in WeightusvARB", e); }
     }
@@ -172,7 +173,7 @@ public final class GLARBVertexBlend {
     /// void glWeightuivARB((int) GLint size, const GLuint* weights);
     /// ```
     public void WeightuivARB(int size, MemorySegment weights) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWeightuivARB)) throw new SymbolNotFoundError("Symbol not found: glWeightuivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWeightuivARB)) throw new GLSymbolNotFoundError("Symbol not found: glWeightuivARB");
         try { Handles.MH_glWeightuivARB.invokeExact(handles.PFN_glWeightuivARB, size, weights); }
         catch (Throwable e) { throw new RuntimeException("error in WeightuivARB", e); }
     }
@@ -181,7 +182,7 @@ public final class GLARBVertexBlend {
     /// void glWeightPointerARB((int) GLint size, (unsigned int) GLenum type, (int) GLsizei stride, const void* pointer);
     /// ```
     public void WeightPointerARB(int size, int type, int stride, MemorySegment pointer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWeightPointerARB)) throw new SymbolNotFoundError("Symbol not found: glWeightPointerARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWeightPointerARB)) throw new GLSymbolNotFoundError("Symbol not found: glWeightPointerARB");
         try { Handles.MH_glWeightPointerARB.invokeExact(handles.PFN_glWeightPointerARB, size, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in WeightPointerARB", e); }
     }
@@ -190,7 +191,7 @@ public final class GLARBVertexBlend {
     /// void glVertexBlendARB((int) GLint count);
     /// ```
     public void VertexBlendARB(int count) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexBlendARB)) throw new SymbolNotFoundError("Symbol not found: glVertexBlendARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexBlendARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexBlendARB");
         try { Handles.MH_glVertexBlendARB.invokeExact(handles.PFN_glVertexBlendARB, count); }
         catch (Throwable e) { throw new RuntimeException("error in VertexBlendARB", e); }
     }

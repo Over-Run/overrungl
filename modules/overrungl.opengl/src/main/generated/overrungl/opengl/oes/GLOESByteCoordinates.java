@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLOESByteCoordinates {
     public static final int GL_BYTE = 0x1400;
@@ -104,7 +105,7 @@ public final class GLOESByteCoordinates {
     /// void glMultiTexCoord1bOES((unsigned int) GLenum texture, ((signed char) khronos_int8_t) GLbyte s);
     /// ```
     public void MultiTexCoord1bOES(int texture, byte s) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1bOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1bOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord1bOES");
         try { Handles.MH_glMultiTexCoord1bOES.invokeExact(handles.PFN_glMultiTexCoord1bOES, texture, s); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1bOES", e); }
     }
@@ -113,7 +114,7 @@ public final class GLOESByteCoordinates {
     /// void glMultiTexCoord1bvOES((unsigned int) GLenum texture, const GLbyte* coords);
     /// ```
     public void MultiTexCoord1bvOES(int texture, MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1bvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord1bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord1bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord1bvOES");
         try { Handles.MH_glMultiTexCoord1bvOES.invokeExact(handles.PFN_glMultiTexCoord1bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord1bvOES", e); }
     }
@@ -122,7 +123,7 @@ public final class GLOESByteCoordinates {
     /// void glMultiTexCoord2bOES((unsigned int) GLenum texture, ((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t);
     /// ```
     public void MultiTexCoord2bOES(int texture, byte s, byte t) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2bOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2bOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord2bOES");
         try { Handles.MH_glMultiTexCoord2bOES.invokeExact(handles.PFN_glMultiTexCoord2bOES, texture, s, t); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2bOES", e); }
     }
@@ -131,7 +132,7 @@ public final class GLOESByteCoordinates {
     /// void glMultiTexCoord2bvOES((unsigned int) GLenum texture, const GLbyte* coords);
     /// ```
     public void MultiTexCoord2bvOES(int texture, MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2bvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord2bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord2bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord2bvOES");
         try { Handles.MH_glMultiTexCoord2bvOES.invokeExact(handles.PFN_glMultiTexCoord2bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord2bvOES", e); }
     }
@@ -140,7 +141,7 @@ public final class GLOESByteCoordinates {
     /// void glMultiTexCoord3bOES((unsigned int) GLenum texture, ((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t, ((signed char) khronos_int8_t) GLbyte r);
     /// ```
     public void MultiTexCoord3bOES(int texture, byte s, byte t, byte r) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3bOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3bOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord3bOES");
         try { Handles.MH_glMultiTexCoord3bOES.invokeExact(handles.PFN_glMultiTexCoord3bOES, texture, s, t, r); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3bOES", e); }
     }
@@ -149,7 +150,7 @@ public final class GLOESByteCoordinates {
     /// void glMultiTexCoord3bvOES((unsigned int) GLenum texture, const GLbyte* coords);
     /// ```
     public void MultiTexCoord3bvOES(int texture, MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3bvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord3bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord3bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord3bvOES");
         try { Handles.MH_glMultiTexCoord3bvOES.invokeExact(handles.PFN_glMultiTexCoord3bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord3bvOES", e); }
     }
@@ -158,7 +159,7 @@ public final class GLOESByteCoordinates {
     /// void glMultiTexCoord4bOES((unsigned int) GLenum texture, ((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t, ((signed char) khronos_int8_t) GLbyte r, ((signed char) khronos_int8_t) GLbyte q);
     /// ```
     public void MultiTexCoord4bOES(int texture, byte s, byte t, byte r, byte q) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4bOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4bOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord4bOES");
         try { Handles.MH_glMultiTexCoord4bOES.invokeExact(handles.PFN_glMultiTexCoord4bOES, texture, s, t, r, q); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4bOES", e); }
     }
@@ -167,7 +168,7 @@ public final class GLOESByteCoordinates {
     /// void glMultiTexCoord4bvOES((unsigned int) GLenum texture, const GLbyte* coords);
     /// ```
     public void MultiTexCoord4bvOES(int texture, MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4bvOES)) throw new SymbolNotFoundError("Symbol not found: glMultiTexCoord4bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoord4bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoord4bvOES");
         try { Handles.MH_glMultiTexCoord4bvOES.invokeExact(handles.PFN_glMultiTexCoord4bvOES, texture, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoord4bvOES", e); }
     }
@@ -176,7 +177,7 @@ public final class GLOESByteCoordinates {
     /// void glTexCoord1bOES(((signed char) khronos_int8_t) GLbyte s);
     /// ```
     public void TexCoord1bOES(byte s) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1bOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord1bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1bOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord1bOES");
         try { Handles.MH_glTexCoord1bOES.invokeExact(handles.PFN_glTexCoord1bOES, s); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1bOES", e); }
     }
@@ -185,7 +186,7 @@ public final class GLOESByteCoordinates {
     /// void glTexCoord1bvOES(const GLbyte* coords);
     /// ```
     public void TexCoord1bvOES(MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1bvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord1bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord1bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord1bvOES");
         try { Handles.MH_glTexCoord1bvOES.invokeExact(handles.PFN_glTexCoord1bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord1bvOES", e); }
     }
@@ -194,7 +195,7 @@ public final class GLOESByteCoordinates {
     /// void glTexCoord2bOES(((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t);
     /// ```
     public void TexCoord2bOES(byte s, byte t) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2bOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2bOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord2bOES");
         try { Handles.MH_glTexCoord2bOES.invokeExact(handles.PFN_glTexCoord2bOES, s, t); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2bOES", e); }
     }
@@ -203,7 +204,7 @@ public final class GLOESByteCoordinates {
     /// void glTexCoord2bvOES(const GLbyte* coords);
     /// ```
     public void TexCoord2bvOES(MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2bvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord2bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord2bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord2bvOES");
         try { Handles.MH_glTexCoord2bvOES.invokeExact(handles.PFN_glTexCoord2bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord2bvOES", e); }
     }
@@ -212,7 +213,7 @@ public final class GLOESByteCoordinates {
     /// void glTexCoord3bOES(((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t, ((signed char) khronos_int8_t) GLbyte r);
     /// ```
     public void TexCoord3bOES(byte s, byte t, byte r) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3bOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord3bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3bOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord3bOES");
         try { Handles.MH_glTexCoord3bOES.invokeExact(handles.PFN_glTexCoord3bOES, s, t, r); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3bOES", e); }
     }
@@ -221,7 +222,7 @@ public final class GLOESByteCoordinates {
     /// void glTexCoord3bvOES(const GLbyte* coords);
     /// ```
     public void TexCoord3bvOES(MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3bvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord3bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord3bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord3bvOES");
         try { Handles.MH_glTexCoord3bvOES.invokeExact(handles.PFN_glTexCoord3bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord3bvOES", e); }
     }
@@ -230,7 +231,7 @@ public final class GLOESByteCoordinates {
     /// void glTexCoord4bOES(((signed char) khronos_int8_t) GLbyte s, ((signed char) khronos_int8_t) GLbyte t, ((signed char) khronos_int8_t) GLbyte r, ((signed char) khronos_int8_t) GLbyte q);
     /// ```
     public void TexCoord4bOES(byte s, byte t, byte r, byte q) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4bOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4bOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord4bOES");
         try { Handles.MH_glTexCoord4bOES.invokeExact(handles.PFN_glTexCoord4bOES, s, t, r, q); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4bOES", e); }
     }
@@ -239,7 +240,7 @@ public final class GLOESByteCoordinates {
     /// void glTexCoord4bvOES(const GLbyte* coords);
     /// ```
     public void TexCoord4bvOES(MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4bvOES)) throw new SymbolNotFoundError("Symbol not found: glTexCoord4bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexCoord4bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoord4bvOES");
         try { Handles.MH_glTexCoord4bvOES.invokeExact(handles.PFN_glTexCoord4bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoord4bvOES", e); }
     }
@@ -248,7 +249,7 @@ public final class GLOESByteCoordinates {
     /// void glVertex2bOES(((signed char) khronos_int8_t) GLbyte x, ((signed char) khronos_int8_t) GLbyte y);
     /// ```
     public void Vertex2bOES(byte x, byte y) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertex2bOES)) throw new SymbolNotFoundError("Symbol not found: glVertex2bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex2bOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex2bOES");
         try { Handles.MH_glVertex2bOES.invokeExact(handles.PFN_glVertex2bOES, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex2bOES", e); }
     }
@@ -257,7 +258,7 @@ public final class GLOESByteCoordinates {
     /// void glVertex2bvOES(const GLbyte* coords);
     /// ```
     public void Vertex2bvOES(MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertex2bvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex2bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex2bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex2bvOES");
         try { Handles.MH_glVertex2bvOES.invokeExact(handles.PFN_glVertex2bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex2bvOES", e); }
     }
@@ -266,7 +267,7 @@ public final class GLOESByteCoordinates {
     /// void glVertex3bOES(((signed char) khronos_int8_t) GLbyte x, ((signed char) khronos_int8_t) GLbyte y, ((signed char) khronos_int8_t) GLbyte z);
     /// ```
     public void Vertex3bOES(byte x, byte y, byte z) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertex3bOES)) throw new SymbolNotFoundError("Symbol not found: glVertex3bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex3bOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex3bOES");
         try { Handles.MH_glVertex3bOES.invokeExact(handles.PFN_glVertex3bOES, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex3bOES", e); }
     }
@@ -275,7 +276,7 @@ public final class GLOESByteCoordinates {
     /// void glVertex3bvOES(const GLbyte* coords);
     /// ```
     public void Vertex3bvOES(MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertex3bvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex3bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex3bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex3bvOES");
         try { Handles.MH_glVertex3bvOES.invokeExact(handles.PFN_glVertex3bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex3bvOES", e); }
     }
@@ -284,7 +285,7 @@ public final class GLOESByteCoordinates {
     /// void glVertex4bOES(((signed char) khronos_int8_t) GLbyte x, ((signed char) khronos_int8_t) GLbyte y, ((signed char) khronos_int8_t) GLbyte z, ((signed char) khronos_int8_t) GLbyte w);
     /// ```
     public void Vertex4bOES(byte x, byte y, byte z, byte w) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertex4bOES)) throw new SymbolNotFoundError("Symbol not found: glVertex4bOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex4bOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex4bOES");
         try { Handles.MH_glVertex4bOES.invokeExact(handles.PFN_glVertex4bOES, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex4bOES", e); }
     }
@@ -293,7 +294,7 @@ public final class GLOESByteCoordinates {
     /// void glVertex4bvOES(const GLbyte* coords);
     /// ```
     public void Vertex4bvOES(MemorySegment coords) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertex4bvOES)) throw new SymbolNotFoundError("Symbol not found: glVertex4bvOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertex4bvOES)) throw new GLSymbolNotFoundError("Symbol not found: glVertex4bvOES");
         try { Handles.MH_glVertex4bvOES.invokeExact(handles.PFN_glVertex4bvOES, coords); }
         catch (Throwable e) { throw new RuntimeException("error in Vertex4bvOES", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGISDetailTexture {
     public static final int GL_DETAIL_TEXTURE_2D_SGIS = 0x8095;
@@ -51,7 +52,7 @@ public final class GLSGISDetailTexture {
     /// void glDetailTexFuncSGIS((unsigned int) GLenum target, (int) GLsizei n, const GLfloat* points);
     /// ```
     public void DetailTexFuncSGIS(int target, int n, MemorySegment points) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glDetailTexFuncSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDetailTexFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glDetailTexFuncSGIS");
         try { Handles.MH_glDetailTexFuncSGIS.invokeExact(handles.PFN_glDetailTexFuncSGIS, target, n, points); }
         catch (Throwable e) { throw new RuntimeException("error in DetailTexFuncSGIS", e); }
     }
@@ -60,7 +61,7 @@ public final class GLSGISDetailTexture {
     /// void glGetDetailTexFuncSGIS((unsigned int) GLenum target, GLfloat* points);
     /// ```
     public void GetDetailTexFuncSGIS(int target, MemorySegment points) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetDetailTexFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetDetailTexFuncSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetDetailTexFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glGetDetailTexFuncSGIS");
         try { Handles.MH_glGetDetailTexFuncSGIS.invokeExact(handles.PFN_glGetDetailTexFuncSGIS, target, points); }
         catch (Throwable e) { throw new RuntimeException("error in GetDetailTexFuncSGIS", e); }
     }

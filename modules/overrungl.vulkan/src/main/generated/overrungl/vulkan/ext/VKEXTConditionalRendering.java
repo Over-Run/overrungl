@@ -43,7 +43,7 @@ public final class VKEXTConditionalRendering {
     /// void vkCmdBeginConditionalRenderingEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkConditionalRenderingBeginInfoEXT* pConditionalRenderingBegin);
     /// ```
     public static void vkCmdBeginConditionalRenderingEXT(VkCommandBuffer commandBuffer, MemorySegment pConditionalRenderingBegin) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginConditionalRenderingEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginConditionalRenderingEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginConditionalRenderingEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginConditionalRenderingEXT");
         try { Handles.MH_vkCmdBeginConditionalRenderingEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginConditionalRenderingEXT, commandBuffer.segment(), pConditionalRenderingBegin); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginConditionalRenderingEXT", e); }
     }
@@ -52,7 +52,7 @@ public final class VKEXTConditionalRendering {
     /// void vkCmdEndConditionalRenderingEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
     /// ```
     public static void vkCmdEndConditionalRenderingEXT(VkCommandBuffer commandBuffer) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndConditionalRenderingEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndConditionalRenderingEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndConditionalRenderingEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndConditionalRenderingEXT");
         try { Handles.MH_vkCmdEndConditionalRenderingEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndConditionalRenderingEXT, commandBuffer.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndConditionalRenderingEXT", e); }
     }

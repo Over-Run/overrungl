@@ -51,7 +51,7 @@ public final class VKKHRExternalMemoryCapabilities {
     /// void vkGetPhysicalDeviceExternalBufferPropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalBufferInfo* pExternalBufferInfo, VkExternalBufferProperties* pExternalBufferProperties);
     /// ```
     public static void vkGetPhysicalDeviceExternalBufferPropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pExternalBufferInfo, MemorySegment pExternalBufferProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalBufferPropertiesKHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalBufferPropertiesKHR");
         try { Handles.MH_vkGetPhysicalDeviceExternalBufferPropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalBufferPropertiesKHR, physicalDevice.segment(), pExternalBufferInfo, pExternalBufferProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalBufferPropertiesKHR", e); }
     }

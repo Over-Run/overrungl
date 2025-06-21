@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBRobustness {
     public static final int GL_NO_ERROR = 0;
@@ -104,7 +105,7 @@ public final class GLARBRobustness {
     /// (unsigned int) GLenum glGetGraphicsResetStatusARB();
     /// ```
     public int GetGraphicsResetStatusARB() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetGraphicsResetStatusARB)) throw new SymbolNotFoundError("Symbol not found: glGetGraphicsResetStatusARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetGraphicsResetStatusARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetGraphicsResetStatusARB");
         try { return (int) Handles.MH_glGetGraphicsResetStatusARB.invokeExact(handles.PFN_glGetGraphicsResetStatusARB); }
         catch (Throwable e) { throw new RuntimeException("error in GetGraphicsResetStatusARB", e); }
     }
@@ -113,7 +114,7 @@ public final class GLARBRobustness {
     /// void glGetnTexImageARB((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei bufSize, void* img);
     /// ```
     public void GetnTexImageARB(int target, int level, int format, int type, int bufSize, MemorySegment img) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnTexImageARB)) throw new SymbolNotFoundError("Symbol not found: glGetnTexImageARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnTexImageARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnTexImageARB");
         try { Handles.MH_glGetnTexImageARB.invokeExact(handles.PFN_glGetnTexImageARB, target, level, format, type, bufSize, img); }
         catch (Throwable e) { throw new RuntimeException("error in GetnTexImageARB", e); }
     }
@@ -122,7 +123,7 @@ public final class GLARBRobustness {
     /// void glReadnPixelsARB((int) GLint x, (int) GLint y, (int) GLsizei width, (int) GLsizei height, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei bufSize, void* data);
     /// ```
     public void ReadnPixelsARB(int x, int y, int width, int height, int format, int type, int bufSize, MemorySegment data) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glReadnPixelsARB)) throw new SymbolNotFoundError("Symbol not found: glReadnPixelsARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glReadnPixelsARB)) throw new GLSymbolNotFoundError("Symbol not found: glReadnPixelsARB");
         try { Handles.MH_glReadnPixelsARB.invokeExact(handles.PFN_glReadnPixelsARB, x, y, width, height, format, type, bufSize, data); }
         catch (Throwable e) { throw new RuntimeException("error in ReadnPixelsARB", e); }
     }
@@ -131,7 +132,7 @@ public final class GLARBRobustness {
     /// void glGetnCompressedTexImageARB((unsigned int) GLenum target, (int) GLint lod, (int) GLsizei bufSize, void* img);
     /// ```
     public void GetnCompressedTexImageARB(int target, int lod, int bufSize, MemorySegment img) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnCompressedTexImageARB)) throw new SymbolNotFoundError("Symbol not found: glGetnCompressedTexImageARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnCompressedTexImageARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnCompressedTexImageARB");
         try { Handles.MH_glGetnCompressedTexImageARB.invokeExact(handles.PFN_glGetnCompressedTexImageARB, target, lod, bufSize, img); }
         catch (Throwable e) { throw new RuntimeException("error in GetnCompressedTexImageARB", e); }
     }
@@ -140,7 +141,7 @@ public final class GLARBRobustness {
     /// void glGetnUniformfvARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLfloat* params);
     /// ```
     public void GetnUniformfvARB(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformfvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformfvARB");
         try { Handles.MH_glGetnUniformfvARB.invokeExact(handles.PFN_glGetnUniformfvARB, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformfvARB", e); }
     }
@@ -149,7 +150,7 @@ public final class GLARBRobustness {
     /// void glGetnUniformivARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLint* params);
     /// ```
     public void GetnUniformivARB(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformivARB)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformivARB");
         try { Handles.MH_glGetnUniformivARB.invokeExact(handles.PFN_glGetnUniformivARB, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformivARB", e); }
     }
@@ -158,7 +159,7 @@ public final class GLARBRobustness {
     /// void glGetnUniformuivARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLuint* params);
     /// ```
     public void GetnUniformuivARB(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformuivARB)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformuivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformuivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformuivARB");
         try { Handles.MH_glGetnUniformuivARB.invokeExact(handles.PFN_glGetnUniformuivARB, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformuivARB", e); }
     }
@@ -167,7 +168,7 @@ public final class GLARBRobustness {
     /// void glGetnUniformdvARB((unsigned int) GLuint program, (int) GLint location, (int) GLsizei bufSize, GLdouble* params);
     /// ```
     public void GetnUniformdvARB(int program, int location, int bufSize, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetnUniformdvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnUniformdvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnUniformdvARB");
         try { Handles.MH_glGetnUniformdvARB.invokeExact(handles.PFN_glGetnUniformdvARB, program, location, bufSize, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetnUniformdvARB", e); }
     }
@@ -176,7 +177,7 @@ public final class GLARBRobustness {
     /// void glGetnMapdvARB((unsigned int) GLenum target, (unsigned int) GLenum query, (int) GLsizei bufSize, GLdouble* v);
     /// ```
     public void GetnMapdvARB(int target, int query, int bufSize, MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnMapdvARB)) throw new SymbolNotFoundError("Symbol not found: glGetnMapdvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnMapdvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnMapdvARB");
         try { Handles.MH_glGetnMapdvARB.invokeExact(handles.PFN_glGetnMapdvARB, target, query, bufSize, v); }
         catch (Throwable e) { throw new RuntimeException("error in GetnMapdvARB", e); }
     }
@@ -185,7 +186,7 @@ public final class GLARBRobustness {
     /// void glGetnMapfvARB((unsigned int) GLenum target, (unsigned int) GLenum query, (int) GLsizei bufSize, GLfloat* v);
     /// ```
     public void GetnMapfvARB(int target, int query, int bufSize, MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnMapfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetnMapfvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnMapfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnMapfvARB");
         try { Handles.MH_glGetnMapfvARB.invokeExact(handles.PFN_glGetnMapfvARB, target, query, bufSize, v); }
         catch (Throwable e) { throw new RuntimeException("error in GetnMapfvARB", e); }
     }
@@ -194,7 +195,7 @@ public final class GLARBRobustness {
     /// void glGetnMapivARB((unsigned int) GLenum target, (unsigned int) GLenum query, (int) GLsizei bufSize, GLint* v);
     /// ```
     public void GetnMapivARB(int target, int query, int bufSize, MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnMapivARB)) throw new SymbolNotFoundError("Symbol not found: glGetnMapivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnMapivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnMapivARB");
         try { Handles.MH_glGetnMapivARB.invokeExact(handles.PFN_glGetnMapivARB, target, query, bufSize, v); }
         catch (Throwable e) { throw new RuntimeException("error in GetnMapivARB", e); }
     }
@@ -203,7 +204,7 @@ public final class GLARBRobustness {
     /// void glGetnPixelMapfvARB((unsigned int) GLenum map, (int) GLsizei bufSize, GLfloat* values);
     /// ```
     public void GetnPixelMapfvARB(int map, int bufSize, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnPixelMapfvARB)) throw new SymbolNotFoundError("Symbol not found: glGetnPixelMapfvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnPixelMapfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnPixelMapfvARB");
         try { Handles.MH_glGetnPixelMapfvARB.invokeExact(handles.PFN_glGetnPixelMapfvARB, map, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnPixelMapfvARB", e); }
     }
@@ -212,7 +213,7 @@ public final class GLARBRobustness {
     /// void glGetnPixelMapuivARB((unsigned int) GLenum map, (int) GLsizei bufSize, GLuint* values);
     /// ```
     public void GetnPixelMapuivARB(int map, int bufSize, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnPixelMapuivARB)) throw new SymbolNotFoundError("Symbol not found: glGetnPixelMapuivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnPixelMapuivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnPixelMapuivARB");
         try { Handles.MH_glGetnPixelMapuivARB.invokeExact(handles.PFN_glGetnPixelMapuivARB, map, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnPixelMapuivARB", e); }
     }
@@ -221,7 +222,7 @@ public final class GLARBRobustness {
     /// void glGetnPixelMapusvARB((unsigned int) GLenum map, (int) GLsizei bufSize, GLushort* values);
     /// ```
     public void GetnPixelMapusvARB(int map, int bufSize, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnPixelMapusvARB)) throw new SymbolNotFoundError("Symbol not found: glGetnPixelMapusvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnPixelMapusvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnPixelMapusvARB");
         try { Handles.MH_glGetnPixelMapusvARB.invokeExact(handles.PFN_glGetnPixelMapusvARB, map, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnPixelMapusvARB", e); }
     }
@@ -230,7 +231,7 @@ public final class GLARBRobustness {
     /// void glGetnPolygonStippleARB((int) GLsizei bufSize, GLubyte* pattern);
     /// ```
     public void GetnPolygonStippleARB(int bufSize, MemorySegment pattern) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnPolygonStippleARB)) throw new SymbolNotFoundError("Symbol not found: glGetnPolygonStippleARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnPolygonStippleARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnPolygonStippleARB");
         try { Handles.MH_glGetnPolygonStippleARB.invokeExact(handles.PFN_glGetnPolygonStippleARB, bufSize, pattern); }
         catch (Throwable e) { throw new RuntimeException("error in GetnPolygonStippleARB", e); }
     }
@@ -239,7 +240,7 @@ public final class GLARBRobustness {
     /// void glGetnColorTableARB((unsigned int) GLenum target, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei bufSize, void* table);
     /// ```
     public void GetnColorTableARB(int target, int format, int type, int bufSize, MemorySegment table) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnColorTableARB)) throw new SymbolNotFoundError("Symbol not found: glGetnColorTableARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnColorTableARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnColorTableARB");
         try { Handles.MH_glGetnColorTableARB.invokeExact(handles.PFN_glGetnColorTableARB, target, format, type, bufSize, table); }
         catch (Throwable e) { throw new RuntimeException("error in GetnColorTableARB", e); }
     }
@@ -248,7 +249,7 @@ public final class GLARBRobustness {
     /// void glGetnConvolutionFilterARB((unsigned int) GLenum target, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei bufSize, void* image);
     /// ```
     public void GetnConvolutionFilterARB(int target, int format, int type, int bufSize, MemorySegment image) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnConvolutionFilterARB)) throw new SymbolNotFoundError("Symbol not found: glGetnConvolutionFilterARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnConvolutionFilterARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnConvolutionFilterARB");
         try { Handles.MH_glGetnConvolutionFilterARB.invokeExact(handles.PFN_glGetnConvolutionFilterARB, target, format, type, bufSize, image); }
         catch (Throwable e) { throw new RuntimeException("error in GetnConvolutionFilterARB", e); }
     }
@@ -257,7 +258,7 @@ public final class GLARBRobustness {
     /// void glGetnSeparableFilterARB((unsigned int) GLenum target, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei rowBufSize, void* row, (int) GLsizei columnBufSize, void* column, void* span);
     /// ```
     public void GetnSeparableFilterARB(int target, int format, int type, int rowBufSize, MemorySegment row, int columnBufSize, MemorySegment column, MemorySegment span) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnSeparableFilterARB)) throw new SymbolNotFoundError("Symbol not found: glGetnSeparableFilterARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnSeparableFilterARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnSeparableFilterARB");
         try { Handles.MH_glGetnSeparableFilterARB.invokeExact(handles.PFN_glGetnSeparableFilterARB, target, format, type, rowBufSize, row, columnBufSize, column, span); }
         catch (Throwable e) { throw new RuntimeException("error in GetnSeparableFilterARB", e); }
     }
@@ -266,7 +267,7 @@ public final class GLARBRobustness {
     /// void glGetnHistogramARB((unsigned int) GLenum target, GLboolean reset, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei bufSize, void* values);
     /// ```
     public void GetnHistogramARB(int target, boolean reset, int format, int type, int bufSize, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnHistogramARB)) throw new SymbolNotFoundError("Symbol not found: glGetnHistogramARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnHistogramARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnHistogramARB");
         try { Handles.MH_glGetnHistogramARB.invokeExact(handles.PFN_glGetnHistogramARB, target, ((reset) ? (byte)1 : (byte)0), format, type, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnHistogramARB", e); }
     }
@@ -275,7 +276,7 @@ public final class GLARBRobustness {
     /// void glGetnMinmaxARB((unsigned int) GLenum target, GLboolean reset, (unsigned int) GLenum format, (unsigned int) GLenum type, (int) GLsizei bufSize, void* values);
     /// ```
     public void GetnMinmaxARB(int target, boolean reset, int format, int type, int bufSize, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetnMinmaxARB)) throw new SymbolNotFoundError("Symbol not found: glGetnMinmaxARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetnMinmaxARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetnMinmaxARB");
         try { Handles.MH_glGetnMinmaxARB.invokeExact(handles.PFN_glGetnMinmaxARB, target, ((reset) ? (byte)1 : (byte)0), format, type, bufSize, values); }
         catch (Throwable e) { throw new RuntimeException("error in GetnMinmaxARB", e); }
     }

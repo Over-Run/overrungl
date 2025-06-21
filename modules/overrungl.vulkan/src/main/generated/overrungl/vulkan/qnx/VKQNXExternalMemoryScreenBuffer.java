@@ -41,7 +41,7 @@ public final class VKQNXExternalMemoryScreenBuffer {
     /// (int) VkResult vkGetScreenBufferPropertiesQNX((struct VkDevice*) VkDevice device, const struct _screen_buffer * buffer, VkScreenBufferPropertiesQNX* pProperties);
     /// ```
     public static int vkGetScreenBufferPropertiesQNX(VkDevice device, MemorySegment buffer, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetScreenBufferPropertiesQNX)) throw new SymbolNotFoundError("Symbol not found: vkGetScreenBufferPropertiesQNX");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetScreenBufferPropertiesQNX)) throw new VKSymbolNotFoundError("Symbol not found: vkGetScreenBufferPropertiesQNX");
         try { return (int) Handles.MH_vkGetScreenBufferPropertiesQNX.invokeExact(device.capabilities().PFN_vkGetScreenBufferPropertiesQNX, device.segment(), buffer, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetScreenBufferPropertiesQNX", e); }
     }

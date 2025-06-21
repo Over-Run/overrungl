@@ -39,7 +39,7 @@ public final class VKKHRBindMemory2 {
     /// (int) VkResult vkBindBufferMemory2KHR((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindBufferMemoryInfo* pBindInfos);
     /// ```
     public static int vkBindBufferMemory2KHR(VkDevice device, int bindInfoCount, MemorySegment pBindInfos) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindBufferMemory2KHR)) throw new SymbolNotFoundError("Symbol not found: vkBindBufferMemory2KHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindBufferMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkBindBufferMemory2KHR");
         try { return (int) Handles.MH_vkBindBufferMemory2KHR.invokeExact(device.capabilities().PFN_vkBindBufferMemory2KHR, device.segment(), bindInfoCount, pBindInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindBufferMemory2KHR", e); }
     }
@@ -48,7 +48,7 @@ public final class VKKHRBindMemory2 {
     /// (int) VkResult vkBindImageMemory2KHR((struct VkDevice*) VkDevice device, uint32_t bindInfoCount, const VkBindImageMemoryInfo* pBindInfos);
     /// ```
     public static int vkBindImageMemory2KHR(VkDevice device, int bindInfoCount, MemorySegment pBindInfos) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindImageMemory2KHR)) throw new SymbolNotFoundError("Symbol not found: vkBindImageMemory2KHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindImageMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkBindImageMemory2KHR");
         try { return (int) Handles.MH_vkBindImageMemory2KHR.invokeExact(device.capabilities().PFN_vkBindImageMemory2KHR, device.segment(), bindInfoCount, pBindInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindImageMemory2KHR", e); }
     }

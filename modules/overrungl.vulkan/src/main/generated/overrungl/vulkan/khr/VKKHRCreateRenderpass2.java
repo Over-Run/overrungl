@@ -45,7 +45,7 @@ public final class VKKHRCreateRenderpass2 {
     /// (int) VkResult vkCreateRenderPass2KHR((struct VkDevice*) VkDevice device, const VkRenderPassCreateInfo2* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkRenderPass* pRenderPass);
     /// ```
     public static int vkCreateRenderPass2KHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pRenderPass) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateRenderPass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateRenderPass2KHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateRenderPass2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateRenderPass2KHR");
         try { return (int) Handles.MH_vkCreateRenderPass2KHR.invokeExact(device.capabilities().PFN_vkCreateRenderPass2KHR, device.segment(), pCreateInfo, pAllocator, pRenderPass); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateRenderPass2KHR", e); }
     }
@@ -54,7 +54,7 @@ public final class VKKHRCreateRenderpass2 {
     /// void vkCmdBeginRenderPass2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderPassBeginInfo* pRenderPassBegin, const VkSubpassBeginInfo* pSubpassBeginInfo);
     /// ```
     public static void vkCmdBeginRenderPass2KHR(VkCommandBuffer commandBuffer, MemorySegment pRenderPassBegin, MemorySegment pSubpassBeginInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRenderPass2KHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginRenderPass2KHR");
         try { Handles.MH_vkCmdBeginRenderPass2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderPass2KHR, commandBuffer.segment(), pRenderPassBegin, pSubpassBeginInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRenderPass2KHR", e); }
     }
@@ -63,7 +63,7 @@ public final class VKKHRCreateRenderpass2 {
     /// void vkCmdNextSubpass2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSubpassBeginInfo* pSubpassBeginInfo, const VkSubpassEndInfo* pSubpassEndInfo);
     /// ```
     public static void vkCmdNextSubpass2KHR(VkCommandBuffer commandBuffer, MemorySegment pSubpassBeginInfo, MemorySegment pSubpassEndInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdNextSubpass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdNextSubpass2KHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdNextSubpass2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdNextSubpass2KHR");
         try { Handles.MH_vkCmdNextSubpass2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdNextSubpass2KHR, commandBuffer.segment(), pSubpassBeginInfo, pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdNextSubpass2KHR", e); }
     }
@@ -72,7 +72,7 @@ public final class VKKHRCreateRenderpass2 {
     /// void vkCmdEndRenderPass2KHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSubpassEndInfo* pSubpassEndInfo);
     /// ```
     public static void vkCmdEndRenderPass2KHR(VkCommandBuffer commandBuffer, MemorySegment pSubpassEndInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2KHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRenderPass2KHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRenderPass2KHR");
         try { Handles.MH_vkCmdEndRenderPass2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderPass2KHR, commandBuffer.segment(), pSubpassEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRenderPass2KHR", e); }
     }

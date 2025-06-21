@@ -41,7 +41,7 @@ public final class VKKHRCalibratedTimestamps {
     /// (int) VkResult vkGetPhysicalDeviceCalibrateableTimeDomainsKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t* pTimeDomainCount, VkTimeDomainKHR* pTimeDomains);
     /// ```
     public static int vkGetPhysicalDeviceCalibrateableTimeDomainsKHR(VkPhysicalDevice physicalDevice, MemorySegment pTimeDomainCount, MemorySegment pTimeDomains) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCalibrateableTimeDomainsKHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceCalibrateableTimeDomainsKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR, physicalDevice.segment(), pTimeDomainCount, pTimeDomains); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceCalibrateableTimeDomainsKHR", e); }
     }
@@ -50,7 +50,7 @@ public final class VKKHRCalibratedTimestamps {
     /// (int) VkResult vkGetCalibratedTimestampsKHR((struct VkDevice*) VkDevice device, uint32_t timestampCount, const VkCalibratedTimestampInfoKHR* pTimestampInfos, uint64_t* pTimestamps, uint64_t* pMaxDeviation);
     /// ```
     public static int vkGetCalibratedTimestampsKHR(VkDevice device, int timestampCount, MemorySegment pTimestampInfos, MemorySegment pTimestamps, MemorySegment pMaxDeviation) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetCalibratedTimestampsKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetCalibratedTimestampsKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetCalibratedTimestampsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetCalibratedTimestampsKHR");
         try { return (int) Handles.MH_vkGetCalibratedTimestampsKHR.invokeExact(device.capabilities().PFN_vkGetCalibratedTimestampsKHR, device.segment(), timestampCount, pTimestampInfos, pTimestamps, pMaxDeviation); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetCalibratedTimestampsKHR", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBVertexArrayObject {
     public static final int GL_VERTEX_ARRAY_BINDING = 0x85B5;
@@ -50,7 +51,7 @@ public final class GLARBVertexArrayObject {
     /// void glBindVertexArray((unsigned int) GLuint array);
     /// ```
     public void BindVertexArray(int array) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexArray)) throw new SymbolNotFoundError("Symbol not found: glBindVertexArray");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexArray)) throw new GLSymbolNotFoundError("Symbol not found: glBindVertexArray");
         try { Handles.MH_glBindVertexArray.invokeExact(handles.PFN_glBindVertexArray, array); }
         catch (Throwable e) { throw new RuntimeException("error in BindVertexArray", e); }
     }
@@ -59,7 +60,7 @@ public final class GLARBVertexArrayObject {
     /// void glDeleteVertexArrays((int) GLsizei n, const GLuint* arrays);
     /// ```
     public void DeleteVertexArrays(int n, MemorySegment arrays) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteVertexArrays)) throw new SymbolNotFoundError("Symbol not found: glDeleteVertexArrays");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteVertexArrays)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteVertexArrays");
         try { Handles.MH_glDeleteVertexArrays.invokeExact(handles.PFN_glDeleteVertexArrays, n, arrays); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteVertexArrays", e); }
     }
@@ -68,7 +69,7 @@ public final class GLARBVertexArrayObject {
     /// void glGenVertexArrays((int) GLsizei n, GLuint* arrays);
     /// ```
     public void GenVertexArrays(int n, MemorySegment arrays) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGenVertexArrays)) throw new SymbolNotFoundError("Symbol not found: glGenVertexArrays");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenVertexArrays)) throw new GLSymbolNotFoundError("Symbol not found: glGenVertexArrays");
         try { Handles.MH_glGenVertexArrays.invokeExact(handles.PFN_glGenVertexArrays, n, arrays); }
         catch (Throwable e) { throw new RuntimeException("error in GenVertexArrays", e); }
     }
@@ -77,7 +78,7 @@ public final class GLARBVertexArrayObject {
     /// GLboolean glIsVertexArray((unsigned int) GLuint array);
     /// ```
     public boolean IsVertexArray(int array) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glIsVertexArray)) throw new SymbolNotFoundError("Symbol not found: glIsVertexArray");
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsVertexArray)) throw new GLSymbolNotFoundError("Symbol not found: glIsVertexArray");
         try { return (((byte) Handles.MH_glIsVertexArray.invokeExact(handles.PFN_glIsVertexArray, array)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsVertexArray", e); }
     }

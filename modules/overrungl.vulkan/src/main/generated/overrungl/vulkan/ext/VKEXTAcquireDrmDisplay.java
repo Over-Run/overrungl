@@ -36,7 +36,7 @@ public final class VKEXTAcquireDrmDisplay {
     /// (int) VkResult vkAcquireDrmDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, int32_t drmFd, (uint64_t) VkDisplayKHR display);
     /// ```
     public static int vkAcquireDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, long display) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkAcquireDrmDisplayEXT");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireDrmDisplayEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireDrmDisplayEXT");
         try { return (int) Handles.MH_vkAcquireDrmDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkAcquireDrmDisplayEXT, physicalDevice.segment(), drmFd, display); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireDrmDisplayEXT", e); }
     }
@@ -45,7 +45,7 @@ public final class VKEXTAcquireDrmDisplay {
     /// (int) VkResult vkGetDrmDisplayEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, int32_t drmFd, uint32_t connectorId, VkDisplayKHR* display);
     /// ```
     public static int vkGetDrmDisplayEXT(VkPhysicalDevice physicalDevice, int drmFd, int connectorId, MemorySegment display) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetDrmDisplayEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDrmDisplayEXT");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetDrmDisplayEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDrmDisplayEXT");
         try { return (int) Handles.MH_vkGetDrmDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetDrmDisplayEXT, physicalDevice.segment(), drmFd, connectorId, display); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDrmDisplayEXT", e); }
     }

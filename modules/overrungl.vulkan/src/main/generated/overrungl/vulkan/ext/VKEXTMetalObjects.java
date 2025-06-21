@@ -53,7 +53,7 @@ public final class VKEXTMetalObjects {
     /// void vkExportMetalObjectsEXT((struct VkDevice*) VkDevice device, VkExportMetalObjectsInfoEXT* pMetalObjectsInfo);
     /// ```
     public static void vkExportMetalObjectsEXT(VkDevice device, MemorySegment pMetalObjectsInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkExportMetalObjectsEXT)) throw new SymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkExportMetalObjectsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkExportMetalObjectsEXT");
         try { Handles.MH_vkExportMetalObjectsEXT.invokeExact(device.capabilities().PFN_vkExportMetalObjectsEXT, device.segment(), pMetalObjectsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkExportMetalObjectsEXT", e); }
     }

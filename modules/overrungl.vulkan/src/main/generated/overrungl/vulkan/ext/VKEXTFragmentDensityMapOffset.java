@@ -40,7 +40,7 @@ public final class VKEXTFragmentDensityMapOffset {
     /// void vkCmdEndRendering2EXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingEndInfoEXT* pRenderingEndInfo);
     /// ```
     public static void vkCmdEndRendering2EXT(VkCommandBuffer commandBuffer, MemorySegment pRenderingEndInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRendering2EXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRendering2EXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRendering2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRendering2EXT");
         try { Handles.MH_vkCmdEndRendering2EXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRendering2EXT, commandBuffer.segment(), pRenderingEndInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRendering2EXT", e); }
     }

@@ -82,7 +82,7 @@ public final class VKEXTDebugReport {
     /// (int) VkResult vkCreateDebugReportCallbackEXT((struct VkInstance*) VkInstance instance, const VkDebugReportCallbackCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkDebugReportCallbackEXT* pCallback);
     /// ```
     public static int vkCreateDebugReportCallbackEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pCallback) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDebugReportCallbackEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateDebugReportCallbackEXT");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDebugReportCallbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDebugReportCallbackEXT");
         try { return (int) Handles.MH_vkCreateDebugReportCallbackEXT.invokeExact(instance.capabilities().PFN_vkCreateDebugReportCallbackEXT, instance.segment(), pCreateInfo, pAllocator, pCallback); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDebugReportCallbackEXT", e); }
     }
@@ -91,7 +91,7 @@ public final class VKEXTDebugReport {
     /// void vkDestroyDebugReportCallbackEXT((struct VkInstance*) VkInstance instance, (uint64_t) VkDebugReportCallbackEXT callback, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyDebugReportCallbackEXT(VkInstance instance, long callback, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDestroyDebugReportCallbackEXT)) throw new SymbolNotFoundError("Symbol not found: vkDestroyDebugReportCallbackEXT");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDestroyDebugReportCallbackEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDebugReportCallbackEXT");
         try { Handles.MH_vkDestroyDebugReportCallbackEXT.invokeExact(instance.capabilities().PFN_vkDestroyDebugReportCallbackEXT, instance.segment(), callback, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDebugReportCallbackEXT", e); }
     }
@@ -100,7 +100,7 @@ public final class VKEXTDebugReport {
     /// void vkDebugReportMessageEXT((struct VkInstance*) VkInstance instance, ((uint32_t) VkFlags) VkDebugReportFlagsEXT flags, (int) VkDebugReportObjectTypeEXT objectType, uint64_t object, size_t location, int32_t messageCode, const char* pLayerPrefix, const char* pMessage);
     /// ```
     public static void vkDebugReportMessageEXT(VkInstance instance, int flags, int objectType, long object, long location, int messageCode, MemorySegment pLayerPrefix, MemorySegment pMessage) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDebugReportMessageEXT)) throw new SymbolNotFoundError("Symbol not found: vkDebugReportMessageEXT");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkDebugReportMessageEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDebugReportMessageEXT");
         try { Handles.MH_vkDebugReportMessageEXT.invoke(instance.capabilities().PFN_vkDebugReportMessageEXT, instance.segment(), flags, objectType, object, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, location), messageCode, pLayerPrefix, pMessage); }
         catch (Throwable e) { throw new RuntimeException("error in vkDebugReportMessageEXT", e); }
     }

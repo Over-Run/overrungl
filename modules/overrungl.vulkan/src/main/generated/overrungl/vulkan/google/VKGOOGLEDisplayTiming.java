@@ -37,7 +37,7 @@ public final class VKGOOGLEDisplayTiming {
     /// (int) VkResult vkGetRefreshCycleDurationGOOGLE((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, VkRefreshCycleDurationGOOGLE* pDisplayTimingProperties);
     /// ```
     public static int vkGetRefreshCycleDurationGOOGLE(VkDevice device, long swapchain, MemorySegment pDisplayTimingProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetRefreshCycleDurationGOOGLE)) throw new SymbolNotFoundError("Symbol not found: vkGetRefreshCycleDurationGOOGLE");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetRefreshCycleDurationGOOGLE)) throw new VKSymbolNotFoundError("Symbol not found: vkGetRefreshCycleDurationGOOGLE");
         try { return (int) Handles.MH_vkGetRefreshCycleDurationGOOGLE.invokeExact(device.capabilities().PFN_vkGetRefreshCycleDurationGOOGLE, device.segment(), swapchain, pDisplayTimingProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRefreshCycleDurationGOOGLE", e); }
     }
@@ -46,7 +46,7 @@ public final class VKGOOGLEDisplayTiming {
     /// (int) VkResult vkGetPastPresentationTimingGOOGLE((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, uint32_t* pPresentationTimingCount, VkPastPresentationTimingGOOGLE* pPresentationTimings);
     /// ```
     public static int vkGetPastPresentationTimingGOOGLE(VkDevice device, long swapchain, MemorySegment pPresentationTimingCount, MemorySegment pPresentationTimings) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPastPresentationTimingGOOGLE)) throw new SymbolNotFoundError("Symbol not found: vkGetPastPresentationTimingGOOGLE");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPastPresentationTimingGOOGLE)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPastPresentationTimingGOOGLE");
         try { return (int) Handles.MH_vkGetPastPresentationTimingGOOGLE.invokeExact(device.capabilities().PFN_vkGetPastPresentationTimingGOOGLE, device.segment(), swapchain, pPresentationTimingCount, pPresentationTimings); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPastPresentationTimingGOOGLE", e); }
     }

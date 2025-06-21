@@ -39,7 +39,7 @@ public final class VKKHRExternalMemoryFd {
     /// (int) VkResult vkGetMemoryFdKHR((struct VkDevice*) VkDevice device, const VkMemoryGetFdInfoKHR* pGetFdInfo, int* pFd);
     /// ```
     public static int vkGetMemoryFdKHR(VkDevice device, MemorySegment pGetFdInfo, MemorySegment pFd) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryFdKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryFdKHR");
         try { return (int) Handles.MH_vkGetMemoryFdKHR.invokeExact(device.capabilities().PFN_vkGetMemoryFdKHR, device.segment(), pGetFdInfo, pFd); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryFdKHR", e); }
     }
@@ -48,7 +48,7 @@ public final class VKKHRExternalMemoryFd {
     /// (int) VkResult vkGetMemoryFdPropertiesKHR((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, int fd, VkMemoryFdPropertiesKHR* pMemoryFdProperties);
     /// ```
     public static int vkGetMemoryFdPropertiesKHR(VkDevice device, int handleType, int fd, MemorySegment pMemoryFdProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryFdPropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryFdPropertiesKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryFdPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryFdPropertiesKHR");
         try { return (int) Handles.MH_vkGetMemoryFdPropertiesKHR.invokeExact(device.capabilities().PFN_vkGetMemoryFdPropertiesKHR, device.segment(), handleType, fd, pMemoryFdProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryFdPropertiesKHR", e); }
     }

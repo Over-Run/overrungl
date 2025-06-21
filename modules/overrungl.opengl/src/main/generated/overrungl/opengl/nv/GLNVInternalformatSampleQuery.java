@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVInternalformatSampleQuery {
     public static final int GL_RENDERBUFFER = 0x8D41;
@@ -47,7 +48,7 @@ public final class GLNVInternalformatSampleQuery {
     /// void glGetInternalformatSampleivNV((unsigned int) GLenum target, (unsigned int) GLenum internalformat, (int) GLsizei samples, (unsigned int) GLenum pname, (int) GLsizei count, GLint* params);
     /// ```
     public void GetInternalformatSampleivNV(int target, int internalformat, int samples, int pname, int count, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformatSampleivNV)) throw new SymbolNotFoundError("Symbol not found: glGetInternalformatSampleivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformatSampleivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetInternalformatSampleivNV");
         try { Handles.MH_glGetInternalformatSampleivNV.invokeExact(handles.PFN_glGetInternalformatSampleivNV, target, internalformat, samples, pname, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetInternalformatSampleivNV", e); }
     }

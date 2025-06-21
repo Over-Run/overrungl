@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLATIVertexAttribArrayObject {
     private final Handles handles;
@@ -46,7 +47,7 @@ public final class GLATIVertexAttribArrayObject {
     /// void glVertexAttribArrayObjectATI((unsigned int) GLuint index, (int) GLint size, (unsigned int) GLenum type, GLboolean normalized, (int) GLsizei stride, (unsigned int) GLuint buffer, (unsigned int) GLuint offset);
     /// ```
     public void VertexAttribArrayObjectATI(int index, int size, int type, boolean normalized, int stride, int buffer, int offset) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribArrayObjectATI)) throw new SymbolNotFoundError("Symbol not found: glVertexAttribArrayObjectATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribArrayObjectATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribArrayObjectATI");
         try { Handles.MH_glVertexAttribArrayObjectATI.invokeExact(handles.PFN_glVertexAttribArrayObjectATI, index, size, type, ((normalized) ? (byte)1 : (byte)0), stride, buffer, offset); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribArrayObjectATI", e); }
     }
@@ -55,7 +56,7 @@ public final class GLATIVertexAttribArrayObject {
     /// void glGetVertexAttribArrayObjectfvATI((unsigned int) GLuint index, (unsigned int) GLenum pname, GLfloat* params);
     /// ```
     public void GetVertexAttribArrayObjectfvATI(int index, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribArrayObjectfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectfvATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribArrayObjectfvATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectfvATI");
         try { Handles.MH_glGetVertexAttribArrayObjectfvATI.invokeExact(handles.PFN_glGetVertexAttribArrayObjectfvATI, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribArrayObjectfvATI", e); }
     }
@@ -64,7 +65,7 @@ public final class GLATIVertexAttribArrayObject {
     /// void glGetVertexAttribArrayObjectivATI((unsigned int) GLuint index, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetVertexAttribArrayObjectivATI(int index, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribArrayObjectivATI)) throw new SymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectivATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribArrayObjectivATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribArrayObjectivATI");
         try { Handles.MH_glGetVertexAttribArrayObjectivATI.invokeExact(handles.PFN_glGetVertexAttribArrayObjectivATI, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribArrayObjectivATI", e); }
     }

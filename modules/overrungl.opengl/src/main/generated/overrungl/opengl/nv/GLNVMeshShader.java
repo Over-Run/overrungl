@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVMeshShader {
     public static final int GL_MESH_SHADER_NV = 0x9559;
@@ -97,7 +98,7 @@ public final class GLNVMeshShader {
     /// void glDrawMeshTasksNV((unsigned int) GLuint first, (unsigned int) GLuint count);
     /// ```
     public void DrawMeshTasksNV(int first, int count) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawMeshTasksNV");
         try { Handles.MH_glDrawMeshTasksNV.invokeExact(handles.PFN_glDrawMeshTasksNV, first, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawMeshTasksNV", e); }
     }
@@ -106,7 +107,7 @@ public final class GLNVMeshShader {
     /// void glDrawMeshTasksIndirectNV(((signed long long) khronos_intptr_t) GLintptr indirect);
     /// ```
     public void DrawMeshTasksIndirectNV(long indirect) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glDrawMeshTasksIndirectNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawMeshTasksIndirectNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawMeshTasksIndirectNV");
         try { Handles.MH_glDrawMeshTasksIndirectNV.invokeExact(handles.PFN_glDrawMeshTasksIndirectNV, indirect); }
         catch (Throwable e) { throw new RuntimeException("error in DrawMeshTasksIndirectNV", e); }
     }
@@ -115,7 +116,7 @@ public final class GLNVMeshShader {
     /// void glMultiDrawMeshTasksIndirectNV(((signed long long) khronos_intptr_t) GLintptr indirect, (int) GLsizei drawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawMeshTasksIndirectNV(long indirect, int drawcount, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectNV)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectNV");
         try { Handles.MH_glMultiDrawMeshTasksIndirectNV.invokeExact(handles.PFN_glMultiDrawMeshTasksIndirectNV, indirect, drawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawMeshTasksIndirectNV", e); }
     }
@@ -124,7 +125,7 @@ public final class GLNVMeshShader {
     /// void glMultiDrawMeshTasksIndirectCountNV(((signed long long) khronos_intptr_t) GLintptr indirect, ((signed long long) khronos_intptr_t) GLintptr drawcount, (int) GLsizei maxdrawcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawMeshTasksIndirectCountNV(long indirect, long drawcount, int maxdrawcount, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectCountNV)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectCountNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawMeshTasksIndirectCountNV)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawMeshTasksIndirectCountNV");
         try { Handles.MH_glMultiDrawMeshTasksIndirectCountNV.invokeExact(handles.PFN_glMultiDrawMeshTasksIndirectCountNV, indirect, drawcount, maxdrawcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawMeshTasksIndirectCountNV", e); }
     }

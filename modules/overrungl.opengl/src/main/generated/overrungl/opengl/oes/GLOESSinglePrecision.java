@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLOESSinglePrecision {
     private final Handles handles;
@@ -55,7 +56,7 @@ public final class GLOESSinglePrecision {
     /// void glClearDepthfOES(((float) khronos_float_t) GLclampf depth);
     /// ```
     public void ClearDepthfOES(float depth) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthfOES)) throw new SymbolNotFoundError("Symbol not found: glClearDepthfOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthfOES)) throw new GLSymbolNotFoundError("Symbol not found: glClearDepthfOES");
         try { Handles.MH_glClearDepthfOES.invokeExact(handles.PFN_glClearDepthfOES, depth); }
         catch (Throwable e) { throw new RuntimeException("error in ClearDepthfOES", e); }
     }
@@ -64,7 +65,7 @@ public final class GLOESSinglePrecision {
     /// void glClipPlanefOES((unsigned int) GLenum plane, const GLfloat* equation);
     /// ```
     public void ClipPlanefOES(int plane, MemorySegment equation) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glClipPlanefOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glClipPlanefOES)) throw new GLSymbolNotFoundError("Symbol not found: glClipPlanefOES");
         try { Handles.MH_glClipPlanefOES.invokeExact(handles.PFN_glClipPlanefOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in ClipPlanefOES", e); }
     }
@@ -73,7 +74,7 @@ public final class GLOESSinglePrecision {
     /// void glDepthRangefOES(((float) khronos_float_t) GLclampf n, ((float) khronos_float_t) GLclampf f);
     /// ```
     public void DepthRangefOES(float n, float f) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangefOES)) throw new SymbolNotFoundError("Symbol not found: glDepthRangefOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangefOES)) throw new GLSymbolNotFoundError("Symbol not found: glDepthRangefOES");
         try { Handles.MH_glDepthRangefOES.invokeExact(handles.PFN_glDepthRangefOES, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in DepthRangefOES", e); }
     }
@@ -82,7 +83,7 @@ public final class GLOESSinglePrecision {
     /// void glFrustumfOES(((float) khronos_float_t) GLfloat l, ((float) khronos_float_t) GLfloat r, ((float) khronos_float_t) GLfloat b, ((float) khronos_float_t) GLfloat t, ((float) khronos_float_t) GLfloat n, ((float) khronos_float_t) GLfloat f);
     /// ```
     public void FrustumfOES(float l, float r, float b, float t, float n, float f) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFrustumfOES)) throw new SymbolNotFoundError("Symbol not found: glFrustumfOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFrustumfOES)) throw new GLSymbolNotFoundError("Symbol not found: glFrustumfOES");
         try { Handles.MH_glFrustumfOES.invokeExact(handles.PFN_glFrustumfOES, l, r, b, t, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in FrustumfOES", e); }
     }
@@ -91,7 +92,7 @@ public final class GLOESSinglePrecision {
     /// void glGetClipPlanefOES((unsigned int) GLenum plane, GLfloat* equation);
     /// ```
     public void GetClipPlanefOES(int plane, MemorySegment equation) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetClipPlanefOES)) throw new SymbolNotFoundError("Symbol not found: glGetClipPlanefOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetClipPlanefOES)) throw new GLSymbolNotFoundError("Symbol not found: glGetClipPlanefOES");
         try { Handles.MH_glGetClipPlanefOES.invokeExact(handles.PFN_glGetClipPlanefOES, plane, equation); }
         catch (Throwable e) { throw new RuntimeException("error in GetClipPlanefOES", e); }
     }
@@ -100,7 +101,7 @@ public final class GLOESSinglePrecision {
     /// void glOrthofOES(((float) khronos_float_t) GLfloat l, ((float) khronos_float_t) GLfloat r, ((float) khronos_float_t) GLfloat b, ((float) khronos_float_t) GLfloat t, ((float) khronos_float_t) GLfloat n, ((float) khronos_float_t) GLfloat f);
     /// ```
     public void OrthofOES(float l, float r, float b, float t, float n, float f) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glOrthofOES)) throw new SymbolNotFoundError("Symbol not found: glOrthofOES");
+        if (MemoryUtil.isNullPointer(handles.PFN_glOrthofOES)) throw new GLSymbolNotFoundError("Symbol not found: glOrthofOES");
         try { Handles.MH_glOrthofOES.invokeExact(handles.PFN_glOrthofOES, l, r, b, t, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in OrthofOES", e); }
     }

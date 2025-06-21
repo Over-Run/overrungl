@@ -39,7 +39,7 @@ public final class VKVALVEDescriptorSetHostMapping {
     /// void vkGetDescriptorSetLayoutHostMappingInfoVALVE((struct VkDevice*) VkDevice device, const VkDescriptorSetBindingReferenceVALVE* pBindingReference, VkDescriptorSetLayoutHostMappingInfoVALVE* pHostMapping);
     /// ```
     public static void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, MemorySegment pBindingReference, MemorySegment pHostMapping) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutHostMappingInfoVALVE");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutHostMappingInfoVALVE");
         try { Handles.MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE, device.segment(), pBindingReference, pHostMapping); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetLayoutHostMappingInfoVALVE", e); }
     }
@@ -48,7 +48,7 @@ public final class VKVALVEDescriptorSetHostMapping {
     /// void vkGetDescriptorSetHostMappingVALVE((struct VkDevice*) VkDevice device, (uint64_t) VkDescriptorSet descriptorSet, void** ppData);
     /// ```
     public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, long descriptorSet, MemorySegment ppData) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetHostMappingVALVE)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetHostMappingVALVE");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetHostMappingVALVE)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetHostMappingVALVE");
         try { Handles.MH_vkGetDescriptorSetHostMappingVALVE.invokeExact(device.capabilities().PFN_vkGetDescriptorSetHostMappingVALVE, device.segment(), descriptorSet, ppData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetHostMappingVALVE", e); }
     }

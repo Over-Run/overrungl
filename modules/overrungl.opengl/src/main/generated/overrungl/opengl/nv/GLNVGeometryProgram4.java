@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVGeometryProgram4 {
     public static final int GL_LINES_ADJACENCY_EXT = 0x000A;
@@ -65,7 +66,7 @@ public final class GLNVGeometryProgram4 {
     /// void glProgramVertexLimitNV((unsigned int) GLenum target, (int) GLint limit);
     /// ```
     public void ProgramVertexLimitNV(int target, int limit) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glProgramVertexLimitNV)) throw new SymbolNotFoundError("Symbol not found: glProgramVertexLimitNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramVertexLimitNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramVertexLimitNV");
         try { Handles.MH_glProgramVertexLimitNV.invokeExact(handles.PFN_glProgramVertexLimitNV, target, limit); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramVertexLimitNV", e); }
     }
@@ -74,7 +75,7 @@ public final class GLNVGeometryProgram4 {
     /// void glFramebufferTextureEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level);
     /// ```
     public void FramebufferTextureEXT(int target, int attachment, int texture, int level) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureEXT");
         try { Handles.MH_glFramebufferTextureEXT.invokeExact(handles.PFN_glFramebufferTextureEXT, target, attachment, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureEXT", e); }
     }
@@ -83,7 +84,7 @@ public final class GLNVGeometryProgram4 {
     /// void glFramebufferTextureLayerEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (int) GLint layer);
     /// ```
     public void FramebufferTextureLayerEXT(int target, int attachment, int texture, int level, int layer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureLayerEXT");
         try { Handles.MH_glFramebufferTextureLayerEXT.invokeExact(handles.PFN_glFramebufferTextureLayerEXT, target, attachment, texture, level, layer); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureLayerEXT", e); }
     }
@@ -92,7 +93,7 @@ public final class GLNVGeometryProgram4 {
     /// void glFramebufferTextureFaceEXT((unsigned int) GLenum target, (unsigned int) GLenum attachment, (unsigned int) GLuint texture, (int) GLint level, (unsigned int) GLenum face);
     /// ```
     public void FramebufferTextureFaceEXT(int target, int attachment, int texture, int level, int face) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureFaceEXT)) throw new SymbolNotFoundError("Symbol not found: glFramebufferTextureFaceEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureFaceEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureFaceEXT");
         try { Handles.MH_glFramebufferTextureFaceEXT.invokeExact(handles.PFN_glFramebufferTextureFaceEXT, target, attachment, texture, level, face); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureFaceEXT", e); }
     }

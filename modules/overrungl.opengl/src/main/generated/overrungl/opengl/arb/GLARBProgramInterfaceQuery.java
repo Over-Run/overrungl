@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBProgramInterfaceQuery {
     public static final int GL_UNIFORM = 0x92E1;
@@ -105,7 +106,7 @@ public final class GLARBProgramInterfaceQuery {
     /// void glGetProgramInterfaceiv((unsigned int) GLuint program, (unsigned int) GLenum programInterface, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetProgramInterfaceiv(int program, int programInterface, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramInterfaceiv)) throw new SymbolNotFoundError("Symbol not found: glGetProgramInterfaceiv");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramInterfaceiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramInterfaceiv");
         try { Handles.MH_glGetProgramInterfaceiv.invokeExact(handles.PFN_glGetProgramInterfaceiv, program, programInterface, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramInterfaceiv", e); }
     }
@@ -114,7 +115,7 @@ public final class GLARBProgramInterfaceQuery {
     /// (unsigned int) GLuint glGetProgramResourceIndex((unsigned int) GLuint program, (unsigned int) GLenum programInterface, const GLchar* name);
     /// ```
     public int GetProgramResourceIndex(int program, int programInterface, MemorySegment name) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceIndex)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceIndex");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceIndex)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramResourceIndex");
         try { return (int) Handles.MH_glGetProgramResourceIndex.invokeExact(handles.PFN_glGetProgramResourceIndex, program, programInterface, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramResourceIndex", e); }
     }
@@ -123,7 +124,7 @@ public final class GLARBProgramInterfaceQuery {
     /// void glGetProgramResourceName((unsigned int) GLuint program, (unsigned int) GLenum programInterface, (unsigned int) GLuint index, (int) GLsizei bufSize, GLsizei* length, GLchar* name);
     /// ```
     public void GetProgramResourceName(int program, int programInterface, int index, int bufSize, MemorySegment length, MemorySegment name) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceName)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceName");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceName)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramResourceName");
         try { Handles.MH_glGetProgramResourceName.invokeExact(handles.PFN_glGetProgramResourceName, program, programInterface, index, bufSize, length, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramResourceName", e); }
     }
@@ -132,7 +133,7 @@ public final class GLARBProgramInterfaceQuery {
     /// void glGetProgramResourceiv((unsigned int) GLuint program, (unsigned int) GLenum programInterface, (unsigned int) GLuint index, (int) GLsizei propCount, const GLenum* props, (int) GLsizei count, GLsizei* length, GLint* params);
     /// ```
     public void GetProgramResourceiv(int program, int programInterface, int index, int propCount, MemorySegment props, int count, MemorySegment length, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceiv)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceiv");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceiv)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramResourceiv");
         try { Handles.MH_glGetProgramResourceiv.invokeExact(handles.PFN_glGetProgramResourceiv, program, programInterface, index, propCount, props, count, length, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramResourceiv", e); }
     }
@@ -141,7 +142,7 @@ public final class GLARBProgramInterfaceQuery {
     /// (int) GLint glGetProgramResourceLocation((unsigned int) GLuint program, (unsigned int) GLenum programInterface, const GLchar* name);
     /// ```
     public int GetProgramResourceLocation(int program, int programInterface, MemorySegment name) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceLocation)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceLocation");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceLocation)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramResourceLocation");
         try { return (int) Handles.MH_glGetProgramResourceLocation.invokeExact(handles.PFN_glGetProgramResourceLocation, program, programInterface, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramResourceLocation", e); }
     }
@@ -150,7 +151,7 @@ public final class GLARBProgramInterfaceQuery {
     /// (int) GLint glGetProgramResourceLocationIndex((unsigned int) GLuint program, (unsigned int) GLenum programInterface, const GLchar* name);
     /// ```
     public int GetProgramResourceLocationIndex(int program, int programInterface, MemorySegment name) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceLocationIndex)) throw new SymbolNotFoundError("Symbol not found: glGetProgramResourceLocationIndex");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramResourceLocationIndex)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramResourceLocationIndex");
         try { return (int) Handles.MH_glGetProgramResourceLocationIndex.invokeExact(handles.PFN_glGetProgramResourceLocationIndex, program, programInterface, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramResourceLocationIndex", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTRasterMultisample {
     public static final int GL_RASTER_MULTISAMPLE_EXT = 0x9327;
@@ -46,7 +47,7 @@ public final class GLEXTRasterMultisample {
     /// void glRasterSamplesEXT((unsigned int) GLuint samples, GLboolean fixedsamplelocations);
     /// ```
     public void RasterSamplesEXT(int samples, boolean fixedsamplelocations) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glRasterSamplesEXT)) throw new SymbolNotFoundError("Symbol not found: glRasterSamplesEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glRasterSamplesEXT)) throw new GLSymbolNotFoundError("Symbol not found: glRasterSamplesEXT");
         try { Handles.MH_glRasterSamplesEXT.invokeExact(handles.PFN_glRasterSamplesEXT, samples, ((fixedsamplelocations) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in RasterSamplesEXT", e); }
     }

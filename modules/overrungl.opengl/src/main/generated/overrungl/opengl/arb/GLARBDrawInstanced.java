@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBDrawInstanced {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLARBDrawInstanced {
     /// void glDrawArraysInstancedARB((unsigned int) GLenum mode, (int) GLint first, (int) GLsizei count, (int) GLsizei primcount);
     /// ```
     public void DrawArraysInstancedARB(int mode, int first, int count, int primcount) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedARB)) throw new GLSymbolNotFoundError("Symbol not found: glDrawArraysInstancedARB");
         try { Handles.MH_glDrawArraysInstancedARB.invokeExact(handles.PFN_glDrawArraysInstancedARB, mode, first, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in DrawArraysInstancedARB", e); }
     }
@@ -52,7 +53,7 @@ public final class GLARBDrawInstanced {
     /// void glDrawElementsInstancedARB((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices, (int) GLsizei primcount);
     /// ```
     public void DrawElementsInstancedARB(int mode, int count, int type, MemorySegment indices, int primcount) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedARB)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedARB)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedARB");
         try { Handles.MH_glDrawElementsInstancedARB.invokeExact(handles.PFN_glDrawElementsInstancedARB, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedARB", e); }
     }

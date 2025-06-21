@@ -41,7 +41,7 @@ public final class VKKHRMaintenance1 {
     /// void vkTrimCommandPoolKHR((struct VkDevice*) VkDevice device, (uint64_t) VkCommandPool commandPool, ((uint32_t) VkFlags) VkCommandPoolTrimFlags flags);
     /// ```
     public static void vkTrimCommandPoolKHR(VkDevice device, long commandPool, int flags) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkTrimCommandPoolKHR)) throw new SymbolNotFoundError("Symbol not found: vkTrimCommandPoolKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkTrimCommandPoolKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkTrimCommandPoolKHR");
         try { Handles.MH_vkTrimCommandPoolKHR.invokeExact(device.capabilities().PFN_vkTrimCommandPoolKHR, device.segment(), commandPool, flags); }
         catch (Throwable e) { throw new RuntimeException("error in vkTrimCommandPoolKHR", e); }
     }

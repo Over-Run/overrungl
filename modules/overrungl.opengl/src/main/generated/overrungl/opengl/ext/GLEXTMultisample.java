@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTMultisample {
     public static final int GL_MULTISAMPLE_EXT = 0x809D;
@@ -60,7 +61,7 @@ public final class GLEXTMultisample {
     /// void glSampleMaskEXT(((float) khronos_float_t) GLclampf value, GLboolean invert);
     /// ```
     public void SampleMaskEXT(float value, boolean invert) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskEXT)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSampleMaskEXT");
         try { Handles.MH_glSampleMaskEXT.invokeExact(handles.PFN_glSampleMaskEXT, value, ((invert) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in SampleMaskEXT", e); }
     }
@@ -69,7 +70,7 @@ public final class GLEXTMultisample {
     /// void glSamplePatternEXT((unsigned int) GLenum pattern);
     /// ```
     public void SamplePatternEXT(int pattern) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSamplePatternEXT)) throw new SymbolNotFoundError("Symbol not found: glSamplePatternEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSamplePatternEXT)) throw new GLSymbolNotFoundError("Symbol not found: glSamplePatternEXT");
         try { Handles.MH_glSamplePatternEXT.invokeExact(handles.PFN_glSamplePatternEXT, pattern); }
         catch (Throwable e) { throw new RuntimeException("error in SamplePatternEXT", e); }
     }

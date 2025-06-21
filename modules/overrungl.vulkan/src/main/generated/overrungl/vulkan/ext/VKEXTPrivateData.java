@@ -42,7 +42,7 @@ public final class VKEXTPrivateData {
     /// (int) VkResult vkCreatePrivateDataSlotEXT((struct VkDevice*) VkDevice device, const VkPrivateDataSlotCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkPrivateDataSlot* pPrivateDataSlot);
     /// ```
     public static int vkCreatePrivateDataSlotEXT(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pPrivateDataSlot) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreatePrivateDataSlotEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreatePrivateDataSlotEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreatePrivateDataSlotEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreatePrivateDataSlotEXT");
         try { return (int) Handles.MH_vkCreatePrivateDataSlotEXT.invokeExact(device.capabilities().PFN_vkCreatePrivateDataSlotEXT, device.segment(), pCreateInfo, pAllocator, pPrivateDataSlot); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreatePrivateDataSlotEXT", e); }
     }
@@ -51,7 +51,7 @@ public final class VKEXTPrivateData {
     /// void vkDestroyPrivateDataSlotEXT((struct VkDevice*) VkDevice device, (uint64_t) VkPrivateDataSlot privateDataSlot, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyPrivateDataSlotEXT(VkDevice device, long privateDataSlot, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyPrivateDataSlotEXT)) throw new SymbolNotFoundError("Symbol not found: vkDestroyPrivateDataSlotEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyPrivateDataSlotEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyPrivateDataSlotEXT");
         try { Handles.MH_vkDestroyPrivateDataSlotEXT.invokeExact(device.capabilities().PFN_vkDestroyPrivateDataSlotEXT, device.segment(), privateDataSlot, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyPrivateDataSlotEXT", e); }
     }
@@ -60,7 +60,7 @@ public final class VKEXTPrivateData {
     /// (int) VkResult vkSetPrivateDataEXT((struct VkDevice*) VkDevice device, (int) VkObjectType objectType, uint64_t objectHandle, (uint64_t) VkPrivateDataSlot privateDataSlot, uint64_t data);
     /// ```
     public static int vkSetPrivateDataEXT(VkDevice device, int objectType, long objectHandle, long privateDataSlot, long data) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetPrivateDataEXT)) throw new SymbolNotFoundError("Symbol not found: vkSetPrivateDataEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetPrivateDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkSetPrivateDataEXT");
         try { return (int) Handles.MH_vkSetPrivateDataEXT.invokeExact(device.capabilities().PFN_vkSetPrivateDataEXT, device.segment(), objectType, objectHandle, privateDataSlot, data); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetPrivateDataEXT", e); }
     }
@@ -69,7 +69,7 @@ public final class VKEXTPrivateData {
     /// void vkGetPrivateDataEXT((struct VkDevice*) VkDevice device, (int) VkObjectType objectType, uint64_t objectHandle, (uint64_t) VkPrivateDataSlot privateDataSlot, uint64_t* pData);
     /// ```
     public static void vkGetPrivateDataEXT(VkDevice device, int objectType, long objectHandle, long privateDataSlot, MemorySegment pData) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPrivateDataEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPrivateDataEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPrivateDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPrivateDataEXT");
         try { Handles.MH_vkGetPrivateDataEXT.invokeExact(device.capabilities().PFN_vkGetPrivateDataEXT, device.segment(), objectType, objectHandle, privateDataSlot, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPrivateDataEXT", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTTimerQuery {
     public static final int GL_TIME_ELAPSED_EXT = 0x88BF;
@@ -44,7 +45,7 @@ public final class GLEXTTimerQuery {
     /// void glGetQueryObjecti64vEXT((unsigned int) GLuint id, (unsigned int) GLenum pname, GLint64* params);
     /// ```
     public void GetQueryObjecti64vEXT(int id, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjecti64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjecti64vEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjecti64vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryObjecti64vEXT");
         try { Handles.MH_glGetQueryObjecti64vEXT.invokeExact(handles.PFN_glGetQueryObjecti64vEXT, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryObjecti64vEXT", e); }
     }
@@ -53,7 +54,7 @@ public final class GLEXTTimerQuery {
     /// void glGetQueryObjectui64vEXT((unsigned int) GLuint id, (unsigned int) GLenum pname, GLuint64* params);
     /// ```
     public void GetQueryObjectui64vEXT(int id, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectui64vEXT)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectui64vEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectui64vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryObjectui64vEXT");
         try { Handles.MH_glGetQueryObjectui64vEXT.invokeExact(handles.PFN_glGetQueryObjectui64vEXT, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectui64vEXT", e); }
     }

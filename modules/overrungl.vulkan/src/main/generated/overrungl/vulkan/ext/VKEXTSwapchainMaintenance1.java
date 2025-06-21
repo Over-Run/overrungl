@@ -42,7 +42,7 @@ public final class VKEXTSwapchainMaintenance1 {
     /// (int) VkResult vkReleaseSwapchainImagesEXT((struct VkDevice*) VkDevice device, const VkReleaseSwapchainImagesInfoEXT* pReleaseInfo);
     /// ```
     public static int vkReleaseSwapchainImagesEXT(VkDevice device, MemorySegment pReleaseInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseSwapchainImagesEXT)) throw new SymbolNotFoundError("Symbol not found: vkReleaseSwapchainImagesEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseSwapchainImagesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkReleaseSwapchainImagesEXT");
         try { return (int) Handles.MH_vkReleaseSwapchainImagesEXT.invokeExact(device.capabilities().PFN_vkReleaseSwapchainImagesEXT, device.segment(), pReleaseInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkReleaseSwapchainImagesEXT", e); }
     }

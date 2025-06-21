@@ -37,7 +37,7 @@ public final class VKNVExternalMemoryWin32 {
     /// (int) VkResult vkGetMemoryWin32HandleNV((struct VkDevice*) VkDevice device, (uint64_t) VkDeviceMemory memory, ((uint32_t) VkFlags) VkExternalMemoryHandleTypeFlagsNV handleType, HANDLE* pHandle);
     /// ```
     public static int vkGetMemoryWin32HandleNV(VkDevice device, long memory, int handleType, MemorySegment pHandle) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandleNV)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandleNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandleNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandleNV");
         try { return (int) Handles.MH_vkGetMemoryWin32HandleNV.invokeExact(device.capabilities().PFN_vkGetMemoryWin32HandleNV, device.segment(), memory, handleType, pHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryWin32HandleNV", e); }
     }

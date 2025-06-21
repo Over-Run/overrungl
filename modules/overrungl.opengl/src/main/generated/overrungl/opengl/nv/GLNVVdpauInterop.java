@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVVdpauInterop {
     public static final int GL_SURFACE_STATE_NV = 0x86EB;
@@ -71,7 +72,7 @@ public final class GLNVVdpauInterop {
     /// void glVDPAUInitNV(const void* vdpDevice, const void* getProcAddress);
     /// ```
     public void VDPAUInitNV(MemorySegment vdpDevice, MemorySegment getProcAddress) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUInitNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUInitNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUInitNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAUInitNV");
         try { Handles.MH_glVDPAUInitNV.invokeExact(handles.PFN_glVDPAUInitNV, vdpDevice, getProcAddress); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAUInitNV", e); }
     }
@@ -80,7 +81,7 @@ public final class GLNVVdpauInterop {
     /// void glVDPAUFiniNV();
     /// ```
     public void VDPAUFiniNV() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUFiniNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUFiniNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUFiniNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAUFiniNV");
         try { Handles.MH_glVDPAUFiniNV.invokeExact(handles.PFN_glVDPAUFiniNV); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAUFiniNV", e); }
     }
@@ -89,7 +90,7 @@ public final class GLNVVdpauInterop {
     /// (((signed long long) khronos_intptr_t) GLintptr) GLvdpauSurfaceNV glVDPAURegisterVideoSurfaceNV(const void* vdpSurface, (unsigned int) GLenum target, (int) GLsizei numTextureNames, const GLuint* textureNames);
     /// ```
     public long VDPAURegisterVideoSurfaceNV(MemorySegment vdpSurface, int target, int numTextureNames, MemorySegment textureNames) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAURegisterVideoSurfaceNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterVideoSurfaceNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAURegisterVideoSurfaceNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAURegisterVideoSurfaceNV");
         try { return (long) Handles.MH_glVDPAURegisterVideoSurfaceNV.invokeExact(handles.PFN_glVDPAURegisterVideoSurfaceNV, vdpSurface, target, numTextureNames, textureNames); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAURegisterVideoSurfaceNV", e); }
     }
@@ -98,7 +99,7 @@ public final class GLNVVdpauInterop {
     /// (((signed long long) khronos_intptr_t) GLintptr) GLvdpauSurfaceNV glVDPAURegisterOutputSurfaceNV(const void* vdpSurface, (unsigned int) GLenum target, (int) GLsizei numTextureNames, const GLuint* textureNames);
     /// ```
     public long VDPAURegisterOutputSurfaceNV(MemorySegment vdpSurface, int target, int numTextureNames, MemorySegment textureNames) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAURegisterOutputSurfaceNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAURegisterOutputSurfaceNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAURegisterOutputSurfaceNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAURegisterOutputSurfaceNV");
         try { return (long) Handles.MH_glVDPAURegisterOutputSurfaceNV.invokeExact(handles.PFN_glVDPAURegisterOutputSurfaceNV, vdpSurface, target, numTextureNames, textureNames); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAURegisterOutputSurfaceNV", e); }
     }
@@ -107,7 +108,7 @@ public final class GLNVVdpauInterop {
     /// GLboolean glVDPAUIsSurfaceNV((((signed long long) khronos_intptr_t) GLintptr) GLvdpauSurfaceNV surface);
     /// ```
     public boolean VDPAUIsSurfaceNV(long surface) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUIsSurfaceNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUIsSurfaceNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUIsSurfaceNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAUIsSurfaceNV");
         try { return (((byte) Handles.MH_glVDPAUIsSurfaceNV.invokeExact(handles.PFN_glVDPAUIsSurfaceNV, surface)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAUIsSurfaceNV", e); }
     }
@@ -116,7 +117,7 @@ public final class GLNVVdpauInterop {
     /// void glVDPAUUnregisterSurfaceNV((((signed long long) khronos_intptr_t) GLintptr) GLvdpauSurfaceNV surface);
     /// ```
     public void VDPAUUnregisterSurfaceNV(long surface) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUUnregisterSurfaceNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUUnregisterSurfaceNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUUnregisterSurfaceNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAUUnregisterSurfaceNV");
         try { Handles.MH_glVDPAUUnregisterSurfaceNV.invokeExact(handles.PFN_glVDPAUUnregisterSurfaceNV, surface); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAUUnregisterSurfaceNV", e); }
     }
@@ -125,7 +126,7 @@ public final class GLNVVdpauInterop {
     /// void glVDPAUGetSurfaceivNV((((signed long long) khronos_intptr_t) GLintptr) GLvdpauSurfaceNV surface, (unsigned int) GLenum pname, (int) GLsizei count, GLsizei* length, GLint* values);
     /// ```
     public void VDPAUGetSurfaceivNV(long surface, int pname, int count, MemorySegment length, MemorySegment values) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUGetSurfaceivNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUGetSurfaceivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUGetSurfaceivNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAUGetSurfaceivNV");
         try { Handles.MH_glVDPAUGetSurfaceivNV.invokeExact(handles.PFN_glVDPAUGetSurfaceivNV, surface, pname, count, length, values); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAUGetSurfaceivNV", e); }
     }
@@ -134,7 +135,7 @@ public final class GLNVVdpauInterop {
     /// void glVDPAUSurfaceAccessNV((((signed long long) khronos_intptr_t) GLintptr) GLvdpauSurfaceNV surface, (unsigned int) GLenum access);
     /// ```
     public void VDPAUSurfaceAccessNV(long surface, int access) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUSurfaceAccessNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUSurfaceAccessNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUSurfaceAccessNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAUSurfaceAccessNV");
         try { Handles.MH_glVDPAUSurfaceAccessNV.invokeExact(handles.PFN_glVDPAUSurfaceAccessNV, surface, access); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAUSurfaceAccessNV", e); }
     }
@@ -143,7 +144,7 @@ public final class GLNVVdpauInterop {
     /// void glVDPAUMapSurfacesNV((int) GLsizei numSurfaces, const GLvdpauSurfaceNV* surfaces);
     /// ```
     public void VDPAUMapSurfacesNV(int numSurfaces, MemorySegment surfaces) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUMapSurfacesNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUMapSurfacesNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUMapSurfacesNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAUMapSurfacesNV");
         try { Handles.MH_glVDPAUMapSurfacesNV.invokeExact(handles.PFN_glVDPAUMapSurfacesNV, numSurfaces, surfaces); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAUMapSurfacesNV", e); }
     }
@@ -152,7 +153,7 @@ public final class GLNVVdpauInterop {
     /// void glVDPAUUnmapSurfacesNV((int) GLsizei numSurface, const GLvdpauSurfaceNV* surfaces);
     /// ```
     public void VDPAUUnmapSurfacesNV(int numSurface, MemorySegment surfaces) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUUnmapSurfacesNV)) throw new SymbolNotFoundError("Symbol not found: glVDPAUUnmapSurfacesNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVDPAUUnmapSurfacesNV)) throw new GLSymbolNotFoundError("Symbol not found: glVDPAUUnmapSurfacesNV");
         try { Handles.MH_glVDPAUUnmapSurfacesNV.invokeExact(handles.PFN_glVDPAUUnmapSurfacesNV, numSurface, surfaces); }
         catch (Throwable e) { throw new RuntimeException("error in VDPAUUnmapSurfacesNV", e); }
     }

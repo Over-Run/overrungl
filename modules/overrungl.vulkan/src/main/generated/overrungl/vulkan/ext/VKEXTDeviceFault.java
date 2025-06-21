@@ -46,7 +46,7 @@ public final class VKEXTDeviceFault {
     /// (int) VkResult vkGetDeviceFaultInfoEXT((struct VkDevice*) VkDevice device, VkDeviceFaultCountsEXT* pFaultCounts, VkDeviceFaultInfoEXT* pFaultInfo);
     /// ```
     public static int vkGetDeviceFaultInfoEXT(VkDevice device, MemorySegment pFaultCounts, MemorySegment pFaultInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceFaultInfoEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceFaultInfoEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceFaultInfoEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceFaultInfoEXT");
         try { return (int) Handles.MH_vkGetDeviceFaultInfoEXT.invokeExact(device.capabilities().PFN_vkGetDeviceFaultInfoEXT, device.segment(), pFaultCounts, pFaultInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceFaultInfoEXT", e); }
     }

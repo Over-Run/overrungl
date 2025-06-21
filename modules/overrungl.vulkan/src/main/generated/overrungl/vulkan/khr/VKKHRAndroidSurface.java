@@ -36,7 +36,7 @@ public final class VKKHRAndroidSurface {
     /// (int) VkResult vkCreateAndroidSurfaceKHR((struct VkInstance*) VkInstance instance, const VkAndroidSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateAndroidSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateAndroidSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateAndroidSurfaceKHR");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateAndroidSurfaceKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateAndroidSurfaceKHR");
         try { return (int) Handles.MH_vkCreateAndroidSurfaceKHR.invokeExact(instance.capabilities().PFN_vkCreateAndroidSurfaceKHR, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateAndroidSurfaceKHR", e); }
     }

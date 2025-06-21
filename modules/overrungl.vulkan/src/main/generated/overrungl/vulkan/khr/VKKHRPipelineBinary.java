@@ -54,7 +54,7 @@ public final class VKKHRPipelineBinary {
     /// (int) VkResult vkCreatePipelineBinariesKHR((struct VkDevice*) VkDevice device, const VkPipelineBinaryCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkPipelineBinaryHandlesInfoKHR* pBinaries);
     /// ```
     public static int vkCreatePipelineBinariesKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pBinaries) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreatePipelineBinariesKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreatePipelineBinariesKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreatePipelineBinariesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreatePipelineBinariesKHR");
         try { return (int) Handles.MH_vkCreatePipelineBinariesKHR.invokeExact(device.capabilities().PFN_vkCreatePipelineBinariesKHR, device.segment(), pCreateInfo, pAllocator, pBinaries); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreatePipelineBinariesKHR", e); }
     }
@@ -63,7 +63,7 @@ public final class VKKHRPipelineBinary {
     /// void vkDestroyPipelineBinaryKHR((struct VkDevice*) VkDevice device, (uint64_t) VkPipelineBinaryKHR pipelineBinary, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyPipelineBinaryKHR(VkDevice device, long pipelineBinary, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyPipelineBinaryKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroyPipelineBinaryKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyPipelineBinaryKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyPipelineBinaryKHR");
         try { Handles.MH_vkDestroyPipelineBinaryKHR.invokeExact(device.capabilities().PFN_vkDestroyPipelineBinaryKHR, device.segment(), pipelineBinary, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyPipelineBinaryKHR", e); }
     }
@@ -72,7 +72,7 @@ public final class VKKHRPipelineBinary {
     /// (int) VkResult vkGetPipelineKeyKHR((struct VkDevice*) VkDevice device, const VkPipelineCreateInfoKHR* pPipelineCreateInfo, VkPipelineBinaryKeyKHR* pPipelineKey);
     /// ```
     public static int vkGetPipelineKeyKHR(VkDevice device, MemorySegment pPipelineCreateInfo, MemorySegment pPipelineKey) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineKeyKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineKeyKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineKeyKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineKeyKHR");
         try { return (int) Handles.MH_vkGetPipelineKeyKHR.invokeExact(device.capabilities().PFN_vkGetPipelineKeyKHR, device.segment(), pPipelineCreateInfo, pPipelineKey); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineKeyKHR", e); }
     }
@@ -81,7 +81,7 @@ public final class VKKHRPipelineBinary {
     /// (int) VkResult vkGetPipelineBinaryDataKHR((struct VkDevice*) VkDevice device, const VkPipelineBinaryDataInfoKHR* pInfo, VkPipelineBinaryKeyKHR* pPipelineBinaryKey, size_t* pPipelineBinaryDataSize, void* pPipelineBinaryData);
     /// ```
     public static int vkGetPipelineBinaryDataKHR(VkDevice device, MemorySegment pInfo, MemorySegment pPipelineBinaryKey, MemorySegment pPipelineBinaryDataSize, MemorySegment pPipelineBinaryData) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineBinaryDataKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelineBinaryDataKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelineBinaryDataKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelineBinaryDataKHR");
         try { return (int) Handles.MH_vkGetPipelineBinaryDataKHR.invokeExact(device.capabilities().PFN_vkGetPipelineBinaryDataKHR, device.segment(), pInfo, pPipelineBinaryKey, pPipelineBinaryDataSize, pPipelineBinaryData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelineBinaryDataKHR", e); }
     }
@@ -90,7 +90,7 @@ public final class VKKHRPipelineBinary {
     /// (int) VkResult vkReleaseCapturedPipelineDataKHR((struct VkDevice*) VkDevice device, const VkReleaseCapturedPipelineDataInfoKHR* pInfo, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static int vkReleaseCapturedPipelineDataKHR(VkDevice device, MemorySegment pInfo, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseCapturedPipelineDataKHR)) throw new SymbolNotFoundError("Symbol not found: vkReleaseCapturedPipelineDataKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseCapturedPipelineDataKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkReleaseCapturedPipelineDataKHR");
         try { return (int) Handles.MH_vkReleaseCapturedPipelineDataKHR.invokeExact(device.capabilities().PFN_vkReleaseCapturedPipelineDataKHR, device.segment(), pInfo, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkReleaseCapturedPipelineDataKHR", e); }
     }

@@ -70,7 +70,7 @@ public final class VKEXTImageCompressionControl {
     /// void vkGetImageSubresourceLayout2EXT((struct VkDevice*) VkDevice device, (uint64_t) VkImage image, const VkImageSubresource2* pSubresource, VkSubresourceLayout2* pLayout);
     /// ```
     public static void vkGetImageSubresourceLayout2EXT(VkDevice device, long image, MemorySegment pSubresource, MemorySegment pLayout) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSubresourceLayout2EXT)) throw new SymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2EXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSubresourceLayout2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2EXT");
         try { Handles.MH_vkGetImageSubresourceLayout2EXT.invokeExact(device.capabilities().PFN_vkGetImageSubresourceLayout2EXT, device.segment(), image, pSubresource, pLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageSubresourceLayout2EXT", e); }
     }

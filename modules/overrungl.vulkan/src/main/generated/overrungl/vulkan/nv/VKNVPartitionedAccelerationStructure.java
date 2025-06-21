@@ -52,7 +52,7 @@ public final class VKNVPartitionedAccelerationStructure {
     /// void vkGetPartitionedAccelerationStructuresBuildSizesNV((struct VkDevice*) VkDevice device, const VkPartitionedAccelerationStructureInstancesInputNV* pInfo, VkAccelerationStructureBuildSizesInfoKHR* pSizeInfo);
     /// ```
     public static void vkGetPartitionedAccelerationStructuresBuildSizesNV(VkDevice device, MemorySegment pInfo, MemorySegment pSizeInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPartitionedAccelerationStructuresBuildSizesNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPartitionedAccelerationStructuresBuildSizesNV");
         try { Handles.MH_vkGetPartitionedAccelerationStructuresBuildSizesNV.invokeExact(device.capabilities().PFN_vkGetPartitionedAccelerationStructuresBuildSizesNV, device.segment(), pInfo, pSizeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPartitionedAccelerationStructuresBuildSizesNV", e); }
     }
@@ -61,7 +61,7 @@ public final class VKNVPartitionedAccelerationStructure {
     /// void vkCmdBuildPartitionedAccelerationStructuresNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkBuildPartitionedAccelerationStructureInfoNV* pBuildInfo);
     /// ```
     public static void vkCmdBuildPartitionedAccelerationStructuresNV(VkCommandBuffer commandBuffer, MemorySegment pBuildInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildPartitionedAccelerationStructuresNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdBuildPartitionedAccelerationStructuresNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildPartitionedAccelerationStructuresNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildPartitionedAccelerationStructuresNV");
         try { Handles.MH_vkCmdBuildPartitionedAccelerationStructuresNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildPartitionedAccelerationStructuresNV, commandBuffer.segment(), pBuildInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBuildPartitionedAccelerationStructuresNV", e); }
     }

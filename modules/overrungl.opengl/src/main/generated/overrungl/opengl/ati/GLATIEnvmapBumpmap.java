@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLATIEnvmapBumpmap {
     public static final int GL_BUMP_ROT_MATRIX_ATI = 0x8775;
@@ -57,7 +58,7 @@ public final class GLATIEnvmapBumpmap {
     /// void glTexBumpParameterivATI((unsigned int) GLenum pname, const GLint* param);
     /// ```
     public void TexBumpParameterivATI(int pname, MemorySegment param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexBumpParameterivATI)) throw new SymbolNotFoundError("Symbol not found: glTexBumpParameterivATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexBumpParameterivATI)) throw new GLSymbolNotFoundError("Symbol not found: glTexBumpParameterivATI");
         try { Handles.MH_glTexBumpParameterivATI.invokeExact(handles.PFN_glTexBumpParameterivATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TexBumpParameterivATI", e); }
     }
@@ -66,7 +67,7 @@ public final class GLATIEnvmapBumpmap {
     /// void glTexBumpParameterfvATI((unsigned int) GLenum pname, const GLfloat* param);
     /// ```
     public void TexBumpParameterfvATI(int pname, MemorySegment param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexBumpParameterfvATI)) throw new SymbolNotFoundError("Symbol not found: glTexBumpParameterfvATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexBumpParameterfvATI)) throw new GLSymbolNotFoundError("Symbol not found: glTexBumpParameterfvATI");
         try { Handles.MH_glTexBumpParameterfvATI.invokeExact(handles.PFN_glTexBumpParameterfvATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TexBumpParameterfvATI", e); }
     }
@@ -75,7 +76,7 @@ public final class GLATIEnvmapBumpmap {
     /// void glGetTexBumpParameterivATI((unsigned int) GLenum pname, GLint* param);
     /// ```
     public void GetTexBumpParameterivATI(int pname, MemorySegment param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexBumpParameterivATI)) throw new SymbolNotFoundError("Symbol not found: glGetTexBumpParameterivATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexBumpParameterivATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexBumpParameterivATI");
         try { Handles.MH_glGetTexBumpParameterivATI.invokeExact(handles.PFN_glGetTexBumpParameterivATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexBumpParameterivATI", e); }
     }
@@ -84,7 +85,7 @@ public final class GLATIEnvmapBumpmap {
     /// void glGetTexBumpParameterfvATI((unsigned int) GLenum pname, GLfloat* param);
     /// ```
     public void GetTexBumpParameterfvATI(int pname, MemorySegment param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexBumpParameterfvATI)) throw new SymbolNotFoundError("Symbol not found: glGetTexBumpParameterfvATI");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetTexBumpParameterfvATI)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexBumpParameterfvATI");
         try { Handles.MH_glGetTexBumpParameterfvATI.invokeExact(handles.PFN_glGetTexBumpParameterfvATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexBumpParameterfvATI", e); }
     }

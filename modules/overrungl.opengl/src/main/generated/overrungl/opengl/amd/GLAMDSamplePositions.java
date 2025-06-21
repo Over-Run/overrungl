@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAMDSamplePositions {
     public static final int GL_SUBSAMPLE_DISTANCE_AMD = 0x883F;
@@ -41,7 +42,7 @@ public final class GLAMDSamplePositions {
     /// void glSetMultisamplefvAMD((unsigned int) GLenum pname, (unsigned int) GLuint index, const GLfloat* val);
     /// ```
     public void SetMultisamplefvAMD(int pname, int index, MemorySegment val) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSetMultisamplefvAMD)) throw new SymbolNotFoundError("Symbol not found: glSetMultisamplefvAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSetMultisamplefvAMD)) throw new GLSymbolNotFoundError("Symbol not found: glSetMultisamplefvAMD");
         try { Handles.MH_glSetMultisamplefvAMD.invokeExact(handles.PFN_glSetMultisamplefvAMD, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in SetMultisamplefvAMD", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGISTexture4D {
     public static final int GL_PACK_SKIP_VOLUMES_SGIS = 0x8130;
@@ -53,7 +54,7 @@ public final class GLSGISTexture4D {
     /// void glTexImage4DSGIS((unsigned int) GLenum target, (int) GLint level, (unsigned int) GLenum internalformat, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLsizei size4d, (int) GLint border, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
     public void TexImage4DSGIS(int target, int level, int internalformat, int width, int height, int depth, int size4d, int border, int format, int type, MemorySegment pixels) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexImage4DSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexImage4DSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexImage4DSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glTexImage4DSGIS");
         try { Handles.MH_glTexImage4DSGIS.invokeExact(handles.PFN_glTexImage4DSGIS, target, level, internalformat, width, height, depth, size4d, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexImage4DSGIS", e); }
     }
@@ -62,7 +63,7 @@ public final class GLSGISTexture4D {
     /// void glTexSubImage4DSGIS((unsigned int) GLenum target, (int) GLint level, (int) GLint xoffset, (int) GLint yoffset, (int) GLint zoffset, (int) GLint woffset, (int) GLsizei width, (int) GLsizei height, (int) GLsizei depth, (int) GLsizei size4d, (unsigned int) GLenum format, (unsigned int) GLenum type, const void* pixels);
     /// ```
     public void TexSubImage4DSGIS(int target, int level, int xoffset, int yoffset, int zoffset, int woffset, int width, int height, int depth, int size4d, int format, int type, MemorySegment pixels) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage4DSGIS)) throw new SymbolNotFoundError("Symbol not found: glTexSubImage4DSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage4DSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glTexSubImage4DSGIS");
         try { Handles.MH_glTexSubImage4DSGIS.invokeExact(handles.PFN_glTexSubImage4DSGIS, target, level, xoffset, yoffset, zoffset, woffset, width, height, depth, size4d, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexSubImage4DSGIS", e); }
     }

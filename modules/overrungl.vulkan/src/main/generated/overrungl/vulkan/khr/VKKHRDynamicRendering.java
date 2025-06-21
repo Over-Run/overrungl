@@ -45,7 +45,7 @@ public final class VKKHRDynamicRendering {
     /// void vkCmdBeginRenderingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingInfo* pRenderingInfo);
     /// ```
     public static void vkCmdBeginRenderingKHR(VkCommandBuffer commandBuffer, MemorySegment pRenderingInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdBeginRenderingKHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginRenderingKHR");
         try { Handles.MH_vkCmdBeginRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR, commandBuffer.segment(), pRenderingInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRenderingKHR", e); }
     }
@@ -54,7 +54,7 @@ public final class VKKHRDynamicRendering {
     /// void vkCmdEndRenderingKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
     /// ```
     public static void vkCmdEndRenderingKHR(VkCommandBuffer commandBuffer) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdEndRenderingKHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRenderingKHR");
         try { Handles.MH_vkCmdEndRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR, commandBuffer.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRenderingKHR", e); }
     }

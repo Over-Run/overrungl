@@ -39,7 +39,7 @@ public final class VKKHRExternalFenceWin32 {
     /// (int) VkResult vkImportFenceWin32HandleKHR((struct VkDevice*) VkDevice device, const VkImportFenceWin32HandleInfoKHR* pImportFenceWin32HandleInfo);
     /// ```
     public static int vkImportFenceWin32HandleKHR(VkDevice device, MemorySegment pImportFenceWin32HandleInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportFenceWin32HandleKHR)) throw new SymbolNotFoundError("Symbol not found: vkImportFenceWin32HandleKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportFenceWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportFenceWin32HandleKHR");
         try { return (int) Handles.MH_vkImportFenceWin32HandleKHR.invokeExact(device.capabilities().PFN_vkImportFenceWin32HandleKHR, device.segment(), pImportFenceWin32HandleInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportFenceWin32HandleKHR", e); }
     }
@@ -48,7 +48,7 @@ public final class VKKHRExternalFenceWin32 {
     /// (int) VkResult vkGetFenceWin32HandleKHR((struct VkDevice*) VkDevice device, const VkFenceGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
     /// ```
     public static int vkGetFenceWin32HandleKHR(VkDevice device, MemorySegment pGetWin32HandleInfo, MemorySegment pHandle) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFenceWin32HandleKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetFenceWin32HandleKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFenceWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetFenceWin32HandleKHR");
         try { return (int) Handles.MH_vkGetFenceWin32HandleKHR.invokeExact(device.capabilities().PFN_vkGetFenceWin32HandleKHR, device.segment(), pGetWin32HandleInfo, pHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetFenceWin32HandleKHR", e); }
     }

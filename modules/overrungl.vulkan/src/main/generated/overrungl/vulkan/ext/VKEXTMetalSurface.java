@@ -36,7 +36,7 @@ public final class VKEXTMetalSurface {
     /// (int) VkResult vkCreateMetalSurfaceEXT((struct VkInstance*) VkInstance instance, const VkMetalSurfaceCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateMetalSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateMetalSurfaceEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateMetalSurfaceEXT");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateMetalSurfaceEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateMetalSurfaceEXT");
         try { return (int) Handles.MH_vkCreateMetalSurfaceEXT.invokeExact(instance.capabilities().PFN_vkCreateMetalSurfaceEXT, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateMetalSurfaceEXT", e); }
     }

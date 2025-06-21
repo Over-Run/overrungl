@@ -38,7 +38,7 @@ public final class VKKHRExternalSemaphoreFd {
     /// (int) VkResult vkImportSemaphoreFdKHR((struct VkDevice*) VkDevice device, const VkImportSemaphoreFdInfoKHR* pImportSemaphoreFdInfo);
     /// ```
     public static int vkImportSemaphoreFdKHR(VkDevice device, MemorySegment pImportSemaphoreFdInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkImportSemaphoreFdKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportSemaphoreFdKHR");
         try { return (int) Handles.MH_vkImportSemaphoreFdKHR.invokeExact(device.capabilities().PFN_vkImportSemaphoreFdKHR, device.segment(), pImportSemaphoreFdInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportSemaphoreFdKHR", e); }
     }
@@ -47,7 +47,7 @@ public final class VKKHRExternalSemaphoreFd {
     /// (int) VkResult vkGetSemaphoreFdKHR((struct VkDevice*) VkDevice device, const VkSemaphoreGetFdInfoKHR* pGetFdInfo, int* pFd);
     /// ```
     public static int vkGetSemaphoreFdKHR(VkDevice device, MemorySegment pGetFdInfo, MemorySegment pFd) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreFdKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreFdKHR");
         try { return (int) Handles.MH_vkGetSemaphoreFdKHR.invokeExact(device.capabilities().PFN_vkGetSemaphoreFdKHR, device.segment(), pGetFdInfo, pFd); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreFdKHR", e); }
     }

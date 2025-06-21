@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAMDOcclusionQueryEvent {
     public static final int GL_OCCLUSION_QUERY_EVENT_MASK_AMD = 0x874F;
@@ -46,7 +47,7 @@ public final class GLAMDOcclusionQueryEvent {
     /// void glQueryObjectParameteruiAMD((unsigned int) GLenum target, (unsigned int) GLuint id, (unsigned int) GLenum pname, (unsigned int) GLuint param);
     /// ```
     public void QueryObjectParameteruiAMD(int target, int id, int pname, int param) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glQueryObjectParameteruiAMD)) throw new SymbolNotFoundError("Symbol not found: glQueryObjectParameteruiAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glQueryObjectParameteruiAMD)) throw new GLSymbolNotFoundError("Symbol not found: glQueryObjectParameteruiAMD");
         try { Handles.MH_glQueryObjectParameteruiAMD.invokeExact(handles.PFN_glQueryObjectParameteruiAMD, target, id, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in QueryObjectParameteruiAMD", e); }
     }

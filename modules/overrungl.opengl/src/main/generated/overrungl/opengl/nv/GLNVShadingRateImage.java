@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVShadingRateImage {
     public static final int GL_SHADING_RATE_IMAGE_NV = 0x9563;
@@ -79,7 +80,7 @@ public final class GLNVShadingRateImage {
     /// void glBindShadingRateImageNV((unsigned int) GLuint texture);
     /// ```
     public void BindShadingRateImageNV(int texture) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBindShadingRateImageNV)) throw new SymbolNotFoundError("Symbol not found: glBindShadingRateImageNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBindShadingRateImageNV)) throw new GLSymbolNotFoundError("Symbol not found: glBindShadingRateImageNV");
         try { Handles.MH_glBindShadingRateImageNV.invokeExact(handles.PFN_glBindShadingRateImageNV, texture); }
         catch (Throwable e) { throw new RuntimeException("error in BindShadingRateImageNV", e); }
     }
@@ -88,7 +89,7 @@ public final class GLNVShadingRateImage {
     /// void glGetShadingRateImagePaletteNV((unsigned int) GLuint viewport, (unsigned int) GLuint entry, GLenum* rate);
     /// ```
     public void GetShadingRateImagePaletteNV(int viewport, int entry, MemorySegment rate) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetShadingRateImagePaletteNV)) throw new SymbolNotFoundError("Symbol not found: glGetShadingRateImagePaletteNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetShadingRateImagePaletteNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetShadingRateImagePaletteNV");
         try { Handles.MH_glGetShadingRateImagePaletteNV.invokeExact(handles.PFN_glGetShadingRateImagePaletteNV, viewport, entry, rate); }
         catch (Throwable e) { throw new RuntimeException("error in GetShadingRateImagePaletteNV", e); }
     }
@@ -97,7 +98,7 @@ public final class GLNVShadingRateImage {
     /// void glGetShadingRateSampleLocationivNV((unsigned int) GLenum rate, (unsigned int) GLuint samples, (unsigned int) GLuint index, GLint* location);
     /// ```
     public void GetShadingRateSampleLocationivNV(int rate, int samples, int index, MemorySegment location) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetShadingRateSampleLocationivNV)) throw new SymbolNotFoundError("Symbol not found: glGetShadingRateSampleLocationivNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetShadingRateSampleLocationivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetShadingRateSampleLocationivNV");
         try { Handles.MH_glGetShadingRateSampleLocationivNV.invokeExact(handles.PFN_glGetShadingRateSampleLocationivNV, rate, samples, index, location); }
         catch (Throwable e) { throw new RuntimeException("error in GetShadingRateSampleLocationivNV", e); }
     }
@@ -106,7 +107,7 @@ public final class GLNVShadingRateImage {
     /// void glShadingRateImageBarrierNV(GLboolean synchronize);
     /// ```
     public void ShadingRateImageBarrierNV(boolean synchronize) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateImageBarrierNV)) throw new SymbolNotFoundError("Symbol not found: glShadingRateImageBarrierNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateImageBarrierNV)) throw new GLSymbolNotFoundError("Symbol not found: glShadingRateImageBarrierNV");
         try { Handles.MH_glShadingRateImageBarrierNV.invokeExact(handles.PFN_glShadingRateImageBarrierNV, ((synchronize) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in ShadingRateImageBarrierNV", e); }
     }
@@ -115,7 +116,7 @@ public final class GLNVShadingRateImage {
     /// void glShadingRateImagePaletteNV((unsigned int) GLuint viewport, (unsigned int) GLuint first, (int) GLsizei count, const GLenum* rates);
     /// ```
     public void ShadingRateImagePaletteNV(int viewport, int first, int count, MemorySegment rates) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateImagePaletteNV)) throw new SymbolNotFoundError("Symbol not found: glShadingRateImagePaletteNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateImagePaletteNV)) throw new GLSymbolNotFoundError("Symbol not found: glShadingRateImagePaletteNV");
         try { Handles.MH_glShadingRateImagePaletteNV.invokeExact(handles.PFN_glShadingRateImagePaletteNV, viewport, first, count, rates); }
         catch (Throwable e) { throw new RuntimeException("error in ShadingRateImagePaletteNV", e); }
     }
@@ -124,7 +125,7 @@ public final class GLNVShadingRateImage {
     /// void glShadingRateSampleOrderNV((unsigned int) GLenum order);
     /// ```
     public void ShadingRateSampleOrderNV(int order) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateSampleOrderNV)) throw new SymbolNotFoundError("Symbol not found: glShadingRateSampleOrderNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateSampleOrderNV)) throw new GLSymbolNotFoundError("Symbol not found: glShadingRateSampleOrderNV");
         try { Handles.MH_glShadingRateSampleOrderNV.invokeExact(handles.PFN_glShadingRateSampleOrderNV, order); }
         catch (Throwable e) { throw new RuntimeException("error in ShadingRateSampleOrderNV", e); }
     }
@@ -133,7 +134,7 @@ public final class GLNVShadingRateImage {
     /// void glShadingRateSampleOrderCustomNV((unsigned int) GLenum rate, (unsigned int) GLuint samples, const GLint* locations);
     /// ```
     public void ShadingRateSampleOrderCustomNV(int rate, int samples, MemorySegment locations) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateSampleOrderCustomNV)) throw new SymbolNotFoundError("Symbol not found: glShadingRateSampleOrderCustomNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateSampleOrderCustomNV)) throw new GLSymbolNotFoundError("Symbol not found: glShadingRateSampleOrderCustomNV");
         try { Handles.MH_glShadingRateSampleOrderCustomNV.invokeExact(handles.PFN_glShadingRateSampleOrderCustomNV, rate, samples, locations); }
         catch (Throwable e) { throw new RuntimeException("error in ShadingRateSampleOrderCustomNV", e); }
     }

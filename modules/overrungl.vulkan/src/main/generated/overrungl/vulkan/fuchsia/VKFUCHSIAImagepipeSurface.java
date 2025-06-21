@@ -36,7 +36,7 @@ public final class VKFUCHSIAImagepipeSurface {
     /// (int) VkResult vkCreateImagePipeSurfaceFUCHSIA((struct VkInstance*) VkInstance instance, const VkImagePipeSurfaceCreateInfoFUCHSIA* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateImagePipeSurfaceFUCHSIA(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateImagePipeSurfaceFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkCreateImagePipeSurfaceFUCHSIA");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateImagePipeSurfaceFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateImagePipeSurfaceFUCHSIA");
         try { return (int) Handles.MH_vkCreateImagePipeSurfaceFUCHSIA.invokeExact(instance.capabilities().PFN_vkCreateImagePipeSurfaceFUCHSIA, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateImagePipeSurfaceFUCHSIA", e); }
     }

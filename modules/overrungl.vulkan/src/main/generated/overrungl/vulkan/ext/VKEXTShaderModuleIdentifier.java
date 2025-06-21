@@ -41,7 +41,7 @@ public final class VKEXTShaderModuleIdentifier {
     /// void vkGetShaderModuleIdentifierEXT((struct VkDevice*) VkDevice device, (uint64_t) VkShaderModule shaderModule, VkShaderModuleIdentifierEXT* pIdentifier);
     /// ```
     public static void vkGetShaderModuleIdentifierEXT(VkDevice device, long shaderModule, MemorySegment pIdentifier) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderModuleIdentifierEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetShaderModuleIdentifierEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderModuleIdentifierEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetShaderModuleIdentifierEXT");
         try { Handles.MH_vkGetShaderModuleIdentifierEXT.invokeExact(device.capabilities().PFN_vkGetShaderModuleIdentifierEXT, device.segment(), shaderModule, pIdentifier); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetShaderModuleIdentifierEXT", e); }
     }
@@ -50,7 +50,7 @@ public final class VKEXTShaderModuleIdentifier {
     /// void vkGetShaderModuleCreateInfoIdentifierEXT((struct VkDevice*) VkDevice device, const VkShaderModuleCreateInfo* pCreateInfo, VkShaderModuleIdentifierEXT* pIdentifier);
     /// ```
     public static void vkGetShaderModuleCreateInfoIdentifierEXT(VkDevice device, MemorySegment pCreateInfo, MemorySegment pIdentifier) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderModuleCreateInfoIdentifierEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetShaderModuleCreateInfoIdentifierEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderModuleCreateInfoIdentifierEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetShaderModuleCreateInfoIdentifierEXT");
         try { Handles.MH_vkGetShaderModuleCreateInfoIdentifierEXT.invokeExact(device.capabilities().PFN_vkGetShaderModuleCreateInfoIdentifierEXT, device.segment(), pCreateInfo, pIdentifier); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetShaderModuleCreateInfoIdentifierEXT", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVVertexArrayRange {
     public static final int GL_VERTEX_ARRAY_RANGE_NV = 0x851D;
@@ -48,7 +49,7 @@ public final class GLNVVertexArrayRange {
     /// void glFlushVertexArrayRangeNV();
     /// ```
     public void FlushVertexArrayRangeNV() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFlushVertexArrayRangeNV)) throw new SymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFlushVertexArrayRangeNV)) throw new GLSymbolNotFoundError("Symbol not found: glFlushVertexArrayRangeNV");
         try { Handles.MH_glFlushVertexArrayRangeNV.invokeExact(handles.PFN_glFlushVertexArrayRangeNV); }
         catch (Throwable e) { throw new RuntimeException("error in FlushVertexArrayRangeNV", e); }
     }
@@ -57,7 +58,7 @@ public final class GLNVVertexArrayRange {
     /// void glVertexArrayRangeNV((int) GLsizei length, const void* pointer);
     /// ```
     public void VertexArrayRangeNV(int length, MemorySegment pointer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayRangeNV)) throw new SymbolNotFoundError("Symbol not found: glVertexArrayRangeNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glVertexArrayRangeNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexArrayRangeNV");
         try { Handles.MH_glVertexArrayRangeNV.invokeExact(handles.PFN_glVertexArrayRangeNV, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in VertexArrayRangeNV", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTDebugLabel {
     public static final int GL_PROGRAM_PIPELINE_OBJECT_EXT = 0x8A4F;
@@ -51,7 +52,7 @@ public final class GLEXTDebugLabel {
     /// void glLabelObjectEXT((unsigned int) GLenum type, (unsigned int) GLuint object, (int) GLsizei length, const GLchar* label);
     /// ```
     public void LabelObjectEXT(int type, int object, int length, MemorySegment label) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glLabelObjectEXT)) throw new SymbolNotFoundError("Symbol not found: glLabelObjectEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glLabelObjectEXT)) throw new GLSymbolNotFoundError("Symbol not found: glLabelObjectEXT");
         try { Handles.MH_glLabelObjectEXT.invokeExact(handles.PFN_glLabelObjectEXT, type, object, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in LabelObjectEXT", e); }
     }
@@ -60,7 +61,7 @@ public final class GLEXTDebugLabel {
     /// void glGetObjectLabelEXT((unsigned int) GLenum type, (unsigned int) GLuint object, (int) GLsizei bufSize, GLsizei* length, GLchar* label);
     /// ```
     public void GetObjectLabelEXT(int type, int object, int bufSize, MemorySegment length, MemorySegment label) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectLabelEXT)) throw new SymbolNotFoundError("Symbol not found: glGetObjectLabelEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectLabelEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectLabelEXT");
         try { Handles.MH_glGetObjectLabelEXT.invokeExact(handles.PFN_glGetObjectLabelEXT, type, object, bufSize, length, label); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectLabelEXT", e); }
     }

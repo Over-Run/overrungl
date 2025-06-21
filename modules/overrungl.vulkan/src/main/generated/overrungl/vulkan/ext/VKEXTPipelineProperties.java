@@ -38,7 +38,7 @@ public final class VKEXTPipelineProperties {
     /// (int) VkResult vkGetPipelinePropertiesEXT((struct VkDevice*) VkDevice device, const VkPipelineInfoEXT* pPipelineInfo, VkBaseOutStructure* pPipelineProperties);
     /// ```
     public static int vkGetPipelinePropertiesEXT(VkDevice device, MemorySegment pPipelineInfo, MemorySegment pPipelineProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelinePropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPipelinePropertiesEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetPipelinePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPipelinePropertiesEXT");
         try { return (int) Handles.MH_vkGetPipelinePropertiesEXT.invokeExact(device.capabilities().PFN_vkGetPipelinePropertiesEXT, device.segment(), pPipelineInfo, pPipelineProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPipelinePropertiesEXT", e); }
     }

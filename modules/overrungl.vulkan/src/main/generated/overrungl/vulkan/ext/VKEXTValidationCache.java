@@ -42,7 +42,7 @@ public final class VKEXTValidationCache {
     /// (int) VkResult vkCreateValidationCacheEXT((struct VkDevice*) VkDevice device, const VkValidationCacheCreateInfoEXT* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkValidationCacheEXT* pValidationCache);
     /// ```
     public static int vkCreateValidationCacheEXT(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pValidationCache) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateValidationCacheEXT)) throw new SymbolNotFoundError("Symbol not found: vkCreateValidationCacheEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateValidationCacheEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateValidationCacheEXT");
         try { return (int) Handles.MH_vkCreateValidationCacheEXT.invokeExact(device.capabilities().PFN_vkCreateValidationCacheEXT, device.segment(), pCreateInfo, pAllocator, pValidationCache); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateValidationCacheEXT", e); }
     }
@@ -51,7 +51,7 @@ public final class VKEXTValidationCache {
     /// void vkDestroyValidationCacheEXT((struct VkDevice*) VkDevice device, (uint64_t) VkValidationCacheEXT validationCache, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyValidationCacheEXT(VkDevice device, long validationCache, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyValidationCacheEXT)) throw new SymbolNotFoundError("Symbol not found: vkDestroyValidationCacheEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyValidationCacheEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyValidationCacheEXT");
         try { Handles.MH_vkDestroyValidationCacheEXT.invokeExact(device.capabilities().PFN_vkDestroyValidationCacheEXT, device.segment(), validationCache, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyValidationCacheEXT", e); }
     }
@@ -60,7 +60,7 @@ public final class VKEXTValidationCache {
     /// (int) VkResult vkMergeValidationCachesEXT((struct VkDevice*) VkDevice device, (uint64_t) VkValidationCacheEXT dstCache, uint32_t srcCacheCount, const VkValidationCacheEXT* pSrcCaches);
     /// ```
     public static int vkMergeValidationCachesEXT(VkDevice device, long dstCache, int srcCacheCount, MemorySegment pSrcCaches) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkMergeValidationCachesEXT)) throw new SymbolNotFoundError("Symbol not found: vkMergeValidationCachesEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkMergeValidationCachesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkMergeValidationCachesEXT");
         try { return (int) Handles.MH_vkMergeValidationCachesEXT.invokeExact(device.capabilities().PFN_vkMergeValidationCachesEXT, device.segment(), dstCache, srcCacheCount, pSrcCaches); }
         catch (Throwable e) { throw new RuntimeException("error in vkMergeValidationCachesEXT", e); }
     }
@@ -69,7 +69,7 @@ public final class VKEXTValidationCache {
     /// (int) VkResult vkGetValidationCacheDataEXT((struct VkDevice*) VkDevice device, (uint64_t) VkValidationCacheEXT validationCache, size_t* pDataSize, void* pData);
     /// ```
     public static int vkGetValidationCacheDataEXT(VkDevice device, long validationCache, MemorySegment pDataSize, MemorySegment pData) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetValidationCacheDataEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetValidationCacheDataEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetValidationCacheDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetValidationCacheDataEXT");
         try { return (int) Handles.MH_vkGetValidationCacheDataEXT.invokeExact(device.capabilities().PFN_vkGetValidationCacheDataEXT, device.segment(), validationCache, pDataSize, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetValidationCacheDataEXT", e); }
     }

@@ -43,7 +43,7 @@ public final class VKEXTSampleLocations {
     /// void vkCmdSetSampleLocationsEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkSampleLocationsInfoEXT* pSampleLocationsInfo);
     /// ```
     public static void vkCmdSetSampleLocationsEXT(VkCommandBuffer commandBuffer, MemorySegment pSampleLocationsInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetSampleLocationsEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetSampleLocationsEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetSampleLocationsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetSampleLocationsEXT");
         try { Handles.MH_vkCmdSetSampleLocationsEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetSampleLocationsEXT, commandBuffer.segment(), pSampleLocationsInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetSampleLocationsEXT", e); }
     }
@@ -52,7 +52,7 @@ public final class VKEXTSampleLocations {
     /// void vkGetPhysicalDeviceMultisamplePropertiesEXT((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (int) VkSampleCountFlagBits samples, VkMultisamplePropertiesEXT* pMultisampleProperties);
     /// ```
     public static void vkGetPhysicalDeviceMultisamplePropertiesEXT(VkPhysicalDevice physicalDevice, int samples, MemorySegment pMultisampleProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceMultisamplePropertiesEXT");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceMultisamplePropertiesEXT");
         try { Handles.MH_vkGetPhysicalDeviceMultisamplePropertiesEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceMultisamplePropertiesEXT, physicalDevice.segment(), samples, pMultisampleProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceMultisamplePropertiesEXT", e); }
     }

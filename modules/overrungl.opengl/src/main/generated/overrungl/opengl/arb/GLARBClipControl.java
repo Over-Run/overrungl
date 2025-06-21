@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBClipControl {
     public static final int GL_LOWER_LEFT = 0x8CA1;
@@ -46,7 +47,7 @@ public final class GLARBClipControl {
     /// void glClipControl((unsigned int) GLenum origin, (unsigned int) GLenum depth);
     /// ```
     public void ClipControl(int origin, int depth) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glClipControl)) throw new SymbolNotFoundError("Symbol not found: glClipControl");
+        if (MemoryUtil.isNullPointer(handles.PFN_glClipControl)) throw new GLSymbolNotFoundError("Symbol not found: glClipControl");
         try { Handles.MH_glClipControl.invokeExact(handles.PFN_glClipControl, origin, depth); }
         catch (Throwable e) { throw new RuntimeException("error in ClipControl", e); }
     }

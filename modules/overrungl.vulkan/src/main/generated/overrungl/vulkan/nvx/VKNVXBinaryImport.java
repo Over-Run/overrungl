@@ -47,7 +47,7 @@ public final class VKNVXBinaryImport {
     /// (int) VkResult vkCreateCuModuleNVX((struct VkDevice*) VkDevice device, const VkCuModuleCreateInfoNVX* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkCuModuleNVX* pModule);
     /// ```
     public static int vkCreateCuModuleNVX(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pModule) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateCuModuleNVX)) throw new SymbolNotFoundError("Symbol not found: vkCreateCuModuleNVX");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateCuModuleNVX)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateCuModuleNVX");
         try { return (int) Handles.MH_vkCreateCuModuleNVX.invokeExact(device.capabilities().PFN_vkCreateCuModuleNVX, device.segment(), pCreateInfo, pAllocator, pModule); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateCuModuleNVX", e); }
     }
@@ -56,7 +56,7 @@ public final class VKNVXBinaryImport {
     /// (int) VkResult vkCreateCuFunctionNVX((struct VkDevice*) VkDevice device, const VkCuFunctionCreateInfoNVX* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkCuFunctionNVX* pFunction);
     /// ```
     public static int vkCreateCuFunctionNVX(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pFunction) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateCuFunctionNVX)) throw new SymbolNotFoundError("Symbol not found: vkCreateCuFunctionNVX");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateCuFunctionNVX)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateCuFunctionNVX");
         try { return (int) Handles.MH_vkCreateCuFunctionNVX.invokeExact(device.capabilities().PFN_vkCreateCuFunctionNVX, device.segment(), pCreateInfo, pAllocator, pFunction); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateCuFunctionNVX", e); }
     }
@@ -65,7 +65,7 @@ public final class VKNVXBinaryImport {
     /// void vkDestroyCuModuleNVX((struct VkDevice*) VkDevice device, (uint64_t) VkCuModuleNVX module, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyCuModuleNVX(VkDevice device, long module, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyCuModuleNVX)) throw new SymbolNotFoundError("Symbol not found: vkDestroyCuModuleNVX");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyCuModuleNVX)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyCuModuleNVX");
         try { Handles.MH_vkDestroyCuModuleNVX.invokeExact(device.capabilities().PFN_vkDestroyCuModuleNVX, device.segment(), module, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyCuModuleNVX", e); }
     }
@@ -74,7 +74,7 @@ public final class VKNVXBinaryImport {
     /// void vkDestroyCuFunctionNVX((struct VkDevice*) VkDevice device, (uint64_t) VkCuFunctionNVX function, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyCuFunctionNVX(VkDevice device, long function, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyCuFunctionNVX)) throw new SymbolNotFoundError("Symbol not found: vkDestroyCuFunctionNVX");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyCuFunctionNVX)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyCuFunctionNVX");
         try { Handles.MH_vkDestroyCuFunctionNVX.invokeExact(device.capabilities().PFN_vkDestroyCuFunctionNVX, device.segment(), function, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyCuFunctionNVX", e); }
     }
@@ -83,7 +83,7 @@ public final class VKNVXBinaryImport {
     /// void vkCmdCuLaunchKernelNVX((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkCuLaunchInfoNVX* pLaunchInfo);
     /// ```
     public static void vkCmdCuLaunchKernelNVX(VkCommandBuffer commandBuffer, MemorySegment pLaunchInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCuLaunchKernelNVX)) throw new SymbolNotFoundError("Symbol not found: vkCmdCuLaunchKernelNVX");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCuLaunchKernelNVX)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCuLaunchKernelNVX");
         try { Handles.MH_vkCmdCuLaunchKernelNVX.invokeExact(commandBuffer.capabilities().PFN_vkCmdCuLaunchKernelNVX, commandBuffer.segment(), pLaunchInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCuLaunchKernelNVX", e); }
     }

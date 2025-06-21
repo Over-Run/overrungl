@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVPrimitiveRestart {
     public static final int GL_PRIMITIVE_RESTART_NV = 0x8558;
@@ -45,7 +46,7 @@ public final class GLNVPrimitiveRestart {
     /// void glPrimitiveRestartNV();
     /// ```
     public void PrimitiveRestartNV() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveRestartNV)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveRestartNV)) throw new GLSymbolNotFoundError("Symbol not found: glPrimitiveRestartNV");
         try { Handles.MH_glPrimitiveRestartNV.invokeExact(handles.PFN_glPrimitiveRestartNV); }
         catch (Throwable e) { throw new RuntimeException("error in PrimitiveRestartNV", e); }
     }
@@ -54,7 +55,7 @@ public final class GLNVPrimitiveRestart {
     /// void glPrimitiveRestartIndexNV((unsigned int) GLuint index);
     /// ```
     public void PrimitiveRestartIndexNV(int index) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveRestartIndexNV)) throw new SymbolNotFoundError("Symbol not found: glPrimitiveRestartIndexNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPrimitiveRestartIndexNV)) throw new GLSymbolNotFoundError("Symbol not found: glPrimitiveRestartIndexNV");
         try { Handles.MH_glPrimitiveRestartIndexNV.invokeExact(handles.PFN_glPrimitiveRestartIndexNV, index); }
         catch (Throwable e) { throw new RuntimeException("error in PrimitiveRestartIndexNV", e); }
     }

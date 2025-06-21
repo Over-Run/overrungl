@@ -42,7 +42,7 @@ public final class VKEXTBufferDeviceAddress {
     /// (uint64_t) VkDeviceAddress vkGetBufferDeviceAddressEXT((struct VkDevice*) VkDevice device, const VkBufferDeviceAddressInfo* pInfo);
     /// ```
     public static long vkGetBufferDeviceAddressEXT(VkDevice device, MemorySegment pInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferDeviceAddressEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferDeviceAddressEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressEXT");
         try { return (long) Handles.MH_vkGetBufferDeviceAddressEXT.invokeExact(device.capabilities().PFN_vkGetBufferDeviceAddressEXT, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferDeviceAddressEXT", e); }
     }

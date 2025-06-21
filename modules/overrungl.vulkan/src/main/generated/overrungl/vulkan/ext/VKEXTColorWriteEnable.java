@@ -38,7 +38,7 @@ public final class VKEXTColorWriteEnable {
     /// void vkCmdSetColorWriteEnableEXT((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t attachmentCount, const VkBool32* pColorWriteEnables);
     /// ```
     public static void vkCmdSetColorWriteEnableEXT(VkCommandBuffer commandBuffer, int attachmentCount, MemorySegment pColorWriteEnables) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorWriteEnableEXT)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetColorWriteEnableEXT");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetColorWriteEnableEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetColorWriteEnableEXT");
         try { Handles.MH_vkCmdSetColorWriteEnableEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetColorWriteEnableEXT, commandBuffer.segment(), attachmentCount, pColorWriteEnables); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetColorWriteEnableEXT", e); }
     }

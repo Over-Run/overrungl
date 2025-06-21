@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVAlphaToCoverageDitherControl {
     public static final int GL_ALPHA_TO_COVERAGE_DITHER_DEFAULT_NV = 0x934D;
@@ -44,7 +45,7 @@ public final class GLNVAlphaToCoverageDitherControl {
     /// void glAlphaToCoverageDitherControlNV((unsigned int) GLenum mode);
     /// ```
     public void AlphaToCoverageDitherControlNV(int mode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaToCoverageDitherControlNV)) throw new SymbolNotFoundError("Symbol not found: glAlphaToCoverageDitherControlNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glAlphaToCoverageDitherControlNV)) throw new GLSymbolNotFoundError("Symbol not found: glAlphaToCoverageDitherControlNV");
         try { Handles.MH_glAlphaToCoverageDitherControlNV.invokeExact(handles.PFN_glAlphaToCoverageDitherControlNV, mode); }
         catch (Throwable e) { throw new RuntimeException("error in AlphaToCoverageDitherControlNV", e); }
     }

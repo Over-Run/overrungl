@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTProvokingVertex {
     public static final int GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION_EXT = 0x8E4C;
@@ -44,7 +45,7 @@ public final class GLEXTProvokingVertex {
     /// void glProvokingVertexEXT((unsigned int) GLenum mode);
     /// ```
     public void ProvokingVertexEXT(int mode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glProvokingVertexEXT)) throw new SymbolNotFoundError("Symbol not found: glProvokingVertexEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glProvokingVertexEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProvokingVertexEXT");
         try { Handles.MH_glProvokingVertexEXT.invokeExact(handles.PFN_glProvokingVertexEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in ProvokingVertexEXT", e); }
     }

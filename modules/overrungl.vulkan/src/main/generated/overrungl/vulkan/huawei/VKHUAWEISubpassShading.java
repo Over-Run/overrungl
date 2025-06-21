@@ -43,7 +43,7 @@ public final class VKHUAWEISubpassShading {
     /// (int) VkResult vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI((struct VkDevice*) VkDevice device, (uint64_t) VkRenderPass renderpass, VkExtent2D* pMaxWorkgroupSize);
     /// ```
     public static int vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI(VkDevice device, long renderpass, MemorySegment pMaxWorkgroupSize) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI");
         try { return (int) Handles.MH_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI.invokeExact(device.capabilities().PFN_vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI, device.segment(), renderpass, pMaxWorkgroupSize); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceSubpassShadingMaxWorkgroupSizeHUAWEI", e); }
     }
@@ -52,7 +52,7 @@ public final class VKHUAWEISubpassShading {
     /// void vkCmdSubpassShadingHUAWEI((struct VkCommandBuffer*) VkCommandBuffer commandBuffer);
     /// ```
     public static void vkCmdSubpassShadingHUAWEI(VkCommandBuffer commandBuffer) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSubpassShadingHUAWEI)) throw new SymbolNotFoundError("Symbol not found: vkCmdSubpassShadingHUAWEI");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSubpassShadingHUAWEI)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSubpassShadingHUAWEI");
         try { Handles.MH_vkCmdSubpassShadingHUAWEI.invokeExact(commandBuffer.capabilities().PFN_vkCmdSubpassShadingHUAWEI, commandBuffer.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSubpassShadingHUAWEI", e); }
     }

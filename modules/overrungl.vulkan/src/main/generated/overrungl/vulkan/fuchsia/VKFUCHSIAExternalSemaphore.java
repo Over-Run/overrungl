@@ -39,7 +39,7 @@ public final class VKFUCHSIAExternalSemaphore {
     /// (int) VkResult vkImportSemaphoreZirconHandleFUCHSIA((struct VkDevice*) VkDevice device, const VkImportSemaphoreZirconHandleInfoFUCHSIA* pImportSemaphoreZirconHandleInfo);
     /// ```
     public static int vkImportSemaphoreZirconHandleFUCHSIA(VkDevice device, MemorySegment pImportSemaphoreZirconHandleInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreZirconHandleFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkImportSemaphoreZirconHandleFUCHSIA");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreZirconHandleFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkImportSemaphoreZirconHandleFUCHSIA");
         try { return (int) Handles.MH_vkImportSemaphoreZirconHandleFUCHSIA.invokeExact(device.capabilities().PFN_vkImportSemaphoreZirconHandleFUCHSIA, device.segment(), pImportSemaphoreZirconHandleInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportSemaphoreZirconHandleFUCHSIA", e); }
     }
@@ -48,7 +48,7 @@ public final class VKFUCHSIAExternalSemaphore {
     /// (int) VkResult vkGetSemaphoreZirconHandleFUCHSIA((struct VkDevice*) VkDevice device, const VkSemaphoreGetZirconHandleInfoFUCHSIA* pGetZirconHandleInfo, zx_handle_t* pZirconHandle);
     /// ```
     public static int vkGetSemaphoreZirconHandleFUCHSIA(VkDevice device, MemorySegment pGetZirconHandleInfo, MemorySegment pZirconHandle) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreZirconHandleFUCHSIA)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreZirconHandleFUCHSIA");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreZirconHandleFUCHSIA)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreZirconHandleFUCHSIA");
         try { return (int) Handles.MH_vkGetSemaphoreZirconHandleFUCHSIA.invokeExact(device.capabilities().PFN_vkGetSemaphoreZirconHandleFUCHSIA, device.segment(), pGetZirconHandleInfo, pZirconHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreZirconHandleFUCHSIA", e); }
     }

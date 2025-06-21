@@ -39,7 +39,7 @@ public final class VKKHRMaintenance3 {
     /// void vkGetDescriptorSetLayoutSupportKHR((struct VkDevice*) VkDevice device, const VkDescriptorSetLayoutCreateInfo* pCreateInfo, VkDescriptorSetLayoutSupport* pSupport);
     /// ```
     public static void vkGetDescriptorSetLayoutSupportKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pSupport) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSupportKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSupportKHR");
         try { Handles.MH_vkGetDescriptorSetLayoutSupportKHR.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutSupportKHR, device.segment(), pCreateInfo, pSupport); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetLayoutSupportKHR", e); }
     }

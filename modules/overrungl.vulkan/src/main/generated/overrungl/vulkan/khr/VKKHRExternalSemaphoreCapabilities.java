@@ -46,7 +46,7 @@ public final class VKKHRExternalSemaphoreCapabilities {
     /// void vkGetPhysicalDeviceExternalSemaphorePropertiesKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, const VkPhysicalDeviceExternalSemaphoreInfo* pExternalSemaphoreInfo, VkExternalSemaphoreProperties* pExternalSemaphoreProperties);
     /// ```
     public static void vkGetPhysicalDeviceExternalSemaphorePropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pExternalSemaphoreInfo, MemorySegment pExternalSemaphoreProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalSemaphorePropertiesKHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalSemaphorePropertiesKHR");
         try { Handles.MH_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalSemaphorePropertiesKHR, physicalDevice.segment(), pExternalSemaphoreInfo, pExternalSemaphoreProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalSemaphorePropertiesKHR", e); }
     }

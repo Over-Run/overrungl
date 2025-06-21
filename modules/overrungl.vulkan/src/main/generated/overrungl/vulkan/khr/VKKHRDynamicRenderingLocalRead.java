@@ -40,7 +40,7 @@ public final class VKKHRDynamicRenderingLocalRead {
     /// void vkCmdSetRenderingAttachmentLocationsKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingAttachmentLocationInfo* pLocationInfo);
     /// ```
     public static void vkCmdSetRenderingAttachmentLocationsKHR(VkCommandBuffer commandBuffer, MemorySegment pLocationInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocationsKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingAttachmentLocationsKHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocationsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRenderingAttachmentLocationsKHR");
         try { Handles.MH_vkCmdSetRenderingAttachmentLocationsKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocationsKHR, commandBuffer.segment(), pLocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRenderingAttachmentLocationsKHR", e); }
     }
@@ -49,7 +49,7 @@ public final class VKKHRDynamicRenderingLocalRead {
     /// void vkCmdSetRenderingInputAttachmentIndicesKHR((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkRenderingInputAttachmentIndexInfo* pInputAttachmentIndexInfo);
     /// ```
     public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, MemorySegment pInputAttachmentIndexInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndicesKHR)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetRenderingInputAttachmentIndicesKHR");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndicesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRenderingInputAttachmentIndicesKHR");
         try { Handles.MH_vkCmdSetRenderingInputAttachmentIndicesKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndicesKHR, commandBuffer.segment(), pInputAttachmentIndexInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRenderingInputAttachmentIndicesKHR", e); }
     }

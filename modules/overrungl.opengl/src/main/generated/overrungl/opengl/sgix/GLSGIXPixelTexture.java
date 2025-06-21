@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGIXPixelTexture {
     public static final int GL_PIXEL_TEX_GEN_SGIX = 0x8139;
@@ -42,7 +43,7 @@ public final class GLSGIXPixelTexture {
     /// void glPixelTexGenSGIX((unsigned int) GLenum mode);
     /// ```
     public void PixelTexGenSGIX(int mode) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenSGIX)) throw new SymbolNotFoundError("Symbol not found: glPixelTexGenSGIX");
+        if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glPixelTexGenSGIX");
         try { Handles.MH_glPixelTexGenSGIX.invokeExact(handles.PFN_glPixelTexGenSGIX, mode); }
         catch (Throwable e) { throw new RuntimeException("error in PixelTexGenSGIX", e); }
     }

@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLNVExplicitMultisample {
     public static final int GL_SAMPLE_POSITION_NV = 0x8E50;
@@ -56,7 +57,7 @@ public final class GLNVExplicitMultisample {
     /// void glGetMultisamplefvNV((unsigned int) GLenum pname, (unsigned int) GLuint index, GLfloat* val);
     /// ```
     public void GetMultisamplefvNV(int pname, int index, MemorySegment val) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefvNV)) throw new SymbolNotFoundError("Symbol not found: glGetMultisamplefvNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetMultisamplefvNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMultisamplefvNV");
         try { Handles.MH_glGetMultisamplefvNV.invokeExact(handles.PFN_glGetMultisamplefvNV, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in GetMultisamplefvNV", e); }
     }
@@ -65,7 +66,7 @@ public final class GLNVExplicitMultisample {
     /// void glSampleMaskIndexedNV((unsigned int) GLuint index, (unsigned int) GLbitfield mask);
     /// ```
     public void SampleMaskIndexedNV(int index, int mask) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskIndexedNV)) throw new SymbolNotFoundError("Symbol not found: glSampleMaskIndexedNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glSampleMaskIndexedNV)) throw new GLSymbolNotFoundError("Symbol not found: glSampleMaskIndexedNV");
         try { Handles.MH_glSampleMaskIndexedNV.invokeExact(handles.PFN_glSampleMaskIndexedNV, index, mask); }
         catch (Throwable e) { throw new RuntimeException("error in SampleMaskIndexedNV", e); }
     }
@@ -74,7 +75,7 @@ public final class GLNVExplicitMultisample {
     /// void glTexRenderbufferNV((unsigned int) GLenum target, (unsigned int) GLuint renderbuffer);
     /// ```
     public void TexRenderbufferNV(int target, int renderbuffer) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glTexRenderbufferNV)) throw new SymbolNotFoundError("Symbol not found: glTexRenderbufferNV");
+        if (MemoryUtil.isNullPointer(handles.PFN_glTexRenderbufferNV)) throw new GLSymbolNotFoundError("Symbol not found: glTexRenderbufferNV");
         try { Handles.MH_glTexRenderbufferNV.invokeExact(handles.PFN_glTexRenderbufferNV, target, renderbuffer); }
         catch (Throwable e) { throw new RuntimeException("error in TexRenderbufferNV", e); }
     }

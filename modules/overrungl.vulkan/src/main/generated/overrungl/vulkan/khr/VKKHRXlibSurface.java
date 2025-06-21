@@ -37,7 +37,7 @@ public final class VKKHRXlibSurface {
     /// (int) VkResult vkCreateXlibSurfaceKHR((struct VkInstance*) VkInstance instance, const VkXlibSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateXlibSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateXlibSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateXlibSurfaceKHR");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateXlibSurfaceKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateXlibSurfaceKHR");
         try { return (int) Handles.MH_vkCreateXlibSurfaceKHR.invokeExact(instance.capabilities().PFN_vkCreateXlibSurfaceKHR, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateXlibSurfaceKHR", e); }
     }
@@ -46,7 +46,7 @@ public final class VKKHRXlibSurface {
     /// (uint32_t) VkBool32 vkGetPhysicalDeviceXlibPresentationSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, Display* dpy, ((unsigned long) XID) VisualID visualID);
     /// ```
     public static int vkGetPhysicalDeviceXlibPresentationSupportKHR(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment dpy, long visualID) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXlibPresentationSupportKHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXlibPresentationSupportKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceXlibPresentationSupportKHR.invoke(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR, physicalDevice.segment(), queueFamilyIndex, dpy, MemoryUtil.narrowingLong(CanonicalTypes.C_LONG, visualID)); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceXlibPresentationSupportKHR", e); }
     }

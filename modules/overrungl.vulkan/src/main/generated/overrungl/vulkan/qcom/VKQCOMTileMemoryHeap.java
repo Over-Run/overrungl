@@ -44,7 +44,7 @@ public final class VKQCOMTileMemoryHeap {
     /// void vkCmdBindTileMemoryQCOM((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, const VkTileMemoryBindInfoQCOM* pTileMemoryBindInfo);
     /// ```
     public static void vkCmdBindTileMemoryQCOM(VkCommandBuffer commandBuffer, MemorySegment pTileMemoryBindInfo) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindTileMemoryQCOM)) throw new SymbolNotFoundError("Symbol not found: vkCmdBindTileMemoryQCOM");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindTileMemoryQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindTileMemoryQCOM");
         try { Handles.MH_vkCmdBindTileMemoryQCOM.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindTileMemoryQCOM, commandBuffer.segment(), pTileMemoryBindInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindTileMemoryQCOM", e); }
     }

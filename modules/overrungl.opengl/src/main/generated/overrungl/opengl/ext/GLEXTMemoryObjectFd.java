@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTMemoryObjectFd {
     public static final int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
@@ -41,7 +42,7 @@ public final class GLEXTMemoryObjectFd {
     /// void glImportMemoryFdEXT((unsigned int) GLuint memory, ((uint64_t) khronos_uint64_t) GLuint64 size, (unsigned int) GLenum handleType, (int) GLint fd);
     /// ```
     public void ImportMemoryFdEXT(int memory, long size, int handleType, int fd) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryFdEXT)) throw new SymbolNotFoundError("Symbol not found: glImportMemoryFdEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glImportMemoryFdEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportMemoryFdEXT");
         try { Handles.MH_glImportMemoryFdEXT.invokeExact(handles.PFN_glImportMemoryFdEXT, memory, size, handleType, fd); }
         catch (Throwable e) { throw new RuntimeException("error in ImportMemoryFdEXT", e); }
     }

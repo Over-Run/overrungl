@@ -38,7 +38,7 @@ public final class VKKHRExternalFenceFd {
     /// (int) VkResult vkImportFenceFdKHR((struct VkDevice*) VkDevice device, const VkImportFenceFdInfoKHR* pImportFenceFdInfo);
     /// ```
     public static int vkImportFenceFdKHR(VkDevice device, MemorySegment pImportFenceFdInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportFenceFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkImportFenceFdKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportFenceFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportFenceFdKHR");
         try { return (int) Handles.MH_vkImportFenceFdKHR.invokeExact(device.capabilities().PFN_vkImportFenceFdKHR, device.segment(), pImportFenceFdInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportFenceFdKHR", e); }
     }
@@ -47,7 +47,7 @@ public final class VKKHRExternalFenceFd {
     /// (int) VkResult vkGetFenceFdKHR((struct VkDevice*) VkDevice device, const VkFenceGetFdInfoKHR* pGetFdInfo, int* pFd);
     /// ```
     public static int vkGetFenceFdKHR(VkDevice device, MemorySegment pGetFdInfo, MemorySegment pFd) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFenceFdKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetFenceFdKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFenceFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetFenceFdKHR");
         try { return (int) Handles.MH_vkGetFenceFdKHR.invokeExact(device.capabilities().PFN_vkGetFenceFdKHR, device.segment(), pGetFdInfo, pFd); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetFenceFdKHR", e); }
     }

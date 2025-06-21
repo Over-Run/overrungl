@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBES31Compatibility {
     public static final int GL_BACK = 0x0405;
@@ -41,7 +42,7 @@ public final class GLARBES31Compatibility {
     /// void glMemoryBarrierByRegion((unsigned int) GLbitfield barriers);
     /// ```
     public void MemoryBarrierByRegion(int barriers) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrierByRegion)) throw new SymbolNotFoundError("Symbol not found: glMemoryBarrierByRegion");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrierByRegion)) throw new GLSymbolNotFoundError("Symbol not found: glMemoryBarrierByRegion");
         try { Handles.MH_glMemoryBarrierByRegion.invokeExact(handles.PFN_glMemoryBarrierByRegion, barriers); }
         catch (Throwable e) { throw new RuntimeException("error in MemoryBarrierByRegion", e); }
     }

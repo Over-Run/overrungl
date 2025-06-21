@@ -40,7 +40,7 @@ public final class VKKHRExternalMemoryWin32 {
     /// (int) VkResult vkGetMemoryWin32HandleKHR((struct VkDevice*) VkDevice device, const VkMemoryGetWin32HandleInfoKHR* pGetWin32HandleInfo, HANDLE* pHandle);
     /// ```
     public static int vkGetMemoryWin32HandleKHR(VkDevice device, MemorySegment pGetWin32HandleInfo, MemorySegment pHandle) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandleKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandleKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandleKHR");
         try { return (int) Handles.MH_vkGetMemoryWin32HandleKHR.invokeExact(device.capabilities().PFN_vkGetMemoryWin32HandleKHR, device.segment(), pGetWin32HandleInfo, pHandle); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryWin32HandleKHR", e); }
     }
@@ -49,7 +49,7 @@ public final class VKKHRExternalMemoryWin32 {
     /// (int) VkResult vkGetMemoryWin32HandlePropertiesKHR((struct VkDevice*) VkDevice device, (int) VkExternalMemoryHandleTypeFlagBits handleType, (void*) HANDLE handle, VkMemoryWin32HandlePropertiesKHR* pMemoryWin32HandleProperties);
     /// ```
     public static int vkGetMemoryWin32HandlePropertiesKHR(VkDevice device, int handleType, MemorySegment handle, MemorySegment pMemoryWin32HandleProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandlePropertiesKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandlePropertiesKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetMemoryWin32HandlePropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetMemoryWin32HandlePropertiesKHR");
         try { return (int) Handles.MH_vkGetMemoryWin32HandlePropertiesKHR.invokeExact(device.capabilities().PFN_vkGetMemoryWin32HandlePropertiesKHR, device.segment(), handleType, handle, pMemoryWin32HandleProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetMemoryWin32HandlePropertiesKHR", e); }
     }

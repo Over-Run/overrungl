@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBWindowPos {
     private final Handles handles;
@@ -85,7 +86,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos2dARB((double) GLdouble x, (double) GLdouble y);
     /// ```
     public void WindowPos2dARB(double x, double y) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2dARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2dARB");
         try { Handles.MH_glWindowPos2dARB.invokeExact(handles.PFN_glWindowPos2dARB, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2dARB", e); }
     }
@@ -94,7 +95,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos2dvARB(const GLdouble* v);
     /// ```
     public void WindowPos2dvARB(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2dvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2dvARB");
         try { Handles.MH_glWindowPos2dvARB.invokeExact(handles.PFN_glWindowPos2dvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2dvARB", e); }
     }
@@ -103,7 +104,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos2fARB(((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y);
     /// ```
     public void WindowPos2fARB(float x, float y) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2fARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2fARB");
         try { Handles.MH_glWindowPos2fARB.invokeExact(handles.PFN_glWindowPos2fARB, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2fARB", e); }
     }
@@ -112,7 +113,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos2fvARB(const GLfloat* v);
     /// ```
     public void WindowPos2fvARB(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2fvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2fvARB");
         try { Handles.MH_glWindowPos2fvARB.invokeExact(handles.PFN_glWindowPos2fvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2fvARB", e); }
     }
@@ -121,7 +122,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos2iARB((int) GLint x, (int) GLint y);
     /// ```
     public void WindowPos2iARB(int x, int y) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2iARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2iARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2iARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2iARB");
         try { Handles.MH_glWindowPos2iARB.invokeExact(handles.PFN_glWindowPos2iARB, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2iARB", e); }
     }
@@ -130,7 +131,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos2ivARB(const GLint* v);
     /// ```
     public void WindowPos2ivARB(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2ivARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2ivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2ivARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2ivARB");
         try { Handles.MH_glWindowPos2ivARB.invokeExact(handles.PFN_glWindowPos2ivARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2ivARB", e); }
     }
@@ -139,7 +140,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos2sARB(((signed short) khronos_int16_t) GLshort x, ((signed short) khronos_int16_t) GLshort y);
     /// ```
     public void WindowPos2sARB(short x, short y) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2sARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2sARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2sARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2sARB");
         try { Handles.MH_glWindowPos2sARB.invokeExact(handles.PFN_glWindowPos2sARB, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2sARB", e); }
     }
@@ -148,7 +149,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos2svARB(const GLshort* v);
     /// ```
     public void WindowPos2svARB(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2svARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos2svARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2svARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2svARB");
         try { Handles.MH_glWindowPos2svARB.invokeExact(handles.PFN_glWindowPos2svARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2svARB", e); }
     }
@@ -157,7 +158,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos3dARB((double) GLdouble x, (double) GLdouble y, (double) GLdouble z);
     /// ```
     public void WindowPos3dARB(double x, double y, double z) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3dARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3dARB");
         try { Handles.MH_glWindowPos3dARB.invokeExact(handles.PFN_glWindowPos3dARB, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3dARB", e); }
     }
@@ -166,7 +167,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos3dvARB(const GLdouble* v);
     /// ```
     public void WindowPos3dvARB(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3dvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3dvARB");
         try { Handles.MH_glWindowPos3dvARB.invokeExact(handles.PFN_glWindowPos3dvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3dvARB", e); }
     }
@@ -175,7 +176,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos3fARB(((float) khronos_float_t) GLfloat x, ((float) khronos_float_t) GLfloat y, ((float) khronos_float_t) GLfloat z);
     /// ```
     public void WindowPos3fARB(float x, float y, float z) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3fARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3fARB");
         try { Handles.MH_glWindowPos3fARB.invokeExact(handles.PFN_glWindowPos3fARB, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3fARB", e); }
     }
@@ -184,7 +185,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos3fvARB(const GLfloat* v);
     /// ```
     public void WindowPos3fvARB(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fvARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3fvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3fvARB");
         try { Handles.MH_glWindowPos3fvARB.invokeExact(handles.PFN_glWindowPos3fvARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3fvARB", e); }
     }
@@ -193,7 +194,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos3iARB((int) GLint x, (int) GLint y, (int) GLint z);
     /// ```
     public void WindowPos3iARB(int x, int y, int z) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3iARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3iARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3iARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3iARB");
         try { Handles.MH_glWindowPos3iARB.invokeExact(handles.PFN_glWindowPos3iARB, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3iARB", e); }
     }
@@ -202,7 +203,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos3ivARB(const GLint* v);
     /// ```
     public void WindowPos3ivARB(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3ivARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3ivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3ivARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3ivARB");
         try { Handles.MH_glWindowPos3ivARB.invokeExact(handles.PFN_glWindowPos3ivARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3ivARB", e); }
     }
@@ -211,7 +212,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos3sARB(((signed short) khronos_int16_t) GLshort x, ((signed short) khronos_int16_t) GLshort y, ((signed short) khronos_int16_t) GLshort z);
     /// ```
     public void WindowPos3sARB(short x, short y, short z) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3sARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3sARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3sARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3sARB");
         try { Handles.MH_glWindowPos3sARB.invokeExact(handles.PFN_glWindowPos3sARB, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3sARB", e); }
     }
@@ -220,7 +221,7 @@ public final class GLARBWindowPos {
     /// void glWindowPos3svARB(const GLshort* v);
     /// ```
     public void WindowPos3svARB(MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3svARB)) throw new SymbolNotFoundError("Symbol not found: glWindowPos3svARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3svARB)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3svARB");
         try { Handles.MH_glWindowPos3svARB.invokeExact(handles.PFN_glWindowPos3svARB, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3svARB", e); }
     }

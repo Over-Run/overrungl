@@ -42,7 +42,7 @@ public final class VKNVExternalMemoryCapabilities {
     /// (int) VkResult vkGetPhysicalDeviceExternalImageFormatPropertiesNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (int) VkFormat format, (int) VkImageType type, (int) VkImageTiling tiling, ((uint32_t) VkFlags) VkImageUsageFlags usage, ((uint32_t) VkFlags) VkImageCreateFlags flags, ((uint32_t) VkFlags) VkExternalMemoryHandleTypeFlagsNV externalHandleType, VkExternalImageFormatPropertiesNV* pExternalImageFormatProperties);
     /// ```
     public static int vkGetPhysicalDeviceExternalImageFormatPropertiesNV(VkPhysicalDevice physicalDevice, int format, int type, int tiling, int usage, int flags, int externalHandleType, MemorySegment pExternalImageFormatProperties) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceExternalImageFormatPropertiesNV");
         try { return (int) Handles.MH_vkGetPhysicalDeviceExternalImageFormatPropertiesNV.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceExternalImageFormatPropertiesNV, physicalDevice.segment(), format, type, tiling, usage, flags, externalHandleType, pExternalImageFormatProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceExternalImageFormatPropertiesNV", e); }
     }

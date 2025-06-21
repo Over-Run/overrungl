@@ -38,7 +38,7 @@ public final class VKQCOMTileProperties {
     /// (int) VkResult vkGetFramebufferTilePropertiesQCOM((struct VkDevice*) VkDevice device, (uint64_t) VkFramebuffer framebuffer, uint32_t* pPropertiesCount, VkTilePropertiesQCOM* pProperties);
     /// ```
     public static int vkGetFramebufferTilePropertiesQCOM(VkDevice device, long framebuffer, MemorySegment pPropertiesCount, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFramebufferTilePropertiesQCOM)) throw new SymbolNotFoundError("Symbol not found: vkGetFramebufferTilePropertiesQCOM");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetFramebufferTilePropertiesQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetFramebufferTilePropertiesQCOM");
         try { return (int) Handles.MH_vkGetFramebufferTilePropertiesQCOM.invokeExact(device.capabilities().PFN_vkGetFramebufferTilePropertiesQCOM, device.segment(), framebuffer, pPropertiesCount, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetFramebufferTilePropertiesQCOM", e); }
     }
@@ -47,7 +47,7 @@ public final class VKQCOMTileProperties {
     /// (int) VkResult vkGetDynamicRenderingTilePropertiesQCOM((struct VkDevice*) VkDevice device, const VkRenderingInfo* pRenderingInfo, VkTilePropertiesQCOM* pProperties);
     /// ```
     public static int vkGetDynamicRenderingTilePropertiesQCOM(VkDevice device, MemorySegment pRenderingInfo, MemorySegment pProperties) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDynamicRenderingTilePropertiesQCOM)) throw new SymbolNotFoundError("Symbol not found: vkGetDynamicRenderingTilePropertiesQCOM");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDynamicRenderingTilePropertiesQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDynamicRenderingTilePropertiesQCOM");
         try { return (int) Handles.MH_vkGetDynamicRenderingTilePropertiesQCOM.invokeExact(device.capabilities().PFN_vkGetDynamicRenderingTilePropertiesQCOM, device.segment(), pRenderingInfo, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDynamicRenderingTilePropertiesQCOM", e); }
     }

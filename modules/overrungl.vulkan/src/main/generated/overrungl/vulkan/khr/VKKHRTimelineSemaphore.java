@@ -46,7 +46,7 @@ public final class VKKHRTimelineSemaphore {
     /// (int) VkResult vkGetSemaphoreCounterValueKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSemaphore semaphore, uint64_t* pValue);
     /// ```
     public static int vkGetSemaphoreCounterValueKHR(VkDevice device, long semaphore, MemorySegment pValue) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreCounterValueKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetSemaphoreCounterValueKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreCounterValueKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreCounterValueKHR");
         try { return (int) Handles.MH_vkGetSemaphoreCounterValueKHR.invokeExact(device.capabilities().PFN_vkGetSemaphoreCounterValueKHR, device.segment(), semaphore, pValue); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreCounterValueKHR", e); }
     }
@@ -55,7 +55,7 @@ public final class VKKHRTimelineSemaphore {
     /// (int) VkResult vkWaitSemaphoresKHR((struct VkDevice*) VkDevice device, const VkSemaphoreWaitInfo* pWaitInfo, uint64_t timeout);
     /// ```
     public static int vkWaitSemaphoresKHR(VkDevice device, MemorySegment pWaitInfo, long timeout) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWaitSemaphoresKHR)) throw new SymbolNotFoundError("Symbol not found: vkWaitSemaphoresKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWaitSemaphoresKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkWaitSemaphoresKHR");
         try { return (int) Handles.MH_vkWaitSemaphoresKHR.invokeExact(device.capabilities().PFN_vkWaitSemaphoresKHR, device.segment(), pWaitInfo, timeout); }
         catch (Throwable e) { throw new RuntimeException("error in vkWaitSemaphoresKHR", e); }
     }
@@ -64,7 +64,7 @@ public final class VKKHRTimelineSemaphore {
     /// (int) VkResult vkSignalSemaphoreKHR((struct VkDevice*) VkDevice device, const VkSemaphoreSignalInfo* pSignalInfo);
     /// ```
     public static int vkSignalSemaphoreKHR(VkDevice device, MemorySegment pSignalInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSignalSemaphoreKHR)) throw new SymbolNotFoundError("Symbol not found: vkSignalSemaphoreKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSignalSemaphoreKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkSignalSemaphoreKHR");
         try { return (int) Handles.MH_vkSignalSemaphoreKHR.invokeExact(device.capabilities().PFN_vkSignalSemaphoreKHR, device.segment(), pSignalInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSignalSemaphoreKHR", e); }
     }

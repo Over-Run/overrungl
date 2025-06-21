@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLAMDMultiDrawIndirect {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLAMDMultiDrawIndirect {
     /// void glMultiDrawArraysIndirectAMD((unsigned int) GLenum mode, const void* indirect, (int) GLsizei primcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawArraysIndirectAMD(int mode, MemorySegment indirect, int primcount, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectAMD)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysIndirectAMD)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysIndirectAMD");
         try { Handles.MH_glMultiDrawArraysIndirectAMD.invokeExact(handles.PFN_glMultiDrawArraysIndirectAMD, mode, indirect, primcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysIndirectAMD", e); }
     }
@@ -52,7 +53,7 @@ public final class GLAMDMultiDrawIndirect {
     /// void glMultiDrawElementsIndirectAMD((unsigned int) GLenum mode, (unsigned int) GLenum type, const void* indirect, (int) GLsizei primcount, (int) GLsizei stride);
     /// ```
     public void MultiDrawElementsIndirectAMD(int mode, int type, MemorySegment indirect, int primcount, int stride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectAMD)) throw new SymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectAMD");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsIndirectAMD)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsIndirectAMD");
         try { Handles.MH_glMultiDrawElementsIndirectAMD.invokeExact(handles.PFN_glMultiDrawElementsIndirectAMD, mode, type, indirect, primcount, stride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsIndirectAMD", e); }
     }

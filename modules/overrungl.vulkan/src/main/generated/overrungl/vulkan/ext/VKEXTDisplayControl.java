@@ -47,7 +47,7 @@ public final class VKEXTDisplayControl {
     /// (int) VkResult vkDisplayPowerControlEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDisplayKHR display, const VkDisplayPowerInfoEXT* pDisplayPowerInfo);
     /// ```
     public static int vkDisplayPowerControlEXT(VkDevice device, long display, MemorySegment pDisplayPowerInfo) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDisplayPowerControlEXT)) throw new SymbolNotFoundError("Symbol not found: vkDisplayPowerControlEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDisplayPowerControlEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDisplayPowerControlEXT");
         try { return (int) Handles.MH_vkDisplayPowerControlEXT.invokeExact(device.capabilities().PFN_vkDisplayPowerControlEXT, device.segment(), display, pDisplayPowerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkDisplayPowerControlEXT", e); }
     }
@@ -56,7 +56,7 @@ public final class VKEXTDisplayControl {
     /// (int) VkResult vkRegisterDeviceEventEXT((struct VkDevice*) VkDevice device, const VkDeviceEventInfoEXT* pDeviceEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
     /// ```
     public static int vkRegisterDeviceEventEXT(VkDevice device, MemorySegment pDeviceEventInfo, MemorySegment pAllocator, MemorySegment pFence) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDeviceEventEXT)) throw new SymbolNotFoundError("Symbol not found: vkRegisterDeviceEventEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDeviceEventEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkRegisterDeviceEventEXT");
         try { return (int) Handles.MH_vkRegisterDeviceEventEXT.invokeExact(device.capabilities().PFN_vkRegisterDeviceEventEXT, device.segment(), pDeviceEventInfo, pAllocator, pFence); }
         catch (Throwable e) { throw new RuntimeException("error in vkRegisterDeviceEventEXT", e); }
     }
@@ -65,7 +65,7 @@ public final class VKEXTDisplayControl {
     /// (int) VkResult vkRegisterDisplayEventEXT((struct VkDevice*) VkDevice device, (uint64_t) VkDisplayKHR display, const VkDisplayEventInfoEXT* pDisplayEventInfo, const VkAllocationCallbacks* pAllocator, VkFence* pFence);
     /// ```
     public static int vkRegisterDisplayEventEXT(VkDevice device, long display, MemorySegment pDisplayEventInfo, MemorySegment pAllocator, MemorySegment pFence) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDisplayEventEXT)) throw new SymbolNotFoundError("Symbol not found: vkRegisterDisplayEventEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDisplayEventEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkRegisterDisplayEventEXT");
         try { return (int) Handles.MH_vkRegisterDisplayEventEXT.invokeExact(device.capabilities().PFN_vkRegisterDisplayEventEXT, device.segment(), display, pDisplayEventInfo, pAllocator, pFence); }
         catch (Throwable e) { throw new RuntimeException("error in vkRegisterDisplayEventEXT", e); }
     }
@@ -74,7 +74,7 @@ public final class VKEXTDisplayControl {
     /// (int) VkResult vkGetSwapchainCounterEXT((struct VkDevice*) VkDevice device, (uint64_t) VkSwapchainKHR swapchain, (int) VkSurfaceCounterFlagBitsEXT counter, uint64_t* pCounterValue);
     /// ```
     public static int vkGetSwapchainCounterEXT(VkDevice device, long swapchain, int counter, MemorySegment pCounterValue) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainCounterEXT)) throw new SymbolNotFoundError("Symbol not found: vkGetSwapchainCounterEXT");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainCounterEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSwapchainCounterEXT");
         try { return (int) Handles.MH_vkGetSwapchainCounterEXT.invokeExact(device.capabilities().PFN_vkGetSwapchainCounterEXT, device.segment(), swapchain, counter, pCounterValue); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSwapchainCounterEXT", e); }
     }

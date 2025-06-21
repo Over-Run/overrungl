@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBSampleLocations {
     public static final int GL_SAMPLE_LOCATION_SUBPIXEL_BITS_ARB = 0x933D;
@@ -54,7 +55,7 @@ public final class GLARBSampleLocations {
     /// void glFramebufferSampleLocationsfvARB((unsigned int) GLenum target, (unsigned int) GLuint start, (int) GLsizei count, const GLfloat* v);
     /// ```
     public void FramebufferSampleLocationsfvARB(int target, int start, int count, MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvARB)) throw new SymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvARB");
         try { Handles.MH_glFramebufferSampleLocationsfvARB.invokeExact(handles.PFN_glFramebufferSampleLocationsfvARB, target, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferSampleLocationsfvARB", e); }
     }
@@ -63,7 +64,7 @@ public final class GLARBSampleLocations {
     /// void glNamedFramebufferSampleLocationsfvARB((unsigned int) GLuint framebuffer, (unsigned int) GLuint start, (int) GLsizei count, const GLfloat* v);
     /// ```
     public void NamedFramebufferSampleLocationsfvARB(int framebuffer, int start, int count, MemorySegment v) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvARB)) throw new SymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvARB");
         try { Handles.MH_glNamedFramebufferSampleLocationsfvARB.invokeExact(handles.PFN_glNamedFramebufferSampleLocationsfvARB, framebuffer, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferSampleLocationsfvARB", e); }
     }
@@ -72,7 +73,7 @@ public final class GLARBSampleLocations {
     /// void glEvaluateDepthValuesARB();
     /// ```
     public void EvaluateDepthValuesARB() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glEvaluateDepthValuesARB)) throw new SymbolNotFoundError("Symbol not found: glEvaluateDepthValuesARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEvaluateDepthValuesARB)) throw new GLSymbolNotFoundError("Symbol not found: glEvaluateDepthValuesARB");
         try { Handles.MH_glEvaluateDepthValuesARB.invokeExact(handles.PFN_glEvaluateDepthValuesARB); }
         catch (Throwable e) { throw new RuntimeException("error in EvaluateDepthValuesARB", e); }
     }

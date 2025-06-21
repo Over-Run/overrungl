@@ -37,7 +37,7 @@ public final class VKKHRWin32Surface {
     /// (int) VkResult vkCreateWin32SurfaceKHR((struct VkInstance*) VkInstance instance, const VkWin32SurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateWin32SurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateWin32SurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateWin32SurfaceKHR");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateWin32SurfaceKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateWin32SurfaceKHR");
         try { return (int) Handles.MH_vkCreateWin32SurfaceKHR.invokeExact(instance.capabilities().PFN_vkCreateWin32SurfaceKHR, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateWin32SurfaceKHR", e); }
     }
@@ -46,7 +46,7 @@ public final class VKKHRWin32Surface {
     /// (uint32_t) VkBool32 vkGetPhysicalDeviceWin32PresentationSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex);
     /// ```
     public static int vkGetPhysicalDeviceWin32PresentationSupportKHR(VkPhysicalDevice physicalDevice, int queueFamilyIndex) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceWin32PresentationSupportKHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceWin32PresentationSupportKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceWin32PresentationSupportKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR, physicalDevice.segment(), queueFamilyIndex); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceWin32PresentationSupportKHR", e); }
     }

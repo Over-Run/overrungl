@@ -36,7 +36,7 @@ public final class VKNVAcquireWinrtDisplay {
     /// (int) VkResult vkAcquireWinrtDisplayNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, (uint64_t) VkDisplayKHR display);
     /// ```
     public static int vkAcquireWinrtDisplayNV(VkPhysicalDevice physicalDevice, long display) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireWinrtDisplayNV)) throw new SymbolNotFoundError("Symbol not found: vkAcquireWinrtDisplayNV");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireWinrtDisplayNV)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireWinrtDisplayNV");
         try { return (int) Handles.MH_vkAcquireWinrtDisplayNV.invokeExact(physicalDevice.capabilities().PFN_vkAcquireWinrtDisplayNV, physicalDevice.segment(), display); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireWinrtDisplayNV", e); }
     }
@@ -45,7 +45,7 @@ public final class VKNVAcquireWinrtDisplay {
     /// (int) VkResult vkGetWinrtDisplayNV((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t deviceRelativeId, VkDisplayKHR* pDisplay);
     /// ```
     public static int vkGetWinrtDisplayNV(VkPhysicalDevice physicalDevice, int deviceRelativeId, MemorySegment pDisplay) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetWinrtDisplayNV)) throw new SymbolNotFoundError("Symbol not found: vkGetWinrtDisplayNV");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetWinrtDisplayNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetWinrtDisplayNV");
         try { return (int) Handles.MH_vkGetWinrtDisplayNV.invokeExact(physicalDevice.capabilities().PFN_vkGetWinrtDisplayNV, physicalDevice.segment(), deviceRelativeId, pDisplay); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetWinrtDisplayNV", e); }
     }

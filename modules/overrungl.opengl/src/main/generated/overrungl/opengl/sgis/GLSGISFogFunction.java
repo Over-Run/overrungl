@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLSGISFogFunction {
     public static final int GL_FOG_FUNC_SGIS = 0x812A;
@@ -46,7 +47,7 @@ public final class GLSGISFogFunction {
     /// void glFogFuncSGIS((int) GLsizei n, const GLfloat* points);
     /// ```
     public void FogFuncSGIS(int n, MemorySegment points) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glFogFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glFogFuncSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glFogFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glFogFuncSGIS");
         try { Handles.MH_glFogFuncSGIS.invokeExact(handles.PFN_glFogFuncSGIS, n, points); }
         catch (Throwable e) { throw new RuntimeException("error in FogFuncSGIS", e); }
     }
@@ -55,7 +56,7 @@ public final class GLSGISFogFunction {
     /// void glGetFogFuncSGIS(GLfloat* points);
     /// ```
     public void GetFogFuncSGIS(MemorySegment points) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetFogFuncSGIS)) throw new SymbolNotFoundError("Symbol not found: glGetFogFuncSGIS");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetFogFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glGetFogFuncSGIS");
         try { Handles.MH_glGetFogFuncSGIS.invokeExact(handles.PFN_glGetFogFuncSGIS, points); }
         catch (Throwable e) { throw new RuntimeException("error in GetFogFuncSGIS", e); }
     }

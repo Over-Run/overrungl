@@ -37,7 +37,7 @@ public final class VKKHRXcbSurface {
     /// (int) VkResult vkCreateXcbSurfaceKHR((struct VkInstance*) VkInstance instance, const VkXcbSurfaceCreateInfoKHR* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSurfaceKHR* pSurface);
     /// ```
     public static int vkCreateXcbSurfaceKHR(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
-        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateXcbSurfaceKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateXcbSurfaceKHR");
+        if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateXcbSurfaceKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateXcbSurfaceKHR");
         try { return (int) Handles.MH_vkCreateXcbSurfaceKHR.invokeExact(instance.capabilities().PFN_vkCreateXcbSurfaceKHR, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateXcbSurfaceKHR", e); }
     }
@@ -46,7 +46,7 @@ public final class VKKHRXcbSurface {
     /// (uint32_t) VkBool32 vkGetPhysicalDeviceXcbPresentationSupportKHR((struct VkPhysicalDevice*) VkPhysicalDevice physicalDevice, uint32_t queueFamilyIndex, xcb_connection_t* connection, (uint32_t) xcb_visualid_t visual_id);
     /// ```
     public static int vkGetPhysicalDeviceXcbPresentationSupportKHR(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment connection, int visual_id) {
-        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR)) throw new SymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXcbPresentationSupportKHR");
+        if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceXcbPresentationSupportKHR");
         try { return (int) Handles.MH_vkGetPhysicalDeviceXcbPresentationSupportKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR, physicalDevice.segment(), queueFamilyIndex, connection, visual_id); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceXcbPresentationSupportKHR", e); }
     }

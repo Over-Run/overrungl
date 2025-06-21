@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLMESAResizeBuffers {
     private final Handles handles;
@@ -40,7 +41,7 @@ public final class GLMESAResizeBuffers {
     /// void glResizeBuffersMESA();
     /// ```
     public void ResizeBuffersMESA() {
-        if (MemoryUtil.isNullPointer(handles.PFN_glResizeBuffersMESA)) throw new SymbolNotFoundError("Symbol not found: glResizeBuffersMESA");
+        if (MemoryUtil.isNullPointer(handles.PFN_glResizeBuffersMESA)) throw new GLSymbolNotFoundError("Symbol not found: glResizeBuffersMESA");
         try { Handles.MH_glResizeBuffersMESA.invokeExact(handles.PFN_glResizeBuffersMESA); }
         catch (Throwable e) { throw new RuntimeException("error in ResizeBuffersMESA", e); }
     }

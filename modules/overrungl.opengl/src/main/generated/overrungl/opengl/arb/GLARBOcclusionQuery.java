@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBOcclusionQuery {
     public static final int GL_QUERY_COUNTER_BITS_ARB = 0x8864;
@@ -66,7 +67,7 @@ public final class GLARBOcclusionQuery {
     /// void glGenQueriesARB((int) GLsizei n, GLuint* ids);
     /// ```
     public void GenQueriesARB(int n, MemorySegment ids) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGenQueriesARB)) throw new SymbolNotFoundError("Symbol not found: glGenQueriesARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGenQueriesARB)) throw new GLSymbolNotFoundError("Symbol not found: glGenQueriesARB");
         try { Handles.MH_glGenQueriesARB.invokeExact(handles.PFN_glGenQueriesARB, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in GenQueriesARB", e); }
     }
@@ -75,7 +76,7 @@ public final class GLARBOcclusionQuery {
     /// void glDeleteQueriesARB((int) GLsizei n, const GLuint* ids);
     /// ```
     public void DeleteQueriesARB(int n, MemorySegment ids) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteQueriesARB)) throw new SymbolNotFoundError("Symbol not found: glDeleteQueriesARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDeleteQueriesARB)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteQueriesARB");
         try { Handles.MH_glDeleteQueriesARB.invokeExact(handles.PFN_glDeleteQueriesARB, n, ids); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteQueriesARB", e); }
     }
@@ -84,7 +85,7 @@ public final class GLARBOcclusionQuery {
     /// GLboolean glIsQueryARB((unsigned int) GLuint id);
     /// ```
     public boolean IsQueryARB(int id) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glIsQueryARB)) throw new SymbolNotFoundError("Symbol not found: glIsQueryARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glIsQueryARB)) throw new GLSymbolNotFoundError("Symbol not found: glIsQueryARB");
         try { return (((byte) Handles.MH_glIsQueryARB.invokeExact(handles.PFN_glIsQueryARB, id)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsQueryARB", e); }
     }
@@ -93,7 +94,7 @@ public final class GLARBOcclusionQuery {
     /// void glBeginQueryARB((unsigned int) GLenum target, (unsigned int) GLuint id);
     /// ```
     public void BeginQueryARB(int target, int id) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glBeginQueryARB)) throw new SymbolNotFoundError("Symbol not found: glBeginQueryARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glBeginQueryARB)) throw new GLSymbolNotFoundError("Symbol not found: glBeginQueryARB");
         try { Handles.MH_glBeginQueryARB.invokeExact(handles.PFN_glBeginQueryARB, target, id); }
         catch (Throwable e) { throw new RuntimeException("error in BeginQueryARB", e); }
     }
@@ -102,7 +103,7 @@ public final class GLARBOcclusionQuery {
     /// void glEndQueryARB((unsigned int) GLenum target);
     /// ```
     public void EndQueryARB(int target) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glEndQueryARB)) throw new SymbolNotFoundError("Symbol not found: glEndQueryARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glEndQueryARB)) throw new GLSymbolNotFoundError("Symbol not found: glEndQueryARB");
         try { Handles.MH_glEndQueryARB.invokeExact(handles.PFN_glEndQueryARB, target); }
         catch (Throwable e) { throw new RuntimeException("error in EndQueryARB", e); }
     }
@@ -111,7 +112,7 @@ public final class GLARBOcclusionQuery {
     /// void glGetQueryivARB((unsigned int) GLenum target, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetQueryivARB(int target, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryivARB)) throw new SymbolNotFoundError("Symbol not found: glGetQueryivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryivARB");
         try { Handles.MH_glGetQueryivARB.invokeExact(handles.PFN_glGetQueryivARB, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryivARB", e); }
     }
@@ -120,7 +121,7 @@ public final class GLARBOcclusionQuery {
     /// void glGetQueryObjectivARB((unsigned int) GLuint id, (unsigned int) GLenum pname, GLint* params);
     /// ```
     public void GetQueryObjectivARB(int id, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectivARB)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryObjectivARB");
         try { Handles.MH_glGetQueryObjectivARB.invokeExact(handles.PFN_glGetQueryObjectivARB, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectivARB", e); }
     }
@@ -129,7 +130,7 @@ public final class GLARBOcclusionQuery {
     /// void glGetQueryObjectuivARB((unsigned int) GLuint id, (unsigned int) GLenum pname, GLuint* params);
     /// ```
     public void GetQueryObjectuivARB(int id, int pname, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectuivARB)) throw new SymbolNotFoundError("Symbol not found: glGetQueryObjectuivARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectuivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryObjectuivARB");
         try { Handles.MH_glGetQueryObjectuivARB.invokeExact(handles.PFN_glGetQueryObjectuivARB, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectuivARB", e); }
     }

@@ -99,7 +99,7 @@ public final class VKKHRSamplerYcbcrConversion {
     /// (int) VkResult vkCreateSamplerYcbcrConversionKHR((struct VkDevice*) VkDevice device, const VkSamplerYcbcrConversionCreateInfo* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkSamplerYcbcrConversion* pYcbcrConversion);
     /// ```
     public static int vkCreateSamplerYcbcrConversionKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pYcbcrConversion) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversionKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSamplerYcbcrConversionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversionKHR");
         try { return (int) Handles.MH_vkCreateSamplerYcbcrConversionKHR.invokeExact(device.capabilities().PFN_vkCreateSamplerYcbcrConversionKHR, device.segment(), pCreateInfo, pAllocator, pYcbcrConversion); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateSamplerYcbcrConversionKHR", e); }
     }
@@ -108,7 +108,7 @@ public final class VKKHRSamplerYcbcrConversion {
     /// void vkDestroySamplerYcbcrConversionKHR((struct VkDevice*) VkDevice device, (uint64_t) VkSamplerYcbcrConversion ycbcrConversion, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroySamplerYcbcrConversionKHR(VkDevice device, long ycbcrConversion, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroySamplerYcbcrConversionKHR)) throw new SymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversionKHR");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroySamplerYcbcrConversionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversionKHR");
         try { Handles.MH_vkDestroySamplerYcbcrConversionKHR.invokeExact(device.capabilities().PFN_vkDestroySamplerYcbcrConversionKHR, device.segment(), ycbcrConversion, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroySamplerYcbcrConversionKHR", e); }
     }

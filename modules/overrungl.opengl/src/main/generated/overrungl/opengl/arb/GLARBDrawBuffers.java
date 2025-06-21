@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLARBDrawBuffers {
     public static final int GL_MAX_DRAW_BUFFERS_ARB = 0x8824;
@@ -57,7 +58,7 @@ public final class GLARBDrawBuffers {
     /// void glDrawBuffersARB((int) GLsizei n, const GLenum* bufs);
     /// ```
     public void DrawBuffersARB(int n, MemorySegment bufs) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersARB)) throw new SymbolNotFoundError("Symbol not found: glDrawBuffersARB");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersARB)) throw new GLSymbolNotFoundError("Symbol not found: glDrawBuffersARB");
         try { Handles.MH_glDrawBuffersARB.invokeExact(handles.PFN_glDrawBuffersARB, n, bufs); }
         catch (Throwable e) { throw new RuntimeException("error in DrawBuffersARB", e); }
     }

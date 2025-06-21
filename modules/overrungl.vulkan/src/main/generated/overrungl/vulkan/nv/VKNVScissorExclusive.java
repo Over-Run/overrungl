@@ -40,7 +40,7 @@ public final class VKNVScissorExclusive {
     /// void vkCmdSetExclusiveScissorEnableNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkBool32* pExclusiveScissorEnables);
     /// ```
     public static void vkCmdSetExclusiveScissorEnableNV(VkCommandBuffer commandBuffer, int firstExclusiveScissor, int exclusiveScissorCount, MemorySegment pExclusiveScissorEnables) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorEnableNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorEnableNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorEnableNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorEnableNV");
         try { Handles.MH_vkCmdSetExclusiveScissorEnableNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorEnableNV, commandBuffer.segment(), firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissorEnables); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetExclusiveScissorEnableNV", e); }
     }
@@ -49,7 +49,7 @@ public final class VKNVScissorExclusive {
     /// void vkCmdSetExclusiveScissorNV((struct VkCommandBuffer*) VkCommandBuffer commandBuffer, uint32_t firstExclusiveScissor, uint32_t exclusiveScissorCount, const VkRect2D* pExclusiveScissors);
     /// ```
     public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, int firstExclusiveScissor, int exclusiveScissorCount, MemorySegment pExclusiveScissors) {
-        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorNV)) throw new SymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorNV");
+        if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorNV");
         try { Handles.MH_vkCmdSetExclusiveScissorNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorNV, commandBuffer.segment(), firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetExclusiveScissorNV", e); }
     }

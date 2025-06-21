@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTDrawInstanced {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLEXTDrawInstanced {
     /// void glDrawArraysInstancedEXT((unsigned int) GLenum mode, (int) GLint start, (int) GLsizei count, (int) GLsizei primcount);
     /// ```
     public void DrawArraysInstancedEXT(int mode, int start, int count, int primcount) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawArraysInstancedEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDrawArraysInstancedEXT");
         try { Handles.MH_glDrawArraysInstancedEXT.invokeExact(handles.PFN_glDrawArraysInstancedEXT, mode, start, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in DrawArraysInstancedEXT", e); }
     }
@@ -52,7 +53,7 @@ public final class GLEXTDrawInstanced {
     /// void glDrawElementsInstancedEXT((unsigned int) GLenum mode, (int) GLsizei count, (unsigned int) GLenum type, const void* indices, (int) GLsizei primcount);
     /// ```
     public void DrawElementsInstancedEXT(int mode, int count, int type, MemorySegment indices, int primcount) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedEXT)) throw new SymbolNotFoundError("Symbol not found: glDrawElementsInstancedEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedEXT");
         try { Handles.MH_glDrawElementsInstancedEXT.invokeExact(handles.PFN_glDrawElementsInstancedEXT, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedEXT", e); }
     }

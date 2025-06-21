@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLEXTGpuProgramParameters {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLEXTGpuProgramParameters {
     /// void glProgramEnvParameters4fvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLfloat* params);
     /// ```
     public void ProgramEnvParameters4fvEXT(int target, int index, int count, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameters4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramEnvParameters4fvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameters4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramEnvParameters4fvEXT");
         try { Handles.MH_glProgramEnvParameters4fvEXT.invokeExact(handles.PFN_glProgramEnvParameters4fvEXT, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameters4fvEXT", e); }
     }
@@ -52,7 +53,7 @@ public final class GLEXTGpuProgramParameters {
     /// void glProgramLocalParameters4fvEXT((unsigned int) GLenum target, (unsigned int) GLuint index, (int) GLsizei count, const GLfloat* params);
     /// ```
     public void ProgramLocalParameters4fvEXT(int target, int index, int count, MemorySegment params) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameters4fvEXT)) throw new SymbolNotFoundError("Symbol not found: glProgramLocalParameters4fvEXT");
+        if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameters4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramLocalParameters4fvEXT");
         try { Handles.MH_glProgramLocalParameters4fvEXT.invokeExact(handles.PFN_glProgramLocalParameters4fvEXT, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameters4fvEXT", e); }
     }

@@ -42,7 +42,7 @@ public final class VKNVExternalComputeQueue {
     /// (int) VkResult vkCreateExternalComputeQueueNV((struct VkDevice*) VkDevice device, const VkExternalComputeQueueCreateInfoNV* pCreateInfo, const VkAllocationCallbacks* pAllocator, VkExternalComputeQueueNV* pExternalQueue);
     /// ```
     public static int vkCreateExternalComputeQueueNV(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pExternalQueue) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateExternalComputeQueueNV)) throw new SymbolNotFoundError("Symbol not found: vkCreateExternalComputeQueueNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateExternalComputeQueueNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateExternalComputeQueueNV");
         try { return (int) Handles.MH_vkCreateExternalComputeQueueNV.invokeExact(device.capabilities().PFN_vkCreateExternalComputeQueueNV, device.segment(), pCreateInfo, pAllocator, pExternalQueue); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateExternalComputeQueueNV", e); }
     }
@@ -51,7 +51,7 @@ public final class VKNVExternalComputeQueue {
     /// void vkDestroyExternalComputeQueueNV((struct VkDevice*) VkDevice device, (struct VkExternalComputeQueueNV*) VkExternalComputeQueueNV externalQueue, const VkAllocationCallbacks* pAllocator);
     /// ```
     public static void vkDestroyExternalComputeQueueNV(VkDevice device, MemorySegment externalQueue, MemorySegment pAllocator) {
-        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyExternalComputeQueueNV)) throw new SymbolNotFoundError("Symbol not found: vkDestroyExternalComputeQueueNV");
+        if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyExternalComputeQueueNV)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyExternalComputeQueueNV");
         try { Handles.MH_vkDestroyExternalComputeQueueNV.invokeExact(device.capabilities().PFN_vkDestroyExternalComputeQueueNV, device.segment(), externalQueue, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyExternalComputeQueueNV", e); }
     }
@@ -60,7 +60,7 @@ public final class VKNVExternalComputeQueue {
     /// void vkGetExternalComputeQueueDataNV((struct VkExternalComputeQueueNV*) VkExternalComputeQueueNV externalQueue, VkExternalComputeQueueDataParamsNV* params, void* pData);
     /// ```
     public static void vkGetExternalComputeQueueDataNV(VkExternalComputeQueueNV externalQueue, MemorySegment params, MemorySegment pData) {
-        if (MemoryUtil.isNullPointer(externalQueue.capabilities().PFN_vkGetExternalComputeQueueDataNV)) throw new SymbolNotFoundError("Symbol not found: vkGetExternalComputeQueueDataNV");
+        if (MemoryUtil.isNullPointer(externalQueue.capabilities().PFN_vkGetExternalComputeQueueDataNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetExternalComputeQueueDataNV");
         try { Handles.MH_vkGetExternalComputeQueueDataNV.invokeExact(externalQueue.capabilities().PFN_vkGetExternalComputeQueueDataNV, externalQueue.segment(), params, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetExternalComputeQueueDataNV", e); }
     }

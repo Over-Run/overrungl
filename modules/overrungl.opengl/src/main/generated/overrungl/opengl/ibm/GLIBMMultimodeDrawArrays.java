@@ -21,6 +21,7 @@ import java.lang.foreign.*;
 import java.lang.invoke.*;
 import overrungl.internal.RuntimeHelper;
 import overrungl.util.*;
+import overrungl.opengl.*;
 
 public final class GLIBMMultimodeDrawArrays {
     private final Handles handles;
@@ -43,7 +44,7 @@ public final class GLIBMMultimodeDrawArrays {
     /// void glMultiModeDrawArraysIBM(const GLenum* mode, const GLint* first, const GLsizei* count, (int) GLsizei primcount, (int) GLint modestride);
     /// ```
     public void MultiModeDrawArraysIBM(MemorySegment mode, MemorySegment first, MemorySegment count, int primcount, int modestride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiModeDrawArraysIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawArraysIBM");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiModeDrawArraysIBM)) throw new GLSymbolNotFoundError("Symbol not found: glMultiModeDrawArraysIBM");
         try { Handles.MH_glMultiModeDrawArraysIBM.invokeExact(handles.PFN_glMultiModeDrawArraysIBM, mode, first, count, primcount, modestride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiModeDrawArraysIBM", e); }
     }
@@ -52,7 +53,7 @@ public final class GLIBMMultimodeDrawArrays {
     /// void glMultiModeDrawElementsIBM(const GLenum* mode, const GLsizei* count, (unsigned int) GLenum type, const void* const * indices, (int) GLsizei primcount, (int) GLint modestride);
     /// ```
     public void MultiModeDrawElementsIBM(MemorySegment mode, MemorySegment count, int type, MemorySegment indices, int primcount, int modestride) {
-        if (MemoryUtil.isNullPointer(handles.PFN_glMultiModeDrawElementsIBM)) throw new SymbolNotFoundError("Symbol not found: glMultiModeDrawElementsIBM");
+        if (MemoryUtil.isNullPointer(handles.PFN_glMultiModeDrawElementsIBM)) throw new GLSymbolNotFoundError("Symbol not found: glMultiModeDrawElementsIBM");
         try { Handles.MH_glMultiModeDrawElementsIBM.invokeExact(handles.PFN_glMultiModeDrawElementsIBM, mode, count, type, indices, primcount, modestride); }
         catch (Throwable e) { throw new RuntimeException("error in MultiModeDrawElementsIBM", e); }
     }
