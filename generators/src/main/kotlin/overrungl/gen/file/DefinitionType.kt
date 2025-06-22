@@ -196,6 +196,7 @@ data class EnumType(
 }
 
 
+const val CHAR_LAYOUT = "ValueLayout.JAVA_CHAR"
 const val BYTE_LAYOUT = "ValueLayout.JAVA_BYTE"
 const val SHORT_LAYOUT = "ValueLayout.JAVA_SHORT"
 const val INT_LAYOUT = "ValueLayout.JAVA_INT"
@@ -309,6 +310,14 @@ val uintptr_t = dynamic(
     memoryLayout = size_t.memoryLayout,
     processor = size_t.processor
 )
+
+val jchar = value("jchar", "char", CHAR_LAYOUT, 'C')
+val jbyte = value("jbyte", "byte", BYTE_LAYOUT, 'B')
+val jshort = value("jshort", "short", SHORT_LAYOUT, 'S')
+val jint = value("jint", "int", INT_LAYOUT, 'I')
+val jlong = value("jlong", "long", LONG_LAYOUT, 'J')
+val jfloat = value("jfloat", "float", FLOAT_LAYOUT, 'F')
+val jdouble = value("jdouble", "double", DOUBLE_LAYOUT, 'D')
 
 fun findBuiltinType(name: String): DefinitionType? {
     return builtinType[name]

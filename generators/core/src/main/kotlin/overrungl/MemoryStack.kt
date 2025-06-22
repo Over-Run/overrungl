@@ -59,6 +59,30 @@ fun memoryStack() {
         )
     }
 
+    Type.entries.forEach {
+        val clzName =
+            if (it == Type.ADDRESS) "VoidPtr" else "${it.typeName.replaceFirstChar { c -> c.uppercaseChar() }}Ptr"
+        sb.appendLine(
+            """
+                |    /// Allocates uninitialized `$clzName`.
+                |    ///
+                |    /// @return the `$clzName`
+                |    public $clzName alloc$clzName() { return new $clzName(malloc($clzName.LAYOUT)); }
+                |
+            """.trimMargin()
+        )
+        sb.appendLine(
+            """
+                |    /// Allocates uninitialized `$clzName.Buffer`.
+                |    ///
+                |    /// @param count the count of the allocated `$clzName`
+                |    /// @return the `$clzName.Buffer`
+                |    public $clzName.Buffer alloc$clzName(long count) { return new $clzName.Buffer(malloc($clzName.LAYOUT, count), count); }
+                |
+            """.trimMargin()
+        )
+    }
+
     sb.append("    ")
     sb.appendLine(formatter_on)
 

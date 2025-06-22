@@ -19,8 +19,7 @@ package overrungl.demo.vulkan;
 import overrungl.demo.util.IOUtil;
 import overrungl.glfw.GLFW;
 import overrungl.glfw.GLFWVidMode;
-import overrungl.util.MemoryStack;
-import overrungl.util.MemoryUtil;
+import overrungl.util.*;
 import overrungl.vulkan.*;
 import overrungl.vulkan.khr.VKKHRSwapchain;
 import overrungl.vulkan.khr.struct.VkPresentInfoKHR;
@@ -34,7 +33,6 @@ import overrungl.vulkan.union.VkClearValue;
 import java.io.IOException;
 import java.lang.foreign.Arena;
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
 import java.util.*;
 
 import static overrungl.glfw.GLFW.*;
@@ -119,9 +117,9 @@ public class VulkanDemo {
             instanceVersion = VK_API_VERSION_1_0;
         } else {
             try (MemoryStack stack = MemoryStack.pushLocal()) {
-                MemorySegment p = stack.allocate(ValueLayout.JAVA_INT);
-                vkEnumerateInstanceVersion(p);
-                instanceVersion = p.get(ValueLayout.JAVA_INT, 0);
+                IntPtr p = stack.allocIntPtr();
+                vkEnumerateInstanceVersion(p.segment());
+                instanceVersion = p.value();
             }
         }
         System.out.println("Instance version: " + versionString(instanceVersion));
@@ -130,13 +128,13 @@ public class VulkanDemo {
 
         String[] instanceLayerNames;
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            MemorySegment pCount = stack.allocate(ValueLayout.JAVA_INT);
-            vkEnumerateInstanceLayerProperties(pCount, MemorySegment.NULL);
-            int count = pCount.get(ValueLayout.JAVA_INT, 0);
+            IntPtr pCount = stack.allocIntPtr();
+            vkEnumerateInstanceLayerProperties(pCount.segment(), MemorySegment.NULL);
+            int count = pCount.value();
             instanceLayerNames = new String[count + 1];
 
             var properties = VkLayerProperties.alloc(stack, count);
-            vkEnumerateInstanceLayerProperties(pCount, properties.segment());
+            vkEnumerateInstanceLayerProperties(pCount.segment(), properties.segment());
             System.out.println("===== Instance layer properties =====");
             for (int i = 0; i < count; i++) {
                 String layerName = MemoryUtil.nativeString(properties.layerNameAt(i));
@@ -150,12 +148,12 @@ public class VulkanDemo {
         for (String layerName : instanceLayerNames) {
             try (MemoryStack stack = MemoryStack.pushLocal()) {
                 MemorySegment pLayerName = MemoryUtil.allocString(stack, layerName);
-                MemorySegment pCount = stack.allocate(ValueLayout.JAVA_INT);
-                vkEnumerateInstanceExtensionProperties(pLayerName, pCount, MemorySegment.NULL);
-                int count = pCount.get(ValueLayout.JAVA_INT, 0);
+                IntPtr pCount = stack.allocIntPtr();
+                vkEnumerateInstanceExtensionProperties(pLayerName, pCount.segment(), MemorySegment.NULL);
+                int count = pCount.value();
 
                 var properties = VkExtensionProperties.alloc(stack, count);
-                vkEnumerateInstanceExtensionProperties(pLayerName, pCount, properties.segment());
+                vkEnumerateInstanceExtensionProperties(pLayerName, pCount.segment(), properties.segment());
                 System.out.println("===== Instance extension properties for layer " + layerName + " =====");
                 printExtensionProperties(properties, count);
                 System.out.println();
@@ -165,8 +163,8 @@ public class VulkanDemo {
 
 
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            MemorySegment pExtCount = stack.allocate(ValueLayout.JAVA_INT);
-            MemorySegment extensions = glfwGetRequiredInstanceExtensions(pExtCount);
+            IntPtr pExtCount = stack.allocIntPtr();
+            MemorySegment extensions = glfwGetRequiredInstanceExtensions(pExtCount.segment());
 
             VkInstanceCreateInfo createInfo = VkInstanceCreateInfo.alloc(stack)
                 .sType(VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO)
@@ -180,27 +178,27 @@ public class VulkanDemo {
                     .segment())
                 .enabledLayerCount(ENABLE_VALIDATION_LAYERS ? 1 : 0)
                 .ppEnabledLayerNames(ENABLE_VALIDATION_LAYERS ? stack.addresses(stack.allocateFrom("VK_LAYER_KHRONOS_validation")) : MemorySegment.NULL)
-                .enabledExtensionCount(pExtCount.get(ValueLayout.JAVA_INT, 0))
+                .enabledExtensionCount(pExtCount.value())
                 .ppEnabledExtensionNames(extensions);
-            MemorySegment p = stack.allocate(ValueLayout.ADDRESS);
-            check(vkCreateInstance(createInfo.segment(), MemorySegment.NULL, p), "failed to create instance");
-            instance = new VkInstance(p.get(ValueLayout.ADDRESS, 0));
+            VoidPtr p = stack.allocVoidPtr();
+            check(vkCreateInstance(createInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create instance");
+            instance = new VkInstance(p.value());
         }
     }
 
     private void pickPhysicalDevice() {
         VkPhysicalDevice[] physicalDevices;
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            MemorySegment pDeviceCount = stack.allocate(ValueLayout.JAVA_INT);
-            vkEnumeratePhysicalDevices(instance, pDeviceCount, MemorySegment.NULL);
-            int count = pDeviceCount.get(ValueLayout.JAVA_INT, 0);
+            IntPtr pDeviceCount = stack.allocIntPtr();
+            vkEnumeratePhysicalDevices(instance, pDeviceCount.segment(), MemorySegment.NULL);
+            int count = pDeviceCount.value();
 
-            MemorySegment pDevices = stack.allocate(ValueLayout.ADDRESS, count);
-            vkEnumeratePhysicalDevices(instance, pDeviceCount, pDevices);
+            var pDevices = stack.allocVoidPtr(count);
+            vkEnumeratePhysicalDevices(instance, pDeviceCount.segment(), pDevices.segment());
             physicalDevices = new VkPhysicalDevice[count];
 
             for (int i = 0; i < count; i++) {
-                physicalDevices[i] = new VkPhysicalDevice(pDevices.getAtIndex(ValueLayout.ADDRESS, i), instance);
+                physicalDevices[i] = new VkPhysicalDevice(pDevices.valueAt(i), instance);
             }
         }
         if (physicalDevices.length == 0) {
@@ -243,12 +241,12 @@ public class VulkanDemo {
         Map<MemorySegment, String[]> physicalDeviceLayerNames = HashMap.newHashMap(physicalDevices.length);
         for (VkPhysicalDevice physicalDevice : physicalDevices) {
             try (MemoryStack stack = MemoryStack.pushLocal()) {
-                MemorySegment pCount = stack.allocate(ValueLayout.JAVA_INT);
-                vkEnumerateDeviceLayerProperties(physicalDevice, pCount, MemorySegment.NULL);
-                int count = pCount.get(ValueLayout.JAVA_INT, 0);
+                IntPtr pCount = stack.allocIntPtr();
+                vkEnumerateDeviceLayerProperties(physicalDevice, pCount.segment(), MemorySegment.NULL);
+                int count = pCount.value();
 
                 var properties = VkLayerProperties.alloc(stack, count);
-                vkEnumerateDeviceLayerProperties(physicalDevice, pCount, properties.segment());
+                vkEnumerateDeviceLayerProperties(physicalDevice, pCount.segment(), properties.segment());
 
                 System.out.println("===== Physical device layer properties for handle 0x" + Long.toHexString(physicalDevice.segment().address()) + " =====");
                 String[] array = new String[count + 1];
@@ -267,12 +265,12 @@ public class VulkanDemo {
             for (String layerName : physicalDeviceLayerNames.get(physicalDevice.segment())) {
                 try (MemoryStack stack = MemoryStack.pushLocal()) {
                     MemorySegment pLayerName = MemoryUtil.allocString(stack, layerName);
-                    MemorySegment pCount = stack.allocate(ValueLayout.JAVA_INT);
-                    vkEnumerateDeviceExtensionProperties(physicalDevice, pLayerName, pCount, MemorySegment.NULL);
-                    int count = pCount.get(ValueLayout.JAVA_INT, 0);
+                    IntPtr pCount = stack.allocIntPtr();
+                    vkEnumerateDeviceExtensionProperties(physicalDevice, pLayerName, pCount.segment(), MemorySegment.NULL);
+                    int count = pCount.value();
 
                     var properties = VkExtensionProperties.alloc(stack, count);
-                    vkEnumerateDeviceExtensionProperties(physicalDevice, pLayerName, pCount, properties.segment());
+                    vkEnumerateDeviceExtensionProperties(physicalDevice, pLayerName, pCount.segment(), properties.segment());
                     System.out.println("===== Physical device extension properties for handle 0x" + Long.toHexString(physicalDevice.segment().address()) + " layer " + layerName + " =====");
                     printExtensionProperties(properties, count);
                     System.out.println();
@@ -286,12 +284,12 @@ public class VulkanDemo {
 
     private void createDevice() {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            MemorySegment pCount = stack.allocate(ValueLayout.JAVA_INT);
-            vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pCount, MemorySegment.NULL);
-            int count = pCount.get(ValueLayout.JAVA_INT, 0);
+            IntPtr pCount = stack.allocIntPtr();
+            vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pCount.segment(), MemorySegment.NULL);
+            int count = pCount.value();
 
             var properties = VkQueueFamilyProperties.alloc(stack, count);
-            vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pCount, properties.segment());
+            vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pCount.segment(), properties.segment());
             for (int i = 0; i < count; i++) {
                 if ((properties.queueFlagsAt(i) & VK_QUEUE_GRAPHICS_BIT) != 0) {
                     graphicsQueueFamilyIndex = i;
@@ -315,23 +313,23 @@ public class VulkanDemo {
                 .enabledLayerCount(0)
                 .enabledExtensionCount(extensionNames.length)
                 .ppEnabledExtensionNames(MemoryUtil.allocArray(stack, extensionNames));
-            MemorySegment pDevice = stack.allocate(ValueLayout.ADDRESS);
-            check(vkCreateDevice(physicalDevice, createInfo.segment(), MemorySegment.NULL, pDevice), "failed to create device");
-            device = new VkDevice(pDevice.get(ValueLayout.ADDRESS, 0), physicalDevice);
+            VoidPtr pDevice = stack.allocVoidPtr();
+            check(vkCreateDevice(physicalDevice, createInfo.segment(), MemorySegment.NULL, pDevice.segment()), "failed to create device");
+            device = new VkDevice(pDevice.value(), physicalDevice);
         }
 
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            MemorySegment p = stack.allocate(ValueLayout.ADDRESS);
-            vkGetDeviceQueue(device, graphicsQueueFamilyIndex, 0, p);
-            graphicsQueue = new VkQueue(p.get(ValueLayout.ADDRESS, 0), device);
+            VoidPtr p = stack.allocVoidPtr();
+            vkGetDeviceQueue(device, graphicsQueueFamilyIndex, 0, p.segment());
+            graphicsQueue = new VkQueue(p.value(), device);
         }
     }
 
     private void createSurface() {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            MemorySegment p = stack.allocate(ValueLayout.JAVA_LONG);
-            check(glfwCreateWindowSurface(instance.segment(), window, MemorySegment.NULL, p), "failed to create surface");
-            surface = p.get(ValueLayout.JAVA_LONG, 0);
+            LongPtr p = stack.allocLongPtr();
+            check(glfwCreateWindowSurface(instance.segment(), window, MemorySegment.NULL, p.segment()), "failed to create surface");
+            surface = p.value();
         }
     }
 
@@ -340,12 +338,12 @@ public class VulkanDemo {
             var surfaceCapabilities = VkSurfaceCapabilitiesKHR.alloc(stack);
             vkGetPhysicalDeviceSurfaceCapabilitiesKHR(physicalDevice, surface, surfaceCapabilities.segment());
 
-            MemorySegment pSurfaceFormatCount = stack.allocate(ValueLayout.JAVA_INT);
-            vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, pSurfaceFormatCount, MemorySegment.NULL);
-            int surfaceFormatCount = pSurfaceFormatCount.get(ValueLayout.JAVA_INT, 0);
+            IntPtr pSurfaceFormatCount = stack.allocIntPtr();
+            vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, pSurfaceFormatCount.segment(), MemorySegment.NULL);
+            int surfaceFormatCount = pSurfaceFormatCount.value();
 
             var surfaceFormats = VkSurfaceFormatKHR.alloc(stack, surfaceFormatCount);
-            vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, pSurfaceFormatCount, surfaceFormats.segment());
+            vkGetPhysicalDeviceSurfaceFormatsKHR(physicalDevice, surface, pSurfaceFormatCount.segment(), surfaceFormats.segment());
 
             int imageFormat = -1;
             int imageColorSpace = -1;
@@ -401,20 +399,20 @@ public class VulkanDemo {
                 .compositeAlpha(compositeAlpha)
                 .presentMode(VK_PRESENT_MODE_FIFO_KHR)
                 .clipped(VK_TRUE);
-            MemorySegment p = stack.allocate(ValueLayout.JAVA_LONG);
-            check(vkCreateSwapchainKHR(device, createInfo.segment(), MemorySegment.NULL, p), "failed to create swap chain");
-            swapChain = p.get(ValueLayout.JAVA_LONG, 0);
+            LongPtr p = stack.allocLongPtr();
+            check(vkCreateSwapchainKHR(device, createInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create swap chain");
+            swapChain = p.value();
         }
 
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            MemorySegment pCount = stack.allocate(ValueLayout.JAVA_INT);
-            vkGetSwapchainImagesKHR(device, swapChain, pCount, MemorySegment.NULL);
-            int count = pCount.get(ValueLayout.JAVA_INT, 0);
+            IntPtr pCount = stack.allocIntPtr();
+            vkGetSwapchainImagesKHR(device, swapChain, pCount.segment(), MemorySegment.NULL);
+            int count = pCount.value();
 
-            MemorySegment pImages = stack.allocate(ValueLayout.JAVA_LONG, count);
-            vkGetSwapchainImagesKHR(device, swapChain, pCount, pImages);
+            var pImages = stack.allocLongPtr(count);
+            vkGetSwapchainImagesKHR(device, swapChain, pCount.segment(), pImages.segment());
             for (int i = 0; i < count; i++) {
-                swapChainImages.add(pImages.getAtIndex(ValueLayout.JAVA_LONG, i));
+                swapChainImages.add(pImages.valueAt(i));
             }
         }
 
@@ -425,17 +423,20 @@ public class VulkanDemo {
                     .image(image)
                     .viewType(VK_IMAGE_VIEW_TYPE_2D)
                     .format(swapChainImageFormat)
-                    .components(VkComponentMapping.alloc(stack).segment())
+                    .components(vkComponentMapping -> vkComponentMapping
+                        .r(VK_COMPONENT_SWIZZLE_IDENTITY)
+                        .g(VK_COMPONENT_SWIZZLE_IDENTITY)
+                        .b(VK_COMPONENT_SWIZZLE_IDENTITY)
+                        .a(VK_COMPONENT_SWIZZLE_IDENTITY))
                     .subresourceRange(VkImageSubresourceRange.allocInit(stack,
-                            VK_IMAGE_ASPECT_COLOR_BIT,
-                            0,
-                            1,
-                            0,
-                            1)
-                        .segment());
-                MemorySegment pView = stack.allocate(ValueLayout.JAVA_LONG);
-                vkCreateImageView(device, createInfo.segment(), MemorySegment.NULL, pView);
-                swapChainImageViews.add(pView.get(ValueLayout.JAVA_LONG, 0));
+                        VK_IMAGE_ASPECT_COLOR_BIT,
+                        0,
+                        1,
+                        0,
+                        1).segment());
+                LongPtr pView = stack.allocLongPtr();
+                vkCreateImageView(device, createInfo.segment(), MemorySegment.NULL, pView.segment());
+                swapChainImageViews.add(pView.value());
             }
         }
     }
@@ -464,9 +465,9 @@ public class VulkanDemo {
                         .layout(VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL)
                         .segment())
                     .segment());
-            MemorySegment pRp = stack.allocate(ValueLayout.JAVA_LONG);
-            check(vkCreateRenderPass(device, createInfo.segment(), MemorySegment.NULL, pRp), "failed to create render pass");
-            renderPass = pRp.get(ValueLayout.JAVA_LONG, 0);
+            LongPtr pRp = stack.allocLongPtr();
+            check(vkCreateRenderPass(device, createInfo.segment(), MemorySegment.NULL, pRp.segment()), "failed to create render pass");
+            renderPass = pRp.value();
         }
     }
 
@@ -481,9 +482,9 @@ public class VulkanDemo {
                     .width(swapChainWidth)
                     .height(swapChainHeight)
                     .layers(1);
-                MemorySegment pFb = stack.allocate(ValueLayout.JAVA_LONG);
-                check(vkCreateFramebuffer(device, createInfo.segment(), MemorySegment.NULL, pFb), "failed to create framebuffer");
-                framebuffers.add(pFb.get(ValueLayout.JAVA_LONG, 0));
+                LongPtr pFb = stack.allocLongPtr();
+                check(vkCreateFramebuffer(device, createInfo.segment(), MemorySegment.NULL, pFb.segment()), "failed to create framebuffer");
+                framebuffers.add(pFb.value());
             }
         }
     }
@@ -492,9 +493,9 @@ public class VulkanDemo {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             var createInfo = VkPipelineLayoutCreateInfo.alloc(stack)
                 .sType(VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO);
-            MemorySegment p = stack.allocate(ValueLayout.JAVA_LONG);
-            check(vkCreatePipelineLayout(device, createInfo.segment(), MemorySegment.NULL, p), "failed to create pipeline layout");
-            pipelineLayout = p.get(ValueLayout.JAVA_LONG, 0);
+            LongPtr p = stack.allocLongPtr();
+            check(vkCreatePipelineLayout(device, createInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create pipeline layout");
+            pipelineLayout = p.value();
         }
     }
 
@@ -505,9 +506,9 @@ public class VulkanDemo {
                 .sType(VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO)
                 .codeSize(code.byteSize())
                 .pCode(code);
-            MemorySegment p = arena.allocate(ValueLayout.JAVA_LONG);
-            check(vkCreateShaderModule(device, createInfo.segment(), MemorySegment.NULL, p), "failed to create shader module from " + filename);
-            return p.get(ValueLayout.JAVA_LONG, 0);
+            LongPtr p = LongPtr.alloc(arena);
+            check(vkCreateShaderModule(device, createInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create shader module from " + filename);
+            return p.value();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -592,9 +593,9 @@ public class VulkanDemo {
                 .layout(pipelineLayout)
                 .renderPass(renderPass)
                 .subpass(0);
-            MemorySegment p = stack.allocate(ValueLayout.JAVA_LONG);
-            check(vkCreateGraphicsPipelines(device, VK_NULL_HANDLE, 1, createInfo.segment(), MemorySegment.NULL, p), "failed to create graphics pipeline");
-            graphicsPipeline = p.get(ValueLayout.JAVA_LONG, 0);
+            LongPtr p = stack.allocLongPtr();
+            check(vkCreateGraphicsPipelines(device, VK_NULL_HANDLE, 1, createInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create graphics pipeline");
+            graphicsPipeline = p.value();
         } finally {
             vkDestroyShaderModule(device, vertexShader, MemorySegment.NULL);
             vkDestroyShaderModule(device, fragmentShader, MemorySegment.NULL);
@@ -607,9 +608,9 @@ public class VulkanDemo {
                 .sType(VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO)
                 .flags(VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT)
                 .queueFamilyIndex(graphicsQueueFamilyIndex);
-            MemorySegment p = stack.allocate(ValueLayout.JAVA_LONG);
-            check(vkCreateCommandPool(device, createInfo.segment(), MemorySegment.NULL, p), "failed to create command pool");
-            commandPool = p.get(ValueLayout.JAVA_LONG, 0);
+            LongPtr p = stack.allocLongPtr();
+            check(vkCreateCommandPool(device, createInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create command pool");
+            commandPool = p.value();
         }
     }
 
@@ -620,9 +621,9 @@ public class VulkanDemo {
                 .commandPool(commandPool)
                 .level(VK_COMMAND_BUFFER_LEVEL_PRIMARY)
                 .commandBufferCount(1);
-            MemorySegment p = stack.allocate(ValueLayout.ADDRESS);
-            check(vkAllocateCommandBuffers(device, createInfo.segment(), p), "failed to allocate command buffer");
-            commandBuffer = new VkCommandBuffer(p.get(ValueLayout.ADDRESS, 0), device);
+            VoidPtr p = stack.allocVoidPtr();
+            check(vkAllocateCommandBuffers(device, createInfo.segment(), p.segment()), "failed to allocate command buffer");
+            commandBuffer = new VkCommandBuffer(p.value(), device);
         }
     }
 
@@ -633,15 +634,15 @@ public class VulkanDemo {
             var fenceCreateInfo = VkFenceCreateInfo.alloc(stack)
                 .sType(VK_STRUCTURE_TYPE_FENCE_CREATE_INFO);
 
-            MemorySegment p = stack.allocate(ValueLayout.JAVA_LONG);
-            check(vkCreateSemaphore(device, semaphoreCreateInfo.segment(), MemorySegment.NULL, p), "failed to create image available semaphore");
-            imageAvailableSemaphore = p.get(ValueLayout.JAVA_LONG, 0);
+            LongPtr p = stack.allocLongPtr();
+            check(vkCreateSemaphore(device, semaphoreCreateInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create image available semaphore");
+            imageAvailableSemaphore = p.value();
 
-            check(vkCreateSemaphore(device, semaphoreCreateInfo.segment(), MemorySegment.NULL, p), "failed to create render finished semaphore");
-            renderFinishedSemaphore = p.get(ValueLayout.JAVA_LONG, 0);
+            check(vkCreateSemaphore(device, semaphoreCreateInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create render finished semaphore");
+            renderFinishedSemaphore = p.value();
 
-            check(vkCreateFence(device, fenceCreateInfo.segment(), MemorySegment.NULL, p), "failed to create in flight fence");
-            inFlightFence = p.get(ValueLayout.JAVA_LONG, 0);
+            check(vkCreateFence(device, fenceCreateInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create in flight fence");
+            inFlightFence = p.value();
         }
     }
 
@@ -659,9 +660,9 @@ public class VulkanDemo {
     private void render() {
         int imageIndex;
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            MemorySegment p = stack.allocate(ValueLayout.JAVA_INT);
-            check(vkAcquireNextImageKHR(device, swapChain, -1, imageAvailableSemaphore, VK_NULL_HANDLE, p), "failed to acquire next image");
-            imageIndex = p.get(ValueLayout.JAVA_INT, 0);
+            IntPtr p = stack.allocIntPtr();
+            check(vkAcquireNextImageKHR(device, swapChain, -1, imageAvailableSemaphore, VK_NULL_HANDLE, p.segment()), "failed to acquire next image");
+            imageIndex = p.value();
         }
 
         try (MemoryStack stack = MemoryStack.pushLocal()) {
@@ -675,10 +676,9 @@ public class VulkanDemo {
                 .sType(VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO)
                 .renderPass(renderPass)
                 .framebuffer(framebuffers.get(imageIndex))
-                .renderArea(VkRect2D.alloc(stack)
-                    .offset(VkOffset2D.allocInit(stack, 0, 0).segment())
-                    .extent(VkExtent2D.allocInit(stack, swapChainWidth, swapChainHeight).segment())
-                    .segment())
+                .renderArea(vkRect2D -> vkRect2D
+                    .offset(vkOffset2D -> vkOffset2D.x(0).y(0))
+                    .extent(vkExtent2D -> vkExtent2D.width(swapChainWidth).height(swapChainHeight)))
                 .clearValueCount(1)
                 .pClearValues(VkClearValue.allocWith_color(stack,
                     VkClearColorValue.allocWith_float32(stack,
@@ -697,8 +697,8 @@ public class VulkanDemo {
                 .minDepth(0.0f)
                 .maxDepth(1.0f);
             var scissor = VkRect2D.alloc(stack)
-                .offset(VkOffset2D.allocInit(stack, 0, 0).segment())
-                .extent(VkExtent2D.allocInit(stack, swapChainWidth, swapChainHeight).segment());
+                .offset(vkOffset2D -> vkOffset2D.x(0).y(0))
+                .extent(vkExtent2D -> vkExtent2D.width(swapChainWidth).height(swapChainHeight));
             vkCmdSetViewport(commandBuffer, 0, 1, viewport.segment());
             vkCmdSetScissor(commandBuffer, 0, 1, scissor.segment());
         }
