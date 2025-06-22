@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkSparseImageMemoryRequirements2 extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSparseImageMemoryRequirements2 memoryRequirements(MemorySegment value) { memoryRequirements(this.segment(), 0L, value); return this; }
+    /// Accepts `memoryRequirements` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSparseImageMemoryRequirements2 memoryRequirements(Consumer<overrungl.vulkan.struct.VkSparseImageMemoryRequirements> func) { func.accept(overrungl.vulkan.struct.VkSparseImageMemoryRequirements.of(memoryRequirements())); return this; }
 
     /// A buffer of [VkSparseImageMemoryRequirements2].
     public static final class Buffer extends VkSparseImageMemoryRequirements2 {
@@ -223,6 +228,11 @@ public sealed class VkSparseImageMemoryRequirements2 extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer memoryRequirementsAt(long index, MemorySegment value) { memoryRequirements(this.segment(), index, value); return this; }
+        /// Accepts `memoryRequirements` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer memoryRequirementsAt(long index, Consumer<overrungl.vulkan.struct.VkSparseImageMemoryRequirements> func) { func.accept(overrungl.vulkan.struct.VkSparseImageMemoryRequirements.of(memoryRequirementsAt(index))); return this; }
 
     }
 }

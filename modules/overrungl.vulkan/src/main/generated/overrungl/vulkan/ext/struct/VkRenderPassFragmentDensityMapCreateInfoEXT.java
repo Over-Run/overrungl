@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends GroupTyp
     /// @param value the value
     /// @return `this`
     public VkRenderPassFragmentDensityMapCreateInfoEXT fragmentDensityMapAttachment(MemorySegment value) { fragmentDensityMapAttachment(this.segment(), 0L, value); return this; }
+    /// Accepts `fragmentDensityMapAttachment` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkRenderPassFragmentDensityMapCreateInfoEXT fragmentDensityMapAttachment(Consumer<overrungl.vulkan.struct.VkAttachmentReference> func) { func.accept(overrungl.vulkan.struct.VkAttachmentReference.of(fragmentDensityMapAttachment())); return this; }
 
     /// A buffer of [VkRenderPassFragmentDensityMapCreateInfoEXT].
     public static final class Buffer extends VkRenderPassFragmentDensityMapCreateInfoEXT {
@@ -223,6 +228,11 @@ public sealed class VkRenderPassFragmentDensityMapCreateInfoEXT extends GroupTyp
         /// @param value the value
         /// @return `this`
         public Buffer fragmentDensityMapAttachmentAt(long index, MemorySegment value) { fragmentDensityMapAttachment(this.segment(), index, value); return this; }
+        /// Accepts `fragmentDensityMapAttachment` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer fragmentDensityMapAttachmentAt(long index, Consumer<overrungl.vulkan.struct.VkAttachmentReference> func) { func.accept(overrungl.vulkan.struct.VkAttachmentReference.of(fragmentDensityMapAttachmentAt(index))); return this; }
 
     }
 }

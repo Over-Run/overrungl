@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -266,6 +267,10 @@ public sealed class VkImageConstraintsInfoFUCHSIA extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints(MemorySegment value) { bufferCollectionConstraints(this.segment(), 0L, value); return this; }
+    /// Accepts `bufferCollectionConstraints` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageConstraintsInfoFUCHSIA bufferCollectionConstraints(Consumer<overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA.of(bufferCollectionConstraints())); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -349,6 +354,11 @@ public sealed class VkImageConstraintsInfoFUCHSIA extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer bufferCollectionConstraintsAt(long index, MemorySegment value) { bufferCollectionConstraints(this.segment(), index, value); return this; }
+        /// Accepts `bufferCollectionConstraints` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer bufferCollectionConstraintsAt(long index, Consumer<overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA.of(bufferCollectionConstraintsAt(index))); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index of the struct buffer

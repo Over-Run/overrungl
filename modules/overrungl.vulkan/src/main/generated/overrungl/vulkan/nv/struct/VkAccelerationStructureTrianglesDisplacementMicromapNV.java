@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -590,6 +591,10 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementBiasAndScaleBuffer(MemorySegment value) { displacementBiasAndScaleBuffer(this.segment(), 0L, value); return this; }
+    /// Accepts `displacementBiasAndScaleBuffer` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementBiasAndScaleBuffer(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(displacementBiasAndScaleBuffer())); return this; }
 
     /// {@return `displacementBiasAndScaleStride` at the given index}
     /// @param segment the segment of the struct
@@ -622,6 +627,10 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementVectorBuffer(MemorySegment value) { displacementVectorBuffer(this.segment(), 0L, value); return this; }
+    /// Accepts `displacementVectorBuffer` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacementVectorBuffer(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(displacementVectorBuffer())); return this; }
 
     /// {@return `displacementVectorStride` at the given index}
     /// @param segment the segment of the struct
@@ -654,6 +663,10 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureTrianglesDisplacementMicromapNV displacedMicromapPrimitiveFlags(MemorySegment value) { displacedMicromapPrimitiveFlags(this.segment(), 0L, value); return this; }
+    /// Accepts `displacedMicromapPrimitiveFlags` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV displacedMicromapPrimitiveFlags(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(displacedMicromapPrimitiveFlags())); return this; }
 
     /// {@return `displacedMicromapPrimitiveFlagsStride` at the given index}
     /// @param segment the segment of the struct
@@ -702,6 +715,10 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureTrianglesDisplacementMicromapNV indexBuffer(MemorySegment value) { indexBuffer(this.segment(), 0L, value); return this; }
+    /// Accepts `indexBuffer` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureTrianglesDisplacementMicromapNV indexBuffer(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexBuffer())); return this; }
 
     /// {@return `indexStride` at the given index}
     /// @param segment the segment of the struct
@@ -865,6 +882,11 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
         /// @param value the value
         /// @return `this`
         public Buffer displacementBiasAndScaleBufferAt(long index, MemorySegment value) { displacementBiasAndScaleBuffer(this.segment(), index, value); return this; }
+        /// Accepts `displacementBiasAndScaleBuffer` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer displacementBiasAndScaleBufferAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(displacementBiasAndScaleBufferAt(index))); return this; }
 
         /// {@return `displacementBiasAndScaleStride` at the given index}
         /// @param index the index of the struct buffer
@@ -883,6 +905,11 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
         /// @param value the value
         /// @return `this`
         public Buffer displacementVectorBufferAt(long index, MemorySegment value) { displacementVectorBuffer(this.segment(), index, value); return this; }
+        /// Accepts `displacementVectorBuffer` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer displacementVectorBufferAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(displacementVectorBufferAt(index))); return this; }
 
         /// {@return `displacementVectorStride` at the given index}
         /// @param index the index of the struct buffer
@@ -901,6 +928,11 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
         /// @param value the value
         /// @return `this`
         public Buffer displacedMicromapPrimitiveFlagsAt(long index, MemorySegment value) { displacedMicromapPrimitiveFlags(this.segment(), index, value); return this; }
+        /// Accepts `displacedMicromapPrimitiveFlags` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer displacedMicromapPrimitiveFlagsAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(displacedMicromapPrimitiveFlagsAt(index))); return this; }
 
         /// {@return `displacedMicromapPrimitiveFlagsStride` at the given index}
         /// @param index the index of the struct buffer
@@ -928,6 +960,11 @@ public sealed class VkAccelerationStructureTrianglesDisplacementMicromapNV exten
         /// @param value the value
         /// @return `this`
         public Buffer indexBufferAt(long index, MemorySegment value) { indexBuffer(this.segment(), index, value); return this; }
+        /// Accepts `indexBuffer` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer indexBufferAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexBufferAt(index))); return this; }
 
         /// {@return `indexStride` at the given index}
         /// @param index the index of the struct buffer

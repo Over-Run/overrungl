@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -232,6 +233,10 @@ public sealed class VkVideoPictureResourceInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoPictureResourceInfoKHR codedOffset(MemorySegment value) { codedOffset(this.segment(), 0L, value); return this; }
+    /// Accepts `codedOffset` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoPictureResourceInfoKHR codedOffset(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(codedOffset())); return this; }
 
     /// {@return `codedExtent` at the given index}
     /// @param segment the segment of the struct
@@ -248,6 +253,10 @@ public sealed class VkVideoPictureResourceInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoPictureResourceInfoKHR codedExtent(MemorySegment value) { codedExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `codedExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoPictureResourceInfoKHR codedExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(codedExtent())); return this; }
 
     /// {@return `baseArrayLayer` at the given index}
     /// @param segment the segment of the struct
@@ -329,6 +338,11 @@ public sealed class VkVideoPictureResourceInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer codedOffsetAt(long index, MemorySegment value) { codedOffset(this.segment(), index, value); return this; }
+        /// Accepts `codedOffset` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer codedOffsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(codedOffsetAt(index))); return this; }
 
         /// {@return `codedExtent` at the given index}
         /// @param index the index of the struct buffer
@@ -338,6 +352,11 @@ public sealed class VkVideoPictureResourceInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer codedExtentAt(long index, MemorySegment value) { codedExtent(this.segment(), index, value); return this; }
+        /// Accepts `codedExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer codedExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(codedExtentAt(index))); return this; }
 
         /// {@return `baseArrayLayer` at the given index}
         /// @param index the index of the struct buffer

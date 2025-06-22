@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -224,6 +225,10 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeAV1OperatingPointInfo flags(MemorySegment value) { flags(this.segment(), 0L, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo flags(Consumer<overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags.of(flags())); return this; }
 
     /// {@return `operating_point_idc` at the given index}
     /// @param segment the segment of the struct
@@ -351,6 +356,11 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+        /// Accepts `flags` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags.of(flagsAt(index))); return this; }
 
         /// {@return `operating_point_idc` at the given index}
         /// @param index the index of the struct buffer

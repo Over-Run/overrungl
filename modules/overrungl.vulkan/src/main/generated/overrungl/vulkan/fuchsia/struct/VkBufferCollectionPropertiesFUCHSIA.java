@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -487,6 +488,10 @@ public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex(MemorySegment value) { sysmemColorSpaceIndex(this.segment(), 0L, value); return this; }
+    /// Accepts `sysmemColorSpaceIndex` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndex(Consumer<overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA.of(sysmemColorSpaceIndex())); return this; }
 
     /// {@return `samplerYcbcrConversionComponents` at the given index}
     /// @param segment the segment of the struct
@@ -503,6 +508,10 @@ public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents(MemorySegment value) { samplerYcbcrConversionComponents(this.segment(), 0L, value); return this; }
+    /// Accepts `samplerYcbcrConversionComponents` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponents(Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(samplerYcbcrConversionComponents())); return this; }
 
     /// {@return `suggestedYcbcrModel` at the given index}
     /// @param segment the segment of the struct
@@ -661,6 +670,11 @@ public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer sysmemColorSpaceIndexAt(long index, MemorySegment value) { sysmemColorSpaceIndex(this.segment(), index, value); return this; }
+        /// Accepts `sysmemColorSpaceIndex` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer sysmemColorSpaceIndexAt(long index, Consumer<overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA.of(sysmemColorSpaceIndexAt(index))); return this; }
 
         /// {@return `samplerYcbcrConversionComponents` at the given index}
         /// @param index the index of the struct buffer
@@ -670,6 +684,11 @@ public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer samplerYcbcrConversionComponentsAt(long index, MemorySegment value) { samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
+        /// Accepts `samplerYcbcrConversionComponents` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer samplerYcbcrConversionComponentsAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(samplerYcbcrConversionComponentsAt(index))); return this; }
 
         /// {@return `suggestedYcbcrModel` at the given index}
         /// @param index the index of the struct buffer

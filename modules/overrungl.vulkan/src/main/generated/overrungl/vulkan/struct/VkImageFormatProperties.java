@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -181,6 +182,10 @@ public sealed class VkImageFormatProperties extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageFormatProperties maxExtent(MemorySegment value) { maxExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `maxExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageFormatProperties maxExtent(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(maxExtent())); return this; }
 
     /// {@return `maxMipLevels` at the given index}
     /// @param segment the segment of the struct
@@ -276,6 +281,11 @@ public sealed class VkImageFormatProperties extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxExtentAt(long index, MemorySegment value) { maxExtent(this.segment(), index, value); return this; }
+        /// Accepts `maxExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(maxExtentAt(index))); return this; }
 
         /// {@return `maxMipLevels` at the given index}
         /// @param index the index of the struct buffer

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -296,6 +297,10 @@ public sealed class StdVideoEncodeH264SliceHeader extends GroupType {
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeH264SliceHeader flags(MemorySegment value) { flags(this.segment(), 0L, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public StdVideoEncodeH264SliceHeader flags(Consumer<overrungl.vulkan.video.StdVideoEncodeH264SliceHeaderFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeH264SliceHeaderFlags.of(flags())); return this; }
 
     /// {@return `first_mb_in_slice` at the given index}
     /// @param segment the segment of the struct
@@ -471,6 +476,11 @@ public sealed class StdVideoEncodeH264SliceHeader extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+        /// Accepts `flags` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoEncodeH264SliceHeaderFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeH264SliceHeaderFlags.of(flagsAt(index))); return this; }
 
         /// {@return `first_mb_in_slice` at the given index}
         /// @param index the index of the struct buffer

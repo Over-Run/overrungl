@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -302,6 +303,10 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSurfacePresentScalingCapabilitiesEXT minScaledImageExtent(MemorySegment value) { minScaledImageExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `minScaledImageExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSurfacePresentScalingCapabilitiesEXT minScaledImageExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minScaledImageExtent())); return this; }
 
     /// {@return `maxScaledImageExtent` at the given index}
     /// @param segment the segment of the struct
@@ -318,6 +323,10 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSurfacePresentScalingCapabilitiesEXT maxScaledImageExtent(MemorySegment value) { maxScaledImageExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `maxScaledImageExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSurfacePresentScalingCapabilitiesEXT maxScaledImageExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxScaledImageExtent())); return this; }
 
     /// A buffer of [VkSurfacePresentScalingCapabilitiesEXT].
     public static final class Buffer extends VkSurfacePresentScalingCapabilitiesEXT {
@@ -394,6 +403,11 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer minScaledImageExtentAt(long index, MemorySegment value) { minScaledImageExtent(this.segment(), index, value); return this; }
+        /// Accepts `minScaledImageExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minScaledImageExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minScaledImageExtentAt(index))); return this; }
 
         /// {@return `maxScaledImageExtent` at the given index}
         /// @param index the index of the struct buffer
@@ -403,6 +417,11 @@ public sealed class VkSurfacePresentScalingCapabilitiesEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxScaledImageExtentAt(long index, MemorySegment value) { maxScaledImageExtent(this.segment(), index, value); return this; }
+        /// Accepts `maxScaledImageExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxScaledImageExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxScaledImageExtentAt(index))); return this; }
 
     }
 }

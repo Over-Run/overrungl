@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -213,6 +214,10 @@ public sealed class VkCopyMemoryToMicromapInfoEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkCopyMemoryToMicromapInfoEXT src(MemorySegment value) { src(this.segment(), 0L, value); return this; }
+    /// Accepts `src` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkCopyMemoryToMicromapInfoEXT src(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(src())); return this; }
 
     /// {@return `dst` at the given index}
     /// @param segment the segment of the struct
@@ -294,6 +299,11 @@ public sealed class VkCopyMemoryToMicromapInfoEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer srcAt(long index, MemorySegment value) { src(this.segment(), index, value); return this; }
+        /// Accepts `src` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer srcAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(srcAt(index))); return this; }
 
         /// {@return `dst` at the given index}
         /// @param index the index of the struct buffer

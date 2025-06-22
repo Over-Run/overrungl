@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -366,6 +367,10 @@ public sealed class VkAccelerationStructureGeometrySpheresDataNV extends GroupTy
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometrySpheresDataNV vertexData(MemorySegment value) { vertexData(this.segment(), 0L, value); return this; }
+    /// Accepts `vertexData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometrySpheresDataNV vertexData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexData())); return this; }
 
     /// {@return `vertexStride` at the given index}
     /// @param segment the segment of the struct
@@ -414,6 +419,10 @@ public sealed class VkAccelerationStructureGeometrySpheresDataNV extends GroupTy
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometrySpheresDataNV radiusData(MemorySegment value) { radiusData(this.segment(), 0L, value); return this; }
+    /// Accepts `radiusData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometrySpheresDataNV radiusData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(radiusData())); return this; }
 
     /// {@return `radiusStride` at the given index}
     /// @param segment the segment of the struct
@@ -462,6 +471,10 @@ public sealed class VkAccelerationStructureGeometrySpheresDataNV extends GroupTy
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometrySpheresDataNV indexData(MemorySegment value) { indexData(this.segment(), 0L, value); return this; }
+    /// Accepts `indexData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometrySpheresDataNV indexData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexData())); return this; }
 
     /// {@return `indexStride` at the given index}
     /// @param segment the segment of the struct
@@ -536,6 +549,11 @@ public sealed class VkAccelerationStructureGeometrySpheresDataNV extends GroupTy
         /// @param value the value
         /// @return `this`
         public Buffer vertexDataAt(long index, MemorySegment value) { vertexData(this.segment(), index, value); return this; }
+        /// Accepts `vertexData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer vertexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexDataAt(index))); return this; }
 
         /// {@return `vertexStride` at the given index}
         /// @param index the index of the struct buffer
@@ -563,6 +581,11 @@ public sealed class VkAccelerationStructureGeometrySpheresDataNV extends GroupTy
         /// @param value the value
         /// @return `this`
         public Buffer radiusDataAt(long index, MemorySegment value) { radiusData(this.segment(), index, value); return this; }
+        /// Accepts `radiusData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer radiusDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(radiusDataAt(index))); return this; }
 
         /// {@return `radiusStride` at the given index}
         /// @param index the index of the struct buffer
@@ -590,6 +613,11 @@ public sealed class VkAccelerationStructureGeometrySpheresDataNV extends GroupTy
         /// @param value the value
         /// @return `this`
         public Buffer indexDataAt(long index, MemorySegment value) { indexData(this.segment(), index, value); return this; }
+        /// Accepts `indexData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer indexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexDataAt(index))); return this; }
 
         /// {@return `indexStride` at the given index}
         /// @param index the index of the struct buffer

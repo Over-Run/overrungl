@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -279,6 +280,10 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo(MemorySegment value) { imageCreateInfo(this.segment(), 0L, value); return this; }
+    /// Accepts `imageCreateInfo` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfo(Consumer<overrungl.vulkan.struct.VkImageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkImageCreateInfo.of(imageCreateInfo())); return this; }
 
     /// {@return `requiredFormatFeatures` at the given index}
     /// @param segment the segment of the struct
@@ -408,6 +413,11 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer imageCreateInfoAt(long index, MemorySegment value) { imageCreateInfo(this.segment(), index, value); return this; }
+        /// Accepts `imageCreateInfo` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer imageCreateInfoAt(long index, Consumer<overrungl.vulkan.struct.VkImageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkImageCreateInfo.of(imageCreateInfoAt(index))); return this; }
 
         /// {@return `requiredFormatFeatures` at the given index}
         /// @param index the index of the struct buffer

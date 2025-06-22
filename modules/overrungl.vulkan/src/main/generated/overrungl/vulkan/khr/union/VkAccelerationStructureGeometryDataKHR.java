@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -135,6 +136,10 @@ public sealed class VkAccelerationStructureGeometryDataKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometryDataKHR triangles(MemorySegment value) { triangles(this.segment(), 0L, value); return this; }
+    /// Accepts `triangles` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryDataKHR triangles(Consumer<overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryTrianglesDataKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryTrianglesDataKHR.of(triangles())); return this; }
 
     /// {@return `aabbs` at the given index}
     /// @param segment the segment of the union
@@ -151,6 +156,10 @@ public sealed class VkAccelerationStructureGeometryDataKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometryDataKHR aabbs(MemorySegment value) { aabbs(this.segment(), 0L, value); return this; }
+    /// Accepts `aabbs` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryDataKHR aabbs(Consumer<overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryAabbsDataKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryAabbsDataKHR.of(aabbs())); return this; }
 
     /// {@return `instances` at the given index}
     /// @param segment the segment of the union
@@ -167,6 +176,10 @@ public sealed class VkAccelerationStructureGeometryDataKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometryDataKHR instances(MemorySegment value) { instances(this.segment(), 0L, value); return this; }
+    /// Accepts `instances` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryDataKHR instances(Consumer<overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryInstancesDataKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryInstancesDataKHR.of(instances())); return this; }
 
     /// A buffer of [VkAccelerationStructureGeometryDataKHR].
     public static final class Buffer extends VkAccelerationStructureGeometryDataKHR {
@@ -198,6 +211,11 @@ public sealed class VkAccelerationStructureGeometryDataKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer trianglesAt(long index, MemorySegment value) { triangles(this.segment(), index, value); return this; }
+        /// Accepts `triangles` with the given function.
+        /// @param index the index of the union buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer trianglesAt(long index, Consumer<overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryTrianglesDataKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryTrianglesDataKHR.of(trianglesAt(index))); return this; }
 
         /// {@return `aabbs` at the given index}
         /// @param index the index of the union buffer
@@ -207,6 +225,11 @@ public sealed class VkAccelerationStructureGeometryDataKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer aabbsAt(long index, MemorySegment value) { aabbs(this.segment(), index, value); return this; }
+        /// Accepts `aabbs` with the given function.
+        /// @param index the index of the union buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer aabbsAt(long index, Consumer<overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryAabbsDataKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryAabbsDataKHR.of(aabbsAt(index))); return this; }
 
         /// {@return `instances` at the given index}
         /// @param index the index of the union buffer
@@ -216,6 +239,11 @@ public sealed class VkAccelerationStructureGeometryDataKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer instancesAt(long index, MemorySegment value) { instances(this.segment(), index, value); return this; }
+        /// Accepts `instances` with the given function.
+        /// @param index the index of the union buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer instancesAt(long index, Consumer<overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryInstancesDataKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkAccelerationStructureGeometryInstancesDataKHR.of(instancesAt(index))); return this; }
 
     }
 }

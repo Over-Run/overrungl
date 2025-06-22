@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -612,6 +613,10 @@ public sealed class VkVideoEncodeH265CapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeH265CapabilitiesKHR maxTiles(MemorySegment value) { maxTiles(this.segment(), 0L, value); return this; }
+    /// Accepts `maxTiles` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeH265CapabilitiesKHR maxTiles(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTiles())); return this; }
 
     /// {@return `ctbSizes` at the given index}
     /// @param segment the segment of the struct
@@ -880,6 +885,11 @@ public sealed class VkVideoEncodeH265CapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxTilesAt(long index, MemorySegment value) { maxTiles(this.segment(), index, value); return this; }
+        /// Accepts `maxTiles` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxTilesAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTilesAt(index))); return this; }
 
         /// {@return `ctbSizes` at the given index}
         /// @param index the index of the struct buffer

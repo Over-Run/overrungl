@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -122,6 +123,10 @@ public sealed class VkGeometryDataNV extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkGeometryDataNV triangles(MemorySegment value) { triangles(this.segment(), 0L, value); return this; }
+    /// Accepts `triangles` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkGeometryDataNV triangles(Consumer<overrungl.vulkan.nv.struct.VkGeometryTrianglesNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryTrianglesNV.of(triangles())); return this; }
 
     /// {@return `aabbs` at the given index}
     /// @param segment the segment of the struct
@@ -138,6 +143,10 @@ public sealed class VkGeometryDataNV extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkGeometryDataNV aabbs(MemorySegment value) { aabbs(this.segment(), 0L, value); return this; }
+    /// Accepts `aabbs` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkGeometryDataNV aabbs(Consumer<overrungl.vulkan.nv.struct.VkGeometryAABBNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryAABBNV.of(aabbs())); return this; }
 
     /// A buffer of [VkGeometryDataNV].
     public static final class Buffer extends VkGeometryDataNV {
@@ -169,6 +178,11 @@ public sealed class VkGeometryDataNV extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer trianglesAt(long index, MemorySegment value) { triangles(this.segment(), index, value); return this; }
+        /// Accepts `triangles` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer trianglesAt(long index, Consumer<overrungl.vulkan.nv.struct.VkGeometryTrianglesNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryTrianglesNV.of(trianglesAt(index))); return this; }
 
         /// {@return `aabbs` at the given index}
         /// @param index the index of the struct buffer
@@ -178,6 +192,11 @@ public sealed class VkGeometryDataNV extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer aabbsAt(long index, MemorySegment value) { aabbs(this.segment(), index, value); return this; }
+        /// Accepts `aabbs` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer aabbsAt(long index, Consumer<overrungl.vulkan.nv.struct.VkGeometryAABBNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryAABBNV.of(aabbsAt(index))); return this; }
 
     }
 }

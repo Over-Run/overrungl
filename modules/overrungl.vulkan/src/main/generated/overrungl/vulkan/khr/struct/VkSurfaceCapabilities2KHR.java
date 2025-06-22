@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkSurfaceCapabilities2KHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSurfaceCapabilities2KHR surfaceCapabilities(MemorySegment value) { surfaceCapabilities(this.segment(), 0L, value); return this; }
+    /// Accepts `surfaceCapabilities` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSurfaceCapabilities2KHR surfaceCapabilities(Consumer<overrungl.vulkan.khr.struct.VkSurfaceCapabilitiesKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkSurfaceCapabilitiesKHR.of(surfaceCapabilities())); return this; }
 
     /// A buffer of [VkSurfaceCapabilities2KHR].
     public static final class Buffer extends VkSurfaceCapabilities2KHR {
@@ -223,6 +228,11 @@ public sealed class VkSurfaceCapabilities2KHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer surfaceCapabilitiesAt(long index, MemorySegment value) { surfaceCapabilities(this.segment(), index, value); return this; }
+        /// Accepts `surfaceCapabilities` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer surfaceCapabilitiesAt(long index, Consumer<overrungl.vulkan.khr.struct.VkSurfaceCapabilitiesKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkSurfaceCapabilitiesKHR.of(surfaceCapabilitiesAt(index))); return this; }
 
     }
 }

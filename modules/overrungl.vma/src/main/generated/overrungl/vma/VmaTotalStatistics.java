@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 import static overrungl.vulkan.VK10.*;
 
@@ -140,6 +141,10 @@ public sealed class VmaTotalStatistics extends GroupType {
     /// @param value the value
     /// @return `this`
     public VmaTotalStatistics memoryType(MemorySegment value) { memoryType(this.segment(), 0L, value); return this; }
+    /// Accepts `memoryType` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VmaTotalStatistics memoryType(Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(memoryType())); return this; }
 
     /// {@return `memoryHeap` at the given index}
     /// @param segment the segment of the struct
@@ -156,6 +161,10 @@ public sealed class VmaTotalStatistics extends GroupType {
     /// @param value the value
     /// @return `this`
     public VmaTotalStatistics memoryHeap(MemorySegment value) { memoryHeap(this.segment(), 0L, value); return this; }
+    /// Accepts `memoryHeap` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VmaTotalStatistics memoryHeap(Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(memoryHeap())); return this; }
 
     /// {@return `total` at the given index}
     /// @param segment the segment of the struct
@@ -172,6 +181,10 @@ public sealed class VmaTotalStatistics extends GroupType {
     /// @param value the value
     /// @return `this`
     public VmaTotalStatistics total(MemorySegment value) { total(this.segment(), 0L, value); return this; }
+    /// Accepts `total` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VmaTotalStatistics total(Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(total())); return this; }
 
     /// A buffer of [VmaTotalStatistics].
     public static final class Buffer extends VmaTotalStatistics {
@@ -203,6 +216,11 @@ public sealed class VmaTotalStatistics extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer memoryTypeAt(long index, MemorySegment value) { memoryType(this.segment(), index, value); return this; }
+        /// Accepts `memoryType` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer memoryTypeAt(long index, Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(memoryTypeAt(index))); return this; }
 
         /// {@return `memoryHeap` at the given index}
         /// @param index the index of the struct buffer
@@ -212,6 +230,11 @@ public sealed class VmaTotalStatistics extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer memoryHeapAt(long index, MemorySegment value) { memoryHeap(this.segment(), index, value); return this; }
+        /// Accepts `memoryHeap` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer memoryHeapAt(long index, Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(memoryHeapAt(index))); return this; }
 
         /// {@return `total` at the given index}
         /// @param index the index of the struct buffer
@@ -221,6 +244,11 @@ public sealed class VmaTotalStatistics extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer totalAt(long index, MemorySegment value) { total(this.segment(), index, value); return this; }
+        /// Accepts `total` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer totalAt(long index, Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(totalAt(index))); return this; }
 
     }
 }

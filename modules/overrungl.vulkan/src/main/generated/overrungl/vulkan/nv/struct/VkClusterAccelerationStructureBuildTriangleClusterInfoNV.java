@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -229,6 +230,10 @@ public sealed class VkClusterAccelerationStructureBuildTriangleClusterInfoNV ext
     /// @param value the value
     /// @return `this`
     public VkClusterAccelerationStructureBuildTriangleClusterInfoNV baseGeometryIndexAndGeometryFlags(MemorySegment value) { baseGeometryIndexAndGeometryFlags(this.segment(), 0L, value); return this; }
+    /// Accepts `baseGeometryIndexAndGeometryFlags` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV baseGeometryIndexAndGeometryFlags(Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.of(baseGeometryIndexAndGeometryFlags())); return this; }
 
     /// {@return `indexBufferStride` at the given index}
     /// @param segment the segment of the struct
@@ -422,6 +427,11 @@ public sealed class VkClusterAccelerationStructureBuildTriangleClusterInfoNV ext
         /// @param value the value
         /// @return `this`
         public Buffer baseGeometryIndexAndGeometryFlagsAt(long index, MemorySegment value) { baseGeometryIndexAndGeometryFlags(this.segment(), index, value); return this; }
+        /// Accepts `baseGeometryIndexAndGeometryFlags` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer baseGeometryIndexAndGeometryFlagsAt(long index, Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.of(baseGeometryIndexAndGeometryFlagsAt(index))); return this; }
 
         /// {@return `indexBufferStride` at the given index}
         /// @param index the index of the struct buffer

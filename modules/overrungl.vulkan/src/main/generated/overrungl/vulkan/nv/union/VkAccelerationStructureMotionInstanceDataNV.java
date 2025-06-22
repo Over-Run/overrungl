@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -135,6 +136,10 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends GroupTyp
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureMotionInstanceDataNV staticInstance(MemorySegment value) { staticInstance(this.segment(), 0L, value); return this; }
+    /// Accepts `staticInstance` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureMotionInstanceDataNV staticInstance(Consumer<overrungl.vulkan.khr.struct.VkAccelerationStructureInstanceKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkAccelerationStructureInstanceKHR.of(staticInstance())); return this; }
 
     /// {@return `matrixMotionInstance` at the given index}
     /// @param segment the segment of the union
@@ -151,6 +156,10 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends GroupTyp
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureMotionInstanceDataNV matrixMotionInstance(MemorySegment value) { matrixMotionInstance(this.segment(), 0L, value); return this; }
+    /// Accepts `matrixMotionInstance` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureMotionInstanceDataNV matrixMotionInstance(Consumer<overrungl.vulkan.nv.struct.VkAccelerationStructureMatrixMotionInstanceNV> func) { func.accept(overrungl.vulkan.nv.struct.VkAccelerationStructureMatrixMotionInstanceNV.of(matrixMotionInstance())); return this; }
 
     /// {@return `srtMotionInstance` at the given index}
     /// @param segment the segment of the union
@@ -167,6 +176,10 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends GroupTyp
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureMotionInstanceDataNV srtMotionInstance(MemorySegment value) { srtMotionInstance(this.segment(), 0L, value); return this; }
+    /// Accepts `srtMotionInstance` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureMotionInstanceDataNV srtMotionInstance(Consumer<overrungl.vulkan.nv.struct.VkAccelerationStructureSRTMotionInstanceNV> func) { func.accept(overrungl.vulkan.nv.struct.VkAccelerationStructureSRTMotionInstanceNV.of(srtMotionInstance())); return this; }
 
     /// A buffer of [VkAccelerationStructureMotionInstanceDataNV].
     public static final class Buffer extends VkAccelerationStructureMotionInstanceDataNV {
@@ -198,6 +211,11 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends GroupTyp
         /// @param value the value
         /// @return `this`
         public Buffer staticInstanceAt(long index, MemorySegment value) { staticInstance(this.segment(), index, value); return this; }
+        /// Accepts `staticInstance` with the given function.
+        /// @param index the index of the union buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer staticInstanceAt(long index, Consumer<overrungl.vulkan.khr.struct.VkAccelerationStructureInstanceKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkAccelerationStructureInstanceKHR.of(staticInstanceAt(index))); return this; }
 
         /// {@return `matrixMotionInstance` at the given index}
         /// @param index the index of the union buffer
@@ -207,6 +225,11 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends GroupTyp
         /// @param value the value
         /// @return `this`
         public Buffer matrixMotionInstanceAt(long index, MemorySegment value) { matrixMotionInstance(this.segment(), index, value); return this; }
+        /// Accepts `matrixMotionInstance` with the given function.
+        /// @param index the index of the union buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer matrixMotionInstanceAt(long index, Consumer<overrungl.vulkan.nv.struct.VkAccelerationStructureMatrixMotionInstanceNV> func) { func.accept(overrungl.vulkan.nv.struct.VkAccelerationStructureMatrixMotionInstanceNV.of(matrixMotionInstanceAt(index))); return this; }
 
         /// {@return `srtMotionInstance` at the given index}
         /// @param index the index of the union buffer
@@ -216,6 +239,11 @@ public sealed class VkAccelerationStructureMotionInstanceDataNV extends GroupTyp
         /// @param value the value
         /// @return `this`
         public Buffer srtMotionInstanceAt(long index, MemorySegment value) { srtMotionInstance(this.segment(), index, value); return this; }
+        /// Accepts `srtMotionInstance` with the given function.
+        /// @param index the index of the union buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer srtMotionInstanceAt(long index, Consumer<overrungl.vulkan.nv.struct.VkAccelerationStructureSRTMotionInstanceNV> func) { func.accept(overrungl.vulkan.nv.struct.VkAccelerationStructureSRTMotionInstanceNV.of(srtMotionInstanceAt(index))); return this; }
 
     }
 }

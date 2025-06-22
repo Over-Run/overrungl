@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -250,6 +251,10 @@ public sealed class VkSampleLocationsInfoEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSampleLocationsInfoEXT sampleLocationGridSize(MemorySegment value) { sampleLocationGridSize(this.segment(), 0L, value); return this; }
+    /// Accepts `sampleLocationGridSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSampleLocationsInfoEXT sampleLocationGridSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(sampleLocationGridSize())); return this; }
 
     /// {@return `sampleLocationsCount` at the given index}
     /// @param segment the segment of the struct
@@ -340,6 +345,11 @@ public sealed class VkSampleLocationsInfoEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer sampleLocationGridSizeAt(long index, MemorySegment value) { sampleLocationGridSize(this.segment(), index, value); return this; }
+        /// Accepts `sampleLocationGridSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer sampleLocationGridSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(sampleLocationGridSizeAt(index))); return this; }
 
         /// {@return `sampleLocationsCount` at the given index}
         /// @param index the index of the struct buffer

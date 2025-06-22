@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -396,6 +397,10 @@ public sealed class VkVideoCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoCapabilitiesKHR pictureAccessGranularity(MemorySegment value) { pictureAccessGranularity(this.segment(), 0L, value); return this; }
+    /// Accepts `pictureAccessGranularity` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoCapabilitiesKHR pictureAccessGranularity(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(pictureAccessGranularity())); return this; }
 
     /// {@return `minCodedExtent` at the given index}
     /// @param segment the segment of the struct
@@ -412,6 +417,10 @@ public sealed class VkVideoCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoCapabilitiesKHR minCodedExtent(MemorySegment value) { minCodedExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `minCodedExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoCapabilitiesKHR minCodedExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minCodedExtent())); return this; }
 
     /// {@return `maxCodedExtent` at the given index}
     /// @param segment the segment of the struct
@@ -428,6 +437,10 @@ public sealed class VkVideoCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoCapabilitiesKHR maxCodedExtent(MemorySegment value) { maxCodedExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `maxCodedExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoCapabilitiesKHR maxCodedExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxCodedExtent())); return this; }
 
     /// {@return `maxDpbSlots` at the given index}
     /// @param segment the segment of the struct
@@ -476,6 +489,10 @@ public sealed class VkVideoCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoCapabilitiesKHR stdHeaderVersion(MemorySegment value) { stdHeaderVersion(this.segment(), 0L, value); return this; }
+    /// Accepts `stdHeaderVersion` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoCapabilitiesKHR stdHeaderVersion(Consumer<overrungl.vulkan.struct.VkExtensionProperties> func) { func.accept(overrungl.vulkan.struct.VkExtensionProperties.of(stdHeaderVersion())); return this; }
 
     /// A buffer of [VkVideoCapabilitiesKHR].
     public static final class Buffer extends VkVideoCapabilitiesKHR {
@@ -552,6 +569,11 @@ public sealed class VkVideoCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer pictureAccessGranularityAt(long index, MemorySegment value) { pictureAccessGranularity(this.segment(), index, value); return this; }
+        /// Accepts `pictureAccessGranularity` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer pictureAccessGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(pictureAccessGranularityAt(index))); return this; }
 
         /// {@return `minCodedExtent` at the given index}
         /// @param index the index of the struct buffer
@@ -561,6 +583,11 @@ public sealed class VkVideoCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer minCodedExtentAt(long index, MemorySegment value) { minCodedExtent(this.segment(), index, value); return this; }
+        /// Accepts `minCodedExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minCodedExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minCodedExtentAt(index))); return this; }
 
         /// {@return `maxCodedExtent` at the given index}
         /// @param index the index of the struct buffer
@@ -570,6 +597,11 @@ public sealed class VkVideoCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxCodedExtentAt(long index, MemorySegment value) { maxCodedExtent(this.segment(), index, value); return this; }
+        /// Accepts `maxCodedExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxCodedExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxCodedExtentAt(index))); return this; }
 
         /// {@return `maxDpbSlots` at the given index}
         /// @param index the index of the struct buffer
@@ -597,6 +629,11 @@ public sealed class VkVideoCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer stdHeaderVersionAt(long index, MemorySegment value) { stdHeaderVersion(this.segment(), index, value); return this; }
+        /// Accepts `stdHeaderVersion` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer stdHeaderVersionAt(long index, Consumer<overrungl.vulkan.struct.VkExtensionProperties> func) { func.accept(overrungl.vulkan.struct.VkExtensionProperties.of(stdHeaderVersionAt(index))); return this; }
 
     }
 }

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -193,6 +194,10 @@ public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends Gr
     /// @param value the value
     /// @return `this`
     public VkSamplerBorderColorComponentMappingCreateInfoEXT components(MemorySegment value) { components(this.segment(), 0L, value); return this; }
+    /// Accepts `components` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSamplerBorderColorComponentMappingCreateInfoEXT components(Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(components())); return this; }
 
     /// {@return `srgb` at the given index}
     /// @param segment the segment of the struct
@@ -258,6 +263,11 @@ public sealed class VkSamplerBorderColorComponentMappingCreateInfoEXT extends Gr
         /// @param value the value
         /// @return `this`
         public Buffer componentsAt(long index, MemorySegment value) { components(this.segment(), index, value); return this; }
+        /// Accepts `components` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer componentsAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(componentsAt(index))); return this; }
 
         /// {@return `srgb` at the given index}
         /// @param index the index of the struct buffer

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -229,6 +230,10 @@ public sealed class VkCopyAccelerationStructureToMemoryInfoKHR extends GroupType
     /// @param value the value
     /// @return `this`
     public VkCopyAccelerationStructureToMemoryInfoKHR dst(MemorySegment value) { dst(this.segment(), 0L, value); return this; }
+    /// Accepts `dst` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkCopyAccelerationStructureToMemoryInfoKHR dst(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR.of(dst())); return this; }
 
     /// {@return `mode` at the given index}
     /// @param segment the segment of the struct
@@ -303,6 +308,11 @@ public sealed class VkCopyAccelerationStructureToMemoryInfoKHR extends GroupType
         /// @param value the value
         /// @return `this`
         public Buffer dstAt(long index, MemorySegment value) { dst(this.segment(), index, value); return this; }
+        /// Accepts `dst` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dstAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR.of(dstAt(index))); return this; }
 
         /// {@return `mode` at the given index}
         /// @param index the index of the struct buffer

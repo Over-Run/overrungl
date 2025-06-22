@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -295,6 +296,10 @@ public sealed class VkVideoFormatPropertiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoFormatPropertiesKHR componentMapping(MemorySegment value) { componentMapping(this.segment(), 0L, value); return this; }
+    /// Accepts `componentMapping` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoFormatPropertiesKHR componentMapping(Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(componentMapping())); return this; }
 
     /// {@return `imageCreateFlags` at the given index}
     /// @param segment the segment of the struct
@@ -417,6 +422,11 @@ public sealed class VkVideoFormatPropertiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer componentMappingAt(long index, MemorySegment value) { componentMapping(this.segment(), index, value); return this; }
+        /// Accepts `componentMapping` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer componentMappingAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(componentMappingAt(index))); return this; }
 
         /// {@return `imageCreateFlags` at the given index}
         /// @param index the index of the struct buffer

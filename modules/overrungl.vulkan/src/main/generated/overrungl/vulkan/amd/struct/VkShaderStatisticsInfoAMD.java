@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -240,6 +241,10 @@ public sealed class VkShaderStatisticsInfoAMD extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkShaderStatisticsInfoAMD resourceUsage(MemorySegment value) { resourceUsage(this.segment(), 0L, value); return this; }
+    /// Accepts `resourceUsage` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkShaderStatisticsInfoAMD resourceUsage(Consumer<overrungl.vulkan.amd.struct.VkShaderResourceUsageAMD> func) { func.accept(overrungl.vulkan.amd.struct.VkShaderResourceUsageAMD.of(resourceUsage())); return this; }
 
     /// {@return `numPhysicalVgprs` at the given index}
     /// @param segment the segment of the struct
@@ -379,6 +384,11 @@ public sealed class VkShaderStatisticsInfoAMD extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer resourceUsageAt(long index, MemorySegment value) { resourceUsage(this.segment(), index, value); return this; }
+        /// Accepts `resourceUsage` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer resourceUsageAt(long index, Consumer<overrungl.vulkan.amd.struct.VkShaderResourceUsageAMD> func) { func.accept(overrungl.vulkan.amd.struct.VkShaderResourceUsageAMD.of(resourceUsageAt(index))); return this; }
 
         /// {@return `numPhysicalVgprs` at the given index}
         /// @param index the index of the struct buffer

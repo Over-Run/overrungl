@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -142,6 +143,10 @@ public sealed class VkClearRect extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkClearRect rect(MemorySegment value) { rect(this.segment(), 0L, value); return this; }
+    /// Accepts `rect` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClearRect rect(Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(rect())); return this; }
 
     /// {@return `baseArrayLayer` at the given index}
     /// @param segment the segment of the struct
@@ -205,6 +210,11 @@ public sealed class VkClearRect extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer rectAt(long index, MemorySegment value) { rect(this.segment(), index, value); return this; }
+        /// Accepts `rect` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer rectAt(long index, Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(rectAt(index))); return this; }
 
         /// {@return `baseArrayLayer` at the given index}
         /// @param index the index of the struct buffer

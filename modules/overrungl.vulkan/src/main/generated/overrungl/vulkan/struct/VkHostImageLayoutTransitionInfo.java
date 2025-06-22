@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -282,6 +283,10 @@ public sealed class VkHostImageLayoutTransitionInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkHostImageLayoutTransitionInfo subresourceRange(MemorySegment value) { subresourceRange(this.segment(), 0L, value); return this; }
+    /// Accepts `subresourceRange` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkHostImageLayoutTransitionInfo subresourceRange(Consumer<overrungl.vulkan.struct.VkImageSubresourceRange> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceRange.of(subresourceRange())); return this; }
 
     /// A buffer of [VkHostImageLayoutTransitionInfo].
     public static final class Buffer extends VkHostImageLayoutTransitionInfo {
@@ -358,6 +363,11 @@ public sealed class VkHostImageLayoutTransitionInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer subresourceRangeAt(long index, MemorySegment value) { subresourceRange(this.segment(), index, value); return this; }
+        /// Accepts `subresourceRange` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer subresourceRangeAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceRange> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceRange.of(subresourceRangeAt(index))); return this; }
 
     }
 }

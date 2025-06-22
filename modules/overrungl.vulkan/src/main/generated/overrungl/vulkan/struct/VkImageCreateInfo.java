@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -516,6 +517,10 @@ public sealed class VkImageCreateInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageCreateInfo extent(MemorySegment value) { extent(this.segment(), 0L, value); return this; }
+    /// Accepts `extent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageCreateInfo extent(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extent())); return this; }
 
     /// {@return `mipLevels` at the given index}
     /// @param segment the segment of the struct
@@ -736,6 +741,11 @@ public sealed class VkImageCreateInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
+        /// Accepts `extent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extentAt(index))); return this; }
 
         /// {@return `mipLevels` at the given index}
         /// @param index the index of the struct buffer

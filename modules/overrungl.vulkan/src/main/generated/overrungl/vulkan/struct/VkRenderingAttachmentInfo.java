@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -440,6 +441,10 @@ public sealed class VkRenderingAttachmentInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkRenderingAttachmentInfo clearValue(MemorySegment value) { clearValue(this.segment(), 0L, value); return this; }
+    /// Accepts `clearValue` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkRenderingAttachmentInfo clearValue(Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValue())); return this; }
 
     /// A buffer of [VkRenderingAttachmentInfo].
     public static final class Buffer extends VkRenderingAttachmentInfo {
@@ -552,6 +557,11 @@ public sealed class VkRenderingAttachmentInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer clearValueAt(long index, MemorySegment value) { clearValue(this.segment(), index, value); return this; }
+        /// Accepts `clearValue` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer clearValueAt(long index, Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValueAt(index))); return this; }
 
     }
 }

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -142,6 +143,10 @@ public sealed class VmaAllocationInfo2 extends GroupType {
     /// @param value the value
     /// @return `this`
     public VmaAllocationInfo2 allocationInfo(MemorySegment value) { allocationInfo(this.segment(), 0L, value); return this; }
+    /// Accepts `allocationInfo` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VmaAllocationInfo2 allocationInfo(Consumer<VmaAllocationInfo> func) { func.accept(VmaAllocationInfo.of(allocationInfo())); return this; }
 
     /// {@return `blockSize` at the given index}
     /// @param segment the segment of the struct
@@ -205,6 +210,11 @@ public sealed class VmaAllocationInfo2 extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer allocationInfoAt(long index, MemorySegment value) { allocationInfo(this.segment(), index, value); return this; }
+        /// Accepts `allocationInfo` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer allocationInfoAt(long index, Consumer<VmaAllocationInfo> func) { func.accept(VmaAllocationInfo.of(allocationInfoAt(index))); return this; }
 
         /// {@return `blockSize` at the given index}
         /// @param index the index of the struct buffer

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -475,6 +476,10 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkPipelineDepthStencilStateCreateInfo front(MemorySegment value) { front(this.segment(), 0L, value); return this; }
+    /// Accepts `front` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo front(Consumer<overrungl.vulkan.struct.VkStencilOpState> func) { func.accept(overrungl.vulkan.struct.VkStencilOpState.of(front())); return this; }
 
     /// {@return `back` at the given index}
     /// @param segment the segment of the struct
@@ -491,6 +496,10 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkPipelineDepthStencilStateCreateInfo back(MemorySegment value) { back(this.segment(), 0L, value); return this; }
+    /// Accepts `back` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo back(Consumer<overrungl.vulkan.struct.VkStencilOpState> func) { func.accept(overrungl.vulkan.struct.VkStencilOpState.of(back())); return this; }
 
     /// {@return `minDepthBounds` at the given index}
     /// @param segment the segment of the struct
@@ -626,6 +635,11 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer frontAt(long index, MemorySegment value) { front(this.segment(), index, value); return this; }
+        /// Accepts `front` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer frontAt(long index, Consumer<overrungl.vulkan.struct.VkStencilOpState> func) { func.accept(overrungl.vulkan.struct.VkStencilOpState.of(frontAt(index))); return this; }
 
         /// {@return `back` at the given index}
         /// @param index the index of the struct buffer
@@ -635,6 +649,11 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer backAt(long index, MemorySegment value) { back(this.segment(), index, value); return this; }
+        /// Accepts `back` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer backAt(long index, Consumer<overrungl.vulkan.struct.VkStencilOpState> func) { func.accept(overrungl.vulkan.struct.VkStencilOpState.of(backAt(index))); return this; }
 
         /// {@return `minDepthBounds` at the given index}
         /// @param index the index of the struct buffer

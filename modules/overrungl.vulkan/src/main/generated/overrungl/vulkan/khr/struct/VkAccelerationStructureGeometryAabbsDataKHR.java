@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -193,6 +194,10 @@ public sealed class VkAccelerationStructureGeometryAabbsDataKHR extends GroupTyp
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometryAabbsDataKHR data(MemorySegment value) { data(this.segment(), 0L, value); return this; }
+    /// Accepts `data` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryAabbsDataKHR data(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(data())); return this; }
 
     /// {@return `stride` at the given index}
     /// @param segment the segment of the struct
@@ -258,6 +263,11 @@ public sealed class VkAccelerationStructureGeometryAabbsDataKHR extends GroupTyp
         /// @param value the value
         /// @return `this`
         public Buffer dataAt(long index, MemorySegment value) { data(this.segment(), index, value); return this; }
+        /// Accepts `data` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(dataAt(index))); return this; }
 
         /// {@return `stride` at the given index}
         /// @param index the index of the struct buffer

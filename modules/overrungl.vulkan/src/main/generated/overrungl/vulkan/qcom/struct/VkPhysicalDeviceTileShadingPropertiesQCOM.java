@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -264,6 +265,10 @@ public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType 
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceTileShadingPropertiesQCOM tileGranularity(MemorySegment value) { tileGranularity(this.segment(), 0L, value); return this; }
+    /// Accepts `tileGranularity` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM tileGranularity(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(tileGranularity())); return this; }
 
     /// {@return `maxTileShadingRate` at the given index}
     /// @param segment the segment of the struct
@@ -280,6 +285,10 @@ public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType 
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceTileShadingPropertiesQCOM maxTileShadingRate(MemorySegment value) { maxTileShadingRate(this.segment(), 0L, value); return this; }
+    /// Accepts `maxTileShadingRate` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM maxTileShadingRate(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTileShadingRate())); return this; }
 
     /// A buffer of [VkPhysicalDeviceTileShadingPropertiesQCOM].
     public static final class Buffer extends VkPhysicalDeviceTileShadingPropertiesQCOM {
@@ -347,6 +356,11 @@ public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType 
         /// @param value the value
         /// @return `this`
         public Buffer tileGranularityAt(long index, MemorySegment value) { tileGranularity(this.segment(), index, value); return this; }
+        /// Accepts `tileGranularity` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer tileGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(tileGranularityAt(index))); return this; }
 
         /// {@return `maxTileShadingRate` at the given index}
         /// @param index the index of the struct buffer
@@ -356,6 +370,11 @@ public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType 
         /// @param value the value
         /// @return `this`
         public Buffer maxTileShadingRateAt(long index, MemorySegment value) { maxTileShadingRate(this.segment(), index, value); return this; }
+        /// Accepts `maxTileShadingRate` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxTileShadingRateAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTileShadingRateAt(index))); return this; }
 
     }
 }

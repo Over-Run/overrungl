@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -611,6 +612,10 @@ public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends GroupType 
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConstantQIndex(MemorySegment value) { preferredConstantQIndex(this.segment(), 0L, value); return this; }
+    /// Accepts `preferredConstantQIndex` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeAV1QualityLevelPropertiesKHR preferredConstantQIndex(Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR.of(preferredConstantQIndex())); return this; }
 
     /// {@return `preferredMaxSingleReferenceCount` at the given index}
     /// @param segment the segment of the struct
@@ -849,6 +854,11 @@ public sealed class VkVideoEncodeAV1QualityLevelPropertiesKHR extends GroupType 
         /// @param value the value
         /// @return `this`
         public Buffer preferredConstantQIndexAt(long index, MemorySegment value) { preferredConstantQIndex(this.segment(), index, value); return this; }
+        /// Accepts `preferredConstantQIndex` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer preferredConstantQIndexAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR.of(preferredConstantQIndexAt(index))); return this; }
 
         /// {@return `preferredMaxSingleReferenceCount` at the given index}
         /// @param index the index of the struct buffer

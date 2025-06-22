@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -140,6 +141,10 @@ public sealed class VkAttachmentSampleLocationsEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkAttachmentSampleLocationsEXT sampleLocationsInfo(MemorySegment value) { sampleLocationsInfo(this.segment(), 0L, value); return this; }
+    /// Accepts `sampleLocationsInfo` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAttachmentSampleLocationsEXT sampleLocationsInfo(Consumer<overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT.of(sampleLocationsInfo())); return this; }
 
     /// A buffer of [VkAttachmentSampleLocationsEXT].
     public static final class Buffer extends VkAttachmentSampleLocationsEXT {
@@ -180,6 +185,11 @@ public sealed class VkAttachmentSampleLocationsEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer sampleLocationsInfoAt(long index, MemorySegment value) { sampleLocationsInfo(this.segment(), index, value); return this; }
+        /// Accepts `sampleLocationsInfo` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer sampleLocationsInfoAt(long index, Consumer<overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT.of(sampleLocationsInfoAt(index))); return this; }
 
     }
 }

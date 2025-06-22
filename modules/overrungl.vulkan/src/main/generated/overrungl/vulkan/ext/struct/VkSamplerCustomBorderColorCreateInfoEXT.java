@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -193,6 +194,10 @@ public sealed class VkSamplerCustomBorderColorCreateInfoEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSamplerCustomBorderColorCreateInfoEXT customBorderColor(MemorySegment value) { customBorderColor(this.segment(), 0L, value); return this; }
+    /// Accepts `customBorderColor` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSamplerCustomBorderColorCreateInfoEXT customBorderColor(Consumer<overrungl.vulkan.union.VkClearColorValue> func) { func.accept(overrungl.vulkan.union.VkClearColorValue.of(customBorderColor())); return this; }
 
     /// {@return `format` at the given index}
     /// @param segment the segment of the struct
@@ -258,6 +263,11 @@ public sealed class VkSamplerCustomBorderColorCreateInfoEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer customBorderColorAt(long index, MemorySegment value) { customBorderColor(this.segment(), index, value); return this; }
+        /// Accepts `customBorderColor` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer customBorderColorAt(long index, Consumer<overrungl.vulkan.union.VkClearColorValue> func) { func.accept(overrungl.vulkan.union.VkClearColorValue.of(customBorderColorAt(index))); return this; }
 
         /// {@return `format` at the given index}
         /// @param index the index of the struct buffer

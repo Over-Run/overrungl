@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkImageFormatProperties2 extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageFormatProperties2 imageFormatProperties(MemorySegment value) { imageFormatProperties(this.segment(), 0L, value); return this; }
+    /// Accepts `imageFormatProperties` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageFormatProperties2 imageFormatProperties(Consumer<overrungl.vulkan.struct.VkImageFormatProperties> func) { func.accept(overrungl.vulkan.struct.VkImageFormatProperties.of(imageFormatProperties())); return this; }
 
     /// A buffer of [VkImageFormatProperties2].
     public static final class Buffer extends VkImageFormatProperties2 {
@@ -223,6 +228,11 @@ public sealed class VkImageFormatProperties2 extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer imageFormatPropertiesAt(long index, MemorySegment value) { imageFormatProperties(this.segment(), index, value); return this; }
+        /// Accepts `imageFormatProperties` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer imageFormatPropertiesAt(long index, Consumer<overrungl.vulkan.struct.VkImageFormatProperties> func) { func.accept(overrungl.vulkan.struct.VkImageFormatProperties.of(imageFormatPropertiesAt(index))); return this; }
 
     }
 }

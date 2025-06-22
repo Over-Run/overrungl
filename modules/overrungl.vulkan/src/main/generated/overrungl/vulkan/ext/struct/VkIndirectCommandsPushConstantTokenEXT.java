@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -107,6 +108,10 @@ public sealed class VkIndirectCommandsPushConstantTokenEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkIndirectCommandsPushConstantTokenEXT updateRange(MemorySegment value) { updateRange(this.segment(), 0L, value); return this; }
+    /// Accepts `updateRange` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkIndirectCommandsPushConstantTokenEXT updateRange(Consumer<overrungl.vulkan.struct.VkPushConstantRange> func) { func.accept(overrungl.vulkan.struct.VkPushConstantRange.of(updateRange())); return this; }
 
     /// A buffer of [VkIndirectCommandsPushConstantTokenEXT].
     public static final class Buffer extends VkIndirectCommandsPushConstantTokenEXT {
@@ -138,6 +143,11 @@ public sealed class VkIndirectCommandsPushConstantTokenEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer updateRangeAt(long index, MemorySegment value) { updateRange(this.segment(), index, value); return this; }
+        /// Accepts `updateRange` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer updateRangeAt(long index, Consumer<overrungl.vulkan.struct.VkPushConstantRange> func) { func.accept(overrungl.vulkan.struct.VkPushConstantRange.of(updateRangeAt(index))); return this; }
 
     }
 }

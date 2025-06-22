@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT extend
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT fragmentDensityOffsetGranularity(MemorySegment value) { fragmentDensityOffsetGranularity(this.segment(), 0L, value); return this; }
+    /// Accepts `fragmentDensityOffsetGranularity` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT fragmentDensityOffsetGranularity(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(fragmentDensityOffsetGranularity())); return this; }
 
     /// A buffer of [VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT].
     public static final class Buffer extends VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT {
@@ -223,6 +228,11 @@ public sealed class VkPhysicalDeviceFragmentDensityMapOffsetPropertiesEXT extend
         /// @param value the value
         /// @return `this`
         public Buffer fragmentDensityOffsetGranularityAt(long index, MemorySegment value) { fragmentDensityOffsetGranularity(this.segment(), index, value); return this; }
+        /// Accepts `fragmentDensityOffsetGranularity` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer fragmentDensityOffsetGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(fragmentDensityOffsetGranularityAt(index))); return this; }
 
     }
 }

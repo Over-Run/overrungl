@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -142,6 +143,10 @@ public sealed class VmaBudget extends GroupType {
     /// @param value the value
     /// @return `this`
     public VmaBudget statistics(MemorySegment value) { statistics(this.segment(), 0L, value); return this; }
+    /// Accepts `statistics` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VmaBudget statistics(Consumer<VmaStatistics> func) { func.accept(VmaStatistics.of(statistics())); return this; }
 
     /// {@return `usage` at the given index}
     /// @param segment the segment of the struct
@@ -205,6 +210,11 @@ public sealed class VmaBudget extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer statisticsAt(long index, MemorySegment value) { statistics(this.segment(), index, value); return this; }
+        /// Accepts `statistics` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer statisticsAt(long index, Consumer<VmaStatistics> func) { func.accept(VmaStatistics.of(statisticsAt(index))); return this; }
 
         /// {@return `usage` at the given index}
         /// @param index the index of the struct buffer

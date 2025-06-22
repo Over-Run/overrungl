@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -202,6 +203,10 @@ public sealed class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupT
     /// @param value the value
     /// @return `this`
     public VkPipelineCacheHeaderVersionSafetyCriticalOne headerVersionOne(MemorySegment value) { headerVersionOne(this.segment(), 0L, value); return this; }
+    /// Accepts `headerVersionOne` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPipelineCacheHeaderVersionSafetyCriticalOne headerVersionOne(Consumer<overrungl.vulkan.struct.VkPipelineCacheHeaderVersionOne> func) { func.accept(overrungl.vulkan.struct.VkPipelineCacheHeaderVersionOne.of(headerVersionOne())); return this; }
 
     /// {@return `validationVersion` at the given index}
     /// @param segment the segment of the struct
@@ -313,6 +318,11 @@ public sealed class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupT
         /// @param value the value
         /// @return `this`
         public Buffer headerVersionOneAt(long index, MemorySegment value) { headerVersionOne(this.segment(), index, value); return this; }
+        /// Accepts `headerVersionOne` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer headerVersionOneAt(long index, Consumer<overrungl.vulkan.struct.VkPipelineCacheHeaderVersionOne> func) { func.accept(overrungl.vulkan.struct.VkPipelineCacheHeaderVersionOne.of(headerVersionOneAt(index))); return this; }
 
         /// {@return `validationVersion` at the given index}
         /// @param index the index of the struct buffer

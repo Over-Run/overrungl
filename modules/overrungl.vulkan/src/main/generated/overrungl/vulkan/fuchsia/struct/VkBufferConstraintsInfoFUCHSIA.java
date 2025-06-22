@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -211,6 +212,10 @@ public sealed class VkBufferConstraintsInfoFUCHSIA extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkBufferConstraintsInfoFUCHSIA createInfo(MemorySegment value) { createInfo(this.segment(), 0L, value); return this; }
+    /// Accepts `createInfo` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkBufferConstraintsInfoFUCHSIA createInfo(Consumer<overrungl.vulkan.struct.VkBufferCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkBufferCreateInfo.of(createInfo())); return this; }
 
     /// {@return `requiredFormatFeatures` at the given index}
     /// @param segment the segment of the struct
@@ -243,6 +248,10 @@ public sealed class VkBufferConstraintsInfoFUCHSIA extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkBufferConstraintsInfoFUCHSIA bufferCollectionConstraints(MemorySegment value) { bufferCollectionConstraints(this.segment(), 0L, value); return this; }
+    /// Accepts `bufferCollectionConstraints` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkBufferConstraintsInfoFUCHSIA bufferCollectionConstraints(Consumer<overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA.of(bufferCollectionConstraints())); return this; }
 
     /// A buffer of [VkBufferConstraintsInfoFUCHSIA].
     public static final class Buffer extends VkBufferConstraintsInfoFUCHSIA {
@@ -292,6 +301,11 @@ public sealed class VkBufferConstraintsInfoFUCHSIA extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer createInfoAt(long index, MemorySegment value) { createInfo(this.segment(), index, value); return this; }
+        /// Accepts `createInfo` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer createInfoAt(long index, Consumer<overrungl.vulkan.struct.VkBufferCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkBufferCreateInfo.of(createInfoAt(index))); return this; }
 
         /// {@return `requiredFormatFeatures` at the given index}
         /// @param index the index of the struct buffer
@@ -310,6 +324,11 @@ public sealed class VkBufferConstraintsInfoFUCHSIA extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer bufferCollectionConstraintsAt(long index, MemorySegment value) { bufferCollectionConstraints(this.segment(), index, value); return this; }
+        /// Accepts `bufferCollectionConstraints` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer bufferCollectionConstraintsAt(long index, Consumer<overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkBufferCollectionConstraintsInfoFUCHSIA.of(bufferCollectionConstraintsAt(index))); return this; }
 
     }
 }

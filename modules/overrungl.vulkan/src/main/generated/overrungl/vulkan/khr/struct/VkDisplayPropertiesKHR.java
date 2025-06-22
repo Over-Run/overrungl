@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -254,6 +255,10 @@ public sealed class VkDisplayPropertiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPropertiesKHR physicalDimensions(MemorySegment value) { physicalDimensions(this.segment(), 0L, value); return this; }
+    /// Accepts `physicalDimensions` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPropertiesKHR physicalDimensions(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalDimensions())); return this; }
 
     /// {@return `physicalResolution` at the given index}
     /// @param segment the segment of the struct
@@ -270,6 +275,10 @@ public sealed class VkDisplayPropertiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPropertiesKHR physicalResolution(MemorySegment value) { physicalResolution(this.segment(), 0L, value); return this; }
+    /// Accepts `physicalResolution` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPropertiesKHR physicalResolution(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalResolution())); return this; }
 
     /// {@return `supportedTransforms` at the given index}
     /// @param segment the segment of the struct
@@ -367,6 +376,11 @@ public sealed class VkDisplayPropertiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer physicalDimensionsAt(long index, MemorySegment value) { physicalDimensions(this.segment(), index, value); return this; }
+        /// Accepts `physicalDimensions` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer physicalDimensionsAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalDimensionsAt(index))); return this; }
 
         /// {@return `physicalResolution` at the given index}
         /// @param index the index of the struct buffer
@@ -376,6 +390,11 @@ public sealed class VkDisplayPropertiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer physicalResolutionAt(long index, MemorySegment value) { physicalResolution(this.segment(), index, value); return this; }
+        /// Accepts `physicalResolution` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer physicalResolutionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalResolutionAt(index))); return this; }
 
         /// {@return `supportedTransforms` at the given index}
         /// @param index the index of the struct buffer

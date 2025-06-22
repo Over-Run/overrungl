@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -211,6 +212,10 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageViewSampleWeightCreateInfoQCOM filterCenter(MemorySegment value) { filterCenter(this.segment(), 0L, value); return this; }
+    /// Accepts `filterCenter` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM filterCenter(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(filterCenter())); return this; }
 
     /// {@return `filterSize` at the given index}
     /// @param segment the segment of the struct
@@ -227,6 +232,10 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageViewSampleWeightCreateInfoQCOM filterSize(MemorySegment value) { filterSize(this.segment(), 0L, value); return this; }
+    /// Accepts `filterSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM filterSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(filterSize())); return this; }
 
     /// {@return `numPhases` at the given index}
     /// @param segment the segment of the struct
@@ -292,6 +301,11 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer filterCenterAt(long index, MemorySegment value) { filterCenter(this.segment(), index, value); return this; }
+        /// Accepts `filterCenter` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer filterCenterAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(filterCenterAt(index))); return this; }
 
         /// {@return `filterSize` at the given index}
         /// @param index the index of the struct buffer
@@ -301,6 +315,11 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer filterSizeAt(long index, MemorySegment value) { filterSize(this.segment(), index, value); return this; }
+        /// Accepts `filterSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer filterSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(filterSizeAt(index))); return this; }
 
         /// {@return `numPhases` at the given index}
         /// @param index the index of the struct buffer

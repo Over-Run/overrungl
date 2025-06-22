@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkQueueFamilyProperties2 extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkQueueFamilyProperties2 queueFamilyProperties(MemorySegment value) { queueFamilyProperties(this.segment(), 0L, value); return this; }
+    /// Accepts `queueFamilyProperties` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkQueueFamilyProperties2 queueFamilyProperties(Consumer<overrungl.vulkan.struct.VkQueueFamilyProperties> func) { func.accept(overrungl.vulkan.struct.VkQueueFamilyProperties.of(queueFamilyProperties())); return this; }
 
     /// A buffer of [VkQueueFamilyProperties2].
     public static final class Buffer extends VkQueueFamilyProperties2 {
@@ -223,6 +228,11 @@ public sealed class VkQueueFamilyProperties2 extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer queueFamilyPropertiesAt(long index, MemorySegment value) { queueFamilyProperties(this.segment(), index, value); return this; }
+        /// Accepts `queueFamilyProperties` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer queueFamilyPropertiesAt(long index, Consumer<overrungl.vulkan.struct.VkQueueFamilyProperties> func) { func.accept(overrungl.vulkan.struct.VkQueueFamilyProperties.of(queueFamilyPropertiesAt(index))); return this; }
 
     }
 }
