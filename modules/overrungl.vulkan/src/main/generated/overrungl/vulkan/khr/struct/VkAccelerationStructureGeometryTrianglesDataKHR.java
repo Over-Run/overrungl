@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -315,6 +316,10 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometryTrianglesDataKHR vertexData(MemorySegment value) { vertexData(this.segment(), 0L, value); return this; }
+    /// Accepts `vertexData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexData())); return this; }
 
     /// {@return `vertexStride` at the given index}
     /// @param segment the segment of the struct
@@ -379,6 +384,10 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometryTrianglesDataKHR indexData(MemorySegment value) { indexData(this.segment(), 0L, value); return this; }
+    /// Accepts `indexData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexData())); return this; }
 
     /// {@return `transformData` at the given index}
     /// @param segment the segment of the struct
@@ -395,6 +404,10 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometryTrianglesDataKHR transformData(MemorySegment value) { transformData(this.segment(), 0L, value); return this; }
+    /// Accepts `transformData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR transformData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(transformData())); return this; }
 
     /// A buffer of [VkAccelerationStructureGeometryTrianglesDataKHR].
     public static final class Buffer extends VkAccelerationStructureGeometryTrianglesDataKHR {
@@ -453,6 +466,11 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
         /// @param value the value
         /// @return `this`
         public Buffer vertexDataAt(long index, MemorySegment value) { vertexData(this.segment(), index, value); return this; }
+        /// Accepts `vertexData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer vertexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexDataAt(index))); return this; }
 
         /// {@return `vertexStride` at the given index}
         /// @param index the index of the struct buffer
@@ -489,6 +507,11 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
         /// @param value the value
         /// @return `this`
         public Buffer indexDataAt(long index, MemorySegment value) { indexData(this.segment(), index, value); return this; }
+        /// Accepts `indexData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer indexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexDataAt(index))); return this; }
 
         /// {@return `transformData` at the given index}
         /// @param index the index of the struct buffer
@@ -498,6 +521,11 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
         /// @param value the value
         /// @return `this`
         public Buffer transformDataAt(long index, MemorySegment value) { transformData(this.segment(), index, value); return this; }
+        /// Accepts `transformData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer transformDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(transformDataAt(index))); return this; }
 
     }
 }

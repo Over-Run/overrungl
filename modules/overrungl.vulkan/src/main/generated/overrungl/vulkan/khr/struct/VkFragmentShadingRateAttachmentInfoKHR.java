@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -209,6 +210,10 @@ public sealed class VkFragmentShadingRateAttachmentInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkFragmentShadingRateAttachmentInfoKHR shadingRateAttachmentTexelSize(MemorySegment value) { shadingRateAttachmentTexelSize(this.segment(), 0L, value); return this; }
+    /// Accepts `shadingRateAttachmentTexelSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkFragmentShadingRateAttachmentInfoKHR shadingRateAttachmentTexelSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(shadingRateAttachmentTexelSize())); return this; }
 
     /// A buffer of [VkFragmentShadingRateAttachmentInfoKHR].
     public static final class Buffer extends VkFragmentShadingRateAttachmentInfoKHR {
@@ -267,6 +272,11 @@ public sealed class VkFragmentShadingRateAttachmentInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer shadingRateAttachmentTexelSizeAt(long index, MemorySegment value) { shadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+        /// Accepts `shadingRateAttachmentTexelSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer shadingRateAttachmentTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(shadingRateAttachmentTexelSizeAt(index))); return this; }
 
     }
 }

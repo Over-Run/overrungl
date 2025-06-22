@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -151,6 +152,10 @@ public sealed class VkClusterAccelerationStructureInstantiateClusterInfoNV exten
     /// @param value the value
     /// @return `this`
     public VkClusterAccelerationStructureInstantiateClusterInfoNV vertexBuffer(MemorySegment value) { vertexBuffer(this.segment(), 0L, value); return this; }
+    /// Accepts `vertexBuffer` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureInstantiateClusterInfoNV vertexBuffer(Consumer<overrungl.vulkan.nv.struct.VkStridedDeviceAddressNV> func) { func.accept(overrungl.vulkan.nv.struct.VkStridedDeviceAddressNV.of(vertexBuffer())); return this; }
 
     /// A buffer of [VkClusterAccelerationStructureInstantiateClusterInfoNV].
     public static final class Buffer extends VkClusterAccelerationStructureInstantiateClusterInfoNV {
@@ -200,6 +205,11 @@ public sealed class VkClusterAccelerationStructureInstantiateClusterInfoNV exten
         /// @param value the value
         /// @return `this`
         public Buffer vertexBufferAt(long index, MemorySegment value) { vertexBuffer(this.segment(), index, value); return this; }
+        /// Accepts `vertexBuffer` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer vertexBufferAt(long index, Consumer<overrungl.vulkan.nv.struct.VkStridedDeviceAddressNV> func) { func.accept(overrungl.vulkan.nv.struct.VkStridedDeviceAddressNV.of(vertexBufferAt(index))); return this; }
 
     }
 }

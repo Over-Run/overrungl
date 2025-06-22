@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends Group
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceImageProcessing2PropertiesQCOM maxBlockMatchWindow(MemorySegment value) { maxBlockMatchWindow(this.segment(), 0L, value); return this; }
+    /// Accepts `maxBlockMatchWindow` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessing2PropertiesQCOM maxBlockMatchWindow(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBlockMatchWindow())); return this; }
 
     /// A buffer of [VkPhysicalDeviceImageProcessing2PropertiesQCOM].
     public static final class Buffer extends VkPhysicalDeviceImageProcessing2PropertiesQCOM {
@@ -223,6 +228,11 @@ public sealed class VkPhysicalDeviceImageProcessing2PropertiesQCOM extends Group
         /// @param value the value
         /// @return `this`
         public Buffer maxBlockMatchWindowAt(long index, MemorySegment value) { maxBlockMatchWindow(this.segment(), index, value); return this; }
+        /// Accepts `maxBlockMatchWindow` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxBlockMatchWindowAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBlockMatchWindowAt(index))); return this; }
 
     }
 }

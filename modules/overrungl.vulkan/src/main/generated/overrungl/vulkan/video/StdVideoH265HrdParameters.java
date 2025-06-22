@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -436,6 +437,10 @@ public sealed class StdVideoH265HrdParameters extends GroupType {
     /// @param value the value
     /// @return `this`
     public StdVideoH265HrdParameters flags(MemorySegment value) { flags(this.segment(), 0L, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public StdVideoH265HrdParameters flags(Consumer<overrungl.vulkan.video.StdVideoH265HrdFlags> func) { func.accept(overrungl.vulkan.video.StdVideoH265HrdFlags.of(flags())); return this; }
 
     /// {@return `tick_divisor_minus2` at the given index}
     /// @param segment the segment of the struct
@@ -748,6 +753,11 @@ public sealed class StdVideoH265HrdParameters extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+        /// Accepts `flags` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoH265HrdFlags> func) { func.accept(overrungl.vulkan.video.StdVideoH265HrdFlags.of(flagsAt(index))); return this; }
 
         /// {@return `tick_divisor_minus2` at the given index}
         /// @param index the index of the struct buffer

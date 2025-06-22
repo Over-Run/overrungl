@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -341,6 +342,10 @@ public sealed class VkImageViewCreateInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageViewCreateInfo components(MemorySegment value) { components(this.segment(), 0L, value); return this; }
+    /// Accepts `components` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageViewCreateInfo components(Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(components())); return this; }
 
     /// {@return `subresourceRange` at the given index}
     /// @param segment the segment of the struct
@@ -357,6 +362,10 @@ public sealed class VkImageViewCreateInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageViewCreateInfo subresourceRange(MemorySegment value) { subresourceRange(this.segment(), 0L, value); return this; }
+    /// Accepts `subresourceRange` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageViewCreateInfo subresourceRange(Consumer<overrungl.vulkan.struct.VkImageSubresourceRange> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceRange.of(subresourceRange())); return this; }
 
     /// A buffer of [VkImageViewCreateInfo].
     public static final class Buffer extends VkImageViewCreateInfo {
@@ -442,6 +451,11 @@ public sealed class VkImageViewCreateInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer componentsAt(long index, MemorySegment value) { components(this.segment(), index, value); return this; }
+        /// Accepts `components` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer componentsAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(componentsAt(index))); return this; }
 
         /// {@return `subresourceRange` at the given index}
         /// @param index the index of the struct buffer
@@ -451,6 +465,11 @@ public sealed class VkImageViewCreateInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer subresourceRangeAt(long index, MemorySegment value) { subresourceRange(this.segment(), index, value); return this; }
+        /// Accepts `subresourceRange` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer subresourceRangeAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceRange> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceRange.of(subresourceRangeAt(index))); return this; }
 
     }
 }

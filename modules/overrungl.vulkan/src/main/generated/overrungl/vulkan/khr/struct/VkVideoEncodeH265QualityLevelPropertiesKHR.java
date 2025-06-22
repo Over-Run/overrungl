@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -408,6 +409,10 @@ public sealed class VkVideoEncodeH265QualityLevelPropertiesKHR extends GroupType
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp(MemorySegment value) { preferredConstantQp(this.segment(), 0L, value); return this; }
+    /// Accepts `preferredConstantQp` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeH265QualityLevelPropertiesKHR preferredConstantQp(Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH265QpKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH265QpKHR.of(preferredConstantQp())); return this; }
 
     /// {@return `preferredMaxL0ReferenceCount` at the given index}
     /// @param segment the segment of the struct
@@ -534,6 +539,11 @@ public sealed class VkVideoEncodeH265QualityLevelPropertiesKHR extends GroupType
         /// @param value the value
         /// @return `this`
         public Buffer preferredConstantQpAt(long index, MemorySegment value) { preferredConstantQp(this.segment(), index, value); return this; }
+        /// Accepts `preferredConstantQp` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer preferredConstantQpAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeH265QpKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeH265QpKHR.of(preferredConstantQpAt(index))); return this; }
 
         /// {@return `preferredMaxL0ReferenceCount` at the given index}
         /// @param index the index of the struct buffer

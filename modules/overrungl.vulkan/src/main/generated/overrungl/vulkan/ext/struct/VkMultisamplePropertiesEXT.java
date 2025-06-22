@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkMultisamplePropertiesEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkMultisamplePropertiesEXT maxSampleLocationGridSize(MemorySegment value) { maxSampleLocationGridSize(this.segment(), 0L, value); return this; }
+    /// Accepts `maxSampleLocationGridSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkMultisamplePropertiesEXT maxSampleLocationGridSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSampleLocationGridSize())); return this; }
 
     /// A buffer of [VkMultisamplePropertiesEXT].
     public static final class Buffer extends VkMultisamplePropertiesEXT {
@@ -223,6 +228,11 @@ public sealed class VkMultisamplePropertiesEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxSampleLocationGridSizeAt(long index, MemorySegment value) { maxSampleLocationGridSize(this.segment(), index, value); return this; }
+        /// Accepts `maxSampleLocationGridSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxSampleLocationGridSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSampleLocationGridSizeAt(index))); return this; }
 
     }
 }

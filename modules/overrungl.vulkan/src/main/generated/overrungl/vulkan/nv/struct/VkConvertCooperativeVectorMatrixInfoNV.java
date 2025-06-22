@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -452,6 +453,10 @@ public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkConvertCooperativeVectorMatrixInfoNV srcData(MemorySegment value) { srcData(this.segment(), 0L, value); return this; }
+    /// Accepts `srcData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV srcData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(srcData())); return this; }
 
     /// {@return `pDstSize` at the given index}
     /// @param segment the segment of the struct
@@ -484,6 +489,10 @@ public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkConvertCooperativeVectorMatrixInfoNV dstData(MemorySegment value) { dstData(this.segment(), 0L, value); return this; }
+    /// Accepts `dstData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV dstData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR.of(dstData())); return this; }
 
     /// {@return `srcComponentType` at the given index}
     /// @param segment the segment of the struct
@@ -670,6 +679,11 @@ public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer srcDataAt(long index, MemorySegment value) { srcData(this.segment(), index, value); return this; }
+        /// Accepts `srcData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer srcDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(srcDataAt(index))); return this; }
 
         /// {@return `pDstSize` at the given index}
         /// @param index the index of the struct buffer
@@ -688,6 +702,11 @@ public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer dstDataAt(long index, MemorySegment value) { dstData(this.segment(), index, value); return this; }
+        /// Accepts `dstData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dstDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR.of(dstDataAt(index))); return this; }
 
         /// {@return `srcComponentType` at the given index}
         /// @param index the index of the struct buffer

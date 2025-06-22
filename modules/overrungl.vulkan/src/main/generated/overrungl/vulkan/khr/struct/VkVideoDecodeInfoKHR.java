@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -392,6 +393,10 @@ public sealed class VkVideoDecodeInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoDecodeInfoKHR dstPictureResource(MemorySegment value) { dstPictureResource(this.segment(), 0L, value); return this; }
+    /// Accepts `dstPictureResource` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoDecodeInfoKHR dstPictureResource(Consumer<overrungl.vulkan.khr.struct.VkVideoPictureResourceInfoKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoPictureResourceInfoKHR.of(dstPictureResource())); return this; }
 
     /// {@return `pSetupReferenceSlot` at the given index}
     /// @param segment the segment of the struct
@@ -525,6 +530,11 @@ public sealed class VkVideoDecodeInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer dstPictureResourceAt(long index, MemorySegment value) { dstPictureResource(this.segment(), index, value); return this; }
+        /// Accepts `dstPictureResource` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dstPictureResourceAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoPictureResourceInfoKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoPictureResourceInfoKHR.of(dstPictureResourceAt(index))); return this; }
 
         /// {@return `pSetupReferenceSlot` at the given index}
         /// @param index the index of the struct buffer

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -279,6 +280,10 @@ public sealed class VkBuildPartitionedAccelerationStructureInfoNV extends GroupT
     /// @param value the value
     /// @return `this`
     public VkBuildPartitionedAccelerationStructureInfoNV input(MemorySegment value) { input(this.segment(), 0L, value); return this; }
+    /// Accepts `input` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkBuildPartitionedAccelerationStructureInfoNV input(Consumer<overrungl.vulkan.nv.struct.VkPartitionedAccelerationStructureInstancesInputNV> func) { func.accept(overrungl.vulkan.nv.struct.VkPartitionedAccelerationStructureInstancesInputNV.of(input())); return this; }
 
     /// {@return `srcAccelerationStructureData` at the given index}
     /// @param segment the segment of the struct
@@ -408,6 +413,11 @@ public sealed class VkBuildPartitionedAccelerationStructureInfoNV extends GroupT
         /// @param value the value
         /// @return `this`
         public Buffer inputAt(long index, MemorySegment value) { input(this.segment(), index, value); return this; }
+        /// Accepts `input` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer inputAt(long index, Consumer<overrungl.vulkan.nv.struct.VkPartitionedAccelerationStructureInstancesInputNV> func) { func.accept(overrungl.vulkan.nv.struct.VkPartitionedAccelerationStructureInstancesInputNV.of(inputAt(index))); return this; }
 
         /// {@return `srcAccelerationStructureData` at the given index}
         /// @param index the index of the struct buffer

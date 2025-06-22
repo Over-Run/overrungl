@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -399,6 +400,10 @@ public sealed class STBRPContext extends GroupType {
     /// @param value the value
     /// @return `this`
     public STBRPContext extra(MemorySegment value) { extra(this.segment(), 0L, value); return this; }
+    /// Accepts `extra` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public STBRPContext extra(Consumer<STBRPNode> func) { func.accept(STBRPNode.of(extra())); return this; }
 
     /// A buffer of [STBRPContext].
     public static final class Buffer extends STBRPContext {
@@ -502,6 +507,11 @@ public sealed class STBRPContext extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer extraAt(long index, MemorySegment value) { extra(this.segment(), index, value); return this; }
+        /// Accepts `extra` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer extraAt(long index, Consumer<STBRPNode> func) { func.accept(STBRPNode.of(extraAt(index))); return this; }
 
     }
 }

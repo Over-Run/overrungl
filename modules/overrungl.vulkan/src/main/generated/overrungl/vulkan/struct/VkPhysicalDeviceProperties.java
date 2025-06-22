@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -419,6 +420,10 @@ public sealed class VkPhysicalDeviceProperties extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceProperties limits(MemorySegment value) { limits(this.segment(), 0L, value); return this; }
+    /// Accepts `limits` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceProperties limits(Consumer<overrungl.vulkan.struct.VkPhysicalDeviceLimits> func) { func.accept(overrungl.vulkan.struct.VkPhysicalDeviceLimits.of(limits())); return this; }
 
     /// {@return `sparseProperties` at the given index}
     /// @param segment the segment of the struct
@@ -435,6 +440,10 @@ public sealed class VkPhysicalDeviceProperties extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceProperties sparseProperties(MemorySegment value) { sparseProperties(this.segment(), 0L, value); return this; }
+    /// Accepts `sparseProperties` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceProperties sparseProperties(Consumer<overrungl.vulkan.struct.VkPhysicalDeviceSparseProperties> func) { func.accept(overrungl.vulkan.struct.VkPhysicalDeviceSparseProperties.of(sparseProperties())); return this; }
 
     /// A buffer of [VkPhysicalDeviceProperties].
     public static final class Buffer extends VkPhysicalDeviceProperties {
@@ -549,6 +558,11 @@ public sealed class VkPhysicalDeviceProperties extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer limitsAt(long index, MemorySegment value) { limits(this.segment(), index, value); return this; }
+        /// Accepts `limits` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer limitsAt(long index, Consumer<overrungl.vulkan.struct.VkPhysicalDeviceLimits> func) { func.accept(overrungl.vulkan.struct.VkPhysicalDeviceLimits.of(limitsAt(index))); return this; }
 
         /// {@return `sparseProperties` at the given index}
         /// @param index the index of the struct buffer
@@ -558,6 +572,11 @@ public sealed class VkPhysicalDeviceProperties extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer sparsePropertiesAt(long index, MemorySegment value) { sparseProperties(this.segment(), index, value); return this; }
+        /// Accepts `sparseProperties` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer sparsePropertiesAt(long index, Consumer<overrungl.vulkan.struct.VkPhysicalDeviceSparseProperties> func) { func.accept(overrungl.vulkan.struct.VkPhysicalDeviceSparseProperties.of(sparsePropertiesAt(index))); return this; }
 
     }
 }

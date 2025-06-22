@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkSparseImageFormatProperties2 extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSparseImageFormatProperties2 properties(MemorySegment value) { properties(this.segment(), 0L, value); return this; }
+    /// Accepts `properties` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSparseImageFormatProperties2 properties(Consumer<overrungl.vulkan.struct.VkSparseImageFormatProperties> func) { func.accept(overrungl.vulkan.struct.VkSparseImageFormatProperties.of(properties())); return this; }
 
     /// A buffer of [VkSparseImageFormatProperties2].
     public static final class Buffer extends VkSparseImageFormatProperties2 {
@@ -223,6 +228,11 @@ public sealed class VkSparseImageFormatProperties2 extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer propertiesAt(long index, MemorySegment value) { properties(this.segment(), index, value); return this; }
+        /// Accepts `properties` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer propertiesAt(long index, Consumer<overrungl.vulkan.struct.VkSparseImageFormatProperties> func) { func.accept(overrungl.vulkan.struct.VkSparseImageFormatProperties.of(propertiesAt(index))); return this; }
 
     }
 }

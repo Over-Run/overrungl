@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -211,6 +212,10 @@ public sealed class VkDisplayPresentInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPresentInfoKHR srcRect(MemorySegment value) { srcRect(this.segment(), 0L, value); return this; }
+    /// Accepts `srcRect` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPresentInfoKHR srcRect(Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(srcRect())); return this; }
 
     /// {@return `dstRect` at the given index}
     /// @param segment the segment of the struct
@@ -227,6 +232,10 @@ public sealed class VkDisplayPresentInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPresentInfoKHR dstRect(MemorySegment value) { dstRect(this.segment(), 0L, value); return this; }
+    /// Accepts `dstRect` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPresentInfoKHR dstRect(Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(dstRect())); return this; }
 
     /// {@return `persistent` at the given index}
     /// @param segment the segment of the struct
@@ -292,6 +301,11 @@ public sealed class VkDisplayPresentInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer srcRectAt(long index, MemorySegment value) { srcRect(this.segment(), index, value); return this; }
+        /// Accepts `srcRect` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer srcRectAt(long index, Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(srcRectAt(index))); return this; }
 
         /// {@return `dstRect` at the given index}
         /// @param index the index of the struct buffer
@@ -301,6 +315,11 @@ public sealed class VkDisplayPresentInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer dstRectAt(long index, MemorySegment value) { dstRect(this.segment(), index, value); return this; }
+        /// Accepts `dstRect` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dstRectAt(long index, Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(dstRectAt(index))); return this; }
 
         /// {@return `persistent` at the given index}
         /// @param index the index of the struct buffer

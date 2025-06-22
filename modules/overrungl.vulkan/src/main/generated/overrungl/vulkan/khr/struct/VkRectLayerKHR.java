@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -140,6 +141,10 @@ public sealed class VkRectLayerKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkRectLayerKHR offset(MemorySegment value) { offset(this.segment(), 0L, value); return this; }
+    /// Accepts `offset` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkRectLayerKHR offset(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(offset())); return this; }
 
     /// {@return `extent` at the given index}
     /// @param segment the segment of the struct
@@ -156,6 +161,10 @@ public sealed class VkRectLayerKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkRectLayerKHR extent(MemorySegment value) { extent(this.segment(), 0L, value); return this; }
+    /// Accepts `extent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkRectLayerKHR extent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(extent())); return this; }
 
     /// {@return `layer` at the given index}
     /// @param segment the segment of the struct
@@ -203,6 +212,11 @@ public sealed class VkRectLayerKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer offsetAt(long index, MemorySegment value) { offset(this.segment(), index, value); return this; }
+        /// Accepts `offset` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer offsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(offsetAt(index))); return this; }
 
         /// {@return `extent` at the given index}
         /// @param index the index of the struct buffer
@@ -212,6 +226,11 @@ public sealed class VkRectLayerKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
+        /// Accepts `extent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(extentAt(index))); return this; }
 
         /// {@return `layer` at the given index}
         /// @param index the index of the struct buffer

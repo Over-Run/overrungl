@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -175,6 +176,10 @@ public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceMemoryProperties memoryTypes(MemorySegment value) { memoryTypes(this.segment(), 0L, value); return this; }
+    /// Accepts `memoryTypes` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties memoryTypes(Consumer<overrungl.vulkan.struct.VkMemoryType> func) { func.accept(overrungl.vulkan.struct.VkMemoryType.of(memoryTypes())); return this; }
 
     /// {@return `memoryHeapCount` at the given index}
     /// @param segment the segment of the struct
@@ -207,6 +212,10 @@ public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceMemoryProperties memoryHeaps(MemorySegment value) { memoryHeaps(this.segment(), 0L, value); return this; }
+    /// Accepts `memoryHeaps` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties memoryHeaps(Consumer<overrungl.vulkan.struct.VkMemoryHeap> func) { func.accept(overrungl.vulkan.struct.VkMemoryHeap.of(memoryHeaps())); return this; }
 
     /// A buffer of [VkPhysicalDeviceMemoryProperties].
     public static final class Buffer extends VkPhysicalDeviceMemoryProperties {
@@ -247,6 +256,11 @@ public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer memoryTypesAt(long index, MemorySegment value) { memoryTypes(this.segment(), index, value); return this; }
+        /// Accepts `memoryTypes` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer memoryTypesAt(long index, Consumer<overrungl.vulkan.struct.VkMemoryType> func) { func.accept(overrungl.vulkan.struct.VkMemoryType.of(memoryTypesAt(index))); return this; }
 
         /// {@return `memoryHeapCount` at the given index}
         /// @param index the index of the struct buffer
@@ -265,6 +279,11 @@ public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer memoryHeapsAt(long index, MemorySegment value) { memoryHeaps(this.segment(), index, value); return this; }
+        /// Accepts `memoryHeaps` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer memoryHeapsAt(long index, Consumer<overrungl.vulkan.struct.VkMemoryHeap> func) { func.accept(overrungl.vulkan.struct.VkMemoryHeap.of(memoryHeapsAt(index))); return this; }
 
     }
 }

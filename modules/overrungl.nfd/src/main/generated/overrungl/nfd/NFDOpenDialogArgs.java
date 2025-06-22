@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -209,6 +210,10 @@ public sealed class NFDOpenDialogArgs extends GroupType {
     /// @param value the value
     /// @return `this`
     public NFDOpenDialogArgs parentWindow(MemorySegment value) { parentWindow(this.segment(), 0L, value); return this; }
+    /// Accepts `parentWindow` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public NFDOpenDialogArgs parentWindow(Consumer<NFDWindowHandle> func) { func.accept(NFDWindowHandle.of(parentWindow())); return this; }
 
     /// A buffer of [NFDOpenDialogArgs].
     public static final class Buffer extends NFDOpenDialogArgs {
@@ -267,6 +272,11 @@ public sealed class NFDOpenDialogArgs extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer parentWindowAt(long index, MemorySegment value) { parentWindow(this.segment(), index, value); return this; }
+        /// Accepts `parentWindow` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer parentWindowAt(long index, Consumer<NFDWindowHandle> func) { func.accept(NFDWindowHandle.of(parentWindowAt(index))); return this; }
 
     }
 }

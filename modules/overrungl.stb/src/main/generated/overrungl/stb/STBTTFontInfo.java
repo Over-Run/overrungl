@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -815,6 +816,10 @@ public sealed class STBTTFontInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public STBTTFontInfo cff(MemorySegment value) { cff(this.segment(), 0L, value); return this; }
+    /// Accepts `cff` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public STBTTFontInfo cff(Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(cff())); return this; }
 
     /// {@return `charstrings` at the given index}
     /// @param segment the segment of the struct
@@ -831,6 +836,10 @@ public sealed class STBTTFontInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public STBTTFontInfo charstrings(MemorySegment value) { charstrings(this.segment(), 0L, value); return this; }
+    /// Accepts `charstrings` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public STBTTFontInfo charstrings(Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(charstrings())); return this; }
 
     /// {@return `gsubrs` at the given index}
     /// @param segment the segment of the struct
@@ -847,6 +856,10 @@ public sealed class STBTTFontInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public STBTTFontInfo gsubrs(MemorySegment value) { gsubrs(this.segment(), 0L, value); return this; }
+    /// Accepts `gsubrs` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public STBTTFontInfo gsubrs(Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(gsubrs())); return this; }
 
     /// {@return `subrs` at the given index}
     /// @param segment the segment of the struct
@@ -863,6 +876,10 @@ public sealed class STBTTFontInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public STBTTFontInfo subrs(MemorySegment value) { subrs(this.segment(), 0L, value); return this; }
+    /// Accepts `subrs` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public STBTTFontInfo subrs(Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(subrs())); return this; }
 
     /// {@return `fontdicts` at the given index}
     /// @param segment the segment of the struct
@@ -879,6 +896,10 @@ public sealed class STBTTFontInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public STBTTFontInfo fontdicts(MemorySegment value) { fontdicts(this.segment(), 0L, value); return this; }
+    /// Accepts `fontdicts` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public STBTTFontInfo fontdicts(Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(fontdicts())); return this; }
 
     /// {@return `fdselect` at the given index}
     /// @param segment the segment of the struct
@@ -895,6 +916,10 @@ public sealed class STBTTFontInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public STBTTFontInfo fdselect(MemorySegment value) { fdselect(this.segment(), 0L, value); return this; }
+    /// Accepts `fdselect` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public STBTTFontInfo fdselect(Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(fdselect())); return this; }
 
     /// A buffer of [STBTTFontInfo].
     public static final class Buffer extends STBTTFontInfo {
@@ -1052,6 +1077,11 @@ public sealed class STBTTFontInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer cffAt(long index, MemorySegment value) { cff(this.segment(), index, value); return this; }
+        /// Accepts `cff` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer cffAt(long index, Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(cffAt(index))); return this; }
 
         /// {@return `charstrings` at the given index}
         /// @param index the index of the struct buffer
@@ -1061,6 +1091,11 @@ public sealed class STBTTFontInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer charstringsAt(long index, MemorySegment value) { charstrings(this.segment(), index, value); return this; }
+        /// Accepts `charstrings` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer charstringsAt(long index, Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(charstringsAt(index))); return this; }
 
         /// {@return `gsubrs` at the given index}
         /// @param index the index of the struct buffer
@@ -1070,6 +1105,11 @@ public sealed class STBTTFontInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer gsubrsAt(long index, MemorySegment value) { gsubrs(this.segment(), index, value); return this; }
+        /// Accepts `gsubrs` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer gsubrsAt(long index, Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(gsubrsAt(index))); return this; }
 
         /// {@return `subrs` at the given index}
         /// @param index the index of the struct buffer
@@ -1079,6 +1119,11 @@ public sealed class STBTTFontInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer subrsAt(long index, MemorySegment value) { subrs(this.segment(), index, value); return this; }
+        /// Accepts `subrs` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer subrsAt(long index, Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(subrsAt(index))); return this; }
 
         /// {@return `fontdicts` at the given index}
         /// @param index the index of the struct buffer
@@ -1088,6 +1133,11 @@ public sealed class STBTTFontInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer fontdictsAt(long index, MemorySegment value) { fontdicts(this.segment(), index, value); return this; }
+        /// Accepts `fontdicts` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer fontdictsAt(long index, Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(fontdictsAt(index))); return this; }
 
         /// {@return `fdselect` at the given index}
         /// @param index the index of the struct buffer
@@ -1097,6 +1147,11 @@ public sealed class STBTTFontInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer fdselectAt(long index, MemorySegment value) { fdselect(this.segment(), index, value); return this; }
+        /// Accepts `fdselect` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer fdselectAt(long index, Consumer<STBTT__buf> func) { func.accept(STBTT__buf.of(fdselectAt(index))); return this; }
 
     }
 }

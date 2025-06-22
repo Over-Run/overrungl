@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -273,6 +274,10 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR minSrcPosition(MemorySegment value) { minSrcPosition(this.segment(), 0L, value); return this; }
+    /// Accepts `minSrcPosition` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minSrcPosition(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minSrcPosition())); return this; }
 
     /// {@return `maxSrcPosition` at the given index}
     /// @param segment the segment of the struct
@@ -289,6 +294,10 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR maxSrcPosition(MemorySegment value) { maxSrcPosition(this.segment(), 0L, value); return this; }
+    /// Accepts `maxSrcPosition` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxSrcPosition(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxSrcPosition())); return this; }
 
     /// {@return `minSrcExtent` at the given index}
     /// @param segment the segment of the struct
@@ -305,6 +314,10 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR minSrcExtent(MemorySegment value) { minSrcExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `minSrcExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minSrcExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minSrcExtent())); return this; }
 
     /// {@return `maxSrcExtent` at the given index}
     /// @param segment the segment of the struct
@@ -321,6 +334,10 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR maxSrcExtent(MemorySegment value) { maxSrcExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `maxSrcExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxSrcExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSrcExtent())); return this; }
 
     /// {@return `minDstPosition` at the given index}
     /// @param segment the segment of the struct
@@ -337,6 +354,10 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR minDstPosition(MemorySegment value) { minDstPosition(this.segment(), 0L, value); return this; }
+    /// Accepts `minDstPosition` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minDstPosition(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minDstPosition())); return this; }
 
     /// {@return `maxDstPosition` at the given index}
     /// @param segment the segment of the struct
@@ -353,6 +374,10 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR maxDstPosition(MemorySegment value) { maxDstPosition(this.segment(), 0L, value); return this; }
+    /// Accepts `maxDstPosition` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxDstPosition(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxDstPosition())); return this; }
 
     /// {@return `minDstExtent` at the given index}
     /// @param segment the segment of the struct
@@ -369,6 +394,10 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR minDstExtent(MemorySegment value) { minDstExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `minDstExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minDstExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minDstExtent())); return this; }
 
     /// {@return `maxDstExtent` at the given index}
     /// @param segment the segment of the struct
@@ -385,6 +414,10 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR maxDstExtent(MemorySegment value) { maxDstExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `maxDstExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxDstExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxDstExtent())); return this; }
 
     /// A buffer of [VkDisplayPlaneCapabilitiesKHR].
     public static final class Buffer extends VkDisplayPlaneCapabilitiesKHR {
@@ -425,6 +458,11 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer minSrcPositionAt(long index, MemorySegment value) { minSrcPosition(this.segment(), index, value); return this; }
+        /// Accepts `minSrcPosition` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minSrcPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minSrcPositionAt(index))); return this; }
 
         /// {@return `maxSrcPosition` at the given index}
         /// @param index the index of the struct buffer
@@ -434,6 +472,11 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxSrcPositionAt(long index, MemorySegment value) { maxSrcPosition(this.segment(), index, value); return this; }
+        /// Accepts `maxSrcPosition` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxSrcPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxSrcPositionAt(index))); return this; }
 
         /// {@return `minSrcExtent` at the given index}
         /// @param index the index of the struct buffer
@@ -443,6 +486,11 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer minSrcExtentAt(long index, MemorySegment value) { minSrcExtent(this.segment(), index, value); return this; }
+        /// Accepts `minSrcExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minSrcExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minSrcExtentAt(index))); return this; }
 
         /// {@return `maxSrcExtent` at the given index}
         /// @param index the index of the struct buffer
@@ -452,6 +500,11 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxSrcExtentAt(long index, MemorySegment value) { maxSrcExtent(this.segment(), index, value); return this; }
+        /// Accepts `maxSrcExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxSrcExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSrcExtentAt(index))); return this; }
 
         /// {@return `minDstPosition` at the given index}
         /// @param index the index of the struct buffer
@@ -461,6 +514,11 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer minDstPositionAt(long index, MemorySegment value) { minDstPosition(this.segment(), index, value); return this; }
+        /// Accepts `minDstPosition` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minDstPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minDstPositionAt(index))); return this; }
 
         /// {@return `maxDstPosition` at the given index}
         /// @param index the index of the struct buffer
@@ -470,6 +528,11 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxDstPositionAt(long index, MemorySegment value) { maxDstPosition(this.segment(), index, value); return this; }
+        /// Accepts `maxDstPosition` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxDstPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxDstPositionAt(index))); return this; }
 
         /// {@return `minDstExtent` at the given index}
         /// @param index the index of the struct buffer
@@ -479,6 +542,11 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer minDstExtentAt(long index, MemorySegment value) { minDstExtent(this.segment(), index, value); return this; }
+        /// Accepts `minDstExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minDstExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minDstExtentAt(index))); return this; }
 
         /// {@return `maxDstExtent` at the given index}
         /// @param index the index of the struct buffer
@@ -488,6 +556,11 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxDstExtentAt(long index, MemorySegment value) { maxDstExtent(this.segment(), index, value); return this; }
+        /// Accepts `maxDstExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxDstExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxDstExtentAt(index))); return this; }
 
     }
 }

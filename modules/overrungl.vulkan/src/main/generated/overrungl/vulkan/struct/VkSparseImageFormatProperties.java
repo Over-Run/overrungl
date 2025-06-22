@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -158,6 +159,10 @@ public sealed class VkSparseImageFormatProperties extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSparseImageFormatProperties imageGranularity(MemorySegment value) { imageGranularity(this.segment(), 0L, value); return this; }
+    /// Accepts `imageGranularity` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSparseImageFormatProperties imageGranularity(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(imageGranularity())); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -214,6 +219,11 @@ public sealed class VkSparseImageFormatProperties extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer imageGranularityAt(long index, MemorySegment value) { imageGranularity(this.segment(), index, value); return this; }
+        /// Accepts `imageGranularity` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer imageGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(imageGranularityAt(index))); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index of the struct buffer

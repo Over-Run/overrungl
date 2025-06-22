@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -209,6 +210,10 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkTilePropertiesQCOM tileSize(MemorySegment value) { tileSize(this.segment(), 0L, value); return this; }
+    /// Accepts `tileSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkTilePropertiesQCOM tileSize(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(tileSize())); return this; }
 
     /// {@return `apronSize` at the given index}
     /// @param segment the segment of the struct
@@ -225,6 +230,10 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkTilePropertiesQCOM apronSize(MemorySegment value) { apronSize(this.segment(), 0L, value); return this; }
+    /// Accepts `apronSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkTilePropertiesQCOM apronSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(apronSize())); return this; }
 
     /// {@return `origin` at the given index}
     /// @param segment the segment of the struct
@@ -241,6 +250,10 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkTilePropertiesQCOM origin(MemorySegment value) { origin(this.segment(), 0L, value); return this; }
+    /// Accepts `origin` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkTilePropertiesQCOM origin(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(origin())); return this; }
 
     /// A buffer of [VkTilePropertiesQCOM].
     public static final class Buffer extends VkTilePropertiesQCOM {
@@ -290,6 +303,11 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer tileSizeAt(long index, MemorySegment value) { tileSize(this.segment(), index, value); return this; }
+        /// Accepts `tileSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer tileSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(tileSizeAt(index))); return this; }
 
         /// {@return `apronSize` at the given index}
         /// @param index the index of the struct buffer
@@ -299,6 +317,11 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer apronSizeAt(long index, MemorySegment value) { apronSize(this.segment(), index, value); return this; }
+        /// Accepts `apronSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer apronSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(apronSizeAt(index))); return this; }
 
         /// {@return `origin` at the given index}
         /// @param index the index of the struct buffer
@@ -308,6 +331,11 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer originAt(long index, MemorySegment value) { origin(this.segment(), index, value); return this; }
+        /// Accepts `origin` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer originAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(originAt(index))); return this; }
 
     }
 }

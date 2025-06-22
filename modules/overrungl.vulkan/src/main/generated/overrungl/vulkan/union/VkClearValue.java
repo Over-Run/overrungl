@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -121,6 +122,10 @@ public sealed class VkClearValue extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkClearValue color(MemorySegment value) { color(this.segment(), 0L, value); return this; }
+    /// Accepts `color` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClearValue color(Consumer<overrungl.vulkan.union.VkClearColorValue> func) { func.accept(overrungl.vulkan.union.VkClearColorValue.of(color())); return this; }
 
     /// {@return `depthStencil` at the given index}
     /// @param segment the segment of the union
@@ -137,6 +142,10 @@ public sealed class VkClearValue extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkClearValue depthStencil(MemorySegment value) { depthStencil(this.segment(), 0L, value); return this; }
+    /// Accepts `depthStencil` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClearValue depthStencil(Consumer<overrungl.vulkan.struct.VkClearDepthStencilValue> func) { func.accept(overrungl.vulkan.struct.VkClearDepthStencilValue.of(depthStencil())); return this; }
 
     /// A buffer of [VkClearValue].
     public static final class Buffer extends VkClearValue {
@@ -168,6 +177,11 @@ public sealed class VkClearValue extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer colorAt(long index, MemorySegment value) { color(this.segment(), index, value); return this; }
+        /// Accepts `color` with the given function.
+        /// @param index the index of the union buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer colorAt(long index, Consumer<overrungl.vulkan.union.VkClearColorValue> func) { func.accept(overrungl.vulkan.union.VkClearColorValue.of(colorAt(index))); return this; }
 
         /// {@return `depthStencil` at the given index}
         /// @param index the index of the union buffer
@@ -177,6 +191,11 @@ public sealed class VkClearValue extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer depthStencilAt(long index, MemorySegment value) { depthStencil(this.segment(), index, value); return this; }
+        /// Accepts `depthStencil` with the given function.
+        /// @param index the index of the union buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer depthStencilAt(long index, Consumer<overrungl.vulkan.struct.VkClearDepthStencilValue> func) { func.accept(overrungl.vulkan.struct.VkClearDepthStencilValue.of(depthStencilAt(index))); return this; }
 
     }
 }

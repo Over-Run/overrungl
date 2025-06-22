@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -751,6 +752,10 @@ public sealed class StdVideoDecodeAV1PictureInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public StdVideoDecodeAV1PictureInfo flags(MemorySegment value) { flags(this.segment(), 0L, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public StdVideoDecodeAV1PictureInfo flags(Consumer<overrungl.vulkan.video.StdVideoDecodeAV1PictureInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoDecodeAV1PictureInfoFlags.of(flags())); return this; }
 
     /// {@return `frame_type` at the given index}
     /// @param segment the segment of the struct
@@ -1226,6 +1231,11 @@ public sealed class StdVideoDecodeAV1PictureInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+        /// Accepts `flags` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoDecodeAV1PictureInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoDecodeAV1PictureInfoFlags.of(flagsAt(index))); return this; }
 
         /// {@return `frame_type` at the given index}
         /// @param index the index of the struct buffer

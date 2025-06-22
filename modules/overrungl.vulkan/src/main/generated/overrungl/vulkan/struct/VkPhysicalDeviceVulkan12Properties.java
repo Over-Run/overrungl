@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -2504,6 +2505,10 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceVulkan12Properties conformanceVersion(MemorySegment value) { conformanceVersion(this.segment(), 0L, value); return this; }
+    /// Accepts `conformanceVersion` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties conformanceVersion(Consumer<overrungl.vulkan.struct.VkConformanceVersion> func) { func.accept(overrungl.vulkan.struct.VkConformanceVersion.of(conformanceVersion())); return this; }
 
     /// {@return `denormBehaviorIndependence` at the given index}
     /// @param segment the segment of the struct
@@ -3368,6 +3373,11 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer conformanceVersionAt(long index, MemorySegment value) { conformanceVersion(this.segment(), index, value); return this; }
+        /// Accepts `conformanceVersion` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer conformanceVersionAt(long index, Consumer<overrungl.vulkan.struct.VkConformanceVersion> func) { func.accept(overrungl.vulkan.struct.VkConformanceVersion.of(conformanceVersionAt(index))); return this; }
 
         /// {@return `denormBehaviorIndependence` at the given index}
         /// @param index the index of the struct buffer

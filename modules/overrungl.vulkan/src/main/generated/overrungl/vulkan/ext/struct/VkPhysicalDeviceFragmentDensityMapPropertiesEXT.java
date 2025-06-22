@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -211,6 +212,10 @@ public sealed class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends Grou
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSize(MemorySegment value) { minFragmentDensityTexelSize(this.segment(), 0L, value); return this; }
+    /// Accepts `minFragmentDensityTexelSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT minFragmentDensityTexelSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minFragmentDensityTexelSize())); return this; }
 
     /// {@return `maxFragmentDensityTexelSize` at the given index}
     /// @param segment the segment of the struct
@@ -227,6 +232,10 @@ public sealed class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends Grou
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSize(MemorySegment value) { maxFragmentDensityTexelSize(this.segment(), 0L, value); return this; }
+    /// Accepts `maxFragmentDensityTexelSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMapPropertiesEXT maxFragmentDensityTexelSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentDensityTexelSize())); return this; }
 
     /// {@return `fragmentDensityInvocations` at the given index}
     /// @param segment the segment of the struct
@@ -292,6 +301,11 @@ public sealed class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends Grou
         /// @param value the value
         /// @return `this`
         public Buffer minFragmentDensityTexelSizeAt(long index, MemorySegment value) { minFragmentDensityTexelSize(this.segment(), index, value); return this; }
+        /// Accepts `minFragmentDensityTexelSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minFragmentDensityTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minFragmentDensityTexelSizeAt(index))); return this; }
 
         /// {@return `maxFragmentDensityTexelSize` at the given index}
         /// @param index the index of the struct buffer
@@ -301,6 +315,11 @@ public sealed class VkPhysicalDeviceFragmentDensityMapPropertiesEXT extends Grou
         /// @param value the value
         /// @return `this`
         public Buffer maxFragmentDensityTexelSizeAt(long index, MemorySegment value) { maxFragmentDensityTexelSize(this.segment(), index, value); return this; }
+        /// Accepts `maxFragmentDensityTexelSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxFragmentDensityTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentDensityTexelSizeAt(index))); return this; }
 
         /// {@return `fragmentDensityInvocations` at the given index}
         /// @param index the index of the struct buffer

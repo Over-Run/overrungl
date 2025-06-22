@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -173,6 +174,10 @@ public sealed class VkImageResolve extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageResolve srcSubresource(MemorySegment value) { srcSubresource(this.segment(), 0L, value); return this; }
+    /// Accepts `srcSubresource` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageResolve srcSubresource(Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(srcSubresource())); return this; }
 
     /// {@return `srcOffset` at the given index}
     /// @param segment the segment of the struct
@@ -189,6 +194,10 @@ public sealed class VkImageResolve extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageResolve srcOffset(MemorySegment value) { srcOffset(this.segment(), 0L, value); return this; }
+    /// Accepts `srcOffset` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageResolve srcOffset(Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(srcOffset())); return this; }
 
     /// {@return `dstSubresource` at the given index}
     /// @param segment the segment of the struct
@@ -205,6 +214,10 @@ public sealed class VkImageResolve extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageResolve dstSubresource(MemorySegment value) { dstSubresource(this.segment(), 0L, value); return this; }
+    /// Accepts `dstSubresource` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageResolve dstSubresource(Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(dstSubresource())); return this; }
 
     /// {@return `dstOffset` at the given index}
     /// @param segment the segment of the struct
@@ -221,6 +234,10 @@ public sealed class VkImageResolve extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageResolve dstOffset(MemorySegment value) { dstOffset(this.segment(), 0L, value); return this; }
+    /// Accepts `dstOffset` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageResolve dstOffset(Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(dstOffset())); return this; }
 
     /// {@return `extent` at the given index}
     /// @param segment the segment of the struct
@@ -237,6 +254,10 @@ public sealed class VkImageResolve extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageResolve extent(MemorySegment value) { extent(this.segment(), 0L, value); return this; }
+    /// Accepts `extent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageResolve extent(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extent())); return this; }
 
     /// A buffer of [VkImageResolve].
     public static final class Buffer extends VkImageResolve {
@@ -268,6 +289,11 @@ public sealed class VkImageResolve extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer srcSubresourceAt(long index, MemorySegment value) { srcSubresource(this.segment(), index, value); return this; }
+        /// Accepts `srcSubresource` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer srcSubresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(srcSubresourceAt(index))); return this; }
 
         /// {@return `srcOffset` at the given index}
         /// @param index the index of the struct buffer
@@ -277,6 +303,11 @@ public sealed class VkImageResolve extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer srcOffsetAt(long index, MemorySegment value) { srcOffset(this.segment(), index, value); return this; }
+        /// Accepts `srcOffset` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer srcOffsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(srcOffsetAt(index))); return this; }
 
         /// {@return `dstSubresource` at the given index}
         /// @param index the index of the struct buffer
@@ -286,6 +317,11 @@ public sealed class VkImageResolve extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer dstSubresourceAt(long index, MemorySegment value) { dstSubresource(this.segment(), index, value); return this; }
+        /// Accepts `dstSubresource` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dstSubresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(dstSubresourceAt(index))); return this; }
 
         /// {@return `dstOffset` at the given index}
         /// @param index the index of the struct buffer
@@ -295,6 +331,11 @@ public sealed class VkImageResolve extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer dstOffsetAt(long index, MemorySegment value) { dstOffset(this.segment(), index, value); return this; }
+        /// Accepts `dstOffset` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dstOffsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(dstOffsetAt(index))); return this; }
 
         /// {@return `extent` at the given index}
         /// @param index the index of the struct buffer
@@ -304,6 +345,11 @@ public sealed class VkImageResolve extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
+        /// Accepts `extent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extentAt(index))); return this; }
 
     }
 }

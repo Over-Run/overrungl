@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkImageSubresource2 extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkImageSubresource2 imageSubresource(MemorySegment value) { imageSubresource(this.segment(), 0L, value); return this; }
+    /// Accepts `imageSubresource` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkImageSubresource2 imageSubresource(Consumer<overrungl.vulkan.struct.VkImageSubresource> func) { func.accept(overrungl.vulkan.struct.VkImageSubresource.of(imageSubresource())); return this; }
 
     /// A buffer of [VkImageSubresource2].
     public static final class Buffer extends VkImageSubresource2 {
@@ -223,6 +228,11 @@ public sealed class VkImageSubresource2 extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer imageSubresourceAt(long index, MemorySegment value) { imageSubresource(this.segment(), index, value); return this; }
+        /// Accepts `imageSubresource` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer imageSubresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresource> func) { func.accept(overrungl.vulkan.struct.VkImageSubresource.of(imageSubresourceAt(index))); return this; }
 
     }
 }

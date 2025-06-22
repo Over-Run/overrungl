@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -246,6 +247,10 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceImageProcessingPropertiesQCOM maxWeightFilterDimension(MemorySegment value) { maxWeightFilterDimension(this.segment(), 0L, value); return this; }
+    /// Accepts `maxWeightFilterDimension` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxWeightFilterDimension(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxWeightFilterDimension())); return this; }
 
     /// {@return `maxBlockMatchRegion` at the given index}
     /// @param segment the segment of the struct
@@ -262,6 +267,10 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBlockMatchRegion(MemorySegment value) { maxBlockMatchRegion(this.segment(), 0L, value); return this; }
+    /// Accepts `maxBlockMatchRegion` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBlockMatchRegion(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBlockMatchRegion())); return this; }
 
     /// {@return `maxBoxFilterBlockSize` at the given index}
     /// @param segment the segment of the struct
@@ -278,6 +287,10 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBoxFilterBlockSize(MemorySegment value) { maxBoxFilterBlockSize(this.segment(), 0L, value); return this; }
+    /// Accepts `maxBoxFilterBlockSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBoxFilterBlockSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBoxFilterBlockSize())); return this; }
 
     /// A buffer of [VkPhysicalDeviceImageProcessingPropertiesQCOM].
     public static final class Buffer extends VkPhysicalDeviceImageProcessingPropertiesQCOM {
@@ -336,6 +349,11 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
         /// @param value the value
         /// @return `this`
         public Buffer maxWeightFilterDimensionAt(long index, MemorySegment value) { maxWeightFilterDimension(this.segment(), index, value); return this; }
+        /// Accepts `maxWeightFilterDimension` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxWeightFilterDimensionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxWeightFilterDimensionAt(index))); return this; }
 
         /// {@return `maxBlockMatchRegion` at the given index}
         /// @param index the index of the struct buffer
@@ -345,6 +363,11 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
         /// @param value the value
         /// @return `this`
         public Buffer maxBlockMatchRegionAt(long index, MemorySegment value) { maxBlockMatchRegion(this.segment(), index, value); return this; }
+        /// Accepts `maxBlockMatchRegion` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxBlockMatchRegionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBlockMatchRegionAt(index))); return this; }
 
         /// {@return `maxBoxFilterBlockSize` at the given index}
         /// @param index the index of the struct buffer
@@ -354,6 +377,11 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
         /// @param value the value
         /// @return `this`
         public Buffer maxBoxFilterBlockSizeAt(long index, MemorySegment value) { maxBoxFilterBlockSize(this.segment(), index, value); return this; }
+        /// Accepts `maxBoxFilterBlockSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxBoxFilterBlockSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBoxFilterBlockSizeAt(index))); return this; }
 
     }
 }

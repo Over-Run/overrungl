@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkPhysicalDeviceMemoryProperties2 extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceMemoryProperties2 memoryProperties(MemorySegment value) { memoryProperties(this.segment(), 0L, value); return this; }
+    /// Accepts `memoryProperties` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties2 memoryProperties(Consumer<overrungl.vulkan.struct.VkPhysicalDeviceMemoryProperties> func) { func.accept(overrungl.vulkan.struct.VkPhysicalDeviceMemoryProperties.of(memoryProperties())); return this; }
 
     /// A buffer of [VkPhysicalDeviceMemoryProperties2].
     public static final class Buffer extends VkPhysicalDeviceMemoryProperties2 {
@@ -223,6 +228,11 @@ public sealed class VkPhysicalDeviceMemoryProperties2 extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer memoryPropertiesAt(long index, MemorySegment value) { memoryProperties(this.segment(), index, value); return this; }
+        /// Accepts `memoryProperties` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer memoryPropertiesAt(long index, Consumer<overrungl.vulkan.struct.VkPhysicalDeviceMemoryProperties> func) { func.accept(overrungl.vulkan.struct.VkPhysicalDeviceMemoryProperties.of(memoryPropertiesAt(index))); return this; }
 
     }
 }

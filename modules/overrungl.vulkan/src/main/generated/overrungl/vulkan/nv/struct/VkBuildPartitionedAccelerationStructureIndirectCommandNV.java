@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkBuildPartitionedAccelerationStructureIndirectCommandNV ext
     /// @param value the value
     /// @return `this`
     public VkBuildPartitionedAccelerationStructureIndirectCommandNV argData(MemorySegment value) { argData(this.segment(), 0L, value); return this; }
+    /// Accepts `argData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkBuildPartitionedAccelerationStructureIndirectCommandNV argData(Consumer<overrungl.vulkan.nv.struct.VkStridedDeviceAddressNV> func) { func.accept(overrungl.vulkan.nv.struct.VkStridedDeviceAddressNV.of(argData())); return this; }
 
     /// A buffer of [VkBuildPartitionedAccelerationStructureIndirectCommandNV].
     public static final class Buffer extends VkBuildPartitionedAccelerationStructureIndirectCommandNV {
@@ -223,6 +228,11 @@ public sealed class VkBuildPartitionedAccelerationStructureIndirectCommandNV ext
         /// @param value the value
         /// @return `this`
         public Buffer argDataAt(long index, MemorySegment value) { argData(this.segment(), index, value); return this; }
+        /// Accepts `argData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer argDataAt(long index, Consumer<overrungl.vulkan.nv.struct.VkStridedDeviceAddressNV> func) { func.accept(overrungl.vulkan.nv.struct.VkStridedDeviceAddressNV.of(argDataAt(index))); return this; }
 
     }
 }

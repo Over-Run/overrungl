@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -320,6 +321,10 @@ public sealed class VkPipelineExecutableStatisticKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkPipelineExecutableStatisticKHR value(MemorySegment value) { value(this.segment(), 0L, value); return this; }
+    /// Accepts `value` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR value(Consumer<overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR> func) { func.accept(overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR.of(value())); return this; }
 
     /// A buffer of [VkPipelineExecutableStatisticKHR].
     public static final class Buffer extends VkPipelineExecutableStatisticKHR {
@@ -416,6 +421,11 @@ public sealed class VkPipelineExecutableStatisticKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer valueAt(long index, MemorySegment value) { value(this.segment(), index, value); return this; }
+        /// Accepts `value` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer valueAt(long index, Consumer<overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR> func) { func.accept(overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR.of(valueAt(index))); return this; }
 
     }
 }

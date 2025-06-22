@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkAccelerationStructureGeometryMotionTrianglesDataNV extends
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureGeometryMotionTrianglesDataNV vertexData(MemorySegment value) { vertexData(this.segment(), 0L, value); return this; }
+    /// Accepts `vertexData` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryMotionTrianglesDataNV vertexData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexData())); return this; }
 
     /// A buffer of [VkAccelerationStructureGeometryMotionTrianglesDataNV].
     public static final class Buffer extends VkAccelerationStructureGeometryMotionTrianglesDataNV {
@@ -223,6 +228,11 @@ public sealed class VkAccelerationStructureGeometryMotionTrianglesDataNV extends
         /// @param value the value
         /// @return `this`
         public Buffer vertexDataAt(long index, MemorySegment value) { vertexData(this.segment(), index, value); return this; }
+        /// Accepts `vertexData` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer vertexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexDataAt(index))); return this; }
 
     }
 }

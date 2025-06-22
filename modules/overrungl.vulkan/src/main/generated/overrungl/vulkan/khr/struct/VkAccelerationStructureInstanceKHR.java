@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -115,6 +116,10 @@ public sealed class VkAccelerationStructureInstanceKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureInstanceKHR transform(MemorySegment value) { transform(this.segment(), 0L, value); return this; }
+    /// Accepts `transform` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureInstanceKHR transform(Consumer<overrungl.vulkan.khr.struct.VkTransformMatrixKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkTransformMatrixKHR.of(transform())); return this; }
 
     /// {@return `accelerationStructureReference` at the given index}
     /// @param segment the segment of the struct
@@ -162,6 +167,11 @@ public sealed class VkAccelerationStructureInstanceKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer transformAt(long index, MemorySegment value) { transform(this.segment(), index, value); return this; }
+        /// Accepts `transform` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer transformAt(long index, Consumer<overrungl.vulkan.khr.struct.VkTransformMatrixKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkTransformMatrixKHR.of(transformAt(index))); return this; }
 
         /// {@return `accelerationStructureReference` at the given index}
         /// @param index the index of the struct buffer

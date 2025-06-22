@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkSurfaceFormat2KHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSurfaceFormat2KHR surfaceFormat(MemorySegment value) { surfaceFormat(this.segment(), 0L, value); return this; }
+    /// Accepts `surfaceFormat` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSurfaceFormat2KHR surfaceFormat(Consumer<overrungl.vulkan.khr.struct.VkSurfaceFormatKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkSurfaceFormatKHR.of(surfaceFormat())); return this; }
 
     /// A buffer of [VkSurfaceFormat2KHR].
     public static final class Buffer extends VkSurfaceFormat2KHR {
@@ -223,6 +228,11 @@ public sealed class VkSurfaceFormat2KHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer surfaceFormatAt(long index, MemorySegment value) { surfaceFormat(this.segment(), index, value); return this; }
+        /// Accepts `surfaceFormat` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer surfaceFormatAt(long index, Consumer<overrungl.vulkan.khr.struct.VkSurfaceFormatKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkSurfaceFormatKHR.of(surfaceFormatAt(index))); return this; }
 
     }
 }

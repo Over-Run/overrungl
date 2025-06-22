@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkExternalImageFormatProperties extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkExternalImageFormatProperties externalMemoryProperties(MemorySegment value) { externalMemoryProperties(this.segment(), 0L, value); return this; }
+    /// Accepts `externalMemoryProperties` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkExternalImageFormatProperties externalMemoryProperties(Consumer<overrungl.vulkan.struct.VkExternalMemoryProperties> func) { func.accept(overrungl.vulkan.struct.VkExternalMemoryProperties.of(externalMemoryProperties())); return this; }
 
     /// A buffer of [VkExternalImageFormatProperties].
     public static final class Buffer extends VkExternalImageFormatProperties {
@@ -223,6 +228,11 @@ public sealed class VkExternalImageFormatProperties extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer externalMemoryPropertiesAt(long index, MemorySegment value) { externalMemoryProperties(this.segment(), index, value); return this; }
+        /// Accepts `externalMemoryProperties` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer externalMemoryPropertiesAt(long index, Consumer<overrungl.vulkan.struct.VkExternalMemoryProperties> func) { func.accept(overrungl.vulkan.struct.VkExternalMemoryProperties.of(externalMemoryPropertiesAt(index))); return this; }
 
     }
 }

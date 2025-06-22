@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -594,6 +595,10 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR minFragmentShadingRateAttachmentTexelSize(MemorySegment value) { minFragmentShadingRateAttachmentTexelSize(this.segment(), 0L, value); return this; }
+    /// Accepts `minFragmentShadingRateAttachmentTexelSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR minFragmentShadingRateAttachmentTexelSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minFragmentShadingRateAttachmentTexelSize())); return this; }
 
     /// {@return `maxFragmentShadingRateAttachmentTexelSize` at the given index}
     /// @param segment the segment of the struct
@@ -610,6 +615,10 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSize(MemorySegment value) { maxFragmentShadingRateAttachmentTexelSize(this.segment(), 0L, value); return this; }
+    /// Accepts `maxFragmentShadingRateAttachmentTexelSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentShadingRateAttachmentTexelSize())); return this; }
 
     /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` at the given index}
     /// @param segment the segment of the struct
@@ -690,6 +699,10 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
     /// @param value the value
     /// @return `this`
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSize(MemorySegment value) { maxFragmentSize(this.segment(), 0L, value); return this; }
+    /// Accepts `maxFragmentSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentSize())); return this; }
 
     /// {@return `maxFragmentSizeAspectRatio` at the given index}
     /// @param segment the segment of the struct
@@ -899,6 +912,11 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
         /// @param value the value
         /// @return `this`
         public Buffer minFragmentShadingRateAttachmentTexelSizeAt(long index, MemorySegment value) { minFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+        /// Accepts `minFragmentShadingRateAttachmentTexelSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minFragmentShadingRateAttachmentTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minFragmentShadingRateAttachmentTexelSizeAt(index))); return this; }
 
         /// {@return `maxFragmentShadingRateAttachmentTexelSize` at the given index}
         /// @param index the index of the struct buffer
@@ -908,6 +926,11 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
         /// @param value the value
         /// @return `this`
         public Buffer maxFragmentShadingRateAttachmentTexelSizeAt(long index, MemorySegment value) { maxFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+        /// Accepts `maxFragmentShadingRateAttachmentTexelSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxFragmentShadingRateAttachmentTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentShadingRateAttachmentTexelSizeAt(index))); return this; }
 
         /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` at the given index}
         /// @param index the index of the struct buffer
@@ -953,6 +976,11 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
         /// @param value the value
         /// @return `this`
         public Buffer maxFragmentSizeAt(long index, MemorySegment value) { maxFragmentSize(this.segment(), index, value); return this; }
+        /// Accepts `maxFragmentSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxFragmentSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentSizeAt(index))); return this; }
 
         /// {@return `maxFragmentSizeAspectRatio` at the given index}
         /// @param index the index of the struct buffer

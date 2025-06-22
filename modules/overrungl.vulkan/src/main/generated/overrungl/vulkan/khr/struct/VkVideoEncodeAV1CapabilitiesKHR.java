@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -890,6 +891,10 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeAV1CapabilitiesKHR codedPictureAlignment(MemorySegment value) { codedPictureAlignment(this.segment(), 0L, value); return this; }
+    /// Accepts `codedPictureAlignment` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeAV1CapabilitiesKHR codedPictureAlignment(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(codedPictureAlignment())); return this; }
 
     /// {@return `maxTiles` at the given index}
     /// @param segment the segment of the struct
@@ -906,6 +911,10 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeAV1CapabilitiesKHR maxTiles(MemorySegment value) { maxTiles(this.segment(), 0L, value); return this; }
+    /// Accepts `maxTiles` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeAV1CapabilitiesKHR maxTiles(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTiles())); return this; }
 
     /// {@return `minTileSize` at the given index}
     /// @param segment the segment of the struct
@@ -922,6 +931,10 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeAV1CapabilitiesKHR minTileSize(MemorySegment value) { minTileSize(this.segment(), 0L, value); return this; }
+    /// Accepts `minTileSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeAV1CapabilitiesKHR minTileSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minTileSize())); return this; }
 
     /// {@return `maxTileSize` at the given index}
     /// @param segment the segment of the struct
@@ -938,6 +951,10 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeAV1CapabilitiesKHR maxTileSize(MemorySegment value) { maxTileSize(this.segment(), 0L, value); return this; }
+    /// Accepts `maxTileSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeAV1CapabilitiesKHR maxTileSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTileSize())); return this; }
 
     /// {@return `superblockSizes` at the given index}
     /// @param segment the segment of the struct
@@ -1293,6 +1310,11 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer codedPictureAlignmentAt(long index, MemorySegment value) { codedPictureAlignment(this.segment(), index, value); return this; }
+        /// Accepts `codedPictureAlignment` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer codedPictureAlignmentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(codedPictureAlignmentAt(index))); return this; }
 
         /// {@return `maxTiles` at the given index}
         /// @param index the index of the struct buffer
@@ -1302,6 +1324,11 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxTilesAt(long index, MemorySegment value) { maxTiles(this.segment(), index, value); return this; }
+        /// Accepts `maxTiles` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxTilesAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTilesAt(index))); return this; }
 
         /// {@return `minTileSize` at the given index}
         /// @param index the index of the struct buffer
@@ -1311,6 +1338,11 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer minTileSizeAt(long index, MemorySegment value) { minTileSize(this.segment(), index, value); return this; }
+        /// Accepts `minTileSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minTileSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minTileSizeAt(index))); return this; }
 
         /// {@return `maxTileSize` at the given index}
         /// @param index the index of the struct buffer
@@ -1320,6 +1352,11 @@ public sealed class VkVideoEncodeAV1CapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxTileSizeAt(long index, MemorySegment value) { maxTileSize(this.segment(), index, value); return this; }
+        /// Accepts `maxTileSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxTileSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTileSizeAt(index))); return this; }
 
         /// {@return `superblockSizes` at the given index}
         /// @param index the index of the struct buffer

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -124,6 +125,10 @@ public sealed class VkDisplayModeParametersKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayModeParametersKHR visibleRegion(MemorySegment value) { visibleRegion(this.segment(), 0L, value); return this; }
+    /// Accepts `visibleRegion` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayModeParametersKHR visibleRegion(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(visibleRegion())); return this; }
 
     /// {@return `refreshRate` at the given index}
     /// @param segment the segment of the struct
@@ -171,6 +176,11 @@ public sealed class VkDisplayModeParametersKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer visibleRegionAt(long index, MemorySegment value) { visibleRegion(this.segment(), index, value); return this; }
+        /// Accepts `visibleRegion` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer visibleRegionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(visibleRegionAt(index))); return this; }
 
         /// {@return `refreshRate` at the given index}
         /// @param index the index of the struct buffer

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -322,6 +323,10 @@ public sealed class StdVideoEncodeH264WeightTable extends GroupType {
     /// @param value the value
     /// @return `this`
     public StdVideoEncodeH264WeightTable flags(MemorySegment value) { flags(this.segment(), 0L, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable flags(Consumer<overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags.of(flags())); return this; }
 
     /// {@return `luma_log2_weight_denom` at the given index}
     /// @param segment the segment of the struct
@@ -681,6 +686,11 @@ public sealed class StdVideoEncodeH264WeightTable extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+        /// Accepts `flags` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags.of(flagsAt(index))); return this; }
 
         /// {@return `luma_log2_weight_denom` at the given index}
         /// @param index the index of the struct buffer

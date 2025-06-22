@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -322,6 +323,10 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
     /// @param value the value
     /// @return `this`
     public VkClusterAccelerationStructureCommandsInfoNV input(MemorySegment value) { input(this.segment(), 0L, value); return this; }
+    /// Accepts `input` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV input(Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV.of(input())); return this; }
 
     /// {@return `dstImplicitData` at the given index}
     /// @param segment the segment of the struct
@@ -370,6 +375,10 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
     /// @param value the value
     /// @return `this`
     public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray(MemorySegment value) { dstAddressesArray(this.segment(), 0L, value); return this; }
+    /// Accepts `dstAddressesArray` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArray(Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstAddressesArray())); return this; }
 
     /// {@return `dstSizesArray` at the given index}
     /// @param segment the segment of the struct
@@ -386,6 +395,10 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
     /// @param value the value
     /// @return `this`
     public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray(MemorySegment value) { dstSizesArray(this.segment(), 0L, value); return this; }
+    /// Accepts `dstSizesArray` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArray(Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstSizesArray())); return this; }
 
     /// {@return `srcInfosArray` at the given index}
     /// @param segment the segment of the struct
@@ -402,6 +415,10 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
     /// @param value the value
     /// @return `this`
     public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray(MemorySegment value) { srcInfosArray(this.segment(), 0L, value); return this; }
+    /// Accepts `srcInfosArray` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArray(Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(srcInfosArray())); return this; }
 
     /// {@return `srcInfosCount` at the given index}
     /// @param segment the segment of the struct
@@ -483,6 +500,11 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
         /// @param value the value
         /// @return `this`
         public Buffer inputAt(long index, MemorySegment value) { input(this.segment(), index, value); return this; }
+        /// Accepts `input` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer inputAt(long index, Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV.of(inputAt(index))); return this; }
 
         /// {@return `dstImplicitData` at the given index}
         /// @param index the index of the struct buffer
@@ -510,6 +532,11 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
         /// @param value the value
         /// @return `this`
         public Buffer dstAddressesArrayAt(long index, MemorySegment value) { dstAddressesArray(this.segment(), index, value); return this; }
+        /// Accepts `dstAddressesArray` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dstAddressesArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstAddressesArrayAt(index))); return this; }
 
         /// {@return `dstSizesArray` at the given index}
         /// @param index the index of the struct buffer
@@ -519,6 +546,11 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
         /// @param value the value
         /// @return `this`
         public Buffer dstSizesArrayAt(long index, MemorySegment value) { dstSizesArray(this.segment(), index, value); return this; }
+        /// Accepts `dstSizesArray` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dstSizesArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstSizesArrayAt(index))); return this; }
 
         /// {@return `srcInfosArray` at the given index}
         /// @param index the index of the struct buffer
@@ -528,6 +560,11 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
         /// @param value the value
         /// @return `this`
         public Buffer srcInfosArrayAt(long index, MemorySegment value) { srcInfosArray(this.segment(), index, value); return this; }
+        /// Accepts `srcInfosArray` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer srcInfosArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(srcInfosArrayAt(index))); return this; }
 
         /// {@return `srcInfosCount` at the given index}
         /// @param index the index of the struct buffer

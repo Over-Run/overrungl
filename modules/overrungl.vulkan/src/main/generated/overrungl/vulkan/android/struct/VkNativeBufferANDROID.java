@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -320,6 +321,10 @@ public sealed class VkNativeBufferANDROID extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkNativeBufferANDROID usage2(MemorySegment value) { usage2(this.segment(), 0L, value); return this; }
+    /// Accepts `usage2` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkNativeBufferANDROID usage2(Consumer<overrungl.vulkan.android.struct.VkNativeBufferUsage2ANDROID> func) { func.accept(overrungl.vulkan.android.struct.VkNativeBufferUsage2ANDROID.of(usage2())); return this; }
 
     /// A buffer of [VkNativeBufferANDROID].
     public static final class Buffer extends VkNativeBufferANDROID {
@@ -405,6 +410,11 @@ public sealed class VkNativeBufferANDROID extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer usage2At(long index, MemorySegment value) { usage2(this.segment(), index, value); return this; }
+        /// Accepts `usage2` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer usage2At(long index, Consumer<overrungl.vulkan.android.struct.VkNativeBufferUsage2ANDROID> func) { func.accept(overrungl.vulkan.android.struct.VkNativeBufferUsage2ANDROID.of(usage2At(index))); return this; }
 
     }
 }

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -229,6 +230,10 @@ public sealed class VkGeometryNV extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkGeometryNV geometry(MemorySegment value) { geometry(this.segment(), 0L, value); return this; }
+    /// Accepts `geometry` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkGeometryNV geometry(Consumer<overrungl.vulkan.nv.struct.VkGeometryDataNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryDataNV.of(geometry())); return this; }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -303,6 +308,11 @@ public sealed class VkGeometryNV extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer geometryAt(long index, MemorySegment value) { geometry(this.segment(), index, value); return this; }
+        /// Accepts `geometry` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer geometryAt(long index, Consumer<overrungl.vulkan.nv.struct.VkGeometryDataNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryDataNV.of(geometryAt(index))); return this; }
 
         /// {@return `flags` at the given index}
         /// @param index the index of the struct buffer

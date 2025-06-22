@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkVideoFormatQuantizationMapPropertiesKHR extends GroupType 
     /// @param value the value
     /// @return `this`
     public VkVideoFormatQuantizationMapPropertiesKHR quantizationMapTexelSize(MemorySegment value) { quantizationMapTexelSize(this.segment(), 0L, value); return this; }
+    /// Accepts `quantizationMapTexelSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoFormatQuantizationMapPropertiesKHR quantizationMapTexelSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(quantizationMapTexelSize())); return this; }
 
     /// A buffer of [VkVideoFormatQuantizationMapPropertiesKHR].
     public static final class Buffer extends VkVideoFormatQuantizationMapPropertiesKHR {
@@ -223,6 +228,11 @@ public sealed class VkVideoFormatQuantizationMapPropertiesKHR extends GroupType 
         /// @param value the value
         /// @return `this`
         public Buffer quantizationMapTexelSizeAt(long index, MemorySegment value) { quantizationMapTexelSize(this.segment(), index, value); return this; }
+        /// Accepts `quantizationMapTexelSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer quantizationMapTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(quantizationMapTexelSizeAt(index))); return this; }
 
     }
 }

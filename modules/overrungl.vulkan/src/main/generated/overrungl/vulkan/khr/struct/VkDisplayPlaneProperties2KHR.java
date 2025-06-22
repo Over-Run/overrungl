@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkDisplayPlaneProperties2KHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayPlaneProperties2KHR displayPlaneProperties(MemorySegment value) { displayPlaneProperties(this.segment(), 0L, value); return this; }
+    /// Accepts `displayPlaneProperties` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneProperties2KHR displayPlaneProperties(Consumer<overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR.of(displayPlaneProperties())); return this; }
 
     /// A buffer of [VkDisplayPlaneProperties2KHR].
     public static final class Buffer extends VkDisplayPlaneProperties2KHR {
@@ -223,6 +228,11 @@ public sealed class VkDisplayPlaneProperties2KHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer displayPlanePropertiesAt(long index, MemorySegment value) { displayPlaneProperties(this.segment(), index, value); return this; }
+        /// Accepts `displayPlaneProperties` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer displayPlanePropertiesAt(long index, Consumer<overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR.of(displayPlanePropertiesAt(index))); return this; }
 
     }
 }

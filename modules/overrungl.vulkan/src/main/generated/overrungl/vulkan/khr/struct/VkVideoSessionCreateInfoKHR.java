@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -418,6 +419,10 @@ public sealed class VkVideoSessionCreateInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoSessionCreateInfoKHR maxCodedExtent(MemorySegment value) { maxCodedExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `maxCodedExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoSessionCreateInfoKHR maxCodedExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxCodedExtent())); return this; }
 
     /// {@return `referencePictureFormat` at the given index}
     /// @param segment the segment of the struct
@@ -567,6 +572,11 @@ public sealed class VkVideoSessionCreateInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxCodedExtentAt(long index, MemorySegment value) { maxCodedExtent(this.segment(), index, value); return this; }
+        /// Accepts `maxCodedExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxCodedExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxCodedExtentAt(index))); return this; }
 
         /// {@return `referencePictureFormat` at the given index}
         /// @param index the index of the struct buffer

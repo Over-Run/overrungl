@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -376,6 +377,10 @@ public sealed class VkAndroidHardwareBufferFormatPropertiesANDROID extends Group
     /// @param value the value
     /// @return `this`
     public VkAndroidHardwareBufferFormatPropertiesANDROID samplerYcbcrConversionComponents(MemorySegment value) { samplerYcbcrConversionComponents(this.segment(), 0L, value); return this; }
+    /// Accepts `samplerYcbcrConversionComponents` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAndroidHardwareBufferFormatPropertiesANDROID samplerYcbcrConversionComponents(Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(samplerYcbcrConversionComponents())); return this; }
 
     /// {@return `suggestedYcbcrModel` at the given index}
     /// @param segment the segment of the struct
@@ -516,6 +521,11 @@ public sealed class VkAndroidHardwareBufferFormatPropertiesANDROID extends Group
         /// @param value the value
         /// @return `this`
         public Buffer samplerYcbcrConversionComponentsAt(long index, MemorySegment value) { samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
+        /// Accepts `samplerYcbcrConversionComponents` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer samplerYcbcrConversionComponentsAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(samplerYcbcrConversionComponentsAt(index))); return this; }
 
         /// {@return `suggestedYcbcrModel` at the given index}
         /// @param index the index of the struct buffer

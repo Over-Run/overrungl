@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkClearAttachment extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkClearAttachment clearValue(MemorySegment value) { clearValue(this.segment(), 0L, value); return this; }
+    /// Accepts `clearValue` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClearAttachment clearValue(Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValue())); return this; }
 
     /// A buffer of [VkClearAttachment].
     public static final class Buffer extends VkClearAttachment {
@@ -223,6 +228,11 @@ public sealed class VkClearAttachment extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer clearValueAt(long index, MemorySegment value) { clearValue(this.segment(), index, value); return this; }
+        /// Accepts `clearValue` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer clearValueAt(long index, Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValueAt(index))); return this; }
 
     }
 }

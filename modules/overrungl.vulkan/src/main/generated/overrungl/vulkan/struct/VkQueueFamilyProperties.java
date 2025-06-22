@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -209,6 +210,10 @@ public sealed class VkQueueFamilyProperties extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkQueueFamilyProperties minImageTransferGranularity(MemorySegment value) { minImageTransferGranularity(this.segment(), 0L, value); return this; }
+    /// Accepts `minImageTransferGranularity` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkQueueFamilyProperties minImageTransferGranularity(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(minImageTransferGranularity())); return this; }
 
     /// A buffer of [VkQueueFamilyProperties].
     public static final class Buffer extends VkQueueFamilyProperties {
@@ -267,6 +272,11 @@ public sealed class VkQueueFamilyProperties extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer minImageTransferGranularityAt(long index, MemorySegment value) { minImageTransferGranularity(this.segment(), index, value); return this; }
+        /// Accepts `minImageTransferGranularity` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minImageTransferGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(minImageTransferGranularityAt(index))); return this; }
 
     }
 }

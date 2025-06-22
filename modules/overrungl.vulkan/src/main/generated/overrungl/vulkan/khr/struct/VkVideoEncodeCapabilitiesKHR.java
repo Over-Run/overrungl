@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -383,6 +384,10 @@ public sealed class VkVideoEncodeCapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeCapabilitiesKHR encodeInputPictureGranularity(MemorySegment value) { encodeInputPictureGranularity(this.segment(), 0L, value); return this; }
+    /// Accepts `encodeInputPictureGranularity` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeCapabilitiesKHR encodeInputPictureGranularity(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(encodeInputPictureGranularity())); return this; }
 
     /// {@return `supportedEncodeFeedbackFlags` at the given index}
     /// @param segment the segment of the struct
@@ -493,6 +498,11 @@ public sealed class VkVideoEncodeCapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer encodeInputPictureGranularityAt(long index, MemorySegment value) { encodeInputPictureGranularity(this.segment(), index, value); return this; }
+        /// Accepts `encodeInputPictureGranularity` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer encodeInputPictureGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(encodeInputPictureGranularityAt(index))); return this; }
 
         /// {@return `supportedEncodeFeedbackFlags` at the given index}
         /// @param index the index of the struct buffer

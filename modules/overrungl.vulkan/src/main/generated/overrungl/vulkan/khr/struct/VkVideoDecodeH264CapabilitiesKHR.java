@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -209,6 +210,10 @@ public sealed class VkVideoDecodeH264CapabilitiesKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoDecodeH264CapabilitiesKHR fieldOffsetGranularity(MemorySegment value) { fieldOffsetGranularity(this.segment(), 0L, value); return this; }
+    /// Accepts `fieldOffsetGranularity` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoDecodeH264CapabilitiesKHR fieldOffsetGranularity(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(fieldOffsetGranularity())); return this; }
 
     /// A buffer of [VkVideoDecodeH264CapabilitiesKHR].
     public static final class Buffer extends VkVideoDecodeH264CapabilitiesKHR {
@@ -267,6 +272,11 @@ public sealed class VkVideoDecodeH264CapabilitiesKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer fieldOffsetGranularityAt(long index, MemorySegment value) { fieldOffsetGranularity(this.segment(), index, value); return this; }
+        /// Accepts `fieldOffsetGranularity` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer fieldOffsetGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(fieldOffsetGranularityAt(index))); return this; }
 
     }
 }

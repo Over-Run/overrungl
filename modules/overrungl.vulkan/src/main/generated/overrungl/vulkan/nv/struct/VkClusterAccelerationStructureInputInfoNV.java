@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -320,6 +321,10 @@ public sealed class VkClusterAccelerationStructureInputInfoNV extends GroupType 
     /// @param value the value
     /// @return `this`
     public VkClusterAccelerationStructureInputInfoNV opInput(MemorySegment value) { opInput(this.segment(), 0L, value); return this; }
+    /// Accepts `opInput` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV opInput(Consumer<overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV> func) { func.accept(overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV.of(opInput())); return this; }
 
     /// A buffer of [VkClusterAccelerationStructureInputInfoNV].
     public static final class Buffer extends VkClusterAccelerationStructureInputInfoNV {
@@ -405,6 +410,11 @@ public sealed class VkClusterAccelerationStructureInputInfoNV extends GroupType 
         /// @param value the value
         /// @return `this`
         public Buffer opInputAt(long index, MemorySegment value) { opInput(this.segment(), index, value); return this; }
+        /// Accepts `opInput` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer opInputAt(long index, Consumer<overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV> func) { func.accept(overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV.of(opInputAt(index))); return this; }
 
     }
 }

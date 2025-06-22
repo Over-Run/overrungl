@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -322,6 +323,10 @@ public sealed class StdVideoDecodeH265PictureInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public StdVideoDecodeH265PictureInfo flags(MemorySegment value) { flags(this.segment(), 0L, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public StdVideoDecodeH265PictureInfo flags(Consumer<overrungl.vulkan.video.StdVideoDecodeH265PictureInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoDecodeH265PictureInfoFlags.of(flags())); return this; }
 
     /// {@return `sps_video_parameter_set_id` at the given index}
     /// @param segment the segment of the struct
@@ -570,6 +575,11 @@ public sealed class StdVideoDecodeH265PictureInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+        /// Accepts `flags` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoDecodeH265PictureInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoDecodeH265PictureInfoFlags.of(flagsAt(index))); return this; }
 
         /// {@return `sps_video_parameter_set_id` at the given index}
         /// @param index the index of the struct buffer

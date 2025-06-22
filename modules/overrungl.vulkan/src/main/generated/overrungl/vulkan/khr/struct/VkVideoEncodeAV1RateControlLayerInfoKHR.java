@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -291,6 +292,10 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeAV1RateControlLayerInfoKHR minQIndex(MemorySegment value) { minQIndex(this.segment(), 0L, value); return this; }
+    /// Accepts `minQIndex` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeAV1RateControlLayerInfoKHR minQIndex(Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR.of(minQIndex())); return this; }
 
     /// {@return `useMaxQIndex` at the given index}
     /// @param segment the segment of the struct
@@ -323,6 +328,10 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeAV1RateControlLayerInfoKHR maxQIndex(MemorySegment value) { maxQIndex(this.segment(), 0L, value); return this; }
+    /// Accepts `maxQIndex` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeAV1RateControlLayerInfoKHR maxQIndex(Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR.of(maxQIndex())); return this; }
 
     /// {@return `useMaxFrameSize` at the given index}
     /// @param segment the segment of the struct
@@ -355,6 +364,10 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkVideoEncodeAV1RateControlLayerInfoKHR maxFrameSize(MemorySegment value) { maxFrameSize(this.segment(), 0L, value); return this; }
+    /// Accepts `maxFrameSize` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkVideoEncodeAV1RateControlLayerInfoKHR maxFrameSize(Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeAV1FrameSizeKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeAV1FrameSizeKHR.of(maxFrameSize())); return this; }
 
     /// A buffer of [VkVideoEncodeAV1RateControlLayerInfoKHR].
     public static final class Buffer extends VkVideoEncodeAV1RateControlLayerInfoKHR {
@@ -413,6 +426,11 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer minQIndexAt(long index, MemorySegment value) { minQIndex(this.segment(), index, value); return this; }
+        /// Accepts `minQIndex` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer minQIndexAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR.of(minQIndexAt(index))); return this; }
 
         /// {@return `useMaxQIndex` at the given index}
         /// @param index the index of the struct buffer
@@ -431,6 +449,11 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxQIndexAt(long index, MemorySegment value) { maxQIndex(this.segment(), index, value); return this; }
+        /// Accepts `maxQIndex` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxQIndexAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeAV1QIndexKHR.of(maxQIndexAt(index))); return this; }
 
         /// {@return `useMaxFrameSize` at the given index}
         /// @param index the index of the struct buffer
@@ -449,6 +472,11 @@ public sealed class VkVideoEncodeAV1RateControlLayerInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer maxFrameSizeAt(long index, MemorySegment value) { maxFrameSize(this.segment(), index, value); return this; }
+        /// Accepts `maxFrameSize` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer maxFrameSizeAt(long index, Consumer<overrungl.vulkan.khr.struct.VkVideoEncodeAV1FrameSizeKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkVideoEncodeAV1FrameSizeKHR.of(maxFrameSizeAt(index))); return this; }
 
     }
 }

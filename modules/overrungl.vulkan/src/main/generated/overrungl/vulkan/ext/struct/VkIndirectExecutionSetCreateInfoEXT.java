@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -209,6 +210,10 @@ public sealed class VkIndirectExecutionSetCreateInfoEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkIndirectExecutionSetCreateInfoEXT info(MemorySegment value) { info(this.segment(), 0L, value); return this; }
+    /// Accepts `info` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkIndirectExecutionSetCreateInfoEXT info(Consumer<overrungl.vulkan.ext.union.VkIndirectExecutionSetInfoEXT> func) { func.accept(overrungl.vulkan.ext.union.VkIndirectExecutionSetInfoEXT.of(info())); return this; }
 
     /// A buffer of [VkIndirectExecutionSetCreateInfoEXT].
     public static final class Buffer extends VkIndirectExecutionSetCreateInfoEXT {
@@ -267,6 +272,11 @@ public sealed class VkIndirectExecutionSetCreateInfoEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer infoAt(long index, MemorySegment value) { info(this.segment(), index, value); return this; }
+        /// Accepts `info` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer infoAt(long index, Consumer<overrungl.vulkan.ext.union.VkIndirectExecutionSetInfoEXT> func) { func.accept(overrungl.vulkan.ext.union.VkIndirectExecutionSetInfoEXT.of(infoAt(index))); return this; }
 
     }
 }

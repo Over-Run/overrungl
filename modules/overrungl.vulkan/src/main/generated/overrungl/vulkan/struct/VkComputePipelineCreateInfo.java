@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -272,6 +273,10 @@ public sealed class VkComputePipelineCreateInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkComputePipelineCreateInfo stage(MemorySegment value) { stage(this.segment(), 0L, value); return this; }
+    /// Accepts `stage` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkComputePipelineCreateInfo stage(Consumer<overrungl.vulkan.struct.VkPipelineShaderStageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkPipelineShaderStageCreateInfo.of(stage())); return this; }
 
     /// {@return `layout` at the given index}
     /// @param segment the segment of the struct
@@ -378,6 +383,11 @@ public sealed class VkComputePipelineCreateInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer stageAt(long index, MemorySegment value) { stage(this.segment(), index, value); return this; }
+        /// Accepts `stage` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer stageAt(long index, Consumer<overrungl.vulkan.struct.VkPipelineShaderStageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkPipelineShaderStageCreateInfo.of(stageAt(index))); return this; }
 
         /// {@return `layout` at the given index}
         /// @param index the index of the struct buffer

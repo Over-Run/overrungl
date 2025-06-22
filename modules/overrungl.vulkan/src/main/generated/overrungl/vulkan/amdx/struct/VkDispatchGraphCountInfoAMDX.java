@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -158,6 +159,10 @@ public sealed class VkDispatchGraphCountInfoAMDX extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDispatchGraphCountInfoAMDX infos(MemorySegment value) { infos(this.segment(), 0L, value); return this; }
+    /// Accepts `infos` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDispatchGraphCountInfoAMDX infos(Consumer<overrungl.vulkan.amdx.union.VkDeviceOrHostAddressConstAMDX> func) { func.accept(overrungl.vulkan.amdx.union.VkDeviceOrHostAddressConstAMDX.of(infos())); return this; }
 
     /// {@return `stride` at the given index}
     /// @param segment the segment of the struct
@@ -214,6 +219,11 @@ public sealed class VkDispatchGraphCountInfoAMDX extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer infosAt(long index, MemorySegment value) { infos(this.segment(), index, value); return this; }
+        /// Accepts `infos` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer infosAt(long index, Consumer<overrungl.vulkan.amdx.union.VkDeviceOrHostAddressConstAMDX> func) { func.accept(overrungl.vulkan.amdx.union.VkDeviceOrHostAddressConstAMDX.of(infosAt(index))); return this; }
 
         /// {@return `stride` at the given index}
         /// @param index the index of the struct buffer

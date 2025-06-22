@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -322,6 +323,10 @@ public sealed class VkHdrMetadataEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkHdrMetadataEXT displayPrimaryRed(MemorySegment value) { displayPrimaryRed(this.segment(), 0L, value); return this; }
+    /// Accepts `displayPrimaryRed` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkHdrMetadataEXT displayPrimaryRed(Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryRed())); return this; }
 
     /// {@return `displayPrimaryGreen` at the given index}
     /// @param segment the segment of the struct
@@ -338,6 +343,10 @@ public sealed class VkHdrMetadataEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkHdrMetadataEXT displayPrimaryGreen(MemorySegment value) { displayPrimaryGreen(this.segment(), 0L, value); return this; }
+    /// Accepts `displayPrimaryGreen` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkHdrMetadataEXT displayPrimaryGreen(Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryGreen())); return this; }
 
     /// {@return `displayPrimaryBlue` at the given index}
     /// @param segment the segment of the struct
@@ -354,6 +363,10 @@ public sealed class VkHdrMetadataEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkHdrMetadataEXT displayPrimaryBlue(MemorySegment value) { displayPrimaryBlue(this.segment(), 0L, value); return this; }
+    /// Accepts `displayPrimaryBlue` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkHdrMetadataEXT displayPrimaryBlue(Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryBlue())); return this; }
 
     /// {@return `whitePoint` at the given index}
     /// @param segment the segment of the struct
@@ -370,6 +383,10 @@ public sealed class VkHdrMetadataEXT extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkHdrMetadataEXT whitePoint(MemorySegment value) { whitePoint(this.segment(), 0L, value); return this; }
+    /// Accepts `whitePoint` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkHdrMetadataEXT whitePoint(Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(whitePoint())); return this; }
 
     /// {@return `maxLuminance` at the given index}
     /// @param segment the segment of the struct
@@ -483,6 +500,11 @@ public sealed class VkHdrMetadataEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer displayPrimaryRedAt(long index, MemorySegment value) { displayPrimaryRed(this.segment(), index, value); return this; }
+        /// Accepts `displayPrimaryRed` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer displayPrimaryRedAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryRedAt(index))); return this; }
 
         /// {@return `displayPrimaryGreen` at the given index}
         /// @param index the index of the struct buffer
@@ -492,6 +514,11 @@ public sealed class VkHdrMetadataEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer displayPrimaryGreenAt(long index, MemorySegment value) { displayPrimaryGreen(this.segment(), index, value); return this; }
+        /// Accepts `displayPrimaryGreen` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer displayPrimaryGreenAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryGreenAt(index))); return this; }
 
         /// {@return `displayPrimaryBlue` at the given index}
         /// @param index the index of the struct buffer
@@ -501,6 +528,11 @@ public sealed class VkHdrMetadataEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer displayPrimaryBlueAt(long index, MemorySegment value) { displayPrimaryBlue(this.segment(), index, value); return this; }
+        /// Accepts `displayPrimaryBlue` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer displayPrimaryBlueAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryBlueAt(index))); return this; }
 
         /// {@return `whitePoint` at the given index}
         /// @param index the index of the struct buffer
@@ -510,6 +542,11 @@ public sealed class VkHdrMetadataEXT extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer whitePointAt(long index, MemorySegment value) { whitePoint(this.segment(), index, value); return this; }
+        /// Accepts `whitePoint` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer whitePointAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(whitePointAt(index))); return this; }
 
         /// {@return `maxLuminance` at the given index}
         /// @param index the index of the struct buffer

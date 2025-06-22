@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -246,6 +247,10 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkCopyMemoryToImageIndirectCommandNV imageSubresource(MemorySegment value) { imageSubresource(this.segment(), 0L, value); return this; }
+    /// Accepts `imageSubresource` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkCopyMemoryToImageIndirectCommandNV imageSubresource(Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(imageSubresource())); return this; }
 
     /// {@return `imageOffset` at the given index}
     /// @param segment the segment of the struct
@@ -262,6 +267,10 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkCopyMemoryToImageIndirectCommandNV imageOffset(MemorySegment value) { imageOffset(this.segment(), 0L, value); return this; }
+    /// Accepts `imageOffset` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkCopyMemoryToImageIndirectCommandNV imageOffset(Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(imageOffset())); return this; }
 
     /// {@return `imageExtent` at the given index}
     /// @param segment the segment of the struct
@@ -278,6 +287,10 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkCopyMemoryToImageIndirectCommandNV imageExtent(MemorySegment value) { imageExtent(this.segment(), 0L, value); return this; }
+    /// Accepts `imageExtent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkCopyMemoryToImageIndirectCommandNV imageExtent(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(imageExtent())); return this; }
 
     /// A buffer of [VkCopyMemoryToImageIndirectCommandNV].
     public static final class Buffer extends VkCopyMemoryToImageIndirectCommandNV {
@@ -336,6 +349,11 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer imageSubresourceAt(long index, MemorySegment value) { imageSubresource(this.segment(), index, value); return this; }
+        /// Accepts `imageSubresource` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer imageSubresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceLayers> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceLayers.of(imageSubresourceAt(index))); return this; }
 
         /// {@return `imageOffset` at the given index}
         /// @param index the index of the struct buffer
@@ -345,6 +363,11 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer imageOffsetAt(long index, MemorySegment value) { imageOffset(this.segment(), index, value); return this; }
+        /// Accepts `imageOffset` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer imageOffsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(imageOffsetAt(index))); return this; }
 
         /// {@return `imageExtent` at the given index}
         /// @param index the index of the struct buffer
@@ -354,6 +377,11 @@ public sealed class VkCopyMemoryToImageIndirectCommandNV extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer imageExtentAt(long index, MemorySegment value) { imageExtent(this.segment(), index, value); return this; }
+        /// Accepts `imageExtent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer imageExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(imageExtentAt(index))); return this; }
 
     }
 }

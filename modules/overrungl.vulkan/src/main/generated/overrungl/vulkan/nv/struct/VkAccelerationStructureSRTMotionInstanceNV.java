@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -121,6 +122,10 @@ public sealed class VkAccelerationStructureSRTMotionInstanceNV extends GroupType
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureSRTMotionInstanceNV transformT0(MemorySegment value) { transformT0(this.segment(), 0L, value); return this; }
+    /// Accepts `transformT0` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureSRTMotionInstanceNV transformT0(Consumer<overrungl.vulkan.nv.struct.VkSRTDataNV> func) { func.accept(overrungl.vulkan.nv.struct.VkSRTDataNV.of(transformT0())); return this; }
 
     /// {@return `transformT1` at the given index}
     /// @param segment the segment of the struct
@@ -137,6 +142,10 @@ public sealed class VkAccelerationStructureSRTMotionInstanceNV extends GroupType
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureSRTMotionInstanceNV transformT1(MemorySegment value) { transformT1(this.segment(), 0L, value); return this; }
+    /// Accepts `transformT1` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureSRTMotionInstanceNV transformT1(Consumer<overrungl.vulkan.nv.struct.VkSRTDataNV> func) { func.accept(overrungl.vulkan.nv.struct.VkSRTDataNV.of(transformT1())); return this; }
 
     /// {@return `accelerationStructureReference` at the given index}
     /// @param segment the segment of the struct
@@ -184,6 +193,11 @@ public sealed class VkAccelerationStructureSRTMotionInstanceNV extends GroupType
         /// @param value the value
         /// @return `this`
         public Buffer transformT0At(long index, MemorySegment value) { transformT0(this.segment(), index, value); return this; }
+        /// Accepts `transformT0` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer transformT0At(long index, Consumer<overrungl.vulkan.nv.struct.VkSRTDataNV> func) { func.accept(overrungl.vulkan.nv.struct.VkSRTDataNV.of(transformT0At(index))); return this; }
 
         /// {@return `transformT1` at the given index}
         /// @param index the index of the struct buffer
@@ -193,6 +207,11 @@ public sealed class VkAccelerationStructureSRTMotionInstanceNV extends GroupType
         /// @param value the value
         /// @return `this`
         public Buffer transformT1At(long index, MemorySegment value) { transformT1(this.segment(), index, value); return this; }
+        /// Accepts `transformT1` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer transformT1At(long index, Consumer<overrungl.vulkan.nv.struct.VkSRTDataNV> func) { func.accept(overrungl.vulkan.nv.struct.VkSRTDataNV.of(transformT1At(index))); return this; }
 
         /// {@return `accelerationStructureReference` at the given index}
         /// @param index the index of the struct buffer

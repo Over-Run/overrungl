@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -198,6 +199,10 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSparseImageMemoryBind subresource(MemorySegment value) { subresource(this.segment(), 0L, value); return this; }
+    /// Accepts `subresource` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSparseImageMemoryBind subresource(Consumer<overrungl.vulkan.struct.VkImageSubresource> func) { func.accept(overrungl.vulkan.struct.VkImageSubresource.of(subresource())); return this; }
 
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
@@ -214,6 +219,10 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSparseImageMemoryBind offset(MemorySegment value) { offset(this.segment(), 0L, value); return this; }
+    /// Accepts `offset` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSparseImageMemoryBind offset(Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(offset())); return this; }
 
     /// {@return `extent` at the given index}
     /// @param segment the segment of the struct
@@ -230,6 +239,10 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkSparseImageMemoryBind extent(MemorySegment value) { extent(this.segment(), 0L, value); return this; }
+    /// Accepts `extent` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkSparseImageMemoryBind extent(Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extent())); return this; }
 
     /// {@return `memory` at the given index}
     /// @param segment the segment of the struct
@@ -309,6 +322,11 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer subresourceAt(long index, MemorySegment value) { subresource(this.segment(), index, value); return this; }
+        /// Accepts `subresource` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer subresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresource> func) { func.accept(overrungl.vulkan.struct.VkImageSubresource.of(subresourceAt(index))); return this; }
 
         /// {@return `offset` at the given index}
         /// @param index the index of the struct buffer
@@ -318,6 +336,11 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer offsetAt(long index, MemorySegment value) { offset(this.segment(), index, value); return this; }
+        /// Accepts `offset` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer offsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(offsetAt(index))); return this; }
 
         /// {@return `extent` at the given index}
         /// @param index the index of the struct buffer
@@ -327,6 +350,11 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
+        /// Accepts `extent` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extentAt(index))); return this; }
 
         /// {@return `memory` at the given index}
         /// @param index the index of the struct buffer

@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -296,6 +297,10 @@ public sealed class StdVideoAV1TileInfo extends GroupType {
     /// @param value the value
     /// @return `this`
     public StdVideoAV1TileInfo flags(MemorySegment value) { flags(this.segment(), 0L, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public StdVideoAV1TileInfo flags(Consumer<overrungl.vulkan.video.StdVideoAV1TileInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1TileInfoFlags.of(flags())); return this; }
 
     /// {@return `TileCols` at the given index}
     /// @param segment the segment of the struct
@@ -490,6 +495,11 @@ public sealed class StdVideoAV1TileInfo extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+        /// Accepts `flags` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1TileInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1TileInfoFlags.of(flagsAt(index))); return this; }
 
         /// {@return `TileCols` at the given index}
         /// @param index the index of the struct buffer

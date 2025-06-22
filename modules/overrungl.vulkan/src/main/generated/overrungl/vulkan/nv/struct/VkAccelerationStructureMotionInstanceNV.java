@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkAccelerationStructureMotionInstanceNV extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkAccelerationStructureMotionInstanceNV data(MemorySegment value) { data(this.segment(), 0L, value); return this; }
+    /// Accepts `data` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureMotionInstanceNV data(Consumer<overrungl.vulkan.nv.union.VkAccelerationStructureMotionInstanceDataNV> func) { func.accept(overrungl.vulkan.nv.union.VkAccelerationStructureMotionInstanceDataNV.of(data())); return this; }
 
     /// A buffer of [VkAccelerationStructureMotionInstanceNV].
     public static final class Buffer extends VkAccelerationStructureMotionInstanceNV {
@@ -223,6 +228,11 @@ public sealed class VkAccelerationStructureMotionInstanceNV extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer dataAt(long index, MemorySegment value) { data(this.segment(), index, value); return this; }
+        /// Accepts `data` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer dataAt(long index, Consumer<overrungl.vulkan.nv.union.VkAccelerationStructureMotionInstanceDataNV> func) { func.accept(overrungl.vulkan.nv.union.VkAccelerationStructureMotionInstanceDataNV.of(dataAt(index))); return this; }
 
     }
 }

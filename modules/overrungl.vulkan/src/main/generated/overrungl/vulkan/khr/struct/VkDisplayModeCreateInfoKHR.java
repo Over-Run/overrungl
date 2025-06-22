@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -209,6 +210,10 @@ public sealed class VkDisplayModeCreateInfoKHR extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkDisplayModeCreateInfoKHR parameters(MemorySegment value) { parameters(this.segment(), 0L, value); return this; }
+    /// Accepts `parameters` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayModeCreateInfoKHR parameters(Consumer<overrungl.vulkan.khr.struct.VkDisplayModeParametersKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkDisplayModeParametersKHR.of(parameters())); return this; }
 
     /// A buffer of [VkDisplayModeCreateInfoKHR].
     public static final class Buffer extends VkDisplayModeCreateInfoKHR {
@@ -267,6 +272,11 @@ public sealed class VkDisplayModeCreateInfoKHR extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer parametersAt(long index, MemorySegment value) { parameters(this.segment(), index, value); return this; }
+        /// Accepts `parameters` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer parametersAt(long index, Consumer<overrungl.vulkan.khr.struct.VkDisplayModeParametersKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkDisplayModeParametersKHR.of(parametersAt(index))); return this; }
 
     }
 }

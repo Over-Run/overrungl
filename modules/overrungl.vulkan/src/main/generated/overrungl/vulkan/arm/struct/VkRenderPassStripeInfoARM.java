@@ -23,6 +23,7 @@ import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
 import overrungl.struct.*;
 import overrungl.util.*;
+import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -174,6 +175,10 @@ public sealed class VkRenderPassStripeInfoARM extends GroupType {
     /// @param value the value
     /// @return `this`
     public VkRenderPassStripeInfoARM stripeArea(MemorySegment value) { stripeArea(this.segment(), 0L, value); return this; }
+    /// Accepts `stripeArea` with the given function.
+    /// @param func the function
+    /// @return `this`
+    public VkRenderPassStripeInfoARM stripeArea(Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(stripeArea())); return this; }
 
     /// A buffer of [VkRenderPassStripeInfoARM].
     public static final class Buffer extends VkRenderPassStripeInfoARM {
@@ -223,6 +228,11 @@ public sealed class VkRenderPassStripeInfoARM extends GroupType {
         /// @param value the value
         /// @return `this`
         public Buffer stripeAreaAt(long index, MemorySegment value) { stripeArea(this.segment(), index, value); return this; }
+        /// Accepts `stripeArea` with the given function.
+        /// @param index the index of the struct buffer
+        /// @param func the function
+        /// @return `this`
+        public Buffer stripeAreaAt(long index, Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(stripeAreaAt(index))); return this; }
 
     }
 }
