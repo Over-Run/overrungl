@@ -1,0 +1,26 @@
+// Pointer types
+
+using CharPtr = struct CharPtr {
+    jchar value;
+};
+using BytePtr = struct BytePtr {
+    jbyte value;
+};
+using ShortPtr = struct ShortPtr {
+    jshort value;
+};
+using IntPtr = struct IntPtr {
+    jint value;
+};
+using LongPtr = struct LongPtr {
+    jlong value;
+};
+using FloatPtr = struct FloatPtr {
+    jfloat value;
+};
+using DoublePtr = struct DoublePtr {
+    jdouble value;
+};
+using VoidPtr = struct VoidPtr {
+    void* value;
+};
