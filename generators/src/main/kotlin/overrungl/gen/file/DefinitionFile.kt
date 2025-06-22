@@ -265,9 +265,12 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             |import java.lang.invoke.*;
             |import overrungl.struct.*;
             |import overrungl.util.*;
-            |
         """.trimMargin()
         )
+        if (groupClass.members.any { it.pair.type is GroupLayoutType }) {
+            sb.appendLine("import java.util.function.*;")
+        }
+        sb.appendLine()
         groupClass.imports.forEach {
             sb.appendLine("import $it;")
         }
@@ -600,6 +603,17 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     }
                     sb.appendLine(", value); return this; }")
                 }
+                if (member.pair.type is GroupLayoutType) {
+                    val typeJavaName = "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
+                    sb.appendLine(
+                        """
+                            |    /// Accepts `${member.pair.name}` with the given function.
+                            |    /// @param func the function
+                            |    /// @return `this`
+                            |    public $className ${member.pair.name}(Consumer<$typeJavaName> func) { func.accept($typeJavaName.of(${member.pair.name}())); return this; }
+                        """.trimMargin()
+                    )
+                }
             } else {
                 sb.appendLine("    public $className ${member.pair.name}(${member.pair.type.javaType} value) { ${member.pair.name}(this.segment(), 0L, value); return this; }")
             }
@@ -715,6 +729,18 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                         sb.append(", index$index")
                     }
                     sb.appendLine(", value); return this; }")
+                }
+                if (member.pair.type is GroupLayoutType) {
+                    val typeJavaName = "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
+                    sb.appendLine(
+                        """
+                            |        /// Accepts `${member.pair.name}` with the given function.
+                            |        /// @param index the index of the ${groupClass.kind.typedef} buffer
+                            |        /// @param func the function
+                            |        /// @return `this`
+                            |        public Buffer ${member.pair.name}At(long index, Consumer<$typeJavaName> func) { func.accept($typeJavaName.of(${member.pair.name}At(index))); return this; }
+                        """.trimMargin()
+                    )
                 }
             } else {
                 sb.appendLine(
