@@ -26,21 +26,23 @@ void main() {
     int width, height;
     // use MemoryStack for one-time and quick allocation
     try (var stack = MemoryStack.pushLocal()) {
-        // use SegmentAllocator to allocate memory
-        var pWidth = stack.allocate(ValueLayout.JAVA_INT);
-        var pHeight = stack.allocate(ValueLayout.JAVA_INT);
+        // use MemoryStack::alloc*Ptr to allocate memory
+        var pWidth = stack.allocIntPtr();
+        var pHeight = stack.allocIntPtr();
         
-        glfwGetFramebufferSize(window, pWidth, pHeight);
+        glfwGetFramebufferSize(window, pWidth.segment(), pHeight.segment());
         
-        // use accessors in MemorySegment to read and write memory
-        width = pWidth.get(ValueLayout.JAVA_INT, 0L);
-        height = pHeight.get(ValueLayout.JAVA_INT, 0L);
+        // use accessors in *Ptr to read and write memory
+        width = pWidth.value();
+        height = pHeight.value();
     }
     
     // for OpenGL, create instance of wrappers
     var gl = new GL(GLFW::glfwGetProcAddress);
     // invoke OpenGL functions via instance methods
     gl.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+    // for Vulkan, load function with GLFW
+    VK.create(GLFW::glfwGetInstanceProcAddress);
 }
 ```
 

@@ -16,10 +16,10 @@
 
 package overrungl.demo.util;
 
+import overrungl.util.IntPtr;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.ValueLayout;
 
 /**
  * @author squid233
@@ -36,9 +36,9 @@ public interface IntSegmentConsumer {
 
     static int glGen(IntSegmentConsumer fun) {
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            MemorySegment segment = stack.allocate(ValueLayout.JAVA_INT);
-            fun.accept(1, segment);
-            return segment.get(ValueLayout.JAVA_INT, 0);
+            IntPtr ptr = stack.allocIntPtr();
+            fun.accept(1, ptr.segment());
+            return ptr.value();
         }
     }
 }

@@ -114,19 +114,23 @@ public final class GL30Test {
         gl.TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         gl.TexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         try (MemoryStack stack = MemoryStack.pushLocal()) {
-            var px = stack.allocate(JAVA_INT);
-            var py = stack.allocate(JAVA_INT);
-            var pc = stack.allocate(JAVA_INT);
+            var px = stack.allocIntPtr();
+            var py = stack.allocIntPtr();
+            var pc = stack.allocIntPtr();
             MemorySegment buffer = IOUtil.ioResourceToSegment(arena, "image.png");
             var data = stbi_load_from_memory(
-                buffer, Math.toIntExact(buffer.byteSize()),
-                px, py, pc, STBI_rgb
+                buffer,
+                Math.toIntExact(buffer.byteSize()),
+                px.segment(),
+                py.segment(),
+                pc.segment(),
+                STBI_rgb
             );
             gl.TexImage2D(GL_TEXTURE_2D,
                 0,
                 GL_RGB,
-                px.get(JAVA_INT, 0),
-                py.get(JAVA_INT, 0),
+                px.value(),
+                py.value(),
                 0,
                 GL_RGB,
                 GL_UNSIGNED_BYTE,
