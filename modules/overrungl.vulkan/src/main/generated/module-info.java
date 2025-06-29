@@ -44,6 +44,7 @@ module overrungl.vulkan {
     exports overrungl.vulkan.nn;
     exports overrungl.vulkan.nv;
     exports overrungl.vulkan.nvx;
+    exports overrungl.vulkan.ohos;
     exports overrungl.vulkan.qcom;
     exports overrungl.vulkan.qnx;
     exports overrungl.vulkan.sec;
@@ -72,6 +73,7 @@ module overrungl.vulkan {
     exports overrungl.vulkan.nv.struct;
     exports overrungl.vulkan.nv.union;
     exports overrungl.vulkan.nvx.struct;
+    exports overrungl.vulkan.ohos.struct;
     exports overrungl.vulkan.qcom.struct;
     exports overrungl.vulkan.qnx.struct;
     exports overrungl.vulkan.sec.struct;

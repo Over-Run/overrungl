@@ -36,6 +36,7 @@ public final class VKEXTHostImageCopy {
     public static final int VK_STRUCTURE_TYPE_HOST_IMAGE_COPY_DEVICE_PERFORMANCE_QUERY_EXT = 1000270009;
     public static final int VK_IMAGE_USAGE_HOST_TRANSFER_BIT_EXT = 0x00400000;
     public static final long VK_FORMAT_FEATURE_2_HOST_IMAGE_TRANSFER_BIT_EXT = 0x400000000000L;
+    public static final int VK_HOST_IMAGE_COPY_MEMCPY_BIT_EXT = 0x00000001;
     public static final int VK_HOST_IMAGE_COPY_MEMCPY_EXT = 0x00000001;
     public static final class Handles {
         public static final MethodHandle MH_vkCopyMemoryToImageEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));

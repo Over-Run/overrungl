@@ -120,10 +120,14 @@ public final class VKCapabilitiesInstance {
     public final MemorySegment PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT;
     public final MemorySegment PFN_vkCreateScreenSurfaceQNX;
     public final MemorySegment PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX;
+    public final MemorySegment PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM;
     public final MemorySegment PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV;
     public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV;
     public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR;
+    public final MemorySegment PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM;
+    public final MemorySegment PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM;
     public final MemorySegment PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR;
+    public final MemorySegment PFN_vkCreateSurfaceOHOS;
     public final MemorySegment PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV;
     public VKCapabilitiesInstance(MemorySegment instance, VKLoadFunc func) {
         PFN_vkDestroyInstance = func.invoke(instance, "vkDestroyInstance");
@@ -228,10 +232,14 @@ public final class VKCapabilitiesInstance {
         PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT = func.invoke(instance, "vkGetPhysicalDeviceDirectFBPresentationSupportEXT");
         PFN_vkCreateScreenSurfaceQNX = func.invoke(instance, "vkCreateScreenSurfaceQNX");
         PFN_vkGetPhysicalDeviceScreenPresentationSupportQNX = func.invoke(instance, "vkGetPhysicalDeviceScreenPresentationSupportQNX");
+        PFN_vkGetPhysicalDeviceExternalTensorPropertiesARM = func.invoke(instance, "vkGetPhysicalDeviceExternalTensorPropertiesARM");
         PFN_vkGetPhysicalDeviceOpticalFlowImageFormatsNV = func.invoke(instance, "vkGetPhysicalDeviceOpticalFlowImageFormatsNV");
         PFN_vkGetPhysicalDeviceCooperativeVectorPropertiesNV = func.invoke(instance, "vkGetPhysicalDeviceCooperativeVectorPropertiesNV");
         PFN_vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR = func.invoke(instance, "vkGetPhysicalDeviceCooperativeMatrixPropertiesKHR");
+        PFN_vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM = func.invoke(instance, "vkGetPhysicalDeviceQueueFamilyDataGraphPropertiesARM");
+        PFN_vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM = func.invoke(instance, "vkGetPhysicalDeviceQueueFamilyDataGraphProcessingEnginePropertiesARM");
         PFN_vkGetPhysicalDeviceCalibrateableTimeDomainsKHR = func.invoke(instance, "vkGetPhysicalDeviceCalibrateableTimeDomainsKHR", "vkGetPhysicalDeviceCalibrateableTimeDomainsEXT");
+        PFN_vkCreateSurfaceOHOS = func.invoke(instance, "vkCreateSurfaceOHOS");
         PFN_vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV = func.invoke(instance, "vkGetPhysicalDeviceCooperativeMatrixFlexibleDimensionsPropertiesNV");
     }
 }

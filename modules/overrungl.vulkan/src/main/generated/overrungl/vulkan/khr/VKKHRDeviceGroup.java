@@ -39,6 +39,7 @@ public final class VKKHRDeviceGroup {
     public static final int VK_PEER_MEMORY_FEATURE_GENERIC_DST_BIT_KHR = 0x00000008;
     public static final int VK_MEMORY_ALLOCATE_DEVICE_MASK_BIT_KHR = 0x00000001;
     public static final int VK_PIPELINE_CREATE_VIEW_INDEX_FROM_DEVICE_INDEX_BIT_KHR = 0x00000008;
+    public static final int VK_PIPELINE_CREATE_DISPATCH_BASE_BIT_KHR = 0x00000010;
     public static final int VK_PIPELINE_CREATE_DISPATCH_BASE_KHR = 0x00000010;
     public static final int VK_DEPENDENCY_DEVICE_GROUP_BIT_KHR = 0x00000004;
     public static final int VK_STRUCTURE_TYPE_BIND_BUFFER_MEMORY_DEVICE_GROUP_INFO_KHR = 1000060013;
