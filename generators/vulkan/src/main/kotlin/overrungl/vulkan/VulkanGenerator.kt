@@ -28,8 +28,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 import kotlin.io.path.createParentDirectories
 
-// vk.xml: 2025-05-31
-// video.xml: 2025-05-31
+// vk.xml: 2025-06-29
+// video.xml: 2025-06-29
 
 const val vulkanPackage = "overrungl.vulkan"
 
@@ -92,6 +92,7 @@ fun videoXML(xmlBuilder: DocumentBuilder): String {
         "VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_1_0_0" to "public static final int VK_STD_VULKAN_VIDEO_CODEC_H264_ENCODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1, 0, 0);",
         "VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0" to "public static final int VK_STD_VULKAN_VIDEO_CODEC_H265_DECODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1, 0, 0);",
         "VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_1_0_0" to "public static final int VK_STD_VULKAN_VIDEO_CODEC_H265_ENCODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1, 0, 0);",
+        "VK_STD_VULKAN_VIDEO_CODEC_VP9_DECODE_API_VERSION_1_0_0" to "public static final int VK_STD_VULKAN_VIDEO_CODEC_VP9_DECODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1, 0, 0);",
         "VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0" to "public static final int VK_STD_VULKAN_VIDEO_CODEC_AV1_DECODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1, 0, 0);",
         "VK_STD_VULKAN_VIDEO_CODEC_AV1_ENCODE_API_VERSION_1_0_0" to "public static final int VK_STD_VULKAN_VIDEO_CODEC_AV1_ENCODE_API_VERSION_1_0_0 = VK_MAKE_VIDEO_STD_VERSION(1, 0, 0);"
     )
@@ -276,6 +277,7 @@ fun main() {
             using VkFlags64 = uint64_t;
             using VkDeviceSize = uint64_t;
             using VkDeviceAddress = uint64_t;
+            using OHNativeWindow = struct NativeWindow;
             using VkRemoteAddressNV = void*;
 
         """.trimIndent()
@@ -899,6 +901,7 @@ fun formatTraits(formatsNode: Element) {
                 import static overrungl.vulkan.VK13.*;
                 import static overrungl.vulkan.VK14.*;
                 import static overrungl.vulkan.arm.VKARMFormatPack.*;
+                import static overrungl.vulkan.arm.VKARMTensors.*;
                 import static overrungl.vulkan.img.VKIMGFormatPvrtc.*;
                 import static overrungl.vulkan.nv.VKNVOpticalFlow.*;
             """.trimIndent()

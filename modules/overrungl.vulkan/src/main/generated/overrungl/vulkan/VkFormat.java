@@ -24,6 +24,7 @@ import static overrungl.vulkan.VK11.*;
 import static overrungl.vulkan.VK13.*;
 import static overrungl.vulkan.VK14.*;
 import static overrungl.vulkan.arm.VKARMFormatPack.*;
+import static overrungl.vulkan.arm.VKARMTensors.*;
 import static overrungl.vulkan.img.VKIMGFormatPvrtc.*;
 import static overrungl.vulkan.nv.VKNVOpticalFlow.*;
 
@@ -293,6 +294,7 @@ public enum VkFormat {
     R14X2G14X2B14X2A14X2_UNORM_4PACK16_ARM(VK_FORMAT_R14X2G14X2B14X2A14X2_UNORM_4PACK16_ARM, new int[]{1,1,1}, 8, "64-bit R14G14B14A14", new int[]{14, 14, 14, 14}, 4, new String[]{"R", "G", "B", "A"}, new String[]{"UNORM", "UNORM", "UNORM", "UNORM"}, null, false, null, true, true, false, true, true, false, 16, 1, new int[]{1}, new int[]{1}, 1),
     G14X2_B14X2R14X2_2PLANE_420_UNORM_3PACK16_ARM(VK_FORMAT_G14X2_B14X2R14X2_2PLANE_420_UNORM_3PACK16_ARM, new int[]{1,1,1}, 6, "14-bit 2-plane 420", new int[]{14, 14, 14}, 3, new String[]{"G", "B", "R"}, new String[]{"UNORM", "UNORM", "UNORM"}, new int[]{0, 1, 1}, false, null, false, true, false, true, true, false, 16, 2, new int[]{1, 2}, new int[]{1, 2}, 1),
     G14X2_B14X2R14X2_2PLANE_422_UNORM_3PACK16_ARM(VK_FORMAT_G14X2_B14X2R14X2_2PLANE_422_UNORM_3PACK16_ARM, new int[]{1,1,1}, 6, "14-bit 2-plane 422", new int[]{14, 14, 14}, 3, new String[]{"G", "B", "R"}, new String[]{"UNORM", "UNORM", "UNORM"}, new int[]{0, 1, 1}, false, null, false, true, false, true, true, false, 16, 2, new int[]{1, 1}, new int[]{1, 2}, 1),
+    R8_BOOL_ARM(VK_FORMAT_R8_BOOL_ARM, new int[]{1,1,1}, 1, "8-bit", new int[]{8}, 1, new String[]{"R"}, new String[]{"BOOL"}, null, false, null, false, false, false, false, true, false, 0, 1, new int[]{1}, new int[]{1}, 1),
     ;
     private final int value;
     private final int[] blockExtent;
@@ -634,6 +636,7 @@ public enum VkFormat {
         case VK_FORMAT_R14X2G14X2B14X2A14X2_UNORM_4PACK16_ARM -> R14X2G14X2B14X2A14X2_UNORM_4PACK16_ARM;
         case VK_FORMAT_G14X2_B14X2R14X2_2PLANE_420_UNORM_3PACK16_ARM -> G14X2_B14X2R14X2_2PLANE_420_UNORM_3PACK16_ARM;
         case VK_FORMAT_G14X2_B14X2R14X2_2PLANE_422_UNORM_3PACK16_ARM -> G14X2_B14X2R14X2_2PLANE_422_UNORM_3PACK16_ARM;
+        case VK_FORMAT_R8_BOOL_ARM -> R8_BOOL_ARM;
         default -> throw new IllegalArgumentException("Unexpected value: " + value); };
     }
 
@@ -921,7 +924,8 @@ public enum VkFormat {
         R14X2G14X2_UNORM_2PACK16_ARM,
         R14X2G14X2B14X2A14X2_UNORM_4PACK16_ARM,
         G14X2_B14X2R14X2_2PLANE_420_UNORM_3PACK16_ARM,
-        G14X2_B14X2R14X2_2PLANE_422_UNORM_3PACK16_ARM
+        G14X2_B14X2R14X2_2PLANE_422_UNORM_3PACK16_ARM,
+        R8_BOOL_ARM
     );
     /// Get all formats
     public static List<VkFormat> getAllFormats() { return allFormats; }
@@ -1182,7 +1186,8 @@ public enum VkFormat {
         R14X2G14X2_UNORM_2PACK16_ARM,
         R14X2G14X2B14X2A14X2_UNORM_4PACK16_ARM,
         G14X2_B14X2R14X2_2PLANE_420_UNORM_3PACK16_ARM,
-        G14X2_B14X2R14X2_2PLANE_422_UNORM_3PACK16_ARM
+        G14X2_B14X2R14X2_2PLANE_422_UNORM_3PACK16_ARM,
+        R8_BOOL_ARM
     );
     /// Get all formats with a color component
     public static List<VkFormat> getColorFormats() { return colorFormats; }
@@ -1616,6 +1621,7 @@ public enum VkFormat {
             case 1 -> R14X2G14X2_UNORM_2PACK16_ARM;
             default -> throw new IllegalArgumentException("Unexpected plane " + plane + " for format " + this);
         };
+        case R8_BOOL_ARM -> this;
     }; }
     /// The number of image planes of this format.
     public int planeCount() { return planeCount; }
