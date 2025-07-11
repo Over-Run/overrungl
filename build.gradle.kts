@@ -57,6 +57,9 @@ allprojects {
                         """<a href="https://github.com/Over-Run/overrungl/issues">Report a bug or suggest an enhancement</a><br>""" +
                             "Copyright © $projLicenseYear Overrun Organization<br>" +
                             "<b>$projVersion (env ${Runtime.version()})</b>"
+
+                    // shut up the javadoc
+                    addStringOption("Xdoclint:all,-missing", "-quiet") // the value is required for no reason!!
                 }
             }
             encoding = "UTF-8"
