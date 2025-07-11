@@ -49,7 +49,7 @@ void main() {
 ## Introduction
 
 Overrun Game Library is a high-performance library implemented with Java 24,
-which enables cross-platform access to a set of C/C++ library bindings, providing various useful utilities.
+which enables cross-platform access to a set of C library bindings, providing various useful utilities.
 
 ### Comparing with LWJGL 3
 
@@ -162,10 +162,10 @@ The customizer has already included this.
 
 See [doc/notes](doc/notes/README.md).
 
-## Additional
+## Additions
 
 The latest Javadoc can be found [here](https://over-run.github.io/overrungl/).
 
-### Credits
+[//]: # (### Credits)
 
-[<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo (Main) logo." width="128" height="128">](https://jb.gg/OpenSourceSupport)
+[//]: # ([<img src="https://resources.jetbrains.com/storage/products/company/brand/logos/jb_beam.png" alt="JetBrains Logo &#40;Main&#41; logo." width="128" height="128">]&#40;https://jb.gg/OpenSourceSupport&#41;)

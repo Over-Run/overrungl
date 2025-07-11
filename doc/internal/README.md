@@ -10,6 +10,7 @@ To publish this library, you need a GPG key and the write permission of Maven Ce
 - [nfd](https://github.com/Over-Run/nfd-ci)
 - [openal](https://github.com/Over-Run/openal-ci)
 - [stb](https://github.com/Over-Run/stb-ci)
+- [vma](https://github.com/Over-Run/VulkanMemoryAllocator-ci)
 
 ### Packing Natives
 
