@@ -45,8 +45,8 @@ public final class VKNVCooperativeVector {
     public static final int VK_STRUCTURE_TYPE_CONVERT_COOPERATIVE_VECTOR_MATRIX_INFO_NV = 1000491004;
     public static final int VK_COMPONENT_TYPE_SINT8_PACKED_NV = 1000491000;
     public static final int VK_COMPONENT_TYPE_UINT8_PACKED_NV = 1000491001;
-    public static final int VK_COMPONENT_TYPE_FLOAT_E4M3_NV = 1000491002;
-    public static final int VK_COMPONENT_TYPE_FLOAT_E5M2_NV = 1000491003;
+    public static final int VK_COMPONENT_TYPE_FLOAT_E4M3_NV = 1000567002;
+    public static final int VK_COMPONENT_TYPE_FLOAT_E5M2_NV = 1000567003;
     public static final long VK_PIPELINE_STAGE_2_CONVERT_COOPERATIVE_VECTOR_MATRIX_BIT_NV = 0x100000000000L;
     public static final class Handles {
         public static final MethodHandle MH_vkGetPhysicalDeviceCooperativeVectorPropertiesNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
