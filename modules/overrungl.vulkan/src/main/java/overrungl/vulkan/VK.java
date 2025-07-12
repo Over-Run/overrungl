@@ -20,6 +20,7 @@ import overrungl.util.MemoryStack;
 import overrungl.util.MemoryUtil;
 
 import java.lang.foreign.MemorySegment;
+import java.util.Objects;
 
 /**
  * This class loads the Vulkan library into the JVM process.
@@ -108,9 +109,6 @@ public final class VK {
 
     /// {@return instance of [GlobalCommands]}
     public static GlobalCommands globalCommands() {
-        if (globalCommands == null) {
-            throw new NullPointerException("globalCommands is null; call VK::create first");
-        }
-        return globalCommands;
+        return Objects.requireNonNull(globalCommands, "Global commands are not loaded; call VK::create first");
     }
 }
