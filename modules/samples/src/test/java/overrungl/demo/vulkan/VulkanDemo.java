@@ -69,7 +69,7 @@ public class VulkanDemo {
     private long commandPool = VK_NULL_HANDLE;
     private VkCommandBuffer commandBuffer = null;
     private long imageAvailableSemaphore = VK_NULL_HANDLE;
-    private long renderFinishedSemaphore = VK_NULL_HANDLE;
+    private final List<Long> renderFinishedSemaphores = new ArrayList<>();
     private long inFlightFence = VK_NULL_HANDLE;
 
     private void init() {
@@ -439,6 +439,15 @@ public class VulkanDemo {
                 swapChainImageViews.add(pView.value());
             }
         }
+
+        try (MemoryStack stack = MemoryStack.pushLocal()) {
+            LongPtr p = stack.allocLongPtr();
+            var semaphoreCreateInfo = VkSemaphoreCreateInfo.allocInit(stack, VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO);
+            for (int i = 0; i < swapChainImages.size(); i++) {
+                check(vkCreateSemaphore(device, semaphoreCreateInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create render finished semaphore");
+                renderFinishedSemaphores.add(p.value());
+            }
+        }
     }
 
     private void createRenderPass() {
@@ -638,9 +647,6 @@ public class VulkanDemo {
             check(vkCreateSemaphore(device, semaphoreCreateInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create image available semaphore");
             imageAvailableSemaphore = p.value();
 
-            check(vkCreateSemaphore(device, semaphoreCreateInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create render finished semaphore");
-            renderFinishedSemaphore = p.value();
-
             check(vkCreateFence(device, fenceCreateInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create in flight fence");
             inFlightFence = p.value();
         }
@@ -715,7 +721,7 @@ public class VulkanDemo {
                 .commandBufferCount(1)
                 .pCommandBuffers(stack.addresses(commandBuffer.segment()))
                 .signalSemaphoreCount(1)
-                .pSignalSemaphores(stack.longs(renderFinishedSemaphore));
+                .pSignalSemaphores(stack.longs(renderFinishedSemaphores.get(imageIndex)));
             check(vkQueueSubmit(graphicsQueue, 1, submitInfo.segment(), inFlightFence), "failed to submit command buffer to graphics queue");
         }
 
@@ -723,7 +729,7 @@ public class VulkanDemo {
             var presentInfo = VkPresentInfoKHR.alloc(stack)
                 .sType(VK_STRUCTURE_TYPE_PRESENT_INFO_KHR)
                 .waitSemaphoreCount(1)
-                .pWaitSemaphores(stack.longs(renderFinishedSemaphore))
+                .pWaitSemaphores(stack.longs(renderFinishedSemaphores.get(imageIndex)))
                 .swapchainCount(1)
                 .pSwapchains(stack.longs(swapChain))
                 .pImageIndices(stack.ints(imageIndex));
@@ -740,7 +746,9 @@ public class VulkanDemo {
     private void dispose() {
         if (device != null) {
             vkDestroyFence(device, inFlightFence, MemorySegment.NULL);
-            vkDestroySemaphore(device, renderFinishedSemaphore, MemorySegment.NULL);
+            for (Long renderFinishedSemaphore : renderFinishedSemaphores) {
+                vkDestroySemaphore(device, renderFinishedSemaphore, MemorySegment.NULL);
+            }
             vkDestroySemaphore(device, imageAvailableSemaphore, MemorySegment.NULL);
             vkDestroyCommandPool(device, commandPool, MemorySegment.NULL);
             vkDestroyPipeline(device, graphicsPipeline, MemorySegment.NULL);
