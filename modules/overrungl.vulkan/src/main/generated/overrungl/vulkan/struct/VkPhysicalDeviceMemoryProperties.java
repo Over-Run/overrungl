@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -34,7 +34,7 @@ import java.util.function.*;
 ///     (struct VkMemoryHeap) VkMemoryHeap memoryHeaps[16];
 /// };
 /// ```
-public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
+public final class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMemoryProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("memoryTypeCount"),
@@ -64,20 +64,21 @@ public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
     public static final MemoryLayout LAYOUT_memoryHeaps = LAYOUT.select(PathElement.groupElement("memoryHeaps"));
 
     /// Creates `VkPhysicalDeviceMemoryProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceMemoryProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceMemoryProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceMemoryProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceMemoryProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMemoryProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMemoryProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceMemoryProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceMemoryProperties` with the given segment.
     ///
@@ -85,18 +86,18 @@ public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceMemoryProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceMemoryProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceMemoryProperties`
-    public static VkPhysicalDeviceMemoryProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMemoryProperties(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceMemoryProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMemoryProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceMemoryProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMemoryProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceMemoryProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMemoryProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceMemoryProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -141,9 +142,10 @@ public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceMemoryProperties copyFrom(VkPhysicalDeviceMemoryProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceMemoryProperties reinterpret(long count) { return new VkPhysicalDeviceMemoryProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `memoryTypeCount` at the given index}
     /// @param segment the segment of the struct
@@ -217,73 +219,67 @@ public sealed class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceMemoryProperties memoryHeaps(Consumer<overrungl.vulkan.struct.VkMemoryHeap> func) { func.accept(overrungl.vulkan.struct.VkMemoryHeap.of(memoryHeaps())); return this; }
 
-    /// A buffer of [VkPhysicalDeviceMemoryProperties].
-    public static final class Buffer extends VkPhysicalDeviceMemoryProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceMemoryProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMemoryProperties`
+    public VkPhysicalDeviceMemoryProperties asSlice(long index) { return new VkPhysicalDeviceMemoryProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceMemoryProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceMemoryProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMemoryProperties`
+    public VkPhysicalDeviceMemoryProperties asSlice(long index, long count) { return new VkPhysicalDeviceMemoryProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceMemoryProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties at(long index, Consumer<VkPhysicalDeviceMemoryProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMemoryProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceMemoryProperties`
-        public VkPhysicalDeviceMemoryProperties asSlice(long index) { return new VkPhysicalDeviceMemoryProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `memoryTypeCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int memoryTypeCountAt(long index) { return memoryTypeCount(this.segment(), index); }
+    /// Sets `memoryTypeCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties memoryTypeCountAt(long index, int value) { memoryTypeCount(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMemoryProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceMemoryProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `memoryTypes` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment memoryTypesAt(long index) { return memoryTypes(this.segment(), index); }
+    /// Sets `memoryTypes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties memoryTypesAt(long index, MemorySegment value) { memoryTypes(this.segment(), index, value); return this; }
+    /// Accepts `memoryTypes` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties memoryTypesAt(long index, Consumer<overrungl.vulkan.struct.VkMemoryType> func) { func.accept(overrungl.vulkan.struct.VkMemoryType.of(memoryTypesAt(index))); return this; }
 
-        /// {@return `memoryTypeCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int memoryTypeCountAt(long index) { return memoryTypeCount(this.segment(), index); }
-        /// Sets `memoryTypeCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryTypeCountAt(long index, int value) { memoryTypeCount(this.segment(), index, value); return this; }
+    /// {@return `memoryHeapCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int memoryHeapCountAt(long index) { return memoryHeapCount(this.segment(), index); }
+    /// Sets `memoryHeapCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties memoryHeapCountAt(long index, int value) { memoryHeapCount(this.segment(), index, value); return this; }
 
-        /// {@return `memoryTypes` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment memoryTypesAt(long index) { return memoryTypes(this.segment(), index); }
-        /// Sets `memoryTypes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryTypesAt(long index, MemorySegment value) { memoryTypes(this.segment(), index, value); return this; }
-        /// Accepts `memoryTypes` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer memoryTypesAt(long index, Consumer<overrungl.vulkan.struct.VkMemoryType> func) { func.accept(overrungl.vulkan.struct.VkMemoryType.of(memoryTypesAt(index))); return this; }
+    /// {@return `memoryHeaps` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment memoryHeapsAt(long index) { return memoryHeaps(this.segment(), index); }
+    /// Sets `memoryHeaps` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties memoryHeapsAt(long index, MemorySegment value) { memoryHeaps(this.segment(), index, value); return this; }
+    /// Accepts `memoryHeaps` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceMemoryProperties memoryHeapsAt(long index, Consumer<overrungl.vulkan.struct.VkMemoryHeap> func) { func.accept(overrungl.vulkan.struct.VkMemoryHeap.of(memoryHeapsAt(index))); return this; }
 
-        /// {@return `memoryHeapCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int memoryHeapCountAt(long index) { return memoryHeapCount(this.segment(), index); }
-        /// Sets `memoryHeapCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryHeapCountAt(long index, int value) { memoryHeapCount(this.segment(), index, value); return this; }
-
-        /// {@return `memoryHeaps` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment memoryHeapsAt(long index) { return memoryHeaps(this.segment(), index); }
-        /// Sets `memoryHeaps` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryHeapsAt(long index, MemorySegment value) { memoryHeaps(this.segment(), index, value); return this; }
-        /// Accepts `memoryHeaps` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer memoryHeapsAt(long index, Consumer<overrungl.vulkan.struct.VkMemoryHeap> func) { func.accept(overrungl.vulkan.struct.VkMemoryHeap.of(memoryHeapsAt(index))); return this; }
-
-    }
 }

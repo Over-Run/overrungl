@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkFormatFeatureFlags bufferFeatures;
 /// };
 /// ```
-public sealed class VkFormatProperties extends GroupType {
+public final class VkFormatProperties extends GroupType {
     /// The struct layout of `VkFormatProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("linearTilingFeatures"),
@@ -59,20 +60,21 @@ public sealed class VkFormatProperties extends GroupType {
     public static final VarHandle VH_bufferFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferFeatures"));
 
     /// Creates `VkFormatProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkFormatProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkFormatProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkFormatProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkFormatProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFormatProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkFormatProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkFormatProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFormatProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkFormatProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFormatProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkFormatProperties` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkFormatProperties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkFormatProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkFormatProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkFormatProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkFormatProperties`
-    public static VkFormatProperties alloc(SegmentAllocator allocator) { return new VkFormatProperties(allocator.allocate(LAYOUT)); }
+    public static VkFormatProperties alloc(SegmentAllocator allocator) { return new VkFormatProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkFormatProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkFormatProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkFormatProperties alloc(SegmentAllocator allocator, long count) { return new VkFormatProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkFormatProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkFormatProperties extends GroupType {
     /// @return `this`
     public VkFormatProperties copyFrom(VkFormatProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkFormatProperties reinterpret(long count) { return new VkFormatProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `linearTilingFeatures` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkFormatProperties extends GroupType {
     /// @return `this`
     public VkFormatProperties bufferFeatures(int value) { bufferFeatures(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkFormatProperties].
-    public static final class Buffer extends VkFormatProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkFormatProperties`
+    public VkFormatProperties asSlice(long index) { return new VkFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkFormatProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkFormatProperties`
+    public VkFormatProperties asSlice(long index, long count) { return new VkFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkFormatProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkFormatProperties at(long index, Consumer<VkFormatProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkFormatProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkFormatProperties`
-        public VkFormatProperties asSlice(long index) { return new VkFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `linearTilingFeatures` at the given index}
+    /// @param index the index of the struct buffer
+    public int linearTilingFeaturesAt(long index) { return linearTilingFeatures(this.segment(), index); }
+    /// Sets `linearTilingFeatures` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFormatProperties linearTilingFeaturesAt(long index, int value) { linearTilingFeatures(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkFormatProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkFormatProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `optimalTilingFeatures` at the given index}
+    /// @param index the index of the struct buffer
+    public int optimalTilingFeaturesAt(long index) { return optimalTilingFeatures(this.segment(), index); }
+    /// Sets `optimalTilingFeatures` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFormatProperties optimalTilingFeaturesAt(long index, int value) { optimalTilingFeatures(this.segment(), index, value); return this; }
 
-        /// {@return `linearTilingFeatures` at the given index}
-        /// @param index the index of the struct buffer
-        public int linearTilingFeaturesAt(long index) { return linearTilingFeatures(this.segment(), index); }
-        /// Sets `linearTilingFeatures` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer linearTilingFeaturesAt(long index, int value) { linearTilingFeatures(this.segment(), index, value); return this; }
+    /// {@return `bufferFeatures` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferFeaturesAt(long index) { return bufferFeatures(this.segment(), index); }
+    /// Sets `bufferFeatures` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFormatProperties bufferFeaturesAt(long index, int value) { bufferFeatures(this.segment(), index, value); return this; }
 
-        /// {@return `optimalTilingFeatures` at the given index}
-        /// @param index the index of the struct buffer
-        public int optimalTilingFeaturesAt(long index) { return optimalTilingFeatures(this.segment(), index); }
-        /// Sets `optimalTilingFeatures` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer optimalTilingFeaturesAt(long index, int value) { optimalTilingFeatures(this.segment(), index, value); return this; }
-
-        /// {@return `bufferFeatures` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferFeaturesAt(long index) { return bufferFeatures(this.segment(), index); }
-        /// Sets `bufferFeatures` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferFeaturesAt(long index, int value) { bufferFeatures(this.segment(), index, value); return this; }
-
-    }
 }

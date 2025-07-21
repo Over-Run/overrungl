@@ -21,9 +21,9 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -40,7 +40,7 @@ import java.util.function.*;
 ///     ((uint32_t) VkFlags) VkClusterAccelerationStructureAddressResolutionFlagsNV addressResolutionFlags;
 /// };
 /// ```
-public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupType {
+public final class VkClusterAccelerationStructureCommandsInfoNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureCommandsInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -108,20 +108,21 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
     public static final VarHandle VH_addressResolutionFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("addressResolutionFlags"));
 
     /// Creates `VkClusterAccelerationStructureCommandsInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkClusterAccelerationStructureCommandsInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkClusterAccelerationStructureCommandsInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClusterAccelerationStructureCommandsInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClusterAccelerationStructureCommandsInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureCommandsInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClusterAccelerationStructureCommandsInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClusterAccelerationStructureCommandsInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureCommandsInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClusterAccelerationStructureCommandsInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureCommandsInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClusterAccelerationStructureCommandsInfoNV` with the given segment.
     ///
@@ -129,18 +130,18 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClusterAccelerationStructureCommandsInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureCommandsInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClusterAccelerationStructureCommandsInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClusterAccelerationStructureCommandsInfoNV`
-    public static VkClusterAccelerationStructureCommandsInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureCommandsInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkClusterAccelerationStructureCommandsInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureCommandsInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClusterAccelerationStructureCommandsInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClusterAccelerationStructureCommandsInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClusterAccelerationStructureCommandsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureCommandsInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkClusterAccelerationStructureCommandsInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -272,9 +273,10 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
     /// @return `this`
     public VkClusterAccelerationStructureCommandsInfoNV copyFrom(VkClusterAccelerationStructureCommandsInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClusterAccelerationStructureCommandsInfoNV reinterpret(long count) { return new VkClusterAccelerationStructureCommandsInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -452,137 +454,131 @@ public sealed class VkClusterAccelerationStructureCommandsInfoNV extends GroupTy
     /// @return `this`
     public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlags(int value) { addressResolutionFlags(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkClusterAccelerationStructureCommandsInfoNV].
-    public static final class Buffer extends VkClusterAccelerationStructureCommandsInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkClusterAccelerationStructureCommandsInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkClusterAccelerationStructureCommandsInfoNV`
+    public VkClusterAccelerationStructureCommandsInfoNV asSlice(long index) { return new VkClusterAccelerationStructureCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClusterAccelerationStructureCommandsInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClusterAccelerationStructureCommandsInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkClusterAccelerationStructureCommandsInfoNV`
+    public VkClusterAccelerationStructureCommandsInfoNV asSlice(long index, long count) { return new VkClusterAccelerationStructureCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClusterAccelerationStructureCommandsInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV at(long index, Consumer<VkClusterAccelerationStructureCommandsInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureCommandsInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkClusterAccelerationStructureCommandsInfoNV`
-        public VkClusterAccelerationStructureCommandsInfoNV asSlice(long index) { return new VkClusterAccelerationStructureCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureCommandsInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkClusterAccelerationStructureCommandsInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `input` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment inputAt(long index) { return input(this.segment(), index); }
+    /// Sets `input` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV inputAt(long index, MemorySegment value) { input(this.segment(), index, value); return this; }
+    /// Accepts `input` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV inputAt(long index, Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV.of(inputAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `dstImplicitData` at the given index}
+    /// @param index the index of the struct buffer
+    public long dstImplicitDataAt(long index) { return dstImplicitData(this.segment(), index); }
+    /// Sets `dstImplicitData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV dstImplicitDataAt(long index, long value) { dstImplicitData(this.segment(), index, value); return this; }
 
-        /// {@return `input` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment inputAt(long index) { return input(this.segment(), index); }
-        /// Sets `input` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer inputAt(long index, MemorySegment value) { input(this.segment(), index, value); return this; }
-        /// Accepts `input` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer inputAt(long index, Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureInputInfoNV.of(inputAt(index))); return this; }
+    /// {@return `scratchData` at the given index}
+    /// @param index the index of the struct buffer
+    public long scratchDataAt(long index) { return scratchData(this.segment(), index); }
+    /// Sets `scratchData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV scratchDataAt(long index, long value) { scratchData(this.segment(), index, value); return this; }
 
-        /// {@return `dstImplicitData` at the given index}
-        /// @param index the index of the struct buffer
-        public long dstImplicitDataAt(long index) { return dstImplicitData(this.segment(), index); }
-        /// Sets `dstImplicitData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstImplicitDataAt(long index, long value) { dstImplicitData(this.segment(), index, value); return this; }
+    /// {@return `dstAddressesArray` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment dstAddressesArrayAt(long index) { return dstAddressesArray(this.segment(), index); }
+    /// Sets `dstAddressesArray` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArrayAt(long index, MemorySegment value) { dstAddressesArray(this.segment(), index, value); return this; }
+    /// Accepts `dstAddressesArray` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV dstAddressesArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstAddressesArrayAt(index))); return this; }
 
-        /// {@return `scratchData` at the given index}
-        /// @param index the index of the struct buffer
-        public long scratchDataAt(long index) { return scratchData(this.segment(), index); }
-        /// Sets `scratchData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer scratchDataAt(long index, long value) { scratchData(this.segment(), index, value); return this; }
+    /// {@return `dstSizesArray` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment dstSizesArrayAt(long index) { return dstSizesArray(this.segment(), index); }
+    /// Sets `dstSizesArray` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArrayAt(long index, MemorySegment value) { dstSizesArray(this.segment(), index, value); return this; }
+    /// Accepts `dstSizesArray` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV dstSizesArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstSizesArrayAt(index))); return this; }
 
-        /// {@return `dstAddressesArray` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment dstAddressesArrayAt(long index) { return dstAddressesArray(this.segment(), index); }
-        /// Sets `dstAddressesArray` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstAddressesArrayAt(long index, MemorySegment value) { dstAddressesArray(this.segment(), index, value); return this; }
-        /// Accepts `dstAddressesArray` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer dstAddressesArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstAddressesArrayAt(index))); return this; }
+    /// {@return `srcInfosArray` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment srcInfosArrayAt(long index) { return srcInfosArray(this.segment(), index); }
+    /// Sets `srcInfosArray` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArrayAt(long index, MemorySegment value) { srcInfosArray(this.segment(), index, value); return this; }
+    /// Accepts `srcInfosArray` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(srcInfosArrayAt(index))); return this; }
 
-        /// {@return `dstSizesArray` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment dstSizesArrayAt(long index) { return dstSizesArray(this.segment(), index); }
-        /// Sets `dstSizesArray` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstSizesArrayAt(long index, MemorySegment value) { dstSizesArray(this.segment(), index, value); return this; }
-        /// Accepts `dstSizesArray` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer dstSizesArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(dstSizesArrayAt(index))); return this; }
+    /// {@return `srcInfosCount` at the given index}
+    /// @param index the index of the struct buffer
+    public long srcInfosCountAt(long index) { return srcInfosCount(this.segment(), index); }
+    /// Sets `srcInfosCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV srcInfosCountAt(long index, long value) { srcInfosCount(this.segment(), index, value); return this; }
 
-        /// {@return `srcInfosArray` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment srcInfosArrayAt(long index) { return srcInfosArray(this.segment(), index); }
-        /// Sets `srcInfosArray` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcInfosArrayAt(long index, MemorySegment value) { srcInfosArray(this.segment(), index, value); return this; }
-        /// Accepts `srcInfosArray` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer srcInfosArrayAt(long index, Consumer<overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkStridedDeviceAddressRegionKHR.of(srcInfosArrayAt(index))); return this; }
+    /// {@return `addressResolutionFlags` at the given index}
+    /// @param index the index of the struct buffer
+    public int addressResolutionFlagsAt(long index) { return addressResolutionFlags(this.segment(), index); }
+    /// Sets `addressResolutionFlags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureCommandsInfoNV addressResolutionFlagsAt(long index, int value) { addressResolutionFlags(this.segment(), index, value); return this; }
 
-        /// {@return `srcInfosCount` at the given index}
-        /// @param index the index of the struct buffer
-        public long srcInfosCountAt(long index) { return srcInfosCount(this.segment(), index); }
-        /// Sets `srcInfosCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcInfosCountAt(long index, long value) { srcInfosCount(this.segment(), index, value); return this; }
-
-        /// {@return `addressResolutionFlags` at the given index}
-        /// @param index the index of the struct buffer
-        public int addressResolutionFlagsAt(long index) { return addressResolutionFlags(this.segment(), index); }
-        /// Sets `addressResolutionFlags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer addressResolutionFlagsAt(long index, int value) { addressResolutionFlags(this.segment(), index, value); return this; }
-
-    }
 }

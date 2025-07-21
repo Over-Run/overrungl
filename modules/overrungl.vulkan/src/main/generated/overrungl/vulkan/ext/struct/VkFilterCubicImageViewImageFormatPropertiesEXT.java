@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 filterCubicMinmax;
 /// };
 /// ```
-public sealed class VkFilterCubicImageViewImageFormatPropertiesEXT extends GroupType {
+public final class VkFilterCubicImageViewImageFormatPropertiesEXT extends GroupType {
     /// The struct layout of `VkFilterCubicImageViewImageFormatPropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkFilterCubicImageViewImageFormatPropertiesEXT extends Group
     public static final VarHandle VH_filterCubicMinmax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("filterCubicMinmax"));
 
     /// Creates `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkFilterCubicImageViewImageFormatPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkFilterCubicImageViewImageFormatPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFilterCubicImageViewImageFormatPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkFilterCubicImageViewImageFormatPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFilterCubicImageViewImageFormatPropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkFilterCubicImageViewImageFormatPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFilterCubicImageViewImageFormatPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkFilterCubicImageViewImageFormatPropertiesEXT extends Group
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkFilterCubicImageViewImageFormatPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkFilterCubicImageViewImageFormatPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkFilterCubicImageViewImageFormatPropertiesEXT`
-    public static VkFilterCubicImageViewImageFormatPropertiesEXT alloc(SegmentAllocator allocator) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkFilterCubicImageViewImageFormatPropertiesEXT alloc(SegmentAllocator allocator) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkFilterCubicImageViewImageFormatPropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkFilterCubicImageViewImageFormatPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkFilterCubicImageViewImageFormatPropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkFilterCubicImageViewImageFormatPropertiesEXT extends Group
     /// @return `this`
     public VkFilterCubicImageViewImageFormatPropertiesEXT copyFrom(VkFilterCubicImageViewImageFormatPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkFilterCubicImageViewImageFormatPropertiesEXT reinterpret(long count) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkFilterCubicImageViewImageFormatPropertiesEXT extends Group
     /// @return `this`
     public VkFilterCubicImageViewImageFormatPropertiesEXT filterCubicMinmax(int value) { filterCubicMinmax(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkFilterCubicImageViewImageFormatPropertiesEXT].
-    public static final class Buffer extends VkFilterCubicImageViewImageFormatPropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`
+    public VkFilterCubicImageViewImageFormatPropertiesEXT asSlice(long index) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkFilterCubicImageViewImageFormatPropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`
+    public VkFilterCubicImageViewImageFormatPropertiesEXT asSlice(long index, long count) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkFilterCubicImageViewImageFormatPropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkFilterCubicImageViewImageFormatPropertiesEXT at(long index, Consumer<VkFilterCubicImageViewImageFormatPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`
-        public VkFilterCubicImageViewImageFormatPropertiesEXT asSlice(long index) { return new VkFilterCubicImageViewImageFormatPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFilterCubicImageViewImageFormatPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkFilterCubicImageViewImageFormatPropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFilterCubicImageViewImageFormatPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `filterCubic` at the given index}
+    /// @param index the index of the struct buffer
+    public int filterCubicAt(long index) { return filterCubic(this.segment(), index); }
+    /// Sets `filterCubic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFilterCubicImageViewImageFormatPropertiesEXT filterCubicAt(long index, int value) { filterCubic(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `filterCubicMinmax` at the given index}
+    /// @param index the index of the struct buffer
+    public int filterCubicMinmaxAt(long index) { return filterCubicMinmax(this.segment(), index); }
+    /// Sets `filterCubicMinmax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFilterCubicImageViewImageFormatPropertiesEXT filterCubicMinmaxAt(long index, int value) { filterCubicMinmax(this.segment(), index, value); return this; }
 
-        /// {@return `filterCubic` at the given index}
-        /// @param index the index of the struct buffer
-        public int filterCubicAt(long index) { return filterCubic(this.segment(), index); }
-        /// Sets `filterCubic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer filterCubicAt(long index, int value) { filterCubic(this.segment(), index, value); return this; }
-
-        /// {@return `filterCubicMinmax` at the given index}
-        /// @param index the index of the struct buffer
-        public int filterCubicMinmaxAt(long index) { return filterCubicMinmax(this.segment(), index); }
-        /// Sets `filterCubicMinmax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer filterCubicMinmaxAt(long index, int value) { filterCubicMinmax(this.segment(), index, value); return this; }
-
-    }
 }

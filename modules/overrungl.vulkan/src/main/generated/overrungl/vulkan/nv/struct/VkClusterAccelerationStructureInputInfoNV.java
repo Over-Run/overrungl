@@ -21,9 +21,9 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -37,7 +37,7 @@ import java.util.function.*;
 ///     (union VkClusterAccelerationStructureOpInputNV) VkClusterAccelerationStructureOpInputNV opInput;
 /// };
 /// ```
-public sealed class VkClusterAccelerationStructureInputInfoNV extends GroupType {
+public final class VkClusterAccelerationStructureInputInfoNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureInputInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -90,20 +90,21 @@ public sealed class VkClusterAccelerationStructureInputInfoNV extends GroupType 
     public static final MemoryLayout LAYOUT_opInput = LAYOUT.select(PathElement.groupElement("opInput"));
 
     /// Creates `VkClusterAccelerationStructureInputInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkClusterAccelerationStructureInputInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkClusterAccelerationStructureInputInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClusterAccelerationStructureInputInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClusterAccelerationStructureInputInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureInputInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClusterAccelerationStructureInputInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClusterAccelerationStructureInputInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureInputInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClusterAccelerationStructureInputInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureInputInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClusterAccelerationStructureInputInfoNV` with the given segment.
     ///
@@ -111,18 +112,18 @@ public sealed class VkClusterAccelerationStructureInputInfoNV extends GroupType 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClusterAccelerationStructureInputInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureInputInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
-    public static VkClusterAccelerationStructureInputInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureInputInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkClusterAccelerationStructureInputInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureInputInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClusterAccelerationStructureInputInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClusterAccelerationStructureInputInfoNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureInputInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkClusterAccelerationStructureInputInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -206,9 +207,10 @@ public sealed class VkClusterAccelerationStructureInputInfoNV extends GroupType 
     /// @return `this`
     public VkClusterAccelerationStructureInputInfoNV copyFrom(VkClusterAccelerationStructureInputInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClusterAccelerationStructureInputInfoNV reinterpret(long count) { return new VkClusterAccelerationStructureInputInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -326,95 +328,89 @@ public sealed class VkClusterAccelerationStructureInputInfoNV extends GroupType 
     /// @return `this`
     public VkClusterAccelerationStructureInputInfoNV opInput(Consumer<overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV> func) { func.accept(overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV.of(opInput())); return this; }
 
-    /// A buffer of [VkClusterAccelerationStructureInputInfoNV].
-    public static final class Buffer extends VkClusterAccelerationStructureInputInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkClusterAccelerationStructureInputInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkClusterAccelerationStructureInputInfoNV`
+    public VkClusterAccelerationStructureInputInfoNV asSlice(long index) { return new VkClusterAccelerationStructureInputInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClusterAccelerationStructureInputInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClusterAccelerationStructureInputInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkClusterAccelerationStructureInputInfoNV`
+    public VkClusterAccelerationStructureInputInfoNV asSlice(long index, long count) { return new VkClusterAccelerationStructureInputInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClusterAccelerationStructureInputInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV at(long index, Consumer<VkClusterAccelerationStructureInputInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureInputInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkClusterAccelerationStructureInputInfoNV`
-        public VkClusterAccelerationStructureInputInfoNV asSlice(long index) { return new VkClusterAccelerationStructureInputInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureInputInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkClusterAccelerationStructureInputInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxAccelerationStructureCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxAccelerationStructureCountAt(long index) { return maxAccelerationStructureCount(this.segment(), index); }
+    /// Sets `maxAccelerationStructureCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV maxAccelerationStructureCountAt(long index, int value) { maxAccelerationStructureCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `maxAccelerationStructureCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxAccelerationStructureCountAt(long index) { return maxAccelerationStructureCount(this.segment(), index); }
-        /// Sets `maxAccelerationStructureCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxAccelerationStructureCountAt(long index, int value) { maxAccelerationStructureCount(this.segment(), index, value); return this; }
+    /// {@return `opType` at the given index}
+    /// @param index the index of the struct buffer
+    public int opTypeAt(long index) { return opType(this.segment(), index); }
+    /// Sets `opType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV opTypeAt(long index, int value) { opType(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `opMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int opModeAt(long index) { return opMode(this.segment(), index); }
+    /// Sets `opMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV opModeAt(long index, int value) { opMode(this.segment(), index, value); return this; }
 
-        /// {@return `opType` at the given index}
-        /// @param index the index of the struct buffer
-        public int opTypeAt(long index) { return opType(this.segment(), index); }
-        /// Sets `opType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer opTypeAt(long index, int value) { opType(this.segment(), index, value); return this; }
+    /// {@return `opInput` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment opInputAt(long index) { return opInput(this.segment(), index); }
+    /// Sets `opInput` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV opInputAt(long index, MemorySegment value) { opInput(this.segment(), index, value); return this; }
+    /// Accepts `opInput` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureInputInfoNV opInputAt(long index, Consumer<overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV> func) { func.accept(overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV.of(opInputAt(index))); return this; }
 
-        /// {@return `opMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int opModeAt(long index) { return opMode(this.segment(), index); }
-        /// Sets `opMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer opModeAt(long index, int value) { opMode(this.segment(), index, value); return this; }
-
-        /// {@return `opInput` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment opInputAt(long index) { return opInput(this.segment(), index); }
-        /// Sets `opInput` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer opInputAt(long index, MemorySegment value) { opInput(this.segment(), index, value); return this; }
-        /// Accepts `opInput` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer opInputAt(long index, Consumer<overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV> func) { func.accept(overrungl.vulkan.nv.union.VkClusterAccelerationStructureOpInputNV.of(opInputAt(index))); return this; }
-
-    }
 }

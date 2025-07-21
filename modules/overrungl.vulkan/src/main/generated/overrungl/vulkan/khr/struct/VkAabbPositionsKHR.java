@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     float maxZ;
 /// };
 /// ```
-public sealed class VkAabbPositionsKHR extends GroupType {
+public final class VkAabbPositionsKHR extends GroupType {
     /// The struct layout of `VkAabbPositionsKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("minX"),
@@ -83,20 +84,21 @@ public sealed class VkAabbPositionsKHR extends GroupType {
     public static final VarHandle VH_maxZ = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxZ"));
 
     /// Creates `VkAabbPositionsKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkAabbPositionsKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAabbPositionsKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAabbPositionsKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAabbPositionsKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAabbPositionsKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAabbPositionsKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAabbPositionsKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAabbPositionsKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAabbPositionsKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAabbPositionsKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAabbPositionsKHR` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkAabbPositionsKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAabbPositionsKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAabbPositionsKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAabbPositionsKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAabbPositionsKHR`
-    public static VkAabbPositionsKHR alloc(SegmentAllocator allocator) { return new VkAabbPositionsKHR(allocator.allocate(LAYOUT)); }
+    public static VkAabbPositionsKHR alloc(SegmentAllocator allocator) { return new VkAabbPositionsKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAabbPositionsKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAabbPositionsKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAabbPositionsKHR alloc(SegmentAllocator allocator, long count) { return new VkAabbPositionsKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAabbPositionsKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkAabbPositionsKHR extends GroupType {
     /// @return `this`
     public VkAabbPositionsKHR copyFrom(VkAabbPositionsKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAabbPositionsKHR reinterpret(long count) { return new VkAabbPositionsKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `minX` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkAabbPositionsKHR extends GroupType {
     /// @return `this`
     public VkAabbPositionsKHR maxZ(float value) { maxZ(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAabbPositionsKHR].
-    public static final class Buffer extends VkAabbPositionsKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkAabbPositionsKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAabbPositionsKHR`
+    public VkAabbPositionsKHR asSlice(long index) { return new VkAabbPositionsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAabbPositionsKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAabbPositionsKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAabbPositionsKHR`
+    public VkAabbPositionsKHR asSlice(long index, long count) { return new VkAabbPositionsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAabbPositionsKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAabbPositionsKHR at(long index, Consumer<VkAabbPositionsKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAabbPositionsKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAabbPositionsKHR`
-        public VkAabbPositionsKHR asSlice(long index) { return new VkAabbPositionsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `minX` at the given index}
+    /// @param index the index of the struct buffer
+    public float minXAt(long index) { return minX(this.segment(), index); }
+    /// Sets `minX` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAabbPositionsKHR minXAt(long index, float value) { minX(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAabbPositionsKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAabbPositionsKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `minY` at the given index}
+    /// @param index the index of the struct buffer
+    public float minYAt(long index) { return minY(this.segment(), index); }
+    /// Sets `minY` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAabbPositionsKHR minYAt(long index, float value) { minY(this.segment(), index, value); return this; }
 
-        /// {@return `minX` at the given index}
-        /// @param index the index of the struct buffer
-        public float minXAt(long index) { return minX(this.segment(), index); }
-        /// Sets `minX` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minXAt(long index, float value) { minX(this.segment(), index, value); return this; }
+    /// {@return `minZ` at the given index}
+    /// @param index the index of the struct buffer
+    public float minZAt(long index) { return minZ(this.segment(), index); }
+    /// Sets `minZ` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAabbPositionsKHR minZAt(long index, float value) { minZ(this.segment(), index, value); return this; }
 
-        /// {@return `minY` at the given index}
-        /// @param index the index of the struct buffer
-        public float minYAt(long index) { return minY(this.segment(), index); }
-        /// Sets `minY` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minYAt(long index, float value) { minY(this.segment(), index, value); return this; }
+    /// {@return `maxX` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxXAt(long index) { return maxX(this.segment(), index); }
+    /// Sets `maxX` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAabbPositionsKHR maxXAt(long index, float value) { maxX(this.segment(), index, value); return this; }
 
-        /// {@return `minZ` at the given index}
-        /// @param index the index of the struct buffer
-        public float minZAt(long index) { return minZ(this.segment(), index); }
-        /// Sets `minZ` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minZAt(long index, float value) { minZ(this.segment(), index, value); return this; }
+    /// {@return `maxY` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxYAt(long index) { return maxY(this.segment(), index); }
+    /// Sets `maxY` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAabbPositionsKHR maxYAt(long index, float value) { maxY(this.segment(), index, value); return this; }
 
-        /// {@return `maxX` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxXAt(long index) { return maxX(this.segment(), index); }
-        /// Sets `maxX` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxXAt(long index, float value) { maxX(this.segment(), index, value); return this; }
+    /// {@return `maxZ` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxZAt(long index) { return maxZ(this.segment(), index); }
+    /// Sets `maxZ` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAabbPositionsKHR maxZAt(long index, float value) { maxZ(this.segment(), index, value); return this; }
 
-        /// {@return `maxY` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxYAt(long index) { return maxY(this.segment(), index); }
-        /// Sets `maxY` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxYAt(long index, float value) { maxY(this.segment(), index, value); return this; }
-
-        /// {@return `maxZ` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxZAt(long index) { return maxZ(this.segment(), index); }
-        /// Sets `maxZ` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxZAt(long index, float value) { maxZ(this.segment(), index, value); return this; }
-
-    }
 }

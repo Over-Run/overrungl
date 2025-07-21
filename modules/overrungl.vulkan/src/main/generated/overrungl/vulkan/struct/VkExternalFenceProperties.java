@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkExternalFenceFeatureFlags externalFenceFeatures;
 /// };
 /// ```
-public sealed class VkExternalFenceProperties extends GroupType {
+public final class VkExternalFenceProperties extends GroupType {
     /// The struct layout of `VkExternalFenceProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkExternalFenceProperties extends GroupType {
     public static final VarHandle VH_externalFenceFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("externalFenceFeatures"));
 
     /// Creates `VkExternalFenceProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkExternalFenceProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkExternalFenceProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkExternalFenceProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkExternalFenceProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExternalFenceProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExternalFenceProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExternalFenceProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExternalFenceProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkExternalFenceProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExternalFenceProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkExternalFenceProperties` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkExternalFenceProperties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkExternalFenceProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkExternalFenceProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkExternalFenceProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExternalFenceProperties`
-    public static VkExternalFenceProperties alloc(SegmentAllocator allocator) { return new VkExternalFenceProperties(allocator.allocate(LAYOUT)); }
+    public static VkExternalFenceProperties alloc(SegmentAllocator allocator) { return new VkExternalFenceProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkExternalFenceProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExternalFenceProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkExternalFenceProperties alloc(SegmentAllocator allocator, long count) { return new VkExternalFenceProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkExternalFenceProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkExternalFenceProperties extends GroupType {
     /// @return `this`
     public VkExternalFenceProperties copyFrom(VkExternalFenceProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkExternalFenceProperties reinterpret(long count) { return new VkExternalFenceProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkExternalFenceProperties extends GroupType {
     /// @return `this`
     public VkExternalFenceProperties externalFenceFeatures(int value) { externalFenceFeatures(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkExternalFenceProperties].
-    public static final class Buffer extends VkExternalFenceProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkExternalFenceProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExternalFenceProperties`
+    public VkExternalFenceProperties asSlice(long index) { return new VkExternalFenceProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkExternalFenceProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkExternalFenceProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExternalFenceProperties`
+    public VkExternalFenceProperties asSlice(long index, long count) { return new VkExternalFenceProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkExternalFenceProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkExternalFenceProperties at(long index, Consumer<VkExternalFenceProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkExternalFenceProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkExternalFenceProperties`
-        public VkExternalFenceProperties asSlice(long index) { return new VkExternalFenceProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExternalFenceProperties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkExternalFenceProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkExternalFenceProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExternalFenceProperties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `exportFromImportedHandleTypes` at the given index}
+    /// @param index the index of the struct buffer
+    public int exportFromImportedHandleTypesAt(long index) { return exportFromImportedHandleTypes(this.segment(), index); }
+    /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExternalFenceProperties exportFromImportedHandleTypesAt(long index, int value) { exportFromImportedHandleTypes(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `compatibleHandleTypes` at the given index}
+    /// @param index the index of the struct buffer
+    public int compatibleHandleTypesAt(long index) { return compatibleHandleTypes(this.segment(), index); }
+    /// Sets `compatibleHandleTypes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExternalFenceProperties compatibleHandleTypesAt(long index, int value) { compatibleHandleTypes(this.segment(), index, value); return this; }
 
-        /// {@return `exportFromImportedHandleTypes` at the given index}
-        /// @param index the index of the struct buffer
-        public int exportFromImportedHandleTypesAt(long index) { return exportFromImportedHandleTypes(this.segment(), index); }
-        /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer exportFromImportedHandleTypesAt(long index, int value) { exportFromImportedHandleTypes(this.segment(), index, value); return this; }
+    /// {@return `externalFenceFeatures` at the given index}
+    /// @param index the index of the struct buffer
+    public int externalFenceFeaturesAt(long index) { return externalFenceFeatures(this.segment(), index); }
+    /// Sets `externalFenceFeatures` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExternalFenceProperties externalFenceFeaturesAt(long index, int value) { externalFenceFeatures(this.segment(), index, value); return this; }
 
-        /// {@return `compatibleHandleTypes` at the given index}
-        /// @param index the index of the struct buffer
-        public int compatibleHandleTypesAt(long index) { return compatibleHandleTypes(this.segment(), index); }
-        /// Sets `compatibleHandleTypes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer compatibleHandleTypesAt(long index, int value) { compatibleHandleTypes(this.segment(), index, value); return this; }
-
-        /// {@return `externalFenceFeatures` at the given index}
-        /// @param index the index of the struct buffer
-        public int externalFenceFeaturesAt(long index) { return externalFenceFeatures(this.segment(), index); }
-        /// Sets `externalFenceFeatures` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer externalFenceFeaturesAt(long index, int value) { externalFenceFeatures(this.segment(), index, value); return this; }
-
-    }
 }

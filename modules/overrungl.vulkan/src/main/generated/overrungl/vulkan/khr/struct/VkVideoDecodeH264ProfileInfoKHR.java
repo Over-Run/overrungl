@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (int) VkVideoDecodeH264PictureLayoutFlagBitsKHR pictureLayout;
 /// };
 /// ```
-public sealed class VkVideoDecodeH264ProfileInfoKHR extends GroupType {
+public final class VkVideoDecodeH264ProfileInfoKHR extends GroupType {
     /// The struct layout of `VkVideoDecodeH264ProfileInfoKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkVideoDecodeH264ProfileInfoKHR extends GroupType {
     public static final VarHandle VH_pictureLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pictureLayout"));
 
     /// Creates `VkVideoDecodeH264ProfileInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkVideoDecodeH264ProfileInfoKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVideoDecodeH264ProfileInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVideoDecodeH264ProfileInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVideoDecodeH264ProfileInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeH264ProfileInfoKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoDecodeH264ProfileInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoDecodeH264ProfileInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeH264ProfileInfoKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVideoDecodeH264ProfileInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeH264ProfileInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVideoDecodeH264ProfileInfoKHR` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkVideoDecodeH264ProfileInfoKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVideoDecodeH264ProfileInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeH264ProfileInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVideoDecodeH264ProfileInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoDecodeH264ProfileInfoKHR`
-    public static VkVideoDecodeH264ProfileInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoDecodeH264ProfileInfoKHR(allocator.allocate(LAYOUT)); }
+    public static VkVideoDecodeH264ProfileInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoDecodeH264ProfileInfoKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVideoDecodeH264ProfileInfoKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoDecodeH264ProfileInfoKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVideoDecodeH264ProfileInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeH264ProfileInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVideoDecodeH264ProfileInfoKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkVideoDecodeH264ProfileInfoKHR extends GroupType {
     /// @return `this`
     public VkVideoDecodeH264ProfileInfoKHR copyFrom(VkVideoDecodeH264ProfileInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVideoDecodeH264ProfileInfoKHR reinterpret(long count) { return new VkVideoDecodeH264ProfileInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkVideoDecodeH264ProfileInfoKHR extends GroupType {
     /// @return `this`
     public VkVideoDecodeH264ProfileInfoKHR pictureLayout(int value) { pictureLayout(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkVideoDecodeH264ProfileInfoKHR].
-    public static final class Buffer extends VkVideoDecodeH264ProfileInfoKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkVideoDecodeH264ProfileInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoDecodeH264ProfileInfoKHR`
+    public VkVideoDecodeH264ProfileInfoKHR asSlice(long index) { return new VkVideoDecodeH264ProfileInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVideoDecodeH264ProfileInfoKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVideoDecodeH264ProfileInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoDecodeH264ProfileInfoKHR`
+    public VkVideoDecodeH264ProfileInfoKHR asSlice(long index, long count) { return new VkVideoDecodeH264ProfileInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVideoDecodeH264ProfileInfoKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVideoDecodeH264ProfileInfoKHR at(long index, Consumer<VkVideoDecodeH264ProfileInfoKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVideoDecodeH264ProfileInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVideoDecodeH264ProfileInfoKHR`
-        public VkVideoDecodeH264ProfileInfoKHR asSlice(long index) { return new VkVideoDecodeH264ProfileInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264ProfileInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVideoDecodeH264ProfileInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVideoDecodeH264ProfileInfoKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264ProfileInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `stdProfileIdc` at the given index}
+    /// @param index the index of the struct buffer
+    public int stdProfileIdcAt(long index) { return stdProfileIdc(this.segment(), index); }
+    /// Sets `stdProfileIdc` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264ProfileInfoKHR stdProfileIdcAt(long index, int value) { stdProfileIdc(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pictureLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public int pictureLayoutAt(long index) { return pictureLayout(this.segment(), index); }
+    /// Sets `pictureLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264ProfileInfoKHR pictureLayoutAt(long index, int value) { pictureLayout(this.segment(), index, value); return this; }
 
-        /// {@return `stdProfileIdc` at the given index}
-        /// @param index the index of the struct buffer
-        public int stdProfileIdcAt(long index) { return stdProfileIdc(this.segment(), index); }
-        /// Sets `stdProfileIdc` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stdProfileIdcAt(long index, int value) { stdProfileIdc(this.segment(), index, value); return this; }
-
-        /// {@return `pictureLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public int pictureLayoutAt(long index) { return pictureLayout(this.segment(), index); }
-        /// Sets `pictureLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pictureLayoutAt(long index, int value) { pictureLayout(this.segment(), index, value); return this; }
-
-    }
 }

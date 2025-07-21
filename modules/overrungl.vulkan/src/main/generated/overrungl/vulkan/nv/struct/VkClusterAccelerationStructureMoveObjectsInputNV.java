@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceSize maxMovedBytes;
 /// };
 /// ```
-public sealed class VkClusterAccelerationStructureMoveObjectsInputNV extends GroupType {
+public final class VkClusterAccelerationStructureMoveObjectsInputNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureMoveObjectsInputNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkClusterAccelerationStructureMoveObjectsInputNV extends Gro
     public static final VarHandle VH_maxMovedBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxMovedBytes"));
 
     /// Creates `VkClusterAccelerationStructureMoveObjectsInputNV` with the given segment.
-    /// @param segment the memory segment
-    public VkClusterAccelerationStructureMoveObjectsInputNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkClusterAccelerationStructureMoveObjectsInputNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClusterAccelerationStructureMoveObjectsInputNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClusterAccelerationStructureMoveObjectsInputNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureMoveObjectsInputNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClusterAccelerationStructureMoveObjectsInputNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClusterAccelerationStructureMoveObjectsInputNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureMoveObjectsInputNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClusterAccelerationStructureMoveObjectsInputNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureMoveObjectsInputNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClusterAccelerationStructureMoveObjectsInputNV` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkClusterAccelerationStructureMoveObjectsInputNV extends Gro
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClusterAccelerationStructureMoveObjectsInputNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureMoveObjectsInputNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClusterAccelerationStructureMoveObjectsInputNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClusterAccelerationStructureMoveObjectsInputNV`
-    public static VkClusterAccelerationStructureMoveObjectsInputNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureMoveObjectsInputNV(allocator.allocate(LAYOUT)); }
+    public static VkClusterAccelerationStructureMoveObjectsInputNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureMoveObjectsInputNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClusterAccelerationStructureMoveObjectsInputNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClusterAccelerationStructureMoveObjectsInputNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClusterAccelerationStructureMoveObjectsInputNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureMoveObjectsInputNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkClusterAccelerationStructureMoveObjectsInputNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkClusterAccelerationStructureMoveObjectsInputNV extends Gro
     /// @return `this`
     public VkClusterAccelerationStructureMoveObjectsInputNV copyFrom(VkClusterAccelerationStructureMoveObjectsInputNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClusterAccelerationStructureMoveObjectsInputNV reinterpret(long count) { return new VkClusterAccelerationStructureMoveObjectsInputNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkClusterAccelerationStructureMoveObjectsInputNV extends Gro
     /// @return `this`
     public VkClusterAccelerationStructureMoveObjectsInputNV maxMovedBytes(long value) { maxMovedBytes(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkClusterAccelerationStructureMoveObjectsInputNV].
-    public static final class Buffer extends VkClusterAccelerationStructureMoveObjectsInputNV {
-        private final long elementCount;
+    /// Creates a slice of `VkClusterAccelerationStructureMoveObjectsInputNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkClusterAccelerationStructureMoveObjectsInputNV`
+    public VkClusterAccelerationStructureMoveObjectsInputNV asSlice(long index) { return new VkClusterAccelerationStructureMoveObjectsInputNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClusterAccelerationStructureMoveObjectsInputNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClusterAccelerationStructureMoveObjectsInputNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkClusterAccelerationStructureMoveObjectsInputNV`
+    public VkClusterAccelerationStructureMoveObjectsInputNV asSlice(long index, long count) { return new VkClusterAccelerationStructureMoveObjectsInputNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClusterAccelerationStructureMoveObjectsInputNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClusterAccelerationStructureMoveObjectsInputNV at(long index, Consumer<VkClusterAccelerationStructureMoveObjectsInputNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureMoveObjectsInputNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkClusterAccelerationStructureMoveObjectsInputNV`
-        public VkClusterAccelerationStructureMoveObjectsInputNV asSlice(long index) { return new VkClusterAccelerationStructureMoveObjectsInputNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureMoveObjectsInputNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureMoveObjectsInputNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkClusterAccelerationStructureMoveObjectsInputNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureMoveObjectsInputNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `type` at the given index}
+    /// @param index the index of the struct buffer
+    public int typeAt(long index) { return type(this.segment(), index); }
+    /// Sets `type` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureMoveObjectsInputNV typeAt(long index, int value) { type(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `noMoveOverlap` at the given index}
+    /// @param index the index of the struct buffer
+    public int noMoveOverlapAt(long index) { return noMoveOverlap(this.segment(), index); }
+    /// Sets `noMoveOverlap` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureMoveObjectsInputNV noMoveOverlapAt(long index, int value) { noMoveOverlap(this.segment(), index, value); return this; }
 
-        /// {@return `type` at the given index}
-        /// @param index the index of the struct buffer
-        public int typeAt(long index) { return type(this.segment(), index); }
-        /// Sets `type` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer typeAt(long index, int value) { type(this.segment(), index, value); return this; }
+    /// {@return `maxMovedBytes` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxMovedBytesAt(long index) { return maxMovedBytes(this.segment(), index); }
+    /// Sets `maxMovedBytes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureMoveObjectsInputNV maxMovedBytesAt(long index, long value) { maxMovedBytes(this.segment(), index, value); return this; }
 
-        /// {@return `noMoveOverlap` at the given index}
-        /// @param index the index of the struct buffer
-        public int noMoveOverlapAt(long index) { return noMoveOverlap(this.segment(), index); }
-        /// Sets `noMoveOverlap` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer noMoveOverlapAt(long index, int value) { noMoveOverlap(this.segment(), index, value); return this; }
-
-        /// {@return `maxMovedBytes` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxMovedBytesAt(long index) { return maxMovedBytes(this.segment(), index); }
-        /// Sets `maxMovedBytes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMovedBytesAt(long index, long value) { maxMovedBytes(this.segment(), index, value); return this; }
-
-    }
 }

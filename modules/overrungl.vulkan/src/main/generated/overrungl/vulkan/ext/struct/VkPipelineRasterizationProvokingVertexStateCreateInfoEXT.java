@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (int) VkProvokingVertexModeEXT provokingVertexMode;
 /// };
 /// ```
-public sealed class VkPipelineRasterizationProvokingVertexStateCreateInfoEXT extends GroupType {
+public final class VkPipelineRasterizationProvokingVertexStateCreateInfoEXT extends GroupType {
     /// The struct layout of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPipelineRasterizationProvokingVertexStateCreateInfoEXT ext
     public static final VarHandle VH_provokingVertexMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("provokingVertexMode"));
 
     /// Creates `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPipelineRasterizationProvokingVertexStateCreateInfoEXT ext
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
-    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPipelineRasterizationProvokingVertexStateCreateInfoEXT ext
     /// @return `this`
     public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT copyFrom(VkPipelineRasterizationProvokingVertexStateCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT reinterpret(long count) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPipelineRasterizationProvokingVertexStateCreateInfoEXT ext
     /// @return `this`
     public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT provokingVertexMode(int value) { provokingVertexMode(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineRasterizationProvokingVertexStateCreateInfoEXT].
-    public static final class Buffer extends VkPipelineRasterizationProvokingVertexStateCreateInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT asSlice(long index) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT asSlice(long index, long count) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT at(long index, Consumer<VkPipelineRasterizationProvokingVertexStateCreateInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
-        public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT asSlice(long index) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `provokingVertexMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int provokingVertexModeAt(long index) { return provokingVertexMode(this.segment(), index); }
+    /// Sets `provokingVertexMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationProvokingVertexStateCreateInfoEXT provokingVertexModeAt(long index, int value) { provokingVertexMode(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `provokingVertexMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int provokingVertexModeAt(long index) { return provokingVertexMode(this.segment(), index); }
-        /// Sets `provokingVertexMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer provokingVertexModeAt(long index, int value) { provokingVertexMode(this.segment(), index, value); return this; }
-
-    }
 }

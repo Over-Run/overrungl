@@ -786,7 +786,7 @@ public class VulkanDemo {
         return VK_API_VERSION_MAJOR(version) + "." + VK_API_VERSION_MINOR(version) + "." + VK_API_VERSION_PATCH(version);
     }
 
-    private static void printLayerProperty(VkLayerProperties.Buffer properties, int i) {
+    private static void printLayerProperty(VkLayerProperties properties, int i) {
         String layerName = MemoryUtil.nativeString(properties.layerNameAt(i));
         int specVersion = properties.specVersionAt(i);
         int implementationVersion = properties.implementationVersionAt(i);
@@ -798,7 +798,7 @@ public class VulkanDemo {
         System.out.println("Description: " + description);
     }
 
-    private static void printExtensionProperties(VkExtensionProperties.Buffer properties, int count) {
+    private static void printExtensionProperties(VkExtensionProperties properties, int count) {
         for (int i = 0; i < count; i++) {
             String extensionName = MemoryUtil.nativeString(properties.extensionNameAt(i));
             int specVersion = properties.specVersionAt(i);

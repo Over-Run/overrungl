@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint8_t shaderModuleIdentifierAlgorithmUUID[16];
 /// };
 /// ```
-public sealed class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT extends GroupType {
+public final class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT extends 
     public static final VarHandle VH_shaderModuleIdentifierAlgorithmUUID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderModuleIdentifierAlgorithmUUID"), PathElement.sequenceElement());
 
     /// Creates `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT extends 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`
-    public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT extends 
     /// @return `this`
     public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT copyFrom(VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -196,64 +199,58 @@ public sealed class VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT extends 
     /// @return `this`
     public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUID(long index0, byte value) { shaderModuleIdentifierAlgorithmUUID(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT].
-    public static final class Buffer extends VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT at(long index, Consumer<VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`
-        public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `shaderModuleIdentifierAlgorithmUUID` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment shaderModuleIdentifierAlgorithmUUIDAt(long index) { return shaderModuleIdentifierAlgorithmUUID(this.segment(), index); }
-        /// {@return `shaderModuleIdentifierAlgorithmUUID` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `shaderModuleIdentifierAlgorithmUUID` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment shaderModuleIdentifierAlgorithmUUIDAt(long index) { return shaderModuleIdentifierAlgorithmUUID(this.segment(), index); }
+    /// {@return `shaderModuleIdentifierAlgorithmUUID` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte shaderModuleIdentifierAlgorithmUUIDAt(long index, long index0) { return shaderModuleIdentifierAlgorithmUUID(this.segment(), index, index0); }
-        /// Sets `shaderModuleIdentifierAlgorithmUUID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderModuleIdentifierAlgorithmUUIDAt(long index, MemorySegment value) { shaderModuleIdentifierAlgorithmUUID(this.segment(), index, value); return this; }
-        /// Sets `shaderModuleIdentifierAlgorithmUUID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderModuleIdentifierAlgorithmUUIDAt(long index, long index0, byte value) { shaderModuleIdentifierAlgorithmUUID(this.segment(), index, index0, value); return this; }
+    /// Sets `shaderModuleIdentifierAlgorithmUUID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUIDAt(long index, MemorySegment value) { shaderModuleIdentifierAlgorithmUUID(this.segment(), index, value); return this; }
+    /// Sets `shaderModuleIdentifierAlgorithmUUID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderModuleIdentifierPropertiesEXT shaderModuleIdentifierAlgorithmUUIDAt(long index, long index0, byte value) { shaderModuleIdentifierAlgorithmUUID(this.segment(), index, index0, value); return this; }
 
-    }
 }

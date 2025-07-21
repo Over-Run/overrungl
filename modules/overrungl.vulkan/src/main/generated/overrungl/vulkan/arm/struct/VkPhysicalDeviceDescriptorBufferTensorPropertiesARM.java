@@ -21,6 +21,7 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     size_t tensorDescriptorSize;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends GroupType {
+public final class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends 
     public static final VarHandle VH_tensorDescriptorSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tensorDescriptorSize"));
 
     /// Creates `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
-    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends 
     /// @return `this`
     public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM copyFrom(VkPhysicalDeviceDescriptorBufferTensorPropertiesARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM reinterpret(long count) { return new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends 
     /// @return `this`
     public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM tensorDescriptorSize(long value) { tensorDescriptorSize(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceDescriptorBufferTensorPropertiesARM].
-    public static final class Buffer extends VkPhysicalDeviceDescriptorBufferTensorPropertiesARM {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM asSlice(long index) { return new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM asSlice(long index, long count) { return new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM at(long index, Consumer<VkPhysicalDeviceDescriptorBufferTensorPropertiesARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
-        public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM asSlice(long index) { return new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `tensorCaptureReplayDescriptorDataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long tensorCaptureReplayDescriptorDataSizeAt(long index) { return tensorCaptureReplayDescriptorDataSize(this.segment(), index); }
+    /// Sets `tensorCaptureReplayDescriptorDataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM tensorCaptureReplayDescriptorDataSizeAt(long index, long value) { tensorCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `tensorViewCaptureReplayDescriptorDataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long tensorViewCaptureReplayDescriptorDataSizeAt(long index) { return tensorViewCaptureReplayDescriptorDataSize(this.segment(), index); }
+    /// Sets `tensorViewCaptureReplayDescriptorDataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM tensorViewCaptureReplayDescriptorDataSizeAt(long index, long value) { tensorViewCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
 
-        /// {@return `tensorCaptureReplayDescriptorDataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long tensorCaptureReplayDescriptorDataSizeAt(long index) { return tensorCaptureReplayDescriptorDataSize(this.segment(), index); }
-        /// Sets `tensorCaptureReplayDescriptorDataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tensorCaptureReplayDescriptorDataSizeAt(long index, long value) { tensorCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+    /// {@return `tensorDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long tensorDescriptorSizeAt(long index) { return tensorDescriptorSize(this.segment(), index); }
+    /// Sets `tensorDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferTensorPropertiesARM tensorDescriptorSizeAt(long index, long value) { tensorDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `tensorViewCaptureReplayDescriptorDataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long tensorViewCaptureReplayDescriptorDataSizeAt(long index) { return tensorViewCaptureReplayDescriptorDataSize(this.segment(), index); }
-        /// Sets `tensorViewCaptureReplayDescriptorDataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tensorViewCaptureReplayDescriptorDataSizeAt(long index, long value) { tensorViewCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
-
-        /// {@return `tensorDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long tensorDescriptorSizeAt(long index) { return tensorDescriptorSize(this.segment(), index); }
-        /// Sets `tensorDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tensorDescriptorSizeAt(long index, long value) { tensorDescriptorSize(this.segment(), index, value); return this; }
-
-    }
 }

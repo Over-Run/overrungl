@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 hostQueryReset;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceHostQueryResetFeatures extends GroupType {
+public final class VkPhysicalDeviceHostQueryResetFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDeviceHostQueryResetFeatures`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDeviceHostQueryResetFeatures extends GroupType {
     public static final VarHandle VH_hostQueryReset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hostQueryReset"));
 
     /// Creates `VkPhysicalDeviceHostQueryResetFeatures` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceHostQueryResetFeatures(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceHostQueryResetFeatures(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceHostQueryResetFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceHostQueryResetFeatures of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceHostQueryResetFeatures(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceHostQueryResetFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceHostQueryResetFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceHostQueryResetFeatures(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceHostQueryResetFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceHostQueryResetFeatures(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceHostQueryResetFeatures` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDeviceHostQueryResetFeatures extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceHostQueryResetFeatures ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceHostQueryResetFeatures(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceHostQueryResetFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceHostQueryResetFeatures`
-    public static VkPhysicalDeviceHostQueryResetFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceHostQueryResetFeatures(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceHostQueryResetFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceHostQueryResetFeatures(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceHostQueryResetFeatures` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceHostQueryResetFeatures`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceHostQueryResetFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceHostQueryResetFeatures(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceHostQueryResetFeatures` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDeviceHostQueryResetFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceHostQueryResetFeatures copyFrom(VkPhysicalDeviceHostQueryResetFeatures src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceHostQueryResetFeatures reinterpret(long count) { return new VkPhysicalDeviceHostQueryResetFeatures(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPhysicalDeviceHostQueryResetFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceHostQueryResetFeatures hostQueryReset(int value) { hostQueryReset(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceHostQueryResetFeatures].
-    public static final class Buffer extends VkPhysicalDeviceHostQueryResetFeatures {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceHostQueryResetFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceHostQueryResetFeatures`
+    public VkPhysicalDeviceHostQueryResetFeatures asSlice(long index) { return new VkPhysicalDeviceHostQueryResetFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceHostQueryResetFeatures.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceHostQueryResetFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceHostQueryResetFeatures`
+    public VkPhysicalDeviceHostQueryResetFeatures asSlice(long index, long count) { return new VkPhysicalDeviceHostQueryResetFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceHostQueryResetFeatures` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceHostQueryResetFeatures at(long index, Consumer<VkPhysicalDeviceHostQueryResetFeatures> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceHostQueryResetFeatures`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceHostQueryResetFeatures`
-        public VkPhysicalDeviceHostQueryResetFeatures asSlice(long index) { return new VkPhysicalDeviceHostQueryResetFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostQueryResetFeatures sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceHostQueryResetFeatures`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceHostQueryResetFeatures`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostQueryResetFeatures pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `hostQueryReset` at the given index}
+    /// @param index the index of the struct buffer
+    public int hostQueryResetAt(long index) { return hostQueryReset(this.segment(), index); }
+    /// Sets `hostQueryReset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostQueryResetFeatures hostQueryResetAt(long index, int value) { hostQueryReset(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `hostQueryReset` at the given index}
-        /// @param index the index of the struct buffer
-        public int hostQueryResetAt(long index) { return hostQueryReset(this.segment(), index); }
-        /// Sets `hostQueryReset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hostQueryResetAt(long index, int value) { hostQueryReset(this.segment(), index, value); return this; }
-
-    }
 }

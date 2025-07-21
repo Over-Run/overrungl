@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 borderColorSwizzleFromImage;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupType {
+public final class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupT
     public static final VarHandle VH_borderColorSwizzleFromImage = LAYOUT.arrayElementVarHandle(PathElement.groupElement("borderColorSwizzleFromImage"));
 
     /// Creates `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceBorderColorSwizzleFeaturesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceBorderColorSwizzleFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceBorderColorSwizzleFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupT
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceBorderColorSwizzleFeaturesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`
-    public static VkPhysicalDeviceBorderColorSwizzleFeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceBorderColorSwizzleFeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceBorderColorSwizzleFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupT
     /// @return `this`
     public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT copyFrom(VkPhysicalDeviceBorderColorSwizzleFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT reinterpret(long count) { return new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPhysicalDeviceBorderColorSwizzleFeaturesEXT extends GroupT
     /// @return `this`
     public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT borderColorSwizzleFromImage(int value) { borderColorSwizzleFromImage(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceBorderColorSwizzleFeaturesEXT].
-    public static final class Buffer extends VkPhysicalDeviceBorderColorSwizzleFeaturesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT at(long index, Consumer<VkPhysicalDeviceBorderColorSwizzleFeaturesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`
-        public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceBorderColorSwizzleFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceBorderColorSwizzleFeaturesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `borderColorSwizzle` at the given index}
+    /// @param index the index of the struct buffer
+    public int borderColorSwizzleAt(long index) { return borderColorSwizzle(this.segment(), index); }
+    /// Sets `borderColorSwizzle` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT borderColorSwizzleAt(long index, int value) { borderColorSwizzle(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `borderColorSwizzleFromImage` at the given index}
+    /// @param index the index of the struct buffer
+    public int borderColorSwizzleFromImageAt(long index) { return borderColorSwizzleFromImage(this.segment(), index); }
+    /// Sets `borderColorSwizzleFromImage` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBorderColorSwizzleFeaturesEXT borderColorSwizzleFromImageAt(long index, int value) { borderColorSwizzleFromImage(this.segment(), index, value); return this; }
 
-        /// {@return `borderColorSwizzle` at the given index}
-        /// @param index the index of the struct buffer
-        public int borderColorSwizzleAt(long index) { return borderColorSwizzle(this.segment(), index); }
-        /// Sets `borderColorSwizzle` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer borderColorSwizzleAt(long index, int value) { borderColorSwizzle(this.segment(), index, value); return this; }
-
-        /// {@return `borderColorSwizzleFromImage` at the given index}
-        /// @param index the index of the struct buffer
-        public int borderColorSwizzleFromImageAt(long index) { return borderColorSwizzleFromImage(this.segment(), index); }
-        /// Sets `borderColorSwizzleFromImage` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer borderColorSwizzleFromImageAt(long index, int value) { borderColorSwizzleFromImage(this.segment(), index, value); return this; }
-
-    }
 }

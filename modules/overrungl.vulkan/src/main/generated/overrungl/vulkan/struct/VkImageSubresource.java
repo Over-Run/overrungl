@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t arrayLayer;
 /// };
 /// ```
-public sealed class VkImageSubresource extends GroupType {
+public final class VkImageSubresource extends GroupType {
     /// The struct layout of `VkImageSubresource`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("aspectMask"),
@@ -59,20 +60,21 @@ public sealed class VkImageSubresource extends GroupType {
     public static final VarHandle VH_arrayLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("arrayLayer"));
 
     /// Creates `VkImageSubresource` with the given segment.
-    /// @param segment the memory segment
-    public VkImageSubresource(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkImageSubresource(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkImageSubresource` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkImageSubresource of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageSubresource(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImageSubresource` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageSubresource ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageSubresource(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkImageSubresource ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageSubresource(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkImageSubresource` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkImageSubresource extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkImageSubresource ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageSubresource(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkImageSubresource` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImageSubresource`
-    public static VkImageSubresource alloc(SegmentAllocator allocator) { return new VkImageSubresource(allocator.allocate(LAYOUT)); }
+    public static VkImageSubresource alloc(SegmentAllocator allocator) { return new VkImageSubresource(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkImageSubresource` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageSubresource`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkImageSubresource alloc(SegmentAllocator allocator, long count) { return new VkImageSubresource(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkImageSubresource` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkImageSubresource extends GroupType {
     /// @return `this`
     public VkImageSubresource copyFrom(VkImageSubresource src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkImageSubresource reinterpret(long count) { return new VkImageSubresource(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkImageSubresource extends GroupType {
     /// @return `this`
     public VkImageSubresource arrayLayer(int value) { arrayLayer(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkImageSubresource].
-    public static final class Buffer extends VkImageSubresource {
-        private final long elementCount;
+    /// Creates a slice of `VkImageSubresource`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageSubresource`
+    public VkImageSubresource asSlice(long index) { return new VkImageSubresource(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkImageSubresource.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkImageSubresource`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageSubresource`
+    public VkImageSubresource asSlice(long index, long count) { return new VkImageSubresource(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkImageSubresource` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkImageSubresource at(long index, Consumer<VkImageSubresource> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkImageSubresource`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkImageSubresource`
-        public VkImageSubresource asSlice(long index) { return new VkImageSubresource(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `aspectMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int aspectMaskAt(long index) { return aspectMask(this.segment(), index); }
+    /// Sets `aspectMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageSubresource aspectMaskAt(long index, int value) { aspectMask(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkImageSubresource`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkImageSubresource`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `mipLevel` at the given index}
+    /// @param index the index of the struct buffer
+    public int mipLevelAt(long index) { return mipLevel(this.segment(), index); }
+    /// Sets `mipLevel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageSubresource mipLevelAt(long index, int value) { mipLevel(this.segment(), index, value); return this; }
 
-        /// {@return `aspectMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int aspectMaskAt(long index) { return aspectMask(this.segment(), index); }
-        /// Sets `aspectMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer aspectMaskAt(long index, int value) { aspectMask(this.segment(), index, value); return this; }
+    /// {@return `arrayLayer` at the given index}
+    /// @param index the index of the struct buffer
+    public int arrayLayerAt(long index) { return arrayLayer(this.segment(), index); }
+    /// Sets `arrayLayer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageSubresource arrayLayerAt(long index, int value) { arrayLayer(this.segment(), index, value); return this; }
 
-        /// {@return `mipLevel` at the given index}
-        /// @param index the index of the struct buffer
-        public int mipLevelAt(long index) { return mipLevel(this.segment(), index); }
-        /// Sets `mipLevel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer mipLevelAt(long index, int value) { mipLevel(this.segment(), index, value); return this; }
-
-        /// {@return `arrayLayer` at the given index}
-        /// @param index the index of the struct buffer
-        public int arrayLayerAt(long index) { return arrayLayer(this.segment(), index); }
-        /// Sets `arrayLayer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer arrayLayerAt(long index, int value) { arrayLayer(this.segment(), index, value); return this; }
-
-    }
 }

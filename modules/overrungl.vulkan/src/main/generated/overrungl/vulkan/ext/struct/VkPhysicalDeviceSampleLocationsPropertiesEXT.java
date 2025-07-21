@@ -21,9 +21,9 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -37,7 +37,7 @@ import java.util.function.*;
 ///     (uint32_t) VkBool32 variableSampleLocations;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupType {
+public final class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceSampleLocationsPropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -90,20 +90,21 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTy
     public static final VarHandle VH_variableSampleLocations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("variableSampleLocations"));
 
     /// Creates `VkPhysicalDeviceSampleLocationsPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceSampleLocationsPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceSampleLocationsPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceSampleLocationsPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceSampleLocationsPropertiesEXT` with the given segment.
     ///
@@ -111,18 +112,18 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTy
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceSampleLocationsPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceSampleLocationsPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceSampleLocationsPropertiesEXT`
-    public static VkPhysicalDeviceSampleLocationsPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceSampleLocationsPropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceSampleLocationsPropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceSampleLocationsPropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceSampleLocationsPropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceSampleLocationsPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSampleLocationsPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceSampleLocationsPropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -206,9 +207,10 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTy
     /// @return `this`
     public VkPhysicalDeviceSampleLocationsPropertiesEXT copyFrom(VkPhysicalDeviceSampleLocationsPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceSampleLocationsPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -345,105 +347,99 @@ public sealed class VkPhysicalDeviceSampleLocationsPropertiesEXT extends GroupTy
     /// @return `this`
     public VkPhysicalDeviceSampleLocationsPropertiesEXT variableSampleLocations(int value) { variableSampleLocations(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceSampleLocationsPropertiesEXT].
-    public static final class Buffer extends VkPhysicalDeviceSampleLocationsPropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceSampleLocationsPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceSampleLocationsPropertiesEXT`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceSampleLocationsPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceSampleLocationsPropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceSampleLocationsPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceSampleLocationsPropertiesEXT`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceSampleLocationsPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceSampleLocationsPropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT at(long index, Consumer<VkPhysicalDeviceSampleLocationsPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceSampleLocationsPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceSampleLocationsPropertiesEXT`
-        public VkPhysicalDeviceSampleLocationsPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceSampleLocationsPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceSampleLocationsPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceSampleLocationsPropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `sampleLocationSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int sampleLocationSampleCountsAt(long index) { return sampleLocationSampleCounts(this.segment(), index); }
+    /// Sets `sampleLocationSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSampleCountsAt(long index, int value) { sampleLocationSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxSampleLocationGridSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxSampleLocationGridSizeAt(long index) { return maxSampleLocationGridSize(this.segment(), index); }
+    /// Sets `maxSampleLocationGridSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT maxSampleLocationGridSizeAt(long index, MemorySegment value) { maxSampleLocationGridSize(this.segment(), index, value); return this; }
+    /// Accepts `maxSampleLocationGridSize` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT maxSampleLocationGridSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSampleLocationGridSizeAt(index))); return this; }
 
-        /// {@return `sampleLocationSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int sampleLocationSampleCountsAt(long index) { return sampleLocationSampleCounts(this.segment(), index); }
-        /// Sets `sampleLocationSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampleLocationSampleCountsAt(long index, int value) { sampleLocationSampleCounts(this.segment(), index, value); return this; }
-
-        /// {@return `maxSampleLocationGridSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxSampleLocationGridSizeAt(long index) { return maxSampleLocationGridSize(this.segment(), index); }
-        /// Sets `maxSampleLocationGridSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSampleLocationGridSizeAt(long index, MemorySegment value) { maxSampleLocationGridSize(this.segment(), index, value); return this; }
-        /// Accepts `maxSampleLocationGridSize` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxSampleLocationGridSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSampleLocationGridSizeAt(index))); return this; }
-
-        /// {@return `sampleLocationCoordinateRange` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment sampleLocationCoordinateRangeAt(long index) { return sampleLocationCoordinateRange(this.segment(), index); }
-        /// {@return `sampleLocationCoordinateRange` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `sampleLocationCoordinateRange` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment sampleLocationCoordinateRangeAt(long index) { return sampleLocationCoordinateRange(this.segment(), index); }
+    /// {@return `sampleLocationCoordinateRange` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public float sampleLocationCoordinateRangeAt(long index, long index0) { return sampleLocationCoordinateRange(this.segment(), index, index0); }
-        /// Sets `sampleLocationCoordinateRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampleLocationCoordinateRangeAt(long index, MemorySegment value) { sampleLocationCoordinateRange(this.segment(), index, value); return this; }
-        /// Sets `sampleLocationCoordinateRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampleLocationCoordinateRangeAt(long index, long index0, float value) { sampleLocationCoordinateRange(this.segment(), index, index0, value); return this; }
+    /// Sets `sampleLocationCoordinateRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRangeAt(long index, MemorySegment value) { sampleLocationCoordinateRange(this.segment(), index, value); return this; }
+    /// Sets `sampleLocationCoordinateRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationCoordinateRangeAt(long index, long index0, float value) { sampleLocationCoordinateRange(this.segment(), index, index0, value); return this; }
 
-        /// {@return `sampleLocationSubPixelBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int sampleLocationSubPixelBitsAt(long index) { return sampleLocationSubPixelBits(this.segment(), index); }
-        /// Sets `sampleLocationSubPixelBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampleLocationSubPixelBitsAt(long index, int value) { sampleLocationSubPixelBits(this.segment(), index, value); return this; }
+    /// {@return `sampleLocationSubPixelBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int sampleLocationSubPixelBitsAt(long index) { return sampleLocationSubPixelBits(this.segment(), index); }
+    /// Sets `sampleLocationSubPixelBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT sampleLocationSubPixelBitsAt(long index, int value) { sampleLocationSubPixelBits(this.segment(), index, value); return this; }
 
-        /// {@return `variableSampleLocations` at the given index}
-        /// @param index the index of the struct buffer
-        public int variableSampleLocationsAt(long index) { return variableSampleLocations(this.segment(), index); }
-        /// Sets `variableSampleLocations` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer variableSampleLocationsAt(long index, int value) { variableSampleLocations(this.segment(), index, value); return this; }
+    /// {@return `variableSampleLocations` at the given index}
+    /// @param index the index of the struct buffer
+    public int variableSampleLocationsAt(long index) { return variableSampleLocations(this.segment(), index); }
+    /// Sets `variableSampleLocations` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceSampleLocationsPropertiesEXT variableSampleLocationsAt(long index, int value) { variableSampleLocations(this.segment(), index, value); return this; }
 
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     const uint32_t* pStencilInputAttachmentIndex;
 /// };
 /// ```
-public sealed class VkRenderingInputAttachmentIndexInfo extends GroupType {
+public final class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// The struct layout of `VkRenderingInputAttachmentIndexInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkRenderingInputAttachmentIndexInfo extends GroupType {
     public static final VarHandle VH_pStencilInputAttachmentIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStencilInputAttachmentIndex"));
 
     /// Creates `VkRenderingInputAttachmentIndexInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkRenderingInputAttachmentIndexInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkRenderingInputAttachmentIndexInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkRenderingInputAttachmentIndexInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkRenderingInputAttachmentIndexInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderingInputAttachmentIndexInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRenderingInputAttachmentIndexInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderingInputAttachmentIndexInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderingInputAttachmentIndexInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkRenderingInputAttachmentIndexInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderingInputAttachmentIndexInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkRenderingInputAttachmentIndexInfo` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkRenderingInputAttachmentIndexInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderingInputAttachmentIndexInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkRenderingInputAttachmentIndexInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkRenderingInputAttachmentIndexInfo`
-    public static VkRenderingInputAttachmentIndexInfo alloc(SegmentAllocator allocator) { return new VkRenderingInputAttachmentIndexInfo(allocator.allocate(LAYOUT)); }
+    public static VkRenderingInputAttachmentIndexInfo alloc(SegmentAllocator allocator) { return new VkRenderingInputAttachmentIndexInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkRenderingInputAttachmentIndexInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderingInputAttachmentIndexInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkRenderingInputAttachmentIndexInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderingInputAttachmentIndexInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkRenderingInputAttachmentIndexInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// @return `this`
     public VkRenderingInputAttachmentIndexInfo copyFrom(VkRenderingInputAttachmentIndexInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkRenderingInputAttachmentIndexInfo reinterpret(long count) { return new VkRenderingInputAttachmentIndexInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkRenderingInputAttachmentIndexInfo extends GroupType {
     /// @return `this`
     public VkRenderingInputAttachmentIndexInfo pStencilInputAttachmentIndex(MemorySegment value) { pStencilInputAttachmentIndex(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkRenderingInputAttachmentIndexInfo].
-    public static final class Buffer extends VkRenderingInputAttachmentIndexInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkRenderingInputAttachmentIndexInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderingInputAttachmentIndexInfo`
+    public VkRenderingInputAttachmentIndexInfo asSlice(long index) { return new VkRenderingInputAttachmentIndexInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkRenderingInputAttachmentIndexInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkRenderingInputAttachmentIndexInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderingInputAttachmentIndexInfo`
+    public VkRenderingInputAttachmentIndexInfo asSlice(long index, long count) { return new VkRenderingInputAttachmentIndexInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkRenderingInputAttachmentIndexInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkRenderingInputAttachmentIndexInfo at(long index, Consumer<VkRenderingInputAttachmentIndexInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkRenderingInputAttachmentIndexInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkRenderingInputAttachmentIndexInfo`
-        public VkRenderingInputAttachmentIndexInfo asSlice(long index) { return new VkRenderingInputAttachmentIndexInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderingInputAttachmentIndexInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkRenderingInputAttachmentIndexInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkRenderingInputAttachmentIndexInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderingInputAttachmentIndexInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `colorAttachmentCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int colorAttachmentCountAt(long index) { return colorAttachmentCount(this.segment(), index); }
+    /// Sets `colorAttachmentCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderingInputAttachmentIndexInfo colorAttachmentCountAt(long index, int value) { colorAttachmentCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pColorAttachmentInputIndices` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pColorAttachmentInputIndicesAt(long index) { return pColorAttachmentInputIndices(this.segment(), index); }
+    /// Sets `pColorAttachmentInputIndices` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderingInputAttachmentIndexInfo pColorAttachmentInputIndicesAt(long index, MemorySegment value) { pColorAttachmentInputIndices(this.segment(), index, value); return this; }
 
-        /// {@return `colorAttachmentCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int colorAttachmentCountAt(long index) { return colorAttachmentCount(this.segment(), index); }
-        /// Sets `colorAttachmentCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer colorAttachmentCountAt(long index, int value) { colorAttachmentCount(this.segment(), index, value); return this; }
+    /// {@return `pDepthInputAttachmentIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pDepthInputAttachmentIndexAt(long index) { return pDepthInputAttachmentIndex(this.segment(), index); }
+    /// Sets `pDepthInputAttachmentIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderingInputAttachmentIndexInfo pDepthInputAttachmentIndexAt(long index, MemorySegment value) { pDepthInputAttachmentIndex(this.segment(), index, value); return this; }
 
-        /// {@return `pColorAttachmentInputIndices` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pColorAttachmentInputIndicesAt(long index) { return pColorAttachmentInputIndices(this.segment(), index); }
-        /// Sets `pColorAttachmentInputIndices` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pColorAttachmentInputIndicesAt(long index, MemorySegment value) { pColorAttachmentInputIndices(this.segment(), index, value); return this; }
+    /// {@return `pStencilInputAttachmentIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pStencilInputAttachmentIndexAt(long index) { return pStencilInputAttachmentIndex(this.segment(), index); }
+    /// Sets `pStencilInputAttachmentIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderingInputAttachmentIndexInfo pStencilInputAttachmentIndexAt(long index, MemorySegment value) { pStencilInputAttachmentIndex(this.segment(), index, value); return this; }
 
-        /// {@return `pDepthInputAttachmentIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pDepthInputAttachmentIndexAt(long index) { return pDepthInputAttachmentIndex(this.segment(), index); }
-        /// Sets `pDepthInputAttachmentIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pDepthInputAttachmentIndexAt(long index, MemorySegment value) { pDepthInputAttachmentIndex(this.segment(), index, value); return this; }
-
-        /// {@return `pStencilInputAttachmentIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pStencilInputAttachmentIndexAt(long index) { return pStencilInputAttachmentIndex(this.segment(), index); }
-        /// Sets `pStencilInputAttachmentIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pStencilInputAttachmentIndexAt(long index, MemorySegment value) { pStencilInputAttachmentIndex(this.segment(), index, value); return this; }
-
-    }
 }

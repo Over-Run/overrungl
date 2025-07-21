@@ -21,6 +21,7 @@ package overrungl.vulkan.mvk.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     const void* pView;
 /// };
 /// ```
-public sealed class VkMacOSSurfaceCreateInfoMVK extends GroupType {
+public final class VkMacOSSurfaceCreateInfoMVK extends GroupType {
     /// The struct layout of `VkMacOSSurfaceCreateInfoMVK`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkMacOSSurfaceCreateInfoMVK extends GroupType {
     public static final VarHandle VH_pView = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pView"));
 
     /// Creates `VkMacOSSurfaceCreateInfoMVK` with the given segment.
-    /// @param segment the memory segment
-    public VkMacOSSurfaceCreateInfoMVK(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkMacOSSurfaceCreateInfoMVK(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkMacOSSurfaceCreateInfoMVK` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkMacOSSurfaceCreateInfoMVK of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMacOSSurfaceCreateInfoMVK(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkMacOSSurfaceCreateInfoMVK` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMacOSSurfaceCreateInfoMVK ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMacOSSurfaceCreateInfoMVK(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkMacOSSurfaceCreateInfoMVK ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMacOSSurfaceCreateInfoMVK(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkMacOSSurfaceCreateInfoMVK` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkMacOSSurfaceCreateInfoMVK extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkMacOSSurfaceCreateInfoMVK ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkMacOSSurfaceCreateInfoMVK(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkMacOSSurfaceCreateInfoMVK` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkMacOSSurfaceCreateInfoMVK`
-    public static VkMacOSSurfaceCreateInfoMVK alloc(SegmentAllocator allocator) { return new VkMacOSSurfaceCreateInfoMVK(allocator.allocate(LAYOUT)); }
+    public static VkMacOSSurfaceCreateInfoMVK alloc(SegmentAllocator allocator) { return new VkMacOSSurfaceCreateInfoMVK(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkMacOSSurfaceCreateInfoMVK` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkMacOSSurfaceCreateInfoMVK`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkMacOSSurfaceCreateInfoMVK alloc(SegmentAllocator allocator, long count) { return new VkMacOSSurfaceCreateInfoMVK(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkMacOSSurfaceCreateInfoMVK` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkMacOSSurfaceCreateInfoMVK extends GroupType {
     /// @return `this`
     public VkMacOSSurfaceCreateInfoMVK copyFrom(VkMacOSSurfaceCreateInfoMVK src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkMacOSSurfaceCreateInfoMVK reinterpret(long count) { return new VkMacOSSurfaceCreateInfoMVK(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkMacOSSurfaceCreateInfoMVK extends GroupType {
     /// @return `this`
     public VkMacOSSurfaceCreateInfoMVK pView(MemorySegment value) { pView(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkMacOSSurfaceCreateInfoMVK].
-    public static final class Buffer extends VkMacOSSurfaceCreateInfoMVK {
-        private final long elementCount;
+    /// Creates a slice of `VkMacOSSurfaceCreateInfoMVK`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMacOSSurfaceCreateInfoMVK`
+    public VkMacOSSurfaceCreateInfoMVK asSlice(long index) { return new VkMacOSSurfaceCreateInfoMVK(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkMacOSSurfaceCreateInfoMVK.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkMacOSSurfaceCreateInfoMVK`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMacOSSurfaceCreateInfoMVK`
+    public VkMacOSSurfaceCreateInfoMVK asSlice(long index, long count) { return new VkMacOSSurfaceCreateInfoMVK(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkMacOSSurfaceCreateInfoMVK` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkMacOSSurfaceCreateInfoMVK at(long index, Consumer<VkMacOSSurfaceCreateInfoMVK> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkMacOSSurfaceCreateInfoMVK`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkMacOSSurfaceCreateInfoMVK`
-        public VkMacOSSurfaceCreateInfoMVK asSlice(long index) { return new VkMacOSSurfaceCreateInfoMVK(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMacOSSurfaceCreateInfoMVK sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkMacOSSurfaceCreateInfoMVK`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkMacOSSurfaceCreateInfoMVK`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMacOSSurfaceCreateInfoMVK pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMacOSSurfaceCreateInfoMVK flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pView` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pViewAt(long index) { return pView(this.segment(), index); }
+    /// Sets `pView` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMacOSSurfaceCreateInfoMVK pViewAt(long index, MemorySegment value) { pView(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-        /// {@return `pView` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pViewAt(long index) { return pView(this.segment(), index); }
-        /// Sets `pView` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pViewAt(long index, MemorySegment value) { pView(this.segment(), index, value); return this; }
-
-    }
 }

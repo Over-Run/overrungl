@@ -21,6 +21,7 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t version;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupType {
+public final class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDataGraphOperationSupportARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("operationType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTy
     public static final VarHandle VH_version = LAYOUT.arrayElementVarHandle(PathElement.groupElement("version"));
 
     /// Creates `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceDataGraphOperationSupportARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceDataGraphOperationSupportARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceDataGraphOperationSupportARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDataGraphOperationSupportARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDataGraphOperationSupportARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDataGraphOperationSupportARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceDataGraphOperationSupportARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDataGraphOperationSupportARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTy
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceDataGraphOperationSupportARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDataGraphOperationSupportARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceDataGraphOperationSupportARM`
-    public static VkPhysicalDeviceDataGraphOperationSupportARM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDataGraphOperationSupportARM(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceDataGraphOperationSupportARM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDataGraphOperationSupportARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceDataGraphOperationSupportARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceDataGraphOperationSupportARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDataGraphOperationSupportARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTy
     /// @return `this`
     public VkPhysicalDeviceDataGraphOperationSupportARM copyFrom(VkPhysicalDeviceDataGraphOperationSupportARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceDataGraphOperationSupportARM reinterpret(long count) { return new VkPhysicalDeviceDataGraphOperationSupportARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `operationType` at the given index}
     /// @param segment the segment of the struct
@@ -196,64 +199,58 @@ public sealed class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTy
     /// @return `this`
     public VkPhysicalDeviceDataGraphOperationSupportARM version(int value) { version(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceDataGraphOperationSupportARM].
-    public static final class Buffer extends VkPhysicalDeviceDataGraphOperationSupportARM {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceDataGraphOperationSupportARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDataGraphOperationSupportARM`
+    public VkPhysicalDeviceDataGraphOperationSupportARM asSlice(long index) { return new VkPhysicalDeviceDataGraphOperationSupportARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceDataGraphOperationSupportARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceDataGraphOperationSupportARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDataGraphOperationSupportARM`
+    public VkPhysicalDeviceDataGraphOperationSupportARM asSlice(long index, long count) { return new VkPhysicalDeviceDataGraphOperationSupportARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceDataGraphOperationSupportARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceDataGraphOperationSupportARM at(long index, Consumer<VkPhysicalDeviceDataGraphOperationSupportARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDataGraphOperationSupportARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceDataGraphOperationSupportARM`
-        public VkPhysicalDeviceDataGraphOperationSupportARM asSlice(long index) { return new VkPhysicalDeviceDataGraphOperationSupportARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `operationType` at the given index}
+    /// @param index the index of the struct buffer
+    public int operationTypeAt(long index) { return operationType(this.segment(), index); }
+    /// Sets `operationType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDataGraphOperationSupportARM operationTypeAt(long index, int value) { operationType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDataGraphOperationSupportARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceDataGraphOperationSupportARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `operationType` at the given index}
-        /// @param index the index of the struct buffer
-        public int operationTypeAt(long index) { return operationType(this.segment(), index); }
-        /// Sets `operationType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer operationTypeAt(long index, int value) { operationType(this.segment(), index, value); return this; }
-
-        /// {@return `name` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment nameAt(long index) { return name(this.segment(), index); }
-        /// {@return `name` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `name` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment nameAt(long index) { return name(this.segment(), index); }
+    /// {@return `name` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte nameAt(long index, long index0) { return name(this.segment(), index, index0); }
-        /// Sets `name` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
-        /// Sets `name` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer nameAt(long index, long index0, byte value) { name(this.segment(), index, index0, value); return this; }
+    /// Sets `name` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDataGraphOperationSupportARM nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
+    /// Sets `name` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDataGraphOperationSupportARM nameAt(long index, long index0, byte value) { name(this.segment(), index, index0, value); return this; }
 
-        /// {@return `version` at the given index}
-        /// @param index the index of the struct buffer
-        public int versionAt(long index) { return version(this.segment(), index); }
-        /// Sets `version` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer versionAt(long index, int value) { version(this.segment(), index, value); return this; }
+    /// {@return `version` at the given index}
+    /// @param index the index of the struct buffer
+    public int versionAt(long index) { return version(this.segment(), index); }
+    /// Sets `version` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDataGraphOperationSupportARM versionAt(long index, int value) { version(this.segment(), index, value); return this; }
 
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     unsigned char* pixels;
 /// };
 /// ```
-public sealed class STBTT__bitmap extends GroupType {
+public final class STBTT__bitmap extends GroupType {
     /// The struct layout of `STBTT__bitmap`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("w"),
@@ -67,20 +68,21 @@ public sealed class STBTT__bitmap extends GroupType {
     public static final VarHandle VH_pixels = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pixels"));
 
     /// Creates `STBTT__bitmap` with the given segment.
-    /// @param segment the memory segment
-    public STBTT__bitmap(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBTT__bitmap(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBTT__bitmap` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBTT__bitmap of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__bitmap(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBTT__bitmap` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTT__bitmap ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__bitmap(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBTT__bitmap ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__bitmap(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBTT__bitmap` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class STBTT__bitmap extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBTT__bitmap ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__bitmap(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBTT__bitmap` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTT__bitmap`
-    public static STBTT__bitmap alloc(SegmentAllocator allocator) { return new STBTT__bitmap(allocator.allocate(LAYOUT)); }
+    public static STBTT__bitmap alloc(SegmentAllocator allocator) { return new STBTT__bitmap(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBTT__bitmap` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBTT__bitmap`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBTT__bitmap alloc(SegmentAllocator allocator, long count) { return new STBTT__bitmap(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBTT__bitmap` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class STBTT__bitmap extends GroupType {
     /// @return `this`
     public STBTT__bitmap copyFrom(STBTT__bitmap src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBTT__bitmap reinterpret(long count) { return new STBTT__bitmap(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `w` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class STBTT__bitmap extends GroupType {
     /// @return `this`
     public STBTT__bitmap pixels(MemorySegment value) { pixels(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBTT__bitmap].
-    public static final class Buffer extends STBTT__bitmap {
-        private final long elementCount;
+    /// Creates a slice of `STBTT__bitmap`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTT__bitmap`
+    public STBTT__bitmap asSlice(long index) { return new STBTT__bitmap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBTT__bitmap.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBTT__bitmap`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTT__bitmap`
+    public STBTT__bitmap asSlice(long index, long count) { return new STBTT__bitmap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBTT__bitmap` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBTT__bitmap at(long index, Consumer<STBTT__bitmap> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBTT__bitmap`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBTT__bitmap`
-        public STBTT__bitmap asSlice(long index) { return new STBTT__bitmap(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `w` at the given index}
+    /// @param index the index of the struct buffer
+    public int wAt(long index) { return w(this.segment(), index); }
+    /// Sets `w` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTT__bitmap wAt(long index, int value) { w(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBTT__bitmap`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBTT__bitmap`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `h` at the given index}
+    /// @param index the index of the struct buffer
+    public int hAt(long index) { return h(this.segment(), index); }
+    /// Sets `h` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTT__bitmap hAt(long index, int value) { h(this.segment(), index, value); return this; }
 
-        /// {@return `w` at the given index}
-        /// @param index the index of the struct buffer
-        public int wAt(long index) { return w(this.segment(), index); }
-        /// Sets `w` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer wAt(long index, int value) { w(this.segment(), index, value); return this; }
+    /// {@return `stride` at the given index}
+    /// @param index the index of the struct buffer
+    public int strideAt(long index) { return stride(this.segment(), index); }
+    /// Sets `stride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTT__bitmap strideAt(long index, int value) { stride(this.segment(), index, value); return this; }
 
-        /// {@return `h` at the given index}
-        /// @param index the index of the struct buffer
-        public int hAt(long index) { return h(this.segment(), index); }
-        /// Sets `h` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hAt(long index, int value) { h(this.segment(), index, value); return this; }
+    /// {@return `pixels` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pixelsAt(long index) { return pixels(this.segment(), index); }
+    /// Sets `pixels` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTT__bitmap pixelsAt(long index, MemorySegment value) { pixels(this.segment(), index, value); return this; }
 
-        /// {@return `stride` at the given index}
-        /// @param index the index of the struct buffer
-        public int strideAt(long index) { return stride(this.segment(), index); }
-        /// Sets `stride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer strideAt(long index, int value) { stride(this.segment(), index, value); return this; }
-
-        /// {@return `pixels` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pixelsAt(long index) { return pixels(this.segment(), index); }
-        /// Sets `pixels` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pixelsAt(long index, MemorySegment value) { pixels(this.segment(), index, value); return this; }
-
-    }
 }

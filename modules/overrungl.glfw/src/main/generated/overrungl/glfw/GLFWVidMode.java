@@ -21,6 +21,7 @@ package overrungl.glfw;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     int refreshRate;
 /// };
 /// ```
-public sealed class GLFWVidMode extends GroupType {
+public final class GLFWVidMode extends GroupType {
     /// The struct layout of `GLFWVidMode`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("width"),
@@ -83,20 +84,21 @@ public sealed class GLFWVidMode extends GroupType {
     public static final VarHandle VH_refreshRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("refreshRate"));
 
     /// Creates `GLFWVidMode` with the given segment.
-    /// @param segment the memory segment
-    public GLFWVidMode(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public GLFWVidMode(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `GLFWVidMode` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static GLFWVidMode of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWVidMode(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `GLFWVidMode` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static GLFWVidMode ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWVidMode(segment.reinterpret(LAYOUT.byteSize())); }
+    public static GLFWVidMode ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWVidMode(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `GLFWVidMode` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class GLFWVidMode extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static GLFWVidMode ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWVidMode(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `GLFWVidMode` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `GLFWVidMode`
-    public static GLFWVidMode alloc(SegmentAllocator allocator) { return new GLFWVidMode(allocator.allocate(LAYOUT)); }
+    public static GLFWVidMode alloc(SegmentAllocator allocator) { return new GLFWVidMode(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `GLFWVidMode` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `GLFWVidMode`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static GLFWVidMode alloc(SegmentAllocator allocator, long count) { return new GLFWVidMode(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `GLFWVidMode` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class GLFWVidMode extends GroupType {
     /// @return `this`
     public GLFWVidMode copyFrom(GLFWVidMode src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public GLFWVidMode reinterpret(long count) { return new GLFWVidMode(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class GLFWVidMode extends GroupType {
     /// @return `this`
     public GLFWVidMode refreshRate(int value) { refreshRate(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [GLFWVidMode].
-    public static final class Buffer extends GLFWVidMode {
-        private final long elementCount;
+    /// Creates a slice of `GLFWVidMode`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `GLFWVidMode`
+    public GLFWVidMode asSlice(long index) { return new GLFWVidMode(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `GLFWVidMode.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `GLFWVidMode`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `GLFWVidMode`
+    public GLFWVidMode asSlice(long index, long count) { return new GLFWVidMode(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `GLFWVidMode` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public GLFWVidMode at(long index, Consumer<GLFWVidMode> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `GLFWVidMode`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `GLFWVidMode`
-        public GLFWVidMode asSlice(long index) { return new GLFWVidMode(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `width` at the given index}
+    /// @param index the index of the struct buffer
+    public int widthAt(long index) { return width(this.segment(), index); }
+    /// Sets `width` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWVidMode widthAt(long index, int value) { width(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `GLFWVidMode`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `GLFWVidMode`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `height` at the given index}
+    /// @param index the index of the struct buffer
+    public int heightAt(long index) { return height(this.segment(), index); }
+    /// Sets `height` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWVidMode heightAt(long index, int value) { height(this.segment(), index, value); return this; }
 
-        /// {@return `width` at the given index}
-        /// @param index the index of the struct buffer
-        public int widthAt(long index) { return width(this.segment(), index); }
-        /// Sets `width` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer widthAt(long index, int value) { width(this.segment(), index, value); return this; }
+    /// {@return `redBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int redBitsAt(long index) { return redBits(this.segment(), index); }
+    /// Sets `redBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWVidMode redBitsAt(long index, int value) { redBits(this.segment(), index, value); return this; }
 
-        /// {@return `height` at the given index}
-        /// @param index the index of the struct buffer
-        public int heightAt(long index) { return height(this.segment(), index); }
-        /// Sets `height` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer heightAt(long index, int value) { height(this.segment(), index, value); return this; }
+    /// {@return `greenBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int greenBitsAt(long index) { return greenBits(this.segment(), index); }
+    /// Sets `greenBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWVidMode greenBitsAt(long index, int value) { greenBits(this.segment(), index, value); return this; }
 
-        /// {@return `redBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int redBitsAt(long index) { return redBits(this.segment(), index); }
-        /// Sets `redBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer redBitsAt(long index, int value) { redBits(this.segment(), index, value); return this; }
+    /// {@return `blueBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int blueBitsAt(long index) { return blueBits(this.segment(), index); }
+    /// Sets `blueBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWVidMode blueBitsAt(long index, int value) { blueBits(this.segment(), index, value); return this; }
 
-        /// {@return `greenBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int greenBitsAt(long index) { return greenBits(this.segment(), index); }
-        /// Sets `greenBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer greenBitsAt(long index, int value) { greenBits(this.segment(), index, value); return this; }
+    /// {@return `refreshRate` at the given index}
+    /// @param index the index of the struct buffer
+    public int refreshRateAt(long index) { return refreshRate(this.segment(), index); }
+    /// Sets `refreshRate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWVidMode refreshRateAt(long index, int value) { refreshRate(this.segment(), index, value); return this; }
 
-        /// {@return `blueBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int blueBitsAt(long index) { return blueBits(this.segment(), index); }
-        /// Sets `blueBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer blueBitsAt(long index, int value) { blueBits(this.segment(), index, value); return this; }
-
-        /// {@return `refreshRate` at the given index}
-        /// @param index the index of the struct buffer
-        public int refreshRateAt(long index) { return refreshRate(this.segment(), index); }
-        /// Sets `refreshRate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer refreshRateAt(long index, int value) { refreshRate(this.segment(), index, value); return this; }
-
-    }
 }

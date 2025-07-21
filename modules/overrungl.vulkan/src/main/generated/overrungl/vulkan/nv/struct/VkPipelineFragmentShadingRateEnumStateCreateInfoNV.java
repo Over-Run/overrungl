@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (int) VkFragmentShadingRateCombinerOpKHR combinerOps[2];
 /// };
 /// ```
-public sealed class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends GroupType {
+public final class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends GroupType {
     /// The struct layout of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends G
     public static final VarHandle VH_combinerOps = LAYOUT.arrayElementVarHandle(PathElement.groupElement("combinerOps"), PathElement.sequenceElement());
 
     /// Creates `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends G
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
-    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV alloc(SegmentAllocator allocator) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV alloc(SegmentAllocator allocator) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineFragmentShadingRateEnumStateCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends G
     /// @return `this`
     public VkPipelineFragmentShadingRateEnumStateCreateInfoNV copyFrom(VkPipelineFragmentShadingRateEnumStateCreateInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV reinterpret(long count) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -267,82 +270,76 @@ public sealed class VkPipelineFragmentShadingRateEnumStateCreateInfoNV extends G
     /// @return `this`
     public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOps(long index0, int value) { combinerOps(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [VkPipelineFragmentShadingRateEnumStateCreateInfoNV].
-    public static final class Buffer extends VkPipelineFragmentShadingRateEnumStateCreateInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV asSlice(long index) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineFragmentShadingRateEnumStateCreateInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV asSlice(long index, long count) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineFragmentShadingRateEnumStateCreateInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV at(long index, Consumer<VkPipelineFragmentShadingRateEnumStateCreateInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
-        public VkPipelineFragmentShadingRateEnumStateCreateInfoNV asSlice(long index) { return new VkPipelineFragmentShadingRateEnumStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineFragmentShadingRateEnumStateCreateInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `shadingRateType` at the given index}
+    /// @param index the index of the struct buffer
+    public int shadingRateTypeAt(long index) { return shadingRateType(this.segment(), index); }
+    /// Sets `shadingRateType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV shadingRateTypeAt(long index, int value) { shadingRateType(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `shadingRate` at the given index}
+    /// @param index the index of the struct buffer
+    public int shadingRateAt(long index) { return shadingRate(this.segment(), index); }
+    /// Sets `shadingRate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV shadingRateAt(long index, int value) { shadingRate(this.segment(), index, value); return this; }
 
-        /// {@return `shadingRateType` at the given index}
-        /// @param index the index of the struct buffer
-        public int shadingRateTypeAt(long index) { return shadingRateType(this.segment(), index); }
-        /// Sets `shadingRateType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shadingRateTypeAt(long index, int value) { shadingRateType(this.segment(), index, value); return this; }
-
-        /// {@return `shadingRate` at the given index}
-        /// @param index the index of the struct buffer
-        public int shadingRateAt(long index) { return shadingRate(this.segment(), index); }
-        /// Sets `shadingRate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shadingRateAt(long index, int value) { shadingRate(this.segment(), index, value); return this; }
-
-        /// {@return `combinerOps` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment combinerOpsAt(long index) { return combinerOps(this.segment(), index); }
-        /// {@return `combinerOps` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `combinerOps` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment combinerOpsAt(long index) { return combinerOps(this.segment(), index); }
+    /// {@return `combinerOps` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public int combinerOpsAt(long index, long index0) { return combinerOps(this.segment(), index, index0); }
-        /// Sets `combinerOps` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer combinerOpsAt(long index, MemorySegment value) { combinerOps(this.segment(), index, value); return this; }
-        /// Sets `combinerOps` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer combinerOpsAt(long index, long index0, int value) { combinerOps(this.segment(), index, index0, value); return this; }
+    /// Sets `combinerOps` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOpsAt(long index, MemorySegment value) { combinerOps(this.segment(), index, value); return this; }
+    /// Sets `combinerOps` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineFragmentShadingRateEnumStateCreateInfoNV combinerOpsAt(long index, long index0, int value) { combinerOps(this.segment(), index, index0, value); return this; }
 
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 shaderSubgroupUniformControlFlow;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR extends GroupType {
+public final class VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR 
     public static final VarHandle VH_shaderSubgroupUniformControlFlow = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderSubgroupUniformControlFlow"));
 
     /// Creates `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`
-    public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR 
     /// @return `this`
     public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR copyFrom(VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR reinterpret(long count) { return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR 
     /// @return `this`
     public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR shaderSubgroupUniformControlFlow(int value) { shaderSubgroupUniformControlFlow(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR].
-    public static final class Buffer extends VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR at(long index, Consumer<VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`
-        public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `shaderSubgroupUniformControlFlow` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSubgroupUniformControlFlowAt(long index) { return shaderSubgroupUniformControlFlow(this.segment(), index); }
+    /// Sets `shaderSubgroupUniformControlFlow` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderSubgroupUniformControlFlowFeaturesKHR shaderSubgroupUniformControlFlowAt(long index, int value) { shaderSubgroupUniformControlFlow(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `shaderSubgroupUniformControlFlow` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSubgroupUniformControlFlowAt(long index) { return shaderSubgroupUniformControlFlow(this.segment(), index); }
-        /// Sets `shaderSubgroupUniformControlFlow` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSubgroupUniformControlFlowAt(long index, int value) { shaderSubgroupUniformControlFlow(this.segment(), index, value); return this; }
-
-    }
 }

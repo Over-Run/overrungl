@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     const uint32_t* pQueueFamilyIndices;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends GroupType {
+public final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends GroupT
     public static final VarHandle VH_pQueueFamilyIndices = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pQueueFamilyIndices"));
 
     /// Creates `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends GroupT
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends GroupT
     /// @return `this`
     public VkPhysicalDeviceImageDrmFormatModifierInfoEXT copyFrom(VkPhysicalDeviceImageDrmFormatModifierInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT reinterpret(long count) { return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends GroupT
     /// @return `this`
     public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pQueueFamilyIndices(MemorySegment value) { pQueueFamilyIndices(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceImageDrmFormatModifierInfoEXT].
-    public static final class Buffer extends VkPhysicalDeviceImageDrmFormatModifierInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT asSlice(long index) { return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceImageDrmFormatModifierInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT asSlice(long index, long count) { return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT at(long index, Consumer<VkPhysicalDeviceImageDrmFormatModifierInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-        public VkPhysicalDeviceImageDrmFormatModifierInfoEXT asSlice(long index) { return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `drmFormatModifier` at the given index}
+    /// @param index the index of the struct buffer
+    public long drmFormatModifierAt(long index) { return drmFormatModifier(this.segment(), index); }
+    /// Sets `drmFormatModifier` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT drmFormatModifierAt(long index, long value) { drmFormatModifier(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `sharingMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int sharingModeAt(long index) { return sharingMode(this.segment(), index); }
+    /// Sets `sharingMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT sharingModeAt(long index, int value) { sharingMode(this.segment(), index, value); return this; }
 
-        /// {@return `drmFormatModifier` at the given index}
-        /// @param index the index of the struct buffer
-        public long drmFormatModifierAt(long index) { return drmFormatModifier(this.segment(), index); }
-        /// Sets `drmFormatModifier` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer drmFormatModifierAt(long index, long value) { drmFormatModifier(this.segment(), index, value); return this; }
+    /// {@return `queueFamilyIndexCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int queueFamilyIndexCountAt(long index) { return queueFamilyIndexCount(this.segment(), index); }
+    /// Sets `queueFamilyIndexCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT queueFamilyIndexCountAt(long index, int value) { queueFamilyIndexCount(this.segment(), index, value); return this; }
 
-        /// {@return `sharingMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int sharingModeAt(long index) { return sharingMode(this.segment(), index); }
-        /// Sets `sharingMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sharingModeAt(long index, int value) { sharingMode(this.segment(), index, value); return this; }
+    /// {@return `pQueueFamilyIndices` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pQueueFamilyIndicesAt(long index) { return pQueueFamilyIndices(this.segment(), index); }
+    /// Sets `pQueueFamilyIndices` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageDrmFormatModifierInfoEXT pQueueFamilyIndicesAt(long index, MemorySegment value) { pQueueFamilyIndices(this.segment(), index, value); return this; }
 
-        /// {@return `queueFamilyIndexCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int queueFamilyIndexCountAt(long index) { return queueFamilyIndexCount(this.segment(), index); }
-        /// Sets `queueFamilyIndexCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer queueFamilyIndexCountAt(long index, int value) { queueFamilyIndexCount(this.segment(), index, value); return this; }
-
-        /// {@return `pQueueFamilyIndices` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pQueueFamilyIndicesAt(long index) { return pQueueFamilyIndices(this.segment(), index); }
-        /// Sets `pQueueFamilyIndices` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pQueueFamilyIndicesAt(long index, MemorySegment value) { pQueueFamilyIndices(this.segment(), index, value); return this; }
-
-    }
 }

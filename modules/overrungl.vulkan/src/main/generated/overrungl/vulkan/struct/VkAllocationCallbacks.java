@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     (void (*VkInternalFreeNotification)(void* pUserData, size_t size, (int) VkInternalAllocationType allocationType, (int) VkSystemAllocationScope allocationScope)) PFN_vkInternalFreeNotification pfnInternalFree;
 /// };
 /// ```
-public sealed class VkAllocationCallbacks extends GroupType {
+public final class VkAllocationCallbacks extends GroupType {
     /// The struct layout of `VkAllocationCallbacks`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("pUserData"),
@@ -83,20 +84,21 @@ public sealed class VkAllocationCallbacks extends GroupType {
     public static final VarHandle VH_pfnInternalFree = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pfnInternalFree"));
 
     /// Creates `VkAllocationCallbacks` with the given segment.
-    /// @param segment the memory segment
-    public VkAllocationCallbacks(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAllocationCallbacks(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAllocationCallbacks` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAllocationCallbacks of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAllocationCallbacks(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAllocationCallbacks` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAllocationCallbacks ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAllocationCallbacks(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAllocationCallbacks ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAllocationCallbacks(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAllocationCallbacks` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkAllocationCallbacks extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAllocationCallbacks ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAllocationCallbacks(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAllocationCallbacks` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAllocationCallbacks`
-    public static VkAllocationCallbacks alloc(SegmentAllocator allocator) { return new VkAllocationCallbacks(allocator.allocate(LAYOUT)); }
+    public static VkAllocationCallbacks alloc(SegmentAllocator allocator) { return new VkAllocationCallbacks(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAllocationCallbacks` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAllocationCallbacks`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAllocationCallbacks alloc(SegmentAllocator allocator, long count) { return new VkAllocationCallbacks(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAllocationCallbacks` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkAllocationCallbacks extends GroupType {
     /// @return `this`
     public VkAllocationCallbacks copyFrom(VkAllocationCallbacks src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAllocationCallbacks reinterpret(long count) { return new VkAllocationCallbacks(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `pUserData` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkAllocationCallbacks extends GroupType {
     /// @return `this`
     public VkAllocationCallbacks pfnInternalFree(MemorySegment value) { pfnInternalFree(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAllocationCallbacks].
-    public static final class Buffer extends VkAllocationCallbacks {
-        private final long elementCount;
+    /// Creates a slice of `VkAllocationCallbacks`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAllocationCallbacks`
+    public VkAllocationCallbacks asSlice(long index) { return new VkAllocationCallbacks(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAllocationCallbacks.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAllocationCallbacks`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAllocationCallbacks`
+    public VkAllocationCallbacks asSlice(long index, long count) { return new VkAllocationCallbacks(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAllocationCallbacks` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAllocationCallbacks at(long index, Consumer<VkAllocationCallbacks> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAllocationCallbacks`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAllocationCallbacks`
-        public VkAllocationCallbacks asSlice(long index) { return new VkAllocationCallbacks(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `pUserData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pUserDataAt(long index) { return pUserData(this.segment(), index); }
+    /// Sets `pUserData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAllocationCallbacks pUserDataAt(long index, MemorySegment value) { pUserData(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAllocationCallbacks`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAllocationCallbacks`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pfnAllocation` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pfnAllocationAt(long index) { return pfnAllocation(this.segment(), index); }
+    /// Sets `pfnAllocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAllocationCallbacks pfnAllocationAt(long index, MemorySegment value) { pfnAllocation(this.segment(), index, value); return this; }
 
-        /// {@return `pUserData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pUserDataAt(long index) { return pUserData(this.segment(), index); }
-        /// Sets `pUserData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pUserDataAt(long index, MemorySegment value) { pUserData(this.segment(), index, value); return this; }
+    /// {@return `pfnReallocation` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pfnReallocationAt(long index) { return pfnReallocation(this.segment(), index); }
+    /// Sets `pfnReallocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAllocationCallbacks pfnReallocationAt(long index, MemorySegment value) { pfnReallocation(this.segment(), index, value); return this; }
 
-        /// {@return `pfnAllocation` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pfnAllocationAt(long index) { return pfnAllocation(this.segment(), index); }
-        /// Sets `pfnAllocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pfnAllocationAt(long index, MemorySegment value) { pfnAllocation(this.segment(), index, value); return this; }
+    /// {@return `pfnFree` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pfnFreeAt(long index) { return pfnFree(this.segment(), index); }
+    /// Sets `pfnFree` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAllocationCallbacks pfnFreeAt(long index, MemorySegment value) { pfnFree(this.segment(), index, value); return this; }
 
-        /// {@return `pfnReallocation` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pfnReallocationAt(long index) { return pfnReallocation(this.segment(), index); }
-        /// Sets `pfnReallocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pfnReallocationAt(long index, MemorySegment value) { pfnReallocation(this.segment(), index, value); return this; }
+    /// {@return `pfnInternalAllocation` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pfnInternalAllocationAt(long index) { return pfnInternalAllocation(this.segment(), index); }
+    /// Sets `pfnInternalAllocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAllocationCallbacks pfnInternalAllocationAt(long index, MemorySegment value) { pfnInternalAllocation(this.segment(), index, value); return this; }
 
-        /// {@return `pfnFree` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pfnFreeAt(long index) { return pfnFree(this.segment(), index); }
-        /// Sets `pfnFree` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pfnFreeAt(long index, MemorySegment value) { pfnFree(this.segment(), index, value); return this; }
+    /// {@return `pfnInternalFree` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pfnInternalFreeAt(long index) { return pfnInternalFree(this.segment(), index); }
+    /// Sets `pfnInternalFree` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAllocationCallbacks pfnInternalFreeAt(long index, MemorySegment value) { pfnInternalFree(this.segment(), index, value); return this; }
 
-        /// {@return `pfnInternalAllocation` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pfnInternalAllocationAt(long index) { return pfnInternalAllocation(this.segment(), index); }
-        /// Sets `pfnInternalAllocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pfnInternalAllocationAt(long index, MemorySegment value) { pfnInternalAllocation(this.segment(), index, value); return this; }
-
-        /// {@return `pfnInternalFree` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pfnInternalFreeAt(long index) { return pfnInternalFree(this.segment(), index); }
-        /// Sets `pfnInternalFree` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pfnInternalFreeAt(long index, MemorySegment value) { pfnInternalFree(this.segment(), index, value); return this; }
-
-    }
 }

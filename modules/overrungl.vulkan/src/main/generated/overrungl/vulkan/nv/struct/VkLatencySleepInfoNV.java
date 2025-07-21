@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint64_t value;
 /// };
 /// ```
-public sealed class VkLatencySleepInfoNV extends GroupType {
+public final class VkLatencySleepInfoNV extends GroupType {
     /// The struct layout of `VkLatencySleepInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkLatencySleepInfoNV extends GroupType {
     public static final VarHandle VH_value = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value"));
 
     /// Creates `VkLatencySleepInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkLatencySleepInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkLatencySleepInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkLatencySleepInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkLatencySleepInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLatencySleepInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkLatencySleepInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkLatencySleepInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLatencySleepInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkLatencySleepInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLatencySleepInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkLatencySleepInfoNV` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkLatencySleepInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkLatencySleepInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkLatencySleepInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkLatencySleepInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkLatencySleepInfoNV`
-    public static VkLatencySleepInfoNV alloc(SegmentAllocator allocator) { return new VkLatencySleepInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkLatencySleepInfoNV alloc(SegmentAllocator allocator) { return new VkLatencySleepInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkLatencySleepInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkLatencySleepInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkLatencySleepInfoNV alloc(SegmentAllocator allocator, long count) { return new VkLatencySleepInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkLatencySleepInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkLatencySleepInfoNV extends GroupType {
     /// @return `this`
     public VkLatencySleepInfoNV copyFrom(VkLatencySleepInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkLatencySleepInfoNV reinterpret(long count) { return new VkLatencySleepInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkLatencySleepInfoNV extends GroupType {
     /// @return `this`
     public VkLatencySleepInfoNV value(long value) { value(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkLatencySleepInfoNV].
-    public static final class Buffer extends VkLatencySleepInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkLatencySleepInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkLatencySleepInfoNV`
+    public VkLatencySleepInfoNV asSlice(long index) { return new VkLatencySleepInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkLatencySleepInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkLatencySleepInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkLatencySleepInfoNV`
+    public VkLatencySleepInfoNV asSlice(long index, long count) { return new VkLatencySleepInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkLatencySleepInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkLatencySleepInfoNV at(long index, Consumer<VkLatencySleepInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkLatencySleepInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkLatencySleepInfoNV`
-        public VkLatencySleepInfoNV asSlice(long index) { return new VkLatencySleepInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLatencySleepInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkLatencySleepInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkLatencySleepInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLatencySleepInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `signalSemaphore` at the given index}
+    /// @param index the index of the struct buffer
+    public long signalSemaphoreAt(long index) { return signalSemaphore(this.segment(), index); }
+    /// Sets `signalSemaphore` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLatencySleepInfoNV signalSemaphoreAt(long index, long value) { signalSemaphore(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `value` at the given index}
+    /// @param index the index of the struct buffer
+    public long valueAt(long index) { return value(this.segment(), index); }
+    /// Sets `value` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLatencySleepInfoNV valueAt(long index, long value) { value(this.segment(), index, value); return this; }
 
-        /// {@return `signalSemaphore` at the given index}
-        /// @param index the index of the struct buffer
-        public long signalSemaphoreAt(long index) { return signalSemaphore(this.segment(), index); }
-        /// Sets `signalSemaphore` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer signalSemaphoreAt(long index, long value) { signalSemaphore(this.segment(), index, value); return this; }
-
-        /// {@return `value` at the given index}
-        /// @param index the index of the struct buffer
-        public long valueAt(long index) { return value(this.segment(), index); }
-        /// Sets `value` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer valueAt(long index, long value) { value(this.segment(), index, value); return this; }
-
-    }
 }

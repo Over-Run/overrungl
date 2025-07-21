@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -39,7 +39,7 @@ import java.util.function.*;
 ///     (int) StdVideoAV1ChromaSamplePosition chroma_sample_position;
 /// };
 /// ```
-public sealed class StdVideoAV1ColorConfig extends GroupType {
+public final class StdVideoAV1ColorConfig extends GroupType {
     /// The struct layout of `StdVideoAV1ColorConfig`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1ColorConfigFlags.LAYOUT.withName("flags"),
@@ -106,20 +106,21 @@ public sealed class StdVideoAV1ColorConfig extends GroupType {
     public static final VarHandle VH_chroma_sample_position = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chroma_sample_position"));
 
     /// Creates `StdVideoAV1ColorConfig` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoAV1ColorConfig(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoAV1ColorConfig(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoAV1ColorConfig` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoAV1ColorConfig of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1ColorConfig(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoAV1ColorConfig` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1ColorConfig ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1ColorConfig(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoAV1ColorConfig ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1ColorConfig(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoAV1ColorConfig` with the given segment.
     ///
@@ -127,18 +128,18 @@ public sealed class StdVideoAV1ColorConfig extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoAV1ColorConfig ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1ColorConfig(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoAV1ColorConfig` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1ColorConfig`
-    public static StdVideoAV1ColorConfig alloc(SegmentAllocator allocator) { return new StdVideoAV1ColorConfig(allocator.allocate(LAYOUT)); }
+    public static StdVideoAV1ColorConfig alloc(SegmentAllocator allocator) { return new StdVideoAV1ColorConfig(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoAV1ColorConfig` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1ColorConfig`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoAV1ColorConfig alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1ColorConfig(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoAV1ColorConfig` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -253,9 +254,10 @@ public sealed class StdVideoAV1ColorConfig extends GroupType {
     /// @return `this`
     public StdVideoAV1ColorConfig copyFrom(StdVideoAV1ColorConfig src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoAV1ColorConfig reinterpret(long count) { return new StdVideoAV1ColorConfig(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -405,113 +407,107 @@ public sealed class StdVideoAV1ColorConfig extends GroupType {
     /// @return `this`
     public StdVideoAV1ColorConfig chroma_sample_position(int value) { chroma_sample_position(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [StdVideoAV1ColorConfig].
-    public static final class Buffer extends StdVideoAV1ColorConfig {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoAV1ColorConfig`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1ColorConfig`
+    public StdVideoAV1ColorConfig asSlice(long index) { return new StdVideoAV1ColorConfig(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoAV1ColorConfig.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoAV1ColorConfig`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1ColorConfig`
+    public StdVideoAV1ColorConfig asSlice(long index, long count) { return new StdVideoAV1ColorConfig(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoAV1ColorConfig` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoAV1ColorConfig at(long index, Consumer<StdVideoAV1ColorConfig> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoAV1ColorConfig`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoAV1ColorConfig`
-        public StdVideoAV1ColorConfig asSlice(long index) { return new StdVideoAV1ColorConfig(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1ColorConfig flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoAV1ColorConfig flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1ColorConfigFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1ColorConfigFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoAV1ColorConfig`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoAV1ColorConfig`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `BitDepth` at the given index}
+    /// @param index the index of the struct buffer
+    public byte BitDepthAt(long index) { return BitDepth(this.segment(), index); }
+    /// Sets `BitDepth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1ColorConfig BitDepthAt(long index, byte value) { BitDepth(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1ColorConfigFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1ColorConfigFlags.of(flagsAt(index))); return this; }
+    /// {@return `subsampling_x` at the given index}
+    /// @param index the index of the struct buffer
+    public byte subsampling_xAt(long index) { return subsampling_x(this.segment(), index); }
+    /// Sets `subsampling_x` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1ColorConfig subsampling_xAt(long index, byte value) { subsampling_x(this.segment(), index, value); return this; }
 
-        /// {@return `BitDepth` at the given index}
-        /// @param index the index of the struct buffer
-        public byte BitDepthAt(long index) { return BitDepth(this.segment(), index); }
-        /// Sets `BitDepth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer BitDepthAt(long index, byte value) { BitDepth(this.segment(), index, value); return this; }
+    /// {@return `subsampling_y` at the given index}
+    /// @param index the index of the struct buffer
+    public byte subsampling_yAt(long index) { return subsampling_y(this.segment(), index); }
+    /// Sets `subsampling_y` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1ColorConfig subsampling_yAt(long index, byte value) { subsampling_y(this.segment(), index, value); return this; }
 
-        /// {@return `subsampling_x` at the given index}
-        /// @param index the index of the struct buffer
-        public byte subsampling_xAt(long index) { return subsampling_x(this.segment(), index); }
-        /// Sets `subsampling_x` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subsampling_xAt(long index, byte value) { subsampling_x(this.segment(), index, value); return this; }
+    /// {@return `reserved1` at the given index}
+    /// @param index the index of the struct buffer
+    public byte reserved1At(long index) { return reserved1(this.segment(), index); }
+    /// Sets `reserved1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1ColorConfig reserved1At(long index, byte value) { reserved1(this.segment(), index, value); return this; }
 
-        /// {@return `subsampling_y` at the given index}
-        /// @param index the index of the struct buffer
-        public byte subsampling_yAt(long index) { return subsampling_y(this.segment(), index); }
-        /// Sets `subsampling_y` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subsampling_yAt(long index, byte value) { subsampling_y(this.segment(), index, value); return this; }
+    /// {@return `color_primaries` at the given index}
+    /// @param index the index of the struct buffer
+    public int color_primariesAt(long index) { return color_primaries(this.segment(), index); }
+    /// Sets `color_primaries` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1ColorConfig color_primariesAt(long index, int value) { color_primaries(this.segment(), index, value); return this; }
 
-        /// {@return `reserved1` at the given index}
-        /// @param index the index of the struct buffer
-        public byte reserved1At(long index) { return reserved1(this.segment(), index); }
-        /// Sets `reserved1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer reserved1At(long index, byte value) { reserved1(this.segment(), index, value); return this; }
+    /// {@return `transfer_characteristics` at the given index}
+    /// @param index the index of the struct buffer
+    public int transfer_characteristicsAt(long index) { return transfer_characteristics(this.segment(), index); }
+    /// Sets `transfer_characteristics` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1ColorConfig transfer_characteristicsAt(long index, int value) { transfer_characteristics(this.segment(), index, value); return this; }
 
-        /// {@return `color_primaries` at the given index}
-        /// @param index the index of the struct buffer
-        public int color_primariesAt(long index) { return color_primaries(this.segment(), index); }
-        /// Sets `color_primaries` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer color_primariesAt(long index, int value) { color_primaries(this.segment(), index, value); return this; }
+    /// {@return `matrix_coefficients` at the given index}
+    /// @param index the index of the struct buffer
+    public int matrix_coefficientsAt(long index) { return matrix_coefficients(this.segment(), index); }
+    /// Sets `matrix_coefficients` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1ColorConfig matrix_coefficientsAt(long index, int value) { matrix_coefficients(this.segment(), index, value); return this; }
 
-        /// {@return `transfer_characteristics` at the given index}
-        /// @param index the index of the struct buffer
-        public int transfer_characteristicsAt(long index) { return transfer_characteristics(this.segment(), index); }
-        /// Sets `transfer_characteristics` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer transfer_characteristicsAt(long index, int value) { transfer_characteristics(this.segment(), index, value); return this; }
+    /// {@return `chroma_sample_position` at the given index}
+    /// @param index the index of the struct buffer
+    public int chroma_sample_positionAt(long index) { return chroma_sample_position(this.segment(), index); }
+    /// Sets `chroma_sample_position` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1ColorConfig chroma_sample_positionAt(long index, int value) { chroma_sample_position(this.segment(), index, value); return this; }
 
-        /// {@return `matrix_coefficients` at the given index}
-        /// @param index the index of the struct buffer
-        public int matrix_coefficientsAt(long index) { return matrix_coefficients(this.segment(), index); }
-        /// Sets `matrix_coefficients` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer matrix_coefficientsAt(long index, int value) { matrix_coefficients(this.segment(), index, value); return this; }
-
-        /// {@return `chroma_sample_position` at the given index}
-        /// @param index the index of the struct buffer
-        public int chroma_sample_positionAt(long index) { return chroma_sample_position(this.segment(), index); }
-        /// Sets `chroma_sample_position` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_sample_positionAt(long index, int value) { chroma_sample_position(this.segment(), index, value); return this; }
-
-    }
 }

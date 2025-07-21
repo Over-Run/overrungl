@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -39,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t maxRayHitAttributeSize;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends GroupType {
+public final class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -115,20 +116,21 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Grou
     public static final VarHandle VH_maxRayHitAttributeSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRayHitAttributeSize"));
 
     /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment.
     ///
@@ -136,18 +138,18 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Grou
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`
-    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceRayTracingPipelinePropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -279,9 +281,10 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Grou
     /// @return `this`
     public VkPhysicalDeviceRayTracingPipelinePropertiesKHR copyFrom(VkPhysicalDeviceRayTracingPipelinePropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR reinterpret(long count) { return new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -443,117 +446,111 @@ public sealed class VkPhysicalDeviceRayTracingPipelinePropertiesKHR extends Grou
     /// @return `this`
     public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayHitAttributeSize(int value) { maxRayHitAttributeSize(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceRayTracingPipelinePropertiesKHR].
-    public static final class Buffer extends VkPhysicalDeviceRayTracingPipelinePropertiesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR asSlice(long index) { return new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceRayTracingPipelinePropertiesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR asSlice(long index, long count) { return new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceRayTracingPipelinePropertiesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR at(long index, Consumer<VkPhysicalDeviceRayTracingPipelinePropertiesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`
-        public VkPhysicalDeviceRayTracingPipelinePropertiesKHR asSlice(long index) { return new VkPhysicalDeviceRayTracingPipelinePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceRayTracingPipelinePropertiesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `shaderGroupHandleSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderGroupHandleSizeAt(long index) { return shaderGroupHandleSize(this.segment(), index); }
+    /// Sets `shaderGroupHandleSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleSizeAt(long index, int value) { shaderGroupHandleSize(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxRayRecursionDepth` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxRayRecursionDepthAt(long index) { return maxRayRecursionDepth(this.segment(), index); }
+    /// Sets `maxRayRecursionDepth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayRecursionDepthAt(long index, int value) { maxRayRecursionDepth(this.segment(), index, value); return this; }
 
-        /// {@return `shaderGroupHandleSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderGroupHandleSizeAt(long index) { return shaderGroupHandleSize(this.segment(), index); }
-        /// Sets `shaderGroupHandleSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderGroupHandleSizeAt(long index, int value) { shaderGroupHandleSize(this.segment(), index, value); return this; }
+    /// {@return `maxShaderGroupStride` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxShaderGroupStrideAt(long index) { return maxShaderGroupStride(this.segment(), index); }
+    /// Sets `maxShaderGroupStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxShaderGroupStrideAt(long index, int value) { maxShaderGroupStride(this.segment(), index, value); return this; }
 
-        /// {@return `maxRayRecursionDepth` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxRayRecursionDepthAt(long index) { return maxRayRecursionDepth(this.segment(), index); }
-        /// Sets `maxRayRecursionDepth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxRayRecursionDepthAt(long index, int value) { maxRayRecursionDepth(this.segment(), index, value); return this; }
+    /// {@return `shaderGroupBaseAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderGroupBaseAlignmentAt(long index) { return shaderGroupBaseAlignment(this.segment(), index); }
+    /// Sets `shaderGroupBaseAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupBaseAlignmentAt(long index, int value) { shaderGroupBaseAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `maxShaderGroupStride` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxShaderGroupStrideAt(long index) { return maxShaderGroupStride(this.segment(), index); }
-        /// Sets `maxShaderGroupStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxShaderGroupStrideAt(long index, int value) { maxShaderGroupStride(this.segment(), index, value); return this; }
+    /// {@return `shaderGroupHandleCaptureReplaySize` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderGroupHandleCaptureReplaySizeAt(long index) { return shaderGroupHandleCaptureReplaySize(this.segment(), index); }
+    /// Sets `shaderGroupHandleCaptureReplaySize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleCaptureReplaySizeAt(long index, int value) { shaderGroupHandleCaptureReplaySize(this.segment(), index, value); return this; }
 
-        /// {@return `shaderGroupBaseAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderGroupBaseAlignmentAt(long index) { return shaderGroupBaseAlignment(this.segment(), index); }
-        /// Sets `shaderGroupBaseAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderGroupBaseAlignmentAt(long index, int value) { shaderGroupBaseAlignment(this.segment(), index, value); return this; }
+    /// {@return `maxRayDispatchInvocationCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxRayDispatchInvocationCountAt(long index) { return maxRayDispatchInvocationCount(this.segment(), index); }
+    /// Sets `maxRayDispatchInvocationCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayDispatchInvocationCountAt(long index, int value) { maxRayDispatchInvocationCount(this.segment(), index, value); return this; }
 
-        /// {@return `shaderGroupHandleCaptureReplaySize` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderGroupHandleCaptureReplaySizeAt(long index) { return shaderGroupHandleCaptureReplaySize(this.segment(), index); }
-        /// Sets `shaderGroupHandleCaptureReplaySize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderGroupHandleCaptureReplaySizeAt(long index, int value) { shaderGroupHandleCaptureReplaySize(this.segment(), index, value); return this; }
+    /// {@return `shaderGroupHandleAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderGroupHandleAlignmentAt(long index) { return shaderGroupHandleAlignment(this.segment(), index); }
+    /// Sets `shaderGroupHandleAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR shaderGroupHandleAlignmentAt(long index, int value) { shaderGroupHandleAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `maxRayDispatchInvocationCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxRayDispatchInvocationCountAt(long index) { return maxRayDispatchInvocationCount(this.segment(), index); }
-        /// Sets `maxRayDispatchInvocationCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxRayDispatchInvocationCountAt(long index, int value) { maxRayDispatchInvocationCount(this.segment(), index, value); return this; }
+    /// {@return `maxRayHitAttributeSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxRayHitAttributeSizeAt(long index) { return maxRayHitAttributeSize(this.segment(), index); }
+    /// Sets `maxRayHitAttributeSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRayTracingPipelinePropertiesKHR maxRayHitAttributeSizeAt(long index, int value) { maxRayHitAttributeSize(this.segment(), index, value); return this; }
 
-        /// {@return `shaderGroupHandleAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderGroupHandleAlignmentAt(long index) { return shaderGroupHandleAlignment(this.segment(), index); }
-        /// Sets `shaderGroupHandleAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderGroupHandleAlignmentAt(long index, int value) { shaderGroupHandleAlignment(this.segment(), index, value); return this; }
-
-        /// {@return `maxRayHitAttributeSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxRayHitAttributeSizeAt(long index) { return maxRayHitAttributeSize(this.segment(), index); }
-        /// Sets `maxRayHitAttributeSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxRayHitAttributeSizeAt(long index, int value) { maxRayHitAttributeSize(this.segment(), index, value); return this; }
-
-    }
 }

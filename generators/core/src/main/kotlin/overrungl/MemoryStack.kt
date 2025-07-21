@@ -67,17 +67,17 @@ fun memoryStack() {
                 |    /// Allocates uninitialized `$clzName`.
                 |    ///
                 |    /// @return the `$clzName`
-                |    public $clzName alloc$clzName() { return new $clzName(malloc($clzName.LAYOUT)); }
+                |    public $clzName alloc$clzName() { return new $clzName(malloc($clzName.LAYOUT), 1); }
                 |
             """.trimMargin()
         )
         sb.appendLine(
             """
-                |    /// Allocates uninitialized `$clzName.Buffer`.
+                |    /// Allocates uninitialized `$clzName`s.
                 |    ///
                 |    /// @param count the count of the allocated `$clzName`
-                |    /// @return the `$clzName.Buffer`
-                |    public $clzName.Buffer alloc$clzName(long count) { return new $clzName.Buffer(malloc($clzName.LAYOUT, count), count); }
+                |    /// @return the `$clzName`s
+                |    public $clzName alloc$clzName(long count) { return new $clzName(malloc($clzName.LAYOUT, count), count); }
                 |
             """.trimMargin()
         )

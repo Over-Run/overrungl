@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -38,7 +39,7 @@ import overrungl.util.*;
 ///     const VkSemaphore* pSignalSemaphores;
 /// };
 /// ```
-public sealed class VkSubmitInfo extends GroupType {
+public final class VkSubmitInfo extends GroupType {
     /// The struct layout of `VkSubmitInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -107,20 +108,21 @@ public sealed class VkSubmitInfo extends GroupType {
     public static final VarHandle VH_pSignalSemaphores = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSignalSemaphores"));
 
     /// Creates `VkSubmitInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkSubmitInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSubmitInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSubmitInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSubmitInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubmitInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSubmitInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSubmitInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubmitInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSubmitInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubmitInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSubmitInfo` with the given segment.
     ///
@@ -128,18 +130,18 @@ public sealed class VkSubmitInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSubmitInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubmitInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSubmitInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSubmitInfo`
-    public static VkSubmitInfo alloc(SegmentAllocator allocator) { return new VkSubmitInfo(allocator.allocate(LAYOUT)); }
+    public static VkSubmitInfo alloc(SegmentAllocator allocator) { return new VkSubmitInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSubmitInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSubmitInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSubmitInfo alloc(SegmentAllocator allocator, long count) { return new VkSubmitInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSubmitInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -254,9 +256,10 @@ public sealed class VkSubmitInfo extends GroupType {
     /// @return `this`
     public VkSubmitInfo copyFrom(VkSubmitInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSubmitInfo reinterpret(long count) { return new VkSubmitInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -402,108 +405,102 @@ public sealed class VkSubmitInfo extends GroupType {
     /// @return `this`
     public VkSubmitInfo pSignalSemaphores(MemorySegment value) { pSignalSemaphores(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSubmitInfo].
-    public static final class Buffer extends VkSubmitInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkSubmitInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubmitInfo`
+    public VkSubmitInfo asSlice(long index) { return new VkSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSubmitInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSubmitInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubmitInfo`
+    public VkSubmitInfo asSlice(long index, long count) { return new VkSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSubmitInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSubmitInfo at(long index, Consumer<VkSubmitInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSubmitInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSubmitInfo`
-        public VkSubmitInfo asSlice(long index) { return new VkSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubmitInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSubmitInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSubmitInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubmitInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `waitSemaphoreCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int waitSemaphoreCountAt(long index) { return waitSemaphoreCount(this.segment(), index); }
+    /// Sets `waitSemaphoreCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubmitInfo waitSemaphoreCountAt(long index, int value) { waitSemaphoreCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pWaitSemaphores` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pWaitSemaphoresAt(long index) { return pWaitSemaphores(this.segment(), index); }
+    /// Sets `pWaitSemaphores` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubmitInfo pWaitSemaphoresAt(long index, MemorySegment value) { pWaitSemaphores(this.segment(), index, value); return this; }
 
-        /// {@return `waitSemaphoreCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int waitSemaphoreCountAt(long index) { return waitSemaphoreCount(this.segment(), index); }
-        /// Sets `waitSemaphoreCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer waitSemaphoreCountAt(long index, int value) { waitSemaphoreCount(this.segment(), index, value); return this; }
+    /// {@return `pWaitDstStageMask` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pWaitDstStageMaskAt(long index) { return pWaitDstStageMask(this.segment(), index); }
+    /// Sets `pWaitDstStageMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubmitInfo pWaitDstStageMaskAt(long index, MemorySegment value) { pWaitDstStageMask(this.segment(), index, value); return this; }
 
-        /// {@return `pWaitSemaphores` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pWaitSemaphoresAt(long index) { return pWaitSemaphores(this.segment(), index); }
-        /// Sets `pWaitSemaphores` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pWaitSemaphoresAt(long index, MemorySegment value) { pWaitSemaphores(this.segment(), index, value); return this; }
+    /// {@return `commandBufferCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int commandBufferCountAt(long index) { return commandBufferCount(this.segment(), index); }
+    /// Sets `commandBufferCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubmitInfo commandBufferCountAt(long index, int value) { commandBufferCount(this.segment(), index, value); return this; }
 
-        /// {@return `pWaitDstStageMask` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pWaitDstStageMaskAt(long index) { return pWaitDstStageMask(this.segment(), index); }
-        /// Sets `pWaitDstStageMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pWaitDstStageMaskAt(long index, MemorySegment value) { pWaitDstStageMask(this.segment(), index, value); return this; }
+    /// {@return `pCommandBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pCommandBuffersAt(long index) { return pCommandBuffers(this.segment(), index); }
+    /// Sets `pCommandBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubmitInfo pCommandBuffersAt(long index, MemorySegment value) { pCommandBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `commandBufferCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int commandBufferCountAt(long index) { return commandBufferCount(this.segment(), index); }
-        /// Sets `commandBufferCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer commandBufferCountAt(long index, int value) { commandBufferCount(this.segment(), index, value); return this; }
+    /// {@return `signalSemaphoreCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int signalSemaphoreCountAt(long index) { return signalSemaphoreCount(this.segment(), index); }
+    /// Sets `signalSemaphoreCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubmitInfo signalSemaphoreCountAt(long index, int value) { signalSemaphoreCount(this.segment(), index, value); return this; }
 
-        /// {@return `pCommandBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pCommandBuffersAt(long index) { return pCommandBuffers(this.segment(), index); }
-        /// Sets `pCommandBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pCommandBuffersAt(long index, MemorySegment value) { pCommandBuffers(this.segment(), index, value); return this; }
+    /// {@return `pSignalSemaphores` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pSignalSemaphoresAt(long index) { return pSignalSemaphores(this.segment(), index); }
+    /// Sets `pSignalSemaphores` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubmitInfo pSignalSemaphoresAt(long index, MemorySegment value) { pSignalSemaphores(this.segment(), index, value); return this; }
 
-        /// {@return `signalSemaphoreCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int signalSemaphoreCountAt(long index) { return signalSemaphoreCount(this.segment(), index); }
-        /// Sets `signalSemaphoreCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer signalSemaphoreCountAt(long index, int value) { signalSemaphoreCount(this.segment(), index, value); return this; }
-
-        /// {@return `pSignalSemaphores` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pSignalSemaphoresAt(long index) { return pSignalSemaphores(this.segment(), index); }
-        /// Sets `pSignalSemaphores` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSignalSemaphoresAt(long index, MemorySegment value) { pSignalSemaphores(this.segment(), index, value); return this; }
-
-    }
 }

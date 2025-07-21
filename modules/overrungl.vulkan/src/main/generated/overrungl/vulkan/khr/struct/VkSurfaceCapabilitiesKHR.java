@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -40,7 +40,7 @@ import java.util.function.*;
 ///     ((uint32_t) VkFlags) VkImageUsageFlags supportedUsageFlags;
 /// };
 /// ```
-public sealed class VkSurfaceCapabilitiesKHR extends GroupType {
+public final class VkSurfaceCapabilitiesKHR extends GroupType {
     /// The struct layout of `VkSurfaceCapabilitiesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("minImageCount"),
@@ -110,20 +110,21 @@ public sealed class VkSurfaceCapabilitiesKHR extends GroupType {
     public static final VarHandle VH_supportedUsageFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("supportedUsageFlags"));
 
     /// Creates `VkSurfaceCapabilitiesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkSurfaceCapabilitiesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSurfaceCapabilitiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSurfaceCapabilitiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSurfaceCapabilitiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfaceCapabilitiesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSurfaceCapabilitiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSurfaceCapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfaceCapabilitiesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSurfaceCapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfaceCapabilitiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSurfaceCapabilitiesKHR` with the given segment.
     ///
@@ -131,18 +132,18 @@ public sealed class VkSurfaceCapabilitiesKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSurfaceCapabilitiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSurfaceCapabilitiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSurfaceCapabilitiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSurfaceCapabilitiesKHR`
-    public static VkSurfaceCapabilitiesKHR alloc(SegmentAllocator allocator) { return new VkSurfaceCapabilitiesKHR(allocator.allocate(LAYOUT)); }
+    public static VkSurfaceCapabilitiesKHR alloc(SegmentAllocator allocator) { return new VkSurfaceCapabilitiesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSurfaceCapabilitiesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSurfaceCapabilitiesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSurfaceCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkSurfaceCapabilitiesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSurfaceCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -274,9 +275,10 @@ public sealed class VkSurfaceCapabilitiesKHR extends GroupType {
     /// @return `this`
     public VkSurfaceCapabilitiesKHR copyFrom(VkSurfaceCapabilitiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSurfaceCapabilitiesKHR reinterpret(long count) { return new VkSurfaceCapabilitiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `minImageCount` at the given index}
     /// @param segment the segment of the struct
@@ -450,132 +452,126 @@ public sealed class VkSurfaceCapabilitiesKHR extends GroupType {
     /// @return `this`
     public VkSurfaceCapabilitiesKHR supportedUsageFlags(int value) { supportedUsageFlags(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSurfaceCapabilitiesKHR].
-    public static final class Buffer extends VkSurfaceCapabilitiesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSurfaceCapabilitiesKHR`
+    public VkSurfaceCapabilitiesKHR asSlice(long index) { return new VkSurfaceCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSurfaceCapabilitiesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSurfaceCapabilitiesKHR`
+    public VkSurfaceCapabilitiesKHR asSlice(long index, long count) { return new VkSurfaceCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSurfaceCapabilitiesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR at(long index, Consumer<VkSurfaceCapabilitiesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSurfaceCapabilitiesKHR`
-        public VkSurfaceCapabilitiesKHR asSlice(long index) { return new VkSurfaceCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `minImageCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int minImageCountAt(long index) { return minImageCount(this.segment(), index); }
+    /// Sets `minImageCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR minImageCountAt(long index, int value) { minImageCount(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSurfaceCapabilitiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSurfaceCapabilitiesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `maxImageCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImageCountAt(long index) { return maxImageCount(this.segment(), index); }
+    /// Sets `maxImageCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR maxImageCountAt(long index, int value) { maxImageCount(this.segment(), index, value); return this; }
 
-        /// {@return `minImageCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int minImageCountAt(long index) { return minImageCount(this.segment(), index); }
-        /// Sets `minImageCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minImageCountAt(long index, int value) { minImageCount(this.segment(), index, value); return this; }
+    /// {@return `currentExtent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment currentExtentAt(long index) { return currentExtent(this.segment(), index); }
+    /// Sets `currentExtent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR currentExtentAt(long index, MemorySegment value) { currentExtent(this.segment(), index, value); return this; }
+    /// Accepts `currentExtent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR currentExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(currentExtentAt(index))); return this; }
 
-        /// {@return `maxImageCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImageCountAt(long index) { return maxImageCount(this.segment(), index); }
-        /// Sets `maxImageCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageCountAt(long index, int value) { maxImageCount(this.segment(), index, value); return this; }
+    /// {@return `minImageExtent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment minImageExtentAt(long index) { return minImageExtent(this.segment(), index); }
+    /// Sets `minImageExtent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR minImageExtentAt(long index, MemorySegment value) { minImageExtent(this.segment(), index, value); return this; }
+    /// Accepts `minImageExtent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR minImageExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minImageExtentAt(index))); return this; }
 
-        /// {@return `currentExtent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment currentExtentAt(long index) { return currentExtent(this.segment(), index); }
-        /// Sets `currentExtent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer currentExtentAt(long index, MemorySegment value) { currentExtent(this.segment(), index, value); return this; }
-        /// Accepts `currentExtent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer currentExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(currentExtentAt(index))); return this; }
+    /// {@return `maxImageExtent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxImageExtentAt(long index) { return maxImageExtent(this.segment(), index); }
+    /// Sets `maxImageExtent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR maxImageExtentAt(long index, MemorySegment value) { maxImageExtent(this.segment(), index, value); return this; }
+    /// Accepts `maxImageExtent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR maxImageExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxImageExtentAt(index))); return this; }
 
-        /// {@return `minImageExtent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment minImageExtentAt(long index) { return minImageExtent(this.segment(), index); }
-        /// Sets `minImageExtent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minImageExtentAt(long index, MemorySegment value) { minImageExtent(this.segment(), index, value); return this; }
-        /// Accepts `minImageExtent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer minImageExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minImageExtentAt(index))); return this; }
+    /// {@return `maxImageArrayLayers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImageArrayLayersAt(long index) { return maxImageArrayLayers(this.segment(), index); }
+    /// Sets `maxImageArrayLayers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR maxImageArrayLayersAt(long index, int value) { maxImageArrayLayers(this.segment(), index, value); return this; }
 
-        /// {@return `maxImageExtent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxImageExtentAt(long index) { return maxImageExtent(this.segment(), index); }
-        /// Sets `maxImageExtent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageExtentAt(long index, MemorySegment value) { maxImageExtent(this.segment(), index, value); return this; }
-        /// Accepts `maxImageExtent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxImageExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxImageExtentAt(index))); return this; }
+    /// {@return `supportedTransforms` at the given index}
+    /// @param index the index of the struct buffer
+    public int supportedTransformsAt(long index) { return supportedTransforms(this.segment(), index); }
+    /// Sets `supportedTransforms` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR supportedTransformsAt(long index, int value) { supportedTransforms(this.segment(), index, value); return this; }
 
-        /// {@return `maxImageArrayLayers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImageArrayLayersAt(long index) { return maxImageArrayLayers(this.segment(), index); }
-        /// Sets `maxImageArrayLayers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageArrayLayersAt(long index, int value) { maxImageArrayLayers(this.segment(), index, value); return this; }
+    /// {@return `currentTransform` at the given index}
+    /// @param index the index of the struct buffer
+    public int currentTransformAt(long index) { return currentTransform(this.segment(), index); }
+    /// Sets `currentTransform` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR currentTransformAt(long index, int value) { currentTransform(this.segment(), index, value); return this; }
 
-        /// {@return `supportedTransforms` at the given index}
-        /// @param index the index of the struct buffer
-        public int supportedTransformsAt(long index) { return supportedTransforms(this.segment(), index); }
-        /// Sets `supportedTransforms` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer supportedTransformsAt(long index, int value) { supportedTransforms(this.segment(), index, value); return this; }
+    /// {@return `supportedCompositeAlpha` at the given index}
+    /// @param index the index of the struct buffer
+    public int supportedCompositeAlphaAt(long index) { return supportedCompositeAlpha(this.segment(), index); }
+    /// Sets `supportedCompositeAlpha` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR supportedCompositeAlphaAt(long index, int value) { supportedCompositeAlpha(this.segment(), index, value); return this; }
 
-        /// {@return `currentTransform` at the given index}
-        /// @param index the index of the struct buffer
-        public int currentTransformAt(long index) { return currentTransform(this.segment(), index); }
-        /// Sets `currentTransform` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer currentTransformAt(long index, int value) { currentTransform(this.segment(), index, value); return this; }
+    /// {@return `supportedUsageFlags` at the given index}
+    /// @param index the index of the struct buffer
+    public int supportedUsageFlagsAt(long index) { return supportedUsageFlags(this.segment(), index); }
+    /// Sets `supportedUsageFlags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSurfaceCapabilitiesKHR supportedUsageFlagsAt(long index, int value) { supportedUsageFlags(this.segment(), index, value); return this; }
 
-        /// {@return `supportedCompositeAlpha` at the given index}
-        /// @param index the index of the struct buffer
-        public int supportedCompositeAlphaAt(long index) { return supportedCompositeAlpha(this.segment(), index); }
-        /// Sets `supportedCompositeAlpha` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer supportedCompositeAlphaAt(long index, int value) { supportedCompositeAlpha(this.segment(), index, value); return this; }
-
-        /// {@return `supportedUsageFlags` at the given index}
-        /// @param index the index of the struct buffer
-        public int supportedUsageFlagsAt(long index) { return supportedUsageFlags(this.segment(), index); }
-        /// Sets `supportedUsageFlags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer supportedUsageFlagsAt(long index, int value) { supportedUsageFlags(this.segment(), index, value); return this; }
-
-    }
 }

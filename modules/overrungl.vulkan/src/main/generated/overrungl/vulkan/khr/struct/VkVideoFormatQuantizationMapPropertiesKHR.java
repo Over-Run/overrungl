@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -33,7 +33,7 @@ import java.util.function.*;
 ///     (struct VkExtent2D) VkExtent2D quantizationMapTexelSize;
 /// };
 /// ```
-public sealed class VkVideoFormatQuantizationMapPropertiesKHR extends GroupType {
+public final class VkVideoFormatQuantizationMapPropertiesKHR extends GroupType {
     /// The struct layout of `VkVideoFormatQuantizationMapPropertiesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -58,20 +58,21 @@ public sealed class VkVideoFormatQuantizationMapPropertiesKHR extends GroupType 
     public static final MemoryLayout LAYOUT_quantizationMapTexelSize = LAYOUT.select(PathElement.groupElement("quantizationMapTexelSize"));
 
     /// Creates `VkVideoFormatQuantizationMapPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkVideoFormatQuantizationMapPropertiesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVideoFormatQuantizationMapPropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVideoFormatQuantizationMapPropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVideoFormatQuantizationMapPropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoFormatQuantizationMapPropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoFormatQuantizationMapPropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoFormatQuantizationMapPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoFormatQuantizationMapPropertiesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVideoFormatQuantizationMapPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoFormatQuantizationMapPropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVideoFormatQuantizationMapPropertiesKHR` with the given segment.
     ///
@@ -79,18 +80,18 @@ public sealed class VkVideoFormatQuantizationMapPropertiesKHR extends GroupType 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVideoFormatQuantizationMapPropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoFormatQuantizationMapPropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVideoFormatQuantizationMapPropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoFormatQuantizationMapPropertiesKHR`
-    public static VkVideoFormatQuantizationMapPropertiesKHR alloc(SegmentAllocator allocator) { return new VkVideoFormatQuantizationMapPropertiesKHR(allocator.allocate(LAYOUT)); }
+    public static VkVideoFormatQuantizationMapPropertiesKHR alloc(SegmentAllocator allocator) { return new VkVideoFormatQuantizationMapPropertiesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVideoFormatQuantizationMapPropertiesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoFormatQuantizationMapPropertiesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVideoFormatQuantizationMapPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoFormatQuantizationMapPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVideoFormatQuantizationMapPropertiesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -124,9 +125,10 @@ public sealed class VkVideoFormatQuantizationMapPropertiesKHR extends GroupType 
     /// @return `this`
     public VkVideoFormatQuantizationMapPropertiesKHR copyFrom(VkVideoFormatQuantizationMapPropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVideoFormatQuantizationMapPropertiesKHR reinterpret(long count) { return new VkVideoFormatQuantizationMapPropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -180,59 +182,53 @@ public sealed class VkVideoFormatQuantizationMapPropertiesKHR extends GroupType 
     /// @return `this`
     public VkVideoFormatQuantizationMapPropertiesKHR quantizationMapTexelSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(quantizationMapTexelSize())); return this; }
 
-    /// A buffer of [VkVideoFormatQuantizationMapPropertiesKHR].
-    public static final class Buffer extends VkVideoFormatQuantizationMapPropertiesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkVideoFormatQuantizationMapPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoFormatQuantizationMapPropertiesKHR`
+    public VkVideoFormatQuantizationMapPropertiesKHR asSlice(long index) { return new VkVideoFormatQuantizationMapPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVideoFormatQuantizationMapPropertiesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVideoFormatQuantizationMapPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoFormatQuantizationMapPropertiesKHR`
+    public VkVideoFormatQuantizationMapPropertiesKHR asSlice(long index, long count) { return new VkVideoFormatQuantizationMapPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVideoFormatQuantizationMapPropertiesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVideoFormatQuantizationMapPropertiesKHR at(long index, Consumer<VkVideoFormatQuantizationMapPropertiesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVideoFormatQuantizationMapPropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVideoFormatQuantizationMapPropertiesKHR`
-        public VkVideoFormatQuantizationMapPropertiesKHR asSlice(long index) { return new VkVideoFormatQuantizationMapPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoFormatQuantizationMapPropertiesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVideoFormatQuantizationMapPropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVideoFormatQuantizationMapPropertiesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoFormatQuantizationMapPropertiesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `quantizationMapTexelSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment quantizationMapTexelSizeAt(long index) { return quantizationMapTexelSize(this.segment(), index); }
+    /// Sets `quantizationMapTexelSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoFormatQuantizationMapPropertiesKHR quantizationMapTexelSizeAt(long index, MemorySegment value) { quantizationMapTexelSize(this.segment(), index, value); return this; }
+    /// Accepts `quantizationMapTexelSize` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkVideoFormatQuantizationMapPropertiesKHR quantizationMapTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(quantizationMapTexelSizeAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `quantizationMapTexelSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment quantizationMapTexelSizeAt(long index) { return quantizationMapTexelSize(this.segment(), index); }
-        /// Sets `quantizationMapTexelSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer quantizationMapTexelSizeAt(long index, MemorySegment value) { quantizationMapTexelSize(this.segment(), index, value); return this; }
-        /// Accepts `quantizationMapTexelSize` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer quantizationMapTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(quantizationMapTexelSizeAt(index))); return this; }
-
-    }
 }

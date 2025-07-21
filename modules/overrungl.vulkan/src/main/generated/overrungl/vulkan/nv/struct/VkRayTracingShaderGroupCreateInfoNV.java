@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t intersectionShader;
 /// };
 /// ```
-public sealed class VkRayTracingShaderGroupCreateInfoNV extends GroupType {
+public final class VkRayTracingShaderGroupCreateInfoNV extends GroupType {
     /// The struct layout of `VkRayTracingShaderGroupCreateInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkRayTracingShaderGroupCreateInfoNV extends GroupType {
     public static final VarHandle VH_intersectionShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("intersectionShader"));
 
     /// Creates `VkRayTracingShaderGroupCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkRayTracingShaderGroupCreateInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkRayTracingShaderGroupCreateInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkRayTracingShaderGroupCreateInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRayTracingShaderGroupCreateInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRayTracingShaderGroupCreateInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRayTracingShaderGroupCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRayTracingShaderGroupCreateInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkRayTracingShaderGroupCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRayTracingShaderGroupCreateInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkRayTracingShaderGroupCreateInfoNV` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkRayTracingShaderGroupCreateInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkRayTracingShaderGroupCreateInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkRayTracingShaderGroupCreateInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkRayTracingShaderGroupCreateInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkRayTracingShaderGroupCreateInfoNV`
-    public static VkRayTracingShaderGroupCreateInfoNV alloc(SegmentAllocator allocator) { return new VkRayTracingShaderGroupCreateInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkRayTracingShaderGroupCreateInfoNV alloc(SegmentAllocator allocator) { return new VkRayTracingShaderGroupCreateInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkRayTracingShaderGroupCreateInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRayTracingShaderGroupCreateInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkRayTracingShaderGroupCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkRayTracingShaderGroupCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkRayTracingShaderGroupCreateInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkRayTracingShaderGroupCreateInfoNV extends GroupType {
     /// @return `this`
     public VkRayTracingShaderGroupCreateInfoNV copyFrom(VkRayTracingShaderGroupCreateInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkRayTracingShaderGroupCreateInfoNV reinterpret(long count) { return new VkRayTracingShaderGroupCreateInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkRayTracingShaderGroupCreateInfoNV extends GroupType {
     /// @return `this`
     public VkRayTracingShaderGroupCreateInfoNV intersectionShader(int value) { intersectionShader(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkRayTracingShaderGroupCreateInfoNV].
-    public static final class Buffer extends VkRayTracingShaderGroupCreateInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkRayTracingShaderGroupCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRayTracingShaderGroupCreateInfoNV`
+    public VkRayTracingShaderGroupCreateInfoNV asSlice(long index) { return new VkRayTracingShaderGroupCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkRayTracingShaderGroupCreateInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkRayTracingShaderGroupCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRayTracingShaderGroupCreateInfoNV`
+    public VkRayTracingShaderGroupCreateInfoNV asSlice(long index, long count) { return new VkRayTracingShaderGroupCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkRayTracingShaderGroupCreateInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkRayTracingShaderGroupCreateInfoNV at(long index, Consumer<VkRayTracingShaderGroupCreateInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkRayTracingShaderGroupCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkRayTracingShaderGroupCreateInfoNV`
-        public VkRayTracingShaderGroupCreateInfoNV asSlice(long index) { return new VkRayTracingShaderGroupCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRayTracingShaderGroupCreateInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkRayTracingShaderGroupCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkRayTracingShaderGroupCreateInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRayTracingShaderGroupCreateInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `type` at the given index}
+    /// @param index the index of the struct buffer
+    public int typeAt(long index) { return type(this.segment(), index); }
+    /// Sets `type` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRayTracingShaderGroupCreateInfoNV typeAt(long index, int value) { type(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `generalShader` at the given index}
+    /// @param index the index of the struct buffer
+    public int generalShaderAt(long index) { return generalShader(this.segment(), index); }
+    /// Sets `generalShader` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRayTracingShaderGroupCreateInfoNV generalShaderAt(long index, int value) { generalShader(this.segment(), index, value); return this; }
 
-        /// {@return `type` at the given index}
-        /// @param index the index of the struct buffer
-        public int typeAt(long index) { return type(this.segment(), index); }
-        /// Sets `type` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer typeAt(long index, int value) { type(this.segment(), index, value); return this; }
+    /// {@return `closestHitShader` at the given index}
+    /// @param index the index of the struct buffer
+    public int closestHitShaderAt(long index) { return closestHitShader(this.segment(), index); }
+    /// Sets `closestHitShader` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRayTracingShaderGroupCreateInfoNV closestHitShaderAt(long index, int value) { closestHitShader(this.segment(), index, value); return this; }
 
-        /// {@return `generalShader` at the given index}
-        /// @param index the index of the struct buffer
-        public int generalShaderAt(long index) { return generalShader(this.segment(), index); }
-        /// Sets `generalShader` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer generalShaderAt(long index, int value) { generalShader(this.segment(), index, value); return this; }
+    /// {@return `anyHitShader` at the given index}
+    /// @param index the index of the struct buffer
+    public int anyHitShaderAt(long index) { return anyHitShader(this.segment(), index); }
+    /// Sets `anyHitShader` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRayTracingShaderGroupCreateInfoNV anyHitShaderAt(long index, int value) { anyHitShader(this.segment(), index, value); return this; }
 
-        /// {@return `closestHitShader` at the given index}
-        /// @param index the index of the struct buffer
-        public int closestHitShaderAt(long index) { return closestHitShader(this.segment(), index); }
-        /// Sets `closestHitShader` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer closestHitShaderAt(long index, int value) { closestHitShader(this.segment(), index, value); return this; }
+    /// {@return `intersectionShader` at the given index}
+    /// @param index the index of the struct buffer
+    public int intersectionShaderAt(long index) { return intersectionShader(this.segment(), index); }
+    /// Sets `intersectionShader` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRayTracingShaderGroupCreateInfoNV intersectionShaderAt(long index, int value) { intersectionShader(this.segment(), index, value); return this; }
 
-        /// {@return `anyHitShader` at the given index}
-        /// @param index the index of the struct buffer
-        public int anyHitShaderAt(long index) { return anyHitShader(this.segment(), index); }
-        /// Sets `anyHitShader` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer anyHitShaderAt(long index, int value) { anyHitShader(this.segment(), index, value); return this; }
-
-        /// {@return `intersectionShader` at the given index}
-        /// @param index the index of the struct buffer
-        public int intersectionShaderAt(long index) { return intersectionShader(this.segment(), index); }
-        /// Sets `intersectionShader` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer intersectionShaderAt(long index, int value) { intersectionShader(this.segment(), index, value); return this; }
-
-    }
 }

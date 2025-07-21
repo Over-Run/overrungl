@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (int) VkComponentSwizzle a;
 /// };
 /// ```
-public sealed class VkComponentMapping extends GroupType {
+public final class VkComponentMapping extends GroupType {
     /// The struct layout of `VkComponentMapping`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("r"),
@@ -67,20 +68,21 @@ public sealed class VkComponentMapping extends GroupType {
     public static final VarHandle VH_a = LAYOUT.arrayElementVarHandle(PathElement.groupElement("a"));
 
     /// Creates `VkComponentMapping` with the given segment.
-    /// @param segment the memory segment
-    public VkComponentMapping(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkComponentMapping(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkComponentMapping` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkComponentMapping of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkComponentMapping(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkComponentMapping` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkComponentMapping ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkComponentMapping(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkComponentMapping ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkComponentMapping(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkComponentMapping` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkComponentMapping extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkComponentMapping ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkComponentMapping(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkComponentMapping` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkComponentMapping`
-    public static VkComponentMapping alloc(SegmentAllocator allocator) { return new VkComponentMapping(allocator.allocate(LAYOUT)); }
+    public static VkComponentMapping alloc(SegmentAllocator allocator) { return new VkComponentMapping(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkComponentMapping` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkComponentMapping`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkComponentMapping alloc(SegmentAllocator allocator, long count) { return new VkComponentMapping(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkComponentMapping` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkComponentMapping extends GroupType {
     /// @return `this`
     public VkComponentMapping copyFrom(VkComponentMapping src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkComponentMapping reinterpret(long count) { return new VkComponentMapping(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `r` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkComponentMapping extends GroupType {
     /// @return `this`
     public VkComponentMapping a(int value) { a(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkComponentMapping].
-    public static final class Buffer extends VkComponentMapping {
-        private final long elementCount;
+    /// Creates a slice of `VkComponentMapping`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkComponentMapping`
+    public VkComponentMapping asSlice(long index) { return new VkComponentMapping(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkComponentMapping.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkComponentMapping`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkComponentMapping`
+    public VkComponentMapping asSlice(long index, long count) { return new VkComponentMapping(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkComponentMapping` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkComponentMapping at(long index, Consumer<VkComponentMapping> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkComponentMapping`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkComponentMapping`
-        public VkComponentMapping asSlice(long index) { return new VkComponentMapping(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `r` at the given index}
+    /// @param index the index of the struct buffer
+    public int rAt(long index) { return r(this.segment(), index); }
+    /// Sets `r` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkComponentMapping rAt(long index, int value) { r(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkComponentMapping`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkComponentMapping`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `g` at the given index}
+    /// @param index the index of the struct buffer
+    public int gAt(long index) { return g(this.segment(), index); }
+    /// Sets `g` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkComponentMapping gAt(long index, int value) { g(this.segment(), index, value); return this; }
 
-        /// {@return `r` at the given index}
-        /// @param index the index of the struct buffer
-        public int rAt(long index) { return r(this.segment(), index); }
-        /// Sets `r` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer rAt(long index, int value) { r(this.segment(), index, value); return this; }
+    /// {@return `b` at the given index}
+    /// @param index the index of the struct buffer
+    public int bAt(long index) { return b(this.segment(), index); }
+    /// Sets `b` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkComponentMapping bAt(long index, int value) { b(this.segment(), index, value); return this; }
 
-        /// {@return `g` at the given index}
-        /// @param index the index of the struct buffer
-        public int gAt(long index) { return g(this.segment(), index); }
-        /// Sets `g` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer gAt(long index, int value) { g(this.segment(), index, value); return this; }
+    /// {@return `a` at the given index}
+    /// @param index the index of the struct buffer
+    public int aAt(long index) { return a(this.segment(), index); }
+    /// Sets `a` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkComponentMapping aAt(long index, int value) { a(this.segment(), index, value); return this; }
 
-        /// {@return `b` at the given index}
-        /// @param index the index of the struct buffer
-        public int bAt(long index) { return b(this.segment(), index); }
-        /// Sets `b` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bAt(long index, int value) { b(this.segment(), index, value); return this; }
-
-        /// {@return `a` at the given index}
-        /// @param index the index of the struct buffer
-        public int aAt(long index) { return a(this.segment(), index); }
-        /// Sets `a` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer aAt(long index, int value) { a(this.segment(), index, value); return this; }
-
-    }
 }

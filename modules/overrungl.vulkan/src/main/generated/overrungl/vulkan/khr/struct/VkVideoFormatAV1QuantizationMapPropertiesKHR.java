@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkVideoEncodeAV1SuperblockSizeFlagsKHR compatibleSuperblockSizes;
 /// };
 /// ```
-public sealed class VkVideoFormatAV1QuantizationMapPropertiesKHR extends GroupType {
+public final class VkVideoFormatAV1QuantizationMapPropertiesKHR extends GroupType {
     /// The struct layout of `VkVideoFormatAV1QuantizationMapPropertiesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkVideoFormatAV1QuantizationMapPropertiesKHR extends GroupTy
     public static final VarHandle VH_compatibleSuperblockSizes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("compatibleSuperblockSizes"));
 
     /// Creates `VkVideoFormatAV1QuantizationMapPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkVideoFormatAV1QuantizationMapPropertiesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVideoFormatAV1QuantizationMapPropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVideoFormatAV1QuantizationMapPropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoFormatAV1QuantizationMapPropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoFormatAV1QuantizationMapPropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoFormatAV1QuantizationMapPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoFormatAV1QuantizationMapPropertiesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVideoFormatAV1QuantizationMapPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoFormatAV1QuantizationMapPropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVideoFormatAV1QuantizationMapPropertiesKHR` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkVideoFormatAV1QuantizationMapPropertiesKHR extends GroupTy
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVideoFormatAV1QuantizationMapPropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoFormatAV1QuantizationMapPropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVideoFormatAV1QuantizationMapPropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoFormatAV1QuantizationMapPropertiesKHR`
-    public static VkVideoFormatAV1QuantizationMapPropertiesKHR alloc(SegmentAllocator allocator) { return new VkVideoFormatAV1QuantizationMapPropertiesKHR(allocator.allocate(LAYOUT)); }
+    public static VkVideoFormatAV1QuantizationMapPropertiesKHR alloc(SegmentAllocator allocator) { return new VkVideoFormatAV1QuantizationMapPropertiesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVideoFormatAV1QuantizationMapPropertiesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoFormatAV1QuantizationMapPropertiesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVideoFormatAV1QuantizationMapPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoFormatAV1QuantizationMapPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVideoFormatAV1QuantizationMapPropertiesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkVideoFormatAV1QuantizationMapPropertiesKHR extends GroupTy
     /// @return `this`
     public VkVideoFormatAV1QuantizationMapPropertiesKHR copyFrom(VkVideoFormatAV1QuantizationMapPropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR reinterpret(long count) { return new VkVideoFormatAV1QuantizationMapPropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkVideoFormatAV1QuantizationMapPropertiesKHR extends GroupTy
     /// @return `this`
     public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizes(int value) { compatibleSuperblockSizes(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkVideoFormatAV1QuantizationMapPropertiesKHR].
-    public static final class Buffer extends VkVideoFormatAV1QuantizationMapPropertiesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkVideoFormatAV1QuantizationMapPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoFormatAV1QuantizationMapPropertiesKHR`
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR asSlice(long index) { return new VkVideoFormatAV1QuantizationMapPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVideoFormatAV1QuantizationMapPropertiesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVideoFormatAV1QuantizationMapPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoFormatAV1QuantizationMapPropertiesKHR`
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR asSlice(long index, long count) { return new VkVideoFormatAV1QuantizationMapPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVideoFormatAV1QuantizationMapPropertiesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR at(long index, Consumer<VkVideoFormatAV1QuantizationMapPropertiesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVideoFormatAV1QuantizationMapPropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVideoFormatAV1QuantizationMapPropertiesKHR`
-        public VkVideoFormatAV1QuantizationMapPropertiesKHR asSlice(long index) { return new VkVideoFormatAV1QuantizationMapPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVideoFormatAV1QuantizationMapPropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVideoFormatAV1QuantizationMapPropertiesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `compatibleSuperblockSizes` at the given index}
+    /// @param index the index of the struct buffer
+    public int compatibleSuperblockSizesAt(long index) { return compatibleSuperblockSizes(this.segment(), index); }
+    /// Sets `compatibleSuperblockSizes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoFormatAV1QuantizationMapPropertiesKHR compatibleSuperblockSizesAt(long index, int value) { compatibleSuperblockSizes(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `compatibleSuperblockSizes` at the given index}
-        /// @param index the index of the struct buffer
-        public int compatibleSuperblockSizesAt(long index) { return compatibleSuperblockSizes(this.segment(), index); }
-        /// Sets `compatibleSuperblockSizes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer compatibleSuperblockSizesAt(long index, int value) { compatibleSuperblockSizes(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -38,7 +39,7 @@ import overrungl.util.*;
 ///     const uint64_t* pReleaseKeys;
 /// };
 /// ```
-public sealed class VkWin32KeyedMutexAcquireReleaseInfoNV extends GroupType {
+public final class VkWin32KeyedMutexAcquireReleaseInfoNV extends GroupType {
     /// The struct layout of `VkWin32KeyedMutexAcquireReleaseInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -107,20 +108,21 @@ public sealed class VkWin32KeyedMutexAcquireReleaseInfoNV extends GroupType {
     public static final VarHandle VH_pReleaseKeys = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pReleaseKeys"));
 
     /// Creates `VkWin32KeyedMutexAcquireReleaseInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkWin32KeyedMutexAcquireReleaseInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkWin32KeyedMutexAcquireReleaseInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkWin32KeyedMutexAcquireReleaseInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkWin32KeyedMutexAcquireReleaseInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkWin32KeyedMutexAcquireReleaseInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkWin32KeyedMutexAcquireReleaseInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkWin32KeyedMutexAcquireReleaseInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkWin32KeyedMutexAcquireReleaseInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkWin32KeyedMutexAcquireReleaseInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkWin32KeyedMutexAcquireReleaseInfoNV` with the given segment.
     ///
@@ -128,18 +130,18 @@ public sealed class VkWin32KeyedMutexAcquireReleaseInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkWin32KeyedMutexAcquireReleaseInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkWin32KeyedMutexAcquireReleaseInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkWin32KeyedMutexAcquireReleaseInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkWin32KeyedMutexAcquireReleaseInfoNV`
-    public static VkWin32KeyedMutexAcquireReleaseInfoNV alloc(SegmentAllocator allocator) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkWin32KeyedMutexAcquireReleaseInfoNV alloc(SegmentAllocator allocator) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkWin32KeyedMutexAcquireReleaseInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkWin32KeyedMutexAcquireReleaseInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkWin32KeyedMutexAcquireReleaseInfoNV alloc(SegmentAllocator allocator, long count) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkWin32KeyedMutexAcquireReleaseInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -254,9 +256,10 @@ public sealed class VkWin32KeyedMutexAcquireReleaseInfoNV extends GroupType {
     /// @return `this`
     public VkWin32KeyedMutexAcquireReleaseInfoNV copyFrom(VkWin32KeyedMutexAcquireReleaseInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkWin32KeyedMutexAcquireReleaseInfoNV reinterpret(long count) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -402,108 +405,102 @@ public sealed class VkWin32KeyedMutexAcquireReleaseInfoNV extends GroupType {
     /// @return `this`
     public VkWin32KeyedMutexAcquireReleaseInfoNV pReleaseKeys(MemorySegment value) { pReleaseKeys(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkWin32KeyedMutexAcquireReleaseInfoNV].
-    public static final class Buffer extends VkWin32KeyedMutexAcquireReleaseInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV asSlice(long index) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkWin32KeyedMutexAcquireReleaseInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV asSlice(long index, long count) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkWin32KeyedMutexAcquireReleaseInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV at(long index, Consumer<VkWin32KeyedMutexAcquireReleaseInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`
-        public VkWin32KeyedMutexAcquireReleaseInfoNV asSlice(long index) { return new VkWin32KeyedMutexAcquireReleaseInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkWin32KeyedMutexAcquireReleaseInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `acquireCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int acquireCountAt(long index) { return acquireCount(this.segment(), index); }
+    /// Sets `acquireCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV acquireCountAt(long index, int value) { acquireCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pAcquireSyncs` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pAcquireSyncsAt(long index) { return pAcquireSyncs(this.segment(), index); }
+    /// Sets `pAcquireSyncs` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV pAcquireSyncsAt(long index, MemorySegment value) { pAcquireSyncs(this.segment(), index, value); return this; }
 
-        /// {@return `acquireCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int acquireCountAt(long index) { return acquireCount(this.segment(), index); }
-        /// Sets `acquireCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer acquireCountAt(long index, int value) { acquireCount(this.segment(), index, value); return this; }
+    /// {@return `pAcquireKeys` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pAcquireKeysAt(long index) { return pAcquireKeys(this.segment(), index); }
+    /// Sets `pAcquireKeys` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV pAcquireKeysAt(long index, MemorySegment value) { pAcquireKeys(this.segment(), index, value); return this; }
 
-        /// {@return `pAcquireSyncs` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pAcquireSyncsAt(long index) { return pAcquireSyncs(this.segment(), index); }
-        /// Sets `pAcquireSyncs` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pAcquireSyncsAt(long index, MemorySegment value) { pAcquireSyncs(this.segment(), index, value); return this; }
+    /// {@return `pAcquireTimeoutMilliseconds` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pAcquireTimeoutMillisecondsAt(long index) { return pAcquireTimeoutMilliseconds(this.segment(), index); }
+    /// Sets `pAcquireTimeoutMilliseconds` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV pAcquireTimeoutMillisecondsAt(long index, MemorySegment value) { pAcquireTimeoutMilliseconds(this.segment(), index, value); return this; }
 
-        /// {@return `pAcquireKeys` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pAcquireKeysAt(long index) { return pAcquireKeys(this.segment(), index); }
-        /// Sets `pAcquireKeys` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pAcquireKeysAt(long index, MemorySegment value) { pAcquireKeys(this.segment(), index, value); return this; }
+    /// {@return `releaseCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int releaseCountAt(long index) { return releaseCount(this.segment(), index); }
+    /// Sets `releaseCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV releaseCountAt(long index, int value) { releaseCount(this.segment(), index, value); return this; }
 
-        /// {@return `pAcquireTimeoutMilliseconds` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pAcquireTimeoutMillisecondsAt(long index) { return pAcquireTimeoutMilliseconds(this.segment(), index); }
-        /// Sets `pAcquireTimeoutMilliseconds` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pAcquireTimeoutMillisecondsAt(long index, MemorySegment value) { pAcquireTimeoutMilliseconds(this.segment(), index, value); return this; }
+    /// {@return `pReleaseSyncs` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pReleaseSyncsAt(long index) { return pReleaseSyncs(this.segment(), index); }
+    /// Sets `pReleaseSyncs` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV pReleaseSyncsAt(long index, MemorySegment value) { pReleaseSyncs(this.segment(), index, value); return this; }
 
-        /// {@return `releaseCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int releaseCountAt(long index) { return releaseCount(this.segment(), index); }
-        /// Sets `releaseCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer releaseCountAt(long index, int value) { releaseCount(this.segment(), index, value); return this; }
+    /// {@return `pReleaseKeys` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pReleaseKeysAt(long index) { return pReleaseKeys(this.segment(), index); }
+    /// Sets `pReleaseKeys` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWin32KeyedMutexAcquireReleaseInfoNV pReleaseKeysAt(long index, MemorySegment value) { pReleaseKeys(this.segment(), index, value); return this; }
 
-        /// {@return `pReleaseSyncs` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pReleaseSyncsAt(long index) { return pReleaseSyncs(this.segment(), index); }
-        /// Sets `pReleaseSyncs` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pReleaseSyncsAt(long index, MemorySegment value) { pReleaseSyncs(this.segment(), index, value); return this; }
-
-        /// {@return `pReleaseKeys` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pReleaseKeysAt(long index) { return pReleaseKeys(this.segment(), index); }
-        /// Sets `pReleaseKeys` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pReleaseKeysAt(long index, MemorySegment value) { pReleaseKeys(this.segment(), index, value); return this; }
-
-    }
 }

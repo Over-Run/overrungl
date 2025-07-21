@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint32_t imageIndex;
 /// };
 /// ```
-public sealed class VkBindImageMemorySwapchainInfoKHR extends GroupType {
+public final class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     /// The struct layout of `VkBindImageMemorySwapchainInfoKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     public static final VarHandle VH_imageIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("imageIndex"));
 
     /// Creates `VkBindImageMemorySwapchainInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkBindImageMemorySwapchainInfoKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkBindImageMemorySwapchainInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkBindImageMemorySwapchainInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkBindImageMemorySwapchainInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindImageMemorySwapchainInfoKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBindImageMemorySwapchainInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindImageMemorySwapchainInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindImageMemorySwapchainInfoKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkBindImageMemorySwapchainInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindImageMemorySwapchainInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkBindImageMemorySwapchainInfoKHR` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkBindImageMemorySwapchainInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindImageMemorySwapchainInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkBindImageMemorySwapchainInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBindImageMemorySwapchainInfoKHR`
-    public static VkBindImageMemorySwapchainInfoKHR alloc(SegmentAllocator allocator) { return new VkBindImageMemorySwapchainInfoKHR(allocator.allocate(LAYOUT)); }
+    public static VkBindImageMemorySwapchainInfoKHR alloc(SegmentAllocator allocator) { return new VkBindImageMemorySwapchainInfoKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkBindImageMemorySwapchainInfoKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBindImageMemorySwapchainInfoKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkBindImageMemorySwapchainInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkBindImageMemorySwapchainInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkBindImageMemorySwapchainInfoKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     /// @return `this`
     public VkBindImageMemorySwapchainInfoKHR copyFrom(VkBindImageMemorySwapchainInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkBindImageMemorySwapchainInfoKHR reinterpret(long count) { return new VkBindImageMemorySwapchainInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkBindImageMemorySwapchainInfoKHR extends GroupType {
     /// @return `this`
     public VkBindImageMemorySwapchainInfoKHR imageIndex(int value) { imageIndex(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkBindImageMemorySwapchainInfoKHR].
-    public static final class Buffer extends VkBindImageMemorySwapchainInfoKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkBindImageMemorySwapchainInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindImageMemorySwapchainInfoKHR`
+    public VkBindImageMemorySwapchainInfoKHR asSlice(long index) { return new VkBindImageMemorySwapchainInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkBindImageMemorySwapchainInfoKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkBindImageMemorySwapchainInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindImageMemorySwapchainInfoKHR`
+    public VkBindImageMemorySwapchainInfoKHR asSlice(long index, long count) { return new VkBindImageMemorySwapchainInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkBindImageMemorySwapchainInfoKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkBindImageMemorySwapchainInfoKHR at(long index, Consumer<VkBindImageMemorySwapchainInfoKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkBindImageMemorySwapchainInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkBindImageMemorySwapchainInfoKHR`
-        public VkBindImageMemorySwapchainInfoKHR asSlice(long index) { return new VkBindImageMemorySwapchainInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindImageMemorySwapchainInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkBindImageMemorySwapchainInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkBindImageMemorySwapchainInfoKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindImageMemorySwapchainInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `swapchain` at the given index}
+    /// @param index the index of the struct buffer
+    public long swapchainAt(long index) { return swapchain(this.segment(), index); }
+    /// Sets `swapchain` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindImageMemorySwapchainInfoKHR swapchainAt(long index, long value) { swapchain(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `imageIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int imageIndexAt(long index) { return imageIndex(this.segment(), index); }
+    /// Sets `imageIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindImageMemorySwapchainInfoKHR imageIndexAt(long index, int value) { imageIndex(this.segment(), index, value); return this; }
 
-        /// {@return `swapchain` at the given index}
-        /// @param index the index of the struct buffer
-        public long swapchainAt(long index) { return swapchain(this.segment(), index); }
-        /// Sets `swapchain` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer swapchainAt(long index, long value) { swapchain(this.segment(), index, value); return this; }
-
-        /// {@return `imageIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int imageIndexAt(long index) { return imageIndex(this.segment(), index); }
-        /// Sets `imageIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageIndexAt(long index, int value) { imageIndex(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.opengl;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     unsigned int baseInstance;
 /// };
 /// ```
-public sealed class DrawElementsIndirectCommand extends GroupType {
+public final class DrawElementsIndirectCommand extends GroupType {
     /// The struct layout of `DrawElementsIndirectCommand`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("count"),
@@ -75,20 +76,21 @@ public sealed class DrawElementsIndirectCommand extends GroupType {
     public static final VarHandle VH_baseInstance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("baseInstance"));
 
     /// Creates `DrawElementsIndirectCommand` with the given segment.
-    /// @param segment the memory segment
-    public DrawElementsIndirectCommand(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public DrawElementsIndirectCommand(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `DrawElementsIndirectCommand` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static DrawElementsIndirectCommand of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new DrawElementsIndirectCommand(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `DrawElementsIndirectCommand` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static DrawElementsIndirectCommand ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new DrawElementsIndirectCommand(segment.reinterpret(LAYOUT.byteSize())); }
+    public static DrawElementsIndirectCommand ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new DrawElementsIndirectCommand(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `DrawElementsIndirectCommand` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class DrawElementsIndirectCommand extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static DrawElementsIndirectCommand ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new DrawElementsIndirectCommand(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `DrawElementsIndirectCommand`
-    public static DrawElementsIndirectCommand alloc(SegmentAllocator allocator) { return new DrawElementsIndirectCommand(allocator.allocate(LAYOUT)); }
+    public static DrawElementsIndirectCommand alloc(SegmentAllocator allocator) { return new DrawElementsIndirectCommand(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `DrawElementsIndirectCommand`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static DrawElementsIndirectCommand alloc(SegmentAllocator allocator, long count) { return new DrawElementsIndirectCommand(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class DrawElementsIndirectCommand extends GroupType {
     /// @return `this`
     public DrawElementsIndirectCommand copyFrom(DrawElementsIndirectCommand src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public DrawElementsIndirectCommand reinterpret(long count) { return new DrawElementsIndirectCommand(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `count` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class DrawElementsIndirectCommand extends GroupType {
     /// @return `this`
     public DrawElementsIndirectCommand baseInstance(int value) { baseInstance(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [DrawElementsIndirectCommand].
-    public static final class Buffer extends DrawElementsIndirectCommand {
-        private final long elementCount;
+    /// Creates a slice of `DrawElementsIndirectCommand`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `DrawElementsIndirectCommand`
+    public DrawElementsIndirectCommand asSlice(long index) { return new DrawElementsIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `DrawElementsIndirectCommand.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `DrawElementsIndirectCommand`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `DrawElementsIndirectCommand`
+    public DrawElementsIndirectCommand asSlice(long index, long count) { return new DrawElementsIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `DrawElementsIndirectCommand` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public DrawElementsIndirectCommand at(long index, Consumer<DrawElementsIndirectCommand> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `DrawElementsIndirectCommand`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `DrawElementsIndirectCommand`
-        public DrawElementsIndirectCommand asSlice(long index) { return new DrawElementsIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `count` at the given index}
+    /// @param index the index of the struct buffer
+    public int countAt(long index) { return count(this.segment(), index); }
+    /// Sets `count` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public DrawElementsIndirectCommand countAt(long index, int value) { count(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `DrawElementsIndirectCommand`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `DrawElementsIndirectCommand`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `instanceCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int instanceCountAt(long index) { return instanceCount(this.segment(), index); }
+    /// Sets `instanceCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public DrawElementsIndirectCommand instanceCountAt(long index, int value) { instanceCount(this.segment(), index, value); return this; }
 
-        /// {@return `count` at the given index}
-        /// @param index the index of the struct buffer
-        public int countAt(long index) { return count(this.segment(), index); }
-        /// Sets `count` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer countAt(long index, int value) { count(this.segment(), index, value); return this; }
+    /// {@return `firstIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int firstIndexAt(long index) { return firstIndex(this.segment(), index); }
+    /// Sets `firstIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public DrawElementsIndirectCommand firstIndexAt(long index, int value) { firstIndex(this.segment(), index, value); return this; }
 
-        /// {@return `instanceCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int instanceCountAt(long index) { return instanceCount(this.segment(), index); }
-        /// Sets `instanceCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer instanceCountAt(long index, int value) { instanceCount(this.segment(), index, value); return this; }
+    /// {@return `baseVertex` at the given index}
+    /// @param index the index of the struct buffer
+    public int baseVertexAt(long index) { return baseVertex(this.segment(), index); }
+    /// Sets `baseVertex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public DrawElementsIndirectCommand baseVertexAt(long index, int value) { baseVertex(this.segment(), index, value); return this; }
 
-        /// {@return `firstIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int firstIndexAt(long index) { return firstIndex(this.segment(), index); }
-        /// Sets `firstIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer firstIndexAt(long index, int value) { firstIndex(this.segment(), index, value); return this; }
+    /// {@return `baseInstance` at the given index}
+    /// @param index the index of the struct buffer
+    public int baseInstanceAt(long index) { return baseInstance(this.segment(), index); }
+    /// Sets `baseInstance` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public DrawElementsIndirectCommand baseInstanceAt(long index, int value) { baseInstance(this.segment(), index, value); return this; }
 
-        /// {@return `baseVertex` at the given index}
-        /// @param index the index of the struct buffer
-        public int baseVertexAt(long index) { return baseVertex(this.segment(), index); }
-        /// Sets `baseVertex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer baseVertexAt(long index, int value) { baseVertex(this.segment(), index, value); return this; }
-
-        /// {@return `baseInstance` at the given index}
-        /// @param index the index of the struct buffer
-        public int baseInstanceAt(long index) { return baseInstance(this.segment(), index); }
-        /// Sets `baseInstance` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer baseInstanceAt(long index, int value) { baseInstance(this.segment(), index, value); return this; }
-
-    }
 }

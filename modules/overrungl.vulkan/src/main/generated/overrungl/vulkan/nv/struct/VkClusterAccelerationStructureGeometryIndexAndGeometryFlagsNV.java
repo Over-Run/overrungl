@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t geometryFlags : 3;
 /// };
 /// ```
-public sealed class VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV extends GroupType {
+public final class VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("geometryIndex"), 24,
@@ -41,20 +42,21 @@ public sealed class VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsN
     );
 
     /// Creates `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV` with the given segment.
-    /// @param segment the memory segment
-    public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV` with the given segment.
     ///
@@ -62,49 +64,44 @@ public sealed class VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsN
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`
-    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(allocator.allocate(LAYOUT)); }
+    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
     public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV copyFrom(VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV reinterpret(long count) { return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
-    /// A buffer of [VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV].
-    public static final class Buffer extends VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV {
-        private final long elementCount;
+    /// Creates a slice of `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`
+    public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV asSlice(long index) { return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`
+    public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV asSlice(long index, long count) { return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV at(long index, Consumer<VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`
-        public VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV asSlice(long index) { return new VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
-
-        /// Creates a slice of `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    }
 }

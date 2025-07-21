@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t sample;
 /// };
 /// ```
-public sealed class VkCoarseSampleLocationNV extends GroupType {
+public final class VkCoarseSampleLocationNV extends GroupType {
     /// The struct layout of `VkCoarseSampleLocationNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("pixelX"),
@@ -59,20 +60,21 @@ public sealed class VkCoarseSampleLocationNV extends GroupType {
     public static final VarHandle VH_sample = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sample"));
 
     /// Creates `VkCoarseSampleLocationNV` with the given segment.
-    /// @param segment the memory segment
-    public VkCoarseSampleLocationNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkCoarseSampleLocationNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkCoarseSampleLocationNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkCoarseSampleLocationNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCoarseSampleLocationNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCoarseSampleLocationNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCoarseSampleLocationNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCoarseSampleLocationNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkCoarseSampleLocationNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCoarseSampleLocationNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkCoarseSampleLocationNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkCoarseSampleLocationNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkCoarseSampleLocationNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkCoarseSampleLocationNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkCoarseSampleLocationNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCoarseSampleLocationNV`
-    public static VkCoarseSampleLocationNV alloc(SegmentAllocator allocator) { return new VkCoarseSampleLocationNV(allocator.allocate(LAYOUT)); }
+    public static VkCoarseSampleLocationNV alloc(SegmentAllocator allocator) { return new VkCoarseSampleLocationNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkCoarseSampleLocationNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCoarseSampleLocationNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkCoarseSampleLocationNV alloc(SegmentAllocator allocator, long count) { return new VkCoarseSampleLocationNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkCoarseSampleLocationNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkCoarseSampleLocationNV extends GroupType {
     /// @return `this`
     public VkCoarseSampleLocationNV copyFrom(VkCoarseSampleLocationNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkCoarseSampleLocationNV reinterpret(long count) { return new VkCoarseSampleLocationNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `pixelX` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkCoarseSampleLocationNV extends GroupType {
     /// @return `this`
     public VkCoarseSampleLocationNV sample(int value) { sample(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkCoarseSampleLocationNV].
-    public static final class Buffer extends VkCoarseSampleLocationNV {
-        private final long elementCount;
+    /// Creates a slice of `VkCoarseSampleLocationNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCoarseSampleLocationNV`
+    public VkCoarseSampleLocationNV asSlice(long index) { return new VkCoarseSampleLocationNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkCoarseSampleLocationNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkCoarseSampleLocationNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCoarseSampleLocationNV`
+    public VkCoarseSampleLocationNV asSlice(long index, long count) { return new VkCoarseSampleLocationNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkCoarseSampleLocationNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkCoarseSampleLocationNV at(long index, Consumer<VkCoarseSampleLocationNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkCoarseSampleLocationNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkCoarseSampleLocationNV`
-        public VkCoarseSampleLocationNV asSlice(long index) { return new VkCoarseSampleLocationNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `pixelX` at the given index}
+    /// @param index the index of the struct buffer
+    public int pixelXAt(long index) { return pixelX(this.segment(), index); }
+    /// Sets `pixelX` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCoarseSampleLocationNV pixelXAt(long index, int value) { pixelX(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkCoarseSampleLocationNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkCoarseSampleLocationNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pixelY` at the given index}
+    /// @param index the index of the struct buffer
+    public int pixelYAt(long index) { return pixelY(this.segment(), index); }
+    /// Sets `pixelY` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCoarseSampleLocationNV pixelYAt(long index, int value) { pixelY(this.segment(), index, value); return this; }
 
-        /// {@return `pixelX` at the given index}
-        /// @param index the index of the struct buffer
-        public int pixelXAt(long index) { return pixelX(this.segment(), index); }
-        /// Sets `pixelX` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pixelXAt(long index, int value) { pixelX(this.segment(), index, value); return this; }
+    /// {@return `sample` at the given index}
+    /// @param index the index of the struct buffer
+    public int sampleAt(long index) { return sample(this.segment(), index); }
+    /// Sets `sample` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCoarseSampleLocationNV sampleAt(long index, int value) { sample(this.segment(), index, value); return this; }
 
-        /// {@return `pixelY` at the given index}
-        /// @param index the index of the struct buffer
-        public int pixelYAt(long index) { return pixelY(this.segment(), index); }
-        /// Sets `pixelY` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pixelYAt(long index, int value) { pixelY(this.segment(), index, value); return this; }
-
-        /// {@return `sample` at the given index}
-        /// @param index the index of the struct buffer
-        public int sampleAt(long index) { return sample(this.segment(), index); }
-        /// Sets `sample` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampleAt(long index, int value) { sample(this.segment(), index, value); return this; }
-
-    }
 }

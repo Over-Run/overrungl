@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -38,7 +39,7 @@ import overrungl.util.*;
 ///     const VkImageMemoryBarrier2* pImageMemoryBarriers;
 /// };
 /// ```
-public sealed class VkDependencyInfo extends GroupType {
+public final class VkDependencyInfo extends GroupType {
     /// The struct layout of `VkDependencyInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -107,20 +108,21 @@ public sealed class VkDependencyInfo extends GroupType {
     public static final VarHandle VH_pImageMemoryBarriers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pImageMemoryBarriers"));
 
     /// Creates `VkDependencyInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkDependencyInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDependencyInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDependencyInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDependencyInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDependencyInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDependencyInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDependencyInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDependencyInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDependencyInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDependencyInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDependencyInfo` with the given segment.
     ///
@@ -128,18 +130,18 @@ public sealed class VkDependencyInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDependencyInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDependencyInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDependencyInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDependencyInfo`
-    public static VkDependencyInfo alloc(SegmentAllocator allocator) { return new VkDependencyInfo(allocator.allocate(LAYOUT)); }
+    public static VkDependencyInfo alloc(SegmentAllocator allocator) { return new VkDependencyInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDependencyInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDependencyInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDependencyInfo alloc(SegmentAllocator allocator, long count) { return new VkDependencyInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDependencyInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -254,9 +256,10 @@ public sealed class VkDependencyInfo extends GroupType {
     /// @return `this`
     public VkDependencyInfo copyFrom(VkDependencyInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDependencyInfo reinterpret(long count) { return new VkDependencyInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -402,108 +405,102 @@ public sealed class VkDependencyInfo extends GroupType {
     /// @return `this`
     public VkDependencyInfo pImageMemoryBarriers(MemorySegment value) { pImageMemoryBarriers(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDependencyInfo].
-    public static final class Buffer extends VkDependencyInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkDependencyInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDependencyInfo`
+    public VkDependencyInfo asSlice(long index) { return new VkDependencyInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDependencyInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDependencyInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDependencyInfo`
+    public VkDependencyInfo asSlice(long index, long count) { return new VkDependencyInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDependencyInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDependencyInfo at(long index, Consumer<VkDependencyInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDependencyInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDependencyInfo`
-        public VkDependencyInfo asSlice(long index) { return new VkDependencyInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDependencyInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDependencyInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDependencyInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDependencyInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `dependencyFlags` at the given index}
+    /// @param index the index of the struct buffer
+    public int dependencyFlagsAt(long index) { return dependencyFlags(this.segment(), index); }
+    /// Sets `dependencyFlags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDependencyInfo dependencyFlagsAt(long index, int value) { dependencyFlags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `memoryBarrierCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int memoryBarrierCountAt(long index) { return memoryBarrierCount(this.segment(), index); }
+    /// Sets `memoryBarrierCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDependencyInfo memoryBarrierCountAt(long index, int value) { memoryBarrierCount(this.segment(), index, value); return this; }
 
-        /// {@return `dependencyFlags` at the given index}
-        /// @param index the index of the struct buffer
-        public int dependencyFlagsAt(long index) { return dependencyFlags(this.segment(), index); }
-        /// Sets `dependencyFlags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dependencyFlagsAt(long index, int value) { dependencyFlags(this.segment(), index, value); return this; }
+    /// {@return `pMemoryBarriers` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pMemoryBarriersAt(long index) { return pMemoryBarriers(this.segment(), index); }
+    /// Sets `pMemoryBarriers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDependencyInfo pMemoryBarriersAt(long index, MemorySegment value) { pMemoryBarriers(this.segment(), index, value); return this; }
 
-        /// {@return `memoryBarrierCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int memoryBarrierCountAt(long index) { return memoryBarrierCount(this.segment(), index); }
-        /// Sets `memoryBarrierCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryBarrierCountAt(long index, int value) { memoryBarrierCount(this.segment(), index, value); return this; }
+    /// {@return `bufferMemoryBarrierCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferMemoryBarrierCountAt(long index) { return bufferMemoryBarrierCount(this.segment(), index); }
+    /// Sets `bufferMemoryBarrierCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDependencyInfo bufferMemoryBarrierCountAt(long index, int value) { bufferMemoryBarrierCount(this.segment(), index, value); return this; }
 
-        /// {@return `pMemoryBarriers` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pMemoryBarriersAt(long index) { return pMemoryBarriers(this.segment(), index); }
-        /// Sets `pMemoryBarriers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pMemoryBarriersAt(long index, MemorySegment value) { pMemoryBarriers(this.segment(), index, value); return this; }
+    /// {@return `pBufferMemoryBarriers` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pBufferMemoryBarriersAt(long index) { return pBufferMemoryBarriers(this.segment(), index); }
+    /// Sets `pBufferMemoryBarriers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDependencyInfo pBufferMemoryBarriersAt(long index, MemorySegment value) { pBufferMemoryBarriers(this.segment(), index, value); return this; }
 
-        /// {@return `bufferMemoryBarrierCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferMemoryBarrierCountAt(long index) { return bufferMemoryBarrierCount(this.segment(), index); }
-        /// Sets `bufferMemoryBarrierCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferMemoryBarrierCountAt(long index, int value) { bufferMemoryBarrierCount(this.segment(), index, value); return this; }
+    /// {@return `imageMemoryBarrierCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int imageMemoryBarrierCountAt(long index) { return imageMemoryBarrierCount(this.segment(), index); }
+    /// Sets `imageMemoryBarrierCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDependencyInfo imageMemoryBarrierCountAt(long index, int value) { imageMemoryBarrierCount(this.segment(), index, value); return this; }
 
-        /// {@return `pBufferMemoryBarriers` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pBufferMemoryBarriersAt(long index) { return pBufferMemoryBarriers(this.segment(), index); }
-        /// Sets `pBufferMemoryBarriers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pBufferMemoryBarriersAt(long index, MemorySegment value) { pBufferMemoryBarriers(this.segment(), index, value); return this; }
+    /// {@return `pImageMemoryBarriers` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pImageMemoryBarriersAt(long index) { return pImageMemoryBarriers(this.segment(), index); }
+    /// Sets `pImageMemoryBarriers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDependencyInfo pImageMemoryBarriersAt(long index, MemorySegment value) { pImageMemoryBarriers(this.segment(), index, value); return this; }
 
-        /// {@return `imageMemoryBarrierCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int imageMemoryBarrierCountAt(long index) { return imageMemoryBarrierCount(this.segment(), index); }
-        /// Sets `imageMemoryBarrierCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageMemoryBarrierCountAt(long index, int value) { imageMemoryBarrierCount(this.segment(), index, value); return this; }
-
-        /// {@return `pImageMemoryBarriers` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pImageMemoryBarriersAt(long index) { return pImageMemoryBarriers(this.segment(), index); }
-        /// Sets `pImageMemoryBarriers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pImageMemoryBarriersAt(long index, MemorySegment value) { pImageMemoryBarriers(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     const char* pObjectName;
 /// };
 /// ```
-public sealed class VkDebugMarkerObjectNameInfoEXT extends GroupType {
+public final class VkDebugMarkerObjectNameInfoEXT extends GroupType {
     /// The struct layout of `VkDebugMarkerObjectNameInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkDebugMarkerObjectNameInfoEXT extends GroupType {
     public static final VarHandle VH_pObjectName = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pObjectName"));
 
     /// Creates `VkDebugMarkerObjectNameInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkDebugMarkerObjectNameInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDebugMarkerObjectNameInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDebugMarkerObjectNameInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDebugMarkerObjectNameInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDebugMarkerObjectNameInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDebugMarkerObjectNameInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDebugMarkerObjectNameInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDebugMarkerObjectNameInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDebugMarkerObjectNameInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDebugMarkerObjectNameInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDebugMarkerObjectNameInfoEXT` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkDebugMarkerObjectNameInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDebugMarkerObjectNameInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDebugMarkerObjectNameInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDebugMarkerObjectNameInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDebugMarkerObjectNameInfoEXT`
-    public static VkDebugMarkerObjectNameInfoEXT alloc(SegmentAllocator allocator) { return new VkDebugMarkerObjectNameInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkDebugMarkerObjectNameInfoEXT alloc(SegmentAllocator allocator) { return new VkDebugMarkerObjectNameInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDebugMarkerObjectNameInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDebugMarkerObjectNameInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDebugMarkerObjectNameInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDebugMarkerObjectNameInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDebugMarkerObjectNameInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkDebugMarkerObjectNameInfoEXT extends GroupType {
     /// @return `this`
     public VkDebugMarkerObjectNameInfoEXT copyFrom(VkDebugMarkerObjectNameInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDebugMarkerObjectNameInfoEXT reinterpret(long count) { return new VkDebugMarkerObjectNameInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkDebugMarkerObjectNameInfoEXT extends GroupType {
     /// @return `this`
     public VkDebugMarkerObjectNameInfoEXT pObjectName(MemorySegment value) { pObjectName(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDebugMarkerObjectNameInfoEXT].
-    public static final class Buffer extends VkDebugMarkerObjectNameInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkDebugMarkerObjectNameInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDebugMarkerObjectNameInfoEXT`
+    public VkDebugMarkerObjectNameInfoEXT asSlice(long index) { return new VkDebugMarkerObjectNameInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDebugMarkerObjectNameInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDebugMarkerObjectNameInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDebugMarkerObjectNameInfoEXT`
+    public VkDebugMarkerObjectNameInfoEXT asSlice(long index, long count) { return new VkDebugMarkerObjectNameInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDebugMarkerObjectNameInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDebugMarkerObjectNameInfoEXT at(long index, Consumer<VkDebugMarkerObjectNameInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDebugMarkerObjectNameInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDebugMarkerObjectNameInfoEXT`
-        public VkDebugMarkerObjectNameInfoEXT asSlice(long index) { return new VkDebugMarkerObjectNameInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugMarkerObjectNameInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDebugMarkerObjectNameInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDebugMarkerObjectNameInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugMarkerObjectNameInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `objectType` at the given index}
+    /// @param index the index of the struct buffer
+    public int objectTypeAt(long index) { return objectType(this.segment(), index); }
+    /// Sets `objectType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugMarkerObjectNameInfoEXT objectTypeAt(long index, int value) { objectType(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `object` at the given index}
+    /// @param index the index of the struct buffer
+    public long objectAt(long index) { return object(this.segment(), index); }
+    /// Sets `object` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugMarkerObjectNameInfoEXT objectAt(long index, long value) { object(this.segment(), index, value); return this; }
 
-        /// {@return `objectType` at the given index}
-        /// @param index the index of the struct buffer
-        public int objectTypeAt(long index) { return objectType(this.segment(), index); }
-        /// Sets `objectType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer objectTypeAt(long index, int value) { objectType(this.segment(), index, value); return this; }
+    /// {@return `pObjectName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pObjectNameAt(long index) { return pObjectName(this.segment(), index); }
+    /// Sets `pObjectName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugMarkerObjectNameInfoEXT pObjectNameAt(long index, MemorySegment value) { pObjectName(this.segment(), index, value); return this; }
 
-        /// {@return `object` at the given index}
-        /// @param index the index of the struct buffer
-        public long objectAt(long index) { return object(this.segment(), index); }
-        /// Sets `object` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer objectAt(long index, long value) { object(this.segment(), index, value); return this; }
-
-        /// {@return `pObjectName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pObjectNameAt(long index) { return pObjectName(this.segment(), index); }
-        /// Sets `pObjectName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pObjectNameAt(long index, MemorySegment value) { pObjectName(this.segment(), index, value); return this; }
-
-    }
 }

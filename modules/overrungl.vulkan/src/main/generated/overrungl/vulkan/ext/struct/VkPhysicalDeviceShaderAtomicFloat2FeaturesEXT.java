@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -43,7 +44,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 sparseImageFloat32AtomicMinMax;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupType {
+public final class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -147,20 +148,21 @@ public sealed class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupT
     public static final VarHandle VH_sparseImageFloat32AtomicMinMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sparseImageFloat32AtomicMinMax"));
 
     /// Creates `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment.
     ///
@@ -168,18 +170,18 @@ public sealed class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupT
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
-    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -389,9 +391,10 @@ public sealed class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupT
     /// @return `this`
     public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT copyFrom(VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT reinterpret(long count) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -617,153 +620,147 @@ public sealed class VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT extends GroupT
     /// @return `this`
     public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT sparseImageFloat32AtomicMinMax(int value) { sparseImageFloat32AtomicMinMax(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT].
-    public static final class Buffer extends VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT at(long index, Consumer<VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
-        public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `shaderBufferFloat16Atomics` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderBufferFloat16AtomicsAt(long index) { return shaderBufferFloat16Atomics(this.segment(), index); }
+    /// Sets `shaderBufferFloat16Atomics` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat16AtomicsAt(long index, int value) { shaderBufferFloat16Atomics(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `shaderBufferFloat16AtomicAdd` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderBufferFloat16AtomicAddAt(long index) { return shaderBufferFloat16AtomicAdd(this.segment(), index); }
+    /// Sets `shaderBufferFloat16AtomicAdd` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat16AtomicAddAt(long index, int value) { shaderBufferFloat16AtomicAdd(this.segment(), index, value); return this; }
 
-        /// {@return `shaderBufferFloat16Atomics` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderBufferFloat16AtomicsAt(long index) { return shaderBufferFloat16Atomics(this.segment(), index); }
-        /// Sets `shaderBufferFloat16Atomics` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderBufferFloat16AtomicsAt(long index, int value) { shaderBufferFloat16Atomics(this.segment(), index, value); return this; }
+    /// {@return `shaderBufferFloat16AtomicMinMax` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderBufferFloat16AtomicMinMaxAt(long index) { return shaderBufferFloat16AtomicMinMax(this.segment(), index); }
+    /// Sets `shaderBufferFloat16AtomicMinMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat16AtomicMinMaxAt(long index, int value) { shaderBufferFloat16AtomicMinMax(this.segment(), index, value); return this; }
 
-        /// {@return `shaderBufferFloat16AtomicAdd` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderBufferFloat16AtomicAddAt(long index) { return shaderBufferFloat16AtomicAdd(this.segment(), index); }
-        /// Sets `shaderBufferFloat16AtomicAdd` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderBufferFloat16AtomicAddAt(long index, int value) { shaderBufferFloat16AtomicAdd(this.segment(), index, value); return this; }
+    /// {@return `shaderBufferFloat32AtomicMinMax` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderBufferFloat32AtomicMinMaxAt(long index) { return shaderBufferFloat32AtomicMinMax(this.segment(), index); }
+    /// Sets `shaderBufferFloat32AtomicMinMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat32AtomicMinMaxAt(long index, int value) { shaderBufferFloat32AtomicMinMax(this.segment(), index, value); return this; }
 
-        /// {@return `shaderBufferFloat16AtomicMinMax` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderBufferFloat16AtomicMinMaxAt(long index) { return shaderBufferFloat16AtomicMinMax(this.segment(), index); }
-        /// Sets `shaderBufferFloat16AtomicMinMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderBufferFloat16AtomicMinMaxAt(long index, int value) { shaderBufferFloat16AtomicMinMax(this.segment(), index, value); return this; }
+    /// {@return `shaderBufferFloat64AtomicMinMax` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderBufferFloat64AtomicMinMaxAt(long index) { return shaderBufferFloat64AtomicMinMax(this.segment(), index); }
+    /// Sets `shaderBufferFloat64AtomicMinMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderBufferFloat64AtomicMinMaxAt(long index, int value) { shaderBufferFloat64AtomicMinMax(this.segment(), index, value); return this; }
 
-        /// {@return `shaderBufferFloat32AtomicMinMax` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderBufferFloat32AtomicMinMaxAt(long index) { return shaderBufferFloat32AtomicMinMax(this.segment(), index); }
-        /// Sets `shaderBufferFloat32AtomicMinMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderBufferFloat32AtomicMinMaxAt(long index, int value) { shaderBufferFloat32AtomicMinMax(this.segment(), index, value); return this; }
+    /// {@return `shaderSharedFloat16Atomics` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSharedFloat16AtomicsAt(long index) { return shaderSharedFloat16Atomics(this.segment(), index); }
+    /// Sets `shaderSharedFloat16Atomics` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat16AtomicsAt(long index, int value) { shaderSharedFloat16Atomics(this.segment(), index, value); return this; }
 
-        /// {@return `shaderBufferFloat64AtomicMinMax` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderBufferFloat64AtomicMinMaxAt(long index) { return shaderBufferFloat64AtomicMinMax(this.segment(), index); }
-        /// Sets `shaderBufferFloat64AtomicMinMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderBufferFloat64AtomicMinMaxAt(long index, int value) { shaderBufferFloat64AtomicMinMax(this.segment(), index, value); return this; }
+    /// {@return `shaderSharedFloat16AtomicAdd` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSharedFloat16AtomicAddAt(long index) { return shaderSharedFloat16AtomicAdd(this.segment(), index); }
+    /// Sets `shaderSharedFloat16AtomicAdd` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat16AtomicAddAt(long index, int value) { shaderSharedFloat16AtomicAdd(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSharedFloat16Atomics` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSharedFloat16AtomicsAt(long index) { return shaderSharedFloat16Atomics(this.segment(), index); }
-        /// Sets `shaderSharedFloat16Atomics` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSharedFloat16AtomicsAt(long index, int value) { shaderSharedFloat16Atomics(this.segment(), index, value); return this; }
+    /// {@return `shaderSharedFloat16AtomicMinMax` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSharedFloat16AtomicMinMaxAt(long index) { return shaderSharedFloat16AtomicMinMax(this.segment(), index); }
+    /// Sets `shaderSharedFloat16AtomicMinMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat16AtomicMinMaxAt(long index, int value) { shaderSharedFloat16AtomicMinMax(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSharedFloat16AtomicAdd` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSharedFloat16AtomicAddAt(long index) { return shaderSharedFloat16AtomicAdd(this.segment(), index); }
-        /// Sets `shaderSharedFloat16AtomicAdd` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSharedFloat16AtomicAddAt(long index, int value) { shaderSharedFloat16AtomicAdd(this.segment(), index, value); return this; }
+    /// {@return `shaderSharedFloat32AtomicMinMax` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSharedFloat32AtomicMinMaxAt(long index) { return shaderSharedFloat32AtomicMinMax(this.segment(), index); }
+    /// Sets `shaderSharedFloat32AtomicMinMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat32AtomicMinMaxAt(long index, int value) { shaderSharedFloat32AtomicMinMax(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSharedFloat16AtomicMinMax` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSharedFloat16AtomicMinMaxAt(long index) { return shaderSharedFloat16AtomicMinMax(this.segment(), index); }
-        /// Sets `shaderSharedFloat16AtomicMinMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSharedFloat16AtomicMinMaxAt(long index, int value) { shaderSharedFloat16AtomicMinMax(this.segment(), index, value); return this; }
+    /// {@return `shaderSharedFloat64AtomicMinMax` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSharedFloat64AtomicMinMaxAt(long index) { return shaderSharedFloat64AtomicMinMax(this.segment(), index); }
+    /// Sets `shaderSharedFloat64AtomicMinMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderSharedFloat64AtomicMinMaxAt(long index, int value) { shaderSharedFloat64AtomicMinMax(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSharedFloat32AtomicMinMax` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSharedFloat32AtomicMinMaxAt(long index) { return shaderSharedFloat32AtomicMinMax(this.segment(), index); }
-        /// Sets `shaderSharedFloat32AtomicMinMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSharedFloat32AtomicMinMaxAt(long index, int value) { shaderSharedFloat32AtomicMinMax(this.segment(), index, value); return this; }
+    /// {@return `shaderImageFloat32AtomicMinMax` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderImageFloat32AtomicMinMaxAt(long index) { return shaderImageFloat32AtomicMinMax(this.segment(), index); }
+    /// Sets `shaderImageFloat32AtomicMinMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT shaderImageFloat32AtomicMinMaxAt(long index, int value) { shaderImageFloat32AtomicMinMax(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSharedFloat64AtomicMinMax` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSharedFloat64AtomicMinMaxAt(long index) { return shaderSharedFloat64AtomicMinMax(this.segment(), index); }
-        /// Sets `shaderSharedFloat64AtomicMinMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSharedFloat64AtomicMinMaxAt(long index, int value) { shaderSharedFloat64AtomicMinMax(this.segment(), index, value); return this; }
+    /// {@return `sparseImageFloat32AtomicMinMax` at the given index}
+    /// @param index the index of the struct buffer
+    public int sparseImageFloat32AtomicMinMaxAt(long index) { return sparseImageFloat32AtomicMinMax(this.segment(), index); }
+    /// Sets `sparseImageFloat32AtomicMinMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderAtomicFloat2FeaturesEXT sparseImageFloat32AtomicMinMaxAt(long index, int value) { sparseImageFloat32AtomicMinMax(this.segment(), index, value); return this; }
 
-        /// {@return `shaderImageFloat32AtomicMinMax` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderImageFloat32AtomicMinMaxAt(long index) { return shaderImageFloat32AtomicMinMax(this.segment(), index); }
-        /// Sets `shaderImageFloat32AtomicMinMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderImageFloat32AtomicMinMaxAt(long index, int value) { shaderImageFloat32AtomicMinMax(this.segment(), index, value); return this; }
-
-        /// {@return `sparseImageFloat32AtomicMinMax` at the given index}
-        /// @param index the index of the struct buffer
-        public int sparseImageFloat32AtomicMinMaxAt(long index) { return sparseImageFloat32AtomicMinMax(this.segment(), index); }
-        /// Sets `sparseImageFloat32AtomicMinMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sparseImageFloat32AtomicMinMaxAt(long index, int value) { sparseImageFloat32AtomicMinMax(this.segment(), index, value); return this; }
-
-    }
 }

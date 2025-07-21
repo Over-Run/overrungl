@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -62,7 +63,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 extendedDynamicState3ShadingRateImageEnable;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends GroupType {
+public final class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -299,20 +300,21 @@ public sealed class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Gro
     public static final VarHandle VH_extendedDynamicState3ShadingRateImageEnable = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState3ShadingRateImageEnable"));
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment.
     ///
@@ -320,18 +322,18 @@ public sealed class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Gro
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceExtendedDynamicState3FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -1130,9 +1132,10 @@ public sealed class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Gro
     /// @return `this`
     public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT copyFrom(VkPhysicalDeviceExtendedDynamicState3FeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT reinterpret(long count) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -1662,324 +1665,318 @@ public sealed class VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extends Gro
     /// @return `this`
     public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ShadingRateImageEnable(int value) { extendedDynamicState3ShadingRateImageEnable(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceExtendedDynamicState3FeaturesEXT].
-    public static final class Buffer extends VkPhysicalDeviceExtendedDynamicState3FeaturesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT at(long index, Consumer<VkPhysicalDeviceExtendedDynamicState3FeaturesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
-        public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceExtendedDynamicState3FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3FeaturesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3TessellationDomainOrigin` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3TessellationDomainOriginAt(long index) { return extendedDynamicState3TessellationDomainOrigin(this.segment(), index); }
+    /// Sets `extendedDynamicState3TessellationDomainOrigin` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3TessellationDomainOriginAt(long index, int value) { extendedDynamicState3TessellationDomainOrigin(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3DepthClampEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3DepthClampEnableAt(long index) { return extendedDynamicState3DepthClampEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3DepthClampEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3DepthClampEnableAt(long index, int value) { extendedDynamicState3DepthClampEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3TessellationDomainOrigin` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3TessellationDomainOriginAt(long index) { return extendedDynamicState3TessellationDomainOrigin(this.segment(), index); }
-        /// Sets `extendedDynamicState3TessellationDomainOrigin` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3TessellationDomainOriginAt(long index, int value) { extendedDynamicState3TessellationDomainOrigin(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3PolygonMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3PolygonModeAt(long index) { return extendedDynamicState3PolygonMode(this.segment(), index); }
+    /// Sets `extendedDynamicState3PolygonMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3PolygonModeAt(long index, int value) { extendedDynamicState3PolygonMode(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3DepthClampEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3DepthClampEnableAt(long index) { return extendedDynamicState3DepthClampEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3DepthClampEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3DepthClampEnableAt(long index, int value) { extendedDynamicState3DepthClampEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3RasterizationSamples` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3RasterizationSamplesAt(long index) { return extendedDynamicState3RasterizationSamples(this.segment(), index); }
+    /// Sets `extendedDynamicState3RasterizationSamples` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3RasterizationSamplesAt(long index, int value) { extendedDynamicState3RasterizationSamples(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3PolygonMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3PolygonModeAt(long index) { return extendedDynamicState3PolygonMode(this.segment(), index); }
-        /// Sets `extendedDynamicState3PolygonMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3PolygonModeAt(long index, int value) { extendedDynamicState3PolygonMode(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3SampleMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3SampleMaskAt(long index) { return extendedDynamicState3SampleMask(this.segment(), index); }
+    /// Sets `extendedDynamicState3SampleMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3SampleMaskAt(long index, int value) { extendedDynamicState3SampleMask(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3RasterizationSamples` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3RasterizationSamplesAt(long index) { return extendedDynamicState3RasterizationSamples(this.segment(), index); }
-        /// Sets `extendedDynamicState3RasterizationSamples` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3RasterizationSamplesAt(long index, int value) { extendedDynamicState3RasterizationSamples(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3AlphaToCoverageEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3AlphaToCoverageEnableAt(long index) { return extendedDynamicState3AlphaToCoverageEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3AlphaToCoverageEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3AlphaToCoverageEnableAt(long index, int value) { extendedDynamicState3AlphaToCoverageEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3SampleMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3SampleMaskAt(long index) { return extendedDynamicState3SampleMask(this.segment(), index); }
-        /// Sets `extendedDynamicState3SampleMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3SampleMaskAt(long index, int value) { extendedDynamicState3SampleMask(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3AlphaToOneEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3AlphaToOneEnableAt(long index) { return extendedDynamicState3AlphaToOneEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3AlphaToOneEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3AlphaToOneEnableAt(long index, int value) { extendedDynamicState3AlphaToOneEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3AlphaToCoverageEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3AlphaToCoverageEnableAt(long index) { return extendedDynamicState3AlphaToCoverageEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3AlphaToCoverageEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3AlphaToCoverageEnableAt(long index, int value) { extendedDynamicState3AlphaToCoverageEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3LogicOpEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3LogicOpEnableAt(long index) { return extendedDynamicState3LogicOpEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3LogicOpEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3LogicOpEnableAt(long index, int value) { extendedDynamicState3LogicOpEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3AlphaToOneEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3AlphaToOneEnableAt(long index) { return extendedDynamicState3AlphaToOneEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3AlphaToOneEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3AlphaToOneEnableAt(long index, int value) { extendedDynamicState3AlphaToOneEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ColorBlendEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ColorBlendEnableAt(long index) { return extendedDynamicState3ColorBlendEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3ColorBlendEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ColorBlendEnableAt(long index, int value) { extendedDynamicState3ColorBlendEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3LogicOpEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3LogicOpEnableAt(long index) { return extendedDynamicState3LogicOpEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3LogicOpEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3LogicOpEnableAt(long index, int value) { extendedDynamicState3LogicOpEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ColorBlendEquation` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ColorBlendEquationAt(long index) { return extendedDynamicState3ColorBlendEquation(this.segment(), index); }
+    /// Sets `extendedDynamicState3ColorBlendEquation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ColorBlendEquationAt(long index, int value) { extendedDynamicState3ColorBlendEquation(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3ColorBlendEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ColorBlendEnableAt(long index) { return extendedDynamicState3ColorBlendEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3ColorBlendEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ColorBlendEnableAt(long index, int value) { extendedDynamicState3ColorBlendEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ColorWriteMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ColorWriteMaskAt(long index) { return extendedDynamicState3ColorWriteMask(this.segment(), index); }
+    /// Sets `extendedDynamicState3ColorWriteMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ColorWriteMaskAt(long index, int value) { extendedDynamicState3ColorWriteMask(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3ColorBlendEquation` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ColorBlendEquationAt(long index) { return extendedDynamicState3ColorBlendEquation(this.segment(), index); }
-        /// Sets `extendedDynamicState3ColorBlendEquation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ColorBlendEquationAt(long index, int value) { extendedDynamicState3ColorBlendEquation(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3RasterizationStream` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3RasterizationStreamAt(long index) { return extendedDynamicState3RasterizationStream(this.segment(), index); }
+    /// Sets `extendedDynamicState3RasterizationStream` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3RasterizationStreamAt(long index, int value) { extendedDynamicState3RasterizationStream(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3ColorWriteMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ColorWriteMaskAt(long index) { return extendedDynamicState3ColorWriteMask(this.segment(), index); }
-        /// Sets `extendedDynamicState3ColorWriteMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ColorWriteMaskAt(long index, int value) { extendedDynamicState3ColorWriteMask(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ConservativeRasterizationMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ConservativeRasterizationModeAt(long index) { return extendedDynamicState3ConservativeRasterizationMode(this.segment(), index); }
+    /// Sets `extendedDynamicState3ConservativeRasterizationMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ConservativeRasterizationModeAt(long index, int value) { extendedDynamicState3ConservativeRasterizationMode(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3RasterizationStream` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3RasterizationStreamAt(long index) { return extendedDynamicState3RasterizationStream(this.segment(), index); }
-        /// Sets `extendedDynamicState3RasterizationStream` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3RasterizationStreamAt(long index, int value) { extendedDynamicState3RasterizationStream(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ExtraPrimitiveOverestimationSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ExtraPrimitiveOverestimationSizeAt(long index) { return extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment(), index); }
+    /// Sets `extendedDynamicState3ExtraPrimitiveOverestimationSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ExtraPrimitiveOverestimationSizeAt(long index, int value) { extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3ConservativeRasterizationMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ConservativeRasterizationModeAt(long index) { return extendedDynamicState3ConservativeRasterizationMode(this.segment(), index); }
-        /// Sets `extendedDynamicState3ConservativeRasterizationMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ConservativeRasterizationModeAt(long index, int value) { extendedDynamicState3ConservativeRasterizationMode(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3DepthClipEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3DepthClipEnableAt(long index) { return extendedDynamicState3DepthClipEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3DepthClipEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3DepthClipEnableAt(long index, int value) { extendedDynamicState3DepthClipEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3ExtraPrimitiveOverestimationSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ExtraPrimitiveOverestimationSizeAt(long index) { return extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment(), index); }
-        /// Sets `extendedDynamicState3ExtraPrimitiveOverestimationSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ExtraPrimitiveOverestimationSizeAt(long index, int value) { extendedDynamicState3ExtraPrimitiveOverestimationSize(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3SampleLocationsEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3SampleLocationsEnableAt(long index) { return extendedDynamicState3SampleLocationsEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3SampleLocationsEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3SampleLocationsEnableAt(long index, int value) { extendedDynamicState3SampleLocationsEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3DepthClipEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3DepthClipEnableAt(long index) { return extendedDynamicState3DepthClipEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3DepthClipEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3DepthClipEnableAt(long index, int value) { extendedDynamicState3DepthClipEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ColorBlendAdvanced` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ColorBlendAdvancedAt(long index) { return extendedDynamicState3ColorBlendAdvanced(this.segment(), index); }
+    /// Sets `extendedDynamicState3ColorBlendAdvanced` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ColorBlendAdvancedAt(long index, int value) { extendedDynamicState3ColorBlendAdvanced(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3SampleLocationsEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3SampleLocationsEnableAt(long index) { return extendedDynamicState3SampleLocationsEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3SampleLocationsEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3SampleLocationsEnableAt(long index, int value) { extendedDynamicState3SampleLocationsEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ProvokingVertexMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ProvokingVertexModeAt(long index) { return extendedDynamicState3ProvokingVertexMode(this.segment(), index); }
+    /// Sets `extendedDynamicState3ProvokingVertexMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ProvokingVertexModeAt(long index, int value) { extendedDynamicState3ProvokingVertexMode(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3ColorBlendAdvanced` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ColorBlendAdvancedAt(long index) { return extendedDynamicState3ColorBlendAdvanced(this.segment(), index); }
-        /// Sets `extendedDynamicState3ColorBlendAdvanced` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ColorBlendAdvancedAt(long index, int value) { extendedDynamicState3ColorBlendAdvanced(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3LineRasterizationMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3LineRasterizationModeAt(long index) { return extendedDynamicState3LineRasterizationMode(this.segment(), index); }
+    /// Sets `extendedDynamicState3LineRasterizationMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3LineRasterizationModeAt(long index, int value) { extendedDynamicState3LineRasterizationMode(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3ProvokingVertexMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ProvokingVertexModeAt(long index) { return extendedDynamicState3ProvokingVertexMode(this.segment(), index); }
-        /// Sets `extendedDynamicState3ProvokingVertexMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ProvokingVertexModeAt(long index, int value) { extendedDynamicState3ProvokingVertexMode(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3LineStippleEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3LineStippleEnableAt(long index) { return extendedDynamicState3LineStippleEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3LineStippleEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3LineStippleEnableAt(long index, int value) { extendedDynamicState3LineStippleEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3LineRasterizationMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3LineRasterizationModeAt(long index) { return extendedDynamicState3LineRasterizationMode(this.segment(), index); }
-        /// Sets `extendedDynamicState3LineRasterizationMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3LineRasterizationModeAt(long index, int value) { extendedDynamicState3LineRasterizationMode(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3DepthClipNegativeOneToOne` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3DepthClipNegativeOneToOneAt(long index) { return extendedDynamicState3DepthClipNegativeOneToOne(this.segment(), index); }
+    /// Sets `extendedDynamicState3DepthClipNegativeOneToOne` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3DepthClipNegativeOneToOneAt(long index, int value) { extendedDynamicState3DepthClipNegativeOneToOne(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3LineStippleEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3LineStippleEnableAt(long index) { return extendedDynamicState3LineStippleEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3LineStippleEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3LineStippleEnableAt(long index, int value) { extendedDynamicState3LineStippleEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ViewportWScalingEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ViewportWScalingEnableAt(long index) { return extendedDynamicState3ViewportWScalingEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3ViewportWScalingEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ViewportWScalingEnableAt(long index, int value) { extendedDynamicState3ViewportWScalingEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3DepthClipNegativeOneToOne` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3DepthClipNegativeOneToOneAt(long index) { return extendedDynamicState3DepthClipNegativeOneToOne(this.segment(), index); }
-        /// Sets `extendedDynamicState3DepthClipNegativeOneToOne` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3DepthClipNegativeOneToOneAt(long index, int value) { extendedDynamicState3DepthClipNegativeOneToOne(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ViewportSwizzle` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ViewportSwizzleAt(long index) { return extendedDynamicState3ViewportSwizzle(this.segment(), index); }
+    /// Sets `extendedDynamicState3ViewportSwizzle` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ViewportSwizzleAt(long index, int value) { extendedDynamicState3ViewportSwizzle(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3ViewportWScalingEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ViewportWScalingEnableAt(long index) { return extendedDynamicState3ViewportWScalingEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3ViewportWScalingEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ViewportWScalingEnableAt(long index, int value) { extendedDynamicState3ViewportWScalingEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3CoverageToColorEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3CoverageToColorEnableAt(long index) { return extendedDynamicState3CoverageToColorEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3CoverageToColorEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageToColorEnableAt(long index, int value) { extendedDynamicState3CoverageToColorEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3ViewportSwizzle` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ViewportSwizzleAt(long index) { return extendedDynamicState3ViewportSwizzle(this.segment(), index); }
-        /// Sets `extendedDynamicState3ViewportSwizzle` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ViewportSwizzleAt(long index, int value) { extendedDynamicState3ViewportSwizzle(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3CoverageToColorLocation` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3CoverageToColorLocationAt(long index) { return extendedDynamicState3CoverageToColorLocation(this.segment(), index); }
+    /// Sets `extendedDynamicState3CoverageToColorLocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageToColorLocationAt(long index, int value) { extendedDynamicState3CoverageToColorLocation(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3CoverageToColorEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3CoverageToColorEnableAt(long index) { return extendedDynamicState3CoverageToColorEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3CoverageToColorEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3CoverageToColorEnableAt(long index, int value) { extendedDynamicState3CoverageToColorEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3CoverageModulationMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3CoverageModulationModeAt(long index) { return extendedDynamicState3CoverageModulationMode(this.segment(), index); }
+    /// Sets `extendedDynamicState3CoverageModulationMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageModulationModeAt(long index, int value) { extendedDynamicState3CoverageModulationMode(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3CoverageToColorLocation` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3CoverageToColorLocationAt(long index) { return extendedDynamicState3CoverageToColorLocation(this.segment(), index); }
-        /// Sets `extendedDynamicState3CoverageToColorLocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3CoverageToColorLocationAt(long index, int value) { extendedDynamicState3CoverageToColorLocation(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3CoverageModulationTableEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3CoverageModulationTableEnableAt(long index) { return extendedDynamicState3CoverageModulationTableEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3CoverageModulationTableEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageModulationTableEnableAt(long index, int value) { extendedDynamicState3CoverageModulationTableEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3CoverageModulationMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3CoverageModulationModeAt(long index) { return extendedDynamicState3CoverageModulationMode(this.segment(), index); }
-        /// Sets `extendedDynamicState3CoverageModulationMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3CoverageModulationModeAt(long index, int value) { extendedDynamicState3CoverageModulationMode(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3CoverageModulationTable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3CoverageModulationTableAt(long index) { return extendedDynamicState3CoverageModulationTable(this.segment(), index); }
+    /// Sets `extendedDynamicState3CoverageModulationTable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageModulationTableAt(long index, int value) { extendedDynamicState3CoverageModulationTable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3CoverageModulationTableEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3CoverageModulationTableEnableAt(long index) { return extendedDynamicState3CoverageModulationTableEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3CoverageModulationTableEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3CoverageModulationTableEnableAt(long index, int value) { extendedDynamicState3CoverageModulationTableEnable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3CoverageReductionMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3CoverageReductionModeAt(long index) { return extendedDynamicState3CoverageReductionMode(this.segment(), index); }
+    /// Sets `extendedDynamicState3CoverageReductionMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3CoverageReductionModeAt(long index, int value) { extendedDynamicState3CoverageReductionMode(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3CoverageModulationTable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3CoverageModulationTableAt(long index) { return extendedDynamicState3CoverageModulationTable(this.segment(), index); }
-        /// Sets `extendedDynamicState3CoverageModulationTable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3CoverageModulationTableAt(long index, int value) { extendedDynamicState3CoverageModulationTable(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3RepresentativeFragmentTestEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3RepresentativeFragmentTestEnableAt(long index) { return extendedDynamicState3RepresentativeFragmentTestEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3RepresentativeFragmentTestEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3RepresentativeFragmentTestEnableAt(long index, int value) { extendedDynamicState3RepresentativeFragmentTestEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3CoverageReductionMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3CoverageReductionModeAt(long index) { return extendedDynamicState3CoverageReductionMode(this.segment(), index); }
-        /// Sets `extendedDynamicState3CoverageReductionMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3CoverageReductionModeAt(long index, int value) { extendedDynamicState3CoverageReductionMode(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState3ShadingRateImageEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState3ShadingRateImageEnableAt(long index) { return extendedDynamicState3ShadingRateImageEnable(this.segment(), index); }
+    /// Sets `extendedDynamicState3ShadingRateImageEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3FeaturesEXT extendedDynamicState3ShadingRateImageEnableAt(long index, int value) { extendedDynamicState3ShadingRateImageEnable(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState3RepresentativeFragmentTestEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3RepresentativeFragmentTestEnableAt(long index) { return extendedDynamicState3RepresentativeFragmentTestEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3RepresentativeFragmentTestEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3RepresentativeFragmentTestEnableAt(long index, int value) { extendedDynamicState3RepresentativeFragmentTestEnable(this.segment(), index, value); return this; }
-
-        /// {@return `extendedDynamicState3ShadingRateImageEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState3ShadingRateImageEnableAt(long index) { return extendedDynamicState3ShadingRateImageEnable(this.segment(), index); }
-        /// Sets `extendedDynamicState3ShadingRateImageEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState3ShadingRateImageEnableAt(long index, int value) { extendedDynamicState3ShadingRateImageEnable(this.segment(), index, value); return this; }
-
-    }
 }

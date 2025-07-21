@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     float t1;
 /// };
 /// ```
-public sealed class STBTTAlignedQuad extends GroupType {
+public final class STBTTAlignedQuad extends GroupType {
     /// The struct layout of `STBTTAlignedQuad`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("x0"),
@@ -99,20 +100,21 @@ public sealed class STBTTAlignedQuad extends GroupType {
     public static final VarHandle VH_t1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("t1"));
 
     /// Creates `STBTTAlignedQuad` with the given segment.
-    /// @param segment the memory segment
-    public STBTTAlignedQuad(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBTTAlignedQuad(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBTTAlignedQuad` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBTTAlignedQuad of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTAlignedQuad(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBTTAlignedQuad` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTTAlignedQuad ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTAlignedQuad(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBTTAlignedQuad ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTAlignedQuad(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBTTAlignedQuad` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class STBTTAlignedQuad extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBTTAlignedQuad ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTAlignedQuad(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBTTAlignedQuad` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTTAlignedQuad`
-    public static STBTTAlignedQuad alloc(SegmentAllocator allocator) { return new STBTTAlignedQuad(allocator.allocate(LAYOUT)); }
+    public static STBTTAlignedQuad alloc(SegmentAllocator allocator) { return new STBTTAlignedQuad(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBTTAlignedQuad` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBTTAlignedQuad`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBTTAlignedQuad alloc(SegmentAllocator allocator, long count) { return new STBTTAlignedQuad(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBTTAlignedQuad` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class STBTTAlignedQuad extends GroupType {
     /// @return `this`
     public STBTTAlignedQuad copyFrom(STBTTAlignedQuad src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBTTAlignedQuad reinterpret(long count) { return new STBTTAlignedQuad(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `x0` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class STBTTAlignedQuad extends GroupType {
     /// @return `this`
     public STBTTAlignedQuad t1(float value) { t1(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBTTAlignedQuad].
-    public static final class Buffer extends STBTTAlignedQuad {
-        private final long elementCount;
+    /// Creates a slice of `STBTTAlignedQuad`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTAlignedQuad`
+    public STBTTAlignedQuad asSlice(long index) { return new STBTTAlignedQuad(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBTTAlignedQuad.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBTTAlignedQuad`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTAlignedQuad`
+    public STBTTAlignedQuad asSlice(long index, long count) { return new STBTTAlignedQuad(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBTTAlignedQuad` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBTTAlignedQuad at(long index, Consumer<STBTTAlignedQuad> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBTTAlignedQuad`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBTTAlignedQuad`
-        public STBTTAlignedQuad asSlice(long index) { return new STBTTAlignedQuad(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `x0` at the given index}
+    /// @param index the index of the struct buffer
+    public float x0At(long index) { return x0(this.segment(), index); }
+    /// Sets `x0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTAlignedQuad x0At(long index, float value) { x0(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBTTAlignedQuad`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBTTAlignedQuad`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `y0` at the given index}
+    /// @param index the index of the struct buffer
+    public float y0At(long index) { return y0(this.segment(), index); }
+    /// Sets `y0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTAlignedQuad y0At(long index, float value) { y0(this.segment(), index, value); return this; }
 
-        /// {@return `x0` at the given index}
-        /// @param index the index of the struct buffer
-        public float x0At(long index) { return x0(this.segment(), index); }
-        /// Sets `x0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer x0At(long index, float value) { x0(this.segment(), index, value); return this; }
+    /// {@return `s0` at the given index}
+    /// @param index the index of the struct buffer
+    public float s0At(long index) { return s0(this.segment(), index); }
+    /// Sets `s0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTAlignedQuad s0At(long index, float value) { s0(this.segment(), index, value); return this; }
 
-        /// {@return `y0` at the given index}
-        /// @param index the index of the struct buffer
-        public float y0At(long index) { return y0(this.segment(), index); }
-        /// Sets `y0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer y0At(long index, float value) { y0(this.segment(), index, value); return this; }
+    /// {@return `t0` at the given index}
+    /// @param index the index of the struct buffer
+    public float t0At(long index) { return t0(this.segment(), index); }
+    /// Sets `t0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTAlignedQuad t0At(long index, float value) { t0(this.segment(), index, value); return this; }
 
-        /// {@return `s0` at the given index}
-        /// @param index the index of the struct buffer
-        public float s0At(long index) { return s0(this.segment(), index); }
-        /// Sets `s0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer s0At(long index, float value) { s0(this.segment(), index, value); return this; }
+    /// {@return `x1` at the given index}
+    /// @param index the index of the struct buffer
+    public float x1At(long index) { return x1(this.segment(), index); }
+    /// Sets `x1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTAlignedQuad x1At(long index, float value) { x1(this.segment(), index, value); return this; }
 
-        /// {@return `t0` at the given index}
-        /// @param index the index of the struct buffer
-        public float t0At(long index) { return t0(this.segment(), index); }
-        /// Sets `t0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer t0At(long index, float value) { t0(this.segment(), index, value); return this; }
+    /// {@return `y1` at the given index}
+    /// @param index the index of the struct buffer
+    public float y1At(long index) { return y1(this.segment(), index); }
+    /// Sets `y1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTAlignedQuad y1At(long index, float value) { y1(this.segment(), index, value); return this; }
 
-        /// {@return `x1` at the given index}
-        /// @param index the index of the struct buffer
-        public float x1At(long index) { return x1(this.segment(), index); }
-        /// Sets `x1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer x1At(long index, float value) { x1(this.segment(), index, value); return this; }
+    /// {@return `s1` at the given index}
+    /// @param index the index of the struct buffer
+    public float s1At(long index) { return s1(this.segment(), index); }
+    /// Sets `s1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTAlignedQuad s1At(long index, float value) { s1(this.segment(), index, value); return this; }
 
-        /// {@return `y1` at the given index}
-        /// @param index the index of the struct buffer
-        public float y1At(long index) { return y1(this.segment(), index); }
-        /// Sets `y1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer y1At(long index, float value) { y1(this.segment(), index, value); return this; }
+    /// {@return `t1` at the given index}
+    /// @param index the index of the struct buffer
+    public float t1At(long index) { return t1(this.segment(), index); }
+    /// Sets `t1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTAlignedQuad t1At(long index, float value) { t1(this.segment(), index, value); return this; }
 
-        /// {@return `s1` at the given index}
-        /// @param index the index of the struct buffer
-        public float s1At(long index) { return s1(this.segment(), index); }
-        /// Sets `s1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer s1At(long index, float value) { s1(this.segment(), index, value); return this; }
-
-        /// {@return `t1` at the given index}
-        /// @param index the index of the struct buffer
-        public float t1At(long index) { return t1(this.segment(), index); }
-        /// Sets `t1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer t1At(long index, float value) { t1(this.segment(), index, value); return this; }
-
-    }
 }

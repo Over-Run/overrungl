@@ -21,9 +21,9 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -47,7 +47,7 @@ import java.util.function.*;
 ///     (uint64_t) VkDeviceAddress opacityMicromapIndexBuffer;
 /// };
 /// ```
-public sealed class VkClusterAccelerationStructureBuildTriangleClusterInfoNV extends GroupType {
+public final class VkClusterAccelerationStructureBuildTriangleClusterInfoNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("clusterID"), -1,
@@ -140,20 +140,21 @@ public sealed class VkClusterAccelerationStructureBuildTriangleClusterInfoNV ext
     public static final VarHandle VH_opacityMicromapIndexBuffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("opacityMicromapIndexBuffer"));
 
     /// Creates `VkClusterAccelerationStructureBuildTriangleClusterInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClusterAccelerationStructureBuildTriangleClusterInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClusterAccelerationStructureBuildTriangleClusterInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClusterAccelerationStructureBuildTriangleClusterInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClusterAccelerationStructureBuildTriangleClusterInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClusterAccelerationStructureBuildTriangleClusterInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClusterAccelerationStructureBuildTriangleClusterInfoNV` with the given segment.
     ///
@@ -161,27 +162,28 @@ public sealed class VkClusterAccelerationStructureBuildTriangleClusterInfoNV ext
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClusterAccelerationStructureBuildTriangleClusterInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClusterAccelerationStructureBuildTriangleClusterInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`
-    public static VkClusterAccelerationStructureBuildTriangleClusterInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkClusterAccelerationStructureBuildTriangleClusterInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClusterAccelerationStructureBuildTriangleClusterInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClusterAccelerationStructureBuildTriangleClusterInfoNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
     public VkClusterAccelerationStructureBuildTriangleClusterInfoNV copyFrom(VkClusterAccelerationStructureBuildTriangleClusterInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV reinterpret(long count) { return new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `clusterID` at the given index}
     /// @param segment the segment of the struct
@@ -379,140 +381,134 @@ public sealed class VkClusterAccelerationStructureBuildTriangleClusterInfoNV ext
     /// @return `this`
     public VkClusterAccelerationStructureBuildTriangleClusterInfoNV opacityMicromapIndexBuffer(long value) { opacityMicromapIndexBuffer(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkClusterAccelerationStructureBuildTriangleClusterInfoNV].
-    public static final class Buffer extends VkClusterAccelerationStructureBuildTriangleClusterInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV asSlice(long index) { return new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClusterAccelerationStructureBuildTriangleClusterInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV asSlice(long index, long count) { return new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClusterAccelerationStructureBuildTriangleClusterInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV at(long index, Consumer<VkClusterAccelerationStructureBuildTriangleClusterInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`
-        public VkClusterAccelerationStructureBuildTriangleClusterInfoNV asSlice(long index) { return new VkClusterAccelerationStructureBuildTriangleClusterInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `clusterID` at the given index}
+    /// @param index the index of the struct buffer
+    public int clusterIDAt(long index) { return clusterID(this.segment(), index); }
+    /// Sets `clusterID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV clusterIDAt(long index, int value) { clusterID(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkClusterAccelerationStructureBuildTriangleClusterInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `clusterFlags` at the given index}
+    /// @param index the index of the struct buffer
+    public int clusterFlagsAt(long index) { return clusterFlags(this.segment(), index); }
+    /// Sets `clusterFlags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV clusterFlagsAt(long index, int value) { clusterFlags(this.segment(), index, value); return this; }
 
-        /// {@return `clusterID` at the given index}
-        /// @param index the index of the struct buffer
-        public int clusterIDAt(long index) { return clusterID(this.segment(), index); }
-        /// Sets `clusterID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterIDAt(long index, int value) { clusterID(this.segment(), index, value); return this; }
+    /// {@return `baseGeometryIndexAndGeometryFlags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment baseGeometryIndexAndGeometryFlagsAt(long index) { return baseGeometryIndexAndGeometryFlags(this.segment(), index); }
+    /// Sets `baseGeometryIndexAndGeometryFlags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV baseGeometryIndexAndGeometryFlagsAt(long index, MemorySegment value) { baseGeometryIndexAndGeometryFlags(this.segment(), index, value); return this; }
+    /// Accepts `baseGeometryIndexAndGeometryFlags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV baseGeometryIndexAndGeometryFlagsAt(long index, Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.of(baseGeometryIndexAndGeometryFlagsAt(index))); return this; }
 
-        /// {@return `clusterFlags` at the given index}
-        /// @param index the index of the struct buffer
-        public int clusterFlagsAt(long index) { return clusterFlags(this.segment(), index); }
-        /// Sets `clusterFlags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterFlagsAt(long index, int value) { clusterFlags(this.segment(), index, value); return this; }
+    /// {@return `indexBufferStride` at the given index}
+    /// @param index the index of the struct buffer
+    public short indexBufferStrideAt(long index) { return indexBufferStride(this.segment(), index); }
+    /// Sets `indexBufferStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV indexBufferStrideAt(long index, short value) { indexBufferStride(this.segment(), index, value); return this; }
 
-        /// {@return `baseGeometryIndexAndGeometryFlags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment baseGeometryIndexAndGeometryFlagsAt(long index) { return baseGeometryIndexAndGeometryFlags(this.segment(), index); }
-        /// Sets `baseGeometryIndexAndGeometryFlags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer baseGeometryIndexAndGeometryFlagsAt(long index, MemorySegment value) { baseGeometryIndexAndGeometryFlags(this.segment(), index, value); return this; }
-        /// Accepts `baseGeometryIndexAndGeometryFlags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer baseGeometryIndexAndGeometryFlagsAt(long index, Consumer<overrungl.vulkan.nv.struct.VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV> func) { func.accept(overrungl.vulkan.nv.struct.VkClusterAccelerationStructureGeometryIndexAndGeometryFlagsNV.of(baseGeometryIndexAndGeometryFlagsAt(index))); return this; }
+    /// {@return `vertexBufferStride` at the given index}
+    /// @param index the index of the struct buffer
+    public short vertexBufferStrideAt(long index) { return vertexBufferStride(this.segment(), index); }
+    /// Sets `vertexBufferStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV vertexBufferStrideAt(long index, short value) { vertexBufferStride(this.segment(), index, value); return this; }
 
-        /// {@return `indexBufferStride` at the given index}
-        /// @param index the index of the struct buffer
-        public short indexBufferStrideAt(long index) { return indexBufferStride(this.segment(), index); }
-        /// Sets `indexBufferStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexBufferStrideAt(long index, short value) { indexBufferStride(this.segment(), index, value); return this; }
+    /// {@return `geometryIndexAndFlagsBufferStride` at the given index}
+    /// @param index the index of the struct buffer
+    public short geometryIndexAndFlagsBufferStrideAt(long index) { return geometryIndexAndFlagsBufferStride(this.segment(), index); }
+    /// Sets `geometryIndexAndFlagsBufferStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV geometryIndexAndFlagsBufferStrideAt(long index, short value) { geometryIndexAndFlagsBufferStride(this.segment(), index, value); return this; }
 
-        /// {@return `vertexBufferStride` at the given index}
-        /// @param index the index of the struct buffer
-        public short vertexBufferStrideAt(long index) { return vertexBufferStride(this.segment(), index); }
-        /// Sets `vertexBufferStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexBufferStrideAt(long index, short value) { vertexBufferStride(this.segment(), index, value); return this; }
+    /// {@return `opacityMicromapIndexBufferStride` at the given index}
+    /// @param index the index of the struct buffer
+    public short opacityMicromapIndexBufferStrideAt(long index) { return opacityMicromapIndexBufferStride(this.segment(), index); }
+    /// Sets `opacityMicromapIndexBufferStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV opacityMicromapIndexBufferStrideAt(long index, short value) { opacityMicromapIndexBufferStride(this.segment(), index, value); return this; }
 
-        /// {@return `geometryIndexAndFlagsBufferStride` at the given index}
-        /// @param index the index of the struct buffer
-        public short geometryIndexAndFlagsBufferStrideAt(long index) { return geometryIndexAndFlagsBufferStride(this.segment(), index); }
-        /// Sets `geometryIndexAndFlagsBufferStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer geometryIndexAndFlagsBufferStrideAt(long index, short value) { geometryIndexAndFlagsBufferStride(this.segment(), index, value); return this; }
+    /// {@return `indexBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long indexBufferAt(long index) { return indexBuffer(this.segment(), index); }
+    /// Sets `indexBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV indexBufferAt(long index, long value) { indexBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `opacityMicromapIndexBufferStride` at the given index}
-        /// @param index the index of the struct buffer
-        public short opacityMicromapIndexBufferStrideAt(long index) { return opacityMicromapIndexBufferStride(this.segment(), index); }
-        /// Sets `opacityMicromapIndexBufferStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer opacityMicromapIndexBufferStrideAt(long index, short value) { opacityMicromapIndexBufferStride(this.segment(), index, value); return this; }
+    /// {@return `vertexBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long vertexBufferAt(long index) { return vertexBuffer(this.segment(), index); }
+    /// Sets `vertexBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV vertexBufferAt(long index, long value) { vertexBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `indexBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long indexBufferAt(long index) { return indexBuffer(this.segment(), index); }
-        /// Sets `indexBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexBufferAt(long index, long value) { indexBuffer(this.segment(), index, value); return this; }
+    /// {@return `geometryIndexAndFlagsBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long geometryIndexAndFlagsBufferAt(long index) { return geometryIndexAndFlagsBuffer(this.segment(), index); }
+    /// Sets `geometryIndexAndFlagsBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV geometryIndexAndFlagsBufferAt(long index, long value) { geometryIndexAndFlagsBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `vertexBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long vertexBufferAt(long index) { return vertexBuffer(this.segment(), index); }
-        /// Sets `vertexBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexBufferAt(long index, long value) { vertexBuffer(this.segment(), index, value); return this; }
+    /// {@return `opacityMicromapArray` at the given index}
+    /// @param index the index of the struct buffer
+    public long opacityMicromapArrayAt(long index) { return opacityMicromapArray(this.segment(), index); }
+    /// Sets `opacityMicromapArray` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV opacityMicromapArrayAt(long index, long value) { opacityMicromapArray(this.segment(), index, value); return this; }
 
-        /// {@return `geometryIndexAndFlagsBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long geometryIndexAndFlagsBufferAt(long index) { return geometryIndexAndFlagsBuffer(this.segment(), index); }
-        /// Sets `geometryIndexAndFlagsBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer geometryIndexAndFlagsBufferAt(long index, long value) { geometryIndexAndFlagsBuffer(this.segment(), index, value); return this; }
+    /// {@return `opacityMicromapIndexBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long opacityMicromapIndexBufferAt(long index) { return opacityMicromapIndexBuffer(this.segment(), index); }
+    /// Sets `opacityMicromapIndexBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildTriangleClusterInfoNV opacityMicromapIndexBufferAt(long index, long value) { opacityMicromapIndexBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `opacityMicromapArray` at the given index}
-        /// @param index the index of the struct buffer
-        public long opacityMicromapArrayAt(long index) { return opacityMicromapArray(this.segment(), index); }
-        /// Sets `opacityMicromapArray` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer opacityMicromapArrayAt(long index, long value) { opacityMicromapArray(this.segment(), index, value); return this; }
-
-        /// {@return `opacityMicromapIndexBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long opacityMicromapIndexBufferAt(long index) { return opacityMicromapIndexBuffer(this.segment(), index); }
-        /// Sets `opacityMicromapIndexBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer opacityMicromapIndexBufferAt(long index, long value) { opacityMicromapIndexBuffer(this.segment(), index, value); return this; }
-
-    }
 }

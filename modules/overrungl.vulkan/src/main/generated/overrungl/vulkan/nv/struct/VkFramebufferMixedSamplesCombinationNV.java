@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkSampleCountFlags colorSamples;
 /// };
 /// ```
-public sealed class VkFramebufferMixedSamplesCombinationNV extends GroupType {
+public final class VkFramebufferMixedSamplesCombinationNV extends GroupType {
     /// The struct layout of `VkFramebufferMixedSamplesCombinationNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends GroupType {
     public static final VarHandle VH_colorSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorSamples"));
 
     /// Creates `VkFramebufferMixedSamplesCombinationNV` with the given segment.
-    /// @param segment the memory segment
-    public VkFramebufferMixedSamplesCombinationNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkFramebufferMixedSamplesCombinationNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkFramebufferMixedSamplesCombinationNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkFramebufferMixedSamplesCombinationNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFramebufferMixedSamplesCombinationNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkFramebufferMixedSamplesCombinationNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkFramebufferMixedSamplesCombinationNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFramebufferMixedSamplesCombinationNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkFramebufferMixedSamplesCombinationNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkFramebufferMixedSamplesCombinationNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkFramebufferMixedSamplesCombinationNV` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkFramebufferMixedSamplesCombinationNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkFramebufferMixedSamplesCombinationNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
-    public static VkFramebufferMixedSamplesCombinationNV alloc(SegmentAllocator allocator) { return new VkFramebufferMixedSamplesCombinationNV(allocator.allocate(LAYOUT)); }
+    public static VkFramebufferMixedSamplesCombinationNV alloc(SegmentAllocator allocator) { return new VkFramebufferMixedSamplesCombinationNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkFramebufferMixedSamplesCombinationNV alloc(SegmentAllocator allocator, long count) { return new VkFramebufferMixedSamplesCombinationNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends GroupType {
     /// @return `this`
     public VkFramebufferMixedSamplesCombinationNV copyFrom(VkFramebufferMixedSamplesCombinationNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkFramebufferMixedSamplesCombinationNV reinterpret(long count) { return new VkFramebufferMixedSamplesCombinationNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkFramebufferMixedSamplesCombinationNV extends GroupType {
     /// @return `this`
     public VkFramebufferMixedSamplesCombinationNV colorSamples(int value) { colorSamples(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkFramebufferMixedSamplesCombinationNV].
-    public static final class Buffer extends VkFramebufferMixedSamplesCombinationNV {
-        private final long elementCount;
+    /// Creates a slice of `VkFramebufferMixedSamplesCombinationNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkFramebufferMixedSamplesCombinationNV`
+    public VkFramebufferMixedSamplesCombinationNV asSlice(long index) { return new VkFramebufferMixedSamplesCombinationNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkFramebufferMixedSamplesCombinationNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkFramebufferMixedSamplesCombinationNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkFramebufferMixedSamplesCombinationNV`
+    public VkFramebufferMixedSamplesCombinationNV asSlice(long index, long count) { return new VkFramebufferMixedSamplesCombinationNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkFramebufferMixedSamplesCombinationNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkFramebufferMixedSamplesCombinationNV at(long index, Consumer<VkFramebufferMixedSamplesCombinationNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkFramebufferMixedSamplesCombinationNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkFramebufferMixedSamplesCombinationNV`
-        public VkFramebufferMixedSamplesCombinationNV asSlice(long index) { return new VkFramebufferMixedSamplesCombinationNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFramebufferMixedSamplesCombinationNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkFramebufferMixedSamplesCombinationNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkFramebufferMixedSamplesCombinationNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFramebufferMixedSamplesCombinationNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `coverageReductionMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int coverageReductionModeAt(long index) { return coverageReductionMode(this.segment(), index); }
+    /// Sets `coverageReductionMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFramebufferMixedSamplesCombinationNV coverageReductionModeAt(long index, int value) { coverageReductionMode(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `rasterizationSamples` at the given index}
+    /// @param index the index of the struct buffer
+    public int rasterizationSamplesAt(long index) { return rasterizationSamples(this.segment(), index); }
+    /// Sets `rasterizationSamples` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFramebufferMixedSamplesCombinationNV rasterizationSamplesAt(long index, int value) { rasterizationSamples(this.segment(), index, value); return this; }
 
-        /// {@return `coverageReductionMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int coverageReductionModeAt(long index) { return coverageReductionMode(this.segment(), index); }
-        /// Sets `coverageReductionMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer coverageReductionModeAt(long index, int value) { coverageReductionMode(this.segment(), index, value); return this; }
+    /// {@return `depthStencilSamples` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthStencilSamplesAt(long index) { return depthStencilSamples(this.segment(), index); }
+    /// Sets `depthStencilSamples` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFramebufferMixedSamplesCombinationNV depthStencilSamplesAt(long index, int value) { depthStencilSamples(this.segment(), index, value); return this; }
 
-        /// {@return `rasterizationSamples` at the given index}
-        /// @param index the index of the struct buffer
-        public int rasterizationSamplesAt(long index) { return rasterizationSamples(this.segment(), index); }
-        /// Sets `rasterizationSamples` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer rasterizationSamplesAt(long index, int value) { rasterizationSamples(this.segment(), index, value); return this; }
+    /// {@return `colorSamples` at the given index}
+    /// @param index the index of the struct buffer
+    public int colorSamplesAt(long index) { return colorSamples(this.segment(), index); }
+    /// Sets `colorSamples` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkFramebufferMixedSamplesCombinationNV colorSamplesAt(long index, int value) { colorSamples(this.segment(), index, value); return this; }
 
-        /// {@return `depthStencilSamples` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthStencilSamplesAt(long index) { return depthStencilSamples(this.segment(), index); }
-        /// Sets `depthStencilSamples` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthStencilSamplesAt(long index, int value) { depthStencilSamples(this.segment(), index, value); return this; }
-
-        /// {@return `colorSamples` at the given index}
-        /// @param index the index of the struct buffer
-        public int colorSamplesAt(long index) { return colorSamples(this.segment(), index); }
-        /// Sets `colorSamples` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer colorSamplesAt(long index, int value) { colorSamples(this.segment(), index, value); return this; }
-
-    }
 }

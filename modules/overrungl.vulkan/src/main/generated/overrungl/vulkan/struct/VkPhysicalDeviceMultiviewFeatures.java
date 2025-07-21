@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 multiviewTessellationShader;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceMultiviewFeatures extends GroupType {
+public final class VkPhysicalDeviceMultiviewFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMultiviewFeatures`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPhysicalDeviceMultiviewFeatures extends GroupType {
     public static final VarHandle VH_multiviewTessellationShader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("multiviewTessellationShader"));
 
     /// Creates `VkPhysicalDeviceMultiviewFeatures` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceMultiviewFeatures(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceMultiviewFeatures(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceMultiviewFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceMultiviewFeatures of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMultiviewFeatures(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMultiviewFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMultiviewFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMultiviewFeatures(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceMultiviewFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMultiviewFeatures(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceMultiviewFeatures` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPhysicalDeviceMultiviewFeatures extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceMultiviewFeatures ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMultiviewFeatures(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceMultiviewFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceMultiviewFeatures`
-    public static VkPhysicalDeviceMultiviewFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMultiviewFeatures(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceMultiviewFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMultiviewFeatures(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceMultiviewFeatures` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMultiviewFeatures`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceMultiviewFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMultiviewFeatures(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceMultiviewFeatures` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPhysicalDeviceMultiviewFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceMultiviewFeatures copyFrom(VkPhysicalDeviceMultiviewFeatures src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceMultiviewFeatures reinterpret(long count) { return new VkPhysicalDeviceMultiviewFeatures(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPhysicalDeviceMultiviewFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceMultiviewFeatures multiviewTessellationShader(int value) { multiviewTessellationShader(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceMultiviewFeatures].
-    public static final class Buffer extends VkPhysicalDeviceMultiviewFeatures {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceMultiviewFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMultiviewFeatures`
+    public VkPhysicalDeviceMultiviewFeatures asSlice(long index) { return new VkPhysicalDeviceMultiviewFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceMultiviewFeatures.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceMultiviewFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMultiviewFeatures`
+    public VkPhysicalDeviceMultiviewFeatures asSlice(long index, long count) { return new VkPhysicalDeviceMultiviewFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceMultiviewFeatures` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceMultiviewFeatures at(long index, Consumer<VkPhysicalDeviceMultiviewFeatures> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMultiviewFeatures`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceMultiviewFeatures`
-        public VkPhysicalDeviceMultiviewFeatures asSlice(long index) { return new VkPhysicalDeviceMultiviewFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMultiviewFeatures sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMultiviewFeatures`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceMultiviewFeatures`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMultiviewFeatures pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `multiview` at the given index}
+    /// @param index the index of the struct buffer
+    public int multiviewAt(long index) { return multiview(this.segment(), index); }
+    /// Sets `multiview` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMultiviewFeatures multiviewAt(long index, int value) { multiview(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `multiviewGeometryShader` at the given index}
+    /// @param index the index of the struct buffer
+    public int multiviewGeometryShaderAt(long index) { return multiviewGeometryShader(this.segment(), index); }
+    /// Sets `multiviewGeometryShader` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMultiviewFeatures multiviewGeometryShaderAt(long index, int value) { multiviewGeometryShader(this.segment(), index, value); return this; }
 
-        /// {@return `multiview` at the given index}
-        /// @param index the index of the struct buffer
-        public int multiviewAt(long index) { return multiview(this.segment(), index); }
-        /// Sets `multiview` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer multiviewAt(long index, int value) { multiview(this.segment(), index, value); return this; }
+    /// {@return `multiviewTessellationShader` at the given index}
+    /// @param index the index of the struct buffer
+    public int multiviewTessellationShaderAt(long index) { return multiviewTessellationShader(this.segment(), index); }
+    /// Sets `multiviewTessellationShader` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMultiviewFeatures multiviewTessellationShaderAt(long index, int value) { multiviewTessellationShader(this.segment(), index, value); return this; }
 
-        /// {@return `multiviewGeometryShader` at the given index}
-        /// @param index the index of the struct buffer
-        public int multiviewGeometryShaderAt(long index) { return multiviewGeometryShader(this.segment(), index); }
-        /// Sets `multiviewGeometryShader` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer multiviewGeometryShaderAt(long index, int value) { multiviewGeometryShader(this.segment(), index, value); return this; }
-
-        /// {@return `multiviewTessellationShader` at the given index}
-        /// @param index the index of the struct buffer
-        public int multiviewTessellationShaderAt(long index) { return multiviewTessellationShader(this.segment(), index); }
-        /// Sets `multiviewTessellationShader` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer multiviewTessellationShaderAt(long index, int value) { multiviewTessellationShader(this.segment(), index, value); return this; }
-
-    }
 }

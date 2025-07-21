@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t maxInlineUniformBlockBindings;
 /// };
 /// ```
-public sealed class VkDescriptorPoolInlineUniformBlockCreateInfo extends GroupType {
+public final class VkDescriptorPoolInlineUniformBlockCreateInfo extends GroupType {
     /// The struct layout of `VkDescriptorPoolInlineUniformBlockCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkDescriptorPoolInlineUniformBlockCreateInfo extends GroupTy
     public static final VarHandle VH_maxInlineUniformBlockBindings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxInlineUniformBlockBindings"));
 
     /// Creates `VkDescriptorPoolInlineUniformBlockCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkDescriptorPoolInlineUniformBlockCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDescriptorPoolInlineUniformBlockCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDescriptorPoolInlineUniformBlockCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDescriptorPoolInlineUniformBlockCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorPoolInlineUniformBlockCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDescriptorPoolInlineUniformBlockCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorPoolInlineUniformBlockCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorPoolInlineUniformBlockCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDescriptorPoolInlineUniformBlockCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorPoolInlineUniformBlockCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDescriptorPoolInlineUniformBlockCreateInfo` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkDescriptorPoolInlineUniformBlockCreateInfo extends GroupTy
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDescriptorPoolInlineUniformBlockCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorPoolInlineUniformBlockCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDescriptorPoolInlineUniformBlockCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDescriptorPoolInlineUniformBlockCreateInfo`
-    public static VkDescriptorPoolInlineUniformBlockCreateInfo alloc(SegmentAllocator allocator) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkDescriptorPoolInlineUniformBlockCreateInfo alloc(SegmentAllocator allocator) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDescriptorPoolInlineUniformBlockCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorPoolInlineUniformBlockCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDescriptorPoolInlineUniformBlockCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDescriptorPoolInlineUniformBlockCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkDescriptorPoolInlineUniformBlockCreateInfo extends GroupTy
     /// @return `this`
     public VkDescriptorPoolInlineUniformBlockCreateInfo copyFrom(VkDescriptorPoolInlineUniformBlockCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDescriptorPoolInlineUniformBlockCreateInfo reinterpret(long count) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkDescriptorPoolInlineUniformBlockCreateInfo extends GroupTy
     /// @return `this`
     public VkDescriptorPoolInlineUniformBlockCreateInfo maxInlineUniformBlockBindings(int value) { maxInlineUniformBlockBindings(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDescriptorPoolInlineUniformBlockCreateInfo].
-    public static final class Buffer extends VkDescriptorPoolInlineUniformBlockCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`
+    public VkDescriptorPoolInlineUniformBlockCreateInfo asSlice(long index) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDescriptorPoolInlineUniformBlockCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`
+    public VkDescriptorPoolInlineUniformBlockCreateInfo asSlice(long index, long count) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDescriptorPoolInlineUniformBlockCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDescriptorPoolInlineUniformBlockCreateInfo at(long index, Consumer<VkDescriptorPoolInlineUniformBlockCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`
-        public VkDescriptorPoolInlineUniformBlockCreateInfo asSlice(long index) { return new VkDescriptorPoolInlineUniformBlockCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorPoolInlineUniformBlockCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDescriptorPoolInlineUniformBlockCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorPoolInlineUniformBlockCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxInlineUniformBlockBindings` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxInlineUniformBlockBindingsAt(long index) { return maxInlineUniformBlockBindings(this.segment(), index); }
+    /// Sets `maxInlineUniformBlockBindings` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorPoolInlineUniformBlockCreateInfo maxInlineUniformBlockBindingsAt(long index, int value) { maxInlineUniformBlockBindings(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `maxInlineUniformBlockBindings` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxInlineUniformBlockBindingsAt(long index) { return maxInlineUniformBlockBindings(this.segment(), index); }
-        /// Sets `maxInlineUniformBlockBindings` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxInlineUniformBlockBindingsAt(long index, int value) { maxInlineUniformBlockBindings(this.segment(), index, value); return this; }
-
-    }
 }

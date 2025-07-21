@@ -21,6 +21,7 @@ package overrungl.vulkan.amdx.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -38,7 +39,7 @@ import overrungl.util.*;
 ///     uint32_t maxExecutionGraphWorkgroups;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType {
+public final class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -107,20 +108,21 @@ public sealed class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupTyp
     public static final VarHandle VH_maxExecutionGraphWorkgroups = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExecutionGraphWorkgroups"));
 
     /// Creates `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment.
     ///
@@ -128,18 +130,18 @@ public sealed class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupTyp
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
-    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceShaderEnqueuePropertiesAMDX alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -254,9 +256,10 @@ public sealed class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupTyp
     /// @return `this`
     public VkPhysicalDeviceShaderEnqueuePropertiesAMDX copyFrom(VkPhysicalDeviceShaderEnqueuePropertiesAMDX src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX reinterpret(long count) { return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -421,118 +424,112 @@ public sealed class VkPhysicalDeviceShaderEnqueuePropertiesAMDX extends GroupTyp
     /// @return `this`
     public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroups(int value) { maxExecutionGraphWorkgroups(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceShaderEnqueuePropertiesAMDX].
-    public static final class Buffer extends VkPhysicalDeviceShaderEnqueuePropertiesAMDX {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX asSlice(long index) { return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceShaderEnqueuePropertiesAMDX.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX asSlice(long index, long count) { return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceShaderEnqueuePropertiesAMDX` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX at(long index, Consumer<VkPhysicalDeviceShaderEnqueuePropertiesAMDX> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
-        public VkPhysicalDeviceShaderEnqueuePropertiesAMDX asSlice(long index) { return new VkPhysicalDeviceShaderEnqueuePropertiesAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceShaderEnqueuePropertiesAMDX`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxExecutionGraphDepth` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxExecutionGraphDepthAt(long index) { return maxExecutionGraphDepth(this.segment(), index); }
+    /// Sets `maxExecutionGraphDepth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphDepthAt(long index, int value) { maxExecutionGraphDepth(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxExecutionGraphShaderOutputNodes` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxExecutionGraphShaderOutputNodesAt(long index) { return maxExecutionGraphShaderOutputNodes(this.segment(), index); }
+    /// Sets `maxExecutionGraphShaderOutputNodes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphShaderOutputNodesAt(long index, int value) { maxExecutionGraphShaderOutputNodes(this.segment(), index, value); return this; }
 
-        /// {@return `maxExecutionGraphDepth` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxExecutionGraphDepthAt(long index) { return maxExecutionGraphDepth(this.segment(), index); }
-        /// Sets `maxExecutionGraphDepth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxExecutionGraphDepthAt(long index, int value) { maxExecutionGraphDepth(this.segment(), index, value); return this; }
+    /// {@return `maxExecutionGraphShaderPayloadSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxExecutionGraphShaderPayloadSizeAt(long index) { return maxExecutionGraphShaderPayloadSize(this.segment(), index); }
+    /// Sets `maxExecutionGraphShaderPayloadSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphShaderPayloadSizeAt(long index, int value) { maxExecutionGraphShaderPayloadSize(this.segment(), index, value); return this; }
 
-        /// {@return `maxExecutionGraphShaderOutputNodes` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxExecutionGraphShaderOutputNodesAt(long index) { return maxExecutionGraphShaderOutputNodes(this.segment(), index); }
-        /// Sets `maxExecutionGraphShaderOutputNodes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxExecutionGraphShaderOutputNodesAt(long index, int value) { maxExecutionGraphShaderOutputNodes(this.segment(), index, value); return this; }
+    /// {@return `maxExecutionGraphShaderPayloadCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxExecutionGraphShaderPayloadCountAt(long index) { return maxExecutionGraphShaderPayloadCount(this.segment(), index); }
+    /// Sets `maxExecutionGraphShaderPayloadCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphShaderPayloadCountAt(long index, int value) { maxExecutionGraphShaderPayloadCount(this.segment(), index, value); return this; }
 
-        /// {@return `maxExecutionGraphShaderPayloadSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxExecutionGraphShaderPayloadSizeAt(long index) { return maxExecutionGraphShaderPayloadSize(this.segment(), index); }
-        /// Sets `maxExecutionGraphShaderPayloadSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxExecutionGraphShaderPayloadSizeAt(long index, int value) { maxExecutionGraphShaderPayloadSize(this.segment(), index, value); return this; }
+    /// {@return `executionGraphDispatchAddressAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public int executionGraphDispatchAddressAlignmentAt(long index) { return executionGraphDispatchAddressAlignment(this.segment(), index); }
+    /// Sets `executionGraphDispatchAddressAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX executionGraphDispatchAddressAlignmentAt(long index, int value) { executionGraphDispatchAddressAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `maxExecutionGraphShaderPayloadCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxExecutionGraphShaderPayloadCountAt(long index) { return maxExecutionGraphShaderPayloadCount(this.segment(), index); }
-        /// Sets `maxExecutionGraphShaderPayloadCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxExecutionGraphShaderPayloadCountAt(long index, int value) { maxExecutionGraphShaderPayloadCount(this.segment(), index, value); return this; }
-
-        /// {@return `executionGraphDispatchAddressAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public int executionGraphDispatchAddressAlignmentAt(long index) { return executionGraphDispatchAddressAlignment(this.segment(), index); }
-        /// Sets `executionGraphDispatchAddressAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer executionGraphDispatchAddressAlignmentAt(long index, int value) { executionGraphDispatchAddressAlignment(this.segment(), index, value); return this; }
-
-        /// {@return `maxExecutionGraphWorkgroupCount` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxExecutionGraphWorkgroupCountAt(long index) { return maxExecutionGraphWorkgroupCount(this.segment(), index); }
-        /// {@return `maxExecutionGraphWorkgroupCount` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `maxExecutionGraphWorkgroupCount` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxExecutionGraphWorkgroupCountAt(long index) { return maxExecutionGraphWorkgroupCount(this.segment(), index); }
+    /// {@return `maxExecutionGraphWorkgroupCount` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public int maxExecutionGraphWorkgroupCountAt(long index, long index0) { return maxExecutionGraphWorkgroupCount(this.segment(), index, index0); }
-        /// Sets `maxExecutionGraphWorkgroupCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxExecutionGraphWorkgroupCountAt(long index, MemorySegment value) { maxExecutionGraphWorkgroupCount(this.segment(), index, value); return this; }
-        /// Sets `maxExecutionGraphWorkgroupCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxExecutionGraphWorkgroupCountAt(long index, long index0, int value) { maxExecutionGraphWorkgroupCount(this.segment(), index, index0, value); return this; }
+    /// Sets `maxExecutionGraphWorkgroupCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupCountAt(long index, MemorySegment value) { maxExecutionGraphWorkgroupCount(this.segment(), index, value); return this; }
+    /// Sets `maxExecutionGraphWorkgroupCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupCountAt(long index, long index0, int value) { maxExecutionGraphWorkgroupCount(this.segment(), index, index0, value); return this; }
 
-        /// {@return `maxExecutionGraphWorkgroups` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxExecutionGraphWorkgroupsAt(long index) { return maxExecutionGraphWorkgroups(this.segment(), index); }
-        /// Sets `maxExecutionGraphWorkgroups` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxExecutionGraphWorkgroupsAt(long index, int value) { maxExecutionGraphWorkgroups(this.segment(), index, value); return this; }
+    /// {@return `maxExecutionGraphWorkgroups` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxExecutionGraphWorkgroupsAt(long index) { return maxExecutionGraphWorkgroups(this.segment(), index); }
+    /// Sets `maxExecutionGraphWorkgroups` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderEnqueuePropertiesAMDX maxExecutionGraphWorkgroupsAt(long index, int value) { maxExecutionGraphWorkgroups(this.segment(), index, value); return this; }
 
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     uint32_t coverageToColorLocation;
 /// };
 /// ```
-public sealed class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType {
+public final class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType {
     /// The struct layout of `VkPipelineCoverageToColorStateCreateInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType
     public static final VarHandle VH_coverageToColorLocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("coverageToColorLocation"));
 
     /// Creates `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineCoverageToColorStateCreateInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineCoverageToColorStateCreateInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCoverageToColorStateCreateInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCoverageToColorStateCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCoverageToColorStateCreateInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineCoverageToColorStateCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCoverageToColorStateCreateInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineCoverageToColorStateCreateInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCoverageToColorStateCreateInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineCoverageToColorStateCreateInfoNV`
-    public static VkPipelineCoverageToColorStateCreateInfoNV alloc(SegmentAllocator allocator) { return new VkPipelineCoverageToColorStateCreateInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkPipelineCoverageToColorStateCreateInfoNV alloc(SegmentAllocator allocator) { return new VkPipelineCoverageToColorStateCreateInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineCoverageToColorStateCreateInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineCoverageToColorStateCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineCoverageToColorStateCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType
     /// @return `this`
     public VkPipelineCoverageToColorStateCreateInfoNV copyFrom(VkPipelineCoverageToColorStateCreateInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineCoverageToColorStateCreateInfoNV reinterpret(long count) { return new VkPipelineCoverageToColorStateCreateInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType
     /// @return `this`
     public VkPipelineCoverageToColorStateCreateInfoNV coverageToColorLocation(int value) { coverageToColorLocation(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineCoverageToColorStateCreateInfoNV].
-    public static final class Buffer extends VkPipelineCoverageToColorStateCreateInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineCoverageToColorStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineCoverageToColorStateCreateInfoNV`
+    public VkPipelineCoverageToColorStateCreateInfoNV asSlice(long index) { return new VkPipelineCoverageToColorStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineCoverageToColorStateCreateInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineCoverageToColorStateCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineCoverageToColorStateCreateInfoNV`
+    public VkPipelineCoverageToColorStateCreateInfoNV asSlice(long index, long count) { return new VkPipelineCoverageToColorStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineCoverageToColorStateCreateInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineCoverageToColorStateCreateInfoNV at(long index, Consumer<VkPipelineCoverageToColorStateCreateInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineCoverageToColorStateCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineCoverageToColorStateCreateInfoNV`
-        public VkPipelineCoverageToColorStateCreateInfoNV asSlice(long index) { return new VkPipelineCoverageToColorStateCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCoverageToColorStateCreateInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineCoverageToColorStateCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineCoverageToColorStateCreateInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCoverageToColorStateCreateInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCoverageToColorStateCreateInfoNV flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `coverageToColorEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int coverageToColorEnableAt(long index) { return coverageToColorEnable(this.segment(), index); }
+    /// Sets `coverageToColorEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCoverageToColorStateCreateInfoNV coverageToColorEnableAt(long index, int value) { coverageToColorEnable(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `coverageToColorLocation` at the given index}
+    /// @param index the index of the struct buffer
+    public int coverageToColorLocationAt(long index) { return coverageToColorLocation(this.segment(), index); }
+    /// Sets `coverageToColorLocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCoverageToColorStateCreateInfoNV coverageToColorLocationAt(long index, int value) { coverageToColorLocation(this.segment(), index, value); return this; }
 
-        /// {@return `coverageToColorEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int coverageToColorEnableAt(long index) { return coverageToColorEnable(this.segment(), index); }
-        /// Sets `coverageToColorEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer coverageToColorEnableAt(long index, int value) { coverageToColorEnable(this.segment(), index, value); return this; }
-
-        /// {@return `coverageToColorLocation` at the given index}
-        /// @param index the index of the struct buffer
-        public int coverageToColorLocationAt(long index) { return coverageToColorLocation(this.segment(), index); }
-        /// Sets `coverageToColorLocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer coverageToColorLocationAt(long index, int value) { coverageToColorLocation(this.segment(), index, value); return this; }
-
-    }
 }

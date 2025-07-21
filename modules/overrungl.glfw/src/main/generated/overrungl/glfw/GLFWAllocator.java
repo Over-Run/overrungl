@@ -21,6 +21,7 @@ package overrungl.glfw;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     void* user;
 /// };
 /// ```
-public sealed class GLFWAllocator extends GroupType {
+public final class GLFWAllocator extends GroupType {
     /// The struct layout of `GLFWAllocator`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("allocate"),
@@ -67,20 +68,21 @@ public sealed class GLFWAllocator extends GroupType {
     public static final VarHandle VH_user = LAYOUT.arrayElementVarHandle(PathElement.groupElement("user"));
 
     /// Creates `GLFWAllocator` with the given segment.
-    /// @param segment the memory segment
-    public GLFWAllocator(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public GLFWAllocator(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `GLFWAllocator` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static GLFWAllocator of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWAllocator(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `GLFWAllocator` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static GLFWAllocator ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWAllocator(segment.reinterpret(LAYOUT.byteSize())); }
+    public static GLFWAllocator ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWAllocator(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `GLFWAllocator` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class GLFWAllocator extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static GLFWAllocator ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWAllocator(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `GLFWAllocator` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `GLFWAllocator`
-    public static GLFWAllocator alloc(SegmentAllocator allocator) { return new GLFWAllocator(allocator.allocate(LAYOUT)); }
+    public static GLFWAllocator alloc(SegmentAllocator allocator) { return new GLFWAllocator(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `GLFWAllocator` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `GLFWAllocator`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static GLFWAllocator alloc(SegmentAllocator allocator, long count) { return new GLFWAllocator(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `GLFWAllocator` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class GLFWAllocator extends GroupType {
     /// @return `this`
     public GLFWAllocator copyFrom(GLFWAllocator src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public GLFWAllocator reinterpret(long count) { return new GLFWAllocator(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `allocate` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class GLFWAllocator extends GroupType {
     /// @return `this`
     public GLFWAllocator user(MemorySegment value) { user(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [GLFWAllocator].
-    public static final class Buffer extends GLFWAllocator {
-        private final long elementCount;
+    /// Creates a slice of `GLFWAllocator`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `GLFWAllocator`
+    public GLFWAllocator asSlice(long index) { return new GLFWAllocator(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `GLFWAllocator.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `GLFWAllocator`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `GLFWAllocator`
+    public GLFWAllocator asSlice(long index, long count) { return new GLFWAllocator(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `GLFWAllocator` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public GLFWAllocator at(long index, Consumer<GLFWAllocator> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `GLFWAllocator`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `GLFWAllocator`
-        public GLFWAllocator asSlice(long index) { return new GLFWAllocator(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `allocate` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment allocateAt(long index) { return allocate(this.segment(), index); }
+    /// Sets `allocate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWAllocator allocateAt(long index, MemorySegment value) { allocate(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `GLFWAllocator`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `GLFWAllocator`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `reallocate` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment reallocateAt(long index) { return reallocate(this.segment(), index); }
+    /// Sets `reallocate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWAllocator reallocateAt(long index, MemorySegment value) { reallocate(this.segment(), index, value); return this; }
 
-        /// {@return `allocate` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment allocateAt(long index) { return allocate(this.segment(), index); }
-        /// Sets `allocate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer allocateAt(long index, MemorySegment value) { allocate(this.segment(), index, value); return this; }
+    /// {@return `deallocate` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment deallocateAt(long index) { return deallocate(this.segment(), index); }
+    /// Sets `deallocate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWAllocator deallocateAt(long index, MemorySegment value) { deallocate(this.segment(), index, value); return this; }
 
-        /// {@return `reallocate` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment reallocateAt(long index) { return reallocate(this.segment(), index); }
-        /// Sets `reallocate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer reallocateAt(long index, MemorySegment value) { reallocate(this.segment(), index, value); return this; }
+    /// {@return `user` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment userAt(long index) { return user(this.segment(), index); }
+    /// Sets `user` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWAllocator userAt(long index, MemorySegment value) { user(this.segment(), index, value); return this; }
 
-        /// {@return `deallocate` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment deallocateAt(long index) { return deallocate(this.segment(), index); }
-        /// Sets `deallocate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deallocateAt(long index, MemorySegment value) { deallocate(this.segment(), index, value); return this; }
-
-        /// {@return `user` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment userAt(long index) { return user(this.segment(), index); }
-        /// Sets `user` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer userAt(long index, MemorySegment value) { user(this.segment(), index, value); return this; }
-
-    }
 }

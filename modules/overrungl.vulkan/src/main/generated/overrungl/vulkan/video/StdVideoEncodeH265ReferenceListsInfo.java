@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -37,7 +37,7 @@ import java.util.function.*;
 ///     uint8_t list_entry_l1[15];
 /// };
 /// ```
-public sealed class StdVideoEncodeH265ReferenceListsInfo extends GroupType {
+public final class StdVideoEncodeH265ReferenceListsInfo extends GroupType {
     /// The struct layout of `StdVideoEncodeH265ReferenceListsInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoEncodeH265ReferenceListsInfoFlags.LAYOUT.withName("flags"),
@@ -90,20 +90,21 @@ public sealed class StdVideoEncodeH265ReferenceListsInfo extends GroupType {
     public static final VarHandle VH_list_entry_l1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("list_entry_l1"), PathElement.sequenceElement());
 
     /// Creates `StdVideoEncodeH265ReferenceListsInfo` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoEncodeH265ReferenceListsInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoEncodeH265ReferenceListsInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoEncodeH265ReferenceListsInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoEncodeH265ReferenceListsInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265ReferenceListsInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeH265ReferenceListsInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH265ReferenceListsInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265ReferenceListsInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoEncodeH265ReferenceListsInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265ReferenceListsInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoEncodeH265ReferenceListsInfo` with the given segment.
     ///
@@ -111,18 +112,18 @@ public sealed class StdVideoEncodeH265ReferenceListsInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoEncodeH265ReferenceListsInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265ReferenceListsInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoEncodeH265ReferenceListsInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeH265ReferenceListsInfo`
-    public static StdVideoEncodeH265ReferenceListsInfo alloc(SegmentAllocator allocator) { return new StdVideoEncodeH265ReferenceListsInfo(allocator.allocate(LAYOUT)); }
+    public static StdVideoEncodeH265ReferenceListsInfo alloc(SegmentAllocator allocator) { return new StdVideoEncodeH265ReferenceListsInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoEncodeH265ReferenceListsInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH265ReferenceListsInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoEncodeH265ReferenceListsInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265ReferenceListsInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoEncodeH265ReferenceListsInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -206,9 +207,10 @@ public sealed class StdVideoEncodeH265ReferenceListsInfo extends GroupType {
     /// @return `this`
     public StdVideoEncodeH265ReferenceListsInfo copyFrom(StdVideoEncodeH265ReferenceListsInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoEncodeH265ReferenceListsInfo reinterpret(long count) { return new StdVideoEncodeH265ReferenceListsInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -402,135 +404,129 @@ public sealed class StdVideoEncodeH265ReferenceListsInfo extends GroupType {
     /// @return `this`
     public StdVideoEncodeH265ReferenceListsInfo list_entry_l1(long index0, byte value) { list_entry_l1(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [StdVideoEncodeH265ReferenceListsInfo].
-    public static final class Buffer extends StdVideoEncodeH265ReferenceListsInfo {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoEncodeH265ReferenceListsInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH265ReferenceListsInfo`
+    public StdVideoEncodeH265ReferenceListsInfo asSlice(long index) { return new StdVideoEncodeH265ReferenceListsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoEncodeH265ReferenceListsInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoEncodeH265ReferenceListsInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH265ReferenceListsInfo`
+    public StdVideoEncodeH265ReferenceListsInfo asSlice(long index, long count) { return new StdVideoEncodeH265ReferenceListsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoEncodeH265ReferenceListsInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo at(long index, Consumer<StdVideoEncodeH265ReferenceListsInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH265ReferenceListsInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoEncodeH265ReferenceListsInfo`
-        public StdVideoEncodeH265ReferenceListsInfo asSlice(long index) { return new StdVideoEncodeH265ReferenceListsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoEncodeH265ReferenceListsInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeH265ReferenceListsInfoFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH265ReferenceListsInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoEncodeH265ReferenceListsInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `num_ref_idx_l0_active_minus1` at the given index}
+    /// @param index the index of the struct buffer
+    public byte num_ref_idx_l0_active_minus1At(long index) { return num_ref_idx_l0_active_minus1(this.segment(), index); }
+    /// Sets `num_ref_idx_l0_active_minus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo num_ref_idx_l0_active_minus1At(long index, byte value) { num_ref_idx_l0_active_minus1(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoEncodeH265ReferenceListsInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeH265ReferenceListsInfoFlags.of(flagsAt(index))); return this; }
+    /// {@return `num_ref_idx_l1_active_minus1` at the given index}
+    /// @param index the index of the struct buffer
+    public byte num_ref_idx_l1_active_minus1At(long index) { return num_ref_idx_l1_active_minus1(this.segment(), index); }
+    /// Sets `num_ref_idx_l1_active_minus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo num_ref_idx_l1_active_minus1At(long index, byte value) { num_ref_idx_l1_active_minus1(this.segment(), index, value); return this; }
 
-        /// {@return `num_ref_idx_l0_active_minus1` at the given index}
-        /// @param index the index of the struct buffer
-        public byte num_ref_idx_l0_active_minus1At(long index) { return num_ref_idx_l0_active_minus1(this.segment(), index); }
-        /// Sets `num_ref_idx_l0_active_minus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_ref_idx_l0_active_minus1At(long index, byte value) { num_ref_idx_l0_active_minus1(this.segment(), index, value); return this; }
-
-        /// {@return `num_ref_idx_l1_active_minus1` at the given index}
-        /// @param index the index of the struct buffer
-        public byte num_ref_idx_l1_active_minus1At(long index) { return num_ref_idx_l1_active_minus1(this.segment(), index); }
-        /// Sets `num_ref_idx_l1_active_minus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_ref_idx_l1_active_minus1At(long index, byte value) { num_ref_idx_l1_active_minus1(this.segment(), index, value); return this; }
-
-        /// {@return `RefPicList0` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment RefPicList0At(long index) { return RefPicList0(this.segment(), index); }
-        /// {@return `RefPicList0` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `RefPicList0` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment RefPicList0At(long index) { return RefPicList0(this.segment(), index); }
+    /// {@return `RefPicList0` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte RefPicList0At(long index, long index0) { return RefPicList0(this.segment(), index, index0); }
-        /// Sets `RefPicList0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer RefPicList0At(long index, MemorySegment value) { RefPicList0(this.segment(), index, value); return this; }
-        /// Sets `RefPicList0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer RefPicList0At(long index, long index0, byte value) { RefPicList0(this.segment(), index, index0, value); return this; }
+    /// Sets `RefPicList0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo RefPicList0At(long index, MemorySegment value) { RefPicList0(this.segment(), index, value); return this; }
+    /// Sets `RefPicList0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo RefPicList0At(long index, long index0, byte value) { RefPicList0(this.segment(), index, index0, value); return this; }
 
-        /// {@return `RefPicList1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment RefPicList1At(long index) { return RefPicList1(this.segment(), index); }
-        /// {@return `RefPicList1` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `RefPicList1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment RefPicList1At(long index) { return RefPicList1(this.segment(), index); }
+    /// {@return `RefPicList1` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte RefPicList1At(long index, long index0) { return RefPicList1(this.segment(), index, index0); }
-        /// Sets `RefPicList1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer RefPicList1At(long index, MemorySegment value) { RefPicList1(this.segment(), index, value); return this; }
-        /// Sets `RefPicList1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer RefPicList1At(long index, long index0, byte value) { RefPicList1(this.segment(), index, index0, value); return this; }
+    /// Sets `RefPicList1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo RefPicList1At(long index, MemorySegment value) { RefPicList1(this.segment(), index, value); return this; }
+    /// Sets `RefPicList1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo RefPicList1At(long index, long index0, byte value) { RefPicList1(this.segment(), index, index0, value); return this; }
 
-        /// {@return `list_entry_l0` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment list_entry_l0At(long index) { return list_entry_l0(this.segment(), index); }
-        /// {@return `list_entry_l0` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `list_entry_l0` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment list_entry_l0At(long index) { return list_entry_l0(this.segment(), index); }
+    /// {@return `list_entry_l0` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte list_entry_l0At(long index, long index0) { return list_entry_l0(this.segment(), index, index0); }
-        /// Sets `list_entry_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer list_entry_l0At(long index, MemorySegment value) { list_entry_l0(this.segment(), index, value); return this; }
-        /// Sets `list_entry_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer list_entry_l0At(long index, long index0, byte value) { list_entry_l0(this.segment(), index, index0, value); return this; }
+    /// Sets `list_entry_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo list_entry_l0At(long index, MemorySegment value) { list_entry_l0(this.segment(), index, value); return this; }
+    /// Sets `list_entry_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo list_entry_l0At(long index, long index0, byte value) { list_entry_l0(this.segment(), index, index0, value); return this; }
 
-        /// {@return `list_entry_l1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment list_entry_l1At(long index) { return list_entry_l1(this.segment(), index); }
-        /// {@return `list_entry_l1` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `list_entry_l1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment list_entry_l1At(long index) { return list_entry_l1(this.segment(), index); }
+    /// {@return `list_entry_l1` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte list_entry_l1At(long index, long index0) { return list_entry_l1(this.segment(), index, index0); }
-        /// Sets `list_entry_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer list_entry_l1At(long index, MemorySegment value) { list_entry_l1(this.segment(), index, value); return this; }
-        /// Sets `list_entry_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer list_entry_l1At(long index, long index0, byte value) { list_entry_l1(this.segment(), index, index0, value); return this; }
+    /// Sets `list_entry_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo list_entry_l1At(long index, MemorySegment value) { list_entry_l1(this.segment(), index, value); return this; }
+    /// Sets `list_entry_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265ReferenceListsInfo list_entry_l1At(long index, long index0, byte value) { list_entry_l1(this.segment(), index, index0, value); return this; }
 
-    }
 }

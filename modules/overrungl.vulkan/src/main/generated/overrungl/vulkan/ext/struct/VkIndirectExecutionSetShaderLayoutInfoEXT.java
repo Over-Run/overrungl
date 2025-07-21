@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     const VkDescriptorSetLayout* pSetLayouts;
 /// };
 /// ```
-public sealed class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType {
+public final class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType {
     /// The struct layout of `VkIndirectExecutionSetShaderLayoutInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType 
     public static final VarHandle VH_pSetLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetLayouts"));
 
     /// Creates `VkIndirectExecutionSetShaderLayoutInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkIndirectExecutionSetShaderLayoutInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkIndirectExecutionSetShaderLayoutInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkIndirectExecutionSetShaderLayoutInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkIndirectExecutionSetShaderLayoutInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetShaderLayoutInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkIndirectExecutionSetShaderLayoutInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectExecutionSetShaderLayoutInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetShaderLayoutInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkIndirectExecutionSetShaderLayoutInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetShaderLayoutInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkIndirectExecutionSetShaderLayoutInfoEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkIndirectExecutionSetShaderLayoutInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetShaderLayoutInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkIndirectExecutionSetShaderLayoutInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkIndirectExecutionSetShaderLayoutInfoEXT`
-    public static VkIndirectExecutionSetShaderLayoutInfoEXT alloc(SegmentAllocator allocator) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkIndirectExecutionSetShaderLayoutInfoEXT alloc(SegmentAllocator allocator) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkIndirectExecutionSetShaderLayoutInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkIndirectExecutionSetShaderLayoutInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkIndirectExecutionSetShaderLayoutInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkIndirectExecutionSetShaderLayoutInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType 
     /// @return `this`
     public VkIndirectExecutionSetShaderLayoutInfoEXT copyFrom(VkIndirectExecutionSetShaderLayoutInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkIndirectExecutionSetShaderLayoutInfoEXT reinterpret(long count) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkIndirectExecutionSetShaderLayoutInfoEXT extends GroupType 
     /// @return `this`
     public VkIndirectExecutionSetShaderLayoutInfoEXT pSetLayouts(MemorySegment value) { pSetLayouts(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkIndirectExecutionSetShaderLayoutInfoEXT].
-    public static final class Buffer extends VkIndirectExecutionSetShaderLayoutInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`
+    public VkIndirectExecutionSetShaderLayoutInfoEXT asSlice(long index) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkIndirectExecutionSetShaderLayoutInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`
+    public VkIndirectExecutionSetShaderLayoutInfoEXT asSlice(long index, long count) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkIndirectExecutionSetShaderLayoutInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkIndirectExecutionSetShaderLayoutInfoEXT at(long index, Consumer<VkIndirectExecutionSetShaderLayoutInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`
-        public VkIndirectExecutionSetShaderLayoutInfoEXT asSlice(long index) { return new VkIndirectExecutionSetShaderLayoutInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderLayoutInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkIndirectExecutionSetShaderLayoutInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderLayoutInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `setLayoutCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int setLayoutCountAt(long index) { return setLayoutCount(this.segment(), index); }
+    /// Sets `setLayoutCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderLayoutInfoEXT setLayoutCountAt(long index, int value) { setLayoutCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pSetLayouts` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pSetLayoutsAt(long index) { return pSetLayouts(this.segment(), index); }
+    /// Sets `pSetLayouts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderLayoutInfoEXT pSetLayoutsAt(long index, MemorySegment value) { pSetLayouts(this.segment(), index, value); return this; }
 
-        /// {@return `setLayoutCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int setLayoutCountAt(long index) { return setLayoutCount(this.segment(), index); }
-        /// Sets `setLayoutCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer setLayoutCountAt(long index, int value) { setLayoutCount(this.segment(), index, value); return this; }
-
-        /// {@return `pSetLayouts` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pSetLayoutsAt(long index) { return pSetLayouts(this.segment(), index); }
-        /// Sets `pSetLayouts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSetLayoutsAt(long index, MemorySegment value) { pSetLayouts(this.segment(), index, value); return this; }
-
-    }
 }

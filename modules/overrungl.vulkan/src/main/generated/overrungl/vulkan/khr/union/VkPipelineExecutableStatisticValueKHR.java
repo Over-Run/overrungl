@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.union;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     double f64;
 /// };
 /// ```
-public sealed class VkPipelineExecutableStatisticValueKHR extends GroupType {
+public final class VkPipelineExecutableStatisticValueKHR extends GroupType {
     /// The union layout of `VkPipelineExecutableStatisticValueKHR`.
     public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("b32"),
@@ -67,20 +68,21 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends GroupType {
     public static final VarHandle VH_f64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("f64"));
 
     /// Creates `VkPipelineExecutableStatisticValueKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineExecutableStatisticValueKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this union buffer
+    public VkPipelineExecutableStatisticValueKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineExecutableStatisticValueKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineExecutableStatisticValueKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticValueKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineExecutableStatisticValueKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineExecutableStatisticValueKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticValueKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineExecutableStatisticValueKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticValueKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineExecutableStatisticValueKHR` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineExecutableStatisticValueKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticValueKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
-    public static VkPipelineExecutableStatisticValueKHR alloc(SegmentAllocator allocator) { return new VkPipelineExecutableStatisticValueKHR(allocator.allocate(LAYOUT)); }
+    public static VkPipelineExecutableStatisticValueKHR alloc(SegmentAllocator allocator) { return new VkPipelineExecutableStatisticValueKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineExecutableStatisticValueKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineExecutableStatisticValueKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineExecutableStatisticValueKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineExecutableStatisticValueKHR` with the given segment allocator and `b32`.
     /// @param allocator the segment allocator
@@ -138,9 +140,10 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends GroupType {
     /// @return `this`
     public VkPipelineExecutableStatisticValueKHR copyFrom(VkPipelineExecutableStatisticValueKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineExecutableStatisticValueKHR reinterpret(long count) { return new VkPipelineExecutableStatisticValueKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `b32` at the given index}
     /// @param segment the segment of the union
@@ -206,63 +209,57 @@ public sealed class VkPipelineExecutableStatisticValueKHR extends GroupType {
     /// @return `this`
     public VkPipelineExecutableStatisticValueKHR f64(double value) { f64(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineExecutableStatisticValueKHR].
-    public static final class Buffer extends VkPipelineExecutableStatisticValueKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineExecutableStatisticValueKHR`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkPipelineExecutableStatisticValueKHR`
+    public VkPipelineExecutableStatisticValueKHR asSlice(long index) { return new VkPipelineExecutableStatisticValueKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineExecutableStatisticValueKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineExecutableStatisticValueKHR`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineExecutableStatisticValueKHR`
+    public VkPipelineExecutableStatisticValueKHR asSlice(long index, long count) { return new VkPipelineExecutableStatisticValueKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineExecutableStatisticValueKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineExecutableStatisticValueKHR at(long index, Consumer<VkPipelineExecutableStatisticValueKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineExecutableStatisticValueKHR`.
-        /// @param index the index of the union buffer
-        /// @return the slice of `VkPipelineExecutableStatisticValueKHR`
-        public VkPipelineExecutableStatisticValueKHR asSlice(long index) { return new VkPipelineExecutableStatisticValueKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `b32` at the given index}
+    /// @param index the index of the union buffer
+    public int b32At(long index) { return b32(this.segment(), index); }
+    /// Sets `b32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticValueKHR b32At(long index, int value) { b32(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineExecutableStatisticValueKHR`.
-        /// @param index the index of the union buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineExecutableStatisticValueKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `i64` at the given index}
+    /// @param index the index of the union buffer
+    public long i64At(long index) { return i64(this.segment(), index); }
+    /// Sets `i64` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticValueKHR i64At(long index, long value) { i64(this.segment(), index, value); return this; }
 
-        /// {@return `b32` at the given index}
-        /// @param index the index of the union buffer
-        public int b32At(long index) { return b32(this.segment(), index); }
-        /// Sets `b32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer b32At(long index, int value) { b32(this.segment(), index, value); return this; }
+    /// {@return `u64` at the given index}
+    /// @param index the index of the union buffer
+    public long u64At(long index) { return u64(this.segment(), index); }
+    /// Sets `u64` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticValueKHR u64At(long index, long value) { u64(this.segment(), index, value); return this; }
 
-        /// {@return `i64` at the given index}
-        /// @param index the index of the union buffer
-        public long i64At(long index) { return i64(this.segment(), index); }
-        /// Sets `i64` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer i64At(long index, long value) { i64(this.segment(), index, value); return this; }
+    /// {@return `f64` at the given index}
+    /// @param index the index of the union buffer
+    public double f64At(long index) { return f64(this.segment(), index); }
+    /// Sets `f64` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticValueKHR f64At(long index, double value) { f64(this.segment(), index, value); return this; }
 
-        /// {@return `u64` at the given index}
-        /// @param index the index of the union buffer
-        public long u64At(long index) { return u64(this.segment(), index); }
-        /// Sets `u64` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer u64At(long index, long value) { u64(this.segment(), index, value); return this; }
-
-        /// {@return `f64` at the given index}
-        /// @param index the index of the union buffer
-        public double f64At(long index) { return f64(this.segment(), index); }
-        /// Sets `f64` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer f64At(long index, double value) { f64(this.segment(), index, value); return this; }
-
-    }
 }

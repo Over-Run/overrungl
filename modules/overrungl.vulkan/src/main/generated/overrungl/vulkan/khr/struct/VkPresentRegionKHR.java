@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     const VkRectLayerKHR* pRectangles;
 /// };
 /// ```
-public sealed class VkPresentRegionKHR extends GroupType {
+public final class VkPresentRegionKHR extends GroupType {
     /// The struct layout of `VkPresentRegionKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("rectangleCount"),
@@ -51,20 +52,21 @@ public sealed class VkPresentRegionKHR extends GroupType {
     public static final VarHandle VH_pRectangles = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRectangles"));
 
     /// Creates `VkPresentRegionKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPresentRegionKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPresentRegionKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPresentRegionKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPresentRegionKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPresentRegionKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPresentRegionKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPresentRegionKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPresentRegionKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPresentRegionKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPresentRegionKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPresentRegionKHR` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkPresentRegionKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPresentRegionKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPresentRegionKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPresentRegionKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPresentRegionKHR`
-    public static VkPresentRegionKHR alloc(SegmentAllocator allocator) { return new VkPresentRegionKHR(allocator.allocate(LAYOUT)); }
+    public static VkPresentRegionKHR alloc(SegmentAllocator allocator) { return new VkPresentRegionKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPresentRegionKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPresentRegionKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPresentRegionKHR alloc(SegmentAllocator allocator, long count) { return new VkPresentRegionKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPresentRegionKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -107,9 +109,10 @@ public sealed class VkPresentRegionKHR extends GroupType {
     /// @return `this`
     public VkPresentRegionKHR copyFrom(VkPresentRegionKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPresentRegionKHR reinterpret(long count) { return new VkPresentRegionKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `rectangleCount` at the given index}
     /// @param segment the segment of the struct
@@ -143,45 +146,39 @@ public sealed class VkPresentRegionKHR extends GroupType {
     /// @return `this`
     public VkPresentRegionKHR pRectangles(MemorySegment value) { pRectangles(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPresentRegionKHR].
-    public static final class Buffer extends VkPresentRegionKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPresentRegionKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPresentRegionKHR`
+    public VkPresentRegionKHR asSlice(long index) { return new VkPresentRegionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPresentRegionKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPresentRegionKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPresentRegionKHR`
+    public VkPresentRegionKHR asSlice(long index, long count) { return new VkPresentRegionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPresentRegionKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPresentRegionKHR at(long index, Consumer<VkPresentRegionKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPresentRegionKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPresentRegionKHR`
-        public VkPresentRegionKHR asSlice(long index) { return new VkPresentRegionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `rectangleCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int rectangleCountAt(long index) { return rectangleCount(this.segment(), index); }
+    /// Sets `rectangleCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPresentRegionKHR rectangleCountAt(long index, int value) { rectangleCount(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPresentRegionKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPresentRegionKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pRectangles` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pRectanglesAt(long index) { return pRectangles(this.segment(), index); }
+    /// Sets `pRectangles` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPresentRegionKHR pRectanglesAt(long index, MemorySegment value) { pRectangles(this.segment(), index, value); return this; }
 
-        /// {@return `rectangleCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int rectangleCountAt(long index) { return rectangleCount(this.segment(), index); }
-        /// Sets `rectangleCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer rectangleCountAt(long index, int value) { rectangleCount(this.segment(), index, value); return this; }
-
-        /// {@return `pRectangles` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pRectanglesAt(long index) { return pRectangles(this.segment(), index); }
-        /// Sets `pRectangles` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pRectanglesAt(long index, MemorySegment value) { pRectangles(this.segment(), index, value); return this; }
-
-    }
 }

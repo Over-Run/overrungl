@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     int max_frame_size;
 /// };
 /// ```
-public sealed class STBVorbisInfo extends GroupType {
+public final class STBVorbisInfo extends GroupType {
     /// The struct layout of `STBVorbisInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sample_rate"),
@@ -83,20 +84,21 @@ public sealed class STBVorbisInfo extends GroupType {
     public static final VarHandle VH_max_frame_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("max_frame_size"));
 
     /// Creates `STBVorbisInfo` with the given segment.
-    /// @param segment the memory segment
-    public STBVorbisInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBVorbisInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBVorbisInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBVorbisInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBVorbisInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBVorbisInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBVorbisInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBVorbisInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBVorbisInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBVorbisInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBVorbisInfo` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class STBVorbisInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBVorbisInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBVorbisInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBVorbisInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBVorbisInfo`
-    public static STBVorbisInfo alloc(SegmentAllocator allocator) { return new STBVorbisInfo(allocator.allocate(LAYOUT)); }
+    public static STBVorbisInfo alloc(SegmentAllocator allocator) { return new STBVorbisInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBVorbisInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBVorbisInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBVorbisInfo alloc(SegmentAllocator allocator, long count) { return new STBVorbisInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBVorbisInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class STBVorbisInfo extends GroupType {
     /// @return `this`
     public STBVorbisInfo copyFrom(STBVorbisInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBVorbisInfo reinterpret(long count) { return new STBVorbisInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sample_rate` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class STBVorbisInfo extends GroupType {
     /// @return `this`
     public STBVorbisInfo max_frame_size(int value) { max_frame_size(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBVorbisInfo].
-    public static final class Buffer extends STBVorbisInfo {
-        private final long elementCount;
+    /// Creates a slice of `STBVorbisInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBVorbisInfo`
+    public STBVorbisInfo asSlice(long index) { return new STBVorbisInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBVorbisInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBVorbisInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBVorbisInfo`
+    public STBVorbisInfo asSlice(long index, long count) { return new STBVorbisInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBVorbisInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBVorbisInfo at(long index, Consumer<STBVorbisInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBVorbisInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBVorbisInfo`
-        public STBVorbisInfo asSlice(long index) { return new STBVorbisInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sample_rate` at the given index}
+    /// @param index the index of the struct buffer
+    public int sample_rateAt(long index) { return sample_rate(this.segment(), index); }
+    /// Sets `sample_rate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBVorbisInfo sample_rateAt(long index, int value) { sample_rate(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBVorbisInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBVorbisInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `channels` at the given index}
+    /// @param index the index of the struct buffer
+    public int channelsAt(long index) { return channels(this.segment(), index); }
+    /// Sets `channels` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBVorbisInfo channelsAt(long index, int value) { channels(this.segment(), index, value); return this; }
 
-        /// {@return `sample_rate` at the given index}
-        /// @param index the index of the struct buffer
-        public int sample_rateAt(long index) { return sample_rate(this.segment(), index); }
-        /// Sets `sample_rate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sample_rateAt(long index, int value) { sample_rate(this.segment(), index, value); return this; }
+    /// {@return `setup_memory_required` at the given index}
+    /// @param index the index of the struct buffer
+    public int setup_memory_requiredAt(long index) { return setup_memory_required(this.segment(), index); }
+    /// Sets `setup_memory_required` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBVorbisInfo setup_memory_requiredAt(long index, int value) { setup_memory_required(this.segment(), index, value); return this; }
 
-        /// {@return `channels` at the given index}
-        /// @param index the index of the struct buffer
-        public int channelsAt(long index) { return channels(this.segment(), index); }
-        /// Sets `channels` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer channelsAt(long index, int value) { channels(this.segment(), index, value); return this; }
+    /// {@return `setup_temp_memory_required` at the given index}
+    /// @param index the index of the struct buffer
+    public int setup_temp_memory_requiredAt(long index) { return setup_temp_memory_required(this.segment(), index); }
+    /// Sets `setup_temp_memory_required` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBVorbisInfo setup_temp_memory_requiredAt(long index, int value) { setup_temp_memory_required(this.segment(), index, value); return this; }
 
-        /// {@return `setup_memory_required` at the given index}
-        /// @param index the index of the struct buffer
-        public int setup_memory_requiredAt(long index) { return setup_memory_required(this.segment(), index); }
-        /// Sets `setup_memory_required` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer setup_memory_requiredAt(long index, int value) { setup_memory_required(this.segment(), index, value); return this; }
+    /// {@return `temp_memory_required` at the given index}
+    /// @param index the index of the struct buffer
+    public int temp_memory_requiredAt(long index) { return temp_memory_required(this.segment(), index); }
+    /// Sets `temp_memory_required` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBVorbisInfo temp_memory_requiredAt(long index, int value) { temp_memory_required(this.segment(), index, value); return this; }
 
-        /// {@return `setup_temp_memory_required` at the given index}
-        /// @param index the index of the struct buffer
-        public int setup_temp_memory_requiredAt(long index) { return setup_temp_memory_required(this.segment(), index); }
-        /// Sets `setup_temp_memory_required` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer setup_temp_memory_requiredAt(long index, int value) { setup_temp_memory_required(this.segment(), index, value); return this; }
+    /// {@return `max_frame_size` at the given index}
+    /// @param index the index of the struct buffer
+    public int max_frame_sizeAt(long index) { return max_frame_size(this.segment(), index); }
+    /// Sets `max_frame_size` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBVorbisInfo max_frame_sizeAt(long index, int value) { max_frame_size(this.segment(), index, value); return this; }
 
-        /// {@return `temp_memory_required` at the given index}
-        /// @param index the index of the struct buffer
-        public int temp_memory_requiredAt(long index) { return temp_memory_required(this.segment(), index); }
-        /// Sets `temp_memory_required` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer temp_memory_requiredAt(long index, int value) { temp_memory_required(this.segment(), index, value); return this; }
-
-        /// {@return `max_frame_size` at the given index}
-        /// @param index the index of the struct buffer
-        public int max_frame_sizeAt(long index) { return max_frame_size(this.segment(), index); }
-        /// Sets `max_frame_size` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer max_frame_sizeAt(long index, int value) { max_frame_size(this.segment(), index, value); return this; }
-
-    }
 }

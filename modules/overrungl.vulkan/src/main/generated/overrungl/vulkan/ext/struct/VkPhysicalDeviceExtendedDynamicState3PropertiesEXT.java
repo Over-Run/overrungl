@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 dynamicPrimitiveTopologyUnrestricted;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceExtendedDynamicState3PropertiesEXT extends GroupType {
+public final class VkPhysicalDeviceExtendedDynamicState3PropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDeviceExtendedDynamicState3PropertiesEXT extends G
     public static final VarHandle VH_dynamicPrimitiveTopologyUnrestricted = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dynamicPrimitiveTopologyUnrestricted"));
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceExtendedDynamicState3PropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExtendedDynamicState3PropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceExtendedDynamicState3PropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDeviceExtendedDynamicState3PropertiesEXT extends G
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceExtendedDynamicState3PropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`
-    public static VkPhysicalDeviceExtendedDynamicState3PropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceExtendedDynamicState3PropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceExtendedDynamicState3PropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDeviceExtendedDynamicState3PropertiesEXT extends G
     /// @return `this`
     public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT copyFrom(VkPhysicalDeviceExtendedDynamicState3PropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPhysicalDeviceExtendedDynamicState3PropertiesEXT extends G
     /// @return `this`
     public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT dynamicPrimitiveTopologyUnrestricted(int value) { dynamicPrimitiveTopologyUnrestricted(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceExtendedDynamicState3PropertiesEXT].
-    public static final class Buffer extends VkPhysicalDeviceExtendedDynamicState3PropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT asSlice(long index) { return new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT at(long index, Consumer<VkPhysicalDeviceExtendedDynamicState3PropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`
-        public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT asSlice(long index) { return new VkPhysicalDeviceExtendedDynamicState3PropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceExtendedDynamicState3PropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `dynamicPrimitiveTopologyUnrestricted` at the given index}
+    /// @param index the index of the struct buffer
+    public int dynamicPrimitiveTopologyUnrestrictedAt(long index) { return dynamicPrimitiveTopologyUnrestricted(this.segment(), index); }
+    /// Sets `dynamicPrimitiveTopologyUnrestricted` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState3PropertiesEXT dynamicPrimitiveTopologyUnrestrictedAt(long index, int value) { dynamicPrimitiveTopologyUnrestricted(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `dynamicPrimitiveTopologyUnrestricted` at the given index}
-        /// @param index the index of the struct buffer
-        public int dynamicPrimitiveTopologyUnrestrictedAt(long index) { return dynamicPrimitiveTopologyUnrestricted(this.segment(), index); }
-        /// Sets `dynamicPrimitiveTopologyUnrestricted` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dynamicPrimitiveTopologyUnrestrictedAt(long index, int value) { dynamicPrimitiveTopologyUnrestricted(this.segment(), index, value); return this; }
-
-    }
 }

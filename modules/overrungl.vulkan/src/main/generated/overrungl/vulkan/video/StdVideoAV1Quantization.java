@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -40,7 +40,7 @@ import java.util.function.*;
 ///     uint8_t qm_v;
 /// };
 /// ```
-public sealed class StdVideoAV1Quantization extends GroupType {
+public final class StdVideoAV1Quantization extends GroupType {
     /// The struct layout of `StdVideoAV1Quantization`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1QuantizationFlags.LAYOUT.withName("flags"),
@@ -114,20 +114,21 @@ public sealed class StdVideoAV1Quantization extends GroupType {
     public static final VarHandle VH_qm_v = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qm_v"));
 
     /// Creates `StdVideoAV1Quantization` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoAV1Quantization(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoAV1Quantization(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoAV1Quantization` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoAV1Quantization of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1Quantization(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoAV1Quantization` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1Quantization ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1Quantization(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoAV1Quantization ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1Quantization(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoAV1Quantization` with the given segment.
     ///
@@ -135,18 +136,18 @@ public sealed class StdVideoAV1Quantization extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoAV1Quantization ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1Quantization(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoAV1Quantization` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1Quantization`
-    public static StdVideoAV1Quantization alloc(SegmentAllocator allocator) { return new StdVideoAV1Quantization(allocator.allocate(LAYOUT)); }
+    public static StdVideoAV1Quantization alloc(SegmentAllocator allocator) { return new StdVideoAV1Quantization(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoAV1Quantization` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1Quantization`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoAV1Quantization alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1Quantization(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoAV1Quantization` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -278,9 +279,10 @@ public sealed class StdVideoAV1Quantization extends GroupType {
     /// @return `this`
     public StdVideoAV1Quantization copyFrom(StdVideoAV1Quantization src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoAV1Quantization reinterpret(long count) { return new StdVideoAV1Quantization(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -446,122 +448,116 @@ public sealed class StdVideoAV1Quantization extends GroupType {
     /// @return `this`
     public StdVideoAV1Quantization qm_v(byte value) { qm_v(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [StdVideoAV1Quantization].
-    public static final class Buffer extends StdVideoAV1Quantization {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoAV1Quantization`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1Quantization`
+    public StdVideoAV1Quantization asSlice(long index) { return new StdVideoAV1Quantization(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoAV1Quantization.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoAV1Quantization`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1Quantization`
+    public StdVideoAV1Quantization asSlice(long index, long count) { return new StdVideoAV1Quantization(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoAV1Quantization` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoAV1Quantization at(long index, Consumer<StdVideoAV1Quantization> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoAV1Quantization`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoAV1Quantization`
-        public StdVideoAV1Quantization asSlice(long index) { return new StdVideoAV1Quantization(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoAV1Quantization flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1QuantizationFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1QuantizationFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoAV1Quantization`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoAV1Quantization`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `base_q_idx` at the given index}
+    /// @param index the index of the struct buffer
+    public byte base_q_idxAt(long index) { return base_q_idx(this.segment(), index); }
+    /// Sets `base_q_idx` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization base_q_idxAt(long index, byte value) { base_q_idx(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1QuantizationFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1QuantizationFlags.of(flagsAt(index))); return this; }
+    /// {@return `DeltaQYDc` at the given index}
+    /// @param index the index of the struct buffer
+    public byte DeltaQYDcAt(long index) { return DeltaQYDc(this.segment(), index); }
+    /// Sets `DeltaQYDc` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization DeltaQYDcAt(long index, byte value) { DeltaQYDc(this.segment(), index, value); return this; }
 
-        /// {@return `base_q_idx` at the given index}
-        /// @param index the index of the struct buffer
-        public byte base_q_idxAt(long index) { return base_q_idx(this.segment(), index); }
-        /// Sets `base_q_idx` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer base_q_idxAt(long index, byte value) { base_q_idx(this.segment(), index, value); return this; }
+    /// {@return `DeltaQUDc` at the given index}
+    /// @param index the index of the struct buffer
+    public byte DeltaQUDcAt(long index) { return DeltaQUDc(this.segment(), index); }
+    /// Sets `DeltaQUDc` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization DeltaQUDcAt(long index, byte value) { DeltaQUDc(this.segment(), index, value); return this; }
 
-        /// {@return `DeltaQYDc` at the given index}
-        /// @param index the index of the struct buffer
-        public byte DeltaQYDcAt(long index) { return DeltaQYDc(this.segment(), index); }
-        /// Sets `DeltaQYDc` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer DeltaQYDcAt(long index, byte value) { DeltaQYDc(this.segment(), index, value); return this; }
+    /// {@return `DeltaQUAc` at the given index}
+    /// @param index the index of the struct buffer
+    public byte DeltaQUAcAt(long index) { return DeltaQUAc(this.segment(), index); }
+    /// Sets `DeltaQUAc` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization DeltaQUAcAt(long index, byte value) { DeltaQUAc(this.segment(), index, value); return this; }
 
-        /// {@return `DeltaQUDc` at the given index}
-        /// @param index the index of the struct buffer
-        public byte DeltaQUDcAt(long index) { return DeltaQUDc(this.segment(), index); }
-        /// Sets `DeltaQUDc` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer DeltaQUDcAt(long index, byte value) { DeltaQUDc(this.segment(), index, value); return this; }
+    /// {@return `DeltaQVDc` at the given index}
+    /// @param index the index of the struct buffer
+    public byte DeltaQVDcAt(long index) { return DeltaQVDc(this.segment(), index); }
+    /// Sets `DeltaQVDc` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization DeltaQVDcAt(long index, byte value) { DeltaQVDc(this.segment(), index, value); return this; }
 
-        /// {@return `DeltaQUAc` at the given index}
-        /// @param index the index of the struct buffer
-        public byte DeltaQUAcAt(long index) { return DeltaQUAc(this.segment(), index); }
-        /// Sets `DeltaQUAc` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer DeltaQUAcAt(long index, byte value) { DeltaQUAc(this.segment(), index, value); return this; }
+    /// {@return `DeltaQVAc` at the given index}
+    /// @param index the index of the struct buffer
+    public byte DeltaQVAcAt(long index) { return DeltaQVAc(this.segment(), index); }
+    /// Sets `DeltaQVAc` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization DeltaQVAcAt(long index, byte value) { DeltaQVAc(this.segment(), index, value); return this; }
 
-        /// {@return `DeltaQVDc` at the given index}
-        /// @param index the index of the struct buffer
-        public byte DeltaQVDcAt(long index) { return DeltaQVDc(this.segment(), index); }
-        /// Sets `DeltaQVDc` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer DeltaQVDcAt(long index, byte value) { DeltaQVDc(this.segment(), index, value); return this; }
+    /// {@return `qm_y` at the given index}
+    /// @param index the index of the struct buffer
+    public byte qm_yAt(long index) { return qm_y(this.segment(), index); }
+    /// Sets `qm_y` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization qm_yAt(long index, byte value) { qm_y(this.segment(), index, value); return this; }
 
-        /// {@return `DeltaQVAc` at the given index}
-        /// @param index the index of the struct buffer
-        public byte DeltaQVAcAt(long index) { return DeltaQVAc(this.segment(), index); }
-        /// Sets `DeltaQVAc` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer DeltaQVAcAt(long index, byte value) { DeltaQVAc(this.segment(), index, value); return this; }
+    /// {@return `qm_u` at the given index}
+    /// @param index the index of the struct buffer
+    public byte qm_uAt(long index) { return qm_u(this.segment(), index); }
+    /// Sets `qm_u` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization qm_uAt(long index, byte value) { qm_u(this.segment(), index, value); return this; }
 
-        /// {@return `qm_y` at the given index}
-        /// @param index the index of the struct buffer
-        public byte qm_yAt(long index) { return qm_y(this.segment(), index); }
-        /// Sets `qm_y` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qm_yAt(long index, byte value) { qm_y(this.segment(), index, value); return this; }
+    /// {@return `qm_v` at the given index}
+    /// @param index the index of the struct buffer
+    public byte qm_vAt(long index) { return qm_v(this.segment(), index); }
+    /// Sets `qm_v` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1Quantization qm_vAt(long index, byte value) { qm_v(this.segment(), index, value); return this; }
 
-        /// {@return `qm_u` at the given index}
-        /// @param index the index of the struct buffer
-        public byte qm_uAt(long index) { return qm_u(this.segment(), index); }
-        /// Sets `qm_u` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qm_uAt(long index, byte value) { qm_u(this.segment(), index, value); return this; }
-
-        /// {@return `qm_v` at the given index}
-        /// @param index the index of the struct buffer
-        public byte qm_vAt(long index) { return qm_v(this.segment(), index); }
-        /// Sets `qm_v` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qm_vAt(long index, byte value) { qm_v(this.segment(), index, value); return this; }
-
-    }
 }

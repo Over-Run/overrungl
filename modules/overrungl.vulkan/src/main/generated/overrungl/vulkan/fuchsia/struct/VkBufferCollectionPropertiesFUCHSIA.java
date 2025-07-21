@@ -21,9 +21,9 @@ package overrungl.vulkan.fuchsia.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -43,7 +43,7 @@ import java.util.function.*;
 ///     (int) VkChromaLocation suggestedYChromaOffset;
 /// };
 /// ```
-public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
+public final class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// The struct layout of `VkBufferCollectionPropertiesFUCHSIA`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -136,20 +136,21 @@ public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     public static final VarHandle VH_suggestedYChromaOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("suggestedYChromaOffset"));
 
     /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
-    /// @param segment the memory segment
-    public VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkBufferCollectionPropertiesFUCHSIA(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkBufferCollectionPropertiesFUCHSIA of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionPropertiesFUCHSIA(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferCollectionPropertiesFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionPropertiesFUCHSIA(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkBufferCollectionPropertiesFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionPropertiesFUCHSIA(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkBufferCollectionPropertiesFUCHSIA` with the given segment.
     ///
@@ -157,18 +158,18 @@ public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkBufferCollectionPropertiesFUCHSIA ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionPropertiesFUCHSIA(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
-    public static VkBufferCollectionPropertiesFUCHSIA alloc(SegmentAllocator allocator) { return new VkBufferCollectionPropertiesFUCHSIA(allocator.allocate(LAYOUT)); }
+    public static VkBufferCollectionPropertiesFUCHSIA alloc(SegmentAllocator allocator) { return new VkBufferCollectionPropertiesFUCHSIA(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBufferCollectionPropertiesFUCHSIA`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkBufferCollectionPropertiesFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkBufferCollectionPropertiesFUCHSIA(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkBufferCollectionPropertiesFUCHSIA` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -357,9 +358,10 @@ public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// @return `this`
     public VkBufferCollectionPropertiesFUCHSIA copyFrom(VkBufferCollectionPropertiesFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkBufferCollectionPropertiesFUCHSIA reinterpret(long count) { return new VkBufferCollectionPropertiesFUCHSIA(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -577,154 +579,148 @@ public sealed class VkBufferCollectionPropertiesFUCHSIA extends GroupType {
     /// @return `this`
     public VkBufferCollectionPropertiesFUCHSIA suggestedYChromaOffset(int value) { suggestedYChromaOffset(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkBufferCollectionPropertiesFUCHSIA].
-    public static final class Buffer extends VkBufferCollectionPropertiesFUCHSIA {
-        private final long elementCount;
+    /// Creates a slice of `VkBufferCollectionPropertiesFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferCollectionPropertiesFUCHSIA`
+    public VkBufferCollectionPropertiesFUCHSIA asSlice(long index) { return new VkBufferCollectionPropertiesFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkBufferCollectionPropertiesFUCHSIA.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkBufferCollectionPropertiesFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferCollectionPropertiesFUCHSIA`
+    public VkBufferCollectionPropertiesFUCHSIA asSlice(long index, long count) { return new VkBufferCollectionPropertiesFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkBufferCollectionPropertiesFUCHSIA` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA at(long index, Consumer<VkBufferCollectionPropertiesFUCHSIA> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkBufferCollectionPropertiesFUCHSIA`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkBufferCollectionPropertiesFUCHSIA`
-        public VkBufferCollectionPropertiesFUCHSIA asSlice(long index) { return new VkBufferCollectionPropertiesFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkBufferCollectionPropertiesFUCHSIA`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkBufferCollectionPropertiesFUCHSIA`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `memoryTypeBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int memoryTypeBitsAt(long index) { return memoryTypeBits(this.segment(), index); }
+    /// Sets `memoryTypeBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA memoryTypeBitsAt(long index, int value) { memoryTypeBits(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `bufferCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferCountAt(long index) { return bufferCount(this.segment(), index); }
+    /// Sets `bufferCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA bufferCountAt(long index, int value) { bufferCount(this.segment(), index, value); return this; }
 
-        /// {@return `memoryTypeBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int memoryTypeBitsAt(long index) { return memoryTypeBits(this.segment(), index); }
-        /// Sets `memoryTypeBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryTypeBitsAt(long index, int value) { memoryTypeBits(this.segment(), index, value); return this; }
+    /// {@return `createInfoIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int createInfoIndexAt(long index) { return createInfoIndex(this.segment(), index); }
+    /// Sets `createInfoIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA createInfoIndexAt(long index, int value) { createInfoIndex(this.segment(), index, value); return this; }
 
-        /// {@return `bufferCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferCountAt(long index) { return bufferCount(this.segment(), index); }
-        /// Sets `bufferCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferCountAt(long index, int value) { bufferCount(this.segment(), index, value); return this; }
+    /// {@return `sysmemPixelFormat` at the given index}
+    /// @param index the index of the struct buffer
+    public long sysmemPixelFormatAt(long index) { return sysmemPixelFormat(this.segment(), index); }
+    /// Sets `sysmemPixelFormat` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA sysmemPixelFormatAt(long index, long value) { sysmemPixelFormat(this.segment(), index, value); return this; }
 
-        /// {@return `createInfoIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int createInfoIndexAt(long index) { return createInfoIndex(this.segment(), index); }
-        /// Sets `createInfoIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer createInfoIndexAt(long index, int value) { createInfoIndex(this.segment(), index, value); return this; }
+    /// {@return `formatFeatures` at the given index}
+    /// @param index the index of the struct buffer
+    public int formatFeaturesAt(long index) { return formatFeatures(this.segment(), index); }
+    /// Sets `formatFeatures` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA formatFeaturesAt(long index, int value) { formatFeatures(this.segment(), index, value); return this; }
 
-        /// {@return `sysmemPixelFormat` at the given index}
-        /// @param index the index of the struct buffer
-        public long sysmemPixelFormatAt(long index) { return sysmemPixelFormat(this.segment(), index); }
-        /// Sets `sysmemPixelFormat` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sysmemPixelFormatAt(long index, long value) { sysmemPixelFormat(this.segment(), index, value); return this; }
+    /// {@return `sysmemColorSpaceIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment sysmemColorSpaceIndexAt(long index) { return sysmemColorSpaceIndex(this.segment(), index); }
+    /// Sets `sysmemColorSpaceIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndexAt(long index, MemorySegment value) { sysmemColorSpaceIndex(this.segment(), index, value); return this; }
+    /// Accepts `sysmemColorSpaceIndex` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA sysmemColorSpaceIndexAt(long index, Consumer<overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA.of(sysmemColorSpaceIndexAt(index))); return this; }
 
-        /// {@return `formatFeatures` at the given index}
-        /// @param index the index of the struct buffer
-        public int formatFeaturesAt(long index) { return formatFeatures(this.segment(), index); }
-        /// Sets `formatFeatures` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer formatFeaturesAt(long index, int value) { formatFeatures(this.segment(), index, value); return this; }
+    /// {@return `samplerYcbcrConversionComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment samplerYcbcrConversionComponentsAt(long index) { return samplerYcbcrConversionComponents(this.segment(), index); }
+    /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponentsAt(long index, MemorySegment value) { samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
+    /// Accepts `samplerYcbcrConversionComponents` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA samplerYcbcrConversionComponentsAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(samplerYcbcrConversionComponentsAt(index))); return this; }
 
-        /// {@return `sysmemColorSpaceIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment sysmemColorSpaceIndexAt(long index) { return sysmemColorSpaceIndex(this.segment(), index); }
-        /// Sets `sysmemColorSpaceIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sysmemColorSpaceIndexAt(long index, MemorySegment value) { sysmemColorSpaceIndex(this.segment(), index, value); return this; }
-        /// Accepts `sysmemColorSpaceIndex` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer sysmemColorSpaceIndexAt(long index, Consumer<overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA> func) { func.accept(overrungl.vulkan.fuchsia.struct.VkSysmemColorSpaceFUCHSIA.of(sysmemColorSpaceIndexAt(index))); return this; }
+    /// {@return `suggestedYcbcrModel` at the given index}
+    /// @param index the index of the struct buffer
+    public int suggestedYcbcrModelAt(long index) { return suggestedYcbcrModel(this.segment(), index); }
+    /// Sets `suggestedYcbcrModel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrModelAt(long index, int value) { suggestedYcbcrModel(this.segment(), index, value); return this; }
 
-        /// {@return `samplerYcbcrConversionComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment samplerYcbcrConversionComponentsAt(long index) { return samplerYcbcrConversionComponents(this.segment(), index); }
-        /// Sets `samplerYcbcrConversionComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer samplerYcbcrConversionComponentsAt(long index, MemorySegment value) { samplerYcbcrConversionComponents(this.segment(), index, value); return this; }
-        /// Accepts `samplerYcbcrConversionComponents` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer samplerYcbcrConversionComponentsAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(samplerYcbcrConversionComponentsAt(index))); return this; }
+    /// {@return `suggestedYcbcrRange` at the given index}
+    /// @param index the index of the struct buffer
+    public int suggestedYcbcrRangeAt(long index) { return suggestedYcbcrRange(this.segment(), index); }
+    /// Sets `suggestedYcbcrRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYcbcrRangeAt(long index, int value) { suggestedYcbcrRange(this.segment(), index, value); return this; }
 
-        /// {@return `suggestedYcbcrModel` at the given index}
-        /// @param index the index of the struct buffer
-        public int suggestedYcbcrModelAt(long index) { return suggestedYcbcrModel(this.segment(), index); }
-        /// Sets `suggestedYcbcrModel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer suggestedYcbcrModelAt(long index, int value) { suggestedYcbcrModel(this.segment(), index, value); return this; }
+    /// {@return `suggestedXChromaOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int suggestedXChromaOffsetAt(long index) { return suggestedXChromaOffset(this.segment(), index); }
+    /// Sets `suggestedXChromaOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA suggestedXChromaOffsetAt(long index, int value) { suggestedXChromaOffset(this.segment(), index, value); return this; }
 
-        /// {@return `suggestedYcbcrRange` at the given index}
-        /// @param index the index of the struct buffer
-        public int suggestedYcbcrRangeAt(long index) { return suggestedYcbcrRange(this.segment(), index); }
-        /// Sets `suggestedYcbcrRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer suggestedYcbcrRangeAt(long index, int value) { suggestedYcbcrRange(this.segment(), index, value); return this; }
+    /// {@return `suggestedYChromaOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int suggestedYChromaOffsetAt(long index) { return suggestedYChromaOffset(this.segment(), index); }
+    /// Sets `suggestedYChromaOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionPropertiesFUCHSIA suggestedYChromaOffsetAt(long index, int value) { suggestedYChromaOffset(this.segment(), index, value); return this; }
 
-        /// {@return `suggestedXChromaOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int suggestedXChromaOffsetAt(long index) { return suggestedXChromaOffset(this.segment(), index); }
-        /// Sets `suggestedXChromaOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer suggestedXChromaOffsetAt(long index, int value) { suggestedXChromaOffset(this.segment(), index, value); return this; }
-
-        /// {@return `suggestedYChromaOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int suggestedYChromaOffsetAt(long index) { return suggestedYChromaOffset(this.segment(), index); }
-        /// Sets `suggestedYChromaOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer suggestedYChromaOffsetAt(long index, int value) { suggestedYChromaOffset(this.segment(), index, value); return this; }
-
-    }
 }

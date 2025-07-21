@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -33,7 +33,7 @@ import java.util.function.*;
 ///     (struct VkSubresourceLayout) VkSubresourceLayout subresourceLayout;
 /// };
 /// ```
-public sealed class VkSubresourceLayout2 extends GroupType {
+public final class VkSubresourceLayout2 extends GroupType {
     /// The struct layout of `VkSubresourceLayout2`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -58,20 +58,21 @@ public sealed class VkSubresourceLayout2 extends GroupType {
     public static final MemoryLayout LAYOUT_subresourceLayout = LAYOUT.select(PathElement.groupElement("subresourceLayout"));
 
     /// Creates `VkSubresourceLayout2` with the given segment.
-    /// @param segment the memory segment
-    public VkSubresourceLayout2(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSubresourceLayout2(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSubresourceLayout2` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSubresourceLayout2 of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubresourceLayout2(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSubresourceLayout2` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSubresourceLayout2 ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubresourceLayout2(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSubresourceLayout2 ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubresourceLayout2(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSubresourceLayout2` with the given segment.
     ///
@@ -79,18 +80,18 @@ public sealed class VkSubresourceLayout2 extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSubresourceLayout2 ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubresourceLayout2(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSubresourceLayout2` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSubresourceLayout2`
-    public static VkSubresourceLayout2 alloc(SegmentAllocator allocator) { return new VkSubresourceLayout2(allocator.allocate(LAYOUT)); }
+    public static VkSubresourceLayout2 alloc(SegmentAllocator allocator) { return new VkSubresourceLayout2(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSubresourceLayout2` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSubresourceLayout2`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSubresourceLayout2 alloc(SegmentAllocator allocator, long count) { return new VkSubresourceLayout2(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSubresourceLayout2` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -124,9 +125,10 @@ public sealed class VkSubresourceLayout2 extends GroupType {
     /// @return `this`
     public VkSubresourceLayout2 copyFrom(VkSubresourceLayout2 src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSubresourceLayout2 reinterpret(long count) { return new VkSubresourceLayout2(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -180,59 +182,53 @@ public sealed class VkSubresourceLayout2 extends GroupType {
     /// @return `this`
     public VkSubresourceLayout2 subresourceLayout(Consumer<overrungl.vulkan.struct.VkSubresourceLayout> func) { func.accept(overrungl.vulkan.struct.VkSubresourceLayout.of(subresourceLayout())); return this; }
 
-    /// A buffer of [VkSubresourceLayout2].
-    public static final class Buffer extends VkSubresourceLayout2 {
-        private final long elementCount;
+    /// Creates a slice of `VkSubresourceLayout2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubresourceLayout2`
+    public VkSubresourceLayout2 asSlice(long index) { return new VkSubresourceLayout2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSubresourceLayout2.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSubresourceLayout2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubresourceLayout2`
+    public VkSubresourceLayout2 asSlice(long index, long count) { return new VkSubresourceLayout2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSubresourceLayout2` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSubresourceLayout2 at(long index, Consumer<VkSubresourceLayout2> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSubresourceLayout2`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSubresourceLayout2`
-        public VkSubresourceLayout2 asSlice(long index) { return new VkSubresourceLayout2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubresourceLayout2 sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSubresourceLayout2`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSubresourceLayout2`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubresourceLayout2 pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `subresourceLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment subresourceLayoutAt(long index) { return subresourceLayout(this.segment(), index); }
+    /// Sets `subresourceLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubresourceLayout2 subresourceLayoutAt(long index, MemorySegment value) { subresourceLayout(this.segment(), index, value); return this; }
+    /// Accepts `subresourceLayout` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkSubresourceLayout2 subresourceLayoutAt(long index, Consumer<overrungl.vulkan.struct.VkSubresourceLayout> func) { func.accept(overrungl.vulkan.struct.VkSubresourceLayout.of(subresourceLayoutAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `subresourceLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment subresourceLayoutAt(long index) { return subresourceLayout(this.segment(), index); }
-        /// Sets `subresourceLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subresourceLayoutAt(long index, MemorySegment value) { subresourceLayout(this.segment(), index, value); return this; }
-        /// Accepts `subresourceLayout` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer subresourceLayoutAt(long index, Consumer<overrungl.vulkan.struct.VkSubresourceLayout> func) { func.accept(overrungl.vulkan.struct.VkSubresourceLayout.of(subresourceLayoutAt(index))); return this; }
-
-    }
 }

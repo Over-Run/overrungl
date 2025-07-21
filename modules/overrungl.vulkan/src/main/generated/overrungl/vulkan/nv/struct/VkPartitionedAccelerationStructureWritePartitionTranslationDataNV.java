@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     float partitionTranslation[3];
 /// };
 /// ```
-public sealed class VkPartitionedAccelerationStructureWritePartitionTranslationDataNV extends GroupType {
+public final class VkPartitionedAccelerationStructureWritePartitionTranslationDataNV extends GroupType {
     /// The struct layout of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("partitionIndex"),
@@ -51,20 +52,21 @@ public sealed class VkPartitionedAccelerationStructureWritePartitionTranslationD
     public static final VarHandle VH_partitionTranslation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("partitionTranslation"), PathElement.sequenceElement());
 
     /// Creates `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkPartitionedAccelerationStructureWritePartitionTranslationD
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`
-    public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV alloc(SegmentAllocator allocator) { return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(allocator.allocate(LAYOUT)); }
+    public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV alloc(SegmentAllocator allocator) { return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPartitionedAccelerationStructureWritePartitionTranslationDataNV alloc(SegmentAllocator allocator, long count) { return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -107,9 +109,10 @@ public sealed class VkPartitionedAccelerationStructureWritePartitionTranslationD
     /// @return `this`
     public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV copyFrom(VkPartitionedAccelerationStructureWritePartitionTranslationDataNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV reinterpret(long count) { return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `partitionIndex` at the given index}
     /// @param segment the segment of the struct
@@ -162,55 +165,49 @@ public sealed class VkPartitionedAccelerationStructureWritePartitionTranslationD
     /// @return `this`
     public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslation(long index0, float value) { partitionTranslation(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [VkPartitionedAccelerationStructureWritePartitionTranslationDataNV].
-    public static final class Buffer extends VkPartitionedAccelerationStructureWritePartitionTranslationDataNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV asSlice(long index) { return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV asSlice(long index, long count) { return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV at(long index, Consumer<VkPartitionedAccelerationStructureWritePartitionTranslationDataNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`
-        public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV asSlice(long index) { return new VkPartitionedAccelerationStructureWritePartitionTranslationDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `partitionIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int partitionIndexAt(long index) { return partitionIndex(this.segment(), index); }
+    /// Sets `partitionIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionIndexAt(long index, int value) { partitionIndex(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPartitionedAccelerationStructureWritePartitionTranslationDataNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `partitionIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int partitionIndexAt(long index) { return partitionIndex(this.segment(), index); }
-        /// Sets `partitionIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer partitionIndexAt(long index, int value) { partitionIndex(this.segment(), index, value); return this; }
-
-        /// {@return `partitionTranslation` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment partitionTranslationAt(long index) { return partitionTranslation(this.segment(), index); }
-        /// {@return `partitionTranslation` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `partitionTranslation` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment partitionTranslationAt(long index) { return partitionTranslation(this.segment(), index); }
+    /// {@return `partitionTranslation` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public float partitionTranslationAt(long index, long index0) { return partitionTranslation(this.segment(), index, index0); }
-        /// Sets `partitionTranslation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer partitionTranslationAt(long index, MemorySegment value) { partitionTranslation(this.segment(), index, value); return this; }
-        /// Sets `partitionTranslation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer partitionTranslationAt(long index, long index0, float value) { partitionTranslation(this.segment(), index, index0, value); return this; }
+    /// Sets `partitionTranslation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslationAt(long index, MemorySegment value) { partitionTranslation(this.segment(), index, value); return this; }
+    /// Sets `partitionTranslation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPartitionedAccelerationStructureWritePartitionTranslationDataNV partitionTranslationAt(long index, long index0, float value) { partitionTranslation(this.segment(), index, index0, value); return this; }
 
-    }
 }

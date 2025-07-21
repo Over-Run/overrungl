@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 advancedBlendAllOperations;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends GroupType {
+public final class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -99,20 +100,21 @@ public sealed class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends 
     public static final VarHandle VH_advancedBlendAllOperations = LAYOUT.arrayElementVarHandle(PathElement.groupElement("advancedBlendAllOperations"));
 
     /// Creates `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
-    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends 
     /// @return `this`
     public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT copyFrom(VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT extends 
     /// @return `this`
     public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendAllOperations(int value) { advancedBlendAllOperations(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT].
-    public static final class Buffer extends VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT at(long index, Consumer<VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
-        public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `advancedBlendMaxColorAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int advancedBlendMaxColorAttachmentsAt(long index) { return advancedBlendMaxColorAttachments(this.segment(), index); }
+    /// Sets `advancedBlendMaxColorAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendMaxColorAttachmentsAt(long index, int value) { advancedBlendMaxColorAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `advancedBlendIndependentBlend` at the given index}
+    /// @param index the index of the struct buffer
+    public int advancedBlendIndependentBlendAt(long index) { return advancedBlendIndependentBlend(this.segment(), index); }
+    /// Sets `advancedBlendIndependentBlend` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendIndependentBlendAt(long index, int value) { advancedBlendIndependentBlend(this.segment(), index, value); return this; }
 
-        /// {@return `advancedBlendMaxColorAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int advancedBlendMaxColorAttachmentsAt(long index) { return advancedBlendMaxColorAttachments(this.segment(), index); }
-        /// Sets `advancedBlendMaxColorAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer advancedBlendMaxColorAttachmentsAt(long index, int value) { advancedBlendMaxColorAttachments(this.segment(), index, value); return this; }
+    /// {@return `advancedBlendNonPremultipliedSrcColor` at the given index}
+    /// @param index the index of the struct buffer
+    public int advancedBlendNonPremultipliedSrcColorAt(long index) { return advancedBlendNonPremultipliedSrcColor(this.segment(), index); }
+    /// Sets `advancedBlendNonPremultipliedSrcColor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendNonPremultipliedSrcColorAt(long index, int value) { advancedBlendNonPremultipliedSrcColor(this.segment(), index, value); return this; }
 
-        /// {@return `advancedBlendIndependentBlend` at the given index}
-        /// @param index the index of the struct buffer
-        public int advancedBlendIndependentBlendAt(long index) { return advancedBlendIndependentBlend(this.segment(), index); }
-        /// Sets `advancedBlendIndependentBlend` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer advancedBlendIndependentBlendAt(long index, int value) { advancedBlendIndependentBlend(this.segment(), index, value); return this; }
+    /// {@return `advancedBlendNonPremultipliedDstColor` at the given index}
+    /// @param index the index of the struct buffer
+    public int advancedBlendNonPremultipliedDstColorAt(long index) { return advancedBlendNonPremultipliedDstColor(this.segment(), index); }
+    /// Sets `advancedBlendNonPremultipliedDstColor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendNonPremultipliedDstColorAt(long index, int value) { advancedBlendNonPremultipliedDstColor(this.segment(), index, value); return this; }
 
-        /// {@return `advancedBlendNonPremultipliedSrcColor` at the given index}
-        /// @param index the index of the struct buffer
-        public int advancedBlendNonPremultipliedSrcColorAt(long index) { return advancedBlendNonPremultipliedSrcColor(this.segment(), index); }
-        /// Sets `advancedBlendNonPremultipliedSrcColor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer advancedBlendNonPremultipliedSrcColorAt(long index, int value) { advancedBlendNonPremultipliedSrcColor(this.segment(), index, value); return this; }
+    /// {@return `advancedBlendCorrelatedOverlap` at the given index}
+    /// @param index the index of the struct buffer
+    public int advancedBlendCorrelatedOverlapAt(long index) { return advancedBlendCorrelatedOverlap(this.segment(), index); }
+    /// Sets `advancedBlendCorrelatedOverlap` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendCorrelatedOverlapAt(long index, int value) { advancedBlendCorrelatedOverlap(this.segment(), index, value); return this; }
 
-        /// {@return `advancedBlendNonPremultipliedDstColor` at the given index}
-        /// @param index the index of the struct buffer
-        public int advancedBlendNonPremultipliedDstColorAt(long index) { return advancedBlendNonPremultipliedDstColor(this.segment(), index); }
-        /// Sets `advancedBlendNonPremultipliedDstColor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer advancedBlendNonPremultipliedDstColorAt(long index, int value) { advancedBlendNonPremultipliedDstColor(this.segment(), index, value); return this; }
+    /// {@return `advancedBlendAllOperations` at the given index}
+    /// @param index the index of the struct buffer
+    public int advancedBlendAllOperationsAt(long index) { return advancedBlendAllOperations(this.segment(), index); }
+    /// Sets `advancedBlendAllOperations` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advancedBlendAllOperationsAt(long index, int value) { advancedBlendAllOperations(this.segment(), index, value); return this; }
 
-        /// {@return `advancedBlendCorrelatedOverlap` at the given index}
-        /// @param index the index of the struct buffer
-        public int advancedBlendCorrelatedOverlapAt(long index) { return advancedBlendCorrelatedOverlap(this.segment(), index); }
-        /// Sets `advancedBlendCorrelatedOverlap` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer advancedBlendCorrelatedOverlapAt(long index, int value) { advancedBlendCorrelatedOverlap(this.segment(), index, value); return this; }
-
-        /// {@return `advancedBlendAllOperations` at the given index}
-        /// @param index the index of the struct buffer
-        public int advancedBlendAllOperationsAt(long index) { return advancedBlendAllOperations(this.segment(), index); }
-        /// Sets `advancedBlendAllOperations` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer advancedBlendAllOperationsAt(long index, int value) { advancedBlendAllOperations(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.qcom.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -45,7 +46,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 tileShadingImageProcessing;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
+public final class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceTileShadingFeaturesQCOM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -163,20 +164,21 @@ public sealed class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     public static final VarHandle VH_tileShadingImageProcessing = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tileShadingImageProcessing"));
 
     /// Creates `VkPhysicalDeviceTileShadingFeaturesQCOM` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceTileShadingFeaturesQCOM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceTileShadingFeaturesQCOM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceTileShadingFeaturesQCOM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceTileShadingFeaturesQCOM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTileShadingFeaturesQCOM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceTileShadingFeaturesQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceTileShadingFeaturesQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTileShadingFeaturesQCOM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceTileShadingFeaturesQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTileShadingFeaturesQCOM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceTileShadingFeaturesQCOM` with the given segment.
     ///
@@ -184,18 +186,18 @@ public sealed class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceTileShadingFeaturesQCOM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTileShadingFeaturesQCOM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceTileShadingFeaturesQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceTileShadingFeaturesQCOM`
-    public static VkPhysicalDeviceTileShadingFeaturesQCOM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceTileShadingFeaturesQCOM(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceTileShadingFeaturesQCOM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceTileShadingFeaturesQCOM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceTileShadingFeaturesQCOM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceTileShadingFeaturesQCOM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceTileShadingFeaturesQCOM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTileShadingFeaturesQCOM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceTileShadingFeaturesQCOM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -450,9 +452,10 @@ public sealed class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceTileShadingFeaturesQCOM copyFrom(VkPhysicalDeviceTileShadingFeaturesQCOM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceTileShadingFeaturesQCOM reinterpret(long count) { return new VkPhysicalDeviceTileShadingFeaturesQCOM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -710,171 +713,165 @@ public sealed class VkPhysicalDeviceTileShadingFeaturesQCOM extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingImageProcessing(int value) { tileShadingImageProcessing(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceTileShadingFeaturesQCOM].
-    public static final class Buffer extends VkPhysicalDeviceTileShadingFeaturesQCOM {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceTileShadingFeaturesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceTileShadingFeaturesQCOM`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM asSlice(long index) { return new VkPhysicalDeviceTileShadingFeaturesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceTileShadingFeaturesQCOM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceTileShadingFeaturesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceTileShadingFeaturesQCOM`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM asSlice(long index, long count) { return new VkPhysicalDeviceTileShadingFeaturesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceTileShadingFeaturesQCOM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM at(long index, Consumer<VkPhysicalDeviceTileShadingFeaturesQCOM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceTileShadingFeaturesQCOM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceTileShadingFeaturesQCOM`
-        public VkPhysicalDeviceTileShadingFeaturesQCOM asSlice(long index) { return new VkPhysicalDeviceTileShadingFeaturesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceTileShadingFeaturesQCOM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceTileShadingFeaturesQCOM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `tileShading` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingAt(long index) { return tileShading(this.segment(), index); }
+    /// Sets `tileShading` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingAt(long index, int value) { tileShading(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `tileShadingFragmentStage` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingFragmentStageAt(long index) { return tileShadingFragmentStage(this.segment(), index); }
+    /// Sets `tileShadingFragmentStage` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingFragmentStageAt(long index, int value) { tileShadingFragmentStage(this.segment(), index, value); return this; }
 
-        /// {@return `tileShading` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingAt(long index) { return tileShading(this.segment(), index); }
-        /// Sets `tileShading` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingAt(long index, int value) { tileShading(this.segment(), index, value); return this; }
+    /// {@return `tileShadingColorAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingColorAttachmentsAt(long index) { return tileShadingColorAttachments(this.segment(), index); }
+    /// Sets `tileShadingColorAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingColorAttachmentsAt(long index, int value) { tileShadingColorAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingFragmentStage` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingFragmentStageAt(long index) { return tileShadingFragmentStage(this.segment(), index); }
-        /// Sets `tileShadingFragmentStage` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingFragmentStageAt(long index, int value) { tileShadingFragmentStage(this.segment(), index, value); return this; }
+    /// {@return `tileShadingDepthAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingDepthAttachmentsAt(long index) { return tileShadingDepthAttachments(this.segment(), index); }
+    /// Sets `tileShadingDepthAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingDepthAttachmentsAt(long index, int value) { tileShadingDepthAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingColorAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingColorAttachmentsAt(long index) { return tileShadingColorAttachments(this.segment(), index); }
-        /// Sets `tileShadingColorAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingColorAttachmentsAt(long index, int value) { tileShadingColorAttachments(this.segment(), index, value); return this; }
+    /// {@return `tileShadingStencilAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingStencilAttachmentsAt(long index) { return tileShadingStencilAttachments(this.segment(), index); }
+    /// Sets `tileShadingStencilAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingStencilAttachmentsAt(long index, int value) { tileShadingStencilAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingDepthAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingDepthAttachmentsAt(long index) { return tileShadingDepthAttachments(this.segment(), index); }
-        /// Sets `tileShadingDepthAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingDepthAttachmentsAt(long index, int value) { tileShadingDepthAttachments(this.segment(), index, value); return this; }
+    /// {@return `tileShadingInputAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingInputAttachmentsAt(long index) { return tileShadingInputAttachments(this.segment(), index); }
+    /// Sets `tileShadingInputAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingInputAttachmentsAt(long index, int value) { tileShadingInputAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingStencilAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingStencilAttachmentsAt(long index) { return tileShadingStencilAttachments(this.segment(), index); }
-        /// Sets `tileShadingStencilAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingStencilAttachmentsAt(long index, int value) { tileShadingStencilAttachments(this.segment(), index, value); return this; }
+    /// {@return `tileShadingSampledAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingSampledAttachmentsAt(long index) { return tileShadingSampledAttachments(this.segment(), index); }
+    /// Sets `tileShadingSampledAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingSampledAttachmentsAt(long index, int value) { tileShadingSampledAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingInputAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingInputAttachmentsAt(long index) { return tileShadingInputAttachments(this.segment(), index); }
-        /// Sets `tileShadingInputAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingInputAttachmentsAt(long index, int value) { tileShadingInputAttachments(this.segment(), index, value); return this; }
+    /// {@return `tileShadingPerTileDraw` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingPerTileDrawAt(long index) { return tileShadingPerTileDraw(this.segment(), index); }
+    /// Sets `tileShadingPerTileDraw` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingPerTileDrawAt(long index, int value) { tileShadingPerTileDraw(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingSampledAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingSampledAttachmentsAt(long index) { return tileShadingSampledAttachments(this.segment(), index); }
-        /// Sets `tileShadingSampledAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingSampledAttachmentsAt(long index, int value) { tileShadingSampledAttachments(this.segment(), index, value); return this; }
+    /// {@return `tileShadingPerTileDispatch` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingPerTileDispatchAt(long index) { return tileShadingPerTileDispatch(this.segment(), index); }
+    /// Sets `tileShadingPerTileDispatch` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingPerTileDispatchAt(long index, int value) { tileShadingPerTileDispatch(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingPerTileDraw` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingPerTileDrawAt(long index) { return tileShadingPerTileDraw(this.segment(), index); }
-        /// Sets `tileShadingPerTileDraw` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingPerTileDrawAt(long index, int value) { tileShadingPerTileDraw(this.segment(), index, value); return this; }
+    /// {@return `tileShadingDispatchTile` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingDispatchTileAt(long index) { return tileShadingDispatchTile(this.segment(), index); }
+    /// Sets `tileShadingDispatchTile` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingDispatchTileAt(long index, int value) { tileShadingDispatchTile(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingPerTileDispatch` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingPerTileDispatchAt(long index) { return tileShadingPerTileDispatch(this.segment(), index); }
-        /// Sets `tileShadingPerTileDispatch` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingPerTileDispatchAt(long index, int value) { tileShadingPerTileDispatch(this.segment(), index, value); return this; }
+    /// {@return `tileShadingApron` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingApronAt(long index) { return tileShadingApron(this.segment(), index); }
+    /// Sets `tileShadingApron` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingApronAt(long index, int value) { tileShadingApron(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingDispatchTile` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingDispatchTileAt(long index) { return tileShadingDispatchTile(this.segment(), index); }
-        /// Sets `tileShadingDispatchTile` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingDispatchTileAt(long index, int value) { tileShadingDispatchTile(this.segment(), index, value); return this; }
+    /// {@return `tileShadingAnisotropicApron` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingAnisotropicApronAt(long index) { return tileShadingAnisotropicApron(this.segment(), index); }
+    /// Sets `tileShadingAnisotropicApron` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingAnisotropicApronAt(long index, int value) { tileShadingAnisotropicApron(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingApron` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingApronAt(long index) { return tileShadingApron(this.segment(), index); }
-        /// Sets `tileShadingApron` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingApronAt(long index, int value) { tileShadingApron(this.segment(), index, value); return this; }
+    /// {@return `tileShadingAtomicOps` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingAtomicOpsAt(long index) { return tileShadingAtomicOps(this.segment(), index); }
+    /// Sets `tileShadingAtomicOps` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingAtomicOpsAt(long index, int value) { tileShadingAtomicOps(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingAnisotropicApron` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingAnisotropicApronAt(long index) { return tileShadingAnisotropicApron(this.segment(), index); }
-        /// Sets `tileShadingAnisotropicApron` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingAnisotropicApronAt(long index, int value) { tileShadingAnisotropicApron(this.segment(), index, value); return this; }
+    /// {@return `tileShadingImageProcessing` at the given index}
+    /// @param index the index of the struct buffer
+    public int tileShadingImageProcessingAt(long index) { return tileShadingImageProcessing(this.segment(), index); }
+    /// Sets `tileShadingImageProcessing` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingFeaturesQCOM tileShadingImageProcessingAt(long index, int value) { tileShadingImageProcessing(this.segment(), index, value); return this; }
 
-        /// {@return `tileShadingAtomicOps` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingAtomicOpsAt(long index) { return tileShadingAtomicOps(this.segment(), index); }
-        /// Sets `tileShadingAtomicOps` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingAtomicOpsAt(long index, int value) { tileShadingAtomicOps(this.segment(), index, value); return this; }
-
-        /// {@return `tileShadingImageProcessing` at the given index}
-        /// @param index the index of the struct buffer
-        public int tileShadingImageProcessingAt(long index) { return tileShadingImageProcessing(this.segment(), index); }
-        /// Sets `tileShadingImageProcessing` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileShadingImageProcessingAt(long index, int value) { tileShadingImageProcessing(this.segment(), index, value); return this; }
-
-    }
 }

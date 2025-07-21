@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     uint32_t firstInstance;
 /// };
 /// ```
-public sealed class VkDrawIndexedIndirectCommand extends GroupType {
+public final class VkDrawIndexedIndirectCommand extends GroupType {
     /// The struct layout of `VkDrawIndexedIndirectCommand`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("indexCount"),
@@ -75,20 +76,21 @@ public sealed class VkDrawIndexedIndirectCommand extends GroupType {
     public static final VarHandle VH_firstInstance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("firstInstance"));
 
     /// Creates `VkDrawIndexedIndirectCommand` with the given segment.
-    /// @param segment the memory segment
-    public VkDrawIndexedIndirectCommand(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDrawIndexedIndirectCommand(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDrawIndexedIndirectCommand` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDrawIndexedIndirectCommand of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrawIndexedIndirectCommand(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDrawIndexedIndirectCommand` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDrawIndexedIndirectCommand ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrawIndexedIndirectCommand(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDrawIndexedIndirectCommand ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrawIndexedIndirectCommand(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDrawIndexedIndirectCommand` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkDrawIndexedIndirectCommand extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDrawIndexedIndirectCommand ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrawIndexedIndirectCommand(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDrawIndexedIndirectCommand`
-    public static VkDrawIndexedIndirectCommand alloc(SegmentAllocator allocator) { return new VkDrawIndexedIndirectCommand(allocator.allocate(LAYOUT)); }
+    public static VkDrawIndexedIndirectCommand alloc(SegmentAllocator allocator) { return new VkDrawIndexedIndirectCommand(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDrawIndexedIndirectCommand`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDrawIndexedIndirectCommand alloc(SegmentAllocator allocator, long count) { return new VkDrawIndexedIndirectCommand(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDrawIndexedIndirectCommand` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkDrawIndexedIndirectCommand extends GroupType {
     /// @return `this`
     public VkDrawIndexedIndirectCommand copyFrom(VkDrawIndexedIndirectCommand src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDrawIndexedIndirectCommand reinterpret(long count) { return new VkDrawIndexedIndirectCommand(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `indexCount` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkDrawIndexedIndirectCommand extends GroupType {
     /// @return `this`
     public VkDrawIndexedIndirectCommand firstInstance(int value) { firstInstance(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDrawIndexedIndirectCommand].
-    public static final class Buffer extends VkDrawIndexedIndirectCommand {
-        private final long elementCount;
+    /// Creates a slice of `VkDrawIndexedIndirectCommand`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDrawIndexedIndirectCommand`
+    public VkDrawIndexedIndirectCommand asSlice(long index) { return new VkDrawIndexedIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDrawIndexedIndirectCommand.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDrawIndexedIndirectCommand`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDrawIndexedIndirectCommand`
+    public VkDrawIndexedIndirectCommand asSlice(long index, long count) { return new VkDrawIndexedIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDrawIndexedIndirectCommand` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDrawIndexedIndirectCommand at(long index, Consumer<VkDrawIndexedIndirectCommand> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDrawIndexedIndirectCommand`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDrawIndexedIndirectCommand`
-        public VkDrawIndexedIndirectCommand asSlice(long index) { return new VkDrawIndexedIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `indexCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int indexCountAt(long index) { return indexCount(this.segment(), index); }
+    /// Sets `indexCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDrawIndexedIndirectCommand indexCountAt(long index, int value) { indexCount(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDrawIndexedIndirectCommand`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDrawIndexedIndirectCommand`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `instanceCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int instanceCountAt(long index) { return instanceCount(this.segment(), index); }
+    /// Sets `instanceCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDrawIndexedIndirectCommand instanceCountAt(long index, int value) { instanceCount(this.segment(), index, value); return this; }
 
-        /// {@return `indexCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int indexCountAt(long index) { return indexCount(this.segment(), index); }
-        /// Sets `indexCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexCountAt(long index, int value) { indexCount(this.segment(), index, value); return this; }
+    /// {@return `firstIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int firstIndexAt(long index) { return firstIndex(this.segment(), index); }
+    /// Sets `firstIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDrawIndexedIndirectCommand firstIndexAt(long index, int value) { firstIndex(this.segment(), index, value); return this; }
 
-        /// {@return `instanceCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int instanceCountAt(long index) { return instanceCount(this.segment(), index); }
-        /// Sets `instanceCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer instanceCountAt(long index, int value) { instanceCount(this.segment(), index, value); return this; }
+    /// {@return `vertexOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int vertexOffsetAt(long index) { return vertexOffset(this.segment(), index); }
+    /// Sets `vertexOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDrawIndexedIndirectCommand vertexOffsetAt(long index, int value) { vertexOffset(this.segment(), index, value); return this; }
 
-        /// {@return `firstIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int firstIndexAt(long index) { return firstIndex(this.segment(), index); }
-        /// Sets `firstIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer firstIndexAt(long index, int value) { firstIndex(this.segment(), index, value); return this; }
+    /// {@return `firstInstance` at the given index}
+    /// @param index the index of the struct buffer
+    public int firstInstanceAt(long index) { return firstInstance(this.segment(), index); }
+    /// Sets `firstInstance` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDrawIndexedIndirectCommand firstInstanceAt(long index, int value) { firstInstance(this.segment(), index, value); return this; }
 
-        /// {@return `vertexOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int vertexOffsetAt(long index) { return vertexOffset(this.segment(), index); }
-        /// Sets `vertexOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexOffsetAt(long index, int value) { vertexOffset(this.segment(), index, value); return this; }
-
-        /// {@return `firstInstance` at the given index}
-        /// @param index the index of the struct buffer
-        public int firstInstanceAt(long index) { return firstInstance(this.segment(), index); }
-        /// Sets `firstInstance` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer firstInstanceAt(long index, int value) { firstInstance(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     uint32_t reserved : 28;
 /// };
 /// ```
-public sealed class StdVideoVP9SegmentationFlags extends GroupType {
+public final class StdVideoVP9SegmentationFlags extends GroupType {
     /// The struct layout of `StdVideoVP9SegmentationFlags`.
     public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("segmentation_update_map"), 1,
@@ -45,20 +46,21 @@ public sealed class StdVideoVP9SegmentationFlags extends GroupType {
     );
 
     /// Creates `StdVideoVP9SegmentationFlags` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoVP9SegmentationFlags(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoVP9SegmentationFlags(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoVP9SegmentationFlags` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoVP9SegmentationFlags of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9SegmentationFlags(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoVP9SegmentationFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoVP9SegmentationFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9SegmentationFlags(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoVP9SegmentationFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9SegmentationFlags(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoVP9SegmentationFlags` with the given segment.
     ///
@@ -66,49 +68,44 @@ public sealed class StdVideoVP9SegmentationFlags extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoVP9SegmentationFlags ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9SegmentationFlags(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoVP9SegmentationFlags` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoVP9SegmentationFlags`
-    public static StdVideoVP9SegmentationFlags alloc(SegmentAllocator allocator) { return new StdVideoVP9SegmentationFlags(allocator.allocate(LAYOUT)); }
+    public static StdVideoVP9SegmentationFlags alloc(SegmentAllocator allocator) { return new StdVideoVP9SegmentationFlags(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoVP9SegmentationFlags` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoVP9SegmentationFlags`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoVP9SegmentationFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoVP9SegmentationFlags(allocator.allocate(LAYOUT, count), count); }
 
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
     public StdVideoVP9SegmentationFlags copyFrom(StdVideoVP9SegmentationFlags src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoVP9SegmentationFlags reinterpret(long count) { return new StdVideoVP9SegmentationFlags(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
-    /// A buffer of [StdVideoVP9SegmentationFlags].
-    public static final class Buffer extends StdVideoVP9SegmentationFlags {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoVP9SegmentationFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoVP9SegmentationFlags`
+    public StdVideoVP9SegmentationFlags asSlice(long index) { return new StdVideoVP9SegmentationFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoVP9SegmentationFlags.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoVP9SegmentationFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoVP9SegmentationFlags`
+    public StdVideoVP9SegmentationFlags asSlice(long index, long count) { return new StdVideoVP9SegmentationFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoVP9SegmentationFlags` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoVP9SegmentationFlags at(long index, Consumer<StdVideoVP9SegmentationFlags> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoVP9SegmentationFlags`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoVP9SegmentationFlags`
-        public StdVideoVP9SegmentationFlags asSlice(long index) { return new StdVideoVP9SegmentationFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
-
-        /// Creates a slice of `StdVideoVP9SegmentationFlags`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoVP9SegmentationFlags`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    }
 }

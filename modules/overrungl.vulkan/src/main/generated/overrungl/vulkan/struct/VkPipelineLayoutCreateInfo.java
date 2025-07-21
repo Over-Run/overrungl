@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     const VkPushConstantRange* pPushConstantRanges;
 /// };
 /// ```
-public sealed class VkPipelineLayoutCreateInfo extends GroupType {
+public final class VkPipelineLayoutCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineLayoutCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkPipelineLayoutCreateInfo extends GroupType {
     public static final VarHandle VH_pPushConstantRanges = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPushConstantRanges"));
 
     /// Creates `VkPipelineLayoutCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineLayoutCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineLayoutCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineLayoutCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineLayoutCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineLayoutCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineLayoutCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineLayoutCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineLayoutCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineLayoutCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineLayoutCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineLayoutCreateInfo` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkPipelineLayoutCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineLayoutCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineLayoutCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineLayoutCreateInfo`
-    public static VkPipelineLayoutCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineLayoutCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkPipelineLayoutCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineLayoutCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineLayoutCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineLayoutCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineLayoutCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineLayoutCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkPipelineLayoutCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineLayoutCreateInfo copyFrom(VkPipelineLayoutCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineLayoutCreateInfo reinterpret(long count) { return new VkPipelineLayoutCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkPipelineLayoutCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineLayoutCreateInfo pPushConstantRanges(MemorySegment value) { pPushConstantRanges(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineLayoutCreateInfo].
-    public static final class Buffer extends VkPipelineLayoutCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineLayoutCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineLayoutCreateInfo`
+    public VkPipelineLayoutCreateInfo asSlice(long index) { return new VkPipelineLayoutCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineLayoutCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineLayoutCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineLayoutCreateInfo`
+    public VkPipelineLayoutCreateInfo asSlice(long index, long count) { return new VkPipelineLayoutCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineLayoutCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineLayoutCreateInfo at(long index, Consumer<VkPipelineLayoutCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineLayoutCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineLayoutCreateInfo`
-        public VkPipelineLayoutCreateInfo asSlice(long index) { return new VkPipelineLayoutCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineLayoutCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineLayoutCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineLayoutCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineLayoutCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineLayoutCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `setLayoutCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int setLayoutCountAt(long index) { return setLayoutCount(this.segment(), index); }
+    /// Sets `setLayoutCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineLayoutCreateInfo setLayoutCountAt(long index, int value) { setLayoutCount(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `pSetLayouts` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pSetLayoutsAt(long index) { return pSetLayouts(this.segment(), index); }
+    /// Sets `pSetLayouts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineLayoutCreateInfo pSetLayoutsAt(long index, MemorySegment value) { pSetLayouts(this.segment(), index, value); return this; }
 
-        /// {@return `setLayoutCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int setLayoutCountAt(long index) { return setLayoutCount(this.segment(), index); }
-        /// Sets `setLayoutCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer setLayoutCountAt(long index, int value) { setLayoutCount(this.segment(), index, value); return this; }
+    /// {@return `pushConstantRangeCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int pushConstantRangeCountAt(long index) { return pushConstantRangeCount(this.segment(), index); }
+    /// Sets `pushConstantRangeCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineLayoutCreateInfo pushConstantRangeCountAt(long index, int value) { pushConstantRangeCount(this.segment(), index, value); return this; }
 
-        /// {@return `pSetLayouts` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pSetLayoutsAt(long index) { return pSetLayouts(this.segment(), index); }
-        /// Sets `pSetLayouts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSetLayoutsAt(long index, MemorySegment value) { pSetLayouts(this.segment(), index, value); return this; }
+    /// {@return `pPushConstantRanges` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pPushConstantRangesAt(long index) { return pPushConstantRanges(this.segment(), index); }
+    /// Sets `pPushConstantRanges` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineLayoutCreateInfo pPushConstantRangesAt(long index, MemorySegment value) { pPushConstantRanges(this.segment(), index, value); return this; }
 
-        /// {@return `pushConstantRangeCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int pushConstantRangeCountAt(long index) { return pushConstantRangeCount(this.segment(), index); }
-        /// Sets `pushConstantRangeCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pushConstantRangeCountAt(long index, int value) { pushConstantRangeCount(this.segment(), index, value); return this; }
-
-        /// {@return `pPushConstantRanges` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pPushConstantRangesAt(long index) { return pPushConstantRanges(this.segment(), index); }
-        /// Sets `pPushConstantRanges` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pPushConstantRangesAt(long index, MemorySegment value) { pPushConstantRanges(this.segment(), index, value); return this; }
-
-    }
 }

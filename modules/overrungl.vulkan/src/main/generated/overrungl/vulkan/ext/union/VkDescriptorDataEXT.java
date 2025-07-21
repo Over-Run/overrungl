@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.union;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -39,7 +40,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceAddress accelerationStructure;
 /// };
 /// ```
-public sealed class VkDescriptorDataEXT extends GroupType {
+public final class VkDescriptorDataEXT extends GroupType {
     /// The union layout of `VkDescriptorDataEXT`.
     public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.ADDRESS.withName("pSampler"),
@@ -115,20 +116,21 @@ public sealed class VkDescriptorDataEXT extends GroupType {
     public static final VarHandle VH_accelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructure"));
 
     /// Creates `VkDescriptorDataEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkDescriptorDataEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this union buffer
+    public VkDescriptorDataEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDescriptorDataEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDescriptorDataEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorDataEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDescriptorDataEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorDataEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorDataEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDescriptorDataEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorDataEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDescriptorDataEXT` with the given segment.
     ///
@@ -136,18 +138,18 @@ public sealed class VkDescriptorDataEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDescriptorDataEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorDataEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDescriptorDataEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDescriptorDataEXT`
-    public static VkDescriptorDataEXT alloc(SegmentAllocator allocator) { return new VkDescriptorDataEXT(allocator.allocate(LAYOUT)); }
+    public static VkDescriptorDataEXT alloc(SegmentAllocator allocator) { return new VkDescriptorDataEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorDataEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDescriptorDataEXT alloc(SegmentAllocator allocator, long count) { return new VkDescriptorDataEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDescriptorDataEXT` with the given segment allocator and `pSampler`.
     /// @param allocator the segment allocator
@@ -234,9 +236,10 @@ public sealed class VkDescriptorDataEXT extends GroupType {
     /// @return `this`
     public VkDescriptorDataEXT copyFrom(VkDescriptorDataEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDescriptorDataEXT reinterpret(long count) { return new VkDescriptorDataEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `pSampler` at the given index}
     /// @param segment the segment of the union
@@ -398,117 +401,111 @@ public sealed class VkDescriptorDataEXT extends GroupType {
     /// @return `this`
     public VkDescriptorDataEXT accelerationStructure(long value) { accelerationStructure(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDescriptorDataEXT].
-    public static final class Buffer extends VkDescriptorDataEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkDescriptorDataEXT`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkDescriptorDataEXT`
+    public VkDescriptorDataEXT asSlice(long index) { return new VkDescriptorDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDescriptorDataEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDescriptorDataEXT`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorDataEXT`
+    public VkDescriptorDataEXT asSlice(long index, long count) { return new VkDescriptorDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDescriptorDataEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDescriptorDataEXT at(long index, Consumer<VkDescriptorDataEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDescriptorDataEXT`.
-        /// @param index the index of the union buffer
-        /// @return the slice of `VkDescriptorDataEXT`
-        public VkDescriptorDataEXT asSlice(long index) { return new VkDescriptorDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `pSampler` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pSamplerAt(long index) { return pSampler(this.segment(), index); }
+    /// Sets `pSampler` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT pSamplerAt(long index, MemorySegment value) { pSampler(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDescriptorDataEXT`.
-        /// @param index the index of the union buffer
-        /// @param count the count
-        /// @return the slice of `VkDescriptorDataEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pCombinedImageSampler` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pCombinedImageSamplerAt(long index) { return pCombinedImageSampler(this.segment(), index); }
+    /// Sets `pCombinedImageSampler` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT pCombinedImageSamplerAt(long index, MemorySegment value) { pCombinedImageSampler(this.segment(), index, value); return this; }
 
-        /// {@return `pSampler` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pSamplerAt(long index) { return pSampler(this.segment(), index); }
-        /// Sets `pSampler` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSamplerAt(long index, MemorySegment value) { pSampler(this.segment(), index, value); return this; }
+    /// {@return `pInputAttachmentImage` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pInputAttachmentImageAt(long index) { return pInputAttachmentImage(this.segment(), index); }
+    /// Sets `pInputAttachmentImage` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT pInputAttachmentImageAt(long index, MemorySegment value) { pInputAttachmentImage(this.segment(), index, value); return this; }
 
-        /// {@return `pCombinedImageSampler` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pCombinedImageSamplerAt(long index) { return pCombinedImageSampler(this.segment(), index); }
-        /// Sets `pCombinedImageSampler` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pCombinedImageSamplerAt(long index, MemorySegment value) { pCombinedImageSampler(this.segment(), index, value); return this; }
+    /// {@return `pSampledImage` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pSampledImageAt(long index) { return pSampledImage(this.segment(), index); }
+    /// Sets `pSampledImage` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT pSampledImageAt(long index, MemorySegment value) { pSampledImage(this.segment(), index, value); return this; }
 
-        /// {@return `pInputAttachmentImage` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pInputAttachmentImageAt(long index) { return pInputAttachmentImage(this.segment(), index); }
-        /// Sets `pInputAttachmentImage` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pInputAttachmentImageAt(long index, MemorySegment value) { pInputAttachmentImage(this.segment(), index, value); return this; }
+    /// {@return `pStorageImage` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pStorageImageAt(long index) { return pStorageImage(this.segment(), index); }
+    /// Sets `pStorageImage` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT pStorageImageAt(long index, MemorySegment value) { pStorageImage(this.segment(), index, value); return this; }
 
-        /// {@return `pSampledImage` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pSampledImageAt(long index) { return pSampledImage(this.segment(), index); }
-        /// Sets `pSampledImage` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSampledImageAt(long index, MemorySegment value) { pSampledImage(this.segment(), index, value); return this; }
+    /// {@return `pUniformTexelBuffer` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pUniformTexelBufferAt(long index) { return pUniformTexelBuffer(this.segment(), index); }
+    /// Sets `pUniformTexelBuffer` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT pUniformTexelBufferAt(long index, MemorySegment value) { pUniformTexelBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `pStorageImage` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pStorageImageAt(long index) { return pStorageImage(this.segment(), index); }
-        /// Sets `pStorageImage` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pStorageImageAt(long index, MemorySegment value) { pStorageImage(this.segment(), index, value); return this; }
+    /// {@return `pStorageTexelBuffer` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pStorageTexelBufferAt(long index) { return pStorageTexelBuffer(this.segment(), index); }
+    /// Sets `pStorageTexelBuffer` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT pStorageTexelBufferAt(long index, MemorySegment value) { pStorageTexelBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `pUniformTexelBuffer` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pUniformTexelBufferAt(long index) { return pUniformTexelBuffer(this.segment(), index); }
-        /// Sets `pUniformTexelBuffer` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pUniformTexelBufferAt(long index, MemorySegment value) { pUniformTexelBuffer(this.segment(), index, value); return this; }
+    /// {@return `pUniformBuffer` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pUniformBufferAt(long index) { return pUniformBuffer(this.segment(), index); }
+    /// Sets `pUniformBuffer` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT pUniformBufferAt(long index, MemorySegment value) { pUniformBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `pStorageTexelBuffer` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pStorageTexelBufferAt(long index) { return pStorageTexelBuffer(this.segment(), index); }
-        /// Sets `pStorageTexelBuffer` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pStorageTexelBufferAt(long index, MemorySegment value) { pStorageTexelBuffer(this.segment(), index, value); return this; }
+    /// {@return `pStorageBuffer` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pStorageBufferAt(long index) { return pStorageBuffer(this.segment(), index); }
+    /// Sets `pStorageBuffer` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT pStorageBufferAt(long index, MemorySegment value) { pStorageBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `pUniformBuffer` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pUniformBufferAt(long index) { return pUniformBuffer(this.segment(), index); }
-        /// Sets `pUniformBuffer` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pUniformBufferAt(long index, MemorySegment value) { pUniformBuffer(this.segment(), index, value); return this; }
+    /// {@return `accelerationStructure` at the given index}
+    /// @param index the index of the union buffer
+    public long accelerationStructureAt(long index) { return accelerationStructure(this.segment(), index); }
+    /// Sets `accelerationStructure` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorDataEXT accelerationStructureAt(long index, long value) { accelerationStructure(this.segment(), index, value); return this; }
 
-        /// {@return `pStorageBuffer` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pStorageBufferAt(long index) { return pStorageBuffer(this.segment(), index); }
-        /// Sets `pStorageBuffer` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pStorageBufferAt(long index, MemorySegment value) { pStorageBuffer(this.segment(), index, value); return this; }
-
-        /// {@return `accelerationStructure` at the given index}
-        /// @param index the index of the union buffer
-        public long accelerationStructureAt(long index) { return accelerationStructure(this.segment(), index); }
-        /// Sets `accelerationStructure` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer accelerationStructureAt(long index, long value) { accelerationStructure(this.segment(), index, value); return this; }
-
-    }
 }

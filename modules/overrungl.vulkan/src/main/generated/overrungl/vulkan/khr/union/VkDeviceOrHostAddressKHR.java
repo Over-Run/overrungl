@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.union;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     void* hostAddress;
 /// };
 /// ```
-public sealed class VkDeviceOrHostAddressKHR extends GroupType {
+public final class VkDeviceOrHostAddressKHR extends GroupType {
     /// The union layout of `VkDeviceOrHostAddressKHR`.
     public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_LONG.withName("deviceAddress"),
@@ -51,20 +52,21 @@ public sealed class VkDeviceOrHostAddressKHR extends GroupType {
     public static final VarHandle VH_hostAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hostAddress"));
 
     /// Creates `VkDeviceOrHostAddressKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkDeviceOrHostAddressKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this union buffer
+    public VkDeviceOrHostAddressKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDeviceOrHostAddressKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDeviceOrHostAddressKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceOrHostAddressKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceOrHostAddressKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceOrHostAddressKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceOrHostAddressKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDeviceOrHostAddressKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceOrHostAddressKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDeviceOrHostAddressKHR` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkDeviceOrHostAddressKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDeviceOrHostAddressKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceOrHostAddressKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDeviceOrHostAddressKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceOrHostAddressKHR`
-    public static VkDeviceOrHostAddressKHR alloc(SegmentAllocator allocator) { return new VkDeviceOrHostAddressKHR(allocator.allocate(LAYOUT)); }
+    public static VkDeviceOrHostAddressKHR alloc(SegmentAllocator allocator) { return new VkDeviceOrHostAddressKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDeviceOrHostAddressKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceOrHostAddressKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDeviceOrHostAddressKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceOrHostAddressKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDeviceOrHostAddressKHR` with the given segment allocator and `deviceAddress`.
     /// @param allocator the segment allocator
@@ -106,9 +108,10 @@ public sealed class VkDeviceOrHostAddressKHR extends GroupType {
     /// @return `this`
     public VkDeviceOrHostAddressKHR copyFrom(VkDeviceOrHostAddressKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDeviceOrHostAddressKHR reinterpret(long count) { return new VkDeviceOrHostAddressKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `deviceAddress` at the given index}
     /// @param segment the segment of the union
@@ -142,45 +145,39 @@ public sealed class VkDeviceOrHostAddressKHR extends GroupType {
     /// @return `this`
     public VkDeviceOrHostAddressKHR hostAddress(MemorySegment value) { hostAddress(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDeviceOrHostAddressKHR].
-    public static final class Buffer extends VkDeviceOrHostAddressKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkDeviceOrHostAddressKHR`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkDeviceOrHostAddressKHR`
+    public VkDeviceOrHostAddressKHR asSlice(long index) { return new VkDeviceOrHostAddressKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDeviceOrHostAddressKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDeviceOrHostAddressKHR`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceOrHostAddressKHR`
+    public VkDeviceOrHostAddressKHR asSlice(long index, long count) { return new VkDeviceOrHostAddressKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDeviceOrHostAddressKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDeviceOrHostAddressKHR at(long index, Consumer<VkDeviceOrHostAddressKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDeviceOrHostAddressKHR`.
-        /// @param index the index of the union buffer
-        /// @return the slice of `VkDeviceOrHostAddressKHR`
-        public VkDeviceOrHostAddressKHR asSlice(long index) { return new VkDeviceOrHostAddressKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `deviceAddress` at the given index}
+    /// @param index the index of the union buffer
+    public long deviceAddressAt(long index) { return deviceAddress(this.segment(), index); }
+    /// Sets `deviceAddress` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceOrHostAddressKHR deviceAddressAt(long index, long value) { deviceAddress(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDeviceOrHostAddressKHR`.
-        /// @param index the index of the union buffer
-        /// @param count the count
-        /// @return the slice of `VkDeviceOrHostAddressKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `hostAddress` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment hostAddressAt(long index) { return hostAddress(this.segment(), index); }
+    /// Sets `hostAddress` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceOrHostAddressKHR hostAddressAt(long index, MemorySegment value) { hostAddress(this.segment(), index, value); return this; }
 
-        /// {@return `deviceAddress` at the given index}
-        /// @param index the index of the union buffer
-        public long deviceAddressAt(long index) { return deviceAddress(this.segment(), index); }
-        /// Sets `deviceAddress` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceAddressAt(long index, long value) { deviceAddress(this.segment(), index, value); return this; }
-
-        /// {@return `hostAddress` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment hostAddressAt(long index) { return hostAddress(this.segment(), index); }
-        /// Sets `hostAddress` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hostAddressAt(long index, MemorySegment value) { hostAddress(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 shaderTerminateInvocation;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceShaderTerminateInvocationFeatures extends GroupType {
+public final class VkPhysicalDeviceShaderTerminateInvocationFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderTerminateInvocationFeatures`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDeviceShaderTerminateInvocationFeatures extends Gr
     public static final VarHandle VH_shaderTerminateInvocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTerminateInvocation"));
 
     /// Creates `VkPhysicalDeviceShaderTerminateInvocationFeatures` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceShaderTerminateInvocationFeatures(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceShaderTerminateInvocationFeatures(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceShaderTerminateInvocationFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceShaderTerminateInvocationFeatures of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTerminateInvocationFeatures(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderTerminateInvocationFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderTerminateInvocationFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTerminateInvocationFeatures(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceShaderTerminateInvocationFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTerminateInvocationFeatures(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceShaderTerminateInvocationFeatures` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDeviceShaderTerminateInvocationFeatures extends Gr
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceShaderTerminateInvocationFeatures ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderTerminateInvocationFeatures(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderTerminateInvocationFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceShaderTerminateInvocationFeatures`
-    public static VkPhysicalDeviceShaderTerminateInvocationFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderTerminateInvocationFeatures(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceShaderTerminateInvocationFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderTerminateInvocationFeatures(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceShaderTerminateInvocationFeatures` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderTerminateInvocationFeatures`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceShaderTerminateInvocationFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderTerminateInvocationFeatures(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderTerminateInvocationFeatures` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDeviceShaderTerminateInvocationFeatures extends Gr
     /// @return `this`
     public VkPhysicalDeviceShaderTerminateInvocationFeatures copyFrom(VkPhysicalDeviceShaderTerminateInvocationFeatures src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceShaderTerminateInvocationFeatures reinterpret(long count) { return new VkPhysicalDeviceShaderTerminateInvocationFeatures(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPhysicalDeviceShaderTerminateInvocationFeatures extends Gr
     /// @return `this`
     public VkPhysicalDeviceShaderTerminateInvocationFeatures shaderTerminateInvocation(int value) { shaderTerminateInvocation(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceShaderTerminateInvocationFeatures].
-    public static final class Buffer extends VkPhysicalDeviceShaderTerminateInvocationFeatures {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceShaderTerminateInvocationFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderTerminateInvocationFeatures`
+    public VkPhysicalDeviceShaderTerminateInvocationFeatures asSlice(long index) { return new VkPhysicalDeviceShaderTerminateInvocationFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceShaderTerminateInvocationFeatures.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceShaderTerminateInvocationFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderTerminateInvocationFeatures`
+    public VkPhysicalDeviceShaderTerminateInvocationFeatures asSlice(long index, long count) { return new VkPhysicalDeviceShaderTerminateInvocationFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceShaderTerminateInvocationFeatures` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceShaderTerminateInvocationFeatures at(long index, Consumer<VkPhysicalDeviceShaderTerminateInvocationFeatures> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderTerminateInvocationFeatures`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceShaderTerminateInvocationFeatures`
-        public VkPhysicalDeviceShaderTerminateInvocationFeatures asSlice(long index) { return new VkPhysicalDeviceShaderTerminateInvocationFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderTerminateInvocationFeatures sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderTerminateInvocationFeatures`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceShaderTerminateInvocationFeatures`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderTerminateInvocationFeatures pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `shaderTerminateInvocation` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderTerminateInvocationAt(long index) { return shaderTerminateInvocation(this.segment(), index); }
+    /// Sets `shaderTerminateInvocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderTerminateInvocationFeatures shaderTerminateInvocationAt(long index, int value) { shaderTerminateInvocation(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `shaderTerminateInvocation` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderTerminateInvocationAt(long index) { return shaderTerminateInvocation(this.segment(), index); }
-        /// Sets `shaderTerminateInvocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderTerminateInvocationAt(long index, int value) { shaderTerminateInvocation(this.segment(), index, value); return this; }
-
-    }
 }

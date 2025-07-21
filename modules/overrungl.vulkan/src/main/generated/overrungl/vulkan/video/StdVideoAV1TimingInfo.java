@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -34,7 +34,7 @@ import java.util.function.*;
 ///     uint32_t num_ticks_per_picture_minus_1;
 /// };
 /// ```
-public sealed class StdVideoAV1TimingInfo extends GroupType {
+public final class StdVideoAV1TimingInfo extends GroupType {
     /// The struct layout of `StdVideoAV1TimingInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1TimingInfoFlags.LAYOUT.withName("flags"),
@@ -66,20 +66,21 @@ public sealed class StdVideoAV1TimingInfo extends GroupType {
     public static final VarHandle VH_num_ticks_per_picture_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("num_ticks_per_picture_minus_1"));
 
     /// Creates `StdVideoAV1TimingInfo` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoAV1TimingInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoAV1TimingInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoAV1TimingInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoAV1TimingInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1TimingInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoAV1TimingInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1TimingInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1TimingInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoAV1TimingInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1TimingInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoAV1TimingInfo` with the given segment.
     ///
@@ -87,18 +88,18 @@ public sealed class StdVideoAV1TimingInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoAV1TimingInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1TimingInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoAV1TimingInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1TimingInfo`
-    public static StdVideoAV1TimingInfo alloc(SegmentAllocator allocator) { return new StdVideoAV1TimingInfo(allocator.allocate(LAYOUT)); }
+    public static StdVideoAV1TimingInfo alloc(SegmentAllocator allocator) { return new StdVideoAV1TimingInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoAV1TimingInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1TimingInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoAV1TimingInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1TimingInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoAV1TimingInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -143,9 +144,10 @@ public sealed class StdVideoAV1TimingInfo extends GroupType {
     /// @return `this`
     public StdVideoAV1TimingInfo copyFrom(StdVideoAV1TimingInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoAV1TimingInfo reinterpret(long count) { return new StdVideoAV1TimingInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -215,68 +217,62 @@ public sealed class StdVideoAV1TimingInfo extends GroupType {
     /// @return `this`
     public StdVideoAV1TimingInfo num_ticks_per_picture_minus_1(int value) { num_ticks_per_picture_minus_1(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [StdVideoAV1TimingInfo].
-    public static final class Buffer extends StdVideoAV1TimingInfo {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoAV1TimingInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1TimingInfo`
+    public StdVideoAV1TimingInfo asSlice(long index) { return new StdVideoAV1TimingInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoAV1TimingInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoAV1TimingInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1TimingInfo`
+    public StdVideoAV1TimingInfo asSlice(long index, long count) { return new StdVideoAV1TimingInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoAV1TimingInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoAV1TimingInfo at(long index, Consumer<StdVideoAV1TimingInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoAV1TimingInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoAV1TimingInfo`
-        public StdVideoAV1TimingInfo asSlice(long index) { return new StdVideoAV1TimingInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TimingInfo flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoAV1TimingInfo flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1TimingInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1TimingInfoFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoAV1TimingInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoAV1TimingInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `num_units_in_display_tick` at the given index}
+    /// @param index the index of the struct buffer
+    public int num_units_in_display_tickAt(long index) { return num_units_in_display_tick(this.segment(), index); }
+    /// Sets `num_units_in_display_tick` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TimingInfo num_units_in_display_tickAt(long index, int value) { num_units_in_display_tick(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1TimingInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1TimingInfoFlags.of(flagsAt(index))); return this; }
+    /// {@return `time_scale` at the given index}
+    /// @param index the index of the struct buffer
+    public int time_scaleAt(long index) { return time_scale(this.segment(), index); }
+    /// Sets `time_scale` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TimingInfo time_scaleAt(long index, int value) { time_scale(this.segment(), index, value); return this; }
 
-        /// {@return `num_units_in_display_tick` at the given index}
-        /// @param index the index of the struct buffer
-        public int num_units_in_display_tickAt(long index) { return num_units_in_display_tick(this.segment(), index); }
-        /// Sets `num_units_in_display_tick` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_units_in_display_tickAt(long index, int value) { num_units_in_display_tick(this.segment(), index, value); return this; }
+    /// {@return `num_ticks_per_picture_minus_1` at the given index}
+    /// @param index the index of the struct buffer
+    public int num_ticks_per_picture_minus_1At(long index) { return num_ticks_per_picture_minus_1(this.segment(), index); }
+    /// Sets `num_ticks_per_picture_minus_1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TimingInfo num_ticks_per_picture_minus_1At(long index, int value) { num_ticks_per_picture_minus_1(this.segment(), index, value); return this; }
 
-        /// {@return `time_scale` at the given index}
-        /// @param index the index of the struct buffer
-        public int time_scaleAt(long index) { return time_scale(this.segment(), index); }
-        /// Sets `time_scale` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer time_scaleAt(long index, int value) { time_scale(this.segment(), index, value); return this; }
-
-        /// {@return `num_ticks_per_picture_minus_1` at the given index}
-        /// @param index the index of the struct buffer
-        public int num_ticks_per_picture_minus_1At(long index) { return num_ticks_per_picture_minus_1(this.segment(), index); }
-        /// Sets `num_ticks_per_picture_minus_1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_ticks_per_picture_minus_1At(long index, int value) { num_ticks_per_picture_minus_1(this.segment(), index, value); return this; }
-
-    }
 }

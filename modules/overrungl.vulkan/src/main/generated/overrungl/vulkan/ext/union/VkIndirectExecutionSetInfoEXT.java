@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.union;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     const VkIndirectExecutionSetShaderInfoEXT* pShaderInfo;
 /// };
 /// ```
-public sealed class VkIndirectExecutionSetInfoEXT extends GroupType {
+public final class VkIndirectExecutionSetInfoEXT extends GroupType {
     /// The union layout of `VkIndirectExecutionSetInfoEXT`.
     public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.ADDRESS.withName("pPipelineInfo"),
@@ -51,20 +52,21 @@ public sealed class VkIndirectExecutionSetInfoEXT extends GroupType {
     public static final VarHandle VH_pShaderInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pShaderInfo"));
 
     /// Creates `VkIndirectExecutionSetInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkIndirectExecutionSetInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this union buffer
+    public VkIndirectExecutionSetInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkIndirectExecutionSetInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkIndirectExecutionSetInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkIndirectExecutionSetInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectExecutionSetInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkIndirectExecutionSetInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkIndirectExecutionSetInfoEXT` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkIndirectExecutionSetInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkIndirectExecutionSetInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkIndirectExecutionSetInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkIndirectExecutionSetInfoEXT`
-    public static VkIndirectExecutionSetInfoEXT alloc(SegmentAllocator allocator) { return new VkIndirectExecutionSetInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkIndirectExecutionSetInfoEXT alloc(SegmentAllocator allocator) { return new VkIndirectExecutionSetInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkIndirectExecutionSetInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkIndirectExecutionSetInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkIndirectExecutionSetInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectExecutionSetInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkIndirectExecutionSetInfoEXT` with the given segment allocator and `pPipelineInfo`.
     /// @param allocator the segment allocator
@@ -106,9 +108,10 @@ public sealed class VkIndirectExecutionSetInfoEXT extends GroupType {
     /// @return `this`
     public VkIndirectExecutionSetInfoEXT copyFrom(VkIndirectExecutionSetInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkIndirectExecutionSetInfoEXT reinterpret(long count) { return new VkIndirectExecutionSetInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `pPipelineInfo` at the given index}
     /// @param segment the segment of the union
@@ -142,45 +145,39 @@ public sealed class VkIndirectExecutionSetInfoEXT extends GroupType {
     /// @return `this`
     public VkIndirectExecutionSetInfoEXT pShaderInfo(MemorySegment value) { pShaderInfo(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkIndirectExecutionSetInfoEXT].
-    public static final class Buffer extends VkIndirectExecutionSetInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkIndirectExecutionSetInfoEXT`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkIndirectExecutionSetInfoEXT`
+    public VkIndirectExecutionSetInfoEXT asSlice(long index) { return new VkIndirectExecutionSetInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkIndirectExecutionSetInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkIndirectExecutionSetInfoEXT`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectExecutionSetInfoEXT`
+    public VkIndirectExecutionSetInfoEXT asSlice(long index, long count) { return new VkIndirectExecutionSetInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkIndirectExecutionSetInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkIndirectExecutionSetInfoEXT at(long index, Consumer<VkIndirectExecutionSetInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkIndirectExecutionSetInfoEXT`.
-        /// @param index the index of the union buffer
-        /// @return the slice of `VkIndirectExecutionSetInfoEXT`
-        public VkIndirectExecutionSetInfoEXT asSlice(long index) { return new VkIndirectExecutionSetInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `pPipelineInfo` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pPipelineInfoAt(long index) { return pPipelineInfo(this.segment(), index); }
+    /// Sets `pPipelineInfo` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetInfoEXT pPipelineInfoAt(long index, MemorySegment value) { pPipelineInfo(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkIndirectExecutionSetInfoEXT`.
-        /// @param index the index of the union buffer
-        /// @param count the count
-        /// @return the slice of `VkIndirectExecutionSetInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pShaderInfo` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pShaderInfoAt(long index) { return pShaderInfo(this.segment(), index); }
+    /// Sets `pShaderInfo` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetInfoEXT pShaderInfoAt(long index, MemorySegment value) { pShaderInfo(this.segment(), index, value); return this; }
 
-        /// {@return `pPipelineInfo` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pPipelineInfoAt(long index) { return pPipelineInfo(this.segment(), index); }
-        /// Sets `pPipelineInfo` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pPipelineInfoAt(long index, MemorySegment value) { pPipelineInfo(this.segment(), index, value); return this; }
-
-        /// {@return `pShaderInfo` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pShaderInfoAt(long index) { return pShaderInfo(this.segment(), index); }
-        /// Sets `pShaderInfo` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pShaderInfoAt(long index, MemorySegment value) { pShaderInfo(this.segment(), index, value); return this; }
-
-    }
 }

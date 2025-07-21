@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint32_t sliceCount;
 /// };
 /// ```
-public sealed class VkImageViewSlicedCreateInfoEXT extends GroupType {
+public final class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// The struct layout of `VkImageViewSlicedCreateInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkImageViewSlicedCreateInfoEXT extends GroupType {
     public static final VarHandle VH_sliceCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sliceCount"));
 
     /// Creates `VkImageViewSlicedCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkImageViewSlicedCreateInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkImageViewSlicedCreateInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkImageViewSlicedCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkImageViewSlicedCreateInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewSlicedCreateInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImageViewSlicedCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageViewSlicedCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewSlicedCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkImageViewSlicedCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewSlicedCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkImageViewSlicedCreateInfoEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkImageViewSlicedCreateInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewSlicedCreateInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkImageViewSlicedCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImageViewSlicedCreateInfoEXT`
-    public static VkImageViewSlicedCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkImageViewSlicedCreateInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkImageViewSlicedCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkImageViewSlicedCreateInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkImageViewSlicedCreateInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageViewSlicedCreateInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkImageViewSlicedCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkImageViewSlicedCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkImageViewSlicedCreateInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkImageViewSlicedCreateInfoEXT copyFrom(VkImageViewSlicedCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkImageViewSlicedCreateInfoEXT reinterpret(long count) { return new VkImageViewSlicedCreateInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkImageViewSlicedCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkImageViewSlicedCreateInfoEXT sliceCount(int value) { sliceCount(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkImageViewSlicedCreateInfoEXT].
-    public static final class Buffer extends VkImageViewSlicedCreateInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkImageViewSlicedCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageViewSlicedCreateInfoEXT`
+    public VkImageViewSlicedCreateInfoEXT asSlice(long index) { return new VkImageViewSlicedCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkImageViewSlicedCreateInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkImageViewSlicedCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageViewSlicedCreateInfoEXT`
+    public VkImageViewSlicedCreateInfoEXT asSlice(long index, long count) { return new VkImageViewSlicedCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkImageViewSlicedCreateInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkImageViewSlicedCreateInfoEXT at(long index, Consumer<VkImageViewSlicedCreateInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkImageViewSlicedCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkImageViewSlicedCreateInfoEXT`
-        public VkImageViewSlicedCreateInfoEXT asSlice(long index) { return new VkImageViewSlicedCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageViewSlicedCreateInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkImageViewSlicedCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkImageViewSlicedCreateInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageViewSlicedCreateInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `sliceOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int sliceOffsetAt(long index) { return sliceOffset(this.segment(), index); }
+    /// Sets `sliceOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageViewSlicedCreateInfoEXT sliceOffsetAt(long index, int value) { sliceOffset(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `sliceCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int sliceCountAt(long index) { return sliceCount(this.segment(), index); }
+    /// Sets `sliceCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageViewSlicedCreateInfoEXT sliceCountAt(long index, int value) { sliceCount(this.segment(), index, value); return this; }
 
-        /// {@return `sliceOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int sliceOffsetAt(long index) { return sliceOffset(this.segment(), index); }
-        /// Sets `sliceOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sliceOffsetAt(long index, int value) { sliceOffset(this.segment(), index, value); return this; }
-
-        /// {@return `sliceCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int sliceCountAt(long index) { return sliceCount(this.segment(), index); }
-        /// Sets `sliceCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sliceCountAt(long index, int value) { sliceCount(this.segment(), index, value); return this; }
-
-    }
 }

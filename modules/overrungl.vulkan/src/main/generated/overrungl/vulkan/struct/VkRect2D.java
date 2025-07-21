@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -32,7 +32,7 @@ import java.util.function.*;
 ///     (struct VkExtent2D) VkExtent2D extent;
 /// };
 /// ```
-public sealed class VkRect2D extends GroupType {
+public final class VkRect2D extends GroupType {
     /// The struct layout of `VkRect2D`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkOffset2D.LAYOUT.withName("offset"),
@@ -48,20 +48,21 @@ public sealed class VkRect2D extends GroupType {
     public static final MemoryLayout LAYOUT_extent = LAYOUT.select(PathElement.groupElement("extent"));
 
     /// Creates `VkRect2D` with the given segment.
-    /// @param segment the memory segment
-    public VkRect2D(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkRect2D(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkRect2D` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkRect2D of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRect2D(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRect2D` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRect2D ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRect2D(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkRect2D ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRect2D(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkRect2D` with the given segment.
     ///
@@ -69,18 +70,18 @@ public sealed class VkRect2D extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkRect2D ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkRect2D(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkRect2D` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkRect2D`
-    public static VkRect2D alloc(SegmentAllocator allocator) { return new VkRect2D(allocator.allocate(LAYOUT)); }
+    public static VkRect2D alloc(SegmentAllocator allocator) { return new VkRect2D(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkRect2D` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRect2D`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkRect2D alloc(SegmentAllocator allocator, long count) { return new VkRect2D(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkRect2D` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -104,9 +105,10 @@ public sealed class VkRect2D extends GroupType {
     /// @return `this`
     public VkRect2D copyFrom(VkRect2D src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkRect2D reinterpret(long count) { return new VkRect2D(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `offset` at the given index}
     /// @param segment the segment of the struct
@@ -148,55 +150,49 @@ public sealed class VkRect2D extends GroupType {
     /// @return `this`
     public VkRect2D extent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(extent())); return this; }
 
-    /// A buffer of [VkRect2D].
-    public static final class Buffer extends VkRect2D {
-        private final long elementCount;
+    /// Creates a slice of `VkRect2D`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRect2D`
+    public VkRect2D asSlice(long index) { return new VkRect2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkRect2D.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkRect2D`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRect2D`
+    public VkRect2D asSlice(long index, long count) { return new VkRect2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkRect2D` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkRect2D at(long index, Consumer<VkRect2D> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkRect2D`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkRect2D`
-        public VkRect2D asSlice(long index) { return new VkRect2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `offset` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment offsetAt(long index) { return offset(this.segment(), index); }
+    /// Sets `offset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRect2D offsetAt(long index, MemorySegment value) { offset(this.segment(), index, value); return this; }
+    /// Accepts `offset` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkRect2D offsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(offsetAt(index))); return this; }
 
-        /// Creates a slice of `VkRect2D`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkRect2D`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `extent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment extentAt(long index) { return extent(this.segment(), index); }
+    /// Sets `extent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRect2D extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
+    /// Accepts `extent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkRect2D extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(extentAt(index))); return this; }
 
-        /// {@return `offset` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment offsetAt(long index) { return offset(this.segment(), index); }
-        /// Sets `offset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer offsetAt(long index, MemorySegment value) { offset(this.segment(), index, value); return this; }
-        /// Accepts `offset` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer offsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(offsetAt(index))); return this; }
-
-        /// {@return `extent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment extentAt(long index) { return extent(this.segment(), index); }
-        /// Sets `extent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
-        /// Accepts `extent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(extentAt(index))); return this; }
-
-    }
 }

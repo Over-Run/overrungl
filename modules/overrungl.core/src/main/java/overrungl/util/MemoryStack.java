@@ -539,90 +539,90 @@ public final class MemoryStack implements SegmentAllocator, AutoCloseable {
     /// Allocates uninitialized `CharPtr`.
     ///
     /// @return the `CharPtr`
-    public CharPtr allocCharPtr() { return new CharPtr(malloc(CharPtr.LAYOUT)); }
+    public CharPtr allocCharPtr() { return new CharPtr(malloc(CharPtr.LAYOUT), 1); }
 
-    /// Allocates uninitialized `CharPtr.Buffer`.
+    /// Allocates uninitialized `CharPtr`s.
     ///
     /// @param count the count of the allocated `CharPtr`
-    /// @return the `CharPtr.Buffer`
-    public CharPtr.Buffer allocCharPtr(long count) { return new CharPtr.Buffer(malloc(CharPtr.LAYOUT, count), count); }
+    /// @return the `CharPtr`s
+    public CharPtr allocCharPtr(long count) { return new CharPtr(malloc(CharPtr.LAYOUT, count), count); }
 
     /// Allocates uninitialized `BytePtr`.
     ///
     /// @return the `BytePtr`
-    public BytePtr allocBytePtr() { return new BytePtr(malloc(BytePtr.LAYOUT)); }
+    public BytePtr allocBytePtr() { return new BytePtr(malloc(BytePtr.LAYOUT), 1); }
 
-    /// Allocates uninitialized `BytePtr.Buffer`.
+    /// Allocates uninitialized `BytePtr`s.
     ///
     /// @param count the count of the allocated `BytePtr`
-    /// @return the `BytePtr.Buffer`
-    public BytePtr.Buffer allocBytePtr(long count) { return new BytePtr.Buffer(malloc(BytePtr.LAYOUT, count), count); }
+    /// @return the `BytePtr`s
+    public BytePtr allocBytePtr(long count) { return new BytePtr(malloc(BytePtr.LAYOUT, count), count); }
 
     /// Allocates uninitialized `ShortPtr`.
     ///
     /// @return the `ShortPtr`
-    public ShortPtr allocShortPtr() { return new ShortPtr(malloc(ShortPtr.LAYOUT)); }
+    public ShortPtr allocShortPtr() { return new ShortPtr(malloc(ShortPtr.LAYOUT), 1); }
 
-    /// Allocates uninitialized `ShortPtr.Buffer`.
+    /// Allocates uninitialized `ShortPtr`s.
     ///
     /// @param count the count of the allocated `ShortPtr`
-    /// @return the `ShortPtr.Buffer`
-    public ShortPtr.Buffer allocShortPtr(long count) { return new ShortPtr.Buffer(malloc(ShortPtr.LAYOUT, count), count); }
+    /// @return the `ShortPtr`s
+    public ShortPtr allocShortPtr(long count) { return new ShortPtr(malloc(ShortPtr.LAYOUT, count), count); }
 
     /// Allocates uninitialized `IntPtr`.
     ///
     /// @return the `IntPtr`
-    public IntPtr allocIntPtr() { return new IntPtr(malloc(IntPtr.LAYOUT)); }
+    public IntPtr allocIntPtr() { return new IntPtr(malloc(IntPtr.LAYOUT), 1); }
 
-    /// Allocates uninitialized `IntPtr.Buffer`.
+    /// Allocates uninitialized `IntPtr`s.
     ///
     /// @param count the count of the allocated `IntPtr`
-    /// @return the `IntPtr.Buffer`
-    public IntPtr.Buffer allocIntPtr(long count) { return new IntPtr.Buffer(malloc(IntPtr.LAYOUT, count), count); }
+    /// @return the `IntPtr`s
+    public IntPtr allocIntPtr(long count) { return new IntPtr(malloc(IntPtr.LAYOUT, count), count); }
 
     /// Allocates uninitialized `LongPtr`.
     ///
     /// @return the `LongPtr`
-    public LongPtr allocLongPtr() { return new LongPtr(malloc(LongPtr.LAYOUT)); }
+    public LongPtr allocLongPtr() { return new LongPtr(malloc(LongPtr.LAYOUT), 1); }
 
-    /// Allocates uninitialized `LongPtr.Buffer`.
+    /// Allocates uninitialized `LongPtr`s.
     ///
     /// @param count the count of the allocated `LongPtr`
-    /// @return the `LongPtr.Buffer`
-    public LongPtr.Buffer allocLongPtr(long count) { return new LongPtr.Buffer(malloc(LongPtr.LAYOUT, count), count); }
+    /// @return the `LongPtr`s
+    public LongPtr allocLongPtr(long count) { return new LongPtr(malloc(LongPtr.LAYOUT, count), count); }
 
     /// Allocates uninitialized `FloatPtr`.
     ///
     /// @return the `FloatPtr`
-    public FloatPtr allocFloatPtr() { return new FloatPtr(malloc(FloatPtr.LAYOUT)); }
+    public FloatPtr allocFloatPtr() { return new FloatPtr(malloc(FloatPtr.LAYOUT), 1); }
 
-    /// Allocates uninitialized `FloatPtr.Buffer`.
+    /// Allocates uninitialized `FloatPtr`s.
     ///
     /// @param count the count of the allocated `FloatPtr`
-    /// @return the `FloatPtr.Buffer`
-    public FloatPtr.Buffer allocFloatPtr(long count) { return new FloatPtr.Buffer(malloc(FloatPtr.LAYOUT, count), count); }
+    /// @return the `FloatPtr`s
+    public FloatPtr allocFloatPtr(long count) { return new FloatPtr(malloc(FloatPtr.LAYOUT, count), count); }
 
     /// Allocates uninitialized `DoublePtr`.
     ///
     /// @return the `DoublePtr`
-    public DoublePtr allocDoublePtr() { return new DoublePtr(malloc(DoublePtr.LAYOUT)); }
+    public DoublePtr allocDoublePtr() { return new DoublePtr(malloc(DoublePtr.LAYOUT), 1); }
 
-    /// Allocates uninitialized `DoublePtr.Buffer`.
+    /// Allocates uninitialized `DoublePtr`s.
     ///
     /// @param count the count of the allocated `DoublePtr`
-    /// @return the `DoublePtr.Buffer`
-    public DoublePtr.Buffer allocDoublePtr(long count) { return new DoublePtr.Buffer(malloc(DoublePtr.LAYOUT, count), count); }
+    /// @return the `DoublePtr`s
+    public DoublePtr allocDoublePtr(long count) { return new DoublePtr(malloc(DoublePtr.LAYOUT, count), count); }
 
     /// Allocates uninitialized `VoidPtr`.
     ///
     /// @return the `VoidPtr`
-    public VoidPtr allocVoidPtr() { return new VoidPtr(malloc(VoidPtr.LAYOUT)); }
+    public VoidPtr allocVoidPtr() { return new VoidPtr(malloc(VoidPtr.LAYOUT), 1); }
 
-    /// Allocates uninitialized `VoidPtr.Buffer`.
+    /// Allocates uninitialized `VoidPtr`s.
     ///
     /// @param count the count of the allocated `VoidPtr`
-    /// @return the `VoidPtr.Buffer`
-    public VoidPtr.Buffer allocVoidPtr(long count) { return new VoidPtr.Buffer(malloc(VoidPtr.LAYOUT, count), count); }
+    /// @return the `VoidPtr`s
+    public VoidPtr allocVoidPtr(long count) { return new VoidPtr(malloc(VoidPtr.LAYOUT, count), count); }
 
     //@formatter:on
     //endregion ---[END GENERATOR END]---

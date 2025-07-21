@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     int32_t y;
 /// };
 /// ```
-public sealed class VkOffset2D extends GroupType {
+public final class VkOffset2D extends GroupType {
     /// The struct layout of `VkOffset2D`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("x"),
@@ -51,20 +52,21 @@ public sealed class VkOffset2D extends GroupType {
     public static final VarHandle VH_y = LAYOUT.arrayElementVarHandle(PathElement.groupElement("y"));
 
     /// Creates `VkOffset2D` with the given segment.
-    /// @param segment the memory segment
-    public VkOffset2D(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkOffset2D(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkOffset2D` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkOffset2D of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOffset2D(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkOffset2D` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkOffset2D ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOffset2D(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkOffset2D ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOffset2D(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkOffset2D` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkOffset2D extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkOffset2D ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkOffset2D(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkOffset2D` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkOffset2D`
-    public static VkOffset2D alloc(SegmentAllocator allocator) { return new VkOffset2D(allocator.allocate(LAYOUT)); }
+    public static VkOffset2D alloc(SegmentAllocator allocator) { return new VkOffset2D(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkOffset2D` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkOffset2D`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkOffset2D alloc(SegmentAllocator allocator, long count) { return new VkOffset2D(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkOffset2D` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -107,9 +109,10 @@ public sealed class VkOffset2D extends GroupType {
     /// @return `this`
     public VkOffset2D copyFrom(VkOffset2D src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkOffset2D reinterpret(long count) { return new VkOffset2D(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
@@ -143,45 +146,39 @@ public sealed class VkOffset2D extends GroupType {
     /// @return `this`
     public VkOffset2D y(int value) { y(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkOffset2D].
-    public static final class Buffer extends VkOffset2D {
-        private final long elementCount;
+    /// Creates a slice of `VkOffset2D`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkOffset2D`
+    public VkOffset2D asSlice(long index) { return new VkOffset2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkOffset2D.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkOffset2D`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkOffset2D`
+    public VkOffset2D asSlice(long index, long count) { return new VkOffset2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkOffset2D` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkOffset2D at(long index, Consumer<VkOffset2D> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkOffset2D`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkOffset2D`
-        public VkOffset2D asSlice(long index) { return new VkOffset2D(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `x` at the given index}
+    /// @param index the index of the struct buffer
+    public int xAt(long index) { return x(this.segment(), index); }
+    /// Sets `x` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOffset2D xAt(long index, int value) { x(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkOffset2D`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkOffset2D`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `y` at the given index}
+    /// @param index the index of the struct buffer
+    public int yAt(long index) { return y(this.segment(), index); }
+    /// Sets `y` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOffset2D yAt(long index, int value) { y(this.segment(), index, value); return this; }
 
-        /// {@return `x` at the given index}
-        /// @param index the index of the struct buffer
-        public int xAt(long index) { return x(this.segment(), index); }
-        /// Sets `x` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xAt(long index, int value) { x(this.segment(), index, value); return this; }
-
-        /// {@return `y` at the given index}
-        /// @param index the index of the struct buffer
-        public int yAt(long index) { return y(this.segment(), index); }
-        /// Sets `y` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer yAt(long index, int value) { y(this.segment(), index, value); return this; }
-
-    }
 }

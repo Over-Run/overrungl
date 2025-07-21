@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     int size;
 /// };
 /// ```
-public sealed class STBTT__buf extends GroupType {
+public final class STBTT__buf extends GroupType {
     /// The struct layout of `STBTT__buf`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("data"),
@@ -59,20 +60,21 @@ public sealed class STBTT__buf extends GroupType {
     public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
 
     /// Creates `STBTT__buf` with the given segment.
-    /// @param segment the memory segment
-    public STBTT__buf(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBTT__buf(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBTT__buf` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBTT__buf of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__buf(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBTT__buf` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTT__buf ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__buf(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBTT__buf ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__buf(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBTT__buf` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class STBTT__buf extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBTT__buf ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBTT__buf(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBTT__buf` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTT__buf`
-    public static STBTT__buf alloc(SegmentAllocator allocator) { return new STBTT__buf(allocator.allocate(LAYOUT)); }
+    public static STBTT__buf alloc(SegmentAllocator allocator) { return new STBTT__buf(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBTT__buf` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBTT__buf`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBTT__buf alloc(SegmentAllocator allocator, long count) { return new STBTT__buf(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBTT__buf` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class STBTT__buf extends GroupType {
     /// @return `this`
     public STBTT__buf copyFrom(STBTT__buf src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBTT__buf reinterpret(long count) { return new STBTT__buf(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `data` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class STBTT__buf extends GroupType {
     /// @return `this`
     public STBTT__buf size(int value) { size(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBTT__buf].
-    public static final class Buffer extends STBTT__buf {
-        private final long elementCount;
+    /// Creates a slice of `STBTT__buf`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTT__buf`
+    public STBTT__buf asSlice(long index) { return new STBTT__buf(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBTT__buf.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBTT__buf`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTT__buf`
+    public STBTT__buf asSlice(long index, long count) { return new STBTT__buf(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBTT__buf` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBTT__buf at(long index, Consumer<STBTT__buf> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBTT__buf`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBTT__buf`
-        public STBTT__buf asSlice(long index) { return new STBTT__buf(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `data` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment dataAt(long index) { return data(this.segment(), index); }
+    /// Sets `data` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTT__buf dataAt(long index, MemorySegment value) { data(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBTT__buf`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBTT__buf`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `cursor` at the given index}
+    /// @param index the index of the struct buffer
+    public int cursorAt(long index) { return cursor(this.segment(), index); }
+    /// Sets `cursor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTT__buf cursorAt(long index, int value) { cursor(this.segment(), index, value); return this; }
 
-        /// {@return `data` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment dataAt(long index) { return data(this.segment(), index); }
-        /// Sets `data` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dataAt(long index, MemorySegment value) { data(this.segment(), index, value); return this; }
+    /// {@return `size` at the given index}
+    /// @param index the index of the struct buffer
+    public int sizeAt(long index) { return size(this.segment(), index); }
+    /// Sets `size` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTT__buf sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
 
-        /// {@return `cursor` at the given index}
-        /// @param index the index of the struct buffer
-        public int cursorAt(long index) { return cursor(this.segment(), index); }
-        /// Sets `cursor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cursorAt(long index, int value) { cursor(this.segment(), index, value); return this; }
-
-        /// {@return `size` at the given index}
-        /// @param index the index of the struct buffer
-        public int sizeAt(long index) { return size(this.segment(), index); }
-        /// Sets `size` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkPipelineStageFlags checkpointExecutionStageMask;
 /// };
 /// ```
-public sealed class VkQueueFamilyCheckpointPropertiesNV extends GroupType {
+public final class VkQueueFamilyCheckpointPropertiesNV extends GroupType {
     /// The struct layout of `VkQueueFamilyCheckpointPropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkQueueFamilyCheckpointPropertiesNV extends GroupType {
     public static final VarHandle VH_checkpointExecutionStageMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("checkpointExecutionStageMask"));
 
     /// Creates `VkQueueFamilyCheckpointPropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkQueueFamilyCheckpointPropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkQueueFamilyCheckpointPropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkQueueFamilyCheckpointPropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkQueueFamilyCheckpointPropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyCheckpointPropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkQueueFamilyCheckpointPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkQueueFamilyCheckpointPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyCheckpointPropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkQueueFamilyCheckpointPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyCheckpointPropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkQueueFamilyCheckpointPropertiesNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkQueueFamilyCheckpointPropertiesNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkQueueFamilyCheckpointPropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyCheckpointPropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkQueueFamilyCheckpointPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkQueueFamilyCheckpointPropertiesNV`
-    public static VkQueueFamilyCheckpointPropertiesNV alloc(SegmentAllocator allocator) { return new VkQueueFamilyCheckpointPropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkQueueFamilyCheckpointPropertiesNV alloc(SegmentAllocator allocator) { return new VkQueueFamilyCheckpointPropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkQueueFamilyCheckpointPropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkQueueFamilyCheckpointPropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkQueueFamilyCheckpointPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyCheckpointPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkQueueFamilyCheckpointPropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkQueueFamilyCheckpointPropertiesNV extends GroupType {
     /// @return `this`
     public VkQueueFamilyCheckpointPropertiesNV copyFrom(VkQueueFamilyCheckpointPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkQueueFamilyCheckpointPropertiesNV reinterpret(long count) { return new VkQueueFamilyCheckpointPropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkQueueFamilyCheckpointPropertiesNV extends GroupType {
     /// @return `this`
     public VkQueueFamilyCheckpointPropertiesNV checkpointExecutionStageMask(int value) { checkpointExecutionStageMask(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkQueueFamilyCheckpointPropertiesNV].
-    public static final class Buffer extends VkQueueFamilyCheckpointPropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkQueueFamilyCheckpointPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkQueueFamilyCheckpointPropertiesNV`
+    public VkQueueFamilyCheckpointPropertiesNV asSlice(long index) { return new VkQueueFamilyCheckpointPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkQueueFamilyCheckpointPropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkQueueFamilyCheckpointPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkQueueFamilyCheckpointPropertiesNV`
+    public VkQueueFamilyCheckpointPropertiesNV asSlice(long index, long count) { return new VkQueueFamilyCheckpointPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkQueueFamilyCheckpointPropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkQueueFamilyCheckpointPropertiesNV at(long index, Consumer<VkQueueFamilyCheckpointPropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkQueueFamilyCheckpointPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkQueueFamilyCheckpointPropertiesNV`
-        public VkQueueFamilyCheckpointPropertiesNV asSlice(long index) { return new VkQueueFamilyCheckpointPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueueFamilyCheckpointPropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkQueueFamilyCheckpointPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkQueueFamilyCheckpointPropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueueFamilyCheckpointPropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `checkpointExecutionStageMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int checkpointExecutionStageMaskAt(long index) { return checkpointExecutionStageMask(this.segment(), index); }
+    /// Sets `checkpointExecutionStageMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueueFamilyCheckpointPropertiesNV checkpointExecutionStageMaskAt(long index, int value) { checkpointExecutionStageMask(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `checkpointExecutionStageMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int checkpointExecutionStageMaskAt(long index) { return checkpointExecutionStageMask(this.segment(), index); }
-        /// Sets `checkpointExecutionStageMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer checkpointExecutionStageMaskAt(long index, int value) { checkpointExecutionStageMask(this.segment(), index, value); return this; }
-
-    }
 }

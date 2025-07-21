@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 bufferDeviceAddressMultiDevice;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT extends GroupType {
+public final class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT extends Group
     public static final VarHandle VH_bufferDeviceAddressMultiDevice = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bufferDeviceAddressMultiDevice"));
 
     /// Creates `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT extends Group
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
-    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceBufferDeviceAddressFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT extends Group
     /// @return `this`
     public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT copyFrom(VkPhysicalDeviceBufferDeviceAddressFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT reinterpret(long count) { return new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPhysicalDeviceBufferDeviceAddressFeaturesEXT extends Group
     /// @return `this`
     public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT bufferDeviceAddressMultiDevice(int value) { bufferDeviceAddressMultiDevice(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceBufferDeviceAddressFeaturesEXT].
-    public static final class Buffer extends VkPhysicalDeviceBufferDeviceAddressFeaturesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT at(long index, Consumer<VkPhysicalDeviceBufferDeviceAddressFeaturesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
-        public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT asSlice(long index) { return new VkPhysicalDeviceBufferDeviceAddressFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceBufferDeviceAddressFeaturesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `bufferDeviceAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferDeviceAddressAt(long index) { return bufferDeviceAddress(this.segment(), index); }
+    /// Sets `bufferDeviceAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT bufferDeviceAddressAt(long index, int value) { bufferDeviceAddress(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `bufferDeviceAddressCaptureReplay` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferDeviceAddressCaptureReplayAt(long index) { return bufferDeviceAddressCaptureReplay(this.segment(), index); }
+    /// Sets `bufferDeviceAddressCaptureReplay` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT bufferDeviceAddressCaptureReplayAt(long index, int value) { bufferDeviceAddressCaptureReplay(this.segment(), index, value); return this; }
 
-        /// {@return `bufferDeviceAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferDeviceAddressAt(long index) { return bufferDeviceAddress(this.segment(), index); }
-        /// Sets `bufferDeviceAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferDeviceAddressAt(long index, int value) { bufferDeviceAddress(this.segment(), index, value); return this; }
+    /// {@return `bufferDeviceAddressMultiDevice` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferDeviceAddressMultiDeviceAt(long index) { return bufferDeviceAddressMultiDevice(this.segment(), index); }
+    /// Sets `bufferDeviceAddressMultiDevice` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceBufferDeviceAddressFeaturesEXT bufferDeviceAddressMultiDeviceAt(long index, int value) { bufferDeviceAddressMultiDevice(this.segment(), index, value); return this; }
 
-        /// {@return `bufferDeviceAddressCaptureReplay` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferDeviceAddressCaptureReplayAt(long index) { return bufferDeviceAddressCaptureReplay(this.segment(), index); }
-        /// Sets `bufferDeviceAddressCaptureReplay` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferDeviceAddressCaptureReplayAt(long index, int value) { bufferDeviceAddressCaptureReplay(this.segment(), index, value); return this; }
-
-        /// {@return `bufferDeviceAddressMultiDevice` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferDeviceAddressMultiDeviceAt(long index) { return bufferDeviceAddressMultiDevice(this.segment(), index); }
-        /// Sets `bufferDeviceAddressMultiDevice` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferDeviceAddressMultiDeviceAt(long index, int value) { bufferDeviceAddressMultiDevice(this.segment(), index, value); return this; }
-
-    }
 }

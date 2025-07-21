@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     uint64_t value;
 /// };
 /// ```
-public sealed class VkApplicationParametersEXT extends GroupType {
+public final class VkApplicationParametersEXT extends GroupType {
     /// The struct layout of `VkApplicationParametersEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkApplicationParametersEXT extends GroupType {
     public static final VarHandle VH_value = LAYOUT.arrayElementVarHandle(PathElement.groupElement("value"));
 
     /// Creates `VkApplicationParametersEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkApplicationParametersEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkApplicationParametersEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkApplicationParametersEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkApplicationParametersEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkApplicationParametersEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkApplicationParametersEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkApplicationParametersEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkApplicationParametersEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkApplicationParametersEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkApplicationParametersEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkApplicationParametersEXT` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkApplicationParametersEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkApplicationParametersEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkApplicationParametersEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkApplicationParametersEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkApplicationParametersEXT`
-    public static VkApplicationParametersEXT alloc(SegmentAllocator allocator) { return new VkApplicationParametersEXT(allocator.allocate(LAYOUT)); }
+    public static VkApplicationParametersEXT alloc(SegmentAllocator allocator) { return new VkApplicationParametersEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkApplicationParametersEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkApplicationParametersEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkApplicationParametersEXT alloc(SegmentAllocator allocator, long count) { return new VkApplicationParametersEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkApplicationParametersEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkApplicationParametersEXT extends GroupType {
     /// @return `this`
     public VkApplicationParametersEXT copyFrom(VkApplicationParametersEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkApplicationParametersEXT reinterpret(long count) { return new VkApplicationParametersEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkApplicationParametersEXT extends GroupType {
     /// @return `this`
     public VkApplicationParametersEXT value(long value) { value(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkApplicationParametersEXT].
-    public static final class Buffer extends VkApplicationParametersEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkApplicationParametersEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkApplicationParametersEXT`
+    public VkApplicationParametersEXT asSlice(long index) { return new VkApplicationParametersEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkApplicationParametersEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkApplicationParametersEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkApplicationParametersEXT`
+    public VkApplicationParametersEXT asSlice(long index, long count) { return new VkApplicationParametersEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkApplicationParametersEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkApplicationParametersEXT at(long index, Consumer<VkApplicationParametersEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkApplicationParametersEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkApplicationParametersEXT`
-        public VkApplicationParametersEXT asSlice(long index) { return new VkApplicationParametersEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationParametersEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkApplicationParametersEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkApplicationParametersEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationParametersEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `vendorID` at the given index}
+    /// @param index the index of the struct buffer
+    public int vendorIDAt(long index) { return vendorID(this.segment(), index); }
+    /// Sets `vendorID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationParametersEXT vendorIDAt(long index, int value) { vendorID(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `deviceID` at the given index}
+    /// @param index the index of the struct buffer
+    public int deviceIDAt(long index) { return deviceID(this.segment(), index); }
+    /// Sets `deviceID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationParametersEXT deviceIDAt(long index, int value) { deviceID(this.segment(), index, value); return this; }
 
-        /// {@return `vendorID` at the given index}
-        /// @param index the index of the struct buffer
-        public int vendorIDAt(long index) { return vendorID(this.segment(), index); }
-        /// Sets `vendorID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vendorIDAt(long index, int value) { vendorID(this.segment(), index, value); return this; }
+    /// {@return `key` at the given index}
+    /// @param index the index of the struct buffer
+    public int keyAt(long index) { return key(this.segment(), index); }
+    /// Sets `key` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationParametersEXT keyAt(long index, int value) { key(this.segment(), index, value); return this; }
 
-        /// {@return `deviceID` at the given index}
-        /// @param index the index of the struct buffer
-        public int deviceIDAt(long index) { return deviceID(this.segment(), index); }
-        /// Sets `deviceID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceIDAt(long index, int value) { deviceID(this.segment(), index, value); return this; }
+    /// {@return `value` at the given index}
+    /// @param index the index of the struct buffer
+    public long valueAt(long index) { return value(this.segment(), index); }
+    /// Sets `value` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationParametersEXT valueAt(long index, long value) { value(this.segment(), index, value); return this; }
 
-        /// {@return `key` at the given index}
-        /// @param index the index of the struct buffer
-        public int keyAt(long index) { return key(this.segment(), index); }
-        /// Sets `key` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer keyAt(long index, int value) { key(this.segment(), index, value); return this; }
-
-        /// {@return `value` at the given index}
-        /// @param index the index of the struct buffer
-        public long valueAt(long index) { return value(this.segment(), index); }
-        /// Sets `value` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer valueAt(long index, long value) { value(this.segment(), index, value); return this; }
-
-    }
 }

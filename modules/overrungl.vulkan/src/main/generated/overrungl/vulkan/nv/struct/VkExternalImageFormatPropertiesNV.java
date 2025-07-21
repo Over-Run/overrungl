@@ -21,9 +21,9 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -34,7 +34,7 @@ import java.util.function.*;
 ///     ((uint32_t) VkFlags) VkExternalMemoryHandleTypeFlagsNV compatibleHandleTypes;
 /// };
 /// ```
-public sealed class VkExternalImageFormatPropertiesNV extends GroupType {
+public final class VkExternalImageFormatPropertiesNV extends GroupType {
     /// The struct layout of `VkExternalImageFormatPropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkImageFormatProperties.LAYOUT.withName("imageFormatProperties"),
@@ -66,20 +66,21 @@ public sealed class VkExternalImageFormatPropertiesNV extends GroupType {
     public static final VarHandle VH_compatibleHandleTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("compatibleHandleTypes"));
 
     /// Creates `VkExternalImageFormatPropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkExternalImageFormatPropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkExternalImageFormatPropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkExternalImageFormatPropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkExternalImageFormatPropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExternalImageFormatPropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExternalImageFormatPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExternalImageFormatPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExternalImageFormatPropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkExternalImageFormatPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExternalImageFormatPropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkExternalImageFormatPropertiesNV` with the given segment.
     ///
@@ -87,18 +88,18 @@ public sealed class VkExternalImageFormatPropertiesNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkExternalImageFormatPropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkExternalImageFormatPropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkExternalImageFormatPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExternalImageFormatPropertiesNV`
-    public static VkExternalImageFormatPropertiesNV alloc(SegmentAllocator allocator) { return new VkExternalImageFormatPropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkExternalImageFormatPropertiesNV alloc(SegmentAllocator allocator) { return new VkExternalImageFormatPropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkExternalImageFormatPropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExternalImageFormatPropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkExternalImageFormatPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkExternalImageFormatPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkExternalImageFormatPropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -143,9 +144,10 @@ public sealed class VkExternalImageFormatPropertiesNV extends GroupType {
     /// @return `this`
     public VkExternalImageFormatPropertiesNV copyFrom(VkExternalImageFormatPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkExternalImageFormatPropertiesNV reinterpret(long count) { return new VkExternalImageFormatPropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `imageFormatProperties` at the given index}
     /// @param segment the segment of the struct
@@ -215,68 +217,62 @@ public sealed class VkExternalImageFormatPropertiesNV extends GroupType {
     /// @return `this`
     public VkExternalImageFormatPropertiesNV compatibleHandleTypes(int value) { compatibleHandleTypes(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkExternalImageFormatPropertiesNV].
-    public static final class Buffer extends VkExternalImageFormatPropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkExternalImageFormatPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExternalImageFormatPropertiesNV`
+    public VkExternalImageFormatPropertiesNV asSlice(long index) { return new VkExternalImageFormatPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkExternalImageFormatPropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkExternalImageFormatPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExternalImageFormatPropertiesNV`
+    public VkExternalImageFormatPropertiesNV asSlice(long index, long count) { return new VkExternalImageFormatPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkExternalImageFormatPropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkExternalImageFormatPropertiesNV at(long index, Consumer<VkExternalImageFormatPropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkExternalImageFormatPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkExternalImageFormatPropertiesNV`
-        public VkExternalImageFormatPropertiesNV asSlice(long index) { return new VkExternalImageFormatPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `imageFormatProperties` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment imageFormatPropertiesAt(long index) { return imageFormatProperties(this.segment(), index); }
+    /// Sets `imageFormatProperties` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExternalImageFormatPropertiesNV imageFormatPropertiesAt(long index, MemorySegment value) { imageFormatProperties(this.segment(), index, value); return this; }
+    /// Accepts `imageFormatProperties` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkExternalImageFormatPropertiesNV imageFormatPropertiesAt(long index, Consumer<overrungl.vulkan.struct.VkImageFormatProperties> func) { func.accept(overrungl.vulkan.struct.VkImageFormatProperties.of(imageFormatPropertiesAt(index))); return this; }
 
-        /// Creates a slice of `VkExternalImageFormatPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkExternalImageFormatPropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `externalMemoryFeatures` at the given index}
+    /// @param index the index of the struct buffer
+    public int externalMemoryFeaturesAt(long index) { return externalMemoryFeatures(this.segment(), index); }
+    /// Sets `externalMemoryFeatures` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExternalImageFormatPropertiesNV externalMemoryFeaturesAt(long index, int value) { externalMemoryFeatures(this.segment(), index, value); return this; }
 
-        /// {@return `imageFormatProperties` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment imageFormatPropertiesAt(long index) { return imageFormatProperties(this.segment(), index); }
-        /// Sets `imageFormatProperties` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageFormatPropertiesAt(long index, MemorySegment value) { imageFormatProperties(this.segment(), index, value); return this; }
-        /// Accepts `imageFormatProperties` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer imageFormatPropertiesAt(long index, Consumer<overrungl.vulkan.struct.VkImageFormatProperties> func) { func.accept(overrungl.vulkan.struct.VkImageFormatProperties.of(imageFormatPropertiesAt(index))); return this; }
+    /// {@return `exportFromImportedHandleTypes` at the given index}
+    /// @param index the index of the struct buffer
+    public int exportFromImportedHandleTypesAt(long index) { return exportFromImportedHandleTypes(this.segment(), index); }
+    /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExternalImageFormatPropertiesNV exportFromImportedHandleTypesAt(long index, int value) { exportFromImportedHandleTypes(this.segment(), index, value); return this; }
 
-        /// {@return `externalMemoryFeatures` at the given index}
-        /// @param index the index of the struct buffer
-        public int externalMemoryFeaturesAt(long index) { return externalMemoryFeatures(this.segment(), index); }
-        /// Sets `externalMemoryFeatures` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer externalMemoryFeaturesAt(long index, int value) { externalMemoryFeatures(this.segment(), index, value); return this; }
+    /// {@return `compatibleHandleTypes` at the given index}
+    /// @param index the index of the struct buffer
+    public int compatibleHandleTypesAt(long index) { return compatibleHandleTypes(this.segment(), index); }
+    /// Sets `compatibleHandleTypes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExternalImageFormatPropertiesNV compatibleHandleTypesAt(long index, int value) { compatibleHandleTypes(this.segment(), index, value); return this; }
 
-        /// {@return `exportFromImportedHandleTypes` at the given index}
-        /// @param index the index of the struct buffer
-        public int exportFromImportedHandleTypesAt(long index) { return exportFromImportedHandleTypes(this.segment(), index); }
-        /// Sets `exportFromImportedHandleTypes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer exportFromImportedHandleTypesAt(long index, int value) { exportFromImportedHandleTypes(this.segment(), index, value); return this; }
-
-        /// {@return `compatibleHandleTypes` at the given index}
-        /// @param index the index of the struct buffer
-        public int compatibleHandleTypesAt(long index) { return compatibleHandleTypes(this.segment(), index); }
-        /// Sets `compatibleHandleTypes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer compatibleHandleTypesAt(long index, int value) { compatibleHandleTypes(this.segment(), index, value); return this; }
-
-    }
 }

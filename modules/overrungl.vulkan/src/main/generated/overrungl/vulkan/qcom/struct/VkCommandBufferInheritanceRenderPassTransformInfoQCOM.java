@@ -21,9 +21,9 @@ package overrungl.vulkan.qcom.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -34,7 +34,7 @@ import java.util.function.*;
 ///     (struct VkRect2D) VkRect2D renderArea;
 /// };
 /// ```
-public sealed class VkCommandBufferInheritanceRenderPassTransformInfoQCOM extends GroupType {
+public final class VkCommandBufferInheritanceRenderPassTransformInfoQCOM extends GroupType {
     /// The struct layout of `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -66,20 +66,21 @@ public sealed class VkCommandBufferInheritanceRenderPassTransformInfoQCOM extend
     public static final MemoryLayout LAYOUT_renderArea = LAYOUT.select(PathElement.groupElement("renderArea"));
 
     /// Creates `VkCommandBufferInheritanceRenderPassTransformInfoQCOM` with the given segment.
-    /// @param segment the memory segment
-    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkCommandBufferInheritanceRenderPassTransformInfoQCOM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCommandBufferInheritanceRenderPassTransformInfoQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkCommandBufferInheritanceRenderPassTransformInfoQCOM` with the given segment.
     ///
@@ -87,18 +88,18 @@ public sealed class VkCommandBufferInheritanceRenderPassTransformInfoQCOM extend
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkCommandBufferInheritanceRenderPassTransformInfoQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`
-    public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM alloc(SegmentAllocator allocator) { return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(allocator.allocate(LAYOUT)); }
+    public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM alloc(SegmentAllocator allocator) { return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkCommandBufferInheritanceRenderPassTransformInfoQCOM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkCommandBufferInheritanceRenderPassTransformInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkCommandBufferInheritanceRenderPassTransformInfoQCOM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -143,9 +144,10 @@ public sealed class VkCommandBufferInheritanceRenderPassTransformInfoQCOM extend
     /// @return `this`
     public VkCommandBufferInheritanceRenderPassTransformInfoQCOM copyFrom(VkCommandBufferInheritanceRenderPassTransformInfoQCOM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM reinterpret(long count) { return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -215,68 +217,62 @@ public sealed class VkCommandBufferInheritanceRenderPassTransformInfoQCOM extend
     /// @return `this`
     public VkCommandBufferInheritanceRenderPassTransformInfoQCOM renderArea(Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(renderArea())); return this; }
 
-    /// A buffer of [VkCommandBufferInheritanceRenderPassTransformInfoQCOM].
-    public static final class Buffer extends VkCommandBufferInheritanceRenderPassTransformInfoQCOM {
-        private final long elementCount;
+    /// Creates a slice of `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM asSlice(long index) { return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkCommandBufferInheritanceRenderPassTransformInfoQCOM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM asSlice(long index, long count) { return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkCommandBufferInheritanceRenderPassTransformInfoQCOM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM at(long index, Consumer<VkCommandBufferInheritanceRenderPassTransformInfoQCOM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`
-        public VkCommandBufferInheritanceRenderPassTransformInfoQCOM asSlice(long index) { return new VkCommandBufferInheritanceRenderPassTransformInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkCommandBufferInheritanceRenderPassTransformInfoQCOM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `transform` at the given index}
+    /// @param index the index of the struct buffer
+    public int transformAt(long index) { return transform(this.segment(), index); }
+    /// Sets `transform` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM transformAt(long index, int value) { transform(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `renderArea` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment renderAreaAt(long index) { return renderArea(this.segment(), index); }
+    /// Sets `renderArea` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM renderAreaAt(long index, MemorySegment value) { renderArea(this.segment(), index, value); return this; }
+    /// Accepts `renderArea` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkCommandBufferInheritanceRenderPassTransformInfoQCOM renderAreaAt(long index, Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(renderAreaAt(index))); return this; }
 
-        /// {@return `transform` at the given index}
-        /// @param index the index of the struct buffer
-        public int transformAt(long index) { return transform(this.segment(), index); }
-        /// Sets `transform` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer transformAt(long index, int value) { transform(this.segment(), index, value); return this; }
-
-        /// {@return `renderArea` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment renderAreaAt(long index) { return renderArea(this.segment(), index); }
-        /// Sets `renderArea` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer renderAreaAt(long index, MemorySegment value) { renderArea(this.segment(), index, value); return this; }
-        /// Accepts `renderArea` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer renderAreaAt(long index, Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(renderAreaAt(index))); return this; }
-
-    }
 }

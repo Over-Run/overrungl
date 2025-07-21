@@ -21,9 +21,9 @@ package overrungl.vma;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 import static overrungl.vulkan.VK10.*;
 
@@ -35,7 +35,7 @@ import static overrungl.vulkan.VK10.*;
 ///     (struct VmaDetailedStatistics) VmaDetailedStatistics total;
 /// };
 /// ```
-public sealed class VmaTotalStatistics extends GroupType {
+public final class VmaTotalStatistics extends GroupType {
     /// The struct layout of `VmaTotalStatistics`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(VK_MAX_MEMORY_TYPES, VmaDetailedStatistics.LAYOUT).withName("memoryType"),
@@ -56,20 +56,21 @@ public sealed class VmaTotalStatistics extends GroupType {
     public static final MemoryLayout LAYOUT_total = LAYOUT.select(PathElement.groupElement("total"));
 
     /// Creates `VmaTotalStatistics` with the given segment.
-    /// @param segment the memory segment
-    public VmaTotalStatistics(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VmaTotalStatistics(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VmaTotalStatistics` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VmaTotalStatistics of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaTotalStatistics(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VmaTotalStatistics` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VmaTotalStatistics ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaTotalStatistics(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VmaTotalStatistics ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaTotalStatistics(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VmaTotalStatistics` with the given segment.
     ///
@@ -77,18 +78,18 @@ public sealed class VmaTotalStatistics extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VmaTotalStatistics ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VmaTotalStatistics(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VmaTotalStatistics` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VmaTotalStatistics`
-    public static VmaTotalStatistics alloc(SegmentAllocator allocator) { return new VmaTotalStatistics(allocator.allocate(LAYOUT)); }
+    public static VmaTotalStatistics alloc(SegmentAllocator allocator) { return new VmaTotalStatistics(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VmaTotalStatistics` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VmaTotalStatistics`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VmaTotalStatistics alloc(SegmentAllocator allocator, long count) { return new VmaTotalStatistics(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VmaTotalStatistics` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -122,9 +123,10 @@ public sealed class VmaTotalStatistics extends GroupType {
     /// @return `this`
     public VmaTotalStatistics copyFrom(VmaTotalStatistics src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VmaTotalStatistics reinterpret(long count) { return new VmaTotalStatistics(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `memoryType` at the given index}
     /// @param segment the segment of the struct
@@ -186,69 +188,63 @@ public sealed class VmaTotalStatistics extends GroupType {
     /// @return `this`
     public VmaTotalStatistics total(Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(total())); return this; }
 
-    /// A buffer of [VmaTotalStatistics].
-    public static final class Buffer extends VmaTotalStatistics {
-        private final long elementCount;
+    /// Creates a slice of `VmaTotalStatistics`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VmaTotalStatistics`
+    public VmaTotalStatistics asSlice(long index) { return new VmaTotalStatistics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VmaTotalStatistics.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VmaTotalStatistics`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VmaTotalStatistics`
+    public VmaTotalStatistics asSlice(long index, long count) { return new VmaTotalStatistics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VmaTotalStatistics` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VmaTotalStatistics at(long index, Consumer<VmaTotalStatistics> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VmaTotalStatistics`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VmaTotalStatistics`
-        public VmaTotalStatistics asSlice(long index) { return new VmaTotalStatistics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `memoryType` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment memoryTypeAt(long index) { return memoryType(this.segment(), index); }
+    /// Sets `memoryType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaTotalStatistics memoryTypeAt(long index, MemorySegment value) { memoryType(this.segment(), index, value); return this; }
+    /// Accepts `memoryType` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VmaTotalStatistics memoryTypeAt(long index, Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(memoryTypeAt(index))); return this; }
 
-        /// Creates a slice of `VmaTotalStatistics`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VmaTotalStatistics`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `memoryHeap` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment memoryHeapAt(long index) { return memoryHeap(this.segment(), index); }
+    /// Sets `memoryHeap` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaTotalStatistics memoryHeapAt(long index, MemorySegment value) { memoryHeap(this.segment(), index, value); return this; }
+    /// Accepts `memoryHeap` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VmaTotalStatistics memoryHeapAt(long index, Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(memoryHeapAt(index))); return this; }
 
-        /// {@return `memoryType` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment memoryTypeAt(long index) { return memoryType(this.segment(), index); }
-        /// Sets `memoryType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryTypeAt(long index, MemorySegment value) { memoryType(this.segment(), index, value); return this; }
-        /// Accepts `memoryType` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer memoryTypeAt(long index, Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(memoryTypeAt(index))); return this; }
+    /// {@return `total` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment totalAt(long index) { return total(this.segment(), index); }
+    /// Sets `total` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaTotalStatistics totalAt(long index, MemorySegment value) { total(this.segment(), index, value); return this; }
+    /// Accepts `total` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VmaTotalStatistics totalAt(long index, Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(totalAt(index))); return this; }
 
-        /// {@return `memoryHeap` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment memoryHeapAt(long index) { return memoryHeap(this.segment(), index); }
-        /// Sets `memoryHeap` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryHeapAt(long index, MemorySegment value) { memoryHeap(this.segment(), index, value); return this; }
-        /// Accepts `memoryHeap` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer memoryHeapAt(long index, Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(memoryHeapAt(index))); return this; }
-
-        /// {@return `total` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment totalAt(long index) { return total(this.segment(), index); }
-        /// Sets `total` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer totalAt(long index, MemorySegment value) { total(this.segment(), index, value); return this; }
-        /// Accepts `total` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer totalAt(long index, Consumer<VmaDetailedStatistics> func) { func.accept(VmaDetailedStatistics.of(totalAt(index))); return this; }
-
-    }
 }

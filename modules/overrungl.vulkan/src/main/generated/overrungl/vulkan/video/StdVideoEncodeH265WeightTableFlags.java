@@ -21,6 +21,7 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint16_t chroma_weight_l1_flag;
 /// };
 /// ```
-public sealed class StdVideoEncodeH265WeightTableFlags extends GroupType {
+public final class StdVideoEncodeH265WeightTableFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeH265WeightTableFlags`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("luma_weight_l0_flag"),
@@ -67,20 +68,21 @@ public sealed class StdVideoEncodeH265WeightTableFlags extends GroupType {
     public static final VarHandle VH_chroma_weight_l1_flag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chroma_weight_l1_flag"));
 
     /// Creates `StdVideoEncodeH265WeightTableFlags` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoEncodeH265WeightTableFlags(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoEncodeH265WeightTableFlags(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoEncodeH265WeightTableFlags` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoEncodeH265WeightTableFlags of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265WeightTableFlags(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeH265WeightTableFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH265WeightTableFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265WeightTableFlags(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoEncodeH265WeightTableFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265WeightTableFlags(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoEncodeH265WeightTableFlags` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class StdVideoEncodeH265WeightTableFlags extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoEncodeH265WeightTableFlags ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265WeightTableFlags(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoEncodeH265WeightTableFlags` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeH265WeightTableFlags`
-    public static StdVideoEncodeH265WeightTableFlags alloc(SegmentAllocator allocator) { return new StdVideoEncodeH265WeightTableFlags(allocator.allocate(LAYOUT)); }
+    public static StdVideoEncodeH265WeightTableFlags alloc(SegmentAllocator allocator) { return new StdVideoEncodeH265WeightTableFlags(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoEncodeH265WeightTableFlags` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH265WeightTableFlags`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoEncodeH265WeightTableFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265WeightTableFlags(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoEncodeH265WeightTableFlags` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class StdVideoEncodeH265WeightTableFlags extends GroupType {
     /// @return `this`
     public StdVideoEncodeH265WeightTableFlags copyFrom(StdVideoEncodeH265WeightTableFlags src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoEncodeH265WeightTableFlags reinterpret(long count) { return new StdVideoEncodeH265WeightTableFlags(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `luma_weight_l0_flag` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class StdVideoEncodeH265WeightTableFlags extends GroupType {
     /// @return `this`
     public StdVideoEncodeH265WeightTableFlags chroma_weight_l1_flag(short value) { chroma_weight_l1_flag(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [StdVideoEncodeH265WeightTableFlags].
-    public static final class Buffer extends StdVideoEncodeH265WeightTableFlags {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoEncodeH265WeightTableFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH265WeightTableFlags`
+    public StdVideoEncodeH265WeightTableFlags asSlice(long index) { return new StdVideoEncodeH265WeightTableFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoEncodeH265WeightTableFlags.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoEncodeH265WeightTableFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH265WeightTableFlags`
+    public StdVideoEncodeH265WeightTableFlags asSlice(long index, long count) { return new StdVideoEncodeH265WeightTableFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoEncodeH265WeightTableFlags` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoEncodeH265WeightTableFlags at(long index, Consumer<StdVideoEncodeH265WeightTableFlags> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH265WeightTableFlags`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoEncodeH265WeightTableFlags`
-        public StdVideoEncodeH265WeightTableFlags asSlice(long index) { return new StdVideoEncodeH265WeightTableFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `luma_weight_l0_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public short luma_weight_l0_flagAt(long index) { return luma_weight_l0_flag(this.segment(), index); }
+    /// Sets `luma_weight_l0_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265WeightTableFlags luma_weight_l0_flagAt(long index, short value) { luma_weight_l0_flag(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH265WeightTableFlags`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoEncodeH265WeightTableFlags`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `chroma_weight_l0_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public short chroma_weight_l0_flagAt(long index) { return chroma_weight_l0_flag(this.segment(), index); }
+    /// Sets `chroma_weight_l0_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265WeightTableFlags chroma_weight_l0_flagAt(long index, short value) { chroma_weight_l0_flag(this.segment(), index, value); return this; }
 
-        /// {@return `luma_weight_l0_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public short luma_weight_l0_flagAt(long index) { return luma_weight_l0_flag(this.segment(), index); }
-        /// Sets `luma_weight_l0_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_weight_l0_flagAt(long index, short value) { luma_weight_l0_flag(this.segment(), index, value); return this; }
+    /// {@return `luma_weight_l1_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public short luma_weight_l1_flagAt(long index) { return luma_weight_l1_flag(this.segment(), index); }
+    /// Sets `luma_weight_l1_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265WeightTableFlags luma_weight_l1_flagAt(long index, short value) { luma_weight_l1_flag(this.segment(), index, value); return this; }
 
-        /// {@return `chroma_weight_l0_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public short chroma_weight_l0_flagAt(long index) { return chroma_weight_l0_flag(this.segment(), index); }
-        /// Sets `chroma_weight_l0_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_weight_l0_flagAt(long index, short value) { chroma_weight_l0_flag(this.segment(), index, value); return this; }
+    /// {@return `chroma_weight_l1_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public short chroma_weight_l1_flagAt(long index) { return chroma_weight_l1_flag(this.segment(), index); }
+    /// Sets `chroma_weight_l1_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265WeightTableFlags chroma_weight_l1_flagAt(long index, short value) { chroma_weight_l1_flag(this.segment(), index, value); return this; }
 
-        /// {@return `luma_weight_l1_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public short luma_weight_l1_flagAt(long index) { return luma_weight_l1_flag(this.segment(), index); }
-        /// Sets `luma_weight_l1_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_weight_l1_flagAt(long index, short value) { luma_weight_l1_flag(this.segment(), index, value); return this; }
-
-        /// {@return `chroma_weight_l1_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public short chroma_weight_l1_flagAt(long index) { return chroma_weight_l1_flag(this.segment(), index); }
-        /// Sets `chroma_weight_l1_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_weight_l1_flagAt(long index, short value) { chroma_weight_l1_flag(this.segment(), index, value); return this; }
-
-    }
 }

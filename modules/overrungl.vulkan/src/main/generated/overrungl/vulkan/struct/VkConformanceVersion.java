@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint8_t patch;
 /// };
 /// ```
-public sealed class VkConformanceVersion extends GroupType {
+public final class VkConformanceVersion extends GroupType {
     /// The struct layout of `VkConformanceVersion`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("major"),
@@ -67,20 +68,21 @@ public sealed class VkConformanceVersion extends GroupType {
     public static final VarHandle VH_patch = LAYOUT.arrayElementVarHandle(PathElement.groupElement("patch"));
 
     /// Creates `VkConformanceVersion` with the given segment.
-    /// @param segment the memory segment
-    public VkConformanceVersion(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkConformanceVersion(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkConformanceVersion` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkConformanceVersion of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkConformanceVersion(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkConformanceVersion` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkConformanceVersion ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkConformanceVersion(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkConformanceVersion ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkConformanceVersion(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkConformanceVersion` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkConformanceVersion extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkConformanceVersion ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkConformanceVersion(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkConformanceVersion` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkConformanceVersion`
-    public static VkConformanceVersion alloc(SegmentAllocator allocator) { return new VkConformanceVersion(allocator.allocate(LAYOUT)); }
+    public static VkConformanceVersion alloc(SegmentAllocator allocator) { return new VkConformanceVersion(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkConformanceVersion` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkConformanceVersion`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkConformanceVersion alloc(SegmentAllocator allocator, long count) { return new VkConformanceVersion(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkConformanceVersion` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkConformanceVersion extends GroupType {
     /// @return `this`
     public VkConformanceVersion copyFrom(VkConformanceVersion src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkConformanceVersion reinterpret(long count) { return new VkConformanceVersion(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `major` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkConformanceVersion extends GroupType {
     /// @return `this`
     public VkConformanceVersion patch(byte value) { patch(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkConformanceVersion].
-    public static final class Buffer extends VkConformanceVersion {
-        private final long elementCount;
+    /// Creates a slice of `VkConformanceVersion`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkConformanceVersion`
+    public VkConformanceVersion asSlice(long index) { return new VkConformanceVersion(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkConformanceVersion.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkConformanceVersion`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkConformanceVersion`
+    public VkConformanceVersion asSlice(long index, long count) { return new VkConformanceVersion(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkConformanceVersion` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkConformanceVersion at(long index, Consumer<VkConformanceVersion> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkConformanceVersion`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkConformanceVersion`
-        public VkConformanceVersion asSlice(long index) { return new VkConformanceVersion(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `major` at the given index}
+    /// @param index the index of the struct buffer
+    public byte majorAt(long index) { return major(this.segment(), index); }
+    /// Sets `major` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConformanceVersion majorAt(long index, byte value) { major(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkConformanceVersion`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkConformanceVersion`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `minor` at the given index}
+    /// @param index the index of the struct buffer
+    public byte minorAt(long index) { return minor(this.segment(), index); }
+    /// Sets `minor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConformanceVersion minorAt(long index, byte value) { minor(this.segment(), index, value); return this; }
 
-        /// {@return `major` at the given index}
-        /// @param index the index of the struct buffer
-        public byte majorAt(long index) { return major(this.segment(), index); }
-        /// Sets `major` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer majorAt(long index, byte value) { major(this.segment(), index, value); return this; }
+    /// {@return `subminor` at the given index}
+    /// @param index the index of the struct buffer
+    public byte subminorAt(long index) { return subminor(this.segment(), index); }
+    /// Sets `subminor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConformanceVersion subminorAt(long index, byte value) { subminor(this.segment(), index, value); return this; }
 
-        /// {@return `minor` at the given index}
-        /// @param index the index of the struct buffer
-        public byte minorAt(long index) { return minor(this.segment(), index); }
-        /// Sets `minor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minorAt(long index, byte value) { minor(this.segment(), index, value); return this; }
+    /// {@return `patch` at the given index}
+    /// @param index the index of the struct buffer
+    public byte patchAt(long index) { return patch(this.segment(), index); }
+    /// Sets `patch` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConformanceVersion patchAt(long index, byte value) { patch(this.segment(), index, value); return this; }
 
-        /// {@return `subminor` at the given index}
-        /// @param index the index of the struct buffer
-        public byte subminorAt(long index) { return subminor(this.segment(), index); }
-        /// Sets `subminor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subminorAt(long index, byte value) { subminor(this.segment(), index, value); return this; }
-
-        /// {@return `patch` at the given index}
-        /// @param index the index of the struct buffer
-        public byte patchAt(long index) { return patch(this.segment(), index); }
-        /// Sets `patch` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer patchAt(long index, byte value) { patch(this.segment(), index, value); return this; }
-
-    }
 }

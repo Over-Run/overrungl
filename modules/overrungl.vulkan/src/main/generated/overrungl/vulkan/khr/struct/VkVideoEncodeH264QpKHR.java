@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     int32_t qpB;
 /// };
 /// ```
-public sealed class VkVideoEncodeH264QpKHR extends GroupType {
+public final class VkVideoEncodeH264QpKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeH264QpKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("qpI"),
@@ -59,20 +60,21 @@ public sealed class VkVideoEncodeH264QpKHR extends GroupType {
     public static final VarHandle VH_qpB = LAYOUT.arrayElementVarHandle(PathElement.groupElement("qpB"));
 
     /// Creates `VkVideoEncodeH264QpKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkVideoEncodeH264QpKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVideoEncodeH264QpKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVideoEncodeH264QpKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVideoEncodeH264QpKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH264QpKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeH264QpKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeH264QpKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH264QpKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVideoEncodeH264QpKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH264QpKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVideoEncodeH264QpKHR` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkVideoEncodeH264QpKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVideoEncodeH264QpKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeH264QpKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVideoEncodeH264QpKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoEncodeH264QpKHR`
-    public static VkVideoEncodeH264QpKHR alloc(SegmentAllocator allocator) { return new VkVideoEncodeH264QpKHR(allocator.allocate(LAYOUT)); }
+    public static VkVideoEncodeH264QpKHR alloc(SegmentAllocator allocator) { return new VkVideoEncodeH264QpKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVideoEncodeH264QpKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoEncodeH264QpKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVideoEncodeH264QpKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH264QpKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVideoEncodeH264QpKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkVideoEncodeH264QpKHR extends GroupType {
     /// @return `this`
     public VkVideoEncodeH264QpKHR copyFrom(VkVideoEncodeH264QpKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVideoEncodeH264QpKHR reinterpret(long count) { return new VkVideoEncodeH264QpKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `qpI` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkVideoEncodeH264QpKHR extends GroupType {
     /// @return `this`
     public VkVideoEncodeH264QpKHR qpB(int value) { qpB(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkVideoEncodeH264QpKHR].
-    public static final class Buffer extends VkVideoEncodeH264QpKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkVideoEncodeH264QpKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeH264QpKHR`
+    public VkVideoEncodeH264QpKHR asSlice(long index) { return new VkVideoEncodeH264QpKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVideoEncodeH264QpKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVideoEncodeH264QpKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeH264QpKHR`
+    public VkVideoEncodeH264QpKHR asSlice(long index, long count) { return new VkVideoEncodeH264QpKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVideoEncodeH264QpKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVideoEncodeH264QpKHR at(long index, Consumer<VkVideoEncodeH264QpKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVideoEncodeH264QpKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVideoEncodeH264QpKHR`
-        public VkVideoEncodeH264QpKHR asSlice(long index) { return new VkVideoEncodeH264QpKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `qpI` at the given index}
+    /// @param index the index of the struct buffer
+    public int qpIAt(long index) { return qpI(this.segment(), index); }
+    /// Sets `qpI` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoEncodeH264QpKHR qpIAt(long index, int value) { qpI(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVideoEncodeH264QpKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVideoEncodeH264QpKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `qpP` at the given index}
+    /// @param index the index of the struct buffer
+    public int qpPAt(long index) { return qpP(this.segment(), index); }
+    /// Sets `qpP` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoEncodeH264QpKHR qpPAt(long index, int value) { qpP(this.segment(), index, value); return this; }
 
-        /// {@return `qpI` at the given index}
-        /// @param index the index of the struct buffer
-        public int qpIAt(long index) { return qpI(this.segment(), index); }
-        /// Sets `qpI` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qpIAt(long index, int value) { qpI(this.segment(), index, value); return this; }
+    /// {@return `qpB` at the given index}
+    /// @param index the index of the struct buffer
+    public int qpBAt(long index) { return qpB(this.segment(), index); }
+    /// Sets `qpB` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoEncodeH264QpKHR qpBAt(long index, int value) { qpB(this.segment(), index, value); return this; }
 
-        /// {@return `qpP` at the given index}
-        /// @param index the index of the struct buffer
-        public int qpPAt(long index) { return qpP(this.segment(), index); }
-        /// Sets `qpP` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qpPAt(long index, int value) { qpP(this.segment(), index, value); return this; }
-
-        /// {@return `qpB` at the given index}
-        /// @param index the index of the struct buffer
-        public int qpBAt(long index) { return qpB(this.segment(), index); }
-        /// Sets `qpB` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qpBAt(long index, int value) { qpB(this.segment(), index, value); return this; }
-
-    }
 }

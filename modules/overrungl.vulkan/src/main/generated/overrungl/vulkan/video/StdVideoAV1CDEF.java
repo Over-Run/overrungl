@@ -21,6 +21,7 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     uint8_t cdef_uv_sec_strength[8];
 /// };
 /// ```
-public sealed class StdVideoAV1CDEF extends GroupType {
+public final class StdVideoAV1CDEF extends GroupType {
     /// The struct layout of `StdVideoAV1CDEF`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("cdef_damping_minus_3"),
@@ -83,20 +84,21 @@ public sealed class StdVideoAV1CDEF extends GroupType {
     public static final VarHandle VH_cdef_uv_sec_strength = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cdef_uv_sec_strength"), PathElement.sequenceElement());
 
     /// Creates `StdVideoAV1CDEF` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoAV1CDEF(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoAV1CDEF(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoAV1CDEF` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoAV1CDEF of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1CDEF(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoAV1CDEF` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1CDEF ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1CDEF(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoAV1CDEF ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1CDEF(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoAV1CDEF` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class StdVideoAV1CDEF extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoAV1CDEF ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1CDEF(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoAV1CDEF` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1CDEF`
-    public static StdVideoAV1CDEF alloc(SegmentAllocator allocator) { return new StdVideoAV1CDEF(allocator.allocate(LAYOUT)); }
+    public static StdVideoAV1CDEF alloc(SegmentAllocator allocator) { return new StdVideoAV1CDEF(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoAV1CDEF` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1CDEF`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoAV1CDEF alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1CDEF(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoAV1CDEF` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class StdVideoAV1CDEF extends GroupType {
     /// @return `this`
     public StdVideoAV1CDEF copyFrom(StdVideoAV1CDEF src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoAV1CDEF reinterpret(long count) { return new StdVideoAV1CDEF(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `cdef_damping_minus_3` at the given index}
     /// @param segment the segment of the struct
@@ -361,121 +364,115 @@ public sealed class StdVideoAV1CDEF extends GroupType {
     /// @return `this`
     public StdVideoAV1CDEF cdef_uv_sec_strength(long index0, byte value) { cdef_uv_sec_strength(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [StdVideoAV1CDEF].
-    public static final class Buffer extends StdVideoAV1CDEF {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoAV1CDEF`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1CDEF`
+    public StdVideoAV1CDEF asSlice(long index) { return new StdVideoAV1CDEF(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoAV1CDEF.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoAV1CDEF`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1CDEF`
+    public StdVideoAV1CDEF asSlice(long index, long count) { return new StdVideoAV1CDEF(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoAV1CDEF` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoAV1CDEF at(long index, Consumer<StdVideoAV1CDEF> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoAV1CDEF`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoAV1CDEF`
-        public StdVideoAV1CDEF asSlice(long index) { return new StdVideoAV1CDEF(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `cdef_damping_minus_3` at the given index}
+    /// @param index the index of the struct buffer
+    public byte cdef_damping_minus_3At(long index) { return cdef_damping_minus_3(this.segment(), index); }
+    /// Sets `cdef_damping_minus_3` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_damping_minus_3At(long index, byte value) { cdef_damping_minus_3(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `StdVideoAV1CDEF`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoAV1CDEF`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `cdef_bits` at the given index}
+    /// @param index the index of the struct buffer
+    public byte cdef_bitsAt(long index) { return cdef_bits(this.segment(), index); }
+    /// Sets `cdef_bits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_bitsAt(long index, byte value) { cdef_bits(this.segment(), index, value); return this; }
 
-        /// {@return `cdef_damping_minus_3` at the given index}
-        /// @param index the index of the struct buffer
-        public byte cdef_damping_minus_3At(long index) { return cdef_damping_minus_3(this.segment(), index); }
-        /// Sets `cdef_damping_minus_3` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_damping_minus_3At(long index, byte value) { cdef_damping_minus_3(this.segment(), index, value); return this; }
-
-        /// {@return `cdef_bits` at the given index}
-        /// @param index the index of the struct buffer
-        public byte cdef_bitsAt(long index) { return cdef_bits(this.segment(), index); }
-        /// Sets `cdef_bits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_bitsAt(long index, byte value) { cdef_bits(this.segment(), index, value); return this; }
-
-        /// {@return `cdef_y_pri_strength` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment cdef_y_pri_strengthAt(long index) { return cdef_y_pri_strength(this.segment(), index); }
-        /// {@return `cdef_y_pri_strength` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `cdef_y_pri_strength` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment cdef_y_pri_strengthAt(long index) { return cdef_y_pri_strength(this.segment(), index); }
+    /// {@return `cdef_y_pri_strength` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte cdef_y_pri_strengthAt(long index, long index0) { return cdef_y_pri_strength(this.segment(), index, index0); }
-        /// Sets `cdef_y_pri_strength` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_y_pri_strengthAt(long index, MemorySegment value) { cdef_y_pri_strength(this.segment(), index, value); return this; }
-        /// Sets `cdef_y_pri_strength` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_y_pri_strengthAt(long index, long index0, byte value) { cdef_y_pri_strength(this.segment(), index, index0, value); return this; }
+    /// Sets `cdef_y_pri_strength` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_y_pri_strengthAt(long index, MemorySegment value) { cdef_y_pri_strength(this.segment(), index, value); return this; }
+    /// Sets `cdef_y_pri_strength` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_y_pri_strengthAt(long index, long index0, byte value) { cdef_y_pri_strength(this.segment(), index, index0, value); return this; }
 
-        /// {@return `cdef_y_sec_strength` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment cdef_y_sec_strengthAt(long index) { return cdef_y_sec_strength(this.segment(), index); }
-        /// {@return `cdef_y_sec_strength` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `cdef_y_sec_strength` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment cdef_y_sec_strengthAt(long index) { return cdef_y_sec_strength(this.segment(), index); }
+    /// {@return `cdef_y_sec_strength` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte cdef_y_sec_strengthAt(long index, long index0) { return cdef_y_sec_strength(this.segment(), index, index0); }
-        /// Sets `cdef_y_sec_strength` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_y_sec_strengthAt(long index, MemorySegment value) { cdef_y_sec_strength(this.segment(), index, value); return this; }
-        /// Sets `cdef_y_sec_strength` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_y_sec_strengthAt(long index, long index0, byte value) { cdef_y_sec_strength(this.segment(), index, index0, value); return this; }
+    /// Sets `cdef_y_sec_strength` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_y_sec_strengthAt(long index, MemorySegment value) { cdef_y_sec_strength(this.segment(), index, value); return this; }
+    /// Sets `cdef_y_sec_strength` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_y_sec_strengthAt(long index, long index0, byte value) { cdef_y_sec_strength(this.segment(), index, index0, value); return this; }
 
-        /// {@return `cdef_uv_pri_strength` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment cdef_uv_pri_strengthAt(long index) { return cdef_uv_pri_strength(this.segment(), index); }
-        /// {@return `cdef_uv_pri_strength` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `cdef_uv_pri_strength` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment cdef_uv_pri_strengthAt(long index) { return cdef_uv_pri_strength(this.segment(), index); }
+    /// {@return `cdef_uv_pri_strength` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte cdef_uv_pri_strengthAt(long index, long index0) { return cdef_uv_pri_strength(this.segment(), index, index0); }
-        /// Sets `cdef_uv_pri_strength` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_uv_pri_strengthAt(long index, MemorySegment value) { cdef_uv_pri_strength(this.segment(), index, value); return this; }
-        /// Sets `cdef_uv_pri_strength` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_uv_pri_strengthAt(long index, long index0, byte value) { cdef_uv_pri_strength(this.segment(), index, index0, value); return this; }
+    /// Sets `cdef_uv_pri_strength` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_uv_pri_strengthAt(long index, MemorySegment value) { cdef_uv_pri_strength(this.segment(), index, value); return this; }
+    /// Sets `cdef_uv_pri_strength` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_uv_pri_strengthAt(long index, long index0, byte value) { cdef_uv_pri_strength(this.segment(), index, index0, value); return this; }
 
-        /// {@return `cdef_uv_sec_strength` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment cdef_uv_sec_strengthAt(long index) { return cdef_uv_sec_strength(this.segment(), index); }
-        /// {@return `cdef_uv_sec_strength` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `cdef_uv_sec_strength` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment cdef_uv_sec_strengthAt(long index) { return cdef_uv_sec_strength(this.segment(), index); }
+    /// {@return `cdef_uv_sec_strength` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte cdef_uv_sec_strengthAt(long index, long index0) { return cdef_uv_sec_strength(this.segment(), index, index0); }
-        /// Sets `cdef_uv_sec_strength` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_uv_sec_strengthAt(long index, MemorySegment value) { cdef_uv_sec_strength(this.segment(), index, value); return this; }
-        /// Sets `cdef_uv_sec_strength` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer cdef_uv_sec_strengthAt(long index, long index0, byte value) { cdef_uv_sec_strength(this.segment(), index, index0, value); return this; }
+    /// Sets `cdef_uv_sec_strength` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_uv_sec_strengthAt(long index, MemorySegment value) { cdef_uv_sec_strength(this.segment(), index, value); return this; }
+    /// Sets `cdef_uv_sec_strength` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1CDEF cdef_uv_sec_strengthAt(long index, long index0, byte value) { cdef_uv_sec_strength(this.segment(), index, index0, value); return this; }
 
-    }
 }

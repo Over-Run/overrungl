@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -39,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t maxDescriptorSetUpdateAfterBindTotalBuffersDynamic;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceMaintenance7PropertiesKHR extends GroupType {
+public final class VkPhysicalDeviceMaintenance7PropertiesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMaintenance7PropertiesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -115,20 +116,21 @@ public sealed class VkPhysicalDeviceMaintenance7PropertiesKHR extends GroupType 
     public static final VarHandle VH_maxDescriptorSetUpdateAfterBindTotalBuffersDynamic = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindTotalBuffersDynamic"));
 
     /// Creates `VkPhysicalDeviceMaintenance7PropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceMaintenance7PropertiesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceMaintenance7PropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceMaintenance7PropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceMaintenance7PropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance7PropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMaintenance7PropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMaintenance7PropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance7PropertiesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceMaintenance7PropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance7PropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceMaintenance7PropertiesKHR` with the given segment.
     ///
@@ -136,18 +138,18 @@ public sealed class VkPhysicalDeviceMaintenance7PropertiesKHR extends GroupType 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceMaintenance7PropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance7PropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceMaintenance7PropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceMaintenance7PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance7PropertiesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMaintenance7PropertiesKHR(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceMaintenance7PropertiesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMaintenance7PropertiesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceMaintenance7PropertiesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMaintenance7PropertiesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceMaintenance7PropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMaintenance7PropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceMaintenance7PropertiesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -279,9 +281,10 @@ public sealed class VkPhysicalDeviceMaintenance7PropertiesKHR extends GroupType 
     /// @return `this`
     public VkPhysicalDeviceMaintenance7PropertiesKHR copyFrom(VkPhysicalDeviceMaintenance7PropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceMaintenance7PropertiesKHR reinterpret(long count) { return new VkPhysicalDeviceMaintenance7PropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -443,117 +446,111 @@ public sealed class VkPhysicalDeviceMaintenance7PropertiesKHR extends GroupType 
     /// @return `this`
     public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(int value) { maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceMaintenance7PropertiesKHR].
-    public static final class Buffer extends VkPhysicalDeviceMaintenance7PropertiesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceMaintenance7PropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMaintenance7PropertiesKHR`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR asSlice(long index) { return new VkPhysicalDeviceMaintenance7PropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceMaintenance7PropertiesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceMaintenance7PropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMaintenance7PropertiesKHR`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR asSlice(long index, long count) { return new VkPhysicalDeviceMaintenance7PropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceMaintenance7PropertiesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR at(long index, Consumer<VkPhysicalDeviceMaintenance7PropertiesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMaintenance7PropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceMaintenance7PropertiesKHR`
-        public VkPhysicalDeviceMaintenance7PropertiesKHR asSlice(long index) { return new VkPhysicalDeviceMaintenance7PropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMaintenance7PropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceMaintenance7PropertiesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `robustFragmentShadingRateAttachmentAccess` at the given index}
+    /// @param index the index of the struct buffer
+    public int robustFragmentShadingRateAttachmentAccessAt(long index) { return robustFragmentShadingRateAttachmentAccess(this.segment(), index); }
+    /// Sets `robustFragmentShadingRateAttachmentAccess` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR robustFragmentShadingRateAttachmentAccessAt(long index, int value) { robustFragmentShadingRateAttachmentAccess(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `separateDepthStencilAttachmentAccess` at the given index}
+    /// @param index the index of the struct buffer
+    public int separateDepthStencilAttachmentAccessAt(long index) { return separateDepthStencilAttachmentAccess(this.segment(), index); }
+    /// Sets `separateDepthStencilAttachmentAccess` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR separateDepthStencilAttachmentAccessAt(long index, int value) { separateDepthStencilAttachmentAccess(this.segment(), index, value); return this; }
 
-        /// {@return `robustFragmentShadingRateAttachmentAccess` at the given index}
-        /// @param index the index of the struct buffer
-        public int robustFragmentShadingRateAttachmentAccessAt(long index) { return robustFragmentShadingRateAttachmentAccess(this.segment(), index); }
-        /// Sets `robustFragmentShadingRateAttachmentAccess` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer robustFragmentShadingRateAttachmentAccessAt(long index, int value) { robustFragmentShadingRateAttachmentAccess(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetTotalUniformBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetTotalUniformBuffersDynamicAt(long index) { return maxDescriptorSetTotalUniformBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetTotalUniformBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetTotalUniformBuffersDynamicAt(long index, int value) { maxDescriptorSetTotalUniformBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `separateDepthStencilAttachmentAccess` at the given index}
-        /// @param index the index of the struct buffer
-        public int separateDepthStencilAttachmentAccessAt(long index) { return separateDepthStencilAttachmentAccess(this.segment(), index); }
-        /// Sets `separateDepthStencilAttachmentAccess` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer separateDepthStencilAttachmentAccessAt(long index, int value) { separateDepthStencilAttachmentAccess(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetTotalStorageBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetTotalStorageBuffersDynamicAt(long index) { return maxDescriptorSetTotalStorageBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetTotalStorageBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetTotalStorageBuffersDynamicAt(long index, int value) { maxDescriptorSetTotalStorageBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetTotalUniformBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetTotalUniformBuffersDynamicAt(long index) { return maxDescriptorSetTotalUniformBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetTotalUniformBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetTotalUniformBuffersDynamicAt(long index, int value) { maxDescriptorSetTotalUniformBuffersDynamic(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetTotalBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetTotalBuffersDynamicAt(long index) { return maxDescriptorSetTotalBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetTotalBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetTotalBuffersDynamicAt(long index, int value) { maxDescriptorSetTotalBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetTotalStorageBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetTotalStorageBuffersDynamicAt(long index) { return maxDescriptorSetTotalStorageBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetTotalStorageBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetTotalStorageBuffersDynamicAt(long index, int value) { maxDescriptorSetTotalStorageBuffersDynamic(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetTotalBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetTotalBuffersDynamicAt(long index) { return maxDescriptorSetTotalBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetTotalBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetTotalBuffersDynamicAt(long index, int value) { maxDescriptorSetTotalBuffersDynamic(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindTotalUniformBuffersDynamic(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindTotalBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindTotalBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindTotalBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance7PropertiesKHR maxDescriptorSetUpdateAfterBindTotalBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindTotalStorageBuffersDynamic(this.segment(), index, value); return this; }
-
-        /// {@return `maxDescriptorSetUpdateAfterBindTotalBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindTotalBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindTotalBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindTotalBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindTotalBuffersDynamic(this.segment(), index, value); return this; }
-
-    }
 }

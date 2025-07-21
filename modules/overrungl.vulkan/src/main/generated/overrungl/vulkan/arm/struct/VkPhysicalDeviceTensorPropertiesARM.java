@@ -21,6 +21,7 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -44,7 +45,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkShaderStageFlags shaderTensorSupportedStages;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceTensorPropertiesARM extends GroupType {
+public final class VkPhysicalDeviceTensorPropertiesARM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceTensorPropertiesARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -155,20 +156,21 @@ public sealed class VkPhysicalDeviceTensorPropertiesARM extends GroupType {
     public static final VarHandle VH_shaderTensorSupportedStages = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderTensorSupportedStages"));
 
     /// Creates `VkPhysicalDeviceTensorPropertiesARM` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceTensorPropertiesARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceTensorPropertiesARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceTensorPropertiesARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceTensorPropertiesARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTensorPropertiesARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceTensorPropertiesARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceTensorPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTensorPropertiesARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceTensorPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTensorPropertiesARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceTensorPropertiesARM` with the given segment.
     ///
@@ -176,18 +178,18 @@ public sealed class VkPhysicalDeviceTensorPropertiesARM extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceTensorPropertiesARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTensorPropertiesARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceTensorPropertiesARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceTensorPropertiesARM`
-    public static VkPhysicalDeviceTensorPropertiesARM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceTensorPropertiesARM(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceTensorPropertiesARM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceTensorPropertiesARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceTensorPropertiesARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceTensorPropertiesARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceTensorPropertiesARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTensorPropertiesARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -419,9 +421,10 @@ public sealed class VkPhysicalDeviceTensorPropertiesARM extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceTensorPropertiesARM copyFrom(VkPhysicalDeviceTensorPropertiesARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceTensorPropertiesARM reinterpret(long count) { return new VkPhysicalDeviceTensorPropertiesARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -663,162 +666,156 @@ public sealed class VkPhysicalDeviceTensorPropertiesARM extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceTensorPropertiesARM shaderTensorSupportedStages(int value) { shaderTensorSupportedStages(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceTensorPropertiesARM].
-    public static final class Buffer extends VkPhysicalDeviceTensorPropertiesARM {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceTensorPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceTensorPropertiesARM`
+    public VkPhysicalDeviceTensorPropertiesARM asSlice(long index) { return new VkPhysicalDeviceTensorPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceTensorPropertiesARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceTensorPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceTensorPropertiesARM`
+    public VkPhysicalDeviceTensorPropertiesARM asSlice(long index, long count) { return new VkPhysicalDeviceTensorPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceTensorPropertiesARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM at(long index, Consumer<VkPhysicalDeviceTensorPropertiesARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceTensorPropertiesARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceTensorPropertiesARM`
-        public VkPhysicalDeviceTensorPropertiesARM asSlice(long index) { return new VkPhysicalDeviceTensorPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceTensorPropertiesARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceTensorPropertiesARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxTensorDimensionCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTensorDimensionCountAt(long index) { return maxTensorDimensionCount(this.segment(), index); }
+    /// Sets `maxTensorDimensionCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxTensorDimensionCountAt(long index, int value) { maxTensorDimensionCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxTensorElements` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxTensorElementsAt(long index) { return maxTensorElements(this.segment(), index); }
+    /// Sets `maxTensorElements` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxTensorElementsAt(long index, long value) { maxTensorElements(this.segment(), index, value); return this; }
 
-        /// {@return `maxTensorDimensionCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTensorDimensionCountAt(long index) { return maxTensorDimensionCount(this.segment(), index); }
-        /// Sets `maxTensorDimensionCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTensorDimensionCountAt(long index, int value) { maxTensorDimensionCount(this.segment(), index, value); return this; }
+    /// {@return `maxPerDimensionTensorElements` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxPerDimensionTensorElementsAt(long index) { return maxPerDimensionTensorElements(this.segment(), index); }
+    /// Sets `maxPerDimensionTensorElements` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxPerDimensionTensorElementsAt(long index, long value) { maxPerDimensionTensorElements(this.segment(), index, value); return this; }
 
-        /// {@return `maxTensorElements` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxTensorElementsAt(long index) { return maxTensorElements(this.segment(), index); }
-        /// Sets `maxTensorElements` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTensorElementsAt(long index, long value) { maxTensorElements(this.segment(), index, value); return this; }
+    /// {@return `maxTensorStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxTensorStrideAt(long index) { return maxTensorStride(this.segment(), index); }
+    /// Sets `maxTensorStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxTensorStrideAt(long index, long value) { maxTensorStride(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerDimensionTensorElements` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxPerDimensionTensorElementsAt(long index) { return maxPerDimensionTensorElements(this.segment(), index); }
-        /// Sets `maxPerDimensionTensorElements` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerDimensionTensorElementsAt(long index, long value) { maxPerDimensionTensorElements(this.segment(), index, value); return this; }
+    /// {@return `maxTensorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxTensorSizeAt(long index) { return maxTensorSize(this.segment(), index); }
+    /// Sets `maxTensorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxTensorSizeAt(long index, long value) { maxTensorSize(this.segment(), index, value); return this; }
 
-        /// {@return `maxTensorStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxTensorStrideAt(long index) { return maxTensorStride(this.segment(), index); }
-        /// Sets `maxTensorStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTensorStrideAt(long index, long value) { maxTensorStride(this.segment(), index, value); return this; }
+    /// {@return `maxTensorShaderAccessArrayLength` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTensorShaderAccessArrayLengthAt(long index) { return maxTensorShaderAccessArrayLength(this.segment(), index); }
+    /// Sets `maxTensorShaderAccessArrayLength` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxTensorShaderAccessArrayLengthAt(long index, int value) { maxTensorShaderAccessArrayLength(this.segment(), index, value); return this; }
 
-        /// {@return `maxTensorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxTensorSizeAt(long index) { return maxTensorSize(this.segment(), index); }
-        /// Sets `maxTensorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTensorSizeAt(long index, long value) { maxTensorSize(this.segment(), index, value); return this; }
+    /// {@return `maxTensorShaderAccessSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTensorShaderAccessSizeAt(long index) { return maxTensorShaderAccessSize(this.segment(), index); }
+    /// Sets `maxTensorShaderAccessSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxTensorShaderAccessSizeAt(long index, int value) { maxTensorShaderAccessSize(this.segment(), index, value); return this; }
 
-        /// {@return `maxTensorShaderAccessArrayLength` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTensorShaderAccessArrayLengthAt(long index) { return maxTensorShaderAccessArrayLength(this.segment(), index); }
-        /// Sets `maxTensorShaderAccessArrayLength` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTensorShaderAccessArrayLengthAt(long index, int value) { maxTensorShaderAccessArrayLength(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetStorageTensors` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetStorageTensorsAt(long index) { return maxDescriptorSetStorageTensors(this.segment(), index); }
+    /// Sets `maxDescriptorSetStorageTensors` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxDescriptorSetStorageTensorsAt(long index, int value) { maxDescriptorSetStorageTensors(this.segment(), index, value); return this; }
 
-        /// {@return `maxTensorShaderAccessSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTensorShaderAccessSizeAt(long index) { return maxTensorShaderAccessSize(this.segment(), index); }
-        /// Sets `maxTensorShaderAccessSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTensorShaderAccessSizeAt(long index, int value) { maxTensorShaderAccessSize(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorSetStorageTensors` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorSetStorageTensorsAt(long index) { return maxPerStageDescriptorSetStorageTensors(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorSetStorageTensors` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxPerStageDescriptorSetStorageTensorsAt(long index, int value) { maxPerStageDescriptorSetStorageTensors(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetStorageTensors` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetStorageTensorsAt(long index) { return maxDescriptorSetStorageTensors(this.segment(), index); }
-        /// Sets `maxDescriptorSetStorageTensors` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetStorageTensorsAt(long index, int value) { maxDescriptorSetStorageTensors(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindStorageTensors` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindStorageTensorsAt(long index) { return maxDescriptorSetUpdateAfterBindStorageTensors(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindStorageTensors` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxDescriptorSetUpdateAfterBindStorageTensorsAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageTensors(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorSetStorageTensors` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorSetStorageTensorsAt(long index) { return maxPerStageDescriptorSetStorageTensors(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorSetStorageTensors` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorSetStorageTensorsAt(long index, int value) { maxPerStageDescriptorSetStorageTensors(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorUpdateAfterBindStorageTensors` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorUpdateAfterBindStorageTensorsAt(long index) { return maxPerStageDescriptorUpdateAfterBindStorageTensors(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorUpdateAfterBindStorageTensors` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM maxPerStageDescriptorUpdateAfterBindStorageTensorsAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindStorageTensors(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindStorageTensors` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindStorageTensorsAt(long index) { return maxDescriptorSetUpdateAfterBindStorageTensors(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindStorageTensors` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindStorageTensorsAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageTensors(this.segment(), index, value); return this; }
+    /// {@return `shaderStorageTensorArrayNonUniformIndexingNative` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderStorageTensorArrayNonUniformIndexingNativeAt(long index) { return shaderStorageTensorArrayNonUniformIndexingNative(this.segment(), index); }
+    /// Sets `shaderStorageTensorArrayNonUniformIndexingNative` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM shaderStorageTensorArrayNonUniformIndexingNativeAt(long index, int value) { shaderStorageTensorArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorUpdateAfterBindStorageTensors` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorUpdateAfterBindStorageTensorsAt(long index) { return maxPerStageDescriptorUpdateAfterBindStorageTensors(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorUpdateAfterBindStorageTensors` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorUpdateAfterBindStorageTensorsAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindStorageTensors(this.segment(), index, value); return this; }
+    /// {@return `shaderTensorSupportedStages` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderTensorSupportedStagesAt(long index) { return shaderTensorSupportedStages(this.segment(), index); }
+    /// Sets `shaderTensorSupportedStages` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTensorPropertiesARM shaderTensorSupportedStagesAt(long index, int value) { shaderTensorSupportedStages(this.segment(), index, value); return this; }
 
-        /// {@return `shaderStorageTensorArrayNonUniformIndexingNative` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderStorageTensorArrayNonUniformIndexingNativeAt(long index) { return shaderStorageTensorArrayNonUniformIndexingNative(this.segment(), index); }
-        /// Sets `shaderStorageTensorArrayNonUniformIndexingNative` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderStorageTensorArrayNonUniformIndexingNativeAt(long index, int value) { shaderStorageTensorArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
-
-        /// {@return `shaderTensorSupportedStages` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderTensorSupportedStagesAt(long index) { return shaderTensorSupportedStages(this.segment(), index); }
-        /// Sets `shaderTensorSupportedStages` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderTensorSupportedStagesAt(long index, int value) { shaderTensorSupportedStages(this.segment(), index, value); return this; }
-
-    }
 }

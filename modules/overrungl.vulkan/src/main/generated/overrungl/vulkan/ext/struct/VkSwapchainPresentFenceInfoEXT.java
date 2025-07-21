@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     const VkFence* pFences;
 /// };
 /// ```
-public sealed class VkSwapchainPresentFenceInfoEXT extends GroupType {
+public final class VkSwapchainPresentFenceInfoEXT extends GroupType {
     /// The struct layout of `VkSwapchainPresentFenceInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends GroupType {
     public static final VarHandle VH_pFences = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pFences"));
 
     /// Creates `VkSwapchainPresentFenceInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkSwapchainPresentFenceInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSwapchainPresentFenceInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSwapchainPresentFenceInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSwapchainPresentFenceInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSwapchainPresentFenceInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSwapchainPresentFenceInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSwapchainPresentFenceInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSwapchainPresentFenceInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSwapchainPresentFenceInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSwapchainPresentFenceInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSwapchainPresentFenceInfoEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSwapchainPresentFenceInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSwapchainPresentFenceInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSwapchainPresentFenceInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSwapchainPresentFenceInfoEXT`
-    public static VkSwapchainPresentFenceInfoEXT alloc(SegmentAllocator allocator) { return new VkSwapchainPresentFenceInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkSwapchainPresentFenceInfoEXT alloc(SegmentAllocator allocator) { return new VkSwapchainPresentFenceInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSwapchainPresentFenceInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSwapchainPresentFenceInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSwapchainPresentFenceInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSwapchainPresentFenceInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSwapchainPresentFenceInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends GroupType {
     /// @return `this`
     public VkSwapchainPresentFenceInfoEXT copyFrom(VkSwapchainPresentFenceInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSwapchainPresentFenceInfoEXT reinterpret(long count) { return new VkSwapchainPresentFenceInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkSwapchainPresentFenceInfoEXT extends GroupType {
     /// @return `this`
     public VkSwapchainPresentFenceInfoEXT pFences(MemorySegment value) { pFences(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSwapchainPresentFenceInfoEXT].
-    public static final class Buffer extends VkSwapchainPresentFenceInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkSwapchainPresentFenceInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSwapchainPresentFenceInfoEXT`
+    public VkSwapchainPresentFenceInfoEXT asSlice(long index) { return new VkSwapchainPresentFenceInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSwapchainPresentFenceInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSwapchainPresentFenceInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSwapchainPresentFenceInfoEXT`
+    public VkSwapchainPresentFenceInfoEXT asSlice(long index, long count) { return new VkSwapchainPresentFenceInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSwapchainPresentFenceInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSwapchainPresentFenceInfoEXT at(long index, Consumer<VkSwapchainPresentFenceInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSwapchainPresentFenceInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSwapchainPresentFenceInfoEXT`
-        public VkSwapchainPresentFenceInfoEXT asSlice(long index) { return new VkSwapchainPresentFenceInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSwapchainPresentFenceInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSwapchainPresentFenceInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSwapchainPresentFenceInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSwapchainPresentFenceInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `swapchainCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int swapchainCountAt(long index) { return swapchainCount(this.segment(), index); }
+    /// Sets `swapchainCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSwapchainPresentFenceInfoEXT swapchainCountAt(long index, int value) { swapchainCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pFences` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pFencesAt(long index) { return pFences(this.segment(), index); }
+    /// Sets `pFences` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSwapchainPresentFenceInfoEXT pFencesAt(long index, MemorySegment value) { pFences(this.segment(), index, value); return this; }
 
-        /// {@return `swapchainCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int swapchainCountAt(long index) { return swapchainCount(this.segment(), index); }
-        /// Sets `swapchainCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer swapchainCountAt(long index, int value) { swapchainCount(this.segment(), index, value); return this; }
-
-        /// {@return `pFences` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pFencesAt(long index) { return pFences(this.segment(), index); }
-        /// Sets `pFences` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pFencesAt(long index, MemorySegment value) { pFences(this.segment(), index, value); return this; }
-
-    }
 }

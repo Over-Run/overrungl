@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 unifiedImageLayoutsVideo;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR extends GroupType {
+public final class VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR extends Group
     public static final VarHandle VH_unifiedImageLayoutsVideo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unifiedImageLayoutsVideo"));
 
     /// Creates `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR extends Group
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
-    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR extends Group
     /// @return `this`
     public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR copyFrom(VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR reinterpret(long count) { return new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR extends Group
     /// @return `this`
     public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR unifiedImageLayoutsVideo(int value) { unifiedImageLayoutsVideo(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR].
-    public static final class Buffer extends VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
+    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
+    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR at(long index, Consumer<VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
-        public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `unifiedImageLayouts` at the given index}
+    /// @param index the index of the struct buffer
+    public int unifiedImageLayoutsAt(long index) { return unifiedImageLayouts(this.segment(), index); }
+    /// Sets `unifiedImageLayouts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR unifiedImageLayoutsAt(long index, int value) { unifiedImageLayouts(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `unifiedImageLayoutsVideo` at the given index}
+    /// @param index the index of the struct buffer
+    public int unifiedImageLayoutsVideoAt(long index) { return unifiedImageLayoutsVideo(this.segment(), index); }
+    /// Sets `unifiedImageLayoutsVideo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR unifiedImageLayoutsVideoAt(long index, int value) { unifiedImageLayoutsVideo(this.segment(), index, value); return this; }
 
-        /// {@return `unifiedImageLayouts` at the given index}
-        /// @param index the index of the struct buffer
-        public int unifiedImageLayoutsAt(long index) { return unifiedImageLayouts(this.segment(), index); }
-        /// Sets `unifiedImageLayouts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer unifiedImageLayoutsAt(long index, int value) { unifiedImageLayouts(this.segment(), index, value); return this; }
-
-        /// {@return `unifiedImageLayoutsVideo` at the given index}
-        /// @param index the index of the struct buffer
-        public int unifiedImageLayoutsVideoAt(long index) { return unifiedImageLayoutsVideo(this.segment(), index); }
-        /// Sets `unifiedImageLayoutsVideo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer unifiedImageLayoutsVideoAt(long index, int value) { unifiedImageLayoutsVideo(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.google.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     uint64_t presentMargin;
 /// };
 /// ```
-public sealed class VkPastPresentationTimingGOOGLE extends GroupType {
+public final class VkPastPresentationTimingGOOGLE extends GroupType {
     /// The struct layout of `VkPastPresentationTimingGOOGLE`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("presentID"),
@@ -75,20 +76,21 @@ public sealed class VkPastPresentationTimingGOOGLE extends GroupType {
     public static final VarHandle VH_presentMargin = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentMargin"));
 
     /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
-    /// @param segment the memory segment
-    public VkPastPresentationTimingGOOGLE(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPastPresentationTimingGOOGLE(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPastPresentationTimingGOOGLE of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPastPresentationTimingGOOGLE(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPastPresentationTimingGOOGLE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPastPresentationTimingGOOGLE(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPastPresentationTimingGOOGLE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPastPresentationTimingGOOGLE(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPastPresentationTimingGOOGLE` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPastPresentationTimingGOOGLE extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPastPresentationTimingGOOGLE ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPastPresentationTimingGOOGLE(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPastPresentationTimingGOOGLE`
-    public static VkPastPresentationTimingGOOGLE alloc(SegmentAllocator allocator) { return new VkPastPresentationTimingGOOGLE(allocator.allocate(LAYOUT)); }
+    public static VkPastPresentationTimingGOOGLE alloc(SegmentAllocator allocator) { return new VkPastPresentationTimingGOOGLE(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPastPresentationTimingGOOGLE`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPastPresentationTimingGOOGLE alloc(SegmentAllocator allocator, long count) { return new VkPastPresentationTimingGOOGLE(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPastPresentationTimingGOOGLE` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPastPresentationTimingGOOGLE extends GroupType {
     /// @return `this`
     public VkPastPresentationTimingGOOGLE copyFrom(VkPastPresentationTimingGOOGLE src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPastPresentationTimingGOOGLE reinterpret(long count) { return new VkPastPresentationTimingGOOGLE(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `presentID` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPastPresentationTimingGOOGLE extends GroupType {
     /// @return `this`
     public VkPastPresentationTimingGOOGLE presentMargin(long value) { presentMargin(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPastPresentationTimingGOOGLE].
-    public static final class Buffer extends VkPastPresentationTimingGOOGLE {
-        private final long elementCount;
+    /// Creates a slice of `VkPastPresentationTimingGOOGLE`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPastPresentationTimingGOOGLE`
+    public VkPastPresentationTimingGOOGLE asSlice(long index) { return new VkPastPresentationTimingGOOGLE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPastPresentationTimingGOOGLE.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPastPresentationTimingGOOGLE`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPastPresentationTimingGOOGLE`
+    public VkPastPresentationTimingGOOGLE asSlice(long index, long count) { return new VkPastPresentationTimingGOOGLE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPastPresentationTimingGOOGLE` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPastPresentationTimingGOOGLE at(long index, Consumer<VkPastPresentationTimingGOOGLE> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPastPresentationTimingGOOGLE`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPastPresentationTimingGOOGLE`
-        public VkPastPresentationTimingGOOGLE asSlice(long index) { return new VkPastPresentationTimingGOOGLE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `presentID` at the given index}
+    /// @param index the index of the struct buffer
+    public int presentIDAt(long index) { return presentID(this.segment(), index); }
+    /// Sets `presentID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPastPresentationTimingGOOGLE presentIDAt(long index, int value) { presentID(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPastPresentationTimingGOOGLE`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPastPresentationTimingGOOGLE`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `desiredPresentTime` at the given index}
+    /// @param index the index of the struct buffer
+    public long desiredPresentTimeAt(long index) { return desiredPresentTime(this.segment(), index); }
+    /// Sets `desiredPresentTime` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPastPresentationTimingGOOGLE desiredPresentTimeAt(long index, long value) { desiredPresentTime(this.segment(), index, value); return this; }
 
-        /// {@return `presentID` at the given index}
-        /// @param index the index of the struct buffer
-        public int presentIDAt(long index) { return presentID(this.segment(), index); }
-        /// Sets `presentID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer presentIDAt(long index, int value) { presentID(this.segment(), index, value); return this; }
+    /// {@return `actualPresentTime` at the given index}
+    /// @param index the index of the struct buffer
+    public long actualPresentTimeAt(long index) { return actualPresentTime(this.segment(), index); }
+    /// Sets `actualPresentTime` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPastPresentationTimingGOOGLE actualPresentTimeAt(long index, long value) { actualPresentTime(this.segment(), index, value); return this; }
 
-        /// {@return `desiredPresentTime` at the given index}
-        /// @param index the index of the struct buffer
-        public long desiredPresentTimeAt(long index) { return desiredPresentTime(this.segment(), index); }
-        /// Sets `desiredPresentTime` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer desiredPresentTimeAt(long index, long value) { desiredPresentTime(this.segment(), index, value); return this; }
+    /// {@return `earliestPresentTime` at the given index}
+    /// @param index the index of the struct buffer
+    public long earliestPresentTimeAt(long index) { return earliestPresentTime(this.segment(), index); }
+    /// Sets `earliestPresentTime` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPastPresentationTimingGOOGLE earliestPresentTimeAt(long index, long value) { earliestPresentTime(this.segment(), index, value); return this; }
 
-        /// {@return `actualPresentTime` at the given index}
-        /// @param index the index of the struct buffer
-        public long actualPresentTimeAt(long index) { return actualPresentTime(this.segment(), index); }
-        /// Sets `actualPresentTime` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer actualPresentTimeAt(long index, long value) { actualPresentTime(this.segment(), index, value); return this; }
+    /// {@return `presentMargin` at the given index}
+    /// @param index the index of the struct buffer
+    public long presentMarginAt(long index) { return presentMargin(this.segment(), index); }
+    /// Sets `presentMargin` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPastPresentationTimingGOOGLE presentMarginAt(long index, long value) { presentMargin(this.segment(), index, value); return this; }
 
-        /// {@return `earliestPresentTime` at the given index}
-        /// @param index the index of the struct buffer
-        public long earliestPresentTimeAt(long index) { return earliestPresentTime(this.segment(), index); }
-        /// Sets `earliestPresentTime` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer earliestPresentTimeAt(long index, long value) { earliestPresentTime(this.segment(), index, value); return this; }
-
-        /// {@return `presentMargin` at the given index}
-        /// @param index the index of the struct buffer
-        public long presentMarginAt(long index) { return presentMargin(this.segment(), index); }
-        /// Sets `presentMargin` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer presentMarginAt(long index, long value) { presentMargin(this.segment(), index, value); return this; }
-
-    }
 }

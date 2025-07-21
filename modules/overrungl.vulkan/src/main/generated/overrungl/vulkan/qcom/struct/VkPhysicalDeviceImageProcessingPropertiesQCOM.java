@@ -21,9 +21,9 @@ package overrungl.vulkan.qcom.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -36,7 +36,7 @@ import java.util.function.*;
 ///     (struct VkExtent2D) VkExtent2D maxBoxFilterBlockSize;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupType {
+public final class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceImageProcessingPropertiesQCOM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -78,20 +78,21 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
     public static final MemoryLayout LAYOUT_maxBoxFilterBlockSize = LAYOUT.select(PathElement.groupElement("maxBoxFilterBlockSize"));
 
     /// Creates `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceImageProcessingPropertiesQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment.
     ///
@@ -99,18 +100,18 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceImageProcessingPropertiesQCOM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceImageProcessingPropertiesQCOM`
-    public static VkPhysicalDeviceImageProcessingPropertiesQCOM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceImageProcessingPropertiesQCOM(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceImageProcessingPropertiesQCOM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceImageProcessingPropertiesQCOM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceImageProcessingPropertiesQCOM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageProcessingPropertiesQCOM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceImageProcessingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -180,9 +181,10 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
     /// @return `this`
     public VkPhysicalDeviceImageProcessingPropertiesQCOM copyFrom(VkPhysicalDeviceImageProcessingPropertiesQCOM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM reinterpret(long count) { return new VkPhysicalDeviceImageProcessingPropertiesQCOM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -292,96 +294,90 @@ public sealed class VkPhysicalDeviceImageProcessingPropertiesQCOM extends GroupT
     /// @return `this`
     public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBoxFilterBlockSize(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBoxFilterBlockSize())); return this; }
 
-    /// A buffer of [VkPhysicalDeviceImageProcessingPropertiesQCOM].
-    public static final class Buffer extends VkPhysicalDeviceImageProcessingPropertiesQCOM {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceImageProcessingPropertiesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceImageProcessingPropertiesQCOM`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM asSlice(long index) { return new VkPhysicalDeviceImageProcessingPropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceImageProcessingPropertiesQCOM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceImageProcessingPropertiesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceImageProcessingPropertiesQCOM`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM asSlice(long index, long count) { return new VkPhysicalDeviceImageProcessingPropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceImageProcessingPropertiesQCOM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM at(long index, Consumer<VkPhysicalDeviceImageProcessingPropertiesQCOM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceImageProcessingPropertiesQCOM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceImageProcessingPropertiesQCOM`
-        public VkPhysicalDeviceImageProcessingPropertiesQCOM asSlice(long index) { return new VkPhysicalDeviceImageProcessingPropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceImageProcessingPropertiesQCOM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceImageProcessingPropertiesQCOM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxWeightFilterPhases` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxWeightFilterPhasesAt(long index) { return maxWeightFilterPhases(this.segment(), index); }
+    /// Sets `maxWeightFilterPhases` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxWeightFilterPhasesAt(long index, int value) { maxWeightFilterPhases(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxWeightFilterDimension` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxWeightFilterDimensionAt(long index) { return maxWeightFilterDimension(this.segment(), index); }
+    /// Sets `maxWeightFilterDimension` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxWeightFilterDimensionAt(long index, MemorySegment value) { maxWeightFilterDimension(this.segment(), index, value); return this; }
+    /// Accepts `maxWeightFilterDimension` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxWeightFilterDimensionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxWeightFilterDimensionAt(index))); return this; }
 
-        /// {@return `maxWeightFilterPhases` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxWeightFilterPhasesAt(long index) { return maxWeightFilterPhases(this.segment(), index); }
-        /// Sets `maxWeightFilterPhases` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxWeightFilterPhasesAt(long index, int value) { maxWeightFilterPhases(this.segment(), index, value); return this; }
+    /// {@return `maxBlockMatchRegion` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxBlockMatchRegionAt(long index) { return maxBlockMatchRegion(this.segment(), index); }
+    /// Sets `maxBlockMatchRegion` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBlockMatchRegionAt(long index, MemorySegment value) { maxBlockMatchRegion(this.segment(), index, value); return this; }
+    /// Accepts `maxBlockMatchRegion` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBlockMatchRegionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBlockMatchRegionAt(index))); return this; }
 
-        /// {@return `maxWeightFilterDimension` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxWeightFilterDimensionAt(long index) { return maxWeightFilterDimension(this.segment(), index); }
-        /// Sets `maxWeightFilterDimension` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxWeightFilterDimensionAt(long index, MemorySegment value) { maxWeightFilterDimension(this.segment(), index, value); return this; }
-        /// Accepts `maxWeightFilterDimension` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxWeightFilterDimensionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxWeightFilterDimensionAt(index))); return this; }
+    /// {@return `maxBoxFilterBlockSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxBoxFilterBlockSizeAt(long index) { return maxBoxFilterBlockSize(this.segment(), index); }
+    /// Sets `maxBoxFilterBlockSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBoxFilterBlockSizeAt(long index, MemorySegment value) { maxBoxFilterBlockSize(this.segment(), index, value); return this; }
+    /// Accepts `maxBoxFilterBlockSize` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceImageProcessingPropertiesQCOM maxBoxFilterBlockSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBoxFilterBlockSizeAt(index))); return this; }
 
-        /// {@return `maxBlockMatchRegion` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxBlockMatchRegionAt(long index) { return maxBlockMatchRegion(this.segment(), index); }
-        /// Sets `maxBlockMatchRegion` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxBlockMatchRegionAt(long index, MemorySegment value) { maxBlockMatchRegion(this.segment(), index, value); return this; }
-        /// Accepts `maxBlockMatchRegion` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxBlockMatchRegionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBlockMatchRegionAt(index))); return this; }
-
-        /// {@return `maxBoxFilterBlockSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxBoxFilterBlockSizeAt(long index) { return maxBoxFilterBlockSize(this.segment(), index); }
-        /// Sets `maxBoxFilterBlockSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxBoxFilterBlockSizeAt(long index, MemorySegment value) { maxBoxFilterBlockSize(this.segment(), index, value); return this; }
-        /// Accepts `maxBoxFilterBlockSize` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxBoxFilterBlockSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxBoxFilterBlockSizeAt(index))); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -72,7 +73,7 @@ import overrungl.util.*;
 ///     uint32_t maxImmutableSamplersPerDescriptorSetLayout;
 /// };
 /// ```
-public sealed class VkDeviceObjectReservationCreateInfo extends GroupType {
+public final class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// The struct layout of `VkDeviceObjectReservationCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -379,20 +380,21 @@ public sealed class VkDeviceObjectReservationCreateInfo extends GroupType {
     public static final VarHandle VH_maxImmutableSamplersPerDescriptorSetLayout = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxImmutableSamplersPerDescriptorSetLayout"));
 
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkDeviceObjectReservationCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDeviceObjectReservationCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDeviceObjectReservationCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceObjectReservationCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceObjectReservationCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceObjectReservationCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDeviceObjectReservationCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceObjectReservationCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDeviceObjectReservationCreateInfo` with the given segment.
     ///
@@ -400,18 +402,18 @@ public sealed class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDeviceObjectReservationCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceObjectReservationCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDeviceObjectReservationCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceObjectReservationCreateInfo`
-    public static VkDeviceObjectReservationCreateInfo alloc(SegmentAllocator allocator) { return new VkDeviceObjectReservationCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkDeviceObjectReservationCreateInfo alloc(SegmentAllocator allocator) { return new VkDeviceObjectReservationCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDeviceObjectReservationCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceObjectReservationCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDeviceObjectReservationCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceObjectReservationCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDeviceObjectReservationCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -1665,9 +1667,10 @@ public sealed class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// @return `this`
     public VkDeviceObjectReservationCreateInfo copyFrom(VkDeviceObjectReservationCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDeviceObjectReservationCreateInfo reinterpret(long count) { return new VkDeviceObjectReservationCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -2357,414 +2360,408 @@ public sealed class VkDeviceObjectReservationCreateInfo extends GroupType {
     /// @return `this`
     public VkDeviceObjectReservationCreateInfo maxImmutableSamplersPerDescriptorSetLayout(int value) { maxImmutableSamplersPerDescriptorSetLayout(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDeviceObjectReservationCreateInfo].
-    public static final class Buffer extends VkDeviceObjectReservationCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkDeviceObjectReservationCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceObjectReservationCreateInfo`
+    public VkDeviceObjectReservationCreateInfo asSlice(long index) { return new VkDeviceObjectReservationCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDeviceObjectReservationCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDeviceObjectReservationCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceObjectReservationCreateInfo`
+    public VkDeviceObjectReservationCreateInfo asSlice(long index, long count) { return new VkDeviceObjectReservationCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDeviceObjectReservationCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo at(long index, Consumer<VkDeviceObjectReservationCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDeviceObjectReservationCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDeviceObjectReservationCreateInfo`
-        public VkDeviceObjectReservationCreateInfo asSlice(long index) { return new VkDeviceObjectReservationCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDeviceObjectReservationCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDeviceObjectReservationCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pipelineCacheCreateInfoCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelineCacheCreateInfoCountAt(long index) { return pipelineCacheCreateInfoCount(this.segment(), index); }
+    /// Sets `pipelineCacheCreateInfoCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo pipelineCacheCreateInfoCountAt(long index, int value) { pipelineCacheCreateInfoCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pPipelineCacheCreateInfos` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pPipelineCacheCreateInfosAt(long index) { return pPipelineCacheCreateInfos(this.segment(), index); }
+    /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo pPipelineCacheCreateInfosAt(long index, MemorySegment value) { pPipelineCacheCreateInfos(this.segment(), index, value); return this; }
 
-        /// {@return `pipelineCacheCreateInfoCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelineCacheCreateInfoCountAt(long index) { return pipelineCacheCreateInfoCount(this.segment(), index); }
-        /// Sets `pipelineCacheCreateInfoCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineCacheCreateInfoCountAt(long index, int value) { pipelineCacheCreateInfoCount(this.segment(), index, value); return this; }
+    /// {@return `pipelinePoolSizeCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelinePoolSizeCountAt(long index) { return pipelinePoolSizeCount(this.segment(), index); }
+    /// Sets `pipelinePoolSizeCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo pipelinePoolSizeCountAt(long index, int value) { pipelinePoolSizeCount(this.segment(), index, value); return this; }
 
-        /// {@return `pPipelineCacheCreateInfos` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pPipelineCacheCreateInfosAt(long index) { return pPipelineCacheCreateInfos(this.segment(), index); }
-        /// Sets `pPipelineCacheCreateInfos` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pPipelineCacheCreateInfosAt(long index, MemorySegment value) { pPipelineCacheCreateInfos(this.segment(), index, value); return this; }
+    /// {@return `pPipelinePoolSizes` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pPipelinePoolSizesAt(long index) { return pPipelinePoolSizes(this.segment(), index); }
+    /// Sets `pPipelinePoolSizes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo pPipelinePoolSizesAt(long index, MemorySegment value) { pPipelinePoolSizes(this.segment(), index, value); return this; }
 
-        /// {@return `pipelinePoolSizeCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelinePoolSizeCountAt(long index) { return pipelinePoolSizeCount(this.segment(), index); }
-        /// Sets `pipelinePoolSizeCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelinePoolSizeCountAt(long index, int value) { pipelinePoolSizeCount(this.segment(), index, value); return this; }
+    /// {@return `semaphoreRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int semaphoreRequestCountAt(long index) { return semaphoreRequestCount(this.segment(), index); }
+    /// Sets `semaphoreRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo semaphoreRequestCountAt(long index, int value) { semaphoreRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `pPipelinePoolSizes` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pPipelinePoolSizesAt(long index) { return pPipelinePoolSizes(this.segment(), index); }
-        /// Sets `pPipelinePoolSizes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pPipelinePoolSizesAt(long index, MemorySegment value) { pPipelinePoolSizes(this.segment(), index, value); return this; }
+    /// {@return `commandBufferRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int commandBufferRequestCountAt(long index) { return commandBufferRequestCount(this.segment(), index); }
+    /// Sets `commandBufferRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo commandBufferRequestCountAt(long index, int value) { commandBufferRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `semaphoreRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int semaphoreRequestCountAt(long index) { return semaphoreRequestCount(this.segment(), index); }
-        /// Sets `semaphoreRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer semaphoreRequestCountAt(long index, int value) { semaphoreRequestCount(this.segment(), index, value); return this; }
+    /// {@return `fenceRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int fenceRequestCountAt(long index) { return fenceRequestCount(this.segment(), index); }
+    /// Sets `fenceRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo fenceRequestCountAt(long index, int value) { fenceRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `commandBufferRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int commandBufferRequestCountAt(long index) { return commandBufferRequestCount(this.segment(), index); }
-        /// Sets `commandBufferRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer commandBufferRequestCountAt(long index, int value) { commandBufferRequestCount(this.segment(), index, value); return this; }
+    /// {@return `deviceMemoryRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int deviceMemoryRequestCountAt(long index) { return deviceMemoryRequestCount(this.segment(), index); }
+    /// Sets `deviceMemoryRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo deviceMemoryRequestCountAt(long index, int value) { deviceMemoryRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `fenceRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int fenceRequestCountAt(long index) { return fenceRequestCount(this.segment(), index); }
-        /// Sets `fenceRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fenceRequestCountAt(long index, int value) { fenceRequestCount(this.segment(), index, value); return this; }
+    /// {@return `bufferRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferRequestCountAt(long index) { return bufferRequestCount(this.segment(), index); }
+    /// Sets `bufferRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo bufferRequestCountAt(long index, int value) { bufferRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `deviceMemoryRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int deviceMemoryRequestCountAt(long index) { return deviceMemoryRequestCount(this.segment(), index); }
-        /// Sets `deviceMemoryRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceMemoryRequestCountAt(long index, int value) { deviceMemoryRequestCount(this.segment(), index, value); return this; }
+    /// {@return `imageRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int imageRequestCountAt(long index) { return imageRequestCount(this.segment(), index); }
+    /// Sets `imageRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo imageRequestCountAt(long index, int value) { imageRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `bufferRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferRequestCountAt(long index) { return bufferRequestCount(this.segment(), index); }
-        /// Sets `bufferRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferRequestCountAt(long index, int value) { bufferRequestCount(this.segment(), index, value); return this; }
+    /// {@return `eventRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int eventRequestCountAt(long index) { return eventRequestCount(this.segment(), index); }
+    /// Sets `eventRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo eventRequestCountAt(long index, int value) { eventRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `imageRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int imageRequestCountAt(long index) { return imageRequestCount(this.segment(), index); }
-        /// Sets `imageRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageRequestCountAt(long index, int value) { imageRequestCount(this.segment(), index, value); return this; }
+    /// {@return `queryPoolRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int queryPoolRequestCountAt(long index) { return queryPoolRequestCount(this.segment(), index); }
+    /// Sets `queryPoolRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo queryPoolRequestCountAt(long index, int value) { queryPoolRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `eventRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int eventRequestCountAt(long index) { return eventRequestCount(this.segment(), index); }
-        /// Sets `eventRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer eventRequestCountAt(long index, int value) { eventRequestCount(this.segment(), index, value); return this; }
+    /// {@return `bufferViewRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferViewRequestCountAt(long index) { return bufferViewRequestCount(this.segment(), index); }
+    /// Sets `bufferViewRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo bufferViewRequestCountAt(long index, int value) { bufferViewRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `queryPoolRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int queryPoolRequestCountAt(long index) { return queryPoolRequestCount(this.segment(), index); }
-        /// Sets `queryPoolRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer queryPoolRequestCountAt(long index, int value) { queryPoolRequestCount(this.segment(), index, value); return this; }
+    /// {@return `imageViewRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int imageViewRequestCountAt(long index) { return imageViewRequestCount(this.segment(), index); }
+    /// Sets `imageViewRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo imageViewRequestCountAt(long index, int value) { imageViewRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `bufferViewRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferViewRequestCountAt(long index) { return bufferViewRequestCount(this.segment(), index); }
-        /// Sets `bufferViewRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferViewRequestCountAt(long index, int value) { bufferViewRequestCount(this.segment(), index, value); return this; }
+    /// {@return `layeredImageViewRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int layeredImageViewRequestCountAt(long index) { return layeredImageViewRequestCount(this.segment(), index); }
+    /// Sets `layeredImageViewRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo layeredImageViewRequestCountAt(long index, int value) { layeredImageViewRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `imageViewRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int imageViewRequestCountAt(long index) { return imageViewRequestCount(this.segment(), index); }
-        /// Sets `imageViewRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageViewRequestCountAt(long index, int value) { imageViewRequestCount(this.segment(), index, value); return this; }
+    /// {@return `pipelineCacheRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelineCacheRequestCountAt(long index) { return pipelineCacheRequestCount(this.segment(), index); }
+    /// Sets `pipelineCacheRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo pipelineCacheRequestCountAt(long index, int value) { pipelineCacheRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `layeredImageViewRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int layeredImageViewRequestCountAt(long index) { return layeredImageViewRequestCount(this.segment(), index); }
-        /// Sets `layeredImageViewRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer layeredImageViewRequestCountAt(long index, int value) { layeredImageViewRequestCount(this.segment(), index, value); return this; }
+    /// {@return `pipelineLayoutRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelineLayoutRequestCountAt(long index) { return pipelineLayoutRequestCount(this.segment(), index); }
+    /// Sets `pipelineLayoutRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo pipelineLayoutRequestCountAt(long index, int value) { pipelineLayoutRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `pipelineCacheRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelineCacheRequestCountAt(long index) { return pipelineCacheRequestCount(this.segment(), index); }
-        /// Sets `pipelineCacheRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineCacheRequestCountAt(long index, int value) { pipelineCacheRequestCount(this.segment(), index, value); return this; }
+    /// {@return `renderPassRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int renderPassRequestCountAt(long index) { return renderPassRequestCount(this.segment(), index); }
+    /// Sets `renderPassRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo renderPassRequestCountAt(long index, int value) { renderPassRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `pipelineLayoutRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelineLayoutRequestCountAt(long index) { return pipelineLayoutRequestCount(this.segment(), index); }
-        /// Sets `pipelineLayoutRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineLayoutRequestCountAt(long index, int value) { pipelineLayoutRequestCount(this.segment(), index, value); return this; }
+    /// {@return `graphicsPipelineRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int graphicsPipelineRequestCountAt(long index) { return graphicsPipelineRequestCount(this.segment(), index); }
+    /// Sets `graphicsPipelineRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo graphicsPipelineRequestCountAt(long index, int value) { graphicsPipelineRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `renderPassRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int renderPassRequestCountAt(long index) { return renderPassRequestCount(this.segment(), index); }
-        /// Sets `renderPassRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer renderPassRequestCountAt(long index, int value) { renderPassRequestCount(this.segment(), index, value); return this; }
+    /// {@return `computePipelineRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int computePipelineRequestCountAt(long index) { return computePipelineRequestCount(this.segment(), index); }
+    /// Sets `computePipelineRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo computePipelineRequestCountAt(long index, int value) { computePipelineRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `graphicsPipelineRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int graphicsPipelineRequestCountAt(long index) { return graphicsPipelineRequestCount(this.segment(), index); }
-        /// Sets `graphicsPipelineRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer graphicsPipelineRequestCountAt(long index, int value) { graphicsPipelineRequestCount(this.segment(), index, value); return this; }
+    /// {@return `descriptorSetLayoutRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int descriptorSetLayoutRequestCountAt(long index) { return descriptorSetLayoutRequestCount(this.segment(), index); }
+    /// Sets `descriptorSetLayoutRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutRequestCountAt(long index, int value) { descriptorSetLayoutRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `computePipelineRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int computePipelineRequestCountAt(long index) { return computePipelineRequestCount(this.segment(), index); }
-        /// Sets `computePipelineRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer computePipelineRequestCountAt(long index, int value) { computePipelineRequestCount(this.segment(), index, value); return this; }
+    /// {@return `samplerRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int samplerRequestCountAt(long index) { return samplerRequestCount(this.segment(), index); }
+    /// Sets `samplerRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo samplerRequestCountAt(long index, int value) { samplerRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorSetLayoutRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int descriptorSetLayoutRequestCountAt(long index) { return descriptorSetLayoutRequestCount(this.segment(), index); }
-        /// Sets `descriptorSetLayoutRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorSetLayoutRequestCountAt(long index, int value) { descriptorSetLayoutRequestCount(this.segment(), index, value); return this; }
+    /// {@return `descriptorPoolRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int descriptorPoolRequestCountAt(long index) { return descriptorPoolRequestCount(this.segment(), index); }
+    /// Sets `descriptorPoolRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo descriptorPoolRequestCountAt(long index, int value) { descriptorPoolRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `samplerRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int samplerRequestCountAt(long index) { return samplerRequestCount(this.segment(), index); }
-        /// Sets `samplerRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer samplerRequestCountAt(long index, int value) { samplerRequestCount(this.segment(), index, value); return this; }
+    /// {@return `descriptorSetRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int descriptorSetRequestCountAt(long index) { return descriptorSetRequestCount(this.segment(), index); }
+    /// Sets `descriptorSetRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo descriptorSetRequestCountAt(long index, int value) { descriptorSetRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorPoolRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int descriptorPoolRequestCountAt(long index) { return descriptorPoolRequestCount(this.segment(), index); }
-        /// Sets `descriptorPoolRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorPoolRequestCountAt(long index, int value) { descriptorPoolRequestCount(this.segment(), index, value); return this; }
+    /// {@return `framebufferRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int framebufferRequestCountAt(long index) { return framebufferRequestCount(this.segment(), index); }
+    /// Sets `framebufferRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo framebufferRequestCountAt(long index, int value) { framebufferRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorSetRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int descriptorSetRequestCountAt(long index) { return descriptorSetRequestCount(this.segment(), index); }
-        /// Sets `descriptorSetRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorSetRequestCountAt(long index, int value) { descriptorSetRequestCount(this.segment(), index, value); return this; }
+    /// {@return `commandPoolRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int commandPoolRequestCountAt(long index) { return commandPoolRequestCount(this.segment(), index); }
+    /// Sets `commandPoolRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo commandPoolRequestCountAt(long index, int value) { commandPoolRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `framebufferRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int framebufferRequestCountAt(long index) { return framebufferRequestCount(this.segment(), index); }
-        /// Sets `framebufferRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer framebufferRequestCountAt(long index, int value) { framebufferRequestCount(this.segment(), index, value); return this; }
+    /// {@return `samplerYcbcrConversionRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int samplerYcbcrConversionRequestCountAt(long index) { return samplerYcbcrConversionRequestCount(this.segment(), index); }
+    /// Sets `samplerYcbcrConversionRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo samplerYcbcrConversionRequestCountAt(long index, int value) { samplerYcbcrConversionRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `commandPoolRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int commandPoolRequestCountAt(long index) { return commandPoolRequestCount(this.segment(), index); }
-        /// Sets `commandPoolRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer commandPoolRequestCountAt(long index, int value) { commandPoolRequestCount(this.segment(), index, value); return this; }
+    /// {@return `surfaceRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int surfaceRequestCountAt(long index) { return surfaceRequestCount(this.segment(), index); }
+    /// Sets `surfaceRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo surfaceRequestCountAt(long index, int value) { surfaceRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `samplerYcbcrConversionRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int samplerYcbcrConversionRequestCountAt(long index) { return samplerYcbcrConversionRequestCount(this.segment(), index); }
-        /// Sets `samplerYcbcrConversionRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer samplerYcbcrConversionRequestCountAt(long index, int value) { samplerYcbcrConversionRequestCount(this.segment(), index, value); return this; }
+    /// {@return `swapchainRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int swapchainRequestCountAt(long index) { return swapchainRequestCount(this.segment(), index); }
+    /// Sets `swapchainRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo swapchainRequestCountAt(long index, int value) { swapchainRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `surfaceRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int surfaceRequestCountAt(long index) { return surfaceRequestCount(this.segment(), index); }
-        /// Sets `surfaceRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer surfaceRequestCountAt(long index, int value) { surfaceRequestCount(this.segment(), index, value); return this; }
+    /// {@return `displayModeRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int displayModeRequestCountAt(long index) { return displayModeRequestCount(this.segment(), index); }
+    /// Sets `displayModeRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo displayModeRequestCountAt(long index, int value) { displayModeRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `swapchainRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int swapchainRequestCountAt(long index) { return swapchainRequestCount(this.segment(), index); }
-        /// Sets `swapchainRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer swapchainRequestCountAt(long index, int value) { swapchainRequestCount(this.segment(), index, value); return this; }
+    /// {@return `subpassDescriptionRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int subpassDescriptionRequestCountAt(long index) { return subpassDescriptionRequestCount(this.segment(), index); }
+    /// Sets `subpassDescriptionRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo subpassDescriptionRequestCountAt(long index, int value) { subpassDescriptionRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `displayModeRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int displayModeRequestCountAt(long index) { return displayModeRequestCount(this.segment(), index); }
-        /// Sets `displayModeRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer displayModeRequestCountAt(long index, int value) { displayModeRequestCount(this.segment(), index, value); return this; }
+    /// {@return `attachmentDescriptionRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int attachmentDescriptionRequestCountAt(long index) { return attachmentDescriptionRequestCount(this.segment(), index); }
+    /// Sets `attachmentDescriptionRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo attachmentDescriptionRequestCountAt(long index, int value) { attachmentDescriptionRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `subpassDescriptionRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int subpassDescriptionRequestCountAt(long index) { return subpassDescriptionRequestCount(this.segment(), index); }
-        /// Sets `subpassDescriptionRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subpassDescriptionRequestCountAt(long index, int value) { subpassDescriptionRequestCount(this.segment(), index, value); return this; }
+    /// {@return `descriptorSetLayoutBindingRequestCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int descriptorSetLayoutBindingRequestCountAt(long index) { return descriptorSetLayoutBindingRequestCount(this.segment(), index); }
+    /// Sets `descriptorSetLayoutBindingRequestCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutBindingRequestCountAt(long index, int value) { descriptorSetLayoutBindingRequestCount(this.segment(), index, value); return this; }
 
-        /// {@return `attachmentDescriptionRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int attachmentDescriptionRequestCountAt(long index) { return attachmentDescriptionRequestCount(this.segment(), index); }
-        /// Sets `attachmentDescriptionRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer attachmentDescriptionRequestCountAt(long index, int value) { attachmentDescriptionRequestCount(this.segment(), index, value); return this; }
+    /// {@return `descriptorSetLayoutBindingLimit` at the given index}
+    /// @param index the index of the struct buffer
+    public int descriptorSetLayoutBindingLimitAt(long index) { return descriptorSetLayoutBindingLimit(this.segment(), index); }
+    /// Sets `descriptorSetLayoutBindingLimit` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo descriptorSetLayoutBindingLimitAt(long index, int value) { descriptorSetLayoutBindingLimit(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorSetLayoutBindingRequestCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int descriptorSetLayoutBindingRequestCountAt(long index) { return descriptorSetLayoutBindingRequestCount(this.segment(), index); }
-        /// Sets `descriptorSetLayoutBindingRequestCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorSetLayoutBindingRequestCountAt(long index, int value) { descriptorSetLayoutBindingRequestCount(this.segment(), index, value); return this; }
+    /// {@return `maxImageViewMipLevels` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImageViewMipLevelsAt(long index) { return maxImageViewMipLevels(this.segment(), index); }
+    /// Sets `maxImageViewMipLevels` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo maxImageViewMipLevelsAt(long index, int value) { maxImageViewMipLevels(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorSetLayoutBindingLimit` at the given index}
-        /// @param index the index of the struct buffer
-        public int descriptorSetLayoutBindingLimitAt(long index) { return descriptorSetLayoutBindingLimit(this.segment(), index); }
-        /// Sets `descriptorSetLayoutBindingLimit` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorSetLayoutBindingLimitAt(long index, int value) { descriptorSetLayoutBindingLimit(this.segment(), index, value); return this; }
+    /// {@return `maxImageViewArrayLayers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImageViewArrayLayersAt(long index) { return maxImageViewArrayLayers(this.segment(), index); }
+    /// Sets `maxImageViewArrayLayers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo maxImageViewArrayLayersAt(long index, int value) { maxImageViewArrayLayers(this.segment(), index, value); return this; }
 
-        /// {@return `maxImageViewMipLevels` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImageViewMipLevelsAt(long index) { return maxImageViewMipLevels(this.segment(), index); }
-        /// Sets `maxImageViewMipLevels` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageViewMipLevelsAt(long index, int value) { maxImageViewMipLevels(this.segment(), index, value); return this; }
+    /// {@return `maxLayeredImageViewMipLevels` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxLayeredImageViewMipLevelsAt(long index) { return maxLayeredImageViewMipLevels(this.segment(), index); }
+    /// Sets `maxLayeredImageViewMipLevels` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo maxLayeredImageViewMipLevelsAt(long index, int value) { maxLayeredImageViewMipLevels(this.segment(), index, value); return this; }
 
-        /// {@return `maxImageViewArrayLayers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImageViewArrayLayersAt(long index) { return maxImageViewArrayLayers(this.segment(), index); }
-        /// Sets `maxImageViewArrayLayers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageViewArrayLayersAt(long index, int value) { maxImageViewArrayLayers(this.segment(), index, value); return this; }
+    /// {@return `maxOcclusionQueriesPerPool` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxOcclusionQueriesPerPoolAt(long index) { return maxOcclusionQueriesPerPool(this.segment(), index); }
+    /// Sets `maxOcclusionQueriesPerPool` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo maxOcclusionQueriesPerPoolAt(long index, int value) { maxOcclusionQueriesPerPool(this.segment(), index, value); return this; }
 
-        /// {@return `maxLayeredImageViewMipLevels` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxLayeredImageViewMipLevelsAt(long index) { return maxLayeredImageViewMipLevels(this.segment(), index); }
-        /// Sets `maxLayeredImageViewMipLevels` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxLayeredImageViewMipLevelsAt(long index, int value) { maxLayeredImageViewMipLevels(this.segment(), index, value); return this; }
+    /// {@return `maxPipelineStatisticsQueriesPerPool` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPipelineStatisticsQueriesPerPoolAt(long index) { return maxPipelineStatisticsQueriesPerPool(this.segment(), index); }
+    /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo maxPipelineStatisticsQueriesPerPoolAt(long index, int value) { maxPipelineStatisticsQueriesPerPool(this.segment(), index, value); return this; }
 
-        /// {@return `maxOcclusionQueriesPerPool` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxOcclusionQueriesPerPoolAt(long index) { return maxOcclusionQueriesPerPool(this.segment(), index); }
-        /// Sets `maxOcclusionQueriesPerPool` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxOcclusionQueriesPerPoolAt(long index, int value) { maxOcclusionQueriesPerPool(this.segment(), index, value); return this; }
+    /// {@return `maxTimestampQueriesPerPool` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTimestampQueriesPerPoolAt(long index) { return maxTimestampQueriesPerPool(this.segment(), index); }
+    /// Sets `maxTimestampQueriesPerPool` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo maxTimestampQueriesPerPoolAt(long index, int value) { maxTimestampQueriesPerPool(this.segment(), index, value); return this; }
 
-        /// {@return `maxPipelineStatisticsQueriesPerPool` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPipelineStatisticsQueriesPerPoolAt(long index) { return maxPipelineStatisticsQueriesPerPool(this.segment(), index); }
-        /// Sets `maxPipelineStatisticsQueriesPerPool` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPipelineStatisticsQueriesPerPoolAt(long index, int value) { maxPipelineStatisticsQueriesPerPool(this.segment(), index, value); return this; }
+    /// {@return `maxImmutableSamplersPerDescriptorSetLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImmutableSamplersPerDescriptorSetLayoutAt(long index) { return maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index); }
+    /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceObjectReservationCreateInfo maxImmutableSamplersPerDescriptorSetLayoutAt(long index, int value) { maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index, value); return this; }
 
-        /// {@return `maxTimestampQueriesPerPool` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTimestampQueriesPerPoolAt(long index) { return maxTimestampQueriesPerPool(this.segment(), index); }
-        /// Sets `maxTimestampQueriesPerPool` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTimestampQueriesPerPoolAt(long index, int value) { maxTimestampQueriesPerPool(this.segment(), index, value); return this; }
-
-        /// {@return `maxImmutableSamplersPerDescriptorSetLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImmutableSamplersPerDescriptorSetLayoutAt(long index) { return maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index); }
-        /// Sets `maxImmutableSamplersPerDescriptorSetLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImmutableSamplersPerDescriptorSetLayoutAt(long index, int value) { maxImmutableSamplersPerDescriptorSetLayout(this.segment(), index, value); return this; }
-
-    }
 }

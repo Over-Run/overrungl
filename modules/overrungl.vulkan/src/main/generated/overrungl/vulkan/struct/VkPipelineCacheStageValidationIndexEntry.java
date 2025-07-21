@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     uint64_t codeOffset;
 /// };
 /// ```
-public sealed class VkPipelineCacheStageValidationIndexEntry extends GroupType {
+public final class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     /// The struct layout of `VkPipelineCacheStageValidationIndexEntry`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("codeSize"),
@@ -51,20 +52,21 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     public static final VarHandle VH_codeOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("codeOffset"));
 
     /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineCacheStageValidationIndexEntry(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineCacheStageValidationIndexEntry(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineCacheStageValidationIndexEntry of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheStageValidationIndexEntry(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCacheStageValidationIndexEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheStageValidationIndexEntry(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineCacheStageValidationIndexEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheStageValidationIndexEntry(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineCacheStageValidationIndexEntry` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineCacheStageValidationIndexEntry ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheStageValidationIndexEntry(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineCacheStageValidationIndexEntry` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineCacheStageValidationIndexEntry`
-    public static VkPipelineCacheStageValidationIndexEntry alloc(SegmentAllocator allocator) { return new VkPipelineCacheStageValidationIndexEntry(allocator.allocate(LAYOUT)); }
+    public static VkPipelineCacheStageValidationIndexEntry alloc(SegmentAllocator allocator) { return new VkPipelineCacheStageValidationIndexEntry(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineCacheStageValidationIndexEntry` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineCacheStageValidationIndexEntry`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineCacheStageValidationIndexEntry alloc(SegmentAllocator allocator, long count) { return new VkPipelineCacheStageValidationIndexEntry(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineCacheStageValidationIndexEntry` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -107,9 +109,10 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     /// @return `this`
     public VkPipelineCacheStageValidationIndexEntry copyFrom(VkPipelineCacheStageValidationIndexEntry src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineCacheStageValidationIndexEntry reinterpret(long count) { return new VkPipelineCacheStageValidationIndexEntry(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `codeSize` at the given index}
     /// @param segment the segment of the struct
@@ -143,45 +146,39 @@ public sealed class VkPipelineCacheStageValidationIndexEntry extends GroupType {
     /// @return `this`
     public VkPipelineCacheStageValidationIndexEntry codeOffset(long value) { codeOffset(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineCacheStageValidationIndexEntry].
-    public static final class Buffer extends VkPipelineCacheStageValidationIndexEntry {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineCacheStageValidationIndexEntry`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineCacheStageValidationIndexEntry`
+    public VkPipelineCacheStageValidationIndexEntry asSlice(long index) { return new VkPipelineCacheStageValidationIndexEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineCacheStageValidationIndexEntry.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineCacheStageValidationIndexEntry`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineCacheStageValidationIndexEntry`
+    public VkPipelineCacheStageValidationIndexEntry asSlice(long index, long count) { return new VkPipelineCacheStageValidationIndexEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineCacheStageValidationIndexEntry` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineCacheStageValidationIndexEntry at(long index, Consumer<VkPipelineCacheStageValidationIndexEntry> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineCacheStageValidationIndexEntry`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineCacheStageValidationIndexEntry`
-        public VkPipelineCacheStageValidationIndexEntry asSlice(long index) { return new VkPipelineCacheStageValidationIndexEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `codeSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long codeSizeAt(long index) { return codeSize(this.segment(), index); }
+    /// Sets `codeSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheStageValidationIndexEntry codeSizeAt(long index, long value) { codeSize(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineCacheStageValidationIndexEntry`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineCacheStageValidationIndexEntry`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `codeOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long codeOffsetAt(long index) { return codeOffset(this.segment(), index); }
+    /// Sets `codeOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheStageValidationIndexEntry codeOffsetAt(long index, long value) { codeOffset(this.segment(), index, value); return this; }
 
-        /// {@return `codeSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long codeSizeAt(long index) { return codeSize(this.segment(), index); }
-        /// Sets `codeSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer codeSizeAt(long index, long value) { codeSize(this.segment(), index, value); return this; }
-
-        /// {@return `codeOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long codeOffsetAt(long index) { return codeOffset(this.segment(), index); }
-        /// Sets `codeOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer codeOffsetAt(long index, long value) { codeOffset(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -35,7 +35,7 @@ import java.util.function.*;
 ///     int16_t FeatureData[8][4];
 /// };
 /// ```
-public sealed class StdVideoVP9Segmentation extends GroupType {
+public final class StdVideoVP9Segmentation extends GroupType {
     /// The struct layout of `StdVideoVP9Segmentation`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoVP9SegmentationFlags.LAYOUT.withName("flags"),
@@ -74,20 +74,21 @@ public sealed class StdVideoVP9Segmentation extends GroupType {
     public static final VarHandle VH_FeatureData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("FeatureData"), PathElement.sequenceElement(), PathElement.sequenceElement());
 
     /// Creates `StdVideoVP9Segmentation` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoVP9Segmentation(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoVP9Segmentation(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoVP9Segmentation` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoVP9Segmentation of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9Segmentation(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoVP9Segmentation` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoVP9Segmentation ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9Segmentation(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoVP9Segmentation ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9Segmentation(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoVP9Segmentation` with the given segment.
     ///
@@ -95,18 +96,18 @@ public sealed class StdVideoVP9Segmentation extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoVP9Segmentation ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9Segmentation(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoVP9Segmentation` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoVP9Segmentation`
-    public static StdVideoVP9Segmentation alloc(SegmentAllocator allocator) { return new StdVideoVP9Segmentation(allocator.allocate(LAYOUT)); }
+    public static StdVideoVP9Segmentation alloc(SegmentAllocator allocator) { return new StdVideoVP9Segmentation(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoVP9Segmentation` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoVP9Segmentation`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoVP9Segmentation alloc(SegmentAllocator allocator, long count) { return new StdVideoVP9Segmentation(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoVP9Segmentation` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -163,9 +164,10 @@ public sealed class StdVideoVP9Segmentation extends GroupType {
     /// @return `this`
     public StdVideoVP9Segmentation copyFrom(StdVideoVP9Segmentation src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoVP9Segmentation reinterpret(long count) { return new StdVideoVP9Segmentation(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -331,119 +333,113 @@ public sealed class StdVideoVP9Segmentation extends GroupType {
     /// @return `this`
     public StdVideoVP9Segmentation FeatureData(long index0, long index1, short value) { FeatureData(this.segment(), 0L, index0, index1, value); return this; }
 
-    /// A buffer of [StdVideoVP9Segmentation].
-    public static final class Buffer extends StdVideoVP9Segmentation {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoVP9Segmentation`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoVP9Segmentation`
+    public StdVideoVP9Segmentation asSlice(long index) { return new StdVideoVP9Segmentation(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoVP9Segmentation.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoVP9Segmentation`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoVP9Segmentation`
+    public StdVideoVP9Segmentation asSlice(long index, long count) { return new StdVideoVP9Segmentation(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoVP9Segmentation` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoVP9Segmentation at(long index, Consumer<StdVideoVP9Segmentation> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoVP9Segmentation`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoVP9Segmentation`
-        public StdVideoVP9Segmentation asSlice(long index) { return new StdVideoVP9Segmentation(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9Segmentation flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoVP9Segmentation flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoVP9SegmentationFlags> func) { func.accept(overrungl.vulkan.video.StdVideoVP9SegmentationFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoVP9Segmentation`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoVP9Segmentation`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoVP9SegmentationFlags> func) { func.accept(overrungl.vulkan.video.StdVideoVP9SegmentationFlags.of(flagsAt(index))); return this; }
-
-        /// {@return `segmentation_tree_probs` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment segmentation_tree_probsAt(long index) { return segmentation_tree_probs(this.segment(), index); }
-        /// {@return `segmentation_tree_probs` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `segmentation_tree_probs` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment segmentation_tree_probsAt(long index) { return segmentation_tree_probs(this.segment(), index); }
+    /// {@return `segmentation_tree_probs` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte segmentation_tree_probsAt(long index, long index0) { return segmentation_tree_probs(this.segment(), index, index0); }
-        /// Sets `segmentation_tree_probs` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer segmentation_tree_probsAt(long index, MemorySegment value) { segmentation_tree_probs(this.segment(), index, value); return this; }
-        /// Sets `segmentation_tree_probs` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer segmentation_tree_probsAt(long index, long index0, byte value) { segmentation_tree_probs(this.segment(), index, index0, value); return this; }
+    /// Sets `segmentation_tree_probs` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9Segmentation segmentation_tree_probsAt(long index, MemorySegment value) { segmentation_tree_probs(this.segment(), index, value); return this; }
+    /// Sets `segmentation_tree_probs` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9Segmentation segmentation_tree_probsAt(long index, long index0, byte value) { segmentation_tree_probs(this.segment(), index, index0, value); return this; }
 
-        /// {@return `segmentation_pred_prob` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment segmentation_pred_probAt(long index) { return segmentation_pred_prob(this.segment(), index); }
-        /// {@return `segmentation_pred_prob` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `segmentation_pred_prob` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment segmentation_pred_probAt(long index) { return segmentation_pred_prob(this.segment(), index); }
+    /// {@return `segmentation_pred_prob` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte segmentation_pred_probAt(long index, long index0) { return segmentation_pred_prob(this.segment(), index, index0); }
-        /// Sets `segmentation_pred_prob` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer segmentation_pred_probAt(long index, MemorySegment value) { segmentation_pred_prob(this.segment(), index, value); return this; }
-        /// Sets `segmentation_pred_prob` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer segmentation_pred_probAt(long index, long index0, byte value) { segmentation_pred_prob(this.segment(), index, index0, value); return this; }
+    /// Sets `segmentation_pred_prob` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9Segmentation segmentation_pred_probAt(long index, MemorySegment value) { segmentation_pred_prob(this.segment(), index, value); return this; }
+    /// Sets `segmentation_pred_prob` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9Segmentation segmentation_pred_probAt(long index, long index0, byte value) { segmentation_pred_prob(this.segment(), index, index0, value); return this; }
 
-        /// {@return `FeatureEnabled` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment FeatureEnabledAt(long index) { return FeatureEnabled(this.segment(), index); }
-        /// {@return `FeatureEnabled` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `FeatureEnabled` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment FeatureEnabledAt(long index) { return FeatureEnabled(this.segment(), index); }
+    /// {@return `FeatureEnabled` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte FeatureEnabledAt(long index, long index0) { return FeatureEnabled(this.segment(), index, index0); }
-        /// Sets `FeatureEnabled` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer FeatureEnabledAt(long index, MemorySegment value) { FeatureEnabled(this.segment(), index, value); return this; }
-        /// Sets `FeatureEnabled` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer FeatureEnabledAt(long index, long index0, byte value) { FeatureEnabled(this.segment(), index, index0, value); return this; }
+    /// Sets `FeatureEnabled` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9Segmentation FeatureEnabledAt(long index, MemorySegment value) { FeatureEnabled(this.segment(), index, value); return this; }
+    /// Sets `FeatureEnabled` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9Segmentation FeatureEnabledAt(long index, long index0, byte value) { FeatureEnabled(this.segment(), index, index0, value); return this; }
 
-        /// {@return `FeatureData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment FeatureDataAt(long index) { return FeatureData(this.segment(), index); }
-        /// {@return `FeatureData` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
+    /// {@return `FeatureData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment FeatureDataAt(long index) { return FeatureData(this.segment(), index); }
+    /// {@return `FeatureData` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
         public short FeatureDataAt(long index, long index0, long index1) { return FeatureData(this.segment(), index, index0, index1); }
-        /// Sets `FeatureData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer FeatureDataAt(long index, MemorySegment value) { FeatureData(this.segment(), index, value); return this; }
-        /// Sets `FeatureData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer FeatureDataAt(long index, long index0, long index1, short value) { FeatureData(this.segment(), index, index0, index1, value); return this; }
+    /// Sets `FeatureData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9Segmentation FeatureDataAt(long index, MemorySegment value) { FeatureData(this.segment(), index, value); return this; }
+    /// Sets `FeatureData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9Segmentation FeatureDataAt(long index, long index0, long index1, short value) { FeatureData(this.segment(), index, index0, index1, value); return this; }
 
-    }
 }

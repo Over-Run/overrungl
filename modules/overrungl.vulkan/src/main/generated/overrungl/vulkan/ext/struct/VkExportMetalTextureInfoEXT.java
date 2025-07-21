@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     (void*) MTLTexture_id mtlTexture;
 /// };
 /// ```
-public sealed class VkExportMetalTextureInfoEXT extends GroupType {
+public final class VkExportMetalTextureInfoEXT extends GroupType {
     /// The struct layout of `VkExportMetalTextureInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkExportMetalTextureInfoEXT extends GroupType {
     public static final VarHandle VH_mtlTexture = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mtlTexture"));
 
     /// Creates `VkExportMetalTextureInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkExportMetalTextureInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkExportMetalTextureInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkExportMetalTextureInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkExportMetalTextureInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalTextureInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExportMetalTextureInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMetalTextureInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalTextureInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkExportMetalTextureInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalTextureInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkExportMetalTextureInfoEXT` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkExportMetalTextureInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkExportMetalTextureInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalTextureInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkExportMetalTextureInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExportMetalTextureInfoEXT`
-    public static VkExportMetalTextureInfoEXT alloc(SegmentAllocator allocator) { return new VkExportMetalTextureInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkExportMetalTextureInfoEXT alloc(SegmentAllocator allocator) { return new VkExportMetalTextureInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkExportMetalTextureInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExportMetalTextureInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkExportMetalTextureInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalTextureInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkExportMetalTextureInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkExportMetalTextureInfoEXT extends GroupType {
     /// @return `this`
     public VkExportMetalTextureInfoEXT copyFrom(VkExportMetalTextureInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkExportMetalTextureInfoEXT reinterpret(long count) { return new VkExportMetalTextureInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkExportMetalTextureInfoEXT extends GroupType {
     /// @return `this`
     public VkExportMetalTextureInfoEXT mtlTexture(MemorySegment value) { mtlTexture(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkExportMetalTextureInfoEXT].
-    public static final class Buffer extends VkExportMetalTextureInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkExportMetalTextureInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExportMetalTextureInfoEXT`
+    public VkExportMetalTextureInfoEXT asSlice(long index) { return new VkExportMetalTextureInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkExportMetalTextureInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkExportMetalTextureInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExportMetalTextureInfoEXT`
+    public VkExportMetalTextureInfoEXT asSlice(long index, long count) { return new VkExportMetalTextureInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkExportMetalTextureInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkExportMetalTextureInfoEXT at(long index, Consumer<VkExportMetalTextureInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkExportMetalTextureInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkExportMetalTextureInfoEXT`
-        public VkExportMetalTextureInfoEXT asSlice(long index) { return new VkExportMetalTextureInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalTextureInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkExportMetalTextureInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkExportMetalTextureInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalTextureInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `image` at the given index}
+    /// @param index the index of the struct buffer
+    public long imageAt(long index) { return image(this.segment(), index); }
+    /// Sets `image` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalTextureInfoEXT imageAt(long index, long value) { image(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `imageView` at the given index}
+    /// @param index the index of the struct buffer
+    public long imageViewAt(long index) { return imageView(this.segment(), index); }
+    /// Sets `imageView` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalTextureInfoEXT imageViewAt(long index, long value) { imageView(this.segment(), index, value); return this; }
 
-        /// {@return `image` at the given index}
-        /// @param index the index of the struct buffer
-        public long imageAt(long index) { return image(this.segment(), index); }
-        /// Sets `image` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageAt(long index, long value) { image(this.segment(), index, value); return this; }
+    /// {@return `bufferView` at the given index}
+    /// @param index the index of the struct buffer
+    public long bufferViewAt(long index) { return bufferView(this.segment(), index); }
+    /// Sets `bufferView` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalTextureInfoEXT bufferViewAt(long index, long value) { bufferView(this.segment(), index, value); return this; }
 
-        /// {@return `imageView` at the given index}
-        /// @param index the index of the struct buffer
-        public long imageViewAt(long index) { return imageView(this.segment(), index); }
-        /// Sets `imageView` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageViewAt(long index, long value) { imageView(this.segment(), index, value); return this; }
+    /// {@return `plane` at the given index}
+    /// @param index the index of the struct buffer
+    public int planeAt(long index) { return plane(this.segment(), index); }
+    /// Sets `plane` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalTextureInfoEXT planeAt(long index, int value) { plane(this.segment(), index, value); return this; }
 
-        /// {@return `bufferView` at the given index}
-        /// @param index the index of the struct buffer
-        public long bufferViewAt(long index) { return bufferView(this.segment(), index); }
-        /// Sets `bufferView` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferViewAt(long index, long value) { bufferView(this.segment(), index, value); return this; }
+    /// {@return `mtlTexture` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment mtlTextureAt(long index) { return mtlTexture(this.segment(), index); }
+    /// Sets `mtlTexture` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalTextureInfoEXT mtlTextureAt(long index, MemorySegment value) { mtlTexture(this.segment(), index, value); return this; }
 
-        /// {@return `plane` at the given index}
-        /// @param index the index of the struct buffer
-        public int planeAt(long index) { return plane(this.segment(), index); }
-        /// Sets `plane` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer planeAt(long index, int value) { plane(this.segment(), index, value); return this; }
-
-        /// {@return `mtlTexture` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment mtlTextureAt(long index) { return mtlTexture(this.segment(), index); }
-        /// Sets `mtlTexture` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer mtlTextureAt(long index, MemorySegment value) { mtlTexture(this.segment(), index, value); return this; }
-
-    }
 }

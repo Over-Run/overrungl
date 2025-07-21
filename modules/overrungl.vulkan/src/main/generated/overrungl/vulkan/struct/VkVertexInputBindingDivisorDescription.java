@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     uint32_t divisor;
 /// };
 /// ```
-public sealed class VkVertexInputBindingDivisorDescription extends GroupType {
+public final class VkVertexInputBindingDivisorDescription extends GroupType {
     /// The struct layout of `VkVertexInputBindingDivisorDescription`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("binding"),
@@ -51,20 +52,21 @@ public sealed class VkVertexInputBindingDivisorDescription extends GroupType {
     public static final VarHandle VH_divisor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("divisor"));
 
     /// Creates `VkVertexInputBindingDivisorDescription` with the given segment.
-    /// @param segment the memory segment
-    public VkVertexInputBindingDivisorDescription(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVertexInputBindingDivisorDescription(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVertexInputBindingDivisorDescription` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVertexInputBindingDivisorDescription of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVertexInputBindingDivisorDescription(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVertexInputBindingDivisorDescription` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVertexInputBindingDivisorDescription ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVertexInputBindingDivisorDescription(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVertexInputBindingDivisorDescription ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVertexInputBindingDivisorDescription(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVertexInputBindingDivisorDescription` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkVertexInputBindingDivisorDescription extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVertexInputBindingDivisorDescription ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVertexInputBindingDivisorDescription(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVertexInputBindingDivisorDescription` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVertexInputBindingDivisorDescription`
-    public static VkVertexInputBindingDivisorDescription alloc(SegmentAllocator allocator) { return new VkVertexInputBindingDivisorDescription(allocator.allocate(LAYOUT)); }
+    public static VkVertexInputBindingDivisorDescription alloc(SegmentAllocator allocator) { return new VkVertexInputBindingDivisorDescription(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVertexInputBindingDivisorDescription` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVertexInputBindingDivisorDescription`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVertexInputBindingDivisorDescription alloc(SegmentAllocator allocator, long count) { return new VkVertexInputBindingDivisorDescription(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVertexInputBindingDivisorDescription` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -107,9 +109,10 @@ public sealed class VkVertexInputBindingDivisorDescription extends GroupType {
     /// @return `this`
     public VkVertexInputBindingDivisorDescription copyFrom(VkVertexInputBindingDivisorDescription src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVertexInputBindingDivisorDescription reinterpret(long count) { return new VkVertexInputBindingDivisorDescription(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `binding` at the given index}
     /// @param segment the segment of the struct
@@ -143,45 +146,39 @@ public sealed class VkVertexInputBindingDivisorDescription extends GroupType {
     /// @return `this`
     public VkVertexInputBindingDivisorDescription divisor(int value) { divisor(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkVertexInputBindingDivisorDescription].
-    public static final class Buffer extends VkVertexInputBindingDivisorDescription {
-        private final long elementCount;
+    /// Creates a slice of `VkVertexInputBindingDivisorDescription`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVertexInputBindingDivisorDescription`
+    public VkVertexInputBindingDivisorDescription asSlice(long index) { return new VkVertexInputBindingDivisorDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVertexInputBindingDivisorDescription.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVertexInputBindingDivisorDescription`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVertexInputBindingDivisorDescription`
+    public VkVertexInputBindingDivisorDescription asSlice(long index, long count) { return new VkVertexInputBindingDivisorDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVertexInputBindingDivisorDescription` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVertexInputBindingDivisorDescription at(long index, Consumer<VkVertexInputBindingDivisorDescription> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVertexInputBindingDivisorDescription`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVertexInputBindingDivisorDescription`
-        public VkVertexInputBindingDivisorDescription asSlice(long index) { return new VkVertexInputBindingDivisorDescription(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `binding` at the given index}
+    /// @param index the index of the struct buffer
+    public int bindingAt(long index) { return binding(this.segment(), index); }
+    /// Sets `binding` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVertexInputBindingDivisorDescription bindingAt(long index, int value) { binding(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVertexInputBindingDivisorDescription`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVertexInputBindingDivisorDescription`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `divisor` at the given index}
+    /// @param index the index of the struct buffer
+    public int divisorAt(long index) { return divisor(this.segment(), index); }
+    /// Sets `divisor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVertexInputBindingDivisorDescription divisorAt(long index, int value) { divisor(this.segment(), index, value); return this; }
 
-        /// {@return `binding` at the given index}
-        /// @param index the index of the struct buffer
-        public int bindingAt(long index) { return binding(this.segment(), index); }
-        /// Sets `binding` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bindingAt(long index, int value) { binding(this.segment(), index, value); return this; }
-
-        /// {@return `divisor` at the given index}
-        /// @param index the index of the struct buffer
-        public int divisorAt(long index) { return divisor(this.segment(), index); }
-        /// Sets `divisor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer divisorAt(long index, int value) { divisor(this.segment(), index, value); return this; }
-
-    }
 }

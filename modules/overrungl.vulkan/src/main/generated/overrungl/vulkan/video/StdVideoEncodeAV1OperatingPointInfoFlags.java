@@ -21,6 +21,7 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint32_t reserved : 29;
 /// };
 /// ```
-public sealed class StdVideoEncodeAV1OperatingPointInfoFlags extends GroupType {
+public final class StdVideoEncodeAV1OperatingPointInfoFlags extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1OperatingPointInfoFlags`.
     public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("decoder_model_present_for_this_op"), 1,
@@ -43,20 +44,21 @@ public sealed class StdVideoEncodeAV1OperatingPointInfoFlags extends GroupType {
     );
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfoFlags` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoEncodeAV1OperatingPointInfoFlags(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoEncodeAV1OperatingPointInfoFlags(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfoFlags` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoEncodeAV1OperatingPointInfoFlags of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeAV1OperatingPointInfoFlags(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfoFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeAV1OperatingPointInfoFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeAV1OperatingPointInfoFlags(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoEncodeAV1OperatingPointInfoFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeAV1OperatingPointInfoFlags(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfoFlags` with the given segment.
     ///
@@ -64,49 +66,44 @@ public sealed class StdVideoEncodeAV1OperatingPointInfoFlags extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoEncodeAV1OperatingPointInfoFlags ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeAV1OperatingPointInfoFlags(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoEncodeAV1OperatingPointInfoFlags` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeAV1OperatingPointInfoFlags`
-    public static StdVideoEncodeAV1OperatingPointInfoFlags alloc(SegmentAllocator allocator) { return new StdVideoEncodeAV1OperatingPointInfoFlags(allocator.allocate(LAYOUT)); }
+    public static StdVideoEncodeAV1OperatingPointInfoFlags alloc(SegmentAllocator allocator) { return new StdVideoEncodeAV1OperatingPointInfoFlags(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoEncodeAV1OperatingPointInfoFlags` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeAV1OperatingPointInfoFlags`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoEncodeAV1OperatingPointInfoFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeAV1OperatingPointInfoFlags(allocator.allocate(LAYOUT, count), count); }
 
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
     public StdVideoEncodeAV1OperatingPointInfoFlags copyFrom(StdVideoEncodeAV1OperatingPointInfoFlags src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoEncodeAV1OperatingPointInfoFlags reinterpret(long count) { return new StdVideoEncodeAV1OperatingPointInfoFlags(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
-    /// A buffer of [StdVideoEncodeAV1OperatingPointInfoFlags].
-    public static final class Buffer extends StdVideoEncodeAV1OperatingPointInfoFlags {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoEncodeAV1OperatingPointInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeAV1OperatingPointInfoFlags`
+    public StdVideoEncodeAV1OperatingPointInfoFlags asSlice(long index) { return new StdVideoEncodeAV1OperatingPointInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoEncodeAV1OperatingPointInfoFlags.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoEncodeAV1OperatingPointInfoFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeAV1OperatingPointInfoFlags`
+    public StdVideoEncodeAV1OperatingPointInfoFlags asSlice(long index, long count) { return new StdVideoEncodeAV1OperatingPointInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoEncodeAV1OperatingPointInfoFlags` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfoFlags at(long index, Consumer<StdVideoEncodeAV1OperatingPointInfoFlags> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoEncodeAV1OperatingPointInfoFlags`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoEncodeAV1OperatingPointInfoFlags`
-        public StdVideoEncodeAV1OperatingPointInfoFlags asSlice(long index) { return new StdVideoEncodeAV1OperatingPointInfoFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
-
-        /// Creates a slice of `StdVideoEncodeAV1OperatingPointInfoFlags`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoEncodeAV1OperatingPointInfoFlags`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    }
 }

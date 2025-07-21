@@ -21,9 +21,9 @@ package overrungl.vulkan.fuchsia.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -38,7 +38,7 @@ import java.util.function.*;
 ///     const VkSysmemColorSpaceFUCHSIA* pColorSpaces;
 /// };
 /// ```
-public sealed class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
+public final class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// The struct layout of `VkImageFormatConstraintsInfoFUCHSIA`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -98,20 +98,21 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     public static final VarHandle VH_pColorSpaces = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorSpaces"));
 
     /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
-    /// @param segment the memory segment
-    public VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkImageFormatConstraintsInfoFUCHSIA(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkImageFormatConstraintsInfoFUCHSIA of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatConstraintsInfoFUCHSIA(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageFormatConstraintsInfoFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkImageFormatConstraintsInfoFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkImageFormatConstraintsInfoFUCHSIA` with the given segment.
     ///
@@ -119,18 +120,18 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkImageFormatConstraintsInfoFUCHSIA ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkImageFormatConstraintsInfoFUCHSIA` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImageFormatConstraintsInfoFUCHSIA`
-    public static VkImageFormatConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator) { return new VkImageFormatConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT)); }
+    public static VkImageFormatConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator) { return new VkImageFormatConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkImageFormatConstraintsInfoFUCHSIA` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageFormatConstraintsInfoFUCHSIA`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkImageFormatConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImageFormatConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkImageFormatConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -229,9 +230,10 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// @return `this`
     public VkImageFormatConstraintsInfoFUCHSIA copyFrom(VkImageFormatConstraintsInfoFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkImageFormatConstraintsInfoFUCHSIA reinterpret(long count) { return new VkImageFormatConstraintsInfoFUCHSIA(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -365,104 +367,98 @@ public sealed class VkImageFormatConstraintsInfoFUCHSIA extends GroupType {
     /// @return `this`
     public VkImageFormatConstraintsInfoFUCHSIA pColorSpaces(MemorySegment value) { pColorSpaces(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkImageFormatConstraintsInfoFUCHSIA].
-    public static final class Buffer extends VkImageFormatConstraintsInfoFUCHSIA {
-        private final long elementCount;
+    /// Creates a slice of `VkImageFormatConstraintsInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageFormatConstraintsInfoFUCHSIA`
+    public VkImageFormatConstraintsInfoFUCHSIA asSlice(long index) { return new VkImageFormatConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkImageFormatConstraintsInfoFUCHSIA.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkImageFormatConstraintsInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageFormatConstraintsInfoFUCHSIA`
+    public VkImageFormatConstraintsInfoFUCHSIA asSlice(long index, long count) { return new VkImageFormatConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkImageFormatConstraintsInfoFUCHSIA` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA at(long index, Consumer<VkImageFormatConstraintsInfoFUCHSIA> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkImageFormatConstraintsInfoFUCHSIA`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkImageFormatConstraintsInfoFUCHSIA`
-        public VkImageFormatConstraintsInfoFUCHSIA asSlice(long index) { return new VkImageFormatConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkImageFormatConstraintsInfoFUCHSIA`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkImageFormatConstraintsInfoFUCHSIA`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `imageCreateInfo` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment imageCreateInfoAt(long index) { return imageCreateInfo(this.segment(), index); }
+    /// Sets `imageCreateInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfoAt(long index, MemorySegment value) { imageCreateInfo(this.segment(), index, value); return this; }
+    /// Accepts `imageCreateInfo` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA imageCreateInfoAt(long index, Consumer<overrungl.vulkan.struct.VkImageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkImageCreateInfo.of(imageCreateInfoAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `requiredFormatFeatures` at the given index}
+    /// @param index the index of the struct buffer
+    public int requiredFormatFeaturesAt(long index) { return requiredFormatFeatures(this.segment(), index); }
+    /// Sets `requiredFormatFeatures` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA requiredFormatFeaturesAt(long index, int value) { requiredFormatFeatures(this.segment(), index, value); return this; }
 
-        /// {@return `imageCreateInfo` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment imageCreateInfoAt(long index) { return imageCreateInfo(this.segment(), index); }
-        /// Sets `imageCreateInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageCreateInfoAt(long index, MemorySegment value) { imageCreateInfo(this.segment(), index, value); return this; }
-        /// Accepts `imageCreateInfo` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer imageCreateInfoAt(long index, Consumer<overrungl.vulkan.struct.VkImageCreateInfo> func) { func.accept(overrungl.vulkan.struct.VkImageCreateInfo.of(imageCreateInfoAt(index))); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `requiredFormatFeatures` at the given index}
-        /// @param index the index of the struct buffer
-        public int requiredFormatFeaturesAt(long index) { return requiredFormatFeatures(this.segment(), index); }
-        /// Sets `requiredFormatFeatures` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer requiredFormatFeaturesAt(long index, int value) { requiredFormatFeatures(this.segment(), index, value); return this; }
+    /// {@return `sysmemPixelFormat` at the given index}
+    /// @param index the index of the struct buffer
+    public long sysmemPixelFormatAt(long index) { return sysmemPixelFormat(this.segment(), index); }
+    /// Sets `sysmemPixelFormat` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA sysmemPixelFormatAt(long index, long value) { sysmemPixelFormat(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `colorSpaceCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int colorSpaceCountAt(long index) { return colorSpaceCount(this.segment(), index); }
+    /// Sets `colorSpaceCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA colorSpaceCountAt(long index, int value) { colorSpaceCount(this.segment(), index, value); return this; }
 
-        /// {@return `sysmemPixelFormat` at the given index}
-        /// @param index the index of the struct buffer
-        public long sysmemPixelFormatAt(long index) { return sysmemPixelFormat(this.segment(), index); }
-        /// Sets `sysmemPixelFormat` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sysmemPixelFormatAt(long index, long value) { sysmemPixelFormat(this.segment(), index, value); return this; }
+    /// {@return `pColorSpaces` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pColorSpacesAt(long index) { return pColorSpaces(this.segment(), index); }
+    /// Sets `pColorSpaces` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatConstraintsInfoFUCHSIA pColorSpacesAt(long index, MemorySegment value) { pColorSpaces(this.segment(), index, value); return this; }
 
-        /// {@return `colorSpaceCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int colorSpaceCountAt(long index) { return colorSpaceCount(this.segment(), index); }
-        /// Sets `colorSpaceCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer colorSpaceCountAt(long index, int value) { colorSpaceCount(this.segment(), index, value); return this; }
-
-        /// {@return `pColorSpaces` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pColorSpacesAt(long index) { return pColorSpaces(this.segment(), index); }
-        /// Sets `pColorSpaces` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pColorSpacesAt(long index, MemorySegment value) { pColorSpaces(this.segment(), index, value); return this; }
-
-    }
 }

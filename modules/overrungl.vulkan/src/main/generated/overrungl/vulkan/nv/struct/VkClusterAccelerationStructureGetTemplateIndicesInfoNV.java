@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -30,7 +31,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceAddress clusterTemplateAddress;
 /// };
 /// ```
-public sealed class VkClusterAccelerationStructureGetTemplateIndicesInfoNV extends GroupType {
+public final class VkClusterAccelerationStructureGetTemplateIndicesInfoNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("clusterTemplateAddress")
@@ -43,20 +44,21 @@ public sealed class VkClusterAccelerationStructureGetTemplateIndicesInfoNV exten
     public static final VarHandle VH_clusterTemplateAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterTemplateAddress"));
 
     /// Creates `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkClusterAccelerationStructureGetTemplateIndicesInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkClusterAccelerationStructureGetTemplateIndicesInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClusterAccelerationStructureGetTemplateIndicesInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClusterAccelerationStructureGetTemplateIndicesInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClusterAccelerationStructureGetTemplateIndicesInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` with the given segment.
     ///
@@ -64,18 +66,18 @@ public sealed class VkClusterAccelerationStructureGetTemplateIndicesInfoNV exten
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClusterAccelerationStructureGetTemplateIndicesInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`
-    public static VkClusterAccelerationStructureGetTemplateIndicesInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkClusterAccelerationStructureGetTemplateIndicesInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClusterAccelerationStructureGetTemplateIndicesInfoNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -90,9 +92,10 @@ public sealed class VkClusterAccelerationStructureGetTemplateIndicesInfoNV exten
     /// @return `this`
     public VkClusterAccelerationStructureGetTemplateIndicesInfoNV copyFrom(VkClusterAccelerationStructureGetTemplateIndicesInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClusterAccelerationStructureGetTemplateIndicesInfoNV reinterpret(long count) { return new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `clusterTemplateAddress` at the given index}
     /// @param segment the segment of the struct
@@ -110,36 +113,30 @@ public sealed class VkClusterAccelerationStructureGetTemplateIndicesInfoNV exten
     /// @return `this`
     public VkClusterAccelerationStructureGetTemplateIndicesInfoNV clusterTemplateAddress(long value) { clusterTemplateAddress(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkClusterAccelerationStructureGetTemplateIndicesInfoNV].
-    public static final class Buffer extends VkClusterAccelerationStructureGetTemplateIndicesInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`
+    public VkClusterAccelerationStructureGetTemplateIndicesInfoNV asSlice(long index) { return new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClusterAccelerationStructureGetTemplateIndicesInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`
+    public VkClusterAccelerationStructureGetTemplateIndicesInfoNV asSlice(long index, long count) { return new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClusterAccelerationStructureGetTemplateIndicesInfoNV at(long index, Consumer<VkClusterAccelerationStructureGetTemplateIndicesInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`
-        public VkClusterAccelerationStructureGetTemplateIndicesInfoNV asSlice(long index) { return new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `clusterTemplateAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long clusterTemplateAddressAt(long index) { return clusterTemplateAddress(this.segment(), index); }
+    /// Sets `clusterTemplateAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureGetTemplateIndicesInfoNV clusterTemplateAddressAt(long index, long value) { clusterTemplateAddress(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `clusterTemplateAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long clusterTemplateAddressAt(long index) { return clusterTemplateAddress(this.segment(), index); }
-        /// Sets `clusterTemplateAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterTemplateAddressAt(long index, long value) { clusterTemplateAddress(this.segment(), index, value); return this; }
-
-    }
 }

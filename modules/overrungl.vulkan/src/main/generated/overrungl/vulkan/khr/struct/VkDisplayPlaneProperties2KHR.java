@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -33,7 +33,7 @@ import java.util.function.*;
 ///     (struct VkDisplayPlanePropertiesKHR) VkDisplayPlanePropertiesKHR displayPlaneProperties;
 /// };
 /// ```
-public sealed class VkDisplayPlaneProperties2KHR extends GroupType {
+public final class VkDisplayPlaneProperties2KHR extends GroupType {
     /// The struct layout of `VkDisplayPlaneProperties2KHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -58,20 +58,21 @@ public sealed class VkDisplayPlaneProperties2KHR extends GroupType {
     public static final MemoryLayout LAYOUT_displayPlaneProperties = LAYOUT.select(PathElement.groupElement("displayPlaneProperties"));
 
     /// Creates `VkDisplayPlaneProperties2KHR` with the given segment.
-    /// @param segment the memory segment
-    public VkDisplayPlaneProperties2KHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDisplayPlaneProperties2KHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDisplayPlaneProperties2KHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDisplayPlaneProperties2KHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneProperties2KHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDisplayPlaneProperties2KHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDisplayPlaneProperties2KHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneProperties2KHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDisplayPlaneProperties2KHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneProperties2KHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDisplayPlaneProperties2KHR` with the given segment.
     ///
@@ -79,18 +80,18 @@ public sealed class VkDisplayPlaneProperties2KHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDisplayPlaneProperties2KHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneProperties2KHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDisplayPlaneProperties2KHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDisplayPlaneProperties2KHR`
-    public static VkDisplayPlaneProperties2KHR alloc(SegmentAllocator allocator) { return new VkDisplayPlaneProperties2KHR(allocator.allocate(LAYOUT)); }
+    public static VkDisplayPlaneProperties2KHR alloc(SegmentAllocator allocator) { return new VkDisplayPlaneProperties2KHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDisplayPlaneProperties2KHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDisplayPlaneProperties2KHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDisplayPlaneProperties2KHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPlaneProperties2KHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDisplayPlaneProperties2KHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -124,9 +125,10 @@ public sealed class VkDisplayPlaneProperties2KHR extends GroupType {
     /// @return `this`
     public VkDisplayPlaneProperties2KHR copyFrom(VkDisplayPlaneProperties2KHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDisplayPlaneProperties2KHR reinterpret(long count) { return new VkDisplayPlaneProperties2KHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -180,59 +182,53 @@ public sealed class VkDisplayPlaneProperties2KHR extends GroupType {
     /// @return `this`
     public VkDisplayPlaneProperties2KHR displayPlaneProperties(Consumer<overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR.of(displayPlaneProperties())); return this; }
 
-    /// A buffer of [VkDisplayPlaneProperties2KHR].
-    public static final class Buffer extends VkDisplayPlaneProperties2KHR {
-        private final long elementCount;
+    /// Creates a slice of `VkDisplayPlaneProperties2KHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDisplayPlaneProperties2KHR`
+    public VkDisplayPlaneProperties2KHR asSlice(long index) { return new VkDisplayPlaneProperties2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDisplayPlaneProperties2KHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDisplayPlaneProperties2KHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDisplayPlaneProperties2KHR`
+    public VkDisplayPlaneProperties2KHR asSlice(long index, long count) { return new VkDisplayPlaneProperties2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDisplayPlaneProperties2KHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDisplayPlaneProperties2KHR at(long index, Consumer<VkDisplayPlaneProperties2KHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDisplayPlaneProperties2KHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDisplayPlaneProperties2KHR`
-        public VkDisplayPlaneProperties2KHR asSlice(long index) { return new VkDisplayPlaneProperties2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneProperties2KHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDisplayPlaneProperties2KHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDisplayPlaneProperties2KHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneProperties2KHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `displayPlaneProperties` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment displayPlanePropertiesAt(long index) { return displayPlaneProperties(this.segment(), index); }
+    /// Sets `displayPlaneProperties` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneProperties2KHR displayPlanePropertiesAt(long index, MemorySegment value) { displayPlaneProperties(this.segment(), index, value); return this; }
+    /// Accepts `displayPlaneProperties` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneProperties2KHR displayPlanePropertiesAt(long index, Consumer<overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR.of(displayPlanePropertiesAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `displayPlaneProperties` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment displayPlanePropertiesAt(long index) { return displayPlaneProperties(this.segment(), index); }
-        /// Sets `displayPlaneProperties` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer displayPlanePropertiesAt(long index, MemorySegment value) { displayPlaneProperties(this.segment(), index, value); return this; }
-        /// Accepts `displayPlaneProperties` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer displayPlanePropertiesAt(long index, Consumer<overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkDisplayPlanePropertiesKHR.of(displayPlanePropertiesAt(index))); return this; }
-
-    }
 }

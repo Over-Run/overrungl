@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceSize range;
 /// };
 /// ```
-public sealed class VkBufferViewCreateInfo extends GroupType {
+public final class VkBufferViewCreateInfo extends GroupType {
     /// The struct layout of `VkBufferViewCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkBufferViewCreateInfo extends GroupType {
     public static final VarHandle VH_range = LAYOUT.arrayElementVarHandle(PathElement.groupElement("range"));
 
     /// Creates `VkBufferViewCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkBufferViewCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkBufferViewCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkBufferViewCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkBufferViewCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferViewCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBufferViewCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferViewCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferViewCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkBufferViewCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferViewCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkBufferViewCreateInfo` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkBufferViewCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkBufferViewCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferViewCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkBufferViewCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBufferViewCreateInfo`
-    public static VkBufferViewCreateInfo alloc(SegmentAllocator allocator) { return new VkBufferViewCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkBufferViewCreateInfo alloc(SegmentAllocator allocator) { return new VkBufferViewCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkBufferViewCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBufferViewCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkBufferViewCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkBufferViewCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkBufferViewCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkBufferViewCreateInfo extends GroupType {
     /// @return `this`
     public VkBufferViewCreateInfo copyFrom(VkBufferViewCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkBufferViewCreateInfo reinterpret(long count) { return new VkBufferViewCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkBufferViewCreateInfo extends GroupType {
     /// @return `this`
     public VkBufferViewCreateInfo range(long value) { range(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkBufferViewCreateInfo].
-    public static final class Buffer extends VkBufferViewCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkBufferViewCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferViewCreateInfo`
+    public VkBufferViewCreateInfo asSlice(long index) { return new VkBufferViewCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkBufferViewCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkBufferViewCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferViewCreateInfo`
+    public VkBufferViewCreateInfo asSlice(long index, long count) { return new VkBufferViewCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkBufferViewCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkBufferViewCreateInfo at(long index, Consumer<VkBufferViewCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkBufferViewCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkBufferViewCreateInfo`
-        public VkBufferViewCreateInfo asSlice(long index) { return new VkBufferViewCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferViewCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkBufferViewCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkBufferViewCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferViewCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferViewCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `buffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long bufferAt(long index) { return buffer(this.segment(), index); }
+    /// Sets `buffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferViewCreateInfo bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `format` at the given index}
+    /// @param index the index of the struct buffer
+    public int formatAt(long index) { return format(this.segment(), index); }
+    /// Sets `format` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferViewCreateInfo formatAt(long index, int value) { format(this.segment(), index, value); return this; }
 
-        /// {@return `buffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long bufferAt(long index) { return buffer(this.segment(), index); }
-        /// Sets `buffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
+    /// {@return `offset` at the given index}
+    /// @param index the index of the struct buffer
+    public long offsetAt(long index) { return offset(this.segment(), index); }
+    /// Sets `offset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferViewCreateInfo offsetAt(long index, long value) { offset(this.segment(), index, value); return this; }
 
-        /// {@return `format` at the given index}
-        /// @param index the index of the struct buffer
-        public int formatAt(long index) { return format(this.segment(), index); }
-        /// Sets `format` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer formatAt(long index, int value) { format(this.segment(), index, value); return this; }
+    /// {@return `range` at the given index}
+    /// @param index the index of the struct buffer
+    public long rangeAt(long index) { return range(this.segment(), index); }
+    /// Sets `range` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferViewCreateInfo rangeAt(long index, long value) { range(this.segment(), index, value); return this; }
 
-        /// {@return `offset` at the given index}
-        /// @param index the index of the struct buffer
-        public long offsetAt(long index) { return offset(this.segment(), index); }
-        /// Sets `offset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer offsetAt(long index, long value) { offset(this.segment(), index, value); return this; }
-
-        /// {@return `range` at the given index}
-        /// @param index the index of the struct buffer
-        public long rangeAt(long index) { return range(this.segment(), index); }
-        /// Sets `range` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer rangeAt(long index, long value) { range(this.segment(), index, value); return this; }
-
-    }
 }

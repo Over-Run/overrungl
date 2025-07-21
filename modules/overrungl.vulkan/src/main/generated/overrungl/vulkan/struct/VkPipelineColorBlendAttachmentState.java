@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkColorComponentFlags colorWriteMask;
 /// };
 /// ```
-public sealed class VkPipelineColorBlendAttachmentState extends GroupType {
+public final class VkPipelineColorBlendAttachmentState extends GroupType {
     /// The struct layout of `VkPipelineColorBlendAttachmentState`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("blendEnable"),
@@ -99,20 +100,21 @@ public sealed class VkPipelineColorBlendAttachmentState extends GroupType {
     public static final VarHandle VH_colorWriteMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("colorWriteMask"));
 
     /// Creates `VkPipelineColorBlendAttachmentState` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineColorBlendAttachmentState(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineColorBlendAttachmentState(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineColorBlendAttachmentState` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineColorBlendAttachmentState of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineColorBlendAttachmentState(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineColorBlendAttachmentState` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineColorBlendAttachmentState ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineColorBlendAttachmentState(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineColorBlendAttachmentState ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineColorBlendAttachmentState(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineColorBlendAttachmentState` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkPipelineColorBlendAttachmentState extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineColorBlendAttachmentState ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineColorBlendAttachmentState(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineColorBlendAttachmentState` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineColorBlendAttachmentState`
-    public static VkPipelineColorBlendAttachmentState alloc(SegmentAllocator allocator) { return new VkPipelineColorBlendAttachmentState(allocator.allocate(LAYOUT)); }
+    public static VkPipelineColorBlendAttachmentState alloc(SegmentAllocator allocator) { return new VkPipelineColorBlendAttachmentState(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineColorBlendAttachmentState` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineColorBlendAttachmentState`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineColorBlendAttachmentState alloc(SegmentAllocator allocator, long count) { return new VkPipelineColorBlendAttachmentState(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineColorBlendAttachmentState` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkPipelineColorBlendAttachmentState extends GroupType {
     /// @return `this`
     public VkPipelineColorBlendAttachmentState copyFrom(VkPipelineColorBlendAttachmentState src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineColorBlendAttachmentState reinterpret(long count) { return new VkPipelineColorBlendAttachmentState(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `blendEnable` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class VkPipelineColorBlendAttachmentState extends GroupType {
     /// @return `this`
     public VkPipelineColorBlendAttachmentState colorWriteMask(int value) { colorWriteMask(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineColorBlendAttachmentState].
-    public static final class Buffer extends VkPipelineColorBlendAttachmentState {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineColorBlendAttachmentState`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineColorBlendAttachmentState`
+    public VkPipelineColorBlendAttachmentState asSlice(long index) { return new VkPipelineColorBlendAttachmentState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineColorBlendAttachmentState.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineColorBlendAttachmentState`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineColorBlendAttachmentState`
+    public VkPipelineColorBlendAttachmentState asSlice(long index, long count) { return new VkPipelineColorBlendAttachmentState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineColorBlendAttachmentState` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineColorBlendAttachmentState at(long index, Consumer<VkPipelineColorBlendAttachmentState> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineColorBlendAttachmentState`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineColorBlendAttachmentState`
-        public VkPipelineColorBlendAttachmentState asSlice(long index) { return new VkPipelineColorBlendAttachmentState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `blendEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int blendEnableAt(long index) { return blendEnable(this.segment(), index); }
+    /// Sets `blendEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorBlendAttachmentState blendEnableAt(long index, int value) { blendEnable(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineColorBlendAttachmentState`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineColorBlendAttachmentState`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `srcColorBlendFactor` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcColorBlendFactorAt(long index) { return srcColorBlendFactor(this.segment(), index); }
+    /// Sets `srcColorBlendFactor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorBlendAttachmentState srcColorBlendFactorAt(long index, int value) { srcColorBlendFactor(this.segment(), index, value); return this; }
 
-        /// {@return `blendEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int blendEnableAt(long index) { return blendEnable(this.segment(), index); }
-        /// Sets `blendEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer blendEnableAt(long index, int value) { blendEnable(this.segment(), index, value); return this; }
+    /// {@return `dstColorBlendFactor` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstColorBlendFactorAt(long index) { return dstColorBlendFactor(this.segment(), index); }
+    /// Sets `dstColorBlendFactor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorBlendAttachmentState dstColorBlendFactorAt(long index, int value) { dstColorBlendFactor(this.segment(), index, value); return this; }
 
-        /// {@return `srcColorBlendFactor` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcColorBlendFactorAt(long index) { return srcColorBlendFactor(this.segment(), index); }
-        /// Sets `srcColorBlendFactor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcColorBlendFactorAt(long index, int value) { srcColorBlendFactor(this.segment(), index, value); return this; }
+    /// {@return `colorBlendOp` at the given index}
+    /// @param index the index of the struct buffer
+    public int colorBlendOpAt(long index) { return colorBlendOp(this.segment(), index); }
+    /// Sets `colorBlendOp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorBlendAttachmentState colorBlendOpAt(long index, int value) { colorBlendOp(this.segment(), index, value); return this; }
 
-        /// {@return `dstColorBlendFactor` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstColorBlendFactorAt(long index) { return dstColorBlendFactor(this.segment(), index); }
-        /// Sets `dstColorBlendFactor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstColorBlendFactorAt(long index, int value) { dstColorBlendFactor(this.segment(), index, value); return this; }
+    /// {@return `srcAlphaBlendFactor` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcAlphaBlendFactorAt(long index) { return srcAlphaBlendFactor(this.segment(), index); }
+    /// Sets `srcAlphaBlendFactor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorBlendAttachmentState srcAlphaBlendFactorAt(long index, int value) { srcAlphaBlendFactor(this.segment(), index, value); return this; }
 
-        /// {@return `colorBlendOp` at the given index}
-        /// @param index the index of the struct buffer
-        public int colorBlendOpAt(long index) { return colorBlendOp(this.segment(), index); }
-        /// Sets `colorBlendOp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer colorBlendOpAt(long index, int value) { colorBlendOp(this.segment(), index, value); return this; }
+    /// {@return `dstAlphaBlendFactor` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstAlphaBlendFactorAt(long index) { return dstAlphaBlendFactor(this.segment(), index); }
+    /// Sets `dstAlphaBlendFactor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorBlendAttachmentState dstAlphaBlendFactorAt(long index, int value) { dstAlphaBlendFactor(this.segment(), index, value); return this; }
 
-        /// {@return `srcAlphaBlendFactor` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcAlphaBlendFactorAt(long index) { return srcAlphaBlendFactor(this.segment(), index); }
-        /// Sets `srcAlphaBlendFactor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcAlphaBlendFactorAt(long index, int value) { srcAlphaBlendFactor(this.segment(), index, value); return this; }
+    /// {@return `alphaBlendOp` at the given index}
+    /// @param index the index of the struct buffer
+    public int alphaBlendOpAt(long index) { return alphaBlendOp(this.segment(), index); }
+    /// Sets `alphaBlendOp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorBlendAttachmentState alphaBlendOpAt(long index, int value) { alphaBlendOp(this.segment(), index, value); return this; }
 
-        /// {@return `dstAlphaBlendFactor` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstAlphaBlendFactorAt(long index) { return dstAlphaBlendFactor(this.segment(), index); }
-        /// Sets `dstAlphaBlendFactor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstAlphaBlendFactorAt(long index, int value) { dstAlphaBlendFactor(this.segment(), index, value); return this; }
+    /// {@return `colorWriteMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int colorWriteMaskAt(long index) { return colorWriteMask(this.segment(), index); }
+    /// Sets `colorWriteMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorBlendAttachmentState colorWriteMaskAt(long index, int value) { colorWriteMask(this.segment(), index, value); return this; }
 
-        /// {@return `alphaBlendOp` at the given index}
-        /// @param index the index of the struct buffer
-        public int alphaBlendOpAt(long index) { return alphaBlendOp(this.segment(), index); }
-        /// Sets `alphaBlendOp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer alphaBlendOpAt(long index, int value) { alphaBlendOp(this.segment(), index, value); return this; }
-
-        /// {@return `colorWriteMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int colorWriteMaskAt(long index) { return colorWriteMask(this.segment(), index); }
-        /// Sets `colorWriteMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer colorWriteMaskAt(long index, int value) { colorWriteMask(this.segment(), index, value); return this; }
-
-    }
 }

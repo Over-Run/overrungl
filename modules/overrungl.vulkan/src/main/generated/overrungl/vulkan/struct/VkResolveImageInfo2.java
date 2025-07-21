@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     const VkImageResolve2* pRegions;
 /// };
 /// ```
-public sealed class VkResolveImageInfo2 extends GroupType {
+public final class VkResolveImageInfo2 extends GroupType {
     /// The struct layout of `VkResolveImageInfo2`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -99,20 +100,21 @@ public sealed class VkResolveImageInfo2 extends GroupType {
     public static final VarHandle VH_pRegions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRegions"));
 
     /// Creates `VkResolveImageInfo2` with the given segment.
-    /// @param segment the memory segment
-    public VkResolveImageInfo2(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkResolveImageInfo2(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkResolveImageInfo2` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkResolveImageInfo2 of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkResolveImageInfo2(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkResolveImageInfo2` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkResolveImageInfo2 ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkResolveImageInfo2(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkResolveImageInfo2 ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkResolveImageInfo2(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkResolveImageInfo2` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkResolveImageInfo2 extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkResolveImageInfo2 ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkResolveImageInfo2(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkResolveImageInfo2` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkResolveImageInfo2`
-    public static VkResolveImageInfo2 alloc(SegmentAllocator allocator) { return new VkResolveImageInfo2(allocator.allocate(LAYOUT)); }
+    public static VkResolveImageInfo2 alloc(SegmentAllocator allocator) { return new VkResolveImageInfo2(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkResolveImageInfo2` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkResolveImageInfo2`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkResolveImageInfo2 alloc(SegmentAllocator allocator, long count) { return new VkResolveImageInfo2(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkResolveImageInfo2` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkResolveImageInfo2 extends GroupType {
     /// @return `this`
     public VkResolveImageInfo2 copyFrom(VkResolveImageInfo2 src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkResolveImageInfo2 reinterpret(long count) { return new VkResolveImageInfo2(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class VkResolveImageInfo2 extends GroupType {
     /// @return `this`
     public VkResolveImageInfo2 pRegions(MemorySegment value) { pRegions(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkResolveImageInfo2].
-    public static final class Buffer extends VkResolveImageInfo2 {
-        private final long elementCount;
+    /// Creates a slice of `VkResolveImageInfo2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkResolveImageInfo2`
+    public VkResolveImageInfo2 asSlice(long index) { return new VkResolveImageInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkResolveImageInfo2.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkResolveImageInfo2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkResolveImageInfo2`
+    public VkResolveImageInfo2 asSlice(long index, long count) { return new VkResolveImageInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkResolveImageInfo2` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkResolveImageInfo2 at(long index, Consumer<VkResolveImageInfo2> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkResolveImageInfo2`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkResolveImageInfo2`
-        public VkResolveImageInfo2 asSlice(long index) { return new VkResolveImageInfo2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkResolveImageInfo2 sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkResolveImageInfo2`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkResolveImageInfo2`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkResolveImageInfo2 pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `srcImage` at the given index}
+    /// @param index the index of the struct buffer
+    public long srcImageAt(long index) { return srcImage(this.segment(), index); }
+    /// Sets `srcImage` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkResolveImageInfo2 srcImageAt(long index, long value) { srcImage(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `srcImageLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcImageLayoutAt(long index) { return srcImageLayout(this.segment(), index); }
+    /// Sets `srcImageLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkResolveImageInfo2 srcImageLayoutAt(long index, int value) { srcImageLayout(this.segment(), index, value); return this; }
 
-        /// {@return `srcImage` at the given index}
-        /// @param index the index of the struct buffer
-        public long srcImageAt(long index) { return srcImage(this.segment(), index); }
-        /// Sets `srcImage` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcImageAt(long index, long value) { srcImage(this.segment(), index, value); return this; }
+    /// {@return `dstImage` at the given index}
+    /// @param index the index of the struct buffer
+    public long dstImageAt(long index) { return dstImage(this.segment(), index); }
+    /// Sets `dstImage` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkResolveImageInfo2 dstImageAt(long index, long value) { dstImage(this.segment(), index, value); return this; }
 
-        /// {@return `srcImageLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcImageLayoutAt(long index) { return srcImageLayout(this.segment(), index); }
-        /// Sets `srcImageLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcImageLayoutAt(long index, int value) { srcImageLayout(this.segment(), index, value); return this; }
+    /// {@return `dstImageLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstImageLayoutAt(long index) { return dstImageLayout(this.segment(), index); }
+    /// Sets `dstImageLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkResolveImageInfo2 dstImageLayoutAt(long index, int value) { dstImageLayout(this.segment(), index, value); return this; }
 
-        /// {@return `dstImage` at the given index}
-        /// @param index the index of the struct buffer
-        public long dstImageAt(long index) { return dstImage(this.segment(), index); }
-        /// Sets `dstImage` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstImageAt(long index, long value) { dstImage(this.segment(), index, value); return this; }
+    /// {@return `regionCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int regionCountAt(long index) { return regionCount(this.segment(), index); }
+    /// Sets `regionCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkResolveImageInfo2 regionCountAt(long index, int value) { regionCount(this.segment(), index, value); return this; }
 
-        /// {@return `dstImageLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstImageLayoutAt(long index) { return dstImageLayout(this.segment(), index); }
-        /// Sets `dstImageLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstImageLayoutAt(long index, int value) { dstImageLayout(this.segment(), index, value); return this; }
+    /// {@return `pRegions` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pRegionsAt(long index) { return pRegions(this.segment(), index); }
+    /// Sets `pRegions` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkResolveImageInfo2 pRegionsAt(long index, MemorySegment value) { pRegions(this.segment(), index, value); return this; }
 
-        /// {@return `regionCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int regionCountAt(long index) { return regionCount(this.segment(), index); }
-        /// Sets `regionCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer regionCountAt(long index, int value) { regionCount(this.segment(), index, value); return this; }
-
-        /// {@return `pRegions` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pRegionsAt(long index) { return pRegions(this.segment(), index); }
-        /// Sets `pRegions` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pRegionsAt(long index, MemorySegment value) { pRegions(this.segment(), index, value); return this; }
-
-    }
 }

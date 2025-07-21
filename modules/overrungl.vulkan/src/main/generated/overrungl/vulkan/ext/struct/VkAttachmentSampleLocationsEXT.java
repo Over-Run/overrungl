@@ -21,9 +21,9 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -32,7 +32,7 @@ import java.util.function.*;
 ///     (struct VkSampleLocationsInfoEXT) VkSampleLocationsInfoEXT sampleLocationsInfo;
 /// };
 /// ```
-public sealed class VkAttachmentSampleLocationsEXT extends GroupType {
+public final class VkAttachmentSampleLocationsEXT extends GroupType {
     /// The struct layout of `VkAttachmentSampleLocationsEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("attachmentIndex"),
@@ -50,20 +50,21 @@ public sealed class VkAttachmentSampleLocationsEXT extends GroupType {
     public static final MemoryLayout LAYOUT_sampleLocationsInfo = LAYOUT.select(PathElement.groupElement("sampleLocationsInfo"));
 
     /// Creates `VkAttachmentSampleLocationsEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkAttachmentSampleLocationsEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAttachmentSampleLocationsEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAttachmentSampleLocationsEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAttachmentSampleLocationsEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAttachmentSampleLocationsEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAttachmentSampleLocationsEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAttachmentSampleLocationsEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAttachmentSampleLocationsEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAttachmentSampleLocationsEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAttachmentSampleLocationsEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAttachmentSampleLocationsEXT` with the given segment.
     ///
@@ -71,18 +72,18 @@ public sealed class VkAttachmentSampleLocationsEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAttachmentSampleLocationsEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAttachmentSampleLocationsEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAttachmentSampleLocationsEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAttachmentSampleLocationsEXT`
-    public static VkAttachmentSampleLocationsEXT alloc(SegmentAllocator allocator) { return new VkAttachmentSampleLocationsEXT(allocator.allocate(LAYOUT)); }
+    public static VkAttachmentSampleLocationsEXT alloc(SegmentAllocator allocator) { return new VkAttachmentSampleLocationsEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAttachmentSampleLocationsEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAttachmentSampleLocationsEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAttachmentSampleLocationsEXT alloc(SegmentAllocator allocator, long count) { return new VkAttachmentSampleLocationsEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAttachmentSampleLocationsEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -106,9 +107,10 @@ public sealed class VkAttachmentSampleLocationsEXT extends GroupType {
     /// @return `this`
     public VkAttachmentSampleLocationsEXT copyFrom(VkAttachmentSampleLocationsEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAttachmentSampleLocationsEXT reinterpret(long count) { return new VkAttachmentSampleLocationsEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `attachmentIndex` at the given index}
     /// @param segment the segment of the struct
@@ -146,50 +148,44 @@ public sealed class VkAttachmentSampleLocationsEXT extends GroupType {
     /// @return `this`
     public VkAttachmentSampleLocationsEXT sampleLocationsInfo(Consumer<overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT.of(sampleLocationsInfo())); return this; }
 
-    /// A buffer of [VkAttachmentSampleLocationsEXT].
-    public static final class Buffer extends VkAttachmentSampleLocationsEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkAttachmentSampleLocationsEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAttachmentSampleLocationsEXT`
+    public VkAttachmentSampleLocationsEXT asSlice(long index) { return new VkAttachmentSampleLocationsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAttachmentSampleLocationsEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAttachmentSampleLocationsEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAttachmentSampleLocationsEXT`
+    public VkAttachmentSampleLocationsEXT asSlice(long index, long count) { return new VkAttachmentSampleLocationsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAttachmentSampleLocationsEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAttachmentSampleLocationsEXT at(long index, Consumer<VkAttachmentSampleLocationsEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAttachmentSampleLocationsEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAttachmentSampleLocationsEXT`
-        public VkAttachmentSampleLocationsEXT asSlice(long index) { return new VkAttachmentSampleLocationsEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `attachmentIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int attachmentIndexAt(long index) { return attachmentIndex(this.segment(), index); }
+    /// Sets `attachmentIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAttachmentSampleLocationsEXT attachmentIndexAt(long index, int value) { attachmentIndex(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAttachmentSampleLocationsEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAttachmentSampleLocationsEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `sampleLocationsInfo` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment sampleLocationsInfoAt(long index) { return sampleLocationsInfo(this.segment(), index); }
+    /// Sets `sampleLocationsInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAttachmentSampleLocationsEXT sampleLocationsInfoAt(long index, MemorySegment value) { sampleLocationsInfo(this.segment(), index, value); return this; }
+    /// Accepts `sampleLocationsInfo` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAttachmentSampleLocationsEXT sampleLocationsInfoAt(long index, Consumer<overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT.of(sampleLocationsInfoAt(index))); return this; }
 
-        /// {@return `attachmentIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int attachmentIndexAt(long index) { return attachmentIndex(this.segment(), index); }
-        /// Sets `attachmentIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer attachmentIndexAt(long index, int value) { attachmentIndex(this.segment(), index, value); return this; }
-
-        /// {@return `sampleLocationsInfo` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment sampleLocationsInfoAt(long index) { return sampleLocationsInfo(this.segment(), index); }
-        /// Sets `sampleLocationsInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampleLocationsInfoAt(long index, MemorySegment value) { sampleLocationsInfo(this.segment(), index, value); return this; }
-        /// Accepts `sampleLocationsInfo` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer sampleLocationsInfoAt(long index, Consumer<overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkSampleLocationsInfoEXT.of(sampleLocationsInfoAt(index))); return this; }
-
-    }
 }

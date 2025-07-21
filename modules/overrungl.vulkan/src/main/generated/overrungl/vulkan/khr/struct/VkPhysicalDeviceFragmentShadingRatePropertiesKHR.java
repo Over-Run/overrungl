@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -49,7 +49,7 @@ import java.util.function.*;
 ///     (uint32_t) VkBool32 fragmentShadingRateStrictMultiplyCombiner;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends GroupType {
+public final class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -182,20 +182,21 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
     public static final VarHandle VH_fragmentShadingRateStrictMultiplyCombiner = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fragmentShadingRateStrictMultiplyCombiner"));
 
     /// Creates `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment.
     ///
@@ -203,18 +204,18 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
-    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceFragmentShadingRatePropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -544,9 +545,10 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
     /// @return `this`
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR copyFrom(VkPhysicalDeviceFragmentShadingRatePropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR reinterpret(long count) { return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -864,213 +866,207 @@ public sealed class VkPhysicalDeviceFragmentShadingRatePropertiesKHR extends Gro
     /// @return `this`
     public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateStrictMultiplyCombiner(int value) { fragmentShadingRateStrictMultiplyCombiner(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceFragmentShadingRatePropertiesKHR].
-    public static final class Buffer extends VkPhysicalDeviceFragmentShadingRatePropertiesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR asSlice(long index) { return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceFragmentShadingRatePropertiesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR asSlice(long index, long count) { return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceFragmentShadingRatePropertiesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR at(long index, Consumer<VkPhysicalDeviceFragmentShadingRatePropertiesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
-        public VkPhysicalDeviceFragmentShadingRatePropertiesKHR asSlice(long index) { return new VkPhysicalDeviceFragmentShadingRatePropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceFragmentShadingRatePropertiesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `minFragmentShadingRateAttachmentTexelSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment minFragmentShadingRateAttachmentTexelSizeAt(long index) { return minFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
+    /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR minFragmentShadingRateAttachmentTexelSizeAt(long index, MemorySegment value) { minFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+    /// Accepts `minFragmentShadingRateAttachmentTexelSize` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR minFragmentShadingRateAttachmentTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minFragmentShadingRateAttachmentTexelSizeAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxFragmentShadingRateAttachmentTexelSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxFragmentShadingRateAttachmentTexelSizeAt(long index) { return maxFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
+    /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSizeAt(long index, MemorySegment value) { maxFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
+    /// Accepts `maxFragmentShadingRateAttachmentTexelSize` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentShadingRateAttachmentTexelSizeAt(index))); return this; }
 
-        /// {@return `minFragmentShadingRateAttachmentTexelSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment minFragmentShadingRateAttachmentTexelSizeAt(long index) { return minFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
-        /// Sets `minFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minFragmentShadingRateAttachmentTexelSizeAt(long index, MemorySegment value) { minFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
-        /// Accepts `minFragmentShadingRateAttachmentTexelSize` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer minFragmentShadingRateAttachmentTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minFragmentShadingRateAttachmentTexelSizeAt(index))); return this; }
+    /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFragmentShadingRateAttachmentTexelSizeAspectRatioAt(long index) { return maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment(), index); }
+    /// Sets `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateAttachmentTexelSizeAspectRatioAt(long index, int value) { maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentShadingRateAttachmentTexelSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxFragmentShadingRateAttachmentTexelSizeAt(long index) { return maxFragmentShadingRateAttachmentTexelSize(this.segment(), index); }
-        /// Sets `maxFragmentShadingRateAttachmentTexelSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentShadingRateAttachmentTexelSizeAt(long index, MemorySegment value) { maxFragmentShadingRateAttachmentTexelSize(this.segment(), index, value); return this; }
-        /// Accepts `maxFragmentShadingRateAttachmentTexelSize` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxFragmentShadingRateAttachmentTexelSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentShadingRateAttachmentTexelSizeAt(index))); return this; }
+    /// {@return `primitiveFragmentShadingRateWithMultipleViewports` at the given index}
+    /// @param index the index of the struct buffer
+    public int primitiveFragmentShadingRateWithMultipleViewportsAt(long index) { return primitiveFragmentShadingRateWithMultipleViewports(this.segment(), index); }
+    /// Sets `primitiveFragmentShadingRateWithMultipleViewports` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR primitiveFragmentShadingRateWithMultipleViewportsAt(long index, int value) { primitiveFragmentShadingRateWithMultipleViewports(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFragmentShadingRateAttachmentTexelSizeAspectRatioAt(long index) { return maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment(), index); }
-        /// Sets `maxFragmentShadingRateAttachmentTexelSizeAspectRatio` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentShadingRateAttachmentTexelSizeAspectRatioAt(long index, int value) { maxFragmentShadingRateAttachmentTexelSizeAspectRatio(this.segment(), index, value); return this; }
+    /// {@return `layeredShadingRateAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int layeredShadingRateAttachmentsAt(long index) { return layeredShadingRateAttachments(this.segment(), index); }
+    /// Sets `layeredShadingRateAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR layeredShadingRateAttachmentsAt(long index, int value) { layeredShadingRateAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `primitiveFragmentShadingRateWithMultipleViewports` at the given index}
-        /// @param index the index of the struct buffer
-        public int primitiveFragmentShadingRateWithMultipleViewportsAt(long index) { return primitiveFragmentShadingRateWithMultipleViewports(this.segment(), index); }
-        /// Sets `primitiveFragmentShadingRateWithMultipleViewports` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer primitiveFragmentShadingRateWithMultipleViewportsAt(long index, int value) { primitiveFragmentShadingRateWithMultipleViewports(this.segment(), index, value); return this; }
+    /// {@return `fragmentShadingRateNonTrivialCombinerOps` at the given index}
+    /// @param index the index of the struct buffer
+    public int fragmentShadingRateNonTrivialCombinerOpsAt(long index) { return fragmentShadingRateNonTrivialCombinerOps(this.segment(), index); }
+    /// Sets `fragmentShadingRateNonTrivialCombinerOps` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateNonTrivialCombinerOpsAt(long index, int value) { fragmentShadingRateNonTrivialCombinerOps(this.segment(), index, value); return this; }
 
-        /// {@return `layeredShadingRateAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int layeredShadingRateAttachmentsAt(long index) { return layeredShadingRateAttachments(this.segment(), index); }
-        /// Sets `layeredShadingRateAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer layeredShadingRateAttachmentsAt(long index, int value) { layeredShadingRateAttachments(this.segment(), index, value); return this; }
+    /// {@return `maxFragmentSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxFragmentSizeAt(long index) { return maxFragmentSize(this.segment(), index); }
+    /// Sets `maxFragmentSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSizeAt(long index, MemorySegment value) { maxFragmentSize(this.segment(), index, value); return this; }
+    /// Accepts `maxFragmentSize` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentSizeAt(index))); return this; }
 
-        /// {@return `fragmentShadingRateNonTrivialCombinerOps` at the given index}
-        /// @param index the index of the struct buffer
-        public int fragmentShadingRateNonTrivialCombinerOpsAt(long index) { return fragmentShadingRateNonTrivialCombinerOps(this.segment(), index); }
-        /// Sets `fragmentShadingRateNonTrivialCombinerOps` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fragmentShadingRateNonTrivialCombinerOpsAt(long index, int value) { fragmentShadingRateNonTrivialCombinerOps(this.segment(), index, value); return this; }
+    /// {@return `maxFragmentSizeAspectRatio` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFragmentSizeAspectRatioAt(long index) { return maxFragmentSizeAspectRatio(this.segment(), index); }
+    /// Sets `maxFragmentSizeAspectRatio` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentSizeAspectRatioAt(long index, int value) { maxFragmentSizeAspectRatio(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxFragmentSizeAt(long index) { return maxFragmentSize(this.segment(), index); }
-        /// Sets `maxFragmentSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentSizeAt(long index, MemorySegment value) { maxFragmentSize(this.segment(), index, value); return this; }
-        /// Accepts `maxFragmentSize` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxFragmentSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxFragmentSizeAt(index))); return this; }
+    /// {@return `maxFragmentShadingRateCoverageSamples` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFragmentShadingRateCoverageSamplesAt(long index) { return maxFragmentShadingRateCoverageSamples(this.segment(), index); }
+    /// Sets `maxFragmentShadingRateCoverageSamples` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateCoverageSamplesAt(long index, int value) { maxFragmentShadingRateCoverageSamples(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentSizeAspectRatio` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFragmentSizeAspectRatioAt(long index) { return maxFragmentSizeAspectRatio(this.segment(), index); }
-        /// Sets `maxFragmentSizeAspectRatio` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentSizeAspectRatioAt(long index, int value) { maxFragmentSizeAspectRatio(this.segment(), index, value); return this; }
+    /// {@return `maxFragmentShadingRateRasterizationSamples` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFragmentShadingRateRasterizationSamplesAt(long index) { return maxFragmentShadingRateRasterizationSamples(this.segment(), index); }
+    /// Sets `maxFragmentShadingRateRasterizationSamples` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR maxFragmentShadingRateRasterizationSamplesAt(long index, int value) { maxFragmentShadingRateRasterizationSamples(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentShadingRateCoverageSamples` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFragmentShadingRateCoverageSamplesAt(long index) { return maxFragmentShadingRateCoverageSamples(this.segment(), index); }
-        /// Sets `maxFragmentShadingRateCoverageSamples` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentShadingRateCoverageSamplesAt(long index, int value) { maxFragmentShadingRateCoverageSamples(this.segment(), index, value); return this; }
+    /// {@return `fragmentShadingRateWithShaderDepthStencilWrites` at the given index}
+    /// @param index the index of the struct buffer
+    public int fragmentShadingRateWithShaderDepthStencilWritesAt(long index) { return fragmentShadingRateWithShaderDepthStencilWrites(this.segment(), index); }
+    /// Sets `fragmentShadingRateWithShaderDepthStencilWrites` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithShaderDepthStencilWritesAt(long index, int value) { fragmentShadingRateWithShaderDepthStencilWrites(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentShadingRateRasterizationSamples` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFragmentShadingRateRasterizationSamplesAt(long index) { return maxFragmentShadingRateRasterizationSamples(this.segment(), index); }
-        /// Sets `maxFragmentShadingRateRasterizationSamples` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentShadingRateRasterizationSamplesAt(long index, int value) { maxFragmentShadingRateRasterizationSamples(this.segment(), index, value); return this; }
+    /// {@return `fragmentShadingRateWithSampleMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int fragmentShadingRateWithSampleMaskAt(long index) { return fragmentShadingRateWithSampleMask(this.segment(), index); }
+    /// Sets `fragmentShadingRateWithSampleMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithSampleMaskAt(long index, int value) { fragmentShadingRateWithSampleMask(this.segment(), index, value); return this; }
 
-        /// {@return `fragmentShadingRateWithShaderDepthStencilWrites` at the given index}
-        /// @param index the index of the struct buffer
-        public int fragmentShadingRateWithShaderDepthStencilWritesAt(long index) { return fragmentShadingRateWithShaderDepthStencilWrites(this.segment(), index); }
-        /// Sets `fragmentShadingRateWithShaderDepthStencilWrites` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fragmentShadingRateWithShaderDepthStencilWritesAt(long index, int value) { fragmentShadingRateWithShaderDepthStencilWrites(this.segment(), index, value); return this; }
+    /// {@return `fragmentShadingRateWithShaderSampleMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int fragmentShadingRateWithShaderSampleMaskAt(long index) { return fragmentShadingRateWithShaderSampleMask(this.segment(), index); }
+    /// Sets `fragmentShadingRateWithShaderSampleMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithShaderSampleMaskAt(long index, int value) { fragmentShadingRateWithShaderSampleMask(this.segment(), index, value); return this; }
 
-        /// {@return `fragmentShadingRateWithSampleMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int fragmentShadingRateWithSampleMaskAt(long index) { return fragmentShadingRateWithSampleMask(this.segment(), index); }
-        /// Sets `fragmentShadingRateWithSampleMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fragmentShadingRateWithSampleMaskAt(long index, int value) { fragmentShadingRateWithSampleMask(this.segment(), index, value); return this; }
+    /// {@return `fragmentShadingRateWithConservativeRasterization` at the given index}
+    /// @param index the index of the struct buffer
+    public int fragmentShadingRateWithConservativeRasterizationAt(long index) { return fragmentShadingRateWithConservativeRasterization(this.segment(), index); }
+    /// Sets `fragmentShadingRateWithConservativeRasterization` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithConservativeRasterizationAt(long index, int value) { fragmentShadingRateWithConservativeRasterization(this.segment(), index, value); return this; }
 
-        /// {@return `fragmentShadingRateWithShaderSampleMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int fragmentShadingRateWithShaderSampleMaskAt(long index) { return fragmentShadingRateWithShaderSampleMask(this.segment(), index); }
-        /// Sets `fragmentShadingRateWithShaderSampleMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fragmentShadingRateWithShaderSampleMaskAt(long index, int value) { fragmentShadingRateWithShaderSampleMask(this.segment(), index, value); return this; }
+    /// {@return `fragmentShadingRateWithFragmentShaderInterlock` at the given index}
+    /// @param index the index of the struct buffer
+    public int fragmentShadingRateWithFragmentShaderInterlockAt(long index) { return fragmentShadingRateWithFragmentShaderInterlock(this.segment(), index); }
+    /// Sets `fragmentShadingRateWithFragmentShaderInterlock` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithFragmentShaderInterlockAt(long index, int value) { fragmentShadingRateWithFragmentShaderInterlock(this.segment(), index, value); return this; }
 
-        /// {@return `fragmentShadingRateWithConservativeRasterization` at the given index}
-        /// @param index the index of the struct buffer
-        public int fragmentShadingRateWithConservativeRasterizationAt(long index) { return fragmentShadingRateWithConservativeRasterization(this.segment(), index); }
-        /// Sets `fragmentShadingRateWithConservativeRasterization` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fragmentShadingRateWithConservativeRasterizationAt(long index, int value) { fragmentShadingRateWithConservativeRasterization(this.segment(), index, value); return this; }
+    /// {@return `fragmentShadingRateWithCustomSampleLocations` at the given index}
+    /// @param index the index of the struct buffer
+    public int fragmentShadingRateWithCustomSampleLocationsAt(long index) { return fragmentShadingRateWithCustomSampleLocations(this.segment(), index); }
+    /// Sets `fragmentShadingRateWithCustomSampleLocations` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateWithCustomSampleLocationsAt(long index, int value) { fragmentShadingRateWithCustomSampleLocations(this.segment(), index, value); return this; }
 
-        /// {@return `fragmentShadingRateWithFragmentShaderInterlock` at the given index}
-        /// @param index the index of the struct buffer
-        public int fragmentShadingRateWithFragmentShaderInterlockAt(long index) { return fragmentShadingRateWithFragmentShaderInterlock(this.segment(), index); }
-        /// Sets `fragmentShadingRateWithFragmentShaderInterlock` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fragmentShadingRateWithFragmentShaderInterlockAt(long index, int value) { fragmentShadingRateWithFragmentShaderInterlock(this.segment(), index, value); return this; }
+    /// {@return `fragmentShadingRateStrictMultiplyCombiner` at the given index}
+    /// @param index the index of the struct buffer
+    public int fragmentShadingRateStrictMultiplyCombinerAt(long index) { return fragmentShadingRateStrictMultiplyCombiner(this.segment(), index); }
+    /// Sets `fragmentShadingRateStrictMultiplyCombiner` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRatePropertiesKHR fragmentShadingRateStrictMultiplyCombinerAt(long index, int value) { fragmentShadingRateStrictMultiplyCombiner(this.segment(), index, value); return this; }
 
-        /// {@return `fragmentShadingRateWithCustomSampleLocations` at the given index}
-        /// @param index the index of the struct buffer
-        public int fragmentShadingRateWithCustomSampleLocationsAt(long index) { return fragmentShadingRateWithCustomSampleLocations(this.segment(), index); }
-        /// Sets `fragmentShadingRateWithCustomSampleLocations` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fragmentShadingRateWithCustomSampleLocationsAt(long index, int value) { fragmentShadingRateWithCustomSampleLocations(this.segment(), index, value); return this; }
-
-        /// {@return `fragmentShadingRateStrictMultiplyCombiner` at the given index}
-        /// @param index the index of the struct buffer
-        public int fragmentShadingRateStrictMultiplyCombinerAt(long index) { return fragmentShadingRateStrictMultiplyCombiner(this.segment(), index); }
-        /// Sets `fragmentShadingRateStrictMultiplyCombiner` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fragmentShadingRateStrictMultiplyCombinerAt(long index, int value) { fragmentShadingRateStrictMultiplyCombiner(this.segment(), index, value); return this; }
-
-    }
 }

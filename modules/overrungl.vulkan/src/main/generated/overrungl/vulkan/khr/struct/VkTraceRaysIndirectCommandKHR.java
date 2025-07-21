@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t depth;
 /// };
 /// ```
-public sealed class VkTraceRaysIndirectCommandKHR extends GroupType {
+public final class VkTraceRaysIndirectCommandKHR extends GroupType {
     /// The struct layout of `VkTraceRaysIndirectCommandKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("width"),
@@ -59,20 +60,21 @@ public sealed class VkTraceRaysIndirectCommandKHR extends GroupType {
     public static final VarHandle VH_depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depth"));
 
     /// Creates `VkTraceRaysIndirectCommandKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkTraceRaysIndirectCommandKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkTraceRaysIndirectCommandKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkTraceRaysIndirectCommandKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkTraceRaysIndirectCommandKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommandKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkTraceRaysIndirectCommandKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkTraceRaysIndirectCommandKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommandKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkTraceRaysIndirectCommandKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommandKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkTraceRaysIndirectCommandKHR` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkTraceRaysIndirectCommandKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkTraceRaysIndirectCommandKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommandKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkTraceRaysIndirectCommandKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkTraceRaysIndirectCommandKHR`
-    public static VkTraceRaysIndirectCommandKHR alloc(SegmentAllocator allocator) { return new VkTraceRaysIndirectCommandKHR(allocator.allocate(LAYOUT)); }
+    public static VkTraceRaysIndirectCommandKHR alloc(SegmentAllocator allocator) { return new VkTraceRaysIndirectCommandKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkTraceRaysIndirectCommandKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkTraceRaysIndirectCommandKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkTraceRaysIndirectCommandKHR alloc(SegmentAllocator allocator, long count) { return new VkTraceRaysIndirectCommandKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkTraceRaysIndirectCommandKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkTraceRaysIndirectCommandKHR extends GroupType {
     /// @return `this`
     public VkTraceRaysIndirectCommandKHR copyFrom(VkTraceRaysIndirectCommandKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkTraceRaysIndirectCommandKHR reinterpret(long count) { return new VkTraceRaysIndirectCommandKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkTraceRaysIndirectCommandKHR extends GroupType {
     /// @return `this`
     public VkTraceRaysIndirectCommandKHR depth(int value) { depth(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkTraceRaysIndirectCommandKHR].
-    public static final class Buffer extends VkTraceRaysIndirectCommandKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkTraceRaysIndirectCommandKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkTraceRaysIndirectCommandKHR`
+    public VkTraceRaysIndirectCommandKHR asSlice(long index) { return new VkTraceRaysIndirectCommandKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkTraceRaysIndirectCommandKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkTraceRaysIndirectCommandKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkTraceRaysIndirectCommandKHR`
+    public VkTraceRaysIndirectCommandKHR asSlice(long index, long count) { return new VkTraceRaysIndirectCommandKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkTraceRaysIndirectCommandKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkTraceRaysIndirectCommandKHR at(long index, Consumer<VkTraceRaysIndirectCommandKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkTraceRaysIndirectCommandKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkTraceRaysIndirectCommandKHR`
-        public VkTraceRaysIndirectCommandKHR asSlice(long index) { return new VkTraceRaysIndirectCommandKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `width` at the given index}
+    /// @param index the index of the struct buffer
+    public int widthAt(long index) { return width(this.segment(), index); }
+    /// Sets `width` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommandKHR widthAt(long index, int value) { width(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkTraceRaysIndirectCommandKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkTraceRaysIndirectCommandKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `height` at the given index}
+    /// @param index the index of the struct buffer
+    public int heightAt(long index) { return height(this.segment(), index); }
+    /// Sets `height` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommandKHR heightAt(long index, int value) { height(this.segment(), index, value); return this; }
 
-        /// {@return `width` at the given index}
-        /// @param index the index of the struct buffer
-        public int widthAt(long index) { return width(this.segment(), index); }
-        /// Sets `width` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer widthAt(long index, int value) { width(this.segment(), index, value); return this; }
+    /// {@return `depth` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthAt(long index) { return depth(this.segment(), index); }
+    /// Sets `depth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommandKHR depthAt(long index, int value) { depth(this.segment(), index, value); return this; }
 
-        /// {@return `height` at the given index}
-        /// @param index the index of the struct buffer
-        public int heightAt(long index) { return height(this.segment(), index); }
-        /// Sets `height` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer heightAt(long index, int value) { height(this.segment(), index, value); return this; }
-
-        /// {@return `depth` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthAt(long index) { return depth(this.segment(), index); }
-        /// Sets `depth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthAt(long index, int value) { depth(this.segment(), index, value); return this; }
-
-    }
 }

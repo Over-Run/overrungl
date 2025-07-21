@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     char** comment_list;
 /// };
 /// ```
-public sealed class STBVorbisComment extends GroupType {
+public final class STBVorbisComment extends GroupType {
     /// The struct layout of `STBVorbisComment`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("vendor"),
@@ -59,20 +60,21 @@ public sealed class STBVorbisComment extends GroupType {
     public static final VarHandle VH_comment_list = LAYOUT.arrayElementVarHandle(PathElement.groupElement("comment_list"));
 
     /// Creates `STBVorbisComment` with the given segment.
-    /// @param segment the memory segment
-    public STBVorbisComment(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBVorbisComment(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBVorbisComment` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBVorbisComment of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBVorbisComment(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBVorbisComment` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBVorbisComment ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBVorbisComment(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBVorbisComment ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBVorbisComment(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBVorbisComment` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class STBVorbisComment extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBVorbisComment ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBVorbisComment(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBVorbisComment` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBVorbisComment`
-    public static STBVorbisComment alloc(SegmentAllocator allocator) { return new STBVorbisComment(allocator.allocate(LAYOUT)); }
+    public static STBVorbisComment alloc(SegmentAllocator allocator) { return new STBVorbisComment(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBVorbisComment` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBVorbisComment`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBVorbisComment alloc(SegmentAllocator allocator, long count) { return new STBVorbisComment(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBVorbisComment` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class STBVorbisComment extends GroupType {
     /// @return `this`
     public STBVorbisComment copyFrom(STBVorbisComment src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBVorbisComment reinterpret(long count) { return new STBVorbisComment(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `vendor` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class STBVorbisComment extends GroupType {
     /// @return `this`
     public STBVorbisComment comment_list(MemorySegment value) { comment_list(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBVorbisComment].
-    public static final class Buffer extends STBVorbisComment {
-        private final long elementCount;
+    /// Creates a slice of `STBVorbisComment`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBVorbisComment`
+    public STBVorbisComment asSlice(long index) { return new STBVorbisComment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBVorbisComment.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBVorbisComment`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBVorbisComment`
+    public STBVorbisComment asSlice(long index, long count) { return new STBVorbisComment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBVorbisComment` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBVorbisComment at(long index, Consumer<STBVorbisComment> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBVorbisComment`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBVorbisComment`
-        public STBVorbisComment asSlice(long index) { return new STBVorbisComment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `vendor` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vendorAt(long index) { return vendor(this.segment(), index); }
+    /// Sets `vendor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBVorbisComment vendorAt(long index, MemorySegment value) { vendor(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBVorbisComment`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBVorbisComment`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `comment_list_length` at the given index}
+    /// @param index the index of the struct buffer
+    public int comment_list_lengthAt(long index) { return comment_list_length(this.segment(), index); }
+    /// Sets `comment_list_length` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBVorbisComment comment_list_lengthAt(long index, int value) { comment_list_length(this.segment(), index, value); return this; }
 
-        /// {@return `vendor` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vendorAt(long index) { return vendor(this.segment(), index); }
-        /// Sets `vendor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vendorAt(long index, MemorySegment value) { vendor(this.segment(), index, value); return this; }
+    /// {@return `comment_list` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment comment_listAt(long index) { return comment_list(this.segment(), index); }
+    /// Sets `comment_list` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBVorbisComment comment_listAt(long index, MemorySegment value) { comment_list(this.segment(), index, value); return this; }
 
-        /// {@return `comment_list_length` at the given index}
-        /// @param index the index of the struct buffer
-        public int comment_list_lengthAt(long index) { return comment_list_length(this.segment(), index); }
-        /// Sets `comment_list_length` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer comment_list_lengthAt(long index, int value) { comment_list_length(this.segment(), index, value); return this; }
-
-        /// {@return `comment_list` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment comment_listAt(long index) { return comment_list(this.segment(), index); }
-        /// Sets `comment_list` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer comment_listAt(long index, MemorySegment value) { comment_list(this.segment(), index, value); return this; }
-
-    }
 }

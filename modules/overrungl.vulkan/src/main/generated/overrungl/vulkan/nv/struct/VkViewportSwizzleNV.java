@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (int) VkViewportCoordinateSwizzleNV w;
 /// };
 /// ```
-public sealed class VkViewportSwizzleNV extends GroupType {
+public final class VkViewportSwizzleNV extends GroupType {
     /// The struct layout of `VkViewportSwizzleNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("x"),
@@ -67,20 +68,21 @@ public sealed class VkViewportSwizzleNV extends GroupType {
     public static final VarHandle VH_w = LAYOUT.arrayElementVarHandle(PathElement.groupElement("w"));
 
     /// Creates `VkViewportSwizzleNV` with the given segment.
-    /// @param segment the memory segment
-    public VkViewportSwizzleNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkViewportSwizzleNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkViewportSwizzleNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkViewportSwizzleNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkViewportSwizzleNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkViewportSwizzleNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkViewportSwizzleNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkViewportSwizzleNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkViewportSwizzleNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkViewportSwizzleNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkViewportSwizzleNV` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkViewportSwizzleNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkViewportSwizzleNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkViewportSwizzleNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkViewportSwizzleNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkViewportSwizzleNV`
-    public static VkViewportSwizzleNV alloc(SegmentAllocator allocator) { return new VkViewportSwizzleNV(allocator.allocate(LAYOUT)); }
+    public static VkViewportSwizzleNV alloc(SegmentAllocator allocator) { return new VkViewportSwizzleNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkViewportSwizzleNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkViewportSwizzleNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkViewportSwizzleNV alloc(SegmentAllocator allocator, long count) { return new VkViewportSwizzleNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkViewportSwizzleNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkViewportSwizzleNV extends GroupType {
     /// @return `this`
     public VkViewportSwizzleNV copyFrom(VkViewportSwizzleNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkViewportSwizzleNV reinterpret(long count) { return new VkViewportSwizzleNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkViewportSwizzleNV extends GroupType {
     /// @return `this`
     public VkViewportSwizzleNV w(int value) { w(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkViewportSwizzleNV].
-    public static final class Buffer extends VkViewportSwizzleNV {
-        private final long elementCount;
+    /// Creates a slice of `VkViewportSwizzleNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkViewportSwizzleNV`
+    public VkViewportSwizzleNV asSlice(long index) { return new VkViewportSwizzleNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkViewportSwizzleNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkViewportSwizzleNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkViewportSwizzleNV`
+    public VkViewportSwizzleNV asSlice(long index, long count) { return new VkViewportSwizzleNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkViewportSwizzleNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkViewportSwizzleNV at(long index, Consumer<VkViewportSwizzleNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkViewportSwizzleNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkViewportSwizzleNV`
-        public VkViewportSwizzleNV asSlice(long index) { return new VkViewportSwizzleNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `x` at the given index}
+    /// @param index the index of the struct buffer
+    public int xAt(long index) { return x(this.segment(), index); }
+    /// Sets `x` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewportSwizzleNV xAt(long index, int value) { x(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkViewportSwizzleNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkViewportSwizzleNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `y` at the given index}
+    /// @param index the index of the struct buffer
+    public int yAt(long index) { return y(this.segment(), index); }
+    /// Sets `y` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewportSwizzleNV yAt(long index, int value) { y(this.segment(), index, value); return this; }
 
-        /// {@return `x` at the given index}
-        /// @param index the index of the struct buffer
-        public int xAt(long index) { return x(this.segment(), index); }
-        /// Sets `x` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xAt(long index, int value) { x(this.segment(), index, value); return this; }
+    /// {@return `z` at the given index}
+    /// @param index the index of the struct buffer
+    public int zAt(long index) { return z(this.segment(), index); }
+    /// Sets `z` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewportSwizzleNV zAt(long index, int value) { z(this.segment(), index, value); return this; }
 
-        /// {@return `y` at the given index}
-        /// @param index the index of the struct buffer
-        public int yAt(long index) { return y(this.segment(), index); }
-        /// Sets `y` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer yAt(long index, int value) { y(this.segment(), index, value); return this; }
+    /// {@return `w` at the given index}
+    /// @param index the index of the struct buffer
+    public int wAt(long index) { return w(this.segment(), index); }
+    /// Sets `w` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewportSwizzleNV wAt(long index, int value) { w(this.segment(), index, value); return this; }
 
-        /// {@return `z` at the given index}
-        /// @param index the index of the struct buffer
-        public int zAt(long index) { return z(this.segment(), index); }
-        /// Sets `z` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer zAt(long index, int value) { z(this.segment(), index, value); return this; }
-
-        /// {@return `w` at the given index}
-        /// @param index the index of the struct buffer
-        public int wAt(long index) { return w(this.segment(), index); }
-        /// Sets `w` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer wAt(long index, int value) { w(this.segment(), index, value); return this; }
-
-    }
 }

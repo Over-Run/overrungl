@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     uint32_t maxDescriptorSetSubsampledSamplers;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends GroupType {
+public final class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Gro
     public static final VarHandle VH_maxDescriptorSetSubsampledSamplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetSubsampledSamplers"));
 
     /// Creates `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Gro
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
-    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceFragmentDensityMap2PropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Gro
     /// @return `this`
     public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT copyFrom(VkPhysicalDeviceFragmentDensityMap2PropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkPhysicalDeviceFragmentDensityMap2PropertiesEXT extends Gro
     /// @return `this`
     public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT maxDescriptorSetSubsampledSamplers(int value) { maxDescriptorSetSubsampledSamplers(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceFragmentDensityMap2PropertiesEXT].
-    public static final class Buffer extends VkPhysicalDeviceFragmentDensityMap2PropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT asSlice(long index) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT at(long index, Consumer<VkPhysicalDeviceFragmentDensityMap2PropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
-        public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT asSlice(long index) { return new VkPhysicalDeviceFragmentDensityMap2PropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceFragmentDensityMap2PropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `subsampledLoads` at the given index}
+    /// @param index the index of the struct buffer
+    public int subsampledLoadsAt(long index) { return subsampledLoads(this.segment(), index); }
+    /// Sets `subsampledLoads` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT subsampledLoadsAt(long index, int value) { subsampledLoads(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `subsampledCoarseReconstructionEarlyAccess` at the given index}
+    /// @param index the index of the struct buffer
+    public int subsampledCoarseReconstructionEarlyAccessAt(long index) { return subsampledCoarseReconstructionEarlyAccess(this.segment(), index); }
+    /// Sets `subsampledCoarseReconstructionEarlyAccess` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT subsampledCoarseReconstructionEarlyAccessAt(long index, int value) { subsampledCoarseReconstructionEarlyAccess(this.segment(), index, value); return this; }
 
-        /// {@return `subsampledLoads` at the given index}
-        /// @param index the index of the struct buffer
-        public int subsampledLoadsAt(long index) { return subsampledLoads(this.segment(), index); }
-        /// Sets `subsampledLoads` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subsampledLoadsAt(long index, int value) { subsampledLoads(this.segment(), index, value); return this; }
+    /// {@return `maxSubsampledArrayLayers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxSubsampledArrayLayersAt(long index) { return maxSubsampledArrayLayers(this.segment(), index); }
+    /// Sets `maxSubsampledArrayLayers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT maxSubsampledArrayLayersAt(long index, int value) { maxSubsampledArrayLayers(this.segment(), index, value); return this; }
 
-        /// {@return `subsampledCoarseReconstructionEarlyAccess` at the given index}
-        /// @param index the index of the struct buffer
-        public int subsampledCoarseReconstructionEarlyAccessAt(long index) { return subsampledCoarseReconstructionEarlyAccess(this.segment(), index); }
-        /// Sets `subsampledCoarseReconstructionEarlyAccess` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subsampledCoarseReconstructionEarlyAccessAt(long index, int value) { subsampledCoarseReconstructionEarlyAccess(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetSubsampledSamplers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetSubsampledSamplersAt(long index) { return maxDescriptorSetSubsampledSamplers(this.segment(), index); }
+    /// Sets `maxDescriptorSetSubsampledSamplers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentDensityMap2PropertiesEXT maxDescriptorSetSubsampledSamplersAt(long index, int value) { maxDescriptorSetSubsampledSamplers(this.segment(), index, value); return this; }
 
-        /// {@return `maxSubsampledArrayLayers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxSubsampledArrayLayersAt(long index) { return maxSubsampledArrayLayers(this.segment(), index); }
-        /// Sets `maxSubsampledArrayLayers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSubsampledArrayLayersAt(long index, int value) { maxSubsampledArrayLayers(this.segment(), index, value); return this; }
-
-        /// {@return `maxDescriptorSetSubsampledSamplers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetSubsampledSamplersAt(long index) { return maxDescriptorSetSubsampledSamplers(this.segment(), index); }
-        /// Sets `maxDescriptorSetSubsampledSamplers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetSubsampledSamplersAt(long index, int value) { maxDescriptorSetSubsampledSamplers(this.segment(), index, value); return this; }
-
-    }
 }

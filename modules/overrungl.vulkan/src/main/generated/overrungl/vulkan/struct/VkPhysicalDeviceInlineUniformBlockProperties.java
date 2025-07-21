@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t maxDescriptorSetUpdateAfterBindInlineUniformBlocks;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceInlineUniformBlockProperties extends GroupType {
+public final class VkPhysicalDeviceInlineUniformBlockProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceInlineUniformBlockProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkPhysicalDeviceInlineUniformBlockProperties extends GroupTy
     public static final VarHandle VH_maxDescriptorSetUpdateAfterBindInlineUniformBlocks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDescriptorSetUpdateAfterBindInlineUniformBlocks"));
 
     /// Creates `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceInlineUniformBlockProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceInlineUniformBlockProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceInlineUniformBlockProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceInlineUniformBlockProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceInlineUniformBlockProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceInlineUniformBlockProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceInlineUniformBlockProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceInlineUniformBlockProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkPhysicalDeviceInlineUniformBlockProperties extends GroupTy
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceInlineUniformBlockProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceInlineUniformBlockProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceInlineUniformBlockProperties`
-    public static VkPhysicalDeviceInlineUniformBlockProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceInlineUniformBlockProperties(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceInlineUniformBlockProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceInlineUniformBlockProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceInlineUniformBlockProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceInlineUniformBlockProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceInlineUniformBlockProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceInlineUniformBlockProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkPhysicalDeviceInlineUniformBlockProperties extends GroupTy
     /// @return `this`
     public VkPhysicalDeviceInlineUniformBlockProperties copyFrom(VkPhysicalDeviceInlineUniformBlockProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceInlineUniformBlockProperties reinterpret(long count) { return new VkPhysicalDeviceInlineUniformBlockProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkPhysicalDeviceInlineUniformBlockProperties extends GroupTy
     /// @return `this`
     public VkPhysicalDeviceInlineUniformBlockProperties maxDescriptorSetUpdateAfterBindInlineUniformBlocks(int value) { maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceInlineUniformBlockProperties].
-    public static final class Buffer extends VkPhysicalDeviceInlineUniformBlockProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceInlineUniformBlockProperties`
+    public VkPhysicalDeviceInlineUniformBlockProperties asSlice(long index) { return new VkPhysicalDeviceInlineUniformBlockProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceInlineUniformBlockProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceInlineUniformBlockProperties`
+    public VkPhysicalDeviceInlineUniformBlockProperties asSlice(long index, long count) { return new VkPhysicalDeviceInlineUniformBlockProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceInlineUniformBlockProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceInlineUniformBlockProperties at(long index, Consumer<VkPhysicalDeviceInlineUniformBlockProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceInlineUniformBlockProperties`
-        public VkPhysicalDeviceInlineUniformBlockProperties asSlice(long index) { return new VkPhysicalDeviceInlineUniformBlockProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceInlineUniformBlockProperties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceInlineUniformBlockProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceInlineUniformBlockProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceInlineUniformBlockProperties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxInlineUniformBlockSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxInlineUniformBlockSizeAt(long index) { return maxInlineUniformBlockSize(this.segment(), index); }
+    /// Sets `maxInlineUniformBlockSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceInlineUniformBlockProperties maxInlineUniformBlockSizeAt(long index, int value) { maxInlineUniformBlockSize(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorInlineUniformBlocks` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorInlineUniformBlocksAt(long index) { return maxPerStageDescriptorInlineUniformBlocks(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceInlineUniformBlockProperties maxPerStageDescriptorInlineUniformBlocksAt(long index, int value) { maxPerStageDescriptorInlineUniformBlocks(this.segment(), index, value); return this; }
 
-        /// {@return `maxInlineUniformBlockSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxInlineUniformBlockSizeAt(long index) { return maxInlineUniformBlockSize(this.segment(), index); }
-        /// Sets `maxInlineUniformBlockSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxInlineUniformBlockSizeAt(long index, int value) { maxInlineUniformBlockSize(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index) { return maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceInlineUniformBlockProperties maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorInlineUniformBlocks` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorInlineUniformBlocksAt(long index) { return maxPerStageDescriptorInlineUniformBlocks(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorInlineUniformBlocks` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorInlineUniformBlocksAt(long index, int value) { maxPerStageDescriptorInlineUniformBlocks(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetInlineUniformBlocks` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetInlineUniformBlocksAt(long index) { return maxDescriptorSetInlineUniformBlocks(this.segment(), index); }
+    /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceInlineUniformBlockProperties maxDescriptorSetInlineUniformBlocksAt(long index, int value) { maxDescriptorSetInlineUniformBlocks(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index) { return maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorUpdateAfterBindInlineUniformBlocksAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index) { return maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceInlineUniformBlockProperties maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index, int value) { maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetInlineUniformBlocks` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetInlineUniformBlocksAt(long index) { return maxDescriptorSetInlineUniformBlocks(this.segment(), index); }
-        /// Sets `maxDescriptorSetInlineUniformBlocks` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetInlineUniformBlocksAt(long index, int value) { maxDescriptorSetInlineUniformBlocks(this.segment(), index, value); return this; }
-
-        /// {@return `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index) { return maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindInlineUniformBlocks` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindInlineUniformBlocksAt(long index, int value) { maxDescriptorSetUpdateAfterBindInlineUniformBlocks(this.segment(), index, value); return this; }
-
-    }
 }

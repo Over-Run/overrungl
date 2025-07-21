@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -45,7 +46,7 @@ import overrungl.util.*;
 ///     float tz;
 /// };
 /// ```
-public sealed class VkSRTDataNV extends GroupType {
+public final class VkSRTDataNV extends GroupType {
     /// The struct layout of `VkSRTDataNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("sx"),
@@ -163,20 +164,21 @@ public sealed class VkSRTDataNV extends GroupType {
     public static final VarHandle VH_tz = LAYOUT.arrayElementVarHandle(PathElement.groupElement("tz"));
 
     /// Creates `VkSRTDataNV` with the given segment.
-    /// @param segment the memory segment
-    public VkSRTDataNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSRTDataNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSRTDataNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSRTDataNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSRTDataNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSRTDataNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSRTDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSRTDataNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSRTDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSRTDataNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSRTDataNV` with the given segment.
     ///
@@ -184,18 +186,18 @@ public sealed class VkSRTDataNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSRTDataNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSRTDataNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSRTDataNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSRTDataNV`
-    public static VkSRTDataNV alloc(SegmentAllocator allocator) { return new VkSRTDataNV(allocator.allocate(LAYOUT)); }
+    public static VkSRTDataNV alloc(SegmentAllocator allocator) { return new VkSRTDataNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSRTDataNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSRTDataNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSRTDataNV alloc(SegmentAllocator allocator, long count) { return new VkSRTDataNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSRTDataNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -450,9 +452,10 @@ public sealed class VkSRTDataNV extends GroupType {
     /// @return `this`
     public VkSRTDataNV copyFrom(VkSRTDataNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSRTDataNV reinterpret(long count) { return new VkSRTDataNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sx` at the given index}
     /// @param segment the segment of the struct
@@ -710,171 +713,165 @@ public sealed class VkSRTDataNV extends GroupType {
     /// @return `this`
     public VkSRTDataNV tz(float value) { tz(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSRTDataNV].
-    public static final class Buffer extends VkSRTDataNV {
-        private final long elementCount;
+    /// Creates a slice of `VkSRTDataNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSRTDataNV`
+    public VkSRTDataNV asSlice(long index) { return new VkSRTDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSRTDataNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSRTDataNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSRTDataNV`
+    public VkSRTDataNV asSlice(long index, long count) { return new VkSRTDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSRTDataNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSRTDataNV at(long index, Consumer<VkSRTDataNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSRTDataNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSRTDataNV`
-        public VkSRTDataNV asSlice(long index) { return new VkSRTDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sx` at the given index}
+    /// @param index the index of the struct buffer
+    public float sxAt(long index) { return sx(this.segment(), index); }
+    /// Sets `sx` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV sxAt(long index, float value) { sx(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSRTDataNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSRTDataNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `a` at the given index}
+    /// @param index the index of the struct buffer
+    public float aAt(long index) { return a(this.segment(), index); }
+    /// Sets `a` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV aAt(long index, float value) { a(this.segment(), index, value); return this; }
 
-        /// {@return `sx` at the given index}
-        /// @param index the index of the struct buffer
-        public float sxAt(long index) { return sx(this.segment(), index); }
-        /// Sets `sx` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sxAt(long index, float value) { sx(this.segment(), index, value); return this; }
+    /// {@return `b` at the given index}
+    /// @param index the index of the struct buffer
+    public float bAt(long index) { return b(this.segment(), index); }
+    /// Sets `b` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV bAt(long index, float value) { b(this.segment(), index, value); return this; }
 
-        /// {@return `a` at the given index}
-        /// @param index the index of the struct buffer
-        public float aAt(long index) { return a(this.segment(), index); }
-        /// Sets `a` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer aAt(long index, float value) { a(this.segment(), index, value); return this; }
+    /// {@return `pvx` at the given index}
+    /// @param index the index of the struct buffer
+    public float pvxAt(long index) { return pvx(this.segment(), index); }
+    /// Sets `pvx` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV pvxAt(long index, float value) { pvx(this.segment(), index, value); return this; }
 
-        /// {@return `b` at the given index}
-        /// @param index the index of the struct buffer
-        public float bAt(long index) { return b(this.segment(), index); }
-        /// Sets `b` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bAt(long index, float value) { b(this.segment(), index, value); return this; }
+    /// {@return `sy` at the given index}
+    /// @param index the index of the struct buffer
+    public float syAt(long index) { return sy(this.segment(), index); }
+    /// Sets `sy` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV syAt(long index, float value) { sy(this.segment(), index, value); return this; }
 
-        /// {@return `pvx` at the given index}
-        /// @param index the index of the struct buffer
-        public float pvxAt(long index) { return pvx(this.segment(), index); }
-        /// Sets `pvx` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pvxAt(long index, float value) { pvx(this.segment(), index, value); return this; }
+    /// {@return `c` at the given index}
+    /// @param index the index of the struct buffer
+    public float cAt(long index) { return c(this.segment(), index); }
+    /// Sets `c` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV cAt(long index, float value) { c(this.segment(), index, value); return this; }
 
-        /// {@return `sy` at the given index}
-        /// @param index the index of the struct buffer
-        public float syAt(long index) { return sy(this.segment(), index); }
-        /// Sets `sy` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer syAt(long index, float value) { sy(this.segment(), index, value); return this; }
+    /// {@return `pvy` at the given index}
+    /// @param index the index of the struct buffer
+    public float pvyAt(long index) { return pvy(this.segment(), index); }
+    /// Sets `pvy` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV pvyAt(long index, float value) { pvy(this.segment(), index, value); return this; }
 
-        /// {@return `c` at the given index}
-        /// @param index the index of the struct buffer
-        public float cAt(long index) { return c(this.segment(), index); }
-        /// Sets `c` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cAt(long index, float value) { c(this.segment(), index, value); return this; }
+    /// {@return `sz` at the given index}
+    /// @param index the index of the struct buffer
+    public float szAt(long index) { return sz(this.segment(), index); }
+    /// Sets `sz` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV szAt(long index, float value) { sz(this.segment(), index, value); return this; }
 
-        /// {@return `pvy` at the given index}
-        /// @param index the index of the struct buffer
-        public float pvyAt(long index) { return pvy(this.segment(), index); }
-        /// Sets `pvy` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pvyAt(long index, float value) { pvy(this.segment(), index, value); return this; }
+    /// {@return `pvz` at the given index}
+    /// @param index the index of the struct buffer
+    public float pvzAt(long index) { return pvz(this.segment(), index); }
+    /// Sets `pvz` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV pvzAt(long index, float value) { pvz(this.segment(), index, value); return this; }
 
-        /// {@return `sz` at the given index}
-        /// @param index the index of the struct buffer
-        public float szAt(long index) { return sz(this.segment(), index); }
-        /// Sets `sz` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer szAt(long index, float value) { sz(this.segment(), index, value); return this; }
+    /// {@return `qx` at the given index}
+    /// @param index the index of the struct buffer
+    public float qxAt(long index) { return qx(this.segment(), index); }
+    /// Sets `qx` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV qxAt(long index, float value) { qx(this.segment(), index, value); return this; }
 
-        /// {@return `pvz` at the given index}
-        /// @param index the index of the struct buffer
-        public float pvzAt(long index) { return pvz(this.segment(), index); }
-        /// Sets `pvz` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pvzAt(long index, float value) { pvz(this.segment(), index, value); return this; }
+    /// {@return `qy` at the given index}
+    /// @param index the index of the struct buffer
+    public float qyAt(long index) { return qy(this.segment(), index); }
+    /// Sets `qy` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV qyAt(long index, float value) { qy(this.segment(), index, value); return this; }
 
-        /// {@return `qx` at the given index}
-        /// @param index the index of the struct buffer
-        public float qxAt(long index) { return qx(this.segment(), index); }
-        /// Sets `qx` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qxAt(long index, float value) { qx(this.segment(), index, value); return this; }
+    /// {@return `qz` at the given index}
+    /// @param index the index of the struct buffer
+    public float qzAt(long index) { return qz(this.segment(), index); }
+    /// Sets `qz` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV qzAt(long index, float value) { qz(this.segment(), index, value); return this; }
 
-        /// {@return `qy` at the given index}
-        /// @param index the index of the struct buffer
-        public float qyAt(long index) { return qy(this.segment(), index); }
-        /// Sets `qy` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qyAt(long index, float value) { qy(this.segment(), index, value); return this; }
+    /// {@return `qw` at the given index}
+    /// @param index the index of the struct buffer
+    public float qwAt(long index) { return qw(this.segment(), index); }
+    /// Sets `qw` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV qwAt(long index, float value) { qw(this.segment(), index, value); return this; }
 
-        /// {@return `qz` at the given index}
-        /// @param index the index of the struct buffer
-        public float qzAt(long index) { return qz(this.segment(), index); }
-        /// Sets `qz` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qzAt(long index, float value) { qz(this.segment(), index, value); return this; }
+    /// {@return `tx` at the given index}
+    /// @param index the index of the struct buffer
+    public float txAt(long index) { return tx(this.segment(), index); }
+    /// Sets `tx` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV txAt(long index, float value) { tx(this.segment(), index, value); return this; }
 
-        /// {@return `qw` at the given index}
-        /// @param index the index of the struct buffer
-        public float qwAt(long index) { return qw(this.segment(), index); }
-        /// Sets `qw` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer qwAt(long index, float value) { qw(this.segment(), index, value); return this; }
+    /// {@return `ty` at the given index}
+    /// @param index the index of the struct buffer
+    public float tyAt(long index) { return ty(this.segment(), index); }
+    /// Sets `ty` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV tyAt(long index, float value) { ty(this.segment(), index, value); return this; }
 
-        /// {@return `tx` at the given index}
-        /// @param index the index of the struct buffer
-        public float txAt(long index) { return tx(this.segment(), index); }
-        /// Sets `tx` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer txAt(long index, float value) { tx(this.segment(), index, value); return this; }
+    /// {@return `tz` at the given index}
+    /// @param index the index of the struct buffer
+    public float tzAt(long index) { return tz(this.segment(), index); }
+    /// Sets `tz` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSRTDataNV tzAt(long index, float value) { tz(this.segment(), index, value); return this; }
 
-        /// {@return `ty` at the given index}
-        /// @param index the index of the struct buffer
-        public float tyAt(long index) { return ty(this.segment(), index); }
-        /// Sets `ty` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tyAt(long index, float value) { ty(this.segment(), index, value); return this; }
-
-        /// {@return `tz` at the given index}
-        /// @param index the index of the struct buffer
-        public float tzAt(long index) { return tz(this.segment(), index); }
-        /// Sets `tz` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tzAt(long index, float value) { tz(this.segment(), index, value); return this; }
-
-    }
 }

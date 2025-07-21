@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -44,7 +44,7 @@ import java.util.function.*;
 ///     uint16_t delta_poc_s1_minus1[16];
 /// };
 /// ```
-public sealed class StdVideoH265ShortTermRefPicSet extends GroupType {
+public final class StdVideoH265ShortTermRefPicSet extends GroupType {
     /// The struct layout of `StdVideoH265ShortTermRefPicSet`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoH265ShortTermRefPicSetFlags.LAYOUT.withName("flags"),
@@ -146,20 +146,21 @@ public sealed class StdVideoH265ShortTermRefPicSet extends GroupType {
     public static final VarHandle VH_delta_poc_s1_minus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("delta_poc_s1_minus1"), PathElement.sequenceElement());
 
     /// Creates `StdVideoH265ShortTermRefPicSet` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoH265ShortTermRefPicSet(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoH265ShortTermRefPicSet(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoH265ShortTermRefPicSet` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoH265ShortTermRefPicSet of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265ShortTermRefPicSet(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoH265ShortTermRefPicSet` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265ShortTermRefPicSet ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265ShortTermRefPicSet(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoH265ShortTermRefPicSet ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265ShortTermRefPicSet(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoH265ShortTermRefPicSet` with the given segment.
     ///
@@ -167,18 +168,18 @@ public sealed class StdVideoH265ShortTermRefPicSet extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoH265ShortTermRefPicSet ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265ShortTermRefPicSet(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoH265ShortTermRefPicSet`
-    public static StdVideoH265ShortTermRefPicSet alloc(SegmentAllocator allocator) { return new StdVideoH265ShortTermRefPicSet(allocator.allocate(LAYOUT)); }
+    public static StdVideoH265ShortTermRefPicSet alloc(SegmentAllocator allocator) { return new StdVideoH265ShortTermRefPicSet(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH265ShortTermRefPicSet`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoH265ShortTermRefPicSet alloc(SegmentAllocator allocator, long count) { return new StdVideoH265ShortTermRefPicSet(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoH265ShortTermRefPicSet` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -388,9 +389,10 @@ public sealed class StdVideoH265ShortTermRefPicSet extends GroupType {
     /// @return `this`
     public StdVideoH265ShortTermRefPicSet copyFrom(StdVideoH265ShortTermRefPicSet src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoH265ShortTermRefPicSet reinterpret(long count) { return new StdVideoH265ShortTermRefPicSet(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -658,178 +660,172 @@ public sealed class StdVideoH265ShortTermRefPicSet extends GroupType {
     /// @return `this`
     public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1(long index0, short value) { delta_poc_s1_minus1(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [StdVideoH265ShortTermRefPicSet].
-    public static final class Buffer extends StdVideoH265ShortTermRefPicSet {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoH265ShortTermRefPicSet`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265ShortTermRefPicSet`
+    public StdVideoH265ShortTermRefPicSet asSlice(long index) { return new StdVideoH265ShortTermRefPicSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoH265ShortTermRefPicSet.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoH265ShortTermRefPicSet`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265ShortTermRefPicSet`
+    public StdVideoH265ShortTermRefPicSet asSlice(long index, long count) { return new StdVideoH265ShortTermRefPicSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoH265ShortTermRefPicSet` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet at(long index, Consumer<StdVideoH265ShortTermRefPicSet> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoH265ShortTermRefPicSet`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoH265ShortTermRefPicSet`
-        public StdVideoH265ShortTermRefPicSet asSlice(long index) { return new StdVideoH265ShortTermRefPicSet(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoH265ShortTermRefPicSetFlags> func) { func.accept(overrungl.vulkan.video.StdVideoH265ShortTermRefPicSetFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoH265ShortTermRefPicSet`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoH265ShortTermRefPicSet`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `delta_idx_minus1` at the given index}
+    /// @param index the index of the struct buffer
+    public int delta_idx_minus1At(long index) { return delta_idx_minus1(this.segment(), index); }
+    /// Sets `delta_idx_minus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet delta_idx_minus1At(long index, int value) { delta_idx_minus1(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoH265ShortTermRefPicSetFlags> func) { func.accept(overrungl.vulkan.video.StdVideoH265ShortTermRefPicSetFlags.of(flagsAt(index))); return this; }
+    /// {@return `use_delta_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public short use_delta_flagAt(long index) { return use_delta_flag(this.segment(), index); }
+    /// Sets `use_delta_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet use_delta_flagAt(long index, short value) { use_delta_flag(this.segment(), index, value); return this; }
 
-        /// {@return `delta_idx_minus1` at the given index}
-        /// @param index the index of the struct buffer
-        public int delta_idx_minus1At(long index) { return delta_idx_minus1(this.segment(), index); }
-        /// Sets `delta_idx_minus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer delta_idx_minus1At(long index, int value) { delta_idx_minus1(this.segment(), index, value); return this; }
+    /// {@return `abs_delta_rps_minus1` at the given index}
+    /// @param index the index of the struct buffer
+    public short abs_delta_rps_minus1At(long index) { return abs_delta_rps_minus1(this.segment(), index); }
+    /// Sets `abs_delta_rps_minus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet abs_delta_rps_minus1At(long index, short value) { abs_delta_rps_minus1(this.segment(), index, value); return this; }
 
-        /// {@return `use_delta_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public short use_delta_flagAt(long index) { return use_delta_flag(this.segment(), index); }
-        /// Sets `use_delta_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer use_delta_flagAt(long index, short value) { use_delta_flag(this.segment(), index, value); return this; }
+    /// {@return `used_by_curr_pic_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public short used_by_curr_pic_flagAt(long index) { return used_by_curr_pic_flag(this.segment(), index); }
+    /// Sets `used_by_curr_pic_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet used_by_curr_pic_flagAt(long index, short value) { used_by_curr_pic_flag(this.segment(), index, value); return this; }
 
-        /// {@return `abs_delta_rps_minus1` at the given index}
-        /// @param index the index of the struct buffer
-        public short abs_delta_rps_minus1At(long index) { return abs_delta_rps_minus1(this.segment(), index); }
-        /// Sets `abs_delta_rps_minus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer abs_delta_rps_minus1At(long index, short value) { abs_delta_rps_minus1(this.segment(), index, value); return this; }
+    /// {@return `used_by_curr_pic_s0_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public short used_by_curr_pic_s0_flagAt(long index) { return used_by_curr_pic_s0_flag(this.segment(), index); }
+    /// Sets `used_by_curr_pic_s0_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet used_by_curr_pic_s0_flagAt(long index, short value) { used_by_curr_pic_s0_flag(this.segment(), index, value); return this; }
 
-        /// {@return `used_by_curr_pic_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public short used_by_curr_pic_flagAt(long index) { return used_by_curr_pic_flag(this.segment(), index); }
-        /// Sets `used_by_curr_pic_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer used_by_curr_pic_flagAt(long index, short value) { used_by_curr_pic_flag(this.segment(), index, value); return this; }
+    /// {@return `used_by_curr_pic_s1_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public short used_by_curr_pic_s1_flagAt(long index) { return used_by_curr_pic_s1_flag(this.segment(), index); }
+    /// Sets `used_by_curr_pic_s1_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet used_by_curr_pic_s1_flagAt(long index, short value) { used_by_curr_pic_s1_flag(this.segment(), index, value); return this; }
 
-        /// {@return `used_by_curr_pic_s0_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public short used_by_curr_pic_s0_flagAt(long index) { return used_by_curr_pic_s0_flag(this.segment(), index); }
-        /// Sets `used_by_curr_pic_s0_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer used_by_curr_pic_s0_flagAt(long index, short value) { used_by_curr_pic_s0_flag(this.segment(), index, value); return this; }
+    /// {@return `reserved1` at the given index}
+    /// @param index the index of the struct buffer
+    public short reserved1At(long index) { return reserved1(this.segment(), index); }
+    /// Sets `reserved1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet reserved1At(long index, short value) { reserved1(this.segment(), index, value); return this; }
 
-        /// {@return `used_by_curr_pic_s1_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public short used_by_curr_pic_s1_flagAt(long index) { return used_by_curr_pic_s1_flag(this.segment(), index); }
-        /// Sets `used_by_curr_pic_s1_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer used_by_curr_pic_s1_flagAt(long index, short value) { used_by_curr_pic_s1_flag(this.segment(), index, value); return this; }
+    /// {@return `reserved2` at the given index}
+    /// @param index the index of the struct buffer
+    public byte reserved2At(long index) { return reserved2(this.segment(), index); }
+    /// Sets `reserved2` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet reserved2At(long index, byte value) { reserved2(this.segment(), index, value); return this; }
 
-        /// {@return `reserved1` at the given index}
-        /// @param index the index of the struct buffer
-        public short reserved1At(long index) { return reserved1(this.segment(), index); }
-        /// Sets `reserved1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer reserved1At(long index, short value) { reserved1(this.segment(), index, value); return this; }
+    /// {@return `reserved3` at the given index}
+    /// @param index the index of the struct buffer
+    public byte reserved3At(long index) { return reserved3(this.segment(), index); }
+    /// Sets `reserved3` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet reserved3At(long index, byte value) { reserved3(this.segment(), index, value); return this; }
 
-        /// {@return `reserved2` at the given index}
-        /// @param index the index of the struct buffer
-        public byte reserved2At(long index) { return reserved2(this.segment(), index); }
-        /// Sets `reserved2` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer reserved2At(long index, byte value) { reserved2(this.segment(), index, value); return this; }
+    /// {@return `num_negative_pics` at the given index}
+    /// @param index the index of the struct buffer
+    public byte num_negative_picsAt(long index) { return num_negative_pics(this.segment(), index); }
+    /// Sets `num_negative_pics` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet num_negative_picsAt(long index, byte value) { num_negative_pics(this.segment(), index, value); return this; }
 
-        /// {@return `reserved3` at the given index}
-        /// @param index the index of the struct buffer
-        public byte reserved3At(long index) { return reserved3(this.segment(), index); }
-        /// Sets `reserved3` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer reserved3At(long index, byte value) { reserved3(this.segment(), index, value); return this; }
+    /// {@return `num_positive_pics` at the given index}
+    /// @param index the index of the struct buffer
+    public byte num_positive_picsAt(long index) { return num_positive_pics(this.segment(), index); }
+    /// Sets `num_positive_pics` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet num_positive_picsAt(long index, byte value) { num_positive_pics(this.segment(), index, value); return this; }
 
-        /// {@return `num_negative_pics` at the given index}
-        /// @param index the index of the struct buffer
-        public byte num_negative_picsAt(long index) { return num_negative_pics(this.segment(), index); }
-        /// Sets `num_negative_pics` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_negative_picsAt(long index, byte value) { num_negative_pics(this.segment(), index, value); return this; }
-
-        /// {@return `num_positive_pics` at the given index}
-        /// @param index the index of the struct buffer
-        public byte num_positive_picsAt(long index) { return num_positive_pics(this.segment(), index); }
-        /// Sets `num_positive_pics` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_positive_picsAt(long index, byte value) { num_positive_pics(this.segment(), index, value); return this; }
-
-        /// {@return `delta_poc_s0_minus1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment delta_poc_s0_minus1At(long index) { return delta_poc_s0_minus1(this.segment(), index); }
-        /// {@return `delta_poc_s0_minus1` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `delta_poc_s0_minus1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment delta_poc_s0_minus1At(long index) { return delta_poc_s0_minus1(this.segment(), index); }
+    /// {@return `delta_poc_s0_minus1` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public short delta_poc_s0_minus1At(long index, long index0) { return delta_poc_s0_minus1(this.segment(), index, index0); }
-        /// Sets `delta_poc_s0_minus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer delta_poc_s0_minus1At(long index, MemorySegment value) { delta_poc_s0_minus1(this.segment(), index, value); return this; }
-        /// Sets `delta_poc_s0_minus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer delta_poc_s0_minus1At(long index, long index0, short value) { delta_poc_s0_minus1(this.segment(), index, index0, value); return this; }
+    /// Sets `delta_poc_s0_minus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet delta_poc_s0_minus1At(long index, MemorySegment value) { delta_poc_s0_minus1(this.segment(), index, value); return this; }
+    /// Sets `delta_poc_s0_minus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet delta_poc_s0_minus1At(long index, long index0, short value) { delta_poc_s0_minus1(this.segment(), index, index0, value); return this; }
 
-        /// {@return `delta_poc_s1_minus1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment delta_poc_s1_minus1At(long index) { return delta_poc_s1_minus1(this.segment(), index); }
-        /// {@return `delta_poc_s1_minus1` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `delta_poc_s1_minus1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment delta_poc_s1_minus1At(long index) { return delta_poc_s1_minus1(this.segment(), index); }
+    /// {@return `delta_poc_s1_minus1` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public short delta_poc_s1_minus1At(long index, long index0) { return delta_poc_s1_minus1(this.segment(), index, index0); }
-        /// Sets `delta_poc_s1_minus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer delta_poc_s1_minus1At(long index, MemorySegment value) { delta_poc_s1_minus1(this.segment(), index, value); return this; }
-        /// Sets `delta_poc_s1_minus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer delta_poc_s1_minus1At(long index, long index0, short value) { delta_poc_s1_minus1(this.segment(), index, index0, value); return this; }
+    /// Sets `delta_poc_s1_minus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1At(long index, MemorySegment value) { delta_poc_s1_minus1(this.segment(), index, value); return this; }
+    /// Sets `delta_poc_s1_minus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH265ShortTermRefPicSet delta_poc_s1_minus1At(long index, long index0, short value) { delta_poc_s1_minus1(this.segment(), index, index0, value); return this; }
 
-    }
 }

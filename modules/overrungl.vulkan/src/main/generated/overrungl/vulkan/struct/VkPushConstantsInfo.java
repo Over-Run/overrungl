@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     const void* pValues;
 /// };
 /// ```
-public sealed class VkPushConstantsInfo extends GroupType {
+public final class VkPushConstantsInfo extends GroupType {
     /// The struct layout of `VkPushConstantsInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkPushConstantsInfo extends GroupType {
     public static final VarHandle VH_pValues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pValues"));
 
     /// Creates `VkPushConstantsInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkPushConstantsInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPushConstantsInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPushConstantsInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPushConstantsInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushConstantsInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPushConstantsInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPushConstantsInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushConstantsInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPushConstantsInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushConstantsInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPushConstantsInfo` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkPushConstantsInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPushConstantsInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushConstantsInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPushConstantsInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPushConstantsInfo`
-    public static VkPushConstantsInfo alloc(SegmentAllocator allocator) { return new VkPushConstantsInfo(allocator.allocate(LAYOUT)); }
+    public static VkPushConstantsInfo alloc(SegmentAllocator allocator) { return new VkPushConstantsInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPushConstantsInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPushConstantsInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPushConstantsInfo alloc(SegmentAllocator allocator, long count) { return new VkPushConstantsInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPushConstantsInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkPushConstantsInfo extends GroupType {
     /// @return `this`
     public VkPushConstantsInfo copyFrom(VkPushConstantsInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPushConstantsInfo reinterpret(long count) { return new VkPushConstantsInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkPushConstantsInfo extends GroupType {
     /// @return `this`
     public VkPushConstantsInfo pValues(MemorySegment value) { pValues(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPushConstantsInfo].
-    public static final class Buffer extends VkPushConstantsInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkPushConstantsInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPushConstantsInfo`
+    public VkPushConstantsInfo asSlice(long index) { return new VkPushConstantsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPushConstantsInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPushConstantsInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPushConstantsInfo`
+    public VkPushConstantsInfo asSlice(long index, long count) { return new VkPushConstantsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPushConstantsInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPushConstantsInfo at(long index, Consumer<VkPushConstantsInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPushConstantsInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPushConstantsInfo`
-        public VkPushConstantsInfo asSlice(long index) { return new VkPushConstantsInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantsInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPushConstantsInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPushConstantsInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantsInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `layout` at the given index}
+    /// @param index the index of the struct buffer
+    public long layoutAt(long index) { return layout(this.segment(), index); }
+    /// Sets `layout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantsInfo layoutAt(long index, long value) { layout(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `stageFlags` at the given index}
+    /// @param index the index of the struct buffer
+    public int stageFlagsAt(long index) { return stageFlags(this.segment(), index); }
+    /// Sets `stageFlags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantsInfo stageFlagsAt(long index, int value) { stageFlags(this.segment(), index, value); return this; }
 
-        /// {@return `layout` at the given index}
-        /// @param index the index of the struct buffer
-        public long layoutAt(long index) { return layout(this.segment(), index); }
-        /// Sets `layout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer layoutAt(long index, long value) { layout(this.segment(), index, value); return this; }
+    /// {@return `offset` at the given index}
+    /// @param index the index of the struct buffer
+    public int offsetAt(long index) { return offset(this.segment(), index); }
+    /// Sets `offset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantsInfo offsetAt(long index, int value) { offset(this.segment(), index, value); return this; }
 
-        /// {@return `stageFlags` at the given index}
-        /// @param index the index of the struct buffer
-        public int stageFlagsAt(long index) { return stageFlags(this.segment(), index); }
-        /// Sets `stageFlags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stageFlagsAt(long index, int value) { stageFlags(this.segment(), index, value); return this; }
+    /// {@return `size` at the given index}
+    /// @param index the index of the struct buffer
+    public int sizeAt(long index) { return size(this.segment(), index); }
+    /// Sets `size` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantsInfo sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
 
-        /// {@return `offset` at the given index}
-        /// @param index the index of the struct buffer
-        public int offsetAt(long index) { return offset(this.segment(), index); }
-        /// Sets `offset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer offsetAt(long index, int value) { offset(this.segment(), index, value); return this; }
+    /// {@return `pValues` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pValuesAt(long index) { return pValues(this.segment(), index); }
+    /// Sets `pValues` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantsInfo pValuesAt(long index, MemorySegment value) { pValues(this.segment(), index, value); return this; }
 
-        /// {@return `size` at the given index}
-        /// @param index the index of the struct buffer
-        public int sizeAt(long index) { return size(this.segment(), index); }
-        /// Sets `size` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
-
-        /// {@return `pValues` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pValuesAt(long index) { return pValues(this.segment(), index); }
-        /// Sets `pValues` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pValuesAt(long index, MemorySegment value) { pValues(this.segment(), index, value); return this; }
-
-    }
 }

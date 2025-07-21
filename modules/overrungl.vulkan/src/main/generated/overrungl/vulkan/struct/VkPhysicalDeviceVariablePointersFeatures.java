@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 variablePointers;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceVariablePointersFeatures extends GroupType {
+public final class VkPhysicalDeviceVariablePointersFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDeviceVariablePointersFeatures`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPhysicalDeviceVariablePointersFeatures extends GroupType {
     public static final VarHandle VH_variablePointers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("variablePointers"));
 
     /// Creates `VkPhysicalDeviceVariablePointersFeatures` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceVariablePointersFeatures(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceVariablePointersFeatures(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceVariablePointersFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceVariablePointersFeatures of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVariablePointersFeatures(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceVariablePointersFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVariablePointersFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVariablePointersFeatures(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceVariablePointersFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVariablePointersFeatures(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceVariablePointersFeatures` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPhysicalDeviceVariablePointersFeatures extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceVariablePointersFeatures ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVariablePointersFeatures(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceVariablePointersFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceVariablePointersFeatures`
-    public static VkPhysicalDeviceVariablePointersFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceVariablePointersFeatures(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceVariablePointersFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceVariablePointersFeatures(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceVariablePointersFeatures` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceVariablePointersFeatures`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceVariablePointersFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVariablePointersFeatures(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceVariablePointersFeatures` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPhysicalDeviceVariablePointersFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceVariablePointersFeatures copyFrom(VkPhysicalDeviceVariablePointersFeatures src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceVariablePointersFeatures reinterpret(long count) { return new VkPhysicalDeviceVariablePointersFeatures(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPhysicalDeviceVariablePointersFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceVariablePointersFeatures variablePointers(int value) { variablePointers(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceVariablePointersFeatures].
-    public static final class Buffer extends VkPhysicalDeviceVariablePointersFeatures {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceVariablePointersFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVariablePointersFeatures`
+    public VkPhysicalDeviceVariablePointersFeatures asSlice(long index) { return new VkPhysicalDeviceVariablePointersFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceVariablePointersFeatures.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceVariablePointersFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVariablePointersFeatures`
+    public VkPhysicalDeviceVariablePointersFeatures asSlice(long index, long count) { return new VkPhysicalDeviceVariablePointersFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceVariablePointersFeatures` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceVariablePointersFeatures at(long index, Consumer<VkPhysicalDeviceVariablePointersFeatures> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceVariablePointersFeatures`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceVariablePointersFeatures`
-        public VkPhysicalDeviceVariablePointersFeatures asSlice(long index) { return new VkPhysicalDeviceVariablePointersFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVariablePointersFeatures sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceVariablePointersFeatures`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceVariablePointersFeatures`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVariablePointersFeatures pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `variablePointersStorageBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public int variablePointersStorageBufferAt(long index) { return variablePointersStorageBuffer(this.segment(), index); }
+    /// Sets `variablePointersStorageBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVariablePointersFeatures variablePointersStorageBufferAt(long index, int value) { variablePointersStorageBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `variablePointers` at the given index}
+    /// @param index the index of the struct buffer
+    public int variablePointersAt(long index) { return variablePointers(this.segment(), index); }
+    /// Sets `variablePointers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVariablePointersFeatures variablePointersAt(long index, int value) { variablePointers(this.segment(), index, value); return this; }
 
-        /// {@return `variablePointersStorageBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public int variablePointersStorageBufferAt(long index) { return variablePointersStorageBuffer(this.segment(), index); }
-        /// Sets `variablePointersStorageBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer variablePointersStorageBufferAt(long index, int value) { variablePointersStorageBuffer(this.segment(), index, value); return this; }
-
-        /// {@return `variablePointers` at the given index}
-        /// @param index the index of the struct buffer
-        public int variablePointersAt(long index) { return variablePointers(this.segment(), index); }
-        /// Sets `variablePointers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer variablePointersAt(long index, int value) { variablePointers(this.segment(), index, value); return this; }
-
-    }
 }

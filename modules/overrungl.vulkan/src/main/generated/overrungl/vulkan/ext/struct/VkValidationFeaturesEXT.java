@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     const VkValidationFeatureDisableEXT* pDisabledValidationFeatures;
 /// };
 /// ```
-public sealed class VkValidationFeaturesEXT extends GroupType {
+public final class VkValidationFeaturesEXT extends GroupType {
     /// The struct layout of `VkValidationFeaturesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkValidationFeaturesEXT extends GroupType {
     public static final VarHandle VH_pDisabledValidationFeatures = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDisabledValidationFeatures"));
 
     /// Creates `VkValidationFeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkValidationFeaturesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkValidationFeaturesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkValidationFeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkValidationFeaturesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkValidationFeaturesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkValidationFeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkValidationFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkValidationFeaturesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkValidationFeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkValidationFeaturesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkValidationFeaturesEXT` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkValidationFeaturesEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkValidationFeaturesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkValidationFeaturesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkValidationFeaturesEXT`
-    public static VkValidationFeaturesEXT alloc(SegmentAllocator allocator) { return new VkValidationFeaturesEXT(allocator.allocate(LAYOUT)); }
+    public static VkValidationFeaturesEXT alloc(SegmentAllocator allocator) { return new VkValidationFeaturesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkValidationFeaturesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkValidationFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkValidationFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkValidationFeaturesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkValidationFeaturesEXT extends GroupType {
     /// @return `this`
     public VkValidationFeaturesEXT copyFrom(VkValidationFeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkValidationFeaturesEXT reinterpret(long count) { return new VkValidationFeaturesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkValidationFeaturesEXT extends GroupType {
     /// @return `this`
     public VkValidationFeaturesEXT pDisabledValidationFeatures(MemorySegment value) { pDisabledValidationFeatures(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkValidationFeaturesEXT].
-    public static final class Buffer extends VkValidationFeaturesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkValidationFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkValidationFeaturesEXT`
+    public VkValidationFeaturesEXT asSlice(long index) { return new VkValidationFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkValidationFeaturesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkValidationFeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkValidationFeaturesEXT`
+    public VkValidationFeaturesEXT asSlice(long index, long count) { return new VkValidationFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkValidationFeaturesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkValidationFeaturesEXT at(long index, Consumer<VkValidationFeaturesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkValidationFeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkValidationFeaturesEXT`
-        public VkValidationFeaturesEXT asSlice(long index) { return new VkValidationFeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationFeaturesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkValidationFeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkValidationFeaturesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationFeaturesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `enabledValidationFeatureCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int enabledValidationFeatureCountAt(long index) { return enabledValidationFeatureCount(this.segment(), index); }
+    /// Sets `enabledValidationFeatureCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationFeaturesEXT enabledValidationFeatureCountAt(long index, int value) { enabledValidationFeatureCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pEnabledValidationFeatures` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pEnabledValidationFeaturesAt(long index) { return pEnabledValidationFeatures(this.segment(), index); }
+    /// Sets `pEnabledValidationFeatures` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationFeaturesEXT pEnabledValidationFeaturesAt(long index, MemorySegment value) { pEnabledValidationFeatures(this.segment(), index, value); return this; }
 
-        /// {@return `enabledValidationFeatureCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int enabledValidationFeatureCountAt(long index) { return enabledValidationFeatureCount(this.segment(), index); }
-        /// Sets `enabledValidationFeatureCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer enabledValidationFeatureCountAt(long index, int value) { enabledValidationFeatureCount(this.segment(), index, value); return this; }
+    /// {@return `disabledValidationFeatureCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int disabledValidationFeatureCountAt(long index) { return disabledValidationFeatureCount(this.segment(), index); }
+    /// Sets `disabledValidationFeatureCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationFeaturesEXT disabledValidationFeatureCountAt(long index, int value) { disabledValidationFeatureCount(this.segment(), index, value); return this; }
 
-        /// {@return `pEnabledValidationFeatures` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pEnabledValidationFeaturesAt(long index) { return pEnabledValidationFeatures(this.segment(), index); }
-        /// Sets `pEnabledValidationFeatures` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pEnabledValidationFeaturesAt(long index, MemorySegment value) { pEnabledValidationFeatures(this.segment(), index, value); return this; }
+    /// {@return `pDisabledValidationFeatures` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pDisabledValidationFeaturesAt(long index) { return pDisabledValidationFeatures(this.segment(), index); }
+    /// Sets `pDisabledValidationFeatures` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationFeaturesEXT pDisabledValidationFeaturesAt(long index, MemorySegment value) { pDisabledValidationFeatures(this.segment(), index, value); return this; }
 
-        /// {@return `disabledValidationFeatureCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int disabledValidationFeatureCountAt(long index) { return disabledValidationFeatureCount(this.segment(), index); }
-        /// Sets `disabledValidationFeatureCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer disabledValidationFeatureCountAt(long index, int value) { disabledValidationFeatureCount(this.segment(), index, value); return this; }
-
-        /// {@return `pDisabledValidationFeatures` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pDisabledValidationFeaturesAt(long index) { return pDisabledValidationFeatures(this.segment(), index); }
-        /// Sets `pDisabledValidationFeatures` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pDisabledValidationFeaturesAt(long index, MemorySegment value) { pDisabledValidationFeatures(this.segment(), index, value); return this; }
-
-    }
 }

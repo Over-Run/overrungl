@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkAccelerationStructureMotionInfoFlagsNV flags;
 /// };
 /// ```
-public sealed class VkAccelerationStructureMotionInfoNV extends GroupType {
+public final class VkAccelerationStructureMotionInfoNV extends GroupType {
     /// The struct layout of `VkAccelerationStructureMotionInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkAccelerationStructureMotionInfoNV extends GroupType {
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
 
     /// Creates `VkAccelerationStructureMotionInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkAccelerationStructureMotionInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAccelerationStructureMotionInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAccelerationStructureMotionInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAccelerationStructureMotionInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureMotionInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureMotionInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureMotionInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureMotionInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAccelerationStructureMotionInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureMotionInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAccelerationStructureMotionInfoNV` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkAccelerationStructureMotionInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAccelerationStructureMotionInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureMotionInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAccelerationStructureMotionInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureMotionInfoNV`
-    public static VkAccelerationStructureMotionInfoNV alloc(SegmentAllocator allocator) { return new VkAccelerationStructureMotionInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkAccelerationStructureMotionInfoNV alloc(SegmentAllocator allocator) { return new VkAccelerationStructureMotionInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAccelerationStructureMotionInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureMotionInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAccelerationStructureMotionInfoNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureMotionInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAccelerationStructureMotionInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkAccelerationStructureMotionInfoNV extends GroupType {
     /// @return `this`
     public VkAccelerationStructureMotionInfoNV copyFrom(VkAccelerationStructureMotionInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAccelerationStructureMotionInfoNV reinterpret(long count) { return new VkAccelerationStructureMotionInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkAccelerationStructureMotionInfoNV extends GroupType {
     /// @return `this`
     public VkAccelerationStructureMotionInfoNV flags(int value) { flags(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAccelerationStructureMotionInfoNV].
-    public static final class Buffer extends VkAccelerationStructureMotionInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkAccelerationStructureMotionInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureMotionInfoNV`
+    public VkAccelerationStructureMotionInfoNV asSlice(long index) { return new VkAccelerationStructureMotionInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAccelerationStructureMotionInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAccelerationStructureMotionInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureMotionInfoNV`
+    public VkAccelerationStructureMotionInfoNV asSlice(long index, long count) { return new VkAccelerationStructureMotionInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAccelerationStructureMotionInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAccelerationStructureMotionInfoNV at(long index, Consumer<VkAccelerationStructureMotionInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureMotionInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAccelerationStructureMotionInfoNV`
-        public VkAccelerationStructureMotionInfoNV asSlice(long index) { return new VkAccelerationStructureMotionInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureMotionInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureMotionInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAccelerationStructureMotionInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureMotionInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxInstances` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxInstancesAt(long index) { return maxInstances(this.segment(), index); }
+    /// Sets `maxInstances` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureMotionInfoNV maxInstancesAt(long index, int value) { maxInstances(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureMotionInfoNV flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `maxInstances` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxInstancesAt(long index) { return maxInstances(this.segment(), index); }
-        /// Sets `maxInstances` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxInstancesAt(long index, int value) { maxInstances(this.segment(), index, value); return this; }
-
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    }
 }

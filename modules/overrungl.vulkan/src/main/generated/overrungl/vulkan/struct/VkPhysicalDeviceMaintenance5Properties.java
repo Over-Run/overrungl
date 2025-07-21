@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 nonStrictWideLinesUseParallelogram;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceMaintenance5Properties extends GroupType {
+public final class VkPhysicalDeviceMaintenance5Properties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMaintenance5Properties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -99,20 +100,21 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends GroupType {
     public static final VarHandle VH_nonStrictWideLinesUseParallelogram = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonStrictWideLinesUseParallelogram"));
 
     /// Creates `VkPhysicalDeviceMaintenance5Properties` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceMaintenance5Properties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceMaintenance5Properties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceMaintenance5Properties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceMaintenance5Properties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance5Properties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMaintenance5Properties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMaintenance5Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance5Properties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceMaintenance5Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance5Properties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceMaintenance5Properties` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceMaintenance5Properties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMaintenance5Properties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceMaintenance5Properties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceMaintenance5Properties`
-    public static VkPhysicalDeviceMaintenance5Properties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMaintenance5Properties(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceMaintenance5Properties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMaintenance5Properties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceMaintenance5Properties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMaintenance5Properties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceMaintenance5Properties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMaintenance5Properties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceMaintenance5Properties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceMaintenance5Properties copyFrom(VkPhysicalDeviceMaintenance5Properties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceMaintenance5Properties reinterpret(long count) { return new VkPhysicalDeviceMaintenance5Properties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class VkPhysicalDeviceMaintenance5Properties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceMaintenance5Properties nonStrictWideLinesUseParallelogram(int value) { nonStrictWideLinesUseParallelogram(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceMaintenance5Properties].
-    public static final class Buffer extends VkPhysicalDeviceMaintenance5Properties {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceMaintenance5Properties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMaintenance5Properties`
+    public VkPhysicalDeviceMaintenance5Properties asSlice(long index) { return new VkPhysicalDeviceMaintenance5Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceMaintenance5Properties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceMaintenance5Properties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMaintenance5Properties`
+    public VkPhysicalDeviceMaintenance5Properties asSlice(long index, long count) { return new VkPhysicalDeviceMaintenance5Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceMaintenance5Properties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance5Properties at(long index, Consumer<VkPhysicalDeviceMaintenance5Properties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMaintenance5Properties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceMaintenance5Properties`
-        public VkPhysicalDeviceMaintenance5Properties asSlice(long index) { return new VkPhysicalDeviceMaintenance5Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance5Properties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMaintenance5Properties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceMaintenance5Properties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance5Properties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `earlyFragmentMultisampleCoverageAfterSampleCounting` at the given index}
+    /// @param index the index of the struct buffer
+    public int earlyFragmentMultisampleCoverageAfterSampleCountingAt(long index) { return earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), index); }
+    /// Sets `earlyFragmentMultisampleCoverageAfterSampleCounting` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance5Properties earlyFragmentMultisampleCoverageAfterSampleCountingAt(long index, int value) { earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `earlyFragmentSampleMaskTestBeforeSampleCounting` at the given index}
+    /// @param index the index of the struct buffer
+    public int earlyFragmentSampleMaskTestBeforeSampleCountingAt(long index) { return earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), index); }
+    /// Sets `earlyFragmentSampleMaskTestBeforeSampleCounting` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance5Properties earlyFragmentSampleMaskTestBeforeSampleCountingAt(long index, int value) { earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), index, value); return this; }
 
-        /// {@return `earlyFragmentMultisampleCoverageAfterSampleCounting` at the given index}
-        /// @param index the index of the struct buffer
-        public int earlyFragmentMultisampleCoverageAfterSampleCountingAt(long index) { return earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), index); }
-        /// Sets `earlyFragmentMultisampleCoverageAfterSampleCounting` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer earlyFragmentMultisampleCoverageAfterSampleCountingAt(long index, int value) { earlyFragmentMultisampleCoverageAfterSampleCounting(this.segment(), index, value); return this; }
+    /// {@return `depthStencilSwizzleOneSupport` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthStencilSwizzleOneSupportAt(long index) { return depthStencilSwizzleOneSupport(this.segment(), index); }
+    /// Sets `depthStencilSwizzleOneSupport` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance5Properties depthStencilSwizzleOneSupportAt(long index, int value) { depthStencilSwizzleOneSupport(this.segment(), index, value); return this; }
 
-        /// {@return `earlyFragmentSampleMaskTestBeforeSampleCounting` at the given index}
-        /// @param index the index of the struct buffer
-        public int earlyFragmentSampleMaskTestBeforeSampleCountingAt(long index) { return earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), index); }
-        /// Sets `earlyFragmentSampleMaskTestBeforeSampleCounting` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer earlyFragmentSampleMaskTestBeforeSampleCountingAt(long index, int value) { earlyFragmentSampleMaskTestBeforeSampleCounting(this.segment(), index, value); return this; }
+    /// {@return `polygonModePointSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int polygonModePointSizeAt(long index) { return polygonModePointSize(this.segment(), index); }
+    /// Sets `polygonModePointSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance5Properties polygonModePointSizeAt(long index, int value) { polygonModePointSize(this.segment(), index, value); return this; }
 
-        /// {@return `depthStencilSwizzleOneSupport` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthStencilSwizzleOneSupportAt(long index) { return depthStencilSwizzleOneSupport(this.segment(), index); }
-        /// Sets `depthStencilSwizzleOneSupport` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthStencilSwizzleOneSupportAt(long index, int value) { depthStencilSwizzleOneSupport(this.segment(), index, value); return this; }
+    /// {@return `nonStrictSinglePixelWideLinesUseParallelogram` at the given index}
+    /// @param index the index of the struct buffer
+    public int nonStrictSinglePixelWideLinesUseParallelogramAt(long index) { return nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), index); }
+    /// Sets `nonStrictSinglePixelWideLinesUseParallelogram` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance5Properties nonStrictSinglePixelWideLinesUseParallelogramAt(long index, int value) { nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), index, value); return this; }
 
-        /// {@return `polygonModePointSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int polygonModePointSizeAt(long index) { return polygonModePointSize(this.segment(), index); }
-        /// Sets `polygonModePointSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer polygonModePointSizeAt(long index, int value) { polygonModePointSize(this.segment(), index, value); return this; }
+    /// {@return `nonStrictWideLinesUseParallelogram` at the given index}
+    /// @param index the index of the struct buffer
+    public int nonStrictWideLinesUseParallelogramAt(long index) { return nonStrictWideLinesUseParallelogram(this.segment(), index); }
+    /// Sets `nonStrictWideLinesUseParallelogram` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMaintenance5Properties nonStrictWideLinesUseParallelogramAt(long index, int value) { nonStrictWideLinesUseParallelogram(this.segment(), index, value); return this; }
 
-        /// {@return `nonStrictSinglePixelWideLinesUseParallelogram` at the given index}
-        /// @param index the index of the struct buffer
-        public int nonStrictSinglePixelWideLinesUseParallelogramAt(long index) { return nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), index); }
-        /// Sets `nonStrictSinglePixelWideLinesUseParallelogram` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer nonStrictSinglePixelWideLinesUseParallelogramAt(long index, int value) { nonStrictSinglePixelWideLinesUseParallelogram(this.segment(), index, value); return this; }
-
-        /// {@return `nonStrictWideLinesUseParallelogram` at the given index}
-        /// @param index the index of the struct buffer
-        public int nonStrictWideLinesUseParallelogramAt(long index) { return nonStrictWideLinesUseParallelogram(this.segment(), index); }
-        /// Sets `nonStrictWideLinesUseParallelogram` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer nonStrictWideLinesUseParallelogramAt(long index, int value) { nonStrictWideLinesUseParallelogram(this.segment(), index, value); return this; }
-
-    }
 }

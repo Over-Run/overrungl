@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     (const wchar_t*) LPCWSTR name;
 /// };
 /// ```
-public sealed class VkImportFenceWin32HandleInfoKHR extends GroupType {
+public final class VkImportFenceWin32HandleInfoKHR extends GroupType {
     /// The struct layout of `VkImportFenceWin32HandleInfoKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkImportFenceWin32HandleInfoKHR extends GroupType {
     public static final VarHandle VH_name = LAYOUT.arrayElementVarHandle(PathElement.groupElement("name"));
 
     /// Creates `VkImportFenceWin32HandleInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkImportFenceWin32HandleInfoKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkImportFenceWin32HandleInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkImportFenceWin32HandleInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkImportFenceWin32HandleInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportFenceWin32HandleInfoKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImportFenceWin32HandleInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImportFenceWin32HandleInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportFenceWin32HandleInfoKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkImportFenceWin32HandleInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportFenceWin32HandleInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkImportFenceWin32HandleInfoKHR` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkImportFenceWin32HandleInfoKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkImportFenceWin32HandleInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportFenceWin32HandleInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
-    public static VkImportFenceWin32HandleInfoKHR alloc(SegmentAllocator allocator) { return new VkImportFenceWin32HandleInfoKHR(allocator.allocate(LAYOUT)); }
+    public static VkImportFenceWin32HandleInfoKHR alloc(SegmentAllocator allocator) { return new VkImportFenceWin32HandleInfoKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImportFenceWin32HandleInfoKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkImportFenceWin32HandleInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkImportFenceWin32HandleInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkImportFenceWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkImportFenceWin32HandleInfoKHR extends GroupType {
     /// @return `this`
     public VkImportFenceWin32HandleInfoKHR copyFrom(VkImportFenceWin32HandleInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkImportFenceWin32HandleInfoKHR reinterpret(long count) { return new VkImportFenceWin32HandleInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkImportFenceWin32HandleInfoKHR extends GroupType {
     /// @return `this`
     public VkImportFenceWin32HandleInfoKHR name(MemorySegment value) { name(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkImportFenceWin32HandleInfoKHR].
-    public static final class Buffer extends VkImportFenceWin32HandleInfoKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkImportFenceWin32HandleInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImportFenceWin32HandleInfoKHR`
+    public VkImportFenceWin32HandleInfoKHR asSlice(long index) { return new VkImportFenceWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkImportFenceWin32HandleInfoKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkImportFenceWin32HandleInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImportFenceWin32HandleInfoKHR`
+    public VkImportFenceWin32HandleInfoKHR asSlice(long index, long count) { return new VkImportFenceWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkImportFenceWin32HandleInfoKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkImportFenceWin32HandleInfoKHR at(long index, Consumer<VkImportFenceWin32HandleInfoKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkImportFenceWin32HandleInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkImportFenceWin32HandleInfoKHR`
-        public VkImportFenceWin32HandleInfoKHR asSlice(long index) { return new VkImportFenceWin32HandleInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportFenceWin32HandleInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkImportFenceWin32HandleInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkImportFenceWin32HandleInfoKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportFenceWin32HandleInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `fence` at the given index}
+    /// @param index the index of the struct buffer
+    public long fenceAt(long index) { return fence(this.segment(), index); }
+    /// Sets `fence` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportFenceWin32HandleInfoKHR fenceAt(long index, long value) { fence(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportFenceWin32HandleInfoKHR flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `fence` at the given index}
-        /// @param index the index of the struct buffer
-        public long fenceAt(long index) { return fence(this.segment(), index); }
-        /// Sets `fence` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fenceAt(long index, long value) { fence(this.segment(), index, value); return this; }
+    /// {@return `handleType` at the given index}
+    /// @param index the index of the struct buffer
+    public int handleTypeAt(long index) { return handleType(this.segment(), index); }
+    /// Sets `handleType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportFenceWin32HandleInfoKHR handleTypeAt(long index, int value) { handleType(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `handle` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment handleAt(long index) { return handle(this.segment(), index); }
+    /// Sets `handle` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportFenceWin32HandleInfoKHR handleAt(long index, MemorySegment value) { handle(this.segment(), index, value); return this; }
 
-        /// {@return `handleType` at the given index}
-        /// @param index the index of the struct buffer
-        public int handleTypeAt(long index) { return handleType(this.segment(), index); }
-        /// Sets `handleType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer handleTypeAt(long index, int value) { handleType(this.segment(), index, value); return this; }
+    /// {@return `name` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment nameAt(long index) { return name(this.segment(), index); }
+    /// Sets `name` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportFenceWin32HandleInfoKHR nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
 
-        /// {@return `handle` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment handleAt(long index) { return handle(this.segment(), index); }
-        /// Sets `handle` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer handleAt(long index, MemorySegment value) { handle(this.segment(), index, value); return this; }
-
-        /// {@return `name` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment nameAt(long index) { return name(this.segment(), index); }
-        /// Sets `name` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     const CAMetalLayer* pLayer;
 /// };
 /// ```
-public sealed class VkMetalSurfaceCreateInfoEXT extends GroupType {
+public final class VkMetalSurfaceCreateInfoEXT extends GroupType {
     /// The struct layout of `VkMetalSurfaceCreateInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkMetalSurfaceCreateInfoEXT extends GroupType {
     public static final VarHandle VH_pLayer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pLayer"));
 
     /// Creates `VkMetalSurfaceCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkMetalSurfaceCreateInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkMetalSurfaceCreateInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkMetalSurfaceCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkMetalSurfaceCreateInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMetalSurfaceCreateInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkMetalSurfaceCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMetalSurfaceCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMetalSurfaceCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkMetalSurfaceCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMetalSurfaceCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkMetalSurfaceCreateInfoEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkMetalSurfaceCreateInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkMetalSurfaceCreateInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkMetalSurfaceCreateInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkMetalSurfaceCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkMetalSurfaceCreateInfoEXT`
-    public static VkMetalSurfaceCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkMetalSurfaceCreateInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkMetalSurfaceCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkMetalSurfaceCreateInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkMetalSurfaceCreateInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkMetalSurfaceCreateInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkMetalSurfaceCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMetalSurfaceCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkMetalSurfaceCreateInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkMetalSurfaceCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkMetalSurfaceCreateInfoEXT copyFrom(VkMetalSurfaceCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkMetalSurfaceCreateInfoEXT reinterpret(long count) { return new VkMetalSurfaceCreateInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkMetalSurfaceCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkMetalSurfaceCreateInfoEXT pLayer(MemorySegment value) { pLayer(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkMetalSurfaceCreateInfoEXT].
-    public static final class Buffer extends VkMetalSurfaceCreateInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkMetalSurfaceCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMetalSurfaceCreateInfoEXT`
+    public VkMetalSurfaceCreateInfoEXT asSlice(long index) { return new VkMetalSurfaceCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkMetalSurfaceCreateInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkMetalSurfaceCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMetalSurfaceCreateInfoEXT`
+    public VkMetalSurfaceCreateInfoEXT asSlice(long index, long count) { return new VkMetalSurfaceCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkMetalSurfaceCreateInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkMetalSurfaceCreateInfoEXT at(long index, Consumer<VkMetalSurfaceCreateInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkMetalSurfaceCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkMetalSurfaceCreateInfoEXT`
-        public VkMetalSurfaceCreateInfoEXT asSlice(long index) { return new VkMetalSurfaceCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMetalSurfaceCreateInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkMetalSurfaceCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkMetalSurfaceCreateInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMetalSurfaceCreateInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMetalSurfaceCreateInfoEXT flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pLayer` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pLayerAt(long index) { return pLayer(this.segment(), index); }
+    /// Sets `pLayer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMetalSurfaceCreateInfoEXT pLayerAt(long index, MemorySegment value) { pLayer(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-        /// {@return `pLayer` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pLayerAt(long index) { return pLayer(this.segment(), index); }
-        /// Sets `pLayer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pLayerAt(long index, MemorySegment value) { pLayer(this.segment(), index, value); return this; }
-
-    }
 }

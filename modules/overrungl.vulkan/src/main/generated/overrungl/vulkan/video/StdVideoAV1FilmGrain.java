@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -55,7 +55,7 @@ import java.util.function.*;
 ///     uint16_t cr_offset;
 /// };
 /// ```
-public sealed class StdVideoAV1FilmGrain extends GroupType {
+public final class StdVideoAV1FilmGrain extends GroupType {
     /// The struct layout of `StdVideoAV1FilmGrain`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1FilmGrainFlags.LAYOUT.withName("flags"),
@@ -234,20 +234,21 @@ public sealed class StdVideoAV1FilmGrain extends GroupType {
     public static final VarHandle VH_cr_offset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cr_offset"));
 
     /// Creates `StdVideoAV1FilmGrain` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoAV1FilmGrain(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoAV1FilmGrain(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoAV1FilmGrain` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoAV1FilmGrain of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1FilmGrain(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoAV1FilmGrain` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1FilmGrain ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1FilmGrain(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoAV1FilmGrain ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1FilmGrain(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoAV1FilmGrain` with the given segment.
     ///
@@ -255,18 +256,18 @@ public sealed class StdVideoAV1FilmGrain extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoAV1FilmGrain ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1FilmGrain(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoAV1FilmGrain` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1FilmGrain`
-    public static StdVideoAV1FilmGrain alloc(SegmentAllocator allocator) { return new StdVideoAV1FilmGrain(allocator.allocate(LAYOUT)); }
+    public static StdVideoAV1FilmGrain alloc(SegmentAllocator allocator) { return new StdVideoAV1FilmGrain(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoAV1FilmGrain` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1FilmGrain`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoAV1FilmGrain alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1FilmGrain(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoAV1FilmGrain` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -773,9 +774,10 @@ public sealed class StdVideoAV1FilmGrain extends GroupType {
     /// @return `this`
     public StdVideoAV1FilmGrain copyFrom(StdVideoAV1FilmGrain src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoAV1FilmGrain reinterpret(long count) { return new StdVideoAV1FilmGrain(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -1352,347 +1354,341 @@ public sealed class StdVideoAV1FilmGrain extends GroupType {
     /// @return `this`
     public StdVideoAV1FilmGrain cr_offset(short value) { cr_offset(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [StdVideoAV1FilmGrain].
-    public static final class Buffer extends StdVideoAV1FilmGrain {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoAV1FilmGrain`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1FilmGrain`
+    public StdVideoAV1FilmGrain asSlice(long index) { return new StdVideoAV1FilmGrain(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoAV1FilmGrain.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoAV1FilmGrain`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1FilmGrain`
+    public StdVideoAV1FilmGrain asSlice(long index, long count) { return new StdVideoAV1FilmGrain(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoAV1FilmGrain` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoAV1FilmGrain at(long index, Consumer<StdVideoAV1FilmGrain> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoAV1FilmGrain`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoAV1FilmGrain`
-        public StdVideoAV1FilmGrain asSlice(long index) { return new StdVideoAV1FilmGrain(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoAV1FilmGrain flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1FilmGrainFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1FilmGrainFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoAV1FilmGrain`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoAV1FilmGrain`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `grain_scaling_minus_8` at the given index}
+    /// @param index the index of the struct buffer
+    public byte grain_scaling_minus_8At(long index) { return grain_scaling_minus_8(this.segment(), index); }
+    /// Sets `grain_scaling_minus_8` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain grain_scaling_minus_8At(long index, byte value) { grain_scaling_minus_8(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1FilmGrainFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1FilmGrainFlags.of(flagsAt(index))); return this; }
+    /// {@return `ar_coeff_lag` at the given index}
+    /// @param index the index of the struct buffer
+    public byte ar_coeff_lagAt(long index) { return ar_coeff_lag(this.segment(), index); }
+    /// Sets `ar_coeff_lag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain ar_coeff_lagAt(long index, byte value) { ar_coeff_lag(this.segment(), index, value); return this; }
 
-        /// {@return `grain_scaling_minus_8` at the given index}
-        /// @param index the index of the struct buffer
-        public byte grain_scaling_minus_8At(long index) { return grain_scaling_minus_8(this.segment(), index); }
-        /// Sets `grain_scaling_minus_8` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer grain_scaling_minus_8At(long index, byte value) { grain_scaling_minus_8(this.segment(), index, value); return this; }
+    /// {@return `ar_coeff_shift_minus_6` at the given index}
+    /// @param index the index of the struct buffer
+    public byte ar_coeff_shift_minus_6At(long index) { return ar_coeff_shift_minus_6(this.segment(), index); }
+    /// Sets `ar_coeff_shift_minus_6` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain ar_coeff_shift_minus_6At(long index, byte value) { ar_coeff_shift_minus_6(this.segment(), index, value); return this; }
 
-        /// {@return `ar_coeff_lag` at the given index}
-        /// @param index the index of the struct buffer
-        public byte ar_coeff_lagAt(long index) { return ar_coeff_lag(this.segment(), index); }
-        /// Sets `ar_coeff_lag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ar_coeff_lagAt(long index, byte value) { ar_coeff_lag(this.segment(), index, value); return this; }
+    /// {@return `grain_scale_shift` at the given index}
+    /// @param index the index of the struct buffer
+    public byte grain_scale_shiftAt(long index) { return grain_scale_shift(this.segment(), index); }
+    /// Sets `grain_scale_shift` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain grain_scale_shiftAt(long index, byte value) { grain_scale_shift(this.segment(), index, value); return this; }
 
-        /// {@return `ar_coeff_shift_minus_6` at the given index}
-        /// @param index the index of the struct buffer
-        public byte ar_coeff_shift_minus_6At(long index) { return ar_coeff_shift_minus_6(this.segment(), index); }
-        /// Sets `ar_coeff_shift_minus_6` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ar_coeff_shift_minus_6At(long index, byte value) { ar_coeff_shift_minus_6(this.segment(), index, value); return this; }
+    /// {@return `grain_seed` at the given index}
+    /// @param index the index of the struct buffer
+    public short grain_seedAt(long index) { return grain_seed(this.segment(), index); }
+    /// Sets `grain_seed` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain grain_seedAt(long index, short value) { grain_seed(this.segment(), index, value); return this; }
 
-        /// {@return `grain_scale_shift` at the given index}
-        /// @param index the index of the struct buffer
-        public byte grain_scale_shiftAt(long index) { return grain_scale_shift(this.segment(), index); }
-        /// Sets `grain_scale_shift` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer grain_scale_shiftAt(long index, byte value) { grain_scale_shift(this.segment(), index, value); return this; }
+    /// {@return `film_grain_params_ref_idx` at the given index}
+    /// @param index the index of the struct buffer
+    public byte film_grain_params_ref_idxAt(long index) { return film_grain_params_ref_idx(this.segment(), index); }
+    /// Sets `film_grain_params_ref_idx` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain film_grain_params_ref_idxAt(long index, byte value) { film_grain_params_ref_idx(this.segment(), index, value); return this; }
 
-        /// {@return `grain_seed` at the given index}
-        /// @param index the index of the struct buffer
-        public short grain_seedAt(long index) { return grain_seed(this.segment(), index); }
-        /// Sets `grain_seed` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer grain_seedAt(long index, short value) { grain_seed(this.segment(), index, value); return this; }
+    /// {@return `num_y_points` at the given index}
+    /// @param index the index of the struct buffer
+    public byte num_y_pointsAt(long index) { return num_y_points(this.segment(), index); }
+    /// Sets `num_y_points` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain num_y_pointsAt(long index, byte value) { num_y_points(this.segment(), index, value); return this; }
 
-        /// {@return `film_grain_params_ref_idx` at the given index}
-        /// @param index the index of the struct buffer
-        public byte film_grain_params_ref_idxAt(long index) { return film_grain_params_ref_idx(this.segment(), index); }
-        /// Sets `film_grain_params_ref_idx` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer film_grain_params_ref_idxAt(long index, byte value) { film_grain_params_ref_idx(this.segment(), index, value); return this; }
-
-        /// {@return `num_y_points` at the given index}
-        /// @param index the index of the struct buffer
-        public byte num_y_pointsAt(long index) { return num_y_points(this.segment(), index); }
-        /// Sets `num_y_points` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_y_pointsAt(long index, byte value) { num_y_points(this.segment(), index, value); return this; }
-
-        /// {@return `point_y_value` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment point_y_valueAt(long index) { return point_y_value(this.segment(), index); }
-        /// {@return `point_y_value` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `point_y_value` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment point_y_valueAt(long index) { return point_y_value(this.segment(), index); }
+    /// {@return `point_y_value` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte point_y_valueAt(long index, long index0) { return point_y_value(this.segment(), index, index0); }
-        /// Sets `point_y_value` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_y_valueAt(long index, MemorySegment value) { point_y_value(this.segment(), index, value); return this; }
-        /// Sets `point_y_value` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_y_valueAt(long index, long index0, byte value) { point_y_value(this.segment(), index, index0, value); return this; }
+    /// Sets `point_y_value` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_y_valueAt(long index, MemorySegment value) { point_y_value(this.segment(), index, value); return this; }
+    /// Sets `point_y_value` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_y_valueAt(long index, long index0, byte value) { point_y_value(this.segment(), index, index0, value); return this; }
 
-        /// {@return `point_y_scaling` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment point_y_scalingAt(long index) { return point_y_scaling(this.segment(), index); }
-        /// {@return `point_y_scaling` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `point_y_scaling` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment point_y_scalingAt(long index) { return point_y_scaling(this.segment(), index); }
+    /// {@return `point_y_scaling` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte point_y_scalingAt(long index, long index0) { return point_y_scaling(this.segment(), index, index0); }
-        /// Sets `point_y_scaling` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_y_scalingAt(long index, MemorySegment value) { point_y_scaling(this.segment(), index, value); return this; }
-        /// Sets `point_y_scaling` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_y_scalingAt(long index, long index0, byte value) { point_y_scaling(this.segment(), index, index0, value); return this; }
+    /// Sets `point_y_scaling` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_y_scalingAt(long index, MemorySegment value) { point_y_scaling(this.segment(), index, value); return this; }
+    /// Sets `point_y_scaling` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_y_scalingAt(long index, long index0, byte value) { point_y_scaling(this.segment(), index, index0, value); return this; }
 
-        /// {@return `num_cb_points` at the given index}
-        /// @param index the index of the struct buffer
-        public byte num_cb_pointsAt(long index) { return num_cb_points(this.segment(), index); }
-        /// Sets `num_cb_points` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_cb_pointsAt(long index, byte value) { num_cb_points(this.segment(), index, value); return this; }
+    /// {@return `num_cb_points` at the given index}
+    /// @param index the index of the struct buffer
+    public byte num_cb_pointsAt(long index) { return num_cb_points(this.segment(), index); }
+    /// Sets `num_cb_points` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain num_cb_pointsAt(long index, byte value) { num_cb_points(this.segment(), index, value); return this; }
 
-        /// {@return `point_cb_value` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment point_cb_valueAt(long index) { return point_cb_value(this.segment(), index); }
-        /// {@return `point_cb_value` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `point_cb_value` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment point_cb_valueAt(long index) { return point_cb_value(this.segment(), index); }
+    /// {@return `point_cb_value` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte point_cb_valueAt(long index, long index0) { return point_cb_value(this.segment(), index, index0); }
-        /// Sets `point_cb_value` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_cb_valueAt(long index, MemorySegment value) { point_cb_value(this.segment(), index, value); return this; }
-        /// Sets `point_cb_value` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_cb_valueAt(long index, long index0, byte value) { point_cb_value(this.segment(), index, index0, value); return this; }
+    /// Sets `point_cb_value` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_cb_valueAt(long index, MemorySegment value) { point_cb_value(this.segment(), index, value); return this; }
+    /// Sets `point_cb_value` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_cb_valueAt(long index, long index0, byte value) { point_cb_value(this.segment(), index, index0, value); return this; }
 
-        /// {@return `point_cb_scaling` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment point_cb_scalingAt(long index) { return point_cb_scaling(this.segment(), index); }
-        /// {@return `point_cb_scaling` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `point_cb_scaling` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment point_cb_scalingAt(long index) { return point_cb_scaling(this.segment(), index); }
+    /// {@return `point_cb_scaling` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte point_cb_scalingAt(long index, long index0) { return point_cb_scaling(this.segment(), index, index0); }
-        /// Sets `point_cb_scaling` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_cb_scalingAt(long index, MemorySegment value) { point_cb_scaling(this.segment(), index, value); return this; }
-        /// Sets `point_cb_scaling` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_cb_scalingAt(long index, long index0, byte value) { point_cb_scaling(this.segment(), index, index0, value); return this; }
+    /// Sets `point_cb_scaling` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_cb_scalingAt(long index, MemorySegment value) { point_cb_scaling(this.segment(), index, value); return this; }
+    /// Sets `point_cb_scaling` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_cb_scalingAt(long index, long index0, byte value) { point_cb_scaling(this.segment(), index, index0, value); return this; }
 
-        /// {@return `num_cr_points` at the given index}
-        /// @param index the index of the struct buffer
-        public byte num_cr_pointsAt(long index) { return num_cr_points(this.segment(), index); }
-        /// Sets `num_cr_points` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_cr_pointsAt(long index, byte value) { num_cr_points(this.segment(), index, value); return this; }
+    /// {@return `num_cr_points` at the given index}
+    /// @param index the index of the struct buffer
+    public byte num_cr_pointsAt(long index) { return num_cr_points(this.segment(), index); }
+    /// Sets `num_cr_points` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain num_cr_pointsAt(long index, byte value) { num_cr_points(this.segment(), index, value); return this; }
 
-        /// {@return `point_cr_value` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment point_cr_valueAt(long index) { return point_cr_value(this.segment(), index); }
-        /// {@return `point_cr_value` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `point_cr_value` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment point_cr_valueAt(long index) { return point_cr_value(this.segment(), index); }
+    /// {@return `point_cr_value` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte point_cr_valueAt(long index, long index0) { return point_cr_value(this.segment(), index, index0); }
-        /// Sets `point_cr_value` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_cr_valueAt(long index, MemorySegment value) { point_cr_value(this.segment(), index, value); return this; }
-        /// Sets `point_cr_value` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_cr_valueAt(long index, long index0, byte value) { point_cr_value(this.segment(), index, index0, value); return this; }
+    /// Sets `point_cr_value` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_cr_valueAt(long index, MemorySegment value) { point_cr_value(this.segment(), index, value); return this; }
+    /// Sets `point_cr_value` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_cr_valueAt(long index, long index0, byte value) { point_cr_value(this.segment(), index, index0, value); return this; }
 
-        /// {@return `point_cr_scaling` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment point_cr_scalingAt(long index) { return point_cr_scaling(this.segment(), index); }
-        /// {@return `point_cr_scaling` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `point_cr_scaling` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment point_cr_scalingAt(long index) { return point_cr_scaling(this.segment(), index); }
+    /// {@return `point_cr_scaling` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte point_cr_scalingAt(long index, long index0) { return point_cr_scaling(this.segment(), index, index0); }
-        /// Sets `point_cr_scaling` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_cr_scalingAt(long index, MemorySegment value) { point_cr_scaling(this.segment(), index, value); return this; }
-        /// Sets `point_cr_scaling` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer point_cr_scalingAt(long index, long index0, byte value) { point_cr_scaling(this.segment(), index, index0, value); return this; }
+    /// Sets `point_cr_scaling` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_cr_scalingAt(long index, MemorySegment value) { point_cr_scaling(this.segment(), index, value); return this; }
+    /// Sets `point_cr_scaling` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain point_cr_scalingAt(long index, long index0, byte value) { point_cr_scaling(this.segment(), index, index0, value); return this; }
 
-        /// {@return `ar_coeffs_y_plus_128` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment ar_coeffs_y_plus_128At(long index) { return ar_coeffs_y_plus_128(this.segment(), index); }
-        /// {@return `ar_coeffs_y_plus_128` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `ar_coeffs_y_plus_128` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment ar_coeffs_y_plus_128At(long index) { return ar_coeffs_y_plus_128(this.segment(), index); }
+    /// {@return `ar_coeffs_y_plus_128` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte ar_coeffs_y_plus_128At(long index, long index0) { return ar_coeffs_y_plus_128(this.segment(), index, index0); }
-        /// Sets `ar_coeffs_y_plus_128` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ar_coeffs_y_plus_128At(long index, MemorySegment value) { ar_coeffs_y_plus_128(this.segment(), index, value); return this; }
-        /// Sets `ar_coeffs_y_plus_128` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer ar_coeffs_y_plus_128At(long index, long index0, byte value) { ar_coeffs_y_plus_128(this.segment(), index, index0, value); return this; }
+    /// Sets `ar_coeffs_y_plus_128` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain ar_coeffs_y_plus_128At(long index, MemorySegment value) { ar_coeffs_y_plus_128(this.segment(), index, value); return this; }
+    /// Sets `ar_coeffs_y_plus_128` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain ar_coeffs_y_plus_128At(long index, long index0, byte value) { ar_coeffs_y_plus_128(this.segment(), index, index0, value); return this; }
 
-        /// {@return `ar_coeffs_cb_plus_128` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment ar_coeffs_cb_plus_128At(long index) { return ar_coeffs_cb_plus_128(this.segment(), index); }
-        /// {@return `ar_coeffs_cb_plus_128` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `ar_coeffs_cb_plus_128` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment ar_coeffs_cb_plus_128At(long index) { return ar_coeffs_cb_plus_128(this.segment(), index); }
+    /// {@return `ar_coeffs_cb_plus_128` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte ar_coeffs_cb_plus_128At(long index, long index0) { return ar_coeffs_cb_plus_128(this.segment(), index, index0); }
-        /// Sets `ar_coeffs_cb_plus_128` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ar_coeffs_cb_plus_128At(long index, MemorySegment value) { ar_coeffs_cb_plus_128(this.segment(), index, value); return this; }
-        /// Sets `ar_coeffs_cb_plus_128` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer ar_coeffs_cb_plus_128At(long index, long index0, byte value) { ar_coeffs_cb_plus_128(this.segment(), index, index0, value); return this; }
+    /// Sets `ar_coeffs_cb_plus_128` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain ar_coeffs_cb_plus_128At(long index, MemorySegment value) { ar_coeffs_cb_plus_128(this.segment(), index, value); return this; }
+    /// Sets `ar_coeffs_cb_plus_128` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain ar_coeffs_cb_plus_128At(long index, long index0, byte value) { ar_coeffs_cb_plus_128(this.segment(), index, index0, value); return this; }
 
-        /// {@return `ar_coeffs_cr_plus_128` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment ar_coeffs_cr_plus_128At(long index) { return ar_coeffs_cr_plus_128(this.segment(), index); }
-        /// {@return `ar_coeffs_cr_plus_128` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `ar_coeffs_cr_plus_128` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment ar_coeffs_cr_plus_128At(long index) { return ar_coeffs_cr_plus_128(this.segment(), index); }
+    /// {@return `ar_coeffs_cr_plus_128` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte ar_coeffs_cr_plus_128At(long index, long index0) { return ar_coeffs_cr_plus_128(this.segment(), index, index0); }
-        /// Sets `ar_coeffs_cr_plus_128` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ar_coeffs_cr_plus_128At(long index, MemorySegment value) { ar_coeffs_cr_plus_128(this.segment(), index, value); return this; }
-        /// Sets `ar_coeffs_cr_plus_128` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer ar_coeffs_cr_plus_128At(long index, long index0, byte value) { ar_coeffs_cr_plus_128(this.segment(), index, index0, value); return this; }
+    /// Sets `ar_coeffs_cr_plus_128` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain ar_coeffs_cr_plus_128At(long index, MemorySegment value) { ar_coeffs_cr_plus_128(this.segment(), index, value); return this; }
+    /// Sets `ar_coeffs_cr_plus_128` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain ar_coeffs_cr_plus_128At(long index, long index0, byte value) { ar_coeffs_cr_plus_128(this.segment(), index, index0, value); return this; }
 
-        /// {@return `cb_mult` at the given index}
-        /// @param index the index of the struct buffer
-        public byte cb_multAt(long index) { return cb_mult(this.segment(), index); }
-        /// Sets `cb_mult` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cb_multAt(long index, byte value) { cb_mult(this.segment(), index, value); return this; }
+    /// {@return `cb_mult` at the given index}
+    /// @param index the index of the struct buffer
+    public byte cb_multAt(long index) { return cb_mult(this.segment(), index); }
+    /// Sets `cb_mult` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain cb_multAt(long index, byte value) { cb_mult(this.segment(), index, value); return this; }
 
-        /// {@return `cb_luma_mult` at the given index}
-        /// @param index the index of the struct buffer
-        public byte cb_luma_multAt(long index) { return cb_luma_mult(this.segment(), index); }
-        /// Sets `cb_luma_mult` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cb_luma_multAt(long index, byte value) { cb_luma_mult(this.segment(), index, value); return this; }
+    /// {@return `cb_luma_mult` at the given index}
+    /// @param index the index of the struct buffer
+    public byte cb_luma_multAt(long index) { return cb_luma_mult(this.segment(), index); }
+    /// Sets `cb_luma_mult` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain cb_luma_multAt(long index, byte value) { cb_luma_mult(this.segment(), index, value); return this; }
 
-        /// {@return `cb_offset` at the given index}
-        /// @param index the index of the struct buffer
-        public short cb_offsetAt(long index) { return cb_offset(this.segment(), index); }
-        /// Sets `cb_offset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cb_offsetAt(long index, short value) { cb_offset(this.segment(), index, value); return this; }
+    /// {@return `cb_offset` at the given index}
+    /// @param index the index of the struct buffer
+    public short cb_offsetAt(long index) { return cb_offset(this.segment(), index); }
+    /// Sets `cb_offset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain cb_offsetAt(long index, short value) { cb_offset(this.segment(), index, value); return this; }
 
-        /// {@return `cr_mult` at the given index}
-        /// @param index the index of the struct buffer
-        public byte cr_multAt(long index) { return cr_mult(this.segment(), index); }
-        /// Sets `cr_mult` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cr_multAt(long index, byte value) { cr_mult(this.segment(), index, value); return this; }
+    /// {@return `cr_mult` at the given index}
+    /// @param index the index of the struct buffer
+    public byte cr_multAt(long index) { return cr_mult(this.segment(), index); }
+    /// Sets `cr_mult` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain cr_multAt(long index, byte value) { cr_mult(this.segment(), index, value); return this; }
 
-        /// {@return `cr_luma_mult` at the given index}
-        /// @param index the index of the struct buffer
-        public byte cr_luma_multAt(long index) { return cr_luma_mult(this.segment(), index); }
-        /// Sets `cr_luma_mult` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cr_luma_multAt(long index, byte value) { cr_luma_mult(this.segment(), index, value); return this; }
+    /// {@return `cr_luma_mult` at the given index}
+    /// @param index the index of the struct buffer
+    public byte cr_luma_multAt(long index) { return cr_luma_mult(this.segment(), index); }
+    /// Sets `cr_luma_mult` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain cr_luma_multAt(long index, byte value) { cr_luma_mult(this.segment(), index, value); return this; }
 
-        /// {@return `cr_offset` at the given index}
-        /// @param index the index of the struct buffer
-        public short cr_offsetAt(long index) { return cr_offset(this.segment(), index); }
-        /// Sets `cr_offset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cr_offsetAt(long index, short value) { cr_offset(this.segment(), index, value); return this; }
+    /// {@return `cr_offset` at the given index}
+    /// @param index the index of the struct buffer
+    public short cr_offsetAt(long index) { return cr_offset(this.segment(), index); }
+    /// Sets `cr_offset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1FilmGrain cr_offsetAt(long index, short value) { cr_offset(this.segment(), index, value); return this; }
 
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     const uint32_t* pCorrelationMasks;
 /// };
 /// ```
-public sealed class VkRenderPassMultiviewCreateInfo extends GroupType {
+public final class VkRenderPassMultiviewCreateInfo extends GroupType {
     /// The struct layout of `VkRenderPassMultiviewCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -99,20 +100,21 @@ public sealed class VkRenderPassMultiviewCreateInfo extends GroupType {
     public static final VarHandle VH_pCorrelationMasks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pCorrelationMasks"));
 
     /// Creates `VkRenderPassMultiviewCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkRenderPassMultiviewCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkRenderPassMultiviewCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkRenderPassMultiviewCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkRenderPassMultiviewCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassMultiviewCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRenderPassMultiviewCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassMultiviewCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassMultiviewCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkRenderPassMultiviewCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassMultiviewCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkRenderPassMultiviewCreateInfo` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkRenderPassMultiviewCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkRenderPassMultiviewCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassMultiviewCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkRenderPassMultiviewCreateInfo`
-    public static VkRenderPassMultiviewCreateInfo alloc(SegmentAllocator allocator) { return new VkRenderPassMultiviewCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkRenderPassMultiviewCreateInfo alloc(SegmentAllocator allocator) { return new VkRenderPassMultiviewCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderPassMultiviewCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkRenderPassMultiviewCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkRenderPassMultiviewCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkRenderPassMultiviewCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkRenderPassMultiviewCreateInfo extends GroupType {
     /// @return `this`
     public VkRenderPassMultiviewCreateInfo copyFrom(VkRenderPassMultiviewCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkRenderPassMultiviewCreateInfo reinterpret(long count) { return new VkRenderPassMultiviewCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class VkRenderPassMultiviewCreateInfo extends GroupType {
     /// @return `this`
     public VkRenderPassMultiviewCreateInfo pCorrelationMasks(MemorySegment value) { pCorrelationMasks(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkRenderPassMultiviewCreateInfo].
-    public static final class Buffer extends VkRenderPassMultiviewCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkRenderPassMultiviewCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderPassMultiviewCreateInfo`
+    public VkRenderPassMultiviewCreateInfo asSlice(long index) { return new VkRenderPassMultiviewCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkRenderPassMultiviewCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkRenderPassMultiviewCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderPassMultiviewCreateInfo`
+    public VkRenderPassMultiviewCreateInfo asSlice(long index, long count) { return new VkRenderPassMultiviewCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkRenderPassMultiviewCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkRenderPassMultiviewCreateInfo at(long index, Consumer<VkRenderPassMultiviewCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkRenderPassMultiviewCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkRenderPassMultiviewCreateInfo`
-        public VkRenderPassMultiviewCreateInfo asSlice(long index) { return new VkRenderPassMultiviewCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassMultiviewCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkRenderPassMultiviewCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkRenderPassMultiviewCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassMultiviewCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `subpassCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int subpassCountAt(long index) { return subpassCount(this.segment(), index); }
+    /// Sets `subpassCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassMultiviewCreateInfo subpassCountAt(long index, int value) { subpassCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pViewMasks` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pViewMasksAt(long index) { return pViewMasks(this.segment(), index); }
+    /// Sets `pViewMasks` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassMultiviewCreateInfo pViewMasksAt(long index, MemorySegment value) { pViewMasks(this.segment(), index, value); return this; }
 
-        /// {@return `subpassCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int subpassCountAt(long index) { return subpassCount(this.segment(), index); }
-        /// Sets `subpassCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subpassCountAt(long index, int value) { subpassCount(this.segment(), index, value); return this; }
+    /// {@return `dependencyCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int dependencyCountAt(long index) { return dependencyCount(this.segment(), index); }
+    /// Sets `dependencyCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassMultiviewCreateInfo dependencyCountAt(long index, int value) { dependencyCount(this.segment(), index, value); return this; }
 
-        /// {@return `pViewMasks` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pViewMasksAt(long index) { return pViewMasks(this.segment(), index); }
-        /// Sets `pViewMasks` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pViewMasksAt(long index, MemorySegment value) { pViewMasks(this.segment(), index, value); return this; }
+    /// {@return `pViewOffsets` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pViewOffsetsAt(long index) { return pViewOffsets(this.segment(), index); }
+    /// Sets `pViewOffsets` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassMultiviewCreateInfo pViewOffsetsAt(long index, MemorySegment value) { pViewOffsets(this.segment(), index, value); return this; }
 
-        /// {@return `dependencyCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int dependencyCountAt(long index) { return dependencyCount(this.segment(), index); }
-        /// Sets `dependencyCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dependencyCountAt(long index, int value) { dependencyCount(this.segment(), index, value); return this; }
+    /// {@return `correlationMaskCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int correlationMaskCountAt(long index) { return correlationMaskCount(this.segment(), index); }
+    /// Sets `correlationMaskCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassMultiviewCreateInfo correlationMaskCountAt(long index, int value) { correlationMaskCount(this.segment(), index, value); return this; }
 
-        /// {@return `pViewOffsets` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pViewOffsetsAt(long index) { return pViewOffsets(this.segment(), index); }
-        /// Sets `pViewOffsets` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pViewOffsetsAt(long index, MemorySegment value) { pViewOffsets(this.segment(), index, value); return this; }
+    /// {@return `pCorrelationMasks` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pCorrelationMasksAt(long index) { return pCorrelationMasks(this.segment(), index); }
+    /// Sets `pCorrelationMasks` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassMultiviewCreateInfo pCorrelationMasksAt(long index, MemorySegment value) { pCorrelationMasks(this.segment(), index, value); return this; }
 
-        /// {@return `correlationMaskCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int correlationMaskCountAt(long index) { return correlationMaskCount(this.segment(), index); }
-        /// Sets `correlationMaskCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer correlationMaskCountAt(long index, int value) { correlationMaskCount(this.segment(), index, value); return this; }
-
-        /// {@return `pCorrelationMasks` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pCorrelationMasksAt(long index) { return pCorrelationMasks(this.segment(), index); }
-        /// Sets `pCorrelationMasks` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pCorrelationMasksAt(long index, MemorySegment value) { pCorrelationMasks(this.segment(), index, value); return this; }
-
-    }
 }

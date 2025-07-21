@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint64_t opaqueCaptureAddress;
 /// };
 /// ```
-public sealed class VkMemoryOpaqueCaptureAddressAllocateInfo extends GroupType {
+public final class VkMemoryOpaqueCaptureAddressAllocateInfo extends GroupType {
     /// The struct layout of `VkMemoryOpaqueCaptureAddressAllocateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkMemoryOpaqueCaptureAddressAllocateInfo extends GroupType {
     public static final VarHandle VH_opaqueCaptureAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("opaqueCaptureAddress"));
 
     /// Creates `VkMemoryOpaqueCaptureAddressAllocateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkMemoryOpaqueCaptureAddressAllocateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkMemoryOpaqueCaptureAddressAllocateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkMemoryOpaqueCaptureAddressAllocateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMemoryOpaqueCaptureAddressAllocateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkMemoryOpaqueCaptureAddressAllocateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMemoryOpaqueCaptureAddressAllocateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMemoryOpaqueCaptureAddressAllocateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkMemoryOpaqueCaptureAddressAllocateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMemoryOpaqueCaptureAddressAllocateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkMemoryOpaqueCaptureAddressAllocateInfo` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkMemoryOpaqueCaptureAddressAllocateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkMemoryOpaqueCaptureAddressAllocateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkMemoryOpaqueCaptureAddressAllocateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkMemoryOpaqueCaptureAddressAllocateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkMemoryOpaqueCaptureAddressAllocateInfo`
-    public static VkMemoryOpaqueCaptureAddressAllocateInfo alloc(SegmentAllocator allocator) { return new VkMemoryOpaqueCaptureAddressAllocateInfo(allocator.allocate(LAYOUT)); }
+    public static VkMemoryOpaqueCaptureAddressAllocateInfo alloc(SegmentAllocator allocator) { return new VkMemoryOpaqueCaptureAddressAllocateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkMemoryOpaqueCaptureAddressAllocateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkMemoryOpaqueCaptureAddressAllocateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkMemoryOpaqueCaptureAddressAllocateInfo alloc(SegmentAllocator allocator, long count) { return new VkMemoryOpaqueCaptureAddressAllocateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkMemoryOpaqueCaptureAddressAllocateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkMemoryOpaqueCaptureAddressAllocateInfo extends GroupType {
     /// @return `this`
     public VkMemoryOpaqueCaptureAddressAllocateInfo copyFrom(VkMemoryOpaqueCaptureAddressAllocateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkMemoryOpaqueCaptureAddressAllocateInfo reinterpret(long count) { return new VkMemoryOpaqueCaptureAddressAllocateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkMemoryOpaqueCaptureAddressAllocateInfo extends GroupType {
     /// @return `this`
     public VkMemoryOpaqueCaptureAddressAllocateInfo opaqueCaptureAddress(long value) { opaqueCaptureAddress(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkMemoryOpaqueCaptureAddressAllocateInfo].
-    public static final class Buffer extends VkMemoryOpaqueCaptureAddressAllocateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkMemoryOpaqueCaptureAddressAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMemoryOpaqueCaptureAddressAllocateInfo`
+    public VkMemoryOpaqueCaptureAddressAllocateInfo asSlice(long index) { return new VkMemoryOpaqueCaptureAddressAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkMemoryOpaqueCaptureAddressAllocateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkMemoryOpaqueCaptureAddressAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMemoryOpaqueCaptureAddressAllocateInfo`
+    public VkMemoryOpaqueCaptureAddressAllocateInfo asSlice(long index, long count) { return new VkMemoryOpaqueCaptureAddressAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkMemoryOpaqueCaptureAddressAllocateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkMemoryOpaqueCaptureAddressAllocateInfo at(long index, Consumer<VkMemoryOpaqueCaptureAddressAllocateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkMemoryOpaqueCaptureAddressAllocateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkMemoryOpaqueCaptureAddressAllocateInfo`
-        public VkMemoryOpaqueCaptureAddressAllocateInfo asSlice(long index) { return new VkMemoryOpaqueCaptureAddressAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMemoryOpaqueCaptureAddressAllocateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkMemoryOpaqueCaptureAddressAllocateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkMemoryOpaqueCaptureAddressAllocateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMemoryOpaqueCaptureAddressAllocateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `opaqueCaptureAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long opaqueCaptureAddressAt(long index) { return opaqueCaptureAddress(this.segment(), index); }
+    /// Sets `opaqueCaptureAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMemoryOpaqueCaptureAddressAllocateInfo opaqueCaptureAddressAt(long index, long value) { opaqueCaptureAddress(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `opaqueCaptureAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long opaqueCaptureAddressAt(long index) { return opaqueCaptureAddress(this.segment(), index); }
-        /// Sets `opaqueCaptureAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer opaqueCaptureAddressAt(long index, long value) { opaqueCaptureAddress(this.segment(), index, value); return this; }
-
-    }
 }

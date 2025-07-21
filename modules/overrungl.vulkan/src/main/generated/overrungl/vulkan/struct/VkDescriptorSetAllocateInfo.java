@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     const VkDescriptorSetLayout* pSetLayouts;
 /// };
 /// ```
-public sealed class VkDescriptorSetAllocateInfo extends GroupType {
+public final class VkDescriptorSetAllocateInfo extends GroupType {
     /// The struct layout of `VkDescriptorSetAllocateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkDescriptorSetAllocateInfo extends GroupType {
     public static final VarHandle VH_pSetLayouts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSetLayouts"));
 
     /// Creates `VkDescriptorSetAllocateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkDescriptorSetAllocateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDescriptorSetAllocateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDescriptorSetAllocateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDescriptorSetAllocateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetAllocateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDescriptorSetAllocateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorSetAllocateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetAllocateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDescriptorSetAllocateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetAllocateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDescriptorSetAllocateInfo` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkDescriptorSetAllocateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDescriptorSetAllocateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetAllocateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDescriptorSetAllocateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDescriptorSetAllocateInfo`
-    public static VkDescriptorSetAllocateInfo alloc(SegmentAllocator allocator) { return new VkDescriptorSetAllocateInfo(allocator.allocate(LAYOUT)); }
+    public static VkDescriptorSetAllocateInfo alloc(SegmentAllocator allocator) { return new VkDescriptorSetAllocateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDescriptorSetAllocateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorSetAllocateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDescriptorSetAllocateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetAllocateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDescriptorSetAllocateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkDescriptorSetAllocateInfo extends GroupType {
     /// @return `this`
     public VkDescriptorSetAllocateInfo copyFrom(VkDescriptorSetAllocateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDescriptorSetAllocateInfo reinterpret(long count) { return new VkDescriptorSetAllocateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkDescriptorSetAllocateInfo extends GroupType {
     /// @return `this`
     public VkDescriptorSetAllocateInfo pSetLayouts(MemorySegment value) { pSetLayouts(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDescriptorSetAllocateInfo].
-    public static final class Buffer extends VkDescriptorSetAllocateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkDescriptorSetAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorSetAllocateInfo`
+    public VkDescriptorSetAllocateInfo asSlice(long index) { return new VkDescriptorSetAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDescriptorSetAllocateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDescriptorSetAllocateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorSetAllocateInfo`
+    public VkDescriptorSetAllocateInfo asSlice(long index, long count) { return new VkDescriptorSetAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDescriptorSetAllocateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDescriptorSetAllocateInfo at(long index, Consumer<VkDescriptorSetAllocateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDescriptorSetAllocateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDescriptorSetAllocateInfo`
-        public VkDescriptorSetAllocateInfo asSlice(long index) { return new VkDescriptorSetAllocateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorSetAllocateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDescriptorSetAllocateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDescriptorSetAllocateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorSetAllocateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `descriptorPool` at the given index}
+    /// @param index the index of the struct buffer
+    public long descriptorPoolAt(long index) { return descriptorPool(this.segment(), index); }
+    /// Sets `descriptorPool` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorSetAllocateInfo descriptorPoolAt(long index, long value) { descriptorPool(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `descriptorSetCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int descriptorSetCountAt(long index) { return descriptorSetCount(this.segment(), index); }
+    /// Sets `descriptorSetCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorSetAllocateInfo descriptorSetCountAt(long index, int value) { descriptorSetCount(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorPool` at the given index}
-        /// @param index the index of the struct buffer
-        public long descriptorPoolAt(long index) { return descriptorPool(this.segment(), index); }
-        /// Sets `descriptorPool` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorPoolAt(long index, long value) { descriptorPool(this.segment(), index, value); return this; }
+    /// {@return `pSetLayouts` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pSetLayoutsAt(long index) { return pSetLayouts(this.segment(), index); }
+    /// Sets `pSetLayouts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorSetAllocateInfo pSetLayoutsAt(long index, MemorySegment value) { pSetLayouts(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorSetCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int descriptorSetCountAt(long index) { return descriptorSetCount(this.segment(), index); }
-        /// Sets `descriptorSetCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorSetCountAt(long index, int value) { descriptorSetCount(this.segment(), index, value); return this; }
-
-        /// {@return `pSetLayouts` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pSetLayoutsAt(long index) { return pSetLayouts(this.segment(), index); }
-        /// Sets `pSetLayouts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSetLayoutsAt(long index, MemorySegment value) { pSetLayouts(this.segment(), index, value); return this; }
-
-    }
 }

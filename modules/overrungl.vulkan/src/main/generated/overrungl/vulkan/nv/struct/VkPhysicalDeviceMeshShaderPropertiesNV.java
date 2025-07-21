@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -44,7 +45,7 @@ import overrungl.util.*;
 ///     uint32_t meshOutputPerPrimitiveGranularity;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
+public final class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMeshShaderPropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -155,20 +156,21 @@ public sealed class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     public static final VarHandle VH_meshOutputPerPrimitiveGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("meshOutputPerPrimitiveGranularity"));
 
     /// Creates `VkPhysicalDeviceMeshShaderPropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceMeshShaderPropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceMeshShaderPropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceMeshShaderPropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceMeshShaderPropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMeshShaderPropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMeshShaderPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMeshShaderPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMeshShaderPropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceMeshShaderPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMeshShaderPropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceMeshShaderPropertiesNV` with the given segment.
     ///
@@ -176,18 +178,18 @@ public sealed class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceMeshShaderPropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMeshShaderPropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceMeshShaderPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceMeshShaderPropertiesNV`
-    public static VkPhysicalDeviceMeshShaderPropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMeshShaderPropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceMeshShaderPropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMeshShaderPropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceMeshShaderPropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMeshShaderPropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceMeshShaderPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMeshShaderPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceMeshShaderPropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -419,9 +421,10 @@ public sealed class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceMeshShaderPropertiesNV copyFrom(VkPhysicalDeviceMeshShaderPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceMeshShaderPropertiesNV reinterpret(long count) { return new VkPhysicalDeviceMeshShaderPropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -701,182 +704,176 @@ public sealed class VkPhysicalDeviceMeshShaderPropertiesNV extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceMeshShaderPropertiesNV meshOutputPerPrimitiveGranularity(int value) { meshOutputPerPrimitiveGranularity(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceMeshShaderPropertiesNV].
-    public static final class Buffer extends VkPhysicalDeviceMeshShaderPropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceMeshShaderPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMeshShaderPropertiesNV`
+    public VkPhysicalDeviceMeshShaderPropertiesNV asSlice(long index) { return new VkPhysicalDeviceMeshShaderPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceMeshShaderPropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceMeshShaderPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMeshShaderPropertiesNV`
+    public VkPhysicalDeviceMeshShaderPropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceMeshShaderPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceMeshShaderPropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV at(long index, Consumer<VkPhysicalDeviceMeshShaderPropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMeshShaderPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceMeshShaderPropertiesNV`
-        public VkPhysicalDeviceMeshShaderPropertiesNV asSlice(long index) { return new VkPhysicalDeviceMeshShaderPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMeshShaderPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceMeshShaderPropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxDrawMeshTasksCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDrawMeshTasksCountAt(long index) { return maxDrawMeshTasksCount(this.segment(), index); }
+    /// Sets `maxDrawMeshTasksCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxDrawMeshTasksCountAt(long index, int value) { maxDrawMeshTasksCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxTaskWorkGroupInvocations` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTaskWorkGroupInvocationsAt(long index) { return maxTaskWorkGroupInvocations(this.segment(), index); }
+    /// Sets `maxTaskWorkGroupInvocations` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskWorkGroupInvocationsAt(long index, int value) { maxTaskWorkGroupInvocations(this.segment(), index, value); return this; }
 
-        /// {@return `maxDrawMeshTasksCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDrawMeshTasksCountAt(long index) { return maxDrawMeshTasksCount(this.segment(), index); }
-        /// Sets `maxDrawMeshTasksCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDrawMeshTasksCountAt(long index, int value) { maxDrawMeshTasksCount(this.segment(), index, value); return this; }
-
-        /// {@return `maxTaskWorkGroupInvocations` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTaskWorkGroupInvocationsAt(long index) { return maxTaskWorkGroupInvocations(this.segment(), index); }
-        /// Sets `maxTaskWorkGroupInvocations` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTaskWorkGroupInvocationsAt(long index, int value) { maxTaskWorkGroupInvocations(this.segment(), index, value); return this; }
-
-        /// {@return `maxTaskWorkGroupSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxTaskWorkGroupSizeAt(long index) { return maxTaskWorkGroupSize(this.segment(), index); }
-        /// {@return `maxTaskWorkGroupSize` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `maxTaskWorkGroupSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxTaskWorkGroupSizeAt(long index) { return maxTaskWorkGroupSize(this.segment(), index); }
+    /// {@return `maxTaskWorkGroupSize` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public int maxTaskWorkGroupSizeAt(long index, long index0) { return maxTaskWorkGroupSize(this.segment(), index, index0); }
-        /// Sets `maxTaskWorkGroupSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTaskWorkGroupSizeAt(long index, MemorySegment value) { maxTaskWorkGroupSize(this.segment(), index, value); return this; }
-        /// Sets `maxTaskWorkGroupSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTaskWorkGroupSizeAt(long index, long index0, int value) { maxTaskWorkGroupSize(this.segment(), index, index0, value); return this; }
+    /// Sets `maxTaskWorkGroupSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskWorkGroupSizeAt(long index, MemorySegment value) { maxTaskWorkGroupSize(this.segment(), index, value); return this; }
+    /// Sets `maxTaskWorkGroupSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskWorkGroupSizeAt(long index, long index0, int value) { maxTaskWorkGroupSize(this.segment(), index, index0, value); return this; }
 
-        /// {@return `maxTaskTotalMemorySize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTaskTotalMemorySizeAt(long index) { return maxTaskTotalMemorySize(this.segment(), index); }
-        /// Sets `maxTaskTotalMemorySize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTaskTotalMemorySizeAt(long index, int value) { maxTaskTotalMemorySize(this.segment(), index, value); return this; }
+    /// {@return `maxTaskTotalMemorySize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTaskTotalMemorySizeAt(long index) { return maxTaskTotalMemorySize(this.segment(), index); }
+    /// Sets `maxTaskTotalMemorySize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskTotalMemorySizeAt(long index, int value) { maxTaskTotalMemorySize(this.segment(), index, value); return this; }
 
-        /// {@return `maxTaskOutputCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTaskOutputCountAt(long index) { return maxTaskOutputCount(this.segment(), index); }
-        /// Sets `maxTaskOutputCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTaskOutputCountAt(long index, int value) { maxTaskOutputCount(this.segment(), index, value); return this; }
+    /// {@return `maxTaskOutputCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTaskOutputCountAt(long index) { return maxTaskOutputCount(this.segment(), index); }
+    /// Sets `maxTaskOutputCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxTaskOutputCountAt(long index, int value) { maxTaskOutputCount(this.segment(), index, value); return this; }
 
-        /// {@return `maxMeshWorkGroupInvocations` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxMeshWorkGroupInvocationsAt(long index) { return maxMeshWorkGroupInvocations(this.segment(), index); }
-        /// Sets `maxMeshWorkGroupInvocations` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMeshWorkGroupInvocationsAt(long index, int value) { maxMeshWorkGroupInvocations(this.segment(), index, value); return this; }
+    /// {@return `maxMeshWorkGroupInvocations` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxMeshWorkGroupInvocationsAt(long index) { return maxMeshWorkGroupInvocations(this.segment(), index); }
+    /// Sets `maxMeshWorkGroupInvocations` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshWorkGroupInvocationsAt(long index, int value) { maxMeshWorkGroupInvocations(this.segment(), index, value); return this; }
 
-        /// {@return `maxMeshWorkGroupSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxMeshWorkGroupSizeAt(long index) { return maxMeshWorkGroupSize(this.segment(), index); }
-        /// {@return `maxMeshWorkGroupSize` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `maxMeshWorkGroupSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxMeshWorkGroupSizeAt(long index) { return maxMeshWorkGroupSize(this.segment(), index); }
+    /// {@return `maxMeshWorkGroupSize` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public int maxMeshWorkGroupSizeAt(long index, long index0) { return maxMeshWorkGroupSize(this.segment(), index, index0); }
-        /// Sets `maxMeshWorkGroupSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMeshWorkGroupSizeAt(long index, MemorySegment value) { maxMeshWorkGroupSize(this.segment(), index, value); return this; }
-        /// Sets `maxMeshWorkGroupSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMeshWorkGroupSizeAt(long index, long index0, int value) { maxMeshWorkGroupSize(this.segment(), index, index0, value); return this; }
+    /// Sets `maxMeshWorkGroupSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshWorkGroupSizeAt(long index, MemorySegment value) { maxMeshWorkGroupSize(this.segment(), index, value); return this; }
+    /// Sets `maxMeshWorkGroupSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshWorkGroupSizeAt(long index, long index0, int value) { maxMeshWorkGroupSize(this.segment(), index, index0, value); return this; }
 
-        /// {@return `maxMeshTotalMemorySize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxMeshTotalMemorySizeAt(long index) { return maxMeshTotalMemorySize(this.segment(), index); }
-        /// Sets `maxMeshTotalMemorySize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMeshTotalMemorySizeAt(long index, int value) { maxMeshTotalMemorySize(this.segment(), index, value); return this; }
+    /// {@return `maxMeshTotalMemorySize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxMeshTotalMemorySizeAt(long index) { return maxMeshTotalMemorySize(this.segment(), index); }
+    /// Sets `maxMeshTotalMemorySize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshTotalMemorySizeAt(long index, int value) { maxMeshTotalMemorySize(this.segment(), index, value); return this; }
 
-        /// {@return `maxMeshOutputVertices` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxMeshOutputVerticesAt(long index) { return maxMeshOutputVertices(this.segment(), index); }
-        /// Sets `maxMeshOutputVertices` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMeshOutputVerticesAt(long index, int value) { maxMeshOutputVertices(this.segment(), index, value); return this; }
+    /// {@return `maxMeshOutputVertices` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxMeshOutputVerticesAt(long index) { return maxMeshOutputVertices(this.segment(), index); }
+    /// Sets `maxMeshOutputVertices` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshOutputVerticesAt(long index, int value) { maxMeshOutputVertices(this.segment(), index, value); return this; }
 
-        /// {@return `maxMeshOutputPrimitives` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxMeshOutputPrimitivesAt(long index) { return maxMeshOutputPrimitives(this.segment(), index); }
-        /// Sets `maxMeshOutputPrimitives` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMeshOutputPrimitivesAt(long index, int value) { maxMeshOutputPrimitives(this.segment(), index, value); return this; }
+    /// {@return `maxMeshOutputPrimitives` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxMeshOutputPrimitivesAt(long index) { return maxMeshOutputPrimitives(this.segment(), index); }
+    /// Sets `maxMeshOutputPrimitives` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshOutputPrimitivesAt(long index, int value) { maxMeshOutputPrimitives(this.segment(), index, value); return this; }
 
-        /// {@return `maxMeshMultiviewViewCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxMeshMultiviewViewCountAt(long index) { return maxMeshMultiviewViewCount(this.segment(), index); }
-        /// Sets `maxMeshMultiviewViewCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMeshMultiviewViewCountAt(long index, int value) { maxMeshMultiviewViewCount(this.segment(), index, value); return this; }
+    /// {@return `maxMeshMultiviewViewCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxMeshMultiviewViewCountAt(long index) { return maxMeshMultiviewViewCount(this.segment(), index); }
+    /// Sets `maxMeshMultiviewViewCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV maxMeshMultiviewViewCountAt(long index, int value) { maxMeshMultiviewViewCount(this.segment(), index, value); return this; }
 
-        /// {@return `meshOutputPerVertexGranularity` at the given index}
-        /// @param index the index of the struct buffer
-        public int meshOutputPerVertexGranularityAt(long index) { return meshOutputPerVertexGranularity(this.segment(), index); }
-        /// Sets `meshOutputPerVertexGranularity` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer meshOutputPerVertexGranularityAt(long index, int value) { meshOutputPerVertexGranularity(this.segment(), index, value); return this; }
+    /// {@return `meshOutputPerVertexGranularity` at the given index}
+    /// @param index the index of the struct buffer
+    public int meshOutputPerVertexGranularityAt(long index) { return meshOutputPerVertexGranularity(this.segment(), index); }
+    /// Sets `meshOutputPerVertexGranularity` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV meshOutputPerVertexGranularityAt(long index, int value) { meshOutputPerVertexGranularity(this.segment(), index, value); return this; }
 
-        /// {@return `meshOutputPerPrimitiveGranularity` at the given index}
-        /// @param index the index of the struct buffer
-        public int meshOutputPerPrimitiveGranularityAt(long index) { return meshOutputPerPrimitiveGranularity(this.segment(), index); }
-        /// Sets `meshOutputPerPrimitiveGranularity` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer meshOutputPerPrimitiveGranularityAt(long index, int value) { meshOutputPerPrimitiveGranularity(this.segment(), index, value); return this; }
+    /// {@return `meshOutputPerPrimitiveGranularity` at the given index}
+    /// @param index the index of the struct buffer
+    public int meshOutputPerPrimitiveGranularityAt(long index) { return meshOutputPerPrimitiveGranularity(this.segment(), index); }
+    /// Sets `meshOutputPerPrimitiveGranularity` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMeshShaderPropertiesNV meshOutputPerPrimitiveGranularityAt(long index, int value) { meshOutputPerPrimitiveGranularity(this.segment(), index, value); return this; }
 
-    }
 }

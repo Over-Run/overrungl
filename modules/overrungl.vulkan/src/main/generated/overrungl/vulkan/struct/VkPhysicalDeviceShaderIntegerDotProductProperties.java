@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -61,7 +62,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceShaderIntegerDotProductProperties extends GroupType {
+public final class VkPhysicalDeviceShaderIntegerDotProductProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderIntegerDotProductProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -291,20 +292,21 @@ public sealed class VkPhysicalDeviceShaderIntegerDotProductProperties extends Gr
     public static final VarHandle VH_integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated = LAYOUT.arrayElementVarHandle(PathElement.groupElement("integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated"));
 
     /// Creates `VkPhysicalDeviceShaderIntegerDotProductProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceShaderIntegerDotProductProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceShaderIntegerDotProductProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceShaderIntegerDotProductProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceShaderIntegerDotProductProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderIntegerDotProductProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderIntegerDotProductProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderIntegerDotProductProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderIntegerDotProductProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceShaderIntegerDotProductProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderIntegerDotProductProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceShaderIntegerDotProductProperties` with the given segment.
     ///
@@ -312,18 +314,18 @@ public sealed class VkPhysicalDeviceShaderIntegerDotProductProperties extends Gr
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceShaderIntegerDotProductProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderIntegerDotProductProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderIntegerDotProductProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceShaderIntegerDotProductProperties`
-    public static VkPhysicalDeviceShaderIntegerDotProductProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderIntegerDotProductProperties(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceShaderIntegerDotProductProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderIntegerDotProductProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceShaderIntegerDotProductProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderIntegerDotProductProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceShaderIntegerDotProductProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderIntegerDotProductProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderIntegerDotProductProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -1082,9 +1084,10 @@ public sealed class VkPhysicalDeviceShaderIntegerDotProductProperties extends Gr
     /// @return `this`
     public VkPhysicalDeviceShaderIntegerDotProductProperties copyFrom(VkPhysicalDeviceShaderIntegerDotProductProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceShaderIntegerDotProductProperties reinterpret(long count) { return new VkPhysicalDeviceShaderIntegerDotProductProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -1598,315 +1601,309 @@ public sealed class VkPhysicalDeviceShaderIntegerDotProductProperties extends Gr
     /// @return `this`
     public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(int value) { integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceShaderIntegerDotProductProperties].
-    public static final class Buffer extends VkPhysicalDeviceShaderIntegerDotProductProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceShaderIntegerDotProductProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderIntegerDotProductProperties`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties asSlice(long index) { return new VkPhysicalDeviceShaderIntegerDotProductProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceShaderIntegerDotProductProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceShaderIntegerDotProductProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderIntegerDotProductProperties`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties asSlice(long index, long count) { return new VkPhysicalDeviceShaderIntegerDotProductProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceShaderIntegerDotProductProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties at(long index, Consumer<VkPhysicalDeviceShaderIntegerDotProductProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderIntegerDotProductProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceShaderIntegerDotProductProperties`
-        public VkPhysicalDeviceShaderIntegerDotProductProperties asSlice(long index) { return new VkPhysicalDeviceShaderIntegerDotProductProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderIntegerDotProductProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceShaderIntegerDotProductProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct8BitUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct8BitUnsignedAcceleratedAt(long index) { return integerDotProduct8BitUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct8BitUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct8BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct8BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct8BitSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct8BitSignedAcceleratedAt(long index) { return integerDotProduct8BitSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct8BitSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct8BitSignedAcceleratedAt(long index, int value) { integerDotProduct8BitSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct8BitUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct8BitUnsignedAcceleratedAt(long index) { return integerDotProduct8BitUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct8BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct8BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct8BitUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct8BitMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct8BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct8BitMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct8BitMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct8BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct8BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct8BitSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct8BitSignedAcceleratedAt(long index) { return integerDotProduct8BitSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct8BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct8BitSignedAcceleratedAt(long index, int value) { integerDotProduct8BitSignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct4x8BitPackedUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct4x8BitPackedUnsignedAcceleratedAt(long index) { return integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct4x8BitPackedUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct4x8BitPackedUnsignedAcceleratedAt(long index, int value) { integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct8BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct8BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct8BitMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct8BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct8BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct8BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct4x8BitPackedSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct4x8BitPackedSignedAcceleratedAt(long index) { return integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct4x8BitPackedSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct4x8BitPackedSignedAcceleratedAt(long index, int value) { integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct4x8BitPackedUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct4x8BitPackedUnsignedAcceleratedAt(long index) { return integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct4x8BitPackedUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct4x8BitPackedUnsignedAcceleratedAt(long index, int value) { integerDotProduct4x8BitPackedUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct4x8BitPackedMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct4x8BitPackedMixedSignednessAcceleratedAt(long index) { return integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct4x8BitPackedMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct4x8BitPackedSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct4x8BitPackedSignedAcceleratedAt(long index) { return integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct4x8BitPackedSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct4x8BitPackedSignedAcceleratedAt(long index, int value) { integerDotProduct4x8BitPackedSignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct16BitUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct16BitUnsignedAcceleratedAt(long index) { return integerDotProduct16BitUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct16BitUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct16BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct16BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct4x8BitPackedMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct4x8BitPackedMixedSignednessAcceleratedAt(long index) { return integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct4x8BitPackedMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct4x8BitPackedMixedSignednessAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct16BitSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct16BitSignedAcceleratedAt(long index) { return integerDotProduct16BitSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct16BitSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct16BitSignedAcceleratedAt(long index, int value) { integerDotProduct16BitSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct16BitUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct16BitUnsignedAcceleratedAt(long index) { return integerDotProduct16BitUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct16BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct16BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct16BitUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct16BitMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct16BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct16BitMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct16BitMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct16BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct16BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct16BitSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct16BitSignedAcceleratedAt(long index) { return integerDotProduct16BitSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct16BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct16BitSignedAcceleratedAt(long index, int value) { integerDotProduct16BitSignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct32BitUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct32BitUnsignedAcceleratedAt(long index) { return integerDotProduct32BitUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct32BitUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct32BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct32BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct16BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct16BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct16BitMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct16BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct16BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct16BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct32BitSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct32BitSignedAcceleratedAt(long index) { return integerDotProduct32BitSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct32BitSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct32BitSignedAcceleratedAt(long index, int value) { integerDotProduct32BitSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct32BitUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct32BitUnsignedAcceleratedAt(long index) { return integerDotProduct32BitUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct32BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct32BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct32BitUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct32BitMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct32BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct32BitMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct32BitMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct32BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct32BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct32BitSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct32BitSignedAcceleratedAt(long index) { return integerDotProduct32BitSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct32BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct32BitSignedAcceleratedAt(long index, int value) { integerDotProduct32BitSignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct64BitUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct64BitUnsignedAcceleratedAt(long index) { return integerDotProduct64BitUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct64BitUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct64BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct64BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct32BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct32BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct32BitMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct32BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct32BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct32BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct64BitSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct64BitSignedAcceleratedAt(long index) { return integerDotProduct64BitSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct64BitSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct64BitSignedAcceleratedAt(long index, int value) { integerDotProduct64BitSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct64BitUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct64BitUnsignedAcceleratedAt(long index) { return integerDotProduct64BitUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct64BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct64BitUnsignedAcceleratedAt(long index, int value) { integerDotProduct64BitUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProduct64BitMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProduct64BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct64BitMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProduct64BitMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProduct64BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct64BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct64BitSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct64BitSignedAcceleratedAt(long index) { return integerDotProduct64BitSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct64BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct64BitSignedAcceleratedAt(long index, int value) { integerDotProduct64BitSignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating8BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating8BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProduct64BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProduct64BitMixedSignednessAcceleratedAt(long index) { return integerDotProduct64BitMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProduct64BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProduct64BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProduct64BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating8BitSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating8BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating8BitSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating8BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating8BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating8BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating8BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating8BitUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating8BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating8BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating8BitSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating8BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating8BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating8BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating8BitSignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating8BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating8BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating8BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating4x8BitPackedSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating4x8BitPackedSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating4x8BitPackedUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating4x8BitPackedSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating4x8BitPackedSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating4x8BitPackedSignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating16BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating16BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating4x8BitPackedMixedSignednessAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating16BitSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating16BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating16BitSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating16BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating16BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating16BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating16BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating16BitUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating16BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating16BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating16BitSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating16BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating16BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating16BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating16BitSignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating32BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating32BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating16BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating16BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating16BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating32BitSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating32BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating32BitSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating32BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating32BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating32BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating32BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating32BitUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating32BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating32BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating32BitSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating32BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating32BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating32BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating32BitSignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating64BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating64BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating32BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating32BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating32BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating64BitSignedAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating64BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating64BitSignedAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating64BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating64BitUnsignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating64BitUnsignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating64BitUnsignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating64BitUnsignedAccelerated(this.segment(), index, value); return this; }
+    /// {@return `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` at the given index}
+    /// @param index the index of the struct buffer
+    public int integerDotProductAccumulatingSaturating64BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), index); }
+    /// Sets `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderIntegerDotProductProperties integerDotProductAccumulatingSaturating64BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
 
-        /// {@return `integerDotProductAccumulatingSaturating64BitSignedAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating64BitSignedAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating64BitSignedAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating64BitSignedAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating64BitSignedAccelerated(this.segment(), index, value); return this; }
-
-        /// {@return `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` at the given index}
-        /// @param index the index of the struct buffer
-        public int integerDotProductAccumulatingSaturating64BitMixedSignednessAcceleratedAt(long index) { return integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), index); }
-        /// Sets `integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer integerDotProductAccumulatingSaturating64BitMixedSignednessAcceleratedAt(long index, int value) { integerDotProductAccumulatingSaturating64BitMixedSignednessAccelerated(this.segment(), index, value); return this; }
-
-    }
 }

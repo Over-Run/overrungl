@@ -21,6 +21,7 @@ package overrungl.vma;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     void* pBreakCallbackUserData;
 /// };
 /// ```
-public sealed class VmaDefragmentationInfo extends GroupType {
+public final class VmaDefragmentationInfo extends GroupType {
     /// The struct layout of `VmaDefragmentationInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("flags"),
@@ -83,20 +84,21 @@ public sealed class VmaDefragmentationInfo extends GroupType {
     public static final VarHandle VH_pBreakCallbackUserData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pBreakCallbackUserData"));
 
     /// Creates `VmaDefragmentationInfo` with the given segment.
-    /// @param segment the memory segment
-    public VmaDefragmentationInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VmaDefragmentationInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VmaDefragmentationInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VmaDefragmentationInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDefragmentationInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VmaDefragmentationInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VmaDefragmentationInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDefragmentationInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VmaDefragmentationInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDefragmentationInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VmaDefragmentationInfo` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VmaDefragmentationInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VmaDefragmentationInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDefragmentationInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VmaDefragmentationInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VmaDefragmentationInfo`
-    public static VmaDefragmentationInfo alloc(SegmentAllocator allocator) { return new VmaDefragmentationInfo(allocator.allocate(LAYOUT)); }
+    public static VmaDefragmentationInfo alloc(SegmentAllocator allocator) { return new VmaDefragmentationInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VmaDefragmentationInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VmaDefragmentationInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VmaDefragmentationInfo alloc(SegmentAllocator allocator, long count) { return new VmaDefragmentationInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VmaDefragmentationInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VmaDefragmentationInfo extends GroupType {
     /// @return `this`
     public VmaDefragmentationInfo copyFrom(VmaDefragmentationInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VmaDefragmentationInfo reinterpret(long count) { return new VmaDefragmentationInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VmaDefragmentationInfo extends GroupType {
     /// @return `this`
     public VmaDefragmentationInfo pBreakCallbackUserData(MemorySegment value) { pBreakCallbackUserData(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VmaDefragmentationInfo].
-    public static final class Buffer extends VmaDefragmentationInfo {
-        private final long elementCount;
+    /// Creates a slice of `VmaDefragmentationInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VmaDefragmentationInfo`
+    public VmaDefragmentationInfo asSlice(long index) { return new VmaDefragmentationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VmaDefragmentationInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VmaDefragmentationInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VmaDefragmentationInfo`
+    public VmaDefragmentationInfo asSlice(long index, long count) { return new VmaDefragmentationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VmaDefragmentationInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VmaDefragmentationInfo at(long index, Consumer<VmaDefragmentationInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VmaDefragmentationInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VmaDefragmentationInfo`
-        public VmaDefragmentationInfo asSlice(long index) { return new VmaDefragmentationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDefragmentationInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VmaDefragmentationInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VmaDefragmentationInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pool` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment poolAt(long index) { return pool(this.segment(), index); }
+    /// Sets `pool` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDefragmentationInfo poolAt(long index, MemorySegment value) { pool(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `maxBytesPerPass` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxBytesPerPassAt(long index) { return maxBytesPerPass(this.segment(), index); }
+    /// Sets `maxBytesPerPass` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDefragmentationInfo maxBytesPerPassAt(long index, long value) { maxBytesPerPass(this.segment(), index, value); return this; }
 
-        /// {@return `pool` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment poolAt(long index) { return pool(this.segment(), index); }
-        /// Sets `pool` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer poolAt(long index, MemorySegment value) { pool(this.segment(), index, value); return this; }
+    /// {@return `maxAllocationsPerPass` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxAllocationsPerPassAt(long index) { return maxAllocationsPerPass(this.segment(), index); }
+    /// Sets `maxAllocationsPerPass` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDefragmentationInfo maxAllocationsPerPassAt(long index, int value) { maxAllocationsPerPass(this.segment(), index, value); return this; }
 
-        /// {@return `maxBytesPerPass` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxBytesPerPassAt(long index) { return maxBytesPerPass(this.segment(), index); }
-        /// Sets `maxBytesPerPass` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxBytesPerPassAt(long index, long value) { maxBytesPerPass(this.segment(), index, value); return this; }
+    /// {@return `pfnBreakCallback` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pfnBreakCallbackAt(long index) { return pfnBreakCallback(this.segment(), index); }
+    /// Sets `pfnBreakCallback` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDefragmentationInfo pfnBreakCallbackAt(long index, MemorySegment value) { pfnBreakCallback(this.segment(), index, value); return this; }
 
-        /// {@return `maxAllocationsPerPass` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxAllocationsPerPassAt(long index) { return maxAllocationsPerPass(this.segment(), index); }
-        /// Sets `maxAllocationsPerPass` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxAllocationsPerPassAt(long index, int value) { maxAllocationsPerPass(this.segment(), index, value); return this; }
+    /// {@return `pBreakCallbackUserData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pBreakCallbackUserDataAt(long index) { return pBreakCallbackUserData(this.segment(), index); }
+    /// Sets `pBreakCallbackUserData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDefragmentationInfo pBreakCallbackUserDataAt(long index, MemorySegment value) { pBreakCallbackUserData(this.segment(), index, value); return this; }
 
-        /// {@return `pfnBreakCallback` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pfnBreakCallbackAt(long index) { return pfnBreakCallback(this.segment(), index); }
-        /// Sets `pfnBreakCallback` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pfnBreakCallbackAt(long index, MemorySegment value) { pfnBreakCallback(this.segment(), index, value); return this; }
-
-        /// {@return `pBreakCallbackUserData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pBreakCallbackUserDataAt(long index) { return pBreakCallbackUserData(this.segment(), index); }
-        /// Sets `pBreakCallbackUserData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pBreakCallbackUserDataAt(long index, MemorySegment value) { pBreakCallbackUserData(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -40,7 +41,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceSize size;
 /// };
 /// ```
-public sealed class VkBufferMemoryBarrier2 extends GroupType {
+public final class VkBufferMemoryBarrier2 extends GroupType {
     /// The struct layout of `VkBufferMemoryBarrier2`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -123,20 +124,21 @@ public sealed class VkBufferMemoryBarrier2 extends GroupType {
     public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
 
     /// Creates `VkBufferMemoryBarrier2` with the given segment.
-    /// @param segment the memory segment
-    public VkBufferMemoryBarrier2(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkBufferMemoryBarrier2(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkBufferMemoryBarrier2` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkBufferMemoryBarrier2 of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferMemoryBarrier2(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBufferMemoryBarrier2` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferMemoryBarrier2 ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferMemoryBarrier2(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkBufferMemoryBarrier2 ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferMemoryBarrier2(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkBufferMemoryBarrier2` with the given segment.
     ///
@@ -144,18 +146,18 @@ public sealed class VkBufferMemoryBarrier2 extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkBufferMemoryBarrier2 ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferMemoryBarrier2(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkBufferMemoryBarrier2` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBufferMemoryBarrier2`
-    public static VkBufferMemoryBarrier2 alloc(SegmentAllocator allocator) { return new VkBufferMemoryBarrier2(allocator.allocate(LAYOUT)); }
+    public static VkBufferMemoryBarrier2 alloc(SegmentAllocator allocator) { return new VkBufferMemoryBarrier2(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkBufferMemoryBarrier2` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBufferMemoryBarrier2`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkBufferMemoryBarrier2 alloc(SegmentAllocator allocator, long count) { return new VkBufferMemoryBarrier2(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkBufferMemoryBarrier2` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -305,9 +307,10 @@ public sealed class VkBufferMemoryBarrier2 extends GroupType {
     /// @return `this`
     public VkBufferMemoryBarrier2 copyFrom(VkBufferMemoryBarrier2 src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkBufferMemoryBarrier2 reinterpret(long count) { return new VkBufferMemoryBarrier2(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -485,126 +488,120 @@ public sealed class VkBufferMemoryBarrier2 extends GroupType {
     /// @return `this`
     public VkBufferMemoryBarrier2 size(long value) { size(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkBufferMemoryBarrier2].
-    public static final class Buffer extends VkBufferMemoryBarrier2 {
-        private final long elementCount;
+    /// Creates a slice of `VkBufferMemoryBarrier2`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferMemoryBarrier2`
+    public VkBufferMemoryBarrier2 asSlice(long index) { return new VkBufferMemoryBarrier2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkBufferMemoryBarrier2.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkBufferMemoryBarrier2`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferMemoryBarrier2`
+    public VkBufferMemoryBarrier2 asSlice(long index, long count) { return new VkBufferMemoryBarrier2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkBufferMemoryBarrier2` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkBufferMemoryBarrier2 at(long index, Consumer<VkBufferMemoryBarrier2> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkBufferMemoryBarrier2`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkBufferMemoryBarrier2`
-        public VkBufferMemoryBarrier2 asSlice(long index) { return new VkBufferMemoryBarrier2(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkBufferMemoryBarrier2`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkBufferMemoryBarrier2`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `srcStageMask` at the given index}
+    /// @param index the index of the struct buffer
+    public long srcStageMaskAt(long index) { return srcStageMask(this.segment(), index); }
+    /// Sets `srcStageMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 srcStageMaskAt(long index, long value) { srcStageMask(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `srcAccessMask` at the given index}
+    /// @param index the index of the struct buffer
+    public long srcAccessMaskAt(long index) { return srcAccessMask(this.segment(), index); }
+    /// Sets `srcAccessMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 srcAccessMaskAt(long index, long value) { srcAccessMask(this.segment(), index, value); return this; }
 
-        /// {@return `srcStageMask` at the given index}
-        /// @param index the index of the struct buffer
-        public long srcStageMaskAt(long index) { return srcStageMask(this.segment(), index); }
-        /// Sets `srcStageMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcStageMaskAt(long index, long value) { srcStageMask(this.segment(), index, value); return this; }
+    /// {@return `dstStageMask` at the given index}
+    /// @param index the index of the struct buffer
+    public long dstStageMaskAt(long index) { return dstStageMask(this.segment(), index); }
+    /// Sets `dstStageMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 dstStageMaskAt(long index, long value) { dstStageMask(this.segment(), index, value); return this; }
 
-        /// {@return `srcAccessMask` at the given index}
-        /// @param index the index of the struct buffer
-        public long srcAccessMaskAt(long index) { return srcAccessMask(this.segment(), index); }
-        /// Sets `srcAccessMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcAccessMaskAt(long index, long value) { srcAccessMask(this.segment(), index, value); return this; }
+    /// {@return `dstAccessMask` at the given index}
+    /// @param index the index of the struct buffer
+    public long dstAccessMaskAt(long index) { return dstAccessMask(this.segment(), index); }
+    /// Sets `dstAccessMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 dstAccessMaskAt(long index, long value) { dstAccessMask(this.segment(), index, value); return this; }
 
-        /// {@return `dstStageMask` at the given index}
-        /// @param index the index of the struct buffer
-        public long dstStageMaskAt(long index) { return dstStageMask(this.segment(), index); }
-        /// Sets `dstStageMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstStageMaskAt(long index, long value) { dstStageMask(this.segment(), index, value); return this; }
+    /// {@return `srcQueueFamilyIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcQueueFamilyIndexAt(long index) { return srcQueueFamilyIndex(this.segment(), index); }
+    /// Sets `srcQueueFamilyIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 srcQueueFamilyIndexAt(long index, int value) { srcQueueFamilyIndex(this.segment(), index, value); return this; }
 
-        /// {@return `dstAccessMask` at the given index}
-        /// @param index the index of the struct buffer
-        public long dstAccessMaskAt(long index) { return dstAccessMask(this.segment(), index); }
-        /// Sets `dstAccessMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstAccessMaskAt(long index, long value) { dstAccessMask(this.segment(), index, value); return this; }
+    /// {@return `dstQueueFamilyIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstQueueFamilyIndexAt(long index) { return dstQueueFamilyIndex(this.segment(), index); }
+    /// Sets `dstQueueFamilyIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 dstQueueFamilyIndexAt(long index, int value) { dstQueueFamilyIndex(this.segment(), index, value); return this; }
 
-        /// {@return `srcQueueFamilyIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcQueueFamilyIndexAt(long index) { return srcQueueFamilyIndex(this.segment(), index); }
-        /// Sets `srcQueueFamilyIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcQueueFamilyIndexAt(long index, int value) { srcQueueFamilyIndex(this.segment(), index, value); return this; }
+    /// {@return `buffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long bufferAt(long index) { return buffer(this.segment(), index); }
+    /// Sets `buffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
 
-        /// {@return `dstQueueFamilyIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstQueueFamilyIndexAt(long index) { return dstQueueFamilyIndex(this.segment(), index); }
-        /// Sets `dstQueueFamilyIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstQueueFamilyIndexAt(long index, int value) { dstQueueFamilyIndex(this.segment(), index, value); return this; }
+    /// {@return `offset` at the given index}
+    /// @param index the index of the struct buffer
+    public long offsetAt(long index) { return offset(this.segment(), index); }
+    /// Sets `offset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 offsetAt(long index, long value) { offset(this.segment(), index, value); return this; }
 
-        /// {@return `buffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long bufferAt(long index) { return buffer(this.segment(), index); }
-        /// Sets `buffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
+    /// {@return `size` at the given index}
+    /// @param index the index of the struct buffer
+    public long sizeAt(long index) { return size(this.segment(), index); }
+    /// Sets `size` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferMemoryBarrier2 sizeAt(long index, long value) { size(this.segment(), index, value); return this; }
 
-        /// {@return `offset` at the given index}
-        /// @param index the index of the struct buffer
-        public long offsetAt(long index) { return offset(this.segment(), index); }
-        /// Sets `offset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer offsetAt(long index, long value) { offset(this.segment(), index, value); return this; }
-
-        /// {@return `size` at the given index}
-        /// @param index the index of the struct buffer
-        public long sizeAt(long index) { return size(this.segment(), index); }
-        /// Sets `size` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sizeAt(long index, long value) { size(this.segment(), index, value); return this; }
-
-    }
 }

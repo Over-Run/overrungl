@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 shaderInt8;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceShaderFloat16Int8Features extends GroupType {
+public final class VkPhysicalDeviceShaderFloat16Int8Features extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderFloat16Int8Features`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPhysicalDeviceShaderFloat16Int8Features extends GroupType 
     public static final VarHandle VH_shaderInt8 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderInt8"));
 
     /// Creates `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceShaderFloat16Int8Features(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceShaderFloat16Int8Features(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceShaderFloat16Int8Features of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderFloat16Int8Features(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderFloat16Int8Features ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderFloat16Int8Features(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceShaderFloat16Int8Features ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderFloat16Int8Features(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPhysicalDeviceShaderFloat16Int8Features extends GroupType 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceShaderFloat16Int8Features ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderFloat16Int8Features(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceShaderFloat16Int8Features`
-    public static VkPhysicalDeviceShaderFloat16Int8Features alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderFloat16Int8Features(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceShaderFloat16Int8Features alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderFloat16Int8Features(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderFloat16Int8Features`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceShaderFloat16Int8Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderFloat16Int8Features(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderFloat16Int8Features` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPhysicalDeviceShaderFloat16Int8Features extends GroupType 
     /// @return `this`
     public VkPhysicalDeviceShaderFloat16Int8Features copyFrom(VkPhysicalDeviceShaderFloat16Int8Features src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceShaderFloat16Int8Features reinterpret(long count) { return new VkPhysicalDeviceShaderFloat16Int8Features(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPhysicalDeviceShaderFloat16Int8Features extends GroupType 
     /// @return `this`
     public VkPhysicalDeviceShaderFloat16Int8Features shaderInt8(int value) { shaderInt8(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceShaderFloat16Int8Features].
-    public static final class Buffer extends VkPhysicalDeviceShaderFloat16Int8Features {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
+    public VkPhysicalDeviceShaderFloat16Int8Features asSlice(long index) { return new VkPhysicalDeviceShaderFloat16Int8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceShaderFloat16Int8Features.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
+    public VkPhysicalDeviceShaderFloat16Int8Features asSlice(long index, long count) { return new VkPhysicalDeviceShaderFloat16Int8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceShaderFloat16Int8Features` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceShaderFloat16Int8Features at(long index, Consumer<VkPhysicalDeviceShaderFloat16Int8Features> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
-        public VkPhysicalDeviceShaderFloat16Int8Features asSlice(long index) { return new VkPhysicalDeviceShaderFloat16Int8Features(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderFloat16Int8Features sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderFloat16Int8Features`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceShaderFloat16Int8Features`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderFloat16Int8Features pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `shaderFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderFloat16At(long index) { return shaderFloat16(this.segment(), index); }
+    /// Sets `shaderFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderFloat16Int8Features shaderFloat16At(long index, int value) { shaderFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `shaderInt8` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderInt8At(long index) { return shaderInt8(this.segment(), index); }
+    /// Sets `shaderInt8` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderFloat16Int8Features shaderInt8At(long index, int value) { shaderInt8(this.segment(), index, value); return this; }
 
-        /// {@return `shaderFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderFloat16At(long index) { return shaderFloat16(this.segment(), index); }
-        /// Sets `shaderFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderFloat16At(long index, int value) { shaderFloat16(this.segment(), index, value); return this; }
-
-        /// {@return `shaderInt8` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderInt8At(long index) { return shaderInt8(this.segment(), index); }
-        /// Sets `shaderInt8` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderInt8At(long index, int value) { shaderInt8(this.segment(), index, value); return this; }
-
-    }
 }

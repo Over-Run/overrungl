@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -42,7 +42,7 @@ import java.util.function.*;
 ///     float maxDepthBounds;
 /// };
 /// ```
-public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
+public final class VkPipelineDepthStencilStateCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineDepthStencilStateCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -128,20 +128,21 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
     public static final VarHandle VH_maxDepthBounds = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDepthBounds"));
 
     /// Creates `VkPipelineDepthStencilStateCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineDepthStencilStateCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineDepthStencilStateCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineDepthStencilStateCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineDepthStencilStateCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineDepthStencilStateCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineDepthStencilStateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineDepthStencilStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineDepthStencilStateCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineDepthStencilStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineDepthStencilStateCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineDepthStencilStateCreateInfo` with the given segment.
     ///
@@ -149,18 +150,18 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineDepthStencilStateCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineDepthStencilStateCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
-    public static VkPipelineDepthStencilStateCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineDepthStencilStateCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkPipelineDepthStencilStateCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineDepthStencilStateCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineDepthStencilStateCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineDepthStencilStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineDepthStencilStateCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineDepthStencilStateCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -329,9 +330,10 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineDepthStencilStateCreateInfo copyFrom(VkPipelineDepthStencilStateCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineDepthStencilStateCreateInfo reinterpret(long count) { return new VkPipelineDepthStencilStateCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -533,145 +535,139 @@ public sealed class VkPipelineDepthStencilStateCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineDepthStencilStateCreateInfo maxDepthBounds(float value) { maxDepthBounds(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineDepthStencilStateCreateInfo].
-    public static final class Buffer extends VkPipelineDepthStencilStateCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineDepthStencilStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineDepthStencilStateCreateInfo`
+    public VkPipelineDepthStencilStateCreateInfo asSlice(long index) { return new VkPipelineDepthStencilStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineDepthStencilStateCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineDepthStencilStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineDepthStencilStateCreateInfo`
+    public VkPipelineDepthStencilStateCreateInfo asSlice(long index, long count) { return new VkPipelineDepthStencilStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineDepthStencilStateCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo at(long index, Consumer<VkPipelineDepthStencilStateCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineDepthStencilStateCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineDepthStencilStateCreateInfo`
-        public VkPipelineDepthStencilStateCreateInfo asSlice(long index) { return new VkPipelineDepthStencilStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineDepthStencilStateCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineDepthStencilStateCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `depthTestEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthTestEnableAt(long index) { return depthTestEnable(this.segment(), index); }
+    /// Sets `depthTestEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo depthTestEnableAt(long index, int value) { depthTestEnable(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `depthWriteEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthWriteEnableAt(long index) { return depthWriteEnable(this.segment(), index); }
+    /// Sets `depthWriteEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo depthWriteEnableAt(long index, int value) { depthWriteEnable(this.segment(), index, value); return this; }
 
-        /// {@return `depthTestEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthTestEnableAt(long index) { return depthTestEnable(this.segment(), index); }
-        /// Sets `depthTestEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthTestEnableAt(long index, int value) { depthTestEnable(this.segment(), index, value); return this; }
+    /// {@return `depthCompareOp` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthCompareOpAt(long index) { return depthCompareOp(this.segment(), index); }
+    /// Sets `depthCompareOp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo depthCompareOpAt(long index, int value) { depthCompareOp(this.segment(), index, value); return this; }
 
-        /// {@return `depthWriteEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthWriteEnableAt(long index) { return depthWriteEnable(this.segment(), index); }
-        /// Sets `depthWriteEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthWriteEnableAt(long index, int value) { depthWriteEnable(this.segment(), index, value); return this; }
+    /// {@return `depthBoundsTestEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthBoundsTestEnableAt(long index) { return depthBoundsTestEnable(this.segment(), index); }
+    /// Sets `depthBoundsTestEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo depthBoundsTestEnableAt(long index, int value) { depthBoundsTestEnable(this.segment(), index, value); return this; }
 
-        /// {@return `depthCompareOp` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthCompareOpAt(long index) { return depthCompareOp(this.segment(), index); }
-        /// Sets `depthCompareOp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthCompareOpAt(long index, int value) { depthCompareOp(this.segment(), index, value); return this; }
+    /// {@return `stencilTestEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int stencilTestEnableAt(long index) { return stencilTestEnable(this.segment(), index); }
+    /// Sets `stencilTestEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo stencilTestEnableAt(long index, int value) { stencilTestEnable(this.segment(), index, value); return this; }
 
-        /// {@return `depthBoundsTestEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthBoundsTestEnableAt(long index) { return depthBoundsTestEnable(this.segment(), index); }
-        /// Sets `depthBoundsTestEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthBoundsTestEnableAt(long index, int value) { depthBoundsTestEnable(this.segment(), index, value); return this; }
+    /// {@return `front` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment frontAt(long index) { return front(this.segment(), index); }
+    /// Sets `front` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo frontAt(long index, MemorySegment value) { front(this.segment(), index, value); return this; }
+    /// Accepts `front` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo frontAt(long index, Consumer<overrungl.vulkan.struct.VkStencilOpState> func) { func.accept(overrungl.vulkan.struct.VkStencilOpState.of(frontAt(index))); return this; }
 
-        /// {@return `stencilTestEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int stencilTestEnableAt(long index) { return stencilTestEnable(this.segment(), index); }
-        /// Sets `stencilTestEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stencilTestEnableAt(long index, int value) { stencilTestEnable(this.segment(), index, value); return this; }
+    /// {@return `back` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment backAt(long index) { return back(this.segment(), index); }
+    /// Sets `back` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo backAt(long index, MemorySegment value) { back(this.segment(), index, value); return this; }
+    /// Accepts `back` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo backAt(long index, Consumer<overrungl.vulkan.struct.VkStencilOpState> func) { func.accept(overrungl.vulkan.struct.VkStencilOpState.of(backAt(index))); return this; }
 
-        /// {@return `front` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment frontAt(long index) { return front(this.segment(), index); }
-        /// Sets `front` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer frontAt(long index, MemorySegment value) { front(this.segment(), index, value); return this; }
-        /// Accepts `front` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer frontAt(long index, Consumer<overrungl.vulkan.struct.VkStencilOpState> func) { func.accept(overrungl.vulkan.struct.VkStencilOpState.of(frontAt(index))); return this; }
+    /// {@return `minDepthBounds` at the given index}
+    /// @param index the index of the struct buffer
+    public float minDepthBoundsAt(long index) { return minDepthBounds(this.segment(), index); }
+    /// Sets `minDepthBounds` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo minDepthBoundsAt(long index, float value) { minDepthBounds(this.segment(), index, value); return this; }
 
-        /// {@return `back` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment backAt(long index) { return back(this.segment(), index); }
-        /// Sets `back` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer backAt(long index, MemorySegment value) { back(this.segment(), index, value); return this; }
-        /// Accepts `back` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer backAt(long index, Consumer<overrungl.vulkan.struct.VkStencilOpState> func) { func.accept(overrungl.vulkan.struct.VkStencilOpState.of(backAt(index))); return this; }
+    /// {@return `maxDepthBounds` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxDepthBoundsAt(long index) { return maxDepthBounds(this.segment(), index); }
+    /// Sets `maxDepthBounds` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineDepthStencilStateCreateInfo maxDepthBoundsAt(long index, float value) { maxDepthBounds(this.segment(), index, value); return this; }
 
-        /// {@return `minDepthBounds` at the given index}
-        /// @param index the index of the struct buffer
-        public float minDepthBoundsAt(long index) { return minDepthBounds(this.segment(), index); }
-        /// Sets `minDepthBounds` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minDepthBoundsAt(long index, float value) { minDepthBounds(this.segment(), index, value); return this; }
-
-        /// {@return `maxDepthBounds` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxDepthBoundsAt(long index) { return maxDepthBounds(this.segment(), index); }
-        /// Sets `maxDepthBounds` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDepthBoundsAt(long index, float value) { maxDepthBounds(this.segment(), index, value); return this; }
-
-    }
 }

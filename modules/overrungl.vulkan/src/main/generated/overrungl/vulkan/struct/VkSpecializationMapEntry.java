@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     size_t size;
 /// };
 /// ```
-public sealed class VkSpecializationMapEntry extends GroupType {
+public final class VkSpecializationMapEntry extends GroupType {
     /// The struct layout of `VkSpecializationMapEntry`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("constantID"),
@@ -59,20 +60,21 @@ public sealed class VkSpecializationMapEntry extends GroupType {
     public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
 
     /// Creates `VkSpecializationMapEntry` with the given segment.
-    /// @param segment the memory segment
-    public VkSpecializationMapEntry(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSpecializationMapEntry(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSpecializationMapEntry` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSpecializationMapEntry of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSpecializationMapEntry(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSpecializationMapEntry` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSpecializationMapEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSpecializationMapEntry(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSpecializationMapEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSpecializationMapEntry(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSpecializationMapEntry` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkSpecializationMapEntry extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSpecializationMapEntry ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSpecializationMapEntry(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSpecializationMapEntry` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSpecializationMapEntry`
-    public static VkSpecializationMapEntry alloc(SegmentAllocator allocator) { return new VkSpecializationMapEntry(allocator.allocate(LAYOUT)); }
+    public static VkSpecializationMapEntry alloc(SegmentAllocator allocator) { return new VkSpecializationMapEntry(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSpecializationMapEntry` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSpecializationMapEntry`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSpecializationMapEntry alloc(SegmentAllocator allocator, long count) { return new VkSpecializationMapEntry(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSpecializationMapEntry` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkSpecializationMapEntry extends GroupType {
     /// @return `this`
     public VkSpecializationMapEntry copyFrom(VkSpecializationMapEntry src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSpecializationMapEntry reinterpret(long count) { return new VkSpecializationMapEntry(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `constantID` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkSpecializationMapEntry extends GroupType {
     /// @return `this`
     public VkSpecializationMapEntry size(long value) { size(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSpecializationMapEntry].
-    public static final class Buffer extends VkSpecializationMapEntry {
-        private final long elementCount;
+    /// Creates a slice of `VkSpecializationMapEntry`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSpecializationMapEntry`
+    public VkSpecializationMapEntry asSlice(long index) { return new VkSpecializationMapEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSpecializationMapEntry.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSpecializationMapEntry`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSpecializationMapEntry`
+    public VkSpecializationMapEntry asSlice(long index, long count) { return new VkSpecializationMapEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSpecializationMapEntry` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSpecializationMapEntry at(long index, Consumer<VkSpecializationMapEntry> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSpecializationMapEntry`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSpecializationMapEntry`
-        public VkSpecializationMapEntry asSlice(long index) { return new VkSpecializationMapEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `constantID` at the given index}
+    /// @param index the index of the struct buffer
+    public int constantIDAt(long index) { return constantID(this.segment(), index); }
+    /// Sets `constantID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSpecializationMapEntry constantIDAt(long index, int value) { constantID(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSpecializationMapEntry`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSpecializationMapEntry`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `offset` at the given index}
+    /// @param index the index of the struct buffer
+    public int offsetAt(long index) { return offset(this.segment(), index); }
+    /// Sets `offset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSpecializationMapEntry offsetAt(long index, int value) { offset(this.segment(), index, value); return this; }
 
-        /// {@return `constantID` at the given index}
-        /// @param index the index of the struct buffer
-        public int constantIDAt(long index) { return constantID(this.segment(), index); }
-        /// Sets `constantID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer constantIDAt(long index, int value) { constantID(this.segment(), index, value); return this; }
+    /// {@return `size` at the given index}
+    /// @param index the index of the struct buffer
+    public long sizeAt(long index) { return size(this.segment(), index); }
+    /// Sets `size` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSpecializationMapEntry sizeAt(long index, long value) { size(this.segment(), index, value); return this; }
 
-        /// {@return `offset` at the given index}
-        /// @param index the index of the struct buffer
-        public int offsetAt(long index) { return offset(this.segment(), index); }
-        /// Sets `offset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer offsetAt(long index, int value) { offset(this.segment(), index, value); return this; }
-
-        /// {@return `size` at the given index}
-        /// @param index the index of the struct buffer
-        public long sizeAt(long index) { return size(this.segment(), index); }
-        /// Sets `size` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sizeAt(long index, long value) { size(this.segment(), index, value); return this; }
-
-    }
 }

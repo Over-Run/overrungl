@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 extendedDynamicState2PatchControlPoints;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extends GroupType {
+public final class VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extends Gro
     public static final VarHandle VH_extendedDynamicState2PatchControlPoints = LAYOUT.arrayElementVarHandle(PathElement.groupElement("extendedDynamicState2PatchControlPoints"));
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extends Gro
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extends Gro
     /// @return `this`
     public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT copyFrom(VkPhysicalDeviceExtendedDynamicState2FeaturesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT reinterpret(long count) { return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extends Gro
     /// @return `this`
     public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extendedDynamicState2PatchControlPoints(int value) { extendedDynamicState2PatchControlPoints(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceExtendedDynamicState2FeaturesEXT].
-    public static final class Buffer extends VkPhysicalDeviceExtendedDynamicState2FeaturesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT asSlice(long index, long count) { return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT at(long index, Consumer<VkPhysicalDeviceExtendedDynamicState2FeaturesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
-        public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT asSlice(long index) { return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState2` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState2At(long index) { return extendedDynamicState2(this.segment(), index); }
+    /// Sets `extendedDynamicState2` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extendedDynamicState2At(long index, int value) { extendedDynamicState2(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState2LogicOp` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState2LogicOpAt(long index) { return extendedDynamicState2LogicOp(this.segment(), index); }
+    /// Sets `extendedDynamicState2LogicOp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extendedDynamicState2LogicOpAt(long index, int value) { extendedDynamicState2LogicOp(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState2` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState2At(long index) { return extendedDynamicState2(this.segment(), index); }
-        /// Sets `extendedDynamicState2` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState2At(long index, int value) { extendedDynamicState2(this.segment(), index, value); return this; }
+    /// {@return `extendedDynamicState2PatchControlPoints` at the given index}
+    /// @param index the index of the struct buffer
+    public int extendedDynamicState2PatchControlPointsAt(long index) { return extendedDynamicState2PatchControlPoints(this.segment(), index); }
+    /// Sets `extendedDynamicState2PatchControlPoints` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extendedDynamicState2PatchControlPointsAt(long index, int value) { extendedDynamicState2PatchControlPoints(this.segment(), index, value); return this; }
 
-        /// {@return `extendedDynamicState2LogicOp` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState2LogicOpAt(long index) { return extendedDynamicState2LogicOp(this.segment(), index); }
-        /// Sets `extendedDynamicState2LogicOp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState2LogicOpAt(long index, int value) { extendedDynamicState2LogicOp(this.segment(), index, value); return this; }
-
-        /// {@return `extendedDynamicState2PatchControlPoints` at the given index}
-        /// @param index the index of the struct buffer
-        public int extendedDynamicState2PatchControlPointsAt(long index) { return extendedDynamicState2PatchControlPoints(this.segment(), index); }
-        /// Sets `extendedDynamicState2PatchControlPoints` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extendedDynamicState2PatchControlPointsAt(long index, int value) { extendedDynamicState2PatchControlPoints(this.segment(), index, value); return this; }
-
-    }
 }

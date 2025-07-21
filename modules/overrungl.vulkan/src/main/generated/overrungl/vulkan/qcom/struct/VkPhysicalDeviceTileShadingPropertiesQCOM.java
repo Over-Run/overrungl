@@ -21,9 +21,9 @@ package overrungl.vulkan.qcom.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -36,7 +36,7 @@ import java.util.function.*;
 ///     (struct VkExtent2D) VkExtent2D maxTileShadingRate;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType {
+public final class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceTileShadingPropertiesQCOM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -80,20 +80,21 @@ public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType 
     public static final MemoryLayout LAYOUT_maxTileShadingRate = LAYOUT.select(PathElement.groupElement("maxTileShadingRate"));
 
     /// Creates `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceTileShadingPropertiesQCOM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceTileShadingPropertiesQCOM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTileShadingPropertiesQCOM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceTileShadingPropertiesQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTileShadingPropertiesQCOM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTileShadingPropertiesQCOM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment.
     ///
@@ -101,18 +102,18 @@ public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceTileShadingPropertiesQCOM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceTileShadingPropertiesQCOM`
-    public static VkPhysicalDeviceTileShadingPropertiesQCOM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceTileShadingPropertiesQCOM(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceTileShadingPropertiesQCOM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceTileShadingPropertiesQCOM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceTileShadingPropertiesQCOM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTileShadingPropertiesQCOM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceTileShadingPropertiesQCOM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -182,9 +183,10 @@ public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType 
     /// @return `this`
     public VkPhysicalDeviceTileShadingPropertiesQCOM copyFrom(VkPhysicalDeviceTileShadingPropertiesQCOM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceTileShadingPropertiesQCOM reinterpret(long count) { return new VkPhysicalDeviceTileShadingPropertiesQCOM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -290,91 +292,85 @@ public sealed class VkPhysicalDeviceTileShadingPropertiesQCOM extends GroupType 
     /// @return `this`
     public VkPhysicalDeviceTileShadingPropertiesQCOM maxTileShadingRate(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTileShadingRate())); return this; }
 
-    /// A buffer of [VkPhysicalDeviceTileShadingPropertiesQCOM].
-    public static final class Buffer extends VkPhysicalDeviceTileShadingPropertiesQCOM {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceTileShadingPropertiesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceTileShadingPropertiesQCOM`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM asSlice(long index) { return new VkPhysicalDeviceTileShadingPropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceTileShadingPropertiesQCOM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceTileShadingPropertiesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceTileShadingPropertiesQCOM`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM asSlice(long index, long count) { return new VkPhysicalDeviceTileShadingPropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceTileShadingPropertiesQCOM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM at(long index, Consumer<VkPhysicalDeviceTileShadingPropertiesQCOM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceTileShadingPropertiesQCOM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceTileShadingPropertiesQCOM`
-        public VkPhysicalDeviceTileShadingPropertiesQCOM asSlice(long index) { return new VkPhysicalDeviceTileShadingPropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceTileShadingPropertiesQCOM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceTileShadingPropertiesQCOM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxApronSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxApronSizeAt(long index) { return maxApronSize(this.segment(), index); }
+    /// Sets `maxApronSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM maxApronSizeAt(long index, int value) { maxApronSize(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `preferNonCoherent` at the given index}
+    /// @param index the index of the struct buffer
+    public int preferNonCoherentAt(long index) { return preferNonCoherent(this.segment(), index); }
+    /// Sets `preferNonCoherent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM preferNonCoherentAt(long index, int value) { preferNonCoherent(this.segment(), index, value); return this; }
 
-        /// {@return `maxApronSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxApronSizeAt(long index) { return maxApronSize(this.segment(), index); }
-        /// Sets `maxApronSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxApronSizeAt(long index, int value) { maxApronSize(this.segment(), index, value); return this; }
+    /// {@return `tileGranularity` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment tileGranularityAt(long index) { return tileGranularity(this.segment(), index); }
+    /// Sets `tileGranularity` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM tileGranularityAt(long index, MemorySegment value) { tileGranularity(this.segment(), index, value); return this; }
+    /// Accepts `tileGranularity` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM tileGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(tileGranularityAt(index))); return this; }
 
-        /// {@return `preferNonCoherent` at the given index}
-        /// @param index the index of the struct buffer
-        public int preferNonCoherentAt(long index) { return preferNonCoherent(this.segment(), index); }
-        /// Sets `preferNonCoherent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer preferNonCoherentAt(long index, int value) { preferNonCoherent(this.segment(), index, value); return this; }
+    /// {@return `maxTileShadingRate` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxTileShadingRateAt(long index) { return maxTileShadingRate(this.segment(), index); }
+    /// Sets `maxTileShadingRate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM maxTileShadingRateAt(long index, MemorySegment value) { maxTileShadingRate(this.segment(), index, value); return this; }
+    /// Accepts `maxTileShadingRate` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceTileShadingPropertiesQCOM maxTileShadingRateAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTileShadingRateAt(index))); return this; }
 
-        /// {@return `tileGranularity` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment tileGranularityAt(long index) { return tileGranularity(this.segment(), index); }
-        /// Sets `tileGranularity` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileGranularityAt(long index, MemorySegment value) { tileGranularity(this.segment(), index, value); return this; }
-        /// Accepts `tileGranularity` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer tileGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(tileGranularityAt(index))); return this; }
-
-        /// {@return `maxTileShadingRate` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxTileShadingRateAt(long index) { return maxTileShadingRate(this.segment(), index); }
-        /// Sets `maxTileShadingRate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTileShadingRateAt(long index, MemorySegment value) { maxTileShadingRate(this.segment(), index, value); return this; }
-        /// Accepts `maxTileShadingRate` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxTileShadingRateAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxTileShadingRateAt(index))); return this; }
-
-    }
 }
