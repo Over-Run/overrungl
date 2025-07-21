@@ -21,9 +21,9 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -44,7 +44,7 @@ import java.util.function.*;
 ///     size_t dstStride;
 /// };
 /// ```
-public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
+public final class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
     /// The struct layout of `VkConvertCooperativeVectorMatrixInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -144,20 +144,21 @@ public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
     public static final VarHandle VH_dstStride = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstStride"));
 
     /// Creates `VkConvertCooperativeVectorMatrixInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkConvertCooperativeVectorMatrixInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkConvertCooperativeVectorMatrixInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkConvertCooperativeVectorMatrixInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkConvertCooperativeVectorMatrixInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkConvertCooperativeVectorMatrixInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkConvertCooperativeVectorMatrixInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkConvertCooperativeVectorMatrixInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkConvertCooperativeVectorMatrixInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkConvertCooperativeVectorMatrixInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkConvertCooperativeVectorMatrixInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkConvertCooperativeVectorMatrixInfoNV` with the given segment.
     ///
@@ -165,18 +166,18 @@ public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkConvertCooperativeVectorMatrixInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkConvertCooperativeVectorMatrixInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
-    public static VkConvertCooperativeVectorMatrixInfoNV alloc(SegmentAllocator allocator) { return new VkConvertCooperativeVectorMatrixInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkConvertCooperativeVectorMatrixInfoNV alloc(SegmentAllocator allocator) { return new VkConvertCooperativeVectorMatrixInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkConvertCooperativeVectorMatrixInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkConvertCooperativeVectorMatrixInfoNV alloc(SegmentAllocator allocator, long count) { return new VkConvertCooperativeVectorMatrixInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkConvertCooperativeVectorMatrixInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -386,9 +387,10 @@ public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
     /// @return `this`
     public VkConvertCooperativeVectorMatrixInfoNV copyFrom(VkConvertCooperativeVectorMatrixInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkConvertCooperativeVectorMatrixInfoNV reinterpret(long count) { return new VkConvertCooperativeVectorMatrixInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -622,163 +624,157 @@ public sealed class VkConvertCooperativeVectorMatrixInfoNV extends GroupType {
     /// @return `this`
     public VkConvertCooperativeVectorMatrixInfoNV dstStride(long value) { dstStride(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkConvertCooperativeVectorMatrixInfoNV].
-    public static final class Buffer extends VkConvertCooperativeVectorMatrixInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkConvertCooperativeVectorMatrixInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkConvertCooperativeVectorMatrixInfoNV`
+    public VkConvertCooperativeVectorMatrixInfoNV asSlice(long index) { return new VkConvertCooperativeVectorMatrixInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkConvertCooperativeVectorMatrixInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkConvertCooperativeVectorMatrixInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkConvertCooperativeVectorMatrixInfoNV`
+    public VkConvertCooperativeVectorMatrixInfoNV asSlice(long index, long count) { return new VkConvertCooperativeVectorMatrixInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkConvertCooperativeVectorMatrixInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV at(long index, Consumer<VkConvertCooperativeVectorMatrixInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkConvertCooperativeVectorMatrixInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkConvertCooperativeVectorMatrixInfoNV`
-        public VkConvertCooperativeVectorMatrixInfoNV asSlice(long index) { return new VkConvertCooperativeVectorMatrixInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkConvertCooperativeVectorMatrixInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkConvertCooperativeVectorMatrixInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `srcSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long srcSizeAt(long index) { return srcSize(this.segment(), index); }
+    /// Sets `srcSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV srcSizeAt(long index, long value) { srcSize(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `srcData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment srcDataAt(long index) { return srcData(this.segment(), index); }
+    /// Sets `srcData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV srcDataAt(long index, MemorySegment value) { srcData(this.segment(), index, value); return this; }
+    /// Accepts `srcData` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV srcDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(srcDataAt(index))); return this; }
 
-        /// {@return `srcSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long srcSizeAt(long index) { return srcSize(this.segment(), index); }
-        /// Sets `srcSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcSizeAt(long index, long value) { srcSize(this.segment(), index, value); return this; }
+    /// {@return `pDstSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pDstSizeAt(long index) { return pDstSize(this.segment(), index); }
+    /// Sets `pDstSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV pDstSizeAt(long index, MemorySegment value) { pDstSize(this.segment(), index, value); return this; }
 
-        /// {@return `srcData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment srcDataAt(long index) { return srcData(this.segment(), index); }
-        /// Sets `srcData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcDataAt(long index, MemorySegment value) { srcData(this.segment(), index, value); return this; }
-        /// Accepts `srcData` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer srcDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(srcDataAt(index))); return this; }
+    /// {@return `dstData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment dstDataAt(long index) { return dstData(this.segment(), index); }
+    /// Sets `dstData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV dstDataAt(long index, MemorySegment value) { dstData(this.segment(), index, value); return this; }
+    /// Accepts `dstData` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV dstDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR.of(dstDataAt(index))); return this; }
 
-        /// {@return `pDstSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pDstSizeAt(long index) { return pDstSize(this.segment(), index); }
-        /// Sets `pDstSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pDstSizeAt(long index, MemorySegment value) { pDstSize(this.segment(), index, value); return this; }
+    /// {@return `srcComponentType` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcComponentTypeAt(long index) { return srcComponentType(this.segment(), index); }
+    /// Sets `srcComponentType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV srcComponentTypeAt(long index, int value) { srcComponentType(this.segment(), index, value); return this; }
 
-        /// {@return `dstData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment dstDataAt(long index) { return dstData(this.segment(), index); }
-        /// Sets `dstData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstDataAt(long index, MemorySegment value) { dstData(this.segment(), index, value); return this; }
-        /// Accepts `dstData` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer dstDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressKHR.of(dstDataAt(index))); return this; }
+    /// {@return `dstComponentType` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstComponentTypeAt(long index) { return dstComponentType(this.segment(), index); }
+    /// Sets `dstComponentType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV dstComponentTypeAt(long index, int value) { dstComponentType(this.segment(), index, value); return this; }
 
-        /// {@return `srcComponentType` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcComponentTypeAt(long index) { return srcComponentType(this.segment(), index); }
-        /// Sets `srcComponentType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcComponentTypeAt(long index, int value) { srcComponentType(this.segment(), index, value); return this; }
+    /// {@return `numRows` at the given index}
+    /// @param index the index of the struct buffer
+    public int numRowsAt(long index) { return numRows(this.segment(), index); }
+    /// Sets `numRows` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV numRowsAt(long index, int value) { numRows(this.segment(), index, value); return this; }
 
-        /// {@return `dstComponentType` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstComponentTypeAt(long index) { return dstComponentType(this.segment(), index); }
-        /// Sets `dstComponentType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstComponentTypeAt(long index, int value) { dstComponentType(this.segment(), index, value); return this; }
+    /// {@return `numColumns` at the given index}
+    /// @param index the index of the struct buffer
+    public int numColumnsAt(long index) { return numColumns(this.segment(), index); }
+    /// Sets `numColumns` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV numColumnsAt(long index, int value) { numColumns(this.segment(), index, value); return this; }
 
-        /// {@return `numRows` at the given index}
-        /// @param index the index of the struct buffer
-        public int numRowsAt(long index) { return numRows(this.segment(), index); }
-        /// Sets `numRows` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer numRowsAt(long index, int value) { numRows(this.segment(), index, value); return this; }
+    /// {@return `srcLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcLayoutAt(long index) { return srcLayout(this.segment(), index); }
+    /// Sets `srcLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV srcLayoutAt(long index, int value) { srcLayout(this.segment(), index, value); return this; }
 
-        /// {@return `numColumns` at the given index}
-        /// @param index the index of the struct buffer
-        public int numColumnsAt(long index) { return numColumns(this.segment(), index); }
-        /// Sets `numColumns` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer numColumnsAt(long index, int value) { numColumns(this.segment(), index, value); return this; }
+    /// {@return `srcStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long srcStrideAt(long index) { return srcStride(this.segment(), index); }
+    /// Sets `srcStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV srcStrideAt(long index, long value) { srcStride(this.segment(), index, value); return this; }
 
-        /// {@return `srcLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcLayoutAt(long index) { return srcLayout(this.segment(), index); }
-        /// Sets `srcLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcLayoutAt(long index, int value) { srcLayout(this.segment(), index, value); return this; }
+    /// {@return `dstLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstLayoutAt(long index) { return dstLayout(this.segment(), index); }
+    /// Sets `dstLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV dstLayoutAt(long index, int value) { dstLayout(this.segment(), index, value); return this; }
 
-        /// {@return `srcStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long srcStrideAt(long index) { return srcStride(this.segment(), index); }
-        /// Sets `srcStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcStrideAt(long index, long value) { srcStride(this.segment(), index, value); return this; }
+    /// {@return `dstStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long dstStrideAt(long index) { return dstStride(this.segment(), index); }
+    /// Sets `dstStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkConvertCooperativeVectorMatrixInfoNV dstStrideAt(long index, long value) { dstStride(this.segment(), index, value); return this; }
 
-        /// {@return `dstLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstLayoutAt(long index) { return dstLayout(this.segment(), index); }
-        /// Sets `dstLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstLayoutAt(long index, int value) { dstLayout(this.segment(), index, value); return this; }
-
-        /// {@return `dstStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long dstStrideAt(long index) { return dstStride(this.segment(), index); }
-        /// Sets `dstStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstStrideAt(long index, long value) { dstStride(this.segment(), index, value); return this; }
-
-    }
 }

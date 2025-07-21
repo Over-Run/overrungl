@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     float maxDepth;
 /// };
 /// ```
-public sealed class VkViewport extends GroupType {
+public final class VkViewport extends GroupType {
     /// The struct layout of `VkViewport`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("x"),
@@ -83,20 +84,21 @@ public sealed class VkViewport extends GroupType {
     public static final VarHandle VH_maxDepth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDepth"));
 
     /// Creates `VkViewport` with the given segment.
-    /// @param segment the memory segment
-    public VkViewport(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkViewport(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkViewport` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkViewport of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkViewport(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkViewport` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkViewport ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkViewport(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkViewport ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkViewport(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkViewport` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkViewport extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkViewport ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkViewport(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkViewport` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkViewport`
-    public static VkViewport alloc(SegmentAllocator allocator) { return new VkViewport(allocator.allocate(LAYOUT)); }
+    public static VkViewport alloc(SegmentAllocator allocator) { return new VkViewport(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkViewport` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkViewport`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkViewport alloc(SegmentAllocator allocator, long count) { return new VkViewport(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkViewport` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkViewport extends GroupType {
     /// @return `this`
     public VkViewport copyFrom(VkViewport src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkViewport reinterpret(long count) { return new VkViewport(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkViewport extends GroupType {
     /// @return `this`
     public VkViewport maxDepth(float value) { maxDepth(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkViewport].
-    public static final class Buffer extends VkViewport {
-        private final long elementCount;
+    /// Creates a slice of `VkViewport`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkViewport`
+    public VkViewport asSlice(long index) { return new VkViewport(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkViewport.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkViewport`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkViewport`
+    public VkViewport asSlice(long index, long count) { return new VkViewport(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkViewport` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkViewport at(long index, Consumer<VkViewport> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkViewport`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkViewport`
-        public VkViewport asSlice(long index) { return new VkViewport(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `x` at the given index}
+    /// @param index the index of the struct buffer
+    public float xAt(long index) { return x(this.segment(), index); }
+    /// Sets `x` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewport xAt(long index, float value) { x(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkViewport`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkViewport`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `y` at the given index}
+    /// @param index the index of the struct buffer
+    public float yAt(long index) { return y(this.segment(), index); }
+    /// Sets `y` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewport yAt(long index, float value) { y(this.segment(), index, value); return this; }
 
-        /// {@return `x` at the given index}
-        /// @param index the index of the struct buffer
-        public float xAt(long index) { return x(this.segment(), index); }
-        /// Sets `x` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xAt(long index, float value) { x(this.segment(), index, value); return this; }
+    /// {@return `width` at the given index}
+    /// @param index the index of the struct buffer
+    public float widthAt(long index) { return width(this.segment(), index); }
+    /// Sets `width` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewport widthAt(long index, float value) { width(this.segment(), index, value); return this; }
 
-        /// {@return `y` at the given index}
-        /// @param index the index of the struct buffer
-        public float yAt(long index) { return y(this.segment(), index); }
-        /// Sets `y` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer yAt(long index, float value) { y(this.segment(), index, value); return this; }
+    /// {@return `height` at the given index}
+    /// @param index the index of the struct buffer
+    public float heightAt(long index) { return height(this.segment(), index); }
+    /// Sets `height` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewport heightAt(long index, float value) { height(this.segment(), index, value); return this; }
 
-        /// {@return `width` at the given index}
-        /// @param index the index of the struct buffer
-        public float widthAt(long index) { return width(this.segment(), index); }
-        /// Sets `width` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer widthAt(long index, float value) { width(this.segment(), index, value); return this; }
+    /// {@return `minDepth` at the given index}
+    /// @param index the index of the struct buffer
+    public float minDepthAt(long index) { return minDepth(this.segment(), index); }
+    /// Sets `minDepth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewport minDepthAt(long index, float value) { minDepth(this.segment(), index, value); return this; }
 
-        /// {@return `height` at the given index}
-        /// @param index the index of the struct buffer
-        public float heightAt(long index) { return height(this.segment(), index); }
-        /// Sets `height` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer heightAt(long index, float value) { height(this.segment(), index, value); return this; }
+    /// {@return `maxDepth` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxDepthAt(long index) { return maxDepth(this.segment(), index); }
+    /// Sets `maxDepth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkViewport maxDepthAt(long index, float value) { maxDepth(this.segment(), index, value); return this; }
 
-        /// {@return `minDepth` at the given index}
-        /// @param index the index of the struct buffer
-        public float minDepthAt(long index) { return minDepth(this.segment(), index); }
-        /// Sets `minDepth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minDepthAt(long index, float value) { minDepth(this.segment(), index, value); return this; }
-
-        /// {@return `maxDepth` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxDepthAt(long index) { return maxDepth(this.segment(), index); }
-        /// Sets `maxDepth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDepthAt(long index, float value) { maxDepth(this.segment(), index, value); return this; }
-
-    }
 }

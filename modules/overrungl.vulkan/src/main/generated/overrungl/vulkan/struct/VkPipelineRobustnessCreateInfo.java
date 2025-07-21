@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     (int) VkPipelineRobustnessImageBehavior images;
 /// };
 /// ```
-public sealed class VkPipelineRobustnessCreateInfo extends GroupType {
+public final class VkPipelineRobustnessCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineRobustnessCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkPipelineRobustnessCreateInfo extends GroupType {
     public static final VarHandle VH_images = LAYOUT.arrayElementVarHandle(PathElement.groupElement("images"));
 
     /// Creates `VkPipelineRobustnessCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineRobustnessCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineRobustnessCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineRobustnessCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineRobustnessCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRobustnessCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineRobustnessCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineRobustnessCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRobustnessCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineRobustnessCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRobustnessCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineRobustnessCreateInfo` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkPipelineRobustnessCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineRobustnessCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRobustnessCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineRobustnessCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineRobustnessCreateInfo`
-    public static VkPipelineRobustnessCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineRobustnessCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkPipelineRobustnessCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineRobustnessCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineRobustnessCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineRobustnessCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineRobustnessCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineRobustnessCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineRobustnessCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkPipelineRobustnessCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineRobustnessCreateInfo copyFrom(VkPipelineRobustnessCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineRobustnessCreateInfo reinterpret(long count) { return new VkPipelineRobustnessCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkPipelineRobustnessCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineRobustnessCreateInfo images(int value) { images(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineRobustnessCreateInfo].
-    public static final class Buffer extends VkPipelineRobustnessCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineRobustnessCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineRobustnessCreateInfo`
+    public VkPipelineRobustnessCreateInfo asSlice(long index) { return new VkPipelineRobustnessCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineRobustnessCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineRobustnessCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineRobustnessCreateInfo`
+    public VkPipelineRobustnessCreateInfo asSlice(long index, long count) { return new VkPipelineRobustnessCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineRobustnessCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineRobustnessCreateInfo at(long index, Consumer<VkPipelineRobustnessCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineRobustnessCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineRobustnessCreateInfo`
-        public VkPipelineRobustnessCreateInfo asSlice(long index) { return new VkPipelineRobustnessCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRobustnessCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineRobustnessCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineRobustnessCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRobustnessCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `storageBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int storageBuffersAt(long index) { return storageBuffers(this.segment(), index); }
+    /// Sets `storageBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRobustnessCreateInfo storageBuffersAt(long index, int value) { storageBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `uniformBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int uniformBuffersAt(long index) { return uniformBuffers(this.segment(), index); }
+    /// Sets `uniformBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRobustnessCreateInfo uniformBuffersAt(long index, int value) { uniformBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `storageBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int storageBuffersAt(long index) { return storageBuffers(this.segment(), index); }
-        /// Sets `storageBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer storageBuffersAt(long index, int value) { storageBuffers(this.segment(), index, value); return this; }
+    /// {@return `vertexInputs` at the given index}
+    /// @param index the index of the struct buffer
+    public int vertexInputsAt(long index) { return vertexInputs(this.segment(), index); }
+    /// Sets `vertexInputs` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRobustnessCreateInfo vertexInputsAt(long index, int value) { vertexInputs(this.segment(), index, value); return this; }
 
-        /// {@return `uniformBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int uniformBuffersAt(long index) { return uniformBuffers(this.segment(), index); }
-        /// Sets `uniformBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer uniformBuffersAt(long index, int value) { uniformBuffers(this.segment(), index, value); return this; }
+    /// {@return `images` at the given index}
+    /// @param index the index of the struct buffer
+    public int imagesAt(long index) { return images(this.segment(), index); }
+    /// Sets `images` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRobustnessCreateInfo imagesAt(long index, int value) { images(this.segment(), index, value); return this; }
 
-        /// {@return `vertexInputs` at the given index}
-        /// @param index the index of the struct buffer
-        public int vertexInputsAt(long index) { return vertexInputs(this.segment(), index); }
-        /// Sets `vertexInputs` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexInputsAt(long index, int value) { vertexInputs(this.segment(), index, value); return this; }
-
-        /// {@return `images` at the given index}
-        /// @param index the index of the struct buffer
-        public int imagesAt(long index) { return images(this.segment(), index); }
-        /// Sets `images` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imagesAt(long index, int value) { images(this.segment(), index, value); return this; }
-
-    }
 }

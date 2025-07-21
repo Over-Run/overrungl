@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -41,7 +42,7 @@ import overrungl.util.*;
 ///     const VkSemaphore* pSignalSemaphores;
 /// };
 /// ```
-public sealed class VkBindSparseInfo extends GroupType {
+public final class VkBindSparseInfo extends GroupType {
     /// The struct layout of `VkBindSparseInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -131,20 +132,21 @@ public sealed class VkBindSparseInfo extends GroupType {
     public static final VarHandle VH_pSignalSemaphores = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSignalSemaphores"));
 
     /// Creates `VkBindSparseInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkBindSparseInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkBindSparseInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkBindSparseInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkBindSparseInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindSparseInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBindSparseInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindSparseInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindSparseInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkBindSparseInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindSparseInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkBindSparseInfo` with the given segment.
     ///
@@ -152,18 +154,18 @@ public sealed class VkBindSparseInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkBindSparseInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindSparseInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkBindSparseInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBindSparseInfo`
-    public static VkBindSparseInfo alloc(SegmentAllocator allocator) { return new VkBindSparseInfo(allocator.allocate(LAYOUT)); }
+    public static VkBindSparseInfo alloc(SegmentAllocator allocator) { return new VkBindSparseInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkBindSparseInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBindSparseInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkBindSparseInfo alloc(SegmentAllocator allocator, long count) { return new VkBindSparseInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkBindSparseInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -332,9 +334,10 @@ public sealed class VkBindSparseInfo extends GroupType {
     /// @return `this`
     public VkBindSparseInfo copyFrom(VkBindSparseInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkBindSparseInfo reinterpret(long count) { return new VkBindSparseInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -528,135 +531,129 @@ public sealed class VkBindSparseInfo extends GroupType {
     /// @return `this`
     public VkBindSparseInfo pSignalSemaphores(MemorySegment value) { pSignalSemaphores(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkBindSparseInfo].
-    public static final class Buffer extends VkBindSparseInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkBindSparseInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindSparseInfo`
+    public VkBindSparseInfo asSlice(long index) { return new VkBindSparseInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkBindSparseInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkBindSparseInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindSparseInfo`
+    public VkBindSparseInfo asSlice(long index, long count) { return new VkBindSparseInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkBindSparseInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkBindSparseInfo at(long index, Consumer<VkBindSparseInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkBindSparseInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkBindSparseInfo`
-        public VkBindSparseInfo asSlice(long index) { return new VkBindSparseInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkBindSparseInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkBindSparseInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `waitSemaphoreCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int waitSemaphoreCountAt(long index) { return waitSemaphoreCount(this.segment(), index); }
+    /// Sets `waitSemaphoreCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo waitSemaphoreCountAt(long index, int value) { waitSemaphoreCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pWaitSemaphores` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pWaitSemaphoresAt(long index) { return pWaitSemaphores(this.segment(), index); }
+    /// Sets `pWaitSemaphores` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo pWaitSemaphoresAt(long index, MemorySegment value) { pWaitSemaphores(this.segment(), index, value); return this; }
 
-        /// {@return `waitSemaphoreCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int waitSemaphoreCountAt(long index) { return waitSemaphoreCount(this.segment(), index); }
-        /// Sets `waitSemaphoreCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer waitSemaphoreCountAt(long index, int value) { waitSemaphoreCount(this.segment(), index, value); return this; }
+    /// {@return `bufferBindCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferBindCountAt(long index) { return bufferBindCount(this.segment(), index); }
+    /// Sets `bufferBindCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo bufferBindCountAt(long index, int value) { bufferBindCount(this.segment(), index, value); return this; }
 
-        /// {@return `pWaitSemaphores` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pWaitSemaphoresAt(long index) { return pWaitSemaphores(this.segment(), index); }
-        /// Sets `pWaitSemaphores` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pWaitSemaphoresAt(long index, MemorySegment value) { pWaitSemaphores(this.segment(), index, value); return this; }
+    /// {@return `pBufferBinds` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pBufferBindsAt(long index) { return pBufferBinds(this.segment(), index); }
+    /// Sets `pBufferBinds` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo pBufferBindsAt(long index, MemorySegment value) { pBufferBinds(this.segment(), index, value); return this; }
 
-        /// {@return `bufferBindCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferBindCountAt(long index) { return bufferBindCount(this.segment(), index); }
-        /// Sets `bufferBindCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferBindCountAt(long index, int value) { bufferBindCount(this.segment(), index, value); return this; }
+    /// {@return `imageOpaqueBindCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int imageOpaqueBindCountAt(long index) { return imageOpaqueBindCount(this.segment(), index); }
+    /// Sets `imageOpaqueBindCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo imageOpaqueBindCountAt(long index, int value) { imageOpaqueBindCount(this.segment(), index, value); return this; }
 
-        /// {@return `pBufferBinds` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pBufferBindsAt(long index) { return pBufferBinds(this.segment(), index); }
-        /// Sets `pBufferBinds` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pBufferBindsAt(long index, MemorySegment value) { pBufferBinds(this.segment(), index, value); return this; }
+    /// {@return `pImageOpaqueBinds` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pImageOpaqueBindsAt(long index) { return pImageOpaqueBinds(this.segment(), index); }
+    /// Sets `pImageOpaqueBinds` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo pImageOpaqueBindsAt(long index, MemorySegment value) { pImageOpaqueBinds(this.segment(), index, value); return this; }
 
-        /// {@return `imageOpaqueBindCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int imageOpaqueBindCountAt(long index) { return imageOpaqueBindCount(this.segment(), index); }
-        /// Sets `imageOpaqueBindCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageOpaqueBindCountAt(long index, int value) { imageOpaqueBindCount(this.segment(), index, value); return this; }
+    /// {@return `imageBindCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int imageBindCountAt(long index) { return imageBindCount(this.segment(), index); }
+    /// Sets `imageBindCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo imageBindCountAt(long index, int value) { imageBindCount(this.segment(), index, value); return this; }
 
-        /// {@return `pImageOpaqueBinds` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pImageOpaqueBindsAt(long index) { return pImageOpaqueBinds(this.segment(), index); }
-        /// Sets `pImageOpaqueBinds` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pImageOpaqueBindsAt(long index, MemorySegment value) { pImageOpaqueBinds(this.segment(), index, value); return this; }
+    /// {@return `pImageBinds` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pImageBindsAt(long index) { return pImageBinds(this.segment(), index); }
+    /// Sets `pImageBinds` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo pImageBindsAt(long index, MemorySegment value) { pImageBinds(this.segment(), index, value); return this; }
 
-        /// {@return `imageBindCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int imageBindCountAt(long index) { return imageBindCount(this.segment(), index); }
-        /// Sets `imageBindCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageBindCountAt(long index, int value) { imageBindCount(this.segment(), index, value); return this; }
+    /// {@return `signalSemaphoreCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int signalSemaphoreCountAt(long index) { return signalSemaphoreCount(this.segment(), index); }
+    /// Sets `signalSemaphoreCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo signalSemaphoreCountAt(long index, int value) { signalSemaphoreCount(this.segment(), index, value); return this; }
 
-        /// {@return `pImageBinds` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pImageBindsAt(long index) { return pImageBinds(this.segment(), index); }
-        /// Sets `pImageBinds` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pImageBindsAt(long index, MemorySegment value) { pImageBinds(this.segment(), index, value); return this; }
+    /// {@return `pSignalSemaphores` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pSignalSemaphoresAt(long index) { return pSignalSemaphores(this.segment(), index); }
+    /// Sets `pSignalSemaphores` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindSparseInfo pSignalSemaphoresAt(long index, MemorySegment value) { pSignalSemaphores(this.segment(), index, value); return this; }
 
-        /// {@return `signalSemaphoreCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int signalSemaphoreCountAt(long index) { return signalSemaphoreCount(this.segment(), index); }
-        /// Sets `signalSemaphoreCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer signalSemaphoreCountAt(long index, int value) { signalSemaphoreCount(this.segment(), index, value); return this; }
-
-        /// {@return `pSignalSemaphores` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pSignalSemaphoresAt(long index) { return pSignalSemaphores(this.segment(), index); }
-        /// Sets `pSignalSemaphores` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSignalSemaphoresAt(long index, MemorySegment value) { pSignalSemaphores(this.segment(), index, value); return this; }
-
-    }
 }

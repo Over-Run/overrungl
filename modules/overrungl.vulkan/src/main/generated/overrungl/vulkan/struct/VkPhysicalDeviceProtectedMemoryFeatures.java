@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 protectedMemory;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceProtectedMemoryFeatures extends GroupType {
+public final class VkPhysicalDeviceProtectedMemoryFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDeviceProtectedMemoryFeatures`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDeviceProtectedMemoryFeatures extends GroupType {
     public static final VarHandle VH_protectedMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("protectedMemory"));
 
     /// Creates `VkPhysicalDeviceProtectedMemoryFeatures` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceProtectedMemoryFeatures(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceProtectedMemoryFeatures(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceProtectedMemoryFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceProtectedMemoryFeatures of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceProtectedMemoryFeatures(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceProtectedMemoryFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceProtectedMemoryFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceProtectedMemoryFeatures(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceProtectedMemoryFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceProtectedMemoryFeatures(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceProtectedMemoryFeatures` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDeviceProtectedMemoryFeatures extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceProtectedMemoryFeatures ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceProtectedMemoryFeatures(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceProtectedMemoryFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceProtectedMemoryFeatures`
-    public static VkPhysicalDeviceProtectedMemoryFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceProtectedMemoryFeatures(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceProtectedMemoryFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceProtectedMemoryFeatures(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceProtectedMemoryFeatures` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceProtectedMemoryFeatures`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceProtectedMemoryFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceProtectedMemoryFeatures(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceProtectedMemoryFeatures` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDeviceProtectedMemoryFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceProtectedMemoryFeatures copyFrom(VkPhysicalDeviceProtectedMemoryFeatures src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceProtectedMemoryFeatures reinterpret(long count) { return new VkPhysicalDeviceProtectedMemoryFeatures(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPhysicalDeviceProtectedMemoryFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceProtectedMemoryFeatures protectedMemory(int value) { protectedMemory(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceProtectedMemoryFeatures].
-    public static final class Buffer extends VkPhysicalDeviceProtectedMemoryFeatures {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceProtectedMemoryFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceProtectedMemoryFeatures`
+    public VkPhysicalDeviceProtectedMemoryFeatures asSlice(long index) { return new VkPhysicalDeviceProtectedMemoryFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceProtectedMemoryFeatures.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceProtectedMemoryFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceProtectedMemoryFeatures`
+    public VkPhysicalDeviceProtectedMemoryFeatures asSlice(long index, long count) { return new VkPhysicalDeviceProtectedMemoryFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceProtectedMemoryFeatures` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceProtectedMemoryFeatures at(long index, Consumer<VkPhysicalDeviceProtectedMemoryFeatures> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceProtectedMemoryFeatures`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceProtectedMemoryFeatures`
-        public VkPhysicalDeviceProtectedMemoryFeatures asSlice(long index) { return new VkPhysicalDeviceProtectedMemoryFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceProtectedMemoryFeatures sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceProtectedMemoryFeatures`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceProtectedMemoryFeatures`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceProtectedMemoryFeatures pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `protectedMemory` at the given index}
+    /// @param index the index of the struct buffer
+    public int protectedMemoryAt(long index) { return protectedMemory(this.segment(), index); }
+    /// Sets `protectedMemory` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceProtectedMemoryFeatures protectedMemoryAt(long index, int value) { protectedMemory(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `protectedMemory` at the given index}
-        /// @param index the index of the struct buffer
-        public int protectedMemoryAt(long index) { return protectedMemory(this.segment(), index); }
-        /// Sets `protectedMemory` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer protectedMemoryAt(long index, int value) { protectedMemory(this.segment(), index, value); return this; }
-
-    }
 }

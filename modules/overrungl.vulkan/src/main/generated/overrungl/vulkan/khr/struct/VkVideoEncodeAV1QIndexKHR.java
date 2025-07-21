@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t bipredictiveQIndex;
 /// };
 /// ```
-public sealed class VkVideoEncodeAV1QIndexKHR extends GroupType {
+public final class VkVideoEncodeAV1QIndexKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeAV1QIndexKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("intraQIndex"),
@@ -59,20 +60,21 @@ public sealed class VkVideoEncodeAV1QIndexKHR extends GroupType {
     public static final VarHandle VH_bipredictiveQIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bipredictiveQIndex"));
 
     /// Creates `VkVideoEncodeAV1QIndexKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkVideoEncodeAV1QIndexKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVideoEncodeAV1QIndexKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVideoEncodeAV1QIndexKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVideoEncodeAV1QIndexKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1QIndexKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeAV1QIndexKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeAV1QIndexKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1QIndexKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVideoEncodeAV1QIndexKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1QIndexKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVideoEncodeAV1QIndexKHR` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkVideoEncodeAV1QIndexKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVideoEncodeAV1QIndexKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1QIndexKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVideoEncodeAV1QIndexKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoEncodeAV1QIndexKHR`
-    public static VkVideoEncodeAV1QIndexKHR alloc(SegmentAllocator allocator) { return new VkVideoEncodeAV1QIndexKHR(allocator.allocate(LAYOUT)); }
+    public static VkVideoEncodeAV1QIndexKHR alloc(SegmentAllocator allocator) { return new VkVideoEncodeAV1QIndexKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVideoEncodeAV1QIndexKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoEncodeAV1QIndexKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVideoEncodeAV1QIndexKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1QIndexKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVideoEncodeAV1QIndexKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkVideoEncodeAV1QIndexKHR extends GroupType {
     /// @return `this`
     public VkVideoEncodeAV1QIndexKHR copyFrom(VkVideoEncodeAV1QIndexKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVideoEncodeAV1QIndexKHR reinterpret(long count) { return new VkVideoEncodeAV1QIndexKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `intraQIndex` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkVideoEncodeAV1QIndexKHR extends GroupType {
     /// @return `this`
     public VkVideoEncodeAV1QIndexKHR bipredictiveQIndex(int value) { bipredictiveQIndex(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkVideoEncodeAV1QIndexKHR].
-    public static final class Buffer extends VkVideoEncodeAV1QIndexKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkVideoEncodeAV1QIndexKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeAV1QIndexKHR`
+    public VkVideoEncodeAV1QIndexKHR asSlice(long index) { return new VkVideoEncodeAV1QIndexKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVideoEncodeAV1QIndexKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVideoEncodeAV1QIndexKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeAV1QIndexKHR`
+    public VkVideoEncodeAV1QIndexKHR asSlice(long index, long count) { return new VkVideoEncodeAV1QIndexKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVideoEncodeAV1QIndexKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVideoEncodeAV1QIndexKHR at(long index, Consumer<VkVideoEncodeAV1QIndexKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVideoEncodeAV1QIndexKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVideoEncodeAV1QIndexKHR`
-        public VkVideoEncodeAV1QIndexKHR asSlice(long index) { return new VkVideoEncodeAV1QIndexKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `intraQIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int intraQIndexAt(long index) { return intraQIndex(this.segment(), index); }
+    /// Sets `intraQIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoEncodeAV1QIndexKHR intraQIndexAt(long index, int value) { intraQIndex(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVideoEncodeAV1QIndexKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVideoEncodeAV1QIndexKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `predictiveQIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int predictiveQIndexAt(long index) { return predictiveQIndex(this.segment(), index); }
+    /// Sets `predictiveQIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoEncodeAV1QIndexKHR predictiveQIndexAt(long index, int value) { predictiveQIndex(this.segment(), index, value); return this; }
 
-        /// {@return `intraQIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int intraQIndexAt(long index) { return intraQIndex(this.segment(), index); }
-        /// Sets `intraQIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer intraQIndexAt(long index, int value) { intraQIndex(this.segment(), index, value); return this; }
+    /// {@return `bipredictiveQIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int bipredictiveQIndexAt(long index) { return bipredictiveQIndex(this.segment(), index); }
+    /// Sets `bipredictiveQIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoEncodeAV1QIndexKHR bipredictiveQIndexAt(long index, int value) { bipredictiveQIndex(this.segment(), index, value); return this; }
 
-        /// {@return `predictiveQIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int predictiveQIndexAt(long index) { return predictiveQIndex(this.segment(), index); }
-        /// Sets `predictiveQIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer predictiveQIndexAt(long index, int value) { predictiveQIndex(this.segment(), index, value); return this; }
-
-        /// {@return `bipredictiveQIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int bipredictiveQIndexAt(long index) { return bipredictiveQIndex(this.segment(), index); }
-        /// Sets `bipredictiveQIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bipredictiveQIndexAt(long index, int value) { bipredictiveQIndex(this.segment(), index, value); return this; }
-
-    }
 }

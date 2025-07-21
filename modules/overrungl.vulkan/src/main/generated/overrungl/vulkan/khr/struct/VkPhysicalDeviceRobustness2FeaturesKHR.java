@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 nullDescriptor;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
+public final class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceRobustness2FeaturesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     public static final VarHandle VH_nullDescriptor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nullDescriptor"));
 
     /// Creates `VkPhysicalDeviceRobustness2FeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceRobustness2FeaturesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceRobustness2FeaturesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceRobustness2FeaturesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceRobustness2FeaturesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRobustness2FeaturesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceRobustness2FeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRobustness2FeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRobustness2FeaturesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceRobustness2FeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRobustness2FeaturesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceRobustness2FeaturesKHR` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceRobustness2FeaturesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRobustness2FeaturesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceRobustness2FeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesKHR`
-    public static VkPhysicalDeviceRobustness2FeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceRobustness2FeaturesKHR(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceRobustness2FeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceRobustness2FeaturesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceRobustness2FeaturesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceRobustness2FeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRobustness2FeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceRobustness2FeaturesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceRobustness2FeaturesKHR copyFrom(VkPhysicalDeviceRobustness2FeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceRobustness2FeaturesKHR reinterpret(long count) { return new VkPhysicalDeviceRobustness2FeaturesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPhysicalDeviceRobustness2FeaturesKHR extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceRobustness2FeaturesKHR nullDescriptor(int value) { nullDescriptor(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceRobustness2FeaturesKHR].
-    public static final class Buffer extends VkPhysicalDeviceRobustness2FeaturesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceRobustness2FeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRobustness2FeaturesKHR`
+    public VkPhysicalDeviceRobustness2FeaturesKHR asSlice(long index) { return new VkPhysicalDeviceRobustness2FeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceRobustness2FeaturesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceRobustness2FeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRobustness2FeaturesKHR`
+    public VkPhysicalDeviceRobustness2FeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceRobustness2FeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceRobustness2FeaturesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceRobustness2FeaturesKHR at(long index, Consumer<VkPhysicalDeviceRobustness2FeaturesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceRobustness2FeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceRobustness2FeaturesKHR`
-        public VkPhysicalDeviceRobustness2FeaturesKHR asSlice(long index) { return new VkPhysicalDeviceRobustness2FeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRobustness2FeaturesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceRobustness2FeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceRobustness2FeaturesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRobustness2FeaturesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `robustBufferAccess2` at the given index}
+    /// @param index the index of the struct buffer
+    public int robustBufferAccess2At(long index) { return robustBufferAccess2(this.segment(), index); }
+    /// Sets `robustBufferAccess2` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRobustness2FeaturesKHR robustBufferAccess2At(long index, int value) { robustBufferAccess2(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `robustImageAccess2` at the given index}
+    /// @param index the index of the struct buffer
+    public int robustImageAccess2At(long index) { return robustImageAccess2(this.segment(), index); }
+    /// Sets `robustImageAccess2` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRobustness2FeaturesKHR robustImageAccess2At(long index, int value) { robustImageAccess2(this.segment(), index, value); return this; }
 
-        /// {@return `robustBufferAccess2` at the given index}
-        /// @param index the index of the struct buffer
-        public int robustBufferAccess2At(long index) { return robustBufferAccess2(this.segment(), index); }
-        /// Sets `robustBufferAccess2` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer robustBufferAccess2At(long index, int value) { robustBufferAccess2(this.segment(), index, value); return this; }
+    /// {@return `nullDescriptor` at the given index}
+    /// @param index the index of the struct buffer
+    public int nullDescriptorAt(long index) { return nullDescriptor(this.segment(), index); }
+    /// Sets `nullDescriptor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRobustness2FeaturesKHR nullDescriptorAt(long index, int value) { nullDescriptor(this.segment(), index, value); return this; }
 
-        /// {@return `robustImageAccess2` at the given index}
-        /// @param index the index of the struct buffer
-        public int robustImageAccess2At(long index) { return robustImageAccess2(this.segment(), index); }
-        /// Sets `robustImageAccess2` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer robustImageAccess2At(long index, int value) { robustImageAccess2(this.segment(), index, value); return this; }
-
-        /// {@return `nullDescriptor` at the given index}
-        /// @param index the index of the struct buffer
-        public int nullDescriptorAt(long index) { return nullDescriptor(this.segment(), index); }
-        /// Sets `nullDescriptor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer nullDescriptorAt(long index, int value) { nullDescriptor(this.segment(), index, value); return this; }
-
-    }
 }

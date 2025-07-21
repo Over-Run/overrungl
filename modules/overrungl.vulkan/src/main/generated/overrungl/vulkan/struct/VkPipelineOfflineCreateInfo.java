@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceSize poolEntrySize;
 /// };
 /// ```
-public sealed class VkPipelineOfflineCreateInfo extends GroupType {
+public final class VkPipelineOfflineCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineOfflineCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPipelineOfflineCreateInfo extends GroupType {
     public static final VarHandle VH_poolEntrySize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("poolEntrySize"));
 
     /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineOfflineCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineOfflineCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineOfflineCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineOfflineCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineOfflineCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineOfflineCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineOfflineCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineOfflineCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineOfflineCreateInfo` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPipelineOfflineCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineOfflineCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineOfflineCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineOfflineCreateInfo`
-    public static VkPipelineOfflineCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineOfflineCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkPipelineOfflineCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineOfflineCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineOfflineCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineOfflineCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineOfflineCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPipelineOfflineCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineOfflineCreateInfo copyFrom(VkPipelineOfflineCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineOfflineCreateInfo reinterpret(long count) { return new VkPipelineOfflineCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -267,82 +270,76 @@ public sealed class VkPipelineOfflineCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineOfflineCreateInfo poolEntrySize(long value) { poolEntrySize(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineOfflineCreateInfo].
-    public static final class Buffer extends VkPipelineOfflineCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineOfflineCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineOfflineCreateInfo`
+    public VkPipelineOfflineCreateInfo asSlice(long index) { return new VkPipelineOfflineCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineOfflineCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineOfflineCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineOfflineCreateInfo`
+    public VkPipelineOfflineCreateInfo asSlice(long index, long count) { return new VkPipelineOfflineCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineOfflineCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineOfflineCreateInfo at(long index, Consumer<VkPipelineOfflineCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineOfflineCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineOfflineCreateInfo`
-        public VkPipelineOfflineCreateInfo asSlice(long index) { return new VkPipelineOfflineCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineOfflineCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineOfflineCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineOfflineCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineOfflineCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `pipelineIdentifier` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pipelineIdentifierAt(long index) { return pipelineIdentifier(this.segment(), index); }
-        /// {@return `pipelineIdentifier` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `pipelineIdentifier` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pipelineIdentifierAt(long index) { return pipelineIdentifier(this.segment(), index); }
+    /// {@return `pipelineIdentifier` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte pipelineIdentifierAt(long index, long index0) { return pipelineIdentifier(this.segment(), index, index0); }
-        /// Sets `pipelineIdentifier` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineIdentifierAt(long index, MemorySegment value) { pipelineIdentifier(this.segment(), index, value); return this; }
-        /// Sets `pipelineIdentifier` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineIdentifierAt(long index, long index0, byte value) { pipelineIdentifier(this.segment(), index, index0, value); return this; }
+    /// Sets `pipelineIdentifier` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineOfflineCreateInfo pipelineIdentifierAt(long index, MemorySegment value) { pipelineIdentifier(this.segment(), index, value); return this; }
+    /// Sets `pipelineIdentifier` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineOfflineCreateInfo pipelineIdentifierAt(long index, long index0, byte value) { pipelineIdentifier(this.segment(), index, index0, value); return this; }
 
-        /// {@return `matchControl` at the given index}
-        /// @param index the index of the struct buffer
-        public int matchControlAt(long index) { return matchControl(this.segment(), index); }
-        /// Sets `matchControl` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer matchControlAt(long index, int value) { matchControl(this.segment(), index, value); return this; }
+    /// {@return `matchControl` at the given index}
+    /// @param index the index of the struct buffer
+    public int matchControlAt(long index) { return matchControl(this.segment(), index); }
+    /// Sets `matchControl` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineOfflineCreateInfo matchControlAt(long index, int value) { matchControl(this.segment(), index, value); return this; }
 
-        /// {@return `poolEntrySize` at the given index}
-        /// @param index the index of the struct buffer
-        public long poolEntrySizeAt(long index) { return poolEntrySize(this.segment(), index); }
-        /// Sets `poolEntrySize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer poolEntrySizeAt(long index, long value) { poolEntrySize(this.segment(), index, value); return this; }
+    /// {@return `poolEntrySize` at the given index}
+    /// @param index the index of the struct buffer
+    public long poolEntrySizeAt(long index) { return poolEntrySize(this.segment(), index); }
+    /// Sets `poolEntrySize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineOfflineCreateInfo poolEntrySizeAt(long index, long value) { poolEntrySize(this.segment(), index, value); return this; }
 
-    }
 }

@@ -21,9 +21,9 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -39,7 +39,7 @@ import java.util.function.*;
 ///     (struct STBRPNode) stbrp_node extra[2];
 /// };
 /// ```
-public sealed class STBRPContext extends GroupType {
+public final class STBRPContext extends GroupType {
     /// The struct layout of `STBRPContext`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("width"),
@@ -106,20 +106,21 @@ public sealed class STBRPContext extends GroupType {
     public static final MemoryLayout LAYOUT_extra = LAYOUT.select(PathElement.groupElement("extra"));
 
     /// Creates `STBRPContext` with the given segment.
-    /// @param segment the memory segment
-    public STBRPContext(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBRPContext(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBRPContext` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBRPContext of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBRPContext(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBRPContext` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBRPContext ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBRPContext(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBRPContext ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBRPContext(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBRPContext` with the given segment.
     ///
@@ -127,18 +128,18 @@ public sealed class STBRPContext extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBRPContext ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBRPContext(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBRPContext` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBRPContext`
-    public static STBRPContext alloc(SegmentAllocator allocator) { return new STBRPContext(allocator.allocate(LAYOUT)); }
+    public static STBRPContext alloc(SegmentAllocator allocator) { return new STBRPContext(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBRPContext` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBRPContext`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBRPContext alloc(SegmentAllocator allocator, long count) { return new STBRPContext(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBRPContext` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -253,9 +254,10 @@ public sealed class STBRPContext extends GroupType {
     /// @return `this`
     public STBRPContext copyFrom(STBRPContext src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBRPContext reinterpret(long count) { return new STBRPContext(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `width` at the given index}
     /// @param segment the segment of the struct
@@ -405,113 +407,107 @@ public sealed class STBRPContext extends GroupType {
     /// @return `this`
     public STBRPContext extra(Consumer<STBRPNode> func) { func.accept(STBRPNode.of(extra())); return this; }
 
-    /// A buffer of [STBRPContext].
-    public static final class Buffer extends STBRPContext {
-        private final long elementCount;
+    /// Creates a slice of `STBRPContext`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBRPContext`
+    public STBRPContext asSlice(long index) { return new STBRPContext(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBRPContext.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBRPContext`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBRPContext`
+    public STBRPContext asSlice(long index, long count) { return new STBRPContext(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBRPContext` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBRPContext at(long index, Consumer<STBRPContext> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBRPContext`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBRPContext`
-        public STBRPContext asSlice(long index) { return new STBRPContext(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `width` at the given index}
+    /// @param index the index of the struct buffer
+    public int widthAt(long index) { return width(this.segment(), index); }
+    /// Sets `width` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPContext widthAt(long index, int value) { width(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBRPContext`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBRPContext`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `height` at the given index}
+    /// @param index the index of the struct buffer
+    public int heightAt(long index) { return height(this.segment(), index); }
+    /// Sets `height` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPContext heightAt(long index, int value) { height(this.segment(), index, value); return this; }
 
-        /// {@return `width` at the given index}
-        /// @param index the index of the struct buffer
-        public int widthAt(long index) { return width(this.segment(), index); }
-        /// Sets `width` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer widthAt(long index, int value) { width(this.segment(), index, value); return this; }
+    /// {@return `align` at the given index}
+    /// @param index the index of the struct buffer
+    public int alignAt(long index) { return align(this.segment(), index); }
+    /// Sets `align` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPContext alignAt(long index, int value) { align(this.segment(), index, value); return this; }
 
-        /// {@return `height` at the given index}
-        /// @param index the index of the struct buffer
-        public int heightAt(long index) { return height(this.segment(), index); }
-        /// Sets `height` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer heightAt(long index, int value) { height(this.segment(), index, value); return this; }
+    /// {@return `init_mode` at the given index}
+    /// @param index the index of the struct buffer
+    public int init_modeAt(long index) { return init_mode(this.segment(), index); }
+    /// Sets `init_mode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPContext init_modeAt(long index, int value) { init_mode(this.segment(), index, value); return this; }
 
-        /// {@return `align` at the given index}
-        /// @param index the index of the struct buffer
-        public int alignAt(long index) { return align(this.segment(), index); }
-        /// Sets `align` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer alignAt(long index, int value) { align(this.segment(), index, value); return this; }
+    /// {@return `heuristic` at the given index}
+    /// @param index the index of the struct buffer
+    public int heuristicAt(long index) { return heuristic(this.segment(), index); }
+    /// Sets `heuristic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPContext heuristicAt(long index, int value) { heuristic(this.segment(), index, value); return this; }
 
-        /// {@return `init_mode` at the given index}
-        /// @param index the index of the struct buffer
-        public int init_modeAt(long index) { return init_mode(this.segment(), index); }
-        /// Sets `init_mode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer init_modeAt(long index, int value) { init_mode(this.segment(), index, value); return this; }
+    /// {@return `num_nodes` at the given index}
+    /// @param index the index of the struct buffer
+    public int num_nodesAt(long index) { return num_nodes(this.segment(), index); }
+    /// Sets `num_nodes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPContext num_nodesAt(long index, int value) { num_nodes(this.segment(), index, value); return this; }
 
-        /// {@return `heuristic` at the given index}
-        /// @param index the index of the struct buffer
-        public int heuristicAt(long index) { return heuristic(this.segment(), index); }
-        /// Sets `heuristic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer heuristicAt(long index, int value) { heuristic(this.segment(), index, value); return this; }
+    /// {@return `active_head` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment active_headAt(long index) { return active_head(this.segment(), index); }
+    /// Sets `active_head` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPContext active_headAt(long index, MemorySegment value) { active_head(this.segment(), index, value); return this; }
 
-        /// {@return `num_nodes` at the given index}
-        /// @param index the index of the struct buffer
-        public int num_nodesAt(long index) { return num_nodes(this.segment(), index); }
-        /// Sets `num_nodes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_nodesAt(long index, int value) { num_nodes(this.segment(), index, value); return this; }
+    /// {@return `free_head` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment free_headAt(long index) { return free_head(this.segment(), index); }
+    /// Sets `free_head` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPContext free_headAt(long index, MemorySegment value) { free_head(this.segment(), index, value); return this; }
 
-        /// {@return `active_head` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment active_headAt(long index) { return active_head(this.segment(), index); }
-        /// Sets `active_head` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer active_headAt(long index, MemorySegment value) { active_head(this.segment(), index, value); return this; }
+    /// {@return `extra` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment extraAt(long index) { return extra(this.segment(), index); }
+    /// Sets `extra` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPContext extraAt(long index, MemorySegment value) { extra(this.segment(), index, value); return this; }
+    /// Accepts `extra` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public STBRPContext extraAt(long index, Consumer<STBRPNode> func) { func.accept(STBRPNode.of(extraAt(index))); return this; }
 
-        /// {@return `free_head` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment free_headAt(long index) { return free_head(this.segment(), index); }
-        /// Sets `free_head` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer free_headAt(long index, MemorySegment value) { free_head(this.segment(), index, value); return this; }
-
-        /// {@return `extra` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment extraAt(long index) { return extra(this.segment(), index); }
-        /// Sets `extra` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extraAt(long index, MemorySegment value) { extra(this.segment(), index, value); return this; }
-        /// Accepts `extra` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer extraAt(long index, Consumer<STBRPNode> func) { func.accept(STBRPNode.of(extraAt(index))); return this; }
-
-    }
 }

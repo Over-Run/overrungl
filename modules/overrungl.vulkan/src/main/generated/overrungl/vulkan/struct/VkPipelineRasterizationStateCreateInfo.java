@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -42,7 +43,7 @@ import overrungl.util.*;
 ///     float lineWidth;
 /// };
 /// ```
-public sealed class VkPipelineRasterizationStateCreateInfo extends GroupType {
+public final class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineRasterizationStateCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -139,20 +140,21 @@ public sealed class VkPipelineRasterizationStateCreateInfo extends GroupType {
     public static final VarHandle VH_lineWidth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineWidth"));
 
     /// Creates `VkPipelineRasterizationStateCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineRasterizationStateCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineRasterizationStateCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineRasterizationStateCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineRasterizationStateCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationStateCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineRasterizationStateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineRasterizationStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationStateCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineRasterizationStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationStateCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineRasterizationStateCreateInfo` with the given segment.
     ///
@@ -160,18 +162,18 @@ public sealed class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineRasterizationStateCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationStateCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
-    public static VkPipelineRasterizationStateCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineRasterizationStateCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkPipelineRasterizationStateCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineRasterizationStateCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineRasterizationStateCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineRasterizationStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationStateCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineRasterizationStateCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -360,9 +362,10 @@ public sealed class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineRasterizationStateCreateInfo copyFrom(VkPipelineRasterizationStateCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineRasterizationStateCreateInfo reinterpret(long count) { return new VkPipelineRasterizationStateCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -572,144 +575,138 @@ public sealed class VkPipelineRasterizationStateCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineRasterizationStateCreateInfo lineWidth(float value) { lineWidth(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineRasterizationStateCreateInfo].
-    public static final class Buffer extends VkPipelineRasterizationStateCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineRasterizationStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineRasterizationStateCreateInfo`
+    public VkPipelineRasterizationStateCreateInfo asSlice(long index) { return new VkPipelineRasterizationStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineRasterizationStateCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineRasterizationStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineRasterizationStateCreateInfo`
+    public VkPipelineRasterizationStateCreateInfo asSlice(long index, long count) { return new VkPipelineRasterizationStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineRasterizationStateCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo at(long index, Consumer<VkPipelineRasterizationStateCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineRasterizationStateCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineRasterizationStateCreateInfo`
-        public VkPipelineRasterizationStateCreateInfo asSlice(long index) { return new VkPipelineRasterizationStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineRasterizationStateCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineRasterizationStateCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `depthClampEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthClampEnableAt(long index) { return depthClampEnable(this.segment(), index); }
+    /// Sets `depthClampEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo depthClampEnableAt(long index, int value) { depthClampEnable(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `rasterizerDiscardEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int rasterizerDiscardEnableAt(long index) { return rasterizerDiscardEnable(this.segment(), index); }
+    /// Sets `rasterizerDiscardEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo rasterizerDiscardEnableAt(long index, int value) { rasterizerDiscardEnable(this.segment(), index, value); return this; }
 
-        /// {@return `depthClampEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthClampEnableAt(long index) { return depthClampEnable(this.segment(), index); }
-        /// Sets `depthClampEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthClampEnableAt(long index, int value) { depthClampEnable(this.segment(), index, value); return this; }
+    /// {@return `polygonMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int polygonModeAt(long index) { return polygonMode(this.segment(), index); }
+    /// Sets `polygonMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo polygonModeAt(long index, int value) { polygonMode(this.segment(), index, value); return this; }
 
-        /// {@return `rasterizerDiscardEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int rasterizerDiscardEnableAt(long index) { return rasterizerDiscardEnable(this.segment(), index); }
-        /// Sets `rasterizerDiscardEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer rasterizerDiscardEnableAt(long index, int value) { rasterizerDiscardEnable(this.segment(), index, value); return this; }
+    /// {@return `cullMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int cullModeAt(long index) { return cullMode(this.segment(), index); }
+    /// Sets `cullMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo cullModeAt(long index, int value) { cullMode(this.segment(), index, value); return this; }
 
-        /// {@return `polygonMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int polygonModeAt(long index) { return polygonMode(this.segment(), index); }
-        /// Sets `polygonMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer polygonModeAt(long index, int value) { polygonMode(this.segment(), index, value); return this; }
+    /// {@return `frontFace` at the given index}
+    /// @param index the index of the struct buffer
+    public int frontFaceAt(long index) { return frontFace(this.segment(), index); }
+    /// Sets `frontFace` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo frontFaceAt(long index, int value) { frontFace(this.segment(), index, value); return this; }
 
-        /// {@return `cullMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int cullModeAt(long index) { return cullMode(this.segment(), index); }
-        /// Sets `cullMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cullModeAt(long index, int value) { cullMode(this.segment(), index, value); return this; }
+    /// {@return `depthBiasEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthBiasEnableAt(long index) { return depthBiasEnable(this.segment(), index); }
+    /// Sets `depthBiasEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo depthBiasEnableAt(long index, int value) { depthBiasEnable(this.segment(), index, value); return this; }
 
-        /// {@return `frontFace` at the given index}
-        /// @param index the index of the struct buffer
-        public int frontFaceAt(long index) { return frontFace(this.segment(), index); }
-        /// Sets `frontFace` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer frontFaceAt(long index, int value) { frontFace(this.segment(), index, value); return this; }
+    /// {@return `depthBiasConstantFactor` at the given index}
+    /// @param index the index of the struct buffer
+    public float depthBiasConstantFactorAt(long index) { return depthBiasConstantFactor(this.segment(), index); }
+    /// Sets `depthBiasConstantFactor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo depthBiasConstantFactorAt(long index, float value) { depthBiasConstantFactor(this.segment(), index, value); return this; }
 
-        /// {@return `depthBiasEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthBiasEnableAt(long index) { return depthBiasEnable(this.segment(), index); }
-        /// Sets `depthBiasEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthBiasEnableAt(long index, int value) { depthBiasEnable(this.segment(), index, value); return this; }
+    /// {@return `depthBiasClamp` at the given index}
+    /// @param index the index of the struct buffer
+    public float depthBiasClampAt(long index) { return depthBiasClamp(this.segment(), index); }
+    /// Sets `depthBiasClamp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo depthBiasClampAt(long index, float value) { depthBiasClamp(this.segment(), index, value); return this; }
 
-        /// {@return `depthBiasConstantFactor` at the given index}
-        /// @param index the index of the struct buffer
-        public float depthBiasConstantFactorAt(long index) { return depthBiasConstantFactor(this.segment(), index); }
-        /// Sets `depthBiasConstantFactor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthBiasConstantFactorAt(long index, float value) { depthBiasConstantFactor(this.segment(), index, value); return this; }
+    /// {@return `depthBiasSlopeFactor` at the given index}
+    /// @param index the index of the struct buffer
+    public float depthBiasSlopeFactorAt(long index) { return depthBiasSlopeFactor(this.segment(), index); }
+    /// Sets `depthBiasSlopeFactor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo depthBiasSlopeFactorAt(long index, float value) { depthBiasSlopeFactor(this.segment(), index, value); return this; }
 
-        /// {@return `depthBiasClamp` at the given index}
-        /// @param index the index of the struct buffer
-        public float depthBiasClampAt(long index) { return depthBiasClamp(this.segment(), index); }
-        /// Sets `depthBiasClamp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthBiasClampAt(long index, float value) { depthBiasClamp(this.segment(), index, value); return this; }
+    /// {@return `lineWidth` at the given index}
+    /// @param index the index of the struct buffer
+    public float lineWidthAt(long index) { return lineWidth(this.segment(), index); }
+    /// Sets `lineWidth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationStateCreateInfo lineWidthAt(long index, float value) { lineWidth(this.segment(), index, value); return this; }
 
-        /// {@return `depthBiasSlopeFactor` at the given index}
-        /// @param index the index of the struct buffer
-        public float depthBiasSlopeFactorAt(long index) { return depthBiasSlopeFactor(this.segment(), index); }
-        /// Sets `depthBiasSlopeFactor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthBiasSlopeFactorAt(long index, float value) { depthBiasSlopeFactor(this.segment(), index, value); return this; }
-
-        /// {@return `lineWidth` at the given index}
-        /// @param index the index of the struct buffer
-        public float lineWidthAt(long index) { return lineWidth(this.segment(), index); }
-        /// Sets `lineWidth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer lineWidthAt(long index, float value) { lineWidth(this.segment(), index, value); return this; }
-
-    }
 }

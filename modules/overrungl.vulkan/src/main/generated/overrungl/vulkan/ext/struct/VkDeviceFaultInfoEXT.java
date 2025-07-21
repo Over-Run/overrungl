@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     void* pVendorBinaryData;
 /// };
 /// ```
-public sealed class VkDeviceFaultInfoEXT extends GroupType {
+public final class VkDeviceFaultInfoEXT extends GroupType {
     /// The struct layout of `VkDeviceFaultInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkDeviceFaultInfoEXT extends GroupType {
     public static final VarHandle VH_pVendorBinaryData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pVendorBinaryData"));
 
     /// Creates `VkDeviceFaultInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkDeviceFaultInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDeviceFaultInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDeviceFaultInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDeviceFaultInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceFaultInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceFaultInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceFaultInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceFaultInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDeviceFaultInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceFaultInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDeviceFaultInfoEXT` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkDeviceFaultInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDeviceFaultInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceFaultInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDeviceFaultInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceFaultInfoEXT`
-    public static VkDeviceFaultInfoEXT alloc(SegmentAllocator allocator) { return new VkDeviceFaultInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkDeviceFaultInfoEXT alloc(SegmentAllocator allocator) { return new VkDeviceFaultInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDeviceFaultInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceFaultInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDeviceFaultInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDeviceFaultInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDeviceFaultInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkDeviceFaultInfoEXT extends GroupType {
     /// @return `this`
     public VkDeviceFaultInfoEXT copyFrom(VkDeviceFaultInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDeviceFaultInfoEXT reinterpret(long count) { return new VkDeviceFaultInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -304,91 +307,85 @@ public sealed class VkDeviceFaultInfoEXT extends GroupType {
     /// @return `this`
     public VkDeviceFaultInfoEXT pVendorBinaryData(MemorySegment value) { pVendorBinaryData(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDeviceFaultInfoEXT].
-    public static final class Buffer extends VkDeviceFaultInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkDeviceFaultInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceFaultInfoEXT`
+    public VkDeviceFaultInfoEXT asSlice(long index) { return new VkDeviceFaultInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDeviceFaultInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDeviceFaultInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceFaultInfoEXT`
+    public VkDeviceFaultInfoEXT asSlice(long index, long count) { return new VkDeviceFaultInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDeviceFaultInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDeviceFaultInfoEXT at(long index, Consumer<VkDeviceFaultInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDeviceFaultInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDeviceFaultInfoEXT`
-        public VkDeviceFaultInfoEXT asSlice(long index) { return new VkDeviceFaultInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceFaultInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDeviceFaultInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDeviceFaultInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceFaultInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `description` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
-        /// {@return `description` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `description` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
+    /// {@return `description` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte descriptionAt(long index, long index0) { return description(this.segment(), index, index0); }
-        /// Sets `description` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
-        /// Sets `description` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
+    /// Sets `description` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceFaultInfoEXT descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
+    /// Sets `description` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceFaultInfoEXT descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
 
-        /// {@return `pAddressInfos` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pAddressInfosAt(long index) { return pAddressInfos(this.segment(), index); }
-        /// Sets `pAddressInfos` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pAddressInfosAt(long index, MemorySegment value) { pAddressInfos(this.segment(), index, value); return this; }
+    /// {@return `pAddressInfos` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pAddressInfosAt(long index) { return pAddressInfos(this.segment(), index); }
+    /// Sets `pAddressInfos` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceFaultInfoEXT pAddressInfosAt(long index, MemorySegment value) { pAddressInfos(this.segment(), index, value); return this; }
 
-        /// {@return `pVendorInfos` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pVendorInfosAt(long index) { return pVendorInfos(this.segment(), index); }
-        /// Sets `pVendorInfos` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pVendorInfosAt(long index, MemorySegment value) { pVendorInfos(this.segment(), index, value); return this; }
+    /// {@return `pVendorInfos` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pVendorInfosAt(long index) { return pVendorInfos(this.segment(), index); }
+    /// Sets `pVendorInfos` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceFaultInfoEXT pVendorInfosAt(long index, MemorySegment value) { pVendorInfos(this.segment(), index, value); return this; }
 
-        /// {@return `pVendorBinaryData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pVendorBinaryDataAt(long index) { return pVendorBinaryData(this.segment(), index); }
-        /// Sets `pVendorBinaryData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pVendorBinaryDataAt(long index, MemorySegment value) { pVendorBinaryData(this.segment(), index, value); return this; }
+    /// {@return `pVendorBinaryData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pVendorBinaryDataAt(long index) { return pVendorBinaryData(this.segment(), index); }
+    /// Sets `pVendorBinaryData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceFaultInfoEXT pVendorBinaryDataAt(long index, MemorySegment value) { pVendorBinaryData(this.segment(), index, value); return this; }
 
-    }
 }

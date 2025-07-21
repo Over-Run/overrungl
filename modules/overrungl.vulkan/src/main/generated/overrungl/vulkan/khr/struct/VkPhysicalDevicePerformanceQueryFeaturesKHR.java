@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 performanceCounterMultipleQueryPools;
 /// };
 /// ```
-public sealed class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupType {
+public final class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDevicePerformanceQueryFeaturesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupTyp
     public static final VarHandle VH_performanceCounterMultipleQueryPools = LAYOUT.arrayElementVarHandle(PathElement.groupElement("performanceCounterMultipleQueryPools"));
 
     /// Creates `VkPhysicalDevicePerformanceQueryFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDevicePerformanceQueryFeaturesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDevicePerformanceQueryFeaturesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDevicePerformanceQueryFeaturesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePerformanceQueryFeaturesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevicePerformanceQueryFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePerformanceQueryFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePerformanceQueryFeaturesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDevicePerformanceQueryFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePerformanceQueryFeaturesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDevicePerformanceQueryFeaturesKHR` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupTyp
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDevicePerformanceQueryFeaturesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePerformanceQueryFeaturesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDevicePerformanceQueryFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDevicePerformanceQueryFeaturesKHR`
-    public static VkPhysicalDevicePerformanceQueryFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePerformanceQueryFeaturesKHR(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDevicePerformanceQueryFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePerformanceQueryFeaturesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDevicePerformanceQueryFeaturesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDevicePerformanceQueryFeaturesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDevicePerformanceQueryFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePerformanceQueryFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDevicePerformanceQueryFeaturesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupTyp
     /// @return `this`
     public VkPhysicalDevicePerformanceQueryFeaturesKHR copyFrom(VkPhysicalDevicePerformanceQueryFeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR reinterpret(long count) { return new VkPhysicalDevicePerformanceQueryFeaturesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPhysicalDevicePerformanceQueryFeaturesKHR extends GroupTyp
     /// @return `this`
     public VkPhysicalDevicePerformanceQueryFeaturesKHR performanceCounterMultipleQueryPools(int value) { performanceCounterMultipleQueryPools(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDevicePerformanceQueryFeaturesKHR].
-    public static final class Buffer extends VkPhysicalDevicePerformanceQueryFeaturesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDevicePerformanceQueryFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePerformanceQueryFeaturesKHR`
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR asSlice(long index) { return new VkPhysicalDevicePerformanceQueryFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDevicePerformanceQueryFeaturesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDevicePerformanceQueryFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePerformanceQueryFeaturesKHR`
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDevicePerformanceQueryFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDevicePerformanceQueryFeaturesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR at(long index, Consumer<VkPhysicalDevicePerformanceQueryFeaturesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDevicePerformanceQueryFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDevicePerformanceQueryFeaturesKHR`
-        public VkPhysicalDevicePerformanceQueryFeaturesKHR asSlice(long index) { return new VkPhysicalDevicePerformanceQueryFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDevicePerformanceQueryFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDevicePerformanceQueryFeaturesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `performanceCounterQueryPools` at the given index}
+    /// @param index the index of the struct buffer
+    public int performanceCounterQueryPoolsAt(long index) { return performanceCounterQueryPools(this.segment(), index); }
+    /// Sets `performanceCounterQueryPools` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR performanceCounterQueryPoolsAt(long index, int value) { performanceCounterQueryPools(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `performanceCounterMultipleQueryPools` at the given index}
+    /// @param index the index of the struct buffer
+    public int performanceCounterMultipleQueryPoolsAt(long index) { return performanceCounterMultipleQueryPools(this.segment(), index); }
+    /// Sets `performanceCounterMultipleQueryPools` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePerformanceQueryFeaturesKHR performanceCounterMultipleQueryPoolsAt(long index, int value) { performanceCounterMultipleQueryPools(this.segment(), index, value); return this; }
 
-        /// {@return `performanceCounterQueryPools` at the given index}
-        /// @param index the index of the struct buffer
-        public int performanceCounterQueryPoolsAt(long index) { return performanceCounterQueryPools(this.segment(), index); }
-        /// Sets `performanceCounterQueryPools` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer performanceCounterQueryPoolsAt(long index, int value) { performanceCounterQueryPools(this.segment(), index, value); return this; }
-
-        /// {@return `performanceCounterMultipleQueryPools` at the given index}
-        /// @param index the index of the struct buffer
-        public int performanceCounterMultipleQueryPoolsAt(long index) { return performanceCounterMultipleQueryPools(this.segment(), index); }
-        /// Sets `performanceCounterMultipleQueryPools` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer performanceCounterMultipleQueryPoolsAt(long index, int value) { performanceCounterMultipleQueryPools(this.segment(), index, value); return this; }
-
-    }
 }

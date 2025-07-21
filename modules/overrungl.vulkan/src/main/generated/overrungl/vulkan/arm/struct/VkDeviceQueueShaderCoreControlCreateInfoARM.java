@@ -21,6 +21,7 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t shaderCoreCount;
 /// };
 /// ```
-public sealed class VkDeviceQueueShaderCoreControlCreateInfoARM extends GroupType {
+public final class VkDeviceQueueShaderCoreControlCreateInfoARM extends GroupType {
     /// The struct layout of `VkDeviceQueueShaderCoreControlCreateInfoARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkDeviceQueueShaderCoreControlCreateInfoARM extends GroupTyp
     public static final VarHandle VH_shaderCoreCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderCoreCount"));
 
     /// Creates `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment.
-    /// @param segment the memory segment
-    public VkDeviceQueueShaderCoreControlCreateInfoARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDeviceQueueShaderCoreControlCreateInfoARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDeviceQueueShaderCoreControlCreateInfoARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceQueueShaderCoreControlCreateInfoARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceQueueShaderCoreControlCreateInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceQueueShaderCoreControlCreateInfoARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDeviceQueueShaderCoreControlCreateInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceQueueShaderCoreControlCreateInfoARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkDeviceQueueShaderCoreControlCreateInfoARM extends GroupTyp
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDeviceQueueShaderCoreControlCreateInfoARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceQueueShaderCoreControlCreateInfoARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceQueueShaderCoreControlCreateInfoARM`
-    public static VkDeviceQueueShaderCoreControlCreateInfoARM alloc(SegmentAllocator allocator) { return new VkDeviceQueueShaderCoreControlCreateInfoARM(allocator.allocate(LAYOUT)); }
+    public static VkDeviceQueueShaderCoreControlCreateInfoARM alloc(SegmentAllocator allocator) { return new VkDeviceQueueShaderCoreControlCreateInfoARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceQueueShaderCoreControlCreateInfoARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDeviceQueueShaderCoreControlCreateInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDeviceQueueShaderCoreControlCreateInfoARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkDeviceQueueShaderCoreControlCreateInfoARM extends GroupTyp
     /// @return `this`
     public VkDeviceQueueShaderCoreControlCreateInfoARM copyFrom(VkDeviceQueueShaderCoreControlCreateInfoARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDeviceQueueShaderCoreControlCreateInfoARM reinterpret(long count) { return new VkDeviceQueueShaderCoreControlCreateInfoARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkDeviceQueueShaderCoreControlCreateInfoARM extends GroupTyp
     /// @return `this`
     public VkDeviceQueueShaderCoreControlCreateInfoARM shaderCoreCount(int value) { shaderCoreCount(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDeviceQueueShaderCoreControlCreateInfoARM].
-    public static final class Buffer extends VkDeviceQueueShaderCoreControlCreateInfoARM {
-        private final long elementCount;
+    /// Creates a slice of `VkDeviceQueueShaderCoreControlCreateInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceQueueShaderCoreControlCreateInfoARM`
+    public VkDeviceQueueShaderCoreControlCreateInfoARM asSlice(long index) { return new VkDeviceQueueShaderCoreControlCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDeviceQueueShaderCoreControlCreateInfoARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDeviceQueueShaderCoreControlCreateInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceQueueShaderCoreControlCreateInfoARM`
+    public VkDeviceQueueShaderCoreControlCreateInfoARM asSlice(long index, long count) { return new VkDeviceQueueShaderCoreControlCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDeviceQueueShaderCoreControlCreateInfoARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDeviceQueueShaderCoreControlCreateInfoARM at(long index, Consumer<VkDeviceQueueShaderCoreControlCreateInfoARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDeviceQueueShaderCoreControlCreateInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDeviceQueueShaderCoreControlCreateInfoARM`
-        public VkDeviceQueueShaderCoreControlCreateInfoARM asSlice(long index) { return new VkDeviceQueueShaderCoreControlCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceQueueShaderCoreControlCreateInfoARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDeviceQueueShaderCoreControlCreateInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDeviceQueueShaderCoreControlCreateInfoARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceQueueShaderCoreControlCreateInfoARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `shaderCoreCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderCoreCountAt(long index) { return shaderCoreCount(this.segment(), index); }
+    /// Sets `shaderCoreCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceQueueShaderCoreControlCreateInfoARM shaderCoreCountAt(long index, int value) { shaderCoreCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `shaderCoreCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderCoreCountAt(long index) { return shaderCoreCount(this.segment(), index); }
-        /// Sets `shaderCoreCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderCoreCountAt(long index, int value) { shaderCoreCount(this.segment(), index, value); return this; }
-
-    }
 }

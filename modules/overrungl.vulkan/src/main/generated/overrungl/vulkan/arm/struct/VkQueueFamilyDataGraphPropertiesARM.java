@@ -21,9 +21,9 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -34,7 +34,7 @@ import java.util.function.*;
 ///     (struct VkPhysicalDeviceDataGraphOperationSupportARM) VkPhysicalDeviceDataGraphOperationSupportARM operation;
 /// };
 /// ```
-public sealed class VkQueueFamilyDataGraphPropertiesARM extends GroupType {
+public final class VkQueueFamilyDataGraphPropertiesARM extends GroupType {
     /// The struct layout of `VkQueueFamilyDataGraphPropertiesARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -64,20 +64,21 @@ public sealed class VkQueueFamilyDataGraphPropertiesARM extends GroupType {
     public static final MemoryLayout LAYOUT_operation = LAYOUT.select(PathElement.groupElement("operation"));
 
     /// Creates `VkQueueFamilyDataGraphPropertiesARM` with the given segment.
-    /// @param segment the memory segment
-    public VkQueueFamilyDataGraphPropertiesARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkQueueFamilyDataGraphPropertiesARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkQueueFamilyDataGraphPropertiesARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkQueueFamilyDataGraphPropertiesARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyDataGraphPropertiesARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkQueueFamilyDataGraphPropertiesARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkQueueFamilyDataGraphPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyDataGraphPropertiesARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkQueueFamilyDataGraphPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyDataGraphPropertiesARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkQueueFamilyDataGraphPropertiesARM` with the given segment.
     ///
@@ -85,18 +86,18 @@ public sealed class VkQueueFamilyDataGraphPropertiesARM extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkQueueFamilyDataGraphPropertiesARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueueFamilyDataGraphPropertiesARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkQueueFamilyDataGraphPropertiesARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkQueueFamilyDataGraphPropertiesARM`
-    public static VkQueueFamilyDataGraphPropertiesARM alloc(SegmentAllocator allocator) { return new VkQueueFamilyDataGraphPropertiesARM(allocator.allocate(LAYOUT)); }
+    public static VkQueueFamilyDataGraphPropertiesARM alloc(SegmentAllocator allocator) { return new VkQueueFamilyDataGraphPropertiesARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkQueueFamilyDataGraphPropertiesARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkQueueFamilyDataGraphPropertiesARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkQueueFamilyDataGraphPropertiesARM alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyDataGraphPropertiesARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkQueueFamilyDataGraphPropertiesARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -141,9 +142,10 @@ public sealed class VkQueueFamilyDataGraphPropertiesARM extends GroupType {
     /// @return `this`
     public VkQueueFamilyDataGraphPropertiesARM copyFrom(VkQueueFamilyDataGraphPropertiesARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkQueueFamilyDataGraphPropertiesARM reinterpret(long count) { return new VkQueueFamilyDataGraphPropertiesARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -217,73 +219,67 @@ public sealed class VkQueueFamilyDataGraphPropertiesARM extends GroupType {
     /// @return `this`
     public VkQueueFamilyDataGraphPropertiesARM operation(Consumer<overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphOperationSupportARM> func) { func.accept(overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphOperationSupportARM.of(operation())); return this; }
 
-    /// A buffer of [VkQueueFamilyDataGraphPropertiesARM].
-    public static final class Buffer extends VkQueueFamilyDataGraphPropertiesARM {
-        private final long elementCount;
+    /// Creates a slice of `VkQueueFamilyDataGraphPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkQueueFamilyDataGraphPropertiesARM`
+    public VkQueueFamilyDataGraphPropertiesARM asSlice(long index) { return new VkQueueFamilyDataGraphPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkQueueFamilyDataGraphPropertiesARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkQueueFamilyDataGraphPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkQueueFamilyDataGraphPropertiesARM`
+    public VkQueueFamilyDataGraphPropertiesARM asSlice(long index, long count) { return new VkQueueFamilyDataGraphPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkQueueFamilyDataGraphPropertiesARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkQueueFamilyDataGraphPropertiesARM at(long index, Consumer<VkQueueFamilyDataGraphPropertiesARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkQueueFamilyDataGraphPropertiesARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkQueueFamilyDataGraphPropertiesARM`
-        public VkQueueFamilyDataGraphPropertiesARM asSlice(long index) { return new VkQueueFamilyDataGraphPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueueFamilyDataGraphPropertiesARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkQueueFamilyDataGraphPropertiesARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkQueueFamilyDataGraphPropertiesARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueueFamilyDataGraphPropertiesARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `engine` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment engineAt(long index) { return engine(this.segment(), index); }
+    /// Sets `engine` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueueFamilyDataGraphPropertiesARM engineAt(long index, MemorySegment value) { engine(this.segment(), index, value); return this; }
+    /// Accepts `engine` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkQueueFamilyDataGraphPropertiesARM engineAt(long index, Consumer<overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphProcessingEngineARM> func) { func.accept(overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphProcessingEngineARM.of(engineAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `operation` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment operationAt(long index) { return operation(this.segment(), index); }
+    /// Sets `operation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueueFamilyDataGraphPropertiesARM operationAt(long index, MemorySegment value) { operation(this.segment(), index, value); return this; }
+    /// Accepts `operation` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkQueueFamilyDataGraphPropertiesARM operationAt(long index, Consumer<overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphOperationSupportARM> func) { func.accept(overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphOperationSupportARM.of(operationAt(index))); return this; }
 
-        /// {@return `engine` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment engineAt(long index) { return engine(this.segment(), index); }
-        /// Sets `engine` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer engineAt(long index, MemorySegment value) { engine(this.segment(), index, value); return this; }
-        /// Accepts `engine` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer engineAt(long index, Consumer<overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphProcessingEngineARM> func) { func.accept(overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphProcessingEngineARM.of(engineAt(index))); return this; }
-
-        /// {@return `operation` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment operationAt(long index) { return operation(this.segment(), index); }
-        /// Sets `operation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer operationAt(long index, MemorySegment value) { operation(this.segment(), index, value); return this; }
-        /// Accepts `operation` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer operationAt(long index, Consumer<overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphOperationSupportARM> func) { func.accept(overrungl.vulkan.arm.struct.VkPhysicalDeviceDataGraphOperationSupportARM.of(operationAt(index))); return this; }
-
-    }
 }

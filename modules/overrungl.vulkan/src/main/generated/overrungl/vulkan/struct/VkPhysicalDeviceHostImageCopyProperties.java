@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 identicalMemoryTypeRequirements;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceHostImageCopyProperties extends GroupType {
+public final class VkPhysicalDeviceHostImageCopyProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceHostImageCopyProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -99,20 +100,21 @@ public sealed class VkPhysicalDeviceHostImageCopyProperties extends GroupType {
     public static final VarHandle VH_identicalMemoryTypeRequirements = LAYOUT.arrayElementVarHandle(PathElement.groupElement("identicalMemoryTypeRequirements"));
 
     /// Creates `VkPhysicalDeviceHostImageCopyProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceHostImageCopyProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceHostImageCopyProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceHostImageCopyProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceHostImageCopyProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceHostImageCopyProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceHostImageCopyProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceHostImageCopyProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceHostImageCopyProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceHostImageCopyProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceHostImageCopyProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceHostImageCopyProperties` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkPhysicalDeviceHostImageCopyProperties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceHostImageCopyProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceHostImageCopyProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
-    public static VkPhysicalDeviceHostImageCopyProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceHostImageCopyProperties(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceHostImageCopyProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceHostImageCopyProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceHostImageCopyProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceHostImageCopyProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceHostImageCopyProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceHostImageCopyProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkPhysicalDeviceHostImageCopyProperties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceHostImageCopyProperties copyFrom(VkPhysicalDeviceHostImageCopyProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceHostImageCopyProperties reinterpret(long count) { return new VkPhysicalDeviceHostImageCopyProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -381,109 +384,103 @@ public sealed class VkPhysicalDeviceHostImageCopyProperties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceHostImageCopyProperties identicalMemoryTypeRequirements(int value) { identicalMemoryTypeRequirements(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceHostImageCopyProperties].
-    public static final class Buffer extends VkPhysicalDeviceHostImageCopyProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceHostImageCopyProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceHostImageCopyProperties`
+    public VkPhysicalDeviceHostImageCopyProperties asSlice(long index) { return new VkPhysicalDeviceHostImageCopyProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceHostImageCopyProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceHostImageCopyProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceHostImageCopyProperties`
+    public VkPhysicalDeviceHostImageCopyProperties asSlice(long index, long count) { return new VkPhysicalDeviceHostImageCopyProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceHostImageCopyProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties at(long index, Consumer<VkPhysicalDeviceHostImageCopyProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceHostImageCopyProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceHostImageCopyProperties`
-        public VkPhysicalDeviceHostImageCopyProperties asSlice(long index) { return new VkPhysicalDeviceHostImageCopyProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceHostImageCopyProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceHostImageCopyProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `copySrcLayoutCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int copySrcLayoutCountAt(long index) { return copySrcLayoutCount(this.segment(), index); }
+    /// Sets `copySrcLayoutCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties copySrcLayoutCountAt(long index, int value) { copySrcLayoutCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pCopySrcLayouts` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pCopySrcLayoutsAt(long index) { return pCopySrcLayouts(this.segment(), index); }
+    /// Sets `pCopySrcLayouts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties pCopySrcLayoutsAt(long index, MemorySegment value) { pCopySrcLayouts(this.segment(), index, value); return this; }
 
-        /// {@return `copySrcLayoutCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int copySrcLayoutCountAt(long index) { return copySrcLayoutCount(this.segment(), index); }
-        /// Sets `copySrcLayoutCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer copySrcLayoutCountAt(long index, int value) { copySrcLayoutCount(this.segment(), index, value); return this; }
+    /// {@return `copyDstLayoutCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int copyDstLayoutCountAt(long index) { return copyDstLayoutCount(this.segment(), index); }
+    /// Sets `copyDstLayoutCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties copyDstLayoutCountAt(long index, int value) { copyDstLayoutCount(this.segment(), index, value); return this; }
 
-        /// {@return `pCopySrcLayouts` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pCopySrcLayoutsAt(long index) { return pCopySrcLayouts(this.segment(), index); }
-        /// Sets `pCopySrcLayouts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pCopySrcLayoutsAt(long index, MemorySegment value) { pCopySrcLayouts(this.segment(), index, value); return this; }
+    /// {@return `pCopyDstLayouts` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pCopyDstLayoutsAt(long index) { return pCopyDstLayouts(this.segment(), index); }
+    /// Sets `pCopyDstLayouts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties pCopyDstLayoutsAt(long index, MemorySegment value) { pCopyDstLayouts(this.segment(), index, value); return this; }
 
-        /// {@return `copyDstLayoutCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int copyDstLayoutCountAt(long index) { return copyDstLayoutCount(this.segment(), index); }
-        /// Sets `copyDstLayoutCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer copyDstLayoutCountAt(long index, int value) { copyDstLayoutCount(this.segment(), index, value); return this; }
-
-        /// {@return `pCopyDstLayouts` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pCopyDstLayoutsAt(long index) { return pCopyDstLayouts(this.segment(), index); }
-        /// Sets `pCopyDstLayouts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pCopyDstLayoutsAt(long index, MemorySegment value) { pCopyDstLayouts(this.segment(), index, value); return this; }
-
-        /// {@return `optimalTilingLayoutUUID` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment optimalTilingLayoutUUIDAt(long index) { return optimalTilingLayoutUUID(this.segment(), index); }
-        /// {@return `optimalTilingLayoutUUID` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `optimalTilingLayoutUUID` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment optimalTilingLayoutUUIDAt(long index) { return optimalTilingLayoutUUID(this.segment(), index); }
+    /// {@return `optimalTilingLayoutUUID` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte optimalTilingLayoutUUIDAt(long index, long index0) { return optimalTilingLayoutUUID(this.segment(), index, index0); }
-        /// Sets `optimalTilingLayoutUUID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer optimalTilingLayoutUUIDAt(long index, MemorySegment value) { optimalTilingLayoutUUID(this.segment(), index, value); return this; }
-        /// Sets `optimalTilingLayoutUUID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer optimalTilingLayoutUUIDAt(long index, long index0, byte value) { optimalTilingLayoutUUID(this.segment(), index, index0, value); return this; }
+    /// Sets `optimalTilingLayoutUUID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUIDAt(long index, MemorySegment value) { optimalTilingLayoutUUID(this.segment(), index, value); return this; }
+    /// Sets `optimalTilingLayoutUUID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties optimalTilingLayoutUUIDAt(long index, long index0, byte value) { optimalTilingLayoutUUID(this.segment(), index, index0, value); return this; }
 
-        /// {@return `identicalMemoryTypeRequirements` at the given index}
-        /// @param index the index of the struct buffer
-        public int identicalMemoryTypeRequirementsAt(long index) { return identicalMemoryTypeRequirements(this.segment(), index); }
-        /// Sets `identicalMemoryTypeRequirements` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer identicalMemoryTypeRequirementsAt(long index, int value) { identicalMemoryTypeRequirements(this.segment(), index, value); return this; }
+    /// {@return `identicalMemoryTypeRequirements` at the given index}
+    /// @param index the index of the struct buffer
+    public int identicalMemoryTypeRequirementsAt(long index) { return identicalMemoryTypeRequirements(this.segment(), index); }
+    /// Sets `identicalMemoryTypeRequirements` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceHostImageCopyProperties identicalMemoryTypeRequirementsAt(long index, int value) { identicalMemoryTypeRequirements(this.segment(), index, value); return this; }
 
-    }
 }

@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -33,7 +33,7 @@ import java.util.function.*;
 ///     (union VkClearValue) VkClearValue clearValue;
 /// };
 /// ```
-public sealed class VkClearAttachment extends GroupType {
+public final class VkClearAttachment extends GroupType {
     /// The struct layout of `VkClearAttachment`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("aspectMask"),
@@ -58,20 +58,21 @@ public sealed class VkClearAttachment extends GroupType {
     public static final MemoryLayout LAYOUT_clearValue = LAYOUT.select(PathElement.groupElement("clearValue"));
 
     /// Creates `VkClearAttachment` with the given segment.
-    /// @param segment the memory segment
-    public VkClearAttachment(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkClearAttachment(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClearAttachment` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClearAttachment of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearAttachment(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClearAttachment` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClearAttachment ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearAttachment(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClearAttachment ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearAttachment(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClearAttachment` with the given segment.
     ///
@@ -79,18 +80,18 @@ public sealed class VkClearAttachment extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClearAttachment ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearAttachment(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClearAttachment` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClearAttachment`
-    public static VkClearAttachment alloc(SegmentAllocator allocator) { return new VkClearAttachment(allocator.allocate(LAYOUT)); }
+    public static VkClearAttachment alloc(SegmentAllocator allocator) { return new VkClearAttachment(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClearAttachment` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClearAttachment`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClearAttachment alloc(SegmentAllocator allocator, long count) { return new VkClearAttachment(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkClearAttachment` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -124,9 +125,10 @@ public sealed class VkClearAttachment extends GroupType {
     /// @return `this`
     public VkClearAttachment copyFrom(VkClearAttachment src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClearAttachment reinterpret(long count) { return new VkClearAttachment(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `aspectMask` at the given index}
     /// @param segment the segment of the struct
@@ -180,59 +182,53 @@ public sealed class VkClearAttachment extends GroupType {
     /// @return `this`
     public VkClearAttachment clearValue(Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValue())); return this; }
 
-    /// A buffer of [VkClearAttachment].
-    public static final class Buffer extends VkClearAttachment {
-        private final long elementCount;
+    /// Creates a slice of `VkClearAttachment`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkClearAttachment`
+    public VkClearAttachment asSlice(long index) { return new VkClearAttachment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClearAttachment.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClearAttachment`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkClearAttachment`
+    public VkClearAttachment asSlice(long index, long count) { return new VkClearAttachment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClearAttachment` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClearAttachment at(long index, Consumer<VkClearAttachment> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClearAttachment`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkClearAttachment`
-        public VkClearAttachment asSlice(long index) { return new VkClearAttachment(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `aspectMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int aspectMaskAt(long index) { return aspectMask(this.segment(), index); }
+    /// Sets `aspectMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClearAttachment aspectMaskAt(long index, int value) { aspectMask(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkClearAttachment`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkClearAttachment`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `colorAttachment` at the given index}
+    /// @param index the index of the struct buffer
+    public int colorAttachmentAt(long index) { return colorAttachment(this.segment(), index); }
+    /// Sets `colorAttachment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClearAttachment colorAttachmentAt(long index, int value) { colorAttachment(this.segment(), index, value); return this; }
 
-        /// {@return `aspectMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int aspectMaskAt(long index) { return aspectMask(this.segment(), index); }
-        /// Sets `aspectMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer aspectMaskAt(long index, int value) { aspectMask(this.segment(), index, value); return this; }
+    /// {@return `clearValue` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment clearValueAt(long index) { return clearValue(this.segment(), index); }
+    /// Sets `clearValue` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClearAttachment clearValueAt(long index, MemorySegment value) { clearValue(this.segment(), index, value); return this; }
+    /// Accepts `clearValue` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkClearAttachment clearValueAt(long index, Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValueAt(index))); return this; }
 
-        /// {@return `colorAttachment` at the given index}
-        /// @param index the index of the struct buffer
-        public int colorAttachmentAt(long index) { return colorAttachment(this.segment(), index); }
-        /// Sets `colorAttachment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer colorAttachmentAt(long index, int value) { colorAttachment(this.segment(), index, value); return this; }
-
-        /// {@return `clearValue` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment clearValueAt(long index) { return clearValue(this.segment(), index); }
-        /// Sets `clearValue` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clearValueAt(long index, MemorySegment value) { clearValue(this.segment(), index, value); return this; }
-        /// Accepts `clearValue` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer clearValueAt(long index, Consumer<overrungl.vulkan.union.VkClearValue> func) { func.accept(overrungl.vulkan.union.VkClearValue.of(clearValueAt(index))); return this; }
-
-    }
 }

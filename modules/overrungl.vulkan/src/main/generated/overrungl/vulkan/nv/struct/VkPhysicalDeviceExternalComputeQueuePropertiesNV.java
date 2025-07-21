@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint32_t maxExternalQueues;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends GroupType {
+public final class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceExternalComputeQueuePropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Gro
     public static final VarHandle VH_maxExternalQueues = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxExternalQueues"));
 
     /// Creates `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceExternalComputeQueuePropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalComputeQueuePropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalComputeQueuePropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalComputeQueuePropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Gro
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalComputeQueuePropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
-    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Gro
     /// @return `this`
     public VkPhysicalDeviceExternalComputeQueuePropertiesNV copyFrom(VkPhysicalDeviceExternalComputeQueuePropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV reinterpret(long count) { return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Gro
     /// @return `this`
     public VkPhysicalDeviceExternalComputeQueuePropertiesNV maxExternalQueues(int value) { maxExternalQueues(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceExternalComputeQueuePropertiesNV].
-    public static final class Buffer extends VkPhysicalDeviceExternalComputeQueuePropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceExternalComputeQueuePropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV asSlice(long index) { return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceExternalComputeQueuePropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceExternalComputeQueuePropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceExternalComputeQueuePropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV at(long index, Consumer<VkPhysicalDeviceExternalComputeQueuePropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExternalComputeQueuePropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
-        public VkPhysicalDeviceExternalComputeQueuePropertiesNV asSlice(long index) { return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExternalComputeQueuePropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `externalDataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int externalDataSizeAt(long index) { return externalDataSize(this.segment(), index); }
+    /// Sets `externalDataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV externalDataSizeAt(long index, int value) { externalDataSize(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxExternalQueues` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxExternalQueuesAt(long index) { return maxExternalQueues(this.segment(), index); }
+    /// Sets `maxExternalQueues` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalComputeQueuePropertiesNV maxExternalQueuesAt(long index, int value) { maxExternalQueues(this.segment(), index, value); return this; }
 
-        /// {@return `externalDataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int externalDataSizeAt(long index) { return externalDataSize(this.segment(), index); }
-        /// Sets `externalDataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer externalDataSizeAt(long index, int value) { externalDataSize(this.segment(), index, value); return this; }
-
-        /// {@return `maxExternalQueues` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxExternalQueuesAt(long index) { return maxExternalQueues(this.segment(), index); }
-        /// Sets `maxExternalQueues` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxExternalQueuesAt(long index, int value) { maxExternalQueues(this.segment(), index, value); return this; }
-
-    }
 }

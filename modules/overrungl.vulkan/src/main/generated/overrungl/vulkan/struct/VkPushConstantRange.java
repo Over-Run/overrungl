@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t size;
 /// };
 /// ```
-public sealed class VkPushConstantRange extends GroupType {
+public final class VkPushConstantRange extends GroupType {
     /// The struct layout of `VkPushConstantRange`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("stageFlags"),
@@ -59,20 +60,21 @@ public sealed class VkPushConstantRange extends GroupType {
     public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
 
     /// Creates `VkPushConstantRange` with the given segment.
-    /// @param segment the memory segment
-    public VkPushConstantRange(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPushConstantRange(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPushConstantRange` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPushConstantRange of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushConstantRange(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPushConstantRange` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPushConstantRange ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushConstantRange(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPushConstantRange ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushConstantRange(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPushConstantRange` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPushConstantRange extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPushConstantRange ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPushConstantRange(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPushConstantRange` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPushConstantRange`
-    public static VkPushConstantRange alloc(SegmentAllocator allocator) { return new VkPushConstantRange(allocator.allocate(LAYOUT)); }
+    public static VkPushConstantRange alloc(SegmentAllocator allocator) { return new VkPushConstantRange(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPushConstantRange` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPushConstantRange`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPushConstantRange alloc(SegmentAllocator allocator, long count) { return new VkPushConstantRange(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPushConstantRange` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPushConstantRange extends GroupType {
     /// @return `this`
     public VkPushConstantRange copyFrom(VkPushConstantRange src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPushConstantRange reinterpret(long count) { return new VkPushConstantRange(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `stageFlags` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPushConstantRange extends GroupType {
     /// @return `this`
     public VkPushConstantRange size(int value) { size(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPushConstantRange].
-    public static final class Buffer extends VkPushConstantRange {
-        private final long elementCount;
+    /// Creates a slice of `VkPushConstantRange`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPushConstantRange`
+    public VkPushConstantRange asSlice(long index) { return new VkPushConstantRange(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPushConstantRange.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPushConstantRange`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPushConstantRange`
+    public VkPushConstantRange asSlice(long index, long count) { return new VkPushConstantRange(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPushConstantRange` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPushConstantRange at(long index, Consumer<VkPushConstantRange> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPushConstantRange`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPushConstantRange`
-        public VkPushConstantRange asSlice(long index) { return new VkPushConstantRange(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `stageFlags` at the given index}
+    /// @param index the index of the struct buffer
+    public int stageFlagsAt(long index) { return stageFlags(this.segment(), index); }
+    /// Sets `stageFlags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantRange stageFlagsAt(long index, int value) { stageFlags(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPushConstantRange`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPushConstantRange`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `offset` at the given index}
+    /// @param index the index of the struct buffer
+    public int offsetAt(long index) { return offset(this.segment(), index); }
+    /// Sets `offset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantRange offsetAt(long index, int value) { offset(this.segment(), index, value); return this; }
 
-        /// {@return `stageFlags` at the given index}
-        /// @param index the index of the struct buffer
-        public int stageFlagsAt(long index) { return stageFlags(this.segment(), index); }
-        /// Sets `stageFlags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stageFlagsAt(long index, int value) { stageFlags(this.segment(), index, value); return this; }
+    /// {@return `size` at the given index}
+    /// @param index the index of the struct buffer
+    public int sizeAt(long index) { return size(this.segment(), index); }
+    /// Sets `size` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPushConstantRange sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
 
-        /// {@return `offset` at the given index}
-        /// @param index the index of the struct buffer
-        public int offsetAt(long index) { return offset(this.segment(), index); }
-        /// Sets `offset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer offsetAt(long index, int value) { offset(this.segment(), index, value); return this; }
-
-        /// {@return `size` at the given index}
-        /// @param index the index of the struct buffer
-        public int sizeAt(long index) { return size(this.segment(), index); }
-        /// Sets `size` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
-
-    }
 }

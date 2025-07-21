@@ -21,9 +21,9 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -32,7 +32,7 @@ import java.util.function.*;
 ///     (struct VkGeometryAABBNV) VkGeometryAABBNV aabbs;
 /// };
 /// ```
-public sealed class VkGeometryDataNV extends GroupType {
+public final class VkGeometryDataNV extends GroupType {
     /// The struct layout of `VkGeometryDataNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.nv.struct.VkGeometryTrianglesNV.LAYOUT.withName("triangles"),
@@ -48,20 +48,21 @@ public sealed class VkGeometryDataNV extends GroupType {
     public static final MemoryLayout LAYOUT_aabbs = LAYOUT.select(PathElement.groupElement("aabbs"));
 
     /// Creates `VkGeometryDataNV` with the given segment.
-    /// @param segment the memory segment
-    public VkGeometryDataNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkGeometryDataNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkGeometryDataNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkGeometryDataNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryDataNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkGeometryDataNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkGeometryDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryDataNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkGeometryDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryDataNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkGeometryDataNV` with the given segment.
     ///
@@ -69,18 +70,18 @@ public sealed class VkGeometryDataNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkGeometryDataNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryDataNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkGeometryDataNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkGeometryDataNV`
-    public static VkGeometryDataNV alloc(SegmentAllocator allocator) { return new VkGeometryDataNV(allocator.allocate(LAYOUT)); }
+    public static VkGeometryDataNV alloc(SegmentAllocator allocator) { return new VkGeometryDataNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkGeometryDataNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkGeometryDataNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkGeometryDataNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryDataNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkGeometryDataNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -104,9 +105,10 @@ public sealed class VkGeometryDataNV extends GroupType {
     /// @return `this`
     public VkGeometryDataNV copyFrom(VkGeometryDataNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkGeometryDataNV reinterpret(long count) { return new VkGeometryDataNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `triangles` at the given index}
     /// @param segment the segment of the struct
@@ -148,55 +150,49 @@ public sealed class VkGeometryDataNV extends GroupType {
     /// @return `this`
     public VkGeometryDataNV aabbs(Consumer<overrungl.vulkan.nv.struct.VkGeometryAABBNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryAABBNV.of(aabbs())); return this; }
 
-    /// A buffer of [VkGeometryDataNV].
-    public static final class Buffer extends VkGeometryDataNV {
-        private final long elementCount;
+    /// Creates a slice of `VkGeometryDataNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkGeometryDataNV`
+    public VkGeometryDataNV asSlice(long index) { return new VkGeometryDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkGeometryDataNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkGeometryDataNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkGeometryDataNV`
+    public VkGeometryDataNV asSlice(long index, long count) { return new VkGeometryDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkGeometryDataNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkGeometryDataNV at(long index, Consumer<VkGeometryDataNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkGeometryDataNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkGeometryDataNV`
-        public VkGeometryDataNV asSlice(long index) { return new VkGeometryDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `triangles` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment trianglesAt(long index) { return triangles(this.segment(), index); }
+    /// Sets `triangles` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryDataNV trianglesAt(long index, MemorySegment value) { triangles(this.segment(), index, value); return this; }
+    /// Accepts `triangles` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkGeometryDataNV trianglesAt(long index, Consumer<overrungl.vulkan.nv.struct.VkGeometryTrianglesNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryTrianglesNV.of(trianglesAt(index))); return this; }
 
-        /// Creates a slice of `VkGeometryDataNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkGeometryDataNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `aabbs` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment aabbsAt(long index) { return aabbs(this.segment(), index); }
+    /// Sets `aabbs` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryDataNV aabbsAt(long index, MemorySegment value) { aabbs(this.segment(), index, value); return this; }
+    /// Accepts `aabbs` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkGeometryDataNV aabbsAt(long index, Consumer<overrungl.vulkan.nv.struct.VkGeometryAABBNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryAABBNV.of(aabbsAt(index))); return this; }
 
-        /// {@return `triangles` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment trianglesAt(long index) { return triangles(this.segment(), index); }
-        /// Sets `triangles` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer trianglesAt(long index, MemorySegment value) { triangles(this.segment(), index, value); return this; }
-        /// Accepts `triangles` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer trianglesAt(long index, Consumer<overrungl.vulkan.nv.struct.VkGeometryTrianglesNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryTrianglesNV.of(trianglesAt(index))); return this; }
-
-        /// {@return `aabbs` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment aabbsAt(long index) { return aabbs(this.segment(), index); }
-        /// Sets `aabbs` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer aabbsAt(long index, MemorySegment value) { aabbs(this.segment(), index, value); return this; }
-        /// Accepts `aabbs` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer aabbsAt(long index, Consumer<overrungl.vulkan.nv.struct.VkGeometryAABBNV> func) { func.accept(overrungl.vulkan.nv.struct.VkGeometryAABBNV.of(aabbsAt(index))); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint16_t format;
 /// };
 /// ```
-public sealed class VkMicromapTriangleEXT extends GroupType {
+public final class VkMicromapTriangleEXT extends GroupType {
     /// The struct layout of `VkMicromapTriangleEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("dataOffset"),
@@ -59,20 +60,21 @@ public sealed class VkMicromapTriangleEXT extends GroupType {
     public static final VarHandle VH_format = LAYOUT.arrayElementVarHandle(PathElement.groupElement("format"));
 
     /// Creates `VkMicromapTriangleEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkMicromapTriangleEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkMicromapTriangleEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkMicromapTriangleEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkMicromapTriangleEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMicromapTriangleEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkMicromapTriangleEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkMicromapTriangleEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMicromapTriangleEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkMicromapTriangleEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkMicromapTriangleEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkMicromapTriangleEXT` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkMicromapTriangleEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkMicromapTriangleEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkMicromapTriangleEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkMicromapTriangleEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkMicromapTriangleEXT`
-    public static VkMicromapTriangleEXT alloc(SegmentAllocator allocator) { return new VkMicromapTriangleEXT(allocator.allocate(LAYOUT)); }
+    public static VkMicromapTriangleEXT alloc(SegmentAllocator allocator) { return new VkMicromapTriangleEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkMicromapTriangleEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkMicromapTriangleEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkMicromapTriangleEXT alloc(SegmentAllocator allocator, long count) { return new VkMicromapTriangleEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkMicromapTriangleEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkMicromapTriangleEXT extends GroupType {
     /// @return `this`
     public VkMicromapTriangleEXT copyFrom(VkMicromapTriangleEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkMicromapTriangleEXT reinterpret(long count) { return new VkMicromapTriangleEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `dataOffset` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkMicromapTriangleEXT extends GroupType {
     /// @return `this`
     public VkMicromapTriangleEXT format(short value) { format(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkMicromapTriangleEXT].
-    public static final class Buffer extends VkMicromapTriangleEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkMicromapTriangleEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkMicromapTriangleEXT`
+    public VkMicromapTriangleEXT asSlice(long index) { return new VkMicromapTriangleEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkMicromapTriangleEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkMicromapTriangleEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkMicromapTriangleEXT`
+    public VkMicromapTriangleEXT asSlice(long index, long count) { return new VkMicromapTriangleEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkMicromapTriangleEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkMicromapTriangleEXT at(long index, Consumer<VkMicromapTriangleEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkMicromapTriangleEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkMicromapTriangleEXT`
-        public VkMicromapTriangleEXT asSlice(long index) { return new VkMicromapTriangleEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `dataOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int dataOffsetAt(long index) { return dataOffset(this.segment(), index); }
+    /// Sets `dataOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMicromapTriangleEXT dataOffsetAt(long index, int value) { dataOffset(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkMicromapTriangleEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkMicromapTriangleEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `subdivisionLevel` at the given index}
+    /// @param index the index of the struct buffer
+    public short subdivisionLevelAt(long index) { return subdivisionLevel(this.segment(), index); }
+    /// Sets `subdivisionLevel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMicromapTriangleEXT subdivisionLevelAt(long index, short value) { subdivisionLevel(this.segment(), index, value); return this; }
 
-        /// {@return `dataOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int dataOffsetAt(long index) { return dataOffset(this.segment(), index); }
-        /// Sets `dataOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dataOffsetAt(long index, int value) { dataOffset(this.segment(), index, value); return this; }
+    /// {@return `format` at the given index}
+    /// @param index the index of the struct buffer
+    public short formatAt(long index) { return format(this.segment(), index); }
+    /// Sets `format` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkMicromapTriangleEXT formatAt(long index, short value) { format(this.segment(), index, value); return this; }
 
-        /// {@return `subdivisionLevel` at the given index}
-        /// @param index the index of the struct buffer
-        public short subdivisionLevelAt(long index) { return subdivisionLevel(this.segment(), index); }
-        /// Sets `subdivisionLevel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subdivisionLevelAt(long index, short value) { subdivisionLevel(this.segment(), index, value); return this; }
-
-        /// {@return `format` at the given index}
-        /// @param index the index of the struct buffer
-        public short formatAt(long index) { return format(this.segment(), index); }
-        /// Sets `format` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer formatAt(long index, short value) { format(this.segment(), index, value); return this; }
-
-    }
 }

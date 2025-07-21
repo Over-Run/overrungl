@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -34,7 +34,7 @@ import java.util.function.*;
 ///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR data;
 /// };
 /// ```
-public sealed class VkAccelerationStructureGeometryInstancesDataKHR extends GroupType {
+public final class VkAccelerationStructureGeometryInstancesDataKHR extends GroupType {
     /// The struct layout of `VkAccelerationStructureGeometryInstancesDataKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -66,20 +66,21 @@ public sealed class VkAccelerationStructureGeometryInstancesDataKHR extends Grou
     public static final MemoryLayout LAYOUT_data = LAYOUT.select(PathElement.groupElement("data"));
 
     /// Creates `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAccelerationStructureGeometryInstancesDataKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAccelerationStructureGeometryInstancesDataKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryInstancesDataKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureGeometryInstancesDataKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryInstancesDataKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAccelerationStructureGeometryInstancesDataKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryInstancesDataKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment.
     ///
@@ -87,18 +88,18 @@ public sealed class VkAccelerationStructureGeometryInstancesDataKHR extends Grou
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAccelerationStructureGeometryInstancesDataKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryInstancesDataKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureGeometryInstancesDataKHR`
-    public static VkAccelerationStructureGeometryInstancesDataKHR alloc(SegmentAllocator allocator) { return new VkAccelerationStructureGeometryInstancesDataKHR(allocator.allocate(LAYOUT)); }
+    public static VkAccelerationStructureGeometryInstancesDataKHR alloc(SegmentAllocator allocator) { return new VkAccelerationStructureGeometryInstancesDataKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureGeometryInstancesDataKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAccelerationStructureGeometryInstancesDataKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureGeometryInstancesDataKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAccelerationStructureGeometryInstancesDataKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -143,9 +144,10 @@ public sealed class VkAccelerationStructureGeometryInstancesDataKHR extends Grou
     /// @return `this`
     public VkAccelerationStructureGeometryInstancesDataKHR copyFrom(VkAccelerationStructureGeometryInstancesDataKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAccelerationStructureGeometryInstancesDataKHR reinterpret(long count) { return new VkAccelerationStructureGeometryInstancesDataKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -215,68 +217,62 @@ public sealed class VkAccelerationStructureGeometryInstancesDataKHR extends Grou
     /// @return `this`
     public VkAccelerationStructureGeometryInstancesDataKHR data(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(data())); return this; }
 
-    /// A buffer of [VkAccelerationStructureGeometryInstancesDataKHR].
-    public static final class Buffer extends VkAccelerationStructureGeometryInstancesDataKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkAccelerationStructureGeometryInstancesDataKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureGeometryInstancesDataKHR`
+    public VkAccelerationStructureGeometryInstancesDataKHR asSlice(long index) { return new VkAccelerationStructureGeometryInstancesDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAccelerationStructureGeometryInstancesDataKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAccelerationStructureGeometryInstancesDataKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureGeometryInstancesDataKHR`
+    public VkAccelerationStructureGeometryInstancesDataKHR asSlice(long index, long count) { return new VkAccelerationStructureGeometryInstancesDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAccelerationStructureGeometryInstancesDataKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAccelerationStructureGeometryInstancesDataKHR at(long index, Consumer<VkAccelerationStructureGeometryInstancesDataKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureGeometryInstancesDataKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAccelerationStructureGeometryInstancesDataKHR`
-        public VkAccelerationStructureGeometryInstancesDataKHR asSlice(long index) { return new VkAccelerationStructureGeometryInstancesDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryInstancesDataKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureGeometryInstancesDataKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAccelerationStructureGeometryInstancesDataKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryInstancesDataKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `arrayOfPointers` at the given index}
+    /// @param index the index of the struct buffer
+    public int arrayOfPointersAt(long index) { return arrayOfPointers(this.segment(), index); }
+    /// Sets `arrayOfPointers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryInstancesDataKHR arrayOfPointersAt(long index, int value) { arrayOfPointers(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `data` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment dataAt(long index) { return data(this.segment(), index); }
+    /// Sets `data` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryInstancesDataKHR dataAt(long index, MemorySegment value) { data(this.segment(), index, value); return this; }
+    /// Accepts `data` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryInstancesDataKHR dataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(dataAt(index))); return this; }
 
-        /// {@return `arrayOfPointers` at the given index}
-        /// @param index the index of the struct buffer
-        public int arrayOfPointersAt(long index) { return arrayOfPointers(this.segment(), index); }
-        /// Sets `arrayOfPointers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer arrayOfPointersAt(long index, int value) { arrayOfPointers(this.segment(), index, value); return this; }
-
-        /// {@return `data` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment dataAt(long index) { return data(this.segment(), index); }
-        /// Sets `data` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dataAt(long index, MemorySegment value) { data(this.segment(), index, value); return this; }
-        /// Accepts `data` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer dataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(dataAt(index))); return this; }
-
-    }
 }

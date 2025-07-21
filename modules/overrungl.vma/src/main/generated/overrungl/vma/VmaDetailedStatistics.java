@@ -21,9 +21,9 @@ package overrungl.vma;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -36,7 +36,7 @@ import java.util.function.*;
 ///     (uint64_t) VkDeviceSize unusedRangeSizeMax;
 /// };
 /// ```
-public sealed class VmaDetailedStatistics extends GroupType {
+public final class VmaDetailedStatistics extends GroupType {
     /// The struct layout of `VmaDetailedStatistics`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         VmaStatistics.LAYOUT.withName("statistics"),
@@ -82,20 +82,21 @@ public sealed class VmaDetailedStatistics extends GroupType {
     public static final VarHandle VH_unusedRangeSizeMax = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unusedRangeSizeMax"));
 
     /// Creates `VmaDetailedStatistics` with the given segment.
-    /// @param segment the memory segment
-    public VmaDetailedStatistics(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VmaDetailedStatistics(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VmaDetailedStatistics` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VmaDetailedStatistics of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDetailedStatistics(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VmaDetailedStatistics` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VmaDetailedStatistics ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDetailedStatistics(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VmaDetailedStatistics ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDetailedStatistics(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VmaDetailedStatistics` with the given segment.
     ///
@@ -103,18 +104,18 @@ public sealed class VmaDetailedStatistics extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VmaDetailedStatistics ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDetailedStatistics(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VmaDetailedStatistics` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VmaDetailedStatistics`
-    public static VmaDetailedStatistics alloc(SegmentAllocator allocator) { return new VmaDetailedStatistics(allocator.allocate(LAYOUT)); }
+    public static VmaDetailedStatistics alloc(SegmentAllocator allocator) { return new VmaDetailedStatistics(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VmaDetailedStatistics` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VmaDetailedStatistics`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VmaDetailedStatistics alloc(SegmentAllocator allocator, long count) { return new VmaDetailedStatistics(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VmaDetailedStatistics` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -184,9 +185,10 @@ public sealed class VmaDetailedStatistics extends GroupType {
     /// @return `this`
     public VmaDetailedStatistics copyFrom(VmaDetailedStatistics src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VmaDetailedStatistics reinterpret(long count) { return new VmaDetailedStatistics(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `statistics` at the given index}
     /// @param segment the segment of the struct
@@ -288,86 +290,80 @@ public sealed class VmaDetailedStatistics extends GroupType {
     /// @return `this`
     public VmaDetailedStatistics unusedRangeSizeMax(long value) { unusedRangeSizeMax(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VmaDetailedStatistics].
-    public static final class Buffer extends VmaDetailedStatistics {
-        private final long elementCount;
+    /// Creates a slice of `VmaDetailedStatistics`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VmaDetailedStatistics`
+    public VmaDetailedStatistics asSlice(long index) { return new VmaDetailedStatistics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VmaDetailedStatistics.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VmaDetailedStatistics`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VmaDetailedStatistics`
+    public VmaDetailedStatistics asSlice(long index, long count) { return new VmaDetailedStatistics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VmaDetailedStatistics` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VmaDetailedStatistics at(long index, Consumer<VmaDetailedStatistics> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VmaDetailedStatistics`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VmaDetailedStatistics`
-        public VmaDetailedStatistics asSlice(long index) { return new VmaDetailedStatistics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `statistics` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment statisticsAt(long index) { return statistics(this.segment(), index); }
+    /// Sets `statistics` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDetailedStatistics statisticsAt(long index, MemorySegment value) { statistics(this.segment(), index, value); return this; }
+    /// Accepts `statistics` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VmaDetailedStatistics statisticsAt(long index, Consumer<VmaStatistics> func) { func.accept(VmaStatistics.of(statisticsAt(index))); return this; }
 
-        /// Creates a slice of `VmaDetailedStatistics`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VmaDetailedStatistics`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `unusedRangeCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int unusedRangeCountAt(long index) { return unusedRangeCount(this.segment(), index); }
+    /// Sets `unusedRangeCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDetailedStatistics unusedRangeCountAt(long index, int value) { unusedRangeCount(this.segment(), index, value); return this; }
 
-        /// {@return `statistics` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment statisticsAt(long index) { return statistics(this.segment(), index); }
-        /// Sets `statistics` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer statisticsAt(long index, MemorySegment value) { statistics(this.segment(), index, value); return this; }
-        /// Accepts `statistics` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer statisticsAt(long index, Consumer<VmaStatistics> func) { func.accept(VmaStatistics.of(statisticsAt(index))); return this; }
+    /// {@return `allocationSizeMin` at the given index}
+    /// @param index the index of the struct buffer
+    public long allocationSizeMinAt(long index) { return allocationSizeMin(this.segment(), index); }
+    /// Sets `allocationSizeMin` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDetailedStatistics allocationSizeMinAt(long index, long value) { allocationSizeMin(this.segment(), index, value); return this; }
 
-        /// {@return `unusedRangeCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int unusedRangeCountAt(long index) { return unusedRangeCount(this.segment(), index); }
-        /// Sets `unusedRangeCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer unusedRangeCountAt(long index, int value) { unusedRangeCount(this.segment(), index, value); return this; }
+    /// {@return `allocationSizeMax` at the given index}
+    /// @param index the index of the struct buffer
+    public long allocationSizeMaxAt(long index) { return allocationSizeMax(this.segment(), index); }
+    /// Sets `allocationSizeMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDetailedStatistics allocationSizeMaxAt(long index, long value) { allocationSizeMax(this.segment(), index, value); return this; }
 
-        /// {@return `allocationSizeMin` at the given index}
-        /// @param index the index of the struct buffer
-        public long allocationSizeMinAt(long index) { return allocationSizeMin(this.segment(), index); }
-        /// Sets `allocationSizeMin` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer allocationSizeMinAt(long index, long value) { allocationSizeMin(this.segment(), index, value); return this; }
+    /// {@return `unusedRangeSizeMin` at the given index}
+    /// @param index the index of the struct buffer
+    public long unusedRangeSizeMinAt(long index) { return unusedRangeSizeMin(this.segment(), index); }
+    /// Sets `unusedRangeSizeMin` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDetailedStatistics unusedRangeSizeMinAt(long index, long value) { unusedRangeSizeMin(this.segment(), index, value); return this; }
 
-        /// {@return `allocationSizeMax` at the given index}
-        /// @param index the index of the struct buffer
-        public long allocationSizeMaxAt(long index) { return allocationSizeMax(this.segment(), index); }
-        /// Sets `allocationSizeMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer allocationSizeMaxAt(long index, long value) { allocationSizeMax(this.segment(), index, value); return this; }
+    /// {@return `unusedRangeSizeMax` at the given index}
+    /// @param index the index of the struct buffer
+    public long unusedRangeSizeMaxAt(long index) { return unusedRangeSizeMax(this.segment(), index); }
+    /// Sets `unusedRangeSizeMax` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDetailedStatistics unusedRangeSizeMaxAt(long index, long value) { unusedRangeSizeMax(this.segment(), index, value); return this; }
 
-        /// {@return `unusedRangeSizeMin` at the given index}
-        /// @param index the index of the struct buffer
-        public long unusedRangeSizeMinAt(long index) { return unusedRangeSizeMin(this.segment(), index); }
-        /// Sets `unusedRangeSizeMin` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer unusedRangeSizeMinAt(long index, long value) { unusedRangeSizeMin(this.segment(), index, value); return this; }
-
-        /// {@return `unusedRangeSizeMax` at the given index}
-        /// @param index the index of the struct buffer
-        public long unusedRangeSizeMaxAt(long index) { return unusedRangeSizeMax(this.segment(), index); }
-        /// Sets `unusedRangeSizeMax` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer unusedRangeSizeMaxAt(long index, long value) { unusedRangeSizeMax(this.segment(), index, value); return this; }
-
-    }
 }

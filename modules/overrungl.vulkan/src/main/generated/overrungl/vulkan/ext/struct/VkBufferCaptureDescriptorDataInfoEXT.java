@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkBuffer buffer;
 /// };
 /// ```
-public sealed class VkBufferCaptureDescriptorDataInfoEXT extends GroupType {
+public final class VkBufferCaptureDescriptorDataInfoEXT extends GroupType {
     /// The struct layout of `VkBufferCaptureDescriptorDataInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkBufferCaptureDescriptorDataInfoEXT extends GroupType {
     public static final VarHandle VH_buffer = LAYOUT.arrayElementVarHandle(PathElement.groupElement("buffer"));
 
     /// Creates `VkBufferCaptureDescriptorDataInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkBufferCaptureDescriptorDataInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkBufferCaptureDescriptorDataInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkBufferCaptureDescriptorDataInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkBufferCaptureDescriptorDataInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCaptureDescriptorDataInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBufferCaptureDescriptorDataInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferCaptureDescriptorDataInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCaptureDescriptorDataInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkBufferCaptureDescriptorDataInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCaptureDescriptorDataInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkBufferCaptureDescriptorDataInfoEXT` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkBufferCaptureDescriptorDataInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkBufferCaptureDescriptorDataInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCaptureDescriptorDataInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkBufferCaptureDescriptorDataInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBufferCaptureDescriptorDataInfoEXT`
-    public static VkBufferCaptureDescriptorDataInfoEXT alloc(SegmentAllocator allocator) { return new VkBufferCaptureDescriptorDataInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkBufferCaptureDescriptorDataInfoEXT alloc(SegmentAllocator allocator) { return new VkBufferCaptureDescriptorDataInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkBufferCaptureDescriptorDataInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBufferCaptureDescriptorDataInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkBufferCaptureDescriptorDataInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkBufferCaptureDescriptorDataInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkBufferCaptureDescriptorDataInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkBufferCaptureDescriptorDataInfoEXT extends GroupType {
     /// @return `this`
     public VkBufferCaptureDescriptorDataInfoEXT copyFrom(VkBufferCaptureDescriptorDataInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkBufferCaptureDescriptorDataInfoEXT reinterpret(long count) { return new VkBufferCaptureDescriptorDataInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkBufferCaptureDescriptorDataInfoEXT extends GroupType {
     /// @return `this`
     public VkBufferCaptureDescriptorDataInfoEXT buffer(long value) { buffer(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkBufferCaptureDescriptorDataInfoEXT].
-    public static final class Buffer extends VkBufferCaptureDescriptorDataInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkBufferCaptureDescriptorDataInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferCaptureDescriptorDataInfoEXT`
+    public VkBufferCaptureDescriptorDataInfoEXT asSlice(long index) { return new VkBufferCaptureDescriptorDataInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkBufferCaptureDescriptorDataInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkBufferCaptureDescriptorDataInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferCaptureDescriptorDataInfoEXT`
+    public VkBufferCaptureDescriptorDataInfoEXT asSlice(long index, long count) { return new VkBufferCaptureDescriptorDataInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkBufferCaptureDescriptorDataInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkBufferCaptureDescriptorDataInfoEXT at(long index, Consumer<VkBufferCaptureDescriptorDataInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkBufferCaptureDescriptorDataInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkBufferCaptureDescriptorDataInfoEXT`
-        public VkBufferCaptureDescriptorDataInfoEXT asSlice(long index) { return new VkBufferCaptureDescriptorDataInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCaptureDescriptorDataInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkBufferCaptureDescriptorDataInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkBufferCaptureDescriptorDataInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCaptureDescriptorDataInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `buffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long bufferAt(long index) { return buffer(this.segment(), index); }
+    /// Sets `buffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCaptureDescriptorDataInfoEXT bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `buffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long bufferAt(long index) { return buffer(this.segment(), index); }
-        /// Sets `buffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferAt(long index, long value) { buffer(this.segment(), index, value); return this; }
-
-    }
 }

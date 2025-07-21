@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     uint64_t stageIndexOffset;
 /// };
 /// ```
-public sealed class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
+public final class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// The struct layout of `VkPipelineCacheSafetyCriticalIndexEntry`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(16, ValueLayout.JAVA_BYTE).withName("pipelineIdentifier"),
@@ -91,20 +92,21 @@ public sealed class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     public static final VarHandle VH_stageIndexOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("stageIndexOffset"));
 
     /// Creates `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineCacheSafetyCriticalIndexEntry(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineCacheSafetyCriticalIndexEntry(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineCacheSafetyCriticalIndexEntry of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheSafetyCriticalIndexEntry(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCacheSafetyCriticalIndexEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheSafetyCriticalIndexEntry(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineCacheSafetyCriticalIndexEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheSafetyCriticalIndexEntry(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineCacheSafetyCriticalIndexEntry ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCacheSafetyCriticalIndexEntry(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
-    public static VkPipelineCacheSafetyCriticalIndexEntry alloc(SegmentAllocator allocator) { return new VkPipelineCacheSafetyCriticalIndexEntry(allocator.allocate(LAYOUT)); }
+    public static VkPipelineCacheSafetyCriticalIndexEntry alloc(SegmentAllocator allocator) { return new VkPipelineCacheSafetyCriticalIndexEntry(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineCacheSafetyCriticalIndexEntry`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineCacheSafetyCriticalIndexEntry alloc(SegmentAllocator allocator, long count) { return new VkPipelineCacheSafetyCriticalIndexEntry(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineCacheSafetyCriticalIndexEntry` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// @return `this`
     public VkPipelineCacheSafetyCriticalIndexEntry copyFrom(VkPipelineCacheSafetyCriticalIndexEntry src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineCacheSafetyCriticalIndexEntry reinterpret(long count) { return new VkPipelineCacheSafetyCriticalIndexEntry(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `pipelineIdentifier` at the given index}
     /// @param segment the segment of the struct
@@ -342,100 +345,94 @@ public sealed class VkPipelineCacheSafetyCriticalIndexEntry extends GroupType {
     /// @return `this`
     public VkPipelineCacheSafetyCriticalIndexEntry stageIndexOffset(long value) { stageIndexOffset(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineCacheSafetyCriticalIndexEntry].
-    public static final class Buffer extends VkPipelineCacheSafetyCriticalIndexEntry {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineCacheSafetyCriticalIndexEntry`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineCacheSafetyCriticalIndexEntry`
+    public VkPipelineCacheSafetyCriticalIndexEntry asSlice(long index) { return new VkPipelineCacheSafetyCriticalIndexEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineCacheSafetyCriticalIndexEntry.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineCacheSafetyCriticalIndexEntry`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineCacheSafetyCriticalIndexEntry`
+    public VkPipelineCacheSafetyCriticalIndexEntry asSlice(long index, long count) { return new VkPipelineCacheSafetyCriticalIndexEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineCacheSafetyCriticalIndexEntry` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineCacheSafetyCriticalIndexEntry at(long index, Consumer<VkPipelineCacheSafetyCriticalIndexEntry> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineCacheSafetyCriticalIndexEntry`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineCacheSafetyCriticalIndexEntry`
-        public VkPipelineCacheSafetyCriticalIndexEntry asSlice(long index) { return new VkPipelineCacheSafetyCriticalIndexEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
-
-        /// Creates a slice of `VkPipelineCacheSafetyCriticalIndexEntry`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineCacheSafetyCriticalIndexEntry`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `pipelineIdentifier` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pipelineIdentifierAt(long index) { return pipelineIdentifier(this.segment(), index); }
-        /// {@return `pipelineIdentifier` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `pipelineIdentifier` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pipelineIdentifierAt(long index) { return pipelineIdentifier(this.segment(), index); }
+    /// {@return `pipelineIdentifier` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte pipelineIdentifierAt(long index, long index0) { return pipelineIdentifier(this.segment(), index, index0); }
-        /// Sets `pipelineIdentifier` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineIdentifierAt(long index, MemorySegment value) { pipelineIdentifier(this.segment(), index, value); return this; }
-        /// Sets `pipelineIdentifier` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineIdentifierAt(long index, long index0, byte value) { pipelineIdentifier(this.segment(), index, index0, value); return this; }
+    /// Sets `pipelineIdentifier` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheSafetyCriticalIndexEntry pipelineIdentifierAt(long index, MemorySegment value) { pipelineIdentifier(this.segment(), index, value); return this; }
+    /// Sets `pipelineIdentifier` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheSafetyCriticalIndexEntry pipelineIdentifierAt(long index, long index0, byte value) { pipelineIdentifier(this.segment(), index, index0, value); return this; }
 
-        /// {@return `pipelineMemorySize` at the given index}
-        /// @param index the index of the struct buffer
-        public long pipelineMemorySizeAt(long index) { return pipelineMemorySize(this.segment(), index); }
-        /// Sets `pipelineMemorySize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineMemorySizeAt(long index, long value) { pipelineMemorySize(this.segment(), index, value); return this; }
+    /// {@return `pipelineMemorySize` at the given index}
+    /// @param index the index of the struct buffer
+    public long pipelineMemorySizeAt(long index) { return pipelineMemorySize(this.segment(), index); }
+    /// Sets `pipelineMemorySize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheSafetyCriticalIndexEntry pipelineMemorySizeAt(long index, long value) { pipelineMemorySize(this.segment(), index, value); return this; }
 
-        /// {@return `jsonSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long jsonSizeAt(long index) { return jsonSize(this.segment(), index); }
-        /// Sets `jsonSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer jsonSizeAt(long index, long value) { jsonSize(this.segment(), index, value); return this; }
+    /// {@return `jsonSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long jsonSizeAt(long index) { return jsonSize(this.segment(), index); }
+    /// Sets `jsonSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheSafetyCriticalIndexEntry jsonSizeAt(long index, long value) { jsonSize(this.segment(), index, value); return this; }
 
-        /// {@return `jsonOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long jsonOffsetAt(long index) { return jsonOffset(this.segment(), index); }
-        /// Sets `jsonOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer jsonOffsetAt(long index, long value) { jsonOffset(this.segment(), index, value); return this; }
+    /// {@return `jsonOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long jsonOffsetAt(long index) { return jsonOffset(this.segment(), index); }
+    /// Sets `jsonOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheSafetyCriticalIndexEntry jsonOffsetAt(long index, long value) { jsonOffset(this.segment(), index, value); return this; }
 
-        /// {@return `stageIndexCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int stageIndexCountAt(long index) { return stageIndexCount(this.segment(), index); }
-        /// Sets `stageIndexCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stageIndexCountAt(long index, int value) { stageIndexCount(this.segment(), index, value); return this; }
+    /// {@return `stageIndexCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int stageIndexCountAt(long index) { return stageIndexCount(this.segment(), index); }
+    /// Sets `stageIndexCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheSafetyCriticalIndexEntry stageIndexCountAt(long index, int value) { stageIndexCount(this.segment(), index, value); return this; }
 
-        /// {@return `stageIndexStride` at the given index}
-        /// @param index the index of the struct buffer
-        public int stageIndexStrideAt(long index) { return stageIndexStride(this.segment(), index); }
-        /// Sets `stageIndexStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stageIndexStrideAt(long index, int value) { stageIndexStride(this.segment(), index, value); return this; }
+    /// {@return `stageIndexStride` at the given index}
+    /// @param index the index of the struct buffer
+    public int stageIndexStrideAt(long index) { return stageIndexStride(this.segment(), index); }
+    /// Sets `stageIndexStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheSafetyCriticalIndexEntry stageIndexStrideAt(long index, int value) { stageIndexStride(this.segment(), index, value); return this; }
 
-        /// {@return `stageIndexOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long stageIndexOffsetAt(long index) { return stageIndexOffset(this.segment(), index); }
-        /// Sets `stageIndexOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stageIndexOffsetAt(long index, long value) { stageIndexOffset(this.segment(), index, value); return this; }
+    /// {@return `stageIndexOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long stageIndexOffsetAt(long index) { return stageIndexOffset(this.segment(), index); }
+    /// Sets `stageIndexOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCacheSafetyCriticalIndexEntry stageIndexOffsetAt(long index, long value) { stageIndexOffset(this.segment(), index, value); return this; }
 
-    }
 }

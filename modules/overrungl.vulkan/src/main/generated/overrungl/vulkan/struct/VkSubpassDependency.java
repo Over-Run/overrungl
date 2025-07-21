@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkDependencyFlags dependencyFlags;
 /// };
 /// ```
-public sealed class VkSubpassDependency extends GroupType {
+public final class VkSubpassDependency extends GroupType {
     /// The struct layout of `VkSubpassDependency`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("srcSubpass"),
@@ -91,20 +92,21 @@ public sealed class VkSubpassDependency extends GroupType {
     public static final VarHandle VH_dependencyFlags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dependencyFlags"));
 
     /// Creates `VkSubpassDependency` with the given segment.
-    /// @param segment the memory segment
-    public VkSubpassDependency(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSubpassDependency(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSubpassDependency` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSubpassDependency of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubpassDependency(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSubpassDependency` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSubpassDependency ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubpassDependency(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSubpassDependency ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubpassDependency(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSubpassDependency` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkSubpassDependency extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSubpassDependency ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSubpassDependency(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSubpassDependency` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSubpassDependency`
-    public static VkSubpassDependency alloc(SegmentAllocator allocator) { return new VkSubpassDependency(allocator.allocate(LAYOUT)); }
+    public static VkSubpassDependency alloc(SegmentAllocator allocator) { return new VkSubpassDependency(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSubpassDependency` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSubpassDependency`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSubpassDependency alloc(SegmentAllocator allocator, long count) { return new VkSubpassDependency(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSubpassDependency` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkSubpassDependency extends GroupType {
     /// @return `this`
     public VkSubpassDependency copyFrom(VkSubpassDependency src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSubpassDependency reinterpret(long count) { return new VkSubpassDependency(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `srcSubpass` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkSubpassDependency extends GroupType {
     /// @return `this`
     public VkSubpassDependency dependencyFlags(int value) { dependencyFlags(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSubpassDependency].
-    public static final class Buffer extends VkSubpassDependency {
-        private final long elementCount;
+    /// Creates a slice of `VkSubpassDependency`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSubpassDependency`
+    public VkSubpassDependency asSlice(long index) { return new VkSubpassDependency(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSubpassDependency.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSubpassDependency`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSubpassDependency`
+    public VkSubpassDependency asSlice(long index, long count) { return new VkSubpassDependency(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSubpassDependency` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSubpassDependency at(long index, Consumer<VkSubpassDependency> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSubpassDependency`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSubpassDependency`
-        public VkSubpassDependency asSlice(long index) { return new VkSubpassDependency(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `srcSubpass` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcSubpassAt(long index) { return srcSubpass(this.segment(), index); }
+    /// Sets `srcSubpass` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubpassDependency srcSubpassAt(long index, int value) { srcSubpass(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSubpassDependency`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSubpassDependency`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `dstSubpass` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstSubpassAt(long index) { return dstSubpass(this.segment(), index); }
+    /// Sets `dstSubpass` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubpassDependency dstSubpassAt(long index, int value) { dstSubpass(this.segment(), index, value); return this; }
 
-        /// {@return `srcSubpass` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcSubpassAt(long index) { return srcSubpass(this.segment(), index); }
-        /// Sets `srcSubpass` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcSubpassAt(long index, int value) { srcSubpass(this.segment(), index, value); return this; }
+    /// {@return `srcStageMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcStageMaskAt(long index) { return srcStageMask(this.segment(), index); }
+    /// Sets `srcStageMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubpassDependency srcStageMaskAt(long index, int value) { srcStageMask(this.segment(), index, value); return this; }
 
-        /// {@return `dstSubpass` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstSubpassAt(long index) { return dstSubpass(this.segment(), index); }
-        /// Sets `dstSubpass` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstSubpassAt(long index, int value) { dstSubpass(this.segment(), index, value); return this; }
+    /// {@return `dstStageMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstStageMaskAt(long index) { return dstStageMask(this.segment(), index); }
+    /// Sets `dstStageMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubpassDependency dstStageMaskAt(long index, int value) { dstStageMask(this.segment(), index, value); return this; }
 
-        /// {@return `srcStageMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcStageMaskAt(long index) { return srcStageMask(this.segment(), index); }
-        /// Sets `srcStageMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcStageMaskAt(long index, int value) { srcStageMask(this.segment(), index, value); return this; }
+    /// {@return `srcAccessMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcAccessMaskAt(long index) { return srcAccessMask(this.segment(), index); }
+    /// Sets `srcAccessMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubpassDependency srcAccessMaskAt(long index, int value) { srcAccessMask(this.segment(), index, value); return this; }
 
-        /// {@return `dstStageMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstStageMaskAt(long index) { return dstStageMask(this.segment(), index); }
-        /// Sets `dstStageMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstStageMaskAt(long index, int value) { dstStageMask(this.segment(), index, value); return this; }
+    /// {@return `dstAccessMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstAccessMaskAt(long index) { return dstAccessMask(this.segment(), index); }
+    /// Sets `dstAccessMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubpassDependency dstAccessMaskAt(long index, int value) { dstAccessMask(this.segment(), index, value); return this; }
 
-        /// {@return `srcAccessMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcAccessMaskAt(long index) { return srcAccessMask(this.segment(), index); }
-        /// Sets `srcAccessMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcAccessMaskAt(long index, int value) { srcAccessMask(this.segment(), index, value); return this; }
+    /// {@return `dependencyFlags` at the given index}
+    /// @param index the index of the struct buffer
+    public int dependencyFlagsAt(long index) { return dependencyFlags(this.segment(), index); }
+    /// Sets `dependencyFlags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSubpassDependency dependencyFlagsAt(long index, int value) { dependencyFlags(this.segment(), index, value); return this; }
 
-        /// {@return `dstAccessMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstAccessMaskAt(long index) { return dstAccessMask(this.segment(), index); }
-        /// Sets `dstAccessMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstAccessMaskAt(long index, int value) { dstAccessMask(this.segment(), index, value); return this; }
-
-        /// {@return `dependencyFlags` at the given index}
-        /// @param index the index of the struct buffer
-        public int dependencyFlagsAt(long index) { return dependencyFlags(this.segment(), index); }
-        /// Sets `dependencyFlags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dependencyFlagsAt(long index, int value) { dependencyFlags(this.segment(), index, value); return this; }
-
-    }
 }

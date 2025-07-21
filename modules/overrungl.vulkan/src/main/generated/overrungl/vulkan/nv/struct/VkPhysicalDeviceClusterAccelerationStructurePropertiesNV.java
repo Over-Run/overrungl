@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -39,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t maxClusterGeometryIndex;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV extends GroupType {
+public final class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -115,20 +116,21 @@ public sealed class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV ext
     public static final VarHandle VH_maxClusterGeometryIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxClusterGeometryIndex"));
 
     /// Creates `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment.
     ///
@@ -136,18 +138,18 @@ public sealed class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV ext
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
-    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceClusterAccelerationStructurePropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -279,9 +281,10 @@ public sealed class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV ext
     /// @return `this`
     public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV copyFrom(VkPhysicalDeviceClusterAccelerationStructurePropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV reinterpret(long count) { return new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -443,117 +446,111 @@ public sealed class VkPhysicalDeviceClusterAccelerationStructurePropertiesNV ext
     /// @return `this`
     public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV maxClusterGeometryIndex(int value) { maxClusterGeometryIndex(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceClusterAccelerationStructurePropertiesNV].
-    public static final class Buffer extends VkPhysicalDeviceClusterAccelerationStructurePropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV asSlice(long index) { return new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV at(long index, Consumer<VkPhysicalDeviceClusterAccelerationStructurePropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
-        public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV asSlice(long index) { return new VkPhysicalDeviceClusterAccelerationStructurePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceClusterAccelerationStructurePropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxVerticesPerCluster` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxVerticesPerClusterAt(long index) { return maxVerticesPerCluster(this.segment(), index); }
+    /// Sets `maxVerticesPerCluster` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV maxVerticesPerClusterAt(long index, int value) { maxVerticesPerCluster(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxTrianglesPerCluster` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTrianglesPerClusterAt(long index) { return maxTrianglesPerCluster(this.segment(), index); }
+    /// Sets `maxTrianglesPerCluster` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV maxTrianglesPerClusterAt(long index, int value) { maxTrianglesPerCluster(this.segment(), index, value); return this; }
 
-        /// {@return `maxVerticesPerCluster` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxVerticesPerClusterAt(long index) { return maxVerticesPerCluster(this.segment(), index); }
-        /// Sets `maxVerticesPerCluster` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxVerticesPerClusterAt(long index, int value) { maxVerticesPerCluster(this.segment(), index, value); return this; }
+    /// {@return `clusterScratchByteAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public int clusterScratchByteAlignmentAt(long index) { return clusterScratchByteAlignment(this.segment(), index); }
+    /// Sets `clusterScratchByteAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterScratchByteAlignmentAt(long index, int value) { clusterScratchByteAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `maxTrianglesPerCluster` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTrianglesPerClusterAt(long index) { return maxTrianglesPerCluster(this.segment(), index); }
-        /// Sets `maxTrianglesPerCluster` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTrianglesPerClusterAt(long index, int value) { maxTrianglesPerCluster(this.segment(), index, value); return this; }
+    /// {@return `clusterByteAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public int clusterByteAlignmentAt(long index) { return clusterByteAlignment(this.segment(), index); }
+    /// Sets `clusterByteAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterByteAlignmentAt(long index, int value) { clusterByteAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `clusterScratchByteAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public int clusterScratchByteAlignmentAt(long index) { return clusterScratchByteAlignment(this.segment(), index); }
-        /// Sets `clusterScratchByteAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterScratchByteAlignmentAt(long index, int value) { clusterScratchByteAlignment(this.segment(), index, value); return this; }
+    /// {@return `clusterTemplateByteAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public int clusterTemplateByteAlignmentAt(long index) { return clusterTemplateByteAlignment(this.segment(), index); }
+    /// Sets `clusterTemplateByteAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterTemplateByteAlignmentAt(long index, int value) { clusterTemplateByteAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `clusterByteAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public int clusterByteAlignmentAt(long index) { return clusterByteAlignment(this.segment(), index); }
-        /// Sets `clusterByteAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterByteAlignmentAt(long index, int value) { clusterByteAlignment(this.segment(), index, value); return this; }
+    /// {@return `clusterBottomLevelByteAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public int clusterBottomLevelByteAlignmentAt(long index) { return clusterBottomLevelByteAlignment(this.segment(), index); }
+    /// Sets `clusterBottomLevelByteAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterBottomLevelByteAlignmentAt(long index, int value) { clusterBottomLevelByteAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `clusterTemplateByteAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public int clusterTemplateByteAlignmentAt(long index) { return clusterTemplateByteAlignment(this.segment(), index); }
-        /// Sets `clusterTemplateByteAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterTemplateByteAlignmentAt(long index, int value) { clusterTemplateByteAlignment(this.segment(), index, value); return this; }
+    /// {@return `clusterTemplateBoundsByteAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public int clusterTemplateBoundsByteAlignmentAt(long index) { return clusterTemplateBoundsByteAlignment(this.segment(), index); }
+    /// Sets `clusterTemplateBoundsByteAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV clusterTemplateBoundsByteAlignmentAt(long index, int value) { clusterTemplateBoundsByteAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `clusterBottomLevelByteAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public int clusterBottomLevelByteAlignmentAt(long index) { return clusterBottomLevelByteAlignment(this.segment(), index); }
-        /// Sets `clusterBottomLevelByteAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterBottomLevelByteAlignmentAt(long index, int value) { clusterBottomLevelByteAlignment(this.segment(), index, value); return this; }
+    /// {@return `maxClusterGeometryIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxClusterGeometryIndexAt(long index) { return maxClusterGeometryIndex(this.segment(), index); }
+    /// Sets `maxClusterGeometryIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceClusterAccelerationStructurePropertiesNV maxClusterGeometryIndexAt(long index, int value) { maxClusterGeometryIndex(this.segment(), index, value); return this; }
 
-        /// {@return `clusterTemplateBoundsByteAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public int clusterTemplateBoundsByteAlignmentAt(long index) { return clusterTemplateBoundsByteAlignment(this.segment(), index); }
-        /// Sets `clusterTemplateBoundsByteAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterTemplateBoundsByteAlignmentAt(long index, int value) { clusterTemplateBoundsByteAlignment(this.segment(), index, value); return this; }
-
-        /// {@return `maxClusterGeometryIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxClusterGeometryIndexAt(long index) { return maxClusterGeometryIndex(this.segment(), index); }
-        /// Sets `maxClusterGeometryIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxClusterGeometryIndexAt(long index, int value) { maxClusterGeometryIndex(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -35,7 +35,7 @@ import java.util.function.*;
 ///     (uint64_t) VkDeviceSize maxResourceSize;
 /// };
 /// ```
-public sealed class VkImageFormatProperties extends GroupType {
+public final class VkImageFormatProperties extends GroupType {
     /// The struct layout of `VkImageFormatProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkExtent3D.LAYOUT.withName("maxExtent"),
@@ -74,20 +74,21 @@ public sealed class VkImageFormatProperties extends GroupType {
     public static final VarHandle VH_maxResourceSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxResourceSize"));
 
     /// Creates `VkImageFormatProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkImageFormatProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkImageFormatProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkImageFormatProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkImageFormatProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImageFormatProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageFormatProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkImageFormatProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkImageFormatProperties` with the given segment.
     ///
@@ -95,18 +96,18 @@ public sealed class VkImageFormatProperties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkImageFormatProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageFormatProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkImageFormatProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImageFormatProperties`
-    public static VkImageFormatProperties alloc(SegmentAllocator allocator) { return new VkImageFormatProperties(allocator.allocate(LAYOUT)); }
+    public static VkImageFormatProperties alloc(SegmentAllocator allocator) { return new VkImageFormatProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkImageFormatProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageFormatProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkImageFormatProperties alloc(SegmentAllocator allocator, long count) { return new VkImageFormatProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkImageFormatProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -163,9 +164,10 @@ public sealed class VkImageFormatProperties extends GroupType {
     /// @return `this`
     public VkImageFormatProperties copyFrom(VkImageFormatProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkImageFormatProperties reinterpret(long count) { return new VkImageFormatProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `maxExtent` at the given index}
     /// @param segment the segment of the struct
@@ -251,77 +253,71 @@ public sealed class VkImageFormatProperties extends GroupType {
     /// @return `this`
     public VkImageFormatProperties maxResourceSize(long value) { maxResourceSize(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkImageFormatProperties].
-    public static final class Buffer extends VkImageFormatProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkImageFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageFormatProperties`
+    public VkImageFormatProperties asSlice(long index) { return new VkImageFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkImageFormatProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkImageFormatProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageFormatProperties`
+    public VkImageFormatProperties asSlice(long index, long count) { return new VkImageFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkImageFormatProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkImageFormatProperties at(long index, Consumer<VkImageFormatProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkImageFormatProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkImageFormatProperties`
-        public VkImageFormatProperties asSlice(long index) { return new VkImageFormatProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `maxExtent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxExtentAt(long index) { return maxExtent(this.segment(), index); }
+    /// Sets `maxExtent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatProperties maxExtentAt(long index, MemorySegment value) { maxExtent(this.segment(), index, value); return this; }
+    /// Accepts `maxExtent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkImageFormatProperties maxExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(maxExtentAt(index))); return this; }
 
-        /// Creates a slice of `VkImageFormatProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkImageFormatProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `maxMipLevels` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxMipLevelsAt(long index) { return maxMipLevels(this.segment(), index); }
+    /// Sets `maxMipLevels` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatProperties maxMipLevelsAt(long index, int value) { maxMipLevels(this.segment(), index, value); return this; }
 
-        /// {@return `maxExtent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxExtentAt(long index) { return maxExtent(this.segment(), index); }
-        /// Sets `maxExtent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxExtentAt(long index, MemorySegment value) { maxExtent(this.segment(), index, value); return this; }
-        /// Accepts `maxExtent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(maxExtentAt(index))); return this; }
+    /// {@return `maxArrayLayers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxArrayLayersAt(long index) { return maxArrayLayers(this.segment(), index); }
+    /// Sets `maxArrayLayers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatProperties maxArrayLayersAt(long index, int value) { maxArrayLayers(this.segment(), index, value); return this; }
 
-        /// {@return `maxMipLevels` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxMipLevelsAt(long index) { return maxMipLevels(this.segment(), index); }
-        /// Sets `maxMipLevels` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMipLevelsAt(long index, int value) { maxMipLevels(this.segment(), index, value); return this; }
+    /// {@return `sampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int sampleCountsAt(long index) { return sampleCounts(this.segment(), index); }
+    /// Sets `sampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatProperties sampleCountsAt(long index, int value) { sampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `maxArrayLayers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxArrayLayersAt(long index) { return maxArrayLayers(this.segment(), index); }
-        /// Sets `maxArrayLayers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxArrayLayersAt(long index, int value) { maxArrayLayers(this.segment(), index, value); return this; }
+    /// {@return `maxResourceSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxResourceSizeAt(long index) { return maxResourceSize(this.segment(), index); }
+    /// Sets `maxResourceSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageFormatProperties maxResourceSizeAt(long index, long value) { maxResourceSize(this.segment(), index, value); return this; }
 
-        /// {@return `sampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int sampleCountsAt(long index) { return sampleCounts(this.segment(), index); }
-        /// Sets `sampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampleCountsAt(long index, int value) { sampleCounts(this.segment(), index, value); return this; }
-
-        /// {@return `maxResourceSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxResourceSizeAt(long index) { return maxResourceSize(this.segment(), index); }
-        /// Sets `maxResourceSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxResourceSizeAt(long index, long value) { maxResourceSize(this.segment(), index, value); return this; }
-
-    }
 }

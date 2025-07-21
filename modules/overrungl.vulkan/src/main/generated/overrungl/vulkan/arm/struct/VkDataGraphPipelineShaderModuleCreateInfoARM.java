@@ -21,6 +21,7 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     const VkDataGraphPipelineConstantARM* pConstants;
 /// };
 /// ```
-public sealed class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupType {
+public final class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupType {
     /// The struct layout of `VkDataGraphPipelineShaderModuleCreateInfoARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTy
     public static final VarHandle VH_pConstants = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pConstants"));
 
     /// Creates `VkDataGraphPipelineShaderModuleCreateInfoARM` with the given segment.
-    /// @param segment the memory segment
-    public VkDataGraphPipelineShaderModuleCreateInfoARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDataGraphPipelineShaderModuleCreateInfoARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDataGraphPipelineShaderModuleCreateInfoARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDataGraphPipelineShaderModuleCreateInfoARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineShaderModuleCreateInfoARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDataGraphPipelineShaderModuleCreateInfoARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDataGraphPipelineShaderModuleCreateInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineShaderModuleCreateInfoARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDataGraphPipelineShaderModuleCreateInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineShaderModuleCreateInfoARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDataGraphPipelineShaderModuleCreateInfoARM` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTy
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDataGraphPipelineShaderModuleCreateInfoARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineShaderModuleCreateInfoARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDataGraphPipelineShaderModuleCreateInfoARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDataGraphPipelineShaderModuleCreateInfoARM`
-    public static VkDataGraphPipelineShaderModuleCreateInfoARM alloc(SegmentAllocator allocator) { return new VkDataGraphPipelineShaderModuleCreateInfoARM(allocator.allocate(LAYOUT)); }
+    public static VkDataGraphPipelineShaderModuleCreateInfoARM alloc(SegmentAllocator allocator) { return new VkDataGraphPipelineShaderModuleCreateInfoARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDataGraphPipelineShaderModuleCreateInfoARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDataGraphPipelineShaderModuleCreateInfoARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDataGraphPipelineShaderModuleCreateInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineShaderModuleCreateInfoARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDataGraphPipelineShaderModuleCreateInfoARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTy
     /// @return `this`
     public VkDataGraphPipelineShaderModuleCreateInfoARM copyFrom(VkDataGraphPipelineShaderModuleCreateInfoARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDataGraphPipelineShaderModuleCreateInfoARM reinterpret(long count) { return new VkDataGraphPipelineShaderModuleCreateInfoARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkDataGraphPipelineShaderModuleCreateInfoARM extends GroupTy
     /// @return `this`
     public VkDataGraphPipelineShaderModuleCreateInfoARM pConstants(MemorySegment value) { pConstants(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDataGraphPipelineShaderModuleCreateInfoARM].
-    public static final class Buffer extends VkDataGraphPipelineShaderModuleCreateInfoARM {
-        private final long elementCount;
+    /// Creates a slice of `VkDataGraphPipelineShaderModuleCreateInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDataGraphPipelineShaderModuleCreateInfoARM`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM asSlice(long index) { return new VkDataGraphPipelineShaderModuleCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDataGraphPipelineShaderModuleCreateInfoARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDataGraphPipelineShaderModuleCreateInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDataGraphPipelineShaderModuleCreateInfoARM`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM asSlice(long index, long count) { return new VkDataGraphPipelineShaderModuleCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDataGraphPipelineShaderModuleCreateInfoARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM at(long index, Consumer<VkDataGraphPipelineShaderModuleCreateInfoARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDataGraphPipelineShaderModuleCreateInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDataGraphPipelineShaderModuleCreateInfoARM`
-        public VkDataGraphPipelineShaderModuleCreateInfoARM asSlice(long index) { return new VkDataGraphPipelineShaderModuleCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDataGraphPipelineShaderModuleCreateInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDataGraphPipelineShaderModuleCreateInfoARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `module` at the given index}
+    /// @param index the index of the struct buffer
+    public long moduleAt(long index) { return module(this.segment(), index); }
+    /// Sets `module` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM moduleAt(long index, long value) { module(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNameAt(long index) { return pName(this.segment(), index); }
+    /// Sets `pName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM pNameAt(long index, MemorySegment value) { pName(this.segment(), index, value); return this; }
 
-        /// {@return `module` at the given index}
-        /// @param index the index of the struct buffer
-        public long moduleAt(long index) { return module(this.segment(), index); }
-        /// Sets `module` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer moduleAt(long index, long value) { module(this.segment(), index, value); return this; }
+    /// {@return `pSpecializationInfo` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pSpecializationInfoAt(long index) { return pSpecializationInfo(this.segment(), index); }
+    /// Sets `pSpecializationInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM pSpecializationInfoAt(long index, MemorySegment value) { pSpecializationInfo(this.segment(), index, value); return this; }
 
-        /// {@return `pName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNameAt(long index) { return pName(this.segment(), index); }
-        /// Sets `pName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNameAt(long index, MemorySegment value) { pName(this.segment(), index, value); return this; }
+    /// {@return `constantCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int constantCountAt(long index) { return constantCount(this.segment(), index); }
+    /// Sets `constantCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM constantCountAt(long index, int value) { constantCount(this.segment(), index, value); return this; }
 
-        /// {@return `pSpecializationInfo` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pSpecializationInfoAt(long index) { return pSpecializationInfo(this.segment(), index); }
-        /// Sets `pSpecializationInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSpecializationInfoAt(long index, MemorySegment value) { pSpecializationInfo(this.segment(), index, value); return this; }
+    /// {@return `pConstants` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pConstantsAt(long index) { return pConstants(this.segment(), index); }
+    /// Sets `pConstants` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineShaderModuleCreateInfoARM pConstantsAt(long index, MemorySegment value) { pConstants(this.segment(), index, value); return this; }
 
-        /// {@return `constantCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int constantCountAt(long index) { return constantCount(this.segment(), index); }
-        /// Sets `constantCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer constantCountAt(long index, int value) { constantCount(this.segment(), index, value); return this; }
-
-        /// {@return `pConstants` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pConstantsAt(long index) { return pConstants(this.segment(), index); }
-        /// Sets `pConstants` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pConstantsAt(long index, MemorySegment value) { pConstants(this.segment(), index, value); return this; }
-
-    }
 }

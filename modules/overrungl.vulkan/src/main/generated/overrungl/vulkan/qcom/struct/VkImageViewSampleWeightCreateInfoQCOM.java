@@ -21,9 +21,9 @@ package overrungl.vulkan.qcom.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -35,7 +35,7 @@ import java.util.function.*;
 ///     uint32_t numPhases;
 /// };
 /// ```
-public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
+public final class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
     /// The struct layout of `VkImageViewSampleWeightCreateInfoQCOM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -72,20 +72,21 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
     public static final VarHandle VH_numPhases = LAYOUT.arrayElementVarHandle(PathElement.groupElement("numPhases"));
 
     /// Creates `VkImageViewSampleWeightCreateInfoQCOM` with the given segment.
-    /// @param segment the memory segment
-    public VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkImageViewSampleWeightCreateInfoQCOM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkImageViewSampleWeightCreateInfoQCOM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkImageViewSampleWeightCreateInfoQCOM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewSampleWeightCreateInfoQCOM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImageViewSampleWeightCreateInfoQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageViewSampleWeightCreateInfoQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewSampleWeightCreateInfoQCOM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkImageViewSampleWeightCreateInfoQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewSampleWeightCreateInfoQCOM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkImageViewSampleWeightCreateInfoQCOM` with the given segment.
     ///
@@ -93,18 +94,18 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkImageViewSampleWeightCreateInfoQCOM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageViewSampleWeightCreateInfoQCOM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
-    public static VkImageViewSampleWeightCreateInfoQCOM alloc(SegmentAllocator allocator) { return new VkImageViewSampleWeightCreateInfoQCOM(allocator.allocate(LAYOUT)); }
+    public static VkImageViewSampleWeightCreateInfoQCOM alloc(SegmentAllocator allocator) { return new VkImageViewSampleWeightCreateInfoQCOM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkImageViewSampleWeightCreateInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkImageViewSampleWeightCreateInfoQCOM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -161,9 +162,10 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
     /// @return `this`
     public VkImageViewSampleWeightCreateInfoQCOM copyFrom(VkImageViewSampleWeightCreateInfoQCOM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkImageViewSampleWeightCreateInfoQCOM reinterpret(long count) { return new VkImageViewSampleWeightCreateInfoQCOM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -253,82 +255,76 @@ public sealed class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
     /// @return `this`
     public VkImageViewSampleWeightCreateInfoQCOM numPhases(int value) { numPhases(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkImageViewSampleWeightCreateInfoQCOM].
-    public static final class Buffer extends VkImageViewSampleWeightCreateInfoQCOM {
-        private final long elementCount;
+    /// Creates a slice of `VkImageViewSampleWeightCreateInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageViewSampleWeightCreateInfoQCOM`
+    public VkImageViewSampleWeightCreateInfoQCOM asSlice(long index) { return new VkImageViewSampleWeightCreateInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkImageViewSampleWeightCreateInfoQCOM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkImageViewSampleWeightCreateInfoQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageViewSampleWeightCreateInfoQCOM`
+    public VkImageViewSampleWeightCreateInfoQCOM asSlice(long index, long count) { return new VkImageViewSampleWeightCreateInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkImageViewSampleWeightCreateInfoQCOM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM at(long index, Consumer<VkImageViewSampleWeightCreateInfoQCOM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkImageViewSampleWeightCreateInfoQCOM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkImageViewSampleWeightCreateInfoQCOM`
-        public VkImageViewSampleWeightCreateInfoQCOM asSlice(long index) { return new VkImageViewSampleWeightCreateInfoQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkImageViewSampleWeightCreateInfoQCOM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkImageViewSampleWeightCreateInfoQCOM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `filterCenter` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment filterCenterAt(long index) { return filterCenter(this.segment(), index); }
+    /// Sets `filterCenter` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM filterCenterAt(long index, MemorySegment value) { filterCenter(this.segment(), index, value); return this; }
+    /// Accepts `filterCenter` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM filterCenterAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(filterCenterAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `filterSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment filterSizeAt(long index) { return filterSize(this.segment(), index); }
+    /// Sets `filterSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM filterSizeAt(long index, MemorySegment value) { filterSize(this.segment(), index, value); return this; }
+    /// Accepts `filterSize` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM filterSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(filterSizeAt(index))); return this; }
 
-        /// {@return `filterCenter` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment filterCenterAt(long index) { return filterCenter(this.segment(), index); }
-        /// Sets `filterCenter` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer filterCenterAt(long index, MemorySegment value) { filterCenter(this.segment(), index, value); return this; }
-        /// Accepts `filterCenter` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer filterCenterAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(filterCenterAt(index))); return this; }
+    /// {@return `numPhases` at the given index}
+    /// @param index the index of the struct buffer
+    public int numPhasesAt(long index) { return numPhases(this.segment(), index); }
+    /// Sets `numPhases` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageViewSampleWeightCreateInfoQCOM numPhasesAt(long index, int value) { numPhases(this.segment(), index, value); return this; }
 
-        /// {@return `filterSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment filterSizeAt(long index) { return filterSize(this.segment(), index); }
-        /// Sets `filterSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer filterSizeAt(long index, MemorySegment value) { filterSize(this.segment(), index, value); return this; }
-        /// Accepts `filterSize` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer filterSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(filterSizeAt(index))); return this; }
-
-        /// {@return `numPhases` at the given index}
-        /// @param index the index of the struct buffer
-        public int numPhasesAt(long index) { return numPhases(this.segment(), index); }
-        /// Sets `numPhases` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer numPhasesAt(long index, int value) { numPhases(this.segment(), index, value); return this; }
-
-    }
 }

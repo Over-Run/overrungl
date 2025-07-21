@@ -21,6 +21,7 @@ package overrungl.vulkan.amd.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (int) VkSampleCountFlagBits depthStencilAttachmentSamples;
 /// };
 /// ```
-public sealed class VkAttachmentSampleCountInfoAMD extends GroupType {
+public final class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// The struct layout of `VkAttachmentSampleCountInfoAMD`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkAttachmentSampleCountInfoAMD extends GroupType {
     public static final VarHandle VH_depthStencilAttachmentSamples = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthStencilAttachmentSamples"));
 
     /// Creates `VkAttachmentSampleCountInfoAMD` with the given segment.
-    /// @param segment the memory segment
-    public VkAttachmentSampleCountInfoAMD(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAttachmentSampleCountInfoAMD(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAttachmentSampleCountInfoAMD` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAttachmentSampleCountInfoAMD of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAttachmentSampleCountInfoAMD(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAttachmentSampleCountInfoAMD` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAttachmentSampleCountInfoAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAttachmentSampleCountInfoAMD(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAttachmentSampleCountInfoAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAttachmentSampleCountInfoAMD(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAttachmentSampleCountInfoAMD` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAttachmentSampleCountInfoAMD ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAttachmentSampleCountInfoAMD(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAttachmentSampleCountInfoAMD` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAttachmentSampleCountInfoAMD`
-    public static VkAttachmentSampleCountInfoAMD alloc(SegmentAllocator allocator) { return new VkAttachmentSampleCountInfoAMD(allocator.allocate(LAYOUT)); }
+    public static VkAttachmentSampleCountInfoAMD alloc(SegmentAllocator allocator) { return new VkAttachmentSampleCountInfoAMD(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAttachmentSampleCountInfoAMD` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAttachmentSampleCountInfoAMD`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAttachmentSampleCountInfoAMD alloc(SegmentAllocator allocator, long count) { return new VkAttachmentSampleCountInfoAMD(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAttachmentSampleCountInfoAMD` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// @return `this`
     public VkAttachmentSampleCountInfoAMD copyFrom(VkAttachmentSampleCountInfoAMD src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAttachmentSampleCountInfoAMD reinterpret(long count) { return new VkAttachmentSampleCountInfoAMD(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// @return `this`
     public VkAttachmentSampleCountInfoAMD depthStencilAttachmentSamples(int value) { depthStencilAttachmentSamples(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAttachmentSampleCountInfoAMD].
-    public static final class Buffer extends VkAttachmentSampleCountInfoAMD {
-        private final long elementCount;
+    /// Creates a slice of `VkAttachmentSampleCountInfoAMD`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAttachmentSampleCountInfoAMD`
+    public VkAttachmentSampleCountInfoAMD asSlice(long index) { return new VkAttachmentSampleCountInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAttachmentSampleCountInfoAMD.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAttachmentSampleCountInfoAMD`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAttachmentSampleCountInfoAMD`
+    public VkAttachmentSampleCountInfoAMD asSlice(long index, long count) { return new VkAttachmentSampleCountInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAttachmentSampleCountInfoAMD` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAttachmentSampleCountInfoAMD at(long index, Consumer<VkAttachmentSampleCountInfoAMD> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAttachmentSampleCountInfoAMD`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAttachmentSampleCountInfoAMD`
-        public VkAttachmentSampleCountInfoAMD asSlice(long index) { return new VkAttachmentSampleCountInfoAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAttachmentSampleCountInfoAMD sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAttachmentSampleCountInfoAMD`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAttachmentSampleCountInfoAMD`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAttachmentSampleCountInfoAMD pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `colorAttachmentCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int colorAttachmentCountAt(long index) { return colorAttachmentCount(this.segment(), index); }
+    /// Sets `colorAttachmentCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAttachmentSampleCountInfoAMD colorAttachmentCountAt(long index, int value) { colorAttachmentCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pColorAttachmentSamples` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pColorAttachmentSamplesAt(long index) { return pColorAttachmentSamples(this.segment(), index); }
+    /// Sets `pColorAttachmentSamples` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAttachmentSampleCountInfoAMD pColorAttachmentSamplesAt(long index, MemorySegment value) { pColorAttachmentSamples(this.segment(), index, value); return this; }
 
-        /// {@return `colorAttachmentCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int colorAttachmentCountAt(long index) { return colorAttachmentCount(this.segment(), index); }
-        /// Sets `colorAttachmentCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer colorAttachmentCountAt(long index, int value) { colorAttachmentCount(this.segment(), index, value); return this; }
+    /// {@return `depthStencilAttachmentSamples` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthStencilAttachmentSamplesAt(long index) { return depthStencilAttachmentSamples(this.segment(), index); }
+    /// Sets `depthStencilAttachmentSamples` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAttachmentSampleCountInfoAMD depthStencilAttachmentSamplesAt(long index, int value) { depthStencilAttachmentSamples(this.segment(), index, value); return this; }
 
-        /// {@return `pColorAttachmentSamples` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pColorAttachmentSamplesAt(long index) { return pColorAttachmentSamples(this.segment(), index); }
-        /// Sets `pColorAttachmentSamples` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pColorAttachmentSamplesAt(long index, MemorySegment value) { pColorAttachmentSamples(this.segment(), index, value); return this; }
-
-        /// {@return `depthStencilAttachmentSamples` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthStencilAttachmentSamplesAt(long index) { return depthStencilAttachmentSamples(this.segment(), index); }
-        /// Sets `depthStencilAttachmentSamples` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthStencilAttachmentSamplesAt(long index, int value) { depthStencilAttachmentSamples(this.segment(), index, value); return this; }
-
-    }
 }

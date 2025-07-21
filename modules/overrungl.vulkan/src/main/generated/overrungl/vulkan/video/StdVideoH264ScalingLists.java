@@ -21,6 +21,7 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint8_t ScalingList8x8[6][64];
 /// };
 /// ```
-public sealed class StdVideoH264ScalingLists extends GroupType {
+public final class StdVideoH264ScalingLists extends GroupType {
     /// The struct layout of `StdVideoH264ScalingLists`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("scaling_list_present_mask"),
@@ -67,20 +68,21 @@ public sealed class StdVideoH264ScalingLists extends GroupType {
     public static final VarHandle VH_ScalingList8x8 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ScalingList8x8"), PathElement.sequenceElement(), PathElement.sequenceElement());
 
     /// Creates `StdVideoH264ScalingLists` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoH264ScalingLists(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoH264ScalingLists(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoH264ScalingLists` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoH264ScalingLists of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH264ScalingLists(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoH264ScalingLists` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH264ScalingLists ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH264ScalingLists(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoH264ScalingLists ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH264ScalingLists(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoH264ScalingLists` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class StdVideoH264ScalingLists extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoH264ScalingLists ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH264ScalingLists(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoH264ScalingLists` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoH264ScalingLists`
-    public static StdVideoH264ScalingLists alloc(SegmentAllocator allocator) { return new StdVideoH264ScalingLists(allocator.allocate(LAYOUT)); }
+    public static StdVideoH264ScalingLists alloc(SegmentAllocator allocator) { return new StdVideoH264ScalingLists(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoH264ScalingLists` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH264ScalingLists`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoH264ScalingLists alloc(SegmentAllocator allocator, long count) { return new StdVideoH264ScalingLists(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoH264ScalingLists` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class StdVideoH264ScalingLists extends GroupType {
     /// @return `this`
     public StdVideoH264ScalingLists copyFrom(StdVideoH264ScalingLists src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoH264ScalingLists reinterpret(long count) { return new StdVideoH264ScalingLists(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `scaling_list_present_mask` at the given index}
     /// @param segment the segment of the struct
@@ -258,87 +261,81 @@ public sealed class StdVideoH264ScalingLists extends GroupType {
     /// @return `this`
     public StdVideoH264ScalingLists ScalingList8x8(long index0, long index1, byte value) { ScalingList8x8(this.segment(), 0L, index0, index1, value); return this; }
 
-    /// A buffer of [StdVideoH264ScalingLists].
-    public static final class Buffer extends StdVideoH264ScalingLists {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoH264ScalingLists`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH264ScalingLists`
+    public StdVideoH264ScalingLists asSlice(long index) { return new StdVideoH264ScalingLists(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoH264ScalingLists.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoH264ScalingLists`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH264ScalingLists`
+    public StdVideoH264ScalingLists asSlice(long index, long count) { return new StdVideoH264ScalingLists(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoH264ScalingLists` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoH264ScalingLists at(long index, Consumer<StdVideoH264ScalingLists> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoH264ScalingLists`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoH264ScalingLists`
-        public StdVideoH264ScalingLists asSlice(long index) { return new StdVideoH264ScalingLists(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `scaling_list_present_mask` at the given index}
+    /// @param index the index of the struct buffer
+    public short scaling_list_present_maskAt(long index) { return scaling_list_present_mask(this.segment(), index); }
+    /// Sets `scaling_list_present_mask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH264ScalingLists scaling_list_present_maskAt(long index, short value) { scaling_list_present_mask(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `StdVideoH264ScalingLists`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoH264ScalingLists`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `use_default_scaling_matrix_mask` at the given index}
+    /// @param index the index of the struct buffer
+    public short use_default_scaling_matrix_maskAt(long index) { return use_default_scaling_matrix_mask(this.segment(), index); }
+    /// Sets `use_default_scaling_matrix_mask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH264ScalingLists use_default_scaling_matrix_maskAt(long index, short value) { use_default_scaling_matrix_mask(this.segment(), index, value); return this; }
 
-        /// {@return `scaling_list_present_mask` at the given index}
-        /// @param index the index of the struct buffer
-        public short scaling_list_present_maskAt(long index) { return scaling_list_present_mask(this.segment(), index); }
-        /// Sets `scaling_list_present_mask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer scaling_list_present_maskAt(long index, short value) { scaling_list_present_mask(this.segment(), index, value); return this; }
-
-        /// {@return `use_default_scaling_matrix_mask` at the given index}
-        /// @param index the index of the struct buffer
-        public short use_default_scaling_matrix_maskAt(long index) { return use_default_scaling_matrix_mask(this.segment(), index); }
-        /// Sets `use_default_scaling_matrix_mask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer use_default_scaling_matrix_maskAt(long index, short value) { use_default_scaling_matrix_mask(this.segment(), index, value); return this; }
-
-        /// {@return `ScalingList4x4` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment ScalingList4x4At(long index) { return ScalingList4x4(this.segment(), index); }
-        /// {@return `ScalingList4x4` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
+    /// {@return `ScalingList4x4` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment ScalingList4x4At(long index) { return ScalingList4x4(this.segment(), index); }
+    /// {@return `ScalingList4x4` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
         public byte ScalingList4x4At(long index, long index0, long index1) { return ScalingList4x4(this.segment(), index, index0, index1); }
-        /// Sets `ScalingList4x4` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ScalingList4x4At(long index, MemorySegment value) { ScalingList4x4(this.segment(), index, value); return this; }
-        /// Sets `ScalingList4x4` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer ScalingList4x4At(long index, long index0, long index1, byte value) { ScalingList4x4(this.segment(), index, index0, index1, value); return this; }
+    /// Sets `ScalingList4x4` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH264ScalingLists ScalingList4x4At(long index, MemorySegment value) { ScalingList4x4(this.segment(), index, value); return this; }
+    /// Sets `ScalingList4x4` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH264ScalingLists ScalingList4x4At(long index, long index0, long index1, byte value) { ScalingList4x4(this.segment(), index, index0, index1, value); return this; }
 
-        /// {@return `ScalingList8x8` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment ScalingList8x8At(long index) { return ScalingList8x8(this.segment(), index); }
-        /// {@return `ScalingList8x8` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
+    /// {@return `ScalingList8x8` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment ScalingList8x8At(long index) { return ScalingList8x8(this.segment(), index); }
+    /// {@return `ScalingList8x8` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
         public byte ScalingList8x8At(long index, long index0, long index1) { return ScalingList8x8(this.segment(), index, index0, index1); }
-        /// Sets `ScalingList8x8` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ScalingList8x8At(long index, MemorySegment value) { ScalingList8x8(this.segment(), index, value); return this; }
-        /// Sets `ScalingList8x8` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer ScalingList8x8At(long index, long index0, long index1, byte value) { ScalingList8x8(this.segment(), index, index0, index1, value); return this; }
+    /// Sets `ScalingList8x8` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH264ScalingLists ScalingList8x8At(long index, MemorySegment value) { ScalingList8x8(this.segment(), index, value); return this; }
+    /// Sets `ScalingList8x8` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoH264ScalingLists ScalingList8x8At(long index, long index0, long index1, byte value) { ScalingList8x8(this.segment(), index, index0, index1, value); return this; }
 
-    }
 }

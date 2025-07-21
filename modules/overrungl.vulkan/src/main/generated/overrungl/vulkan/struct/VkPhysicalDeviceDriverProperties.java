@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -36,7 +36,7 @@ import java.util.function.*;
 ///     (struct VkConformanceVersion) VkConformanceVersion conformanceVersion;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceDriverProperties extends GroupType {
+public final class VkPhysicalDeviceDriverProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDriverProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,20 +82,21 @@ public sealed class VkPhysicalDeviceDriverProperties extends GroupType {
     public static final MemoryLayout LAYOUT_conformanceVersion = LAYOUT.select(PathElement.groupElement("conformanceVersion"));
 
     /// Creates `VkPhysicalDeviceDriverProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceDriverProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceDriverProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceDriverProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceDriverProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDriverProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceDriverProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDriverProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDriverProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceDriverProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDriverProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceDriverProperties` with the given segment.
     ///
@@ -103,18 +104,18 @@ public sealed class VkPhysicalDeviceDriverProperties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceDriverProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDriverProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceDriverProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceDriverProperties`
-    public static VkPhysicalDeviceDriverProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDriverProperties(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceDriverProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDriverProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceDriverProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceDriverProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceDriverProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDriverProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceDriverProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -184,9 +185,10 @@ public sealed class VkPhysicalDeviceDriverProperties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceDriverProperties copyFrom(VkPhysicalDeviceDriverProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceDriverProperties reinterpret(long count) { return new VkPhysicalDeviceDriverProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -326,106 +328,100 @@ public sealed class VkPhysicalDeviceDriverProperties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceDriverProperties conformanceVersion(Consumer<overrungl.vulkan.struct.VkConformanceVersion> func) { func.accept(overrungl.vulkan.struct.VkConformanceVersion.of(conformanceVersion())); return this; }
 
-    /// A buffer of [VkPhysicalDeviceDriverProperties].
-    public static final class Buffer extends VkPhysicalDeviceDriverProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceDriverProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDriverProperties`
+    public VkPhysicalDeviceDriverProperties asSlice(long index) { return new VkPhysicalDeviceDriverProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceDriverProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceDriverProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDriverProperties`
+    public VkPhysicalDeviceDriverProperties asSlice(long index, long count) { return new VkPhysicalDeviceDriverProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceDriverProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties at(long index, Consumer<VkPhysicalDeviceDriverProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDriverProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceDriverProperties`
-        public VkPhysicalDeviceDriverProperties asSlice(long index) { return new VkPhysicalDeviceDriverProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDriverProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceDriverProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `driverID` at the given index}
+    /// @param index the index of the struct buffer
+    public int driverIDAt(long index) { return driverID(this.segment(), index); }
+    /// Sets `driverID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties driverIDAt(long index, int value) { driverID(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `driverID` at the given index}
-        /// @param index the index of the struct buffer
-        public int driverIDAt(long index) { return driverID(this.segment(), index); }
-        /// Sets `driverID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverIDAt(long index, int value) { driverID(this.segment(), index, value); return this; }
-
-        /// {@return `driverName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment driverNameAt(long index) { return driverName(this.segment(), index); }
-        /// {@return `driverName` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `driverName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment driverNameAt(long index) { return driverName(this.segment(), index); }
+    /// {@return `driverName` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte driverNameAt(long index, long index0) { return driverName(this.segment(), index, index0); }
-        /// Sets `driverName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverNameAt(long index, MemorySegment value) { driverName(this.segment(), index, value); return this; }
-        /// Sets `driverName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverNameAt(long index, long index0, byte value) { driverName(this.segment(), index, index0, value); return this; }
+    /// Sets `driverName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties driverNameAt(long index, MemorySegment value) { driverName(this.segment(), index, value); return this; }
+    /// Sets `driverName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties driverNameAt(long index, long index0, byte value) { driverName(this.segment(), index, index0, value); return this; }
 
-        /// {@return `driverInfo` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment driverInfoAt(long index) { return driverInfo(this.segment(), index); }
-        /// {@return `driverInfo` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `driverInfo` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment driverInfoAt(long index) { return driverInfo(this.segment(), index); }
+    /// {@return `driverInfo` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte driverInfoAt(long index, long index0) { return driverInfo(this.segment(), index, index0); }
-        /// Sets `driverInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverInfoAt(long index, MemorySegment value) { driverInfo(this.segment(), index, value); return this; }
-        /// Sets `driverInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverInfoAt(long index, long index0, byte value) { driverInfo(this.segment(), index, index0, value); return this; }
+    /// Sets `driverInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties driverInfoAt(long index, MemorySegment value) { driverInfo(this.segment(), index, value); return this; }
+    /// Sets `driverInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties driverInfoAt(long index, long index0, byte value) { driverInfo(this.segment(), index, index0, value); return this; }
 
-        /// {@return `conformanceVersion` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment conformanceVersionAt(long index) { return conformanceVersion(this.segment(), index); }
-        /// Sets `conformanceVersion` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer conformanceVersionAt(long index, MemorySegment value) { conformanceVersion(this.segment(), index, value); return this; }
-        /// Accepts `conformanceVersion` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer conformanceVersionAt(long index, Consumer<overrungl.vulkan.struct.VkConformanceVersion> func) { func.accept(overrungl.vulkan.struct.VkConformanceVersion.of(conformanceVersionAt(index))); return this; }
+    /// {@return `conformanceVersion` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment conformanceVersionAt(long index) { return conformanceVersion(this.segment(), index); }
+    /// Sets `conformanceVersion` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties conformanceVersionAt(long index, MemorySegment value) { conformanceVersion(this.segment(), index, value); return this; }
+    /// Accepts `conformanceVersion` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceDriverProperties conformanceVersionAt(long index, Consumer<overrungl.vulkan.struct.VkConformanceVersion> func) { func.accept(overrungl.vulkan.struct.VkConformanceVersion.of(conformanceVersionAt(index))); return this; }
 
-    }
 }

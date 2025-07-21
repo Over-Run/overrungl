@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     int64_t renderMinor;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
+public final class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDrmPropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -99,20 +100,21 @@ public sealed class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     public static final VarHandle VH_renderMinor = LAYOUT.arrayElementVarHandle(PathElement.groupElement("renderMinor"));
 
     /// Creates `VkPhysicalDeviceDrmPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceDrmPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceDrmPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceDrmPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDrmPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceDrmPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDrmPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDrmPropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceDrmPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDrmPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceDrmPropertiesEXT` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceDrmPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDrmPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceDrmPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceDrmPropertiesEXT`
-    public static VkPhysicalDeviceDrmPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDrmPropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceDrmPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDrmPropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceDrmPropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceDrmPropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceDrmPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDrmPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceDrmPropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceDrmPropertiesEXT copyFrom(VkPhysicalDeviceDrmPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceDrmPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceDrmPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class VkPhysicalDeviceDrmPropertiesEXT extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceDrmPropertiesEXT renderMinor(long value) { renderMinor(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceDrmPropertiesEXT].
-    public static final class Buffer extends VkPhysicalDeviceDrmPropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceDrmPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDrmPropertiesEXT`
+    public VkPhysicalDeviceDrmPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDrmPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceDrmPropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceDrmPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDrmPropertiesEXT`
+    public VkPhysicalDeviceDrmPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDrmPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceDrmPropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT at(long index, Consumer<VkPhysicalDeviceDrmPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDrmPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceDrmPropertiesEXT`
-        public VkPhysicalDeviceDrmPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDrmPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDrmPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceDrmPropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `hasPrimary` at the given index}
+    /// @param index the index of the struct buffer
+    public int hasPrimaryAt(long index) { return hasPrimary(this.segment(), index); }
+    /// Sets `hasPrimary` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT hasPrimaryAt(long index, int value) { hasPrimary(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `hasRender` at the given index}
+    /// @param index the index of the struct buffer
+    public int hasRenderAt(long index) { return hasRender(this.segment(), index); }
+    /// Sets `hasRender` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT hasRenderAt(long index, int value) { hasRender(this.segment(), index, value); return this; }
 
-        /// {@return `hasPrimary` at the given index}
-        /// @param index the index of the struct buffer
-        public int hasPrimaryAt(long index) { return hasPrimary(this.segment(), index); }
-        /// Sets `hasPrimary` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hasPrimaryAt(long index, int value) { hasPrimary(this.segment(), index, value); return this; }
+    /// {@return `primaryMajor` at the given index}
+    /// @param index the index of the struct buffer
+    public long primaryMajorAt(long index) { return primaryMajor(this.segment(), index); }
+    /// Sets `primaryMajor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT primaryMajorAt(long index, long value) { primaryMajor(this.segment(), index, value); return this; }
 
-        /// {@return `hasRender` at the given index}
-        /// @param index the index of the struct buffer
-        public int hasRenderAt(long index) { return hasRender(this.segment(), index); }
-        /// Sets `hasRender` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hasRenderAt(long index, int value) { hasRender(this.segment(), index, value); return this; }
+    /// {@return `primaryMinor` at the given index}
+    /// @param index the index of the struct buffer
+    public long primaryMinorAt(long index) { return primaryMinor(this.segment(), index); }
+    /// Sets `primaryMinor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT primaryMinorAt(long index, long value) { primaryMinor(this.segment(), index, value); return this; }
 
-        /// {@return `primaryMajor` at the given index}
-        /// @param index the index of the struct buffer
-        public long primaryMajorAt(long index) { return primaryMajor(this.segment(), index); }
-        /// Sets `primaryMajor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer primaryMajorAt(long index, long value) { primaryMajor(this.segment(), index, value); return this; }
+    /// {@return `renderMajor` at the given index}
+    /// @param index the index of the struct buffer
+    public long renderMajorAt(long index) { return renderMajor(this.segment(), index); }
+    /// Sets `renderMajor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT renderMajorAt(long index, long value) { renderMajor(this.segment(), index, value); return this; }
 
-        /// {@return `primaryMinor` at the given index}
-        /// @param index the index of the struct buffer
-        public long primaryMinorAt(long index) { return primaryMinor(this.segment(), index); }
-        /// Sets `primaryMinor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer primaryMinorAt(long index, long value) { primaryMinor(this.segment(), index, value); return this; }
+    /// {@return `renderMinor` at the given index}
+    /// @param index the index of the struct buffer
+    public long renderMinorAt(long index) { return renderMinor(this.segment(), index); }
+    /// Sets `renderMinor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDrmPropertiesEXT renderMinorAt(long index, long value) { renderMinor(this.segment(), index, value); return this; }
 
-        /// {@return `renderMajor` at the given index}
-        /// @param index the index of the struct buffer
-        public long renderMajorAt(long index) { return renderMajor(this.segment(), index); }
-        /// Sets `renderMajor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer renderMajorAt(long index, long value) { renderMajor(this.segment(), index, value); return this; }
-
-        /// {@return `renderMinor` at the given index}
-        /// @param index the index of the struct buffer
-        public long renderMinorAt(long index) { return renderMinor(this.segment(), index); }
-        /// Sets `renderMinor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer renderMinorAt(long index, long value) { renderMinor(this.segment(), index, value); return this; }
-
-    }
 }

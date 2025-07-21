@@ -21,6 +21,7 @@ package overrungl.glfw;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     unsigned int size;
 /// };
 /// ```
-public sealed class GLFWGammaRamp extends GroupType {
+public final class GLFWGammaRamp extends GroupType {
     /// The struct layout of `GLFWGammaRamp`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("red"),
@@ -67,20 +68,21 @@ public sealed class GLFWGammaRamp extends GroupType {
     public static final VarHandle VH_size = LAYOUT.arrayElementVarHandle(PathElement.groupElement("size"));
 
     /// Creates `GLFWGammaRamp` with the given segment.
-    /// @param segment the memory segment
-    public GLFWGammaRamp(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public GLFWGammaRamp(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `GLFWGammaRamp` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static GLFWGammaRamp of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWGammaRamp(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `GLFWGammaRamp` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static GLFWGammaRamp ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWGammaRamp(segment.reinterpret(LAYOUT.byteSize())); }
+    public static GLFWGammaRamp ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWGammaRamp(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `GLFWGammaRamp` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class GLFWGammaRamp extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static GLFWGammaRamp ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new GLFWGammaRamp(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `GLFWGammaRamp` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `GLFWGammaRamp`
-    public static GLFWGammaRamp alloc(SegmentAllocator allocator) { return new GLFWGammaRamp(allocator.allocate(LAYOUT)); }
+    public static GLFWGammaRamp alloc(SegmentAllocator allocator) { return new GLFWGammaRamp(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `GLFWGammaRamp` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `GLFWGammaRamp`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static GLFWGammaRamp alloc(SegmentAllocator allocator, long count) { return new GLFWGammaRamp(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `GLFWGammaRamp` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class GLFWGammaRamp extends GroupType {
     /// @return `this`
     public GLFWGammaRamp copyFrom(GLFWGammaRamp src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public GLFWGammaRamp reinterpret(long count) { return new GLFWGammaRamp(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `red` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class GLFWGammaRamp extends GroupType {
     /// @return `this`
     public GLFWGammaRamp size(int value) { size(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [GLFWGammaRamp].
-    public static final class Buffer extends GLFWGammaRamp {
-        private final long elementCount;
+    /// Creates a slice of `GLFWGammaRamp`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `GLFWGammaRamp`
+    public GLFWGammaRamp asSlice(long index) { return new GLFWGammaRamp(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `GLFWGammaRamp.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `GLFWGammaRamp`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `GLFWGammaRamp`
+    public GLFWGammaRamp asSlice(long index, long count) { return new GLFWGammaRamp(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `GLFWGammaRamp` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public GLFWGammaRamp at(long index, Consumer<GLFWGammaRamp> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `GLFWGammaRamp`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `GLFWGammaRamp`
-        public GLFWGammaRamp asSlice(long index) { return new GLFWGammaRamp(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `red` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment redAt(long index) { return red(this.segment(), index); }
+    /// Sets `red` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp redAt(long index, MemorySegment value) { red(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `GLFWGammaRamp`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `GLFWGammaRamp`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `green` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment greenAt(long index) { return green(this.segment(), index); }
+    /// Sets `green` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp greenAt(long index, MemorySegment value) { green(this.segment(), index, value); return this; }
 
-        /// {@return `red` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment redAt(long index) { return red(this.segment(), index); }
-        /// Sets `red` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer redAt(long index, MemorySegment value) { red(this.segment(), index, value); return this; }
+    /// {@return `blue` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment blueAt(long index) { return blue(this.segment(), index); }
+    /// Sets `blue` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp blueAt(long index, MemorySegment value) { blue(this.segment(), index, value); return this; }
 
-        /// {@return `green` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment greenAt(long index) { return green(this.segment(), index); }
-        /// Sets `green` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer greenAt(long index, MemorySegment value) { green(this.segment(), index, value); return this; }
+    /// {@return `size` at the given index}
+    /// @param index the index of the struct buffer
+    public int sizeAt(long index) { return size(this.segment(), index); }
+    /// Sets `size` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public GLFWGammaRamp sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
 
-        /// {@return `blue` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment blueAt(long index) { return blue(this.segment(), index); }
-        /// Sets `blue` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer blueAt(long index, MemorySegment value) { blue(this.segment(), index, value); return this; }
-
-        /// {@return `size` at the given index}
-        /// @param index the index of the struct buffer
-        public int sizeAt(long index) { return size(this.segment(), index); }
-        /// Sets `size` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
-
-    }
 }

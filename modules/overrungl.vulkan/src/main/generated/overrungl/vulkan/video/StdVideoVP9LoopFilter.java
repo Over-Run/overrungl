@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -37,7 +37,7 @@ import java.util.function.*;
 ///     int8_t loop_filter_mode_deltas[2];
 /// };
 /// ```
-public sealed class StdVideoVP9LoopFilter extends GroupType {
+public final class StdVideoVP9LoopFilter extends GroupType {
     /// The struct layout of `StdVideoVP9LoopFilter`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoVP9LoopFilterFlags.LAYOUT.withName("flags"),
@@ -90,20 +90,21 @@ public sealed class StdVideoVP9LoopFilter extends GroupType {
     public static final VarHandle VH_loop_filter_mode_deltas = LAYOUT.arrayElementVarHandle(PathElement.groupElement("loop_filter_mode_deltas"), PathElement.sequenceElement());
 
     /// Creates `StdVideoVP9LoopFilter` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoVP9LoopFilter(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoVP9LoopFilter(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoVP9LoopFilter` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoVP9LoopFilter of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9LoopFilter(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoVP9LoopFilter` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoVP9LoopFilter ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9LoopFilter(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoVP9LoopFilter ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9LoopFilter(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoVP9LoopFilter` with the given segment.
     ///
@@ -111,18 +112,18 @@ public sealed class StdVideoVP9LoopFilter extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoVP9LoopFilter ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoVP9LoopFilter(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoVP9LoopFilter` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoVP9LoopFilter`
-    public static StdVideoVP9LoopFilter alloc(SegmentAllocator allocator) { return new StdVideoVP9LoopFilter(allocator.allocate(LAYOUT)); }
+    public static StdVideoVP9LoopFilter alloc(SegmentAllocator allocator) { return new StdVideoVP9LoopFilter(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoVP9LoopFilter` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoVP9LoopFilter`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoVP9LoopFilter alloc(SegmentAllocator allocator, long count) { return new StdVideoVP9LoopFilter(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoVP9LoopFilter` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -206,9 +207,10 @@ public sealed class StdVideoVP9LoopFilter extends GroupType {
     /// @return `this`
     public StdVideoVP9LoopFilter copyFrom(StdVideoVP9LoopFilter src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoVP9LoopFilter reinterpret(long count) { return new StdVideoVP9LoopFilter(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -364,115 +366,109 @@ public sealed class StdVideoVP9LoopFilter extends GroupType {
     /// @return `this`
     public StdVideoVP9LoopFilter loop_filter_mode_deltas(long index0, byte value) { loop_filter_mode_deltas(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [StdVideoVP9LoopFilter].
-    public static final class Buffer extends StdVideoVP9LoopFilter {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoVP9LoopFilter`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoVP9LoopFilter`
+    public StdVideoVP9LoopFilter asSlice(long index) { return new StdVideoVP9LoopFilter(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoVP9LoopFilter.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoVP9LoopFilter`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoVP9LoopFilter`
+    public StdVideoVP9LoopFilter asSlice(long index, long count) { return new StdVideoVP9LoopFilter(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoVP9LoopFilter` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoVP9LoopFilter at(long index, Consumer<StdVideoVP9LoopFilter> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoVP9LoopFilter`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoVP9LoopFilter`
-        public StdVideoVP9LoopFilter asSlice(long index) { return new StdVideoVP9LoopFilter(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9LoopFilter flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoVP9LoopFilter flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoVP9LoopFilterFlags> func) { func.accept(overrungl.vulkan.video.StdVideoVP9LoopFilterFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoVP9LoopFilter`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoVP9LoopFilter`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `loop_filter_level` at the given index}
+    /// @param index the index of the struct buffer
+    public byte loop_filter_levelAt(long index) { return loop_filter_level(this.segment(), index); }
+    /// Sets `loop_filter_level` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9LoopFilter loop_filter_levelAt(long index, byte value) { loop_filter_level(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoVP9LoopFilterFlags> func) { func.accept(overrungl.vulkan.video.StdVideoVP9LoopFilterFlags.of(flagsAt(index))); return this; }
+    /// {@return `loop_filter_sharpness` at the given index}
+    /// @param index the index of the struct buffer
+    public byte loop_filter_sharpnessAt(long index) { return loop_filter_sharpness(this.segment(), index); }
+    /// Sets `loop_filter_sharpness` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9LoopFilter loop_filter_sharpnessAt(long index, byte value) { loop_filter_sharpness(this.segment(), index, value); return this; }
 
-        /// {@return `loop_filter_level` at the given index}
-        /// @param index the index of the struct buffer
-        public byte loop_filter_levelAt(long index) { return loop_filter_level(this.segment(), index); }
-        /// Sets `loop_filter_level` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer loop_filter_levelAt(long index, byte value) { loop_filter_level(this.segment(), index, value); return this; }
+    /// {@return `update_ref_delta` at the given index}
+    /// @param index the index of the struct buffer
+    public byte update_ref_deltaAt(long index) { return update_ref_delta(this.segment(), index); }
+    /// Sets `update_ref_delta` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9LoopFilter update_ref_deltaAt(long index, byte value) { update_ref_delta(this.segment(), index, value); return this; }
 
-        /// {@return `loop_filter_sharpness` at the given index}
-        /// @param index the index of the struct buffer
-        public byte loop_filter_sharpnessAt(long index) { return loop_filter_sharpness(this.segment(), index); }
-        /// Sets `loop_filter_sharpness` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer loop_filter_sharpnessAt(long index, byte value) { loop_filter_sharpness(this.segment(), index, value); return this; }
-
-        /// {@return `update_ref_delta` at the given index}
-        /// @param index the index of the struct buffer
-        public byte update_ref_deltaAt(long index) { return update_ref_delta(this.segment(), index); }
-        /// Sets `update_ref_delta` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer update_ref_deltaAt(long index, byte value) { update_ref_delta(this.segment(), index, value); return this; }
-
-        /// {@return `loop_filter_ref_deltas` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment loop_filter_ref_deltasAt(long index) { return loop_filter_ref_deltas(this.segment(), index); }
-        /// {@return `loop_filter_ref_deltas` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `loop_filter_ref_deltas` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment loop_filter_ref_deltasAt(long index) { return loop_filter_ref_deltas(this.segment(), index); }
+    /// {@return `loop_filter_ref_deltas` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte loop_filter_ref_deltasAt(long index, long index0) { return loop_filter_ref_deltas(this.segment(), index, index0); }
-        /// Sets `loop_filter_ref_deltas` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer loop_filter_ref_deltasAt(long index, MemorySegment value) { loop_filter_ref_deltas(this.segment(), index, value); return this; }
-        /// Sets `loop_filter_ref_deltas` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer loop_filter_ref_deltasAt(long index, long index0, byte value) { loop_filter_ref_deltas(this.segment(), index, index0, value); return this; }
+    /// Sets `loop_filter_ref_deltas` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9LoopFilter loop_filter_ref_deltasAt(long index, MemorySegment value) { loop_filter_ref_deltas(this.segment(), index, value); return this; }
+    /// Sets `loop_filter_ref_deltas` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9LoopFilter loop_filter_ref_deltasAt(long index, long index0, byte value) { loop_filter_ref_deltas(this.segment(), index, index0, value); return this; }
 
-        /// {@return `update_mode_delta` at the given index}
-        /// @param index the index of the struct buffer
-        public byte update_mode_deltaAt(long index) { return update_mode_delta(this.segment(), index); }
-        /// Sets `update_mode_delta` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer update_mode_deltaAt(long index, byte value) { update_mode_delta(this.segment(), index, value); return this; }
+    /// {@return `update_mode_delta` at the given index}
+    /// @param index the index of the struct buffer
+    public byte update_mode_deltaAt(long index) { return update_mode_delta(this.segment(), index); }
+    /// Sets `update_mode_delta` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9LoopFilter update_mode_deltaAt(long index, byte value) { update_mode_delta(this.segment(), index, value); return this; }
 
-        /// {@return `loop_filter_mode_deltas` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment loop_filter_mode_deltasAt(long index) { return loop_filter_mode_deltas(this.segment(), index); }
-        /// {@return `loop_filter_mode_deltas` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `loop_filter_mode_deltas` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment loop_filter_mode_deltasAt(long index) { return loop_filter_mode_deltas(this.segment(), index); }
+    /// {@return `loop_filter_mode_deltas` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte loop_filter_mode_deltasAt(long index, long index0) { return loop_filter_mode_deltas(this.segment(), index, index0); }
-        /// Sets `loop_filter_mode_deltas` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer loop_filter_mode_deltasAt(long index, MemorySegment value) { loop_filter_mode_deltas(this.segment(), index, value); return this; }
-        /// Sets `loop_filter_mode_deltas` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer loop_filter_mode_deltasAt(long index, long index0, byte value) { loop_filter_mode_deltas(this.segment(), index, index0, value); return this; }
+    /// Sets `loop_filter_mode_deltas` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9LoopFilter loop_filter_mode_deltasAt(long index, MemorySegment value) { loop_filter_mode_deltas(this.segment(), index, value); return this; }
+    /// Sets `loop_filter_mode_deltas` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoVP9LoopFilter loop_filter_mode_deltasAt(long index, long index0, byte value) { loop_filter_mode_deltas(this.segment(), index, index0, value); return this; }
 
-    }
 }

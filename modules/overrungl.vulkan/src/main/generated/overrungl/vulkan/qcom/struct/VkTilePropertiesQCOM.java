@@ -21,9 +21,9 @@ package overrungl.vulkan.qcom.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -35,7 +35,7 @@ import java.util.function.*;
 ///     (struct VkOffset2D) VkOffset2D origin;
 /// };
 /// ```
-public sealed class VkTilePropertiesQCOM extends GroupType {
+public final class VkTilePropertiesQCOM extends GroupType {
     /// The struct layout of `VkTilePropertiesQCOM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -70,20 +70,21 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
     public static final MemoryLayout LAYOUT_origin = LAYOUT.select(PathElement.groupElement("origin"));
 
     /// Creates `VkTilePropertiesQCOM` with the given segment.
-    /// @param segment the memory segment
-    public VkTilePropertiesQCOM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkTilePropertiesQCOM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkTilePropertiesQCOM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkTilePropertiesQCOM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkTilePropertiesQCOM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkTilePropertiesQCOM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkTilePropertiesQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkTilePropertiesQCOM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkTilePropertiesQCOM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkTilePropertiesQCOM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkTilePropertiesQCOM` with the given segment.
     ///
@@ -91,18 +92,18 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkTilePropertiesQCOM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkTilePropertiesQCOM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkTilePropertiesQCOM`
-    public static VkTilePropertiesQCOM alloc(SegmentAllocator allocator) { return new VkTilePropertiesQCOM(allocator.allocate(LAYOUT)); }
+    public static VkTilePropertiesQCOM alloc(SegmentAllocator allocator) { return new VkTilePropertiesQCOM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkTilePropertiesQCOM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkTilePropertiesQCOM alloc(SegmentAllocator allocator, long count) { return new VkTilePropertiesQCOM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkTilePropertiesQCOM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -159,9 +160,10 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
     /// @return `this`
     public VkTilePropertiesQCOM copyFrom(VkTilePropertiesQCOM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkTilePropertiesQCOM reinterpret(long count) { return new VkTilePropertiesQCOM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -255,87 +257,81 @@ public sealed class VkTilePropertiesQCOM extends GroupType {
     /// @return `this`
     public VkTilePropertiesQCOM origin(Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(origin())); return this; }
 
-    /// A buffer of [VkTilePropertiesQCOM].
-    public static final class Buffer extends VkTilePropertiesQCOM {
-        private final long elementCount;
+    /// Creates a slice of `VkTilePropertiesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkTilePropertiesQCOM`
+    public VkTilePropertiesQCOM asSlice(long index) { return new VkTilePropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkTilePropertiesQCOM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkTilePropertiesQCOM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkTilePropertiesQCOM`
+    public VkTilePropertiesQCOM asSlice(long index, long count) { return new VkTilePropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkTilePropertiesQCOM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkTilePropertiesQCOM at(long index, Consumer<VkTilePropertiesQCOM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkTilePropertiesQCOM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkTilePropertiesQCOM`
-        public VkTilePropertiesQCOM asSlice(long index) { return new VkTilePropertiesQCOM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTilePropertiesQCOM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkTilePropertiesQCOM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkTilePropertiesQCOM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTilePropertiesQCOM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `tileSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment tileSizeAt(long index) { return tileSize(this.segment(), index); }
+    /// Sets `tileSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTilePropertiesQCOM tileSizeAt(long index, MemorySegment value) { tileSize(this.segment(), index, value); return this; }
+    /// Accepts `tileSize` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkTilePropertiesQCOM tileSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(tileSizeAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `apronSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment apronSizeAt(long index) { return apronSize(this.segment(), index); }
+    /// Sets `apronSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTilePropertiesQCOM apronSizeAt(long index, MemorySegment value) { apronSize(this.segment(), index, value); return this; }
+    /// Accepts `apronSize` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkTilePropertiesQCOM apronSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(apronSizeAt(index))); return this; }
 
-        /// {@return `tileSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment tileSizeAt(long index) { return tileSize(this.segment(), index); }
-        /// Sets `tileSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tileSizeAt(long index, MemorySegment value) { tileSize(this.segment(), index, value); return this; }
-        /// Accepts `tileSize` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer tileSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(tileSizeAt(index))); return this; }
+    /// {@return `origin` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment originAt(long index) { return origin(this.segment(), index); }
+    /// Sets `origin` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTilePropertiesQCOM originAt(long index, MemorySegment value) { origin(this.segment(), index, value); return this; }
+    /// Accepts `origin` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkTilePropertiesQCOM originAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(originAt(index))); return this; }
 
-        /// {@return `apronSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment apronSizeAt(long index) { return apronSize(this.segment(), index); }
-        /// Sets `apronSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer apronSizeAt(long index, MemorySegment value) { apronSize(this.segment(), index, value); return this; }
-        /// Accepts `apronSize` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer apronSizeAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(apronSizeAt(index))); return this; }
-
-        /// {@return `origin` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment originAt(long index) { return origin(this.segment(), index); }
-        /// Sets `origin` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer originAt(long index, MemorySegment value) { origin(this.segment(), index, value); return this; }
-        /// Accepts `origin` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer originAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(originAt(index))); return this; }
-
-    }
 }

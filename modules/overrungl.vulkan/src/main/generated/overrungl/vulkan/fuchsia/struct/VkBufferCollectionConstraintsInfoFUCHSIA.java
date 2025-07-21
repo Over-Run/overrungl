@@ -21,6 +21,7 @@ package overrungl.vulkan.fuchsia.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t minBufferCountForSharedSlack;
 /// };
 /// ```
-public sealed class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
+public final class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// The struct layout of `VkBufferCollectionConstraintsInfoFUCHSIA`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     public static final VarHandle VH_minBufferCountForSharedSlack = LAYOUT.arrayElementVarHandle(PathElement.groupElement("minBufferCountForSharedSlack"));
 
     /// Creates `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment.
-    /// @param segment the memory segment
-    public VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkBufferCollectionConstraintsInfoFUCHSIA(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkBufferCollectionConstraintsInfoFUCHSIA of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionConstraintsInfoFUCHSIA(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBufferCollectionConstraintsInfoFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkBufferCollectionConstraintsInfoFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkBufferCollectionConstraintsInfoFUCHSIA ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBufferCollectionConstraintsInfoFUCHSIA(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
-    public static VkBufferCollectionConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator) { return new VkBufferCollectionConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT)); }
+    public static VkBufferCollectionConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator) { return new VkBufferCollectionConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBufferCollectionConstraintsInfoFUCHSIA`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkBufferCollectionConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkBufferCollectionConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkBufferCollectionConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// @return `this`
     public VkBufferCollectionConstraintsInfoFUCHSIA copyFrom(VkBufferCollectionConstraintsInfoFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkBufferCollectionConstraintsInfoFUCHSIA reinterpret(long count) { return new VkBufferCollectionConstraintsInfoFUCHSIA(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkBufferCollectionConstraintsInfoFUCHSIA extends GroupType {
     /// @return `this`
     public VkBufferCollectionConstraintsInfoFUCHSIA minBufferCountForSharedSlack(int value) { minBufferCountForSharedSlack(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkBufferCollectionConstraintsInfoFUCHSIA].
-    public static final class Buffer extends VkBufferCollectionConstraintsInfoFUCHSIA {
-        private final long elementCount;
+    /// Creates a slice of `VkBufferCollectionConstraintsInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public VkBufferCollectionConstraintsInfoFUCHSIA asSlice(long index) { return new VkBufferCollectionConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkBufferCollectionConstraintsInfoFUCHSIA.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkBufferCollectionConstraintsInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBufferCollectionConstraintsInfoFUCHSIA`
+    public VkBufferCollectionConstraintsInfoFUCHSIA asSlice(long index, long count) { return new VkBufferCollectionConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkBufferCollectionConstraintsInfoFUCHSIA` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkBufferCollectionConstraintsInfoFUCHSIA at(long index, Consumer<VkBufferCollectionConstraintsInfoFUCHSIA> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkBufferCollectionConstraintsInfoFUCHSIA`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkBufferCollectionConstraintsInfoFUCHSIA`
-        public VkBufferCollectionConstraintsInfoFUCHSIA asSlice(long index) { return new VkBufferCollectionConstraintsInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionConstraintsInfoFUCHSIA sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkBufferCollectionConstraintsInfoFUCHSIA`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkBufferCollectionConstraintsInfoFUCHSIA`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionConstraintsInfoFUCHSIA pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `minBufferCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int minBufferCountAt(long index) { return minBufferCount(this.segment(), index); }
+    /// Sets `minBufferCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionConstraintsInfoFUCHSIA minBufferCountAt(long index, int value) { minBufferCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxBufferCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxBufferCountAt(long index) { return maxBufferCount(this.segment(), index); }
+    /// Sets `maxBufferCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionConstraintsInfoFUCHSIA maxBufferCountAt(long index, int value) { maxBufferCount(this.segment(), index, value); return this; }
 
-        /// {@return `minBufferCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int minBufferCountAt(long index) { return minBufferCount(this.segment(), index); }
-        /// Sets `minBufferCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minBufferCountAt(long index, int value) { minBufferCount(this.segment(), index, value); return this; }
+    /// {@return `minBufferCountForCamping` at the given index}
+    /// @param index the index of the struct buffer
+    public int minBufferCountForCampingAt(long index) { return minBufferCountForCamping(this.segment(), index); }
+    /// Sets `minBufferCountForCamping` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionConstraintsInfoFUCHSIA minBufferCountForCampingAt(long index, int value) { minBufferCountForCamping(this.segment(), index, value); return this; }
 
-        /// {@return `maxBufferCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxBufferCountAt(long index) { return maxBufferCount(this.segment(), index); }
-        /// Sets `maxBufferCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxBufferCountAt(long index, int value) { maxBufferCount(this.segment(), index, value); return this; }
+    /// {@return `minBufferCountForDedicatedSlack` at the given index}
+    /// @param index the index of the struct buffer
+    public int minBufferCountForDedicatedSlackAt(long index) { return minBufferCountForDedicatedSlack(this.segment(), index); }
+    /// Sets `minBufferCountForDedicatedSlack` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionConstraintsInfoFUCHSIA minBufferCountForDedicatedSlackAt(long index, int value) { minBufferCountForDedicatedSlack(this.segment(), index, value); return this; }
 
-        /// {@return `minBufferCountForCamping` at the given index}
-        /// @param index the index of the struct buffer
-        public int minBufferCountForCampingAt(long index) { return minBufferCountForCamping(this.segment(), index); }
-        /// Sets `minBufferCountForCamping` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minBufferCountForCampingAt(long index, int value) { minBufferCountForCamping(this.segment(), index, value); return this; }
+    /// {@return `minBufferCountForSharedSlack` at the given index}
+    /// @param index the index of the struct buffer
+    public int minBufferCountForSharedSlackAt(long index) { return minBufferCountForSharedSlack(this.segment(), index); }
+    /// Sets `minBufferCountForSharedSlack` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBufferCollectionConstraintsInfoFUCHSIA minBufferCountForSharedSlackAt(long index, int value) { minBufferCountForSharedSlack(this.segment(), index, value); return this; }
 
-        /// {@return `minBufferCountForDedicatedSlack` at the given index}
-        /// @param index the index of the struct buffer
-        public int minBufferCountForDedicatedSlackAt(long index) { return minBufferCountForDedicatedSlack(this.segment(), index); }
-        /// Sets `minBufferCountForDedicatedSlack` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minBufferCountForDedicatedSlackAt(long index, int value) { minBufferCountForDedicatedSlack(this.segment(), index, value); return this; }
-
-        /// {@return `minBufferCountForSharedSlack` at the given index}
-        /// @param index the index of the struct buffer
-        public int minBufferCountForSharedSlackAt(long index) { return minBufferCountForSharedSlack(this.segment(), index); }
-        /// Sets `minBufferCountForSharedSlack` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minBufferCountForSharedSlackAt(long index, int value) { minBufferCountForSharedSlack(this.segment(), index, value); return this; }
-
-    }
 }

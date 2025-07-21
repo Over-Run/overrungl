@@ -21,6 +21,7 @@ package overrungl.vulkan.amd.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 antiLag;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceAntiLagFeaturesAMD extends GroupType {
+public final class VkPhysicalDeviceAntiLagFeaturesAMD extends GroupType {
     /// The struct layout of `VkPhysicalDeviceAntiLagFeaturesAMD`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDeviceAntiLagFeaturesAMD extends GroupType {
     public static final VarHandle VH_antiLag = LAYOUT.arrayElementVarHandle(PathElement.groupElement("antiLag"));
 
     /// Creates `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceAntiLagFeaturesAMD(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceAntiLagFeaturesAMD(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceAntiLagFeaturesAMD of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAntiLagFeaturesAMD(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceAntiLagFeaturesAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAntiLagFeaturesAMD(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceAntiLagFeaturesAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAntiLagFeaturesAMD(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDeviceAntiLagFeaturesAMD extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceAntiLagFeaturesAMD ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceAntiLagFeaturesAMD(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceAntiLagFeaturesAMD`
-    public static VkPhysicalDeviceAntiLagFeaturesAMD alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceAntiLagFeaturesAMD(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceAntiLagFeaturesAMD alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceAntiLagFeaturesAMD(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceAntiLagFeaturesAMD`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceAntiLagFeaturesAMD alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceAntiLagFeaturesAMD(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceAntiLagFeaturesAMD` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDeviceAntiLagFeaturesAMD extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceAntiLagFeaturesAMD copyFrom(VkPhysicalDeviceAntiLagFeaturesAMD src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceAntiLagFeaturesAMD reinterpret(long count) { return new VkPhysicalDeviceAntiLagFeaturesAMD(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPhysicalDeviceAntiLagFeaturesAMD extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceAntiLagFeaturesAMD antiLag(int value) { antiLag(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceAntiLagFeaturesAMD].
-    public static final class Buffer extends VkPhysicalDeviceAntiLagFeaturesAMD {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceAntiLagFeaturesAMD`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceAntiLagFeaturesAMD`
+    public VkPhysicalDeviceAntiLagFeaturesAMD asSlice(long index) { return new VkPhysicalDeviceAntiLagFeaturesAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceAntiLagFeaturesAMD.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceAntiLagFeaturesAMD`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceAntiLagFeaturesAMD`
+    public VkPhysicalDeviceAntiLagFeaturesAMD asSlice(long index, long count) { return new VkPhysicalDeviceAntiLagFeaturesAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceAntiLagFeaturesAMD` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceAntiLagFeaturesAMD at(long index, Consumer<VkPhysicalDeviceAntiLagFeaturesAMD> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceAntiLagFeaturesAMD`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceAntiLagFeaturesAMD`
-        public VkPhysicalDeviceAntiLagFeaturesAMD asSlice(long index) { return new VkPhysicalDeviceAntiLagFeaturesAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceAntiLagFeaturesAMD sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceAntiLagFeaturesAMD`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceAntiLagFeaturesAMD`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceAntiLagFeaturesAMD pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `antiLag` at the given index}
+    /// @param index the index of the struct buffer
+    public int antiLagAt(long index) { return antiLag(this.segment(), index); }
+    /// Sets `antiLag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceAntiLagFeaturesAMD antiLagAt(long index, int value) { antiLag(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `antiLag` at the given index}
-        /// @param index the index of the struct buffer
-        public int antiLagAt(long index) { return antiLag(this.segment(), index); }
-        /// Sets `antiLag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer antiLagAt(long index, int value) { antiLag(this.segment(), index, value); return this; }
-
-    }
 }

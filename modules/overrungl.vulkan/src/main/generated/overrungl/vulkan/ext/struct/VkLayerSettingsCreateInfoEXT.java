@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     const VkLayerSettingEXT* pSettings;
 /// };
 /// ```
-public sealed class VkLayerSettingsCreateInfoEXT extends GroupType {
+public final class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// The struct layout of `VkLayerSettingsCreateInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkLayerSettingsCreateInfoEXT extends GroupType {
     public static final VarHandle VH_pSettings = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSettings"));
 
     /// Creates `VkLayerSettingsCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkLayerSettingsCreateInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkLayerSettingsCreateInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkLayerSettingsCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkLayerSettingsCreateInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLayerSettingsCreateInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkLayerSettingsCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkLayerSettingsCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLayerSettingsCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkLayerSettingsCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLayerSettingsCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkLayerSettingsCreateInfoEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkLayerSettingsCreateInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkLayerSettingsCreateInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkLayerSettingsCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkLayerSettingsCreateInfoEXT`
-    public static VkLayerSettingsCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkLayerSettingsCreateInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkLayerSettingsCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkLayerSettingsCreateInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkLayerSettingsCreateInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkLayerSettingsCreateInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkLayerSettingsCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkLayerSettingsCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkLayerSettingsCreateInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkLayerSettingsCreateInfoEXT copyFrom(VkLayerSettingsCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkLayerSettingsCreateInfoEXT reinterpret(long count) { return new VkLayerSettingsCreateInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkLayerSettingsCreateInfoEXT pSettings(MemorySegment value) { pSettings(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkLayerSettingsCreateInfoEXT].
-    public static final class Buffer extends VkLayerSettingsCreateInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkLayerSettingsCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkLayerSettingsCreateInfoEXT`
+    public VkLayerSettingsCreateInfoEXT asSlice(long index) { return new VkLayerSettingsCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkLayerSettingsCreateInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkLayerSettingsCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkLayerSettingsCreateInfoEXT`
+    public VkLayerSettingsCreateInfoEXT asSlice(long index, long count) { return new VkLayerSettingsCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkLayerSettingsCreateInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkLayerSettingsCreateInfoEXT at(long index, Consumer<VkLayerSettingsCreateInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkLayerSettingsCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkLayerSettingsCreateInfoEXT`
-        public VkLayerSettingsCreateInfoEXT asSlice(long index) { return new VkLayerSettingsCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLayerSettingsCreateInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkLayerSettingsCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkLayerSettingsCreateInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLayerSettingsCreateInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `settingCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int settingCountAt(long index) { return settingCount(this.segment(), index); }
+    /// Sets `settingCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLayerSettingsCreateInfoEXT settingCountAt(long index, int value) { settingCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pSettings` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pSettingsAt(long index) { return pSettings(this.segment(), index); }
+    /// Sets `pSettings` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLayerSettingsCreateInfoEXT pSettingsAt(long index, MemorySegment value) { pSettings(this.segment(), index, value); return this; }
 
-        /// {@return `settingCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int settingCountAt(long index) { return settingCount(this.segment(), index); }
-        /// Sets `settingCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer settingCountAt(long index, int value) { settingCount(this.segment(), index, value); return this; }
-
-        /// {@return `pSettings` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pSettingsAt(long index) { return pSettings(this.segment(), index); }
-        /// Sets `pSettings` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSettingsAt(long index, MemorySegment value) { pSettings(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint64_t maxDecompressionIndirectCount;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceMemoryDecompressionPropertiesNV extends GroupType {
+public final class VkPhysicalDeviceMemoryDecompressionPropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPhysicalDeviceMemoryDecompressionPropertiesNV extends Grou
     public static final VarHandle VH_maxDecompressionIndirectCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxDecompressionIndirectCount"));
 
     /// Creates `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryDecompressionPropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryDecompressionPropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryDecompressionPropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPhysicalDeviceMemoryDecompressionPropertiesNV extends Grou
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceMemoryDecompressionPropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
-    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceMemoryDecompressionPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceMemoryDecompressionPropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPhysicalDeviceMemoryDecompressionPropertiesNV extends Grou
     /// @return `this`
     public VkPhysicalDeviceMemoryDecompressionPropertiesNV copyFrom(VkPhysicalDeviceMemoryDecompressionPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV reinterpret(long count) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPhysicalDeviceMemoryDecompressionPropertiesNV extends Grou
     /// @return `this`
     public VkPhysicalDeviceMemoryDecompressionPropertiesNV maxDecompressionIndirectCount(long value) { maxDecompressionIndirectCount(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceMemoryDecompressionPropertiesNV].
-    public static final class Buffer extends VkPhysicalDeviceMemoryDecompressionPropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV asSlice(long index) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceMemoryDecompressionPropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceMemoryDecompressionPropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV at(long index, Consumer<VkPhysicalDeviceMemoryDecompressionPropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
-        public VkPhysicalDeviceMemoryDecompressionPropertiesNV asSlice(long index) { return new VkPhysicalDeviceMemoryDecompressionPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceMemoryDecompressionPropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `decompressionMethods` at the given index}
+    /// @param index the index of the struct buffer
+    public long decompressionMethodsAt(long index) { return decompressionMethods(this.segment(), index); }
+    /// Sets `decompressionMethods` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV decompressionMethodsAt(long index, long value) { decompressionMethods(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxDecompressionIndirectCount` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxDecompressionIndirectCountAt(long index) { return maxDecompressionIndirectCount(this.segment(), index); }
+    /// Sets `maxDecompressionIndirectCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceMemoryDecompressionPropertiesNV maxDecompressionIndirectCountAt(long index, long value) { maxDecompressionIndirectCount(this.segment(), index, value); return this; }
 
-        /// {@return `decompressionMethods` at the given index}
-        /// @param index the index of the struct buffer
-        public long decompressionMethodsAt(long index) { return decompressionMethods(this.segment(), index); }
-        /// Sets `decompressionMethods` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer decompressionMethodsAt(long index, long value) { decompressionMethods(this.segment(), index, value); return this; }
-
-        /// {@return `maxDecompressionIndirectCount` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxDecompressionIndirectCountAt(long index) { return maxDecompressionIndirectCount(this.segment(), index); }
-        /// Sets `maxDecompressionIndirectCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDecompressionIndirectCountAt(long index, long value) { maxDecompressionIndirectCount(this.segment(), index, value); return this; }
-
-    }
 }

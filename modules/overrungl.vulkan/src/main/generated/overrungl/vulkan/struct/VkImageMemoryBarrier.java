@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -40,7 +40,7 @@ import java.util.function.*;
 ///     (struct VkImageSubresourceRange) VkImageSubresourceRange subresourceRange;
 /// };
 /// ```
-public sealed class VkImageMemoryBarrier extends GroupType {
+public final class VkImageMemoryBarrier extends GroupType {
     /// The struct layout of `VkImageMemoryBarrier`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -114,20 +114,21 @@ public sealed class VkImageMemoryBarrier extends GroupType {
     public static final MemoryLayout LAYOUT_subresourceRange = LAYOUT.select(PathElement.groupElement("subresourceRange"));
 
     /// Creates `VkImageMemoryBarrier` with the given segment.
-    /// @param segment the memory segment
-    public VkImageMemoryBarrier(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkImageMemoryBarrier(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkImageMemoryBarrier` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkImageMemoryBarrier of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageMemoryBarrier(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImageMemoryBarrier` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImageMemoryBarrier ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageMemoryBarrier(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkImageMemoryBarrier ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageMemoryBarrier(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkImageMemoryBarrier` with the given segment.
     ///
@@ -135,18 +136,18 @@ public sealed class VkImageMemoryBarrier extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkImageMemoryBarrier ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImageMemoryBarrier(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkImageMemoryBarrier` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImageMemoryBarrier`
-    public static VkImageMemoryBarrier alloc(SegmentAllocator allocator) { return new VkImageMemoryBarrier(allocator.allocate(LAYOUT)); }
+    public static VkImageMemoryBarrier alloc(SegmentAllocator allocator) { return new VkImageMemoryBarrier(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkImageMemoryBarrier` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImageMemoryBarrier`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkImageMemoryBarrier alloc(SegmentAllocator allocator, long count) { return new VkImageMemoryBarrier(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkImageMemoryBarrier` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -278,9 +279,10 @@ public sealed class VkImageMemoryBarrier extends GroupType {
     /// @return `this`
     public VkImageMemoryBarrier copyFrom(VkImageMemoryBarrier src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkImageMemoryBarrier reinterpret(long count) { return new VkImageMemoryBarrier(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -446,122 +448,116 @@ public sealed class VkImageMemoryBarrier extends GroupType {
     /// @return `this`
     public VkImageMemoryBarrier subresourceRange(Consumer<overrungl.vulkan.struct.VkImageSubresourceRange> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceRange.of(subresourceRange())); return this; }
 
-    /// A buffer of [VkImageMemoryBarrier].
-    public static final class Buffer extends VkImageMemoryBarrier {
-        private final long elementCount;
+    /// Creates a slice of `VkImageMemoryBarrier`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImageMemoryBarrier`
+    public VkImageMemoryBarrier asSlice(long index) { return new VkImageMemoryBarrier(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkImageMemoryBarrier.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkImageMemoryBarrier`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImageMemoryBarrier`
+    public VkImageMemoryBarrier asSlice(long index, long count) { return new VkImageMemoryBarrier(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkImageMemoryBarrier` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkImageMemoryBarrier at(long index, Consumer<VkImageMemoryBarrier> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkImageMemoryBarrier`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkImageMemoryBarrier`
-        public VkImageMemoryBarrier asSlice(long index) { return new VkImageMemoryBarrier(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkImageMemoryBarrier`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkImageMemoryBarrier`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `srcAccessMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcAccessMaskAt(long index) { return srcAccessMask(this.segment(), index); }
+    /// Sets `srcAccessMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier srcAccessMaskAt(long index, int value) { srcAccessMask(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `dstAccessMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstAccessMaskAt(long index) { return dstAccessMask(this.segment(), index); }
+    /// Sets `dstAccessMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier dstAccessMaskAt(long index, int value) { dstAccessMask(this.segment(), index, value); return this; }
 
-        /// {@return `srcAccessMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcAccessMaskAt(long index) { return srcAccessMask(this.segment(), index); }
-        /// Sets `srcAccessMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcAccessMaskAt(long index, int value) { srcAccessMask(this.segment(), index, value); return this; }
+    /// {@return `oldLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public int oldLayoutAt(long index) { return oldLayout(this.segment(), index); }
+    /// Sets `oldLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier oldLayoutAt(long index, int value) { oldLayout(this.segment(), index, value); return this; }
 
-        /// {@return `dstAccessMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstAccessMaskAt(long index) { return dstAccessMask(this.segment(), index); }
-        /// Sets `dstAccessMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstAccessMaskAt(long index, int value) { dstAccessMask(this.segment(), index, value); return this; }
+    /// {@return `newLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public int newLayoutAt(long index) { return newLayout(this.segment(), index); }
+    /// Sets `newLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier newLayoutAt(long index, int value) { newLayout(this.segment(), index, value); return this; }
 
-        /// {@return `oldLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public int oldLayoutAt(long index) { return oldLayout(this.segment(), index); }
-        /// Sets `oldLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer oldLayoutAt(long index, int value) { oldLayout(this.segment(), index, value); return this; }
+    /// {@return `srcQueueFamilyIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int srcQueueFamilyIndexAt(long index) { return srcQueueFamilyIndex(this.segment(), index); }
+    /// Sets `srcQueueFamilyIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier srcQueueFamilyIndexAt(long index, int value) { srcQueueFamilyIndex(this.segment(), index, value); return this; }
 
-        /// {@return `newLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public int newLayoutAt(long index) { return newLayout(this.segment(), index); }
-        /// Sets `newLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer newLayoutAt(long index, int value) { newLayout(this.segment(), index, value); return this; }
+    /// {@return `dstQueueFamilyIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int dstQueueFamilyIndexAt(long index) { return dstQueueFamilyIndex(this.segment(), index); }
+    /// Sets `dstQueueFamilyIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier dstQueueFamilyIndexAt(long index, int value) { dstQueueFamilyIndex(this.segment(), index, value); return this; }
 
-        /// {@return `srcQueueFamilyIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int srcQueueFamilyIndexAt(long index) { return srcQueueFamilyIndex(this.segment(), index); }
-        /// Sets `srcQueueFamilyIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcQueueFamilyIndexAt(long index, int value) { srcQueueFamilyIndex(this.segment(), index, value); return this; }
+    /// {@return `image` at the given index}
+    /// @param index the index of the struct buffer
+    public long imageAt(long index) { return image(this.segment(), index); }
+    /// Sets `image` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier imageAt(long index, long value) { image(this.segment(), index, value); return this; }
 
-        /// {@return `dstQueueFamilyIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int dstQueueFamilyIndexAt(long index) { return dstQueueFamilyIndex(this.segment(), index); }
-        /// Sets `dstQueueFamilyIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstQueueFamilyIndexAt(long index, int value) { dstQueueFamilyIndex(this.segment(), index, value); return this; }
+    /// {@return `subresourceRange` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment subresourceRangeAt(long index) { return subresourceRange(this.segment(), index); }
+    /// Sets `subresourceRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImageMemoryBarrier subresourceRangeAt(long index, MemorySegment value) { subresourceRange(this.segment(), index, value); return this; }
+    /// Accepts `subresourceRange` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkImageMemoryBarrier subresourceRangeAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceRange> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceRange.of(subresourceRangeAt(index))); return this; }
 
-        /// {@return `image` at the given index}
-        /// @param index the index of the struct buffer
-        public long imageAt(long index) { return image(this.segment(), index); }
-        /// Sets `image` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageAt(long index, long value) { image(this.segment(), index, value); return this; }
-
-        /// {@return `subresourceRange` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment subresourceRangeAt(long index) { return subresourceRange(this.segment(), index); }
-        /// Sets `subresourceRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subresourceRangeAt(long index, MemorySegment value) { subresourceRange(this.segment(), index, value); return this; }
-        /// Accepts `subresourceRange` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer subresourceRangeAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresourceRange> func) { func.accept(overrungl.vulkan.struct.VkImageSubresourceRange.of(subresourceRangeAt(index))); return this; }
-
-    }
 }

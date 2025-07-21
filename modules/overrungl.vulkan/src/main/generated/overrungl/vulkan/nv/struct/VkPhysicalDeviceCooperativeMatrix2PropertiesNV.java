@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     uint32_t cooperativeMatrixWorkgroupScopeReservedSharedMemory;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends GroupType {
+public final class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Group
     public static final VarHandle VH_cooperativeMatrixWorkgroupScopeReservedSharedMemory = LAYOUT.arrayElementVarHandle(PathElement.groupElement("cooperativeMatrixWorkgroupScopeReservedSharedMemory"));
 
     /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Group
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
-    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceCooperativeMatrix2PropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Group
     /// @return `this`
     public VkPhysicalDeviceCooperativeMatrix2PropertiesNV copyFrom(VkPhysicalDeviceCooperativeMatrix2PropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV reinterpret(long count) { return new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPhysicalDeviceCooperativeMatrix2PropertiesNV extends Group
     /// @return `this`
     public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixWorkgroupScopeReservedSharedMemory(int value) { cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceCooperativeMatrix2PropertiesNV].
-    public static final class Buffer extends VkPhysicalDeviceCooperativeMatrix2PropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV asSlice(long index) { return new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceCooperativeMatrix2PropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceCooperativeMatrix2PropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV at(long index, Consumer<VkPhysicalDeviceCooperativeMatrix2PropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
-        public VkPhysicalDeviceCooperativeMatrix2PropertiesNV asSlice(long index) { return new VkPhysicalDeviceCooperativeMatrix2PropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceCooperativeMatrix2PropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int cooperativeMatrixWorkgroupScopeMaxWorkgroupSizeAt(long index) { return cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), index); }
+    /// Sets `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixWorkgroupScopeMaxWorkgroupSizeAt(long index, int value) { cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `cooperativeMatrixFlexibleDimensionsMaxDimension` at the given index}
+    /// @param index the index of the struct buffer
+    public int cooperativeMatrixFlexibleDimensionsMaxDimensionAt(long index) { return cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), index); }
+    /// Sets `cooperativeMatrixFlexibleDimensionsMaxDimension` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixFlexibleDimensionsMaxDimensionAt(long index, int value) { cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), index, value); return this; }
 
-        /// {@return `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int cooperativeMatrixWorkgroupScopeMaxWorkgroupSizeAt(long index) { return cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), index); }
-        /// Sets `cooperativeMatrixWorkgroupScopeMaxWorkgroupSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cooperativeMatrixWorkgroupScopeMaxWorkgroupSizeAt(long index, int value) { cooperativeMatrixWorkgroupScopeMaxWorkgroupSize(this.segment(), index, value); return this; }
+    /// {@return `cooperativeMatrixWorkgroupScopeReservedSharedMemory` at the given index}
+    /// @param index the index of the struct buffer
+    public int cooperativeMatrixWorkgroupScopeReservedSharedMemoryAt(long index) { return cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), index); }
+    /// Sets `cooperativeMatrixWorkgroupScopeReservedSharedMemory` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceCooperativeMatrix2PropertiesNV cooperativeMatrixWorkgroupScopeReservedSharedMemoryAt(long index, int value) { cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), index, value); return this; }
 
-        /// {@return `cooperativeMatrixFlexibleDimensionsMaxDimension` at the given index}
-        /// @param index the index of the struct buffer
-        public int cooperativeMatrixFlexibleDimensionsMaxDimensionAt(long index) { return cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), index); }
-        /// Sets `cooperativeMatrixFlexibleDimensionsMaxDimension` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cooperativeMatrixFlexibleDimensionsMaxDimensionAt(long index, int value) { cooperativeMatrixFlexibleDimensionsMaxDimension(this.segment(), index, value); return this; }
-
-        /// {@return `cooperativeMatrixWorkgroupScopeReservedSharedMemory` at the given index}
-        /// @param index the index of the struct buffer
-        public int cooperativeMatrixWorkgroupScopeReservedSharedMemoryAt(long index) { return cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), index); }
-        /// Sets `cooperativeMatrixWorkgroupScopeReservedSharedMemory` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cooperativeMatrixWorkgroupScopeReservedSharedMemoryAt(long index, int value) { cooperativeMatrixWorkgroupScopeReservedSharedMemory(this.segment(), index, value); return this; }
-
-    }
 }

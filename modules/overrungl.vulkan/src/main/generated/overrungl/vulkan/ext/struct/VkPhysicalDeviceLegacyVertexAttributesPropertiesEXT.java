@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 nativeUnalignedPerformance;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT extends GroupType {
+public final class VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT extends 
     public static final VarHandle VH_nativeUnalignedPerformance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nativeUnalignedPerformance"));
 
     /// Creates `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT extends 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`
-    public static VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT extends 
     /// @return `this`
     public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT copyFrom(VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT extends 
     /// @return `this`
     public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT nativeUnalignedPerformance(int value) { nativeUnalignedPerformance(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT].
-    public static final class Buffer extends VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT at(long index, Consumer<VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`
-        public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `nativeUnalignedPerformance` at the given index}
+    /// @param index the index of the struct buffer
+    public int nativeUnalignedPerformanceAt(long index) { return nativeUnalignedPerformance(this.segment(), index); }
+    /// Sets `nativeUnalignedPerformance` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLegacyVertexAttributesPropertiesEXT nativeUnalignedPerformanceAt(long index, int value) { nativeUnalignedPerformance(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `nativeUnalignedPerformance` at the given index}
-        /// @param index the index of the struct buffer
-        public int nativeUnalignedPerformanceAt(long index) { return nativeUnalignedPerformance(this.segment(), index); }
-        /// Sets `nativeUnalignedPerformance` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer nativeUnalignedPerformanceAt(long index, int value) { nativeUnalignedPerformance(this.segment(), index, value); return this; }
-
-    }
 }

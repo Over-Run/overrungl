@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -36,7 +36,7 @@ import java.util.function.*;
 ///     (union VkPipelineExecutableStatisticValueKHR) VkPipelineExecutableStatisticValueKHR value;
 /// };
 /// ```
-public sealed class VkPipelineExecutableStatisticKHR extends GroupType {
+public final class VkPipelineExecutableStatisticKHR extends GroupType {
     /// The struct layout of `VkPipelineExecutableStatisticKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -82,20 +82,21 @@ public sealed class VkPipelineExecutableStatisticKHR extends GroupType {
     public static final MemoryLayout LAYOUT_value = LAYOUT.select(PathElement.groupElement("value"));
 
     /// Creates `VkPipelineExecutableStatisticKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineExecutableStatisticKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineExecutableStatisticKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineExecutableStatisticKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineExecutableStatisticKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineExecutableStatisticKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineExecutableStatisticKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineExecutableStatisticKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineExecutableStatisticKHR` with the given segment.
     ///
@@ -103,18 +104,18 @@ public sealed class VkPipelineExecutableStatisticKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineExecutableStatisticKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineExecutableStatisticKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineExecutableStatisticKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineExecutableStatisticKHR`
-    public static VkPipelineExecutableStatisticKHR alloc(SegmentAllocator allocator) { return new VkPipelineExecutableStatisticKHR(allocator.allocate(LAYOUT)); }
+    public static VkPipelineExecutableStatisticKHR alloc(SegmentAllocator allocator) { return new VkPipelineExecutableStatisticKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineExecutableStatisticKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineExecutableStatisticKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineExecutableStatisticKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineExecutableStatisticKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineExecutableStatisticKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -184,9 +185,10 @@ public sealed class VkPipelineExecutableStatisticKHR extends GroupType {
     /// @return `this`
     public VkPipelineExecutableStatisticKHR copyFrom(VkPipelineExecutableStatisticKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineExecutableStatisticKHR reinterpret(long count) { return new VkPipelineExecutableStatisticKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -326,106 +328,100 @@ public sealed class VkPipelineExecutableStatisticKHR extends GroupType {
     /// @return `this`
     public VkPipelineExecutableStatisticKHR value(Consumer<overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR> func) { func.accept(overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR.of(value())); return this; }
 
-    /// A buffer of [VkPipelineExecutableStatisticKHR].
-    public static final class Buffer extends VkPipelineExecutableStatisticKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineExecutableStatisticKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineExecutableStatisticKHR`
+    public VkPipelineExecutableStatisticKHR asSlice(long index) { return new VkPipelineExecutableStatisticKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineExecutableStatisticKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineExecutableStatisticKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineExecutableStatisticKHR`
+    public VkPipelineExecutableStatisticKHR asSlice(long index, long count) { return new VkPipelineExecutableStatisticKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineExecutableStatisticKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR at(long index, Consumer<VkPipelineExecutableStatisticKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineExecutableStatisticKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineExecutableStatisticKHR`
-        public VkPipelineExecutableStatisticKHR asSlice(long index) { return new VkPipelineExecutableStatisticKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineExecutableStatisticKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineExecutableStatisticKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
-
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `name` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment nameAt(long index) { return name(this.segment(), index); }
-        /// {@return `name` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `name` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment nameAt(long index) { return name(this.segment(), index); }
+    /// {@return `name` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte nameAt(long index, long index0) { return name(this.segment(), index, index0); }
-        /// Sets `name` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
-        /// Sets `name` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer nameAt(long index, long index0, byte value) { name(this.segment(), index, index0, value); return this; }
+    /// Sets `name` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
+    /// Sets `name` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR nameAt(long index, long index0, byte value) { name(this.segment(), index, index0, value); return this; }
 
-        /// {@return `description` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
-        /// {@return `description` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `description` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
+    /// {@return `description` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte descriptionAt(long index, long index0) { return description(this.segment(), index, index0); }
-        /// Sets `description` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
-        /// Sets `description` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
+    /// Sets `description` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
+    /// Sets `description` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
 
-        /// {@return `format` at the given index}
-        /// @param index the index of the struct buffer
-        public int formatAt(long index) { return format(this.segment(), index); }
-        /// Sets `format` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer formatAt(long index, int value) { format(this.segment(), index, value); return this; }
+    /// {@return `format` at the given index}
+    /// @param index the index of the struct buffer
+    public int formatAt(long index) { return format(this.segment(), index); }
+    /// Sets `format` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR formatAt(long index, int value) { format(this.segment(), index, value); return this; }
 
-        /// {@return `value` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment valueAt(long index) { return value(this.segment(), index); }
-        /// Sets `value` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer valueAt(long index, MemorySegment value) { value(this.segment(), index, value); return this; }
-        /// Accepts `value` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer valueAt(long index, Consumer<overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR> func) { func.accept(overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR.of(valueAt(index))); return this; }
+    /// {@return `value` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment valueAt(long index) { return value(this.segment(), index); }
+    /// Sets `value` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR valueAt(long index, MemorySegment value) { value(this.segment(), index, value); return this; }
+    /// Accepts `value` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPipelineExecutableStatisticKHR valueAt(long index, Consumer<overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR> func) { func.accept(overrungl.vulkan.khr.union.VkPipelineExecutableStatisticValueKHR.of(valueAt(index))); return this; }
 
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     const VkRect2D* pDeviceRenderAreas;
 /// };
 /// ```
-public sealed class VkDeviceGroupRenderPassBeginInfo extends GroupType {
+public final class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// The struct layout of `VkDeviceGroupRenderPassBeginInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     public static final VarHandle VH_pDeviceRenderAreas = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDeviceRenderAreas"));
 
     /// Creates `VkDeviceGroupRenderPassBeginInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkDeviceGroupRenderPassBeginInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDeviceGroupRenderPassBeginInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDeviceGroupRenderPassBeginInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDeviceGroupRenderPassBeginInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceGroupRenderPassBeginInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceGroupRenderPassBeginInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceGroupRenderPassBeginInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceGroupRenderPassBeginInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDeviceGroupRenderPassBeginInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceGroupRenderPassBeginInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDeviceGroupRenderPassBeginInfo` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDeviceGroupRenderPassBeginInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceGroupRenderPassBeginInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDeviceGroupRenderPassBeginInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceGroupRenderPassBeginInfo`
-    public static VkDeviceGroupRenderPassBeginInfo alloc(SegmentAllocator allocator) { return new VkDeviceGroupRenderPassBeginInfo(allocator.allocate(LAYOUT)); }
+    public static VkDeviceGroupRenderPassBeginInfo alloc(SegmentAllocator allocator) { return new VkDeviceGroupRenderPassBeginInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDeviceGroupRenderPassBeginInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceGroupRenderPassBeginInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDeviceGroupRenderPassBeginInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceGroupRenderPassBeginInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDeviceGroupRenderPassBeginInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// @return `this`
     public VkDeviceGroupRenderPassBeginInfo copyFrom(VkDeviceGroupRenderPassBeginInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDeviceGroupRenderPassBeginInfo reinterpret(long count) { return new VkDeviceGroupRenderPassBeginInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkDeviceGroupRenderPassBeginInfo extends GroupType {
     /// @return `this`
     public VkDeviceGroupRenderPassBeginInfo pDeviceRenderAreas(MemorySegment value) { pDeviceRenderAreas(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDeviceGroupRenderPassBeginInfo].
-    public static final class Buffer extends VkDeviceGroupRenderPassBeginInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkDeviceGroupRenderPassBeginInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceGroupRenderPassBeginInfo`
+    public VkDeviceGroupRenderPassBeginInfo asSlice(long index) { return new VkDeviceGroupRenderPassBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDeviceGroupRenderPassBeginInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDeviceGroupRenderPassBeginInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceGroupRenderPassBeginInfo`
+    public VkDeviceGroupRenderPassBeginInfo asSlice(long index, long count) { return new VkDeviceGroupRenderPassBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDeviceGroupRenderPassBeginInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDeviceGroupRenderPassBeginInfo at(long index, Consumer<VkDeviceGroupRenderPassBeginInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDeviceGroupRenderPassBeginInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDeviceGroupRenderPassBeginInfo`
-        public VkDeviceGroupRenderPassBeginInfo asSlice(long index) { return new VkDeviceGroupRenderPassBeginInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceGroupRenderPassBeginInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDeviceGroupRenderPassBeginInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDeviceGroupRenderPassBeginInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceGroupRenderPassBeginInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `deviceMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int deviceMaskAt(long index) { return deviceMask(this.segment(), index); }
+    /// Sets `deviceMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceGroupRenderPassBeginInfo deviceMaskAt(long index, int value) { deviceMask(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `deviceRenderAreaCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int deviceRenderAreaCountAt(long index) { return deviceRenderAreaCount(this.segment(), index); }
+    /// Sets `deviceRenderAreaCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceGroupRenderPassBeginInfo deviceRenderAreaCountAt(long index, int value) { deviceRenderAreaCount(this.segment(), index, value); return this; }
 
-        /// {@return `deviceMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int deviceMaskAt(long index) { return deviceMask(this.segment(), index); }
-        /// Sets `deviceMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceMaskAt(long index, int value) { deviceMask(this.segment(), index, value); return this; }
+    /// {@return `pDeviceRenderAreas` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pDeviceRenderAreasAt(long index) { return pDeviceRenderAreas(this.segment(), index); }
+    /// Sets `pDeviceRenderAreas` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceGroupRenderPassBeginInfo pDeviceRenderAreasAt(long index, MemorySegment value) { pDeviceRenderAreas(this.segment(), index, value); return this; }
 
-        /// {@return `deviceRenderAreaCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int deviceRenderAreaCountAt(long index) { return deviceRenderAreaCount(this.segment(), index); }
-        /// Sets `deviceRenderAreaCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceRenderAreaCountAt(long index, int value) { deviceRenderAreaCount(this.segment(), index, value); return this; }
-
-        /// {@return `pDeviceRenderAreas` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pDeviceRenderAreasAt(long index) { return pDeviceRenderAreas(this.segment(), index); }
-        /// Sets `pDeviceRenderAreas` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pDeviceRenderAreasAt(long index, MemorySegment value) { pDeviceRenderAreas(this.segment(), index, value); return this; }
-
-    }
 }

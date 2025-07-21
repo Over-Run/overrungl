@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 transpose;
 /// };
 /// ```
-public sealed class VkCooperativeVectorPropertiesNV extends GroupType {
+public final class VkCooperativeVectorPropertiesNV extends GroupType {
     /// The struct layout of `VkCooperativeVectorPropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -99,20 +100,21 @@ public sealed class VkCooperativeVectorPropertiesNV extends GroupType {
     public static final VarHandle VH_transpose = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transpose"));
 
     /// Creates `VkCooperativeVectorPropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkCooperativeVectorPropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkCooperativeVectorPropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkCooperativeVectorPropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkCooperativeVectorPropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCooperativeVectorPropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCooperativeVectorPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCooperativeVectorPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCooperativeVectorPropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkCooperativeVectorPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCooperativeVectorPropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkCooperativeVectorPropertiesNV` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkCooperativeVectorPropertiesNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkCooperativeVectorPropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkCooperativeVectorPropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCooperativeVectorPropertiesNV`
-    public static VkCooperativeVectorPropertiesNV alloc(SegmentAllocator allocator) { return new VkCooperativeVectorPropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkCooperativeVectorPropertiesNV alloc(SegmentAllocator allocator) { return new VkCooperativeVectorPropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCooperativeVectorPropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkCooperativeVectorPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkCooperativeVectorPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkCooperativeVectorPropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkCooperativeVectorPropertiesNV extends GroupType {
     /// @return `this`
     public VkCooperativeVectorPropertiesNV copyFrom(VkCooperativeVectorPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkCooperativeVectorPropertiesNV reinterpret(long count) { return new VkCooperativeVectorPropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class VkCooperativeVectorPropertiesNV extends GroupType {
     /// @return `this`
     public VkCooperativeVectorPropertiesNV transpose(int value) { transpose(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkCooperativeVectorPropertiesNV].
-    public static final class Buffer extends VkCooperativeVectorPropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkCooperativeVectorPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCooperativeVectorPropertiesNV`
+    public VkCooperativeVectorPropertiesNV asSlice(long index) { return new VkCooperativeVectorPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkCooperativeVectorPropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkCooperativeVectorPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCooperativeVectorPropertiesNV`
+    public VkCooperativeVectorPropertiesNV asSlice(long index, long count) { return new VkCooperativeVectorPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkCooperativeVectorPropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkCooperativeVectorPropertiesNV at(long index, Consumer<VkCooperativeVectorPropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkCooperativeVectorPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkCooperativeVectorPropertiesNV`
-        public VkCooperativeVectorPropertiesNV asSlice(long index) { return new VkCooperativeVectorPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCooperativeVectorPropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkCooperativeVectorPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkCooperativeVectorPropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCooperativeVectorPropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `inputType` at the given index}
+    /// @param index the index of the struct buffer
+    public int inputTypeAt(long index) { return inputType(this.segment(), index); }
+    /// Sets `inputType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCooperativeVectorPropertiesNV inputTypeAt(long index, int value) { inputType(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `inputInterpretation` at the given index}
+    /// @param index the index of the struct buffer
+    public int inputInterpretationAt(long index) { return inputInterpretation(this.segment(), index); }
+    /// Sets `inputInterpretation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCooperativeVectorPropertiesNV inputInterpretationAt(long index, int value) { inputInterpretation(this.segment(), index, value); return this; }
 
-        /// {@return `inputType` at the given index}
-        /// @param index the index of the struct buffer
-        public int inputTypeAt(long index) { return inputType(this.segment(), index); }
-        /// Sets `inputType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer inputTypeAt(long index, int value) { inputType(this.segment(), index, value); return this; }
+    /// {@return `matrixInterpretation` at the given index}
+    /// @param index the index of the struct buffer
+    public int matrixInterpretationAt(long index) { return matrixInterpretation(this.segment(), index); }
+    /// Sets `matrixInterpretation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCooperativeVectorPropertiesNV matrixInterpretationAt(long index, int value) { matrixInterpretation(this.segment(), index, value); return this; }
 
-        /// {@return `inputInterpretation` at the given index}
-        /// @param index the index of the struct buffer
-        public int inputInterpretationAt(long index) { return inputInterpretation(this.segment(), index); }
-        /// Sets `inputInterpretation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer inputInterpretationAt(long index, int value) { inputInterpretation(this.segment(), index, value); return this; }
+    /// {@return `biasInterpretation` at the given index}
+    /// @param index the index of the struct buffer
+    public int biasInterpretationAt(long index) { return biasInterpretation(this.segment(), index); }
+    /// Sets `biasInterpretation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCooperativeVectorPropertiesNV biasInterpretationAt(long index, int value) { biasInterpretation(this.segment(), index, value); return this; }
 
-        /// {@return `matrixInterpretation` at the given index}
-        /// @param index the index of the struct buffer
-        public int matrixInterpretationAt(long index) { return matrixInterpretation(this.segment(), index); }
-        /// Sets `matrixInterpretation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer matrixInterpretationAt(long index, int value) { matrixInterpretation(this.segment(), index, value); return this; }
+    /// {@return `resultType` at the given index}
+    /// @param index the index of the struct buffer
+    public int resultTypeAt(long index) { return resultType(this.segment(), index); }
+    /// Sets `resultType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCooperativeVectorPropertiesNV resultTypeAt(long index, int value) { resultType(this.segment(), index, value); return this; }
 
-        /// {@return `biasInterpretation` at the given index}
-        /// @param index the index of the struct buffer
-        public int biasInterpretationAt(long index) { return biasInterpretation(this.segment(), index); }
-        /// Sets `biasInterpretation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer biasInterpretationAt(long index, int value) { biasInterpretation(this.segment(), index, value); return this; }
+    /// {@return `transpose` at the given index}
+    /// @param index the index of the struct buffer
+    public int transposeAt(long index) { return transpose(this.segment(), index); }
+    /// Sets `transpose` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCooperativeVectorPropertiesNV transposeAt(long index, int value) { transpose(this.segment(), index, value); return this; }
 
-        /// {@return `resultType` at the given index}
-        /// @param index the index of the struct buffer
-        public int resultTypeAt(long index) { return resultType(this.segment(), index); }
-        /// Sets `resultType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer resultTypeAt(long index, int value) { resultType(this.segment(), index, value); return this; }
-
-        /// {@return `transpose` at the given index}
-        /// @param index the index of the struct buffer
-        public int transposeAt(long index) { return transpose(this.segment(), index); }
-        /// Sets `transpose` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer transposeAt(long index, int value) { transpose(this.segment(), index, value); return this; }
-
-    }
 }

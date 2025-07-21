@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     uint16_t lineStipplePattern;
 /// };
 /// ```
-public sealed class VkPipelineRasterizationLineStateCreateInfo extends GroupType {
+public final class VkPipelineRasterizationLineStateCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineRasterizationLineStateCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkPipelineRasterizationLineStateCreateInfo extends GroupType
     public static final VarHandle VH_lineStipplePattern = LAYOUT.arrayElementVarHandle(PathElement.groupElement("lineStipplePattern"));
 
     /// Creates `VkPipelineRasterizationLineStateCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineRasterizationLineStateCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineRasterizationLineStateCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineRasterizationLineStateCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineRasterizationLineStateCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationLineStateCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineRasterizationLineStateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineRasterizationLineStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationLineStateCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineRasterizationLineStateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationLineStateCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineRasterizationLineStateCreateInfo` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkPipelineRasterizationLineStateCreateInfo extends GroupType
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineRasterizationLineStateCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineRasterizationLineStateCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineRasterizationLineStateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineRasterizationLineStateCreateInfo`
-    public static VkPipelineRasterizationLineStateCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineRasterizationLineStateCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkPipelineRasterizationLineStateCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineRasterizationLineStateCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineRasterizationLineStateCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineRasterizationLineStateCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineRasterizationLineStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationLineStateCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineRasterizationLineStateCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkPipelineRasterizationLineStateCreateInfo extends GroupType
     /// @return `this`
     public VkPipelineRasterizationLineStateCreateInfo copyFrom(VkPipelineRasterizationLineStateCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineRasterizationLineStateCreateInfo reinterpret(long count) { return new VkPipelineRasterizationLineStateCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkPipelineRasterizationLineStateCreateInfo extends GroupType
     /// @return `this`
     public VkPipelineRasterizationLineStateCreateInfo lineStipplePattern(short value) { lineStipplePattern(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineRasterizationLineStateCreateInfo].
-    public static final class Buffer extends VkPipelineRasterizationLineStateCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineRasterizationLineStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineRasterizationLineStateCreateInfo`
+    public VkPipelineRasterizationLineStateCreateInfo asSlice(long index) { return new VkPipelineRasterizationLineStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineRasterizationLineStateCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineRasterizationLineStateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineRasterizationLineStateCreateInfo`
+    public VkPipelineRasterizationLineStateCreateInfo asSlice(long index, long count) { return new VkPipelineRasterizationLineStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineRasterizationLineStateCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineRasterizationLineStateCreateInfo at(long index, Consumer<VkPipelineRasterizationLineStateCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineRasterizationLineStateCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineRasterizationLineStateCreateInfo`
-        public VkPipelineRasterizationLineStateCreateInfo asSlice(long index) { return new VkPipelineRasterizationLineStateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationLineStateCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineRasterizationLineStateCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineRasterizationLineStateCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationLineStateCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `lineRasterizationMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int lineRasterizationModeAt(long index) { return lineRasterizationMode(this.segment(), index); }
+    /// Sets `lineRasterizationMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationLineStateCreateInfo lineRasterizationModeAt(long index, int value) { lineRasterizationMode(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `stippledLineEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int stippledLineEnableAt(long index) { return stippledLineEnable(this.segment(), index); }
+    /// Sets `stippledLineEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationLineStateCreateInfo stippledLineEnableAt(long index, int value) { stippledLineEnable(this.segment(), index, value); return this; }
 
-        /// {@return `lineRasterizationMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int lineRasterizationModeAt(long index) { return lineRasterizationMode(this.segment(), index); }
-        /// Sets `lineRasterizationMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer lineRasterizationModeAt(long index, int value) { lineRasterizationMode(this.segment(), index, value); return this; }
+    /// {@return `lineStippleFactor` at the given index}
+    /// @param index the index of the struct buffer
+    public int lineStippleFactorAt(long index) { return lineStippleFactor(this.segment(), index); }
+    /// Sets `lineStippleFactor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationLineStateCreateInfo lineStippleFactorAt(long index, int value) { lineStippleFactor(this.segment(), index, value); return this; }
 
-        /// {@return `stippledLineEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int stippledLineEnableAt(long index) { return stippledLineEnable(this.segment(), index); }
-        /// Sets `stippledLineEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stippledLineEnableAt(long index, int value) { stippledLineEnable(this.segment(), index, value); return this; }
+    /// {@return `lineStipplePattern` at the given index}
+    /// @param index the index of the struct buffer
+    public short lineStipplePatternAt(long index) { return lineStipplePattern(this.segment(), index); }
+    /// Sets `lineStipplePattern` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineRasterizationLineStateCreateInfo lineStipplePatternAt(long index, short value) { lineStipplePattern(this.segment(), index, value); return this; }
 
-        /// {@return `lineStippleFactor` at the given index}
-        /// @param index the index of the struct buffer
-        public int lineStippleFactorAt(long index) { return lineStippleFactor(this.segment(), index); }
-        /// Sets `lineStippleFactor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer lineStippleFactorAt(long index, int value) { lineStippleFactor(this.segment(), index, value); return this; }
-
-        /// {@return `lineStipplePattern` at the given index}
-        /// @param index the index of the struct buffer
-        public short lineStipplePatternAt(long index) { return lineStipplePattern(this.segment(), index); }
-        /// Sets `lineStipplePattern` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer lineStipplePatternAt(long index, short value) { lineStipplePattern(this.segment(), index, value); return this; }
-
-    }
 }

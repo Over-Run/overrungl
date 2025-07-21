@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (int) VkOutOfBandQueueTypeNV queueType;
 /// };
 /// ```
-public sealed class VkOutOfBandQueueTypeInfoNV extends GroupType {
+public final class VkOutOfBandQueueTypeInfoNV extends GroupType {
     /// The struct layout of `VkOutOfBandQueueTypeInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkOutOfBandQueueTypeInfoNV extends GroupType {
     public static final VarHandle VH_queueType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("queueType"));
 
     /// Creates `VkOutOfBandQueueTypeInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkOutOfBandQueueTypeInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkOutOfBandQueueTypeInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkOutOfBandQueueTypeInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkOutOfBandQueueTypeInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOutOfBandQueueTypeInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkOutOfBandQueueTypeInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkOutOfBandQueueTypeInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOutOfBandQueueTypeInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkOutOfBandQueueTypeInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOutOfBandQueueTypeInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkOutOfBandQueueTypeInfoNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkOutOfBandQueueTypeInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkOutOfBandQueueTypeInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkOutOfBandQueueTypeInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkOutOfBandQueueTypeInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkOutOfBandQueueTypeInfoNV`
-    public static VkOutOfBandQueueTypeInfoNV alloc(SegmentAllocator allocator) { return new VkOutOfBandQueueTypeInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkOutOfBandQueueTypeInfoNV alloc(SegmentAllocator allocator) { return new VkOutOfBandQueueTypeInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkOutOfBandQueueTypeInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkOutOfBandQueueTypeInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkOutOfBandQueueTypeInfoNV alloc(SegmentAllocator allocator, long count) { return new VkOutOfBandQueueTypeInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkOutOfBandQueueTypeInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkOutOfBandQueueTypeInfoNV extends GroupType {
     /// @return `this`
     public VkOutOfBandQueueTypeInfoNV copyFrom(VkOutOfBandQueueTypeInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkOutOfBandQueueTypeInfoNV reinterpret(long count) { return new VkOutOfBandQueueTypeInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkOutOfBandQueueTypeInfoNV extends GroupType {
     /// @return `this`
     public VkOutOfBandQueueTypeInfoNV queueType(int value) { queueType(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkOutOfBandQueueTypeInfoNV].
-    public static final class Buffer extends VkOutOfBandQueueTypeInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkOutOfBandQueueTypeInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkOutOfBandQueueTypeInfoNV`
+    public VkOutOfBandQueueTypeInfoNV asSlice(long index) { return new VkOutOfBandQueueTypeInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkOutOfBandQueueTypeInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkOutOfBandQueueTypeInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkOutOfBandQueueTypeInfoNV`
+    public VkOutOfBandQueueTypeInfoNV asSlice(long index, long count) { return new VkOutOfBandQueueTypeInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkOutOfBandQueueTypeInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkOutOfBandQueueTypeInfoNV at(long index, Consumer<VkOutOfBandQueueTypeInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkOutOfBandQueueTypeInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkOutOfBandQueueTypeInfoNV`
-        public VkOutOfBandQueueTypeInfoNV asSlice(long index) { return new VkOutOfBandQueueTypeInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOutOfBandQueueTypeInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkOutOfBandQueueTypeInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkOutOfBandQueueTypeInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOutOfBandQueueTypeInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `queueType` at the given index}
+    /// @param index the index of the struct buffer
+    public int queueTypeAt(long index) { return queueType(this.segment(), index); }
+    /// Sets `queueType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOutOfBandQueueTypeInfoNV queueTypeAt(long index, int value) { queueType(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `queueType` at the given index}
-        /// @param index the index of the struct buffer
-        public int queueTypeAt(long index) { return queueType(this.segment(), index); }
-        /// Sets `queueType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer queueTypeAt(long index, int value) { queueType(this.segment(), index, value); return this; }
-
-    }
 }

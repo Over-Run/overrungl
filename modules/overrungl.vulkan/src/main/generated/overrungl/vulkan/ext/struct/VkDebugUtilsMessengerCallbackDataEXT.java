@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -41,7 +42,7 @@ import overrungl.util.*;
 ///     const VkDebugUtilsObjectNameInfoEXT* pObjects;
 /// };
 /// ```
-public sealed class VkDebugUtilsMessengerCallbackDataEXT extends GroupType {
+public final class VkDebugUtilsMessengerCallbackDataEXT extends GroupType {
     /// The struct layout of `VkDebugUtilsMessengerCallbackDataEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -131,20 +132,21 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends GroupType {
     public static final VarHandle VH_pObjects = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pObjects"));
 
     /// Creates `VkDebugUtilsMessengerCallbackDataEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDebugUtilsMessengerCallbackDataEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDebugUtilsMessengerCallbackDataEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDebugUtilsMessengerCallbackDataEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDebugUtilsMessengerCallbackDataEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDebugUtilsMessengerCallbackDataEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDebugUtilsMessengerCallbackDataEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDebugUtilsMessengerCallbackDataEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDebugUtilsMessengerCallbackDataEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDebugUtilsMessengerCallbackDataEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDebugUtilsMessengerCallbackDataEXT` with the given segment.
     ///
@@ -152,18 +154,18 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDebugUtilsMessengerCallbackDataEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDebugUtilsMessengerCallbackDataEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDebugUtilsMessengerCallbackDataEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDebugUtilsMessengerCallbackDataEXT`
-    public static VkDebugUtilsMessengerCallbackDataEXT alloc(SegmentAllocator allocator) { return new VkDebugUtilsMessengerCallbackDataEXT(allocator.allocate(LAYOUT)); }
+    public static VkDebugUtilsMessengerCallbackDataEXT alloc(SegmentAllocator allocator) { return new VkDebugUtilsMessengerCallbackDataEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDebugUtilsMessengerCallbackDataEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDebugUtilsMessengerCallbackDataEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDebugUtilsMessengerCallbackDataEXT alloc(SegmentAllocator allocator, long count) { return new VkDebugUtilsMessengerCallbackDataEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDebugUtilsMessengerCallbackDataEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -332,9 +334,10 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends GroupType {
     /// @return `this`
     public VkDebugUtilsMessengerCallbackDataEXT copyFrom(VkDebugUtilsMessengerCallbackDataEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDebugUtilsMessengerCallbackDataEXT reinterpret(long count) { return new VkDebugUtilsMessengerCallbackDataEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -528,135 +531,129 @@ public sealed class VkDebugUtilsMessengerCallbackDataEXT extends GroupType {
     /// @return `this`
     public VkDebugUtilsMessengerCallbackDataEXT pObjects(MemorySegment value) { pObjects(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDebugUtilsMessengerCallbackDataEXT].
-    public static final class Buffer extends VkDebugUtilsMessengerCallbackDataEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkDebugUtilsMessengerCallbackDataEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDebugUtilsMessengerCallbackDataEXT`
+    public VkDebugUtilsMessengerCallbackDataEXT asSlice(long index) { return new VkDebugUtilsMessengerCallbackDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDebugUtilsMessengerCallbackDataEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDebugUtilsMessengerCallbackDataEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDebugUtilsMessengerCallbackDataEXT`
+    public VkDebugUtilsMessengerCallbackDataEXT asSlice(long index, long count) { return new VkDebugUtilsMessengerCallbackDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDebugUtilsMessengerCallbackDataEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT at(long index, Consumer<VkDebugUtilsMessengerCallbackDataEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDebugUtilsMessengerCallbackDataEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDebugUtilsMessengerCallbackDataEXT`
-        public VkDebugUtilsMessengerCallbackDataEXT asSlice(long index) { return new VkDebugUtilsMessengerCallbackDataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDebugUtilsMessengerCallbackDataEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDebugUtilsMessengerCallbackDataEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pMessageIdName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pMessageIdNameAt(long index) { return pMessageIdName(this.segment(), index); }
+    /// Sets `pMessageIdName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT pMessageIdNameAt(long index, MemorySegment value) { pMessageIdName(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `messageIdNumber` at the given index}
+    /// @param index the index of the struct buffer
+    public int messageIdNumberAt(long index) { return messageIdNumber(this.segment(), index); }
+    /// Sets `messageIdNumber` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT messageIdNumberAt(long index, int value) { messageIdNumber(this.segment(), index, value); return this; }
 
-        /// {@return `pMessageIdName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pMessageIdNameAt(long index) { return pMessageIdName(this.segment(), index); }
-        /// Sets `pMessageIdName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pMessageIdNameAt(long index, MemorySegment value) { pMessageIdName(this.segment(), index, value); return this; }
+    /// {@return `pMessage` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pMessageAt(long index) { return pMessage(this.segment(), index); }
+    /// Sets `pMessage` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT pMessageAt(long index, MemorySegment value) { pMessage(this.segment(), index, value); return this; }
 
-        /// {@return `messageIdNumber` at the given index}
-        /// @param index the index of the struct buffer
-        public int messageIdNumberAt(long index) { return messageIdNumber(this.segment(), index); }
-        /// Sets `messageIdNumber` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer messageIdNumberAt(long index, int value) { messageIdNumber(this.segment(), index, value); return this; }
+    /// {@return `queueLabelCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int queueLabelCountAt(long index) { return queueLabelCount(this.segment(), index); }
+    /// Sets `queueLabelCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT queueLabelCountAt(long index, int value) { queueLabelCount(this.segment(), index, value); return this; }
 
-        /// {@return `pMessage` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pMessageAt(long index) { return pMessage(this.segment(), index); }
-        /// Sets `pMessage` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pMessageAt(long index, MemorySegment value) { pMessage(this.segment(), index, value); return this; }
+    /// {@return `pQueueLabels` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pQueueLabelsAt(long index) { return pQueueLabels(this.segment(), index); }
+    /// Sets `pQueueLabels` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT pQueueLabelsAt(long index, MemorySegment value) { pQueueLabels(this.segment(), index, value); return this; }
 
-        /// {@return `queueLabelCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int queueLabelCountAt(long index) { return queueLabelCount(this.segment(), index); }
-        /// Sets `queueLabelCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer queueLabelCountAt(long index, int value) { queueLabelCount(this.segment(), index, value); return this; }
+    /// {@return `cmdBufLabelCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int cmdBufLabelCountAt(long index) { return cmdBufLabelCount(this.segment(), index); }
+    /// Sets `cmdBufLabelCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT cmdBufLabelCountAt(long index, int value) { cmdBufLabelCount(this.segment(), index, value); return this; }
 
-        /// {@return `pQueueLabels` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pQueueLabelsAt(long index) { return pQueueLabels(this.segment(), index); }
-        /// Sets `pQueueLabels` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pQueueLabelsAt(long index, MemorySegment value) { pQueueLabels(this.segment(), index, value); return this; }
+    /// {@return `pCmdBufLabels` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pCmdBufLabelsAt(long index) { return pCmdBufLabels(this.segment(), index); }
+    /// Sets `pCmdBufLabels` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT pCmdBufLabelsAt(long index, MemorySegment value) { pCmdBufLabels(this.segment(), index, value); return this; }
 
-        /// {@return `cmdBufLabelCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int cmdBufLabelCountAt(long index) { return cmdBufLabelCount(this.segment(), index); }
-        /// Sets `cmdBufLabelCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer cmdBufLabelCountAt(long index, int value) { cmdBufLabelCount(this.segment(), index, value); return this; }
+    /// {@return `objectCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int objectCountAt(long index) { return objectCount(this.segment(), index); }
+    /// Sets `objectCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT objectCountAt(long index, int value) { objectCount(this.segment(), index, value); return this; }
 
-        /// {@return `pCmdBufLabels` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pCmdBufLabelsAt(long index) { return pCmdBufLabels(this.segment(), index); }
-        /// Sets `pCmdBufLabels` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pCmdBufLabelsAt(long index, MemorySegment value) { pCmdBufLabels(this.segment(), index, value); return this; }
+    /// {@return `pObjects` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pObjectsAt(long index) { return pObjects(this.segment(), index); }
+    /// Sets `pObjects` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDebugUtilsMessengerCallbackDataEXT pObjectsAt(long index, MemorySegment value) { pObjects(this.segment(), index, value); return this; }
 
-        /// {@return `objectCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int objectCountAt(long index) { return objectCount(this.segment(), index); }
-        /// Sets `objectCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer objectCountAt(long index, int value) { objectCount(this.segment(), index, value); return this; }
-
-        /// {@return `pObjects` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pObjectsAt(long index) { return pObjects(this.segment(), index); }
-        /// Sets `pObjects` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pObjectsAt(long index, MemorySegment value) { pObjects(this.segment(), index, value); return this; }
-
-    }
 }

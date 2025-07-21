@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -40,7 +41,7 @@ import overrungl.util.*;
 ///     ((uint32_t) VkFlags) VkOpticalFlowSessionCreateFlagsNV flags;
 /// };
 /// ```
-public sealed class VkOpticalFlowSessionCreateInfoNV extends GroupType {
+public final class VkOpticalFlowSessionCreateInfoNV extends GroupType {
     /// The struct layout of `VkOpticalFlowSessionCreateInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -123,20 +124,21 @@ public sealed class VkOpticalFlowSessionCreateInfoNV extends GroupType {
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
 
     /// Creates `VkOpticalFlowSessionCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkOpticalFlowSessionCreateInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkOpticalFlowSessionCreateInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkOpticalFlowSessionCreateInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkOpticalFlowSessionCreateInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOpticalFlowSessionCreateInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkOpticalFlowSessionCreateInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkOpticalFlowSessionCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOpticalFlowSessionCreateInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkOpticalFlowSessionCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkOpticalFlowSessionCreateInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkOpticalFlowSessionCreateInfoNV` with the given segment.
     ///
@@ -144,18 +146,18 @@ public sealed class VkOpticalFlowSessionCreateInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkOpticalFlowSessionCreateInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkOpticalFlowSessionCreateInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkOpticalFlowSessionCreateInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkOpticalFlowSessionCreateInfoNV`
-    public static VkOpticalFlowSessionCreateInfoNV alloc(SegmentAllocator allocator) { return new VkOpticalFlowSessionCreateInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkOpticalFlowSessionCreateInfoNV alloc(SegmentAllocator allocator) { return new VkOpticalFlowSessionCreateInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkOpticalFlowSessionCreateInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkOpticalFlowSessionCreateInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkOpticalFlowSessionCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkOpticalFlowSessionCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkOpticalFlowSessionCreateInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -305,9 +307,10 @@ public sealed class VkOpticalFlowSessionCreateInfoNV extends GroupType {
     /// @return `this`
     public VkOpticalFlowSessionCreateInfoNV copyFrom(VkOpticalFlowSessionCreateInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkOpticalFlowSessionCreateInfoNV reinterpret(long count) { return new VkOpticalFlowSessionCreateInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -485,126 +488,120 @@ public sealed class VkOpticalFlowSessionCreateInfoNV extends GroupType {
     /// @return `this`
     public VkOpticalFlowSessionCreateInfoNV flags(int value) { flags(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkOpticalFlowSessionCreateInfoNV].
-    public static final class Buffer extends VkOpticalFlowSessionCreateInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkOpticalFlowSessionCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkOpticalFlowSessionCreateInfoNV`
+    public VkOpticalFlowSessionCreateInfoNV asSlice(long index) { return new VkOpticalFlowSessionCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkOpticalFlowSessionCreateInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkOpticalFlowSessionCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkOpticalFlowSessionCreateInfoNV`
+    public VkOpticalFlowSessionCreateInfoNV asSlice(long index, long count) { return new VkOpticalFlowSessionCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkOpticalFlowSessionCreateInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV at(long index, Consumer<VkOpticalFlowSessionCreateInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkOpticalFlowSessionCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkOpticalFlowSessionCreateInfoNV`
-        public VkOpticalFlowSessionCreateInfoNV asSlice(long index) { return new VkOpticalFlowSessionCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkOpticalFlowSessionCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkOpticalFlowSessionCreateInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `width` at the given index}
+    /// @param index the index of the struct buffer
+    public int widthAt(long index) { return width(this.segment(), index); }
+    /// Sets `width` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV widthAt(long index, int value) { width(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `height` at the given index}
+    /// @param index the index of the struct buffer
+    public int heightAt(long index) { return height(this.segment(), index); }
+    /// Sets `height` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV heightAt(long index, int value) { height(this.segment(), index, value); return this; }
 
-        /// {@return `width` at the given index}
-        /// @param index the index of the struct buffer
-        public int widthAt(long index) { return width(this.segment(), index); }
-        /// Sets `width` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer widthAt(long index, int value) { width(this.segment(), index, value); return this; }
+    /// {@return `imageFormat` at the given index}
+    /// @param index the index of the struct buffer
+    public int imageFormatAt(long index) { return imageFormat(this.segment(), index); }
+    /// Sets `imageFormat` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV imageFormatAt(long index, int value) { imageFormat(this.segment(), index, value); return this; }
 
-        /// {@return `height` at the given index}
-        /// @param index the index of the struct buffer
-        public int heightAt(long index) { return height(this.segment(), index); }
-        /// Sets `height` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer heightAt(long index, int value) { height(this.segment(), index, value); return this; }
+    /// {@return `flowVectorFormat` at the given index}
+    /// @param index the index of the struct buffer
+    public int flowVectorFormatAt(long index) { return flowVectorFormat(this.segment(), index); }
+    /// Sets `flowVectorFormat` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV flowVectorFormatAt(long index, int value) { flowVectorFormat(this.segment(), index, value); return this; }
 
-        /// {@return `imageFormat` at the given index}
-        /// @param index the index of the struct buffer
-        public int imageFormatAt(long index) { return imageFormat(this.segment(), index); }
-        /// Sets `imageFormat` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageFormatAt(long index, int value) { imageFormat(this.segment(), index, value); return this; }
+    /// {@return `costFormat` at the given index}
+    /// @param index the index of the struct buffer
+    public int costFormatAt(long index) { return costFormat(this.segment(), index); }
+    /// Sets `costFormat` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV costFormatAt(long index, int value) { costFormat(this.segment(), index, value); return this; }
 
-        /// {@return `flowVectorFormat` at the given index}
-        /// @param index the index of the struct buffer
-        public int flowVectorFormatAt(long index) { return flowVectorFormat(this.segment(), index); }
-        /// Sets `flowVectorFormat` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flowVectorFormatAt(long index, int value) { flowVectorFormat(this.segment(), index, value); return this; }
+    /// {@return `outputGridSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int outputGridSizeAt(long index) { return outputGridSize(this.segment(), index); }
+    /// Sets `outputGridSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV outputGridSizeAt(long index, int value) { outputGridSize(this.segment(), index, value); return this; }
 
-        /// {@return `costFormat` at the given index}
-        /// @param index the index of the struct buffer
-        public int costFormatAt(long index) { return costFormat(this.segment(), index); }
-        /// Sets `costFormat` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer costFormatAt(long index, int value) { costFormat(this.segment(), index, value); return this; }
+    /// {@return `hintGridSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int hintGridSizeAt(long index) { return hintGridSize(this.segment(), index); }
+    /// Sets `hintGridSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV hintGridSizeAt(long index, int value) { hintGridSize(this.segment(), index, value); return this; }
 
-        /// {@return `outputGridSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int outputGridSizeAt(long index) { return outputGridSize(this.segment(), index); }
-        /// Sets `outputGridSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer outputGridSizeAt(long index, int value) { outputGridSize(this.segment(), index, value); return this; }
+    /// {@return `performanceLevel` at the given index}
+    /// @param index the index of the struct buffer
+    public int performanceLevelAt(long index) { return performanceLevel(this.segment(), index); }
+    /// Sets `performanceLevel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV performanceLevelAt(long index, int value) { performanceLevel(this.segment(), index, value); return this; }
 
-        /// {@return `hintGridSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int hintGridSizeAt(long index) { return hintGridSize(this.segment(), index); }
-        /// Sets `hintGridSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hintGridSizeAt(long index, int value) { hintGridSize(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkOpticalFlowSessionCreateInfoNV flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `performanceLevel` at the given index}
-        /// @param index the index of the struct buffer
-        public int performanceLevelAt(long index) { return performanceLevel(this.segment(), index); }
-        /// Sets `performanceLevel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer performanceLevelAt(long index, int value) { performanceLevel(this.segment(), index, value); return this; }
-
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 pipelineExecutableInfo;
 /// };
 /// ```
-public sealed class VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR extends GroupType {
+public final class VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR exte
     public static final VarHandle VH_pipelineExecutableInfo = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipelineExecutableInfo"));
 
     /// Creates `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR exte
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`
-    public static VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR exte
     /// @return `this`
     public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR copyFrom(VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR reinterpret(long count) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR exte
     /// @return `this`
     public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR pipelineExecutableInfo(int value) { pipelineExecutableInfo(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR].
-    public static final class Buffer extends VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR asSlice(long index) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR at(long index, Consumer<VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`
-        public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR asSlice(long index) { return new VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pipelineExecutableInfo` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelineExecutableInfoAt(long index) { return pipelineExecutableInfo(this.segment(), index); }
+    /// Sets `pipelineExecutableInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR pipelineExecutableInfoAt(long index, int value) { pipelineExecutableInfo(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `pipelineExecutableInfo` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelineExecutableInfoAt(long index) { return pipelineExecutableInfo(this.segment(), index); }
-        /// Sets `pipelineExecutableInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineExecutableInfoAt(long index, int value) { pipelineExecutableInfo(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -40,7 +40,7 @@ import java.util.function.*;
 ///     (uint32_t) VkBool32 forceExplicitReconstruction;
 /// };
 /// ```
-public sealed class VkSamplerYcbcrConversionCreateInfo extends GroupType {
+public final class VkSamplerYcbcrConversionCreateInfo extends GroupType {
     /// The struct layout of `VkSamplerYcbcrConversionCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -114,20 +114,21 @@ public sealed class VkSamplerYcbcrConversionCreateInfo extends GroupType {
     public static final VarHandle VH_forceExplicitReconstruction = LAYOUT.arrayElementVarHandle(PathElement.groupElement("forceExplicitReconstruction"));
 
     /// Creates `VkSamplerYcbcrConversionCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkSamplerYcbcrConversionCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSamplerYcbcrConversionCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSamplerYcbcrConversionCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSamplerYcbcrConversionCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerYcbcrConversionCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSamplerYcbcrConversionCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSamplerYcbcrConversionCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerYcbcrConversionCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSamplerYcbcrConversionCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerYcbcrConversionCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSamplerYcbcrConversionCreateInfo` with the given segment.
     ///
@@ -135,18 +136,18 @@ public sealed class VkSamplerYcbcrConversionCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSamplerYcbcrConversionCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerYcbcrConversionCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSamplerYcbcrConversionCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSamplerYcbcrConversionCreateInfo`
-    public static VkSamplerYcbcrConversionCreateInfo alloc(SegmentAllocator allocator) { return new VkSamplerYcbcrConversionCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkSamplerYcbcrConversionCreateInfo alloc(SegmentAllocator allocator) { return new VkSamplerYcbcrConversionCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSamplerYcbcrConversionCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSamplerYcbcrConversionCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSamplerYcbcrConversionCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkSamplerYcbcrConversionCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSamplerYcbcrConversionCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -278,9 +279,10 @@ public sealed class VkSamplerYcbcrConversionCreateInfo extends GroupType {
     /// @return `this`
     public VkSamplerYcbcrConversionCreateInfo copyFrom(VkSamplerYcbcrConversionCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSamplerYcbcrConversionCreateInfo reinterpret(long count) { return new VkSamplerYcbcrConversionCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -446,122 +448,116 @@ public sealed class VkSamplerYcbcrConversionCreateInfo extends GroupType {
     /// @return `this`
     public VkSamplerYcbcrConversionCreateInfo forceExplicitReconstruction(int value) { forceExplicitReconstruction(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSamplerYcbcrConversionCreateInfo].
-    public static final class Buffer extends VkSamplerYcbcrConversionCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkSamplerYcbcrConversionCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSamplerYcbcrConversionCreateInfo`
+    public VkSamplerYcbcrConversionCreateInfo asSlice(long index) { return new VkSamplerYcbcrConversionCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSamplerYcbcrConversionCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSamplerYcbcrConversionCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSamplerYcbcrConversionCreateInfo`
+    public VkSamplerYcbcrConversionCreateInfo asSlice(long index, long count) { return new VkSamplerYcbcrConversionCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSamplerYcbcrConversionCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo at(long index, Consumer<VkSamplerYcbcrConversionCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSamplerYcbcrConversionCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSamplerYcbcrConversionCreateInfo`
-        public VkSamplerYcbcrConversionCreateInfo asSlice(long index) { return new VkSamplerYcbcrConversionCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSamplerYcbcrConversionCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSamplerYcbcrConversionCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `format` at the given index}
+    /// @param index the index of the struct buffer
+    public int formatAt(long index) { return format(this.segment(), index); }
+    /// Sets `format` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo formatAt(long index, int value) { format(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `ycbcrModel` at the given index}
+    /// @param index the index of the struct buffer
+    public int ycbcrModelAt(long index) { return ycbcrModel(this.segment(), index); }
+    /// Sets `ycbcrModel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo ycbcrModelAt(long index, int value) { ycbcrModel(this.segment(), index, value); return this; }
 
-        /// {@return `format` at the given index}
-        /// @param index the index of the struct buffer
-        public int formatAt(long index) { return format(this.segment(), index); }
-        /// Sets `format` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer formatAt(long index, int value) { format(this.segment(), index, value); return this; }
+    /// {@return `ycbcrRange` at the given index}
+    /// @param index the index of the struct buffer
+    public int ycbcrRangeAt(long index) { return ycbcrRange(this.segment(), index); }
+    /// Sets `ycbcrRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo ycbcrRangeAt(long index, int value) { ycbcrRange(this.segment(), index, value); return this; }
 
-        /// {@return `ycbcrModel` at the given index}
-        /// @param index the index of the struct buffer
-        public int ycbcrModelAt(long index) { return ycbcrModel(this.segment(), index); }
-        /// Sets `ycbcrModel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ycbcrModelAt(long index, int value) { ycbcrModel(this.segment(), index, value); return this; }
+    /// {@return `components` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment componentsAt(long index) { return components(this.segment(), index); }
+    /// Sets `components` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo componentsAt(long index, MemorySegment value) { components(this.segment(), index, value); return this; }
+    /// Accepts `components` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo componentsAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(componentsAt(index))); return this; }
 
-        /// {@return `ycbcrRange` at the given index}
-        /// @param index the index of the struct buffer
-        public int ycbcrRangeAt(long index) { return ycbcrRange(this.segment(), index); }
-        /// Sets `ycbcrRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ycbcrRangeAt(long index, int value) { ycbcrRange(this.segment(), index, value); return this; }
+    /// {@return `xChromaOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int xChromaOffsetAt(long index) { return xChromaOffset(this.segment(), index); }
+    /// Sets `xChromaOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo xChromaOffsetAt(long index, int value) { xChromaOffset(this.segment(), index, value); return this; }
 
-        /// {@return `components` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment componentsAt(long index) { return components(this.segment(), index); }
-        /// Sets `components` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer componentsAt(long index, MemorySegment value) { components(this.segment(), index, value); return this; }
-        /// Accepts `components` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer componentsAt(long index, Consumer<overrungl.vulkan.struct.VkComponentMapping> func) { func.accept(overrungl.vulkan.struct.VkComponentMapping.of(componentsAt(index))); return this; }
+    /// {@return `yChromaOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int yChromaOffsetAt(long index) { return yChromaOffset(this.segment(), index); }
+    /// Sets `yChromaOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo yChromaOffsetAt(long index, int value) { yChromaOffset(this.segment(), index, value); return this; }
 
-        /// {@return `xChromaOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int xChromaOffsetAt(long index) { return xChromaOffset(this.segment(), index); }
-        /// Sets `xChromaOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xChromaOffsetAt(long index, int value) { xChromaOffset(this.segment(), index, value); return this; }
+    /// {@return `chromaFilter` at the given index}
+    /// @param index the index of the struct buffer
+    public int chromaFilterAt(long index) { return chromaFilter(this.segment(), index); }
+    /// Sets `chromaFilter` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo chromaFilterAt(long index, int value) { chromaFilter(this.segment(), index, value); return this; }
 
-        /// {@return `yChromaOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int yChromaOffsetAt(long index) { return yChromaOffset(this.segment(), index); }
-        /// Sets `yChromaOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer yChromaOffsetAt(long index, int value) { yChromaOffset(this.segment(), index, value); return this; }
+    /// {@return `forceExplicitReconstruction` at the given index}
+    /// @param index the index of the struct buffer
+    public int forceExplicitReconstructionAt(long index) { return forceExplicitReconstruction(this.segment(), index); }
+    /// Sets `forceExplicitReconstruction` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerYcbcrConversionCreateInfo forceExplicitReconstructionAt(long index, int value) { forceExplicitReconstruction(this.segment(), index, value); return this; }
 
-        /// {@return `chromaFilter` at the given index}
-        /// @param index the index of the struct buffer
-        public int chromaFilterAt(long index) { return chromaFilter(this.segment(), index); }
-        /// Sets `chromaFilter` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chromaFilterAt(long index, int value) { chromaFilter(this.segment(), index, value); return this; }
-
-        /// {@return `forceExplicitReconstruction` at the given index}
-        /// @param index the index of the struct buffer
-        public int forceExplicitReconstructionAt(long index) { return forceExplicitReconstruction(this.segment(), index); }
-        /// Sets `forceExplicitReconstruction` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer forceExplicitReconstructionAt(long index, int value) { forceExplicitReconstruction(this.segment(), index, value); return this; }
-
-    }
 }

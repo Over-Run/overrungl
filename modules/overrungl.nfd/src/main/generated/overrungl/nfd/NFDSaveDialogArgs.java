@@ -21,9 +21,9 @@ package overrungl.nfd;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -35,7 +35,7 @@ import java.util.function.*;
 ///     (struct NFDWindowHandle) nfdwindowhandle_t parentWindow;
 /// };
 /// ```
-public sealed class NFDSaveDialogArgs extends GroupType {
+public final class NFDSaveDialogArgs extends GroupType {
     /// The struct layout of `NFDSaveDialogArgs`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("filterList"),
@@ -74,20 +74,21 @@ public sealed class NFDSaveDialogArgs extends GroupType {
     public static final MemoryLayout LAYOUT_parentWindow = LAYOUT.select(PathElement.groupElement("parentWindow"));
 
     /// Creates `NFDSaveDialogArgs` with the given segment.
-    /// @param segment the memory segment
-    public NFDSaveDialogArgs(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public NFDSaveDialogArgs(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `NFDSaveDialogArgs` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static NFDSaveDialogArgs of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new NFDSaveDialogArgs(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `NFDSaveDialogArgs` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static NFDSaveDialogArgs ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new NFDSaveDialogArgs(segment.reinterpret(LAYOUT.byteSize())); }
+    public static NFDSaveDialogArgs ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new NFDSaveDialogArgs(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `NFDSaveDialogArgs` with the given segment.
     ///
@@ -95,18 +96,18 @@ public sealed class NFDSaveDialogArgs extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static NFDSaveDialogArgs ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new NFDSaveDialogArgs(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `NFDSaveDialogArgs` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `NFDSaveDialogArgs`
-    public static NFDSaveDialogArgs alloc(SegmentAllocator allocator) { return new NFDSaveDialogArgs(allocator.allocate(LAYOUT)); }
+    public static NFDSaveDialogArgs alloc(SegmentAllocator allocator) { return new NFDSaveDialogArgs(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `NFDSaveDialogArgs` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `NFDSaveDialogArgs`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static NFDSaveDialogArgs alloc(SegmentAllocator allocator, long count) { return new NFDSaveDialogArgs(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `NFDSaveDialogArgs` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -163,9 +164,10 @@ public sealed class NFDSaveDialogArgs extends GroupType {
     /// @return `this`
     public NFDSaveDialogArgs copyFrom(NFDSaveDialogArgs src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public NFDSaveDialogArgs reinterpret(long count) { return new NFDSaveDialogArgs(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `filterList` at the given index}
     /// @param segment the segment of the struct
@@ -251,77 +253,71 @@ public sealed class NFDSaveDialogArgs extends GroupType {
     /// @return `this`
     public NFDSaveDialogArgs parentWindow(Consumer<NFDWindowHandle> func) { func.accept(NFDWindowHandle.of(parentWindow())); return this; }
 
-    /// A buffer of [NFDSaveDialogArgs].
-    public static final class Buffer extends NFDSaveDialogArgs {
-        private final long elementCount;
+    /// Creates a slice of `NFDSaveDialogArgs`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `NFDSaveDialogArgs`
+    public NFDSaveDialogArgs asSlice(long index) { return new NFDSaveDialogArgs(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `NFDSaveDialogArgs.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `NFDSaveDialogArgs`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `NFDSaveDialogArgs`
+    public NFDSaveDialogArgs asSlice(long index, long count) { return new NFDSaveDialogArgs(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `NFDSaveDialogArgs` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public NFDSaveDialogArgs at(long index, Consumer<NFDSaveDialogArgs> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `NFDSaveDialogArgs`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `NFDSaveDialogArgs`
-        public NFDSaveDialogArgs asSlice(long index) { return new NFDSaveDialogArgs(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `filterList` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment filterListAt(long index) { return filterList(this.segment(), index); }
+    /// Sets `filterList` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public NFDSaveDialogArgs filterListAt(long index, MemorySegment value) { filterList(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `NFDSaveDialogArgs`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `NFDSaveDialogArgs`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `filterCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int filterCountAt(long index) { return filterCount(this.segment(), index); }
+    /// Sets `filterCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public NFDSaveDialogArgs filterCountAt(long index, int value) { filterCount(this.segment(), index, value); return this; }
 
-        /// {@return `filterList` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment filterListAt(long index) { return filterList(this.segment(), index); }
-        /// Sets `filterList` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer filterListAt(long index, MemorySegment value) { filterList(this.segment(), index, value); return this; }
+    /// {@return `defaultPath` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment defaultPathAt(long index) { return defaultPath(this.segment(), index); }
+    /// Sets `defaultPath` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public NFDSaveDialogArgs defaultPathAt(long index, MemorySegment value) { defaultPath(this.segment(), index, value); return this; }
 
-        /// {@return `filterCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int filterCountAt(long index) { return filterCount(this.segment(), index); }
-        /// Sets `filterCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer filterCountAt(long index, int value) { filterCount(this.segment(), index, value); return this; }
+    /// {@return `defaultName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment defaultNameAt(long index) { return defaultName(this.segment(), index); }
+    /// Sets `defaultName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public NFDSaveDialogArgs defaultNameAt(long index, MemorySegment value) { defaultName(this.segment(), index, value); return this; }
 
-        /// {@return `defaultPath` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment defaultPathAt(long index) { return defaultPath(this.segment(), index); }
-        /// Sets `defaultPath` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer defaultPathAt(long index, MemorySegment value) { defaultPath(this.segment(), index, value); return this; }
+    /// {@return `parentWindow` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment parentWindowAt(long index) { return parentWindow(this.segment(), index); }
+    /// Sets `parentWindow` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public NFDSaveDialogArgs parentWindowAt(long index, MemorySegment value) { parentWindow(this.segment(), index, value); return this; }
+    /// Accepts `parentWindow` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public NFDSaveDialogArgs parentWindowAt(long index, Consumer<NFDWindowHandle> func) { func.accept(NFDWindowHandle.of(parentWindowAt(index))); return this; }
 
-        /// {@return `defaultName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment defaultNameAt(long index) { return defaultName(this.segment(), index); }
-        /// Sets `defaultName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer defaultNameAt(long index, MemorySegment value) { defaultName(this.segment(), index, value); return this; }
-
-        /// {@return `parentWindow` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment parentWindowAt(long index) { return parentWindow(this.segment(), index); }
-        /// Sets `parentWindow` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer parentWindowAt(long index, MemorySegment value) { parentWindow(this.segment(), index, value); return this; }
-        /// Accepts `parentWindow` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer parentWindowAt(long index, Consumer<NFDWindowHandle> func) { func.accept(NFDWindowHandle.of(parentWindowAt(index))); return this; }
-
-    }
 }

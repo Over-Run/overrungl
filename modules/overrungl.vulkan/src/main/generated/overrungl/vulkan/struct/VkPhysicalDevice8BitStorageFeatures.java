@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 storagePushConstant8;
 /// };
 /// ```
-public sealed class VkPhysicalDevice8BitStorageFeatures extends GroupType {
+public final class VkPhysicalDevice8BitStorageFeatures extends GroupType {
     /// The struct layout of `VkPhysicalDevice8BitStorageFeatures`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPhysicalDevice8BitStorageFeatures extends GroupType {
     public static final VarHandle VH_storagePushConstant8 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("storagePushConstant8"));
 
     /// Creates `VkPhysicalDevice8BitStorageFeatures` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDevice8BitStorageFeatures(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDevice8BitStorageFeatures(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDevice8BitStorageFeatures` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDevice8BitStorageFeatures of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevice8BitStorageFeatures(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevice8BitStorageFeatures` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevice8BitStorageFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevice8BitStorageFeatures(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDevice8BitStorageFeatures ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevice8BitStorageFeatures(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDevice8BitStorageFeatures` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPhysicalDevice8BitStorageFeatures extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDevice8BitStorageFeatures ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevice8BitStorageFeatures(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDevice8BitStorageFeatures` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDevice8BitStorageFeatures`
-    public static VkPhysicalDevice8BitStorageFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDevice8BitStorageFeatures(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDevice8BitStorageFeatures alloc(SegmentAllocator allocator) { return new VkPhysicalDevice8BitStorageFeatures(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDevice8BitStorageFeatures` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDevice8BitStorageFeatures`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDevice8BitStorageFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevice8BitStorageFeatures(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDevice8BitStorageFeatures` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPhysicalDevice8BitStorageFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDevice8BitStorageFeatures copyFrom(VkPhysicalDevice8BitStorageFeatures src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDevice8BitStorageFeatures reinterpret(long count) { return new VkPhysicalDevice8BitStorageFeatures(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPhysicalDevice8BitStorageFeatures extends GroupType {
     /// @return `this`
     public VkPhysicalDevice8BitStorageFeatures storagePushConstant8(int value) { storagePushConstant8(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDevice8BitStorageFeatures].
-    public static final class Buffer extends VkPhysicalDevice8BitStorageFeatures {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDevice8BitStorageFeatures`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevice8BitStorageFeatures`
+    public VkPhysicalDevice8BitStorageFeatures asSlice(long index) { return new VkPhysicalDevice8BitStorageFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDevice8BitStorageFeatures.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDevice8BitStorageFeatures`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevice8BitStorageFeatures`
+    public VkPhysicalDevice8BitStorageFeatures asSlice(long index, long count) { return new VkPhysicalDevice8BitStorageFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDevice8BitStorageFeatures` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDevice8BitStorageFeatures at(long index, Consumer<VkPhysicalDevice8BitStorageFeatures> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDevice8BitStorageFeatures`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDevice8BitStorageFeatures`
-        public VkPhysicalDevice8BitStorageFeatures asSlice(long index) { return new VkPhysicalDevice8BitStorageFeatures(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevice8BitStorageFeatures sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDevice8BitStorageFeatures`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDevice8BitStorageFeatures`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevice8BitStorageFeatures pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `storageBuffer8BitAccess` at the given index}
+    /// @param index the index of the struct buffer
+    public int storageBuffer8BitAccessAt(long index) { return storageBuffer8BitAccess(this.segment(), index); }
+    /// Sets `storageBuffer8BitAccess` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevice8BitStorageFeatures storageBuffer8BitAccessAt(long index, int value) { storageBuffer8BitAccess(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `uniformAndStorageBuffer8BitAccess` at the given index}
+    /// @param index the index of the struct buffer
+    public int uniformAndStorageBuffer8BitAccessAt(long index) { return uniformAndStorageBuffer8BitAccess(this.segment(), index); }
+    /// Sets `uniformAndStorageBuffer8BitAccess` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevice8BitStorageFeatures uniformAndStorageBuffer8BitAccessAt(long index, int value) { uniformAndStorageBuffer8BitAccess(this.segment(), index, value); return this; }
 
-        /// {@return `storageBuffer8BitAccess` at the given index}
-        /// @param index the index of the struct buffer
-        public int storageBuffer8BitAccessAt(long index) { return storageBuffer8BitAccess(this.segment(), index); }
-        /// Sets `storageBuffer8BitAccess` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer storageBuffer8BitAccessAt(long index, int value) { storageBuffer8BitAccess(this.segment(), index, value); return this; }
+    /// {@return `storagePushConstant8` at the given index}
+    /// @param index the index of the struct buffer
+    public int storagePushConstant8At(long index) { return storagePushConstant8(this.segment(), index); }
+    /// Sets `storagePushConstant8` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevice8BitStorageFeatures storagePushConstant8At(long index, int value) { storagePushConstant8(this.segment(), index, value); return this; }
 
-        /// {@return `uniformAndStorageBuffer8BitAccess` at the given index}
-        /// @param index the index of the struct buffer
-        public int uniformAndStorageBuffer8BitAccessAt(long index) { return uniformAndStorageBuffer8BitAccess(this.segment(), index); }
-        /// Sets `uniformAndStorageBuffer8BitAccess` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer uniformAndStorageBuffer8BitAccessAt(long index, int value) { uniformAndStorageBuffer8BitAccess(this.segment(), index, value); return this; }
-
-        /// {@return `storagePushConstant8` at the given index}
-        /// @param index the index of the struct buffer
-        public int storagePushConstant8At(long index) { return storagePushConstant8(this.segment(), index); }
-        /// Sets `storagePushConstant8` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer storagePushConstant8At(long index, int value) { storagePushConstant8(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     const VkDataGraphPipelineResourceInfoARM* pResourceInfos;
 /// };
 /// ```
-public sealed class VkDataGraphPipelineCreateInfoARM extends GroupType {
+public final class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// The struct layout of `VkDataGraphPipelineCreateInfoARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkDataGraphPipelineCreateInfoARM extends GroupType {
     public static final VarHandle VH_pResourceInfos = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pResourceInfos"));
 
     /// Creates `VkDataGraphPipelineCreateInfoARM` with the given segment.
-    /// @param segment the memory segment
-    public VkDataGraphPipelineCreateInfoARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDataGraphPipelineCreateInfoARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDataGraphPipelineCreateInfoARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDataGraphPipelineCreateInfoARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineCreateInfoARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDataGraphPipelineCreateInfoARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDataGraphPipelineCreateInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineCreateInfoARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDataGraphPipelineCreateInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineCreateInfoARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDataGraphPipelineCreateInfoARM` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDataGraphPipelineCreateInfoARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineCreateInfoARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDataGraphPipelineCreateInfoARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDataGraphPipelineCreateInfoARM`
-    public static VkDataGraphPipelineCreateInfoARM alloc(SegmentAllocator allocator) { return new VkDataGraphPipelineCreateInfoARM(allocator.allocate(LAYOUT)); }
+    public static VkDataGraphPipelineCreateInfoARM alloc(SegmentAllocator allocator) { return new VkDataGraphPipelineCreateInfoARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDataGraphPipelineCreateInfoARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDataGraphPipelineCreateInfoARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDataGraphPipelineCreateInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineCreateInfoARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDataGraphPipelineCreateInfoARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// @return `this`
     public VkDataGraphPipelineCreateInfoARM copyFrom(VkDataGraphPipelineCreateInfoARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDataGraphPipelineCreateInfoARM reinterpret(long count) { return new VkDataGraphPipelineCreateInfoARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkDataGraphPipelineCreateInfoARM extends GroupType {
     /// @return `this`
     public VkDataGraphPipelineCreateInfoARM pResourceInfos(MemorySegment value) { pResourceInfos(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDataGraphPipelineCreateInfoARM].
-    public static final class Buffer extends VkDataGraphPipelineCreateInfoARM {
-        private final long elementCount;
+    /// Creates a slice of `VkDataGraphPipelineCreateInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDataGraphPipelineCreateInfoARM`
+    public VkDataGraphPipelineCreateInfoARM asSlice(long index) { return new VkDataGraphPipelineCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDataGraphPipelineCreateInfoARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDataGraphPipelineCreateInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDataGraphPipelineCreateInfoARM`
+    public VkDataGraphPipelineCreateInfoARM asSlice(long index, long count) { return new VkDataGraphPipelineCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDataGraphPipelineCreateInfoARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDataGraphPipelineCreateInfoARM at(long index, Consumer<VkDataGraphPipelineCreateInfoARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDataGraphPipelineCreateInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDataGraphPipelineCreateInfoARM`
-        public VkDataGraphPipelineCreateInfoARM asSlice(long index) { return new VkDataGraphPipelineCreateInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineCreateInfoARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDataGraphPipelineCreateInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDataGraphPipelineCreateInfoARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineCreateInfoARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public long flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineCreateInfoARM flagsAt(long index, long value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `layout` at the given index}
+    /// @param index the index of the struct buffer
+    public long layoutAt(long index) { return layout(this.segment(), index); }
+    /// Sets `layout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineCreateInfoARM layoutAt(long index, long value) { layout(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public long flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, long value) { flags(this.segment(), index, value); return this; }
+    /// {@return `resourceInfoCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int resourceInfoCountAt(long index) { return resourceInfoCount(this.segment(), index); }
+    /// Sets `resourceInfoCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineCreateInfoARM resourceInfoCountAt(long index, int value) { resourceInfoCount(this.segment(), index, value); return this; }
 
-        /// {@return `layout` at the given index}
-        /// @param index the index of the struct buffer
-        public long layoutAt(long index) { return layout(this.segment(), index); }
-        /// Sets `layout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer layoutAt(long index, long value) { layout(this.segment(), index, value); return this; }
+    /// {@return `pResourceInfos` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pResourceInfosAt(long index) { return pResourceInfos(this.segment(), index); }
+    /// Sets `pResourceInfos` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineCreateInfoARM pResourceInfosAt(long index, MemorySegment value) { pResourceInfos(this.segment(), index, value); return this; }
 
-        /// {@return `resourceInfoCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int resourceInfoCountAt(long index) { return resourceInfoCount(this.segment(), index); }
-        /// Sets `resourceInfoCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer resourceInfoCountAt(long index, int value) { resourceInfoCount(this.segment(), index, value); return this; }
-
-        /// {@return `pResourceInfos` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pResourceInfosAt(long index) { return pResourceInfos(this.segment(), index); }
-        /// Sets `pResourceInfos` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pResourceInfosAt(long index, MemorySegment value) { pResourceInfos(this.segment(), index, value); return this; }
-
-    }
 }

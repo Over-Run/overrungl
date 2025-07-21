@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 sciSyncExport;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType {
+public final class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceExternalSciSyncFeaturesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType 
     public static final VarHandle VH_sciSyncExport = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sciSyncExport"));
 
     /// Creates `VkPhysicalDeviceExternalSciSyncFeaturesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceExternalSciSyncFeaturesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceExternalSciSyncFeaturesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceExternalSciSyncFeaturesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalSciSyncFeaturesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceExternalSciSyncFeaturesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceExternalSciSyncFeaturesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalSciSyncFeaturesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceExternalSciSyncFeaturesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalSciSyncFeaturesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceExternalSciSyncFeaturesNV` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType 
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceExternalSciSyncFeaturesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceExternalSciSyncFeaturesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceExternalSciSyncFeaturesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceExternalSciSyncFeaturesNV`
-    public static VkPhysicalDeviceExternalSciSyncFeaturesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExternalSciSyncFeaturesNV(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceExternalSciSyncFeaturesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceExternalSciSyncFeaturesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceExternalSciSyncFeaturesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceExternalSciSyncFeaturesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceExternalSciSyncFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalSciSyncFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceExternalSciSyncFeaturesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType 
     /// @return `this`
     public VkPhysicalDeviceExternalSciSyncFeaturesNV copyFrom(VkPhysicalDeviceExternalSciSyncFeaturesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV reinterpret(long count) { return new VkPhysicalDeviceExternalSciSyncFeaturesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkPhysicalDeviceExternalSciSyncFeaturesNV extends GroupType 
     /// @return `this`
     public VkPhysicalDeviceExternalSciSyncFeaturesNV sciSyncExport(int value) { sciSyncExport(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceExternalSciSyncFeaturesNV].
-    public static final class Buffer extends VkPhysicalDeviceExternalSciSyncFeaturesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceExternalSciSyncFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceExternalSciSyncFeaturesNV`
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV asSlice(long index) { return new VkPhysicalDeviceExternalSciSyncFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceExternalSciSyncFeaturesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceExternalSciSyncFeaturesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceExternalSciSyncFeaturesNV`
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV asSlice(long index, long count) { return new VkPhysicalDeviceExternalSciSyncFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceExternalSciSyncFeaturesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV at(long index, Consumer<VkPhysicalDeviceExternalSciSyncFeaturesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExternalSciSyncFeaturesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceExternalSciSyncFeaturesNV`
-        public VkPhysicalDeviceExternalSciSyncFeaturesNV asSlice(long index) { return new VkPhysicalDeviceExternalSciSyncFeaturesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceExternalSciSyncFeaturesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceExternalSciSyncFeaturesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `sciSyncFence` at the given index}
+    /// @param index the index of the struct buffer
+    public int sciSyncFenceAt(long index) { return sciSyncFence(this.segment(), index); }
+    /// Sets `sciSyncFence` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV sciSyncFenceAt(long index, int value) { sciSyncFence(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `sciSyncSemaphore` at the given index}
+    /// @param index the index of the struct buffer
+    public int sciSyncSemaphoreAt(long index) { return sciSyncSemaphore(this.segment(), index); }
+    /// Sets `sciSyncSemaphore` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV sciSyncSemaphoreAt(long index, int value) { sciSyncSemaphore(this.segment(), index, value); return this; }
 
-        /// {@return `sciSyncFence` at the given index}
-        /// @param index the index of the struct buffer
-        public int sciSyncFenceAt(long index) { return sciSyncFence(this.segment(), index); }
-        /// Sets `sciSyncFence` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sciSyncFenceAt(long index, int value) { sciSyncFence(this.segment(), index, value); return this; }
+    /// {@return `sciSyncImport` at the given index}
+    /// @param index the index of the struct buffer
+    public int sciSyncImportAt(long index) { return sciSyncImport(this.segment(), index); }
+    /// Sets `sciSyncImport` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV sciSyncImportAt(long index, int value) { sciSyncImport(this.segment(), index, value); return this; }
 
-        /// {@return `sciSyncSemaphore` at the given index}
-        /// @param index the index of the struct buffer
-        public int sciSyncSemaphoreAt(long index) { return sciSyncSemaphore(this.segment(), index); }
-        /// Sets `sciSyncSemaphore` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sciSyncSemaphoreAt(long index, int value) { sciSyncSemaphore(this.segment(), index, value); return this; }
+    /// {@return `sciSyncExport` at the given index}
+    /// @param index the index of the struct buffer
+    public int sciSyncExportAt(long index) { return sciSyncExport(this.segment(), index); }
+    /// Sets `sciSyncExport` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceExternalSciSyncFeaturesNV sciSyncExportAt(long index, int value) { sciSyncExport(this.segment(), index, value); return this; }
 
-        /// {@return `sciSyncImport` at the given index}
-        /// @param index the index of the struct buffer
-        public int sciSyncImportAt(long index) { return sciSyncImport(this.segment(), index); }
-        /// Sets `sciSyncImport` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sciSyncImportAt(long index, int value) { sciSyncImport(this.segment(), index, value); return this; }
-
-        /// {@return `sciSyncExport` at the given index}
-        /// @param index the index of the struct buffer
-        public int sciSyncExportAt(long index) { return sciSyncExport(this.segment(), index); }
-        /// Sets `sciSyncExport` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sciSyncExportAt(long index, int value) { sciSyncExport(this.segment(), index, value); return this; }
-
-    }
 }

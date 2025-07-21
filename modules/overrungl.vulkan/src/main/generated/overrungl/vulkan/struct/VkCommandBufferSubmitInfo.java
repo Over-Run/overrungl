@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint32_t deviceMask;
 /// };
 /// ```
-public sealed class VkCommandBufferSubmitInfo extends GroupType {
+public final class VkCommandBufferSubmitInfo extends GroupType {
     /// The struct layout of `VkCommandBufferSubmitInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkCommandBufferSubmitInfo extends GroupType {
     public static final VarHandle VH_deviceMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMask"));
 
     /// Creates `VkCommandBufferSubmitInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkCommandBufferSubmitInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkCommandBufferSubmitInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkCommandBufferSubmitInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkCommandBufferSubmitInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferSubmitInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCommandBufferSubmitInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCommandBufferSubmitInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferSubmitInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkCommandBufferSubmitInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferSubmitInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkCommandBufferSubmitInfo` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkCommandBufferSubmitInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkCommandBufferSubmitInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkCommandBufferSubmitInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkCommandBufferSubmitInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCommandBufferSubmitInfo`
-    public static VkCommandBufferSubmitInfo alloc(SegmentAllocator allocator) { return new VkCommandBufferSubmitInfo(allocator.allocate(LAYOUT)); }
+    public static VkCommandBufferSubmitInfo alloc(SegmentAllocator allocator) { return new VkCommandBufferSubmitInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkCommandBufferSubmitInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCommandBufferSubmitInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkCommandBufferSubmitInfo alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferSubmitInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkCommandBufferSubmitInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkCommandBufferSubmitInfo extends GroupType {
     /// @return `this`
     public VkCommandBufferSubmitInfo copyFrom(VkCommandBufferSubmitInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkCommandBufferSubmitInfo reinterpret(long count) { return new VkCommandBufferSubmitInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkCommandBufferSubmitInfo extends GroupType {
     /// @return `this`
     public VkCommandBufferSubmitInfo deviceMask(int value) { deviceMask(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkCommandBufferSubmitInfo].
-    public static final class Buffer extends VkCommandBufferSubmitInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkCommandBufferSubmitInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCommandBufferSubmitInfo`
+    public VkCommandBufferSubmitInfo asSlice(long index) { return new VkCommandBufferSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkCommandBufferSubmitInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkCommandBufferSubmitInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCommandBufferSubmitInfo`
+    public VkCommandBufferSubmitInfo asSlice(long index, long count) { return new VkCommandBufferSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkCommandBufferSubmitInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkCommandBufferSubmitInfo at(long index, Consumer<VkCommandBufferSubmitInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkCommandBufferSubmitInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkCommandBufferSubmitInfo`
-        public VkCommandBufferSubmitInfo asSlice(long index) { return new VkCommandBufferSubmitInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCommandBufferSubmitInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkCommandBufferSubmitInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkCommandBufferSubmitInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCommandBufferSubmitInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `commandBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment commandBufferAt(long index) { return commandBuffer(this.segment(), index); }
+    /// Sets `commandBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCommandBufferSubmitInfo commandBufferAt(long index, MemorySegment value) { commandBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `deviceMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int deviceMaskAt(long index) { return deviceMask(this.segment(), index); }
+    /// Sets `deviceMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCommandBufferSubmitInfo deviceMaskAt(long index, int value) { deviceMask(this.segment(), index, value); return this; }
 
-        /// {@return `commandBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment commandBufferAt(long index) { return commandBuffer(this.segment(), index); }
-        /// Sets `commandBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer commandBufferAt(long index, MemorySegment value) { commandBuffer(this.segment(), index, value); return this; }
-
-        /// {@return `deviceMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int deviceMaskAt(long index) { return deviceMask(this.segment(), index); }
-        /// Sets `deviceMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceMaskAt(long index, int value) { deviceMask(this.segment(), index, value); return this; }
-
-    }
 }

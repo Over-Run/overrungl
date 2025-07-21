@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -38,7 +39,7 @@ import overrungl.util.*;
 ///     float yoff2;
 /// };
 /// ```
-public sealed class STBTTPackedChar extends GroupType {
+public final class STBTTPackedChar extends GroupType {
     /// The struct layout of `STBTTPackedChar`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("x0"),
@@ -107,20 +108,21 @@ public sealed class STBTTPackedChar extends GroupType {
     public static final VarHandle VH_yoff2 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("yoff2"));
 
     /// Creates `STBTTPackedChar` with the given segment.
-    /// @param segment the memory segment
-    public STBTTPackedChar(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBTTPackedChar(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBTTPackedChar` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBTTPackedChar of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTPackedChar(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBTTPackedChar` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTTPackedChar ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTPackedChar(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBTTPackedChar ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTPackedChar(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBTTPackedChar` with the given segment.
     ///
@@ -128,18 +130,18 @@ public sealed class STBTTPackedChar extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBTTPackedChar ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTPackedChar(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBTTPackedChar` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTTPackedChar`
-    public static STBTTPackedChar alloc(SegmentAllocator allocator) { return new STBTTPackedChar(allocator.allocate(LAYOUT)); }
+    public static STBTTPackedChar alloc(SegmentAllocator allocator) { return new STBTTPackedChar(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBTTPackedChar` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBTTPackedChar`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBTTPackedChar alloc(SegmentAllocator allocator, long count) { return new STBTTPackedChar(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBTTPackedChar` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -254,9 +256,10 @@ public sealed class STBTTPackedChar extends GroupType {
     /// @return `this`
     public STBTTPackedChar copyFrom(STBTTPackedChar src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBTTPackedChar reinterpret(long count) { return new STBTTPackedChar(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `x0` at the given index}
     /// @param segment the segment of the struct
@@ -402,108 +405,102 @@ public sealed class STBTTPackedChar extends GroupType {
     /// @return `this`
     public STBTTPackedChar yoff2(float value) { yoff2(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBTTPackedChar].
-    public static final class Buffer extends STBTTPackedChar {
-        private final long elementCount;
+    /// Creates a slice of `STBTTPackedChar`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTPackedChar`
+    public STBTTPackedChar asSlice(long index) { return new STBTTPackedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBTTPackedChar.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBTTPackedChar`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTPackedChar`
+    public STBTTPackedChar asSlice(long index, long count) { return new STBTTPackedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBTTPackedChar` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBTTPackedChar at(long index, Consumer<STBTTPackedChar> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBTTPackedChar`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBTTPackedChar`
-        public STBTTPackedChar asSlice(long index) { return new STBTTPackedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `x0` at the given index}
+    /// @param index the index of the struct buffer
+    public short x0At(long index) { return x0(this.segment(), index); }
+    /// Sets `x0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackedChar x0At(long index, short value) { x0(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBTTPackedChar`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBTTPackedChar`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `y0` at the given index}
+    /// @param index the index of the struct buffer
+    public short y0At(long index) { return y0(this.segment(), index); }
+    /// Sets `y0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackedChar y0At(long index, short value) { y0(this.segment(), index, value); return this; }
 
-        /// {@return `x0` at the given index}
-        /// @param index the index of the struct buffer
-        public short x0At(long index) { return x0(this.segment(), index); }
-        /// Sets `x0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer x0At(long index, short value) { x0(this.segment(), index, value); return this; }
+    /// {@return `x1` at the given index}
+    /// @param index the index of the struct buffer
+    public short x1At(long index) { return x1(this.segment(), index); }
+    /// Sets `x1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackedChar x1At(long index, short value) { x1(this.segment(), index, value); return this; }
 
-        /// {@return `y0` at the given index}
-        /// @param index the index of the struct buffer
-        public short y0At(long index) { return y0(this.segment(), index); }
-        /// Sets `y0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer y0At(long index, short value) { y0(this.segment(), index, value); return this; }
+    /// {@return `y1` at the given index}
+    /// @param index the index of the struct buffer
+    public short y1At(long index) { return y1(this.segment(), index); }
+    /// Sets `y1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackedChar y1At(long index, short value) { y1(this.segment(), index, value); return this; }
 
-        /// {@return `x1` at the given index}
-        /// @param index the index of the struct buffer
-        public short x1At(long index) { return x1(this.segment(), index); }
-        /// Sets `x1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer x1At(long index, short value) { x1(this.segment(), index, value); return this; }
+    /// {@return `xoff` at the given index}
+    /// @param index the index of the struct buffer
+    public float xoffAt(long index) { return xoff(this.segment(), index); }
+    /// Sets `xoff` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackedChar xoffAt(long index, float value) { xoff(this.segment(), index, value); return this; }
 
-        /// {@return `y1` at the given index}
-        /// @param index the index of the struct buffer
-        public short y1At(long index) { return y1(this.segment(), index); }
-        /// Sets `y1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer y1At(long index, short value) { y1(this.segment(), index, value); return this; }
+    /// {@return `yoff` at the given index}
+    /// @param index the index of the struct buffer
+    public float yoffAt(long index) { return yoff(this.segment(), index); }
+    /// Sets `yoff` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackedChar yoffAt(long index, float value) { yoff(this.segment(), index, value); return this; }
 
-        /// {@return `xoff` at the given index}
-        /// @param index the index of the struct buffer
-        public float xoffAt(long index) { return xoff(this.segment(), index); }
-        /// Sets `xoff` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xoffAt(long index, float value) { xoff(this.segment(), index, value); return this; }
+    /// {@return `xadvance` at the given index}
+    /// @param index the index of the struct buffer
+    public float xadvanceAt(long index) { return xadvance(this.segment(), index); }
+    /// Sets `xadvance` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackedChar xadvanceAt(long index, float value) { xadvance(this.segment(), index, value); return this; }
 
-        /// {@return `yoff` at the given index}
-        /// @param index the index of the struct buffer
-        public float yoffAt(long index) { return yoff(this.segment(), index); }
-        /// Sets `yoff` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer yoffAt(long index, float value) { yoff(this.segment(), index, value); return this; }
+    /// {@return `xoff2` at the given index}
+    /// @param index the index of the struct buffer
+    public float xoff2At(long index) { return xoff2(this.segment(), index); }
+    /// Sets `xoff2` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackedChar xoff2At(long index, float value) { xoff2(this.segment(), index, value); return this; }
 
-        /// {@return `xadvance` at the given index}
-        /// @param index the index of the struct buffer
-        public float xadvanceAt(long index) { return xadvance(this.segment(), index); }
-        /// Sets `xadvance` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xadvanceAt(long index, float value) { xadvance(this.segment(), index, value); return this; }
+    /// {@return `yoff2` at the given index}
+    /// @param index the index of the struct buffer
+    public float yoff2At(long index) { return yoff2(this.segment(), index); }
+    /// Sets `yoff2` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackedChar yoff2At(long index, float value) { yoff2(this.segment(), index, value); return this; }
 
-        /// {@return `xoff2` at the given index}
-        /// @param index the index of the struct buffer
-        public float xoff2At(long index) { return xoff2(this.segment(), index); }
-        /// Sets `xoff2` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xoff2At(long index, float value) { xoff2(this.segment(), index, value); return this; }
-
-        /// {@return `yoff2` at the given index}
-        /// @param index the index of the struct buffer
-        public float yoff2At(long index) { return yoff2(this.segment(), index); }
-        /// Sets `yoff2` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer yoff2At(long index, float value) { yoff2(this.segment(), index, value); return this; }
-
-    }
 }

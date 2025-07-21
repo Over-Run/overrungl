@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     const char* const * ppEnabledExtensionNames;
 /// };
 /// ```
-public sealed class VkInstanceCreateInfo extends GroupType {
+public final class VkInstanceCreateInfo extends GroupType {
     /// The struct layout of `VkInstanceCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -99,20 +100,21 @@ public sealed class VkInstanceCreateInfo extends GroupType {
     public static final VarHandle VH_ppEnabledExtensionNames = LAYOUT.arrayElementVarHandle(PathElement.groupElement("ppEnabledExtensionNames"));
 
     /// Creates `VkInstanceCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkInstanceCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkInstanceCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkInstanceCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkInstanceCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkInstanceCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkInstanceCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkInstanceCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkInstanceCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkInstanceCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkInstanceCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkInstanceCreateInfo` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkInstanceCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkInstanceCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkInstanceCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkInstanceCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkInstanceCreateInfo`
-    public static VkInstanceCreateInfo alloc(SegmentAllocator allocator) { return new VkInstanceCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkInstanceCreateInfo alloc(SegmentAllocator allocator) { return new VkInstanceCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkInstanceCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkInstanceCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkInstanceCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkInstanceCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkInstanceCreateInfo extends GroupType {
     /// @return `this`
     public VkInstanceCreateInfo copyFrom(VkInstanceCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkInstanceCreateInfo reinterpret(long count) { return new VkInstanceCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class VkInstanceCreateInfo extends GroupType {
     /// @return `this`
     public VkInstanceCreateInfo ppEnabledExtensionNames(MemorySegment value) { ppEnabledExtensionNames(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkInstanceCreateInfo].
-    public static final class Buffer extends VkInstanceCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkInstanceCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkInstanceCreateInfo`
+    public VkInstanceCreateInfo asSlice(long index) { return new VkInstanceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkInstanceCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkInstanceCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkInstanceCreateInfo`
+    public VkInstanceCreateInfo asSlice(long index, long count) { return new VkInstanceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkInstanceCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkInstanceCreateInfo at(long index, Consumer<VkInstanceCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkInstanceCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkInstanceCreateInfo`
-        public VkInstanceCreateInfo asSlice(long index) { return new VkInstanceCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkInstanceCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkInstanceCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkInstanceCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkInstanceCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkInstanceCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pApplicationInfo` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pApplicationInfoAt(long index) { return pApplicationInfo(this.segment(), index); }
+    /// Sets `pApplicationInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkInstanceCreateInfo pApplicationInfoAt(long index, MemorySegment value) { pApplicationInfo(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `enabledLayerCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int enabledLayerCountAt(long index) { return enabledLayerCount(this.segment(), index); }
+    /// Sets `enabledLayerCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkInstanceCreateInfo enabledLayerCountAt(long index, int value) { enabledLayerCount(this.segment(), index, value); return this; }
 
-        /// {@return `pApplicationInfo` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pApplicationInfoAt(long index) { return pApplicationInfo(this.segment(), index); }
-        /// Sets `pApplicationInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pApplicationInfoAt(long index, MemorySegment value) { pApplicationInfo(this.segment(), index, value); return this; }
+    /// {@return `ppEnabledLayerNames` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment ppEnabledLayerNamesAt(long index) { return ppEnabledLayerNames(this.segment(), index); }
+    /// Sets `ppEnabledLayerNames` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkInstanceCreateInfo ppEnabledLayerNamesAt(long index, MemorySegment value) { ppEnabledLayerNames(this.segment(), index, value); return this; }
 
-        /// {@return `enabledLayerCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int enabledLayerCountAt(long index) { return enabledLayerCount(this.segment(), index); }
-        /// Sets `enabledLayerCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer enabledLayerCountAt(long index, int value) { enabledLayerCount(this.segment(), index, value); return this; }
+    /// {@return `enabledExtensionCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int enabledExtensionCountAt(long index) { return enabledExtensionCount(this.segment(), index); }
+    /// Sets `enabledExtensionCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkInstanceCreateInfo enabledExtensionCountAt(long index, int value) { enabledExtensionCount(this.segment(), index, value); return this; }
 
-        /// {@return `ppEnabledLayerNames` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment ppEnabledLayerNamesAt(long index) { return ppEnabledLayerNames(this.segment(), index); }
-        /// Sets `ppEnabledLayerNames` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ppEnabledLayerNamesAt(long index, MemorySegment value) { ppEnabledLayerNames(this.segment(), index, value); return this; }
+    /// {@return `ppEnabledExtensionNames` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment ppEnabledExtensionNamesAt(long index) { return ppEnabledExtensionNames(this.segment(), index); }
+    /// Sets `ppEnabledExtensionNames` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkInstanceCreateInfo ppEnabledExtensionNamesAt(long index, MemorySegment value) { ppEnabledExtensionNames(this.segment(), index, value); return this; }
 
-        /// {@return `enabledExtensionCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int enabledExtensionCountAt(long index) { return enabledExtensionCount(this.segment(), index); }
-        /// Sets `enabledExtensionCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer enabledExtensionCountAt(long index, int value) { enabledExtensionCount(this.segment(), index, value); return this; }
-
-        /// {@return `ppEnabledExtensionNames` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment ppEnabledExtensionNamesAt(long index) { return ppEnabledExtensionNames(this.segment(), index); }
-        /// Sets `ppEnabledExtensionNames` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ppEnabledExtensionNamesAt(long index, MemorySegment value) { ppEnabledExtensionNames(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -65,7 +66,7 @@ import overrungl.util.*;
 ///     stbir__info* samplers;
 /// };
 /// ```
-public sealed class STBIR_RESIZE extends GroupType {
+public final class STBIR_RESIZE extends GroupType {
     /// The struct layout of `STBIR_RESIZE`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("user_data"),
@@ -323,20 +324,21 @@ public sealed class STBIR_RESIZE extends GroupType {
     public static final VarHandle VH_samplers = LAYOUT.arrayElementVarHandle(PathElement.groupElement("samplers"));
 
     /// Creates `STBIR_RESIZE` with the given segment.
-    /// @param segment the memory segment
-    public STBIR_RESIZE(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBIR_RESIZE(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBIR_RESIZE` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBIR_RESIZE of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBIR_RESIZE(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBIR_RESIZE` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBIR_RESIZE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBIR_RESIZE(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBIR_RESIZE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBIR_RESIZE(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBIR_RESIZE` with the given segment.
     ///
@@ -344,18 +346,18 @@ public sealed class STBIR_RESIZE extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBIR_RESIZE ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBIR_RESIZE(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBIR_RESIZE` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBIR_RESIZE`
-    public static STBIR_RESIZE alloc(SegmentAllocator allocator) { return new STBIR_RESIZE(allocator.allocate(LAYOUT)); }
+    public static STBIR_RESIZE alloc(SegmentAllocator allocator) { return new STBIR_RESIZE(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBIR_RESIZE` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBIR_RESIZE`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBIR_RESIZE alloc(SegmentAllocator allocator, long count) { return new STBIR_RESIZE(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBIR_RESIZE` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -1280,9 +1282,10 @@ public sealed class STBIR_RESIZE extends GroupType {
     /// @return `this`
     public STBIR_RESIZE copyFrom(STBIR_RESIZE src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBIR_RESIZE reinterpret(long count) { return new STBIR_RESIZE(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `user_data` at the given index}
     /// @param segment the segment of the struct
@@ -1860,351 +1863,345 @@ public sealed class STBIR_RESIZE extends GroupType {
     /// @return `this`
     public STBIR_RESIZE samplers(MemorySegment value) { samplers(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBIR_RESIZE].
-    public static final class Buffer extends STBIR_RESIZE {
-        private final long elementCount;
+    /// Creates a slice of `STBIR_RESIZE`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBIR_RESIZE`
+    public STBIR_RESIZE asSlice(long index) { return new STBIR_RESIZE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBIR_RESIZE.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBIR_RESIZE`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBIR_RESIZE`
+    public STBIR_RESIZE asSlice(long index, long count) { return new STBIR_RESIZE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBIR_RESIZE` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBIR_RESIZE at(long index, Consumer<STBIR_RESIZE> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBIR_RESIZE`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBIR_RESIZE`
-        public STBIR_RESIZE asSlice(long index) { return new STBIR_RESIZE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `user_data` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment user_dataAt(long index) { return user_data(this.segment(), index); }
+    /// Sets `user_data` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE user_dataAt(long index, MemorySegment value) { user_data(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBIR_RESIZE`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBIR_RESIZE`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `input_pixels` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment input_pixelsAt(long index) { return input_pixels(this.segment(), index); }
+    /// Sets `input_pixels` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_pixelsAt(long index, MemorySegment value) { input_pixels(this.segment(), index, value); return this; }
 
-        /// {@return `user_data` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment user_dataAt(long index) { return user_data(this.segment(), index); }
-        /// Sets `user_data` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer user_dataAt(long index, MemorySegment value) { user_data(this.segment(), index, value); return this; }
+    /// {@return `input_w` at the given index}
+    /// @param index the index of the struct buffer
+    public int input_wAt(long index) { return input_w(this.segment(), index); }
+    /// Sets `input_w` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_wAt(long index, int value) { input_w(this.segment(), index, value); return this; }
 
-        /// {@return `input_pixels` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment input_pixelsAt(long index) { return input_pixels(this.segment(), index); }
-        /// Sets `input_pixels` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_pixelsAt(long index, MemorySegment value) { input_pixels(this.segment(), index, value); return this; }
+    /// {@return `input_h` at the given index}
+    /// @param index the index of the struct buffer
+    public int input_hAt(long index) { return input_h(this.segment(), index); }
+    /// Sets `input_h` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_hAt(long index, int value) { input_h(this.segment(), index, value); return this; }
 
-        /// {@return `input_w` at the given index}
-        /// @param index the index of the struct buffer
-        public int input_wAt(long index) { return input_w(this.segment(), index); }
-        /// Sets `input_w` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_wAt(long index, int value) { input_w(this.segment(), index, value); return this; }
+    /// {@return `input_s0` at the given index}
+    /// @param index the index of the struct buffer
+    public double input_s0At(long index) { return input_s0(this.segment(), index); }
+    /// Sets `input_s0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_s0At(long index, double value) { input_s0(this.segment(), index, value); return this; }
 
-        /// {@return `input_h` at the given index}
-        /// @param index the index of the struct buffer
-        public int input_hAt(long index) { return input_h(this.segment(), index); }
-        /// Sets `input_h` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_hAt(long index, int value) { input_h(this.segment(), index, value); return this; }
+    /// {@return `input_t0` at the given index}
+    /// @param index the index of the struct buffer
+    public double input_t0At(long index) { return input_t0(this.segment(), index); }
+    /// Sets `input_t0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_t0At(long index, double value) { input_t0(this.segment(), index, value); return this; }
 
-        /// {@return `input_s0` at the given index}
-        /// @param index the index of the struct buffer
-        public double input_s0At(long index) { return input_s0(this.segment(), index); }
-        /// Sets `input_s0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_s0At(long index, double value) { input_s0(this.segment(), index, value); return this; }
+    /// {@return `input_s1` at the given index}
+    /// @param index the index of the struct buffer
+    public double input_s1At(long index) { return input_s1(this.segment(), index); }
+    /// Sets `input_s1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_s1At(long index, double value) { input_s1(this.segment(), index, value); return this; }
 
-        /// {@return `input_t0` at the given index}
-        /// @param index the index of the struct buffer
-        public double input_t0At(long index) { return input_t0(this.segment(), index); }
-        /// Sets `input_t0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_t0At(long index, double value) { input_t0(this.segment(), index, value); return this; }
+    /// {@return `input_t1` at the given index}
+    /// @param index the index of the struct buffer
+    public double input_t1At(long index) { return input_t1(this.segment(), index); }
+    /// Sets `input_t1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_t1At(long index, double value) { input_t1(this.segment(), index, value); return this; }
 
-        /// {@return `input_s1` at the given index}
-        /// @param index the index of the struct buffer
-        public double input_s1At(long index) { return input_s1(this.segment(), index); }
-        /// Sets `input_s1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_s1At(long index, double value) { input_s1(this.segment(), index, value); return this; }
+    /// {@return `input_cb` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment input_cbAt(long index) { return input_cb(this.segment(), index); }
+    /// Sets `input_cb` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_cbAt(long index, MemorySegment value) { input_cb(this.segment(), index, value); return this; }
 
-        /// {@return `input_t1` at the given index}
-        /// @param index the index of the struct buffer
-        public double input_t1At(long index) { return input_t1(this.segment(), index); }
-        /// Sets `input_t1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_t1At(long index, double value) { input_t1(this.segment(), index, value); return this; }
+    /// {@return `output_pixels` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment output_pixelsAt(long index) { return output_pixels(this.segment(), index); }
+    /// Sets `output_pixels` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_pixelsAt(long index, MemorySegment value) { output_pixels(this.segment(), index, value); return this; }
 
-        /// {@return `input_cb` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment input_cbAt(long index) { return input_cb(this.segment(), index); }
-        /// Sets `input_cb` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_cbAt(long index, MemorySegment value) { input_cb(this.segment(), index, value); return this; }
+    /// {@return `output_w` at the given index}
+    /// @param index the index of the struct buffer
+    public int output_wAt(long index) { return output_w(this.segment(), index); }
+    /// Sets `output_w` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_wAt(long index, int value) { output_w(this.segment(), index, value); return this; }
 
-        /// {@return `output_pixels` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment output_pixelsAt(long index) { return output_pixels(this.segment(), index); }
-        /// Sets `output_pixels` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_pixelsAt(long index, MemorySegment value) { output_pixels(this.segment(), index, value); return this; }
+    /// {@return `output_h` at the given index}
+    /// @param index the index of the struct buffer
+    public int output_hAt(long index) { return output_h(this.segment(), index); }
+    /// Sets `output_h` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_hAt(long index, int value) { output_h(this.segment(), index, value); return this; }
 
-        /// {@return `output_w` at the given index}
-        /// @param index the index of the struct buffer
-        public int output_wAt(long index) { return output_w(this.segment(), index); }
-        /// Sets `output_w` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_wAt(long index, int value) { output_w(this.segment(), index, value); return this; }
+    /// {@return `output_subx` at the given index}
+    /// @param index the index of the struct buffer
+    public int output_subxAt(long index) { return output_subx(this.segment(), index); }
+    /// Sets `output_subx` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_subxAt(long index, int value) { output_subx(this.segment(), index, value); return this; }
 
-        /// {@return `output_h` at the given index}
-        /// @param index the index of the struct buffer
-        public int output_hAt(long index) { return output_h(this.segment(), index); }
-        /// Sets `output_h` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_hAt(long index, int value) { output_h(this.segment(), index, value); return this; }
+    /// {@return `output_suby` at the given index}
+    /// @param index the index of the struct buffer
+    public int output_subyAt(long index) { return output_suby(this.segment(), index); }
+    /// Sets `output_suby` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_subyAt(long index, int value) { output_suby(this.segment(), index, value); return this; }
 
-        /// {@return `output_subx` at the given index}
-        /// @param index the index of the struct buffer
-        public int output_subxAt(long index) { return output_subx(this.segment(), index); }
-        /// Sets `output_subx` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_subxAt(long index, int value) { output_subx(this.segment(), index, value); return this; }
+    /// {@return `output_subw` at the given index}
+    /// @param index the index of the struct buffer
+    public int output_subwAt(long index) { return output_subw(this.segment(), index); }
+    /// Sets `output_subw` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_subwAt(long index, int value) { output_subw(this.segment(), index, value); return this; }
 
-        /// {@return `output_suby` at the given index}
-        /// @param index the index of the struct buffer
-        public int output_subyAt(long index) { return output_suby(this.segment(), index); }
-        /// Sets `output_suby` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_subyAt(long index, int value) { output_suby(this.segment(), index, value); return this; }
+    /// {@return `output_subh` at the given index}
+    /// @param index the index of the struct buffer
+    public int output_subhAt(long index) { return output_subh(this.segment(), index); }
+    /// Sets `output_subh` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_subhAt(long index, int value) { output_subh(this.segment(), index, value); return this; }
 
-        /// {@return `output_subw` at the given index}
-        /// @param index the index of the struct buffer
-        public int output_subwAt(long index) { return output_subw(this.segment(), index); }
-        /// Sets `output_subw` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_subwAt(long index, int value) { output_subw(this.segment(), index, value); return this; }
+    /// {@return `output_cb` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment output_cbAt(long index) { return output_cb(this.segment(), index); }
+    /// Sets `output_cb` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_cbAt(long index, MemorySegment value) { output_cb(this.segment(), index, value); return this; }
 
-        /// {@return `output_subh` at the given index}
-        /// @param index the index of the struct buffer
-        public int output_subhAt(long index) { return output_subh(this.segment(), index); }
-        /// Sets `output_subh` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_subhAt(long index, int value) { output_subh(this.segment(), index, value); return this; }
+    /// {@return `input_stride_in_bytes` at the given index}
+    /// @param index the index of the struct buffer
+    public int input_stride_in_bytesAt(long index) { return input_stride_in_bytes(this.segment(), index); }
+    /// Sets `input_stride_in_bytes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_stride_in_bytesAt(long index, int value) { input_stride_in_bytes(this.segment(), index, value); return this; }
 
-        /// {@return `output_cb` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment output_cbAt(long index) { return output_cb(this.segment(), index); }
-        /// Sets `output_cb` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_cbAt(long index, MemorySegment value) { output_cb(this.segment(), index, value); return this; }
+    /// {@return `output_stride_in_bytes` at the given index}
+    /// @param index the index of the struct buffer
+    public int output_stride_in_bytesAt(long index) { return output_stride_in_bytes(this.segment(), index); }
+    /// Sets `output_stride_in_bytes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_stride_in_bytesAt(long index, int value) { output_stride_in_bytes(this.segment(), index, value); return this; }
 
-        /// {@return `input_stride_in_bytes` at the given index}
-        /// @param index the index of the struct buffer
-        public int input_stride_in_bytesAt(long index) { return input_stride_in_bytes(this.segment(), index); }
-        /// Sets `input_stride_in_bytes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_stride_in_bytesAt(long index, int value) { input_stride_in_bytes(this.segment(), index, value); return this; }
+    /// {@return `splits` at the given index}
+    /// @param index the index of the struct buffer
+    public int splitsAt(long index) { return splits(this.segment(), index); }
+    /// Sets `splits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE splitsAt(long index, int value) { splits(this.segment(), index, value); return this; }
 
-        /// {@return `output_stride_in_bytes` at the given index}
-        /// @param index the index of the struct buffer
-        public int output_stride_in_bytesAt(long index) { return output_stride_in_bytes(this.segment(), index); }
-        /// Sets `output_stride_in_bytes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_stride_in_bytesAt(long index, int value) { output_stride_in_bytes(this.segment(), index, value); return this; }
+    /// {@return `fast_alpha` at the given index}
+    /// @param index the index of the struct buffer
+    public int fast_alphaAt(long index) { return fast_alpha(this.segment(), index); }
+    /// Sets `fast_alpha` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE fast_alphaAt(long index, int value) { fast_alpha(this.segment(), index, value); return this; }
 
-        /// {@return `splits` at the given index}
-        /// @param index the index of the struct buffer
-        public int splitsAt(long index) { return splits(this.segment(), index); }
-        /// Sets `splits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer splitsAt(long index, int value) { splits(this.segment(), index, value); return this; }
+    /// {@return `needs_rebuild` at the given index}
+    /// @param index the index of the struct buffer
+    public int needs_rebuildAt(long index) { return needs_rebuild(this.segment(), index); }
+    /// Sets `needs_rebuild` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE needs_rebuildAt(long index, int value) { needs_rebuild(this.segment(), index, value); return this; }
 
-        /// {@return `fast_alpha` at the given index}
-        /// @param index the index of the struct buffer
-        public int fast_alphaAt(long index) { return fast_alpha(this.segment(), index); }
-        /// Sets `fast_alpha` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fast_alphaAt(long index, int value) { fast_alpha(this.segment(), index, value); return this; }
+    /// {@return `called_alloc` at the given index}
+    /// @param index the index of the struct buffer
+    public int called_allocAt(long index) { return called_alloc(this.segment(), index); }
+    /// Sets `called_alloc` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE called_allocAt(long index, int value) { called_alloc(this.segment(), index, value); return this; }
 
-        /// {@return `needs_rebuild` at the given index}
-        /// @param index the index of the struct buffer
-        public int needs_rebuildAt(long index) { return needs_rebuild(this.segment(), index); }
-        /// Sets `needs_rebuild` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer needs_rebuildAt(long index, int value) { needs_rebuild(this.segment(), index, value); return this; }
+    /// {@return `input_pixel_layout_public` at the given index}
+    /// @param index the index of the struct buffer
+    public int input_pixel_layout_publicAt(long index) { return input_pixel_layout_public(this.segment(), index); }
+    /// Sets `input_pixel_layout_public` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_pixel_layout_publicAt(long index, int value) { input_pixel_layout_public(this.segment(), index, value); return this; }
 
-        /// {@return `called_alloc` at the given index}
-        /// @param index the index of the struct buffer
-        public int called_allocAt(long index) { return called_alloc(this.segment(), index); }
-        /// Sets `called_alloc` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer called_allocAt(long index, int value) { called_alloc(this.segment(), index, value); return this; }
+    /// {@return `output_pixel_layout_public` at the given index}
+    /// @param index the index of the struct buffer
+    public int output_pixel_layout_publicAt(long index) { return output_pixel_layout_public(this.segment(), index); }
+    /// Sets `output_pixel_layout_public` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_pixel_layout_publicAt(long index, int value) { output_pixel_layout_public(this.segment(), index, value); return this; }
 
-        /// {@return `input_pixel_layout_public` at the given index}
-        /// @param index the index of the struct buffer
-        public int input_pixel_layout_publicAt(long index) { return input_pixel_layout_public(this.segment(), index); }
-        /// Sets `input_pixel_layout_public` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_pixel_layout_publicAt(long index, int value) { input_pixel_layout_public(this.segment(), index, value); return this; }
+    /// {@return `input_data_type` at the given index}
+    /// @param index the index of the struct buffer
+    public int input_data_typeAt(long index) { return input_data_type(this.segment(), index); }
+    /// Sets `input_data_type` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE input_data_typeAt(long index, int value) { input_data_type(this.segment(), index, value); return this; }
 
-        /// {@return `output_pixel_layout_public` at the given index}
-        /// @param index the index of the struct buffer
-        public int output_pixel_layout_publicAt(long index) { return output_pixel_layout_public(this.segment(), index); }
-        /// Sets `output_pixel_layout_public` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_pixel_layout_publicAt(long index, int value) { output_pixel_layout_public(this.segment(), index, value); return this; }
+    /// {@return `output_data_type` at the given index}
+    /// @param index the index of the struct buffer
+    public int output_data_typeAt(long index) { return output_data_type(this.segment(), index); }
+    /// Sets `output_data_type` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE output_data_typeAt(long index, int value) { output_data_type(this.segment(), index, value); return this; }
 
-        /// {@return `input_data_type` at the given index}
-        /// @param index the index of the struct buffer
-        public int input_data_typeAt(long index) { return input_data_type(this.segment(), index); }
-        /// Sets `input_data_type` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer input_data_typeAt(long index, int value) { input_data_type(this.segment(), index, value); return this; }
+    /// {@return `horizontal_filter` at the given index}
+    /// @param index the index of the struct buffer
+    public int horizontal_filterAt(long index) { return horizontal_filter(this.segment(), index); }
+    /// Sets `horizontal_filter` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE horizontal_filterAt(long index, int value) { horizontal_filter(this.segment(), index, value); return this; }
 
-        /// {@return `output_data_type` at the given index}
-        /// @param index the index of the struct buffer
-        public int output_data_typeAt(long index) { return output_data_type(this.segment(), index); }
-        /// Sets `output_data_type` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer output_data_typeAt(long index, int value) { output_data_type(this.segment(), index, value); return this; }
+    /// {@return `vertical_filter` at the given index}
+    /// @param index the index of the struct buffer
+    public int vertical_filterAt(long index) { return vertical_filter(this.segment(), index); }
+    /// Sets `vertical_filter` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE vertical_filterAt(long index, int value) { vertical_filter(this.segment(), index, value); return this; }
 
-        /// {@return `horizontal_filter` at the given index}
-        /// @param index the index of the struct buffer
-        public int horizontal_filterAt(long index) { return horizontal_filter(this.segment(), index); }
-        /// Sets `horizontal_filter` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer horizontal_filterAt(long index, int value) { horizontal_filter(this.segment(), index, value); return this; }
+    /// {@return `horizontal_edge` at the given index}
+    /// @param index the index of the struct buffer
+    public int horizontal_edgeAt(long index) { return horizontal_edge(this.segment(), index); }
+    /// Sets `horizontal_edge` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE horizontal_edgeAt(long index, int value) { horizontal_edge(this.segment(), index, value); return this; }
 
-        /// {@return `vertical_filter` at the given index}
-        /// @param index the index of the struct buffer
-        public int vertical_filterAt(long index) { return vertical_filter(this.segment(), index); }
-        /// Sets `vertical_filter` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertical_filterAt(long index, int value) { vertical_filter(this.segment(), index, value); return this; }
+    /// {@return `vertical_edge` at the given index}
+    /// @param index the index of the struct buffer
+    public int vertical_edgeAt(long index) { return vertical_edge(this.segment(), index); }
+    /// Sets `vertical_edge` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE vertical_edgeAt(long index, int value) { vertical_edge(this.segment(), index, value); return this; }
 
-        /// {@return `horizontal_edge` at the given index}
-        /// @param index the index of the struct buffer
-        public int horizontal_edgeAt(long index) { return horizontal_edge(this.segment(), index); }
-        /// Sets `horizontal_edge` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer horizontal_edgeAt(long index, int value) { horizontal_edge(this.segment(), index, value); return this; }
+    /// {@return `horizontal_filter_kernel` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment horizontal_filter_kernelAt(long index) { return horizontal_filter_kernel(this.segment(), index); }
+    /// Sets `horizontal_filter_kernel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE horizontal_filter_kernelAt(long index, MemorySegment value) { horizontal_filter_kernel(this.segment(), index, value); return this; }
 
-        /// {@return `vertical_edge` at the given index}
-        /// @param index the index of the struct buffer
-        public int vertical_edgeAt(long index) { return vertical_edge(this.segment(), index); }
-        /// Sets `vertical_edge` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertical_edgeAt(long index, int value) { vertical_edge(this.segment(), index, value); return this; }
+    /// {@return `horizontal_filter_support` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment horizontal_filter_supportAt(long index) { return horizontal_filter_support(this.segment(), index); }
+    /// Sets `horizontal_filter_support` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE horizontal_filter_supportAt(long index, MemorySegment value) { horizontal_filter_support(this.segment(), index, value); return this; }
 
-        /// {@return `horizontal_filter_kernel` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment horizontal_filter_kernelAt(long index) { return horizontal_filter_kernel(this.segment(), index); }
-        /// Sets `horizontal_filter_kernel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer horizontal_filter_kernelAt(long index, MemorySegment value) { horizontal_filter_kernel(this.segment(), index, value); return this; }
+    /// {@return `vertical_filter_kernel` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vertical_filter_kernelAt(long index) { return vertical_filter_kernel(this.segment(), index); }
+    /// Sets `vertical_filter_kernel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE vertical_filter_kernelAt(long index, MemorySegment value) { vertical_filter_kernel(this.segment(), index, value); return this; }
 
-        /// {@return `horizontal_filter_support` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment horizontal_filter_supportAt(long index) { return horizontal_filter_support(this.segment(), index); }
-        /// Sets `horizontal_filter_support` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer horizontal_filter_supportAt(long index, MemorySegment value) { horizontal_filter_support(this.segment(), index, value); return this; }
+    /// {@return `vertical_filter_support` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vertical_filter_supportAt(long index) { return vertical_filter_support(this.segment(), index); }
+    /// Sets `vertical_filter_support` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE vertical_filter_supportAt(long index, MemorySegment value) { vertical_filter_support(this.segment(), index, value); return this; }
 
-        /// {@return `vertical_filter_kernel` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vertical_filter_kernelAt(long index) { return vertical_filter_kernel(this.segment(), index); }
-        /// Sets `vertical_filter_kernel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertical_filter_kernelAt(long index, MemorySegment value) { vertical_filter_kernel(this.segment(), index, value); return this; }
+    /// {@return `samplers` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment samplersAt(long index) { return samplers(this.segment(), index); }
+    /// Sets `samplers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBIR_RESIZE samplersAt(long index, MemorySegment value) { samplers(this.segment(), index, value); return this; }
 
-        /// {@return `vertical_filter_support` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vertical_filter_supportAt(long index) { return vertical_filter_support(this.segment(), index); }
-        /// Sets `vertical_filter_support` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertical_filter_supportAt(long index, MemorySegment value) { vertical_filter_support(this.segment(), index, value); return this; }
-
-        /// {@return `samplers` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment samplersAt(long index) { return samplers(this.segment(), index); }
-        /// Sets `samplers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer samplersAt(long index, MemorySegment value) { samplers(this.segment(), index, value); return this; }
-
-    }
 }

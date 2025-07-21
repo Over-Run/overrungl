@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (void*) MTLSharedEvent_id mtlSharedEvent;
 /// };
 /// ```
-public sealed class VkExportMetalSharedEventInfoEXT extends GroupType {
+public final class VkExportMetalSharedEventInfoEXT extends GroupType {
     /// The struct layout of `VkExportMetalSharedEventInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkExportMetalSharedEventInfoEXT extends GroupType {
     public static final VarHandle VH_mtlSharedEvent = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mtlSharedEvent"));
 
     /// Creates `VkExportMetalSharedEventInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkExportMetalSharedEventInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkExportMetalSharedEventInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkExportMetalSharedEventInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkExportMetalSharedEventInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalSharedEventInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExportMetalSharedEventInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMetalSharedEventInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalSharedEventInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkExportMetalSharedEventInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalSharedEventInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkExportMetalSharedEventInfoEXT` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkExportMetalSharedEventInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkExportMetalSharedEventInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalSharedEventInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExportMetalSharedEventInfoEXT`
-    public static VkExportMetalSharedEventInfoEXT alloc(SegmentAllocator allocator) { return new VkExportMetalSharedEventInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkExportMetalSharedEventInfoEXT alloc(SegmentAllocator allocator) { return new VkExportMetalSharedEventInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExportMetalSharedEventInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkExportMetalSharedEventInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalSharedEventInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkExportMetalSharedEventInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkExportMetalSharedEventInfoEXT extends GroupType {
     /// @return `this`
     public VkExportMetalSharedEventInfoEXT copyFrom(VkExportMetalSharedEventInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkExportMetalSharedEventInfoEXT reinterpret(long count) { return new VkExportMetalSharedEventInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkExportMetalSharedEventInfoEXT extends GroupType {
     /// @return `this`
     public VkExportMetalSharedEventInfoEXT mtlSharedEvent(MemorySegment value) { mtlSharedEvent(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkExportMetalSharedEventInfoEXT].
-    public static final class Buffer extends VkExportMetalSharedEventInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkExportMetalSharedEventInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExportMetalSharedEventInfoEXT`
+    public VkExportMetalSharedEventInfoEXT asSlice(long index) { return new VkExportMetalSharedEventInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkExportMetalSharedEventInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkExportMetalSharedEventInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExportMetalSharedEventInfoEXT`
+    public VkExportMetalSharedEventInfoEXT asSlice(long index, long count) { return new VkExportMetalSharedEventInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkExportMetalSharedEventInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkExportMetalSharedEventInfoEXT at(long index, Consumer<VkExportMetalSharedEventInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkExportMetalSharedEventInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkExportMetalSharedEventInfoEXT`
-        public VkExportMetalSharedEventInfoEXT asSlice(long index) { return new VkExportMetalSharedEventInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalSharedEventInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkExportMetalSharedEventInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkExportMetalSharedEventInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalSharedEventInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `semaphore` at the given index}
+    /// @param index the index of the struct buffer
+    public long semaphoreAt(long index) { return semaphore(this.segment(), index); }
+    /// Sets `semaphore` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalSharedEventInfoEXT semaphoreAt(long index, long value) { semaphore(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `event` at the given index}
+    /// @param index the index of the struct buffer
+    public long eventAt(long index) { return event(this.segment(), index); }
+    /// Sets `event` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalSharedEventInfoEXT eventAt(long index, long value) { event(this.segment(), index, value); return this; }
 
-        /// {@return `semaphore` at the given index}
-        /// @param index the index of the struct buffer
-        public long semaphoreAt(long index) { return semaphore(this.segment(), index); }
-        /// Sets `semaphore` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer semaphoreAt(long index, long value) { semaphore(this.segment(), index, value); return this; }
+    /// {@return `mtlSharedEvent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment mtlSharedEventAt(long index) { return mtlSharedEvent(this.segment(), index); }
+    /// Sets `mtlSharedEvent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalSharedEventInfoEXT mtlSharedEventAt(long index, MemorySegment value) { mtlSharedEvent(this.segment(), index, value); return this; }
 
-        /// {@return `event` at the given index}
-        /// @param index the index of the struct buffer
-        public long eventAt(long index) { return event(this.segment(), index); }
-        /// Sets `event` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer eventAt(long index, long value) { event(this.segment(), index, value); return this; }
-
-        /// {@return `mtlSharedEvent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment mtlSharedEventAt(long index) { return mtlSharedEvent(this.segment(), index); }
-        /// Sets `mtlSharedEvent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer mtlSharedEventAt(long index, MemorySegment value) { mtlSharedEvent(this.segment(), index, value); return this; }
-
-    }
 }

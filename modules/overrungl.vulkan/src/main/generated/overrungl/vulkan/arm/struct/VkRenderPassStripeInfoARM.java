@@ -21,9 +21,9 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -33,7 +33,7 @@ import java.util.function.*;
 ///     (struct VkRect2D) VkRect2D stripeArea;
 /// };
 /// ```
-public sealed class VkRenderPassStripeInfoARM extends GroupType {
+public final class VkRenderPassStripeInfoARM extends GroupType {
     /// The struct layout of `VkRenderPassStripeInfoARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -58,20 +58,21 @@ public sealed class VkRenderPassStripeInfoARM extends GroupType {
     public static final MemoryLayout LAYOUT_stripeArea = LAYOUT.select(PathElement.groupElement("stripeArea"));
 
     /// Creates `VkRenderPassStripeInfoARM` with the given segment.
-    /// @param segment the memory segment
-    public VkRenderPassStripeInfoARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkRenderPassStripeInfoARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkRenderPassStripeInfoARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkRenderPassStripeInfoARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassStripeInfoARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRenderPassStripeInfoARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassStripeInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassStripeInfoARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkRenderPassStripeInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassStripeInfoARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkRenderPassStripeInfoARM` with the given segment.
     ///
@@ -79,18 +80,18 @@ public sealed class VkRenderPassStripeInfoARM extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkRenderPassStripeInfoARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassStripeInfoARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkRenderPassStripeInfoARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkRenderPassStripeInfoARM`
-    public static VkRenderPassStripeInfoARM alloc(SegmentAllocator allocator) { return new VkRenderPassStripeInfoARM(allocator.allocate(LAYOUT)); }
+    public static VkRenderPassStripeInfoARM alloc(SegmentAllocator allocator) { return new VkRenderPassStripeInfoARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkRenderPassStripeInfoARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderPassStripeInfoARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkRenderPassStripeInfoARM alloc(SegmentAllocator allocator, long count) { return new VkRenderPassStripeInfoARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkRenderPassStripeInfoARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -124,9 +125,10 @@ public sealed class VkRenderPassStripeInfoARM extends GroupType {
     /// @return `this`
     public VkRenderPassStripeInfoARM copyFrom(VkRenderPassStripeInfoARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkRenderPassStripeInfoARM reinterpret(long count) { return new VkRenderPassStripeInfoARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -180,59 +182,53 @@ public sealed class VkRenderPassStripeInfoARM extends GroupType {
     /// @return `this`
     public VkRenderPassStripeInfoARM stripeArea(Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(stripeArea())); return this; }
 
-    /// A buffer of [VkRenderPassStripeInfoARM].
-    public static final class Buffer extends VkRenderPassStripeInfoARM {
-        private final long elementCount;
+    /// Creates a slice of `VkRenderPassStripeInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderPassStripeInfoARM`
+    public VkRenderPassStripeInfoARM asSlice(long index) { return new VkRenderPassStripeInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkRenderPassStripeInfoARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkRenderPassStripeInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderPassStripeInfoARM`
+    public VkRenderPassStripeInfoARM asSlice(long index, long count) { return new VkRenderPassStripeInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkRenderPassStripeInfoARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkRenderPassStripeInfoARM at(long index, Consumer<VkRenderPassStripeInfoARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkRenderPassStripeInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkRenderPassStripeInfoARM`
-        public VkRenderPassStripeInfoARM asSlice(long index) { return new VkRenderPassStripeInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassStripeInfoARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkRenderPassStripeInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkRenderPassStripeInfoARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassStripeInfoARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `stripeArea` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment stripeAreaAt(long index) { return stripeArea(this.segment(), index); }
+    /// Sets `stripeArea` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassStripeInfoARM stripeAreaAt(long index, MemorySegment value) { stripeArea(this.segment(), index, value); return this; }
+    /// Accepts `stripeArea` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkRenderPassStripeInfoARM stripeAreaAt(long index, Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(stripeAreaAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `stripeArea` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment stripeAreaAt(long index) { return stripeArea(this.segment(), index); }
-        /// Sets `stripeArea` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stripeAreaAt(long index, MemorySegment value) { stripeArea(this.segment(), index, value); return this; }
-        /// Accepts `stripeArea` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer stripeAreaAt(long index, Consumer<overrungl.vulkan.struct.VkRect2D> func) { func.accept(overrungl.vulkan.struct.VkRect2D.of(stripeAreaAt(index))); return this; }
-
-    }
 }

@@ -21,9 +21,9 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -40,7 +40,7 @@ import java.util.function.*;
 ///     (uint64_t) VkMicromapEXT micromap;
 /// };
 /// ```
-public sealed class VkAccelerationStructureTrianglesOpacityMicromapEXT extends GroupType {
+public final class VkAccelerationStructureTrianglesOpacityMicromapEXT extends GroupType {
     /// The struct layout of `VkAccelerationStructureTrianglesOpacityMicromapEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -114,20 +114,21 @@ public sealed class VkAccelerationStructureTrianglesOpacityMicromapEXT extends G
     public static final VarHandle VH_micromap = LAYOUT.arrayElementVarHandle(PathElement.groupElement("micromap"));
 
     /// Creates `VkAccelerationStructureTrianglesOpacityMicromapEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAccelerationStructureTrianglesOpacityMicromapEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureTrianglesOpacityMicromapEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureTrianglesOpacityMicromapEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAccelerationStructureTrianglesOpacityMicromapEXT` with the given segment.
     ///
@@ -135,18 +136,18 @@ public sealed class VkAccelerationStructureTrianglesOpacityMicromapEXT extends G
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureTrianglesOpacityMicromapEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAccelerationStructureTrianglesOpacityMicromapEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureTrianglesOpacityMicromapEXT`
-    public static VkAccelerationStructureTrianglesOpacityMicromapEXT alloc(SegmentAllocator allocator) { return new VkAccelerationStructureTrianglesOpacityMicromapEXT(allocator.allocate(LAYOUT)); }
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT alloc(SegmentAllocator allocator) { return new VkAccelerationStructureTrianglesOpacityMicromapEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAccelerationStructureTrianglesOpacityMicromapEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureTrianglesOpacityMicromapEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAccelerationStructureTrianglesOpacityMicromapEXT alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureTrianglesOpacityMicromapEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAccelerationStructureTrianglesOpacityMicromapEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -278,9 +279,10 @@ public sealed class VkAccelerationStructureTrianglesOpacityMicromapEXT extends G
     /// @return `this`
     public VkAccelerationStructureTrianglesOpacityMicromapEXT copyFrom(VkAccelerationStructureTrianglesOpacityMicromapEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT reinterpret(long count) { return new VkAccelerationStructureTrianglesOpacityMicromapEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -446,122 +448,116 @@ public sealed class VkAccelerationStructureTrianglesOpacityMicromapEXT extends G
     /// @return `this`
     public VkAccelerationStructureTrianglesOpacityMicromapEXT micromap(long value) { micromap(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAccelerationStructureTrianglesOpacityMicromapEXT].
-    public static final class Buffer extends VkAccelerationStructureTrianglesOpacityMicromapEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkAccelerationStructureTrianglesOpacityMicromapEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureTrianglesOpacityMicromapEXT`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT asSlice(long index) { return new VkAccelerationStructureTrianglesOpacityMicromapEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAccelerationStructureTrianglesOpacityMicromapEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAccelerationStructureTrianglesOpacityMicromapEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureTrianglesOpacityMicromapEXT`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT asSlice(long index, long count) { return new VkAccelerationStructureTrianglesOpacityMicromapEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAccelerationStructureTrianglesOpacityMicromapEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT at(long index, Consumer<VkAccelerationStructureTrianglesOpacityMicromapEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureTrianglesOpacityMicromapEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAccelerationStructureTrianglesOpacityMicromapEXT`
-        public VkAccelerationStructureTrianglesOpacityMicromapEXT asSlice(long index) { return new VkAccelerationStructureTrianglesOpacityMicromapEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureTrianglesOpacityMicromapEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAccelerationStructureTrianglesOpacityMicromapEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `indexType` at the given index}
+    /// @param index the index of the struct buffer
+    public int indexTypeAt(long index) { return indexType(this.segment(), index); }
+    /// Sets `indexType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `indexBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment indexBufferAt(long index) { return indexBuffer(this.segment(), index); }
+    /// Sets `indexBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexBufferAt(long index, MemorySegment value) { indexBuffer(this.segment(), index, value); return this; }
+    /// Accepts `indexBuffer` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexBufferAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexBufferAt(index))); return this; }
 
-        /// {@return `indexType` at the given index}
-        /// @param index the index of the struct buffer
-        public int indexTypeAt(long index) { return indexType(this.segment(), index); }
-        /// Sets `indexType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
+    /// {@return `indexStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long indexStrideAt(long index) { return indexStride(this.segment(), index); }
+    /// Sets `indexStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT indexStrideAt(long index, long value) { indexStride(this.segment(), index, value); return this; }
 
-        /// {@return `indexBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment indexBufferAt(long index) { return indexBuffer(this.segment(), index); }
-        /// Sets `indexBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexBufferAt(long index, MemorySegment value) { indexBuffer(this.segment(), index, value); return this; }
-        /// Accepts `indexBuffer` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer indexBufferAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexBufferAt(index))); return this; }
+    /// {@return `baseTriangle` at the given index}
+    /// @param index the index of the struct buffer
+    public int baseTriangleAt(long index) { return baseTriangle(this.segment(), index); }
+    /// Sets `baseTriangle` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT baseTriangleAt(long index, int value) { baseTriangle(this.segment(), index, value); return this; }
 
-        /// {@return `indexStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long indexStrideAt(long index) { return indexStride(this.segment(), index); }
-        /// Sets `indexStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexStrideAt(long index, long value) { indexStride(this.segment(), index, value); return this; }
+    /// {@return `usageCountsCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int usageCountsCountAt(long index) { return usageCountsCount(this.segment(), index); }
+    /// Sets `usageCountsCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT usageCountsCountAt(long index, int value) { usageCountsCount(this.segment(), index, value); return this; }
 
-        /// {@return `baseTriangle` at the given index}
-        /// @param index the index of the struct buffer
-        public int baseTriangleAt(long index) { return baseTriangle(this.segment(), index); }
-        /// Sets `baseTriangle` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer baseTriangleAt(long index, int value) { baseTriangle(this.segment(), index, value); return this; }
+    /// {@return `pUsageCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pUsageCountsAt(long index) { return pUsageCounts(this.segment(), index); }
+    /// Sets `pUsageCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT pUsageCountsAt(long index, MemorySegment value) { pUsageCounts(this.segment(), index, value); return this; }
 
-        /// {@return `usageCountsCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int usageCountsCountAt(long index) { return usageCountsCount(this.segment(), index); }
-        /// Sets `usageCountsCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer usageCountsCountAt(long index, int value) { usageCountsCount(this.segment(), index, value); return this; }
+    /// {@return `ppUsageCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment ppUsageCountsAt(long index) { return ppUsageCounts(this.segment(), index); }
+    /// Sets `ppUsageCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT ppUsageCountsAt(long index, MemorySegment value) { ppUsageCounts(this.segment(), index, value); return this; }
 
-        /// {@return `pUsageCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pUsageCountsAt(long index) { return pUsageCounts(this.segment(), index); }
-        /// Sets `pUsageCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pUsageCountsAt(long index, MemorySegment value) { pUsageCounts(this.segment(), index, value); return this; }
+    /// {@return `micromap` at the given index}
+    /// @param index the index of the struct buffer
+    public long micromapAt(long index) { return micromap(this.segment(), index); }
+    /// Sets `micromap` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureTrianglesOpacityMicromapEXT micromapAt(long index, long value) { micromap(this.segment(), index, value); return this; }
 
-        /// {@return `ppUsageCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment ppUsageCountsAt(long index) { return ppUsageCounts(this.segment(), index); }
-        /// Sets `ppUsageCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer ppUsageCountsAt(long index, MemorySegment value) { ppUsageCounts(this.segment(), index, value); return this; }
-
-        /// {@return `micromap` at the given index}
-        /// @param index the index of the struct buffer
-        public long micromapAt(long index) { return micromap(this.segment(), index); }
-        /// Sets `micromap` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer micromapAt(long index, long value) { micromap(this.segment(), index, value); return this; }
-
-    }
 }

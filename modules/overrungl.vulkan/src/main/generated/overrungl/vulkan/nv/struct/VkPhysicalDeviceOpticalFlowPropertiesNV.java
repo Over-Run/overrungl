@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -42,7 +43,7 @@ import overrungl.util.*;
 ///     uint32_t maxNumRegionsOfInterest;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
+public final class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDeviceOpticalFlowPropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -139,20 +140,21 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     public static final VarHandle VH_maxNumRegionsOfInterest = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxNumRegionsOfInterest"));
 
     /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceOpticalFlowPropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceOpticalFlowPropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceOpticalFlowPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceOpticalFlowPropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceOpticalFlowPropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment.
     ///
@@ -160,18 +162,18 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceOpticalFlowPropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceOpticalFlowPropertiesNV`
-    public static VkPhysicalDeviceOpticalFlowPropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceOpticalFlowPropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceOpticalFlowPropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceOpticalFlowPropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceOpticalFlowPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceOpticalFlowPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceOpticalFlowPropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -360,9 +362,10 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceOpticalFlowPropertiesNV copyFrom(VkPhysicalDeviceOpticalFlowPropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceOpticalFlowPropertiesNV reinterpret(long count) { return new VkPhysicalDeviceOpticalFlowPropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -572,144 +575,138 @@ public sealed class VkPhysicalDeviceOpticalFlowPropertiesNV extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceOpticalFlowPropertiesNV maxNumRegionsOfInterest(int value) { maxNumRegionsOfInterest(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceOpticalFlowPropertiesNV].
-    public static final class Buffer extends VkPhysicalDeviceOpticalFlowPropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceOpticalFlowPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceOpticalFlowPropertiesNV`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV asSlice(long index) { return new VkPhysicalDeviceOpticalFlowPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceOpticalFlowPropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceOpticalFlowPropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceOpticalFlowPropertiesNV`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV asSlice(long index, long count) { return new VkPhysicalDeviceOpticalFlowPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceOpticalFlowPropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV at(long index, Consumer<VkPhysicalDeviceOpticalFlowPropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceOpticalFlowPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceOpticalFlowPropertiesNV`
-        public VkPhysicalDeviceOpticalFlowPropertiesNV asSlice(long index) { return new VkPhysicalDeviceOpticalFlowPropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceOpticalFlowPropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceOpticalFlowPropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `supportedOutputGridSizes` at the given index}
+    /// @param index the index of the struct buffer
+    public int supportedOutputGridSizesAt(long index) { return supportedOutputGridSizes(this.segment(), index); }
+    /// Sets `supportedOutputGridSizes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedOutputGridSizesAt(long index, int value) { supportedOutputGridSizes(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `supportedHintGridSizes` at the given index}
+    /// @param index the index of the struct buffer
+    public int supportedHintGridSizesAt(long index) { return supportedHintGridSizes(this.segment(), index); }
+    /// Sets `supportedHintGridSizes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV supportedHintGridSizesAt(long index, int value) { supportedHintGridSizes(this.segment(), index, value); return this; }
 
-        /// {@return `supportedOutputGridSizes` at the given index}
-        /// @param index the index of the struct buffer
-        public int supportedOutputGridSizesAt(long index) { return supportedOutputGridSizes(this.segment(), index); }
-        /// Sets `supportedOutputGridSizes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer supportedOutputGridSizesAt(long index, int value) { supportedOutputGridSizes(this.segment(), index, value); return this; }
+    /// {@return `hintSupported` at the given index}
+    /// @param index the index of the struct buffer
+    public int hintSupportedAt(long index) { return hintSupported(this.segment(), index); }
+    /// Sets `hintSupported` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV hintSupportedAt(long index, int value) { hintSupported(this.segment(), index, value); return this; }
 
-        /// {@return `supportedHintGridSizes` at the given index}
-        /// @param index the index of the struct buffer
-        public int supportedHintGridSizesAt(long index) { return supportedHintGridSizes(this.segment(), index); }
-        /// Sets `supportedHintGridSizes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer supportedHintGridSizesAt(long index, int value) { supportedHintGridSizes(this.segment(), index, value); return this; }
+    /// {@return `costSupported` at the given index}
+    /// @param index the index of the struct buffer
+    public int costSupportedAt(long index) { return costSupported(this.segment(), index); }
+    /// Sets `costSupported` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV costSupportedAt(long index, int value) { costSupported(this.segment(), index, value); return this; }
 
-        /// {@return `hintSupported` at the given index}
-        /// @param index the index of the struct buffer
-        public int hintSupportedAt(long index) { return hintSupported(this.segment(), index); }
-        /// Sets `hintSupported` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hintSupportedAt(long index, int value) { hintSupported(this.segment(), index, value); return this; }
+    /// {@return `bidirectionalFlowSupported` at the given index}
+    /// @param index the index of the struct buffer
+    public int bidirectionalFlowSupportedAt(long index) { return bidirectionalFlowSupported(this.segment(), index); }
+    /// Sets `bidirectionalFlowSupported` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV bidirectionalFlowSupportedAt(long index, int value) { bidirectionalFlowSupported(this.segment(), index, value); return this; }
 
-        /// {@return `costSupported` at the given index}
-        /// @param index the index of the struct buffer
-        public int costSupportedAt(long index) { return costSupported(this.segment(), index); }
-        /// Sets `costSupported` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer costSupportedAt(long index, int value) { costSupported(this.segment(), index, value); return this; }
+    /// {@return `globalFlowSupported` at the given index}
+    /// @param index the index of the struct buffer
+    public int globalFlowSupportedAt(long index) { return globalFlowSupported(this.segment(), index); }
+    /// Sets `globalFlowSupported` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV globalFlowSupportedAt(long index, int value) { globalFlowSupported(this.segment(), index, value); return this; }
 
-        /// {@return `bidirectionalFlowSupported` at the given index}
-        /// @param index the index of the struct buffer
-        public int bidirectionalFlowSupportedAt(long index) { return bidirectionalFlowSupported(this.segment(), index); }
-        /// Sets `bidirectionalFlowSupported` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bidirectionalFlowSupportedAt(long index, int value) { bidirectionalFlowSupported(this.segment(), index, value); return this; }
+    /// {@return `minWidth` at the given index}
+    /// @param index the index of the struct buffer
+    public int minWidthAt(long index) { return minWidth(this.segment(), index); }
+    /// Sets `minWidth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV minWidthAt(long index, int value) { minWidth(this.segment(), index, value); return this; }
 
-        /// {@return `globalFlowSupported` at the given index}
-        /// @param index the index of the struct buffer
-        public int globalFlowSupportedAt(long index) { return globalFlowSupported(this.segment(), index); }
-        /// Sets `globalFlowSupported` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer globalFlowSupportedAt(long index, int value) { globalFlowSupported(this.segment(), index, value); return this; }
+    /// {@return `minHeight` at the given index}
+    /// @param index the index of the struct buffer
+    public int minHeightAt(long index) { return minHeight(this.segment(), index); }
+    /// Sets `minHeight` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV minHeightAt(long index, int value) { minHeight(this.segment(), index, value); return this; }
 
-        /// {@return `minWidth` at the given index}
-        /// @param index the index of the struct buffer
-        public int minWidthAt(long index) { return minWidth(this.segment(), index); }
-        /// Sets `minWidth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minWidthAt(long index, int value) { minWidth(this.segment(), index, value); return this; }
+    /// {@return `maxWidth` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxWidthAt(long index) { return maxWidth(this.segment(), index); }
+    /// Sets `maxWidth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV maxWidthAt(long index, int value) { maxWidth(this.segment(), index, value); return this; }
 
-        /// {@return `minHeight` at the given index}
-        /// @param index the index of the struct buffer
-        public int minHeightAt(long index) { return minHeight(this.segment(), index); }
-        /// Sets `minHeight` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minHeightAt(long index, int value) { minHeight(this.segment(), index, value); return this; }
+    /// {@return `maxHeight` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxHeightAt(long index) { return maxHeight(this.segment(), index); }
+    /// Sets `maxHeight` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV maxHeightAt(long index, int value) { maxHeight(this.segment(), index, value); return this; }
 
-        /// {@return `maxWidth` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxWidthAt(long index) { return maxWidth(this.segment(), index); }
-        /// Sets `maxWidth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxWidthAt(long index, int value) { maxWidth(this.segment(), index, value); return this; }
+    /// {@return `maxNumRegionsOfInterest` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxNumRegionsOfInterestAt(long index) { return maxNumRegionsOfInterest(this.segment(), index); }
+    /// Sets `maxNumRegionsOfInterest` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceOpticalFlowPropertiesNV maxNumRegionsOfInterestAt(long index, int value) { maxNumRegionsOfInterest(this.segment(), index, value); return this; }
 
-        /// {@return `maxHeight` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxHeightAt(long index) { return maxHeight(this.segment(), index); }
-        /// Sets `maxHeight` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxHeightAt(long index, int value) { maxHeight(this.segment(), index, value); return this; }
-
-        /// {@return `maxNumRegionsOfInterest` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxNumRegionsOfInterestAt(long index) { return maxNumRegionsOfInterest(this.segment(), index); }
-        /// Sets `maxNumRegionsOfInterest` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxNumRegionsOfInterestAt(long index, int value) { maxNumRegionsOfInterest(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -135,7 +136,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceSize nonCoherentAtomSize;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceLimits extends GroupType {
+public final class VkPhysicalDeviceLimits extends GroupType {
     /// The struct layout of `VkPhysicalDeviceLimits`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("maxImageDimension1D"),
@@ -883,20 +884,21 @@ public sealed class VkPhysicalDeviceLimits extends GroupType {
     public static final VarHandle VH_nonCoherentAtomSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("nonCoherentAtomSize"));
 
     /// Creates `VkPhysicalDeviceLimits` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceLimits(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceLimits(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceLimits` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceLimits of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLimits(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceLimits` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceLimits ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLimits(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceLimits ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLimits(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceLimits` with the given segment.
     ///
@@ -904,18 +906,18 @@ public sealed class VkPhysicalDeviceLimits extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceLimits ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceLimits(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceLimits` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceLimits`
-    public static VkPhysicalDeviceLimits alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceLimits(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceLimits alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceLimits(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceLimits` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceLimits`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceLimits alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLimits(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceLimits` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -7335,9 +7337,10 @@ public sealed class VkPhysicalDeviceLimits extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceLimits copyFrom(VkPhysicalDeviceLimits src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceLimits reinterpret(long count) { return new VkPhysicalDeviceLimits(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `maxImageDimension1D` at the given index}
     /// @param segment the segment of the struct
@@ -9149,1041 +9152,1035 @@ public sealed class VkPhysicalDeviceLimits extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceLimits nonCoherentAtomSize(long value) { nonCoherentAtomSize(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceLimits].
-    public static final class Buffer extends VkPhysicalDeviceLimits {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceLimits`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceLimits`
+    public VkPhysicalDeviceLimits asSlice(long index) { return new VkPhysicalDeviceLimits(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceLimits.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceLimits`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceLimits`
+    public VkPhysicalDeviceLimits asSlice(long index, long count) { return new VkPhysicalDeviceLimits(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceLimits` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceLimits at(long index, Consumer<VkPhysicalDeviceLimits> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceLimits`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceLimits`
-        public VkPhysicalDeviceLimits asSlice(long index) { return new VkPhysicalDeviceLimits(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `maxImageDimension1D` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImageDimension1DAt(long index) { return maxImageDimension1D(this.segment(), index); }
+    /// Sets `maxImageDimension1D` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxImageDimension1DAt(long index, int value) { maxImageDimension1D(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceLimits`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceLimits`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `maxImageDimension2D` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImageDimension2DAt(long index) { return maxImageDimension2D(this.segment(), index); }
+    /// Sets `maxImageDimension2D` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxImageDimension2DAt(long index, int value) { maxImageDimension2D(this.segment(), index, value); return this; }
 
-        /// {@return `maxImageDimension1D` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImageDimension1DAt(long index) { return maxImageDimension1D(this.segment(), index); }
-        /// Sets `maxImageDimension1D` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageDimension1DAt(long index, int value) { maxImageDimension1D(this.segment(), index, value); return this; }
+    /// {@return `maxImageDimension3D` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImageDimension3DAt(long index) { return maxImageDimension3D(this.segment(), index); }
+    /// Sets `maxImageDimension3D` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxImageDimension3DAt(long index, int value) { maxImageDimension3D(this.segment(), index, value); return this; }
 
-        /// {@return `maxImageDimension2D` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImageDimension2DAt(long index) { return maxImageDimension2D(this.segment(), index); }
-        /// Sets `maxImageDimension2D` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageDimension2DAt(long index, int value) { maxImageDimension2D(this.segment(), index, value); return this; }
+    /// {@return `maxImageDimensionCube` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImageDimensionCubeAt(long index) { return maxImageDimensionCube(this.segment(), index); }
+    /// Sets `maxImageDimensionCube` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxImageDimensionCubeAt(long index, int value) { maxImageDimensionCube(this.segment(), index, value); return this; }
 
-        /// {@return `maxImageDimension3D` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImageDimension3DAt(long index) { return maxImageDimension3D(this.segment(), index); }
-        /// Sets `maxImageDimension3D` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageDimension3DAt(long index, int value) { maxImageDimension3D(this.segment(), index, value); return this; }
+    /// {@return `maxImageArrayLayers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxImageArrayLayersAt(long index) { return maxImageArrayLayers(this.segment(), index); }
+    /// Sets `maxImageArrayLayers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxImageArrayLayersAt(long index, int value) { maxImageArrayLayers(this.segment(), index, value); return this; }
 
-        /// {@return `maxImageDimensionCube` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImageDimensionCubeAt(long index) { return maxImageDimensionCube(this.segment(), index); }
-        /// Sets `maxImageDimensionCube` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageDimensionCubeAt(long index, int value) { maxImageDimensionCube(this.segment(), index, value); return this; }
+    /// {@return `maxTexelBufferElements` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTexelBufferElementsAt(long index) { return maxTexelBufferElements(this.segment(), index); }
+    /// Sets `maxTexelBufferElements` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTexelBufferElementsAt(long index, int value) { maxTexelBufferElements(this.segment(), index, value); return this; }
 
-        /// {@return `maxImageArrayLayers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxImageArrayLayersAt(long index) { return maxImageArrayLayers(this.segment(), index); }
-        /// Sets `maxImageArrayLayers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxImageArrayLayersAt(long index, int value) { maxImageArrayLayers(this.segment(), index, value); return this; }
+    /// {@return `maxUniformBufferRange` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxUniformBufferRangeAt(long index) { return maxUniformBufferRange(this.segment(), index); }
+    /// Sets `maxUniformBufferRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxUniformBufferRangeAt(long index, int value) { maxUniformBufferRange(this.segment(), index, value); return this; }
 
-        /// {@return `maxTexelBufferElements` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTexelBufferElementsAt(long index) { return maxTexelBufferElements(this.segment(), index); }
-        /// Sets `maxTexelBufferElements` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTexelBufferElementsAt(long index, int value) { maxTexelBufferElements(this.segment(), index, value); return this; }
+    /// {@return `maxStorageBufferRange` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxStorageBufferRangeAt(long index) { return maxStorageBufferRange(this.segment(), index); }
+    /// Sets `maxStorageBufferRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxStorageBufferRangeAt(long index, int value) { maxStorageBufferRange(this.segment(), index, value); return this; }
 
-        /// {@return `maxUniformBufferRange` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxUniformBufferRangeAt(long index) { return maxUniformBufferRange(this.segment(), index); }
-        /// Sets `maxUniformBufferRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxUniformBufferRangeAt(long index, int value) { maxUniformBufferRange(this.segment(), index, value); return this; }
+    /// {@return `maxPushConstantsSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPushConstantsSizeAt(long index) { return maxPushConstantsSize(this.segment(), index); }
+    /// Sets `maxPushConstantsSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxPushConstantsSizeAt(long index, int value) { maxPushConstantsSize(this.segment(), index, value); return this; }
 
-        /// {@return `maxStorageBufferRange` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxStorageBufferRangeAt(long index) { return maxStorageBufferRange(this.segment(), index); }
-        /// Sets `maxStorageBufferRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxStorageBufferRangeAt(long index, int value) { maxStorageBufferRange(this.segment(), index, value); return this; }
+    /// {@return `maxMemoryAllocationCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxMemoryAllocationCountAt(long index) { return maxMemoryAllocationCount(this.segment(), index); }
+    /// Sets `maxMemoryAllocationCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxMemoryAllocationCountAt(long index, int value) { maxMemoryAllocationCount(this.segment(), index, value); return this; }
 
-        /// {@return `maxPushConstantsSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPushConstantsSizeAt(long index) { return maxPushConstantsSize(this.segment(), index); }
-        /// Sets `maxPushConstantsSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPushConstantsSizeAt(long index, int value) { maxPushConstantsSize(this.segment(), index, value); return this; }
+    /// {@return `maxSamplerAllocationCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxSamplerAllocationCountAt(long index) { return maxSamplerAllocationCount(this.segment(), index); }
+    /// Sets `maxSamplerAllocationCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxSamplerAllocationCountAt(long index, int value) { maxSamplerAllocationCount(this.segment(), index, value); return this; }
 
-        /// {@return `maxMemoryAllocationCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxMemoryAllocationCountAt(long index) { return maxMemoryAllocationCount(this.segment(), index); }
-        /// Sets `maxMemoryAllocationCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxMemoryAllocationCountAt(long index, int value) { maxMemoryAllocationCount(this.segment(), index, value); return this; }
+    /// {@return `bufferImageGranularity` at the given index}
+    /// @param index the index of the struct buffer
+    public long bufferImageGranularityAt(long index) { return bufferImageGranularity(this.segment(), index); }
+    /// Sets `bufferImageGranularity` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits bufferImageGranularityAt(long index, long value) { bufferImageGranularity(this.segment(), index, value); return this; }
 
-        /// {@return `maxSamplerAllocationCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxSamplerAllocationCountAt(long index) { return maxSamplerAllocationCount(this.segment(), index); }
-        /// Sets `maxSamplerAllocationCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSamplerAllocationCountAt(long index, int value) { maxSamplerAllocationCount(this.segment(), index, value); return this; }
+    /// {@return `sparseAddressSpaceSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long sparseAddressSpaceSizeAt(long index) { return sparseAddressSpaceSize(this.segment(), index); }
+    /// Sets `sparseAddressSpaceSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits sparseAddressSpaceSizeAt(long index, long value) { sparseAddressSpaceSize(this.segment(), index, value); return this; }
 
-        /// {@return `bufferImageGranularity` at the given index}
-        /// @param index the index of the struct buffer
-        public long bufferImageGranularityAt(long index) { return bufferImageGranularity(this.segment(), index); }
-        /// Sets `bufferImageGranularity` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferImageGranularityAt(long index, long value) { bufferImageGranularity(this.segment(), index, value); return this; }
+    /// {@return `maxBoundDescriptorSets` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxBoundDescriptorSetsAt(long index) { return maxBoundDescriptorSets(this.segment(), index); }
+    /// Sets `maxBoundDescriptorSets` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxBoundDescriptorSetsAt(long index, int value) { maxBoundDescriptorSets(this.segment(), index, value); return this; }
 
-        /// {@return `sparseAddressSpaceSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long sparseAddressSpaceSizeAt(long index) { return sparseAddressSpaceSize(this.segment(), index); }
-        /// Sets `sparseAddressSpaceSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sparseAddressSpaceSizeAt(long index, long value) { sparseAddressSpaceSize(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorSamplers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorSamplersAt(long index) { return maxPerStageDescriptorSamplers(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorSamplers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxPerStageDescriptorSamplersAt(long index, int value) { maxPerStageDescriptorSamplers(this.segment(), index, value); return this; }
 
-        /// {@return `maxBoundDescriptorSets` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxBoundDescriptorSetsAt(long index) { return maxBoundDescriptorSets(this.segment(), index); }
-        /// Sets `maxBoundDescriptorSets` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxBoundDescriptorSetsAt(long index, int value) { maxBoundDescriptorSets(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorUniformBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorUniformBuffersAt(long index) { return maxPerStageDescriptorUniformBuffers(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorUniformBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxPerStageDescriptorUniformBuffersAt(long index, int value) { maxPerStageDescriptorUniformBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorSamplers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorSamplersAt(long index) { return maxPerStageDescriptorSamplers(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorSamplers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorSamplersAt(long index, int value) { maxPerStageDescriptorSamplers(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorStorageBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorStorageBuffersAt(long index) { return maxPerStageDescriptorStorageBuffers(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorStorageBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxPerStageDescriptorStorageBuffersAt(long index, int value) { maxPerStageDescriptorStorageBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorUniformBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorUniformBuffersAt(long index) { return maxPerStageDescriptorUniformBuffers(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorUniformBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorUniformBuffersAt(long index, int value) { maxPerStageDescriptorUniformBuffers(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorSampledImages` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorSampledImagesAt(long index) { return maxPerStageDescriptorSampledImages(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorSampledImages` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxPerStageDescriptorSampledImagesAt(long index, int value) { maxPerStageDescriptorSampledImages(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorStorageBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorStorageBuffersAt(long index) { return maxPerStageDescriptorStorageBuffers(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorStorageBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorStorageBuffersAt(long index, int value) { maxPerStageDescriptorStorageBuffers(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorStorageImages` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorStorageImagesAt(long index) { return maxPerStageDescriptorStorageImages(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorStorageImages` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxPerStageDescriptorStorageImagesAt(long index, int value) { maxPerStageDescriptorStorageImages(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorSampledImages` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorSampledImagesAt(long index) { return maxPerStageDescriptorSampledImages(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorSampledImages` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorSampledImagesAt(long index, int value) { maxPerStageDescriptorSampledImages(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorInputAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorInputAttachmentsAt(long index) { return maxPerStageDescriptorInputAttachments(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorInputAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxPerStageDescriptorInputAttachmentsAt(long index, int value) { maxPerStageDescriptorInputAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorStorageImages` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorStorageImagesAt(long index) { return maxPerStageDescriptorStorageImages(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorStorageImages` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorStorageImagesAt(long index, int value) { maxPerStageDescriptorStorageImages(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageResources` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageResourcesAt(long index) { return maxPerStageResources(this.segment(), index); }
+    /// Sets `maxPerStageResources` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxPerStageResourcesAt(long index, int value) { maxPerStageResources(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorInputAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorInputAttachmentsAt(long index) { return maxPerStageDescriptorInputAttachments(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorInputAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorInputAttachmentsAt(long index, int value) { maxPerStageDescriptorInputAttachments(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetSamplers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetSamplersAt(long index) { return maxDescriptorSetSamplers(this.segment(), index); }
+    /// Sets `maxDescriptorSetSamplers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDescriptorSetSamplersAt(long index, int value) { maxDescriptorSetSamplers(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageResources` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageResourcesAt(long index) { return maxPerStageResources(this.segment(), index); }
-        /// Sets `maxPerStageResources` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageResourcesAt(long index, int value) { maxPerStageResources(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUniformBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUniformBuffersAt(long index) { return maxDescriptorSetUniformBuffers(this.segment(), index); }
+    /// Sets `maxDescriptorSetUniformBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDescriptorSetUniformBuffersAt(long index, int value) { maxDescriptorSetUniformBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetSamplers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetSamplersAt(long index) { return maxDescriptorSetSamplers(this.segment(), index); }
-        /// Sets `maxDescriptorSetSamplers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetSamplersAt(long index, int value) { maxDescriptorSetSamplers(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUniformBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUniformBuffersDynamicAt(long index) { return maxDescriptorSetUniformBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetUniformBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDescriptorSetUniformBuffersDynamicAt(long index, int value) { maxDescriptorSetUniformBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUniformBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUniformBuffersAt(long index) { return maxDescriptorSetUniformBuffers(this.segment(), index); }
-        /// Sets `maxDescriptorSetUniformBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUniformBuffersAt(long index, int value) { maxDescriptorSetUniformBuffers(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetStorageBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetStorageBuffersAt(long index) { return maxDescriptorSetStorageBuffers(this.segment(), index); }
+    /// Sets `maxDescriptorSetStorageBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDescriptorSetStorageBuffersAt(long index, int value) { maxDescriptorSetStorageBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUniformBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUniformBuffersDynamicAt(long index) { return maxDescriptorSetUniformBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetUniformBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUniformBuffersDynamicAt(long index, int value) { maxDescriptorSetUniformBuffersDynamic(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetStorageBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetStorageBuffersDynamicAt(long index) { return maxDescriptorSetStorageBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetStorageBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDescriptorSetStorageBuffersDynamicAt(long index, int value) { maxDescriptorSetStorageBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetStorageBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetStorageBuffersAt(long index) { return maxDescriptorSetStorageBuffers(this.segment(), index); }
-        /// Sets `maxDescriptorSetStorageBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetStorageBuffersAt(long index, int value) { maxDescriptorSetStorageBuffers(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetSampledImages` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetSampledImagesAt(long index) { return maxDescriptorSetSampledImages(this.segment(), index); }
+    /// Sets `maxDescriptorSetSampledImages` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDescriptorSetSampledImagesAt(long index, int value) { maxDescriptorSetSampledImages(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetStorageBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetStorageBuffersDynamicAt(long index) { return maxDescriptorSetStorageBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetStorageBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetStorageBuffersDynamicAt(long index, int value) { maxDescriptorSetStorageBuffersDynamic(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetStorageImages` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetStorageImagesAt(long index) { return maxDescriptorSetStorageImages(this.segment(), index); }
+    /// Sets `maxDescriptorSetStorageImages` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDescriptorSetStorageImagesAt(long index, int value) { maxDescriptorSetStorageImages(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetSampledImages` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetSampledImagesAt(long index) { return maxDescriptorSetSampledImages(this.segment(), index); }
-        /// Sets `maxDescriptorSetSampledImages` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetSampledImagesAt(long index, int value) { maxDescriptorSetSampledImages(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetInputAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetInputAttachmentsAt(long index) { return maxDescriptorSetInputAttachments(this.segment(), index); }
+    /// Sets `maxDescriptorSetInputAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDescriptorSetInputAttachmentsAt(long index, int value) { maxDescriptorSetInputAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetStorageImages` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetStorageImagesAt(long index) { return maxDescriptorSetStorageImages(this.segment(), index); }
-        /// Sets `maxDescriptorSetStorageImages` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetStorageImagesAt(long index, int value) { maxDescriptorSetStorageImages(this.segment(), index, value); return this; }
+    /// {@return `maxVertexInputAttributes` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxVertexInputAttributesAt(long index) { return maxVertexInputAttributes(this.segment(), index); }
+    /// Sets `maxVertexInputAttributes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxVertexInputAttributesAt(long index, int value) { maxVertexInputAttributes(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetInputAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetInputAttachmentsAt(long index) { return maxDescriptorSetInputAttachments(this.segment(), index); }
-        /// Sets `maxDescriptorSetInputAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetInputAttachmentsAt(long index, int value) { maxDescriptorSetInputAttachments(this.segment(), index, value); return this; }
+    /// {@return `maxVertexInputBindings` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxVertexInputBindingsAt(long index) { return maxVertexInputBindings(this.segment(), index); }
+    /// Sets `maxVertexInputBindings` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxVertexInputBindingsAt(long index, int value) { maxVertexInputBindings(this.segment(), index, value); return this; }
 
-        /// {@return `maxVertexInputAttributes` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxVertexInputAttributesAt(long index) { return maxVertexInputAttributes(this.segment(), index); }
-        /// Sets `maxVertexInputAttributes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxVertexInputAttributesAt(long index, int value) { maxVertexInputAttributes(this.segment(), index, value); return this; }
+    /// {@return `maxVertexInputAttributeOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxVertexInputAttributeOffsetAt(long index) { return maxVertexInputAttributeOffset(this.segment(), index); }
+    /// Sets `maxVertexInputAttributeOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxVertexInputAttributeOffsetAt(long index, int value) { maxVertexInputAttributeOffset(this.segment(), index, value); return this; }
 
-        /// {@return `maxVertexInputBindings` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxVertexInputBindingsAt(long index) { return maxVertexInputBindings(this.segment(), index); }
-        /// Sets `maxVertexInputBindings` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxVertexInputBindingsAt(long index, int value) { maxVertexInputBindings(this.segment(), index, value); return this; }
+    /// {@return `maxVertexInputBindingStride` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxVertexInputBindingStrideAt(long index) { return maxVertexInputBindingStride(this.segment(), index); }
+    /// Sets `maxVertexInputBindingStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxVertexInputBindingStrideAt(long index, int value) { maxVertexInputBindingStride(this.segment(), index, value); return this; }
 
-        /// {@return `maxVertexInputAttributeOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxVertexInputAttributeOffsetAt(long index) { return maxVertexInputAttributeOffset(this.segment(), index); }
-        /// Sets `maxVertexInputAttributeOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxVertexInputAttributeOffsetAt(long index, int value) { maxVertexInputAttributeOffset(this.segment(), index, value); return this; }
+    /// {@return `maxVertexOutputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxVertexOutputComponentsAt(long index) { return maxVertexOutputComponents(this.segment(), index); }
+    /// Sets `maxVertexOutputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxVertexOutputComponentsAt(long index, int value) { maxVertexOutputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxVertexInputBindingStride` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxVertexInputBindingStrideAt(long index) { return maxVertexInputBindingStride(this.segment(), index); }
-        /// Sets `maxVertexInputBindingStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxVertexInputBindingStrideAt(long index, int value) { maxVertexInputBindingStride(this.segment(), index, value); return this; }
+    /// {@return `maxTessellationGenerationLevel` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTessellationGenerationLevelAt(long index) { return maxTessellationGenerationLevel(this.segment(), index); }
+    /// Sets `maxTessellationGenerationLevel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTessellationGenerationLevelAt(long index, int value) { maxTessellationGenerationLevel(this.segment(), index, value); return this; }
 
-        /// {@return `maxVertexOutputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxVertexOutputComponentsAt(long index) { return maxVertexOutputComponents(this.segment(), index); }
-        /// Sets `maxVertexOutputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxVertexOutputComponentsAt(long index, int value) { maxVertexOutputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxTessellationPatchSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTessellationPatchSizeAt(long index) { return maxTessellationPatchSize(this.segment(), index); }
+    /// Sets `maxTessellationPatchSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTessellationPatchSizeAt(long index, int value) { maxTessellationPatchSize(this.segment(), index, value); return this; }
 
-        /// {@return `maxTessellationGenerationLevel` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTessellationGenerationLevelAt(long index) { return maxTessellationGenerationLevel(this.segment(), index); }
-        /// Sets `maxTessellationGenerationLevel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTessellationGenerationLevelAt(long index, int value) { maxTessellationGenerationLevel(this.segment(), index, value); return this; }
+    /// {@return `maxTessellationControlPerVertexInputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTessellationControlPerVertexInputComponentsAt(long index) { return maxTessellationControlPerVertexInputComponents(this.segment(), index); }
+    /// Sets `maxTessellationControlPerVertexInputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTessellationControlPerVertexInputComponentsAt(long index, int value) { maxTessellationControlPerVertexInputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxTessellationPatchSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTessellationPatchSizeAt(long index) { return maxTessellationPatchSize(this.segment(), index); }
-        /// Sets `maxTessellationPatchSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTessellationPatchSizeAt(long index, int value) { maxTessellationPatchSize(this.segment(), index, value); return this; }
+    /// {@return `maxTessellationControlPerVertexOutputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTessellationControlPerVertexOutputComponentsAt(long index) { return maxTessellationControlPerVertexOutputComponents(this.segment(), index); }
+    /// Sets `maxTessellationControlPerVertexOutputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTessellationControlPerVertexOutputComponentsAt(long index, int value) { maxTessellationControlPerVertexOutputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxTessellationControlPerVertexInputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTessellationControlPerVertexInputComponentsAt(long index) { return maxTessellationControlPerVertexInputComponents(this.segment(), index); }
-        /// Sets `maxTessellationControlPerVertexInputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTessellationControlPerVertexInputComponentsAt(long index, int value) { maxTessellationControlPerVertexInputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxTessellationControlPerPatchOutputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTessellationControlPerPatchOutputComponentsAt(long index) { return maxTessellationControlPerPatchOutputComponents(this.segment(), index); }
+    /// Sets `maxTessellationControlPerPatchOutputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTessellationControlPerPatchOutputComponentsAt(long index, int value) { maxTessellationControlPerPatchOutputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxTessellationControlPerVertexOutputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTessellationControlPerVertexOutputComponentsAt(long index) { return maxTessellationControlPerVertexOutputComponents(this.segment(), index); }
-        /// Sets `maxTessellationControlPerVertexOutputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTessellationControlPerVertexOutputComponentsAt(long index, int value) { maxTessellationControlPerVertexOutputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxTessellationControlTotalOutputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTessellationControlTotalOutputComponentsAt(long index) { return maxTessellationControlTotalOutputComponents(this.segment(), index); }
+    /// Sets `maxTessellationControlTotalOutputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTessellationControlTotalOutputComponentsAt(long index, int value) { maxTessellationControlTotalOutputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxTessellationControlPerPatchOutputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTessellationControlPerPatchOutputComponentsAt(long index) { return maxTessellationControlPerPatchOutputComponents(this.segment(), index); }
-        /// Sets `maxTessellationControlPerPatchOutputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTessellationControlPerPatchOutputComponentsAt(long index, int value) { maxTessellationControlPerPatchOutputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxTessellationEvaluationInputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTessellationEvaluationInputComponentsAt(long index) { return maxTessellationEvaluationInputComponents(this.segment(), index); }
+    /// Sets `maxTessellationEvaluationInputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTessellationEvaluationInputComponentsAt(long index, int value) { maxTessellationEvaluationInputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxTessellationControlTotalOutputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTessellationControlTotalOutputComponentsAt(long index) { return maxTessellationControlTotalOutputComponents(this.segment(), index); }
-        /// Sets `maxTessellationControlTotalOutputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTessellationControlTotalOutputComponentsAt(long index, int value) { maxTessellationControlTotalOutputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxTessellationEvaluationOutputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTessellationEvaluationOutputComponentsAt(long index) { return maxTessellationEvaluationOutputComponents(this.segment(), index); }
+    /// Sets `maxTessellationEvaluationOutputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTessellationEvaluationOutputComponentsAt(long index, int value) { maxTessellationEvaluationOutputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxTessellationEvaluationInputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTessellationEvaluationInputComponentsAt(long index) { return maxTessellationEvaluationInputComponents(this.segment(), index); }
-        /// Sets `maxTessellationEvaluationInputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTessellationEvaluationInputComponentsAt(long index, int value) { maxTessellationEvaluationInputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxGeometryShaderInvocations` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxGeometryShaderInvocationsAt(long index) { return maxGeometryShaderInvocations(this.segment(), index); }
+    /// Sets `maxGeometryShaderInvocations` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxGeometryShaderInvocationsAt(long index, int value) { maxGeometryShaderInvocations(this.segment(), index, value); return this; }
 
-        /// {@return `maxTessellationEvaluationOutputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTessellationEvaluationOutputComponentsAt(long index) { return maxTessellationEvaluationOutputComponents(this.segment(), index); }
-        /// Sets `maxTessellationEvaluationOutputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTessellationEvaluationOutputComponentsAt(long index, int value) { maxTessellationEvaluationOutputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxGeometryInputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxGeometryInputComponentsAt(long index) { return maxGeometryInputComponents(this.segment(), index); }
+    /// Sets `maxGeometryInputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxGeometryInputComponentsAt(long index, int value) { maxGeometryInputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxGeometryShaderInvocations` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxGeometryShaderInvocationsAt(long index) { return maxGeometryShaderInvocations(this.segment(), index); }
-        /// Sets `maxGeometryShaderInvocations` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxGeometryShaderInvocationsAt(long index, int value) { maxGeometryShaderInvocations(this.segment(), index, value); return this; }
+    /// {@return `maxGeometryOutputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxGeometryOutputComponentsAt(long index) { return maxGeometryOutputComponents(this.segment(), index); }
+    /// Sets `maxGeometryOutputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxGeometryOutputComponentsAt(long index, int value) { maxGeometryOutputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxGeometryInputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxGeometryInputComponentsAt(long index) { return maxGeometryInputComponents(this.segment(), index); }
-        /// Sets `maxGeometryInputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxGeometryInputComponentsAt(long index, int value) { maxGeometryInputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxGeometryOutputVertices` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxGeometryOutputVerticesAt(long index) { return maxGeometryOutputVertices(this.segment(), index); }
+    /// Sets `maxGeometryOutputVertices` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxGeometryOutputVerticesAt(long index, int value) { maxGeometryOutputVertices(this.segment(), index, value); return this; }
 
-        /// {@return `maxGeometryOutputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxGeometryOutputComponentsAt(long index) { return maxGeometryOutputComponents(this.segment(), index); }
-        /// Sets `maxGeometryOutputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxGeometryOutputComponentsAt(long index, int value) { maxGeometryOutputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxGeometryTotalOutputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxGeometryTotalOutputComponentsAt(long index) { return maxGeometryTotalOutputComponents(this.segment(), index); }
+    /// Sets `maxGeometryTotalOutputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxGeometryTotalOutputComponentsAt(long index, int value) { maxGeometryTotalOutputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxGeometryOutputVertices` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxGeometryOutputVerticesAt(long index) { return maxGeometryOutputVertices(this.segment(), index); }
-        /// Sets `maxGeometryOutputVertices` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxGeometryOutputVerticesAt(long index, int value) { maxGeometryOutputVertices(this.segment(), index, value); return this; }
+    /// {@return `maxFragmentInputComponents` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFragmentInputComponentsAt(long index) { return maxFragmentInputComponents(this.segment(), index); }
+    /// Sets `maxFragmentInputComponents` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxFragmentInputComponentsAt(long index, int value) { maxFragmentInputComponents(this.segment(), index, value); return this; }
 
-        /// {@return `maxGeometryTotalOutputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxGeometryTotalOutputComponentsAt(long index) { return maxGeometryTotalOutputComponents(this.segment(), index); }
-        /// Sets `maxGeometryTotalOutputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxGeometryTotalOutputComponentsAt(long index, int value) { maxGeometryTotalOutputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxFragmentOutputAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFragmentOutputAttachmentsAt(long index) { return maxFragmentOutputAttachments(this.segment(), index); }
+    /// Sets `maxFragmentOutputAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxFragmentOutputAttachmentsAt(long index, int value) { maxFragmentOutputAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentInputComponents` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFragmentInputComponentsAt(long index) { return maxFragmentInputComponents(this.segment(), index); }
-        /// Sets `maxFragmentInputComponents` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentInputComponentsAt(long index, int value) { maxFragmentInputComponents(this.segment(), index, value); return this; }
+    /// {@return `maxFragmentDualSrcAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFragmentDualSrcAttachmentsAt(long index) { return maxFragmentDualSrcAttachments(this.segment(), index); }
+    /// Sets `maxFragmentDualSrcAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxFragmentDualSrcAttachmentsAt(long index, int value) { maxFragmentDualSrcAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentOutputAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFragmentOutputAttachmentsAt(long index) { return maxFragmentOutputAttachments(this.segment(), index); }
-        /// Sets `maxFragmentOutputAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentOutputAttachmentsAt(long index, int value) { maxFragmentOutputAttachments(this.segment(), index, value); return this; }
+    /// {@return `maxFragmentCombinedOutputResources` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFragmentCombinedOutputResourcesAt(long index) { return maxFragmentCombinedOutputResources(this.segment(), index); }
+    /// Sets `maxFragmentCombinedOutputResources` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxFragmentCombinedOutputResourcesAt(long index, int value) { maxFragmentCombinedOutputResources(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentDualSrcAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFragmentDualSrcAttachmentsAt(long index) { return maxFragmentDualSrcAttachments(this.segment(), index); }
-        /// Sets `maxFragmentDualSrcAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentDualSrcAttachmentsAt(long index, int value) { maxFragmentDualSrcAttachments(this.segment(), index, value); return this; }
+    /// {@return `maxComputeSharedMemorySize` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxComputeSharedMemorySizeAt(long index) { return maxComputeSharedMemorySize(this.segment(), index); }
+    /// Sets `maxComputeSharedMemorySize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxComputeSharedMemorySizeAt(long index, int value) { maxComputeSharedMemorySize(this.segment(), index, value); return this; }
 
-        /// {@return `maxFragmentCombinedOutputResources` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFragmentCombinedOutputResourcesAt(long index) { return maxFragmentCombinedOutputResources(this.segment(), index); }
-        /// Sets `maxFragmentCombinedOutputResources` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFragmentCombinedOutputResourcesAt(long index, int value) { maxFragmentCombinedOutputResources(this.segment(), index, value); return this; }
-
-        /// {@return `maxComputeSharedMemorySize` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxComputeSharedMemorySizeAt(long index) { return maxComputeSharedMemorySize(this.segment(), index); }
-        /// Sets `maxComputeSharedMemorySize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxComputeSharedMemorySizeAt(long index, int value) { maxComputeSharedMemorySize(this.segment(), index, value); return this; }
-
-        /// {@return `maxComputeWorkGroupCount` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxComputeWorkGroupCountAt(long index) { return maxComputeWorkGroupCount(this.segment(), index); }
-        /// {@return `maxComputeWorkGroupCount` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `maxComputeWorkGroupCount` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxComputeWorkGroupCountAt(long index) { return maxComputeWorkGroupCount(this.segment(), index); }
+    /// {@return `maxComputeWorkGroupCount` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public int maxComputeWorkGroupCountAt(long index, long index0) { return maxComputeWorkGroupCount(this.segment(), index, index0); }
-        /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxComputeWorkGroupCountAt(long index, MemorySegment value) { maxComputeWorkGroupCount(this.segment(), index, value); return this; }
-        /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxComputeWorkGroupCountAt(long index, long index0, int value) { maxComputeWorkGroupCount(this.segment(), index, index0, value); return this; }
+    /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxComputeWorkGroupCountAt(long index, MemorySegment value) { maxComputeWorkGroupCount(this.segment(), index, value); return this; }
+    /// Sets `maxComputeWorkGroupCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxComputeWorkGroupCountAt(long index, long index0, int value) { maxComputeWorkGroupCount(this.segment(), index, index0, value); return this; }
 
-        /// {@return `maxComputeWorkGroupInvocations` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxComputeWorkGroupInvocationsAt(long index) { return maxComputeWorkGroupInvocations(this.segment(), index); }
-        /// Sets `maxComputeWorkGroupInvocations` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxComputeWorkGroupInvocationsAt(long index, int value) { maxComputeWorkGroupInvocations(this.segment(), index, value); return this; }
+    /// {@return `maxComputeWorkGroupInvocations` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxComputeWorkGroupInvocationsAt(long index) { return maxComputeWorkGroupInvocations(this.segment(), index); }
+    /// Sets `maxComputeWorkGroupInvocations` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxComputeWorkGroupInvocationsAt(long index, int value) { maxComputeWorkGroupInvocations(this.segment(), index, value); return this; }
 
-        /// {@return `maxComputeWorkGroupSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxComputeWorkGroupSizeAt(long index) { return maxComputeWorkGroupSize(this.segment(), index); }
-        /// {@return `maxComputeWorkGroupSize` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `maxComputeWorkGroupSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxComputeWorkGroupSizeAt(long index) { return maxComputeWorkGroupSize(this.segment(), index); }
+    /// {@return `maxComputeWorkGroupSize` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public int maxComputeWorkGroupSizeAt(long index, long index0) { return maxComputeWorkGroupSize(this.segment(), index, index0); }
-        /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxComputeWorkGroupSizeAt(long index, MemorySegment value) { maxComputeWorkGroupSize(this.segment(), index, value); return this; }
-        /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxComputeWorkGroupSizeAt(long index, long index0, int value) { maxComputeWorkGroupSize(this.segment(), index, index0, value); return this; }
+    /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxComputeWorkGroupSizeAt(long index, MemorySegment value) { maxComputeWorkGroupSize(this.segment(), index, value); return this; }
+    /// Sets `maxComputeWorkGroupSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxComputeWorkGroupSizeAt(long index, long index0, int value) { maxComputeWorkGroupSize(this.segment(), index, index0, value); return this; }
 
-        /// {@return `subPixelPrecisionBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int subPixelPrecisionBitsAt(long index) { return subPixelPrecisionBits(this.segment(), index); }
-        /// Sets `subPixelPrecisionBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subPixelPrecisionBitsAt(long index, int value) { subPixelPrecisionBits(this.segment(), index, value); return this; }
+    /// {@return `subPixelPrecisionBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int subPixelPrecisionBitsAt(long index) { return subPixelPrecisionBits(this.segment(), index); }
+    /// Sets `subPixelPrecisionBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits subPixelPrecisionBitsAt(long index, int value) { subPixelPrecisionBits(this.segment(), index, value); return this; }
 
-        /// {@return `subTexelPrecisionBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int subTexelPrecisionBitsAt(long index) { return subTexelPrecisionBits(this.segment(), index); }
-        /// Sets `subTexelPrecisionBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subTexelPrecisionBitsAt(long index, int value) { subTexelPrecisionBits(this.segment(), index, value); return this; }
+    /// {@return `subTexelPrecisionBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int subTexelPrecisionBitsAt(long index) { return subTexelPrecisionBits(this.segment(), index); }
+    /// Sets `subTexelPrecisionBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits subTexelPrecisionBitsAt(long index, int value) { subTexelPrecisionBits(this.segment(), index, value); return this; }
 
-        /// {@return `mipmapPrecisionBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int mipmapPrecisionBitsAt(long index) { return mipmapPrecisionBits(this.segment(), index); }
-        /// Sets `mipmapPrecisionBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer mipmapPrecisionBitsAt(long index, int value) { mipmapPrecisionBits(this.segment(), index, value); return this; }
+    /// {@return `mipmapPrecisionBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int mipmapPrecisionBitsAt(long index) { return mipmapPrecisionBits(this.segment(), index); }
+    /// Sets `mipmapPrecisionBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits mipmapPrecisionBitsAt(long index, int value) { mipmapPrecisionBits(this.segment(), index, value); return this; }
 
-        /// {@return `maxDrawIndexedIndexValue` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDrawIndexedIndexValueAt(long index) { return maxDrawIndexedIndexValue(this.segment(), index); }
-        /// Sets `maxDrawIndexedIndexValue` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDrawIndexedIndexValueAt(long index, int value) { maxDrawIndexedIndexValue(this.segment(), index, value); return this; }
+    /// {@return `maxDrawIndexedIndexValue` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDrawIndexedIndexValueAt(long index) { return maxDrawIndexedIndexValue(this.segment(), index); }
+    /// Sets `maxDrawIndexedIndexValue` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDrawIndexedIndexValueAt(long index, int value) { maxDrawIndexedIndexValue(this.segment(), index, value); return this; }
 
-        /// {@return `maxDrawIndirectCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDrawIndirectCountAt(long index) { return maxDrawIndirectCount(this.segment(), index); }
-        /// Sets `maxDrawIndirectCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDrawIndirectCountAt(long index, int value) { maxDrawIndirectCount(this.segment(), index, value); return this; }
+    /// {@return `maxDrawIndirectCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDrawIndirectCountAt(long index) { return maxDrawIndirectCount(this.segment(), index); }
+    /// Sets `maxDrawIndirectCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxDrawIndirectCountAt(long index, int value) { maxDrawIndirectCount(this.segment(), index, value); return this; }
 
-        /// {@return `maxSamplerLodBias` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxSamplerLodBiasAt(long index) { return maxSamplerLodBias(this.segment(), index); }
-        /// Sets `maxSamplerLodBias` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSamplerLodBiasAt(long index, float value) { maxSamplerLodBias(this.segment(), index, value); return this; }
+    /// {@return `maxSamplerLodBias` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxSamplerLodBiasAt(long index) { return maxSamplerLodBias(this.segment(), index); }
+    /// Sets `maxSamplerLodBias` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxSamplerLodBiasAt(long index, float value) { maxSamplerLodBias(this.segment(), index, value); return this; }
 
-        /// {@return `maxSamplerAnisotropy` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxSamplerAnisotropyAt(long index) { return maxSamplerAnisotropy(this.segment(), index); }
-        /// Sets `maxSamplerAnisotropy` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSamplerAnisotropyAt(long index, float value) { maxSamplerAnisotropy(this.segment(), index, value); return this; }
+    /// {@return `maxSamplerAnisotropy` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxSamplerAnisotropyAt(long index) { return maxSamplerAnisotropy(this.segment(), index); }
+    /// Sets `maxSamplerAnisotropy` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxSamplerAnisotropyAt(long index, float value) { maxSamplerAnisotropy(this.segment(), index, value); return this; }
 
-        /// {@return `maxViewports` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxViewportsAt(long index) { return maxViewports(this.segment(), index); }
-        /// Sets `maxViewports` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxViewportsAt(long index, int value) { maxViewports(this.segment(), index, value); return this; }
+    /// {@return `maxViewports` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxViewportsAt(long index) { return maxViewports(this.segment(), index); }
+    /// Sets `maxViewports` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxViewportsAt(long index, int value) { maxViewports(this.segment(), index, value); return this; }
 
-        /// {@return `maxViewportDimensions` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxViewportDimensionsAt(long index) { return maxViewportDimensions(this.segment(), index); }
-        /// {@return `maxViewportDimensions` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `maxViewportDimensions` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxViewportDimensionsAt(long index) { return maxViewportDimensions(this.segment(), index); }
+    /// {@return `maxViewportDimensions` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public int maxViewportDimensionsAt(long index, long index0) { return maxViewportDimensions(this.segment(), index, index0); }
-        /// Sets `maxViewportDimensions` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxViewportDimensionsAt(long index, MemorySegment value) { maxViewportDimensions(this.segment(), index, value); return this; }
-        /// Sets `maxViewportDimensions` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxViewportDimensionsAt(long index, long index0, int value) { maxViewportDimensions(this.segment(), index, index0, value); return this; }
+    /// Sets `maxViewportDimensions` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxViewportDimensionsAt(long index, MemorySegment value) { maxViewportDimensions(this.segment(), index, value); return this; }
+    /// Sets `maxViewportDimensions` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxViewportDimensionsAt(long index, long index0, int value) { maxViewportDimensions(this.segment(), index, index0, value); return this; }
 
-        /// {@return `viewportBoundsRange` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment viewportBoundsRangeAt(long index) { return viewportBoundsRange(this.segment(), index); }
-        /// {@return `viewportBoundsRange` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `viewportBoundsRange` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment viewportBoundsRangeAt(long index) { return viewportBoundsRange(this.segment(), index); }
+    /// {@return `viewportBoundsRange` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public float viewportBoundsRangeAt(long index, long index0) { return viewportBoundsRange(this.segment(), index, index0); }
-        /// Sets `viewportBoundsRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer viewportBoundsRangeAt(long index, MemorySegment value) { viewportBoundsRange(this.segment(), index, value); return this; }
-        /// Sets `viewportBoundsRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer viewportBoundsRangeAt(long index, long index0, float value) { viewportBoundsRange(this.segment(), index, index0, value); return this; }
+    /// Sets `viewportBoundsRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits viewportBoundsRangeAt(long index, MemorySegment value) { viewportBoundsRange(this.segment(), index, value); return this; }
+    /// Sets `viewportBoundsRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits viewportBoundsRangeAt(long index, long index0, float value) { viewportBoundsRange(this.segment(), index, index0, value); return this; }
 
-        /// {@return `viewportSubPixelBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int viewportSubPixelBitsAt(long index) { return viewportSubPixelBits(this.segment(), index); }
-        /// Sets `viewportSubPixelBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer viewportSubPixelBitsAt(long index, int value) { viewportSubPixelBits(this.segment(), index, value); return this; }
+    /// {@return `viewportSubPixelBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int viewportSubPixelBitsAt(long index) { return viewportSubPixelBits(this.segment(), index); }
+    /// Sets `viewportSubPixelBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits viewportSubPixelBitsAt(long index, int value) { viewportSubPixelBits(this.segment(), index, value); return this; }
 
-        /// {@return `minMemoryMapAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public long minMemoryMapAlignmentAt(long index) { return minMemoryMapAlignment(this.segment(), index); }
-        /// Sets `minMemoryMapAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minMemoryMapAlignmentAt(long index, long value) { minMemoryMapAlignment(this.segment(), index, value); return this; }
+    /// {@return `minMemoryMapAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public long minMemoryMapAlignmentAt(long index) { return minMemoryMapAlignment(this.segment(), index); }
+    /// Sets `minMemoryMapAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits minMemoryMapAlignmentAt(long index, long value) { minMemoryMapAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `minTexelBufferOffsetAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public long minTexelBufferOffsetAlignmentAt(long index) { return minTexelBufferOffsetAlignment(this.segment(), index); }
-        /// Sets `minTexelBufferOffsetAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minTexelBufferOffsetAlignmentAt(long index, long value) { minTexelBufferOffsetAlignment(this.segment(), index, value); return this; }
+    /// {@return `minTexelBufferOffsetAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public long minTexelBufferOffsetAlignmentAt(long index) { return minTexelBufferOffsetAlignment(this.segment(), index); }
+    /// Sets `minTexelBufferOffsetAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits minTexelBufferOffsetAlignmentAt(long index, long value) { minTexelBufferOffsetAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `minUniformBufferOffsetAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public long minUniformBufferOffsetAlignmentAt(long index) { return minUniformBufferOffsetAlignment(this.segment(), index); }
-        /// Sets `minUniformBufferOffsetAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minUniformBufferOffsetAlignmentAt(long index, long value) { minUniformBufferOffsetAlignment(this.segment(), index, value); return this; }
+    /// {@return `minUniformBufferOffsetAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public long minUniformBufferOffsetAlignmentAt(long index) { return minUniformBufferOffsetAlignment(this.segment(), index); }
+    /// Sets `minUniformBufferOffsetAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits minUniformBufferOffsetAlignmentAt(long index, long value) { minUniformBufferOffsetAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `minStorageBufferOffsetAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public long minStorageBufferOffsetAlignmentAt(long index) { return minStorageBufferOffsetAlignment(this.segment(), index); }
-        /// Sets `minStorageBufferOffsetAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minStorageBufferOffsetAlignmentAt(long index, long value) { minStorageBufferOffsetAlignment(this.segment(), index, value); return this; }
+    /// {@return `minStorageBufferOffsetAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public long minStorageBufferOffsetAlignmentAt(long index) { return minStorageBufferOffsetAlignment(this.segment(), index); }
+    /// Sets `minStorageBufferOffsetAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits minStorageBufferOffsetAlignmentAt(long index, long value) { minStorageBufferOffsetAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `minTexelOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int minTexelOffsetAt(long index) { return minTexelOffset(this.segment(), index); }
-        /// Sets `minTexelOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minTexelOffsetAt(long index, int value) { minTexelOffset(this.segment(), index, value); return this; }
+    /// {@return `minTexelOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int minTexelOffsetAt(long index) { return minTexelOffset(this.segment(), index); }
+    /// Sets `minTexelOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits minTexelOffsetAt(long index, int value) { minTexelOffset(this.segment(), index, value); return this; }
 
-        /// {@return `maxTexelOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTexelOffsetAt(long index) { return maxTexelOffset(this.segment(), index); }
-        /// Sets `maxTexelOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTexelOffsetAt(long index, int value) { maxTexelOffset(this.segment(), index, value); return this; }
+    /// {@return `maxTexelOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTexelOffsetAt(long index) { return maxTexelOffset(this.segment(), index); }
+    /// Sets `maxTexelOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTexelOffsetAt(long index, int value) { maxTexelOffset(this.segment(), index, value); return this; }
 
-        /// {@return `minTexelGatherOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int minTexelGatherOffsetAt(long index) { return minTexelGatherOffset(this.segment(), index); }
-        /// Sets `minTexelGatherOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minTexelGatherOffsetAt(long index, int value) { minTexelGatherOffset(this.segment(), index, value); return this; }
+    /// {@return `minTexelGatherOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int minTexelGatherOffsetAt(long index) { return minTexelGatherOffset(this.segment(), index); }
+    /// Sets `minTexelGatherOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits minTexelGatherOffsetAt(long index, int value) { minTexelGatherOffset(this.segment(), index, value); return this; }
 
-        /// {@return `maxTexelGatherOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxTexelGatherOffsetAt(long index) { return maxTexelGatherOffset(this.segment(), index); }
-        /// Sets `maxTexelGatherOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTexelGatherOffsetAt(long index, int value) { maxTexelGatherOffset(this.segment(), index, value); return this; }
+    /// {@return `maxTexelGatherOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxTexelGatherOffsetAt(long index) { return maxTexelGatherOffset(this.segment(), index); }
+    /// Sets `maxTexelGatherOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxTexelGatherOffsetAt(long index, int value) { maxTexelGatherOffset(this.segment(), index, value); return this; }
 
-        /// {@return `minInterpolationOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public float minInterpolationOffsetAt(long index) { return minInterpolationOffset(this.segment(), index); }
-        /// Sets `minInterpolationOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minInterpolationOffsetAt(long index, float value) { minInterpolationOffset(this.segment(), index, value); return this; }
+    /// {@return `minInterpolationOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public float minInterpolationOffsetAt(long index) { return minInterpolationOffset(this.segment(), index); }
+    /// Sets `minInterpolationOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits minInterpolationOffsetAt(long index, float value) { minInterpolationOffset(this.segment(), index, value); return this; }
 
-        /// {@return `maxInterpolationOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxInterpolationOffsetAt(long index) { return maxInterpolationOffset(this.segment(), index); }
-        /// Sets `maxInterpolationOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxInterpolationOffsetAt(long index, float value) { maxInterpolationOffset(this.segment(), index, value); return this; }
+    /// {@return `maxInterpolationOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxInterpolationOffsetAt(long index) { return maxInterpolationOffset(this.segment(), index); }
+    /// Sets `maxInterpolationOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxInterpolationOffsetAt(long index, float value) { maxInterpolationOffset(this.segment(), index, value); return this; }
 
-        /// {@return `subPixelInterpolationOffsetBits` at the given index}
-        /// @param index the index of the struct buffer
-        public int subPixelInterpolationOffsetBitsAt(long index) { return subPixelInterpolationOffsetBits(this.segment(), index); }
-        /// Sets `subPixelInterpolationOffsetBits` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subPixelInterpolationOffsetBitsAt(long index, int value) { subPixelInterpolationOffsetBits(this.segment(), index, value); return this; }
+    /// {@return `subPixelInterpolationOffsetBits` at the given index}
+    /// @param index the index of the struct buffer
+    public int subPixelInterpolationOffsetBitsAt(long index) { return subPixelInterpolationOffsetBits(this.segment(), index); }
+    /// Sets `subPixelInterpolationOffsetBits` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits subPixelInterpolationOffsetBitsAt(long index, int value) { subPixelInterpolationOffsetBits(this.segment(), index, value); return this; }
 
-        /// {@return `maxFramebufferWidth` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFramebufferWidthAt(long index) { return maxFramebufferWidth(this.segment(), index); }
-        /// Sets `maxFramebufferWidth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFramebufferWidthAt(long index, int value) { maxFramebufferWidth(this.segment(), index, value); return this; }
+    /// {@return `maxFramebufferWidth` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFramebufferWidthAt(long index) { return maxFramebufferWidth(this.segment(), index); }
+    /// Sets `maxFramebufferWidth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxFramebufferWidthAt(long index, int value) { maxFramebufferWidth(this.segment(), index, value); return this; }
 
-        /// {@return `maxFramebufferHeight` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFramebufferHeightAt(long index) { return maxFramebufferHeight(this.segment(), index); }
-        /// Sets `maxFramebufferHeight` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFramebufferHeightAt(long index, int value) { maxFramebufferHeight(this.segment(), index, value); return this; }
+    /// {@return `maxFramebufferHeight` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFramebufferHeightAt(long index) { return maxFramebufferHeight(this.segment(), index); }
+    /// Sets `maxFramebufferHeight` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxFramebufferHeightAt(long index, int value) { maxFramebufferHeight(this.segment(), index, value); return this; }
 
-        /// {@return `maxFramebufferLayers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxFramebufferLayersAt(long index) { return maxFramebufferLayers(this.segment(), index); }
-        /// Sets `maxFramebufferLayers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFramebufferLayersAt(long index, int value) { maxFramebufferLayers(this.segment(), index, value); return this; }
+    /// {@return `maxFramebufferLayers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxFramebufferLayersAt(long index) { return maxFramebufferLayers(this.segment(), index); }
+    /// Sets `maxFramebufferLayers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxFramebufferLayersAt(long index, int value) { maxFramebufferLayers(this.segment(), index, value); return this; }
 
-        /// {@return `framebufferColorSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int framebufferColorSampleCountsAt(long index) { return framebufferColorSampleCounts(this.segment(), index); }
-        /// Sets `framebufferColorSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer framebufferColorSampleCountsAt(long index, int value) { framebufferColorSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `framebufferColorSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int framebufferColorSampleCountsAt(long index) { return framebufferColorSampleCounts(this.segment(), index); }
+    /// Sets `framebufferColorSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits framebufferColorSampleCountsAt(long index, int value) { framebufferColorSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `framebufferDepthSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int framebufferDepthSampleCountsAt(long index) { return framebufferDepthSampleCounts(this.segment(), index); }
-        /// Sets `framebufferDepthSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer framebufferDepthSampleCountsAt(long index, int value) { framebufferDepthSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `framebufferDepthSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int framebufferDepthSampleCountsAt(long index) { return framebufferDepthSampleCounts(this.segment(), index); }
+    /// Sets `framebufferDepthSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits framebufferDepthSampleCountsAt(long index, int value) { framebufferDepthSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `framebufferStencilSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int framebufferStencilSampleCountsAt(long index) { return framebufferStencilSampleCounts(this.segment(), index); }
-        /// Sets `framebufferStencilSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer framebufferStencilSampleCountsAt(long index, int value) { framebufferStencilSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `framebufferStencilSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int framebufferStencilSampleCountsAt(long index) { return framebufferStencilSampleCounts(this.segment(), index); }
+    /// Sets `framebufferStencilSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits framebufferStencilSampleCountsAt(long index, int value) { framebufferStencilSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `framebufferNoAttachmentsSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int framebufferNoAttachmentsSampleCountsAt(long index) { return framebufferNoAttachmentsSampleCounts(this.segment(), index); }
-        /// Sets `framebufferNoAttachmentsSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer framebufferNoAttachmentsSampleCountsAt(long index, int value) { framebufferNoAttachmentsSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `framebufferNoAttachmentsSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int framebufferNoAttachmentsSampleCountsAt(long index) { return framebufferNoAttachmentsSampleCounts(this.segment(), index); }
+    /// Sets `framebufferNoAttachmentsSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits framebufferNoAttachmentsSampleCountsAt(long index, int value) { framebufferNoAttachmentsSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `maxColorAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxColorAttachmentsAt(long index) { return maxColorAttachments(this.segment(), index); }
-        /// Sets `maxColorAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxColorAttachmentsAt(long index, int value) { maxColorAttachments(this.segment(), index, value); return this; }
+    /// {@return `maxColorAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxColorAttachmentsAt(long index) { return maxColorAttachments(this.segment(), index); }
+    /// Sets `maxColorAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxColorAttachmentsAt(long index, int value) { maxColorAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `sampledImageColorSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int sampledImageColorSampleCountsAt(long index) { return sampledImageColorSampleCounts(this.segment(), index); }
-        /// Sets `sampledImageColorSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampledImageColorSampleCountsAt(long index, int value) { sampledImageColorSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `sampledImageColorSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int sampledImageColorSampleCountsAt(long index) { return sampledImageColorSampleCounts(this.segment(), index); }
+    /// Sets `sampledImageColorSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits sampledImageColorSampleCountsAt(long index, int value) { sampledImageColorSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `sampledImageIntegerSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int sampledImageIntegerSampleCountsAt(long index) { return sampledImageIntegerSampleCounts(this.segment(), index); }
-        /// Sets `sampledImageIntegerSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampledImageIntegerSampleCountsAt(long index, int value) { sampledImageIntegerSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `sampledImageIntegerSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int sampledImageIntegerSampleCountsAt(long index) { return sampledImageIntegerSampleCounts(this.segment(), index); }
+    /// Sets `sampledImageIntegerSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits sampledImageIntegerSampleCountsAt(long index, int value) { sampledImageIntegerSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `sampledImageDepthSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int sampledImageDepthSampleCountsAt(long index) { return sampledImageDepthSampleCounts(this.segment(), index); }
-        /// Sets `sampledImageDepthSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampledImageDepthSampleCountsAt(long index, int value) { sampledImageDepthSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `sampledImageDepthSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int sampledImageDepthSampleCountsAt(long index) { return sampledImageDepthSampleCounts(this.segment(), index); }
+    /// Sets `sampledImageDepthSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits sampledImageDepthSampleCountsAt(long index, int value) { sampledImageDepthSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `sampledImageStencilSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int sampledImageStencilSampleCountsAt(long index) { return sampledImageStencilSampleCounts(this.segment(), index); }
-        /// Sets `sampledImageStencilSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampledImageStencilSampleCountsAt(long index, int value) { sampledImageStencilSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `sampledImageStencilSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int sampledImageStencilSampleCountsAt(long index) { return sampledImageStencilSampleCounts(this.segment(), index); }
+    /// Sets `sampledImageStencilSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits sampledImageStencilSampleCountsAt(long index, int value) { sampledImageStencilSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `storageImageSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int storageImageSampleCountsAt(long index) { return storageImageSampleCounts(this.segment(), index); }
-        /// Sets `storageImageSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer storageImageSampleCountsAt(long index, int value) { storageImageSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `storageImageSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int storageImageSampleCountsAt(long index) { return storageImageSampleCounts(this.segment(), index); }
+    /// Sets `storageImageSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits storageImageSampleCountsAt(long index, int value) { storageImageSampleCounts(this.segment(), index, value); return this; }
 
-        /// {@return `maxSampleMaskWords` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxSampleMaskWordsAt(long index) { return maxSampleMaskWords(this.segment(), index); }
-        /// Sets `maxSampleMaskWords` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSampleMaskWordsAt(long index, int value) { maxSampleMaskWords(this.segment(), index, value); return this; }
+    /// {@return `maxSampleMaskWords` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxSampleMaskWordsAt(long index) { return maxSampleMaskWords(this.segment(), index); }
+    /// Sets `maxSampleMaskWords` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxSampleMaskWordsAt(long index, int value) { maxSampleMaskWords(this.segment(), index, value); return this; }
 
-        /// {@return `timestampComputeAndGraphics` at the given index}
-        /// @param index the index of the struct buffer
-        public int timestampComputeAndGraphicsAt(long index) { return timestampComputeAndGraphics(this.segment(), index); }
-        /// Sets `timestampComputeAndGraphics` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer timestampComputeAndGraphicsAt(long index, int value) { timestampComputeAndGraphics(this.segment(), index, value); return this; }
+    /// {@return `timestampComputeAndGraphics` at the given index}
+    /// @param index the index of the struct buffer
+    public int timestampComputeAndGraphicsAt(long index) { return timestampComputeAndGraphics(this.segment(), index); }
+    /// Sets `timestampComputeAndGraphics` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits timestampComputeAndGraphicsAt(long index, int value) { timestampComputeAndGraphics(this.segment(), index, value); return this; }
 
-        /// {@return `timestampPeriod` at the given index}
-        /// @param index the index of the struct buffer
-        public float timestampPeriodAt(long index) { return timestampPeriod(this.segment(), index); }
-        /// Sets `timestampPeriod` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer timestampPeriodAt(long index, float value) { timestampPeriod(this.segment(), index, value); return this; }
+    /// {@return `timestampPeriod` at the given index}
+    /// @param index the index of the struct buffer
+    public float timestampPeriodAt(long index) { return timestampPeriod(this.segment(), index); }
+    /// Sets `timestampPeriod` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits timestampPeriodAt(long index, float value) { timestampPeriod(this.segment(), index, value); return this; }
 
-        /// {@return `maxClipDistances` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxClipDistancesAt(long index) { return maxClipDistances(this.segment(), index); }
-        /// Sets `maxClipDistances` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxClipDistancesAt(long index, int value) { maxClipDistances(this.segment(), index, value); return this; }
+    /// {@return `maxClipDistances` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxClipDistancesAt(long index) { return maxClipDistances(this.segment(), index); }
+    /// Sets `maxClipDistances` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxClipDistancesAt(long index, int value) { maxClipDistances(this.segment(), index, value); return this; }
 
-        /// {@return `maxCullDistances` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxCullDistancesAt(long index) { return maxCullDistances(this.segment(), index); }
-        /// Sets `maxCullDistances` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxCullDistancesAt(long index, int value) { maxCullDistances(this.segment(), index, value); return this; }
+    /// {@return `maxCullDistances` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxCullDistancesAt(long index) { return maxCullDistances(this.segment(), index); }
+    /// Sets `maxCullDistances` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxCullDistancesAt(long index, int value) { maxCullDistances(this.segment(), index, value); return this; }
 
-        /// {@return `maxCombinedClipAndCullDistances` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxCombinedClipAndCullDistancesAt(long index) { return maxCombinedClipAndCullDistances(this.segment(), index); }
-        /// Sets `maxCombinedClipAndCullDistances` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxCombinedClipAndCullDistancesAt(long index, int value) { maxCombinedClipAndCullDistances(this.segment(), index, value); return this; }
+    /// {@return `maxCombinedClipAndCullDistances` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxCombinedClipAndCullDistancesAt(long index) { return maxCombinedClipAndCullDistances(this.segment(), index); }
+    /// Sets `maxCombinedClipAndCullDistances` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits maxCombinedClipAndCullDistancesAt(long index, int value) { maxCombinedClipAndCullDistances(this.segment(), index, value); return this; }
 
-        /// {@return `discreteQueuePriorities` at the given index}
-        /// @param index the index of the struct buffer
-        public int discreteQueuePrioritiesAt(long index) { return discreteQueuePriorities(this.segment(), index); }
-        /// Sets `discreteQueuePriorities` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer discreteQueuePrioritiesAt(long index, int value) { discreteQueuePriorities(this.segment(), index, value); return this; }
+    /// {@return `discreteQueuePriorities` at the given index}
+    /// @param index the index of the struct buffer
+    public int discreteQueuePrioritiesAt(long index) { return discreteQueuePriorities(this.segment(), index); }
+    /// Sets `discreteQueuePriorities` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits discreteQueuePrioritiesAt(long index, int value) { discreteQueuePriorities(this.segment(), index, value); return this; }
 
-        /// {@return `pointSizeRange` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pointSizeRangeAt(long index) { return pointSizeRange(this.segment(), index); }
-        /// {@return `pointSizeRange` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `pointSizeRange` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pointSizeRangeAt(long index) { return pointSizeRange(this.segment(), index); }
+    /// {@return `pointSizeRange` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public float pointSizeRangeAt(long index, long index0) { return pointSizeRange(this.segment(), index, index0); }
-        /// Sets `pointSizeRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pointSizeRangeAt(long index, MemorySegment value) { pointSizeRange(this.segment(), index, value); return this; }
-        /// Sets `pointSizeRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer pointSizeRangeAt(long index, long index0, float value) { pointSizeRange(this.segment(), index, index0, value); return this; }
+    /// Sets `pointSizeRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits pointSizeRangeAt(long index, MemorySegment value) { pointSizeRange(this.segment(), index, value); return this; }
+    /// Sets `pointSizeRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits pointSizeRangeAt(long index, long index0, float value) { pointSizeRange(this.segment(), index, index0, value); return this; }
 
-        /// {@return `lineWidthRange` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment lineWidthRangeAt(long index) { return lineWidthRange(this.segment(), index); }
-        /// {@return `lineWidthRange` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `lineWidthRange` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment lineWidthRangeAt(long index) { return lineWidthRange(this.segment(), index); }
+    /// {@return `lineWidthRange` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public float lineWidthRangeAt(long index, long index0) { return lineWidthRange(this.segment(), index, index0); }
-        /// Sets `lineWidthRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer lineWidthRangeAt(long index, MemorySegment value) { lineWidthRange(this.segment(), index, value); return this; }
-        /// Sets `lineWidthRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer lineWidthRangeAt(long index, long index0, float value) { lineWidthRange(this.segment(), index, index0, value); return this; }
+    /// Sets `lineWidthRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits lineWidthRangeAt(long index, MemorySegment value) { lineWidthRange(this.segment(), index, value); return this; }
+    /// Sets `lineWidthRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits lineWidthRangeAt(long index, long index0, float value) { lineWidthRange(this.segment(), index, index0, value); return this; }
 
-        /// {@return `pointSizeGranularity` at the given index}
-        /// @param index the index of the struct buffer
-        public float pointSizeGranularityAt(long index) { return pointSizeGranularity(this.segment(), index); }
-        /// Sets `pointSizeGranularity` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pointSizeGranularityAt(long index, float value) { pointSizeGranularity(this.segment(), index, value); return this; }
+    /// {@return `pointSizeGranularity` at the given index}
+    /// @param index the index of the struct buffer
+    public float pointSizeGranularityAt(long index) { return pointSizeGranularity(this.segment(), index); }
+    /// Sets `pointSizeGranularity` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits pointSizeGranularityAt(long index, float value) { pointSizeGranularity(this.segment(), index, value); return this; }
 
-        /// {@return `lineWidthGranularity` at the given index}
-        /// @param index the index of the struct buffer
-        public float lineWidthGranularityAt(long index) { return lineWidthGranularity(this.segment(), index); }
-        /// Sets `lineWidthGranularity` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer lineWidthGranularityAt(long index, float value) { lineWidthGranularity(this.segment(), index, value); return this; }
+    /// {@return `lineWidthGranularity` at the given index}
+    /// @param index the index of the struct buffer
+    public float lineWidthGranularityAt(long index) { return lineWidthGranularity(this.segment(), index); }
+    /// Sets `lineWidthGranularity` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits lineWidthGranularityAt(long index, float value) { lineWidthGranularity(this.segment(), index, value); return this; }
 
-        /// {@return `strictLines` at the given index}
-        /// @param index the index of the struct buffer
-        public int strictLinesAt(long index) { return strictLines(this.segment(), index); }
-        /// Sets `strictLines` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer strictLinesAt(long index, int value) { strictLines(this.segment(), index, value); return this; }
+    /// {@return `strictLines` at the given index}
+    /// @param index the index of the struct buffer
+    public int strictLinesAt(long index) { return strictLines(this.segment(), index); }
+    /// Sets `strictLines` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits strictLinesAt(long index, int value) { strictLines(this.segment(), index, value); return this; }
 
-        /// {@return `standardSampleLocations` at the given index}
-        /// @param index the index of the struct buffer
-        public int standardSampleLocationsAt(long index) { return standardSampleLocations(this.segment(), index); }
-        /// Sets `standardSampleLocations` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer standardSampleLocationsAt(long index, int value) { standardSampleLocations(this.segment(), index, value); return this; }
+    /// {@return `standardSampleLocations` at the given index}
+    /// @param index the index of the struct buffer
+    public int standardSampleLocationsAt(long index) { return standardSampleLocations(this.segment(), index); }
+    /// Sets `standardSampleLocations` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits standardSampleLocationsAt(long index, int value) { standardSampleLocations(this.segment(), index, value); return this; }
 
-        /// {@return `optimalBufferCopyOffsetAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public long optimalBufferCopyOffsetAlignmentAt(long index) { return optimalBufferCopyOffsetAlignment(this.segment(), index); }
-        /// Sets `optimalBufferCopyOffsetAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer optimalBufferCopyOffsetAlignmentAt(long index, long value) { optimalBufferCopyOffsetAlignment(this.segment(), index, value); return this; }
+    /// {@return `optimalBufferCopyOffsetAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public long optimalBufferCopyOffsetAlignmentAt(long index) { return optimalBufferCopyOffsetAlignment(this.segment(), index); }
+    /// Sets `optimalBufferCopyOffsetAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits optimalBufferCopyOffsetAlignmentAt(long index, long value) { optimalBufferCopyOffsetAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `optimalBufferCopyRowPitchAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public long optimalBufferCopyRowPitchAlignmentAt(long index) { return optimalBufferCopyRowPitchAlignment(this.segment(), index); }
-        /// Sets `optimalBufferCopyRowPitchAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer optimalBufferCopyRowPitchAlignmentAt(long index, long value) { optimalBufferCopyRowPitchAlignment(this.segment(), index, value); return this; }
+    /// {@return `optimalBufferCopyRowPitchAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public long optimalBufferCopyRowPitchAlignmentAt(long index) { return optimalBufferCopyRowPitchAlignment(this.segment(), index); }
+    /// Sets `optimalBufferCopyRowPitchAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits optimalBufferCopyRowPitchAlignmentAt(long index, long value) { optimalBufferCopyRowPitchAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `nonCoherentAtomSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long nonCoherentAtomSizeAt(long index) { return nonCoherentAtomSize(this.segment(), index); }
-        /// Sets `nonCoherentAtomSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer nonCoherentAtomSizeAt(long index, long value) { nonCoherentAtomSize(this.segment(), index, value); return this; }
+    /// {@return `nonCoherentAtomSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long nonCoherentAtomSizeAt(long index) { return nonCoherentAtomSize(this.segment(), index); }
+    /// Sets `nonCoherentAtomSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceLimits nonCoherentAtomSizeAt(long index, long value) { nonCoherentAtomSize(this.segment(), index, value); return this; }
 
-    }
 }

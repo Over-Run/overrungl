@@ -21,6 +21,7 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     uint8_t delta_poc_msb_cycle_lt[48];
 /// };
 /// ```
-public sealed class StdVideoEncodeH265LongTermRefPics extends GroupType {
+public final class StdVideoEncodeH265LongTermRefPics extends GroupType {
     /// The struct layout of `StdVideoEncodeH265LongTermRefPics`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_BYTE.withName("num_long_term_sps"),
@@ -91,20 +92,21 @@ public sealed class StdVideoEncodeH265LongTermRefPics extends GroupType {
     public static final VarHandle VH_delta_poc_msb_cycle_lt = LAYOUT.arrayElementVarHandle(PathElement.groupElement("delta_poc_msb_cycle_lt"), PathElement.sequenceElement());
 
     /// Creates `StdVideoEncodeH265LongTermRefPics` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoEncodeH265LongTermRefPics(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoEncodeH265LongTermRefPics(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoEncodeH265LongTermRefPics` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoEncodeH265LongTermRefPics of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265LongTermRefPics(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeH265LongTermRefPics` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH265LongTermRefPics ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265LongTermRefPics(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoEncodeH265LongTermRefPics ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265LongTermRefPics(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoEncodeH265LongTermRefPics` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class StdVideoEncodeH265LongTermRefPics extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoEncodeH265LongTermRefPics ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH265LongTermRefPics(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
-    public static StdVideoEncodeH265LongTermRefPics alloc(SegmentAllocator allocator) { return new StdVideoEncodeH265LongTermRefPics(allocator.allocate(LAYOUT)); }
+    public static StdVideoEncodeH265LongTermRefPics alloc(SegmentAllocator allocator) { return new StdVideoEncodeH265LongTermRefPics(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH265LongTermRefPics`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoEncodeH265LongTermRefPics alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265LongTermRefPics(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoEncodeH265LongTermRefPics` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class StdVideoEncodeH265LongTermRefPics extends GroupType {
     /// @return `this`
     public StdVideoEncodeH265LongTermRefPics copyFrom(StdVideoEncodeH265LongTermRefPics src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoEncodeH265LongTermRefPics reinterpret(long count) { return new StdVideoEncodeH265LongTermRefPics(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `num_long_term_sps` at the given index}
     /// @param segment the segment of the struct
@@ -399,130 +402,124 @@ public sealed class StdVideoEncodeH265LongTermRefPics extends GroupType {
     /// @return `this`
     public StdVideoEncodeH265LongTermRefPics delta_poc_msb_cycle_lt(long index0, byte value) { delta_poc_msb_cycle_lt(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [StdVideoEncodeH265LongTermRefPics].
-    public static final class Buffer extends StdVideoEncodeH265LongTermRefPics {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoEncodeH265LongTermRefPics`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH265LongTermRefPics`
+    public StdVideoEncodeH265LongTermRefPics asSlice(long index) { return new StdVideoEncodeH265LongTermRefPics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoEncodeH265LongTermRefPics.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoEncodeH265LongTermRefPics`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH265LongTermRefPics`
+    public StdVideoEncodeH265LongTermRefPics asSlice(long index, long count) { return new StdVideoEncodeH265LongTermRefPics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoEncodeH265LongTermRefPics` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics at(long index, Consumer<StdVideoEncodeH265LongTermRefPics> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH265LongTermRefPics`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoEncodeH265LongTermRefPics`
-        public StdVideoEncodeH265LongTermRefPics asSlice(long index) { return new StdVideoEncodeH265LongTermRefPics(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `num_long_term_sps` at the given index}
+    /// @param index the index of the struct buffer
+    public byte num_long_term_spsAt(long index) { return num_long_term_sps(this.segment(), index); }
+    /// Sets `num_long_term_sps` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics num_long_term_spsAt(long index, byte value) { num_long_term_sps(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH265LongTermRefPics`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoEncodeH265LongTermRefPics`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `num_long_term_pics` at the given index}
+    /// @param index the index of the struct buffer
+    public byte num_long_term_picsAt(long index) { return num_long_term_pics(this.segment(), index); }
+    /// Sets `num_long_term_pics` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics num_long_term_picsAt(long index, byte value) { num_long_term_pics(this.segment(), index, value); return this; }
 
-        /// {@return `num_long_term_sps` at the given index}
-        /// @param index the index of the struct buffer
-        public byte num_long_term_spsAt(long index) { return num_long_term_sps(this.segment(), index); }
-        /// Sets `num_long_term_sps` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_long_term_spsAt(long index, byte value) { num_long_term_sps(this.segment(), index, value); return this; }
-
-        /// {@return `num_long_term_pics` at the given index}
-        /// @param index the index of the struct buffer
-        public byte num_long_term_picsAt(long index) { return num_long_term_pics(this.segment(), index); }
-        /// Sets `num_long_term_pics` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_long_term_picsAt(long index, byte value) { num_long_term_pics(this.segment(), index, value); return this; }
-
-        /// {@return `lt_idx_sps` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment lt_idx_spsAt(long index) { return lt_idx_sps(this.segment(), index); }
-        /// {@return `lt_idx_sps` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `lt_idx_sps` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment lt_idx_spsAt(long index) { return lt_idx_sps(this.segment(), index); }
+    /// {@return `lt_idx_sps` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte lt_idx_spsAt(long index, long index0) { return lt_idx_sps(this.segment(), index, index0); }
-        /// Sets `lt_idx_sps` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer lt_idx_spsAt(long index, MemorySegment value) { lt_idx_sps(this.segment(), index, value); return this; }
-        /// Sets `lt_idx_sps` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer lt_idx_spsAt(long index, long index0, byte value) { lt_idx_sps(this.segment(), index, index0, value); return this; }
+    /// Sets `lt_idx_sps` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics lt_idx_spsAt(long index, MemorySegment value) { lt_idx_sps(this.segment(), index, value); return this; }
+    /// Sets `lt_idx_sps` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics lt_idx_spsAt(long index, long index0, byte value) { lt_idx_sps(this.segment(), index, index0, value); return this; }
 
-        /// {@return `poc_lsb_lt` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment poc_lsb_ltAt(long index) { return poc_lsb_lt(this.segment(), index); }
-        /// {@return `poc_lsb_lt` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `poc_lsb_lt` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment poc_lsb_ltAt(long index) { return poc_lsb_lt(this.segment(), index); }
+    /// {@return `poc_lsb_lt` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte poc_lsb_ltAt(long index, long index0) { return poc_lsb_lt(this.segment(), index, index0); }
-        /// Sets `poc_lsb_lt` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer poc_lsb_ltAt(long index, MemorySegment value) { poc_lsb_lt(this.segment(), index, value); return this; }
-        /// Sets `poc_lsb_lt` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer poc_lsb_ltAt(long index, long index0, byte value) { poc_lsb_lt(this.segment(), index, index0, value); return this; }
+    /// Sets `poc_lsb_lt` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics poc_lsb_ltAt(long index, MemorySegment value) { poc_lsb_lt(this.segment(), index, value); return this; }
+    /// Sets `poc_lsb_lt` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics poc_lsb_ltAt(long index, long index0, byte value) { poc_lsb_lt(this.segment(), index, index0, value); return this; }
 
-        /// {@return `used_by_curr_pic_lt_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public short used_by_curr_pic_lt_flagAt(long index) { return used_by_curr_pic_lt_flag(this.segment(), index); }
-        /// Sets `used_by_curr_pic_lt_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer used_by_curr_pic_lt_flagAt(long index, short value) { used_by_curr_pic_lt_flag(this.segment(), index, value); return this; }
+    /// {@return `used_by_curr_pic_lt_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public short used_by_curr_pic_lt_flagAt(long index) { return used_by_curr_pic_lt_flag(this.segment(), index); }
+    /// Sets `used_by_curr_pic_lt_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics used_by_curr_pic_lt_flagAt(long index, short value) { used_by_curr_pic_lt_flag(this.segment(), index, value); return this; }
 
-        /// {@return `delta_poc_msb_present_flag` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment delta_poc_msb_present_flagAt(long index) { return delta_poc_msb_present_flag(this.segment(), index); }
-        /// {@return `delta_poc_msb_present_flag` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `delta_poc_msb_present_flag` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment delta_poc_msb_present_flagAt(long index) { return delta_poc_msb_present_flag(this.segment(), index); }
+    /// {@return `delta_poc_msb_present_flag` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte delta_poc_msb_present_flagAt(long index, long index0) { return delta_poc_msb_present_flag(this.segment(), index, index0); }
-        /// Sets `delta_poc_msb_present_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer delta_poc_msb_present_flagAt(long index, MemorySegment value) { delta_poc_msb_present_flag(this.segment(), index, value); return this; }
-        /// Sets `delta_poc_msb_present_flag` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer delta_poc_msb_present_flagAt(long index, long index0, byte value) { delta_poc_msb_present_flag(this.segment(), index, index0, value); return this; }
+    /// Sets `delta_poc_msb_present_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics delta_poc_msb_present_flagAt(long index, MemorySegment value) { delta_poc_msb_present_flag(this.segment(), index, value); return this; }
+    /// Sets `delta_poc_msb_present_flag` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics delta_poc_msb_present_flagAt(long index, long index0, byte value) { delta_poc_msb_present_flag(this.segment(), index, index0, value); return this; }
 
-        /// {@return `delta_poc_msb_cycle_lt` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment delta_poc_msb_cycle_ltAt(long index) { return delta_poc_msb_cycle_lt(this.segment(), index); }
-        /// {@return `delta_poc_msb_cycle_lt` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `delta_poc_msb_cycle_lt` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment delta_poc_msb_cycle_ltAt(long index) { return delta_poc_msb_cycle_lt(this.segment(), index); }
+    /// {@return `delta_poc_msb_cycle_lt` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte delta_poc_msb_cycle_ltAt(long index, long index0) { return delta_poc_msb_cycle_lt(this.segment(), index, index0); }
-        /// Sets `delta_poc_msb_cycle_lt` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer delta_poc_msb_cycle_ltAt(long index, MemorySegment value) { delta_poc_msb_cycle_lt(this.segment(), index, value); return this; }
-        /// Sets `delta_poc_msb_cycle_lt` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer delta_poc_msb_cycle_ltAt(long index, long index0, byte value) { delta_poc_msb_cycle_lt(this.segment(), index, index0, value); return this; }
+    /// Sets `delta_poc_msb_cycle_lt` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics delta_poc_msb_cycle_ltAt(long index, MemorySegment value) { delta_poc_msb_cycle_lt(this.segment(), index, value); return this; }
+    /// Sets `delta_poc_msb_cycle_lt` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH265LongTermRefPics delta_poc_msb_cycle_ltAt(long index, long index0, byte value) { delta_poc_msb_cycle_lt(this.segment(), index, index0, value); return this; }
 
-    }
 }

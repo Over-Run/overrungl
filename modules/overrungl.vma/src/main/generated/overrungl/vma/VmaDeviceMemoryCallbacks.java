@@ -21,6 +21,7 @@ package overrungl.vma;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     void* pUserData;
 /// };
 /// ```
-public sealed class VmaDeviceMemoryCallbacks extends GroupType {
+public final class VmaDeviceMemoryCallbacks extends GroupType {
     /// The struct layout of `VmaDeviceMemoryCallbacks`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("pfnAllocate"),
@@ -59,20 +60,21 @@ public sealed class VmaDeviceMemoryCallbacks extends GroupType {
     public static final VarHandle VH_pUserData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pUserData"));
 
     /// Creates `VmaDeviceMemoryCallbacks` with the given segment.
-    /// @param segment the memory segment
-    public VmaDeviceMemoryCallbacks(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VmaDeviceMemoryCallbacks(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VmaDeviceMemoryCallbacks` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VmaDeviceMemoryCallbacks of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDeviceMemoryCallbacks(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VmaDeviceMemoryCallbacks` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VmaDeviceMemoryCallbacks ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDeviceMemoryCallbacks(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VmaDeviceMemoryCallbacks ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDeviceMemoryCallbacks(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VmaDeviceMemoryCallbacks` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VmaDeviceMemoryCallbacks extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VmaDeviceMemoryCallbacks ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDeviceMemoryCallbacks(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VmaDeviceMemoryCallbacks` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VmaDeviceMemoryCallbacks`
-    public static VmaDeviceMemoryCallbacks alloc(SegmentAllocator allocator) { return new VmaDeviceMemoryCallbacks(allocator.allocate(LAYOUT)); }
+    public static VmaDeviceMemoryCallbacks alloc(SegmentAllocator allocator) { return new VmaDeviceMemoryCallbacks(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VmaDeviceMemoryCallbacks` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VmaDeviceMemoryCallbacks`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VmaDeviceMemoryCallbacks alloc(SegmentAllocator allocator, long count) { return new VmaDeviceMemoryCallbacks(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VmaDeviceMemoryCallbacks` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VmaDeviceMemoryCallbacks extends GroupType {
     /// @return `this`
     public VmaDeviceMemoryCallbacks copyFrom(VmaDeviceMemoryCallbacks src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VmaDeviceMemoryCallbacks reinterpret(long count) { return new VmaDeviceMemoryCallbacks(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `pfnAllocate` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VmaDeviceMemoryCallbacks extends GroupType {
     /// @return `this`
     public VmaDeviceMemoryCallbacks pUserData(MemorySegment value) { pUserData(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VmaDeviceMemoryCallbacks].
-    public static final class Buffer extends VmaDeviceMemoryCallbacks {
-        private final long elementCount;
+    /// Creates a slice of `VmaDeviceMemoryCallbacks`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VmaDeviceMemoryCallbacks`
+    public VmaDeviceMemoryCallbacks asSlice(long index) { return new VmaDeviceMemoryCallbacks(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VmaDeviceMemoryCallbacks.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VmaDeviceMemoryCallbacks`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VmaDeviceMemoryCallbacks`
+    public VmaDeviceMemoryCallbacks asSlice(long index, long count) { return new VmaDeviceMemoryCallbacks(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VmaDeviceMemoryCallbacks` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VmaDeviceMemoryCallbacks at(long index, Consumer<VmaDeviceMemoryCallbacks> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VmaDeviceMemoryCallbacks`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VmaDeviceMemoryCallbacks`
-        public VmaDeviceMemoryCallbacks asSlice(long index) { return new VmaDeviceMemoryCallbacks(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `pfnAllocate` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pfnAllocateAt(long index) { return pfnAllocate(this.segment(), index); }
+    /// Sets `pfnAllocate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDeviceMemoryCallbacks pfnAllocateAt(long index, MemorySegment value) { pfnAllocate(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VmaDeviceMemoryCallbacks`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VmaDeviceMemoryCallbacks`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pfnFree` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pfnFreeAt(long index) { return pfnFree(this.segment(), index); }
+    /// Sets `pfnFree` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDeviceMemoryCallbacks pfnFreeAt(long index, MemorySegment value) { pfnFree(this.segment(), index, value); return this; }
 
-        /// {@return `pfnAllocate` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pfnAllocateAt(long index) { return pfnAllocate(this.segment(), index); }
-        /// Sets `pfnAllocate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pfnAllocateAt(long index, MemorySegment value) { pfnAllocate(this.segment(), index, value); return this; }
+    /// {@return `pUserData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pUserDataAt(long index) { return pUserData(this.segment(), index); }
+    /// Sets `pUserData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDeviceMemoryCallbacks pUserDataAt(long index, MemorySegment value) { pUserData(this.segment(), index, value); return this; }
 
-        /// {@return `pfnFree` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pfnFreeAt(long index) { return pfnFree(this.segment(), index); }
-        /// Sets `pfnFree` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pfnFreeAt(long index, MemorySegment value) { pfnFree(this.segment(), index, value); return this; }
-
-        /// {@return `pUserData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pUserDataAt(long index) { return pUserData(this.segment(), index); }
-        /// Sets `pUserData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pUserDataAt(long index, MemorySegment value) { pUserData(this.segment(), index, value); return this; }
-
-    }
 }

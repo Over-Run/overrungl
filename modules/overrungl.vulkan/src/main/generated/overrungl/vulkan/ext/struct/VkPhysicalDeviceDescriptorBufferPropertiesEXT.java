@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -64,7 +65,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceSize descriptorBufferAddressSpaceSize;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupType {
+public final class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -315,20 +316,21 @@ public sealed class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupT
     public static final VarHandle VH_descriptorBufferAddressSpaceSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("descriptorBufferAddressSpaceSize"));
 
     /// Creates `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferPropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment.
     ///
@@ -336,18 +338,18 @@ public sealed class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupT
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceDescriptorBufferPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
-    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceDescriptorBufferPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceDescriptorBufferPropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -1229,9 +1231,10 @@ public sealed class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupT
     /// @return `this`
     public VkPhysicalDeviceDescriptorBufferPropertiesEXT copyFrom(VkPhysicalDeviceDescriptorBufferPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT reinterpret(long count) { return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -1793,342 +1796,336 @@ public sealed class VkPhysicalDeviceDescriptorBufferPropertiesEXT extends GroupT
     /// @return `this`
     public VkPhysicalDeviceDescriptorBufferPropertiesEXT descriptorBufferAddressSpaceSize(long value) { descriptorBufferAddressSpaceSize(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceDescriptorBufferPropertiesEXT].
-    public static final class Buffer extends VkPhysicalDeviceDescriptorBufferPropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceDescriptorBufferPropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceDescriptorBufferPropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT at(long index, Consumer<VkPhysicalDeviceDescriptorBufferPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
-        public VkPhysicalDeviceDescriptorBufferPropertiesEXT asSlice(long index) { return new VkPhysicalDeviceDescriptorBufferPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceDescriptorBufferPropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `combinedImageSamplerDescriptorSingleArray` at the given index}
+    /// @param index the index of the struct buffer
+    public int combinedImageSamplerDescriptorSingleArrayAt(long index) { return combinedImageSamplerDescriptorSingleArray(this.segment(), index); }
+    /// Sets `combinedImageSamplerDescriptorSingleArray` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT combinedImageSamplerDescriptorSingleArrayAt(long index, int value) { combinedImageSamplerDescriptorSingleArray(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `bufferlessPushDescriptors` at the given index}
+    /// @param index the index of the struct buffer
+    public int bufferlessPushDescriptorsAt(long index) { return bufferlessPushDescriptors(this.segment(), index); }
+    /// Sets `bufferlessPushDescriptors` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT bufferlessPushDescriptorsAt(long index, int value) { bufferlessPushDescriptors(this.segment(), index, value); return this; }
 
-        /// {@return `combinedImageSamplerDescriptorSingleArray` at the given index}
-        /// @param index the index of the struct buffer
-        public int combinedImageSamplerDescriptorSingleArrayAt(long index) { return combinedImageSamplerDescriptorSingleArray(this.segment(), index); }
-        /// Sets `combinedImageSamplerDescriptorSingleArray` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer combinedImageSamplerDescriptorSingleArrayAt(long index, int value) { combinedImageSamplerDescriptorSingleArray(this.segment(), index, value); return this; }
+    /// {@return `allowSamplerImageViewPostSubmitCreation` at the given index}
+    /// @param index the index of the struct buffer
+    public int allowSamplerImageViewPostSubmitCreationAt(long index) { return allowSamplerImageViewPostSubmitCreation(this.segment(), index); }
+    /// Sets `allowSamplerImageViewPostSubmitCreation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT allowSamplerImageViewPostSubmitCreationAt(long index, int value) { allowSamplerImageViewPostSubmitCreation(this.segment(), index, value); return this; }
 
-        /// {@return `bufferlessPushDescriptors` at the given index}
-        /// @param index the index of the struct buffer
-        public int bufferlessPushDescriptorsAt(long index) { return bufferlessPushDescriptors(this.segment(), index); }
-        /// Sets `bufferlessPushDescriptors` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferlessPushDescriptorsAt(long index, int value) { bufferlessPushDescriptors(this.segment(), index, value); return this; }
+    /// {@return `descriptorBufferOffsetAlignment` at the given index}
+    /// @param index the index of the struct buffer
+    public long descriptorBufferOffsetAlignmentAt(long index) { return descriptorBufferOffsetAlignment(this.segment(), index); }
+    /// Sets `descriptorBufferOffsetAlignment` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT descriptorBufferOffsetAlignmentAt(long index, long value) { descriptorBufferOffsetAlignment(this.segment(), index, value); return this; }
 
-        /// {@return `allowSamplerImageViewPostSubmitCreation` at the given index}
-        /// @param index the index of the struct buffer
-        public int allowSamplerImageViewPostSubmitCreationAt(long index) { return allowSamplerImageViewPostSubmitCreation(this.segment(), index); }
-        /// Sets `allowSamplerImageViewPostSubmitCreation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer allowSamplerImageViewPostSubmitCreationAt(long index, int value) { allowSamplerImageViewPostSubmitCreation(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorBufferBindings` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorBufferBindingsAt(long index) { return maxDescriptorBufferBindings(this.segment(), index); }
+    /// Sets `maxDescriptorBufferBindings` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxDescriptorBufferBindingsAt(long index, int value) { maxDescriptorBufferBindings(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorBufferOffsetAlignment` at the given index}
-        /// @param index the index of the struct buffer
-        public long descriptorBufferOffsetAlignmentAt(long index) { return descriptorBufferOffsetAlignment(this.segment(), index); }
-        /// Sets `descriptorBufferOffsetAlignment` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorBufferOffsetAlignmentAt(long index, long value) { descriptorBufferOffsetAlignment(this.segment(), index, value); return this; }
+    /// {@return `maxResourceDescriptorBufferBindings` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxResourceDescriptorBufferBindingsAt(long index) { return maxResourceDescriptorBufferBindings(this.segment(), index); }
+    /// Sets `maxResourceDescriptorBufferBindings` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxResourceDescriptorBufferBindingsAt(long index, int value) { maxResourceDescriptorBufferBindings(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorBufferBindings` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorBufferBindingsAt(long index) { return maxDescriptorBufferBindings(this.segment(), index); }
-        /// Sets `maxDescriptorBufferBindings` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorBufferBindingsAt(long index, int value) { maxDescriptorBufferBindings(this.segment(), index, value); return this; }
+    /// {@return `maxSamplerDescriptorBufferBindings` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxSamplerDescriptorBufferBindingsAt(long index) { return maxSamplerDescriptorBufferBindings(this.segment(), index); }
+    /// Sets `maxSamplerDescriptorBufferBindings` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxSamplerDescriptorBufferBindingsAt(long index, int value) { maxSamplerDescriptorBufferBindings(this.segment(), index, value); return this; }
 
-        /// {@return `maxResourceDescriptorBufferBindings` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxResourceDescriptorBufferBindingsAt(long index) { return maxResourceDescriptorBufferBindings(this.segment(), index); }
-        /// Sets `maxResourceDescriptorBufferBindings` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxResourceDescriptorBufferBindingsAt(long index, int value) { maxResourceDescriptorBufferBindings(this.segment(), index, value); return this; }
+    /// {@return `maxEmbeddedImmutableSamplerBindings` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxEmbeddedImmutableSamplerBindingsAt(long index) { return maxEmbeddedImmutableSamplerBindings(this.segment(), index); }
+    /// Sets `maxEmbeddedImmutableSamplerBindings` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxEmbeddedImmutableSamplerBindingsAt(long index, int value) { maxEmbeddedImmutableSamplerBindings(this.segment(), index, value); return this; }
 
-        /// {@return `maxSamplerDescriptorBufferBindings` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxSamplerDescriptorBufferBindingsAt(long index) { return maxSamplerDescriptorBufferBindings(this.segment(), index); }
-        /// Sets `maxSamplerDescriptorBufferBindings` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSamplerDescriptorBufferBindingsAt(long index, int value) { maxSamplerDescriptorBufferBindings(this.segment(), index, value); return this; }
+    /// {@return `maxEmbeddedImmutableSamplers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxEmbeddedImmutableSamplersAt(long index) { return maxEmbeddedImmutableSamplers(this.segment(), index); }
+    /// Sets `maxEmbeddedImmutableSamplers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxEmbeddedImmutableSamplersAt(long index, int value) { maxEmbeddedImmutableSamplers(this.segment(), index, value); return this; }
 
-        /// {@return `maxEmbeddedImmutableSamplerBindings` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxEmbeddedImmutableSamplerBindingsAt(long index) { return maxEmbeddedImmutableSamplerBindings(this.segment(), index); }
-        /// Sets `maxEmbeddedImmutableSamplerBindings` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxEmbeddedImmutableSamplerBindingsAt(long index, int value) { maxEmbeddedImmutableSamplerBindings(this.segment(), index, value); return this; }
+    /// {@return `bufferCaptureReplayDescriptorDataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long bufferCaptureReplayDescriptorDataSizeAt(long index) { return bufferCaptureReplayDescriptorDataSize(this.segment(), index); }
+    /// Sets `bufferCaptureReplayDescriptorDataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT bufferCaptureReplayDescriptorDataSizeAt(long index, long value) { bufferCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
 
-        /// {@return `maxEmbeddedImmutableSamplers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxEmbeddedImmutableSamplersAt(long index) { return maxEmbeddedImmutableSamplers(this.segment(), index); }
-        /// Sets `maxEmbeddedImmutableSamplers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxEmbeddedImmutableSamplersAt(long index, int value) { maxEmbeddedImmutableSamplers(this.segment(), index, value); return this; }
+    /// {@return `imageCaptureReplayDescriptorDataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long imageCaptureReplayDescriptorDataSizeAt(long index) { return imageCaptureReplayDescriptorDataSize(this.segment(), index); }
+    /// Sets `imageCaptureReplayDescriptorDataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT imageCaptureReplayDescriptorDataSizeAt(long index, long value) { imageCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
 
-        /// {@return `bufferCaptureReplayDescriptorDataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long bufferCaptureReplayDescriptorDataSizeAt(long index) { return bufferCaptureReplayDescriptorDataSize(this.segment(), index); }
-        /// Sets `bufferCaptureReplayDescriptorDataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferCaptureReplayDescriptorDataSizeAt(long index, long value) { bufferCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+    /// {@return `imageViewCaptureReplayDescriptorDataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long imageViewCaptureReplayDescriptorDataSizeAt(long index) { return imageViewCaptureReplayDescriptorDataSize(this.segment(), index); }
+    /// Sets `imageViewCaptureReplayDescriptorDataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT imageViewCaptureReplayDescriptorDataSizeAt(long index, long value) { imageViewCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
 
-        /// {@return `imageCaptureReplayDescriptorDataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long imageCaptureReplayDescriptorDataSizeAt(long index) { return imageCaptureReplayDescriptorDataSize(this.segment(), index); }
-        /// Sets `imageCaptureReplayDescriptorDataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageCaptureReplayDescriptorDataSizeAt(long index, long value) { imageCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+    /// {@return `samplerCaptureReplayDescriptorDataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long samplerCaptureReplayDescriptorDataSizeAt(long index) { return samplerCaptureReplayDescriptorDataSize(this.segment(), index); }
+    /// Sets `samplerCaptureReplayDescriptorDataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT samplerCaptureReplayDescriptorDataSizeAt(long index, long value) { samplerCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
 
-        /// {@return `imageViewCaptureReplayDescriptorDataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long imageViewCaptureReplayDescriptorDataSizeAt(long index) { return imageViewCaptureReplayDescriptorDataSize(this.segment(), index); }
-        /// Sets `imageViewCaptureReplayDescriptorDataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer imageViewCaptureReplayDescriptorDataSizeAt(long index, long value) { imageViewCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+    /// {@return `accelerationStructureCaptureReplayDescriptorDataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long accelerationStructureCaptureReplayDescriptorDataSizeAt(long index) { return accelerationStructureCaptureReplayDescriptorDataSize(this.segment(), index); }
+    /// Sets `accelerationStructureCaptureReplayDescriptorDataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT accelerationStructureCaptureReplayDescriptorDataSizeAt(long index, long value) { accelerationStructureCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
 
-        /// {@return `samplerCaptureReplayDescriptorDataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long samplerCaptureReplayDescriptorDataSizeAt(long index) { return samplerCaptureReplayDescriptorDataSize(this.segment(), index); }
-        /// Sets `samplerCaptureReplayDescriptorDataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer samplerCaptureReplayDescriptorDataSizeAt(long index, long value) { samplerCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+    /// {@return `samplerDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long samplerDescriptorSizeAt(long index) { return samplerDescriptorSize(this.segment(), index); }
+    /// Sets `samplerDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT samplerDescriptorSizeAt(long index, long value) { samplerDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `accelerationStructureCaptureReplayDescriptorDataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long accelerationStructureCaptureReplayDescriptorDataSizeAt(long index) { return accelerationStructureCaptureReplayDescriptorDataSize(this.segment(), index); }
-        /// Sets `accelerationStructureCaptureReplayDescriptorDataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer accelerationStructureCaptureReplayDescriptorDataSizeAt(long index, long value) { accelerationStructureCaptureReplayDescriptorDataSize(this.segment(), index, value); return this; }
+    /// {@return `combinedImageSamplerDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long combinedImageSamplerDescriptorSizeAt(long index) { return combinedImageSamplerDescriptorSize(this.segment(), index); }
+    /// Sets `combinedImageSamplerDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT combinedImageSamplerDescriptorSizeAt(long index, long value) { combinedImageSamplerDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `samplerDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long samplerDescriptorSizeAt(long index) { return samplerDescriptorSize(this.segment(), index); }
-        /// Sets `samplerDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer samplerDescriptorSizeAt(long index, long value) { samplerDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `sampledImageDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long sampledImageDescriptorSizeAt(long index) { return sampledImageDescriptorSize(this.segment(), index); }
+    /// Sets `sampledImageDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT sampledImageDescriptorSizeAt(long index, long value) { sampledImageDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `combinedImageSamplerDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long combinedImageSamplerDescriptorSizeAt(long index) { return combinedImageSamplerDescriptorSize(this.segment(), index); }
-        /// Sets `combinedImageSamplerDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer combinedImageSamplerDescriptorSizeAt(long index, long value) { combinedImageSamplerDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `storageImageDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long storageImageDescriptorSizeAt(long index) { return storageImageDescriptorSize(this.segment(), index); }
+    /// Sets `storageImageDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT storageImageDescriptorSizeAt(long index, long value) { storageImageDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `sampledImageDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long sampledImageDescriptorSizeAt(long index) { return sampledImageDescriptorSize(this.segment(), index); }
-        /// Sets `sampledImageDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sampledImageDescriptorSizeAt(long index, long value) { sampledImageDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `uniformTexelBufferDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long uniformTexelBufferDescriptorSizeAt(long index) { return uniformTexelBufferDescriptorSize(this.segment(), index); }
+    /// Sets `uniformTexelBufferDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT uniformTexelBufferDescriptorSizeAt(long index, long value) { uniformTexelBufferDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `storageImageDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long storageImageDescriptorSizeAt(long index) { return storageImageDescriptorSize(this.segment(), index); }
-        /// Sets `storageImageDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer storageImageDescriptorSizeAt(long index, long value) { storageImageDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `robustUniformTexelBufferDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long robustUniformTexelBufferDescriptorSizeAt(long index) { return robustUniformTexelBufferDescriptorSize(this.segment(), index); }
+    /// Sets `robustUniformTexelBufferDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT robustUniformTexelBufferDescriptorSizeAt(long index, long value) { robustUniformTexelBufferDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `uniformTexelBufferDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long uniformTexelBufferDescriptorSizeAt(long index) { return uniformTexelBufferDescriptorSize(this.segment(), index); }
-        /// Sets `uniformTexelBufferDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer uniformTexelBufferDescriptorSizeAt(long index, long value) { uniformTexelBufferDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `storageTexelBufferDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long storageTexelBufferDescriptorSizeAt(long index) { return storageTexelBufferDescriptorSize(this.segment(), index); }
+    /// Sets `storageTexelBufferDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT storageTexelBufferDescriptorSizeAt(long index, long value) { storageTexelBufferDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `robustUniformTexelBufferDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long robustUniformTexelBufferDescriptorSizeAt(long index) { return robustUniformTexelBufferDescriptorSize(this.segment(), index); }
-        /// Sets `robustUniformTexelBufferDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer robustUniformTexelBufferDescriptorSizeAt(long index, long value) { robustUniformTexelBufferDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `robustStorageTexelBufferDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long robustStorageTexelBufferDescriptorSizeAt(long index) { return robustStorageTexelBufferDescriptorSize(this.segment(), index); }
+    /// Sets `robustStorageTexelBufferDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT robustStorageTexelBufferDescriptorSizeAt(long index, long value) { robustStorageTexelBufferDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `storageTexelBufferDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long storageTexelBufferDescriptorSizeAt(long index) { return storageTexelBufferDescriptorSize(this.segment(), index); }
-        /// Sets `storageTexelBufferDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer storageTexelBufferDescriptorSizeAt(long index, long value) { storageTexelBufferDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `uniformBufferDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long uniformBufferDescriptorSizeAt(long index) { return uniformBufferDescriptorSize(this.segment(), index); }
+    /// Sets `uniformBufferDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT uniformBufferDescriptorSizeAt(long index, long value) { uniformBufferDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `robustStorageTexelBufferDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long robustStorageTexelBufferDescriptorSizeAt(long index) { return robustStorageTexelBufferDescriptorSize(this.segment(), index); }
-        /// Sets `robustStorageTexelBufferDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer robustStorageTexelBufferDescriptorSizeAt(long index, long value) { robustStorageTexelBufferDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `robustUniformBufferDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long robustUniformBufferDescriptorSizeAt(long index) { return robustUniformBufferDescriptorSize(this.segment(), index); }
+    /// Sets `robustUniformBufferDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT robustUniformBufferDescriptorSizeAt(long index, long value) { robustUniformBufferDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `uniformBufferDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long uniformBufferDescriptorSizeAt(long index) { return uniformBufferDescriptorSize(this.segment(), index); }
-        /// Sets `uniformBufferDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer uniformBufferDescriptorSizeAt(long index, long value) { uniformBufferDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `storageBufferDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long storageBufferDescriptorSizeAt(long index) { return storageBufferDescriptorSize(this.segment(), index); }
+    /// Sets `storageBufferDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT storageBufferDescriptorSizeAt(long index, long value) { storageBufferDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `robustUniformBufferDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long robustUniformBufferDescriptorSizeAt(long index) { return robustUniformBufferDescriptorSize(this.segment(), index); }
-        /// Sets `robustUniformBufferDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer robustUniformBufferDescriptorSizeAt(long index, long value) { robustUniformBufferDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `robustStorageBufferDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long robustStorageBufferDescriptorSizeAt(long index) { return robustStorageBufferDescriptorSize(this.segment(), index); }
+    /// Sets `robustStorageBufferDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT robustStorageBufferDescriptorSizeAt(long index, long value) { robustStorageBufferDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `storageBufferDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long storageBufferDescriptorSizeAt(long index) { return storageBufferDescriptorSize(this.segment(), index); }
-        /// Sets `storageBufferDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer storageBufferDescriptorSizeAt(long index, long value) { storageBufferDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `inputAttachmentDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long inputAttachmentDescriptorSizeAt(long index) { return inputAttachmentDescriptorSize(this.segment(), index); }
+    /// Sets `inputAttachmentDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT inputAttachmentDescriptorSizeAt(long index, long value) { inputAttachmentDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `robustStorageBufferDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long robustStorageBufferDescriptorSizeAt(long index) { return robustStorageBufferDescriptorSize(this.segment(), index); }
-        /// Sets `robustStorageBufferDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer robustStorageBufferDescriptorSizeAt(long index, long value) { robustStorageBufferDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `accelerationStructureDescriptorSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long accelerationStructureDescriptorSizeAt(long index) { return accelerationStructureDescriptorSize(this.segment(), index); }
+    /// Sets `accelerationStructureDescriptorSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT accelerationStructureDescriptorSizeAt(long index, long value) { accelerationStructureDescriptorSize(this.segment(), index, value); return this; }
 
-        /// {@return `inputAttachmentDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long inputAttachmentDescriptorSizeAt(long index) { return inputAttachmentDescriptorSize(this.segment(), index); }
-        /// Sets `inputAttachmentDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer inputAttachmentDescriptorSizeAt(long index, long value) { inputAttachmentDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `maxSamplerDescriptorBufferRange` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxSamplerDescriptorBufferRangeAt(long index) { return maxSamplerDescriptorBufferRange(this.segment(), index); }
+    /// Sets `maxSamplerDescriptorBufferRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxSamplerDescriptorBufferRangeAt(long index, long value) { maxSamplerDescriptorBufferRange(this.segment(), index, value); return this; }
 
-        /// {@return `accelerationStructureDescriptorSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long accelerationStructureDescriptorSizeAt(long index) { return accelerationStructureDescriptorSize(this.segment(), index); }
-        /// Sets `accelerationStructureDescriptorSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer accelerationStructureDescriptorSizeAt(long index, long value) { accelerationStructureDescriptorSize(this.segment(), index, value); return this; }
+    /// {@return `maxResourceDescriptorBufferRange` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxResourceDescriptorBufferRangeAt(long index) { return maxResourceDescriptorBufferRange(this.segment(), index); }
+    /// Sets `maxResourceDescriptorBufferRange` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT maxResourceDescriptorBufferRangeAt(long index, long value) { maxResourceDescriptorBufferRange(this.segment(), index, value); return this; }
 
-        /// {@return `maxSamplerDescriptorBufferRange` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxSamplerDescriptorBufferRangeAt(long index) { return maxSamplerDescriptorBufferRange(this.segment(), index); }
-        /// Sets `maxSamplerDescriptorBufferRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSamplerDescriptorBufferRangeAt(long index, long value) { maxSamplerDescriptorBufferRange(this.segment(), index, value); return this; }
+    /// {@return `samplerDescriptorBufferAddressSpaceSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long samplerDescriptorBufferAddressSpaceSizeAt(long index) { return samplerDescriptorBufferAddressSpaceSize(this.segment(), index); }
+    /// Sets `samplerDescriptorBufferAddressSpaceSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT samplerDescriptorBufferAddressSpaceSizeAt(long index, long value) { samplerDescriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
 
-        /// {@return `maxResourceDescriptorBufferRange` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxResourceDescriptorBufferRangeAt(long index) { return maxResourceDescriptorBufferRange(this.segment(), index); }
-        /// Sets `maxResourceDescriptorBufferRange` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxResourceDescriptorBufferRangeAt(long index, long value) { maxResourceDescriptorBufferRange(this.segment(), index, value); return this; }
+    /// {@return `resourceDescriptorBufferAddressSpaceSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long resourceDescriptorBufferAddressSpaceSizeAt(long index) { return resourceDescriptorBufferAddressSpaceSize(this.segment(), index); }
+    /// Sets `resourceDescriptorBufferAddressSpaceSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT resourceDescriptorBufferAddressSpaceSizeAt(long index, long value) { resourceDescriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
 
-        /// {@return `samplerDescriptorBufferAddressSpaceSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long samplerDescriptorBufferAddressSpaceSizeAt(long index) { return samplerDescriptorBufferAddressSpaceSize(this.segment(), index); }
-        /// Sets `samplerDescriptorBufferAddressSpaceSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer samplerDescriptorBufferAddressSpaceSizeAt(long index, long value) { samplerDescriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
+    /// {@return `descriptorBufferAddressSpaceSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long descriptorBufferAddressSpaceSizeAt(long index) { return descriptorBufferAddressSpaceSize(this.segment(), index); }
+    /// Sets `descriptorBufferAddressSpaceSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceDescriptorBufferPropertiesEXT descriptorBufferAddressSpaceSizeAt(long index, long value) { descriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
 
-        /// {@return `resourceDescriptorBufferAddressSpaceSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long resourceDescriptorBufferAddressSpaceSizeAt(long index) { return resourceDescriptorBufferAddressSpaceSize(this.segment(), index); }
-        /// Sets `resourceDescriptorBufferAddressSpaceSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer resourceDescriptorBufferAddressSpaceSizeAt(long index, long value) { resourceDescriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
-
-        /// {@return `descriptorBufferAddressSpaceSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long descriptorBufferAddressSpaceSizeAt(long index) { return descriptorBufferAddressSpaceSize(this.segment(), index); }
-        /// Sets `descriptorBufferAddressSpaceSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorBufferAddressSpaceSizeAt(long index, long value) { descriptorBufferAddressSpaceSize(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     unsigned char v_oversample;
 /// };
 /// ```
-public sealed class STBTTPackRange extends GroupType {
+public final class STBTTPackRange extends GroupType {
     /// The struct layout of `STBTTPackRange`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_FLOAT.withName("font_size"),
@@ -91,20 +92,21 @@ public sealed class STBTTPackRange extends GroupType {
     public static final VarHandle VH_v_oversample = LAYOUT.arrayElementVarHandle(PathElement.groupElement("v_oversample"));
 
     /// Creates `STBTTPackRange` with the given segment.
-    /// @param segment the memory segment
-    public STBTTPackRange(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBTTPackRange(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBTTPackRange` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBTTPackRange of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTPackRange(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBTTPackRange` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTTPackRange ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTPackRange(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBTTPackRange ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTPackRange(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBTTPackRange` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class STBTTPackRange extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBTTPackRange ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTPackRange(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBTTPackRange` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTTPackRange`
-    public static STBTTPackRange alloc(SegmentAllocator allocator) { return new STBTTPackRange(allocator.allocate(LAYOUT)); }
+    public static STBTTPackRange alloc(SegmentAllocator allocator) { return new STBTTPackRange(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBTTPackRange` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBTTPackRange`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBTTPackRange alloc(SegmentAllocator allocator, long count) { return new STBTTPackRange(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBTTPackRange` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class STBTTPackRange extends GroupType {
     /// @return `this`
     public STBTTPackRange copyFrom(STBTTPackRange src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBTTPackRange reinterpret(long count) { return new STBTTPackRange(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `font_size` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class STBTTPackRange extends GroupType {
     /// @return `this`
     public STBTTPackRange v_oversample(byte value) { v_oversample(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBTTPackRange].
-    public static final class Buffer extends STBTTPackRange {
-        private final long elementCount;
+    /// Creates a slice of `STBTTPackRange`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTPackRange`
+    public STBTTPackRange asSlice(long index) { return new STBTTPackRange(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBTTPackRange.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBTTPackRange`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTPackRange`
+    public STBTTPackRange asSlice(long index, long count) { return new STBTTPackRange(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBTTPackRange` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBTTPackRange at(long index, Consumer<STBTTPackRange> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBTTPackRange`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBTTPackRange`
-        public STBTTPackRange asSlice(long index) { return new STBTTPackRange(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `font_size` at the given index}
+    /// @param index the index of the struct buffer
+    public float font_sizeAt(long index) { return font_size(this.segment(), index); }
+    /// Sets `font_size` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackRange font_sizeAt(long index, float value) { font_size(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBTTPackRange`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBTTPackRange`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `first_unicode_codepoint_in_range` at the given index}
+    /// @param index the index of the struct buffer
+    public int first_unicode_codepoint_in_rangeAt(long index) { return first_unicode_codepoint_in_range(this.segment(), index); }
+    /// Sets `first_unicode_codepoint_in_range` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackRange first_unicode_codepoint_in_rangeAt(long index, int value) { first_unicode_codepoint_in_range(this.segment(), index, value); return this; }
 
-        /// {@return `font_size` at the given index}
-        /// @param index the index of the struct buffer
-        public float font_sizeAt(long index) { return font_size(this.segment(), index); }
-        /// Sets `font_size` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer font_sizeAt(long index, float value) { font_size(this.segment(), index, value); return this; }
+    /// {@return `array_of_unicode_codepoints` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment array_of_unicode_codepointsAt(long index) { return array_of_unicode_codepoints(this.segment(), index); }
+    /// Sets `array_of_unicode_codepoints` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackRange array_of_unicode_codepointsAt(long index, MemorySegment value) { array_of_unicode_codepoints(this.segment(), index, value); return this; }
 
-        /// {@return `first_unicode_codepoint_in_range` at the given index}
-        /// @param index the index of the struct buffer
-        public int first_unicode_codepoint_in_rangeAt(long index) { return first_unicode_codepoint_in_range(this.segment(), index); }
-        /// Sets `first_unicode_codepoint_in_range` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer first_unicode_codepoint_in_rangeAt(long index, int value) { first_unicode_codepoint_in_range(this.segment(), index, value); return this; }
+    /// {@return `num_chars` at the given index}
+    /// @param index the index of the struct buffer
+    public int num_charsAt(long index) { return num_chars(this.segment(), index); }
+    /// Sets `num_chars` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackRange num_charsAt(long index, int value) { num_chars(this.segment(), index, value); return this; }
 
-        /// {@return `array_of_unicode_codepoints` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment array_of_unicode_codepointsAt(long index) { return array_of_unicode_codepoints(this.segment(), index); }
-        /// Sets `array_of_unicode_codepoints` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer array_of_unicode_codepointsAt(long index, MemorySegment value) { array_of_unicode_codepoints(this.segment(), index, value); return this; }
+    /// {@return `chardata_for_range` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment chardata_for_rangeAt(long index) { return chardata_for_range(this.segment(), index); }
+    /// Sets `chardata_for_range` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackRange chardata_for_rangeAt(long index, MemorySegment value) { chardata_for_range(this.segment(), index, value); return this; }
 
-        /// {@return `num_chars` at the given index}
-        /// @param index the index of the struct buffer
-        public int num_charsAt(long index) { return num_chars(this.segment(), index); }
-        /// Sets `num_chars` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer num_charsAt(long index, int value) { num_chars(this.segment(), index, value); return this; }
+    /// {@return `h_oversample` at the given index}
+    /// @param index the index of the struct buffer
+    public byte h_oversampleAt(long index) { return h_oversample(this.segment(), index); }
+    /// Sets `h_oversample` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackRange h_oversampleAt(long index, byte value) { h_oversample(this.segment(), index, value); return this; }
 
-        /// {@return `chardata_for_range` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment chardata_for_rangeAt(long index) { return chardata_for_range(this.segment(), index); }
-        /// Sets `chardata_for_range` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chardata_for_rangeAt(long index, MemorySegment value) { chardata_for_range(this.segment(), index, value); return this; }
+    /// {@return `v_oversample` at the given index}
+    /// @param index the index of the struct buffer
+    public byte v_oversampleAt(long index) { return v_oversample(this.segment(), index); }
+    /// Sets `v_oversample` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTPackRange v_oversampleAt(long index, byte value) { v_oversample(this.segment(), index, value); return this; }
 
-        /// {@return `h_oversample` at the given index}
-        /// @param index the index of the struct buffer
-        public byte h_oversampleAt(long index) { return h_oversample(this.segment(), index); }
-        /// Sets `h_oversample` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer h_oversampleAt(long index, byte value) { h_oversample(this.segment(), index, value); return this; }
-
-        /// {@return `v_oversample` at the given index}
-        /// @param index the index of the struct buffer
-        public byte v_oversampleAt(long index) { return v_oversample(this.segment(), index); }
-        /// Sets `v_oversample` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer v_oversampleAt(long index, byte value) { v_oversample(this.segment(), index, value); return this; }
-
-    }
 }

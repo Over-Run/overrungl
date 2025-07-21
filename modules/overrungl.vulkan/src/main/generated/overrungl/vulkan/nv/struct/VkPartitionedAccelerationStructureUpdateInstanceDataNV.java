@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceAddress accelerationStructure;
 /// };
 /// ```
-public sealed class VkPartitionedAccelerationStructureUpdateInstanceDataNV extends GroupType {
+public final class VkPartitionedAccelerationStructureUpdateInstanceDataNV extends GroupType {
     /// The struct layout of `VkPartitionedAccelerationStructureUpdateInstanceDataNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("instanceIndex"),
@@ -59,20 +60,21 @@ public sealed class VkPartitionedAccelerationStructureUpdateInstanceDataNV exten
     public static final VarHandle VH_accelerationStructure = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructure"));
 
     /// Creates `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPartitionedAccelerationStructureUpdateInstanceDataNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPartitionedAccelerationStructureUpdateInstanceDataNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPartitionedAccelerationStructureUpdateInstanceDataNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPartitionedAccelerationStructureUpdateInstanceDataNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPartitionedAccelerationStructureUpdateInstanceDataNV exten
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPartitionedAccelerationStructureUpdateInstanceDataNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
-    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV alloc(SegmentAllocator allocator) { return new VkPartitionedAccelerationStructureUpdateInstanceDataNV(allocator.allocate(LAYOUT)); }
+    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV alloc(SegmentAllocator allocator) { return new VkPartitionedAccelerationStructureUpdateInstanceDataNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPartitionedAccelerationStructureUpdateInstanceDataNV alloc(SegmentAllocator allocator, long count) { return new VkPartitionedAccelerationStructureUpdateInstanceDataNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPartitionedAccelerationStructureUpdateInstanceDataNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPartitionedAccelerationStructureUpdateInstanceDataNV exten
     /// @return `this`
     public VkPartitionedAccelerationStructureUpdateInstanceDataNV copyFrom(VkPartitionedAccelerationStructureUpdateInstanceDataNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV reinterpret(long count) { return new VkPartitionedAccelerationStructureUpdateInstanceDataNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `instanceIndex` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPartitionedAccelerationStructureUpdateInstanceDataNV exten
     /// @return `this`
     public VkPartitionedAccelerationStructureUpdateInstanceDataNV accelerationStructure(long value) { accelerationStructure(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPartitionedAccelerationStructureUpdateInstanceDataNV].
-    public static final class Buffer extends VkPartitionedAccelerationStructureUpdateInstanceDataNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPartitionedAccelerationStructureUpdateInstanceDataNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV asSlice(long index) { return new VkPartitionedAccelerationStructureUpdateInstanceDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPartitionedAccelerationStructureUpdateInstanceDataNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPartitionedAccelerationStructureUpdateInstanceDataNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV asSlice(long index, long count) { return new VkPartitionedAccelerationStructureUpdateInstanceDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPartitionedAccelerationStructureUpdateInstanceDataNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV at(long index, Consumer<VkPartitionedAccelerationStructureUpdateInstanceDataNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPartitionedAccelerationStructureUpdateInstanceDataNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
-        public VkPartitionedAccelerationStructureUpdateInstanceDataNV asSlice(long index) { return new VkPartitionedAccelerationStructureUpdateInstanceDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `instanceIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int instanceIndexAt(long index) { return instanceIndex(this.segment(), index); }
+    /// Sets `instanceIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV instanceIndexAt(long index, int value) { instanceIndex(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPartitionedAccelerationStructureUpdateInstanceDataNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPartitionedAccelerationStructureUpdateInstanceDataNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `instanceContributionToHitGroupIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int instanceContributionToHitGroupIndexAt(long index) { return instanceContributionToHitGroupIndex(this.segment(), index); }
+    /// Sets `instanceContributionToHitGroupIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV instanceContributionToHitGroupIndexAt(long index, int value) { instanceContributionToHitGroupIndex(this.segment(), index, value); return this; }
 
-        /// {@return `instanceIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int instanceIndexAt(long index) { return instanceIndex(this.segment(), index); }
-        /// Sets `instanceIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer instanceIndexAt(long index, int value) { instanceIndex(this.segment(), index, value); return this; }
+    /// {@return `accelerationStructure` at the given index}
+    /// @param index the index of the struct buffer
+    public long accelerationStructureAt(long index) { return accelerationStructure(this.segment(), index); }
+    /// Sets `accelerationStructure` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPartitionedAccelerationStructureUpdateInstanceDataNV accelerationStructureAt(long index, long value) { accelerationStructure(this.segment(), index, value); return this; }
 
-        /// {@return `instanceContributionToHitGroupIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int instanceContributionToHitGroupIndexAt(long index) { return instanceContributionToHitGroupIndex(this.segment(), index); }
-        /// Sets `instanceContributionToHitGroupIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer instanceContributionToHitGroupIndexAt(long index, int value) { instanceContributionToHitGroupIndex(this.segment(), index, value); return this; }
-
-        /// {@return `accelerationStructure` at the given index}
-        /// @param index the index of the struct buffer
-        public long accelerationStructureAt(long index) { return accelerationStructure(this.segment(), index); }
-        /// Sets `accelerationStructure` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer accelerationStructureAt(long index, long value) { accelerationStructure(this.segment(), index, value); return this; }
-
-    }
 }

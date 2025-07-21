@@ -21,6 +21,7 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -59,7 +60,7 @@ import overrungl.util.*;
 ///     uint32_t intra_boundary_filtering_disabled_flag : 1;
 /// };
 /// ```
-public sealed class StdVideoH265SpsFlags extends GroupType {
+public final class StdVideoH265SpsFlags extends GroupType {
     /// The struct layout of `StdVideoH265SpsFlags`.
     public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
         ValueLayout.JAVA_INT.withName("sps_temporal_id_nesting_flag"), 1,
@@ -95,20 +96,21 @@ public sealed class StdVideoH265SpsFlags extends GroupType {
     );
 
     /// Creates `StdVideoH265SpsFlags` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoH265SpsFlags(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoH265SpsFlags(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoH265SpsFlags` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoH265SpsFlags of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265SpsFlags(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoH265SpsFlags` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoH265SpsFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265SpsFlags(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoH265SpsFlags ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265SpsFlags(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoH265SpsFlags` with the given segment.
     ///
@@ -116,49 +118,44 @@ public sealed class StdVideoH265SpsFlags extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoH265SpsFlags ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoH265SpsFlags(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoH265SpsFlags` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoH265SpsFlags`
-    public static StdVideoH265SpsFlags alloc(SegmentAllocator allocator) { return new StdVideoH265SpsFlags(allocator.allocate(LAYOUT)); }
+    public static StdVideoH265SpsFlags alloc(SegmentAllocator allocator) { return new StdVideoH265SpsFlags(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoH265SpsFlags` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoH265SpsFlags`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoH265SpsFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoH265SpsFlags(allocator.allocate(LAYOUT, count), count); }
 
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
     public StdVideoH265SpsFlags copyFrom(StdVideoH265SpsFlags src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoH265SpsFlags reinterpret(long count) { return new StdVideoH265SpsFlags(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
-    /// A buffer of [StdVideoH265SpsFlags].
-    public static final class Buffer extends StdVideoH265SpsFlags {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoH265SpsFlags`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoH265SpsFlags`
+    public StdVideoH265SpsFlags asSlice(long index) { return new StdVideoH265SpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoH265SpsFlags.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoH265SpsFlags`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoH265SpsFlags`
+    public StdVideoH265SpsFlags asSlice(long index, long count) { return new StdVideoH265SpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoH265SpsFlags` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoH265SpsFlags at(long index, Consumer<StdVideoH265SpsFlags> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoH265SpsFlags`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoH265SpsFlags`
-        public StdVideoH265SpsFlags asSlice(long index) { return new StdVideoH265SpsFlags(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
-
-        /// Creates a slice of `StdVideoH265SpsFlags`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoH265SpsFlags`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-    }
 }

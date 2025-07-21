@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     void* pQueriedLowLatencyData;
 /// };
 /// ```
-public sealed class VkQueryLowLatencySupportNV extends GroupType {
+public final class VkQueryLowLatencySupportNV extends GroupType {
     /// The struct layout of `VkQueryLowLatencySupportNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkQueryLowLatencySupportNV extends GroupType {
     public static final VarHandle VH_pQueriedLowLatencyData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pQueriedLowLatencyData"));
 
     /// Creates `VkQueryLowLatencySupportNV` with the given segment.
-    /// @param segment the memory segment
-    public VkQueryLowLatencySupportNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkQueryLowLatencySupportNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkQueryLowLatencySupportNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkQueryLowLatencySupportNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueryLowLatencySupportNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkQueryLowLatencySupportNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkQueryLowLatencySupportNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueryLowLatencySupportNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkQueryLowLatencySupportNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueryLowLatencySupportNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkQueryLowLatencySupportNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkQueryLowLatencySupportNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkQueryLowLatencySupportNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkQueryLowLatencySupportNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkQueryLowLatencySupportNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkQueryLowLatencySupportNV`
-    public static VkQueryLowLatencySupportNV alloc(SegmentAllocator allocator) { return new VkQueryLowLatencySupportNV(allocator.allocate(LAYOUT)); }
+    public static VkQueryLowLatencySupportNV alloc(SegmentAllocator allocator) { return new VkQueryLowLatencySupportNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkQueryLowLatencySupportNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkQueryLowLatencySupportNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkQueryLowLatencySupportNV alloc(SegmentAllocator allocator, long count) { return new VkQueryLowLatencySupportNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkQueryLowLatencySupportNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkQueryLowLatencySupportNV extends GroupType {
     /// @return `this`
     public VkQueryLowLatencySupportNV copyFrom(VkQueryLowLatencySupportNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkQueryLowLatencySupportNV reinterpret(long count) { return new VkQueryLowLatencySupportNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkQueryLowLatencySupportNV extends GroupType {
     /// @return `this`
     public VkQueryLowLatencySupportNV pQueriedLowLatencyData(MemorySegment value) { pQueriedLowLatencyData(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkQueryLowLatencySupportNV].
-    public static final class Buffer extends VkQueryLowLatencySupportNV {
-        private final long elementCount;
+    /// Creates a slice of `VkQueryLowLatencySupportNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkQueryLowLatencySupportNV`
+    public VkQueryLowLatencySupportNV asSlice(long index) { return new VkQueryLowLatencySupportNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkQueryLowLatencySupportNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkQueryLowLatencySupportNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkQueryLowLatencySupportNV`
+    public VkQueryLowLatencySupportNV asSlice(long index, long count) { return new VkQueryLowLatencySupportNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkQueryLowLatencySupportNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkQueryLowLatencySupportNV at(long index, Consumer<VkQueryLowLatencySupportNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkQueryLowLatencySupportNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkQueryLowLatencySupportNV`
-        public VkQueryLowLatencySupportNV asSlice(long index) { return new VkQueryLowLatencySupportNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueryLowLatencySupportNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkQueryLowLatencySupportNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkQueryLowLatencySupportNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueryLowLatencySupportNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pQueriedLowLatencyData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pQueriedLowLatencyDataAt(long index) { return pQueriedLowLatencyData(this.segment(), index); }
+    /// Sets `pQueriedLowLatencyData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkQueryLowLatencySupportNV pQueriedLowLatencyDataAt(long index, MemorySegment value) { pQueriedLowLatencyData(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `pQueriedLowLatencyData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pQueriedLowLatencyDataAt(long index) { return pQueriedLowLatencyData(this.segment(), index); }
-        /// Sets `pQueriedLowLatencyData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pQueriedLowLatencyDataAt(long index, MemorySegment value) { pQueriedLowLatencyData(this.segment(), index, value); return this; }
-
-    }
 }

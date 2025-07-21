@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t reference;
 /// };
 /// ```
-public sealed class VkStencilOpState extends GroupType {
+public final class VkStencilOpState extends GroupType {
     /// The struct layout of `VkStencilOpState`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("failOp"),
@@ -91,20 +92,21 @@ public sealed class VkStencilOpState extends GroupType {
     public static final VarHandle VH_reference = LAYOUT.arrayElementVarHandle(PathElement.groupElement("reference"));
 
     /// Creates `VkStencilOpState` with the given segment.
-    /// @param segment the memory segment
-    public VkStencilOpState(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkStencilOpState(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkStencilOpState` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkStencilOpState of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkStencilOpState(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkStencilOpState` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkStencilOpState ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkStencilOpState(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkStencilOpState ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkStencilOpState(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkStencilOpState` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkStencilOpState extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkStencilOpState ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkStencilOpState(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkStencilOpState` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkStencilOpState`
-    public static VkStencilOpState alloc(SegmentAllocator allocator) { return new VkStencilOpState(allocator.allocate(LAYOUT)); }
+    public static VkStencilOpState alloc(SegmentAllocator allocator) { return new VkStencilOpState(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkStencilOpState` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkStencilOpState`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkStencilOpState alloc(SegmentAllocator allocator, long count) { return new VkStencilOpState(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkStencilOpState` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkStencilOpState extends GroupType {
     /// @return `this`
     public VkStencilOpState copyFrom(VkStencilOpState src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkStencilOpState reinterpret(long count) { return new VkStencilOpState(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `failOp` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkStencilOpState extends GroupType {
     /// @return `this`
     public VkStencilOpState reference(int value) { reference(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkStencilOpState].
-    public static final class Buffer extends VkStencilOpState {
-        private final long elementCount;
+    /// Creates a slice of `VkStencilOpState`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkStencilOpState`
+    public VkStencilOpState asSlice(long index) { return new VkStencilOpState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkStencilOpState.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkStencilOpState`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkStencilOpState`
+    public VkStencilOpState asSlice(long index, long count) { return new VkStencilOpState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkStencilOpState` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkStencilOpState at(long index, Consumer<VkStencilOpState> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkStencilOpState`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkStencilOpState`
-        public VkStencilOpState asSlice(long index) { return new VkStencilOpState(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `failOp` at the given index}
+    /// @param index the index of the struct buffer
+    public int failOpAt(long index) { return failOp(this.segment(), index); }
+    /// Sets `failOp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkStencilOpState failOpAt(long index, int value) { failOp(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkStencilOpState`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkStencilOpState`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `passOp` at the given index}
+    /// @param index the index of the struct buffer
+    public int passOpAt(long index) { return passOp(this.segment(), index); }
+    /// Sets `passOp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkStencilOpState passOpAt(long index, int value) { passOp(this.segment(), index, value); return this; }
 
-        /// {@return `failOp` at the given index}
-        /// @param index the index of the struct buffer
-        public int failOpAt(long index) { return failOp(this.segment(), index); }
-        /// Sets `failOp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer failOpAt(long index, int value) { failOp(this.segment(), index, value); return this; }
+    /// {@return `depthFailOp` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthFailOpAt(long index) { return depthFailOp(this.segment(), index); }
+    /// Sets `depthFailOp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkStencilOpState depthFailOpAt(long index, int value) { depthFailOp(this.segment(), index, value); return this; }
 
-        /// {@return `passOp` at the given index}
-        /// @param index the index of the struct buffer
-        public int passOpAt(long index) { return passOp(this.segment(), index); }
-        /// Sets `passOp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer passOpAt(long index, int value) { passOp(this.segment(), index, value); return this; }
+    /// {@return `compareOp` at the given index}
+    /// @param index the index of the struct buffer
+    public int compareOpAt(long index) { return compareOp(this.segment(), index); }
+    /// Sets `compareOp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkStencilOpState compareOpAt(long index, int value) { compareOp(this.segment(), index, value); return this; }
 
-        /// {@return `depthFailOp` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthFailOpAt(long index) { return depthFailOp(this.segment(), index); }
-        /// Sets `depthFailOp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthFailOpAt(long index, int value) { depthFailOp(this.segment(), index, value); return this; }
+    /// {@return `compareMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int compareMaskAt(long index) { return compareMask(this.segment(), index); }
+    /// Sets `compareMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkStencilOpState compareMaskAt(long index, int value) { compareMask(this.segment(), index, value); return this; }
 
-        /// {@return `compareOp` at the given index}
-        /// @param index the index of the struct buffer
-        public int compareOpAt(long index) { return compareOp(this.segment(), index); }
-        /// Sets `compareOp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer compareOpAt(long index, int value) { compareOp(this.segment(), index, value); return this; }
+    /// {@return `writeMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int writeMaskAt(long index) { return writeMask(this.segment(), index); }
+    /// Sets `writeMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkStencilOpState writeMaskAt(long index, int value) { writeMask(this.segment(), index, value); return this; }
 
-        /// {@return `compareMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int compareMaskAt(long index) { return compareMask(this.segment(), index); }
-        /// Sets `compareMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer compareMaskAt(long index, int value) { compareMask(this.segment(), index, value); return this; }
+    /// {@return `reference` at the given index}
+    /// @param index the index of the struct buffer
+    public int referenceAt(long index) { return reference(this.segment(), index); }
+    /// Sets `reference` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkStencilOpState referenceAt(long index, int value) { reference(this.segment(), index, value); return this; }
 
-        /// {@return `writeMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int writeMaskAt(long index) { return writeMask(this.segment(), index); }
-        /// Sets `writeMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer writeMaskAt(long index, int value) { writeMask(this.segment(), index, value); return this; }
-
-        /// {@return `reference` at the given index}
-        /// @param index the index of the struct buffer
-        public int referenceAt(long index) { return reference(this.segment(), index); }
-        /// Sets `reference` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer referenceAt(long index, int value) { reference(this.segment(), index, value); return this; }
-
-    }
 }

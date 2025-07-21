@@ -21,6 +21,7 @@ package overrungl.vulkan.union;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t uint32[4];
 /// };
 /// ```
-public sealed class VkClearColorValue extends GroupType {
+public final class VkClearColorValue extends GroupType {
     /// The union layout of `VkClearColorValue`.
     public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         MemoryLayout.sequenceLayout(4, ValueLayout.JAVA_FLOAT).withName("float32"),
@@ -59,20 +60,21 @@ public sealed class VkClearColorValue extends GroupType {
     public static final VarHandle VH_uint32 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("uint32"), PathElement.sequenceElement());
 
     /// Creates `VkClearColorValue` with the given segment.
-    /// @param segment the memory segment
-    public VkClearColorValue(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this union buffer
+    public VkClearColorValue(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClearColorValue` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClearColorValue of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearColorValue(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClearColorValue` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClearColorValue ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearColorValue(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClearColorValue ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearColorValue(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClearColorValue` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkClearColorValue extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClearColorValue ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClearColorValue(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClearColorValue` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClearColorValue`
-    public static VkClearColorValue alloc(SegmentAllocator allocator) { return new VkClearColorValue(allocator.allocate(LAYOUT)); }
+    public static VkClearColorValue alloc(SegmentAllocator allocator) { return new VkClearColorValue(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClearColorValue` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClearColorValue`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClearColorValue alloc(SegmentAllocator allocator, long count) { return new VkClearColorValue(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkClearColorValue` with the given segment allocator and `float32`.
     /// @param allocator the segment allocator
@@ -122,9 +124,10 @@ public sealed class VkClearColorValue extends GroupType {
     /// @return `this`
     public VkClearColorValue copyFrom(VkClearColorValue src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClearColorValue reinterpret(long count) { return new VkClearColorValue(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `float32` at the given index}
     /// @param segment the segment of the union
@@ -231,84 +234,78 @@ public sealed class VkClearColorValue extends GroupType {
     /// @return `this`
     public VkClearColorValue uint32(long index0, int value) { uint32(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [VkClearColorValue].
-    public static final class Buffer extends VkClearColorValue {
-        private final long elementCount;
+    /// Creates a slice of `VkClearColorValue`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkClearColorValue`
+    public VkClearColorValue asSlice(long index) { return new VkClearColorValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClearColorValue.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClearColorValue`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkClearColorValue`
+    public VkClearColorValue asSlice(long index, long count) { return new VkClearColorValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClearColorValue` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClearColorValue at(long index, Consumer<VkClearColorValue> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClearColorValue`.
-        /// @param index the index of the union buffer
-        /// @return the slice of `VkClearColorValue`
-        public VkClearColorValue asSlice(long index) { return new VkClearColorValue(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
-
-        /// Creates a slice of `VkClearColorValue`.
-        /// @param index the index of the union buffer
-        /// @param count the count
-        /// @return the slice of `VkClearColorValue`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `float32` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment float32At(long index) { return float32(this.segment(), index); }
-        /// {@return `float32` at the given index}
-        /// @param index the index of the union buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `float32` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment float32At(long index) { return float32(this.segment(), index); }
+    /// {@return `float32` at the given index}
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
         public float float32At(long index, long index0) { return float32(this.segment(), index, index0); }
-        /// Sets `float32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer float32At(long index, MemorySegment value) { float32(this.segment(), index, value); return this; }
-        /// Sets `float32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer float32At(long index, long index0, float value) { float32(this.segment(), index, index0, value); return this; }
+    /// Sets `float32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClearColorValue float32At(long index, MemorySegment value) { float32(this.segment(), index, value); return this; }
+    /// Sets `float32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkClearColorValue float32At(long index, long index0, float value) { float32(this.segment(), index, index0, value); return this; }
 
-        /// {@return `int32` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment int32At(long index) { return int32(this.segment(), index); }
-        /// {@return `int32` at the given index}
-        /// @param index the index of the union buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `int32` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment int32At(long index) { return int32(this.segment(), index); }
+    /// {@return `int32` at the given index}
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
         public int int32At(long index, long index0) { return int32(this.segment(), index, index0); }
-        /// Sets `int32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer int32At(long index, MemorySegment value) { int32(this.segment(), index, value); return this; }
-        /// Sets `int32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer int32At(long index, long index0, int value) { int32(this.segment(), index, index0, value); return this; }
+    /// Sets `int32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClearColorValue int32At(long index, MemorySegment value) { int32(this.segment(), index, value); return this; }
+    /// Sets `int32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkClearColorValue int32At(long index, long index0, int value) { int32(this.segment(), index, index0, value); return this; }
 
-        /// {@return `uint32` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment uint32At(long index) { return uint32(this.segment(), index); }
-        /// {@return `uint32` at the given index}
-        /// @param index the index of the union buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `uint32` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment uint32At(long index) { return uint32(this.segment(), index); }
+    /// {@return `uint32` at the given index}
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
         public int uint32At(long index, long index0) { return uint32(this.segment(), index, index0); }
-        /// Sets `uint32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer uint32At(long index, MemorySegment value) { uint32(this.segment(), index, value); return this; }
-        /// Sets `uint32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer uint32At(long index, long index0, int value) { uint32(this.segment(), index, index0, value); return this; }
+    /// Sets `uint32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClearColorValue uint32At(long index, MemorySegment value) { uint32(this.segment(), index, value); return this; }
+    /// Sets `uint32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkClearColorValue uint32At(long index, long index0, int value) { uint32(this.segment(), index, index0, value); return this; }
 
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     const void* pInitialData;
 /// };
 /// ```
-public sealed class VkValidationCacheCreateInfoEXT extends GroupType {
+public final class VkValidationCacheCreateInfoEXT extends GroupType {
     /// The struct layout of `VkValidationCacheCreateInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkValidationCacheCreateInfoEXT extends GroupType {
     public static final VarHandle VH_pInitialData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pInitialData"));
 
     /// Creates `VkValidationCacheCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkValidationCacheCreateInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkValidationCacheCreateInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkValidationCacheCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkValidationCacheCreateInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkValidationCacheCreateInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkValidationCacheCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkValidationCacheCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkValidationCacheCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkValidationCacheCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkValidationCacheCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkValidationCacheCreateInfoEXT` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkValidationCacheCreateInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkValidationCacheCreateInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkValidationCacheCreateInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkValidationCacheCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkValidationCacheCreateInfoEXT`
-    public static VkValidationCacheCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkValidationCacheCreateInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkValidationCacheCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkValidationCacheCreateInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkValidationCacheCreateInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkValidationCacheCreateInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkValidationCacheCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkValidationCacheCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkValidationCacheCreateInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkValidationCacheCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkValidationCacheCreateInfoEXT copyFrom(VkValidationCacheCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkValidationCacheCreateInfoEXT reinterpret(long count) { return new VkValidationCacheCreateInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkValidationCacheCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkValidationCacheCreateInfoEXT pInitialData(MemorySegment value) { pInitialData(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkValidationCacheCreateInfoEXT].
-    public static final class Buffer extends VkValidationCacheCreateInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkValidationCacheCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkValidationCacheCreateInfoEXT`
+    public VkValidationCacheCreateInfoEXT asSlice(long index) { return new VkValidationCacheCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkValidationCacheCreateInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkValidationCacheCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkValidationCacheCreateInfoEXT`
+    public VkValidationCacheCreateInfoEXT asSlice(long index, long count) { return new VkValidationCacheCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkValidationCacheCreateInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkValidationCacheCreateInfoEXT at(long index, Consumer<VkValidationCacheCreateInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkValidationCacheCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkValidationCacheCreateInfoEXT`
-        public VkValidationCacheCreateInfoEXT asSlice(long index) { return new VkValidationCacheCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationCacheCreateInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkValidationCacheCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkValidationCacheCreateInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationCacheCreateInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationCacheCreateInfoEXT flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `initialDataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long initialDataSizeAt(long index) { return initialDataSize(this.segment(), index); }
+    /// Sets `initialDataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationCacheCreateInfoEXT initialDataSizeAt(long index, long value) { initialDataSize(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `pInitialData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pInitialDataAt(long index) { return pInitialData(this.segment(), index); }
+    /// Sets `pInitialData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkValidationCacheCreateInfoEXT pInitialDataAt(long index, MemorySegment value) { pInitialData(this.segment(), index, value); return this; }
 
-        /// {@return `initialDataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long initialDataSizeAt(long index) { return initialDataSize(this.segment(), index); }
-        /// Sets `initialDataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer initialDataSizeAt(long index, long value) { initialDataSize(this.segment(), index, value); return this; }
-
-        /// {@return `pInitialData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pInitialDataAt(long index) { return pInitialData(this.segment(), index); }
-        /// Sets `pInitialData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pInitialDataAt(long index, MemorySegment value) { pInitialData(this.segment(), index, value); return this; }
-
-    }
 }

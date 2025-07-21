@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.union;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     double float64;
 /// };
 /// ```
-public sealed class VkPerformanceCounterResultKHR extends GroupType {
+public final class VkPerformanceCounterResultKHR extends GroupType {
     /// The union layout of `VkPerformanceCounterResultKHR`.
     public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_INT.withName("int32"),
@@ -83,20 +84,21 @@ public sealed class VkPerformanceCounterResultKHR extends GroupType {
     public static final VarHandle VH_float64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("float64"));
 
     /// Creates `VkPerformanceCounterResultKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPerformanceCounterResultKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this union buffer
+    public VkPerformanceCounterResultKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPerformanceCounterResultKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPerformanceCounterResultKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceCounterResultKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPerformanceCounterResultKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceCounterResultKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceCounterResultKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPerformanceCounterResultKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceCounterResultKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPerformanceCounterResultKHR` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkPerformanceCounterResultKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPerformanceCounterResultKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceCounterResultKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPerformanceCounterResultKHR`
-    public static VkPerformanceCounterResultKHR alloc(SegmentAllocator allocator) { return new VkPerformanceCounterResultKHR(allocator.allocate(LAYOUT)); }
+    public static VkPerformanceCounterResultKHR alloc(SegmentAllocator allocator) { return new VkPerformanceCounterResultKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPerformanceCounterResultKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPerformanceCounterResultKHR alloc(SegmentAllocator allocator, long count) { return new VkPerformanceCounterResultKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPerformanceCounterResultKHR` with the given segment allocator and `int32`.
     /// @param allocator the segment allocator
@@ -170,9 +172,10 @@ public sealed class VkPerformanceCounterResultKHR extends GroupType {
     /// @return `this`
     public VkPerformanceCounterResultKHR copyFrom(VkPerformanceCounterResultKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPerformanceCounterResultKHR reinterpret(long count) { return new VkPerformanceCounterResultKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `int32` at the given index}
     /// @param segment the segment of the union
@@ -270,81 +273,75 @@ public sealed class VkPerformanceCounterResultKHR extends GroupType {
     /// @return `this`
     public VkPerformanceCounterResultKHR float64(double value) { float64(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPerformanceCounterResultKHR].
-    public static final class Buffer extends VkPerformanceCounterResultKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPerformanceCounterResultKHR`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkPerformanceCounterResultKHR`
+    public VkPerformanceCounterResultKHR asSlice(long index) { return new VkPerformanceCounterResultKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPerformanceCounterResultKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPerformanceCounterResultKHR`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkPerformanceCounterResultKHR`
+    public VkPerformanceCounterResultKHR asSlice(long index, long count) { return new VkPerformanceCounterResultKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPerformanceCounterResultKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPerformanceCounterResultKHR at(long index, Consumer<VkPerformanceCounterResultKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPerformanceCounterResultKHR`.
-        /// @param index the index of the union buffer
-        /// @return the slice of `VkPerformanceCounterResultKHR`
-        public VkPerformanceCounterResultKHR asSlice(long index) { return new VkPerformanceCounterResultKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `int32` at the given index}
+    /// @param index the index of the union buffer
+    public int int32At(long index) { return int32(this.segment(), index); }
+    /// Sets `int32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterResultKHR int32At(long index, int value) { int32(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPerformanceCounterResultKHR`.
-        /// @param index the index of the union buffer
-        /// @param count the count
-        /// @return the slice of `VkPerformanceCounterResultKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `int64` at the given index}
+    /// @param index the index of the union buffer
+    public long int64At(long index) { return int64(this.segment(), index); }
+    /// Sets `int64` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterResultKHR int64At(long index, long value) { int64(this.segment(), index, value); return this; }
 
-        /// {@return `int32` at the given index}
-        /// @param index the index of the union buffer
-        public int int32At(long index) { return int32(this.segment(), index); }
-        /// Sets `int32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer int32At(long index, int value) { int32(this.segment(), index, value); return this; }
+    /// {@return `uint32` at the given index}
+    /// @param index the index of the union buffer
+    public int uint32At(long index) { return uint32(this.segment(), index); }
+    /// Sets `uint32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterResultKHR uint32At(long index, int value) { uint32(this.segment(), index, value); return this; }
 
-        /// {@return `int64` at the given index}
-        /// @param index the index of the union buffer
-        public long int64At(long index) { return int64(this.segment(), index); }
-        /// Sets `int64` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer int64At(long index, long value) { int64(this.segment(), index, value); return this; }
+    /// {@return `uint64` at the given index}
+    /// @param index the index of the union buffer
+    public long uint64At(long index) { return uint64(this.segment(), index); }
+    /// Sets `uint64` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterResultKHR uint64At(long index, long value) { uint64(this.segment(), index, value); return this; }
 
-        /// {@return `uint32` at the given index}
-        /// @param index the index of the union buffer
-        public int uint32At(long index) { return uint32(this.segment(), index); }
-        /// Sets `uint32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer uint32At(long index, int value) { uint32(this.segment(), index, value); return this; }
+    /// {@return `float32` at the given index}
+    /// @param index the index of the union buffer
+    public float float32At(long index) { return float32(this.segment(), index); }
+    /// Sets `float32` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterResultKHR float32At(long index, float value) { float32(this.segment(), index, value); return this; }
 
-        /// {@return `uint64` at the given index}
-        /// @param index the index of the union buffer
-        public long uint64At(long index) { return uint64(this.segment(), index); }
-        /// Sets `uint64` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer uint64At(long index, long value) { uint64(this.segment(), index, value); return this; }
+    /// {@return `float64` at the given index}
+    /// @param index the index of the union buffer
+    public double float64At(long index) { return float64(this.segment(), index); }
+    /// Sets `float64` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterResultKHR float64At(long index, double value) { float64(this.segment(), index, value); return this; }
 
-        /// {@return `float32` at the given index}
-        /// @param index the index of the union buffer
-        public float float32At(long index) { return float32(this.segment(), index); }
-        /// Sets `float32` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer float32At(long index, float value) { float32(this.segment(), index, value); return this; }
-
-        /// {@return `float64` at the given index}
-        /// @param index the index of the union buffer
-        public double float64At(long index) { return float64(this.segment(), index); }
-        /// Sets `float64` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer float64At(long index, double value) { float64(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,9 +21,9 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -34,7 +34,7 @@ import java.util.function.*;
 ///     uint32_t maxRenderPassStripes;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends GroupType {
+public final class VkPhysicalDeviceRenderPassStripedPropertiesARM extends GroupType {
     /// The struct layout of `VkPhysicalDeviceRenderPassStripedPropertiesARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -66,20 +66,21 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Group
     public static final VarHandle VH_maxRenderPassStripes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxRenderPassStripes"));
 
     /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceRenderPassStripedPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment.
     ///
@@ -87,18 +88,18 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Group
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceRenderPassStripedPropertiesARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceRenderPassStripedPropertiesARM`
-    public static VkPhysicalDeviceRenderPassStripedPropertiesARM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceRenderPassStripedPropertiesARM(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceRenderPassStripedPropertiesARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceRenderPassStripedPropertiesARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceRenderPassStripedPropertiesARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRenderPassStripedPropertiesARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceRenderPassStripedPropertiesARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -143,9 +144,10 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Group
     /// @return `this`
     public VkPhysicalDeviceRenderPassStripedPropertiesARM copyFrom(VkPhysicalDeviceRenderPassStripedPropertiesARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM reinterpret(long count) { return new VkPhysicalDeviceRenderPassStripedPropertiesARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -215,68 +217,62 @@ public sealed class VkPhysicalDeviceRenderPassStripedPropertiesARM extends Group
     /// @return `this`
     public VkPhysicalDeviceRenderPassStripedPropertiesARM maxRenderPassStripes(int value) { maxRenderPassStripes(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceRenderPassStripedPropertiesARM].
-    public static final class Buffer extends VkPhysicalDeviceRenderPassStripedPropertiesARM {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceRenderPassStripedPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceRenderPassStripedPropertiesARM`
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM asSlice(long index) { return new VkPhysicalDeviceRenderPassStripedPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceRenderPassStripedPropertiesARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceRenderPassStripedPropertiesARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceRenderPassStripedPropertiesARM`
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM asSlice(long index, long count) { return new VkPhysicalDeviceRenderPassStripedPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceRenderPassStripedPropertiesARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM at(long index, Consumer<VkPhysicalDeviceRenderPassStripedPropertiesARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceRenderPassStripedPropertiesARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceRenderPassStripedPropertiesARM`
-        public VkPhysicalDeviceRenderPassStripedPropertiesARM asSlice(long index) { return new VkPhysicalDeviceRenderPassStripedPropertiesARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceRenderPassStripedPropertiesARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceRenderPassStripedPropertiesARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `renderPassStripeGranularity` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment renderPassStripeGranularityAt(long index) { return renderPassStripeGranularity(this.segment(), index); }
+    /// Sets `renderPassStripeGranularity` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM renderPassStripeGranularityAt(long index, MemorySegment value) { renderPassStripeGranularity(this.segment(), index, value); return this; }
+    /// Accepts `renderPassStripeGranularity` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM renderPassStripeGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(renderPassStripeGranularityAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `maxRenderPassStripes` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxRenderPassStripesAt(long index) { return maxRenderPassStripes(this.segment(), index); }
+    /// Sets `maxRenderPassStripes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceRenderPassStripedPropertiesARM maxRenderPassStripesAt(long index, int value) { maxRenderPassStripes(this.segment(), index, value); return this; }
 
-        /// {@return `renderPassStripeGranularity` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment renderPassStripeGranularityAt(long index) { return renderPassStripeGranularity(this.segment(), index); }
-        /// Sets `renderPassStripeGranularity` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer renderPassStripeGranularityAt(long index, MemorySegment value) { renderPassStripeGranularity(this.segment(), index, value); return this; }
-        /// Accepts `renderPassStripeGranularity` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer renderPassStripeGranularityAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(renderPassStripeGranularityAt(index))); return this; }
-
-        /// {@return `maxRenderPassStripes` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxRenderPassStripesAt(long index) { return maxRenderPassStripes(this.segment(), index); }
-        /// Sets `maxRenderPassStripes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxRenderPassStripesAt(long index, int value) { maxRenderPassStripes(this.segment(), index, value); return this; }
-
-    }
 }

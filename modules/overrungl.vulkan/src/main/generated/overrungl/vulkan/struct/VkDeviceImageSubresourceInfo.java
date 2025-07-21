@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     const VkImageSubresource2* pSubresource;
 /// };
 /// ```
-public sealed class VkDeviceImageSubresourceInfo extends GroupType {
+public final class VkDeviceImageSubresourceInfo extends GroupType {
     /// The struct layout of `VkDeviceImageSubresourceInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkDeviceImageSubresourceInfo extends GroupType {
     public static final VarHandle VH_pSubresource = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pSubresource"));
 
     /// Creates `VkDeviceImageSubresourceInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkDeviceImageSubresourceInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDeviceImageSubresourceInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDeviceImageSubresourceInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDeviceImageSubresourceInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceImageSubresourceInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceImageSubresourceInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceImageSubresourceInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceImageSubresourceInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDeviceImageSubresourceInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceImageSubresourceInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDeviceImageSubresourceInfo` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkDeviceImageSubresourceInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDeviceImageSubresourceInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceImageSubresourceInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDeviceImageSubresourceInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceImageSubresourceInfo`
-    public static VkDeviceImageSubresourceInfo alloc(SegmentAllocator allocator) { return new VkDeviceImageSubresourceInfo(allocator.allocate(LAYOUT)); }
+    public static VkDeviceImageSubresourceInfo alloc(SegmentAllocator allocator) { return new VkDeviceImageSubresourceInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDeviceImageSubresourceInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceImageSubresourceInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDeviceImageSubresourceInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceImageSubresourceInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDeviceImageSubresourceInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkDeviceImageSubresourceInfo extends GroupType {
     /// @return `this`
     public VkDeviceImageSubresourceInfo copyFrom(VkDeviceImageSubresourceInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDeviceImageSubresourceInfo reinterpret(long count) { return new VkDeviceImageSubresourceInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkDeviceImageSubresourceInfo extends GroupType {
     /// @return `this`
     public VkDeviceImageSubresourceInfo pSubresource(MemorySegment value) { pSubresource(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDeviceImageSubresourceInfo].
-    public static final class Buffer extends VkDeviceImageSubresourceInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkDeviceImageSubresourceInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDeviceImageSubresourceInfo`
+    public VkDeviceImageSubresourceInfo asSlice(long index) { return new VkDeviceImageSubresourceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDeviceImageSubresourceInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDeviceImageSubresourceInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceImageSubresourceInfo`
+    public VkDeviceImageSubresourceInfo asSlice(long index, long count) { return new VkDeviceImageSubresourceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDeviceImageSubresourceInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDeviceImageSubresourceInfo at(long index, Consumer<VkDeviceImageSubresourceInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDeviceImageSubresourceInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDeviceImageSubresourceInfo`
-        public VkDeviceImageSubresourceInfo asSlice(long index) { return new VkDeviceImageSubresourceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceImageSubresourceInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDeviceImageSubresourceInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDeviceImageSubresourceInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceImageSubresourceInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pCreateInfo` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pCreateInfoAt(long index) { return pCreateInfo(this.segment(), index); }
+    /// Sets `pCreateInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceImageSubresourceInfo pCreateInfoAt(long index, MemorySegment value) { pCreateInfo(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pSubresource` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pSubresourceAt(long index) { return pSubresource(this.segment(), index); }
+    /// Sets `pSubresource` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceImageSubresourceInfo pSubresourceAt(long index, MemorySegment value) { pSubresource(this.segment(), index, value); return this; }
 
-        /// {@return `pCreateInfo` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pCreateInfoAt(long index) { return pCreateInfo(this.segment(), index); }
-        /// Sets `pCreateInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pCreateInfoAt(long index, MemorySegment value) { pCreateInfo(this.segment(), index, value); return this; }
-
-        /// {@return `pSubresource` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pSubresourceAt(long index) { return pSubresource(this.segment(), index); }
-        /// Sets `pSubresource` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSubresourceAt(long index, MemorySegment value) { pSubresource(this.segment(), index, value); return this; }
-
-    }
 }

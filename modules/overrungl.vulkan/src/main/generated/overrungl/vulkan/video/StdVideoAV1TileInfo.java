@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -40,7 +40,7 @@ import java.util.function.*;
 ///     const uint16_t* pHeightInSbsMinus1;
 /// };
 /// ```
-public sealed class StdVideoAV1TileInfo extends GroupType {
+public final class StdVideoAV1TileInfo extends GroupType {
     /// The struct layout of `StdVideoAV1TileInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoAV1TileInfoFlags.LAYOUT.withName("flags"),
@@ -114,20 +114,21 @@ public sealed class StdVideoAV1TileInfo extends GroupType {
     public static final VarHandle VH_pHeightInSbsMinus1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pHeightInSbsMinus1"));
 
     /// Creates `StdVideoAV1TileInfo` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoAV1TileInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoAV1TileInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoAV1TileInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoAV1TileInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1TileInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoAV1TileInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1TileInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1TileInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoAV1TileInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1TileInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoAV1TileInfo` with the given segment.
     ///
@@ -135,18 +136,18 @@ public sealed class StdVideoAV1TileInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoAV1TileInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1TileInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1TileInfo`
-    public static StdVideoAV1TileInfo alloc(SegmentAllocator allocator) { return new StdVideoAV1TileInfo(allocator.allocate(LAYOUT)); }
+    public static StdVideoAV1TileInfo alloc(SegmentAllocator allocator) { return new StdVideoAV1TileInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1TileInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoAV1TileInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1TileInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoAV1TileInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -278,9 +279,10 @@ public sealed class StdVideoAV1TileInfo extends GroupType {
     /// @return `this`
     public StdVideoAV1TileInfo copyFrom(StdVideoAV1TileInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoAV1TileInfo reinterpret(long count) { return new StdVideoAV1TileInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -465,132 +467,126 @@ public sealed class StdVideoAV1TileInfo extends GroupType {
     /// @return `this`
     public StdVideoAV1TileInfo pHeightInSbsMinus1(MemorySegment value) { pHeightInSbsMinus1(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [StdVideoAV1TileInfo].
-    public static final class Buffer extends StdVideoAV1TileInfo {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoAV1TileInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1TileInfo`
+    public StdVideoAV1TileInfo asSlice(long index) { return new StdVideoAV1TileInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoAV1TileInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoAV1TileInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1TileInfo`
+    public StdVideoAV1TileInfo asSlice(long index, long count) { return new StdVideoAV1TileInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoAV1TileInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoAV1TileInfo at(long index, Consumer<StdVideoAV1TileInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoAV1TileInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoAV1TileInfo`
-        public StdVideoAV1TileInfo asSlice(long index) { return new StdVideoAV1TileInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoAV1TileInfo flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1TileInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1TileInfoFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoAV1TileInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoAV1TileInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `TileCols` at the given index}
+    /// @param index the index of the struct buffer
+    public byte TileColsAt(long index) { return TileCols(this.segment(), index); }
+    /// Sets `TileCols` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo TileColsAt(long index, byte value) { TileCols(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoAV1TileInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoAV1TileInfoFlags.of(flagsAt(index))); return this; }
+    /// {@return `TileRows` at the given index}
+    /// @param index the index of the struct buffer
+    public byte TileRowsAt(long index) { return TileRows(this.segment(), index); }
+    /// Sets `TileRows` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo TileRowsAt(long index, byte value) { TileRows(this.segment(), index, value); return this; }
 
-        /// {@return `TileCols` at the given index}
-        /// @param index the index of the struct buffer
-        public byte TileColsAt(long index) { return TileCols(this.segment(), index); }
-        /// Sets `TileCols` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer TileColsAt(long index, byte value) { TileCols(this.segment(), index, value); return this; }
+    /// {@return `context_update_tile_id` at the given index}
+    /// @param index the index of the struct buffer
+    public short context_update_tile_idAt(long index) { return context_update_tile_id(this.segment(), index); }
+    /// Sets `context_update_tile_id` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo context_update_tile_idAt(long index, short value) { context_update_tile_id(this.segment(), index, value); return this; }
 
-        /// {@return `TileRows` at the given index}
-        /// @param index the index of the struct buffer
-        public byte TileRowsAt(long index) { return TileRows(this.segment(), index); }
-        /// Sets `TileRows` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer TileRowsAt(long index, byte value) { TileRows(this.segment(), index, value); return this; }
+    /// {@return `tile_size_bytes_minus_1` at the given index}
+    /// @param index the index of the struct buffer
+    public byte tile_size_bytes_minus_1At(long index) { return tile_size_bytes_minus_1(this.segment(), index); }
+    /// Sets `tile_size_bytes_minus_1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo tile_size_bytes_minus_1At(long index, byte value) { tile_size_bytes_minus_1(this.segment(), index, value); return this; }
 
-        /// {@return `context_update_tile_id` at the given index}
-        /// @param index the index of the struct buffer
-        public short context_update_tile_idAt(long index) { return context_update_tile_id(this.segment(), index); }
-        /// Sets `context_update_tile_id` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer context_update_tile_idAt(long index, short value) { context_update_tile_id(this.segment(), index, value); return this; }
-
-        /// {@return `tile_size_bytes_minus_1` at the given index}
-        /// @param index the index of the struct buffer
-        public byte tile_size_bytes_minus_1At(long index) { return tile_size_bytes_minus_1(this.segment(), index); }
-        /// Sets `tile_size_bytes_minus_1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer tile_size_bytes_minus_1At(long index, byte value) { tile_size_bytes_minus_1(this.segment(), index, value); return this; }
-
-        /// {@return `reserved1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment reserved1At(long index) { return reserved1(this.segment(), index); }
-        /// {@return `reserved1` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `reserved1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment reserved1At(long index) { return reserved1(this.segment(), index); }
+    /// {@return `reserved1` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte reserved1At(long index, long index0) { return reserved1(this.segment(), index, index0); }
-        /// Sets `reserved1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer reserved1At(long index, MemorySegment value) { reserved1(this.segment(), index, value); return this; }
-        /// Sets `reserved1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer reserved1At(long index, long index0, byte value) { reserved1(this.segment(), index, index0, value); return this; }
+    /// Sets `reserved1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo reserved1At(long index, MemorySegment value) { reserved1(this.segment(), index, value); return this; }
+    /// Sets `reserved1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo reserved1At(long index, long index0, byte value) { reserved1(this.segment(), index, index0, value); return this; }
 
-        /// {@return `pMiColStarts` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pMiColStartsAt(long index) { return pMiColStarts(this.segment(), index); }
-        /// Sets `pMiColStarts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pMiColStartsAt(long index, MemorySegment value) { pMiColStarts(this.segment(), index, value); return this; }
+    /// {@return `pMiColStarts` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pMiColStartsAt(long index) { return pMiColStarts(this.segment(), index); }
+    /// Sets `pMiColStarts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo pMiColStartsAt(long index, MemorySegment value) { pMiColStarts(this.segment(), index, value); return this; }
 
-        /// {@return `pMiRowStarts` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pMiRowStartsAt(long index) { return pMiRowStarts(this.segment(), index); }
-        /// Sets `pMiRowStarts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pMiRowStartsAt(long index, MemorySegment value) { pMiRowStarts(this.segment(), index, value); return this; }
+    /// {@return `pMiRowStarts` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pMiRowStartsAt(long index) { return pMiRowStarts(this.segment(), index); }
+    /// Sets `pMiRowStarts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo pMiRowStartsAt(long index, MemorySegment value) { pMiRowStarts(this.segment(), index, value); return this; }
 
-        /// {@return `pWidthInSbsMinus1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pWidthInSbsMinus1At(long index) { return pWidthInSbsMinus1(this.segment(), index); }
-        /// Sets `pWidthInSbsMinus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pWidthInSbsMinus1At(long index, MemorySegment value) { pWidthInSbsMinus1(this.segment(), index, value); return this; }
+    /// {@return `pWidthInSbsMinus1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pWidthInSbsMinus1At(long index) { return pWidthInSbsMinus1(this.segment(), index); }
+    /// Sets `pWidthInSbsMinus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo pWidthInSbsMinus1At(long index, MemorySegment value) { pWidthInSbsMinus1(this.segment(), index, value); return this; }
 
-        /// {@return `pHeightInSbsMinus1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pHeightInSbsMinus1At(long index) { return pHeightInSbsMinus1(this.segment(), index); }
-        /// Sets `pHeightInSbsMinus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pHeightInSbsMinus1At(long index, MemorySegment value) { pHeightInSbsMinus1(this.segment(), index, value); return this; }
+    /// {@return `pHeightInSbsMinus1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pHeightInSbsMinus1At(long index) { return pHeightInSbsMinus1(this.segment(), index); }
+    /// Sets `pHeightInSbsMinus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1TileInfo pHeightInSbsMinus1At(long index, MemorySegment value) { pHeightInSbsMinus1(this.segment(), index, value); return this; }
 
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceAddress clusterReferences;
 /// };
 /// ```
-public sealed class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV extends GroupType {
+public final class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV extends GroupType {
     /// The struct layout of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("clusterReferencesCount"),
@@ -59,20 +60,21 @@ public sealed class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV
     public static final VarHandle VH_clusterReferences = LAYOUT.arrayElementVarHandle(PathElement.groupElement("clusterReferences"));
 
     /// Creates `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
-    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV
     /// @return `this`
     public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV copyFrom(VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV reinterpret(long count) { return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `clusterReferencesCount` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV
     /// @return `this`
     public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV clusterReferences(long value) { clusterReferences(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV].
-    public static final class Buffer extends VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV asSlice(long index) { return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV asSlice(long index, long count) { return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV at(long index, Consumer<VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
-        public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV asSlice(long index) { return new VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `clusterReferencesCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int clusterReferencesCountAt(long index) { return clusterReferencesCount(this.segment(), index); }
+    /// Sets `clusterReferencesCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV clusterReferencesCountAt(long index, int value) { clusterReferencesCount(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `clusterReferencesStride` at the given index}
+    /// @param index the index of the struct buffer
+    public int clusterReferencesStrideAt(long index) { return clusterReferencesStride(this.segment(), index); }
+    /// Sets `clusterReferencesStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV clusterReferencesStrideAt(long index, int value) { clusterReferencesStride(this.segment(), index, value); return this; }
 
-        /// {@return `clusterReferencesCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int clusterReferencesCountAt(long index) { return clusterReferencesCount(this.segment(), index); }
-        /// Sets `clusterReferencesCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterReferencesCountAt(long index, int value) { clusterReferencesCount(this.segment(), index, value); return this; }
+    /// {@return `clusterReferences` at the given index}
+    /// @param index the index of the struct buffer
+    public long clusterReferencesAt(long index) { return clusterReferences(this.segment(), index); }
+    /// Sets `clusterReferences` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureBuildClustersBottomLevelInfoNV clusterReferencesAt(long index, long value) { clusterReferences(this.segment(), index, value); return this; }
 
-        /// {@return `clusterReferencesStride` at the given index}
-        /// @param index the index of the struct buffer
-        public int clusterReferencesStrideAt(long index) { return clusterReferencesStride(this.segment(), index); }
-        /// Sets `clusterReferencesStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterReferencesStrideAt(long index, int value) { clusterReferencesStride(this.segment(), index, value); return this; }
-
-        /// {@return `clusterReferences` at the given index}
-        /// @param index the index of the struct buffer
-        public long clusterReferencesAt(long index) { return clusterReferences(this.segment(), index); }
-        /// Sets `clusterReferences` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer clusterReferencesAt(long index, long value) { clusterReferences(this.segment(), index, value); return this; }
-
-    }
 }

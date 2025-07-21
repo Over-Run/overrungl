@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     int fd;
 /// };
 /// ```
-public sealed class VkImportSemaphoreFdInfoKHR extends GroupType {
+public final class VkImportSemaphoreFdInfoKHR extends GroupType {
     /// The struct layout of `VkImportSemaphoreFdInfoKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkImportSemaphoreFdInfoKHR extends GroupType {
     public static final VarHandle VH_fd = LAYOUT.arrayElementVarHandle(PathElement.groupElement("fd"));
 
     /// Creates `VkImportSemaphoreFdInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkImportSemaphoreFdInfoKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkImportSemaphoreFdInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkImportSemaphoreFdInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkImportSemaphoreFdInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportSemaphoreFdInfoKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImportSemaphoreFdInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImportSemaphoreFdInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportSemaphoreFdInfoKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkImportSemaphoreFdInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportSemaphoreFdInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkImportSemaphoreFdInfoKHR` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkImportSemaphoreFdInfoKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkImportSemaphoreFdInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportSemaphoreFdInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkImportSemaphoreFdInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImportSemaphoreFdInfoKHR`
-    public static VkImportSemaphoreFdInfoKHR alloc(SegmentAllocator allocator) { return new VkImportSemaphoreFdInfoKHR(allocator.allocate(LAYOUT)); }
+    public static VkImportSemaphoreFdInfoKHR alloc(SegmentAllocator allocator) { return new VkImportSemaphoreFdInfoKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkImportSemaphoreFdInfoKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImportSemaphoreFdInfoKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkImportSemaphoreFdInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkImportSemaphoreFdInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkImportSemaphoreFdInfoKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkImportSemaphoreFdInfoKHR extends GroupType {
     /// @return `this`
     public VkImportSemaphoreFdInfoKHR copyFrom(VkImportSemaphoreFdInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkImportSemaphoreFdInfoKHR reinterpret(long count) { return new VkImportSemaphoreFdInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkImportSemaphoreFdInfoKHR extends GroupType {
     /// @return `this`
     public VkImportSemaphoreFdInfoKHR fd(int value) { fd(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkImportSemaphoreFdInfoKHR].
-    public static final class Buffer extends VkImportSemaphoreFdInfoKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkImportSemaphoreFdInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImportSemaphoreFdInfoKHR`
+    public VkImportSemaphoreFdInfoKHR asSlice(long index) { return new VkImportSemaphoreFdInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkImportSemaphoreFdInfoKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkImportSemaphoreFdInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImportSemaphoreFdInfoKHR`
+    public VkImportSemaphoreFdInfoKHR asSlice(long index, long count) { return new VkImportSemaphoreFdInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkImportSemaphoreFdInfoKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkImportSemaphoreFdInfoKHR at(long index, Consumer<VkImportSemaphoreFdInfoKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkImportSemaphoreFdInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkImportSemaphoreFdInfoKHR`
-        public VkImportSemaphoreFdInfoKHR asSlice(long index) { return new VkImportSemaphoreFdInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportSemaphoreFdInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkImportSemaphoreFdInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkImportSemaphoreFdInfoKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportSemaphoreFdInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `semaphore` at the given index}
+    /// @param index the index of the struct buffer
+    public long semaphoreAt(long index) { return semaphore(this.segment(), index); }
+    /// Sets `semaphore` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportSemaphoreFdInfoKHR semaphoreAt(long index, long value) { semaphore(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportSemaphoreFdInfoKHR flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `semaphore` at the given index}
-        /// @param index the index of the struct buffer
-        public long semaphoreAt(long index) { return semaphore(this.segment(), index); }
-        /// Sets `semaphore` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer semaphoreAt(long index, long value) { semaphore(this.segment(), index, value); return this; }
+    /// {@return `handleType` at the given index}
+    /// @param index the index of the struct buffer
+    public int handleTypeAt(long index) { return handleType(this.segment(), index); }
+    /// Sets `handleType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportSemaphoreFdInfoKHR handleTypeAt(long index, int value) { handleType(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `fd` at the given index}
+    /// @param index the index of the struct buffer
+    public int fdAt(long index) { return fd(this.segment(), index); }
+    /// Sets `fd` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportSemaphoreFdInfoKHR fdAt(long index, int value) { fd(this.segment(), index, value); return this; }
 
-        /// {@return `handleType` at the given index}
-        /// @param index the index of the struct buffer
-        public int handleTypeAt(long index) { return handleType(this.segment(), index); }
-        /// Sets `handleType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer handleTypeAt(long index, int value) { handleType(this.segment(), index, value); return this; }
-
-        /// {@return `fd` at the given index}
-        /// @param index the index of the struct buffer
-        public int fdAt(long index) { return fd(this.segment(), index); }
-        /// Sets `fd` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fdAt(long index, int value) { fd(this.segment(), index, value); return this; }
-
-    }
 }

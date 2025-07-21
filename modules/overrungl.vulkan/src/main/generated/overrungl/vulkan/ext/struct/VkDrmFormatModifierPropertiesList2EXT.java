@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     VkDrmFormatModifierProperties2EXT* pDrmFormatModifierProperties;
 /// };
 /// ```
-public sealed class VkDrmFormatModifierPropertiesList2EXT extends GroupType {
+public final class VkDrmFormatModifierPropertiesList2EXT extends GroupType {
     /// The struct layout of `VkDrmFormatModifierPropertiesList2EXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkDrmFormatModifierPropertiesList2EXT extends GroupType {
     public static final VarHandle VH_pDrmFormatModifierProperties = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pDrmFormatModifierProperties"));
 
     /// Creates `VkDrmFormatModifierPropertiesList2EXT` with the given segment.
-    /// @param segment the memory segment
-    public VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDrmFormatModifierPropertiesList2EXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDrmFormatModifierPropertiesList2EXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDrmFormatModifierPropertiesList2EXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrmFormatModifierPropertiesList2EXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDrmFormatModifierPropertiesList2EXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDrmFormatModifierPropertiesList2EXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrmFormatModifierPropertiesList2EXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDrmFormatModifierPropertiesList2EXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrmFormatModifierPropertiesList2EXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDrmFormatModifierPropertiesList2EXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkDrmFormatModifierPropertiesList2EXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDrmFormatModifierPropertiesList2EXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDrmFormatModifierPropertiesList2EXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDrmFormatModifierPropertiesList2EXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDrmFormatModifierPropertiesList2EXT`
-    public static VkDrmFormatModifierPropertiesList2EXT alloc(SegmentAllocator allocator) { return new VkDrmFormatModifierPropertiesList2EXT(allocator.allocate(LAYOUT)); }
+    public static VkDrmFormatModifierPropertiesList2EXT alloc(SegmentAllocator allocator) { return new VkDrmFormatModifierPropertiesList2EXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDrmFormatModifierPropertiesList2EXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDrmFormatModifierPropertiesList2EXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDrmFormatModifierPropertiesList2EXT alloc(SegmentAllocator allocator, long count) { return new VkDrmFormatModifierPropertiesList2EXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDrmFormatModifierPropertiesList2EXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkDrmFormatModifierPropertiesList2EXT extends GroupType {
     /// @return `this`
     public VkDrmFormatModifierPropertiesList2EXT copyFrom(VkDrmFormatModifierPropertiesList2EXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDrmFormatModifierPropertiesList2EXT reinterpret(long count) { return new VkDrmFormatModifierPropertiesList2EXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkDrmFormatModifierPropertiesList2EXT extends GroupType {
     /// @return `this`
     public VkDrmFormatModifierPropertiesList2EXT pDrmFormatModifierProperties(MemorySegment value) { pDrmFormatModifierProperties(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDrmFormatModifierPropertiesList2EXT].
-    public static final class Buffer extends VkDrmFormatModifierPropertiesList2EXT {
-        private final long elementCount;
+    /// Creates a slice of `VkDrmFormatModifierPropertiesList2EXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDrmFormatModifierPropertiesList2EXT`
+    public VkDrmFormatModifierPropertiesList2EXT asSlice(long index) { return new VkDrmFormatModifierPropertiesList2EXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDrmFormatModifierPropertiesList2EXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDrmFormatModifierPropertiesList2EXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDrmFormatModifierPropertiesList2EXT`
+    public VkDrmFormatModifierPropertiesList2EXT asSlice(long index, long count) { return new VkDrmFormatModifierPropertiesList2EXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDrmFormatModifierPropertiesList2EXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDrmFormatModifierPropertiesList2EXT at(long index, Consumer<VkDrmFormatModifierPropertiesList2EXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDrmFormatModifierPropertiesList2EXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDrmFormatModifierPropertiesList2EXT`
-        public VkDrmFormatModifierPropertiesList2EXT asSlice(long index) { return new VkDrmFormatModifierPropertiesList2EXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDrmFormatModifierPropertiesList2EXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDrmFormatModifierPropertiesList2EXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDrmFormatModifierPropertiesList2EXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDrmFormatModifierPropertiesList2EXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `drmFormatModifierCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int drmFormatModifierCountAt(long index) { return drmFormatModifierCount(this.segment(), index); }
+    /// Sets `drmFormatModifierCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDrmFormatModifierPropertiesList2EXT drmFormatModifierCountAt(long index, int value) { drmFormatModifierCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pDrmFormatModifierProperties` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pDrmFormatModifierPropertiesAt(long index) { return pDrmFormatModifierProperties(this.segment(), index); }
+    /// Sets `pDrmFormatModifierProperties` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDrmFormatModifierPropertiesList2EXT pDrmFormatModifierPropertiesAt(long index, MemorySegment value) { pDrmFormatModifierProperties(this.segment(), index, value); return this; }
 
-        /// {@return `drmFormatModifierCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int drmFormatModifierCountAt(long index) { return drmFormatModifierCount(this.segment(), index); }
-        /// Sets `drmFormatModifierCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer drmFormatModifierCountAt(long index, int value) { drmFormatModifierCount(this.segment(), index, value); return this; }
-
-        /// {@return `pDrmFormatModifierProperties` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pDrmFormatModifierPropertiesAt(long index) { return pDrmFormatModifierProperties(this.segment(), index); }
-        /// Sets `pDrmFormatModifierProperties` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pDrmFormatModifierPropertiesAt(long index, MemorySegment value) { pDrmFormatModifierProperties(this.segment(), index, value); return this; }
-
-    }
 }

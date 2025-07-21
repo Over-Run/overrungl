@@ -21,6 +21,7 @@ package overrungl.vulkan.amd.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -45,7 +46,7 @@ import overrungl.util.*;
 ///     uint32_t vgprAllocationGranularity;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
+public final class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// The struct layout of `VkPhysicalDeviceShaderCorePropertiesAMD`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -163,20 +164,21 @@ public sealed class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     public static final VarHandle VH_vgprAllocationGranularity = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vgprAllocationGranularity"));
 
     /// Creates `VkPhysicalDeviceShaderCorePropertiesAMD` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceShaderCorePropertiesAMD(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceShaderCorePropertiesAMD(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceShaderCorePropertiesAMD` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceShaderCorePropertiesAMD of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderCorePropertiesAMD(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceShaderCorePropertiesAMD` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceShaderCorePropertiesAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderCorePropertiesAMD(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceShaderCorePropertiesAMD ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderCorePropertiesAMD(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceShaderCorePropertiesAMD` with the given segment.
     ///
@@ -184,18 +186,18 @@ public sealed class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceShaderCorePropertiesAMD ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceShaderCorePropertiesAMD(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderCorePropertiesAMD` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceShaderCorePropertiesAMD`
-    public static VkPhysicalDeviceShaderCorePropertiesAMD alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderCorePropertiesAMD(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceShaderCorePropertiesAMD alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceShaderCorePropertiesAMD(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceShaderCorePropertiesAMD` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceShaderCorePropertiesAMD`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceShaderCorePropertiesAMD alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderCorePropertiesAMD(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceShaderCorePropertiesAMD` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -450,9 +452,10 @@ public sealed class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceShaderCorePropertiesAMD copyFrom(VkPhysicalDeviceShaderCorePropertiesAMD src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceShaderCorePropertiesAMD reinterpret(long count) { return new VkPhysicalDeviceShaderCorePropertiesAMD(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -710,171 +713,165 @@ public sealed class VkPhysicalDeviceShaderCorePropertiesAMD extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceShaderCorePropertiesAMD vgprAllocationGranularity(int value) { vgprAllocationGranularity(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceShaderCorePropertiesAMD].
-    public static final class Buffer extends VkPhysicalDeviceShaderCorePropertiesAMD {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceShaderCorePropertiesAMD`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceShaderCorePropertiesAMD`
+    public VkPhysicalDeviceShaderCorePropertiesAMD asSlice(long index) { return new VkPhysicalDeviceShaderCorePropertiesAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceShaderCorePropertiesAMD.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceShaderCorePropertiesAMD`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceShaderCorePropertiesAMD`
+    public VkPhysicalDeviceShaderCorePropertiesAMD asSlice(long index, long count) { return new VkPhysicalDeviceShaderCorePropertiesAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceShaderCorePropertiesAMD` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD at(long index, Consumer<VkPhysicalDeviceShaderCorePropertiesAMD> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderCorePropertiesAMD`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceShaderCorePropertiesAMD`
-        public VkPhysicalDeviceShaderCorePropertiesAMD asSlice(long index) { return new VkPhysicalDeviceShaderCorePropertiesAMD(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceShaderCorePropertiesAMD`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceShaderCorePropertiesAMD`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `shaderEngineCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderEngineCountAt(long index) { return shaderEngineCount(this.segment(), index); }
+    /// Sets `shaderEngineCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD shaderEngineCountAt(long index, int value) { shaderEngineCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `shaderArraysPerEngineCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderArraysPerEngineCountAt(long index) { return shaderArraysPerEngineCount(this.segment(), index); }
+    /// Sets `shaderArraysPerEngineCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD shaderArraysPerEngineCountAt(long index, int value) { shaderArraysPerEngineCount(this.segment(), index, value); return this; }
 
-        /// {@return `shaderEngineCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderEngineCountAt(long index) { return shaderEngineCount(this.segment(), index); }
-        /// Sets `shaderEngineCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderEngineCountAt(long index, int value) { shaderEngineCount(this.segment(), index, value); return this; }
+    /// {@return `computeUnitsPerShaderArray` at the given index}
+    /// @param index the index of the struct buffer
+    public int computeUnitsPerShaderArrayAt(long index) { return computeUnitsPerShaderArray(this.segment(), index); }
+    /// Sets `computeUnitsPerShaderArray` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD computeUnitsPerShaderArrayAt(long index, int value) { computeUnitsPerShaderArray(this.segment(), index, value); return this; }
 
-        /// {@return `shaderArraysPerEngineCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderArraysPerEngineCountAt(long index) { return shaderArraysPerEngineCount(this.segment(), index); }
-        /// Sets `shaderArraysPerEngineCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderArraysPerEngineCountAt(long index, int value) { shaderArraysPerEngineCount(this.segment(), index, value); return this; }
+    /// {@return `simdPerComputeUnit` at the given index}
+    /// @param index the index of the struct buffer
+    public int simdPerComputeUnitAt(long index) { return simdPerComputeUnit(this.segment(), index); }
+    /// Sets `simdPerComputeUnit` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD simdPerComputeUnitAt(long index, int value) { simdPerComputeUnit(this.segment(), index, value); return this; }
 
-        /// {@return `computeUnitsPerShaderArray` at the given index}
-        /// @param index the index of the struct buffer
-        public int computeUnitsPerShaderArrayAt(long index) { return computeUnitsPerShaderArray(this.segment(), index); }
-        /// Sets `computeUnitsPerShaderArray` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer computeUnitsPerShaderArrayAt(long index, int value) { computeUnitsPerShaderArray(this.segment(), index, value); return this; }
+    /// {@return `wavefrontsPerSimd` at the given index}
+    /// @param index the index of the struct buffer
+    public int wavefrontsPerSimdAt(long index) { return wavefrontsPerSimd(this.segment(), index); }
+    /// Sets `wavefrontsPerSimd` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD wavefrontsPerSimdAt(long index, int value) { wavefrontsPerSimd(this.segment(), index, value); return this; }
 
-        /// {@return `simdPerComputeUnit` at the given index}
-        /// @param index the index of the struct buffer
-        public int simdPerComputeUnitAt(long index) { return simdPerComputeUnit(this.segment(), index); }
-        /// Sets `simdPerComputeUnit` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer simdPerComputeUnitAt(long index, int value) { simdPerComputeUnit(this.segment(), index, value); return this; }
+    /// {@return `wavefrontSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int wavefrontSizeAt(long index) { return wavefrontSize(this.segment(), index); }
+    /// Sets `wavefrontSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD wavefrontSizeAt(long index, int value) { wavefrontSize(this.segment(), index, value); return this; }
 
-        /// {@return `wavefrontsPerSimd` at the given index}
-        /// @param index the index of the struct buffer
-        public int wavefrontsPerSimdAt(long index) { return wavefrontsPerSimd(this.segment(), index); }
-        /// Sets `wavefrontsPerSimd` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer wavefrontsPerSimdAt(long index, int value) { wavefrontsPerSimd(this.segment(), index, value); return this; }
+    /// {@return `sgprsPerSimd` at the given index}
+    /// @param index the index of the struct buffer
+    public int sgprsPerSimdAt(long index) { return sgprsPerSimd(this.segment(), index); }
+    /// Sets `sgprsPerSimd` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD sgprsPerSimdAt(long index, int value) { sgprsPerSimd(this.segment(), index, value); return this; }
 
-        /// {@return `wavefrontSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int wavefrontSizeAt(long index) { return wavefrontSize(this.segment(), index); }
-        /// Sets `wavefrontSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer wavefrontSizeAt(long index, int value) { wavefrontSize(this.segment(), index, value); return this; }
+    /// {@return `minSgprAllocation` at the given index}
+    /// @param index the index of the struct buffer
+    public int minSgprAllocationAt(long index) { return minSgprAllocation(this.segment(), index); }
+    /// Sets `minSgprAllocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD minSgprAllocationAt(long index, int value) { minSgprAllocation(this.segment(), index, value); return this; }
 
-        /// {@return `sgprsPerSimd` at the given index}
-        /// @param index the index of the struct buffer
-        public int sgprsPerSimdAt(long index) { return sgprsPerSimd(this.segment(), index); }
-        /// Sets `sgprsPerSimd` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sgprsPerSimdAt(long index, int value) { sgprsPerSimd(this.segment(), index, value); return this; }
+    /// {@return `maxSgprAllocation` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxSgprAllocationAt(long index) { return maxSgprAllocation(this.segment(), index); }
+    /// Sets `maxSgprAllocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD maxSgprAllocationAt(long index, int value) { maxSgprAllocation(this.segment(), index, value); return this; }
 
-        /// {@return `minSgprAllocation` at the given index}
-        /// @param index the index of the struct buffer
-        public int minSgprAllocationAt(long index) { return minSgprAllocation(this.segment(), index); }
-        /// Sets `minSgprAllocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minSgprAllocationAt(long index, int value) { minSgprAllocation(this.segment(), index, value); return this; }
+    /// {@return `sgprAllocationGranularity` at the given index}
+    /// @param index the index of the struct buffer
+    public int sgprAllocationGranularityAt(long index) { return sgprAllocationGranularity(this.segment(), index); }
+    /// Sets `sgprAllocationGranularity` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD sgprAllocationGranularityAt(long index, int value) { sgprAllocationGranularity(this.segment(), index, value); return this; }
 
-        /// {@return `maxSgprAllocation` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxSgprAllocationAt(long index) { return maxSgprAllocation(this.segment(), index); }
-        /// Sets `maxSgprAllocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSgprAllocationAt(long index, int value) { maxSgprAllocation(this.segment(), index, value); return this; }
+    /// {@return `vgprsPerSimd` at the given index}
+    /// @param index the index of the struct buffer
+    public int vgprsPerSimdAt(long index) { return vgprsPerSimd(this.segment(), index); }
+    /// Sets `vgprsPerSimd` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD vgprsPerSimdAt(long index, int value) { vgprsPerSimd(this.segment(), index, value); return this; }
 
-        /// {@return `sgprAllocationGranularity` at the given index}
-        /// @param index the index of the struct buffer
-        public int sgprAllocationGranularityAt(long index) { return sgprAllocationGranularity(this.segment(), index); }
-        /// Sets `sgprAllocationGranularity` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sgprAllocationGranularityAt(long index, int value) { sgprAllocationGranularity(this.segment(), index, value); return this; }
+    /// {@return `minVgprAllocation` at the given index}
+    /// @param index the index of the struct buffer
+    public int minVgprAllocationAt(long index) { return minVgprAllocation(this.segment(), index); }
+    /// Sets `minVgprAllocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD minVgprAllocationAt(long index, int value) { minVgprAllocation(this.segment(), index, value); return this; }
 
-        /// {@return `vgprsPerSimd` at the given index}
-        /// @param index the index of the struct buffer
-        public int vgprsPerSimdAt(long index) { return vgprsPerSimd(this.segment(), index); }
-        /// Sets `vgprsPerSimd` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vgprsPerSimdAt(long index, int value) { vgprsPerSimd(this.segment(), index, value); return this; }
+    /// {@return `maxVgprAllocation` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxVgprAllocationAt(long index) { return maxVgprAllocation(this.segment(), index); }
+    /// Sets `maxVgprAllocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD maxVgprAllocationAt(long index, int value) { maxVgprAllocation(this.segment(), index, value); return this; }
 
-        /// {@return `minVgprAllocation` at the given index}
-        /// @param index the index of the struct buffer
-        public int minVgprAllocationAt(long index) { return minVgprAllocation(this.segment(), index); }
-        /// Sets `minVgprAllocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minVgprAllocationAt(long index, int value) { minVgprAllocation(this.segment(), index, value); return this; }
+    /// {@return `vgprAllocationGranularity` at the given index}
+    /// @param index the index of the struct buffer
+    public int vgprAllocationGranularityAt(long index) { return vgprAllocationGranularity(this.segment(), index); }
+    /// Sets `vgprAllocationGranularity` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceShaderCorePropertiesAMD vgprAllocationGranularityAt(long index, int value) { vgprAllocationGranularity(this.segment(), index, value); return this; }
 
-        /// {@return `maxVgprAllocation` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxVgprAllocationAt(long index) { return maxVgprAllocation(this.segment(), index); }
-        /// Sets `maxVgprAllocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxVgprAllocationAt(long index, int value) { maxVgprAllocation(this.segment(), index, value); return this; }
-
-        /// {@return `vgprAllocationGranularity` at the given index}
-        /// @param index the index of the struct buffer
-        public int vgprAllocationGranularityAt(long index) { return vgprAllocationGranularity(this.segment(), index); }
-        /// Sets `vgprAllocationGranularity` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vgprAllocationGranularityAt(long index, int value) { vgprAllocationGranularity(this.segment(), index, value); return this; }
-
-    }
 }

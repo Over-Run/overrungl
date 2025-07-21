@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     const VkBool32* pColorWriteEnables;
 /// };
 /// ```
-public sealed class VkPipelineColorWriteCreateInfoEXT extends GroupType {
+public final class VkPipelineColorWriteCreateInfoEXT extends GroupType {
     /// The struct layout of `VkPipelineColorWriteCreateInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends GroupType {
     public static final VarHandle VH_pColorWriteEnables = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pColorWriteEnables"));
 
     /// Creates `VkPipelineColorWriteCreateInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineColorWriteCreateInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineColorWriteCreateInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineColorWriteCreateInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineColorWriteCreateInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineColorWriteCreateInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineColorWriteCreateInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineColorWriteCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineColorWriteCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineColorWriteCreateInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineColorWriteCreateInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineColorWriteCreateInfoEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineColorWriteCreateInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineColorWriteCreateInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineColorWriteCreateInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineColorWriteCreateInfoEXT`
-    public static VkPipelineColorWriteCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkPipelineColorWriteCreateInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkPipelineColorWriteCreateInfoEXT alloc(SegmentAllocator allocator) { return new VkPipelineColorWriteCreateInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineColorWriteCreateInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineColorWriteCreateInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineColorWriteCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineColorWriteCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineColorWriteCreateInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkPipelineColorWriteCreateInfoEXT copyFrom(VkPipelineColorWriteCreateInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineColorWriteCreateInfoEXT reinterpret(long count) { return new VkPipelineColorWriteCreateInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPipelineColorWriteCreateInfoEXT extends GroupType {
     /// @return `this`
     public VkPipelineColorWriteCreateInfoEXT pColorWriteEnables(MemorySegment value) { pColorWriteEnables(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineColorWriteCreateInfoEXT].
-    public static final class Buffer extends VkPipelineColorWriteCreateInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineColorWriteCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineColorWriteCreateInfoEXT`
+    public VkPipelineColorWriteCreateInfoEXT asSlice(long index) { return new VkPipelineColorWriteCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineColorWriteCreateInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineColorWriteCreateInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineColorWriteCreateInfoEXT`
+    public VkPipelineColorWriteCreateInfoEXT asSlice(long index, long count) { return new VkPipelineColorWriteCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineColorWriteCreateInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineColorWriteCreateInfoEXT at(long index, Consumer<VkPipelineColorWriteCreateInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineColorWriteCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineColorWriteCreateInfoEXT`
-        public VkPipelineColorWriteCreateInfoEXT asSlice(long index) { return new VkPipelineColorWriteCreateInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorWriteCreateInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineColorWriteCreateInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineColorWriteCreateInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorWriteCreateInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `attachmentCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int attachmentCountAt(long index) { return attachmentCount(this.segment(), index); }
+    /// Sets `attachmentCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorWriteCreateInfoEXT attachmentCountAt(long index, int value) { attachmentCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pColorWriteEnables` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pColorWriteEnablesAt(long index) { return pColorWriteEnables(this.segment(), index); }
+    /// Sets `pColorWriteEnables` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineColorWriteCreateInfoEXT pColorWriteEnablesAt(long index, MemorySegment value) { pColorWriteEnables(this.segment(), index, value); return this; }
 
-        /// {@return `attachmentCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int attachmentCountAt(long index) { return attachmentCount(this.segment(), index); }
-        /// Sets `attachmentCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer attachmentCountAt(long index, int value) { attachmentCount(this.segment(), index, value); return this; }
-
-        /// {@return `pColorWriteEnables` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pColorWriteEnablesAt(long index) { return pColorWriteEnables(this.segment(), index); }
-        /// Sets `pColorWriteEnables` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pColorWriteEnablesAt(long index, MemorySegment value) { pColorWriteEnables(this.segment(), index, value); return this; }
-
-    }
 }

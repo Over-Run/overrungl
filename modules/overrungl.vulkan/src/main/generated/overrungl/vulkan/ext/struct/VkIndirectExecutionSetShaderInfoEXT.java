@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -37,7 +38,7 @@ import overrungl.util.*;
 ///     const VkPushConstantRange* pPushConstantRanges;
 /// };
 /// ```
-public sealed class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
+public final class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// The struct layout of `VkIndirectExecutionSetShaderInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -99,20 +100,21 @@ public sealed class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     public static final VarHandle VH_pPushConstantRanges = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPushConstantRanges"));
 
     /// Creates `VkIndirectExecutionSetShaderInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkIndirectExecutionSetShaderInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkIndirectExecutionSetShaderInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkIndirectExecutionSetShaderInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkIndirectExecutionSetShaderInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetShaderInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkIndirectExecutionSetShaderInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkIndirectExecutionSetShaderInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetShaderInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkIndirectExecutionSetShaderInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetShaderInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkIndirectExecutionSetShaderInfoEXT` with the given segment.
     ///
@@ -120,18 +122,18 @@ public sealed class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkIndirectExecutionSetShaderInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkIndirectExecutionSetShaderInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
-    public static VkIndirectExecutionSetShaderInfoEXT alloc(SegmentAllocator allocator) { return new VkIndirectExecutionSetShaderInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkIndirectExecutionSetShaderInfoEXT alloc(SegmentAllocator allocator) { return new VkIndirectExecutionSetShaderInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkIndirectExecutionSetShaderInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkIndirectExecutionSetShaderInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectExecutionSetShaderInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkIndirectExecutionSetShaderInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -230,9 +232,10 @@ public sealed class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// @return `this`
     public VkIndirectExecutionSetShaderInfoEXT copyFrom(VkIndirectExecutionSetShaderInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkIndirectExecutionSetShaderInfoEXT reinterpret(long count) { return new VkIndirectExecutionSetShaderInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -362,99 +365,93 @@ public sealed class VkIndirectExecutionSetShaderInfoEXT extends GroupType {
     /// @return `this`
     public VkIndirectExecutionSetShaderInfoEXT pPushConstantRanges(MemorySegment value) { pPushConstantRanges(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkIndirectExecutionSetShaderInfoEXT].
-    public static final class Buffer extends VkIndirectExecutionSetShaderInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkIndirectExecutionSetShaderInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkIndirectExecutionSetShaderInfoEXT`
+    public VkIndirectExecutionSetShaderInfoEXT asSlice(long index) { return new VkIndirectExecutionSetShaderInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkIndirectExecutionSetShaderInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkIndirectExecutionSetShaderInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkIndirectExecutionSetShaderInfoEXT`
+    public VkIndirectExecutionSetShaderInfoEXT asSlice(long index, long count) { return new VkIndirectExecutionSetShaderInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkIndirectExecutionSetShaderInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkIndirectExecutionSetShaderInfoEXT at(long index, Consumer<VkIndirectExecutionSetShaderInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkIndirectExecutionSetShaderInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkIndirectExecutionSetShaderInfoEXT`
-        public VkIndirectExecutionSetShaderInfoEXT asSlice(long index) { return new VkIndirectExecutionSetShaderInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkIndirectExecutionSetShaderInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkIndirectExecutionSetShaderInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `shaderCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderCountAt(long index) { return shaderCount(this.segment(), index); }
+    /// Sets `shaderCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderInfoEXT shaderCountAt(long index, int value) { shaderCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pInitialShaders` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pInitialShadersAt(long index) { return pInitialShaders(this.segment(), index); }
+    /// Sets `pInitialShaders` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderInfoEXT pInitialShadersAt(long index, MemorySegment value) { pInitialShaders(this.segment(), index, value); return this; }
 
-        /// {@return `shaderCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderCountAt(long index) { return shaderCount(this.segment(), index); }
-        /// Sets `shaderCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderCountAt(long index, int value) { shaderCount(this.segment(), index, value); return this; }
+    /// {@return `pSetLayoutInfos` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pSetLayoutInfosAt(long index) { return pSetLayoutInfos(this.segment(), index); }
+    /// Sets `pSetLayoutInfos` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderInfoEXT pSetLayoutInfosAt(long index, MemorySegment value) { pSetLayoutInfos(this.segment(), index, value); return this; }
 
-        /// {@return `pInitialShaders` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pInitialShadersAt(long index) { return pInitialShaders(this.segment(), index); }
-        /// Sets `pInitialShaders` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pInitialShadersAt(long index, MemorySegment value) { pInitialShaders(this.segment(), index, value); return this; }
+    /// {@return `maxShaderCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxShaderCountAt(long index) { return maxShaderCount(this.segment(), index); }
+    /// Sets `maxShaderCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderInfoEXT maxShaderCountAt(long index, int value) { maxShaderCount(this.segment(), index, value); return this; }
 
-        /// {@return `pSetLayoutInfos` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pSetLayoutInfosAt(long index) { return pSetLayoutInfos(this.segment(), index); }
-        /// Sets `pSetLayoutInfos` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pSetLayoutInfosAt(long index, MemorySegment value) { pSetLayoutInfos(this.segment(), index, value); return this; }
+    /// {@return `pushConstantRangeCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int pushConstantRangeCountAt(long index) { return pushConstantRangeCount(this.segment(), index); }
+    /// Sets `pushConstantRangeCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderInfoEXT pushConstantRangeCountAt(long index, int value) { pushConstantRangeCount(this.segment(), index, value); return this; }
 
-        /// {@return `maxShaderCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxShaderCountAt(long index) { return maxShaderCount(this.segment(), index); }
-        /// Sets `maxShaderCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxShaderCountAt(long index, int value) { maxShaderCount(this.segment(), index, value); return this; }
+    /// {@return `pPushConstantRanges` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pPushConstantRangesAt(long index) { return pPushConstantRanges(this.segment(), index); }
+    /// Sets `pPushConstantRanges` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkIndirectExecutionSetShaderInfoEXT pPushConstantRangesAt(long index, MemorySegment value) { pPushConstantRanges(this.segment(), index, value); return this; }
 
-        /// {@return `pushConstantRangeCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int pushConstantRangeCountAt(long index) { return pushConstantRangeCount(this.segment(), index); }
-        /// Sets `pushConstantRangeCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pushConstantRangeCountAt(long index, int value) { pushConstantRangeCount(this.segment(), index, value); return this; }
-
-        /// {@return `pPushConstantRanges` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pPushConstantRangesAt(long index) { return pPushConstantRanges(this.segment(), index); }
-        /// Sets `pPushConstantRanges` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pPushConstantRangesAt(long index, MemorySegment value) { pPushConstantRanges(this.segment(), index, value); return this; }
-
-    }
 }

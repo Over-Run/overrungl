@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceSize strideInBytes;
 /// };
 /// ```
-public sealed class VkStridedDeviceAddressNV extends GroupType {
+public final class VkStridedDeviceAddressNV extends GroupType {
     /// The struct layout of `VkStridedDeviceAddressNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("startAddress"),
@@ -51,20 +52,21 @@ public sealed class VkStridedDeviceAddressNV extends GroupType {
     public static final VarHandle VH_strideInBytes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("strideInBytes"));
 
     /// Creates `VkStridedDeviceAddressNV` with the given segment.
-    /// @param segment the memory segment
-    public VkStridedDeviceAddressNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkStridedDeviceAddressNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkStridedDeviceAddressNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkStridedDeviceAddressNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkStridedDeviceAddressNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkStridedDeviceAddressNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkStridedDeviceAddressNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkStridedDeviceAddressNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkStridedDeviceAddressNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkStridedDeviceAddressNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkStridedDeviceAddressNV` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkStridedDeviceAddressNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkStridedDeviceAddressNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkStridedDeviceAddressNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkStridedDeviceAddressNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkStridedDeviceAddressNV`
-    public static VkStridedDeviceAddressNV alloc(SegmentAllocator allocator) { return new VkStridedDeviceAddressNV(allocator.allocate(LAYOUT)); }
+    public static VkStridedDeviceAddressNV alloc(SegmentAllocator allocator) { return new VkStridedDeviceAddressNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkStridedDeviceAddressNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkStridedDeviceAddressNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkStridedDeviceAddressNV alloc(SegmentAllocator allocator, long count) { return new VkStridedDeviceAddressNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkStridedDeviceAddressNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -107,9 +109,10 @@ public sealed class VkStridedDeviceAddressNV extends GroupType {
     /// @return `this`
     public VkStridedDeviceAddressNV copyFrom(VkStridedDeviceAddressNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkStridedDeviceAddressNV reinterpret(long count) { return new VkStridedDeviceAddressNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `startAddress` at the given index}
     /// @param segment the segment of the struct
@@ -143,45 +146,39 @@ public sealed class VkStridedDeviceAddressNV extends GroupType {
     /// @return `this`
     public VkStridedDeviceAddressNV strideInBytes(long value) { strideInBytes(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkStridedDeviceAddressNV].
-    public static final class Buffer extends VkStridedDeviceAddressNV {
-        private final long elementCount;
+    /// Creates a slice of `VkStridedDeviceAddressNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkStridedDeviceAddressNV`
+    public VkStridedDeviceAddressNV asSlice(long index) { return new VkStridedDeviceAddressNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkStridedDeviceAddressNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkStridedDeviceAddressNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkStridedDeviceAddressNV`
+    public VkStridedDeviceAddressNV asSlice(long index, long count) { return new VkStridedDeviceAddressNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkStridedDeviceAddressNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkStridedDeviceAddressNV at(long index, Consumer<VkStridedDeviceAddressNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkStridedDeviceAddressNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkStridedDeviceAddressNV`
-        public VkStridedDeviceAddressNV asSlice(long index) { return new VkStridedDeviceAddressNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `startAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long startAddressAt(long index) { return startAddress(this.segment(), index); }
+    /// Sets `startAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkStridedDeviceAddressNV startAddressAt(long index, long value) { startAddress(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkStridedDeviceAddressNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkStridedDeviceAddressNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `strideInBytes` at the given index}
+    /// @param index the index of the struct buffer
+    public long strideInBytesAt(long index) { return strideInBytes(this.segment(), index); }
+    /// Sets `strideInBytes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkStridedDeviceAddressNV strideInBytesAt(long index, long value) { strideInBytes(this.segment(), index, value); return this; }
 
-        /// {@return `startAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long startAddressAt(long index) { return startAddress(this.segment(), index); }
-        /// Sets `startAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer startAddressAt(long index, long value) { startAddress(this.segment(), index, value); return this; }
-
-        /// {@return `strideInBytes` at the given index}
-        /// @param index the index of the struct buffer
-        public long strideInBytesAt(long index) { return strideInBytes(this.segment(), index); }
-        /// Sets `strideInBytes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer strideInBytesAt(long index, long value) { strideInBytes(this.segment(), index, value); return this; }
-
-    }
 }

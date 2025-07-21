@@ -21,9 +21,9 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -43,7 +43,7 @@ import java.util.function.*;
 ///     (int) VkRayTracingLssPrimitiveEndCapsModeNV endCapsMode;
 /// };
 /// ```
-public sealed class VkAccelerationStructureGeometryLinearSweptSpheresDataNV extends GroupType {
+public final class VkAccelerationStructureGeometryLinearSweptSpheresDataNV extends GroupType {
     /// The struct layout of `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -134,20 +134,21 @@ public sealed class VkAccelerationStructureGeometryLinearSweptSpheresDataNV exte
     public static final VarHandle VH_endCapsMode = LAYOUT.arrayElementVarHandle(PathElement.groupElement("endCapsMode"));
 
     /// Creates `VkAccelerationStructureGeometryLinearSweptSpheresDataNV` with the given segment.
-    /// @param segment the memory segment
-    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAccelerationStructureGeometryLinearSweptSpheresDataNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAccelerationStructureGeometryLinearSweptSpheresDataNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureGeometryLinearSweptSpheresDataNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureGeometryLinearSweptSpheresDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAccelerationStructureGeometryLinearSweptSpheresDataNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAccelerationStructureGeometryLinearSweptSpheresDataNV` with the given segment.
     ///
@@ -155,18 +156,18 @@ public sealed class VkAccelerationStructureGeometryLinearSweptSpheresDataNV exte
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAccelerationStructureGeometryLinearSweptSpheresDataNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAccelerationStructureGeometryLinearSweptSpheresDataNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`
-    public static VkAccelerationStructureGeometryLinearSweptSpheresDataNV alloc(SegmentAllocator allocator) { return new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(allocator.allocate(LAYOUT)); }
+    public static VkAccelerationStructureGeometryLinearSweptSpheresDataNV alloc(SegmentAllocator allocator) { return new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAccelerationStructureGeometryLinearSweptSpheresDataNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAccelerationStructureGeometryLinearSweptSpheresDataNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAccelerationStructureGeometryLinearSweptSpheresDataNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -355,9 +356,10 @@ public sealed class VkAccelerationStructureGeometryLinearSweptSpheresDataNV exte
     /// @return `this`
     public VkAccelerationStructureGeometryLinearSweptSpheresDataNV copyFrom(VkAccelerationStructureGeometryLinearSweptSpheresDataNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV reinterpret(long count) { return new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -579,159 +581,153 @@ public sealed class VkAccelerationStructureGeometryLinearSweptSpheresDataNV exte
     /// @return `this`
     public VkAccelerationStructureGeometryLinearSweptSpheresDataNV endCapsMode(int value) { endCapsMode(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAccelerationStructureGeometryLinearSweptSpheresDataNV].
-    public static final class Buffer extends VkAccelerationStructureGeometryLinearSweptSpheresDataNV {
-        private final long elementCount;
+    /// Creates a slice of `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV asSlice(long index) { return new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAccelerationStructureGeometryLinearSweptSpheresDataNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV asSlice(long index, long count) { return new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAccelerationStructureGeometryLinearSweptSpheresDataNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV at(long index, Consumer<VkAccelerationStructureGeometryLinearSweptSpheresDataNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`
-        public VkAccelerationStructureGeometryLinearSweptSpheresDataNV asSlice(long index) { return new VkAccelerationStructureGeometryLinearSweptSpheresDataNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAccelerationStructureGeometryLinearSweptSpheresDataNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `vertexFormat` at the given index}
+    /// @param index the index of the struct buffer
+    public int vertexFormatAt(long index) { return vertexFormat(this.segment(), index); }
+    /// Sets `vertexFormat` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV vertexFormatAt(long index, int value) { vertexFormat(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `vertexData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vertexDataAt(long index) { return vertexData(this.segment(), index); }
+    /// Sets `vertexData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV vertexDataAt(long index, MemorySegment value) { vertexData(this.segment(), index, value); return this; }
+    /// Accepts `vertexData` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV vertexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexDataAt(index))); return this; }
 
-        /// {@return `vertexFormat` at the given index}
-        /// @param index the index of the struct buffer
-        public int vertexFormatAt(long index) { return vertexFormat(this.segment(), index); }
-        /// Sets `vertexFormat` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexFormatAt(long index, int value) { vertexFormat(this.segment(), index, value); return this; }
+    /// {@return `vertexStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long vertexStrideAt(long index) { return vertexStride(this.segment(), index); }
+    /// Sets `vertexStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV vertexStrideAt(long index, long value) { vertexStride(this.segment(), index, value); return this; }
 
-        /// {@return `vertexData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vertexDataAt(long index) { return vertexData(this.segment(), index); }
-        /// Sets `vertexData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexDataAt(long index, MemorySegment value) { vertexData(this.segment(), index, value); return this; }
-        /// Accepts `vertexData` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer vertexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexDataAt(index))); return this; }
+    /// {@return `radiusFormat` at the given index}
+    /// @param index the index of the struct buffer
+    public int radiusFormatAt(long index) { return radiusFormat(this.segment(), index); }
+    /// Sets `radiusFormat` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV radiusFormatAt(long index, int value) { radiusFormat(this.segment(), index, value); return this; }
 
-        /// {@return `vertexStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long vertexStrideAt(long index) { return vertexStride(this.segment(), index); }
-        /// Sets `vertexStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexStrideAt(long index, long value) { vertexStride(this.segment(), index, value); return this; }
+    /// {@return `radiusData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment radiusDataAt(long index) { return radiusData(this.segment(), index); }
+    /// Sets `radiusData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV radiusDataAt(long index, MemorySegment value) { radiusData(this.segment(), index, value); return this; }
+    /// Accepts `radiusData` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV radiusDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(radiusDataAt(index))); return this; }
 
-        /// {@return `radiusFormat` at the given index}
-        /// @param index the index of the struct buffer
-        public int radiusFormatAt(long index) { return radiusFormat(this.segment(), index); }
-        /// Sets `radiusFormat` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer radiusFormatAt(long index, int value) { radiusFormat(this.segment(), index, value); return this; }
+    /// {@return `radiusStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long radiusStrideAt(long index) { return radiusStride(this.segment(), index); }
+    /// Sets `radiusStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV radiusStrideAt(long index, long value) { radiusStride(this.segment(), index, value); return this; }
 
-        /// {@return `radiusData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment radiusDataAt(long index) { return radiusData(this.segment(), index); }
-        /// Sets `radiusData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer radiusDataAt(long index, MemorySegment value) { radiusData(this.segment(), index, value); return this; }
-        /// Accepts `radiusData` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer radiusDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(radiusDataAt(index))); return this; }
+    /// {@return `indexType` at the given index}
+    /// @param index the index of the struct buffer
+    public int indexTypeAt(long index) { return indexType(this.segment(), index); }
+    /// Sets `indexType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
 
-        /// {@return `radiusStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long radiusStrideAt(long index) { return radiusStride(this.segment(), index); }
-        /// Sets `radiusStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer radiusStrideAt(long index, long value) { radiusStride(this.segment(), index, value); return this; }
+    /// {@return `indexData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment indexDataAt(long index) { return indexData(this.segment(), index); }
+    /// Sets `indexData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexDataAt(long index, MemorySegment value) { indexData(this.segment(), index, value); return this; }
+    /// Accepts `indexData` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexDataAt(index))); return this; }
 
-        /// {@return `indexType` at the given index}
-        /// @param index the index of the struct buffer
-        public int indexTypeAt(long index) { return indexType(this.segment(), index); }
-        /// Sets `indexType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
+    /// {@return `indexStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long indexStrideAt(long index) { return indexStride(this.segment(), index); }
+    /// Sets `indexStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexStrideAt(long index, long value) { indexStride(this.segment(), index, value); return this; }
 
-        /// {@return `indexData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment indexDataAt(long index) { return indexData(this.segment(), index); }
-        /// Sets `indexData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexDataAt(long index, MemorySegment value) { indexData(this.segment(), index, value); return this; }
-        /// Accepts `indexData` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer indexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexDataAt(index))); return this; }
+    /// {@return `indexingMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int indexingModeAt(long index) { return indexingMode(this.segment(), index); }
+    /// Sets `indexingMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV indexingModeAt(long index, int value) { indexingMode(this.segment(), index, value); return this; }
 
-        /// {@return `indexStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long indexStrideAt(long index) { return indexStride(this.segment(), index); }
-        /// Sets `indexStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexStrideAt(long index, long value) { indexStride(this.segment(), index, value); return this; }
+    /// {@return `endCapsMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int endCapsModeAt(long index) { return endCapsMode(this.segment(), index); }
+    /// Sets `endCapsMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryLinearSweptSpheresDataNV endCapsModeAt(long index, int value) { endCapsMode(this.segment(), index, value); return this; }
 
-        /// {@return `indexingMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int indexingModeAt(long index) { return indexingMode(this.segment(), index); }
-        /// Sets `indexingMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexingModeAt(long index, int value) { indexingMode(this.segment(), index, value); return this; }
-
-        /// {@return `endCapsMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int endCapsModeAt(long index) { return endCapsMode(this.segment(), index); }
-        /// Sets `endCapsMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer endCapsModeAt(long index, int value) { endCapsMode(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -39,7 +39,7 @@ import java.util.function.*;
 ///     (union VkDeviceOrHostAddressConstKHR) VkDeviceOrHostAddressConstKHR transformData;
 /// };
 /// ```
-public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends GroupType {
+public final class VkAccelerationStructureGeometryTrianglesDataKHR extends GroupType {
     /// The struct layout of `VkAccelerationStructureGeometryTrianglesDataKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -102,20 +102,21 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
     public static final MemoryLayout LAYOUT_transformData = LAYOUT.select(PathElement.groupElement("transformData"));
 
     /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAccelerationStructureGeometryTrianglesDataKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAccelerationStructureGeometryTrianglesDataKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryTrianglesDataKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureGeometryTrianglesDataKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryTrianglesDataKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAccelerationStructureGeometryTrianglesDataKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryTrianglesDataKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment.
     ///
@@ -123,18 +124,18 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAccelerationStructureGeometryTrianglesDataKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureGeometryTrianglesDataKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
-    public static VkAccelerationStructureGeometryTrianglesDataKHR alloc(SegmentAllocator allocator) { return new VkAccelerationStructureGeometryTrianglesDataKHR(allocator.allocate(LAYOUT)); }
+    public static VkAccelerationStructureGeometryTrianglesDataKHR alloc(SegmentAllocator allocator) { return new VkAccelerationStructureGeometryTrianglesDataKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureGeometryTrianglesDataKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAccelerationStructureGeometryTrianglesDataKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureGeometryTrianglesDataKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAccelerationStructureGeometryTrianglesDataKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -249,9 +250,10 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
     /// @return `this`
     public VkAccelerationStructureGeometryTrianglesDataKHR copyFrom(VkAccelerationStructureGeometryTrianglesDataKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAccelerationStructureGeometryTrianglesDataKHR reinterpret(long count) { return new VkAccelerationStructureGeometryTrianglesDataKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -409,123 +411,117 @@ public sealed class VkAccelerationStructureGeometryTrianglesDataKHR extends Grou
     /// @return `this`
     public VkAccelerationStructureGeometryTrianglesDataKHR transformData(Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(transformData())); return this; }
 
-    /// A buffer of [VkAccelerationStructureGeometryTrianglesDataKHR].
-    public static final class Buffer extends VkAccelerationStructureGeometryTrianglesDataKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkAccelerationStructureGeometryTrianglesDataKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public VkAccelerationStructureGeometryTrianglesDataKHR asSlice(long index) { return new VkAccelerationStructureGeometryTrianglesDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAccelerationStructureGeometryTrianglesDataKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAccelerationStructureGeometryTrianglesDataKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureGeometryTrianglesDataKHR`
+    public VkAccelerationStructureGeometryTrianglesDataKHR asSlice(long index, long count) { return new VkAccelerationStructureGeometryTrianglesDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAccelerationStructureGeometryTrianglesDataKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR at(long index, Consumer<VkAccelerationStructureGeometryTrianglesDataKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureGeometryTrianglesDataKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAccelerationStructureGeometryTrianglesDataKHR`
-        public VkAccelerationStructureGeometryTrianglesDataKHR asSlice(long index) { return new VkAccelerationStructureGeometryTrianglesDataKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureGeometryTrianglesDataKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAccelerationStructureGeometryTrianglesDataKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `vertexFormat` at the given index}
+    /// @param index the index of the struct buffer
+    public int vertexFormatAt(long index) { return vertexFormat(this.segment(), index); }
+    /// Sets `vertexFormat` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexFormatAt(long index, int value) { vertexFormat(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `vertexData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vertexDataAt(long index) { return vertexData(this.segment(), index); }
+    /// Sets `vertexData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexDataAt(long index, MemorySegment value) { vertexData(this.segment(), index, value); return this; }
+    /// Accepts `vertexData` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexDataAt(index))); return this; }
 
-        /// {@return `vertexFormat` at the given index}
-        /// @param index the index of the struct buffer
-        public int vertexFormatAt(long index) { return vertexFormat(this.segment(), index); }
-        /// Sets `vertexFormat` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexFormatAt(long index, int value) { vertexFormat(this.segment(), index, value); return this; }
+    /// {@return `vertexStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long vertexStrideAt(long index) { return vertexStride(this.segment(), index); }
+    /// Sets `vertexStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR vertexStrideAt(long index, long value) { vertexStride(this.segment(), index, value); return this; }
 
-        /// {@return `vertexData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vertexDataAt(long index) { return vertexData(this.segment(), index); }
-        /// Sets `vertexData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexDataAt(long index, MemorySegment value) { vertexData(this.segment(), index, value); return this; }
-        /// Accepts `vertexData` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer vertexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(vertexDataAt(index))); return this; }
+    /// {@return `maxVertex` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxVertexAt(long index) { return maxVertex(this.segment(), index); }
+    /// Sets `maxVertex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR maxVertexAt(long index, int value) { maxVertex(this.segment(), index, value); return this; }
 
-        /// {@return `vertexStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long vertexStrideAt(long index) { return vertexStride(this.segment(), index); }
-        /// Sets `vertexStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexStrideAt(long index, long value) { vertexStride(this.segment(), index, value); return this; }
+    /// {@return `indexType` at the given index}
+    /// @param index the index of the struct buffer
+    public int indexTypeAt(long index) { return indexType(this.segment(), index); }
+    /// Sets `indexType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
 
-        /// {@return `maxVertex` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxVertexAt(long index) { return maxVertex(this.segment(), index); }
-        /// Sets `maxVertex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxVertexAt(long index, int value) { maxVertex(this.segment(), index, value); return this; }
+    /// {@return `indexData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment indexDataAt(long index) { return indexData(this.segment(), index); }
+    /// Sets `indexData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexDataAt(long index, MemorySegment value) { indexData(this.segment(), index, value); return this; }
+    /// Accepts `indexData` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR indexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexDataAt(index))); return this; }
 
-        /// {@return `indexType` at the given index}
-        /// @param index the index of the struct buffer
-        public int indexTypeAt(long index) { return indexType(this.segment(), index); }
-        /// Sets `indexType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
+    /// {@return `transformData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment transformDataAt(long index) { return transformData(this.segment(), index); }
+    /// Sets `transformData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR transformDataAt(long index, MemorySegment value) { transformData(this.segment(), index, value); return this; }
+    /// Accepts `transformData` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureGeometryTrianglesDataKHR transformDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(transformDataAt(index))); return this; }
 
-        /// {@return `indexData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment indexDataAt(long index) { return indexData(this.segment(), index); }
-        /// Sets `indexData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexDataAt(long index, MemorySegment value) { indexData(this.segment(), index, value); return this; }
-        /// Accepts `indexData` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer indexDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(indexDataAt(index))); return this; }
-
-        /// {@return `transformData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment transformDataAt(long index) { return transformData(this.segment(), index); }
-        /// Sets `transformData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer transformDataAt(long index, MemorySegment value) { transformData(this.segment(), index, value); return this; }
-        /// Accepts `transformData` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer transformDataAt(long index, Consumer<overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR> func) { func.accept(overrungl.vulkan.khr.union.VkDeviceOrHostAddressConstKHR.of(transformDataAt(index))); return this; }
-
-    }
 }

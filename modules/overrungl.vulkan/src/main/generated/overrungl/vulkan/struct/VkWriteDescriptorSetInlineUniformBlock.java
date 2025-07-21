@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     const void* pData;
 /// };
 /// ```
-public sealed class VkWriteDescriptorSetInlineUniformBlock extends GroupType {
+public final class VkWriteDescriptorSetInlineUniformBlock extends GroupType {
     /// The struct layout of `VkWriteDescriptorSetInlineUniformBlock`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkWriteDescriptorSetInlineUniformBlock extends GroupType {
     public static final VarHandle VH_pData = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pData"));
 
     /// Creates `VkWriteDescriptorSetInlineUniformBlock` with the given segment.
-    /// @param segment the memory segment
-    public VkWriteDescriptorSetInlineUniformBlock(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkWriteDescriptorSetInlineUniformBlock(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkWriteDescriptorSetInlineUniformBlock` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkWriteDescriptorSetInlineUniformBlock of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkWriteDescriptorSetInlineUniformBlock(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkWriteDescriptorSetInlineUniformBlock` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkWriteDescriptorSetInlineUniformBlock ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkWriteDescriptorSetInlineUniformBlock(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkWriteDescriptorSetInlineUniformBlock ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkWriteDescriptorSetInlineUniformBlock(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkWriteDescriptorSetInlineUniformBlock` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkWriteDescriptorSetInlineUniformBlock extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkWriteDescriptorSetInlineUniformBlock ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkWriteDescriptorSetInlineUniformBlock(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkWriteDescriptorSetInlineUniformBlock` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkWriteDescriptorSetInlineUniformBlock`
-    public static VkWriteDescriptorSetInlineUniformBlock alloc(SegmentAllocator allocator) { return new VkWriteDescriptorSetInlineUniformBlock(allocator.allocate(LAYOUT)); }
+    public static VkWriteDescriptorSetInlineUniformBlock alloc(SegmentAllocator allocator) { return new VkWriteDescriptorSetInlineUniformBlock(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkWriteDescriptorSetInlineUniformBlock` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkWriteDescriptorSetInlineUniformBlock`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkWriteDescriptorSetInlineUniformBlock alloc(SegmentAllocator allocator, long count) { return new VkWriteDescriptorSetInlineUniformBlock(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkWriteDescriptorSetInlineUniformBlock` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkWriteDescriptorSetInlineUniformBlock extends GroupType {
     /// @return `this`
     public VkWriteDescriptorSetInlineUniformBlock copyFrom(VkWriteDescriptorSetInlineUniformBlock src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkWriteDescriptorSetInlineUniformBlock reinterpret(long count) { return new VkWriteDescriptorSetInlineUniformBlock(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkWriteDescriptorSetInlineUniformBlock extends GroupType {
     /// @return `this`
     public VkWriteDescriptorSetInlineUniformBlock pData(MemorySegment value) { pData(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkWriteDescriptorSetInlineUniformBlock].
-    public static final class Buffer extends VkWriteDescriptorSetInlineUniformBlock {
-        private final long elementCount;
+    /// Creates a slice of `VkWriteDescriptorSetInlineUniformBlock`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkWriteDescriptorSetInlineUniformBlock`
+    public VkWriteDescriptorSetInlineUniformBlock asSlice(long index) { return new VkWriteDescriptorSetInlineUniformBlock(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkWriteDescriptorSetInlineUniformBlock.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkWriteDescriptorSetInlineUniformBlock`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkWriteDescriptorSetInlineUniformBlock`
+    public VkWriteDescriptorSetInlineUniformBlock asSlice(long index, long count) { return new VkWriteDescriptorSetInlineUniformBlock(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkWriteDescriptorSetInlineUniformBlock` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkWriteDescriptorSetInlineUniformBlock at(long index, Consumer<VkWriteDescriptorSetInlineUniformBlock> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkWriteDescriptorSetInlineUniformBlock`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkWriteDescriptorSetInlineUniformBlock`
-        public VkWriteDescriptorSetInlineUniformBlock asSlice(long index) { return new VkWriteDescriptorSetInlineUniformBlock(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWriteDescriptorSetInlineUniformBlock sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkWriteDescriptorSetInlineUniformBlock`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkWriteDescriptorSetInlineUniformBlock`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWriteDescriptorSetInlineUniformBlock pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `dataSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int dataSizeAt(long index) { return dataSize(this.segment(), index); }
+    /// Sets `dataSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWriteDescriptorSetInlineUniformBlock dataSizeAt(long index, int value) { dataSize(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pData` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pDataAt(long index) { return pData(this.segment(), index); }
+    /// Sets `pData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkWriteDescriptorSetInlineUniformBlock pDataAt(long index, MemorySegment value) { pData(this.segment(), index, value); return this; }
 
-        /// {@return `dataSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int dataSizeAt(long index) { return dataSize(this.segment(), index); }
-        /// Sets `dataSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dataSizeAt(long index, int value) { dataSize(this.segment(), index, value); return this; }
-
-        /// {@return `pData` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pDataAt(long index) { return pData(this.segment(), index); }
-        /// Sets `pData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pDataAt(long index, MemorySegment value) { pData(this.segment(), index, value); return this; }
-
-    }
 }

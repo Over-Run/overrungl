@@ -21,6 +21,7 @@ package overrungl.vulkan.sec.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint64_t swapBufferTimestamp;
 /// };
 /// ```
-public sealed class VkAmigoProfilingSubmitInfoSEC extends GroupType {
+public final class VkAmigoProfilingSubmitInfoSEC extends GroupType {
     /// The struct layout of `VkAmigoProfilingSubmitInfoSEC`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkAmigoProfilingSubmitInfoSEC extends GroupType {
     public static final VarHandle VH_swapBufferTimestamp = LAYOUT.arrayElementVarHandle(PathElement.groupElement("swapBufferTimestamp"));
 
     /// Creates `VkAmigoProfilingSubmitInfoSEC` with the given segment.
-    /// @param segment the memory segment
-    public VkAmigoProfilingSubmitInfoSEC(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAmigoProfilingSubmitInfoSEC(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAmigoProfilingSubmitInfoSEC` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAmigoProfilingSubmitInfoSEC of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAmigoProfilingSubmitInfoSEC(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAmigoProfilingSubmitInfoSEC` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAmigoProfilingSubmitInfoSEC ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAmigoProfilingSubmitInfoSEC(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAmigoProfilingSubmitInfoSEC ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAmigoProfilingSubmitInfoSEC(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAmigoProfilingSubmitInfoSEC` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkAmigoProfilingSubmitInfoSEC extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAmigoProfilingSubmitInfoSEC ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAmigoProfilingSubmitInfoSEC(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAmigoProfilingSubmitInfoSEC` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAmigoProfilingSubmitInfoSEC`
-    public static VkAmigoProfilingSubmitInfoSEC alloc(SegmentAllocator allocator) { return new VkAmigoProfilingSubmitInfoSEC(allocator.allocate(LAYOUT)); }
+    public static VkAmigoProfilingSubmitInfoSEC alloc(SegmentAllocator allocator) { return new VkAmigoProfilingSubmitInfoSEC(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAmigoProfilingSubmitInfoSEC` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAmigoProfilingSubmitInfoSEC`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAmigoProfilingSubmitInfoSEC alloc(SegmentAllocator allocator, long count) { return new VkAmigoProfilingSubmitInfoSEC(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAmigoProfilingSubmitInfoSEC` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkAmigoProfilingSubmitInfoSEC extends GroupType {
     /// @return `this`
     public VkAmigoProfilingSubmitInfoSEC copyFrom(VkAmigoProfilingSubmitInfoSEC src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAmigoProfilingSubmitInfoSEC reinterpret(long count) { return new VkAmigoProfilingSubmitInfoSEC(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkAmigoProfilingSubmitInfoSEC extends GroupType {
     /// @return `this`
     public VkAmigoProfilingSubmitInfoSEC swapBufferTimestamp(long value) { swapBufferTimestamp(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAmigoProfilingSubmitInfoSEC].
-    public static final class Buffer extends VkAmigoProfilingSubmitInfoSEC {
-        private final long elementCount;
+    /// Creates a slice of `VkAmigoProfilingSubmitInfoSEC`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAmigoProfilingSubmitInfoSEC`
+    public VkAmigoProfilingSubmitInfoSEC asSlice(long index) { return new VkAmigoProfilingSubmitInfoSEC(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAmigoProfilingSubmitInfoSEC.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAmigoProfilingSubmitInfoSEC`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAmigoProfilingSubmitInfoSEC`
+    public VkAmigoProfilingSubmitInfoSEC asSlice(long index, long count) { return new VkAmigoProfilingSubmitInfoSEC(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAmigoProfilingSubmitInfoSEC` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAmigoProfilingSubmitInfoSEC at(long index, Consumer<VkAmigoProfilingSubmitInfoSEC> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAmigoProfilingSubmitInfoSEC`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAmigoProfilingSubmitInfoSEC`
-        public VkAmigoProfilingSubmitInfoSEC asSlice(long index) { return new VkAmigoProfilingSubmitInfoSEC(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAmigoProfilingSubmitInfoSEC sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAmigoProfilingSubmitInfoSEC`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAmigoProfilingSubmitInfoSEC`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAmigoProfilingSubmitInfoSEC pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `firstDrawTimestamp` at the given index}
+    /// @param index the index of the struct buffer
+    public long firstDrawTimestampAt(long index) { return firstDrawTimestamp(this.segment(), index); }
+    /// Sets `firstDrawTimestamp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAmigoProfilingSubmitInfoSEC firstDrawTimestampAt(long index, long value) { firstDrawTimestamp(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `swapBufferTimestamp` at the given index}
+    /// @param index the index of the struct buffer
+    public long swapBufferTimestampAt(long index) { return swapBufferTimestamp(this.segment(), index); }
+    /// Sets `swapBufferTimestamp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAmigoProfilingSubmitInfoSEC swapBufferTimestampAt(long index, long value) { swapBufferTimestamp(this.segment(), index, value); return this; }
 
-        /// {@return `firstDrawTimestamp` at the given index}
-        /// @param index the index of the struct buffer
-        public long firstDrawTimestampAt(long index) { return firstDrawTimestamp(this.segment(), index); }
-        /// Sets `firstDrawTimestamp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer firstDrawTimestampAt(long index, long value) { firstDrawTimestamp(this.segment(), index, value); return this; }
-
-        /// {@return `swapBufferTimestamp` at the given index}
-        /// @param index the index of the struct buffer
-        public long swapBufferTimestampAt(long index) { return swapBufferTimestamp(this.segment(), index); }
-        /// Sets `swapBufferTimestamp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer swapBufferTimestampAt(long index, long value) { swapBufferTimestamp(this.segment(), index, value); return this; }
-
-    }
 }

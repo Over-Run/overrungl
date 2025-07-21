@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -37,7 +37,7 @@ import java.util.function.*;
 ///     uint8_t initial_display_delay_minus_1;
 /// };
 /// ```
-public sealed class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
+public final class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// The struct layout of `StdVideoEncodeAV1OperatingPointInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags.LAYOUT.withName("flags"),
@@ -90,20 +90,21 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     public static final VarHandle VH_initial_display_delay_minus_1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("initial_display_delay_minus_1"));
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfo` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoEncodeAV1OperatingPointInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoEncodeAV1OperatingPointInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoEncodeAV1OperatingPointInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeAV1OperatingPointInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeAV1OperatingPointInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeAV1OperatingPointInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoEncodeAV1OperatingPointInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeAV1OperatingPointInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoEncodeAV1OperatingPointInfo` with the given segment.
     ///
@@ -111,18 +112,18 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoEncodeAV1OperatingPointInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeAV1OperatingPointInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
-    public static StdVideoEncodeAV1OperatingPointInfo alloc(SegmentAllocator allocator) { return new StdVideoEncodeAV1OperatingPointInfo(allocator.allocate(LAYOUT)); }
+    public static StdVideoEncodeAV1OperatingPointInfo alloc(SegmentAllocator allocator) { return new StdVideoEncodeAV1OperatingPointInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeAV1OperatingPointInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoEncodeAV1OperatingPointInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeAV1OperatingPointInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoEncodeAV1OperatingPointInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -206,9 +207,10 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// @return `this`
     public StdVideoEncodeAV1OperatingPointInfo copyFrom(StdVideoEncodeAV1OperatingPointInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoEncodeAV1OperatingPointInfo reinterpret(long count) { return new StdVideoEncodeAV1OperatingPointInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -326,95 +328,89 @@ public sealed class StdVideoEncodeAV1OperatingPointInfo extends GroupType {
     /// @return `this`
     public StdVideoEncodeAV1OperatingPointInfo initial_display_delay_minus_1(byte value) { initial_display_delay_minus_1(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [StdVideoEncodeAV1OperatingPointInfo].
-    public static final class Buffer extends StdVideoEncodeAV1OperatingPointInfo {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoEncodeAV1OperatingPointInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeAV1OperatingPointInfo`
+    public StdVideoEncodeAV1OperatingPointInfo asSlice(long index) { return new StdVideoEncodeAV1OperatingPointInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoEncodeAV1OperatingPointInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoEncodeAV1OperatingPointInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeAV1OperatingPointInfo`
+    public StdVideoEncodeAV1OperatingPointInfo asSlice(long index, long count) { return new StdVideoEncodeAV1OperatingPointInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoEncodeAV1OperatingPointInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo at(long index, Consumer<StdVideoEncodeAV1OperatingPointInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoEncodeAV1OperatingPointInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoEncodeAV1OperatingPointInfo`
-        public StdVideoEncodeAV1OperatingPointInfo asSlice(long index) { return new StdVideoEncodeAV1OperatingPointInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoEncodeAV1OperatingPointInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoEncodeAV1OperatingPointInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `operating_point_idc` at the given index}
+    /// @param index the index of the struct buffer
+    public short operating_point_idcAt(long index) { return operating_point_idc(this.segment(), index); }
+    /// Sets `operating_point_idc` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo operating_point_idcAt(long index, short value) { operating_point_idc(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeAV1OperatingPointInfoFlags.of(flagsAt(index))); return this; }
+    /// {@return `seq_level_idx` at the given index}
+    /// @param index the index of the struct buffer
+    public byte seq_level_idxAt(long index) { return seq_level_idx(this.segment(), index); }
+    /// Sets `seq_level_idx` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo seq_level_idxAt(long index, byte value) { seq_level_idx(this.segment(), index, value); return this; }
 
-        /// {@return `operating_point_idc` at the given index}
-        /// @param index the index of the struct buffer
-        public short operating_point_idcAt(long index) { return operating_point_idc(this.segment(), index); }
-        /// Sets `operating_point_idc` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer operating_point_idcAt(long index, short value) { operating_point_idc(this.segment(), index, value); return this; }
+    /// {@return `seq_tier` at the given index}
+    /// @param index the index of the struct buffer
+    public byte seq_tierAt(long index) { return seq_tier(this.segment(), index); }
+    /// Sets `seq_tier` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo seq_tierAt(long index, byte value) { seq_tier(this.segment(), index, value); return this; }
 
-        /// {@return `seq_level_idx` at the given index}
-        /// @param index the index of the struct buffer
-        public byte seq_level_idxAt(long index) { return seq_level_idx(this.segment(), index); }
-        /// Sets `seq_level_idx` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer seq_level_idxAt(long index, byte value) { seq_level_idx(this.segment(), index, value); return this; }
+    /// {@return `decoder_buffer_delay` at the given index}
+    /// @param index the index of the struct buffer
+    public int decoder_buffer_delayAt(long index) { return decoder_buffer_delay(this.segment(), index); }
+    /// Sets `decoder_buffer_delay` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo decoder_buffer_delayAt(long index, int value) { decoder_buffer_delay(this.segment(), index, value); return this; }
 
-        /// {@return `seq_tier` at the given index}
-        /// @param index the index of the struct buffer
-        public byte seq_tierAt(long index) { return seq_tier(this.segment(), index); }
-        /// Sets `seq_tier` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer seq_tierAt(long index, byte value) { seq_tier(this.segment(), index, value); return this; }
+    /// {@return `encoder_buffer_delay` at the given index}
+    /// @param index the index of the struct buffer
+    public int encoder_buffer_delayAt(long index) { return encoder_buffer_delay(this.segment(), index); }
+    /// Sets `encoder_buffer_delay` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo encoder_buffer_delayAt(long index, int value) { encoder_buffer_delay(this.segment(), index, value); return this; }
 
-        /// {@return `decoder_buffer_delay` at the given index}
-        /// @param index the index of the struct buffer
-        public int decoder_buffer_delayAt(long index) { return decoder_buffer_delay(this.segment(), index); }
-        /// Sets `decoder_buffer_delay` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer decoder_buffer_delayAt(long index, int value) { decoder_buffer_delay(this.segment(), index, value); return this; }
+    /// {@return `initial_display_delay_minus_1` at the given index}
+    /// @param index the index of the struct buffer
+    public byte initial_display_delay_minus_1At(long index) { return initial_display_delay_minus_1(this.segment(), index); }
+    /// Sets `initial_display_delay_minus_1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeAV1OperatingPointInfo initial_display_delay_minus_1At(long index, byte value) { initial_display_delay_minus_1(this.segment(), index, value); return this; }
 
-        /// {@return `encoder_buffer_delay` at the given index}
-        /// @param index the index of the struct buffer
-        public int encoder_buffer_delayAt(long index) { return encoder_buffer_delay(this.segment(), index); }
-        /// Sets `encoder_buffer_delay` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer encoder_buffer_delayAt(long index, int value) { encoder_buffer_delay(this.segment(), index, value); return this; }
-
-        /// {@return `initial_display_delay_minus_1` at the given index}
-        /// @param index the index of the struct buffer
-        public byte initial_display_delay_minus_1At(long index) { return initial_display_delay_minus_1(this.segment(), index); }
-        /// Sets `initial_display_delay_minus_1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer initial_display_delay_minus_1At(long index, byte value) { initial_display_delay_minus_1(this.segment(), index, value); return this; }
-
-    }
 }

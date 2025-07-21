@@ -263,13 +263,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             |import java.lang.foreign.*;
             |import java.lang.foreign.MemoryLayout.PathElement;
             |import java.lang.invoke.*;
+            |import java.util.function.*;
             |import overrungl.struct.*;
             |import overrungl.util.*;
         """.trimMargin()
         )
-        if (groupClass.members.any { it.pair.type is GroupLayoutType }) {
-            sb.appendLine("import java.util.function.*;")
-        }
         sb.appendLine()
         groupClass.imports.forEach {
             sb.appendLine("import $it;")
@@ -294,7 +292,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         }
         sb.appendLine("/// };")
         sb.appendLine("/// ```")
-        sb.appendLine("public sealed class $className extends GroupType {")
+        sb.appendLine("public final class $className extends GroupType {")
 
         // layout
         sb.appendLine("    /// The ${groupClass.kind.typedef} layout of `$className`.")
@@ -347,8 +345,9 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         sb.appendLine(
             """
                 |    /// Creates `$className` with the given segment.
-                |    /// @param segment the memory segment
-                |    public $className(MemorySegment segment) { super(segment, LAYOUT); }
+                |    /// @param segment      the memory segment
+                |    /// @param elementCount the element count of this ${groupClass.kind.typedef} buffer
+                |    public $className(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
                 |
             """.trimMargin()
         )
@@ -359,14 +358,14 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                 |    /// Creates `$className` with the given segment.
                 |    /// @param segment the memory segment
                 |    /// @return the created instance or `null` if the segment is `NULL`
-                |    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+                |    public static $className of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new $className(segment, estimateCount(segment, LAYOUT)); }
                 |
                 |    /// Creates `$className` with the given segment.
                 |    ///
                 |    /// Reinterprets the segment if zero-length.
                 |    /// @param segment the memory segment
                 |    /// @return the created instance or `null` if the segment is `NULL`
-                |    public static $className ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new $className(segment.reinterpret(LAYOUT.byteSize())); }
+                |    public static $className ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new $className(segment.reinterpret(LAYOUT.byteSize()), 1); }
                 |
                 |    /// Creates `$className` with the given segment.
                 |    ///
@@ -374,18 +373,18 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                 |    /// @param segment the memory segment
                 |    /// @param count   the count of the buffer
                 |    /// @return the created instance or `null` if the segment is `NULL`
-                |    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+                |    public static $className ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new $className(segment.reinterpret(LAYOUT.scale(0, count)), count); }
                 |
                 |    /// Allocates a `$className` with the given segment allocator.
                 |    /// @param allocator the segment allocator
                 |    /// @return the allocated `$className`
-                |    public static $className alloc(SegmentAllocator allocator) { return new $className(allocator.allocate(LAYOUT)); }
+                |    public static $className alloc(SegmentAllocator allocator) { return new $className(allocator.allocate(LAYOUT), 1); }
                 |
                 |    /// Allocates a `$className` with the given segment allocator and count.
                 |    /// @param allocator the segment allocator
                 |    /// @param count     the count
                 |    /// @return the allocated `$className`
-                |    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+                |    public static $className alloc(SegmentAllocator allocator, long count) { return new $className(allocator.allocate(LAYOUT, count), count); }
                 |
             """.trimMargin()
         )
@@ -451,9 +450,10 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                 |    /// @return `this`
                 |    public $className copyFrom($className src) { this.segment().copyFrom(src.segment()); return this; }
 
-                |    /// Converts this instance to a buffer.
-                |    /// @return the buffer
-                |    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+                |    /// Reinterprets this buffer with the given count.
+                |    /// @param count the new count
+                |    /// @return the reinterpreted buffer
+                |    public $className reinterpret(long count) { return new $className(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
                 |
             """.trimMargin()
         )
@@ -622,38 +622,32 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         }
 
         // buffer
-        sb.appendLine("    /// A buffer of [$className].")
-        sb.appendLine("    public static final class Buffer extends $className {")
-        sb.appendLine("        private final long elementCount;")
-        sb.appendLine()
-
-        // constructor
-        sb.appendLine(
-            """
-                |        /// Creates `$className.Buffer` with the given segment.
-                |        /// @param segment      the memory segment
-                |        /// @param elementCount the element count
-                |        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
-            """.trimMargin()
-        )
-        sb.appendLine()
-
-        sb.appendLine("        @Override public long estimateCount() { return elementCount; }")
-        sb.appendLine()
 
         // slice
         sb.appendLine(
             """
-                |        /// Creates a slice of `$className`.
-                |        /// @param index the index of the ${groupClass.kind.typedef} buffer
-                |        /// @return the slice of `$className`
-                |        public $className asSlice(long index) { return new $className(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+                |    /// Creates a slice of `$className`.
+                |    /// @param index the index of the ${groupClass.kind.typedef} buffer
+                |    /// @return the slice of `$className`
+                |    public $className asSlice(long index) { return new $className(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-                |        /// Creates a slice of `$className`.
-                |        /// @param index the index of the ${groupClass.kind.typedef} buffer
-                |        /// @param count the count
-                |        /// @return the slice of `$className`
-                |        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+                |    /// Creates a slice of `$className`.
+                |    /// @param index the index of the ${groupClass.kind.typedef} buffer
+                |    /// @param count the count
+                |    /// @return the slice of `$className`
+                |    public $className asSlice(long index, long count) { return new $className(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+            """.trimMargin()
+        )
+        sb.appendLine()
+
+        // consumer
+        sb.appendLine(
+            """
+                |    /// Visits `$className` buffer at the given index.
+                |    /// @param index the index of this buffer
+                |    /// @param func  the function to run with the slice of this buffer
+                |    /// @return `this`
+                |    public $className at(long index, Consumer<$className> func) { func.accept(asSlice(index)); return this; }
             """.trimMargin()
         )
         sb.appendLine()
@@ -667,21 +661,21 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             // instance getters
             sb.appendLine(
                 """
-                    |        /// {@return `${member.pair.name}` at the given index}
-                    |        /// @param index the index of the ${groupClass.kind.typedef} buffer
+                    |    /// {@return `${member.pair.name}` at the given index}
+                    |    /// @param index the index of the ${groupClass.kind.typedef} buffer
                 """.trimMargin()
             )
             if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
-                sb.appendLine("        public MemorySegment ${member.pair.name}At(long index) { return ${member.pair.name}(this.segment(), index); }")
+                sb.appendLine("    public MemorySegment ${member.pair.name}At(long index) { return ${member.pair.name}(this.segment(), index); }")
                 if (member.pair.type !is GroupLayoutType && member.pair.dimensions.isNotEmpty()) {
                     sb.appendLine(
                         """
-                            |        /// {@return `${member.pair.name}` at the given index}
-                            |        /// @param index the index of the ${groupClass.kind.typedef} buffer
+                            |    /// {@return `${member.pair.name}` at the given index}
+                            |    /// @param index the index of the ${groupClass.kind.typedef} buffer
                         """.trimMargin()
                     )
                     member.pair.dimensions.forEachIndexed { index, _ ->
-                        sb.appendLine("        /// @param index$index the Index $index of the array")
+                        sb.appendLine("    /// @param index$index the Index $index of the array")
                     }
                     sb.append("        public ${member.pair.type.memoryLayout.carrier(null)} ${member.pair.name}At(long index")
                     member.pair.dimensions.forEachIndexed { index, _ ->
@@ -694,33 +688,33 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     sb.appendLine("); }")
                 }
             } else {
-                sb.appendLine("        public ${member.pair.type.javaType} ${member.pair.name}At(long index) { return ${member.pair.name}(this.segment(), index); }")
+                sb.appendLine("    public ${member.pair.type.javaType} ${member.pair.name}At(long index) { return ${member.pair.name}(this.segment(), index); }")
             }
 
             // instance setters
             sb.appendLine(
                 """
-                    |        /// Sets `${member.pair.name}` with the given value at the given index.
-                    |        /// @param index the index of the ${groupClass.kind.typedef} buffer
-                    |        /// @param value the value
-                    |        /// @return `this`
+                    |    /// Sets `${member.pair.name}` with the given value at the given index.
+                    |    /// @param index the index of the ${groupClass.kind.typedef} buffer
+                    |    /// @param value the value
+                    |    /// @return `this`
                 """.trimMargin()
             )
             if (member.pair.type is GroupLayoutType || member.pair.dimensions.isNotEmpty()) {
-                sb.appendLine("        public Buffer ${member.pair.name}At(long index, MemorySegment value) { ${member.pair.name}(this.segment(), index, value); return this; }")
+                sb.appendLine("    public $className ${member.pair.name}At(long index, MemorySegment value) { ${member.pair.name}(this.segment(), index, value); return this; }")
                 if (member.pair.type !is GroupLayoutType && member.pair.dimensions.isNotEmpty()) {
                     sb.appendLine(
                         """
-                            |        /// Sets `${member.pair.name}` with the given value at the given index.
-                            |        /// @param index the index of the ${groupClass.kind.typedef} buffer
+                            |    /// Sets `${member.pair.name}` with the given value at the given index.
+                            |    /// @param index the index of the ${groupClass.kind.typedef} buffer
                         """.trimMargin()
                     )
                     member.pair.dimensions.forEachIndexed { index, _ ->
-                        sb.appendLine("        /// @param index$index the Index $index of the array")
+                        sb.appendLine("    /// @param index$index the Index $index of the array")
                     }
-                    sb.appendLine("        /// @param value the value")
-                    sb.appendLine("        /// @return `this`")
-                    sb.append("        public Buffer ${member.pair.name}At(long index")
+                    sb.appendLine("    /// @param value the value")
+                    sb.appendLine("    /// @return `this`")
+                    sb.append("    public $className ${member.pair.name}At(long index")
                     member.pair.dimensions.forEachIndexed { index, _ ->
                         sb.append(", long index$index")
                     }
@@ -734,25 +728,23 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
                     val typeJavaName = "${if (member.pair.type.packageName != null) "${member.pair.type.packageName}." else ""}${member.pair.type.name}"
                     sb.appendLine(
                         """
-                            |        /// Accepts `${member.pair.name}` with the given function.
-                            |        /// @param index the index of the ${groupClass.kind.typedef} buffer
-                            |        /// @param func the function
-                            |        /// @return `this`
-                            |        public Buffer ${member.pair.name}At(long index, Consumer<$typeJavaName> func) { func.accept($typeJavaName.of(${member.pair.name}At(index))); return this; }
+                            |    /// Accepts `${member.pair.name}` with the given function.
+                            |    /// @param index the index of the ${groupClass.kind.typedef} buffer
+                            |    /// @param func the function
+                            |    /// @return `this`
+                            |    public $className ${member.pair.name}At(long index, Consumer<$typeJavaName> func) { func.accept($typeJavaName.of(${member.pair.name}At(index))); return this; }
                         """.trimMargin()
                     )
                 }
             } else {
                 sb.appendLine(
-                    "        public Buffer ${member.pair.name}At(long index, ${member.pair.type.javaType} value) {" +
+                    "    public $className ${member.pair.name}At(long index, ${member.pair.type.javaType} value) {" +
                         " ${member.pair.name}(this.segment(), index, value); return this; }"
                 )
             }
 
             sb.appendLine()
         }
-
-        sb.appendLine("    }")
 
         sb.appendLine("}")
         writeString(path, sb.toString())

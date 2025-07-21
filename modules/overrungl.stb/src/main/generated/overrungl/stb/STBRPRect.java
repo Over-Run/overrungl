@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     int was_packed;
 /// };
 /// ```
-public sealed class STBRPRect extends GroupType {
+public final class STBRPRect extends GroupType {
     /// The struct layout of `STBRPRect`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("id"),
@@ -83,20 +84,21 @@ public sealed class STBRPRect extends GroupType {
     public static final VarHandle VH_was_packed = LAYOUT.arrayElementVarHandle(PathElement.groupElement("was_packed"));
 
     /// Creates `STBRPRect` with the given segment.
-    /// @param segment the memory segment
-    public STBRPRect(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBRPRect(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBRPRect` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBRPRect of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBRPRect(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBRPRect` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBRPRect ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBRPRect(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBRPRect ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBRPRect(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBRPRect` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class STBRPRect extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBRPRect ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBRPRect(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBRPRect` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBRPRect`
-    public static STBRPRect alloc(SegmentAllocator allocator) { return new STBRPRect(allocator.allocate(LAYOUT)); }
+    public static STBRPRect alloc(SegmentAllocator allocator) { return new STBRPRect(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBRPRect` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBRPRect`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBRPRect alloc(SegmentAllocator allocator, long count) { return new STBRPRect(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBRPRect` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class STBRPRect extends GroupType {
     /// @return `this`
     public STBRPRect copyFrom(STBRPRect src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBRPRect reinterpret(long count) { return new STBRPRect(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `id` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class STBRPRect extends GroupType {
     /// @return `this`
     public STBRPRect was_packed(int value) { was_packed(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBRPRect].
-    public static final class Buffer extends STBRPRect {
-        private final long elementCount;
+    /// Creates a slice of `STBRPRect`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBRPRect`
+    public STBRPRect asSlice(long index) { return new STBRPRect(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBRPRect.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBRPRect`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBRPRect`
+    public STBRPRect asSlice(long index, long count) { return new STBRPRect(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBRPRect` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBRPRect at(long index, Consumer<STBRPRect> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBRPRect`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBRPRect`
-        public STBRPRect asSlice(long index) { return new STBRPRect(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `id` at the given index}
+    /// @param index the index of the struct buffer
+    public int idAt(long index) { return id(this.segment(), index); }
+    /// Sets `id` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPRect idAt(long index, int value) { id(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBRPRect`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBRPRect`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `w` at the given index}
+    /// @param index the index of the struct buffer
+    public int wAt(long index) { return w(this.segment(), index); }
+    /// Sets `w` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPRect wAt(long index, int value) { w(this.segment(), index, value); return this; }
 
-        /// {@return `id` at the given index}
-        /// @param index the index of the struct buffer
-        public int idAt(long index) { return id(this.segment(), index); }
-        /// Sets `id` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer idAt(long index, int value) { id(this.segment(), index, value); return this; }
+    /// {@return `h` at the given index}
+    /// @param index the index of the struct buffer
+    public int hAt(long index) { return h(this.segment(), index); }
+    /// Sets `h` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPRect hAt(long index, int value) { h(this.segment(), index, value); return this; }
 
-        /// {@return `w` at the given index}
-        /// @param index the index of the struct buffer
-        public int wAt(long index) { return w(this.segment(), index); }
-        /// Sets `w` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer wAt(long index, int value) { w(this.segment(), index, value); return this; }
+    /// {@return `x` at the given index}
+    /// @param index the index of the struct buffer
+    public int xAt(long index) { return x(this.segment(), index); }
+    /// Sets `x` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPRect xAt(long index, int value) { x(this.segment(), index, value); return this; }
 
-        /// {@return `h` at the given index}
-        /// @param index the index of the struct buffer
-        public int hAt(long index) { return h(this.segment(), index); }
-        /// Sets `h` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hAt(long index, int value) { h(this.segment(), index, value); return this; }
+    /// {@return `y` at the given index}
+    /// @param index the index of the struct buffer
+    public int yAt(long index) { return y(this.segment(), index); }
+    /// Sets `y` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPRect yAt(long index, int value) { y(this.segment(), index, value); return this; }
 
-        /// {@return `x` at the given index}
-        /// @param index the index of the struct buffer
-        public int xAt(long index) { return x(this.segment(), index); }
-        /// Sets `x` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xAt(long index, int value) { x(this.segment(), index, value); return this; }
+    /// {@return `was_packed` at the given index}
+    /// @param index the index of the struct buffer
+    public int was_packedAt(long index) { return was_packed(this.segment(), index); }
+    /// Sets `was_packed` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBRPRect was_packedAt(long index, int value) { was_packed(this.segment(), index, value); return this; }
 
-        /// {@return `y` at the given index}
-        /// @param index the index of the struct buffer
-        public int yAt(long index) { return y(this.segment(), index); }
-        /// Sets `y` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer yAt(long index, int value) { y(this.segment(), index, value); return this; }
-
-        /// {@return `was_packed` at the given index}
-        /// @param index the index of the struct buffer
-        public int was_packedAt(long index) { return was_packed(this.segment(), index); }
-        /// Sets `was_packed` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer was_packedAt(long index, int value) { was_packed(this.segment(), index, value); return this; }
-
-    }
 }

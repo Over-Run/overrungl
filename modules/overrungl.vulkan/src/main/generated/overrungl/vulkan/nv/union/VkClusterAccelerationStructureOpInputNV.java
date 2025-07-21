@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.union;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     VkClusterAccelerationStructureMoveObjectsInputNV* pMoveObjects;
 /// };
 /// ```
-public sealed class VkClusterAccelerationStructureOpInputNV extends GroupType {
+public final class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// The union layout of `VkClusterAccelerationStructureOpInputNV`.
     public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.ADDRESS.withName("pClustersBottomLevel"),
@@ -59,20 +60,21 @@ public sealed class VkClusterAccelerationStructureOpInputNV extends GroupType {
     public static final VarHandle VH_pMoveObjects = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pMoveObjects"));
 
     /// Creates `VkClusterAccelerationStructureOpInputNV` with the given segment.
-    /// @param segment the memory segment
-    public VkClusterAccelerationStructureOpInputNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this union buffer
+    public VkClusterAccelerationStructureOpInputNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkClusterAccelerationStructureOpInputNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkClusterAccelerationStructureOpInputNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureOpInputNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkClusterAccelerationStructureOpInputNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkClusterAccelerationStructureOpInputNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureOpInputNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkClusterAccelerationStructureOpInputNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureOpInputNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkClusterAccelerationStructureOpInputNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkClusterAccelerationStructureOpInputNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkClusterAccelerationStructureOpInputNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkClusterAccelerationStructureOpInputNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkClusterAccelerationStructureOpInputNV`
-    public static VkClusterAccelerationStructureOpInputNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureOpInputNV(allocator.allocate(LAYOUT)); }
+    public static VkClusterAccelerationStructureOpInputNV alloc(SegmentAllocator allocator) { return new VkClusterAccelerationStructureOpInputNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkClusterAccelerationStructureOpInputNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkClusterAccelerationStructureOpInputNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkClusterAccelerationStructureOpInputNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureOpInputNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkClusterAccelerationStructureOpInputNV` with the given segment allocator and `pClustersBottomLevel`.
     /// @param allocator the segment allocator
@@ -122,9 +124,10 @@ public sealed class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// @return `this`
     public VkClusterAccelerationStructureOpInputNV copyFrom(VkClusterAccelerationStructureOpInputNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkClusterAccelerationStructureOpInputNV reinterpret(long count) { return new VkClusterAccelerationStructureOpInputNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `pClustersBottomLevel` at the given index}
     /// @param segment the segment of the union
@@ -174,54 +177,48 @@ public sealed class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// @return `this`
     public VkClusterAccelerationStructureOpInputNV pMoveObjects(MemorySegment value) { pMoveObjects(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkClusterAccelerationStructureOpInputNV].
-    public static final class Buffer extends VkClusterAccelerationStructureOpInputNV {
-        private final long elementCount;
+    /// Creates a slice of `VkClusterAccelerationStructureOpInputNV`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkClusterAccelerationStructureOpInputNV`
+    public VkClusterAccelerationStructureOpInputNV asSlice(long index) { return new VkClusterAccelerationStructureOpInputNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkClusterAccelerationStructureOpInputNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkClusterAccelerationStructureOpInputNV`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkClusterAccelerationStructureOpInputNV`
+    public VkClusterAccelerationStructureOpInputNV asSlice(long index, long count) { return new VkClusterAccelerationStructureOpInputNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkClusterAccelerationStructureOpInputNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkClusterAccelerationStructureOpInputNV at(long index, Consumer<VkClusterAccelerationStructureOpInputNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureOpInputNV`.
-        /// @param index the index of the union buffer
-        /// @return the slice of `VkClusterAccelerationStructureOpInputNV`
-        public VkClusterAccelerationStructureOpInputNV asSlice(long index) { return new VkClusterAccelerationStructureOpInputNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `pClustersBottomLevel` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pClustersBottomLevelAt(long index) { return pClustersBottomLevel(this.segment(), index); }
+    /// Sets `pClustersBottomLevel` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureOpInputNV pClustersBottomLevelAt(long index, MemorySegment value) { pClustersBottomLevel(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkClusterAccelerationStructureOpInputNV`.
-        /// @param index the index of the union buffer
-        /// @param count the count
-        /// @return the slice of `VkClusterAccelerationStructureOpInputNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pTriangleClusters` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pTriangleClustersAt(long index) { return pTriangleClusters(this.segment(), index); }
+    /// Sets `pTriangleClusters` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureOpInputNV pTriangleClustersAt(long index, MemorySegment value) { pTriangleClusters(this.segment(), index, value); return this; }
 
-        /// {@return `pClustersBottomLevel` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pClustersBottomLevelAt(long index) { return pClustersBottomLevel(this.segment(), index); }
-        /// Sets `pClustersBottomLevel` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pClustersBottomLevelAt(long index, MemorySegment value) { pClustersBottomLevel(this.segment(), index, value); return this; }
+    /// {@return `pMoveObjects` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment pMoveObjectsAt(long index) { return pMoveObjects(this.segment(), index); }
+    /// Sets `pMoveObjects` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkClusterAccelerationStructureOpInputNV pMoveObjectsAt(long index, MemorySegment value) { pMoveObjects(this.segment(), index, value); return this; }
 
-        /// {@return `pTriangleClusters` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pTriangleClustersAt(long index) { return pTriangleClusters(this.segment(), index); }
-        /// Sets `pTriangleClusters` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pTriangleClustersAt(long index, MemorySegment value) { pTriangleClusters(this.segment(), index, value); return this; }
-
-        /// {@return `pMoveObjects` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment pMoveObjectsAt(long index) { return pMoveObjects(this.segment(), index); }
-        /// Sets `pMoveObjects` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pMoveObjectsAt(long index, MemorySegment value) { pMoveObjects(this.segment(), index, value); return this; }
-
-    }
 }

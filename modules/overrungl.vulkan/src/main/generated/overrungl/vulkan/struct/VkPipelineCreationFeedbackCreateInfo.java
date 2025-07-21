@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     VkPipelineCreationFeedback* pPipelineStageCreationFeedbacks;
 /// };
 /// ```
-public sealed class VkPipelineCreationFeedbackCreateInfo extends GroupType {
+public final class VkPipelineCreationFeedbackCreateInfo extends GroupType {
     /// The struct layout of `VkPipelineCreationFeedbackCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends GroupType {
     public static final VarHandle VH_pPipelineStageCreationFeedbacks = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pPipelineStageCreationFeedbacks"));
 
     /// Creates `VkPipelineCreationFeedbackCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineCreationFeedbackCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineCreationFeedbackCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineCreationFeedbackCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineCreationFeedbackCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCreationFeedbackCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineCreationFeedbackCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineCreationFeedbackCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCreationFeedbackCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineCreationFeedbackCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCreationFeedbackCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineCreationFeedbackCreateInfo` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineCreationFeedbackCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineCreationFeedbackCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineCreationFeedbackCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineCreationFeedbackCreateInfo`
-    public static VkPipelineCreationFeedbackCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineCreationFeedbackCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkPipelineCreationFeedbackCreateInfo alloc(SegmentAllocator allocator) { return new VkPipelineCreationFeedbackCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineCreationFeedbackCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineCreationFeedbackCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineCreationFeedbackCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineCreationFeedbackCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineCreationFeedbackCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineCreationFeedbackCreateInfo copyFrom(VkPipelineCreationFeedbackCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineCreationFeedbackCreateInfo reinterpret(long count) { return new VkPipelineCreationFeedbackCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPipelineCreationFeedbackCreateInfo extends GroupType {
     /// @return `this`
     public VkPipelineCreationFeedbackCreateInfo pPipelineStageCreationFeedbacks(MemorySegment value) { pPipelineStageCreationFeedbacks(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineCreationFeedbackCreateInfo].
-    public static final class Buffer extends VkPipelineCreationFeedbackCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineCreationFeedbackCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineCreationFeedbackCreateInfo`
+    public VkPipelineCreationFeedbackCreateInfo asSlice(long index) { return new VkPipelineCreationFeedbackCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineCreationFeedbackCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineCreationFeedbackCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineCreationFeedbackCreateInfo`
+    public VkPipelineCreationFeedbackCreateInfo asSlice(long index, long count) { return new VkPipelineCreationFeedbackCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineCreationFeedbackCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineCreationFeedbackCreateInfo at(long index, Consumer<VkPipelineCreationFeedbackCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineCreationFeedbackCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineCreationFeedbackCreateInfo`
-        public VkPipelineCreationFeedbackCreateInfo asSlice(long index) { return new VkPipelineCreationFeedbackCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCreationFeedbackCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineCreationFeedbackCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineCreationFeedbackCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCreationFeedbackCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pPipelineCreationFeedback` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pPipelineCreationFeedbackAt(long index) { return pPipelineCreationFeedback(this.segment(), index); }
+    /// Sets `pPipelineCreationFeedback` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCreationFeedbackCreateInfo pPipelineCreationFeedbackAt(long index, MemorySegment value) { pPipelineCreationFeedback(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pipelineStageCreationFeedbackCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelineStageCreationFeedbackCountAt(long index) { return pipelineStageCreationFeedbackCount(this.segment(), index); }
+    /// Sets `pipelineStageCreationFeedbackCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCreationFeedbackCreateInfo pipelineStageCreationFeedbackCountAt(long index, int value) { pipelineStageCreationFeedbackCount(this.segment(), index, value); return this; }
 
-        /// {@return `pPipelineCreationFeedback` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pPipelineCreationFeedbackAt(long index) { return pPipelineCreationFeedback(this.segment(), index); }
-        /// Sets `pPipelineCreationFeedback` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pPipelineCreationFeedbackAt(long index, MemorySegment value) { pPipelineCreationFeedback(this.segment(), index, value); return this; }
+    /// {@return `pPipelineStageCreationFeedbacks` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pPipelineStageCreationFeedbacksAt(long index) { return pPipelineStageCreationFeedbacks(this.segment(), index); }
+    /// Sets `pPipelineStageCreationFeedbacks` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineCreationFeedbackCreateInfo pPipelineStageCreationFeedbacksAt(long index, MemorySegment value) { pPipelineStageCreationFeedbacks(this.segment(), index, value); return this; }
 
-        /// {@return `pipelineStageCreationFeedbackCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelineStageCreationFeedbackCountAt(long index) { return pipelineStageCreationFeedbackCount(this.segment(), index); }
-        /// Sets `pipelineStageCreationFeedbackCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineStageCreationFeedbackCountAt(long index, int value) { pipelineStageCreationFeedbackCount(this.segment(), index, value); return this; }
-
-        /// {@return `pPipelineStageCreationFeedbacks` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pPipelineStageCreationFeedbacksAt(long index) { return pPipelineStageCreationFeedbacks(this.segment(), index); }
-        /// Sets `pPipelineStageCreationFeedbacks` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pPipelineStageCreationFeedbacksAt(long index, MemorySegment value) { pPipelineStageCreationFeedbacks(this.segment(), index, value); return this; }
-
-    }
 }

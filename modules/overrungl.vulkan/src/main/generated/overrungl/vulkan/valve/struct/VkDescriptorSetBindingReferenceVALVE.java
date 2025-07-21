@@ -21,6 +21,7 @@ package overrungl.vulkan.valve.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint32_t binding;
 /// };
 /// ```
-public sealed class VkDescriptorSetBindingReferenceVALVE extends GroupType {
+public final class VkDescriptorSetBindingReferenceVALVE extends GroupType {
     /// The struct layout of `VkDescriptorSetBindingReferenceVALVE`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends GroupType {
     public static final VarHandle VH_binding = LAYOUT.arrayElementVarHandle(PathElement.groupElement("binding"));
 
     /// Creates `VkDescriptorSetBindingReferenceVALVE` with the given segment.
-    /// @param segment the memory segment
-    public VkDescriptorSetBindingReferenceVALVE(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDescriptorSetBindingReferenceVALVE(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDescriptorSetBindingReferenceVALVE` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDescriptorSetBindingReferenceVALVE of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetBindingReferenceVALVE(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDescriptorSetBindingReferenceVALVE` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorSetBindingReferenceVALVE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetBindingReferenceVALVE(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDescriptorSetBindingReferenceVALVE ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetBindingReferenceVALVE(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDescriptorSetBindingReferenceVALVE` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDescriptorSetBindingReferenceVALVE ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorSetBindingReferenceVALVE(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDescriptorSetBindingReferenceVALVE` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDescriptorSetBindingReferenceVALVE`
-    public static VkDescriptorSetBindingReferenceVALVE alloc(SegmentAllocator allocator) { return new VkDescriptorSetBindingReferenceVALVE(allocator.allocate(LAYOUT)); }
+    public static VkDescriptorSetBindingReferenceVALVE alloc(SegmentAllocator allocator) { return new VkDescriptorSetBindingReferenceVALVE(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDescriptorSetBindingReferenceVALVE` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorSetBindingReferenceVALVE`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDescriptorSetBindingReferenceVALVE alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetBindingReferenceVALVE(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDescriptorSetBindingReferenceVALVE` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends GroupType {
     /// @return `this`
     public VkDescriptorSetBindingReferenceVALVE copyFrom(VkDescriptorSetBindingReferenceVALVE src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDescriptorSetBindingReferenceVALVE reinterpret(long count) { return new VkDescriptorSetBindingReferenceVALVE(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkDescriptorSetBindingReferenceVALVE extends GroupType {
     /// @return `this`
     public VkDescriptorSetBindingReferenceVALVE binding(int value) { binding(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDescriptorSetBindingReferenceVALVE].
-    public static final class Buffer extends VkDescriptorSetBindingReferenceVALVE {
-        private final long elementCount;
+    /// Creates a slice of `VkDescriptorSetBindingReferenceVALVE`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorSetBindingReferenceVALVE`
+    public VkDescriptorSetBindingReferenceVALVE asSlice(long index) { return new VkDescriptorSetBindingReferenceVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDescriptorSetBindingReferenceVALVE.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDescriptorSetBindingReferenceVALVE`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorSetBindingReferenceVALVE`
+    public VkDescriptorSetBindingReferenceVALVE asSlice(long index, long count) { return new VkDescriptorSetBindingReferenceVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDescriptorSetBindingReferenceVALVE` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDescriptorSetBindingReferenceVALVE at(long index, Consumer<VkDescriptorSetBindingReferenceVALVE> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDescriptorSetBindingReferenceVALVE`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDescriptorSetBindingReferenceVALVE`
-        public VkDescriptorSetBindingReferenceVALVE asSlice(long index) { return new VkDescriptorSetBindingReferenceVALVE(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorSetBindingReferenceVALVE sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDescriptorSetBindingReferenceVALVE`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDescriptorSetBindingReferenceVALVE`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorSetBindingReferenceVALVE pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `descriptorSetLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public long descriptorSetLayoutAt(long index) { return descriptorSetLayout(this.segment(), index); }
+    /// Sets `descriptorSetLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorSetBindingReferenceVALVE descriptorSetLayoutAt(long index, long value) { descriptorSetLayout(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `binding` at the given index}
+    /// @param index the index of the struct buffer
+    public int bindingAt(long index) { return binding(this.segment(), index); }
+    /// Sets `binding` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorSetBindingReferenceVALVE bindingAt(long index, int value) { binding(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorSetLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public long descriptorSetLayoutAt(long index) { return descriptorSetLayout(this.segment(), index); }
-        /// Sets `descriptorSetLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorSetLayoutAt(long index, long value) { descriptorSetLayout(this.segment(), index, value); return this; }
-
-        /// {@return `binding` at the given index}
-        /// @param index the index of the struct buffer
-        public int bindingAt(long index) { return binding(this.segment(), index); }
-        /// Sets `binding` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bindingAt(long index, int value) { binding(this.segment(), index, value); return this; }
-
-    }
 }

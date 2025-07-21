@@ -21,6 +21,7 @@ package overrungl.stb;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     float xadvance;
 /// };
 /// ```
-public sealed class STBTTBakedChar extends GroupType {
+public final class STBTTBakedChar extends GroupType {
     /// The struct layout of `STBTTBakedChar`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_SHORT.withName("x0"),
@@ -91,20 +92,21 @@ public sealed class STBTTBakedChar extends GroupType {
     public static final VarHandle VH_xadvance = LAYOUT.arrayElementVarHandle(PathElement.groupElement("xadvance"));
 
     /// Creates `STBTTBakedChar` with the given segment.
-    /// @param segment the memory segment
-    public STBTTBakedChar(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public STBTTBakedChar(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `STBTTBakedChar` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static STBTTBakedChar of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTBakedChar(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `STBTTBakedChar` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static STBTTBakedChar ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTBakedChar(segment.reinterpret(LAYOUT.byteSize())); }
+    public static STBTTBakedChar ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTBakedChar(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `STBTTBakedChar` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class STBTTBakedChar extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static STBTTBakedChar ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new STBTTBakedChar(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `STBTTBakedChar` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `STBTTBakedChar`
-    public static STBTTBakedChar alloc(SegmentAllocator allocator) { return new STBTTBakedChar(allocator.allocate(LAYOUT)); }
+    public static STBTTBakedChar alloc(SegmentAllocator allocator) { return new STBTTBakedChar(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `STBTTBakedChar` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `STBTTBakedChar`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static STBTTBakedChar alloc(SegmentAllocator allocator, long count) { return new STBTTBakedChar(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `STBTTBakedChar` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class STBTTBakedChar extends GroupType {
     /// @return `this`
     public STBTTBakedChar copyFrom(STBTTBakedChar src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public STBTTBakedChar reinterpret(long count) { return new STBTTBakedChar(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `x0` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class STBTTBakedChar extends GroupType {
     /// @return `this`
     public STBTTBakedChar xadvance(float value) { xadvance(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [STBTTBakedChar].
-    public static final class Buffer extends STBTTBakedChar {
-        private final long elementCount;
+    /// Creates a slice of `STBTTBakedChar`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `STBTTBakedChar`
+    public STBTTBakedChar asSlice(long index) { return new STBTTBakedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `STBTTBakedChar.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `STBTTBakedChar`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `STBTTBakedChar`
+    public STBTTBakedChar asSlice(long index, long count) { return new STBTTBakedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `STBTTBakedChar` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public STBTTBakedChar at(long index, Consumer<STBTTBakedChar> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `STBTTBakedChar`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `STBTTBakedChar`
-        public STBTTBakedChar asSlice(long index) { return new STBTTBakedChar(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `x0` at the given index}
+    /// @param index the index of the struct buffer
+    public short x0At(long index) { return x0(this.segment(), index); }
+    /// Sets `x0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTBakedChar x0At(long index, short value) { x0(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `STBTTBakedChar`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `STBTTBakedChar`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `y0` at the given index}
+    /// @param index the index of the struct buffer
+    public short y0At(long index) { return y0(this.segment(), index); }
+    /// Sets `y0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTBakedChar y0At(long index, short value) { y0(this.segment(), index, value); return this; }
 
-        /// {@return `x0` at the given index}
-        /// @param index the index of the struct buffer
-        public short x0At(long index) { return x0(this.segment(), index); }
-        /// Sets `x0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer x0At(long index, short value) { x0(this.segment(), index, value); return this; }
+    /// {@return `x1` at the given index}
+    /// @param index the index of the struct buffer
+    public short x1At(long index) { return x1(this.segment(), index); }
+    /// Sets `x1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTBakedChar x1At(long index, short value) { x1(this.segment(), index, value); return this; }
 
-        /// {@return `y0` at the given index}
-        /// @param index the index of the struct buffer
-        public short y0At(long index) { return y0(this.segment(), index); }
-        /// Sets `y0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer y0At(long index, short value) { y0(this.segment(), index, value); return this; }
+    /// {@return `y1` at the given index}
+    /// @param index the index of the struct buffer
+    public short y1At(long index) { return y1(this.segment(), index); }
+    /// Sets `y1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTBakedChar y1At(long index, short value) { y1(this.segment(), index, value); return this; }
 
-        /// {@return `x1` at the given index}
-        /// @param index the index of the struct buffer
-        public short x1At(long index) { return x1(this.segment(), index); }
-        /// Sets `x1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer x1At(long index, short value) { x1(this.segment(), index, value); return this; }
+    /// {@return `xoff` at the given index}
+    /// @param index the index of the struct buffer
+    public float xoffAt(long index) { return xoff(this.segment(), index); }
+    /// Sets `xoff` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTBakedChar xoffAt(long index, float value) { xoff(this.segment(), index, value); return this; }
 
-        /// {@return `y1` at the given index}
-        /// @param index the index of the struct buffer
-        public short y1At(long index) { return y1(this.segment(), index); }
-        /// Sets `y1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer y1At(long index, short value) { y1(this.segment(), index, value); return this; }
+    /// {@return `yoff` at the given index}
+    /// @param index the index of the struct buffer
+    public float yoffAt(long index) { return yoff(this.segment(), index); }
+    /// Sets `yoff` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTBakedChar yoffAt(long index, float value) { yoff(this.segment(), index, value); return this; }
 
-        /// {@return `xoff` at the given index}
-        /// @param index the index of the struct buffer
-        public float xoffAt(long index) { return xoff(this.segment(), index); }
-        /// Sets `xoff` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xoffAt(long index, float value) { xoff(this.segment(), index, value); return this; }
+    /// {@return `xadvance` at the given index}
+    /// @param index the index of the struct buffer
+    public float xadvanceAt(long index) { return xadvance(this.segment(), index); }
+    /// Sets `xadvance` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public STBTTBakedChar xadvanceAt(long index, float value) { xadvance(this.segment(), index, value); return this; }
 
-        /// {@return `yoff` at the given index}
-        /// @param index the index of the struct buffer
-        public float yoffAt(long index) { return yoff(this.segment(), index); }
-        /// Sets `yoff` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer yoffAt(long index, float value) { yoff(this.segment(), index, value); return this; }
-
-        /// {@return `xadvance` at the given index}
-        /// @param index the index of the struct buffer
-        public float xadvanceAt(long index) { return xadvance(this.segment(), index); }
-        /// Sets `xadvance` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xadvanceAt(long index, float value) { xadvance(this.segment(), index, value); return this; }
-
-    }
 }

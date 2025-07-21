@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 depthBiasExact;
 /// };
 /// ```
-public sealed class VkDepthBiasRepresentationInfoEXT extends GroupType {
+public final class VkDepthBiasRepresentationInfoEXT extends GroupType {
     /// The struct layout of `VkDepthBiasRepresentationInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkDepthBiasRepresentationInfoEXT extends GroupType {
     public static final VarHandle VH_depthBiasExact = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depthBiasExact"));
 
     /// Creates `VkDepthBiasRepresentationInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkDepthBiasRepresentationInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDepthBiasRepresentationInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDepthBiasRepresentationInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDepthBiasRepresentationInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDepthBiasRepresentationInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDepthBiasRepresentationInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDepthBiasRepresentationInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDepthBiasRepresentationInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDepthBiasRepresentationInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDepthBiasRepresentationInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDepthBiasRepresentationInfoEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkDepthBiasRepresentationInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDepthBiasRepresentationInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDepthBiasRepresentationInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDepthBiasRepresentationInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDepthBiasRepresentationInfoEXT`
-    public static VkDepthBiasRepresentationInfoEXT alloc(SegmentAllocator allocator) { return new VkDepthBiasRepresentationInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkDepthBiasRepresentationInfoEXT alloc(SegmentAllocator allocator) { return new VkDepthBiasRepresentationInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDepthBiasRepresentationInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDepthBiasRepresentationInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDepthBiasRepresentationInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDepthBiasRepresentationInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDepthBiasRepresentationInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkDepthBiasRepresentationInfoEXT extends GroupType {
     /// @return `this`
     public VkDepthBiasRepresentationInfoEXT copyFrom(VkDepthBiasRepresentationInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDepthBiasRepresentationInfoEXT reinterpret(long count) { return new VkDepthBiasRepresentationInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkDepthBiasRepresentationInfoEXT extends GroupType {
     /// @return `this`
     public VkDepthBiasRepresentationInfoEXT depthBiasExact(int value) { depthBiasExact(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDepthBiasRepresentationInfoEXT].
-    public static final class Buffer extends VkDepthBiasRepresentationInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkDepthBiasRepresentationInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDepthBiasRepresentationInfoEXT`
+    public VkDepthBiasRepresentationInfoEXT asSlice(long index) { return new VkDepthBiasRepresentationInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDepthBiasRepresentationInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDepthBiasRepresentationInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDepthBiasRepresentationInfoEXT`
+    public VkDepthBiasRepresentationInfoEXT asSlice(long index, long count) { return new VkDepthBiasRepresentationInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDepthBiasRepresentationInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDepthBiasRepresentationInfoEXT at(long index, Consumer<VkDepthBiasRepresentationInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDepthBiasRepresentationInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDepthBiasRepresentationInfoEXT`
-        public VkDepthBiasRepresentationInfoEXT asSlice(long index) { return new VkDepthBiasRepresentationInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDepthBiasRepresentationInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDepthBiasRepresentationInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDepthBiasRepresentationInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDepthBiasRepresentationInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `depthBiasRepresentation` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthBiasRepresentationAt(long index) { return depthBiasRepresentation(this.segment(), index); }
+    /// Sets `depthBiasRepresentation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDepthBiasRepresentationInfoEXT depthBiasRepresentationAt(long index, int value) { depthBiasRepresentation(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `depthBiasExact` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthBiasExactAt(long index) { return depthBiasExact(this.segment(), index); }
+    /// Sets `depthBiasExact` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDepthBiasRepresentationInfoEXT depthBiasExactAt(long index, int value) { depthBiasExact(this.segment(), index, value); return this; }
 
-        /// {@return `depthBiasRepresentation` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthBiasRepresentationAt(long index) { return depthBiasRepresentation(this.segment(), index); }
-        /// Sets `depthBiasRepresentation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthBiasRepresentationAt(long index, int value) { depthBiasRepresentation(this.segment(), index, value); return this; }
-
-        /// {@return `depthBiasExact` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthBiasExactAt(long index) { return depthBiasExact(this.segment(), index); }
-        /// Sets `depthBiasExact` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthBiasExactAt(long index, int value) { depthBiasExact(this.segment(), index, value); return this; }
-
-    }
 }

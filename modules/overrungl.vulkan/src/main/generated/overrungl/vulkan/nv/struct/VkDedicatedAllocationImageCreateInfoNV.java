@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 dedicatedAllocation;
 /// };
 /// ```
-public sealed class VkDedicatedAllocationImageCreateInfoNV extends GroupType {
+public final class VkDedicatedAllocationImageCreateInfoNV extends GroupType {
     /// The struct layout of `VkDedicatedAllocationImageCreateInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkDedicatedAllocationImageCreateInfoNV extends GroupType {
     public static final VarHandle VH_dedicatedAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dedicatedAllocation"));
 
     /// Creates `VkDedicatedAllocationImageCreateInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkDedicatedAllocationImageCreateInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDedicatedAllocationImageCreateInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDedicatedAllocationImageCreateInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDedicatedAllocationImageCreateInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDedicatedAllocationImageCreateInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDedicatedAllocationImageCreateInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDedicatedAllocationImageCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDedicatedAllocationImageCreateInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDedicatedAllocationImageCreateInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDedicatedAllocationImageCreateInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDedicatedAllocationImageCreateInfoNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkDedicatedAllocationImageCreateInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDedicatedAllocationImageCreateInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDedicatedAllocationImageCreateInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDedicatedAllocationImageCreateInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDedicatedAllocationImageCreateInfoNV`
-    public static VkDedicatedAllocationImageCreateInfoNV alloc(SegmentAllocator allocator) { return new VkDedicatedAllocationImageCreateInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkDedicatedAllocationImageCreateInfoNV alloc(SegmentAllocator allocator) { return new VkDedicatedAllocationImageCreateInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDedicatedAllocationImageCreateInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDedicatedAllocationImageCreateInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDedicatedAllocationImageCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkDedicatedAllocationImageCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDedicatedAllocationImageCreateInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkDedicatedAllocationImageCreateInfoNV extends GroupType {
     /// @return `this`
     public VkDedicatedAllocationImageCreateInfoNV copyFrom(VkDedicatedAllocationImageCreateInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDedicatedAllocationImageCreateInfoNV reinterpret(long count) { return new VkDedicatedAllocationImageCreateInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkDedicatedAllocationImageCreateInfoNV extends GroupType {
     /// @return `this`
     public VkDedicatedAllocationImageCreateInfoNV dedicatedAllocation(int value) { dedicatedAllocation(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDedicatedAllocationImageCreateInfoNV].
-    public static final class Buffer extends VkDedicatedAllocationImageCreateInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkDedicatedAllocationImageCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDedicatedAllocationImageCreateInfoNV`
+    public VkDedicatedAllocationImageCreateInfoNV asSlice(long index) { return new VkDedicatedAllocationImageCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDedicatedAllocationImageCreateInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDedicatedAllocationImageCreateInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDedicatedAllocationImageCreateInfoNV`
+    public VkDedicatedAllocationImageCreateInfoNV asSlice(long index, long count) { return new VkDedicatedAllocationImageCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDedicatedAllocationImageCreateInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDedicatedAllocationImageCreateInfoNV at(long index, Consumer<VkDedicatedAllocationImageCreateInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDedicatedAllocationImageCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDedicatedAllocationImageCreateInfoNV`
-        public VkDedicatedAllocationImageCreateInfoNV asSlice(long index) { return new VkDedicatedAllocationImageCreateInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDedicatedAllocationImageCreateInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDedicatedAllocationImageCreateInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDedicatedAllocationImageCreateInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDedicatedAllocationImageCreateInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `dedicatedAllocation` at the given index}
+    /// @param index the index of the struct buffer
+    public int dedicatedAllocationAt(long index) { return dedicatedAllocation(this.segment(), index); }
+    /// Sets `dedicatedAllocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDedicatedAllocationImageCreateInfoNV dedicatedAllocationAt(long index, int value) { dedicatedAllocation(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `dedicatedAllocation` at the given index}
-        /// @param index the index of the struct buffer
-        public int dedicatedAllocationAt(long index) { return dedicatedAllocation(this.segment(), index); }
-        /// Sets `dedicatedAllocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dedicatedAllocationAt(long index, int value) { dedicatedAllocation(this.segment(), index, value); return this; }
-
-    }
 }

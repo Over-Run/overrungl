@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -37,7 +37,7 @@ import java.util.function.*;
 ///     (uint32_t) VkBool32 persistentContent;
 /// };
 /// ```
-public sealed class VkDisplayPropertiesKHR extends GroupType {
+public final class VkDisplayPropertiesKHR extends GroupType {
     /// The struct layout of `VkDisplayPropertiesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("display"),
@@ -88,20 +88,21 @@ public sealed class VkDisplayPropertiesKHR extends GroupType {
     public static final VarHandle VH_persistentContent = LAYOUT.arrayElementVarHandle(PathElement.groupElement("persistentContent"));
 
     /// Creates `VkDisplayPropertiesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkDisplayPropertiesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDisplayPropertiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDisplayPropertiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDisplayPropertiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPropertiesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDisplayPropertiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDisplayPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPropertiesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDisplayPropertiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPropertiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDisplayPropertiesKHR` with the given segment.
     ///
@@ -109,18 +110,18 @@ public sealed class VkDisplayPropertiesKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDisplayPropertiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPropertiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDisplayPropertiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDisplayPropertiesKHR`
-    public static VkDisplayPropertiesKHR alloc(SegmentAllocator allocator) { return new VkDisplayPropertiesKHR(allocator.allocate(LAYOUT)); }
+    public static VkDisplayPropertiesKHR alloc(SegmentAllocator allocator) { return new VkDisplayPropertiesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDisplayPropertiesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDisplayPropertiesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDisplayPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDisplayPropertiesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -204,9 +205,10 @@ public sealed class VkDisplayPropertiesKHR extends GroupType {
     /// @return `this`
     public VkDisplayPropertiesKHR copyFrom(VkDisplayPropertiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDisplayPropertiesKHR reinterpret(long count) { return new VkDisplayPropertiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `display` at the given index}
     /// @param segment the segment of the struct
@@ -328,100 +330,94 @@ public sealed class VkDisplayPropertiesKHR extends GroupType {
     /// @return `this`
     public VkDisplayPropertiesKHR persistentContent(int value) { persistentContent(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDisplayPropertiesKHR].
-    public static final class Buffer extends VkDisplayPropertiesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkDisplayPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDisplayPropertiesKHR`
+    public VkDisplayPropertiesKHR asSlice(long index) { return new VkDisplayPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDisplayPropertiesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDisplayPropertiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDisplayPropertiesKHR`
+    public VkDisplayPropertiesKHR asSlice(long index, long count) { return new VkDisplayPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDisplayPropertiesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDisplayPropertiesKHR at(long index, Consumer<VkDisplayPropertiesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDisplayPropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDisplayPropertiesKHR`
-        public VkDisplayPropertiesKHR asSlice(long index) { return new VkDisplayPropertiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `display` at the given index}
+    /// @param index the index of the struct buffer
+    public long displayAt(long index) { return display(this.segment(), index); }
+    /// Sets `display` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPropertiesKHR displayAt(long index, long value) { display(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDisplayPropertiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDisplayPropertiesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `displayName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment displayNameAt(long index) { return displayName(this.segment(), index); }
+    /// Sets `displayName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPropertiesKHR displayNameAt(long index, MemorySegment value) { displayName(this.segment(), index, value); return this; }
 
-        /// {@return `display` at the given index}
-        /// @param index the index of the struct buffer
-        public long displayAt(long index) { return display(this.segment(), index); }
-        /// Sets `display` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer displayAt(long index, long value) { display(this.segment(), index, value); return this; }
+    /// {@return `physicalDimensions` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment physicalDimensionsAt(long index) { return physicalDimensions(this.segment(), index); }
+    /// Sets `physicalDimensions` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPropertiesKHR physicalDimensionsAt(long index, MemorySegment value) { physicalDimensions(this.segment(), index, value); return this; }
+    /// Accepts `physicalDimensions` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPropertiesKHR physicalDimensionsAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalDimensionsAt(index))); return this; }
 
-        /// {@return `displayName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment displayNameAt(long index) { return displayName(this.segment(), index); }
-        /// Sets `displayName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer displayNameAt(long index, MemorySegment value) { displayName(this.segment(), index, value); return this; }
+    /// {@return `physicalResolution` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment physicalResolutionAt(long index) { return physicalResolution(this.segment(), index); }
+    /// Sets `physicalResolution` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPropertiesKHR physicalResolutionAt(long index, MemorySegment value) { physicalResolution(this.segment(), index, value); return this; }
+    /// Accepts `physicalResolution` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPropertiesKHR physicalResolutionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalResolutionAt(index))); return this; }
 
-        /// {@return `physicalDimensions` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment physicalDimensionsAt(long index) { return physicalDimensions(this.segment(), index); }
-        /// Sets `physicalDimensions` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer physicalDimensionsAt(long index, MemorySegment value) { physicalDimensions(this.segment(), index, value); return this; }
-        /// Accepts `physicalDimensions` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer physicalDimensionsAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalDimensionsAt(index))); return this; }
+    /// {@return `supportedTransforms` at the given index}
+    /// @param index the index of the struct buffer
+    public int supportedTransformsAt(long index) { return supportedTransforms(this.segment(), index); }
+    /// Sets `supportedTransforms` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPropertiesKHR supportedTransformsAt(long index, int value) { supportedTransforms(this.segment(), index, value); return this; }
 
-        /// {@return `physicalResolution` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment physicalResolutionAt(long index) { return physicalResolution(this.segment(), index); }
-        /// Sets `physicalResolution` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer physicalResolutionAt(long index, MemorySegment value) { physicalResolution(this.segment(), index, value); return this; }
-        /// Accepts `physicalResolution` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer physicalResolutionAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(physicalResolutionAt(index))); return this; }
+    /// {@return `planeReorderPossible` at the given index}
+    /// @param index the index of the struct buffer
+    public int planeReorderPossibleAt(long index) { return planeReorderPossible(this.segment(), index); }
+    /// Sets `planeReorderPossible` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPropertiesKHR planeReorderPossibleAt(long index, int value) { planeReorderPossible(this.segment(), index, value); return this; }
 
-        /// {@return `supportedTransforms` at the given index}
-        /// @param index the index of the struct buffer
-        public int supportedTransformsAt(long index) { return supportedTransforms(this.segment(), index); }
-        /// Sets `supportedTransforms` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer supportedTransformsAt(long index, int value) { supportedTransforms(this.segment(), index, value); return this; }
+    /// {@return `persistentContent` at the given index}
+    /// @param index the index of the struct buffer
+    public int persistentContentAt(long index) { return persistentContent(this.segment(), index); }
+    /// Sets `persistentContent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPropertiesKHR persistentContentAt(long index, int value) { persistentContent(this.segment(), index, value); return this; }
 
-        /// {@return `planeReorderPossible` at the given index}
-        /// @param index the index of the struct buffer
-        public int planeReorderPossibleAt(long index) { return planeReorderPossible(this.segment(), index); }
-        /// Sets `planeReorderPossible` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer planeReorderPossibleAt(long index, int value) { planeReorderPossible(this.segment(), index, value); return this; }
-
-        /// {@return `persistentContent` at the given index}
-        /// @param index the index of the struct buffer
-        public int persistentContentAt(long index) { return persistentContent(this.segment(), index); }
-        /// Sets `persistentContent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer persistentContentAt(long index, int value) { persistentContent(this.segment(), index, value); return this; }
-
-    }
 }

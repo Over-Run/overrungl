@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t deviceMask;
 /// };
 /// ```
-public sealed class VkAcquireNextImageInfoKHR extends GroupType {
+public final class VkAcquireNextImageInfoKHR extends GroupType {
     /// The struct layout of `VkAcquireNextImageInfoKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkAcquireNextImageInfoKHR extends GroupType {
     public static final VarHandle VH_deviceMask = LAYOUT.arrayElementVarHandle(PathElement.groupElement("deviceMask"));
 
     /// Creates `VkAcquireNextImageInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkAcquireNextImageInfoKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAcquireNextImageInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAcquireNextImageInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAcquireNextImageInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAcquireNextImageInfoKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAcquireNextImageInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAcquireNextImageInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAcquireNextImageInfoKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAcquireNextImageInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAcquireNextImageInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAcquireNextImageInfoKHR` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkAcquireNextImageInfoKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAcquireNextImageInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAcquireNextImageInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAcquireNextImageInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAcquireNextImageInfoKHR`
-    public static VkAcquireNextImageInfoKHR alloc(SegmentAllocator allocator) { return new VkAcquireNextImageInfoKHR(allocator.allocate(LAYOUT)); }
+    public static VkAcquireNextImageInfoKHR alloc(SegmentAllocator allocator) { return new VkAcquireNextImageInfoKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAcquireNextImageInfoKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAcquireNextImageInfoKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAcquireNextImageInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAcquireNextImageInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAcquireNextImageInfoKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkAcquireNextImageInfoKHR extends GroupType {
     /// @return `this`
     public VkAcquireNextImageInfoKHR copyFrom(VkAcquireNextImageInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAcquireNextImageInfoKHR reinterpret(long count) { return new VkAcquireNextImageInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkAcquireNextImageInfoKHR extends GroupType {
     /// @return `this`
     public VkAcquireNextImageInfoKHR deviceMask(int value) { deviceMask(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAcquireNextImageInfoKHR].
-    public static final class Buffer extends VkAcquireNextImageInfoKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkAcquireNextImageInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAcquireNextImageInfoKHR`
+    public VkAcquireNextImageInfoKHR asSlice(long index) { return new VkAcquireNextImageInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAcquireNextImageInfoKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAcquireNextImageInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAcquireNextImageInfoKHR`
+    public VkAcquireNextImageInfoKHR asSlice(long index, long count) { return new VkAcquireNextImageInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAcquireNextImageInfoKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAcquireNextImageInfoKHR at(long index, Consumer<VkAcquireNextImageInfoKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAcquireNextImageInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAcquireNextImageInfoKHR`
-        public VkAcquireNextImageInfoKHR asSlice(long index) { return new VkAcquireNextImageInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAcquireNextImageInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAcquireNextImageInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAcquireNextImageInfoKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAcquireNextImageInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `swapchain` at the given index}
+    /// @param index the index of the struct buffer
+    public long swapchainAt(long index) { return swapchain(this.segment(), index); }
+    /// Sets `swapchain` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAcquireNextImageInfoKHR swapchainAt(long index, long value) { swapchain(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `timeout` at the given index}
+    /// @param index the index of the struct buffer
+    public long timeoutAt(long index) { return timeout(this.segment(), index); }
+    /// Sets `timeout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAcquireNextImageInfoKHR timeoutAt(long index, long value) { timeout(this.segment(), index, value); return this; }
 
-        /// {@return `swapchain` at the given index}
-        /// @param index the index of the struct buffer
-        public long swapchainAt(long index) { return swapchain(this.segment(), index); }
-        /// Sets `swapchain` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer swapchainAt(long index, long value) { swapchain(this.segment(), index, value); return this; }
+    /// {@return `semaphore` at the given index}
+    /// @param index the index of the struct buffer
+    public long semaphoreAt(long index) { return semaphore(this.segment(), index); }
+    /// Sets `semaphore` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAcquireNextImageInfoKHR semaphoreAt(long index, long value) { semaphore(this.segment(), index, value); return this; }
 
-        /// {@return `timeout` at the given index}
-        /// @param index the index of the struct buffer
-        public long timeoutAt(long index) { return timeout(this.segment(), index); }
-        /// Sets `timeout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer timeoutAt(long index, long value) { timeout(this.segment(), index, value); return this; }
+    /// {@return `fence` at the given index}
+    /// @param index the index of the struct buffer
+    public long fenceAt(long index) { return fence(this.segment(), index); }
+    /// Sets `fence` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAcquireNextImageInfoKHR fenceAt(long index, long value) { fence(this.segment(), index, value); return this; }
 
-        /// {@return `semaphore` at the given index}
-        /// @param index the index of the struct buffer
-        public long semaphoreAt(long index) { return semaphore(this.segment(), index); }
-        /// Sets `semaphore` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer semaphoreAt(long index, long value) { semaphore(this.segment(), index, value); return this; }
+    /// {@return `deviceMask` at the given index}
+    /// @param index the index of the struct buffer
+    public int deviceMaskAt(long index) { return deviceMask(this.segment(), index); }
+    /// Sets `deviceMask` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAcquireNextImageInfoKHR deviceMaskAt(long index, int value) { deviceMask(this.segment(), index, value); return this; }
 
-        /// {@return `fence` at the given index}
-        /// @param index the index of the struct buffer
-        public long fenceAt(long index) { return fence(this.segment(), index); }
-        /// Sets `fence` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer fenceAt(long index, long value) { fence(this.segment(), index, value); return this; }
-
-        /// {@return `deviceMask` at the given index}
-        /// @param index the index of the struct buffer
-        public int deviceMaskAt(long index) { return deviceMask(this.segment(), index); }
-        /// Sets `deviceMask` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceMaskAt(long index, int value) { deviceMask(this.segment(), index, value); return this; }
-
-    }
 }

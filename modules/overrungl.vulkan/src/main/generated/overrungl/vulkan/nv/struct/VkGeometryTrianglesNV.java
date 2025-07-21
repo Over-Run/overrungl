@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -42,7 +43,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceSize transformOffset;
 /// };
 /// ```
-public sealed class VkGeometryTrianglesNV extends GroupType {
+public final class VkGeometryTrianglesNV extends GroupType {
     /// The struct layout of `VkGeometryTrianglesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -139,20 +140,21 @@ public sealed class VkGeometryTrianglesNV extends GroupType {
     public static final VarHandle VH_transformOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("transformOffset"));
 
     /// Creates `VkGeometryTrianglesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkGeometryTrianglesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkGeometryTrianglesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkGeometryTrianglesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkGeometryTrianglesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryTrianglesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkGeometryTrianglesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkGeometryTrianglesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryTrianglesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkGeometryTrianglesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryTrianglesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkGeometryTrianglesNV` with the given segment.
     ///
@@ -160,18 +162,18 @@ public sealed class VkGeometryTrianglesNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkGeometryTrianglesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeometryTrianglesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkGeometryTrianglesNV`
-    public static VkGeometryTrianglesNV alloc(SegmentAllocator allocator) { return new VkGeometryTrianglesNV(allocator.allocate(LAYOUT)); }
+    public static VkGeometryTrianglesNV alloc(SegmentAllocator allocator) { return new VkGeometryTrianglesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkGeometryTrianglesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkGeometryTrianglesNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryTrianglesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkGeometryTrianglesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -360,9 +362,10 @@ public sealed class VkGeometryTrianglesNV extends GroupType {
     /// @return `this`
     public VkGeometryTrianglesNV copyFrom(VkGeometryTrianglesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkGeometryTrianglesNV reinterpret(long count) { return new VkGeometryTrianglesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -572,144 +575,138 @@ public sealed class VkGeometryTrianglesNV extends GroupType {
     /// @return `this`
     public VkGeometryTrianglesNV transformOffset(long value) { transformOffset(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkGeometryTrianglesNV].
-    public static final class Buffer extends VkGeometryTrianglesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkGeometryTrianglesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkGeometryTrianglesNV`
+    public VkGeometryTrianglesNV asSlice(long index) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkGeometryTrianglesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkGeometryTrianglesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkGeometryTrianglesNV`
+    public VkGeometryTrianglesNV asSlice(long index, long count) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkGeometryTrianglesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkGeometryTrianglesNV at(long index, Consumer<VkGeometryTrianglesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkGeometryTrianglesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkGeometryTrianglesNV`
-        public VkGeometryTrianglesNV asSlice(long index) { return new VkGeometryTrianglesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkGeometryTrianglesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkGeometryTrianglesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `vertexData` at the given index}
+    /// @param index the index of the struct buffer
+    public long vertexDataAt(long index) { return vertexData(this.segment(), index); }
+    /// Sets `vertexData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV vertexDataAt(long index, long value) { vertexData(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `vertexOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long vertexOffsetAt(long index) { return vertexOffset(this.segment(), index); }
+    /// Sets `vertexOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV vertexOffsetAt(long index, long value) { vertexOffset(this.segment(), index, value); return this; }
 
-        /// {@return `vertexData` at the given index}
-        /// @param index the index of the struct buffer
-        public long vertexDataAt(long index) { return vertexData(this.segment(), index); }
-        /// Sets `vertexData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexDataAt(long index, long value) { vertexData(this.segment(), index, value); return this; }
+    /// {@return `vertexCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int vertexCountAt(long index) { return vertexCount(this.segment(), index); }
+    /// Sets `vertexCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV vertexCountAt(long index, int value) { vertexCount(this.segment(), index, value); return this; }
 
-        /// {@return `vertexOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long vertexOffsetAt(long index) { return vertexOffset(this.segment(), index); }
-        /// Sets `vertexOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexOffsetAt(long index, long value) { vertexOffset(this.segment(), index, value); return this; }
+    /// {@return `vertexStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long vertexStrideAt(long index) { return vertexStride(this.segment(), index); }
+    /// Sets `vertexStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV vertexStrideAt(long index, long value) { vertexStride(this.segment(), index, value); return this; }
 
-        /// {@return `vertexCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int vertexCountAt(long index) { return vertexCount(this.segment(), index); }
-        /// Sets `vertexCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexCountAt(long index, int value) { vertexCount(this.segment(), index, value); return this; }
+    /// {@return `vertexFormat` at the given index}
+    /// @param index the index of the struct buffer
+    public int vertexFormatAt(long index) { return vertexFormat(this.segment(), index); }
+    /// Sets `vertexFormat` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV vertexFormatAt(long index, int value) { vertexFormat(this.segment(), index, value); return this; }
 
-        /// {@return `vertexStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long vertexStrideAt(long index) { return vertexStride(this.segment(), index); }
-        /// Sets `vertexStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexStrideAt(long index, long value) { vertexStride(this.segment(), index, value); return this; }
+    /// {@return `indexData` at the given index}
+    /// @param index the index of the struct buffer
+    public long indexDataAt(long index) { return indexData(this.segment(), index); }
+    /// Sets `indexData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV indexDataAt(long index, long value) { indexData(this.segment(), index, value); return this; }
 
-        /// {@return `vertexFormat` at the given index}
-        /// @param index the index of the struct buffer
-        public int vertexFormatAt(long index) { return vertexFormat(this.segment(), index); }
-        /// Sets `vertexFormat` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vertexFormatAt(long index, int value) { vertexFormat(this.segment(), index, value); return this; }
+    /// {@return `indexOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long indexOffsetAt(long index) { return indexOffset(this.segment(), index); }
+    /// Sets `indexOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV indexOffsetAt(long index, long value) { indexOffset(this.segment(), index, value); return this; }
 
-        /// {@return `indexData` at the given index}
-        /// @param index the index of the struct buffer
-        public long indexDataAt(long index) { return indexData(this.segment(), index); }
-        /// Sets `indexData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexDataAt(long index, long value) { indexData(this.segment(), index, value); return this; }
+    /// {@return `indexCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int indexCountAt(long index) { return indexCount(this.segment(), index); }
+    /// Sets `indexCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV indexCountAt(long index, int value) { indexCount(this.segment(), index, value); return this; }
 
-        /// {@return `indexOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long indexOffsetAt(long index) { return indexOffset(this.segment(), index); }
-        /// Sets `indexOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexOffsetAt(long index, long value) { indexOffset(this.segment(), index, value); return this; }
+    /// {@return `indexType` at the given index}
+    /// @param index the index of the struct buffer
+    public int indexTypeAt(long index) { return indexType(this.segment(), index); }
+    /// Sets `indexType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
 
-        /// {@return `indexCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int indexCountAt(long index) { return indexCount(this.segment(), index); }
-        /// Sets `indexCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexCountAt(long index, int value) { indexCount(this.segment(), index, value); return this; }
+    /// {@return `transformData` at the given index}
+    /// @param index the index of the struct buffer
+    public long transformDataAt(long index) { return transformData(this.segment(), index); }
+    /// Sets `transformData` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV transformDataAt(long index, long value) { transformData(this.segment(), index, value); return this; }
 
-        /// {@return `indexType` at the given index}
-        /// @param index the index of the struct buffer
-        public int indexTypeAt(long index) { return indexType(this.segment(), index); }
-        /// Sets `indexType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
+    /// {@return `transformOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long transformOffsetAt(long index) { return transformOffset(this.segment(), index); }
+    /// Sets `transformOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeometryTrianglesNV transformOffsetAt(long index, long value) { transformOffset(this.segment(), index, value); return this; }
 
-        /// {@return `transformData` at the given index}
-        /// @param index the index of the struct buffer
-        public long transformDataAt(long index) { return transformData(this.segment(), index); }
-        /// Sets `transformData` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer transformDataAt(long index, long value) { transformData(this.segment(), index, value); return this; }
-
-        /// {@return `transformOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long transformOffsetAt(long index) { return transformOffset(this.segment(), index); }
-        /// Sets `transformOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer transformOffsetAt(long index, long value) { transformOffset(this.segment(), index, value); return this; }
-
-    }
 }

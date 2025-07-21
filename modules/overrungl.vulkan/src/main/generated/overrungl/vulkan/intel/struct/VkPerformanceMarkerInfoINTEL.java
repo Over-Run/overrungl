@@ -21,6 +21,7 @@ package overrungl.vulkan.intel.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint64_t marker;
 /// };
 /// ```
-public sealed class VkPerformanceMarkerInfoINTEL extends GroupType {
+public final class VkPerformanceMarkerInfoINTEL extends GroupType {
     /// The struct layout of `VkPerformanceMarkerInfoINTEL`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPerformanceMarkerInfoINTEL extends GroupType {
     public static final VarHandle VH_marker = LAYOUT.arrayElementVarHandle(PathElement.groupElement("marker"));
 
     /// Creates `VkPerformanceMarkerInfoINTEL` with the given segment.
-    /// @param segment the memory segment
-    public VkPerformanceMarkerInfoINTEL(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPerformanceMarkerInfoINTEL(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPerformanceMarkerInfoINTEL` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPerformanceMarkerInfoINTEL of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceMarkerInfoINTEL(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPerformanceMarkerInfoINTEL` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceMarkerInfoINTEL ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceMarkerInfoINTEL(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPerformanceMarkerInfoINTEL ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceMarkerInfoINTEL(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPerformanceMarkerInfoINTEL` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPerformanceMarkerInfoINTEL extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPerformanceMarkerInfoINTEL ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceMarkerInfoINTEL(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPerformanceMarkerInfoINTEL` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPerformanceMarkerInfoINTEL`
-    public static VkPerformanceMarkerInfoINTEL alloc(SegmentAllocator allocator) { return new VkPerformanceMarkerInfoINTEL(allocator.allocate(LAYOUT)); }
+    public static VkPerformanceMarkerInfoINTEL alloc(SegmentAllocator allocator) { return new VkPerformanceMarkerInfoINTEL(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPerformanceMarkerInfoINTEL` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPerformanceMarkerInfoINTEL`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPerformanceMarkerInfoINTEL alloc(SegmentAllocator allocator, long count) { return new VkPerformanceMarkerInfoINTEL(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPerformanceMarkerInfoINTEL` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPerformanceMarkerInfoINTEL extends GroupType {
     /// @return `this`
     public VkPerformanceMarkerInfoINTEL copyFrom(VkPerformanceMarkerInfoINTEL src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPerformanceMarkerInfoINTEL reinterpret(long count) { return new VkPerformanceMarkerInfoINTEL(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPerformanceMarkerInfoINTEL extends GroupType {
     /// @return `this`
     public VkPerformanceMarkerInfoINTEL marker(long value) { marker(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPerformanceMarkerInfoINTEL].
-    public static final class Buffer extends VkPerformanceMarkerInfoINTEL {
-        private final long elementCount;
+    /// Creates a slice of `VkPerformanceMarkerInfoINTEL`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPerformanceMarkerInfoINTEL`
+    public VkPerformanceMarkerInfoINTEL asSlice(long index) { return new VkPerformanceMarkerInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPerformanceMarkerInfoINTEL.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPerformanceMarkerInfoINTEL`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPerformanceMarkerInfoINTEL`
+    public VkPerformanceMarkerInfoINTEL asSlice(long index, long count) { return new VkPerformanceMarkerInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPerformanceMarkerInfoINTEL` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPerformanceMarkerInfoINTEL at(long index, Consumer<VkPerformanceMarkerInfoINTEL> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPerformanceMarkerInfoINTEL`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPerformanceMarkerInfoINTEL`
-        public VkPerformanceMarkerInfoINTEL asSlice(long index) { return new VkPerformanceMarkerInfoINTEL(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceMarkerInfoINTEL sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPerformanceMarkerInfoINTEL`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPerformanceMarkerInfoINTEL`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceMarkerInfoINTEL pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `marker` at the given index}
+    /// @param index the index of the struct buffer
+    public long markerAt(long index) { return marker(this.segment(), index); }
+    /// Sets `marker` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceMarkerInfoINTEL markerAt(long index, long value) { marker(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `marker` at the given index}
-        /// @param index the index of the struct buffer
-        public long markerAt(long index) { return marker(this.segment(), index); }
-        /// Sets `marker` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer markerAt(long index, long value) { marker(this.segment(), index, value); return this; }
-
-    }
 }

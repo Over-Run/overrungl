@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -34,7 +34,7 @@ import java.util.function.*;
 ///     (struct VkMemoryRequirements) VkMemoryRequirements memoryRequirements;
 /// };
 /// ```
-public sealed class VkVideoSessionMemoryRequirementsKHR extends GroupType {
+public final class VkVideoSessionMemoryRequirementsKHR extends GroupType {
     /// The struct layout of `VkVideoSessionMemoryRequirementsKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -66,20 +66,21 @@ public sealed class VkVideoSessionMemoryRequirementsKHR extends GroupType {
     public static final MemoryLayout LAYOUT_memoryRequirements = LAYOUT.select(PathElement.groupElement("memoryRequirements"));
 
     /// Creates `VkVideoSessionMemoryRequirementsKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkVideoSessionMemoryRequirementsKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVideoSessionMemoryRequirementsKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVideoSessionMemoryRequirementsKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVideoSessionMemoryRequirementsKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoSessionMemoryRequirementsKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoSessionMemoryRequirementsKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoSessionMemoryRequirementsKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoSessionMemoryRequirementsKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVideoSessionMemoryRequirementsKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoSessionMemoryRequirementsKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVideoSessionMemoryRequirementsKHR` with the given segment.
     ///
@@ -87,18 +88,18 @@ public sealed class VkVideoSessionMemoryRequirementsKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVideoSessionMemoryRequirementsKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoSessionMemoryRequirementsKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVideoSessionMemoryRequirementsKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoSessionMemoryRequirementsKHR`
-    public static VkVideoSessionMemoryRequirementsKHR alloc(SegmentAllocator allocator) { return new VkVideoSessionMemoryRequirementsKHR(allocator.allocate(LAYOUT)); }
+    public static VkVideoSessionMemoryRequirementsKHR alloc(SegmentAllocator allocator) { return new VkVideoSessionMemoryRequirementsKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVideoSessionMemoryRequirementsKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoSessionMemoryRequirementsKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVideoSessionMemoryRequirementsKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoSessionMemoryRequirementsKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVideoSessionMemoryRequirementsKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -143,9 +144,10 @@ public sealed class VkVideoSessionMemoryRequirementsKHR extends GroupType {
     /// @return `this`
     public VkVideoSessionMemoryRequirementsKHR copyFrom(VkVideoSessionMemoryRequirementsKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVideoSessionMemoryRequirementsKHR reinterpret(long count) { return new VkVideoSessionMemoryRequirementsKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -215,68 +217,62 @@ public sealed class VkVideoSessionMemoryRequirementsKHR extends GroupType {
     /// @return `this`
     public VkVideoSessionMemoryRequirementsKHR memoryRequirements(Consumer<overrungl.vulkan.struct.VkMemoryRequirements> func) { func.accept(overrungl.vulkan.struct.VkMemoryRequirements.of(memoryRequirements())); return this; }
 
-    /// A buffer of [VkVideoSessionMemoryRequirementsKHR].
-    public static final class Buffer extends VkVideoSessionMemoryRequirementsKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkVideoSessionMemoryRequirementsKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoSessionMemoryRequirementsKHR`
+    public VkVideoSessionMemoryRequirementsKHR asSlice(long index) { return new VkVideoSessionMemoryRequirementsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVideoSessionMemoryRequirementsKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVideoSessionMemoryRequirementsKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoSessionMemoryRequirementsKHR`
+    public VkVideoSessionMemoryRequirementsKHR asSlice(long index, long count) { return new VkVideoSessionMemoryRequirementsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVideoSessionMemoryRequirementsKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVideoSessionMemoryRequirementsKHR at(long index, Consumer<VkVideoSessionMemoryRequirementsKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVideoSessionMemoryRequirementsKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVideoSessionMemoryRequirementsKHR`
-        public VkVideoSessionMemoryRequirementsKHR asSlice(long index) { return new VkVideoSessionMemoryRequirementsKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoSessionMemoryRequirementsKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVideoSessionMemoryRequirementsKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVideoSessionMemoryRequirementsKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoSessionMemoryRequirementsKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `memoryBindIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int memoryBindIndexAt(long index) { return memoryBindIndex(this.segment(), index); }
+    /// Sets `memoryBindIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoSessionMemoryRequirementsKHR memoryBindIndexAt(long index, int value) { memoryBindIndex(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `memoryRequirements` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment memoryRequirementsAt(long index) { return memoryRequirements(this.segment(), index); }
+    /// Sets `memoryRequirements` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoSessionMemoryRequirementsKHR memoryRequirementsAt(long index, MemorySegment value) { memoryRequirements(this.segment(), index, value); return this; }
+    /// Accepts `memoryRequirements` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkVideoSessionMemoryRequirementsKHR memoryRequirementsAt(long index, Consumer<overrungl.vulkan.struct.VkMemoryRequirements> func) { func.accept(overrungl.vulkan.struct.VkMemoryRequirements.of(memoryRequirementsAt(index))); return this; }
 
-        /// {@return `memoryBindIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int memoryBindIndexAt(long index) { return memoryBindIndex(this.segment(), index); }
-        /// Sets `memoryBindIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryBindIndexAt(long index, int value) { memoryBindIndex(this.segment(), index, value); return this; }
-
-        /// {@return `memoryRequirements` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment memoryRequirementsAt(long index) { return memoryRequirements(this.segment(), index); }
-        /// Sets `memoryRequirements` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryRequirementsAt(long index, MemorySegment value) { memoryRequirements(this.segment(), index, value); return this; }
-        /// Accepts `memoryRequirements` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer memoryRequirementsAt(long index, Consumer<overrungl.vulkan.struct.VkMemoryRequirements> func) { func.accept(overrungl.vulkan.struct.VkMemoryRequirements.of(memoryRequirementsAt(index))); return this; }
-
-    }
 }

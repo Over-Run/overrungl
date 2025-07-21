@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint32_t poolEntryCount;
 /// };
 /// ```
-public sealed class VkPipelinePoolSize extends GroupType {
+public final class VkPipelinePoolSize extends GroupType {
     /// The struct layout of `VkPipelinePoolSize`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPipelinePoolSize extends GroupType {
     public static final VarHandle VH_poolEntryCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("poolEntryCount"));
 
     /// Creates `VkPipelinePoolSize` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelinePoolSize(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelinePoolSize(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelinePoolSize` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelinePoolSize of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelinePoolSize(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelinePoolSize` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelinePoolSize ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelinePoolSize(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelinePoolSize ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelinePoolSize(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelinePoolSize` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPipelinePoolSize extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelinePoolSize ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelinePoolSize(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelinePoolSize` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelinePoolSize`
-    public static VkPipelinePoolSize alloc(SegmentAllocator allocator) { return new VkPipelinePoolSize(allocator.allocate(LAYOUT)); }
+    public static VkPipelinePoolSize alloc(SegmentAllocator allocator) { return new VkPipelinePoolSize(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelinePoolSize` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelinePoolSize`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelinePoolSize alloc(SegmentAllocator allocator, long count) { return new VkPipelinePoolSize(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelinePoolSize` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPipelinePoolSize extends GroupType {
     /// @return `this`
     public VkPipelinePoolSize copyFrom(VkPipelinePoolSize src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelinePoolSize reinterpret(long count) { return new VkPipelinePoolSize(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPipelinePoolSize extends GroupType {
     /// @return `this`
     public VkPipelinePoolSize poolEntryCount(int value) { poolEntryCount(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelinePoolSize].
-    public static final class Buffer extends VkPipelinePoolSize {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelinePoolSize`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelinePoolSize`
+    public VkPipelinePoolSize asSlice(long index) { return new VkPipelinePoolSize(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelinePoolSize.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelinePoolSize`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelinePoolSize`
+    public VkPipelinePoolSize asSlice(long index, long count) { return new VkPipelinePoolSize(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelinePoolSize` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelinePoolSize at(long index, Consumer<VkPipelinePoolSize> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelinePoolSize`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelinePoolSize`
-        public VkPipelinePoolSize asSlice(long index) { return new VkPipelinePoolSize(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelinePoolSize sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelinePoolSize`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelinePoolSize`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelinePoolSize pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `poolEntrySize` at the given index}
+    /// @param index the index of the struct buffer
+    public long poolEntrySizeAt(long index) { return poolEntrySize(this.segment(), index); }
+    /// Sets `poolEntrySize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelinePoolSize poolEntrySizeAt(long index, long value) { poolEntrySize(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `poolEntryCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int poolEntryCountAt(long index) { return poolEntryCount(this.segment(), index); }
+    /// Sets `poolEntryCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelinePoolSize poolEntryCountAt(long index, int value) { poolEntryCount(this.segment(), index, value); return this; }
 
-        /// {@return `poolEntrySize` at the given index}
-        /// @param index the index of the struct buffer
-        public long poolEntrySizeAt(long index) { return poolEntrySize(this.segment(), index); }
-        /// Sets `poolEntrySize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer poolEntrySizeAt(long index, long value) { poolEntrySize(this.segment(), index, value); return this; }
-
-        /// {@return `poolEntryCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int poolEntryCountAt(long index) { return poolEntryCount(this.segment(), index); }
-        /// Sets `poolEntryCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer poolEntryCountAt(long index, int value) { poolEntryCount(this.segment(), index, value); return this; }
-
-    }
 }

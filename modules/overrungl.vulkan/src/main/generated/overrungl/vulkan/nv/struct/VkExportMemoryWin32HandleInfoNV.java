@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (unsigned long) DWORD dwAccess;
 /// };
 /// ```
-public sealed class VkExportMemoryWin32HandleInfoNV extends GroupType {
+public final class VkExportMemoryWin32HandleInfoNV extends GroupType {
     /// The struct layout of `VkExportMemoryWin32HandleInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkExportMemoryWin32HandleInfoNV extends GroupType {
     public static final VarHandle VH_dwAccess = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dwAccess"));
 
     /// Creates `VkExportMemoryWin32HandleInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkExportMemoryWin32HandleInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkExportMemoryWin32HandleInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkExportMemoryWin32HandleInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkExportMemoryWin32HandleInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMemoryWin32HandleInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExportMemoryWin32HandleInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMemoryWin32HandleInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMemoryWin32HandleInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkExportMemoryWin32HandleInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMemoryWin32HandleInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkExportMemoryWin32HandleInfoNV` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkExportMemoryWin32HandleInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkExportMemoryWin32HandleInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMemoryWin32HandleInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkExportMemoryWin32HandleInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExportMemoryWin32HandleInfoNV`
-    public static VkExportMemoryWin32HandleInfoNV alloc(SegmentAllocator allocator) { return new VkExportMemoryWin32HandleInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkExportMemoryWin32HandleInfoNV alloc(SegmentAllocator allocator) { return new VkExportMemoryWin32HandleInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkExportMemoryWin32HandleInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExportMemoryWin32HandleInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkExportMemoryWin32HandleInfoNV alloc(SegmentAllocator allocator, long count) { return new VkExportMemoryWin32HandleInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkExportMemoryWin32HandleInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkExportMemoryWin32HandleInfoNV extends GroupType {
     /// @return `this`
     public VkExportMemoryWin32HandleInfoNV copyFrom(VkExportMemoryWin32HandleInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkExportMemoryWin32HandleInfoNV reinterpret(long count) { return new VkExportMemoryWin32HandleInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkExportMemoryWin32HandleInfoNV extends GroupType {
     /// @return `this`
     public VkExportMemoryWin32HandleInfoNV dwAccess(long value) { dwAccess(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkExportMemoryWin32HandleInfoNV].
-    public static final class Buffer extends VkExportMemoryWin32HandleInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkExportMemoryWin32HandleInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExportMemoryWin32HandleInfoNV`
+    public VkExportMemoryWin32HandleInfoNV asSlice(long index) { return new VkExportMemoryWin32HandleInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkExportMemoryWin32HandleInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkExportMemoryWin32HandleInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExportMemoryWin32HandleInfoNV`
+    public VkExportMemoryWin32HandleInfoNV asSlice(long index, long count) { return new VkExportMemoryWin32HandleInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkExportMemoryWin32HandleInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkExportMemoryWin32HandleInfoNV at(long index, Consumer<VkExportMemoryWin32HandleInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkExportMemoryWin32HandleInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkExportMemoryWin32HandleInfoNV`
-        public VkExportMemoryWin32HandleInfoNV asSlice(long index) { return new VkExportMemoryWin32HandleInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMemoryWin32HandleInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkExportMemoryWin32HandleInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkExportMemoryWin32HandleInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMemoryWin32HandleInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pAttributes` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pAttributesAt(long index) { return pAttributes(this.segment(), index); }
+    /// Sets `pAttributes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMemoryWin32HandleInfoNV pAttributesAt(long index, MemorySegment value) { pAttributes(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `dwAccess` at the given index}
+    /// @param index the index of the struct buffer
+    public long dwAccessAt(long index) { return dwAccess(this.segment(), index); }
+    /// Sets `dwAccess` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMemoryWin32HandleInfoNV dwAccessAt(long index, long value) { dwAccess(this.segment(), index, value); return this; }
 
-        /// {@return `pAttributes` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pAttributesAt(long index) { return pAttributes(this.segment(), index); }
-        /// Sets `pAttributes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pAttributesAt(long index, MemorySegment value) { pAttributes(this.segment(), index, value); return this; }
-
-        /// {@return `dwAccess` at the given index}
-        /// @param index the index of the struct buffer
-        public long dwAccessAt(long index) { return dwAccess(this.segment(), index); }
-        /// Sets `dwAccess` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dwAccessAt(long index, long value) { dwAccess(this.segment(), index, value); return this; }
-
-    }
 }

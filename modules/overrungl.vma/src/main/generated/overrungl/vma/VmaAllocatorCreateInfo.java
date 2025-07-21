@@ -21,6 +21,7 @@ package overrungl.vma;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -40,7 +41,7 @@ import overrungl.util.*;
 ///     const VkExternalMemoryHandleTypeFlagsKHR* pTypeExternalMemoryHandleTypes;
 /// };
 /// ```
-public sealed class VmaAllocatorCreateInfo extends GroupType {
+public final class VmaAllocatorCreateInfo extends GroupType {
     /// The struct layout of `VmaAllocatorCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("flags"),
@@ -123,20 +124,21 @@ public sealed class VmaAllocatorCreateInfo extends GroupType {
     public static final VarHandle VH_pTypeExternalMemoryHandleTypes = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pTypeExternalMemoryHandleTypes"));
 
     /// Creates `VmaAllocatorCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VmaAllocatorCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VmaAllocatorCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VmaAllocatorCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VmaAllocatorCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaAllocatorCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VmaAllocatorCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VmaAllocatorCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaAllocatorCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VmaAllocatorCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaAllocatorCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VmaAllocatorCreateInfo` with the given segment.
     ///
@@ -144,18 +146,18 @@ public sealed class VmaAllocatorCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VmaAllocatorCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VmaAllocatorCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VmaAllocatorCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VmaAllocatorCreateInfo`
-    public static VmaAllocatorCreateInfo alloc(SegmentAllocator allocator) { return new VmaAllocatorCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VmaAllocatorCreateInfo alloc(SegmentAllocator allocator) { return new VmaAllocatorCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VmaAllocatorCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VmaAllocatorCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VmaAllocatorCreateInfo alloc(SegmentAllocator allocator, long count) { return new VmaAllocatorCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VmaAllocatorCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -305,9 +307,10 @@ public sealed class VmaAllocatorCreateInfo extends GroupType {
     /// @return `this`
     public VmaAllocatorCreateInfo copyFrom(VmaAllocatorCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VmaAllocatorCreateInfo reinterpret(long count) { return new VmaAllocatorCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -485,126 +488,120 @@ public sealed class VmaAllocatorCreateInfo extends GroupType {
     /// @return `this`
     public VmaAllocatorCreateInfo pTypeExternalMemoryHandleTypes(MemorySegment value) { pTypeExternalMemoryHandleTypes(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VmaAllocatorCreateInfo].
-    public static final class Buffer extends VmaAllocatorCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VmaAllocatorCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VmaAllocatorCreateInfo`
+    public VmaAllocatorCreateInfo asSlice(long index) { return new VmaAllocatorCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VmaAllocatorCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VmaAllocatorCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VmaAllocatorCreateInfo`
+    public VmaAllocatorCreateInfo asSlice(long index, long count) { return new VmaAllocatorCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VmaAllocatorCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VmaAllocatorCreateInfo at(long index, Consumer<VmaAllocatorCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VmaAllocatorCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VmaAllocatorCreateInfo`
-        public VmaAllocatorCreateInfo asSlice(long index) { return new VmaAllocatorCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VmaAllocatorCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VmaAllocatorCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `physicalDevice` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment physicalDeviceAt(long index) { return physicalDevice(this.segment(), index); }
+    /// Sets `physicalDevice` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo physicalDeviceAt(long index, MemorySegment value) { physicalDevice(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `device` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment deviceAt(long index) { return device(this.segment(), index); }
+    /// Sets `device` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo deviceAt(long index, MemorySegment value) { device(this.segment(), index, value); return this; }
 
-        /// {@return `physicalDevice` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment physicalDeviceAt(long index) { return physicalDevice(this.segment(), index); }
-        /// Sets `physicalDevice` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer physicalDeviceAt(long index, MemorySegment value) { physicalDevice(this.segment(), index, value); return this; }
+    /// {@return `preferredLargeHeapBlockSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long preferredLargeHeapBlockSizeAt(long index) { return preferredLargeHeapBlockSize(this.segment(), index); }
+    /// Sets `preferredLargeHeapBlockSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo preferredLargeHeapBlockSizeAt(long index, long value) { preferredLargeHeapBlockSize(this.segment(), index, value); return this; }
 
-        /// {@return `device` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment deviceAt(long index) { return device(this.segment(), index); }
-        /// Sets `device` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceAt(long index, MemorySegment value) { device(this.segment(), index, value); return this; }
+    /// {@return `pAllocationCallbacks` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pAllocationCallbacksAt(long index) { return pAllocationCallbacks(this.segment(), index); }
+    /// Sets `pAllocationCallbacks` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo pAllocationCallbacksAt(long index, MemorySegment value) { pAllocationCallbacks(this.segment(), index, value); return this; }
 
-        /// {@return `preferredLargeHeapBlockSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long preferredLargeHeapBlockSizeAt(long index) { return preferredLargeHeapBlockSize(this.segment(), index); }
-        /// Sets `preferredLargeHeapBlockSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer preferredLargeHeapBlockSizeAt(long index, long value) { preferredLargeHeapBlockSize(this.segment(), index, value); return this; }
+    /// {@return `pDeviceMemoryCallbacks` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pDeviceMemoryCallbacksAt(long index) { return pDeviceMemoryCallbacks(this.segment(), index); }
+    /// Sets `pDeviceMemoryCallbacks` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo pDeviceMemoryCallbacksAt(long index, MemorySegment value) { pDeviceMemoryCallbacks(this.segment(), index, value); return this; }
 
-        /// {@return `pAllocationCallbacks` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pAllocationCallbacksAt(long index) { return pAllocationCallbacks(this.segment(), index); }
-        /// Sets `pAllocationCallbacks` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pAllocationCallbacksAt(long index, MemorySegment value) { pAllocationCallbacks(this.segment(), index, value); return this; }
+    /// {@return `pHeapSizeLimit` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pHeapSizeLimitAt(long index) { return pHeapSizeLimit(this.segment(), index); }
+    /// Sets `pHeapSizeLimit` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo pHeapSizeLimitAt(long index, MemorySegment value) { pHeapSizeLimit(this.segment(), index, value); return this; }
 
-        /// {@return `pDeviceMemoryCallbacks` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pDeviceMemoryCallbacksAt(long index) { return pDeviceMemoryCallbacks(this.segment(), index); }
-        /// Sets `pDeviceMemoryCallbacks` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pDeviceMemoryCallbacksAt(long index, MemorySegment value) { pDeviceMemoryCallbacks(this.segment(), index, value); return this; }
+    /// {@return `pVulkanFunctions` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pVulkanFunctionsAt(long index) { return pVulkanFunctions(this.segment(), index); }
+    /// Sets `pVulkanFunctions` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo pVulkanFunctionsAt(long index, MemorySegment value) { pVulkanFunctions(this.segment(), index, value); return this; }
 
-        /// {@return `pHeapSizeLimit` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pHeapSizeLimitAt(long index) { return pHeapSizeLimit(this.segment(), index); }
-        /// Sets `pHeapSizeLimit` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pHeapSizeLimitAt(long index, MemorySegment value) { pHeapSizeLimit(this.segment(), index, value); return this; }
+    /// {@return `instance` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment instanceAt(long index) { return instance(this.segment(), index); }
+    /// Sets `instance` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo instanceAt(long index, MemorySegment value) { instance(this.segment(), index, value); return this; }
 
-        /// {@return `pVulkanFunctions` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pVulkanFunctionsAt(long index) { return pVulkanFunctions(this.segment(), index); }
-        /// Sets `pVulkanFunctions` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pVulkanFunctionsAt(long index, MemorySegment value) { pVulkanFunctions(this.segment(), index, value); return this; }
+    /// {@return `vulkanApiVersion` at the given index}
+    /// @param index the index of the struct buffer
+    public int vulkanApiVersionAt(long index) { return vulkanApiVersion(this.segment(), index); }
+    /// Sets `vulkanApiVersion` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo vulkanApiVersionAt(long index, int value) { vulkanApiVersion(this.segment(), index, value); return this; }
 
-        /// {@return `instance` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment instanceAt(long index) { return instance(this.segment(), index); }
-        /// Sets `instance` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer instanceAt(long index, MemorySegment value) { instance(this.segment(), index, value); return this; }
+    /// {@return `pTypeExternalMemoryHandleTypes` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pTypeExternalMemoryHandleTypesAt(long index) { return pTypeExternalMemoryHandleTypes(this.segment(), index); }
+    /// Sets `pTypeExternalMemoryHandleTypes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorCreateInfo pTypeExternalMemoryHandleTypesAt(long index, MemorySegment value) { pTypeExternalMemoryHandleTypes(this.segment(), index, value); return this; }
 
-        /// {@return `vulkanApiVersion` at the given index}
-        /// @param index the index of the struct buffer
-        public int vulkanApiVersionAt(long index) { return vulkanApiVersion(this.segment(), index); }
-        /// Sets `vulkanApiVersion` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vulkanApiVersionAt(long index, int value) { vulkanApiVersion(this.segment(), index, value); return this; }
-
-        /// {@return `pTypeExternalMemoryHandleTypes` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pTypeExternalMemoryHandleTypesAt(long index) { return pTypeExternalMemoryHandleTypes(this.segment(), index); }
-        /// Sets `pTypeExternalMemoryHandleTypes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pTypeExternalMemoryHandleTypesAt(long index, MemorySegment value) { pTypeExternalMemoryHandleTypes(this.segment(), index, value); return this; }
-
-    }
 }

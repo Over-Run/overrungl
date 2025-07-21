@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     const StdVideoH264PictureParameterSet* pStdPPSs;
 /// };
 /// ```
-public sealed class VkVideoDecodeH264SessionParametersAddInfoKHR extends GroupType {
+public final class VkVideoDecodeH264SessionParametersAddInfoKHR extends GroupType {
     /// The struct layout of `VkVideoDecodeH264SessionParametersAddInfoKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkVideoDecodeH264SessionParametersAddInfoKHR extends GroupTy
     public static final VarHandle VH_pStdPPSs = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdPPSs"));
 
     /// Creates `VkVideoDecodeH264SessionParametersAddInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkVideoDecodeH264SessionParametersAddInfoKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVideoDecodeH264SessionParametersAddInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVideoDecodeH264SessionParametersAddInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVideoDecodeH264SessionParametersAddInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeH264SessionParametersAddInfoKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoDecodeH264SessionParametersAddInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoDecodeH264SessionParametersAddInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeH264SessionParametersAddInfoKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVideoDecodeH264SessionParametersAddInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeH264SessionParametersAddInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVideoDecodeH264SessionParametersAddInfoKHR` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkVideoDecodeH264SessionParametersAddInfoKHR extends GroupTy
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVideoDecodeH264SessionParametersAddInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeH264SessionParametersAddInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVideoDecodeH264SessionParametersAddInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoDecodeH264SessionParametersAddInfoKHR`
-    public static VkVideoDecodeH264SessionParametersAddInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoDecodeH264SessionParametersAddInfoKHR(allocator.allocate(LAYOUT)); }
+    public static VkVideoDecodeH264SessionParametersAddInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoDecodeH264SessionParametersAddInfoKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVideoDecodeH264SessionParametersAddInfoKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoDecodeH264SessionParametersAddInfoKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVideoDecodeH264SessionParametersAddInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeH264SessionParametersAddInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVideoDecodeH264SessionParametersAddInfoKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkVideoDecodeH264SessionParametersAddInfoKHR extends GroupTy
     /// @return `this`
     public VkVideoDecodeH264SessionParametersAddInfoKHR copyFrom(VkVideoDecodeH264SessionParametersAddInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVideoDecodeH264SessionParametersAddInfoKHR reinterpret(long count) { return new VkVideoDecodeH264SessionParametersAddInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkVideoDecodeH264SessionParametersAddInfoKHR extends GroupTy
     /// @return `this`
     public VkVideoDecodeH264SessionParametersAddInfoKHR pStdPPSs(MemorySegment value) { pStdPPSs(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkVideoDecodeH264SessionParametersAddInfoKHR].
-    public static final class Buffer extends VkVideoDecodeH264SessionParametersAddInfoKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkVideoDecodeH264SessionParametersAddInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoDecodeH264SessionParametersAddInfoKHR`
+    public VkVideoDecodeH264SessionParametersAddInfoKHR asSlice(long index) { return new VkVideoDecodeH264SessionParametersAddInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVideoDecodeH264SessionParametersAddInfoKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVideoDecodeH264SessionParametersAddInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoDecodeH264SessionParametersAddInfoKHR`
+    public VkVideoDecodeH264SessionParametersAddInfoKHR asSlice(long index, long count) { return new VkVideoDecodeH264SessionParametersAddInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVideoDecodeH264SessionParametersAddInfoKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVideoDecodeH264SessionParametersAddInfoKHR at(long index, Consumer<VkVideoDecodeH264SessionParametersAddInfoKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVideoDecodeH264SessionParametersAddInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVideoDecodeH264SessionParametersAddInfoKHR`
-        public VkVideoDecodeH264SessionParametersAddInfoKHR asSlice(long index) { return new VkVideoDecodeH264SessionParametersAddInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264SessionParametersAddInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVideoDecodeH264SessionParametersAddInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVideoDecodeH264SessionParametersAddInfoKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264SessionParametersAddInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `stdSPSCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int stdSPSCountAt(long index) { return stdSPSCount(this.segment(), index); }
+    /// Sets `stdSPSCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264SessionParametersAddInfoKHR stdSPSCountAt(long index, int value) { stdSPSCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pStdSPSs` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pStdSPSsAt(long index) { return pStdSPSs(this.segment(), index); }
+    /// Sets `pStdSPSs` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264SessionParametersAddInfoKHR pStdSPSsAt(long index, MemorySegment value) { pStdSPSs(this.segment(), index, value); return this; }
 
-        /// {@return `stdSPSCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int stdSPSCountAt(long index) { return stdSPSCount(this.segment(), index); }
-        /// Sets `stdSPSCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stdSPSCountAt(long index, int value) { stdSPSCount(this.segment(), index, value); return this; }
+    /// {@return `stdPPSCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int stdPPSCountAt(long index) { return stdPPSCount(this.segment(), index); }
+    /// Sets `stdPPSCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264SessionParametersAddInfoKHR stdPPSCountAt(long index, int value) { stdPPSCount(this.segment(), index, value); return this; }
 
-        /// {@return `pStdSPSs` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pStdSPSsAt(long index) { return pStdSPSs(this.segment(), index); }
-        /// Sets `pStdSPSs` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pStdSPSsAt(long index, MemorySegment value) { pStdSPSs(this.segment(), index, value); return this; }
+    /// {@return `pStdPPSs` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pStdPPSsAt(long index) { return pStdPPSs(this.segment(), index); }
+    /// Sets `pStdPPSs` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeH264SessionParametersAddInfoKHR pStdPPSsAt(long index, MemorySegment value) { pStdPPSs(this.segment(), index, value); return this; }
 
-        /// {@return `stdPPSCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int stdPPSCountAt(long index) { return stdPPSCount(this.segment(), index); }
-        /// Sets `stdPPSCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer stdPPSCountAt(long index, int value) { stdPPSCount(this.segment(), index, value); return this; }
-
-        /// {@return `pStdPPSs` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pStdPPSsAt(long index) { return pStdPPSs(this.segment(), index); }
-        /// Sets `pStdPPSs` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pStdPPSsAt(long index, MemorySegment value) { pStdPPSs(this.segment(), index, value); return this; }
-
-    }
 }

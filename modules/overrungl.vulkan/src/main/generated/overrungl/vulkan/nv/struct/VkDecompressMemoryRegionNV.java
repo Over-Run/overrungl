@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     ((uint64_t) VkFlags64) VkMemoryDecompressionMethodFlagsNV decompressionMethod;
 /// };
 /// ```
-public sealed class VkDecompressMemoryRegionNV extends GroupType {
+public final class VkDecompressMemoryRegionNV extends GroupType {
     /// The struct layout of `VkDecompressMemoryRegionNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("srcAddress"),
@@ -75,20 +76,21 @@ public sealed class VkDecompressMemoryRegionNV extends GroupType {
     public static final VarHandle VH_decompressionMethod = LAYOUT.arrayElementVarHandle(PathElement.groupElement("decompressionMethod"));
 
     /// Creates `VkDecompressMemoryRegionNV` with the given segment.
-    /// @param segment the memory segment
-    public VkDecompressMemoryRegionNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDecompressMemoryRegionNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDecompressMemoryRegionNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDecompressMemoryRegionNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDecompressMemoryRegionNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDecompressMemoryRegionNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDecompressMemoryRegionNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDecompressMemoryRegionNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDecompressMemoryRegionNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDecompressMemoryRegionNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDecompressMemoryRegionNV` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkDecompressMemoryRegionNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDecompressMemoryRegionNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDecompressMemoryRegionNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDecompressMemoryRegionNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDecompressMemoryRegionNV`
-    public static VkDecompressMemoryRegionNV alloc(SegmentAllocator allocator) { return new VkDecompressMemoryRegionNV(allocator.allocate(LAYOUT)); }
+    public static VkDecompressMemoryRegionNV alloc(SegmentAllocator allocator) { return new VkDecompressMemoryRegionNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDecompressMemoryRegionNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDecompressMemoryRegionNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDecompressMemoryRegionNV alloc(SegmentAllocator allocator, long count) { return new VkDecompressMemoryRegionNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDecompressMemoryRegionNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkDecompressMemoryRegionNV extends GroupType {
     /// @return `this`
     public VkDecompressMemoryRegionNV copyFrom(VkDecompressMemoryRegionNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDecompressMemoryRegionNV reinterpret(long count) { return new VkDecompressMemoryRegionNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `srcAddress` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkDecompressMemoryRegionNV extends GroupType {
     /// @return `this`
     public VkDecompressMemoryRegionNV decompressionMethod(long value) { decompressionMethod(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDecompressMemoryRegionNV].
-    public static final class Buffer extends VkDecompressMemoryRegionNV {
-        private final long elementCount;
+    /// Creates a slice of `VkDecompressMemoryRegionNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDecompressMemoryRegionNV`
+    public VkDecompressMemoryRegionNV asSlice(long index) { return new VkDecompressMemoryRegionNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDecompressMemoryRegionNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDecompressMemoryRegionNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDecompressMemoryRegionNV`
+    public VkDecompressMemoryRegionNV asSlice(long index, long count) { return new VkDecompressMemoryRegionNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDecompressMemoryRegionNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDecompressMemoryRegionNV at(long index, Consumer<VkDecompressMemoryRegionNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDecompressMemoryRegionNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDecompressMemoryRegionNV`
-        public VkDecompressMemoryRegionNV asSlice(long index) { return new VkDecompressMemoryRegionNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `srcAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long srcAddressAt(long index) { return srcAddress(this.segment(), index); }
+    /// Sets `srcAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDecompressMemoryRegionNV srcAddressAt(long index, long value) { srcAddress(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDecompressMemoryRegionNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDecompressMemoryRegionNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `dstAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long dstAddressAt(long index) { return dstAddress(this.segment(), index); }
+    /// Sets `dstAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDecompressMemoryRegionNV dstAddressAt(long index, long value) { dstAddress(this.segment(), index, value); return this; }
 
-        /// {@return `srcAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long srcAddressAt(long index) { return srcAddress(this.segment(), index); }
-        /// Sets `srcAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcAddressAt(long index, long value) { srcAddress(this.segment(), index, value); return this; }
+    /// {@return `compressedSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long compressedSizeAt(long index) { return compressedSize(this.segment(), index); }
+    /// Sets `compressedSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDecompressMemoryRegionNV compressedSizeAt(long index, long value) { compressedSize(this.segment(), index, value); return this; }
 
-        /// {@return `dstAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long dstAddressAt(long index) { return dstAddress(this.segment(), index); }
-        /// Sets `dstAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstAddressAt(long index, long value) { dstAddress(this.segment(), index, value); return this; }
+    /// {@return `decompressedSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long decompressedSizeAt(long index) { return decompressedSize(this.segment(), index); }
+    /// Sets `decompressedSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDecompressMemoryRegionNV decompressedSizeAt(long index, long value) { decompressedSize(this.segment(), index, value); return this; }
 
-        /// {@return `compressedSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long compressedSizeAt(long index) { return compressedSize(this.segment(), index); }
-        /// Sets `compressedSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer compressedSizeAt(long index, long value) { compressedSize(this.segment(), index, value); return this; }
+    /// {@return `decompressionMethod` at the given index}
+    /// @param index the index of the struct buffer
+    public long decompressionMethodAt(long index) { return decompressionMethod(this.segment(), index); }
+    /// Sets `decompressionMethod` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDecompressMemoryRegionNV decompressionMethodAt(long index, long value) { decompressionMethod(this.segment(), index, value); return this; }
 
-        /// {@return `decompressedSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long decompressedSizeAt(long index) { return decompressedSize(this.segment(), index); }
-        /// Sets `decompressedSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer decompressedSizeAt(long index, long value) { decompressedSize(this.segment(), index, value); return this; }
-
-        /// {@return `decompressionMethod` at the given index}
-        /// @param index the index of the struct buffer
-        public long decompressionMethodAt(long index) { return decompressionMethod(this.segment(), index); }
-        /// Sets `decompressionMethod` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer decompressionMethodAt(long index, long value) { decompressionMethod(this.segment(), index, value); return this; }
-
-    }
 }

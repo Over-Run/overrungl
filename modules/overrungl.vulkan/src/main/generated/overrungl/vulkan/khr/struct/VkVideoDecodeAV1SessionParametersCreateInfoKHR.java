@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     const StdVideoAV1SequenceHeader* pStdSequenceHeader;
 /// };
 /// ```
-public sealed class VkVideoDecodeAV1SessionParametersCreateInfoKHR extends GroupType {
+public final class VkVideoDecodeAV1SessionParametersCreateInfoKHR extends GroupType {
     /// The struct layout of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkVideoDecodeAV1SessionParametersCreateInfoKHR extends Group
     public static final VarHandle VH_pStdSequenceHeader = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pStdSequenceHeader"));
 
     /// Creates `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkVideoDecodeAV1SessionParametersCreateInfoKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeAV1SessionParametersCreateInfoKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeAV1SessionParametersCreateInfoKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeAV1SessionParametersCreateInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkVideoDecodeAV1SessionParametersCreateInfoKHR extends Group
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoDecodeAV1SessionParametersCreateInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(allocator.allocate(LAYOUT)); }
+    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR alloc(SegmentAllocator allocator) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkVideoDecodeAV1SessionParametersCreateInfoKHR extends Group
     /// @return `this`
     public VkVideoDecodeAV1SessionParametersCreateInfoKHR copyFrom(VkVideoDecodeAV1SessionParametersCreateInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR reinterpret(long count) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkVideoDecodeAV1SessionParametersCreateInfoKHR extends Group
     /// @return `this`
     public VkVideoDecodeAV1SessionParametersCreateInfoKHR pStdSequenceHeader(MemorySegment value) { pStdSequenceHeader(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkVideoDecodeAV1SessionParametersCreateInfoKHR].
-    public static final class Buffer extends VkVideoDecodeAV1SessionParametersCreateInfoKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR asSlice(long index) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVideoDecodeAV1SessionParametersCreateInfoKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR asSlice(long index, long count) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVideoDecodeAV1SessionParametersCreateInfoKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR at(long index, Consumer<VkVideoDecodeAV1SessionParametersCreateInfoKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
-        public VkVideoDecodeAV1SessionParametersCreateInfoKHR asSlice(long index) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pStdSequenceHeader` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pStdSequenceHeaderAt(long index) { return pStdSequenceHeader(this.segment(), index); }
+    /// Sets `pStdSequenceHeader` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoDecodeAV1SessionParametersCreateInfoKHR pStdSequenceHeaderAt(long index, MemorySegment value) { pStdSequenceHeader(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `pStdSequenceHeader` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pStdSequenceHeaderAt(long index) { return pStdSequenceHeader(this.segment(), index); }
-        /// Sets `pStdSequenceHeader` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pStdSequenceHeaderAt(long index, MemorySegment value) { pStdSequenceHeader(this.segment(), index, value); return this; }
-
-    }
 }

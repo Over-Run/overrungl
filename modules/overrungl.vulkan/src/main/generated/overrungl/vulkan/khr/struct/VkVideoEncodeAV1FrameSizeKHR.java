@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t bipredictiveFrameSize;
 /// };
 /// ```
-public sealed class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
+public final class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// The struct layout of `VkVideoEncodeAV1FrameSizeKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("intraFrameSize"),
@@ -59,20 +60,21 @@ public sealed class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     public static final VarHandle VH_bipredictiveFrameSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("bipredictiveFrameSize"));
 
     /// Creates `VkVideoEncodeAV1FrameSizeKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkVideoEncodeAV1FrameSizeKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkVideoEncodeAV1FrameSizeKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkVideoEncodeAV1FrameSizeKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkVideoEncodeAV1FrameSizeKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1FrameSizeKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkVideoEncodeAV1FrameSizeKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkVideoEncodeAV1FrameSizeKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1FrameSizeKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkVideoEncodeAV1FrameSizeKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1FrameSizeKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkVideoEncodeAV1FrameSizeKHR` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkVideoEncodeAV1FrameSizeKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkVideoEncodeAV1FrameSizeKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkVideoEncodeAV1FrameSizeKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkVideoEncodeAV1FrameSizeKHR`
-    public static VkVideoEncodeAV1FrameSizeKHR alloc(SegmentAllocator allocator) { return new VkVideoEncodeAV1FrameSizeKHR(allocator.allocate(LAYOUT)); }
+    public static VkVideoEncodeAV1FrameSizeKHR alloc(SegmentAllocator allocator) { return new VkVideoEncodeAV1FrameSizeKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkVideoEncodeAV1FrameSizeKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkVideoEncodeAV1FrameSizeKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkVideoEncodeAV1FrameSizeKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1FrameSizeKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkVideoEncodeAV1FrameSizeKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// @return `this`
     public VkVideoEncodeAV1FrameSizeKHR copyFrom(VkVideoEncodeAV1FrameSizeKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkVideoEncodeAV1FrameSizeKHR reinterpret(long count) { return new VkVideoEncodeAV1FrameSizeKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `intraFrameSize` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// @return `this`
     public VkVideoEncodeAV1FrameSizeKHR bipredictiveFrameSize(int value) { bipredictiveFrameSize(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkVideoEncodeAV1FrameSizeKHR].
-    public static final class Buffer extends VkVideoEncodeAV1FrameSizeKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkVideoEncodeAV1FrameSizeKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkVideoEncodeAV1FrameSizeKHR`
+    public VkVideoEncodeAV1FrameSizeKHR asSlice(long index) { return new VkVideoEncodeAV1FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkVideoEncodeAV1FrameSizeKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkVideoEncodeAV1FrameSizeKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkVideoEncodeAV1FrameSizeKHR`
+    public VkVideoEncodeAV1FrameSizeKHR asSlice(long index, long count) { return new VkVideoEncodeAV1FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkVideoEncodeAV1FrameSizeKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkVideoEncodeAV1FrameSizeKHR at(long index, Consumer<VkVideoEncodeAV1FrameSizeKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkVideoEncodeAV1FrameSizeKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkVideoEncodeAV1FrameSizeKHR`
-        public VkVideoEncodeAV1FrameSizeKHR asSlice(long index) { return new VkVideoEncodeAV1FrameSizeKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `intraFrameSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int intraFrameSizeAt(long index) { return intraFrameSize(this.segment(), index); }
+    /// Sets `intraFrameSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoEncodeAV1FrameSizeKHR intraFrameSizeAt(long index, int value) { intraFrameSize(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkVideoEncodeAV1FrameSizeKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkVideoEncodeAV1FrameSizeKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `predictiveFrameSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int predictiveFrameSizeAt(long index) { return predictiveFrameSize(this.segment(), index); }
+    /// Sets `predictiveFrameSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoEncodeAV1FrameSizeKHR predictiveFrameSizeAt(long index, int value) { predictiveFrameSize(this.segment(), index, value); return this; }
 
-        /// {@return `intraFrameSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int intraFrameSizeAt(long index) { return intraFrameSize(this.segment(), index); }
-        /// Sets `intraFrameSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer intraFrameSizeAt(long index, int value) { intraFrameSize(this.segment(), index, value); return this; }
+    /// {@return `bipredictiveFrameSize` at the given index}
+    /// @param index the index of the struct buffer
+    public int bipredictiveFrameSizeAt(long index) { return bipredictiveFrameSize(this.segment(), index); }
+    /// Sets `bipredictiveFrameSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkVideoEncodeAV1FrameSizeKHR bipredictiveFrameSizeAt(long index, int value) { bipredictiveFrameSize(this.segment(), index, value); return this; }
 
-        /// {@return `predictiveFrameSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int predictiveFrameSizeAt(long index) { return predictiveFrameSize(this.segment(), index); }
-        /// Sets `predictiveFrameSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer predictiveFrameSizeAt(long index, int value) { predictiveFrameSize(this.segment(), index, value); return this; }
-
-        /// {@return `bipredictiveFrameSize` at the given index}
-        /// @param index the index of the struct buffer
-        public int bipredictiveFrameSizeAt(long index) { return bipredictiveFrameSize(this.segment(), index); }
-        /// Sets `bipredictiveFrameSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bipredictiveFrameSizeAt(long index, int value) { bipredictiveFrameSize(this.segment(), index, value); return this; }
-
-    }
 }

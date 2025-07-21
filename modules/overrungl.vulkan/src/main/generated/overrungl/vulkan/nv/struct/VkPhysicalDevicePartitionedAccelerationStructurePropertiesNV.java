@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t maxPartitionCount;
 /// };
 /// ```
-public sealed class VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV extends GroupType {
+public final class VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV extends GroupType {
     /// The struct layout of `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV
     public static final VarHandle VH_maxPartitionCount = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxPartitionCount"));
 
     /// Creates `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`
-    public static VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV
     /// @return `this`
     public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV copyFrom(VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV reinterpret(long count) { return new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV
     /// @return `this`
     public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV maxPartitionCount(int value) { maxPartitionCount(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV].
-    public static final class Buffer extends VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`
+    public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV asSlice(long index) { return new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`
+    public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV asSlice(long index, long count) { return new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV at(long index, Consumer<VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`
-        public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV asSlice(long index) { return new VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `maxPartitionCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPartitionCountAt(long index) { return maxPartitionCount(this.segment(), index); }
+    /// Sets `maxPartitionCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePartitionedAccelerationStructurePropertiesNV maxPartitionCountAt(long index, int value) { maxPartitionCount(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `maxPartitionCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPartitionCountAt(long index) { return maxPartitionCount(this.segment(), index); }
-        /// Sets `maxPartitionCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPartitionCountAt(long index, int value) { maxPartitionCount(this.segment(), index, value); return this; }
-
-    }
 }

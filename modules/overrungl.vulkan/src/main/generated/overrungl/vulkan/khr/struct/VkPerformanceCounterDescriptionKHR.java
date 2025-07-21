@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     char description[256];
 /// };
 /// ```
-public sealed class VkPerformanceCounterDescriptionKHR extends GroupType {
+public final class VkPerformanceCounterDescriptionKHR extends GroupType {
     /// The struct layout of `VkPerformanceCounterDescriptionKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkPerformanceCounterDescriptionKHR extends GroupType {
     public static final VarHandle VH_description = LAYOUT.arrayElementVarHandle(PathElement.groupElement("description"), PathElement.sequenceElement());
 
     /// Creates `VkPerformanceCounterDescriptionKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPerformanceCounterDescriptionKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPerformanceCounterDescriptionKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPerformanceCounterDescriptionKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPerformanceCounterDescriptionKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceCounterDescriptionKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPerformanceCounterDescriptionKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPerformanceCounterDescriptionKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceCounterDescriptionKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPerformanceCounterDescriptionKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceCounterDescriptionKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPerformanceCounterDescriptionKHR` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkPerformanceCounterDescriptionKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPerformanceCounterDescriptionKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPerformanceCounterDescriptionKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPerformanceCounterDescriptionKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPerformanceCounterDescriptionKHR`
-    public static VkPerformanceCounterDescriptionKHR alloc(SegmentAllocator allocator) { return new VkPerformanceCounterDescriptionKHR(allocator.allocate(LAYOUT)); }
+    public static VkPerformanceCounterDescriptionKHR alloc(SegmentAllocator allocator) { return new VkPerformanceCounterDescriptionKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPerformanceCounterDescriptionKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPerformanceCounterDescriptionKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPerformanceCounterDescriptionKHR alloc(SegmentAllocator allocator, long count) { return new VkPerformanceCounterDescriptionKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPerformanceCounterDescriptionKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkPerformanceCounterDescriptionKHR extends GroupType {
     /// @return `this`
     public VkPerformanceCounterDescriptionKHR copyFrom(VkPerformanceCounterDescriptionKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPerformanceCounterDescriptionKHR reinterpret(long count) { return new VkPerformanceCounterDescriptionKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -342,111 +345,105 @@ public sealed class VkPerformanceCounterDescriptionKHR extends GroupType {
     /// @return `this`
     public VkPerformanceCounterDescriptionKHR description(long index0, byte value) { description(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [VkPerformanceCounterDescriptionKHR].
-    public static final class Buffer extends VkPerformanceCounterDescriptionKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPerformanceCounterDescriptionKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPerformanceCounterDescriptionKHR`
+    public VkPerformanceCounterDescriptionKHR asSlice(long index) { return new VkPerformanceCounterDescriptionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPerformanceCounterDescriptionKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPerformanceCounterDescriptionKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPerformanceCounterDescriptionKHR`
+    public VkPerformanceCounterDescriptionKHR asSlice(long index, long count) { return new VkPerformanceCounterDescriptionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPerformanceCounterDescriptionKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR at(long index, Consumer<VkPerformanceCounterDescriptionKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPerformanceCounterDescriptionKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPerformanceCounterDescriptionKHR`
-        public VkPerformanceCounterDescriptionKHR asSlice(long index) { return new VkPerformanceCounterDescriptionKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPerformanceCounterDescriptionKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPerformanceCounterDescriptionKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-        /// {@return `name` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment nameAt(long index) { return name(this.segment(), index); }
-        /// {@return `name` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `name` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment nameAt(long index) { return name(this.segment(), index); }
+    /// {@return `name` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte nameAt(long index, long index0) { return name(this.segment(), index, index0); }
-        /// Sets `name` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
-        /// Sets `name` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer nameAt(long index, long index0, byte value) { name(this.segment(), index, index0, value); return this; }
+    /// Sets `name` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR nameAt(long index, MemorySegment value) { name(this.segment(), index, value); return this; }
+    /// Sets `name` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR nameAt(long index, long index0, byte value) { name(this.segment(), index, index0, value); return this; }
 
-        /// {@return `category` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment categoryAt(long index) { return category(this.segment(), index); }
-        /// {@return `category` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `category` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment categoryAt(long index) { return category(this.segment(), index); }
+    /// {@return `category` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte categoryAt(long index, long index0) { return category(this.segment(), index, index0); }
-        /// Sets `category` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer categoryAt(long index, MemorySegment value) { category(this.segment(), index, value); return this; }
-        /// Sets `category` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer categoryAt(long index, long index0, byte value) { category(this.segment(), index, index0, value); return this; }
+    /// Sets `category` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR categoryAt(long index, MemorySegment value) { category(this.segment(), index, value); return this; }
+    /// Sets `category` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR categoryAt(long index, long index0, byte value) { category(this.segment(), index, index0, value); return this; }
 
-        /// {@return `description` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
-        /// {@return `description` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `description` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
+    /// {@return `description` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte descriptionAt(long index, long index0) { return description(this.segment(), index, index0); }
-        /// Sets `description` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
-        /// Sets `description` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
+    /// Sets `description` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
+    /// Sets `description` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPerformanceCounterDescriptionKHR descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
 
-    }
 }

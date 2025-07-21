@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -48,7 +49,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 shaderRoundingModeRTZFloat64;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceFloatControlsProperties extends GroupType {
+public final class VkPhysicalDeviceFloatControlsProperties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceFloatControlsProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -187,20 +188,21 @@ public sealed class VkPhysicalDeviceFloatControlsProperties extends GroupType {
     public static final VarHandle VH_shaderRoundingModeRTZFloat64 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("shaderRoundingModeRTZFloat64"));
 
     /// Creates `VkPhysicalDeviceFloatControlsProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceFloatControlsProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceFloatControlsProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceFloatControlsProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceFloatControlsProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFloatControlsProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceFloatControlsProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFloatControlsProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFloatControlsProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceFloatControlsProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFloatControlsProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceFloatControlsProperties` with the given segment.
     ///
@@ -208,18 +210,18 @@ public sealed class VkPhysicalDeviceFloatControlsProperties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceFloatControlsProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFloatControlsProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceFloatControlsProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceFloatControlsProperties`
-    public static VkPhysicalDeviceFloatControlsProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFloatControlsProperties(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceFloatControlsProperties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFloatControlsProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceFloatControlsProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceFloatControlsProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceFloatControlsProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFloatControlsProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceFloatControlsProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -549,9 +551,10 @@ public sealed class VkPhysicalDeviceFloatControlsProperties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceFloatControlsProperties copyFrom(VkPhysicalDeviceFloatControlsProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceFloatControlsProperties reinterpret(long count) { return new VkPhysicalDeviceFloatControlsProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -857,198 +860,192 @@ public sealed class VkPhysicalDeviceFloatControlsProperties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTZFloat64(int value) { shaderRoundingModeRTZFloat64(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceFloatControlsProperties].
-    public static final class Buffer extends VkPhysicalDeviceFloatControlsProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceFloatControlsProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFloatControlsProperties`
+    public VkPhysicalDeviceFloatControlsProperties asSlice(long index) { return new VkPhysicalDeviceFloatControlsProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceFloatControlsProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceFloatControlsProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFloatControlsProperties`
+    public VkPhysicalDeviceFloatControlsProperties asSlice(long index, long count) { return new VkPhysicalDeviceFloatControlsProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceFloatControlsProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties at(long index, Consumer<VkPhysicalDeviceFloatControlsProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceFloatControlsProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceFloatControlsProperties`
-        public VkPhysicalDeviceFloatControlsProperties asSlice(long index) { return new VkPhysicalDeviceFloatControlsProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceFloatControlsProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceFloatControlsProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `denormBehaviorIndependence` at the given index}
+    /// @param index the index of the struct buffer
+    public int denormBehaviorIndependenceAt(long index) { return denormBehaviorIndependence(this.segment(), index); }
+    /// Sets `denormBehaviorIndependence` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties denormBehaviorIndependenceAt(long index, int value) { denormBehaviorIndependence(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `roundingModeIndependence` at the given index}
+    /// @param index the index of the struct buffer
+    public int roundingModeIndependenceAt(long index) { return roundingModeIndependence(this.segment(), index); }
+    /// Sets `roundingModeIndependence` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties roundingModeIndependenceAt(long index, int value) { roundingModeIndependence(this.segment(), index, value); return this; }
 
-        /// {@return `denormBehaviorIndependence` at the given index}
-        /// @param index the index of the struct buffer
-        public int denormBehaviorIndependenceAt(long index) { return denormBehaviorIndependence(this.segment(), index); }
-        /// Sets `denormBehaviorIndependence` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer denormBehaviorIndependenceAt(long index, int value) { denormBehaviorIndependence(this.segment(), index, value); return this; }
+    /// {@return `shaderSignedZeroInfNanPreserveFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSignedZeroInfNanPreserveFloat16At(long index) { return shaderSignedZeroInfNanPreserveFloat16(this.segment(), index); }
+    /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderSignedZeroInfNanPreserveFloat16At(long index, int value) { shaderSignedZeroInfNanPreserveFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `roundingModeIndependence` at the given index}
-        /// @param index the index of the struct buffer
-        public int roundingModeIndependenceAt(long index) { return roundingModeIndependence(this.segment(), index); }
-        /// Sets `roundingModeIndependence` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer roundingModeIndependenceAt(long index, int value) { roundingModeIndependence(this.segment(), index, value); return this; }
+    /// {@return `shaderSignedZeroInfNanPreserveFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSignedZeroInfNanPreserveFloat32At(long index) { return shaderSignedZeroInfNanPreserveFloat32(this.segment(), index); }
+    /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderSignedZeroInfNanPreserveFloat32At(long index, int value) { shaderSignedZeroInfNanPreserveFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSignedZeroInfNanPreserveFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSignedZeroInfNanPreserveFloat16At(long index) { return shaderSignedZeroInfNanPreserveFloat16(this.segment(), index); }
-        /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSignedZeroInfNanPreserveFloat16At(long index, int value) { shaderSignedZeroInfNanPreserveFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderSignedZeroInfNanPreserveFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSignedZeroInfNanPreserveFloat64At(long index) { return shaderSignedZeroInfNanPreserveFloat64(this.segment(), index); }
+    /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderSignedZeroInfNanPreserveFloat64At(long index, int value) { shaderSignedZeroInfNanPreserveFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSignedZeroInfNanPreserveFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSignedZeroInfNanPreserveFloat32At(long index) { return shaderSignedZeroInfNanPreserveFloat32(this.segment(), index); }
-        /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSignedZeroInfNanPreserveFloat32At(long index, int value) { shaderSignedZeroInfNanPreserveFloat32(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormPreserveFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormPreserveFloat16At(long index) { return shaderDenormPreserveFloat16(this.segment(), index); }
+    /// Sets `shaderDenormPreserveFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderDenormPreserveFloat16At(long index, int value) { shaderDenormPreserveFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSignedZeroInfNanPreserveFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSignedZeroInfNanPreserveFloat64At(long index) { return shaderSignedZeroInfNanPreserveFloat64(this.segment(), index); }
-        /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSignedZeroInfNanPreserveFloat64At(long index, int value) { shaderSignedZeroInfNanPreserveFloat64(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormPreserveFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormPreserveFloat32At(long index) { return shaderDenormPreserveFloat32(this.segment(), index); }
+    /// Sets `shaderDenormPreserveFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderDenormPreserveFloat32At(long index, int value) { shaderDenormPreserveFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormPreserveFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormPreserveFloat16At(long index) { return shaderDenormPreserveFloat16(this.segment(), index); }
-        /// Sets `shaderDenormPreserveFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormPreserveFloat16At(long index, int value) { shaderDenormPreserveFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormPreserveFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormPreserveFloat64At(long index) { return shaderDenormPreserveFloat64(this.segment(), index); }
+    /// Sets `shaderDenormPreserveFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderDenormPreserveFloat64At(long index, int value) { shaderDenormPreserveFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormPreserveFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormPreserveFloat32At(long index) { return shaderDenormPreserveFloat32(this.segment(), index); }
-        /// Sets `shaderDenormPreserveFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormPreserveFloat32At(long index, int value) { shaderDenormPreserveFloat32(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormFlushToZeroFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormFlushToZeroFloat16At(long index) { return shaderDenormFlushToZeroFloat16(this.segment(), index); }
+    /// Sets `shaderDenormFlushToZeroFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderDenormFlushToZeroFloat16At(long index, int value) { shaderDenormFlushToZeroFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormPreserveFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormPreserveFloat64At(long index) { return shaderDenormPreserveFloat64(this.segment(), index); }
-        /// Sets `shaderDenormPreserveFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormPreserveFloat64At(long index, int value) { shaderDenormPreserveFloat64(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormFlushToZeroFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormFlushToZeroFloat32At(long index) { return shaderDenormFlushToZeroFloat32(this.segment(), index); }
+    /// Sets `shaderDenormFlushToZeroFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderDenormFlushToZeroFloat32At(long index, int value) { shaderDenormFlushToZeroFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormFlushToZeroFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormFlushToZeroFloat16At(long index) { return shaderDenormFlushToZeroFloat16(this.segment(), index); }
-        /// Sets `shaderDenormFlushToZeroFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormFlushToZeroFloat16At(long index, int value) { shaderDenormFlushToZeroFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormFlushToZeroFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormFlushToZeroFloat64At(long index) { return shaderDenormFlushToZeroFloat64(this.segment(), index); }
+    /// Sets `shaderDenormFlushToZeroFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderDenormFlushToZeroFloat64At(long index, int value) { shaderDenormFlushToZeroFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormFlushToZeroFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormFlushToZeroFloat32At(long index) { return shaderDenormFlushToZeroFloat32(this.segment(), index); }
-        /// Sets `shaderDenormFlushToZeroFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormFlushToZeroFloat32At(long index, int value) { shaderDenormFlushToZeroFloat32(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTEFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTEFloat16At(long index) { return shaderRoundingModeRTEFloat16(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTEFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTEFloat16At(long index, int value) { shaderRoundingModeRTEFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormFlushToZeroFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormFlushToZeroFloat64At(long index) { return shaderDenormFlushToZeroFloat64(this.segment(), index); }
-        /// Sets `shaderDenormFlushToZeroFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormFlushToZeroFloat64At(long index, int value) { shaderDenormFlushToZeroFloat64(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTEFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTEFloat32At(long index) { return shaderRoundingModeRTEFloat32(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTEFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTEFloat32At(long index, int value) { shaderRoundingModeRTEFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTEFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTEFloat16At(long index) { return shaderRoundingModeRTEFloat16(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTEFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTEFloat16At(long index, int value) { shaderRoundingModeRTEFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTEFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTEFloat64At(long index) { return shaderRoundingModeRTEFloat64(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTEFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTEFloat64At(long index, int value) { shaderRoundingModeRTEFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTEFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTEFloat32At(long index) { return shaderRoundingModeRTEFloat32(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTEFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTEFloat32At(long index, int value) { shaderRoundingModeRTEFloat32(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTZFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTZFloat16At(long index) { return shaderRoundingModeRTZFloat16(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTZFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTZFloat16At(long index, int value) { shaderRoundingModeRTZFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTEFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTEFloat64At(long index) { return shaderRoundingModeRTEFloat64(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTEFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTEFloat64At(long index, int value) { shaderRoundingModeRTEFloat64(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTZFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTZFloat32At(long index) { return shaderRoundingModeRTZFloat32(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTZFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTZFloat32At(long index, int value) { shaderRoundingModeRTZFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTZFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTZFloat16At(long index) { return shaderRoundingModeRTZFloat16(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTZFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTZFloat16At(long index, int value) { shaderRoundingModeRTZFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTZFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTZFloat64At(long index) { return shaderRoundingModeRTZFloat64(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTZFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFloatControlsProperties shaderRoundingModeRTZFloat64At(long index, int value) { shaderRoundingModeRTZFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTZFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTZFloat32At(long index) { return shaderRoundingModeRTZFloat32(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTZFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTZFloat32At(long index, int value) { shaderRoundingModeRTZFloat32(this.segment(), index, value); return this; }
-
-        /// {@return `shaderRoundingModeRTZFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTZFloat64At(long index) { return shaderRoundingModeRTZFloat64(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTZFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTZFloat64At(long index, int value) { shaderRoundingModeRTZFloat64(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDataGraphPipelineSessionARM session;
 /// };
 /// ```
-public sealed class VkDataGraphPipelineSessionBindPointRequirementsInfoARM extends GroupType {
+public final class VkDataGraphPipelineSessionBindPointRequirementsInfoARM extends GroupType {
     /// The struct layout of `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkDataGraphPipelineSessionBindPointRequirementsInfoARM exten
     public static final VarHandle VH_session = LAYOUT.arrayElementVarHandle(PathElement.groupElement("session"));
 
     /// Creates `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment.
-    /// @param segment the memory segment
-    public VkDataGraphPipelineSessionBindPointRequirementsInfoARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDataGraphPipelineSessionBindPointRequirementsInfoARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkDataGraphPipelineSessionBindPointRequirementsInfoARM exten
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
-    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM alloc(SegmentAllocator allocator) { return new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(allocator.allocate(LAYOUT)); }
+    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM alloc(SegmentAllocator allocator) { return new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkDataGraphPipelineSessionBindPointRequirementsInfoARM exten
     /// @return `this`
     public VkDataGraphPipelineSessionBindPointRequirementsInfoARM copyFrom(VkDataGraphPipelineSessionBindPointRequirementsInfoARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDataGraphPipelineSessionBindPointRequirementsInfoARM reinterpret(long count) { return new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkDataGraphPipelineSessionBindPointRequirementsInfoARM exten
     /// @return `this`
     public VkDataGraphPipelineSessionBindPointRequirementsInfoARM session(long value) { session(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDataGraphPipelineSessionBindPointRequirementsInfoARM].
-    public static final class Buffer extends VkDataGraphPipelineSessionBindPointRequirementsInfoARM {
-        private final long elementCount;
+    /// Creates a slice of `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
+    public VkDataGraphPipelineSessionBindPointRequirementsInfoARM asSlice(long index) { return new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDataGraphPipelineSessionBindPointRequirementsInfoARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
+    public VkDataGraphPipelineSessionBindPointRequirementsInfoARM asSlice(long index, long count) { return new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDataGraphPipelineSessionBindPointRequirementsInfoARM at(long index, Consumer<VkDataGraphPipelineSessionBindPointRequirementsInfoARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
-        public VkDataGraphPipelineSessionBindPointRequirementsInfoARM asSlice(long index) { return new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineSessionBindPointRequirementsInfoARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineSessionBindPointRequirementsInfoARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `session` at the given index}
+    /// @param index the index of the struct buffer
+    public long sessionAt(long index) { return session(this.segment(), index); }
+    /// Sets `session` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDataGraphPipelineSessionBindPointRequirementsInfoARM sessionAt(long index, long value) { session(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `session` at the given index}
-        /// @param index the index of the struct buffer
-        public long sessionAt(long index) { return session(this.segment(), index); }
-        /// Sets `session` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sessionAt(long index, long value) { session(this.segment(), index, value); return this; }
-
-    }
 }

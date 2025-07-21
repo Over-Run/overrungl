@@ -21,6 +21,7 @@ package overrungl.vulkan.arm.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     const VkTensorCopyARM* pRegions;
 /// };
 /// ```
-public sealed class VkCopyTensorInfoARM extends GroupType {
+public final class VkCopyTensorInfoARM extends GroupType {
     /// The struct layout of `VkCopyTensorInfoARM`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkCopyTensorInfoARM extends GroupType {
     public static final VarHandle VH_pRegions = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pRegions"));
 
     /// Creates `VkCopyTensorInfoARM` with the given segment.
-    /// @param segment the memory segment
-    public VkCopyTensorInfoARM(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkCopyTensorInfoARM(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkCopyTensorInfoARM` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkCopyTensorInfoARM of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCopyTensorInfoARM(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkCopyTensorInfoARM` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkCopyTensorInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCopyTensorInfoARM(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkCopyTensorInfoARM ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkCopyTensorInfoARM(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkCopyTensorInfoARM` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkCopyTensorInfoARM extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkCopyTensorInfoARM ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkCopyTensorInfoARM(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkCopyTensorInfoARM` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkCopyTensorInfoARM`
-    public static VkCopyTensorInfoARM alloc(SegmentAllocator allocator) { return new VkCopyTensorInfoARM(allocator.allocate(LAYOUT)); }
+    public static VkCopyTensorInfoARM alloc(SegmentAllocator allocator) { return new VkCopyTensorInfoARM(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkCopyTensorInfoARM` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkCopyTensorInfoARM`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkCopyTensorInfoARM alloc(SegmentAllocator allocator, long count) { return new VkCopyTensorInfoARM(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkCopyTensorInfoARM` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkCopyTensorInfoARM extends GroupType {
     /// @return `this`
     public VkCopyTensorInfoARM copyFrom(VkCopyTensorInfoARM src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkCopyTensorInfoARM reinterpret(long count) { return new VkCopyTensorInfoARM(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkCopyTensorInfoARM extends GroupType {
     /// @return `this`
     public VkCopyTensorInfoARM pRegions(MemorySegment value) { pRegions(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkCopyTensorInfoARM].
-    public static final class Buffer extends VkCopyTensorInfoARM {
-        private final long elementCount;
+    /// Creates a slice of `VkCopyTensorInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkCopyTensorInfoARM`
+    public VkCopyTensorInfoARM asSlice(long index) { return new VkCopyTensorInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkCopyTensorInfoARM.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkCopyTensorInfoARM`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkCopyTensorInfoARM`
+    public VkCopyTensorInfoARM asSlice(long index, long count) { return new VkCopyTensorInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkCopyTensorInfoARM` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkCopyTensorInfoARM at(long index, Consumer<VkCopyTensorInfoARM> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkCopyTensorInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkCopyTensorInfoARM`
-        public VkCopyTensorInfoARM asSlice(long index) { return new VkCopyTensorInfoARM(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCopyTensorInfoARM sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkCopyTensorInfoARM`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkCopyTensorInfoARM`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCopyTensorInfoARM pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `srcTensor` at the given index}
+    /// @param index the index of the struct buffer
+    public long srcTensorAt(long index) { return srcTensor(this.segment(), index); }
+    /// Sets `srcTensor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCopyTensorInfoARM srcTensorAt(long index, long value) { srcTensor(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `dstTensor` at the given index}
+    /// @param index the index of the struct buffer
+    public long dstTensorAt(long index) { return dstTensor(this.segment(), index); }
+    /// Sets `dstTensor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCopyTensorInfoARM dstTensorAt(long index, long value) { dstTensor(this.segment(), index, value); return this; }
 
-        /// {@return `srcTensor` at the given index}
-        /// @param index the index of the struct buffer
-        public long srcTensorAt(long index) { return srcTensor(this.segment(), index); }
-        /// Sets `srcTensor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcTensorAt(long index, long value) { srcTensor(this.segment(), index, value); return this; }
+    /// {@return `regionCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int regionCountAt(long index) { return regionCount(this.segment(), index); }
+    /// Sets `regionCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCopyTensorInfoARM regionCountAt(long index, int value) { regionCount(this.segment(), index, value); return this; }
 
-        /// {@return `dstTensor` at the given index}
-        /// @param index the index of the struct buffer
-        public long dstTensorAt(long index) { return dstTensor(this.segment(), index); }
-        /// Sets `dstTensor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstTensorAt(long index, long value) { dstTensor(this.segment(), index, value); return this; }
+    /// {@return `pRegions` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pRegionsAt(long index) { return pRegions(this.segment(), index); }
+    /// Sets `pRegions` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkCopyTensorInfoARM pRegionsAt(long index, MemorySegment value) { pRegions(this.segment(), index, value); return this; }
 
-        /// {@return `regionCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int regionCountAt(long index) { return regionCount(this.segment(), index); }
-        /// Sets `regionCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer regionCountAt(long index, int value) { regionCount(this.segment(), index, value); return this; }
-
-        /// {@return `pRegions` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pRegionsAt(long index) { return pRegions(this.segment(), index); }
-        /// Sets `pRegions` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pRegionsAt(long index, MemorySegment value) { pRegions(this.segment(), index, value); return this; }
-
-    }
 }

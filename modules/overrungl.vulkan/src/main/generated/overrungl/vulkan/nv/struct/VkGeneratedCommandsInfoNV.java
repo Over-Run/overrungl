@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -44,7 +45,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkDeviceSize sequencesIndexOffset;
 /// };
 /// ```
-public sealed class VkGeneratedCommandsInfoNV extends GroupType {
+public final class VkGeneratedCommandsInfoNV extends GroupType {
     /// The struct layout of `VkGeneratedCommandsInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -155,20 +156,21 @@ public sealed class VkGeneratedCommandsInfoNV extends GroupType {
     public static final VarHandle VH_sequencesIndexOffset = LAYOUT.arrayElementVarHandle(PathElement.groupElement("sequencesIndexOffset"));
 
     /// Creates `VkGeneratedCommandsInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkGeneratedCommandsInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkGeneratedCommandsInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkGeneratedCommandsInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkGeneratedCommandsInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeneratedCommandsInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkGeneratedCommandsInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkGeneratedCommandsInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeneratedCommandsInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkGeneratedCommandsInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeneratedCommandsInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkGeneratedCommandsInfoNV` with the given segment.
     ///
@@ -176,18 +178,18 @@ public sealed class VkGeneratedCommandsInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkGeneratedCommandsInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkGeneratedCommandsInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkGeneratedCommandsInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkGeneratedCommandsInfoNV`
-    public static VkGeneratedCommandsInfoNV alloc(SegmentAllocator allocator) { return new VkGeneratedCommandsInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkGeneratedCommandsInfoNV alloc(SegmentAllocator allocator) { return new VkGeneratedCommandsInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkGeneratedCommandsInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkGeneratedCommandsInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkGeneratedCommandsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkGeneratedCommandsInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkGeneratedCommandsInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -419,9 +421,10 @@ public sealed class VkGeneratedCommandsInfoNV extends GroupType {
     /// @return `this`
     public VkGeneratedCommandsInfoNV copyFrom(VkGeneratedCommandsInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkGeneratedCommandsInfoNV reinterpret(long count) { return new VkGeneratedCommandsInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -663,162 +666,156 @@ public sealed class VkGeneratedCommandsInfoNV extends GroupType {
     /// @return `this`
     public VkGeneratedCommandsInfoNV sequencesIndexOffset(long value) { sequencesIndexOffset(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkGeneratedCommandsInfoNV].
-    public static final class Buffer extends VkGeneratedCommandsInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkGeneratedCommandsInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkGeneratedCommandsInfoNV`
+    public VkGeneratedCommandsInfoNV asSlice(long index) { return new VkGeneratedCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkGeneratedCommandsInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkGeneratedCommandsInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkGeneratedCommandsInfoNV`
+    public VkGeneratedCommandsInfoNV asSlice(long index, long count) { return new VkGeneratedCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkGeneratedCommandsInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV at(long index, Consumer<VkGeneratedCommandsInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkGeneratedCommandsInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkGeneratedCommandsInfoNV`
-        public VkGeneratedCommandsInfoNV asSlice(long index) { return new VkGeneratedCommandsInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkGeneratedCommandsInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkGeneratedCommandsInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pipelineBindPoint` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelineBindPointAt(long index) { return pipelineBindPoint(this.segment(), index); }
+    /// Sets `pipelineBindPoint` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV pipelineBindPointAt(long index, int value) { pipelineBindPoint(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pipeline` at the given index}
+    /// @param index the index of the struct buffer
+    public long pipelineAt(long index) { return pipeline(this.segment(), index); }
+    /// Sets `pipeline` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV pipelineAt(long index, long value) { pipeline(this.segment(), index, value); return this; }
 
-        /// {@return `pipelineBindPoint` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelineBindPointAt(long index) { return pipelineBindPoint(this.segment(), index); }
-        /// Sets `pipelineBindPoint` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineBindPointAt(long index, int value) { pipelineBindPoint(this.segment(), index, value); return this; }
+    /// {@return `indirectCommandsLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public long indirectCommandsLayoutAt(long index) { return indirectCommandsLayout(this.segment(), index); }
+    /// Sets `indirectCommandsLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV indirectCommandsLayoutAt(long index, long value) { indirectCommandsLayout(this.segment(), index, value); return this; }
 
-        /// {@return `pipeline` at the given index}
-        /// @param index the index of the struct buffer
-        public long pipelineAt(long index) { return pipeline(this.segment(), index); }
-        /// Sets `pipeline` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineAt(long index, long value) { pipeline(this.segment(), index, value); return this; }
+    /// {@return `streamCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int streamCountAt(long index) { return streamCount(this.segment(), index); }
+    /// Sets `streamCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV streamCountAt(long index, int value) { streamCount(this.segment(), index, value); return this; }
 
-        /// {@return `indirectCommandsLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public long indirectCommandsLayoutAt(long index) { return indirectCommandsLayout(this.segment(), index); }
-        /// Sets `indirectCommandsLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indirectCommandsLayoutAt(long index, long value) { indirectCommandsLayout(this.segment(), index, value); return this; }
+    /// {@return `pStreams` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pStreamsAt(long index) { return pStreams(this.segment(), index); }
+    /// Sets `pStreams` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV pStreamsAt(long index, MemorySegment value) { pStreams(this.segment(), index, value); return this; }
 
-        /// {@return `streamCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int streamCountAt(long index) { return streamCount(this.segment(), index); }
-        /// Sets `streamCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer streamCountAt(long index, int value) { streamCount(this.segment(), index, value); return this; }
+    /// {@return `sequencesCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int sequencesCountAt(long index) { return sequencesCount(this.segment(), index); }
+    /// Sets `sequencesCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV sequencesCountAt(long index, int value) { sequencesCount(this.segment(), index, value); return this; }
 
-        /// {@return `pStreams` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pStreamsAt(long index) { return pStreams(this.segment(), index); }
-        /// Sets `pStreams` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pStreamsAt(long index, MemorySegment value) { pStreams(this.segment(), index, value); return this; }
+    /// {@return `preprocessBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long preprocessBufferAt(long index) { return preprocessBuffer(this.segment(), index); }
+    /// Sets `preprocessBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV preprocessBufferAt(long index, long value) { preprocessBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `sequencesCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int sequencesCountAt(long index) { return sequencesCount(this.segment(), index); }
-        /// Sets `sequencesCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sequencesCountAt(long index, int value) { sequencesCount(this.segment(), index, value); return this; }
+    /// {@return `preprocessOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long preprocessOffsetAt(long index) { return preprocessOffset(this.segment(), index); }
+    /// Sets `preprocessOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV preprocessOffsetAt(long index, long value) { preprocessOffset(this.segment(), index, value); return this; }
 
-        /// {@return `preprocessBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long preprocessBufferAt(long index) { return preprocessBuffer(this.segment(), index); }
-        /// Sets `preprocessBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer preprocessBufferAt(long index, long value) { preprocessBuffer(this.segment(), index, value); return this; }
+    /// {@return `preprocessSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long preprocessSizeAt(long index) { return preprocessSize(this.segment(), index); }
+    /// Sets `preprocessSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV preprocessSizeAt(long index, long value) { preprocessSize(this.segment(), index, value); return this; }
 
-        /// {@return `preprocessOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long preprocessOffsetAt(long index) { return preprocessOffset(this.segment(), index); }
-        /// Sets `preprocessOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer preprocessOffsetAt(long index, long value) { preprocessOffset(this.segment(), index, value); return this; }
+    /// {@return `sequencesCountBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long sequencesCountBufferAt(long index) { return sequencesCountBuffer(this.segment(), index); }
+    /// Sets `sequencesCountBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV sequencesCountBufferAt(long index, long value) { sequencesCountBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `preprocessSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long preprocessSizeAt(long index) { return preprocessSize(this.segment(), index); }
-        /// Sets `preprocessSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer preprocessSizeAt(long index, long value) { preprocessSize(this.segment(), index, value); return this; }
+    /// {@return `sequencesCountOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long sequencesCountOffsetAt(long index) { return sequencesCountOffset(this.segment(), index); }
+    /// Sets `sequencesCountOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV sequencesCountOffsetAt(long index, long value) { sequencesCountOffset(this.segment(), index, value); return this; }
 
-        /// {@return `sequencesCountBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long sequencesCountBufferAt(long index) { return sequencesCountBuffer(this.segment(), index); }
-        /// Sets `sequencesCountBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sequencesCountBufferAt(long index, long value) { sequencesCountBuffer(this.segment(), index, value); return this; }
+    /// {@return `sequencesIndexBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public long sequencesIndexBufferAt(long index) { return sequencesIndexBuffer(this.segment(), index); }
+    /// Sets `sequencesIndexBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV sequencesIndexBufferAt(long index, long value) { sequencesIndexBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `sequencesCountOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long sequencesCountOffsetAt(long index) { return sequencesCountOffset(this.segment(), index); }
-        /// Sets `sequencesCountOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sequencesCountOffsetAt(long index, long value) { sequencesCountOffset(this.segment(), index, value); return this; }
+    /// {@return `sequencesIndexOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long sequencesIndexOffsetAt(long index) { return sequencesIndexOffset(this.segment(), index); }
+    /// Sets `sequencesIndexOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkGeneratedCommandsInfoNV sequencesIndexOffsetAt(long index, long value) { sequencesIndexOffset(this.segment(), index, value); return this; }
 
-        /// {@return `sequencesIndexBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public long sequencesIndexBufferAt(long index) { return sequencesIndexBuffer(this.segment(), index); }
-        /// Sets `sequencesIndexBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sequencesIndexBufferAt(long index, long value) { sequencesIndexBuffer(this.segment(), index, value); return this; }
-
-        /// {@return `sequencesIndexOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long sequencesIndexOffsetAt(long index) { return sequencesIndexOffset(this.segment(), index); }
-        /// Sets `sequencesIndexOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sequencesIndexOffsetAt(long index, long value) { sequencesIndexOffset(this.segment(), index, value); return this; }
-
-    }
 }

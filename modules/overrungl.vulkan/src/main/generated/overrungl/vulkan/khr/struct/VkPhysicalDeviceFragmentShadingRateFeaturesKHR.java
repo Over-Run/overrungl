@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 attachmentFragmentShadingRate;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends GroupType {
+public final class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends GroupType {
     /// The struct layout of `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends Group
     public static final VarHandle VH_attachmentFragmentShadingRate = LAYOUT.arrayElementVarHandle(PathElement.groupElement("attachmentFragmentShadingRate"));
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends Group
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
-    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends Group
     /// @return `this`
     public VkPhysicalDeviceFragmentShadingRateFeaturesKHR copyFrom(VkPhysicalDeviceFragmentShadingRateFeaturesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR reinterpret(long count) { return new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends Group
     /// @return `this`
     public VkPhysicalDeviceFragmentShadingRateFeaturesKHR attachmentFragmentShadingRate(int value) { attachmentFragmentShadingRate(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceFragmentShadingRateFeaturesKHR].
-    public static final class Buffer extends VkPhysicalDeviceFragmentShadingRateFeaturesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceFragmentShadingRateFeaturesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR asSlice(long index, long count) { return new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR at(long index, Consumer<VkPhysicalDeviceFragmentShadingRateFeaturesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
-        public VkPhysicalDeviceFragmentShadingRateFeaturesKHR asSlice(long index) { return new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pipelineFragmentShadingRate` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelineFragmentShadingRateAt(long index) { return pipelineFragmentShadingRate(this.segment(), index); }
+    /// Sets `pipelineFragmentShadingRate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR pipelineFragmentShadingRateAt(long index, int value) { pipelineFragmentShadingRate(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `primitiveFragmentShadingRate` at the given index}
+    /// @param index the index of the struct buffer
+    public int primitiveFragmentShadingRateAt(long index) { return primitiveFragmentShadingRate(this.segment(), index); }
+    /// Sets `primitiveFragmentShadingRate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR primitiveFragmentShadingRateAt(long index, int value) { primitiveFragmentShadingRate(this.segment(), index, value); return this; }
 
-        /// {@return `pipelineFragmentShadingRate` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelineFragmentShadingRateAt(long index) { return pipelineFragmentShadingRate(this.segment(), index); }
-        /// Sets `pipelineFragmentShadingRate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineFragmentShadingRateAt(long index, int value) { pipelineFragmentShadingRate(this.segment(), index, value); return this; }
+    /// {@return `attachmentFragmentShadingRate` at the given index}
+    /// @param index the index of the struct buffer
+    public int attachmentFragmentShadingRateAt(long index) { return attachmentFragmentShadingRate(this.segment(), index); }
+    /// Sets `attachmentFragmentShadingRate` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceFragmentShadingRateFeaturesKHR attachmentFragmentShadingRateAt(long index, int value) { attachmentFragmentShadingRate(this.segment(), index, value); return this; }
 
-        /// {@return `primitiveFragmentShadingRate` at the given index}
-        /// @param index the index of the struct buffer
-        public int primitiveFragmentShadingRateAt(long index) { return primitiveFragmentShadingRate(this.segment(), index); }
-        /// Sets `primitiveFragmentShadingRate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer primitiveFragmentShadingRateAt(long index, int value) { primitiveFragmentShadingRate(this.segment(), index, value); return this; }
-
-        /// {@return `attachmentFragmentShadingRate` at the given index}
-        /// @param index the index of the struct buffer
-        public int attachmentFragmentShadingRateAt(long index) { return attachmentFragmentShadingRate(this.segment(), index); }
-        /// Sets `attachmentFragmentShadingRate` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer attachmentFragmentShadingRateAt(long index, int value) { attachmentFragmentShadingRate(this.segment(), index, value); return this; }
-
-    }
 }

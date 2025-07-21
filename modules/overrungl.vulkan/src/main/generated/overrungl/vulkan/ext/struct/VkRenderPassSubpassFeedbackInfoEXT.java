@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t postMergeIndex;
 /// };
 /// ```
-public sealed class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
+public final class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// The struct layout of `VkRenderPassSubpassFeedbackInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("subpassMergeStatus"),
@@ -59,20 +60,21 @@ public sealed class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     public static final VarHandle VH_postMergeIndex = LAYOUT.arrayElementVarHandle(PathElement.groupElement("postMergeIndex"));
 
     /// Creates `VkRenderPassSubpassFeedbackInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkRenderPassSubpassFeedbackInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkRenderPassSubpassFeedbackInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkRenderPassSubpassFeedbackInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkRenderPassSubpassFeedbackInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassSubpassFeedbackInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkRenderPassSubpassFeedbackInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkRenderPassSubpassFeedbackInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassSubpassFeedbackInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkRenderPassSubpassFeedbackInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassSubpassFeedbackInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkRenderPassSubpassFeedbackInfoEXT` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkRenderPassSubpassFeedbackInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkRenderPassSubpassFeedbackInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkRenderPassSubpassFeedbackInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkRenderPassSubpassFeedbackInfoEXT`
-    public static VkRenderPassSubpassFeedbackInfoEXT alloc(SegmentAllocator allocator) { return new VkRenderPassSubpassFeedbackInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkRenderPassSubpassFeedbackInfoEXT alloc(SegmentAllocator allocator) { return new VkRenderPassSubpassFeedbackInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkRenderPassSubpassFeedbackInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkRenderPassSubpassFeedbackInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkRenderPassSubpassFeedbackInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkRenderPassSubpassFeedbackInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkRenderPassSubpassFeedbackInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// @return `this`
     public VkRenderPassSubpassFeedbackInfoEXT copyFrom(VkRenderPassSubpassFeedbackInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkRenderPassSubpassFeedbackInfoEXT reinterpret(long count) { return new VkRenderPassSubpassFeedbackInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `subpassMergeStatus` at the given index}
     /// @param segment the segment of the struct
@@ -196,64 +199,58 @@ public sealed class VkRenderPassSubpassFeedbackInfoEXT extends GroupType {
     /// @return `this`
     public VkRenderPassSubpassFeedbackInfoEXT postMergeIndex(int value) { postMergeIndex(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkRenderPassSubpassFeedbackInfoEXT].
-    public static final class Buffer extends VkRenderPassSubpassFeedbackInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkRenderPassSubpassFeedbackInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkRenderPassSubpassFeedbackInfoEXT`
+    public VkRenderPassSubpassFeedbackInfoEXT asSlice(long index) { return new VkRenderPassSubpassFeedbackInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkRenderPassSubpassFeedbackInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkRenderPassSubpassFeedbackInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkRenderPassSubpassFeedbackInfoEXT`
+    public VkRenderPassSubpassFeedbackInfoEXT asSlice(long index, long count) { return new VkRenderPassSubpassFeedbackInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkRenderPassSubpassFeedbackInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkRenderPassSubpassFeedbackInfoEXT at(long index, Consumer<VkRenderPassSubpassFeedbackInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkRenderPassSubpassFeedbackInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkRenderPassSubpassFeedbackInfoEXT`
-        public VkRenderPassSubpassFeedbackInfoEXT asSlice(long index) { return new VkRenderPassSubpassFeedbackInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `subpassMergeStatus` at the given index}
+    /// @param index the index of the struct buffer
+    public int subpassMergeStatusAt(long index) { return subpassMergeStatus(this.segment(), index); }
+    /// Sets `subpassMergeStatus` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassSubpassFeedbackInfoEXT subpassMergeStatusAt(long index, int value) { subpassMergeStatus(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkRenderPassSubpassFeedbackInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkRenderPassSubpassFeedbackInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `subpassMergeStatus` at the given index}
-        /// @param index the index of the struct buffer
-        public int subpassMergeStatusAt(long index) { return subpassMergeStatus(this.segment(), index); }
-        /// Sets `subpassMergeStatus` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subpassMergeStatusAt(long index, int value) { subpassMergeStatus(this.segment(), index, value); return this; }
-
-        /// {@return `description` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
-        /// {@return `description` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `description` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment descriptionAt(long index) { return description(this.segment(), index); }
+    /// {@return `description` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte descriptionAt(long index, long index0) { return description(this.segment(), index, index0); }
-        /// Sets `description` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
-        /// Sets `description` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
+    /// Sets `description` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassSubpassFeedbackInfoEXT descriptionAt(long index, MemorySegment value) { description(this.segment(), index, value); return this; }
+    /// Sets `description` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassSubpassFeedbackInfoEXT descriptionAt(long index, long index0, byte value) { description(this.segment(), index, index0, value); return this; }
 
-        /// {@return `postMergeIndex` at the given index}
-        /// @param index the index of the struct buffer
-        public int postMergeIndexAt(long index) { return postMergeIndex(this.segment(), index); }
-        /// Sets `postMergeIndex` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer postMergeIndexAt(long index, int value) { postMergeIndex(this.segment(), index, value); return this; }
+    /// {@return `postMergeIndex` at the given index}
+    /// @param index the index of the struct buffer
+    public int postMergeIndexAt(long index) { return postMergeIndex(this.segment(), index); }
+    /// Sets `postMergeIndex` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkRenderPassSubpassFeedbackInfoEXT postMergeIndexAt(long index, int value) { postMergeIndex(this.segment(), index, value); return this; }
 
-    }
 }

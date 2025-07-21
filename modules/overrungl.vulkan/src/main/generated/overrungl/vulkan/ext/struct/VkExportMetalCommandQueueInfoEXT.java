@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (void*) MTLCommandQueue_id mtlCommandQueue;
 /// };
 /// ```
-public sealed class VkExportMetalCommandQueueInfoEXT extends GroupType {
+public final class VkExportMetalCommandQueueInfoEXT extends GroupType {
     /// The struct layout of `VkExportMetalCommandQueueInfoEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends GroupType {
     public static final VarHandle VH_mtlCommandQueue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("mtlCommandQueue"));
 
     /// Creates `VkExportMetalCommandQueueInfoEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkExportMetalCommandQueueInfoEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkExportMetalCommandQueueInfoEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkExportMetalCommandQueueInfoEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkExportMetalCommandQueueInfoEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalCommandQueueInfoEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExportMetalCommandQueueInfoEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExportMetalCommandQueueInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalCommandQueueInfoEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkExportMetalCommandQueueInfoEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalCommandQueueInfoEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkExportMetalCommandQueueInfoEXT` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkExportMetalCommandQueueInfoEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkExportMetalCommandQueueInfoEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkExportMetalCommandQueueInfoEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExportMetalCommandQueueInfoEXT`
-    public static VkExportMetalCommandQueueInfoEXT alloc(SegmentAllocator allocator) { return new VkExportMetalCommandQueueInfoEXT(allocator.allocate(LAYOUT)); }
+    public static VkExportMetalCommandQueueInfoEXT alloc(SegmentAllocator allocator) { return new VkExportMetalCommandQueueInfoEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkExportMetalCommandQueueInfoEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExportMetalCommandQueueInfoEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkExportMetalCommandQueueInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalCommandQueueInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkExportMetalCommandQueueInfoEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends GroupType {
     /// @return `this`
     public VkExportMetalCommandQueueInfoEXT copyFrom(VkExportMetalCommandQueueInfoEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkExportMetalCommandQueueInfoEXT reinterpret(long count) { return new VkExportMetalCommandQueueInfoEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkExportMetalCommandQueueInfoEXT extends GroupType {
     /// @return `this`
     public VkExportMetalCommandQueueInfoEXT mtlCommandQueue(MemorySegment value) { mtlCommandQueue(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkExportMetalCommandQueueInfoEXT].
-    public static final class Buffer extends VkExportMetalCommandQueueInfoEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkExportMetalCommandQueueInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExportMetalCommandQueueInfoEXT`
+    public VkExportMetalCommandQueueInfoEXT asSlice(long index) { return new VkExportMetalCommandQueueInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkExportMetalCommandQueueInfoEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkExportMetalCommandQueueInfoEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExportMetalCommandQueueInfoEXT`
+    public VkExportMetalCommandQueueInfoEXT asSlice(long index, long count) { return new VkExportMetalCommandQueueInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkExportMetalCommandQueueInfoEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkExportMetalCommandQueueInfoEXT at(long index, Consumer<VkExportMetalCommandQueueInfoEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkExportMetalCommandQueueInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkExportMetalCommandQueueInfoEXT`
-        public VkExportMetalCommandQueueInfoEXT asSlice(long index) { return new VkExportMetalCommandQueueInfoEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalCommandQueueInfoEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkExportMetalCommandQueueInfoEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkExportMetalCommandQueueInfoEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalCommandQueueInfoEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `queue` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment queueAt(long index) { return queue(this.segment(), index); }
+    /// Sets `queue` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalCommandQueueInfoEXT queueAt(long index, MemorySegment value) { queue(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `mtlCommandQueue` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment mtlCommandQueueAt(long index) { return mtlCommandQueue(this.segment(), index); }
+    /// Sets `mtlCommandQueue` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExportMetalCommandQueueInfoEXT mtlCommandQueueAt(long index, MemorySegment value) { mtlCommandQueue(this.segment(), index, value); return this; }
 
-        /// {@return `queue` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment queueAt(long index) { return queue(this.segment(), index); }
-        /// Sets `queue` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer queueAt(long index, MemorySegment value) { queue(this.segment(), index, value); return this; }
-
-        /// {@return `mtlCommandQueue` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment mtlCommandQueueAt(long index) { return mtlCommandQueue(this.segment(), index); }
-        /// Sets `mtlCommandQueue` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer mtlCommandQueueAt(long index, MemorySegment value) { mtlCommandQueue(this.segment(), index, value); return this; }
-
-    }
 }

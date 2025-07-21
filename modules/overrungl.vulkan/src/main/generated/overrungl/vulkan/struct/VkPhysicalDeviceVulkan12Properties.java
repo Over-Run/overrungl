@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -84,7 +84,7 @@ import java.util.function.*;
 ///     ((uint32_t) VkFlags) VkSampleCountFlags framebufferIntegerColorSampleCounts;
 /// };
 /// ```
-public sealed class VkPhysicalDeviceVulkan12Properties extends GroupType {
+public final class VkPhysicalDeviceVulkan12Properties extends GroupType {
     /// The struct layout of `VkPhysicalDeviceVulkan12Properties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -466,20 +466,21 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends GroupType {
     public static final VarHandle VH_framebufferIntegerColorSampleCounts = LAYOUT.arrayElementVarHandle(PathElement.groupElement("framebufferIntegerColorSampleCounts"));
 
     /// Creates `VkPhysicalDeviceVulkan12Properties` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDeviceVulkan12Properties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDeviceVulkan12Properties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDeviceVulkan12Properties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDeviceVulkan12Properties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan12Properties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDeviceVulkan12Properties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDeviceVulkan12Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan12Properties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDeviceVulkan12Properties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan12Properties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDeviceVulkan12Properties` with the given segment.
     ///
@@ -487,18 +488,18 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDeviceVulkan12Properties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDeviceVulkan12Properties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDeviceVulkan12Properties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDeviceVulkan12Properties`
-    public static VkPhysicalDeviceVulkan12Properties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceVulkan12Properties(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDeviceVulkan12Properties alloc(SegmentAllocator allocator) { return new VkPhysicalDeviceVulkan12Properties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDeviceVulkan12Properties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDeviceVulkan12Properties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDeviceVulkan12Properties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkan12Properties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDeviceVulkan12Properties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -2368,9 +2369,10 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceVulkan12Properties copyFrom(VkPhysicalDeviceVulkan12Properties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDeviceVulkan12Properties reinterpret(long count) { return new VkPhysicalDeviceVulkan12Properties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -3278,538 +3280,532 @@ public sealed class VkPhysicalDeviceVulkan12Properties extends GroupType {
     /// @return `this`
     public VkPhysicalDeviceVulkan12Properties framebufferIntegerColorSampleCounts(int value) { framebufferIntegerColorSampleCounts(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDeviceVulkan12Properties].
-    public static final class Buffer extends VkPhysicalDeviceVulkan12Properties {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDeviceVulkan12Properties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDeviceVulkan12Properties`
+    public VkPhysicalDeviceVulkan12Properties asSlice(long index) { return new VkPhysicalDeviceVulkan12Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDeviceVulkan12Properties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDeviceVulkan12Properties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDeviceVulkan12Properties`
+    public VkPhysicalDeviceVulkan12Properties asSlice(long index, long count) { return new VkPhysicalDeviceVulkan12Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDeviceVulkan12Properties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties at(long index, Consumer<VkPhysicalDeviceVulkan12Properties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceVulkan12Properties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDeviceVulkan12Properties`
-        public VkPhysicalDeviceVulkan12Properties asSlice(long index) { return new VkPhysicalDeviceVulkan12Properties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDeviceVulkan12Properties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDeviceVulkan12Properties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `driverID` at the given index}
+    /// @param index the index of the struct buffer
+    public int driverIDAt(long index) { return driverID(this.segment(), index); }
+    /// Sets `driverID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties driverIDAt(long index, int value) { driverID(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `driverID` at the given index}
-        /// @param index the index of the struct buffer
-        public int driverIDAt(long index) { return driverID(this.segment(), index); }
-        /// Sets `driverID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverIDAt(long index, int value) { driverID(this.segment(), index, value); return this; }
-
-        /// {@return `driverName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment driverNameAt(long index) { return driverName(this.segment(), index); }
-        /// {@return `driverName` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `driverName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment driverNameAt(long index) { return driverName(this.segment(), index); }
+    /// {@return `driverName` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte driverNameAt(long index, long index0) { return driverName(this.segment(), index, index0); }
-        /// Sets `driverName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverNameAt(long index, MemorySegment value) { driverName(this.segment(), index, value); return this; }
-        /// Sets `driverName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverNameAt(long index, long index0, byte value) { driverName(this.segment(), index, index0, value); return this; }
+    /// Sets `driverName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties driverNameAt(long index, MemorySegment value) { driverName(this.segment(), index, value); return this; }
+    /// Sets `driverName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties driverNameAt(long index, long index0, byte value) { driverName(this.segment(), index, index0, value); return this; }
 
-        /// {@return `driverInfo` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment driverInfoAt(long index) { return driverInfo(this.segment(), index); }
-        /// {@return `driverInfo` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `driverInfo` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment driverInfoAt(long index) { return driverInfo(this.segment(), index); }
+    /// {@return `driverInfo` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte driverInfoAt(long index, long index0) { return driverInfo(this.segment(), index, index0); }
-        /// Sets `driverInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverInfoAt(long index, MemorySegment value) { driverInfo(this.segment(), index, value); return this; }
-        /// Sets `driverInfo` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer driverInfoAt(long index, long index0, byte value) { driverInfo(this.segment(), index, index0, value); return this; }
+    /// Sets `driverInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties driverInfoAt(long index, MemorySegment value) { driverInfo(this.segment(), index, value); return this; }
+    /// Sets `driverInfo` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties driverInfoAt(long index, long index0, byte value) { driverInfo(this.segment(), index, index0, value); return this; }
 
-        /// {@return `conformanceVersion` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment conformanceVersionAt(long index) { return conformanceVersion(this.segment(), index); }
-        /// Sets `conformanceVersion` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer conformanceVersionAt(long index, MemorySegment value) { conformanceVersion(this.segment(), index, value); return this; }
-        /// Accepts `conformanceVersion` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer conformanceVersionAt(long index, Consumer<overrungl.vulkan.struct.VkConformanceVersion> func) { func.accept(overrungl.vulkan.struct.VkConformanceVersion.of(conformanceVersionAt(index))); return this; }
+    /// {@return `conformanceVersion` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment conformanceVersionAt(long index) { return conformanceVersion(this.segment(), index); }
+    /// Sets `conformanceVersion` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties conformanceVersionAt(long index, MemorySegment value) { conformanceVersion(this.segment(), index, value); return this; }
+    /// Accepts `conformanceVersion` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties conformanceVersionAt(long index, Consumer<overrungl.vulkan.struct.VkConformanceVersion> func) { func.accept(overrungl.vulkan.struct.VkConformanceVersion.of(conformanceVersionAt(index))); return this; }
 
-        /// {@return `denormBehaviorIndependence` at the given index}
-        /// @param index the index of the struct buffer
-        public int denormBehaviorIndependenceAt(long index) { return denormBehaviorIndependence(this.segment(), index); }
-        /// Sets `denormBehaviorIndependence` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer denormBehaviorIndependenceAt(long index, int value) { denormBehaviorIndependence(this.segment(), index, value); return this; }
+    /// {@return `denormBehaviorIndependence` at the given index}
+    /// @param index the index of the struct buffer
+    public int denormBehaviorIndependenceAt(long index) { return denormBehaviorIndependence(this.segment(), index); }
+    /// Sets `denormBehaviorIndependence` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties denormBehaviorIndependenceAt(long index, int value) { denormBehaviorIndependence(this.segment(), index, value); return this; }
 
-        /// {@return `roundingModeIndependence` at the given index}
-        /// @param index the index of the struct buffer
-        public int roundingModeIndependenceAt(long index) { return roundingModeIndependence(this.segment(), index); }
-        /// Sets `roundingModeIndependence` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer roundingModeIndependenceAt(long index, int value) { roundingModeIndependence(this.segment(), index, value); return this; }
+    /// {@return `roundingModeIndependence` at the given index}
+    /// @param index the index of the struct buffer
+    public int roundingModeIndependenceAt(long index) { return roundingModeIndependence(this.segment(), index); }
+    /// Sets `roundingModeIndependence` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties roundingModeIndependenceAt(long index, int value) { roundingModeIndependence(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSignedZeroInfNanPreserveFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSignedZeroInfNanPreserveFloat16At(long index) { return shaderSignedZeroInfNanPreserveFloat16(this.segment(), index); }
-        /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSignedZeroInfNanPreserveFloat16At(long index, int value) { shaderSignedZeroInfNanPreserveFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderSignedZeroInfNanPreserveFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSignedZeroInfNanPreserveFloat16At(long index) { return shaderSignedZeroInfNanPreserveFloat16(this.segment(), index); }
+    /// Sets `shaderSignedZeroInfNanPreserveFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderSignedZeroInfNanPreserveFloat16At(long index, int value) { shaderSignedZeroInfNanPreserveFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSignedZeroInfNanPreserveFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSignedZeroInfNanPreserveFloat32At(long index) { return shaderSignedZeroInfNanPreserveFloat32(this.segment(), index); }
-        /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSignedZeroInfNanPreserveFloat32At(long index, int value) { shaderSignedZeroInfNanPreserveFloat32(this.segment(), index, value); return this; }
+    /// {@return `shaderSignedZeroInfNanPreserveFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSignedZeroInfNanPreserveFloat32At(long index) { return shaderSignedZeroInfNanPreserveFloat32(this.segment(), index); }
+    /// Sets `shaderSignedZeroInfNanPreserveFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderSignedZeroInfNanPreserveFloat32At(long index, int value) { shaderSignedZeroInfNanPreserveFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSignedZeroInfNanPreserveFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSignedZeroInfNanPreserveFloat64At(long index) { return shaderSignedZeroInfNanPreserveFloat64(this.segment(), index); }
-        /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSignedZeroInfNanPreserveFloat64At(long index, int value) { shaderSignedZeroInfNanPreserveFloat64(this.segment(), index, value); return this; }
+    /// {@return `shaderSignedZeroInfNanPreserveFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSignedZeroInfNanPreserveFloat64At(long index) { return shaderSignedZeroInfNanPreserveFloat64(this.segment(), index); }
+    /// Sets `shaderSignedZeroInfNanPreserveFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderSignedZeroInfNanPreserveFloat64At(long index, int value) { shaderSignedZeroInfNanPreserveFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormPreserveFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormPreserveFloat16At(long index) { return shaderDenormPreserveFloat16(this.segment(), index); }
-        /// Sets `shaderDenormPreserveFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormPreserveFloat16At(long index, int value) { shaderDenormPreserveFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormPreserveFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormPreserveFloat16At(long index) { return shaderDenormPreserveFloat16(this.segment(), index); }
+    /// Sets `shaderDenormPreserveFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderDenormPreserveFloat16At(long index, int value) { shaderDenormPreserveFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormPreserveFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormPreserveFloat32At(long index) { return shaderDenormPreserveFloat32(this.segment(), index); }
-        /// Sets `shaderDenormPreserveFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormPreserveFloat32At(long index, int value) { shaderDenormPreserveFloat32(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormPreserveFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormPreserveFloat32At(long index) { return shaderDenormPreserveFloat32(this.segment(), index); }
+    /// Sets `shaderDenormPreserveFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderDenormPreserveFloat32At(long index, int value) { shaderDenormPreserveFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormPreserveFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormPreserveFloat64At(long index) { return shaderDenormPreserveFloat64(this.segment(), index); }
-        /// Sets `shaderDenormPreserveFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormPreserveFloat64At(long index, int value) { shaderDenormPreserveFloat64(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormPreserveFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormPreserveFloat64At(long index) { return shaderDenormPreserveFloat64(this.segment(), index); }
+    /// Sets `shaderDenormPreserveFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderDenormPreserveFloat64At(long index, int value) { shaderDenormPreserveFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormFlushToZeroFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormFlushToZeroFloat16At(long index) { return shaderDenormFlushToZeroFloat16(this.segment(), index); }
-        /// Sets `shaderDenormFlushToZeroFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormFlushToZeroFloat16At(long index, int value) { shaderDenormFlushToZeroFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormFlushToZeroFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormFlushToZeroFloat16At(long index) { return shaderDenormFlushToZeroFloat16(this.segment(), index); }
+    /// Sets `shaderDenormFlushToZeroFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderDenormFlushToZeroFloat16At(long index, int value) { shaderDenormFlushToZeroFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormFlushToZeroFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormFlushToZeroFloat32At(long index) { return shaderDenormFlushToZeroFloat32(this.segment(), index); }
-        /// Sets `shaderDenormFlushToZeroFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormFlushToZeroFloat32At(long index, int value) { shaderDenormFlushToZeroFloat32(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormFlushToZeroFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormFlushToZeroFloat32At(long index) { return shaderDenormFlushToZeroFloat32(this.segment(), index); }
+    /// Sets `shaderDenormFlushToZeroFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderDenormFlushToZeroFloat32At(long index, int value) { shaderDenormFlushToZeroFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderDenormFlushToZeroFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderDenormFlushToZeroFloat64At(long index) { return shaderDenormFlushToZeroFloat64(this.segment(), index); }
-        /// Sets `shaderDenormFlushToZeroFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderDenormFlushToZeroFloat64At(long index, int value) { shaderDenormFlushToZeroFloat64(this.segment(), index, value); return this; }
+    /// {@return `shaderDenormFlushToZeroFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderDenormFlushToZeroFloat64At(long index) { return shaderDenormFlushToZeroFloat64(this.segment(), index); }
+    /// Sets `shaderDenormFlushToZeroFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderDenormFlushToZeroFloat64At(long index, int value) { shaderDenormFlushToZeroFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTEFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTEFloat16At(long index) { return shaderRoundingModeRTEFloat16(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTEFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTEFloat16At(long index, int value) { shaderRoundingModeRTEFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTEFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTEFloat16At(long index) { return shaderRoundingModeRTEFloat16(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTEFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTEFloat16At(long index, int value) { shaderRoundingModeRTEFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTEFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTEFloat32At(long index) { return shaderRoundingModeRTEFloat32(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTEFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTEFloat32At(long index, int value) { shaderRoundingModeRTEFloat32(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTEFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTEFloat32At(long index) { return shaderRoundingModeRTEFloat32(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTEFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTEFloat32At(long index, int value) { shaderRoundingModeRTEFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTEFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTEFloat64At(long index) { return shaderRoundingModeRTEFloat64(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTEFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTEFloat64At(long index, int value) { shaderRoundingModeRTEFloat64(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTEFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTEFloat64At(long index) { return shaderRoundingModeRTEFloat64(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTEFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTEFloat64At(long index, int value) { shaderRoundingModeRTEFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTZFloat16` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTZFloat16At(long index) { return shaderRoundingModeRTZFloat16(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTZFloat16` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTZFloat16At(long index, int value) { shaderRoundingModeRTZFloat16(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTZFloat16` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTZFloat16At(long index) { return shaderRoundingModeRTZFloat16(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTZFloat16` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTZFloat16At(long index, int value) { shaderRoundingModeRTZFloat16(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTZFloat32` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTZFloat32At(long index) { return shaderRoundingModeRTZFloat32(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTZFloat32` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTZFloat32At(long index, int value) { shaderRoundingModeRTZFloat32(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTZFloat32` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTZFloat32At(long index) { return shaderRoundingModeRTZFloat32(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTZFloat32` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTZFloat32At(long index, int value) { shaderRoundingModeRTZFloat32(this.segment(), index, value); return this; }
 
-        /// {@return `shaderRoundingModeRTZFloat64` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderRoundingModeRTZFloat64At(long index) { return shaderRoundingModeRTZFloat64(this.segment(), index); }
-        /// Sets `shaderRoundingModeRTZFloat64` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderRoundingModeRTZFloat64At(long index, int value) { shaderRoundingModeRTZFloat64(this.segment(), index, value); return this; }
+    /// {@return `shaderRoundingModeRTZFloat64` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderRoundingModeRTZFloat64At(long index) { return shaderRoundingModeRTZFloat64(this.segment(), index); }
+    /// Sets `shaderRoundingModeRTZFloat64` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderRoundingModeRTZFloat64At(long index, int value) { shaderRoundingModeRTZFloat64(this.segment(), index, value); return this; }
 
-        /// {@return `maxUpdateAfterBindDescriptorsInAllPools` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxUpdateAfterBindDescriptorsInAllPoolsAt(long index) { return maxUpdateAfterBindDescriptorsInAllPools(this.segment(), index); }
-        /// Sets `maxUpdateAfterBindDescriptorsInAllPools` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxUpdateAfterBindDescriptorsInAllPoolsAt(long index, int value) { maxUpdateAfterBindDescriptorsInAllPools(this.segment(), index, value); return this; }
+    /// {@return `maxUpdateAfterBindDescriptorsInAllPools` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxUpdateAfterBindDescriptorsInAllPoolsAt(long index) { return maxUpdateAfterBindDescriptorsInAllPools(this.segment(), index); }
+    /// Sets `maxUpdateAfterBindDescriptorsInAllPools` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxUpdateAfterBindDescriptorsInAllPoolsAt(long index, int value) { maxUpdateAfterBindDescriptorsInAllPools(this.segment(), index, value); return this; }
 
-        /// {@return `shaderUniformBufferArrayNonUniformIndexingNative` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderUniformBufferArrayNonUniformIndexingNativeAt(long index) { return shaderUniformBufferArrayNonUniformIndexingNative(this.segment(), index); }
-        /// Sets `shaderUniformBufferArrayNonUniformIndexingNative` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderUniformBufferArrayNonUniformIndexingNativeAt(long index, int value) { shaderUniformBufferArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
+    /// {@return `shaderUniformBufferArrayNonUniformIndexingNative` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderUniformBufferArrayNonUniformIndexingNativeAt(long index) { return shaderUniformBufferArrayNonUniformIndexingNative(this.segment(), index); }
+    /// Sets `shaderUniformBufferArrayNonUniformIndexingNative` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderUniformBufferArrayNonUniformIndexingNativeAt(long index, int value) { shaderUniformBufferArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
 
-        /// {@return `shaderSampledImageArrayNonUniformIndexingNative` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderSampledImageArrayNonUniformIndexingNativeAt(long index) { return shaderSampledImageArrayNonUniformIndexingNative(this.segment(), index); }
-        /// Sets `shaderSampledImageArrayNonUniformIndexingNative` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderSampledImageArrayNonUniformIndexingNativeAt(long index, int value) { shaderSampledImageArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
+    /// {@return `shaderSampledImageArrayNonUniformIndexingNative` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderSampledImageArrayNonUniformIndexingNativeAt(long index) { return shaderSampledImageArrayNonUniformIndexingNative(this.segment(), index); }
+    /// Sets `shaderSampledImageArrayNonUniformIndexingNative` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderSampledImageArrayNonUniformIndexingNativeAt(long index, int value) { shaderSampledImageArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
 
-        /// {@return `shaderStorageBufferArrayNonUniformIndexingNative` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderStorageBufferArrayNonUniformIndexingNativeAt(long index) { return shaderStorageBufferArrayNonUniformIndexingNative(this.segment(), index); }
-        /// Sets `shaderStorageBufferArrayNonUniformIndexingNative` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderStorageBufferArrayNonUniformIndexingNativeAt(long index, int value) { shaderStorageBufferArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
+    /// {@return `shaderStorageBufferArrayNonUniformIndexingNative` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderStorageBufferArrayNonUniformIndexingNativeAt(long index) { return shaderStorageBufferArrayNonUniformIndexingNative(this.segment(), index); }
+    /// Sets `shaderStorageBufferArrayNonUniformIndexingNative` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderStorageBufferArrayNonUniformIndexingNativeAt(long index, int value) { shaderStorageBufferArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
 
-        /// {@return `shaderStorageImageArrayNonUniformIndexingNative` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderStorageImageArrayNonUniformIndexingNativeAt(long index) { return shaderStorageImageArrayNonUniformIndexingNative(this.segment(), index); }
-        /// Sets `shaderStorageImageArrayNonUniformIndexingNative` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderStorageImageArrayNonUniformIndexingNativeAt(long index, int value) { shaderStorageImageArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
+    /// {@return `shaderStorageImageArrayNonUniformIndexingNative` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderStorageImageArrayNonUniformIndexingNativeAt(long index) { return shaderStorageImageArrayNonUniformIndexingNative(this.segment(), index); }
+    /// Sets `shaderStorageImageArrayNonUniformIndexingNative` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderStorageImageArrayNonUniformIndexingNativeAt(long index, int value) { shaderStorageImageArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
 
-        /// {@return `shaderInputAttachmentArrayNonUniformIndexingNative` at the given index}
-        /// @param index the index of the struct buffer
-        public int shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index) { return shaderInputAttachmentArrayNonUniformIndexingNative(this.segment(), index); }
-        /// Sets `shaderInputAttachmentArrayNonUniformIndexingNative` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index, int value) { shaderInputAttachmentArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
+    /// {@return `shaderInputAttachmentArrayNonUniformIndexingNative` at the given index}
+    /// @param index the index of the struct buffer
+    public int shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index) { return shaderInputAttachmentArrayNonUniformIndexingNative(this.segment(), index); }
+    /// Sets `shaderInputAttachmentArrayNonUniformIndexingNative` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties shaderInputAttachmentArrayNonUniformIndexingNativeAt(long index, int value) { shaderInputAttachmentArrayNonUniformIndexingNative(this.segment(), index, value); return this; }
 
-        /// {@return `robustBufferAccessUpdateAfterBind` at the given index}
-        /// @param index the index of the struct buffer
-        public int robustBufferAccessUpdateAfterBindAt(long index) { return robustBufferAccessUpdateAfterBind(this.segment(), index); }
-        /// Sets `robustBufferAccessUpdateAfterBind` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer robustBufferAccessUpdateAfterBindAt(long index, int value) { robustBufferAccessUpdateAfterBind(this.segment(), index, value); return this; }
+    /// {@return `robustBufferAccessUpdateAfterBind` at the given index}
+    /// @param index the index of the struct buffer
+    public int robustBufferAccessUpdateAfterBindAt(long index) { return robustBufferAccessUpdateAfterBind(this.segment(), index); }
+    /// Sets `robustBufferAccessUpdateAfterBind` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties robustBufferAccessUpdateAfterBindAt(long index, int value) { robustBufferAccessUpdateAfterBind(this.segment(), index, value); return this; }
 
-        /// {@return `quadDivergentImplicitLod` at the given index}
-        /// @param index the index of the struct buffer
-        public int quadDivergentImplicitLodAt(long index) { return quadDivergentImplicitLod(this.segment(), index); }
-        /// Sets `quadDivergentImplicitLod` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer quadDivergentImplicitLodAt(long index, int value) { quadDivergentImplicitLod(this.segment(), index, value); return this; }
+    /// {@return `quadDivergentImplicitLod` at the given index}
+    /// @param index the index of the struct buffer
+    public int quadDivergentImplicitLodAt(long index) { return quadDivergentImplicitLod(this.segment(), index); }
+    /// Sets `quadDivergentImplicitLod` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties quadDivergentImplicitLodAt(long index, int value) { quadDivergentImplicitLod(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorUpdateAfterBindSamplers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorUpdateAfterBindSamplersAt(long index) { return maxPerStageDescriptorUpdateAfterBindSamplers(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorUpdateAfterBindSamplers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorUpdateAfterBindSamplersAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindSamplers(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorUpdateAfterBindSamplers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorUpdateAfterBindSamplersAt(long index) { return maxPerStageDescriptorUpdateAfterBindSamplers(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorUpdateAfterBindSamplers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindSamplersAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindSamplers(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorUpdateAfterBindUniformBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index) { return maxPerStageDescriptorUpdateAfterBindUniformBuffers(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorUpdateAfterBindUniformBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindUniformBuffers(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorUpdateAfterBindUniformBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index) { return maxPerStageDescriptorUpdateAfterBindUniformBuffers(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorUpdateAfterBindUniformBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindUniformBuffersAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindUniformBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorUpdateAfterBindStorageBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index) { return maxPerStageDescriptorUpdateAfterBindStorageBuffers(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorUpdateAfterBindStorageBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindStorageBuffers(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorUpdateAfterBindStorageBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index) { return maxPerStageDescriptorUpdateAfterBindStorageBuffers(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorUpdateAfterBindStorageBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindStorageBuffersAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindStorageBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorUpdateAfterBindSampledImages` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index) { return maxPerStageDescriptorUpdateAfterBindSampledImages(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorUpdateAfterBindSampledImages` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindSampledImages(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorUpdateAfterBindSampledImages` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index) { return maxPerStageDescriptorUpdateAfterBindSampledImages(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorUpdateAfterBindSampledImages` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindSampledImagesAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindSampledImages(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorUpdateAfterBindStorageImages` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index) { return maxPerStageDescriptorUpdateAfterBindStorageImages(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorUpdateAfterBindStorageImages` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindStorageImages(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorUpdateAfterBindStorageImages` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index) { return maxPerStageDescriptorUpdateAfterBindStorageImages(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorUpdateAfterBindStorageImages` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindStorageImagesAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindStorageImages(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageDescriptorUpdateAfterBindInputAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index) { return maxPerStageDescriptorUpdateAfterBindInputAttachments(this.segment(), index); }
-        /// Sets `maxPerStageDescriptorUpdateAfterBindInputAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindInputAttachments(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageDescriptorUpdateAfterBindInputAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index) { return maxPerStageDescriptorUpdateAfterBindInputAttachments(this.segment(), index); }
+    /// Sets `maxPerStageDescriptorUpdateAfterBindInputAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxPerStageDescriptorUpdateAfterBindInputAttachmentsAt(long index, int value) { maxPerStageDescriptorUpdateAfterBindInputAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `maxPerStageUpdateAfterBindResources` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxPerStageUpdateAfterBindResourcesAt(long index) { return maxPerStageUpdateAfterBindResources(this.segment(), index); }
-        /// Sets `maxPerStageUpdateAfterBindResources` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxPerStageUpdateAfterBindResourcesAt(long index, int value) { maxPerStageUpdateAfterBindResources(this.segment(), index, value); return this; }
+    /// {@return `maxPerStageUpdateAfterBindResources` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxPerStageUpdateAfterBindResourcesAt(long index) { return maxPerStageUpdateAfterBindResources(this.segment(), index); }
+    /// Sets `maxPerStageUpdateAfterBindResources` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxPerStageUpdateAfterBindResourcesAt(long index, int value) { maxPerStageUpdateAfterBindResources(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindSamplers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindSamplersAt(long index) { return maxDescriptorSetUpdateAfterBindSamplers(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindSamplers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindSamplersAt(long index, int value) { maxDescriptorSetUpdateAfterBindSamplers(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindSamplers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindSamplersAt(long index) { return maxDescriptorSetUpdateAfterBindSamplers(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindSamplers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindSamplersAt(long index, int value) { maxDescriptorSetUpdateAfterBindSamplers(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index) { return maxDescriptorSetUpdateAfterBindUniformBuffers(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index, int value) { maxDescriptorSetUpdateAfterBindUniformBuffers(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index) { return maxDescriptorSetUpdateAfterBindUniformBuffers(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindUniformBuffersAt(long index, int value) { maxDescriptorSetUpdateAfterBindUniformBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindUniformBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindUniformBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindUniformBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffers` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index) { return maxDescriptorSetUpdateAfterBindStorageBuffers(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffers` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageBuffers(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffers` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index) { return maxDescriptorSetUpdateAfterBindStorageBuffers(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffers` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindStorageBuffersAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageBuffers(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index) { return maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindStorageBuffersDynamic` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindStorageBuffersDynamicAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageBuffersDynamic(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindSampledImages` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindSampledImagesAt(long index) { return maxDescriptorSetUpdateAfterBindSampledImages(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindSampledImages` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindSampledImagesAt(long index, int value) { maxDescriptorSetUpdateAfterBindSampledImages(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindSampledImages` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindSampledImagesAt(long index) { return maxDescriptorSetUpdateAfterBindSampledImages(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindSampledImages` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindSampledImagesAt(long index, int value) { maxDescriptorSetUpdateAfterBindSampledImages(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindStorageImages` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindStorageImagesAt(long index) { return maxDescriptorSetUpdateAfterBindStorageImages(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindStorageImages` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindStorageImagesAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageImages(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindStorageImages` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindStorageImagesAt(long index) { return maxDescriptorSetUpdateAfterBindStorageImages(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindStorageImages` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindStorageImagesAt(long index, int value) { maxDescriptorSetUpdateAfterBindStorageImages(this.segment(), index, value); return this; }
 
-        /// {@return `maxDescriptorSetUpdateAfterBindInputAttachments` at the given index}
-        /// @param index the index of the struct buffer
-        public int maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index) { return maxDescriptorSetUpdateAfterBindInputAttachments(this.segment(), index); }
-        /// Sets `maxDescriptorSetUpdateAfterBindInputAttachments` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index, int value) { maxDescriptorSetUpdateAfterBindInputAttachments(this.segment(), index, value); return this; }
+    /// {@return `maxDescriptorSetUpdateAfterBindInputAttachments` at the given index}
+    /// @param index the index of the struct buffer
+    public int maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index) { return maxDescriptorSetUpdateAfterBindInputAttachments(this.segment(), index); }
+    /// Sets `maxDescriptorSetUpdateAfterBindInputAttachments` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxDescriptorSetUpdateAfterBindInputAttachmentsAt(long index, int value) { maxDescriptorSetUpdateAfterBindInputAttachments(this.segment(), index, value); return this; }
 
-        /// {@return `supportedDepthResolveModes` at the given index}
-        /// @param index the index of the struct buffer
-        public int supportedDepthResolveModesAt(long index) { return supportedDepthResolveModes(this.segment(), index); }
-        /// Sets `supportedDepthResolveModes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer supportedDepthResolveModesAt(long index, int value) { supportedDepthResolveModes(this.segment(), index, value); return this; }
+    /// {@return `supportedDepthResolveModes` at the given index}
+    /// @param index the index of the struct buffer
+    public int supportedDepthResolveModesAt(long index) { return supportedDepthResolveModes(this.segment(), index); }
+    /// Sets `supportedDepthResolveModes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties supportedDepthResolveModesAt(long index, int value) { supportedDepthResolveModes(this.segment(), index, value); return this; }
 
-        /// {@return `supportedStencilResolveModes` at the given index}
-        /// @param index the index of the struct buffer
-        public int supportedStencilResolveModesAt(long index) { return supportedStencilResolveModes(this.segment(), index); }
-        /// Sets `supportedStencilResolveModes` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer supportedStencilResolveModesAt(long index, int value) { supportedStencilResolveModes(this.segment(), index, value); return this; }
+    /// {@return `supportedStencilResolveModes` at the given index}
+    /// @param index the index of the struct buffer
+    public int supportedStencilResolveModesAt(long index) { return supportedStencilResolveModes(this.segment(), index); }
+    /// Sets `supportedStencilResolveModes` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties supportedStencilResolveModesAt(long index, int value) { supportedStencilResolveModes(this.segment(), index, value); return this; }
 
-        /// {@return `independentResolveNone` at the given index}
-        /// @param index the index of the struct buffer
-        public int independentResolveNoneAt(long index) { return independentResolveNone(this.segment(), index); }
-        /// Sets `independentResolveNone` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer independentResolveNoneAt(long index, int value) { independentResolveNone(this.segment(), index, value); return this; }
+    /// {@return `independentResolveNone` at the given index}
+    /// @param index the index of the struct buffer
+    public int independentResolveNoneAt(long index) { return independentResolveNone(this.segment(), index); }
+    /// Sets `independentResolveNone` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties independentResolveNoneAt(long index, int value) { independentResolveNone(this.segment(), index, value); return this; }
 
-        /// {@return `independentResolve` at the given index}
-        /// @param index the index of the struct buffer
-        public int independentResolveAt(long index) { return independentResolve(this.segment(), index); }
-        /// Sets `independentResolve` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer independentResolveAt(long index, int value) { independentResolve(this.segment(), index, value); return this; }
+    /// {@return `independentResolve` at the given index}
+    /// @param index the index of the struct buffer
+    public int independentResolveAt(long index) { return independentResolve(this.segment(), index); }
+    /// Sets `independentResolve` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties independentResolveAt(long index, int value) { independentResolve(this.segment(), index, value); return this; }
 
-        /// {@return `filterMinmaxSingleComponentFormats` at the given index}
-        /// @param index the index of the struct buffer
-        public int filterMinmaxSingleComponentFormatsAt(long index) { return filterMinmaxSingleComponentFormats(this.segment(), index); }
-        /// Sets `filterMinmaxSingleComponentFormats` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer filterMinmaxSingleComponentFormatsAt(long index, int value) { filterMinmaxSingleComponentFormats(this.segment(), index, value); return this; }
+    /// {@return `filterMinmaxSingleComponentFormats` at the given index}
+    /// @param index the index of the struct buffer
+    public int filterMinmaxSingleComponentFormatsAt(long index) { return filterMinmaxSingleComponentFormats(this.segment(), index); }
+    /// Sets `filterMinmaxSingleComponentFormats` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties filterMinmaxSingleComponentFormatsAt(long index, int value) { filterMinmaxSingleComponentFormats(this.segment(), index, value); return this; }
 
-        /// {@return `filterMinmaxImageComponentMapping` at the given index}
-        /// @param index the index of the struct buffer
-        public int filterMinmaxImageComponentMappingAt(long index) { return filterMinmaxImageComponentMapping(this.segment(), index); }
-        /// Sets `filterMinmaxImageComponentMapping` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer filterMinmaxImageComponentMappingAt(long index, int value) { filterMinmaxImageComponentMapping(this.segment(), index, value); return this; }
+    /// {@return `filterMinmaxImageComponentMapping` at the given index}
+    /// @param index the index of the struct buffer
+    public int filterMinmaxImageComponentMappingAt(long index) { return filterMinmaxImageComponentMapping(this.segment(), index); }
+    /// Sets `filterMinmaxImageComponentMapping` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties filterMinmaxImageComponentMappingAt(long index, int value) { filterMinmaxImageComponentMapping(this.segment(), index, value); return this; }
 
-        /// {@return `maxTimelineSemaphoreValueDifference` at the given index}
-        /// @param index the index of the struct buffer
-        public long maxTimelineSemaphoreValueDifferenceAt(long index) { return maxTimelineSemaphoreValueDifference(this.segment(), index); }
-        /// Sets `maxTimelineSemaphoreValueDifference` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxTimelineSemaphoreValueDifferenceAt(long index, long value) { maxTimelineSemaphoreValueDifference(this.segment(), index, value); return this; }
+    /// {@return `maxTimelineSemaphoreValueDifference` at the given index}
+    /// @param index the index of the struct buffer
+    public long maxTimelineSemaphoreValueDifferenceAt(long index) { return maxTimelineSemaphoreValueDifference(this.segment(), index); }
+    /// Sets `maxTimelineSemaphoreValueDifference` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties maxTimelineSemaphoreValueDifferenceAt(long index, long value) { maxTimelineSemaphoreValueDifference(this.segment(), index, value); return this; }
 
-        /// {@return `framebufferIntegerColorSampleCounts` at the given index}
-        /// @param index the index of the struct buffer
-        public int framebufferIntegerColorSampleCountsAt(long index) { return framebufferIntegerColorSampleCounts(this.segment(), index); }
-        /// Sets `framebufferIntegerColorSampleCounts` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer framebufferIntegerColorSampleCountsAt(long index, int value) { framebufferIntegerColorSampleCounts(this.segment(), index, value); return this; }
+    /// {@return `framebufferIntegerColorSampleCounts` at the given index}
+    /// @param index the index of the struct buffer
+    public int framebufferIntegerColorSampleCountsAt(long index) { return framebufferIntegerColorSampleCounts(this.segment(), index); }
+    /// Sets `framebufferIntegerColorSampleCounts` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDeviceVulkan12Properties framebufferIntegerColorSampleCountsAt(long index, int value) { framebufferIntegerColorSampleCounts(this.segment(), index, value); return this; }
 
-    }
 }

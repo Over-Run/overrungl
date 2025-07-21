@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     uint64_t initialValue;
 /// };
 /// ```
-public sealed class VkSemaphoreTypeCreateInfo extends GroupType {
+public final class VkSemaphoreTypeCreateInfo extends GroupType {
     /// The struct layout of `VkSemaphoreTypeCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkSemaphoreTypeCreateInfo extends GroupType {
     public static final VarHandle VH_initialValue = LAYOUT.arrayElementVarHandle(PathElement.groupElement("initialValue"));
 
     /// Creates `VkSemaphoreTypeCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkSemaphoreTypeCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSemaphoreTypeCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSemaphoreTypeCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSemaphoreTypeCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSemaphoreTypeCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSemaphoreTypeCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSemaphoreTypeCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSemaphoreTypeCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSemaphoreTypeCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSemaphoreTypeCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSemaphoreTypeCreateInfo` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkSemaphoreTypeCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSemaphoreTypeCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSemaphoreTypeCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSemaphoreTypeCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSemaphoreTypeCreateInfo`
-    public static VkSemaphoreTypeCreateInfo alloc(SegmentAllocator allocator) { return new VkSemaphoreTypeCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkSemaphoreTypeCreateInfo alloc(SegmentAllocator allocator) { return new VkSemaphoreTypeCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSemaphoreTypeCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSemaphoreTypeCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSemaphoreTypeCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkSemaphoreTypeCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSemaphoreTypeCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkSemaphoreTypeCreateInfo extends GroupType {
     /// @return `this`
     public VkSemaphoreTypeCreateInfo copyFrom(VkSemaphoreTypeCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSemaphoreTypeCreateInfo reinterpret(long count) { return new VkSemaphoreTypeCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkSemaphoreTypeCreateInfo extends GroupType {
     /// @return `this`
     public VkSemaphoreTypeCreateInfo initialValue(long value) { initialValue(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSemaphoreTypeCreateInfo].
-    public static final class Buffer extends VkSemaphoreTypeCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkSemaphoreTypeCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSemaphoreTypeCreateInfo`
+    public VkSemaphoreTypeCreateInfo asSlice(long index) { return new VkSemaphoreTypeCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSemaphoreTypeCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSemaphoreTypeCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSemaphoreTypeCreateInfo`
+    public VkSemaphoreTypeCreateInfo asSlice(long index, long count) { return new VkSemaphoreTypeCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSemaphoreTypeCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSemaphoreTypeCreateInfo at(long index, Consumer<VkSemaphoreTypeCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSemaphoreTypeCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSemaphoreTypeCreateInfo`
-        public VkSemaphoreTypeCreateInfo asSlice(long index) { return new VkSemaphoreTypeCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSemaphoreTypeCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSemaphoreTypeCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSemaphoreTypeCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSemaphoreTypeCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `semaphoreType` at the given index}
+    /// @param index the index of the struct buffer
+    public int semaphoreTypeAt(long index) { return semaphoreType(this.segment(), index); }
+    /// Sets `semaphoreType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSemaphoreTypeCreateInfo semaphoreTypeAt(long index, int value) { semaphoreType(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `initialValue` at the given index}
+    /// @param index the index of the struct buffer
+    public long initialValueAt(long index) { return initialValue(this.segment(), index); }
+    /// Sets `initialValue` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSemaphoreTypeCreateInfo initialValueAt(long index, long value) { initialValue(this.segment(), index, value); return this; }
 
-        /// {@return `semaphoreType` at the given index}
-        /// @param index the index of the struct buffer
-        public int semaphoreTypeAt(long index) { return semaphoreType(this.segment(), index); }
-        /// Sets `semaphoreType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer semaphoreTypeAt(long index, int value) { semaphoreType(this.segment(), index, value); return this; }
-
-        /// {@return `initialValue` at the given index}
-        /// @param index the index of the struct buffer
-        public long initialValueAt(long index) { return initialValue(this.segment(), index); }
-        /// Sets `initialValue` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer initialValueAt(long index, long value) { initialValue(this.segment(), index, value); return this; }
-
-    }
 }

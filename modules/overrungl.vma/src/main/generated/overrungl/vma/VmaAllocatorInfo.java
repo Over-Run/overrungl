@@ -21,6 +21,7 @@ package overrungl.vma;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (struct VkDevice *) VkDevice device;
 /// };
 /// ```
-public sealed class VmaAllocatorInfo extends GroupType {
+public final class VmaAllocatorInfo extends GroupType {
     /// The struct layout of `VmaAllocatorInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("instance"),
@@ -59,20 +60,21 @@ public sealed class VmaAllocatorInfo extends GroupType {
     public static final VarHandle VH_device = LAYOUT.arrayElementVarHandle(PathElement.groupElement("device"));
 
     /// Creates `VmaAllocatorInfo` with the given segment.
-    /// @param segment the memory segment
-    public VmaAllocatorInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VmaAllocatorInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VmaAllocatorInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VmaAllocatorInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaAllocatorInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VmaAllocatorInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VmaAllocatorInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaAllocatorInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VmaAllocatorInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaAllocatorInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VmaAllocatorInfo` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VmaAllocatorInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VmaAllocatorInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VmaAllocatorInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VmaAllocatorInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VmaAllocatorInfo`
-    public static VmaAllocatorInfo alloc(SegmentAllocator allocator) { return new VmaAllocatorInfo(allocator.allocate(LAYOUT)); }
+    public static VmaAllocatorInfo alloc(SegmentAllocator allocator) { return new VmaAllocatorInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VmaAllocatorInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VmaAllocatorInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VmaAllocatorInfo alloc(SegmentAllocator allocator, long count) { return new VmaAllocatorInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VmaAllocatorInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VmaAllocatorInfo extends GroupType {
     /// @return `this`
     public VmaAllocatorInfo copyFrom(VmaAllocatorInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VmaAllocatorInfo reinterpret(long count) { return new VmaAllocatorInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `instance` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VmaAllocatorInfo extends GroupType {
     /// @return `this`
     public VmaAllocatorInfo device(MemorySegment value) { device(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VmaAllocatorInfo].
-    public static final class Buffer extends VmaAllocatorInfo {
-        private final long elementCount;
+    /// Creates a slice of `VmaAllocatorInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VmaAllocatorInfo`
+    public VmaAllocatorInfo asSlice(long index) { return new VmaAllocatorInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VmaAllocatorInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VmaAllocatorInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VmaAllocatorInfo`
+    public VmaAllocatorInfo asSlice(long index, long count) { return new VmaAllocatorInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VmaAllocatorInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VmaAllocatorInfo at(long index, Consumer<VmaAllocatorInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VmaAllocatorInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VmaAllocatorInfo`
-        public VmaAllocatorInfo asSlice(long index) { return new VmaAllocatorInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `instance` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment instanceAt(long index) { return instance(this.segment(), index); }
+    /// Sets `instance` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorInfo instanceAt(long index, MemorySegment value) { instance(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VmaAllocatorInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VmaAllocatorInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `physicalDevice` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment physicalDeviceAt(long index) { return physicalDevice(this.segment(), index); }
+    /// Sets `physicalDevice` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorInfo physicalDeviceAt(long index, MemorySegment value) { physicalDevice(this.segment(), index, value); return this; }
 
-        /// {@return `instance` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment instanceAt(long index) { return instance(this.segment(), index); }
-        /// Sets `instance` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer instanceAt(long index, MemorySegment value) { instance(this.segment(), index, value); return this; }
+    /// {@return `device` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment deviceAt(long index) { return device(this.segment(), index); }
+    /// Sets `device` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaAllocatorInfo deviceAt(long index, MemorySegment value) { device(this.segment(), index, value); return this; }
 
-        /// {@return `physicalDevice` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment physicalDeviceAt(long index) { return physicalDevice(this.segment(), index); }
-        /// Sets `physicalDevice` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer physicalDeviceAt(long index, MemorySegment value) { physicalDevice(this.segment(), index, value); return this; }
-
-        /// {@return `device` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment deviceAt(long index) { return device(this.segment(), index); }
-        /// Sets `device` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceAt(long index, MemorySegment value) { device(this.segment(), index, value); return this; }
-
-    }
 }

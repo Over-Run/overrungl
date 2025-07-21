@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (uint64_t) VkPipeline pipeline;
 /// };
 /// ```
-public sealed class VkPipelineIndirectDeviceAddressInfoNV extends GroupType {
+public final class VkPipelineIndirectDeviceAddressInfoNV extends GroupType {
     /// The struct layout of `VkPipelineIndirectDeviceAddressInfoNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkPipelineIndirectDeviceAddressInfoNV extends GroupType {
     public static final VarHandle VH_pipeline = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pipeline"));
 
     /// Creates `VkPipelineIndirectDeviceAddressInfoNV` with the given segment.
-    /// @param segment the memory segment
-    public VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPipelineIndirectDeviceAddressInfoNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPipelineIndirectDeviceAddressInfoNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPipelineIndirectDeviceAddressInfoNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineIndirectDeviceAddressInfoNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPipelineIndirectDeviceAddressInfoNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPipelineIndirectDeviceAddressInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineIndirectDeviceAddressInfoNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPipelineIndirectDeviceAddressInfoNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineIndirectDeviceAddressInfoNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPipelineIndirectDeviceAddressInfoNV` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkPipelineIndirectDeviceAddressInfoNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPipelineIndirectDeviceAddressInfoNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPipelineIndirectDeviceAddressInfoNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPipelineIndirectDeviceAddressInfoNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPipelineIndirectDeviceAddressInfoNV`
-    public static VkPipelineIndirectDeviceAddressInfoNV alloc(SegmentAllocator allocator) { return new VkPipelineIndirectDeviceAddressInfoNV(allocator.allocate(LAYOUT)); }
+    public static VkPipelineIndirectDeviceAddressInfoNV alloc(SegmentAllocator allocator) { return new VkPipelineIndirectDeviceAddressInfoNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPipelineIndirectDeviceAddressInfoNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPipelineIndirectDeviceAddressInfoNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPipelineIndirectDeviceAddressInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineIndirectDeviceAddressInfoNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPipelineIndirectDeviceAddressInfoNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkPipelineIndirectDeviceAddressInfoNV extends GroupType {
     /// @return `this`
     public VkPipelineIndirectDeviceAddressInfoNV copyFrom(VkPipelineIndirectDeviceAddressInfoNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPipelineIndirectDeviceAddressInfoNV reinterpret(long count) { return new VkPipelineIndirectDeviceAddressInfoNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkPipelineIndirectDeviceAddressInfoNV extends GroupType {
     /// @return `this`
     public VkPipelineIndirectDeviceAddressInfoNV pipeline(long value) { pipeline(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPipelineIndirectDeviceAddressInfoNV].
-    public static final class Buffer extends VkPipelineIndirectDeviceAddressInfoNV {
-        private final long elementCount;
+    /// Creates a slice of `VkPipelineIndirectDeviceAddressInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPipelineIndirectDeviceAddressInfoNV`
+    public VkPipelineIndirectDeviceAddressInfoNV asSlice(long index) { return new VkPipelineIndirectDeviceAddressInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPipelineIndirectDeviceAddressInfoNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPipelineIndirectDeviceAddressInfoNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPipelineIndirectDeviceAddressInfoNV`
+    public VkPipelineIndirectDeviceAddressInfoNV asSlice(long index, long count) { return new VkPipelineIndirectDeviceAddressInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPipelineIndirectDeviceAddressInfoNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPipelineIndirectDeviceAddressInfoNV at(long index, Consumer<VkPipelineIndirectDeviceAddressInfoNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPipelineIndirectDeviceAddressInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPipelineIndirectDeviceAddressInfoNV`
-        public VkPipelineIndirectDeviceAddressInfoNV asSlice(long index) { return new VkPipelineIndirectDeviceAddressInfoNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineIndirectDeviceAddressInfoNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPipelineIndirectDeviceAddressInfoNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPipelineIndirectDeviceAddressInfoNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineIndirectDeviceAddressInfoNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pipelineBindPoint` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelineBindPointAt(long index) { return pipelineBindPoint(this.segment(), index); }
+    /// Sets `pipelineBindPoint` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineIndirectDeviceAddressInfoNV pipelineBindPointAt(long index, int value) { pipelineBindPoint(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pipeline` at the given index}
+    /// @param index the index of the struct buffer
+    public long pipelineAt(long index) { return pipeline(this.segment(), index); }
+    /// Sets `pipeline` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPipelineIndirectDeviceAddressInfoNV pipelineAt(long index, long value) { pipeline(this.segment(), index, value); return this; }
 
-        /// {@return `pipelineBindPoint` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelineBindPointAt(long index) { return pipelineBindPoint(this.segment(), index); }
-        /// Sets `pipelineBindPoint` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineBindPointAt(long index, int value) { pipelineBindPoint(this.segment(), index, value); return this; }
-
-        /// {@return `pipeline` at the given index}
-        /// @param index the index of the struct buffer
-        public long pipelineAt(long index) { return pipeline(this.segment(), index); }
-        /// Sets `pipeline` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineAt(long index, long value) { pipeline(this.segment(), index, value); return this; }
-
-    }
 }

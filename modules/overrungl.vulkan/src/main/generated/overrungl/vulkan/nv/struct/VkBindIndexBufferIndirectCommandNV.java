@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (int) VkIndexType indexType;
 /// };
 /// ```
-public sealed class VkBindIndexBufferIndirectCommandNV extends GroupType {
+public final class VkBindIndexBufferIndirectCommandNV extends GroupType {
     /// The struct layout of `VkBindIndexBufferIndirectCommandNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("bufferAddress"),
@@ -59,20 +60,21 @@ public sealed class VkBindIndexBufferIndirectCommandNV extends GroupType {
     public static final VarHandle VH_indexType = LAYOUT.arrayElementVarHandle(PathElement.groupElement("indexType"));
 
     /// Creates `VkBindIndexBufferIndirectCommandNV` with the given segment.
-    /// @param segment the memory segment
-    public VkBindIndexBufferIndirectCommandNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkBindIndexBufferIndirectCommandNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkBindIndexBufferIndirectCommandNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkBindIndexBufferIndirectCommandNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindIndexBufferIndirectCommandNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkBindIndexBufferIndirectCommandNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkBindIndexBufferIndirectCommandNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindIndexBufferIndirectCommandNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkBindIndexBufferIndirectCommandNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindIndexBufferIndirectCommandNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkBindIndexBufferIndirectCommandNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkBindIndexBufferIndirectCommandNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkBindIndexBufferIndirectCommandNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkBindIndexBufferIndirectCommandNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkBindIndexBufferIndirectCommandNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkBindIndexBufferIndirectCommandNV`
-    public static VkBindIndexBufferIndirectCommandNV alloc(SegmentAllocator allocator) { return new VkBindIndexBufferIndirectCommandNV(allocator.allocate(LAYOUT)); }
+    public static VkBindIndexBufferIndirectCommandNV alloc(SegmentAllocator allocator) { return new VkBindIndexBufferIndirectCommandNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkBindIndexBufferIndirectCommandNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkBindIndexBufferIndirectCommandNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkBindIndexBufferIndirectCommandNV alloc(SegmentAllocator allocator, long count) { return new VkBindIndexBufferIndirectCommandNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkBindIndexBufferIndirectCommandNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkBindIndexBufferIndirectCommandNV extends GroupType {
     /// @return `this`
     public VkBindIndexBufferIndirectCommandNV copyFrom(VkBindIndexBufferIndirectCommandNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkBindIndexBufferIndirectCommandNV reinterpret(long count) { return new VkBindIndexBufferIndirectCommandNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `bufferAddress` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkBindIndexBufferIndirectCommandNV extends GroupType {
     /// @return `this`
     public VkBindIndexBufferIndirectCommandNV indexType(int value) { indexType(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkBindIndexBufferIndirectCommandNV].
-    public static final class Buffer extends VkBindIndexBufferIndirectCommandNV {
-        private final long elementCount;
+    /// Creates a slice of `VkBindIndexBufferIndirectCommandNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkBindIndexBufferIndirectCommandNV`
+    public VkBindIndexBufferIndirectCommandNV asSlice(long index) { return new VkBindIndexBufferIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkBindIndexBufferIndirectCommandNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkBindIndexBufferIndirectCommandNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkBindIndexBufferIndirectCommandNV`
+    public VkBindIndexBufferIndirectCommandNV asSlice(long index, long count) { return new VkBindIndexBufferIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkBindIndexBufferIndirectCommandNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkBindIndexBufferIndirectCommandNV at(long index, Consumer<VkBindIndexBufferIndirectCommandNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkBindIndexBufferIndirectCommandNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkBindIndexBufferIndirectCommandNV`
-        public VkBindIndexBufferIndirectCommandNV asSlice(long index) { return new VkBindIndexBufferIndirectCommandNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `bufferAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long bufferAddressAt(long index) { return bufferAddress(this.segment(), index); }
+    /// Sets `bufferAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindIndexBufferIndirectCommandNV bufferAddressAt(long index, long value) { bufferAddress(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkBindIndexBufferIndirectCommandNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkBindIndexBufferIndirectCommandNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `size` at the given index}
+    /// @param index the index of the struct buffer
+    public int sizeAt(long index) { return size(this.segment(), index); }
+    /// Sets `size` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindIndexBufferIndirectCommandNV sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
 
-        /// {@return `bufferAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long bufferAddressAt(long index) { return bufferAddress(this.segment(), index); }
-        /// Sets `bufferAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer bufferAddressAt(long index, long value) { bufferAddress(this.segment(), index, value); return this; }
+    /// {@return `indexType` at the given index}
+    /// @param index the index of the struct buffer
+    public int indexTypeAt(long index) { return indexType(this.segment(), index); }
+    /// Sets `indexType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkBindIndexBufferIndirectCommandNV indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
 
-        /// {@return `size` at the given index}
-        /// @param index the index of the struct buffer
-        public int sizeAt(long index) { return size(this.segment(), index); }
-        /// Sets `size` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sizeAt(long index, int value) { size(this.segment(), index, value); return this; }
-
-        /// {@return `indexType` at the given index}
-        /// @param index the index of the struct buffer
-        public int indexTypeAt(long index) { return indexType(this.segment(), index); }
-        /// Sets `indexType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer indexTypeAt(long index, int value) { indexType(this.segment(), index, value); return this; }
-
-    }
 }

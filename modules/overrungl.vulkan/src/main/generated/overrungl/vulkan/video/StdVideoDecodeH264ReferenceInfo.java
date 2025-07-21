@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -34,7 +34,7 @@ import java.util.function.*;
 ///     int32_t PicOrderCnt[2];
 /// };
 /// ```
-public sealed class StdVideoDecodeH264ReferenceInfo extends GroupType {
+public final class StdVideoDecodeH264ReferenceInfo extends GroupType {
     /// The struct layout of `StdVideoDecodeH264ReferenceInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoDecodeH264ReferenceInfoFlags.LAYOUT.withName("flags"),
@@ -66,20 +66,21 @@ public sealed class StdVideoDecodeH264ReferenceInfo extends GroupType {
     public static final VarHandle VH_PicOrderCnt = LAYOUT.arrayElementVarHandle(PathElement.groupElement("PicOrderCnt"), PathElement.sequenceElement());
 
     /// Creates `StdVideoDecodeH264ReferenceInfo` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoDecodeH264ReferenceInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoDecodeH264ReferenceInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoDecodeH264ReferenceInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoDecodeH264ReferenceInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoDecodeH264ReferenceInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoDecodeH264ReferenceInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoDecodeH264ReferenceInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoDecodeH264ReferenceInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoDecodeH264ReferenceInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoDecodeH264ReferenceInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoDecodeH264ReferenceInfo` with the given segment.
     ///
@@ -87,18 +88,18 @@ public sealed class StdVideoDecodeH264ReferenceInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoDecodeH264ReferenceInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoDecodeH264ReferenceInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoDecodeH264ReferenceInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoDecodeH264ReferenceInfo`
-    public static StdVideoDecodeH264ReferenceInfo alloc(SegmentAllocator allocator) { return new StdVideoDecodeH264ReferenceInfo(allocator.allocate(LAYOUT)); }
+    public static StdVideoDecodeH264ReferenceInfo alloc(SegmentAllocator allocator) { return new StdVideoDecodeH264ReferenceInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoDecodeH264ReferenceInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoDecodeH264ReferenceInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoDecodeH264ReferenceInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoDecodeH264ReferenceInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoDecodeH264ReferenceInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -143,9 +144,10 @@ public sealed class StdVideoDecodeH264ReferenceInfo extends GroupType {
     /// @return `this`
     public StdVideoDecodeH264ReferenceInfo copyFrom(StdVideoDecodeH264ReferenceInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoDecodeH264ReferenceInfo reinterpret(long count) { return new StdVideoDecodeH264ReferenceInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -234,78 +236,72 @@ public sealed class StdVideoDecodeH264ReferenceInfo extends GroupType {
     /// @return `this`
     public StdVideoDecodeH264ReferenceInfo PicOrderCnt(long index0, int value) { PicOrderCnt(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [StdVideoDecodeH264ReferenceInfo].
-    public static final class Buffer extends StdVideoDecodeH264ReferenceInfo {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoDecodeH264ReferenceInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoDecodeH264ReferenceInfo`
+    public StdVideoDecodeH264ReferenceInfo asSlice(long index) { return new StdVideoDecodeH264ReferenceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoDecodeH264ReferenceInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoDecodeH264ReferenceInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoDecodeH264ReferenceInfo`
+    public StdVideoDecodeH264ReferenceInfo asSlice(long index, long count) { return new StdVideoDecodeH264ReferenceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoDecodeH264ReferenceInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoDecodeH264ReferenceInfo at(long index, Consumer<StdVideoDecodeH264ReferenceInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoDecodeH264ReferenceInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoDecodeH264ReferenceInfo`
-        public StdVideoDecodeH264ReferenceInfo asSlice(long index) { return new StdVideoDecodeH264ReferenceInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoDecodeH264ReferenceInfo flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoDecodeH264ReferenceInfo flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoDecodeH264ReferenceInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoDecodeH264ReferenceInfoFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoDecodeH264ReferenceInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoDecodeH264ReferenceInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `FrameNum` at the given index}
+    /// @param index the index of the struct buffer
+    public short FrameNumAt(long index) { return FrameNum(this.segment(), index); }
+    /// Sets `FrameNum` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoDecodeH264ReferenceInfo FrameNumAt(long index, short value) { FrameNum(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoDecodeH264ReferenceInfoFlags> func) { func.accept(overrungl.vulkan.video.StdVideoDecodeH264ReferenceInfoFlags.of(flagsAt(index))); return this; }
+    /// {@return `reserved` at the given index}
+    /// @param index the index of the struct buffer
+    public short reservedAt(long index) { return reserved(this.segment(), index); }
+    /// Sets `reserved` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoDecodeH264ReferenceInfo reservedAt(long index, short value) { reserved(this.segment(), index, value); return this; }
 
-        /// {@return `FrameNum` at the given index}
-        /// @param index the index of the struct buffer
-        public short FrameNumAt(long index) { return FrameNum(this.segment(), index); }
-        /// Sets `FrameNum` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer FrameNumAt(long index, short value) { FrameNum(this.segment(), index, value); return this; }
-
-        /// {@return `reserved` at the given index}
-        /// @param index the index of the struct buffer
-        public short reservedAt(long index) { return reserved(this.segment(), index); }
-        /// Sets `reserved` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer reservedAt(long index, short value) { reserved(this.segment(), index, value); return this; }
-
-        /// {@return `PicOrderCnt` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment PicOrderCntAt(long index) { return PicOrderCnt(this.segment(), index); }
-        /// {@return `PicOrderCnt` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `PicOrderCnt` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment PicOrderCntAt(long index) { return PicOrderCnt(this.segment(), index); }
+    /// {@return `PicOrderCnt` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public int PicOrderCntAt(long index, long index0) { return PicOrderCnt(this.segment(), index, index0); }
-        /// Sets `PicOrderCnt` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer PicOrderCntAt(long index, MemorySegment value) { PicOrderCnt(this.segment(), index, value); return this; }
-        /// Sets `PicOrderCnt` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer PicOrderCntAt(long index, long index0, int value) { PicOrderCnt(this.segment(), index, index0, value); return this; }
+    /// Sets `PicOrderCnt` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoDecodeH264ReferenceInfo PicOrderCntAt(long index, MemorySegment value) { PicOrderCnt(this.segment(), index, value); return this; }
+    /// Sets `PicOrderCnt` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoDecodeH264ReferenceInfo PicOrderCntAt(long index, long index0, int value) { PicOrderCnt(this.segment(), index, index0, value); return this; }
 
-    }
 }

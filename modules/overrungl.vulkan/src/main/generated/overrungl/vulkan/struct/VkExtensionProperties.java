@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     uint32_t specVersion;
 /// };
 /// ```
-public sealed class VkExtensionProperties extends GroupType {
+public final class VkExtensionProperties extends GroupType {
     /// The struct layout of `VkExtensionProperties`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(256, ValueLayout.JAVA_BYTE).withName("extensionName"),
@@ -51,20 +52,21 @@ public sealed class VkExtensionProperties extends GroupType {
     public static final VarHandle VH_specVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("specVersion"));
 
     /// Creates `VkExtensionProperties` with the given segment.
-    /// @param segment the memory segment
-    public VkExtensionProperties(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkExtensionProperties(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkExtensionProperties` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkExtensionProperties of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExtensionProperties(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkExtensionProperties` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkExtensionProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExtensionProperties(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkExtensionProperties ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkExtensionProperties(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkExtensionProperties` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkExtensionProperties extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkExtensionProperties ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkExtensionProperties(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkExtensionProperties` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkExtensionProperties`
-    public static VkExtensionProperties alloc(SegmentAllocator allocator) { return new VkExtensionProperties(allocator.allocate(LAYOUT)); }
+    public static VkExtensionProperties alloc(SegmentAllocator allocator) { return new VkExtensionProperties(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkExtensionProperties` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkExtensionProperties`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkExtensionProperties alloc(SegmentAllocator allocator, long count) { return new VkExtensionProperties(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkExtensionProperties` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -107,9 +109,10 @@ public sealed class VkExtensionProperties extends GroupType {
     /// @return `this`
     public VkExtensionProperties copyFrom(VkExtensionProperties src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkExtensionProperties reinterpret(long count) { return new VkExtensionProperties(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `extensionName` at the given index}
     /// @param segment the segment of the struct
@@ -162,55 +165,49 @@ public sealed class VkExtensionProperties extends GroupType {
     /// @return `this`
     public VkExtensionProperties specVersion(int value) { specVersion(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkExtensionProperties].
-    public static final class Buffer extends VkExtensionProperties {
-        private final long elementCount;
+    /// Creates a slice of `VkExtensionProperties`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkExtensionProperties`
+    public VkExtensionProperties asSlice(long index) { return new VkExtensionProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkExtensionProperties.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkExtensionProperties`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkExtensionProperties`
+    public VkExtensionProperties asSlice(long index, long count) { return new VkExtensionProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkExtensionProperties` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkExtensionProperties at(long index, Consumer<VkExtensionProperties> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkExtensionProperties`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkExtensionProperties`
-        public VkExtensionProperties asSlice(long index) { return new VkExtensionProperties(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
-
-        /// Creates a slice of `VkExtensionProperties`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkExtensionProperties`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `extensionName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment extensionNameAt(long index) { return extensionName(this.segment(), index); }
-        /// {@return `extensionName` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `extensionName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment extensionNameAt(long index) { return extensionName(this.segment(), index); }
+    /// {@return `extensionName` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte extensionNameAt(long index, long index0) { return extensionName(this.segment(), index, index0); }
-        /// Sets `extensionName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extensionNameAt(long index, MemorySegment value) { extensionName(this.segment(), index, value); return this; }
-        /// Sets `extensionName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer extensionNameAt(long index, long index0, byte value) { extensionName(this.segment(), index, index0, value); return this; }
+    /// Sets `extensionName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExtensionProperties extensionNameAt(long index, MemorySegment value) { extensionName(this.segment(), index, value); return this; }
+    /// Sets `extensionName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public VkExtensionProperties extensionNameAt(long index, long index0, byte value) { extensionName(this.segment(), index, index0, value); return this; }
 
-        /// {@return `specVersion` at the given index}
-        /// @param index the index of the struct buffer
-        public int specVersionAt(long index) { return specVersion(this.segment(), index); }
-        /// Sets `specVersion` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer specVersionAt(long index, int value) { specVersion(this.segment(), index, value); return this; }
+    /// {@return `specVersion` at the given index}
+    /// @param index the index of the struct buffer
+    public int specVersionAt(long index) { return specVersion(this.segment(), index); }
+    /// Sets `specVersion` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkExtensionProperties specVersionAt(long index, int value) { specVersion(this.segment(), index, value); return this; }
 
-    }
 }

@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -39,7 +39,7 @@ import java.util.function.*;
 ///     (struct VkExtent2D) VkExtent2D maxDstExtent;
 /// };
 /// ```
-public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
+public final class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// The struct layout of `VkDisplayPlaneCapabilitiesKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("supportedAlpha"),
@@ -92,20 +92,21 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     public static final MemoryLayout LAYOUT_maxDstExtent = LAYOUT.select(PathElement.groupElement("maxDstExtent"));
 
     /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkDisplayPlaneCapabilitiesKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDisplayPlaneCapabilitiesKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDisplayPlaneCapabilitiesKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneCapabilitiesKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDisplayPlaneCapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneCapabilitiesKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDisplayPlaneCapabilitiesKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneCapabilitiesKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDisplayPlaneCapabilitiesKHR` with the given segment.
     ///
@@ -113,18 +114,18 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDisplayPlaneCapabilitiesKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDisplayPlaneCapabilitiesKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
-    public static VkDisplayPlaneCapabilitiesKHR alloc(SegmentAllocator allocator) { return new VkDisplayPlaneCapabilitiesKHR(allocator.allocate(LAYOUT)); }
+    public static VkDisplayPlaneCapabilitiesKHR alloc(SegmentAllocator allocator) { return new VkDisplayPlaneCapabilitiesKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDisplayPlaneCapabilitiesKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDisplayPlaneCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPlaneCapabilitiesKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDisplayPlaneCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -239,9 +240,10 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR copyFrom(VkDisplayPlaneCapabilitiesKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDisplayPlaneCapabilitiesKHR reinterpret(long count) { return new VkDisplayPlaneCapabilitiesKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `supportedAlpha` at the given index}
     /// @param segment the segment of the struct
@@ -419,148 +421,142 @@ public sealed class VkDisplayPlaneCapabilitiesKHR extends GroupType {
     /// @return `this`
     public VkDisplayPlaneCapabilitiesKHR maxDstExtent(Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxDstExtent())); return this; }
 
-    /// A buffer of [VkDisplayPlaneCapabilitiesKHR].
-    public static final class Buffer extends VkDisplayPlaneCapabilitiesKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkDisplayPlaneCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDisplayPlaneCapabilitiesKHR`
+    public VkDisplayPlaneCapabilitiesKHR asSlice(long index) { return new VkDisplayPlaneCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDisplayPlaneCapabilitiesKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDisplayPlaneCapabilitiesKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDisplayPlaneCapabilitiesKHR`
+    public VkDisplayPlaneCapabilitiesKHR asSlice(long index, long count) { return new VkDisplayPlaneCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDisplayPlaneCapabilitiesKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR at(long index, Consumer<VkDisplayPlaneCapabilitiesKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDisplayPlaneCapabilitiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDisplayPlaneCapabilitiesKHR`
-        public VkDisplayPlaneCapabilitiesKHR asSlice(long index) { return new VkDisplayPlaneCapabilitiesKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `supportedAlpha` at the given index}
+    /// @param index the index of the struct buffer
+    public int supportedAlphaAt(long index) { return supportedAlpha(this.segment(), index); }
+    /// Sets `supportedAlpha` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR supportedAlphaAt(long index, int value) { supportedAlpha(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDisplayPlaneCapabilitiesKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDisplayPlaneCapabilitiesKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `minSrcPosition` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment minSrcPositionAt(long index) { return minSrcPosition(this.segment(), index); }
+    /// Sets `minSrcPosition` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minSrcPositionAt(long index, MemorySegment value) { minSrcPosition(this.segment(), index, value); return this; }
+    /// Accepts `minSrcPosition` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minSrcPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minSrcPositionAt(index))); return this; }
 
-        /// {@return `supportedAlpha` at the given index}
-        /// @param index the index of the struct buffer
-        public int supportedAlphaAt(long index) { return supportedAlpha(this.segment(), index); }
-        /// Sets `supportedAlpha` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer supportedAlphaAt(long index, int value) { supportedAlpha(this.segment(), index, value); return this; }
+    /// {@return `maxSrcPosition` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxSrcPositionAt(long index) { return maxSrcPosition(this.segment(), index); }
+    /// Sets `maxSrcPosition` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxSrcPositionAt(long index, MemorySegment value) { maxSrcPosition(this.segment(), index, value); return this; }
+    /// Accepts `maxSrcPosition` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxSrcPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxSrcPositionAt(index))); return this; }
 
-        /// {@return `minSrcPosition` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment minSrcPositionAt(long index) { return minSrcPosition(this.segment(), index); }
-        /// Sets `minSrcPosition` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minSrcPositionAt(long index, MemorySegment value) { minSrcPosition(this.segment(), index, value); return this; }
-        /// Accepts `minSrcPosition` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer minSrcPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minSrcPositionAt(index))); return this; }
+    /// {@return `minSrcExtent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment minSrcExtentAt(long index) { return minSrcExtent(this.segment(), index); }
+    /// Sets `minSrcExtent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minSrcExtentAt(long index, MemorySegment value) { minSrcExtent(this.segment(), index, value); return this; }
+    /// Accepts `minSrcExtent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minSrcExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minSrcExtentAt(index))); return this; }
 
-        /// {@return `maxSrcPosition` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxSrcPositionAt(long index) { return maxSrcPosition(this.segment(), index); }
-        /// Sets `maxSrcPosition` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSrcPositionAt(long index, MemorySegment value) { maxSrcPosition(this.segment(), index, value); return this; }
-        /// Accepts `maxSrcPosition` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxSrcPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxSrcPositionAt(index))); return this; }
+    /// {@return `maxSrcExtent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxSrcExtentAt(long index) { return maxSrcExtent(this.segment(), index); }
+    /// Sets `maxSrcExtent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxSrcExtentAt(long index, MemorySegment value) { maxSrcExtent(this.segment(), index, value); return this; }
+    /// Accepts `maxSrcExtent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxSrcExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSrcExtentAt(index))); return this; }
 
-        /// {@return `minSrcExtent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment minSrcExtentAt(long index) { return minSrcExtent(this.segment(), index); }
-        /// Sets `minSrcExtent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minSrcExtentAt(long index, MemorySegment value) { minSrcExtent(this.segment(), index, value); return this; }
-        /// Accepts `minSrcExtent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer minSrcExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minSrcExtentAt(index))); return this; }
+    /// {@return `minDstPosition` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment minDstPositionAt(long index) { return minDstPosition(this.segment(), index); }
+    /// Sets `minDstPosition` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minDstPositionAt(long index, MemorySegment value) { minDstPosition(this.segment(), index, value); return this; }
+    /// Accepts `minDstPosition` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minDstPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minDstPositionAt(index))); return this; }
 
-        /// {@return `maxSrcExtent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxSrcExtentAt(long index) { return maxSrcExtent(this.segment(), index); }
-        /// Sets `maxSrcExtent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxSrcExtentAt(long index, MemorySegment value) { maxSrcExtent(this.segment(), index, value); return this; }
-        /// Accepts `maxSrcExtent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxSrcExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxSrcExtentAt(index))); return this; }
+    /// {@return `maxDstPosition` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxDstPositionAt(long index) { return maxDstPosition(this.segment(), index); }
+    /// Sets `maxDstPosition` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxDstPositionAt(long index, MemorySegment value) { maxDstPosition(this.segment(), index, value); return this; }
+    /// Accepts `maxDstPosition` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxDstPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxDstPositionAt(index))); return this; }
 
-        /// {@return `minDstPosition` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment minDstPositionAt(long index) { return minDstPosition(this.segment(), index); }
-        /// Sets `minDstPosition` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minDstPositionAt(long index, MemorySegment value) { minDstPosition(this.segment(), index, value); return this; }
-        /// Accepts `minDstPosition` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer minDstPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(minDstPositionAt(index))); return this; }
+    /// {@return `minDstExtent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment minDstExtentAt(long index) { return minDstExtent(this.segment(), index); }
+    /// Sets `minDstExtent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minDstExtentAt(long index, MemorySegment value) { minDstExtent(this.segment(), index, value); return this; }
+    /// Accepts `minDstExtent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR minDstExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minDstExtentAt(index))); return this; }
 
-        /// {@return `maxDstPosition` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxDstPositionAt(long index) { return maxDstPosition(this.segment(), index); }
-        /// Sets `maxDstPosition` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDstPositionAt(long index, MemorySegment value) { maxDstPosition(this.segment(), index, value); return this; }
-        /// Accepts `maxDstPosition` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxDstPositionAt(long index, Consumer<overrungl.vulkan.struct.VkOffset2D> func) { func.accept(overrungl.vulkan.struct.VkOffset2D.of(maxDstPositionAt(index))); return this; }
+    /// {@return `maxDstExtent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment maxDstExtentAt(long index) { return maxDstExtent(this.segment(), index); }
+    /// Sets `maxDstExtent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxDstExtentAt(long index, MemorySegment value) { maxDstExtent(this.segment(), index, value); return this; }
+    /// Accepts `maxDstExtent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkDisplayPlaneCapabilitiesKHR maxDstExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxDstExtentAt(index))); return this; }
 
-        /// {@return `minDstExtent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment minDstExtentAt(long index) { return minDstExtent(this.segment(), index); }
-        /// Sets `minDstExtent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minDstExtentAt(long index, MemorySegment value) { minDstExtent(this.segment(), index, value); return this; }
-        /// Accepts `minDstExtent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer minDstExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(minDstExtentAt(index))); return this; }
-
-        /// {@return `maxDstExtent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment maxDstExtentAt(long index) { return maxDstExtent(this.segment(), index); }
-        /// Sets `maxDstExtent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxDstExtentAt(long index, MemorySegment value) { maxDstExtent(this.segment(), index, value); return this; }
-        /// Accepts `maxDstExtent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer maxDstExtentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent2D> func) { func.accept(overrungl.vulkan.struct.VkExtent2D.of(maxDstExtentAt(index))); return this; }
-
-    }
 }

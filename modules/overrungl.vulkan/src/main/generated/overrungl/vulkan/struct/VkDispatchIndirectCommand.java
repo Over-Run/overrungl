@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint32_t z;
 /// };
 /// ```
-public sealed class VkDispatchIndirectCommand extends GroupType {
+public final class VkDispatchIndirectCommand extends GroupType {
     /// The struct layout of `VkDispatchIndirectCommand`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("x"),
@@ -59,20 +60,21 @@ public sealed class VkDispatchIndirectCommand extends GroupType {
     public static final VarHandle VH_z = LAYOUT.arrayElementVarHandle(PathElement.groupElement("z"));
 
     /// Creates `VkDispatchIndirectCommand` with the given segment.
-    /// @param segment the memory segment
-    public VkDispatchIndirectCommand(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDispatchIndirectCommand(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDispatchIndirectCommand` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDispatchIndirectCommand of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDispatchIndirectCommand(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDispatchIndirectCommand` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDispatchIndirectCommand ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDispatchIndirectCommand(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDispatchIndirectCommand ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDispatchIndirectCommand(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDispatchIndirectCommand` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkDispatchIndirectCommand extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDispatchIndirectCommand ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDispatchIndirectCommand(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDispatchIndirectCommand` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDispatchIndirectCommand`
-    public static VkDispatchIndirectCommand alloc(SegmentAllocator allocator) { return new VkDispatchIndirectCommand(allocator.allocate(LAYOUT)); }
+    public static VkDispatchIndirectCommand alloc(SegmentAllocator allocator) { return new VkDispatchIndirectCommand(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDispatchIndirectCommand` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDispatchIndirectCommand`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDispatchIndirectCommand alloc(SegmentAllocator allocator, long count) { return new VkDispatchIndirectCommand(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDispatchIndirectCommand` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkDispatchIndirectCommand extends GroupType {
     /// @return `this`
     public VkDispatchIndirectCommand copyFrom(VkDispatchIndirectCommand src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDispatchIndirectCommand reinterpret(long count) { return new VkDispatchIndirectCommand(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `x` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkDispatchIndirectCommand extends GroupType {
     /// @return `this`
     public VkDispatchIndirectCommand z(int value) { z(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDispatchIndirectCommand].
-    public static final class Buffer extends VkDispatchIndirectCommand {
-        private final long elementCount;
+    /// Creates a slice of `VkDispatchIndirectCommand`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDispatchIndirectCommand`
+    public VkDispatchIndirectCommand asSlice(long index) { return new VkDispatchIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDispatchIndirectCommand.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDispatchIndirectCommand`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDispatchIndirectCommand`
+    public VkDispatchIndirectCommand asSlice(long index, long count) { return new VkDispatchIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDispatchIndirectCommand` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDispatchIndirectCommand at(long index, Consumer<VkDispatchIndirectCommand> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDispatchIndirectCommand`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDispatchIndirectCommand`
-        public VkDispatchIndirectCommand asSlice(long index) { return new VkDispatchIndirectCommand(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `x` at the given index}
+    /// @param index the index of the struct buffer
+    public int xAt(long index) { return x(this.segment(), index); }
+    /// Sets `x` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDispatchIndirectCommand xAt(long index, int value) { x(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDispatchIndirectCommand`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDispatchIndirectCommand`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `y` at the given index}
+    /// @param index the index of the struct buffer
+    public int yAt(long index) { return y(this.segment(), index); }
+    /// Sets `y` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDispatchIndirectCommand yAt(long index, int value) { y(this.segment(), index, value); return this; }
 
-        /// {@return `x` at the given index}
-        /// @param index the index of the struct buffer
-        public int xAt(long index) { return x(this.segment(), index); }
-        /// Sets `x` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer xAt(long index, int value) { x(this.segment(), index, value); return this; }
+    /// {@return `z` at the given index}
+    /// @param index the index of the struct buffer
+    public int zAt(long index) { return z(this.segment(), index); }
+    /// Sets `z` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDispatchIndirectCommand zAt(long index, int value) { z(this.segment(), index, value); return this; }
 
-        /// {@return `y` at the given index}
-        /// @param index the index of the struct buffer
-        public int yAt(long index) { return y(this.segment(), index); }
-        /// Sets `y` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer yAt(long index, int value) { y(this.segment(), index, value); return this; }
-
-        /// {@return `z` at the given index}
-        /// @param index the index of the struct buffer
-        public int zAt(long index) { return z(this.segment(), index); }
-        /// Sets `z` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer zAt(long index, int value) { z(this.segment(), index, value); return this; }
-
-    }
 }

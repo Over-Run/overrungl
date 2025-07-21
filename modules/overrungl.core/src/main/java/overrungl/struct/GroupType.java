@@ -31,16 +31,19 @@ import java.lang.foreign.MemorySegment;
 public abstract class GroupType implements Addressable {
     private final MemorySegment segment;
     private final GroupLayout layout;
+    private final long elementCount;
 
     /// A constructor that accepts a backing segment and the layout of a `GroupType` instance.
     ///
     /// Subclasses should pass their own layout to this constructor.
     ///
-    /// @param segment the backing segment
-    /// @param layout  the layout of the group type
-    public GroupType(MemorySegment segment, GroupLayout layout) {
+    /// @param segment      the backing segment
+    /// @param layout       the layout of the group type
+    /// @param elementCount the element count of the group type buffer
+    public GroupType(MemorySegment segment, GroupLayout layout, long elementCount) {
         this.segment = segment;
         this.layout = layout;
+        this.elementCount = elementCount;
     }
 
     /// Estimates the element count of the struct buffer in the given segment.
@@ -59,7 +62,7 @@ public abstract class GroupType implements Addressable {
     ///
     /// @return the estimated element count of the group type buffer
     public long estimateCount() {
-        return estimateCount(segment, layout);
+        return elementCount;
     }
 
     /// {@return the segment of this group type}

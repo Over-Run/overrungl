@@ -21,6 +21,7 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint16_t long_term_pic_num;
 /// };
 /// ```
-public sealed class StdVideoEncodeH264RefListModEntry extends GroupType {
+public final class StdVideoEncodeH264RefListModEntry extends GroupType {
     /// The struct layout of `StdVideoEncodeH264RefListModEntry`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("modification_of_pic_nums_idc"),
@@ -59,20 +60,21 @@ public sealed class StdVideoEncodeH264RefListModEntry extends GroupType {
     public static final VarHandle VH_long_term_pic_num = LAYOUT.arrayElementVarHandle(PathElement.groupElement("long_term_pic_num"));
 
     /// Creates `StdVideoEncodeH264RefListModEntry` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoEncodeH264RefListModEntry(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoEncodeH264RefListModEntry(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoEncodeH264RefListModEntry` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoEncodeH264RefListModEntry of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH264RefListModEntry(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeH264RefListModEntry` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH264RefListModEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH264RefListModEntry(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoEncodeH264RefListModEntry ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH264RefListModEntry(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoEncodeH264RefListModEntry` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class StdVideoEncodeH264RefListModEntry extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoEncodeH264RefListModEntry ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH264RefListModEntry(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoEncodeH264RefListModEntry` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeH264RefListModEntry`
-    public static StdVideoEncodeH264RefListModEntry alloc(SegmentAllocator allocator) { return new StdVideoEncodeH264RefListModEntry(allocator.allocate(LAYOUT)); }
+    public static StdVideoEncodeH264RefListModEntry alloc(SegmentAllocator allocator) { return new StdVideoEncodeH264RefListModEntry(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoEncodeH264RefListModEntry` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH264RefListModEntry`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoEncodeH264RefListModEntry alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264RefListModEntry(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoEncodeH264RefListModEntry` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class StdVideoEncodeH264RefListModEntry extends GroupType {
     /// @return `this`
     public StdVideoEncodeH264RefListModEntry copyFrom(StdVideoEncodeH264RefListModEntry src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoEncodeH264RefListModEntry reinterpret(long count) { return new StdVideoEncodeH264RefListModEntry(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `modification_of_pic_nums_idc` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class StdVideoEncodeH264RefListModEntry extends GroupType {
     /// @return `this`
     public StdVideoEncodeH264RefListModEntry long_term_pic_num(short value) { long_term_pic_num(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [StdVideoEncodeH264RefListModEntry].
-    public static final class Buffer extends StdVideoEncodeH264RefListModEntry {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoEncodeH264RefListModEntry`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH264RefListModEntry`
+    public StdVideoEncodeH264RefListModEntry asSlice(long index) { return new StdVideoEncodeH264RefListModEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoEncodeH264RefListModEntry.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoEncodeH264RefListModEntry`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH264RefListModEntry`
+    public StdVideoEncodeH264RefListModEntry asSlice(long index, long count) { return new StdVideoEncodeH264RefListModEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoEncodeH264RefListModEntry` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoEncodeH264RefListModEntry at(long index, Consumer<StdVideoEncodeH264RefListModEntry> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH264RefListModEntry`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoEncodeH264RefListModEntry`
-        public StdVideoEncodeH264RefListModEntry asSlice(long index) { return new StdVideoEncodeH264RefListModEntry(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `modification_of_pic_nums_idc` at the given index}
+    /// @param index the index of the struct buffer
+    public int modification_of_pic_nums_idcAt(long index) { return modification_of_pic_nums_idc(this.segment(), index); }
+    /// Sets `modification_of_pic_nums_idc` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264RefListModEntry modification_of_pic_nums_idcAt(long index, int value) { modification_of_pic_nums_idc(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH264RefListModEntry`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoEncodeH264RefListModEntry`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `abs_diff_pic_num_minus1` at the given index}
+    /// @param index the index of the struct buffer
+    public short abs_diff_pic_num_minus1At(long index) { return abs_diff_pic_num_minus1(this.segment(), index); }
+    /// Sets `abs_diff_pic_num_minus1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264RefListModEntry abs_diff_pic_num_minus1At(long index, short value) { abs_diff_pic_num_minus1(this.segment(), index, value); return this; }
 
-        /// {@return `modification_of_pic_nums_idc` at the given index}
-        /// @param index the index of the struct buffer
-        public int modification_of_pic_nums_idcAt(long index) { return modification_of_pic_nums_idc(this.segment(), index); }
-        /// Sets `modification_of_pic_nums_idc` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer modification_of_pic_nums_idcAt(long index, int value) { modification_of_pic_nums_idc(this.segment(), index, value); return this; }
+    /// {@return `long_term_pic_num` at the given index}
+    /// @param index the index of the struct buffer
+    public short long_term_pic_numAt(long index) { return long_term_pic_num(this.segment(), index); }
+    /// Sets `long_term_pic_num` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264RefListModEntry long_term_pic_numAt(long index, short value) { long_term_pic_num(this.segment(), index, value); return this; }
 
-        /// {@return `abs_diff_pic_num_minus1` at the given index}
-        /// @param index the index of the struct buffer
-        public short abs_diff_pic_num_minus1At(long index) { return abs_diff_pic_num_minus1(this.segment(), index); }
-        /// Sets `abs_diff_pic_num_minus1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer abs_diff_pic_num_minus1At(long index, short value) { abs_diff_pic_num_minus1(this.segment(), index, value); return this; }
-
-        /// {@return `long_term_pic_num` at the given index}
-        /// @param index the index of the struct buffer
-        public short long_term_pic_numAt(long index) { return long_term_pic_num(this.segment(), index); }
-        /// Sets `long_term_pic_num` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer long_term_pic_numAt(long index, short value) { long_term_pic_num(this.segment(), index, value); return this; }
-
-    }
 }

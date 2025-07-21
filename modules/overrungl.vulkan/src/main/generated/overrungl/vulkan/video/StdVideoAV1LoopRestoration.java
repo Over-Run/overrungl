@@ -21,6 +21,7 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     uint16_t LoopRestorationSize[3];
 /// };
 /// ```
-public sealed class StdVideoAV1LoopRestoration extends GroupType {
+public final class StdVideoAV1LoopRestoration extends GroupType {
     /// The struct layout of `StdVideoAV1LoopRestoration`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         MemoryLayout.sequenceLayout(3, ValueLayout.JAVA_INT).withName("FrameRestorationType"),
@@ -51,20 +52,21 @@ public sealed class StdVideoAV1LoopRestoration extends GroupType {
     public static final VarHandle VH_LoopRestorationSize = LAYOUT.arrayElementVarHandle(PathElement.groupElement("LoopRestorationSize"), PathElement.sequenceElement());
 
     /// Creates `StdVideoAV1LoopRestoration` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoAV1LoopRestoration(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoAV1LoopRestoration(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoAV1LoopRestoration` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoAV1LoopRestoration of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1LoopRestoration(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoAV1LoopRestoration` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoAV1LoopRestoration ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1LoopRestoration(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoAV1LoopRestoration ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1LoopRestoration(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoAV1LoopRestoration` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class StdVideoAV1LoopRestoration extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoAV1LoopRestoration ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoAV1LoopRestoration(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoAV1LoopRestoration` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoAV1LoopRestoration`
-    public static StdVideoAV1LoopRestoration alloc(SegmentAllocator allocator) { return new StdVideoAV1LoopRestoration(allocator.allocate(LAYOUT)); }
+    public static StdVideoAV1LoopRestoration alloc(SegmentAllocator allocator) { return new StdVideoAV1LoopRestoration(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoAV1LoopRestoration` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoAV1LoopRestoration`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoAV1LoopRestoration alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1LoopRestoration(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoAV1LoopRestoration` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -107,9 +109,10 @@ public sealed class StdVideoAV1LoopRestoration extends GroupType {
     /// @return `this`
     public StdVideoAV1LoopRestoration copyFrom(StdVideoAV1LoopRestoration src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoAV1LoopRestoration reinterpret(long count) { return new StdVideoAV1LoopRestoration(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `FrameRestorationType` at the given index}
     /// @param segment the segment of the struct
@@ -181,65 +184,59 @@ public sealed class StdVideoAV1LoopRestoration extends GroupType {
     /// @return `this`
     public StdVideoAV1LoopRestoration LoopRestorationSize(long index0, short value) { LoopRestorationSize(this.segment(), 0L, index0, value); return this; }
 
-    /// A buffer of [StdVideoAV1LoopRestoration].
-    public static final class Buffer extends StdVideoAV1LoopRestoration {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoAV1LoopRestoration`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoAV1LoopRestoration`
+    public StdVideoAV1LoopRestoration asSlice(long index) { return new StdVideoAV1LoopRestoration(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoAV1LoopRestoration.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoAV1LoopRestoration`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoAV1LoopRestoration`
+    public StdVideoAV1LoopRestoration asSlice(long index, long count) { return new StdVideoAV1LoopRestoration(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoAV1LoopRestoration` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoAV1LoopRestoration at(long index, Consumer<StdVideoAV1LoopRestoration> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoAV1LoopRestoration`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoAV1LoopRestoration`
-        public StdVideoAV1LoopRestoration asSlice(long index) { return new StdVideoAV1LoopRestoration(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
-
-        /// Creates a slice of `StdVideoAV1LoopRestoration`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoAV1LoopRestoration`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
-
-        /// {@return `FrameRestorationType` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment FrameRestorationTypeAt(long index) { return FrameRestorationType(this.segment(), index); }
-        /// {@return `FrameRestorationType` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `FrameRestorationType` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment FrameRestorationTypeAt(long index) { return FrameRestorationType(this.segment(), index); }
+    /// {@return `FrameRestorationType` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public int FrameRestorationTypeAt(long index, long index0) { return FrameRestorationType(this.segment(), index, index0); }
-        /// Sets `FrameRestorationType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer FrameRestorationTypeAt(long index, MemorySegment value) { FrameRestorationType(this.segment(), index, value); return this; }
-        /// Sets `FrameRestorationType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer FrameRestorationTypeAt(long index, long index0, int value) { FrameRestorationType(this.segment(), index, index0, value); return this; }
+    /// Sets `FrameRestorationType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1LoopRestoration FrameRestorationTypeAt(long index, MemorySegment value) { FrameRestorationType(this.segment(), index, value); return this; }
+    /// Sets `FrameRestorationType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1LoopRestoration FrameRestorationTypeAt(long index, long index0, int value) { FrameRestorationType(this.segment(), index, index0, value); return this; }
 
-        /// {@return `LoopRestorationSize` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment LoopRestorationSizeAt(long index) { return LoopRestorationSize(this.segment(), index); }
-        /// {@return `LoopRestorationSize` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `LoopRestorationSize` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment LoopRestorationSizeAt(long index) { return LoopRestorationSize(this.segment(), index); }
+    /// {@return `LoopRestorationSize` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public short LoopRestorationSizeAt(long index, long index0) { return LoopRestorationSize(this.segment(), index, index0); }
-        /// Sets `LoopRestorationSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer LoopRestorationSizeAt(long index, MemorySegment value) { LoopRestorationSize(this.segment(), index, value); return this; }
-        /// Sets `LoopRestorationSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer LoopRestorationSizeAt(long index, long index0, short value) { LoopRestorationSize(this.segment(), index, index0, value); return this; }
+    /// Sets `LoopRestorationSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1LoopRestoration LoopRestorationSizeAt(long index, MemorySegment value) { LoopRestorationSize(this.segment(), index, value); return this; }
+    /// Sets `LoopRestorationSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoAV1LoopRestoration LoopRestorationSizeAt(long index, long index0, short value) { LoopRestorationSize(this.segment(), index, index0, value); return this; }
 
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.amdx.union;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -31,7 +32,7 @@ import overrungl.util.*;
 ///     const void* hostAddress;
 /// };
 /// ```
-public sealed class VkDeviceOrHostAddressConstAMDX extends GroupType {
+public final class VkDeviceOrHostAddressConstAMDX extends GroupType {
     /// The union layout of `VkDeviceOrHostAddressConstAMDX`.
     public static final GroupLayout LAYOUT = MemoryLayout.unionLayout(
         ValueLayout.JAVA_LONG.withName("deviceAddress"),
@@ -51,20 +52,21 @@ public sealed class VkDeviceOrHostAddressConstAMDX extends GroupType {
     public static final VarHandle VH_hostAddress = LAYOUT.arrayElementVarHandle(PathElement.groupElement("hostAddress"));
 
     /// Creates `VkDeviceOrHostAddressConstAMDX` with the given segment.
-    /// @param segment the memory segment
-    public VkDeviceOrHostAddressConstAMDX(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this union buffer
+    public VkDeviceOrHostAddressConstAMDX(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDeviceOrHostAddressConstAMDX` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDeviceOrHostAddressConstAMDX of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceOrHostAddressConstAMDX(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDeviceOrHostAddressConstAMDX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDeviceOrHostAddressConstAMDX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceOrHostAddressConstAMDX(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDeviceOrHostAddressConstAMDX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceOrHostAddressConstAMDX(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDeviceOrHostAddressConstAMDX` with the given segment.
     ///
@@ -72,18 +74,18 @@ public sealed class VkDeviceOrHostAddressConstAMDX extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDeviceOrHostAddressConstAMDX ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDeviceOrHostAddressConstAMDX(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDeviceOrHostAddressConstAMDX` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDeviceOrHostAddressConstAMDX`
-    public static VkDeviceOrHostAddressConstAMDX alloc(SegmentAllocator allocator) { return new VkDeviceOrHostAddressConstAMDX(allocator.allocate(LAYOUT)); }
+    public static VkDeviceOrHostAddressConstAMDX alloc(SegmentAllocator allocator) { return new VkDeviceOrHostAddressConstAMDX(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDeviceOrHostAddressConstAMDX` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDeviceOrHostAddressConstAMDX`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDeviceOrHostAddressConstAMDX alloc(SegmentAllocator allocator, long count) { return new VkDeviceOrHostAddressConstAMDX(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDeviceOrHostAddressConstAMDX` with the given segment allocator and `deviceAddress`.
     /// @param allocator the segment allocator
@@ -106,9 +108,10 @@ public sealed class VkDeviceOrHostAddressConstAMDX extends GroupType {
     /// @return `this`
     public VkDeviceOrHostAddressConstAMDX copyFrom(VkDeviceOrHostAddressConstAMDX src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDeviceOrHostAddressConstAMDX reinterpret(long count) { return new VkDeviceOrHostAddressConstAMDX(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `deviceAddress` at the given index}
     /// @param segment the segment of the union
@@ -142,45 +145,39 @@ public sealed class VkDeviceOrHostAddressConstAMDX extends GroupType {
     /// @return `this`
     public VkDeviceOrHostAddressConstAMDX hostAddress(MemorySegment value) { hostAddress(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDeviceOrHostAddressConstAMDX].
-    public static final class Buffer extends VkDeviceOrHostAddressConstAMDX {
-        private final long elementCount;
+    /// Creates a slice of `VkDeviceOrHostAddressConstAMDX`.
+    /// @param index the index of the union buffer
+    /// @return the slice of `VkDeviceOrHostAddressConstAMDX`
+    public VkDeviceOrHostAddressConstAMDX asSlice(long index) { return new VkDeviceOrHostAddressConstAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDeviceOrHostAddressConstAMDX.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDeviceOrHostAddressConstAMDX`.
+    /// @param index the index of the union buffer
+    /// @param count the count
+    /// @return the slice of `VkDeviceOrHostAddressConstAMDX`
+    public VkDeviceOrHostAddressConstAMDX asSlice(long index, long count) { return new VkDeviceOrHostAddressConstAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDeviceOrHostAddressConstAMDX` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDeviceOrHostAddressConstAMDX at(long index, Consumer<VkDeviceOrHostAddressConstAMDX> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDeviceOrHostAddressConstAMDX`.
-        /// @param index the index of the union buffer
-        /// @return the slice of `VkDeviceOrHostAddressConstAMDX`
-        public VkDeviceOrHostAddressConstAMDX asSlice(long index) { return new VkDeviceOrHostAddressConstAMDX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `deviceAddress` at the given index}
+    /// @param index the index of the union buffer
+    public long deviceAddressAt(long index) { return deviceAddress(this.segment(), index); }
+    /// Sets `deviceAddress` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceOrHostAddressConstAMDX deviceAddressAt(long index, long value) { deviceAddress(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDeviceOrHostAddressConstAMDX`.
-        /// @param index the index of the union buffer
-        /// @param count the count
-        /// @return the slice of `VkDeviceOrHostAddressConstAMDX`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `hostAddress` at the given index}
+    /// @param index the index of the union buffer
+    public MemorySegment hostAddressAt(long index) { return hostAddress(this.segment(), index); }
+    /// Sets `hostAddress` with the given value at the given index.
+    /// @param index the index of the union buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDeviceOrHostAddressConstAMDX hostAddressAt(long index, MemorySegment value) { hostAddress(this.segment(), index, value); return this; }
 
-        /// {@return `deviceAddress` at the given index}
-        /// @param index the index of the union buffer
-        public long deviceAddressAt(long index) { return deviceAddress(this.segment(), index); }
-        /// Sets `deviceAddress` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer deviceAddressAt(long index, long value) { deviceAddress(this.segment(), index, value); return this; }
-
-        /// {@return `hostAddress` at the given index}
-        /// @param index the index of the union buffer
-        public MemorySegment hostAddressAt(long index) { return hostAddress(this.segment(), index); }
-        /// Sets `hostAddress` with the given value at the given index.
-        /// @param index the index of the union buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hostAddressAt(long index, MemorySegment value) { hostAddress(this.segment(), index, value); return this; }
-
-    }
 }

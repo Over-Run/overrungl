@@ -21,6 +21,7 @@ package overrungl.vma;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -56,7 +57,7 @@ import overrungl.util.*;
 ///     (void*) PFN_vkGetMemoryWin32HandleKHR vkGetMemoryWin32HandleKHR;
 /// };
 /// ```
-public sealed class VmaVulkanFunctions extends GroupType {
+public final class VmaVulkanFunctions extends GroupType {
     /// The struct layout of `VmaVulkanFunctions`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.ADDRESS.withName("vkGetInstanceProcAddr"),
@@ -251,20 +252,21 @@ public sealed class VmaVulkanFunctions extends GroupType {
     public static final VarHandle VH_vkGetMemoryWin32HandleKHR = LAYOUT.arrayElementVarHandle(PathElement.groupElement("vkGetMemoryWin32HandleKHR"));
 
     /// Creates `VmaVulkanFunctions` with the given segment.
-    /// @param segment the memory segment
-    public VmaVulkanFunctions(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VmaVulkanFunctions(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VmaVulkanFunctions` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VmaVulkanFunctions of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaVulkanFunctions(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VmaVulkanFunctions` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VmaVulkanFunctions ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaVulkanFunctions(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VmaVulkanFunctions ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaVulkanFunctions(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VmaVulkanFunctions` with the given segment.
     ///
@@ -272,18 +274,18 @@ public sealed class VmaVulkanFunctions extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VmaVulkanFunctions ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VmaVulkanFunctions(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VmaVulkanFunctions` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VmaVulkanFunctions`
-    public static VmaVulkanFunctions alloc(SegmentAllocator allocator) { return new VmaVulkanFunctions(allocator.allocate(LAYOUT)); }
+    public static VmaVulkanFunctions alloc(SegmentAllocator allocator) { return new VmaVulkanFunctions(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VmaVulkanFunctions` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VmaVulkanFunctions`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VmaVulkanFunctions alloc(SegmentAllocator allocator, long count) { return new VmaVulkanFunctions(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VmaVulkanFunctions` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -857,9 +859,10 @@ public sealed class VmaVulkanFunctions extends GroupType {
     /// @return `this`
     public VmaVulkanFunctions copyFrom(VmaVulkanFunctions src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VmaVulkanFunctions reinterpret(long count) { return new VmaVulkanFunctions(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `vkGetInstanceProcAddr` at the given index}
     /// @param segment the segment of the struct
@@ -1293,270 +1296,264 @@ public sealed class VmaVulkanFunctions extends GroupType {
     /// @return `this`
     public VmaVulkanFunctions vkGetMemoryWin32HandleKHR(MemorySegment value) { vkGetMemoryWin32HandleKHR(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VmaVulkanFunctions].
-    public static final class Buffer extends VmaVulkanFunctions {
-        private final long elementCount;
+    /// Creates a slice of `VmaVulkanFunctions`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VmaVulkanFunctions`
+    public VmaVulkanFunctions asSlice(long index) { return new VmaVulkanFunctions(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VmaVulkanFunctions.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VmaVulkanFunctions`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VmaVulkanFunctions`
+    public VmaVulkanFunctions asSlice(long index, long count) { return new VmaVulkanFunctions(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VmaVulkanFunctions` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VmaVulkanFunctions at(long index, Consumer<VmaVulkanFunctions> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VmaVulkanFunctions`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VmaVulkanFunctions`
-        public VmaVulkanFunctions asSlice(long index) { return new VmaVulkanFunctions(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `vkGetInstanceProcAddr` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetInstanceProcAddrAt(long index) { return vkGetInstanceProcAddr(this.segment(), index); }
+    /// Sets `vkGetInstanceProcAddr` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetInstanceProcAddrAt(long index, MemorySegment value) { vkGetInstanceProcAddr(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VmaVulkanFunctions`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VmaVulkanFunctions`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `vkGetDeviceProcAddr` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetDeviceProcAddrAt(long index) { return vkGetDeviceProcAddr(this.segment(), index); }
+    /// Sets `vkGetDeviceProcAddr` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetDeviceProcAddrAt(long index, MemorySegment value) { vkGetDeviceProcAddr(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetInstanceProcAddr` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetInstanceProcAddrAt(long index) { return vkGetInstanceProcAddr(this.segment(), index); }
-        /// Sets `vkGetInstanceProcAddr` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetInstanceProcAddrAt(long index, MemorySegment value) { vkGetInstanceProcAddr(this.segment(), index, value); return this; }
+    /// {@return `vkGetPhysicalDeviceProperties` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetPhysicalDevicePropertiesAt(long index) { return vkGetPhysicalDeviceProperties(this.segment(), index); }
+    /// Sets `vkGetPhysicalDeviceProperties` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetPhysicalDevicePropertiesAt(long index, MemorySegment value) { vkGetPhysicalDeviceProperties(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetDeviceProcAddr` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetDeviceProcAddrAt(long index) { return vkGetDeviceProcAddr(this.segment(), index); }
-        /// Sets `vkGetDeviceProcAddr` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetDeviceProcAddrAt(long index, MemorySegment value) { vkGetDeviceProcAddr(this.segment(), index, value); return this; }
+    /// {@return `vkGetPhysicalDeviceMemoryProperties` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetPhysicalDeviceMemoryPropertiesAt(long index) { return vkGetPhysicalDeviceMemoryProperties(this.segment(), index); }
+    /// Sets `vkGetPhysicalDeviceMemoryProperties` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetPhysicalDeviceMemoryPropertiesAt(long index, MemorySegment value) { vkGetPhysicalDeviceMemoryProperties(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetPhysicalDeviceProperties` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetPhysicalDevicePropertiesAt(long index) { return vkGetPhysicalDeviceProperties(this.segment(), index); }
-        /// Sets `vkGetPhysicalDeviceProperties` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetPhysicalDevicePropertiesAt(long index, MemorySegment value) { vkGetPhysicalDeviceProperties(this.segment(), index, value); return this; }
+    /// {@return `vkAllocateMemory` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkAllocateMemoryAt(long index) { return vkAllocateMemory(this.segment(), index); }
+    /// Sets `vkAllocateMemory` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkAllocateMemoryAt(long index, MemorySegment value) { vkAllocateMemory(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetPhysicalDeviceMemoryProperties` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetPhysicalDeviceMemoryPropertiesAt(long index) { return vkGetPhysicalDeviceMemoryProperties(this.segment(), index); }
-        /// Sets `vkGetPhysicalDeviceMemoryProperties` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetPhysicalDeviceMemoryPropertiesAt(long index, MemorySegment value) { vkGetPhysicalDeviceMemoryProperties(this.segment(), index, value); return this; }
+    /// {@return `vkFreeMemory` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkFreeMemoryAt(long index) { return vkFreeMemory(this.segment(), index); }
+    /// Sets `vkFreeMemory` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkFreeMemoryAt(long index, MemorySegment value) { vkFreeMemory(this.segment(), index, value); return this; }
 
-        /// {@return `vkAllocateMemory` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkAllocateMemoryAt(long index) { return vkAllocateMemory(this.segment(), index); }
-        /// Sets `vkAllocateMemory` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkAllocateMemoryAt(long index, MemorySegment value) { vkAllocateMemory(this.segment(), index, value); return this; }
+    /// {@return `vkMapMemory` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkMapMemoryAt(long index) { return vkMapMemory(this.segment(), index); }
+    /// Sets `vkMapMemory` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkMapMemoryAt(long index, MemorySegment value) { vkMapMemory(this.segment(), index, value); return this; }
 
-        /// {@return `vkFreeMemory` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkFreeMemoryAt(long index) { return vkFreeMemory(this.segment(), index); }
-        /// Sets `vkFreeMemory` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkFreeMemoryAt(long index, MemorySegment value) { vkFreeMemory(this.segment(), index, value); return this; }
+    /// {@return `vkUnmapMemory` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkUnmapMemoryAt(long index) { return vkUnmapMemory(this.segment(), index); }
+    /// Sets `vkUnmapMemory` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkUnmapMemoryAt(long index, MemorySegment value) { vkUnmapMemory(this.segment(), index, value); return this; }
 
-        /// {@return `vkMapMemory` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkMapMemoryAt(long index) { return vkMapMemory(this.segment(), index); }
-        /// Sets `vkMapMemory` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkMapMemoryAt(long index, MemorySegment value) { vkMapMemory(this.segment(), index, value); return this; }
+    /// {@return `vkFlushMappedMemoryRanges` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkFlushMappedMemoryRangesAt(long index) { return vkFlushMappedMemoryRanges(this.segment(), index); }
+    /// Sets `vkFlushMappedMemoryRanges` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkFlushMappedMemoryRangesAt(long index, MemorySegment value) { vkFlushMappedMemoryRanges(this.segment(), index, value); return this; }
 
-        /// {@return `vkUnmapMemory` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkUnmapMemoryAt(long index) { return vkUnmapMemory(this.segment(), index); }
-        /// Sets `vkUnmapMemory` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkUnmapMemoryAt(long index, MemorySegment value) { vkUnmapMemory(this.segment(), index, value); return this; }
+    /// {@return `vkInvalidateMappedMemoryRanges` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkInvalidateMappedMemoryRangesAt(long index) { return vkInvalidateMappedMemoryRanges(this.segment(), index); }
+    /// Sets `vkInvalidateMappedMemoryRanges` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkInvalidateMappedMemoryRangesAt(long index, MemorySegment value) { vkInvalidateMappedMemoryRanges(this.segment(), index, value); return this; }
 
-        /// {@return `vkFlushMappedMemoryRanges` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkFlushMappedMemoryRangesAt(long index) { return vkFlushMappedMemoryRanges(this.segment(), index); }
-        /// Sets `vkFlushMappedMemoryRanges` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkFlushMappedMemoryRangesAt(long index, MemorySegment value) { vkFlushMappedMemoryRanges(this.segment(), index, value); return this; }
+    /// {@return `vkBindBufferMemory` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkBindBufferMemoryAt(long index) { return vkBindBufferMemory(this.segment(), index); }
+    /// Sets `vkBindBufferMemory` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkBindBufferMemoryAt(long index, MemorySegment value) { vkBindBufferMemory(this.segment(), index, value); return this; }
 
-        /// {@return `vkInvalidateMappedMemoryRanges` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkInvalidateMappedMemoryRangesAt(long index) { return vkInvalidateMappedMemoryRanges(this.segment(), index); }
-        /// Sets `vkInvalidateMappedMemoryRanges` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkInvalidateMappedMemoryRangesAt(long index, MemorySegment value) { vkInvalidateMappedMemoryRanges(this.segment(), index, value); return this; }
+    /// {@return `vkBindImageMemory` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkBindImageMemoryAt(long index) { return vkBindImageMemory(this.segment(), index); }
+    /// Sets `vkBindImageMemory` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkBindImageMemoryAt(long index, MemorySegment value) { vkBindImageMemory(this.segment(), index, value); return this; }
 
-        /// {@return `vkBindBufferMemory` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkBindBufferMemoryAt(long index) { return vkBindBufferMemory(this.segment(), index); }
-        /// Sets `vkBindBufferMemory` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkBindBufferMemoryAt(long index, MemorySegment value) { vkBindBufferMemory(this.segment(), index, value); return this; }
+    /// {@return `vkGetBufferMemoryRequirements` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetBufferMemoryRequirementsAt(long index) { return vkGetBufferMemoryRequirements(this.segment(), index); }
+    /// Sets `vkGetBufferMemoryRequirements` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetBufferMemoryRequirementsAt(long index, MemorySegment value) { vkGetBufferMemoryRequirements(this.segment(), index, value); return this; }
 
-        /// {@return `vkBindImageMemory` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkBindImageMemoryAt(long index) { return vkBindImageMemory(this.segment(), index); }
-        /// Sets `vkBindImageMemory` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkBindImageMemoryAt(long index, MemorySegment value) { vkBindImageMemory(this.segment(), index, value); return this; }
+    /// {@return `vkGetImageMemoryRequirements` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetImageMemoryRequirementsAt(long index) { return vkGetImageMemoryRequirements(this.segment(), index); }
+    /// Sets `vkGetImageMemoryRequirements` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetImageMemoryRequirementsAt(long index, MemorySegment value) { vkGetImageMemoryRequirements(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetBufferMemoryRequirements` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetBufferMemoryRequirementsAt(long index) { return vkGetBufferMemoryRequirements(this.segment(), index); }
-        /// Sets `vkGetBufferMemoryRequirements` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetBufferMemoryRequirementsAt(long index, MemorySegment value) { vkGetBufferMemoryRequirements(this.segment(), index, value); return this; }
+    /// {@return `vkCreateBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkCreateBufferAt(long index) { return vkCreateBuffer(this.segment(), index); }
+    /// Sets `vkCreateBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkCreateBufferAt(long index, MemorySegment value) { vkCreateBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetImageMemoryRequirements` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetImageMemoryRequirementsAt(long index) { return vkGetImageMemoryRequirements(this.segment(), index); }
-        /// Sets `vkGetImageMemoryRequirements` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetImageMemoryRequirementsAt(long index, MemorySegment value) { vkGetImageMemoryRequirements(this.segment(), index, value); return this; }
+    /// {@return `vkDestroyBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkDestroyBufferAt(long index) { return vkDestroyBuffer(this.segment(), index); }
+    /// Sets `vkDestroyBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkDestroyBufferAt(long index, MemorySegment value) { vkDestroyBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `vkCreateBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkCreateBufferAt(long index) { return vkCreateBuffer(this.segment(), index); }
-        /// Sets `vkCreateBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkCreateBufferAt(long index, MemorySegment value) { vkCreateBuffer(this.segment(), index, value); return this; }
+    /// {@return `vkCreateImage` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkCreateImageAt(long index) { return vkCreateImage(this.segment(), index); }
+    /// Sets `vkCreateImage` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkCreateImageAt(long index, MemorySegment value) { vkCreateImage(this.segment(), index, value); return this; }
 
-        /// {@return `vkDestroyBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkDestroyBufferAt(long index) { return vkDestroyBuffer(this.segment(), index); }
-        /// Sets `vkDestroyBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkDestroyBufferAt(long index, MemorySegment value) { vkDestroyBuffer(this.segment(), index, value); return this; }
+    /// {@return `vkDestroyImage` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkDestroyImageAt(long index) { return vkDestroyImage(this.segment(), index); }
+    /// Sets `vkDestroyImage` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkDestroyImageAt(long index, MemorySegment value) { vkDestroyImage(this.segment(), index, value); return this; }
 
-        /// {@return `vkCreateImage` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkCreateImageAt(long index) { return vkCreateImage(this.segment(), index); }
-        /// Sets `vkCreateImage` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkCreateImageAt(long index, MemorySegment value) { vkCreateImage(this.segment(), index, value); return this; }
+    /// {@return `vkCmdCopyBuffer` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkCmdCopyBufferAt(long index) { return vkCmdCopyBuffer(this.segment(), index); }
+    /// Sets `vkCmdCopyBuffer` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkCmdCopyBufferAt(long index, MemorySegment value) { vkCmdCopyBuffer(this.segment(), index, value); return this; }
 
-        /// {@return `vkDestroyImage` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkDestroyImageAt(long index) { return vkDestroyImage(this.segment(), index); }
-        /// Sets `vkDestroyImage` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkDestroyImageAt(long index, MemorySegment value) { vkDestroyImage(this.segment(), index, value); return this; }
+    /// {@return `vkGetBufferMemoryRequirements2KHR` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetBufferMemoryRequirements2KHRAt(long index) { return vkGetBufferMemoryRequirements2KHR(this.segment(), index); }
+    /// Sets `vkGetBufferMemoryRequirements2KHR` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetBufferMemoryRequirements2KHRAt(long index, MemorySegment value) { vkGetBufferMemoryRequirements2KHR(this.segment(), index, value); return this; }
 
-        /// {@return `vkCmdCopyBuffer` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkCmdCopyBufferAt(long index) { return vkCmdCopyBuffer(this.segment(), index); }
-        /// Sets `vkCmdCopyBuffer` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkCmdCopyBufferAt(long index, MemorySegment value) { vkCmdCopyBuffer(this.segment(), index, value); return this; }
+    /// {@return `vkGetImageMemoryRequirements2KHR` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetImageMemoryRequirements2KHRAt(long index) { return vkGetImageMemoryRequirements2KHR(this.segment(), index); }
+    /// Sets `vkGetImageMemoryRequirements2KHR` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetImageMemoryRequirements2KHRAt(long index, MemorySegment value) { vkGetImageMemoryRequirements2KHR(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetBufferMemoryRequirements2KHR` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetBufferMemoryRequirements2KHRAt(long index) { return vkGetBufferMemoryRequirements2KHR(this.segment(), index); }
-        /// Sets `vkGetBufferMemoryRequirements2KHR` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetBufferMemoryRequirements2KHRAt(long index, MemorySegment value) { vkGetBufferMemoryRequirements2KHR(this.segment(), index, value); return this; }
+    /// {@return `vkBindBufferMemory2KHR` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkBindBufferMemory2KHRAt(long index) { return vkBindBufferMemory2KHR(this.segment(), index); }
+    /// Sets `vkBindBufferMemory2KHR` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkBindBufferMemory2KHRAt(long index, MemorySegment value) { vkBindBufferMemory2KHR(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetImageMemoryRequirements2KHR` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetImageMemoryRequirements2KHRAt(long index) { return vkGetImageMemoryRequirements2KHR(this.segment(), index); }
-        /// Sets `vkGetImageMemoryRequirements2KHR` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetImageMemoryRequirements2KHRAt(long index, MemorySegment value) { vkGetImageMemoryRequirements2KHR(this.segment(), index, value); return this; }
+    /// {@return `vkBindImageMemory2KHR` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkBindImageMemory2KHRAt(long index) { return vkBindImageMemory2KHR(this.segment(), index); }
+    /// Sets `vkBindImageMemory2KHR` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkBindImageMemory2KHRAt(long index, MemorySegment value) { vkBindImageMemory2KHR(this.segment(), index, value); return this; }
 
-        /// {@return `vkBindBufferMemory2KHR` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkBindBufferMemory2KHRAt(long index) { return vkBindBufferMemory2KHR(this.segment(), index); }
-        /// Sets `vkBindBufferMemory2KHR` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkBindBufferMemory2KHRAt(long index, MemorySegment value) { vkBindBufferMemory2KHR(this.segment(), index, value); return this; }
+    /// {@return `vkGetPhysicalDeviceMemoryProperties2KHR` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetPhysicalDeviceMemoryProperties2KHRAt(long index) { return vkGetPhysicalDeviceMemoryProperties2KHR(this.segment(), index); }
+    /// Sets `vkGetPhysicalDeviceMemoryProperties2KHR` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetPhysicalDeviceMemoryProperties2KHRAt(long index, MemorySegment value) { vkGetPhysicalDeviceMemoryProperties2KHR(this.segment(), index, value); return this; }
 
-        /// {@return `vkBindImageMemory2KHR` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkBindImageMemory2KHRAt(long index) { return vkBindImageMemory2KHR(this.segment(), index); }
-        /// Sets `vkBindImageMemory2KHR` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkBindImageMemory2KHRAt(long index, MemorySegment value) { vkBindImageMemory2KHR(this.segment(), index, value); return this; }
+    /// {@return `vkGetDeviceBufferMemoryRequirements` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetDeviceBufferMemoryRequirementsAt(long index) { return vkGetDeviceBufferMemoryRequirements(this.segment(), index); }
+    /// Sets `vkGetDeviceBufferMemoryRequirements` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetDeviceBufferMemoryRequirementsAt(long index, MemorySegment value) { vkGetDeviceBufferMemoryRequirements(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetPhysicalDeviceMemoryProperties2KHR` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetPhysicalDeviceMemoryProperties2KHRAt(long index) { return vkGetPhysicalDeviceMemoryProperties2KHR(this.segment(), index); }
-        /// Sets `vkGetPhysicalDeviceMemoryProperties2KHR` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetPhysicalDeviceMemoryProperties2KHRAt(long index, MemorySegment value) { vkGetPhysicalDeviceMemoryProperties2KHR(this.segment(), index, value); return this; }
+    /// {@return `vkGetDeviceImageMemoryRequirements` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetDeviceImageMemoryRequirementsAt(long index) { return vkGetDeviceImageMemoryRequirements(this.segment(), index); }
+    /// Sets `vkGetDeviceImageMemoryRequirements` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetDeviceImageMemoryRequirementsAt(long index, MemorySegment value) { vkGetDeviceImageMemoryRequirements(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetDeviceBufferMemoryRequirements` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetDeviceBufferMemoryRequirementsAt(long index) { return vkGetDeviceBufferMemoryRequirements(this.segment(), index); }
-        /// Sets `vkGetDeviceBufferMemoryRequirements` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetDeviceBufferMemoryRequirementsAt(long index, MemorySegment value) { vkGetDeviceBufferMemoryRequirements(this.segment(), index, value); return this; }
+    /// {@return `vkGetMemoryWin32HandleKHR` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment vkGetMemoryWin32HandleKHRAt(long index) { return vkGetMemoryWin32HandleKHR(this.segment(), index); }
+    /// Sets `vkGetMemoryWin32HandleKHR` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaVulkanFunctions vkGetMemoryWin32HandleKHRAt(long index, MemorySegment value) { vkGetMemoryWin32HandleKHR(this.segment(), index, value); return this; }
 
-        /// {@return `vkGetDeviceImageMemoryRequirements` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetDeviceImageMemoryRequirementsAt(long index) { return vkGetDeviceImageMemoryRequirements(this.segment(), index); }
-        /// Sets `vkGetDeviceImageMemoryRequirements` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetDeviceImageMemoryRequirementsAt(long index, MemorySegment value) { vkGetDeviceImageMemoryRequirements(this.segment(), index, value); return this; }
-
-        /// {@return `vkGetMemoryWin32HandleKHR` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment vkGetMemoryWin32HandleKHRAt(long index) { return vkGetMemoryWin32HandleKHR(this.segment(), index); }
-        /// Sets `vkGetMemoryWin32HandleKHR` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer vkGetMemoryWin32HandleKHRAt(long index, MemorySegment value) { vkGetMemoryWin32HandleKHR(this.segment(), index, value); return this; }
-
-    }
 }

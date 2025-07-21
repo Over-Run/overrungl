@@ -21,9 +21,9 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -36,7 +36,7 @@ import java.util.function.*;
 ///     uint64_t accelerationStructureReference;
 /// };
 /// ```
-public sealed class VkAccelerationStructureInstanceKHR extends GroupType {
+public final class VkAccelerationStructureInstanceKHR extends GroupType {
     /// The struct layout of `VkAccelerationStructureInstanceKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.bitfields(
         overrungl.vulkan.khr.struct.VkTransformMatrixKHR.LAYOUT.withName("transform"), -1,
@@ -58,20 +58,21 @@ public sealed class VkAccelerationStructureInstanceKHR extends GroupType {
     public static final VarHandle VH_accelerationStructureReference = LAYOUT.arrayElementVarHandle(PathElement.groupElement("accelerationStructureReference"));
 
     /// Creates `VkAccelerationStructureInstanceKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkAccelerationStructureInstanceKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAccelerationStructureInstanceKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAccelerationStructureInstanceKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAccelerationStructureInstanceKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureInstanceKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAccelerationStructureInstanceKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAccelerationStructureInstanceKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureInstanceKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAccelerationStructureInstanceKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureInstanceKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAccelerationStructureInstanceKHR` with the given segment.
     ///
@@ -79,27 +80,28 @@ public sealed class VkAccelerationStructureInstanceKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAccelerationStructureInstanceKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAccelerationStructureInstanceKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAccelerationStructureInstanceKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAccelerationStructureInstanceKHR`
-    public static VkAccelerationStructureInstanceKHR alloc(SegmentAllocator allocator) { return new VkAccelerationStructureInstanceKHR(allocator.allocate(LAYOUT)); }
+    public static VkAccelerationStructureInstanceKHR alloc(SegmentAllocator allocator) { return new VkAccelerationStructureInstanceKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAccelerationStructureInstanceKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAccelerationStructureInstanceKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAccelerationStructureInstanceKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureInstanceKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
     public VkAccelerationStructureInstanceKHR copyFrom(VkAccelerationStructureInstanceKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAccelerationStructureInstanceKHR reinterpret(long count) { return new VkAccelerationStructureInstanceKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `transform` at the given index}
     /// @param segment the segment of the struct
@@ -137,50 +139,44 @@ public sealed class VkAccelerationStructureInstanceKHR extends GroupType {
     /// @return `this`
     public VkAccelerationStructureInstanceKHR accelerationStructureReference(long value) { accelerationStructureReference(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAccelerationStructureInstanceKHR].
-    public static final class Buffer extends VkAccelerationStructureInstanceKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkAccelerationStructureInstanceKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAccelerationStructureInstanceKHR`
+    public VkAccelerationStructureInstanceKHR asSlice(long index) { return new VkAccelerationStructureInstanceKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAccelerationStructureInstanceKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAccelerationStructureInstanceKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAccelerationStructureInstanceKHR`
+    public VkAccelerationStructureInstanceKHR asSlice(long index, long count) { return new VkAccelerationStructureInstanceKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAccelerationStructureInstanceKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAccelerationStructureInstanceKHR at(long index, Consumer<VkAccelerationStructureInstanceKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureInstanceKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAccelerationStructureInstanceKHR`
-        public VkAccelerationStructureInstanceKHR asSlice(long index) { return new VkAccelerationStructureInstanceKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `transform` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment transformAt(long index) { return transform(this.segment(), index); }
+    /// Sets `transform` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureInstanceKHR transformAt(long index, MemorySegment value) { transform(this.segment(), index, value); return this; }
+    /// Accepts `transform` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkAccelerationStructureInstanceKHR transformAt(long index, Consumer<overrungl.vulkan.khr.struct.VkTransformMatrixKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkTransformMatrixKHR.of(transformAt(index))); return this; }
 
-        /// Creates a slice of `VkAccelerationStructureInstanceKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAccelerationStructureInstanceKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `accelerationStructureReference` at the given index}
+    /// @param index the index of the struct buffer
+    public long accelerationStructureReferenceAt(long index) { return accelerationStructureReference(this.segment(), index); }
+    /// Sets `accelerationStructureReference` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAccelerationStructureInstanceKHR accelerationStructureReferenceAt(long index, long value) { accelerationStructureReference(this.segment(), index, value); return this; }
 
-        /// {@return `transform` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment transformAt(long index) { return transform(this.segment(), index); }
-        /// Sets `transform` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer transformAt(long index, MemorySegment value) { transform(this.segment(), index, value); return this; }
-        /// Accepts `transform` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer transformAt(long index, Consumer<overrungl.vulkan.khr.struct.VkTransformMatrixKHR> func) { func.accept(overrungl.vulkan.khr.struct.VkTransformMatrixKHR.of(transformAt(index))); return this; }
-
-        /// {@return `accelerationStructureReference` at the given index}
-        /// @param index the index of the struct buffer
-        public long accelerationStructureReferenceAt(long index) { return accelerationStructureReference(this.segment(), index); }
-        /// Sets `accelerationStructureReference` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer accelerationStructureReferenceAt(long index, long value) { accelerationStructureReference(this.segment(), index, value); return this; }
-
-    }
 }

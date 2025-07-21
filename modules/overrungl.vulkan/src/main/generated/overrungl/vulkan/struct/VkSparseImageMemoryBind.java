@@ -21,9 +21,9 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -36,7 +36,7 @@ import java.util.function.*;
 ///     ((uint32_t) VkFlags) VkSparseMemoryBindFlags flags;
 /// };
 /// ```
-public sealed class VkSparseImageMemoryBind extends GroupType {
+public final class VkSparseImageMemoryBind extends GroupType {
     /// The struct layout of `VkSparseImageMemoryBind`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.struct.VkImageSubresource.LAYOUT.withName("subresource"),
@@ -78,20 +78,21 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
     public static final VarHandle VH_flags = LAYOUT.arrayElementVarHandle(PathElement.groupElement("flags"));
 
     /// Creates `VkSparseImageMemoryBind` with the given segment.
-    /// @param segment the memory segment
-    public VkSparseImageMemoryBind(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSparseImageMemoryBind(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSparseImageMemoryBind` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSparseImageMemoryBind of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseImageMemoryBind(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSparseImageMemoryBind` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSparseImageMemoryBind ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseImageMemoryBind(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSparseImageMemoryBind ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseImageMemoryBind(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSparseImageMemoryBind` with the given segment.
     ///
@@ -99,18 +100,18 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSparseImageMemoryBind ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSparseImageMemoryBind(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSparseImageMemoryBind` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSparseImageMemoryBind`
-    public static VkSparseImageMemoryBind alloc(SegmentAllocator allocator) { return new VkSparseImageMemoryBind(allocator.allocate(LAYOUT)); }
+    public static VkSparseImageMemoryBind alloc(SegmentAllocator allocator) { return new VkSparseImageMemoryBind(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSparseImageMemoryBind` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSparseImageMemoryBind`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSparseImageMemoryBind alloc(SegmentAllocator allocator, long count) { return new VkSparseImageMemoryBind(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSparseImageMemoryBind` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -180,9 +181,10 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
     /// @return `this`
     public VkSparseImageMemoryBind copyFrom(VkSparseImageMemoryBind src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSparseImageMemoryBind reinterpret(long count) { return new VkSparseImageMemoryBind(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `subresource` at the given index}
     /// @param segment the segment of the struct
@@ -292,96 +294,90 @@ public sealed class VkSparseImageMemoryBind extends GroupType {
     /// @return `this`
     public VkSparseImageMemoryBind flags(int value) { flags(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSparseImageMemoryBind].
-    public static final class Buffer extends VkSparseImageMemoryBind {
-        private final long elementCount;
+    /// Creates a slice of `VkSparseImageMemoryBind`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSparseImageMemoryBind`
+    public VkSparseImageMemoryBind asSlice(long index) { return new VkSparseImageMemoryBind(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSparseImageMemoryBind.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSparseImageMemoryBind`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSparseImageMemoryBind`
+    public VkSparseImageMemoryBind asSlice(long index, long count) { return new VkSparseImageMemoryBind(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSparseImageMemoryBind` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSparseImageMemoryBind at(long index, Consumer<VkSparseImageMemoryBind> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSparseImageMemoryBind`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSparseImageMemoryBind`
-        public VkSparseImageMemoryBind asSlice(long index) { return new VkSparseImageMemoryBind(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `subresource` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment subresourceAt(long index) { return subresource(this.segment(), index); }
+    /// Sets `subresource` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSparseImageMemoryBind subresourceAt(long index, MemorySegment value) { subresource(this.segment(), index, value); return this; }
+    /// Accepts `subresource` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkSparseImageMemoryBind subresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresource> func) { func.accept(overrungl.vulkan.struct.VkImageSubresource.of(subresourceAt(index))); return this; }
 
-        /// Creates a slice of `VkSparseImageMemoryBind`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSparseImageMemoryBind`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `offset` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment offsetAt(long index) { return offset(this.segment(), index); }
+    /// Sets `offset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSparseImageMemoryBind offsetAt(long index, MemorySegment value) { offset(this.segment(), index, value); return this; }
+    /// Accepts `offset` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkSparseImageMemoryBind offsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(offsetAt(index))); return this; }
 
-        /// {@return `subresource` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment subresourceAt(long index) { return subresource(this.segment(), index); }
-        /// Sets `subresource` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer subresourceAt(long index, MemorySegment value) { subresource(this.segment(), index, value); return this; }
-        /// Accepts `subresource` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer subresourceAt(long index, Consumer<overrungl.vulkan.struct.VkImageSubresource> func) { func.accept(overrungl.vulkan.struct.VkImageSubresource.of(subresourceAt(index))); return this; }
+    /// {@return `extent` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment extentAt(long index) { return extent(this.segment(), index); }
+    /// Sets `extent` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSparseImageMemoryBind extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
+    /// Accepts `extent` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkSparseImageMemoryBind extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extentAt(index))); return this; }
 
-        /// {@return `offset` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment offsetAt(long index) { return offset(this.segment(), index); }
-        /// Sets `offset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer offsetAt(long index, MemorySegment value) { offset(this.segment(), index, value); return this; }
-        /// Accepts `offset` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer offsetAt(long index, Consumer<overrungl.vulkan.struct.VkOffset3D> func) { func.accept(overrungl.vulkan.struct.VkOffset3D.of(offsetAt(index))); return this; }
+    /// {@return `memory` at the given index}
+    /// @param index the index of the struct buffer
+    public long memoryAt(long index) { return memory(this.segment(), index); }
+    /// Sets `memory` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSparseImageMemoryBind memoryAt(long index, long value) { memory(this.segment(), index, value); return this; }
 
-        /// {@return `extent` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment extentAt(long index) { return extent(this.segment(), index); }
-        /// Sets `extent` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer extentAt(long index, MemorySegment value) { extent(this.segment(), index, value); return this; }
-        /// Accepts `extent` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer extentAt(long index, Consumer<overrungl.vulkan.struct.VkExtent3D> func) { func.accept(overrungl.vulkan.struct.VkExtent3D.of(extentAt(index))); return this; }
+    /// {@return `memoryOffset` at the given index}
+    /// @param index the index of the struct buffer
+    public long memoryOffsetAt(long index) { return memoryOffset(this.segment(), index); }
+    /// Sets `memoryOffset` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSparseImageMemoryBind memoryOffsetAt(long index, long value) { memoryOffset(this.segment(), index, value); return this; }
 
-        /// {@return `memory` at the given index}
-        /// @param index the index of the struct buffer
-        public long memoryAt(long index) { return memory(this.segment(), index); }
-        /// Sets `memory` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryAt(long index, long value) { memory(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSparseImageMemoryBind flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `memoryOffset` at the given index}
-        /// @param index the index of the struct buffer
-        public long memoryOffsetAt(long index) { return memoryOffset(this.segment(), index); }
-        /// Sets `memoryOffset` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer memoryOffsetAt(long index, long value) { memoryOffset(this.segment(), index, value); return this; }
-
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-    }
 }

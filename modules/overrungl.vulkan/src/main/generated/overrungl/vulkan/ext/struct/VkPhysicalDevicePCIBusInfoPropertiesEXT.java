@@ -21,6 +21,7 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -35,7 +36,7 @@ import overrungl.util.*;
 ///     uint32_t pciFunction;
 /// };
 /// ```
-public sealed class VkPhysicalDevicePCIBusInfoPropertiesEXT extends GroupType {
+public final class VkPhysicalDevicePCIBusInfoPropertiesEXT extends GroupType {
     /// The struct layout of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -83,20 +84,21 @@ public sealed class VkPhysicalDevicePCIBusInfoPropertiesEXT extends GroupType {
     public static final VarHandle VH_pciFunction = LAYOUT.arrayElementVarHandle(PathElement.groupElement("pciFunction"));
 
     /// Creates `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkPhysicalDevicePCIBusInfoPropertiesEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkPhysicalDevicePCIBusInfoPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkPhysicalDevicePCIBusInfoPropertiesEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment.
     ///
@@ -104,18 +106,18 @@ public sealed class VkPhysicalDevicePCIBusInfoPropertiesEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkPhysicalDevicePCIBusInfoPropertiesEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkPhysicalDevicePCIBusInfoPropertiesEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-    public static VkPhysicalDevicePCIBusInfoPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(allocator.allocate(LAYOUT)); }
+    public static VkPhysicalDevicePCIBusInfoPropertiesEXT alloc(SegmentAllocator allocator) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkPhysicalDevicePCIBusInfoPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -185,9 +187,10 @@ public sealed class VkPhysicalDevicePCIBusInfoPropertiesEXT extends GroupType {
     /// @return `this`
     public VkPhysicalDevicePCIBusInfoPropertiesEXT copyFrom(VkPhysicalDevicePCIBusInfoPropertiesEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT reinterpret(long count) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -285,81 +288,75 @@ public sealed class VkPhysicalDevicePCIBusInfoPropertiesEXT extends GroupType {
     /// @return `this`
     public VkPhysicalDevicePCIBusInfoPropertiesEXT pciFunction(int value) { pciFunction(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkPhysicalDevicePCIBusInfoPropertiesEXT].
-    public static final class Buffer extends VkPhysicalDevicePCIBusInfoPropertiesEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT asSlice(long index) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkPhysicalDevicePCIBusInfoPropertiesEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT asSlice(long index, long count) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkPhysicalDevicePCIBusInfoPropertiesEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT at(long index, Consumer<VkPhysicalDevicePCIBusInfoPropertiesEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-        public VkPhysicalDevicePCIBusInfoPropertiesEXT asSlice(long index) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pciDomain` at the given index}
+    /// @param index the index of the struct buffer
+    public int pciDomainAt(long index) { return pciDomain(this.segment(), index); }
+    /// Sets `pciDomain` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDomainAt(long index, int value) { pciDomain(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `pciBus` at the given index}
+    /// @param index the index of the struct buffer
+    public int pciBusAt(long index) { return pciBus(this.segment(), index); }
+    /// Sets `pciBus` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciBusAt(long index, int value) { pciBus(this.segment(), index, value); return this; }
 
-        /// {@return `pciDomain` at the given index}
-        /// @param index the index of the struct buffer
-        public int pciDomainAt(long index) { return pciDomain(this.segment(), index); }
-        /// Sets `pciDomain` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pciDomainAt(long index, int value) { pciDomain(this.segment(), index, value); return this; }
+    /// {@return `pciDevice` at the given index}
+    /// @param index the index of the struct buffer
+    public int pciDeviceAt(long index) { return pciDevice(this.segment(), index); }
+    /// Sets `pciDevice` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciDeviceAt(long index, int value) { pciDevice(this.segment(), index, value); return this; }
 
-        /// {@return `pciBus` at the given index}
-        /// @param index the index of the struct buffer
-        public int pciBusAt(long index) { return pciBus(this.segment(), index); }
-        /// Sets `pciBus` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pciBusAt(long index, int value) { pciBus(this.segment(), index, value); return this; }
+    /// {@return `pciFunction` at the given index}
+    /// @param index the index of the struct buffer
+    public int pciFunctionAt(long index) { return pciFunction(this.segment(), index); }
+    /// Sets `pciFunction` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkPhysicalDevicePCIBusInfoPropertiesEXT pciFunctionAt(long index, int value) { pciFunction(this.segment(), index, value); return this; }
 
-        /// {@return `pciDevice` at the given index}
-        /// @param index the index of the struct buffer
-        public int pciDeviceAt(long index) { return pciDevice(this.segment(), index); }
-        /// Sets `pciDevice` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pciDeviceAt(long index, int value) { pciDevice(this.segment(), index, value); return this; }
-
-        /// {@return `pciFunction` at the given index}
-        /// @param index the index of the struct buffer
-        public int pciFunctionAt(long index) { return pciFunction(this.segment(), index); }
-        /// Sets `pciFunction` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pciFunctionAt(long index, int value) { pciFunction(this.segment(), index, value); return this; }
-
-    }
 }

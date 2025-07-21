@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     struct ANativeWindow * window;
 /// };
 /// ```
-public sealed class VkAndroidSurfaceCreateInfoKHR extends GroupType {
+public final class VkAndroidSurfaceCreateInfoKHR extends GroupType {
     /// The struct layout of `VkAndroidSurfaceCreateInfoKHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkAndroidSurfaceCreateInfoKHR extends GroupType {
     public static final VarHandle VH_window = LAYOUT.arrayElementVarHandle(PathElement.groupElement("window"));
 
     /// Creates `VkAndroidSurfaceCreateInfoKHR` with the given segment.
-    /// @param segment the memory segment
-    public VkAndroidSurfaceCreateInfoKHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkAndroidSurfaceCreateInfoKHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkAndroidSurfaceCreateInfoKHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkAndroidSurfaceCreateInfoKHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAndroidSurfaceCreateInfoKHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkAndroidSurfaceCreateInfoKHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkAndroidSurfaceCreateInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAndroidSurfaceCreateInfoKHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkAndroidSurfaceCreateInfoKHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkAndroidSurfaceCreateInfoKHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkAndroidSurfaceCreateInfoKHR` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkAndroidSurfaceCreateInfoKHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkAndroidSurfaceCreateInfoKHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkAndroidSurfaceCreateInfoKHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkAndroidSurfaceCreateInfoKHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkAndroidSurfaceCreateInfoKHR`
-    public static VkAndroidSurfaceCreateInfoKHR alloc(SegmentAllocator allocator) { return new VkAndroidSurfaceCreateInfoKHR(allocator.allocate(LAYOUT)); }
+    public static VkAndroidSurfaceCreateInfoKHR alloc(SegmentAllocator allocator) { return new VkAndroidSurfaceCreateInfoKHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkAndroidSurfaceCreateInfoKHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkAndroidSurfaceCreateInfoKHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkAndroidSurfaceCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAndroidSurfaceCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkAndroidSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkAndroidSurfaceCreateInfoKHR extends GroupType {
     /// @return `this`
     public VkAndroidSurfaceCreateInfoKHR copyFrom(VkAndroidSurfaceCreateInfoKHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkAndroidSurfaceCreateInfoKHR reinterpret(long count) { return new VkAndroidSurfaceCreateInfoKHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkAndroidSurfaceCreateInfoKHR extends GroupType {
     /// @return `this`
     public VkAndroidSurfaceCreateInfoKHR window(MemorySegment value) { window(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkAndroidSurfaceCreateInfoKHR].
-    public static final class Buffer extends VkAndroidSurfaceCreateInfoKHR {
-        private final long elementCount;
+    /// Creates a slice of `VkAndroidSurfaceCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkAndroidSurfaceCreateInfoKHR`
+    public VkAndroidSurfaceCreateInfoKHR asSlice(long index) { return new VkAndroidSurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkAndroidSurfaceCreateInfoKHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkAndroidSurfaceCreateInfoKHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkAndroidSurfaceCreateInfoKHR`
+    public VkAndroidSurfaceCreateInfoKHR asSlice(long index, long count) { return new VkAndroidSurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkAndroidSurfaceCreateInfoKHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkAndroidSurfaceCreateInfoKHR at(long index, Consumer<VkAndroidSurfaceCreateInfoKHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkAndroidSurfaceCreateInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkAndroidSurfaceCreateInfoKHR`
-        public VkAndroidSurfaceCreateInfoKHR asSlice(long index) { return new VkAndroidSurfaceCreateInfoKHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAndroidSurfaceCreateInfoKHR sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkAndroidSurfaceCreateInfoKHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkAndroidSurfaceCreateInfoKHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAndroidSurfaceCreateInfoKHR pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAndroidSurfaceCreateInfoKHR flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `window` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment windowAt(long index) { return window(this.segment(), index); }
+    /// Sets `window` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkAndroidSurfaceCreateInfoKHR windowAt(long index, MemorySegment value) { window(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
-
-        /// {@return `window` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment windowAt(long index) { return window(this.segment(), index); }
-        /// Sets `window` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer windowAt(long index, MemorySegment value) { window(this.segment(), index, value); return this; }
-
-    }
 }

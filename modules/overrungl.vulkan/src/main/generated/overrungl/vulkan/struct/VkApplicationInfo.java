@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -36,7 +37,7 @@ import overrungl.util.*;
 ///     uint32_t apiVersion;
 /// };
 /// ```
-public sealed class VkApplicationInfo extends GroupType {
+public final class VkApplicationInfo extends GroupType {
     /// The struct layout of `VkApplicationInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -91,20 +92,21 @@ public sealed class VkApplicationInfo extends GroupType {
     public static final VarHandle VH_apiVersion = LAYOUT.arrayElementVarHandle(PathElement.groupElement("apiVersion"));
 
     /// Creates `VkApplicationInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkApplicationInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkApplicationInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkApplicationInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkApplicationInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkApplicationInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkApplicationInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkApplicationInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkApplicationInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkApplicationInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkApplicationInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkApplicationInfo` with the given segment.
     ///
@@ -112,18 +114,18 @@ public sealed class VkApplicationInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkApplicationInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkApplicationInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkApplicationInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkApplicationInfo`
-    public static VkApplicationInfo alloc(SegmentAllocator allocator) { return new VkApplicationInfo(allocator.allocate(LAYOUT)); }
+    public static VkApplicationInfo alloc(SegmentAllocator allocator) { return new VkApplicationInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkApplicationInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkApplicationInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkApplicationInfo alloc(SegmentAllocator allocator, long count) { return new VkApplicationInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkApplicationInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -207,9 +209,10 @@ public sealed class VkApplicationInfo extends GroupType {
     /// @return `this`
     public VkApplicationInfo copyFrom(VkApplicationInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkApplicationInfo reinterpret(long count) { return new VkApplicationInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -323,90 +326,84 @@ public sealed class VkApplicationInfo extends GroupType {
     /// @return `this`
     public VkApplicationInfo apiVersion(int value) { apiVersion(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkApplicationInfo].
-    public static final class Buffer extends VkApplicationInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkApplicationInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkApplicationInfo`
+    public VkApplicationInfo asSlice(long index) { return new VkApplicationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkApplicationInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkApplicationInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkApplicationInfo`
+    public VkApplicationInfo asSlice(long index, long count) { return new VkApplicationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkApplicationInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkApplicationInfo at(long index, Consumer<VkApplicationInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkApplicationInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkApplicationInfo`
-        public VkApplicationInfo asSlice(long index) { return new VkApplicationInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkApplicationInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkApplicationInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `pApplicationName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pApplicationNameAt(long index) { return pApplicationName(this.segment(), index); }
+    /// Sets `pApplicationName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationInfo pApplicationNameAt(long index, MemorySegment value) { pApplicationName(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `applicationVersion` at the given index}
+    /// @param index the index of the struct buffer
+    public int applicationVersionAt(long index) { return applicationVersion(this.segment(), index); }
+    /// Sets `applicationVersion` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationInfo applicationVersionAt(long index, int value) { applicationVersion(this.segment(), index, value); return this; }
 
-        /// {@return `pApplicationName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pApplicationNameAt(long index) { return pApplicationName(this.segment(), index); }
-        /// Sets `pApplicationName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pApplicationNameAt(long index, MemorySegment value) { pApplicationName(this.segment(), index, value); return this; }
+    /// {@return `pEngineName` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pEngineNameAt(long index) { return pEngineName(this.segment(), index); }
+    /// Sets `pEngineName` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationInfo pEngineNameAt(long index, MemorySegment value) { pEngineName(this.segment(), index, value); return this; }
 
-        /// {@return `applicationVersion` at the given index}
-        /// @param index the index of the struct buffer
-        public int applicationVersionAt(long index) { return applicationVersion(this.segment(), index); }
-        /// Sets `applicationVersion` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer applicationVersionAt(long index, int value) { applicationVersion(this.segment(), index, value); return this; }
+    /// {@return `engineVersion` at the given index}
+    /// @param index the index of the struct buffer
+    public int engineVersionAt(long index) { return engineVersion(this.segment(), index); }
+    /// Sets `engineVersion` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationInfo engineVersionAt(long index, int value) { engineVersion(this.segment(), index, value); return this; }
 
-        /// {@return `pEngineName` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pEngineNameAt(long index) { return pEngineName(this.segment(), index); }
-        /// Sets `pEngineName` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pEngineNameAt(long index, MemorySegment value) { pEngineName(this.segment(), index, value); return this; }
+    /// {@return `apiVersion` at the given index}
+    /// @param index the index of the struct buffer
+    public int apiVersionAt(long index) { return apiVersion(this.segment(), index); }
+    /// Sets `apiVersion` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkApplicationInfo apiVersionAt(long index, int value) { apiVersion(this.segment(), index, value); return this; }
 
-        /// {@return `engineVersion` at the given index}
-        /// @param index the index of the struct buffer
-        public int engineVersionAt(long index) { return engineVersion(this.segment(), index); }
-        /// Sets `engineVersion` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer engineVersionAt(long index, int value) { engineVersion(this.segment(), index, value); return this; }
-
-        /// {@return `apiVersion` at the given index}
-        /// @param index the index of the struct buffer
-        public int apiVersionAt(long index) { return apiVersion(this.segment(), index); }
-        /// Sets `apiVersion` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer apiVersionAt(long index, int value) { apiVersion(this.segment(), index, value); return this; }
-
-    }
 }

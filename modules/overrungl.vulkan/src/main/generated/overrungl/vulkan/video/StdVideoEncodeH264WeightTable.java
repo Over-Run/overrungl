@@ -21,9 +21,9 @@ package overrungl.vulkan.video;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -41,7 +41,7 @@ import java.util.function.*;
 ///     int8_t chroma_offset_l1[32][2];
 /// };
 /// ```
-public sealed class StdVideoEncodeH264WeightTable extends GroupType {
+public final class StdVideoEncodeH264WeightTable extends GroupType {
     /// The struct layout of `StdVideoEncodeH264WeightTable`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags.LAYOUT.withName("flags"),
@@ -122,20 +122,21 @@ public sealed class StdVideoEncodeH264WeightTable extends GroupType {
     public static final VarHandle VH_chroma_offset_l1 = LAYOUT.arrayElementVarHandle(PathElement.groupElement("chroma_offset_l1"), PathElement.sequenceElement(), PathElement.sequenceElement());
 
     /// Creates `StdVideoEncodeH264WeightTable` with the given segment.
-    /// @param segment the memory segment
-    public StdVideoEncodeH264WeightTable(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public StdVideoEncodeH264WeightTable(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `StdVideoEncodeH264WeightTable` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static StdVideoEncodeH264WeightTable of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH264WeightTable(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `StdVideoEncodeH264WeightTable` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static StdVideoEncodeH264WeightTable ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH264WeightTable(segment.reinterpret(LAYOUT.byteSize())); }
+    public static StdVideoEncodeH264WeightTable ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH264WeightTable(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `StdVideoEncodeH264WeightTable` with the given segment.
     ///
@@ -143,18 +144,18 @@ public sealed class StdVideoEncodeH264WeightTable extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static StdVideoEncodeH264WeightTable ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new StdVideoEncodeH264WeightTable(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `StdVideoEncodeH264WeightTable`
-    public static StdVideoEncodeH264WeightTable alloc(SegmentAllocator allocator) { return new StdVideoEncodeH264WeightTable(allocator.allocate(LAYOUT)); }
+    public static StdVideoEncodeH264WeightTable alloc(SegmentAllocator allocator) { return new StdVideoEncodeH264WeightTable(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `StdVideoEncodeH264WeightTable`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static StdVideoEncodeH264WeightTable alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264WeightTable(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `StdVideoEncodeH264WeightTable` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -304,9 +305,10 @@ public sealed class StdVideoEncodeH264WeightTable extends GroupType {
     /// @return `this`
     public StdVideoEncodeH264WeightTable copyFrom(StdVideoEncodeH264WeightTable src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public StdVideoEncodeH264WeightTable reinterpret(long count) { return new StdVideoEncodeH264WeightTable(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `flags` at the given index}
     /// @param segment the segment of the struct
@@ -656,219 +658,213 @@ public sealed class StdVideoEncodeH264WeightTable extends GroupType {
     /// @return `this`
     public StdVideoEncodeH264WeightTable chroma_offset_l1(long index0, long index1, byte value) { chroma_offset_l1(this.segment(), 0L, index0, index1, value); return this; }
 
-    /// A buffer of [StdVideoEncodeH264WeightTable].
-    public static final class Buffer extends StdVideoEncodeH264WeightTable {
-        private final long elementCount;
+    /// Creates a slice of `StdVideoEncodeH264WeightTable`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `StdVideoEncodeH264WeightTable`
+    public StdVideoEncodeH264WeightTable asSlice(long index) { return new StdVideoEncodeH264WeightTable(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `StdVideoEncodeH264WeightTable.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `StdVideoEncodeH264WeightTable`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `StdVideoEncodeH264WeightTable`
+    public StdVideoEncodeH264WeightTable asSlice(long index, long count) { return new StdVideoEncodeH264WeightTable(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `StdVideoEncodeH264WeightTable` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable at(long index, Consumer<StdVideoEncodeH264WeightTable> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH264WeightTable`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `StdVideoEncodeH264WeightTable`
-        public StdVideoEncodeH264WeightTable asSlice(long index) { return new StdVideoEncodeH264WeightTable(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
+    /// Accepts `flags` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags.of(flagsAt(index))); return this; }
 
-        /// Creates a slice of `StdVideoEncodeH264WeightTable`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `StdVideoEncodeH264WeightTable`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `luma_log2_weight_denom` at the given index}
+    /// @param index the index of the struct buffer
+    public byte luma_log2_weight_denomAt(long index) { return luma_log2_weight_denom(this.segment(), index); }
+    /// Sets `luma_log2_weight_denom` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable luma_log2_weight_denomAt(long index, byte value) { luma_log2_weight_denom(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, MemorySegment value) { flags(this.segment(), index, value); return this; }
-        /// Accepts `flags` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer flagsAt(long index, Consumer<overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags> func) { func.accept(overrungl.vulkan.video.StdVideoEncodeH264WeightTableFlags.of(flagsAt(index))); return this; }
+    /// {@return `chroma_log2_weight_denom` at the given index}
+    /// @param index the index of the struct buffer
+    public byte chroma_log2_weight_denomAt(long index) { return chroma_log2_weight_denom(this.segment(), index); }
+    /// Sets `chroma_log2_weight_denom` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable chroma_log2_weight_denomAt(long index, byte value) { chroma_log2_weight_denom(this.segment(), index, value); return this; }
 
-        /// {@return `luma_log2_weight_denom` at the given index}
-        /// @param index the index of the struct buffer
-        public byte luma_log2_weight_denomAt(long index) { return luma_log2_weight_denom(this.segment(), index); }
-        /// Sets `luma_log2_weight_denom` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_log2_weight_denomAt(long index, byte value) { luma_log2_weight_denom(this.segment(), index, value); return this; }
-
-        /// {@return `chroma_log2_weight_denom` at the given index}
-        /// @param index the index of the struct buffer
-        public byte chroma_log2_weight_denomAt(long index) { return chroma_log2_weight_denom(this.segment(), index); }
-        /// Sets `chroma_log2_weight_denom` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_log2_weight_denomAt(long index, byte value) { chroma_log2_weight_denom(this.segment(), index, value); return this; }
-
-        /// {@return `luma_weight_l0` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment luma_weight_l0At(long index) { return luma_weight_l0(this.segment(), index); }
-        /// {@return `luma_weight_l0` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `luma_weight_l0` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment luma_weight_l0At(long index) { return luma_weight_l0(this.segment(), index); }
+    /// {@return `luma_weight_l0` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte luma_weight_l0At(long index, long index0) { return luma_weight_l0(this.segment(), index, index0); }
-        /// Sets `luma_weight_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_weight_l0At(long index, MemorySegment value) { luma_weight_l0(this.segment(), index, value); return this; }
-        /// Sets `luma_weight_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_weight_l0At(long index, long index0, byte value) { luma_weight_l0(this.segment(), index, index0, value); return this; }
+    /// Sets `luma_weight_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable luma_weight_l0At(long index, MemorySegment value) { luma_weight_l0(this.segment(), index, value); return this; }
+    /// Sets `luma_weight_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable luma_weight_l0At(long index, long index0, byte value) { luma_weight_l0(this.segment(), index, index0, value); return this; }
 
-        /// {@return `luma_offset_l0` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment luma_offset_l0At(long index) { return luma_offset_l0(this.segment(), index); }
-        /// {@return `luma_offset_l0` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `luma_offset_l0` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment luma_offset_l0At(long index) { return luma_offset_l0(this.segment(), index); }
+    /// {@return `luma_offset_l0` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte luma_offset_l0At(long index, long index0) { return luma_offset_l0(this.segment(), index, index0); }
-        /// Sets `luma_offset_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_offset_l0At(long index, MemorySegment value) { luma_offset_l0(this.segment(), index, value); return this; }
-        /// Sets `luma_offset_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_offset_l0At(long index, long index0, byte value) { luma_offset_l0(this.segment(), index, index0, value); return this; }
+    /// Sets `luma_offset_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable luma_offset_l0At(long index, MemorySegment value) { luma_offset_l0(this.segment(), index, value); return this; }
+    /// Sets `luma_offset_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable luma_offset_l0At(long index, long index0, byte value) { luma_offset_l0(this.segment(), index, index0, value); return this; }
 
-        /// {@return `chroma_weight_l0` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment chroma_weight_l0At(long index) { return chroma_weight_l0(this.segment(), index); }
-        /// {@return `chroma_weight_l0` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
+    /// {@return `chroma_weight_l0` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment chroma_weight_l0At(long index) { return chroma_weight_l0(this.segment(), index); }
+    /// {@return `chroma_weight_l0` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
         public byte chroma_weight_l0At(long index, long index0, long index1) { return chroma_weight_l0(this.segment(), index, index0, index1); }
-        /// Sets `chroma_weight_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_weight_l0At(long index, MemorySegment value) { chroma_weight_l0(this.segment(), index, value); return this; }
-        /// Sets `chroma_weight_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_weight_l0At(long index, long index0, long index1, byte value) { chroma_weight_l0(this.segment(), index, index0, index1, value); return this; }
+    /// Sets `chroma_weight_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable chroma_weight_l0At(long index, MemorySegment value) { chroma_weight_l0(this.segment(), index, value); return this; }
+    /// Sets `chroma_weight_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable chroma_weight_l0At(long index, long index0, long index1, byte value) { chroma_weight_l0(this.segment(), index, index0, index1, value); return this; }
 
-        /// {@return `chroma_offset_l0` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment chroma_offset_l0At(long index) { return chroma_offset_l0(this.segment(), index); }
-        /// {@return `chroma_offset_l0` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
+    /// {@return `chroma_offset_l0` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment chroma_offset_l0At(long index) { return chroma_offset_l0(this.segment(), index); }
+    /// {@return `chroma_offset_l0` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
         public byte chroma_offset_l0At(long index, long index0, long index1) { return chroma_offset_l0(this.segment(), index, index0, index1); }
-        /// Sets `chroma_offset_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_offset_l0At(long index, MemorySegment value) { chroma_offset_l0(this.segment(), index, value); return this; }
-        /// Sets `chroma_offset_l0` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_offset_l0At(long index, long index0, long index1, byte value) { chroma_offset_l0(this.segment(), index, index0, index1, value); return this; }
+    /// Sets `chroma_offset_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable chroma_offset_l0At(long index, MemorySegment value) { chroma_offset_l0(this.segment(), index, value); return this; }
+    /// Sets `chroma_offset_l0` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable chroma_offset_l0At(long index, long index0, long index1, byte value) { chroma_offset_l0(this.segment(), index, index0, index1, value); return this; }
 
-        /// {@return `luma_weight_l1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment luma_weight_l1At(long index) { return luma_weight_l1(this.segment(), index); }
-        /// {@return `luma_weight_l1` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `luma_weight_l1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment luma_weight_l1At(long index) { return luma_weight_l1(this.segment(), index); }
+    /// {@return `luma_weight_l1` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte luma_weight_l1At(long index, long index0) { return luma_weight_l1(this.segment(), index, index0); }
-        /// Sets `luma_weight_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_weight_l1At(long index, MemorySegment value) { luma_weight_l1(this.segment(), index, value); return this; }
-        /// Sets `luma_weight_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_weight_l1At(long index, long index0, byte value) { luma_weight_l1(this.segment(), index, index0, value); return this; }
+    /// Sets `luma_weight_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable luma_weight_l1At(long index, MemorySegment value) { luma_weight_l1(this.segment(), index, value); return this; }
+    /// Sets `luma_weight_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable luma_weight_l1At(long index, long index0, byte value) { luma_weight_l1(this.segment(), index, index0, value); return this; }
 
-        /// {@return `luma_offset_l1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment luma_offset_l1At(long index) { return luma_offset_l1(this.segment(), index); }
-        /// {@return `luma_offset_l1` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
+    /// {@return `luma_offset_l1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment luma_offset_l1At(long index) { return luma_offset_l1(this.segment(), index); }
+    /// {@return `luma_offset_l1` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
         public byte luma_offset_l1At(long index, long index0) { return luma_offset_l1(this.segment(), index, index0); }
-        /// Sets `luma_offset_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_offset_l1At(long index, MemorySegment value) { luma_offset_l1(this.segment(), index, value); return this; }
-        /// Sets `luma_offset_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer luma_offset_l1At(long index, long index0, byte value) { luma_offset_l1(this.segment(), index, index0, value); return this; }
+    /// Sets `luma_offset_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable luma_offset_l1At(long index, MemorySegment value) { luma_offset_l1(this.segment(), index, value); return this; }
+    /// Sets `luma_offset_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable luma_offset_l1At(long index, long index0, byte value) { luma_offset_l1(this.segment(), index, index0, value); return this; }
 
-        /// {@return `chroma_weight_l1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment chroma_weight_l1At(long index) { return chroma_weight_l1(this.segment(), index); }
-        /// {@return `chroma_weight_l1` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
+    /// {@return `chroma_weight_l1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment chroma_weight_l1At(long index) { return chroma_weight_l1(this.segment(), index); }
+    /// {@return `chroma_weight_l1` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
         public byte chroma_weight_l1At(long index, long index0, long index1) { return chroma_weight_l1(this.segment(), index, index0, index1); }
-        /// Sets `chroma_weight_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_weight_l1At(long index, MemorySegment value) { chroma_weight_l1(this.segment(), index, value); return this; }
-        /// Sets `chroma_weight_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_weight_l1At(long index, long index0, long index1, byte value) { chroma_weight_l1(this.segment(), index, index0, index1, value); return this; }
+    /// Sets `chroma_weight_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable chroma_weight_l1At(long index, MemorySegment value) { chroma_weight_l1(this.segment(), index, value); return this; }
+    /// Sets `chroma_weight_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable chroma_weight_l1At(long index, long index0, long index1, byte value) { chroma_weight_l1(this.segment(), index, index0, index1, value); return this; }
 
-        /// {@return `chroma_offset_l1` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment chroma_offset_l1At(long index) { return chroma_offset_l1(this.segment(), index); }
-        /// {@return `chroma_offset_l1` at the given index}
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
+    /// {@return `chroma_offset_l1` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment chroma_offset_l1At(long index) { return chroma_offset_l1(this.segment(), index); }
+    /// {@return `chroma_offset_l1` at the given index}
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
         public byte chroma_offset_l1At(long index, long index0, long index1) { return chroma_offset_l1(this.segment(), index, index0, index1); }
-        /// Sets `chroma_offset_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_offset_l1At(long index, MemorySegment value) { chroma_offset_l1(this.segment(), index, value); return this; }
-        /// Sets `chroma_offset_l1` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param index0 the Index 0 of the array
-        /// @param index1 the Index 1 of the array
-        /// @param value the value
-        /// @return `this`
-        public Buffer chroma_offset_l1At(long index, long index0, long index1, byte value) { chroma_offset_l1(this.segment(), index, index0, index1, value); return this; }
+    /// Sets `chroma_offset_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable chroma_offset_l1At(long index, MemorySegment value) { chroma_offset_l1(this.segment(), index, value); return this; }
+    /// Sets `chroma_offset_l1` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param index0 the Index 0 of the array
+    /// @param index1 the Index 1 of the array
+    /// @param value the value
+    /// @return `this`
+    public StdVideoEncodeH264WeightTable chroma_offset_l1At(long index, long index0, long index1, byte value) { chroma_offset_l1(this.segment(), index, index0, index1, value); return this; }
 
-    }
 }

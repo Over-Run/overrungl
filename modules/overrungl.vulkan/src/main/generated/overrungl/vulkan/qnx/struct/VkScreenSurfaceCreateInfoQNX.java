@@ -21,6 +21,7 @@ package overrungl.vulkan.qnx.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -34,7 +35,7 @@ import overrungl.util.*;
 ///     struct _screen_window * window;
 /// };
 /// ```
-public sealed class VkScreenSurfaceCreateInfoQNX extends GroupType {
+public final class VkScreenSurfaceCreateInfoQNX extends GroupType {
     /// The struct layout of `VkScreenSurfaceCreateInfoQNX`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -75,20 +76,21 @@ public sealed class VkScreenSurfaceCreateInfoQNX extends GroupType {
     public static final VarHandle VH_window = LAYOUT.arrayElementVarHandle(PathElement.groupElement("window"));
 
     /// Creates `VkScreenSurfaceCreateInfoQNX` with the given segment.
-    /// @param segment the memory segment
-    public VkScreenSurfaceCreateInfoQNX(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkScreenSurfaceCreateInfoQNX(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkScreenSurfaceCreateInfoQNX` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkScreenSurfaceCreateInfoQNX of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkScreenSurfaceCreateInfoQNX(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkScreenSurfaceCreateInfoQNX` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkScreenSurfaceCreateInfoQNX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkScreenSurfaceCreateInfoQNX(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkScreenSurfaceCreateInfoQNX ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkScreenSurfaceCreateInfoQNX(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkScreenSurfaceCreateInfoQNX` with the given segment.
     ///
@@ -96,18 +98,18 @@ public sealed class VkScreenSurfaceCreateInfoQNX extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkScreenSurfaceCreateInfoQNX ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkScreenSurfaceCreateInfoQNX(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
-    public static VkScreenSurfaceCreateInfoQNX alloc(SegmentAllocator allocator) { return new VkScreenSurfaceCreateInfoQNX(allocator.allocate(LAYOUT)); }
+    public static VkScreenSurfaceCreateInfoQNX alloc(SegmentAllocator allocator) { return new VkScreenSurfaceCreateInfoQNX(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkScreenSurfaceCreateInfoQNX alloc(SegmentAllocator allocator, long count) { return new VkScreenSurfaceCreateInfoQNX(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -164,9 +166,10 @@ public sealed class VkScreenSurfaceCreateInfoQNX extends GroupType {
     /// @return `this`
     public VkScreenSurfaceCreateInfoQNX copyFrom(VkScreenSurfaceCreateInfoQNX src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkScreenSurfaceCreateInfoQNX reinterpret(long count) { return new VkScreenSurfaceCreateInfoQNX(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -248,72 +251,66 @@ public sealed class VkScreenSurfaceCreateInfoQNX extends GroupType {
     /// @return `this`
     public VkScreenSurfaceCreateInfoQNX window(MemorySegment value) { window(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkScreenSurfaceCreateInfoQNX].
-    public static final class Buffer extends VkScreenSurfaceCreateInfoQNX {
-        private final long elementCount;
+    /// Creates a slice of `VkScreenSurfaceCreateInfoQNX`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkScreenSurfaceCreateInfoQNX`
+    public VkScreenSurfaceCreateInfoQNX asSlice(long index) { return new VkScreenSurfaceCreateInfoQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkScreenSurfaceCreateInfoQNX.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkScreenSurfaceCreateInfoQNX`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkScreenSurfaceCreateInfoQNX`
+    public VkScreenSurfaceCreateInfoQNX asSlice(long index, long count) { return new VkScreenSurfaceCreateInfoQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkScreenSurfaceCreateInfoQNX` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkScreenSurfaceCreateInfoQNX at(long index, Consumer<VkScreenSurfaceCreateInfoQNX> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkScreenSurfaceCreateInfoQNX`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkScreenSurfaceCreateInfoQNX`
-        public VkScreenSurfaceCreateInfoQNX asSlice(long index) { return new VkScreenSurfaceCreateInfoQNX(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkScreenSurfaceCreateInfoQNX sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkScreenSurfaceCreateInfoQNX`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkScreenSurfaceCreateInfoQNX`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkScreenSurfaceCreateInfoQNX pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkScreenSurfaceCreateInfoQNX flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `context` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment contextAt(long index) { return context(this.segment(), index); }
+    /// Sets `context` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkScreenSurfaceCreateInfoQNX contextAt(long index, MemorySegment value) { context(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `window` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment windowAt(long index) { return window(this.segment(), index); }
+    /// Sets `window` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkScreenSurfaceCreateInfoQNX windowAt(long index, MemorySegment value) { window(this.segment(), index, value); return this; }
 
-        /// {@return `context` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment contextAt(long index) { return context(this.segment(), index); }
-        /// Sets `context` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer contextAt(long index, MemorySegment value) { context(this.segment(), index, value); return this; }
-
-        /// {@return `window` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment windowAt(long index) { return window(this.segment(), index); }
-        /// Sets `window` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer windowAt(long index, MemorySegment value) { window(this.segment(), index, value); return this; }
-
-    }
 }

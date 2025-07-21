@@ -21,9 +21,9 @@ package overrungl.vulkan.ext.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
-import java.util.function.*;
 
 /// ## Layout
 /// ```
@@ -40,7 +40,7 @@ import java.util.function.*;
 ///     float maxFrameAverageLightLevel;
 /// };
 /// ```
-public sealed class VkHdrMetadataEXT extends GroupType {
+public final class VkHdrMetadataEXT extends GroupType {
     /// The struct layout of `VkHdrMetadataEXT`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -108,20 +108,21 @@ public sealed class VkHdrMetadataEXT extends GroupType {
     public static final VarHandle VH_maxFrameAverageLightLevel = LAYOUT.arrayElementVarHandle(PathElement.groupElement("maxFrameAverageLightLevel"));
 
     /// Creates `VkHdrMetadataEXT` with the given segment.
-    /// @param segment the memory segment
-    public VkHdrMetadataEXT(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkHdrMetadataEXT(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkHdrMetadataEXT` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkHdrMetadataEXT of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkHdrMetadataEXT(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkHdrMetadataEXT` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkHdrMetadataEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkHdrMetadataEXT(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkHdrMetadataEXT ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkHdrMetadataEXT(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkHdrMetadataEXT` with the given segment.
     ///
@@ -129,18 +130,18 @@ public sealed class VkHdrMetadataEXT extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkHdrMetadataEXT ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkHdrMetadataEXT(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkHdrMetadataEXT` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkHdrMetadataEXT`
-    public static VkHdrMetadataEXT alloc(SegmentAllocator allocator) { return new VkHdrMetadataEXT(allocator.allocate(LAYOUT)); }
+    public static VkHdrMetadataEXT alloc(SegmentAllocator allocator) { return new VkHdrMetadataEXT(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkHdrMetadataEXT` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkHdrMetadataEXT`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkHdrMetadataEXT alloc(SegmentAllocator allocator, long count) { return new VkHdrMetadataEXT(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkHdrMetadataEXT` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -272,9 +273,10 @@ public sealed class VkHdrMetadataEXT extends GroupType {
     /// @return `this`
     public VkHdrMetadataEXT copyFrom(VkHdrMetadataEXT src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkHdrMetadataEXT reinterpret(long count) { return new VkHdrMetadataEXT(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -452,137 +454,131 @@ public sealed class VkHdrMetadataEXT extends GroupType {
     /// @return `this`
     public VkHdrMetadataEXT maxFrameAverageLightLevel(float value) { maxFrameAverageLightLevel(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkHdrMetadataEXT].
-    public static final class Buffer extends VkHdrMetadataEXT {
-        private final long elementCount;
+    /// Creates a slice of `VkHdrMetadataEXT`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkHdrMetadataEXT`
+    public VkHdrMetadataEXT asSlice(long index) { return new VkHdrMetadataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkHdrMetadataEXT.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkHdrMetadataEXT`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkHdrMetadataEXT`
+    public VkHdrMetadataEXT asSlice(long index, long count) { return new VkHdrMetadataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkHdrMetadataEXT` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkHdrMetadataEXT at(long index, Consumer<VkHdrMetadataEXT> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkHdrMetadataEXT`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkHdrMetadataEXT`
-        public VkHdrMetadataEXT asSlice(long index) { return new VkHdrMetadataEXT(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkHdrMetadataEXT`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkHdrMetadataEXT`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `displayPrimaryRed` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment displayPrimaryRedAt(long index) { return displayPrimaryRed(this.segment(), index); }
+    /// Sets `displayPrimaryRed` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT displayPrimaryRedAt(long index, MemorySegment value) { displayPrimaryRed(this.segment(), index, value); return this; }
+    /// Accepts `displayPrimaryRed` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkHdrMetadataEXT displayPrimaryRedAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryRedAt(index))); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `displayPrimaryGreen` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment displayPrimaryGreenAt(long index) { return displayPrimaryGreen(this.segment(), index); }
+    /// Sets `displayPrimaryGreen` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT displayPrimaryGreenAt(long index, MemorySegment value) { displayPrimaryGreen(this.segment(), index, value); return this; }
+    /// Accepts `displayPrimaryGreen` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkHdrMetadataEXT displayPrimaryGreenAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryGreenAt(index))); return this; }
 
-        /// {@return `displayPrimaryRed` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment displayPrimaryRedAt(long index) { return displayPrimaryRed(this.segment(), index); }
-        /// Sets `displayPrimaryRed` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer displayPrimaryRedAt(long index, MemorySegment value) { displayPrimaryRed(this.segment(), index, value); return this; }
-        /// Accepts `displayPrimaryRed` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer displayPrimaryRedAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryRedAt(index))); return this; }
+    /// {@return `displayPrimaryBlue` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment displayPrimaryBlueAt(long index) { return displayPrimaryBlue(this.segment(), index); }
+    /// Sets `displayPrimaryBlue` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT displayPrimaryBlueAt(long index, MemorySegment value) { displayPrimaryBlue(this.segment(), index, value); return this; }
+    /// Accepts `displayPrimaryBlue` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkHdrMetadataEXT displayPrimaryBlueAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryBlueAt(index))); return this; }
 
-        /// {@return `displayPrimaryGreen` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment displayPrimaryGreenAt(long index) { return displayPrimaryGreen(this.segment(), index); }
-        /// Sets `displayPrimaryGreen` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer displayPrimaryGreenAt(long index, MemorySegment value) { displayPrimaryGreen(this.segment(), index, value); return this; }
-        /// Accepts `displayPrimaryGreen` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer displayPrimaryGreenAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryGreenAt(index))); return this; }
+    /// {@return `whitePoint` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment whitePointAt(long index) { return whitePoint(this.segment(), index); }
+    /// Sets `whitePoint` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT whitePointAt(long index, MemorySegment value) { whitePoint(this.segment(), index, value); return this; }
+    /// Accepts `whitePoint` with the given function.
+    /// @param index the index of the struct buffer
+    /// @param func the function
+    /// @return `this`
+    public VkHdrMetadataEXT whitePointAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(whitePointAt(index))); return this; }
 
-        /// {@return `displayPrimaryBlue` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment displayPrimaryBlueAt(long index) { return displayPrimaryBlue(this.segment(), index); }
-        /// Sets `displayPrimaryBlue` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer displayPrimaryBlueAt(long index, MemorySegment value) { displayPrimaryBlue(this.segment(), index, value); return this; }
-        /// Accepts `displayPrimaryBlue` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer displayPrimaryBlueAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(displayPrimaryBlueAt(index))); return this; }
+    /// {@return `maxLuminance` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxLuminanceAt(long index) { return maxLuminance(this.segment(), index); }
+    /// Sets `maxLuminance` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT maxLuminanceAt(long index, float value) { maxLuminance(this.segment(), index, value); return this; }
 
-        /// {@return `whitePoint` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment whitePointAt(long index) { return whitePoint(this.segment(), index); }
-        /// Sets `whitePoint` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer whitePointAt(long index, MemorySegment value) { whitePoint(this.segment(), index, value); return this; }
-        /// Accepts `whitePoint` with the given function.
-        /// @param index the index of the struct buffer
-        /// @param func the function
-        /// @return `this`
-        public Buffer whitePointAt(long index, Consumer<overrungl.vulkan.ext.struct.VkXYColorEXT> func) { func.accept(overrungl.vulkan.ext.struct.VkXYColorEXT.of(whitePointAt(index))); return this; }
+    /// {@return `minLuminance` at the given index}
+    /// @param index the index of the struct buffer
+    public float minLuminanceAt(long index) { return minLuminance(this.segment(), index); }
+    /// Sets `minLuminance` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT minLuminanceAt(long index, float value) { minLuminance(this.segment(), index, value); return this; }
 
-        /// {@return `maxLuminance` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxLuminanceAt(long index) { return maxLuminance(this.segment(), index); }
-        /// Sets `maxLuminance` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxLuminanceAt(long index, float value) { maxLuminance(this.segment(), index, value); return this; }
+    /// {@return `maxContentLightLevel` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxContentLightLevelAt(long index) { return maxContentLightLevel(this.segment(), index); }
+    /// Sets `maxContentLightLevel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT maxContentLightLevelAt(long index, float value) { maxContentLightLevel(this.segment(), index, value); return this; }
 
-        /// {@return `minLuminance` at the given index}
-        /// @param index the index of the struct buffer
-        public float minLuminanceAt(long index) { return minLuminance(this.segment(), index); }
-        /// Sets `minLuminance` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minLuminanceAt(long index, float value) { minLuminance(this.segment(), index, value); return this; }
+    /// {@return `maxFrameAverageLightLevel` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxFrameAverageLightLevelAt(long index) { return maxFrameAverageLightLevel(this.segment(), index); }
+    /// Sets `maxFrameAverageLightLevel` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkHdrMetadataEXT maxFrameAverageLightLevelAt(long index, float value) { maxFrameAverageLightLevel(this.segment(), index, value); return this; }
 
-        /// {@return `maxContentLightLevel` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxContentLightLevelAt(long index) { return maxContentLightLevel(this.segment(), index); }
-        /// Sets `maxContentLightLevel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxContentLightLevelAt(long index, float value) { maxContentLightLevel(this.segment(), index, value); return this; }
-
-        /// {@return `maxFrameAverageLightLevel` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxFrameAverageLightLevelAt(long index) { return maxFrameAverageLightLevel(this.segment(), index); }
-        /// Sets `maxFrameAverageLightLevel` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxFrameAverageLightLevelAt(long index, float value) { maxFrameAverageLightLevel(this.segment(), index, value); return this; }
-
-    }
 }

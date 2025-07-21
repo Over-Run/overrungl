@@ -21,6 +21,7 @@ package overrungl.vulkan.fuchsia.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -33,7 +34,7 @@ import overrungl.util.*;
 ///     (int32_t) zx_handle_t handle;
 /// };
 /// ```
-public sealed class VkImportMemoryZirconHandleInfoFUCHSIA extends GroupType {
+public final class VkImportMemoryZirconHandleInfoFUCHSIA extends GroupType {
     /// The struct layout of `VkImportMemoryZirconHandleInfoFUCHSIA`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -67,20 +68,21 @@ public sealed class VkImportMemoryZirconHandleInfoFUCHSIA extends GroupType {
     public static final VarHandle VH_handle = LAYOUT.arrayElementVarHandle(PathElement.groupElement("handle"));
 
     /// Creates `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment.
-    /// @param segment the memory segment
-    public VkImportMemoryZirconHandleInfoFUCHSIA(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkImportMemoryZirconHandleInfoFUCHSIA(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkImportMemoryZirconHandleInfoFUCHSIA of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportMemoryZirconHandleInfoFUCHSIA(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkImportMemoryZirconHandleInfoFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportMemoryZirconHandleInfoFUCHSIA(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkImportMemoryZirconHandleInfoFUCHSIA ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportMemoryZirconHandleInfoFUCHSIA(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment.
     ///
@@ -88,18 +90,18 @@ public sealed class VkImportMemoryZirconHandleInfoFUCHSIA extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkImportMemoryZirconHandleInfoFUCHSIA ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkImportMemoryZirconHandleInfoFUCHSIA(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkImportMemoryZirconHandleInfoFUCHSIA`
-    public static VkImportMemoryZirconHandleInfoFUCHSIA alloc(SegmentAllocator allocator) { return new VkImportMemoryZirconHandleInfoFUCHSIA(allocator.allocate(LAYOUT)); }
+    public static VkImportMemoryZirconHandleInfoFUCHSIA alloc(SegmentAllocator allocator) { return new VkImportMemoryZirconHandleInfoFUCHSIA(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkImportMemoryZirconHandleInfoFUCHSIA`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkImportMemoryZirconHandleInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImportMemoryZirconHandleInfoFUCHSIA(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -144,9 +146,10 @@ public sealed class VkImportMemoryZirconHandleInfoFUCHSIA extends GroupType {
     /// @return `this`
     public VkImportMemoryZirconHandleInfoFUCHSIA copyFrom(VkImportMemoryZirconHandleInfoFUCHSIA src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkImportMemoryZirconHandleInfoFUCHSIA reinterpret(long count) { return new VkImportMemoryZirconHandleInfoFUCHSIA(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -212,63 +215,57 @@ public sealed class VkImportMemoryZirconHandleInfoFUCHSIA extends GroupType {
     /// @return `this`
     public VkImportMemoryZirconHandleInfoFUCHSIA handle(int value) { handle(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkImportMemoryZirconHandleInfoFUCHSIA].
-    public static final class Buffer extends VkImportMemoryZirconHandleInfoFUCHSIA {
-        private final long elementCount;
+    /// Creates a slice of `VkImportMemoryZirconHandleInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkImportMemoryZirconHandleInfoFUCHSIA`
+    public VkImportMemoryZirconHandleInfoFUCHSIA asSlice(long index) { return new VkImportMemoryZirconHandleInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkImportMemoryZirconHandleInfoFUCHSIA.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkImportMemoryZirconHandleInfoFUCHSIA`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkImportMemoryZirconHandleInfoFUCHSIA`
+    public VkImportMemoryZirconHandleInfoFUCHSIA asSlice(long index, long count) { return new VkImportMemoryZirconHandleInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkImportMemoryZirconHandleInfoFUCHSIA` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkImportMemoryZirconHandleInfoFUCHSIA at(long index, Consumer<VkImportMemoryZirconHandleInfoFUCHSIA> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkImportMemoryZirconHandleInfoFUCHSIA`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkImportMemoryZirconHandleInfoFUCHSIA`
-        public VkImportMemoryZirconHandleInfoFUCHSIA asSlice(long index) { return new VkImportMemoryZirconHandleInfoFUCHSIA(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportMemoryZirconHandleInfoFUCHSIA sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkImportMemoryZirconHandleInfoFUCHSIA`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkImportMemoryZirconHandleInfoFUCHSIA`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportMemoryZirconHandleInfoFUCHSIA pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `handleType` at the given index}
+    /// @param index the index of the struct buffer
+    public int handleTypeAt(long index) { return handleType(this.segment(), index); }
+    /// Sets `handleType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportMemoryZirconHandleInfoFUCHSIA handleTypeAt(long index, int value) { handleType(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `handle` at the given index}
+    /// @param index the index of the struct buffer
+    public int handleAt(long index) { return handle(this.segment(), index); }
+    /// Sets `handle` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkImportMemoryZirconHandleInfoFUCHSIA handleAt(long index, int value) { handle(this.segment(), index, value); return this; }
 
-        /// {@return `handleType` at the given index}
-        /// @param index the index of the struct buffer
-        public int handleTypeAt(long index) { return handleType(this.segment(), index); }
-        /// Sets `handleType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer handleTypeAt(long index, int value) { handleType(this.segment(), index, value); return this; }
-
-        /// {@return `handle` at the given index}
-        /// @param index the index of the struct buffer
-        public int handleAt(long index) { return handle(this.segment(), index); }
-        /// Sets `handle` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer handleAt(long index, int value) { handle(this.segment(), index, value); return this; }
-
-    }
 }

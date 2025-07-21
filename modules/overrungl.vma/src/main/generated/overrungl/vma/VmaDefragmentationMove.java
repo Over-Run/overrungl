@@ -21,6 +21,7 @@ package overrungl.vma;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     (struct VmaAllocation *) VmaAllocation dstTmpAllocation;
 /// };
 /// ```
-public sealed class VmaDefragmentationMove extends GroupType {
+public final class VmaDefragmentationMove extends GroupType {
     /// The struct layout of `VmaDefragmentationMove`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("operation"),
@@ -59,20 +60,21 @@ public sealed class VmaDefragmentationMove extends GroupType {
     public static final VarHandle VH_dstTmpAllocation = LAYOUT.arrayElementVarHandle(PathElement.groupElement("dstTmpAllocation"));
 
     /// Creates `VmaDefragmentationMove` with the given segment.
-    /// @param segment the memory segment
-    public VmaDefragmentationMove(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VmaDefragmentationMove(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VmaDefragmentationMove` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VmaDefragmentationMove of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDefragmentationMove(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VmaDefragmentationMove` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VmaDefragmentationMove ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDefragmentationMove(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VmaDefragmentationMove ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDefragmentationMove(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VmaDefragmentationMove` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VmaDefragmentationMove extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VmaDefragmentationMove ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VmaDefragmentationMove(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VmaDefragmentationMove` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VmaDefragmentationMove`
-    public static VmaDefragmentationMove alloc(SegmentAllocator allocator) { return new VmaDefragmentationMove(allocator.allocate(LAYOUT)); }
+    public static VmaDefragmentationMove alloc(SegmentAllocator allocator) { return new VmaDefragmentationMove(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VmaDefragmentationMove` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VmaDefragmentationMove`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VmaDefragmentationMove alloc(SegmentAllocator allocator, long count) { return new VmaDefragmentationMove(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VmaDefragmentationMove` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VmaDefragmentationMove extends GroupType {
     /// @return `this`
     public VmaDefragmentationMove copyFrom(VmaDefragmentationMove src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VmaDefragmentationMove reinterpret(long count) { return new VmaDefragmentationMove(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `operation` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VmaDefragmentationMove extends GroupType {
     /// @return `this`
     public VmaDefragmentationMove dstTmpAllocation(MemorySegment value) { dstTmpAllocation(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VmaDefragmentationMove].
-    public static final class Buffer extends VmaDefragmentationMove {
-        private final long elementCount;
+    /// Creates a slice of `VmaDefragmentationMove`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VmaDefragmentationMove`
+    public VmaDefragmentationMove asSlice(long index) { return new VmaDefragmentationMove(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VmaDefragmentationMove.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VmaDefragmentationMove`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VmaDefragmentationMove`
+    public VmaDefragmentationMove asSlice(long index, long count) { return new VmaDefragmentationMove(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VmaDefragmentationMove` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VmaDefragmentationMove at(long index, Consumer<VmaDefragmentationMove> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VmaDefragmentationMove`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VmaDefragmentationMove`
-        public VmaDefragmentationMove asSlice(long index) { return new VmaDefragmentationMove(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `operation` at the given index}
+    /// @param index the index of the struct buffer
+    public int operationAt(long index) { return operation(this.segment(), index); }
+    /// Sets `operation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDefragmentationMove operationAt(long index, int value) { operation(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VmaDefragmentationMove`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VmaDefragmentationMove`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `srcAllocation` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment srcAllocationAt(long index) { return srcAllocation(this.segment(), index); }
+    /// Sets `srcAllocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDefragmentationMove srcAllocationAt(long index, MemorySegment value) { srcAllocation(this.segment(), index, value); return this; }
 
-        /// {@return `operation` at the given index}
-        /// @param index the index of the struct buffer
-        public int operationAt(long index) { return operation(this.segment(), index); }
-        /// Sets `operation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer operationAt(long index, int value) { operation(this.segment(), index, value); return this; }
+    /// {@return `dstTmpAllocation` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment dstTmpAllocationAt(long index) { return dstTmpAllocation(this.segment(), index); }
+    /// Sets `dstTmpAllocation` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VmaDefragmentationMove dstTmpAllocationAt(long index, MemorySegment value) { dstTmpAllocation(this.segment(), index, value); return this; }
 
-        /// {@return `srcAllocation` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment srcAllocationAt(long index) { return srcAllocation(this.segment(), index); }
-        /// Sets `srcAllocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer srcAllocationAt(long index, MemorySegment value) { srcAllocation(this.segment(), index, value); return this; }
-
-        /// {@return `dstTmpAllocation` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment dstTmpAllocationAt(long index) { return dstTmpAllocation(this.segment(), index); }
-        /// Sets `dstTmpAllocation` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer dstTmpAllocationAt(long index, MemorySegment value) { dstTmpAllocation(this.segment(), index, value); return this; }
-
-    }
 }

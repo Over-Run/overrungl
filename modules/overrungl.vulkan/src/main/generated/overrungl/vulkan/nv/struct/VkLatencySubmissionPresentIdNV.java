@@ -21,6 +21,7 @@ package overrungl.vulkan.nv.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -32,7 +33,7 @@ import overrungl.util.*;
 ///     uint64_t presentID;
 /// };
 /// ```
-public sealed class VkLatencySubmissionPresentIdNV extends GroupType {
+public final class VkLatencySubmissionPresentIdNV extends GroupType {
     /// The struct layout of `VkLatencySubmissionPresentIdNV`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -59,20 +60,21 @@ public sealed class VkLatencySubmissionPresentIdNV extends GroupType {
     public static final VarHandle VH_presentID = LAYOUT.arrayElementVarHandle(PathElement.groupElement("presentID"));
 
     /// Creates `VkLatencySubmissionPresentIdNV` with the given segment.
-    /// @param segment the memory segment
-    public VkLatencySubmissionPresentIdNV(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkLatencySubmissionPresentIdNV(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkLatencySubmissionPresentIdNV` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkLatencySubmissionPresentIdNV of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLatencySubmissionPresentIdNV(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkLatencySubmissionPresentIdNV` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkLatencySubmissionPresentIdNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLatencySubmissionPresentIdNV(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkLatencySubmissionPresentIdNV ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkLatencySubmissionPresentIdNV(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkLatencySubmissionPresentIdNV` with the given segment.
     ///
@@ -80,18 +82,18 @@ public sealed class VkLatencySubmissionPresentIdNV extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkLatencySubmissionPresentIdNV ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkLatencySubmissionPresentIdNV(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkLatencySubmissionPresentIdNV` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkLatencySubmissionPresentIdNV`
-    public static VkLatencySubmissionPresentIdNV alloc(SegmentAllocator allocator) { return new VkLatencySubmissionPresentIdNV(allocator.allocate(LAYOUT)); }
+    public static VkLatencySubmissionPresentIdNV alloc(SegmentAllocator allocator) { return new VkLatencySubmissionPresentIdNV(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkLatencySubmissionPresentIdNV` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkLatencySubmissionPresentIdNV`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkLatencySubmissionPresentIdNV alloc(SegmentAllocator allocator, long count) { return new VkLatencySubmissionPresentIdNV(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkLatencySubmissionPresentIdNV` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -125,9 +127,10 @@ public sealed class VkLatencySubmissionPresentIdNV extends GroupType {
     /// @return `this`
     public VkLatencySubmissionPresentIdNV copyFrom(VkLatencySubmissionPresentIdNV src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkLatencySubmissionPresentIdNV reinterpret(long count) { return new VkLatencySubmissionPresentIdNV(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -177,54 +180,48 @@ public sealed class VkLatencySubmissionPresentIdNV extends GroupType {
     /// @return `this`
     public VkLatencySubmissionPresentIdNV presentID(long value) { presentID(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkLatencySubmissionPresentIdNV].
-    public static final class Buffer extends VkLatencySubmissionPresentIdNV {
-        private final long elementCount;
+    /// Creates a slice of `VkLatencySubmissionPresentIdNV`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkLatencySubmissionPresentIdNV`
+    public VkLatencySubmissionPresentIdNV asSlice(long index) { return new VkLatencySubmissionPresentIdNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkLatencySubmissionPresentIdNV.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkLatencySubmissionPresentIdNV`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkLatencySubmissionPresentIdNV`
+    public VkLatencySubmissionPresentIdNV asSlice(long index, long count) { return new VkLatencySubmissionPresentIdNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkLatencySubmissionPresentIdNV` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkLatencySubmissionPresentIdNV at(long index, Consumer<VkLatencySubmissionPresentIdNV> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkLatencySubmissionPresentIdNV`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkLatencySubmissionPresentIdNV`
-        public VkLatencySubmissionPresentIdNV asSlice(long index) { return new VkLatencySubmissionPresentIdNV(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLatencySubmissionPresentIdNV sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkLatencySubmissionPresentIdNV`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkLatencySubmissionPresentIdNV`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLatencySubmissionPresentIdNV pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `presentID` at the given index}
+    /// @param index the index of the struct buffer
+    public long presentIDAt(long index) { return presentID(this.segment(), index); }
+    /// Sets `presentID` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkLatencySubmissionPresentIdNV presentIDAt(long index, long value) { presentID(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
-
-        /// {@return `presentID` at the given index}
-        /// @param index the index of the struct buffer
-        public long presentIDAt(long index) { return presentID(this.segment(), index); }
-        /// Sets `presentID` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer presentIDAt(long index, long value) { presentID(this.segment(), index, value); return this; }
-
-    }
 }

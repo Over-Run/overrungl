@@ -21,6 +21,7 @@ package overrungl.vulkan.khr.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -43,7 +44,7 @@ import overrungl.util.*;
 ///     uint32_t depth;
 /// };
 /// ```
-public sealed class VkTraceRaysIndirectCommand2KHR extends GroupType {
+public final class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// The struct layout of `VkTraceRaysIndirectCommand2KHR`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_LONG.withName("raygenShaderRecordAddress"),
@@ -147,20 +148,21 @@ public sealed class VkTraceRaysIndirectCommand2KHR extends GroupType {
     public static final VarHandle VH_depth = LAYOUT.arrayElementVarHandle(PathElement.groupElement("depth"));
 
     /// Creates `VkTraceRaysIndirectCommand2KHR` with the given segment.
-    /// @param segment the memory segment
-    public VkTraceRaysIndirectCommand2KHR(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkTraceRaysIndirectCommand2KHR(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkTraceRaysIndirectCommand2KHR` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkTraceRaysIndirectCommand2KHR of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommand2KHR(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkTraceRaysIndirectCommand2KHR` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkTraceRaysIndirectCommand2KHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommand2KHR(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkTraceRaysIndirectCommand2KHR ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommand2KHR(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkTraceRaysIndirectCommand2KHR` with the given segment.
     ///
@@ -168,18 +170,18 @@ public sealed class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkTraceRaysIndirectCommand2KHR ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkTraceRaysIndirectCommand2KHR(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
-    public static VkTraceRaysIndirectCommand2KHR alloc(SegmentAllocator allocator) { return new VkTraceRaysIndirectCommand2KHR(allocator.allocate(LAYOUT)); }
+    public static VkTraceRaysIndirectCommand2KHR alloc(SegmentAllocator allocator) { return new VkTraceRaysIndirectCommand2KHR(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkTraceRaysIndirectCommand2KHR`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkTraceRaysIndirectCommand2KHR alloc(SegmentAllocator allocator, long count) { return new VkTraceRaysIndirectCommand2KHR(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkTraceRaysIndirectCommand2KHR` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -389,9 +391,10 @@ public sealed class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// @return `this`
     public VkTraceRaysIndirectCommand2KHR copyFrom(VkTraceRaysIndirectCommand2KHR src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkTraceRaysIndirectCommand2KHR reinterpret(long count) { return new VkTraceRaysIndirectCommand2KHR(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `raygenShaderRecordAddress` at the given index}
     /// @param segment the segment of the struct
@@ -617,153 +620,147 @@ public sealed class VkTraceRaysIndirectCommand2KHR extends GroupType {
     /// @return `this`
     public VkTraceRaysIndirectCommand2KHR depth(int value) { depth(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkTraceRaysIndirectCommand2KHR].
-    public static final class Buffer extends VkTraceRaysIndirectCommand2KHR {
-        private final long elementCount;
+    /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
+    public VkTraceRaysIndirectCommand2KHR asSlice(long index) { return new VkTraceRaysIndirectCommand2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkTraceRaysIndirectCommand2KHR.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
+    public VkTraceRaysIndirectCommand2KHR asSlice(long index, long count) { return new VkTraceRaysIndirectCommand2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkTraceRaysIndirectCommand2KHR` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR at(long index, Consumer<VkTraceRaysIndirectCommand2KHR> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
-        public VkTraceRaysIndirectCommand2KHR asSlice(long index) { return new VkTraceRaysIndirectCommand2KHR(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `raygenShaderRecordAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long raygenShaderRecordAddressAt(long index) { return raygenShaderRecordAddress(this.segment(), index); }
+    /// Sets `raygenShaderRecordAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR raygenShaderRecordAddressAt(long index, long value) { raygenShaderRecordAddress(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkTraceRaysIndirectCommand2KHR`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkTraceRaysIndirectCommand2KHR`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `raygenShaderRecordSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long raygenShaderRecordSizeAt(long index) { return raygenShaderRecordSize(this.segment(), index); }
+    /// Sets `raygenShaderRecordSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR raygenShaderRecordSizeAt(long index, long value) { raygenShaderRecordSize(this.segment(), index, value); return this; }
 
-        /// {@return `raygenShaderRecordAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long raygenShaderRecordAddressAt(long index) { return raygenShaderRecordAddress(this.segment(), index); }
-        /// Sets `raygenShaderRecordAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer raygenShaderRecordAddressAt(long index, long value) { raygenShaderRecordAddress(this.segment(), index, value); return this; }
+    /// {@return `missShaderBindingTableAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long missShaderBindingTableAddressAt(long index) { return missShaderBindingTableAddress(this.segment(), index); }
+    /// Sets `missShaderBindingTableAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR missShaderBindingTableAddressAt(long index, long value) { missShaderBindingTableAddress(this.segment(), index, value); return this; }
 
-        /// {@return `raygenShaderRecordSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long raygenShaderRecordSizeAt(long index) { return raygenShaderRecordSize(this.segment(), index); }
-        /// Sets `raygenShaderRecordSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer raygenShaderRecordSizeAt(long index, long value) { raygenShaderRecordSize(this.segment(), index, value); return this; }
+    /// {@return `missShaderBindingTableSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long missShaderBindingTableSizeAt(long index) { return missShaderBindingTableSize(this.segment(), index); }
+    /// Sets `missShaderBindingTableSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR missShaderBindingTableSizeAt(long index, long value) { missShaderBindingTableSize(this.segment(), index, value); return this; }
 
-        /// {@return `missShaderBindingTableAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long missShaderBindingTableAddressAt(long index) { return missShaderBindingTableAddress(this.segment(), index); }
-        /// Sets `missShaderBindingTableAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer missShaderBindingTableAddressAt(long index, long value) { missShaderBindingTableAddress(this.segment(), index, value); return this; }
+    /// {@return `missShaderBindingTableStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long missShaderBindingTableStrideAt(long index) { return missShaderBindingTableStride(this.segment(), index); }
+    /// Sets `missShaderBindingTableStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR missShaderBindingTableStrideAt(long index, long value) { missShaderBindingTableStride(this.segment(), index, value); return this; }
 
-        /// {@return `missShaderBindingTableSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long missShaderBindingTableSizeAt(long index) { return missShaderBindingTableSize(this.segment(), index); }
-        /// Sets `missShaderBindingTableSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer missShaderBindingTableSizeAt(long index, long value) { missShaderBindingTableSize(this.segment(), index, value); return this; }
+    /// {@return `hitShaderBindingTableAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long hitShaderBindingTableAddressAt(long index) { return hitShaderBindingTableAddress(this.segment(), index); }
+    /// Sets `hitShaderBindingTableAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR hitShaderBindingTableAddressAt(long index, long value) { hitShaderBindingTableAddress(this.segment(), index, value); return this; }
 
-        /// {@return `missShaderBindingTableStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long missShaderBindingTableStrideAt(long index) { return missShaderBindingTableStride(this.segment(), index); }
-        /// Sets `missShaderBindingTableStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer missShaderBindingTableStrideAt(long index, long value) { missShaderBindingTableStride(this.segment(), index, value); return this; }
+    /// {@return `hitShaderBindingTableSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long hitShaderBindingTableSizeAt(long index) { return hitShaderBindingTableSize(this.segment(), index); }
+    /// Sets `hitShaderBindingTableSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR hitShaderBindingTableSizeAt(long index, long value) { hitShaderBindingTableSize(this.segment(), index, value); return this; }
 
-        /// {@return `hitShaderBindingTableAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long hitShaderBindingTableAddressAt(long index) { return hitShaderBindingTableAddress(this.segment(), index); }
-        /// Sets `hitShaderBindingTableAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hitShaderBindingTableAddressAt(long index, long value) { hitShaderBindingTableAddress(this.segment(), index, value); return this; }
+    /// {@return `hitShaderBindingTableStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long hitShaderBindingTableStrideAt(long index) { return hitShaderBindingTableStride(this.segment(), index); }
+    /// Sets `hitShaderBindingTableStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR hitShaderBindingTableStrideAt(long index, long value) { hitShaderBindingTableStride(this.segment(), index, value); return this; }
 
-        /// {@return `hitShaderBindingTableSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long hitShaderBindingTableSizeAt(long index) { return hitShaderBindingTableSize(this.segment(), index); }
-        /// Sets `hitShaderBindingTableSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hitShaderBindingTableSizeAt(long index, long value) { hitShaderBindingTableSize(this.segment(), index, value); return this; }
+    /// {@return `callableShaderBindingTableAddress` at the given index}
+    /// @param index the index of the struct buffer
+    public long callableShaderBindingTableAddressAt(long index) { return callableShaderBindingTableAddress(this.segment(), index); }
+    /// Sets `callableShaderBindingTableAddress` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR callableShaderBindingTableAddressAt(long index, long value) { callableShaderBindingTableAddress(this.segment(), index, value); return this; }
 
-        /// {@return `hitShaderBindingTableStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long hitShaderBindingTableStrideAt(long index) { return hitShaderBindingTableStride(this.segment(), index); }
-        /// Sets `hitShaderBindingTableStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer hitShaderBindingTableStrideAt(long index, long value) { hitShaderBindingTableStride(this.segment(), index, value); return this; }
+    /// {@return `callableShaderBindingTableSize` at the given index}
+    /// @param index the index of the struct buffer
+    public long callableShaderBindingTableSizeAt(long index) { return callableShaderBindingTableSize(this.segment(), index); }
+    /// Sets `callableShaderBindingTableSize` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR callableShaderBindingTableSizeAt(long index, long value) { callableShaderBindingTableSize(this.segment(), index, value); return this; }
 
-        /// {@return `callableShaderBindingTableAddress` at the given index}
-        /// @param index the index of the struct buffer
-        public long callableShaderBindingTableAddressAt(long index) { return callableShaderBindingTableAddress(this.segment(), index); }
-        /// Sets `callableShaderBindingTableAddress` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer callableShaderBindingTableAddressAt(long index, long value) { callableShaderBindingTableAddress(this.segment(), index, value); return this; }
+    /// {@return `callableShaderBindingTableStride` at the given index}
+    /// @param index the index of the struct buffer
+    public long callableShaderBindingTableStrideAt(long index) { return callableShaderBindingTableStride(this.segment(), index); }
+    /// Sets `callableShaderBindingTableStride` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR callableShaderBindingTableStrideAt(long index, long value) { callableShaderBindingTableStride(this.segment(), index, value); return this; }
 
-        /// {@return `callableShaderBindingTableSize` at the given index}
-        /// @param index the index of the struct buffer
-        public long callableShaderBindingTableSizeAt(long index) { return callableShaderBindingTableSize(this.segment(), index); }
-        /// Sets `callableShaderBindingTableSize` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer callableShaderBindingTableSizeAt(long index, long value) { callableShaderBindingTableSize(this.segment(), index, value); return this; }
+    /// {@return `width` at the given index}
+    /// @param index the index of the struct buffer
+    public int widthAt(long index) { return width(this.segment(), index); }
+    /// Sets `width` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR widthAt(long index, int value) { width(this.segment(), index, value); return this; }
 
-        /// {@return `callableShaderBindingTableStride` at the given index}
-        /// @param index the index of the struct buffer
-        public long callableShaderBindingTableStrideAt(long index) { return callableShaderBindingTableStride(this.segment(), index); }
-        /// Sets `callableShaderBindingTableStride` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer callableShaderBindingTableStrideAt(long index, long value) { callableShaderBindingTableStride(this.segment(), index, value); return this; }
+    /// {@return `height` at the given index}
+    /// @param index the index of the struct buffer
+    public int heightAt(long index) { return height(this.segment(), index); }
+    /// Sets `height` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR heightAt(long index, int value) { height(this.segment(), index, value); return this; }
 
-        /// {@return `width` at the given index}
-        /// @param index the index of the struct buffer
-        public int widthAt(long index) { return width(this.segment(), index); }
-        /// Sets `width` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer widthAt(long index, int value) { width(this.segment(), index, value); return this; }
+    /// {@return `depth` at the given index}
+    /// @param index the index of the struct buffer
+    public int depthAt(long index) { return depth(this.segment(), index); }
+    /// Sets `depth` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkTraceRaysIndirectCommand2KHR depthAt(long index, int value) { depth(this.segment(), index, value); return this; }
 
-        /// {@return `height` at the given index}
-        /// @param index the index of the struct buffer
-        public int heightAt(long index) { return height(this.segment(), index); }
-        /// Sets `height` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer heightAt(long index, int value) { height(this.segment(), index, value); return this; }
-
-        /// {@return `depth` at the given index}
-        /// @param index the index of the struct buffer
-        public int depthAt(long index) { return depth(this.segment(), index); }
-        /// Sets `depth` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer depthAt(long index, int value) { depth(this.segment(), index, value); return this; }
-
-    }
 }

@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -39,7 +40,7 @@ import overrungl.util.*;
 ///     uint32_t set;
 /// };
 /// ```
-public sealed class VkDescriptorUpdateTemplateCreateInfo extends GroupType {
+public final class VkDescriptorUpdateTemplateCreateInfo extends GroupType {
     /// The struct layout of `VkDescriptorUpdateTemplateCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -115,20 +116,21 @@ public sealed class VkDescriptorUpdateTemplateCreateInfo extends GroupType {
     public static final VarHandle VH_set = LAYOUT.arrayElementVarHandle(PathElement.groupElement("set"));
 
     /// Creates `VkDescriptorUpdateTemplateCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkDescriptorUpdateTemplateCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkDescriptorUpdateTemplateCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkDescriptorUpdateTemplateCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorUpdateTemplateCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkDescriptorUpdateTemplateCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkDescriptorUpdateTemplateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorUpdateTemplateCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkDescriptorUpdateTemplateCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorUpdateTemplateCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkDescriptorUpdateTemplateCreateInfo` with the given segment.
     ///
@@ -136,18 +138,18 @@ public sealed class VkDescriptorUpdateTemplateCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkDescriptorUpdateTemplateCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkDescriptorUpdateTemplateCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkDescriptorUpdateTemplateCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkDescriptorUpdateTemplateCreateInfo`
-    public static VkDescriptorUpdateTemplateCreateInfo alloc(SegmentAllocator allocator) { return new VkDescriptorUpdateTemplateCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkDescriptorUpdateTemplateCreateInfo alloc(SegmentAllocator allocator) { return new VkDescriptorUpdateTemplateCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkDescriptorUpdateTemplateCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkDescriptorUpdateTemplateCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkDescriptorUpdateTemplateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorUpdateTemplateCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkDescriptorUpdateTemplateCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -279,9 +281,10 @@ public sealed class VkDescriptorUpdateTemplateCreateInfo extends GroupType {
     /// @return `this`
     public VkDescriptorUpdateTemplateCreateInfo copyFrom(VkDescriptorUpdateTemplateCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkDescriptorUpdateTemplateCreateInfo reinterpret(long count) { return new VkDescriptorUpdateTemplateCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -443,117 +446,111 @@ public sealed class VkDescriptorUpdateTemplateCreateInfo extends GroupType {
     /// @return `this`
     public VkDescriptorUpdateTemplateCreateInfo set(int value) { set(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkDescriptorUpdateTemplateCreateInfo].
-    public static final class Buffer extends VkDescriptorUpdateTemplateCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkDescriptorUpdateTemplateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkDescriptorUpdateTemplateCreateInfo`
+    public VkDescriptorUpdateTemplateCreateInfo asSlice(long index) { return new VkDescriptorUpdateTemplateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkDescriptorUpdateTemplateCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkDescriptorUpdateTemplateCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkDescriptorUpdateTemplateCreateInfo`
+    public VkDescriptorUpdateTemplateCreateInfo asSlice(long index, long count) { return new VkDescriptorUpdateTemplateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkDescriptorUpdateTemplateCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo at(long index, Consumer<VkDescriptorUpdateTemplateCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkDescriptorUpdateTemplateCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkDescriptorUpdateTemplateCreateInfo`
-        public VkDescriptorUpdateTemplateCreateInfo asSlice(long index) { return new VkDescriptorUpdateTemplateCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkDescriptorUpdateTemplateCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkDescriptorUpdateTemplateCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `descriptorUpdateEntryCount` at the given index}
+    /// @param index the index of the struct buffer
+    public int descriptorUpdateEntryCountAt(long index) { return descriptorUpdateEntryCount(this.segment(), index); }
+    /// Sets `descriptorUpdateEntryCount` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo descriptorUpdateEntryCountAt(long index, int value) { descriptorUpdateEntryCount(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `pDescriptorUpdateEntries` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pDescriptorUpdateEntriesAt(long index) { return pDescriptorUpdateEntries(this.segment(), index); }
+    /// Sets `pDescriptorUpdateEntries` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo pDescriptorUpdateEntriesAt(long index, MemorySegment value) { pDescriptorUpdateEntries(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorUpdateEntryCount` at the given index}
-        /// @param index the index of the struct buffer
-        public int descriptorUpdateEntryCountAt(long index) { return descriptorUpdateEntryCount(this.segment(), index); }
-        /// Sets `descriptorUpdateEntryCount` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorUpdateEntryCountAt(long index, int value) { descriptorUpdateEntryCount(this.segment(), index, value); return this; }
+    /// {@return `templateType` at the given index}
+    /// @param index the index of the struct buffer
+    public int templateTypeAt(long index) { return templateType(this.segment(), index); }
+    /// Sets `templateType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo templateTypeAt(long index, int value) { templateType(this.segment(), index, value); return this; }
 
-        /// {@return `pDescriptorUpdateEntries` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pDescriptorUpdateEntriesAt(long index) { return pDescriptorUpdateEntries(this.segment(), index); }
-        /// Sets `pDescriptorUpdateEntries` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pDescriptorUpdateEntriesAt(long index, MemorySegment value) { pDescriptorUpdateEntries(this.segment(), index, value); return this; }
+    /// {@return `descriptorSetLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public long descriptorSetLayoutAt(long index) { return descriptorSetLayout(this.segment(), index); }
+    /// Sets `descriptorSetLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo descriptorSetLayoutAt(long index, long value) { descriptorSetLayout(this.segment(), index, value); return this; }
 
-        /// {@return `templateType` at the given index}
-        /// @param index the index of the struct buffer
-        public int templateTypeAt(long index) { return templateType(this.segment(), index); }
-        /// Sets `templateType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer templateTypeAt(long index, int value) { templateType(this.segment(), index, value); return this; }
+    /// {@return `pipelineBindPoint` at the given index}
+    /// @param index the index of the struct buffer
+    public int pipelineBindPointAt(long index) { return pipelineBindPoint(this.segment(), index); }
+    /// Sets `pipelineBindPoint` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo pipelineBindPointAt(long index, int value) { pipelineBindPoint(this.segment(), index, value); return this; }
 
-        /// {@return `descriptorSetLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public long descriptorSetLayoutAt(long index) { return descriptorSetLayout(this.segment(), index); }
-        /// Sets `descriptorSetLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer descriptorSetLayoutAt(long index, long value) { descriptorSetLayout(this.segment(), index, value); return this; }
+    /// {@return `pipelineLayout` at the given index}
+    /// @param index the index of the struct buffer
+    public long pipelineLayoutAt(long index) { return pipelineLayout(this.segment(), index); }
+    /// Sets `pipelineLayout` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo pipelineLayoutAt(long index, long value) { pipelineLayout(this.segment(), index, value); return this; }
 
-        /// {@return `pipelineBindPoint` at the given index}
-        /// @param index the index of the struct buffer
-        public int pipelineBindPointAt(long index) { return pipelineBindPoint(this.segment(), index); }
-        /// Sets `pipelineBindPoint` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineBindPointAt(long index, int value) { pipelineBindPoint(this.segment(), index, value); return this; }
+    /// {@return `set` at the given index}
+    /// @param index the index of the struct buffer
+    public int setAt(long index) { return set(this.segment(), index); }
+    /// Sets `set` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkDescriptorUpdateTemplateCreateInfo setAt(long index, int value) { set(this.segment(), index, value); return this; }
 
-        /// {@return `pipelineLayout` at the given index}
-        /// @param index the index of the struct buffer
-        public long pipelineLayoutAt(long index) { return pipelineLayout(this.segment(), index); }
-        /// Sets `pipelineLayout` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pipelineLayoutAt(long index, long value) { pipelineLayout(this.segment(), index, value); return this; }
-
-        /// {@return `set` at the given index}
-        /// @param index the index of the struct buffer
-        public int setAt(long index) { return set(this.segment(), index); }
-        /// Sets `set` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer setAt(long index, int value) { set(this.segment(), index, value); return this; }
-
-    }
 }

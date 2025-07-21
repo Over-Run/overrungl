@@ -21,6 +21,7 @@ package overrungl.vulkan.struct;
 import java.lang.foreign.*;
 import java.lang.foreign.MemoryLayout.PathElement;
 import java.lang.invoke.*;
+import java.util.function.*;
 import overrungl.struct.*;
 import overrungl.util.*;
 
@@ -47,7 +48,7 @@ import overrungl.util.*;
 ///     (uint32_t) VkBool32 unnormalizedCoordinates;
 /// };
 /// ```
-public sealed class VkSamplerCreateInfo extends GroupType {
+public final class VkSamplerCreateInfo extends GroupType {
     /// The struct layout of `VkSamplerCreateInfo`.
     public static final GroupLayout LAYOUT = LayoutBuilder.struct(
         ValueLayout.JAVA_INT.withName("sType"),
@@ -179,20 +180,21 @@ public sealed class VkSamplerCreateInfo extends GroupType {
     public static final VarHandle VH_unnormalizedCoordinates = LAYOUT.arrayElementVarHandle(PathElement.groupElement("unnormalizedCoordinates"));
 
     /// Creates `VkSamplerCreateInfo` with the given segment.
-    /// @param segment the memory segment
-    public VkSamplerCreateInfo(MemorySegment segment) { super(segment, LAYOUT); }
+    /// @param segment      the memory segment
+    /// @param elementCount the element count of this struct buffer
+    public VkSamplerCreateInfo(MemorySegment segment, long elementCount) { super(segment, LAYOUT, elementCount); }
 
     /// Creates `VkSamplerCreateInfo` with the given segment.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment, estimateCount(segment, LAYOUT)); }
+    public static VkSamplerCreateInfo of(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerCreateInfo(segment, estimateCount(segment, LAYOUT)); }
 
     /// Creates `VkSamplerCreateInfo` with the given segment.
     ///
     /// Reinterprets the segment if zero-length.
     /// @param segment the memory segment
     /// @return the created instance or `null` if the segment is `NULL`
-    public static VkSamplerCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerCreateInfo(segment.reinterpret(LAYOUT.byteSize())); }
+    public static VkSamplerCreateInfo ofNative(MemorySegment segment) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerCreateInfo(segment.reinterpret(LAYOUT.byteSize()), 1); }
 
     /// Creates `VkSamplerCreateInfo` with the given segment.
     ///
@@ -200,18 +202,18 @@ public sealed class VkSamplerCreateInfo extends GroupType {
     /// @param segment the memory segment
     /// @param count   the count of the buffer
     /// @return the created instance or `null` if the segment is `NULL`
-    public static Buffer ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new Buffer(segment.reinterpret(LAYOUT.scale(0, count)), count); }
+    public static VkSamplerCreateInfo ofNative(MemorySegment segment, long count) { return MemoryUtil.isNullPointer(segment) ? null : new VkSamplerCreateInfo(segment.reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// Allocates a `VkSamplerCreateInfo` with the given segment allocator.
     /// @param allocator the segment allocator
     /// @return the allocated `VkSamplerCreateInfo`
-    public static VkSamplerCreateInfo alloc(SegmentAllocator allocator) { return new VkSamplerCreateInfo(allocator.allocate(LAYOUT)); }
+    public static VkSamplerCreateInfo alloc(SegmentAllocator allocator) { return new VkSamplerCreateInfo(allocator.allocate(LAYOUT), 1); }
 
     /// Allocates a `VkSamplerCreateInfo` with the given segment allocator and count.
     /// @param allocator the segment allocator
     /// @param count     the count
     /// @return the allocated `VkSamplerCreateInfo`
-    public static Buffer alloc(SegmentAllocator allocator, long count) { return new Buffer(allocator.allocate(LAYOUT, count), count); }
+    public static VkSamplerCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkSamplerCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
     /// Allocates a `VkSamplerCreateInfo` with the given segment allocator and arguments like initializer list.
     /// @param allocator the segment allocator
@@ -515,9 +517,10 @@ public sealed class VkSamplerCreateInfo extends GroupType {
     /// @return `this`
     public VkSamplerCreateInfo copyFrom(VkSamplerCreateInfo src) { this.segment().copyFrom(src.segment()); return this; }
 
-    /// Converts this instance to a buffer.
-    /// @return the buffer
-    public Buffer asBuffer() { if (this instanceof Buffer buf) return buf; else return new Buffer(this.segment(), this.estimateCount()); }
+    /// Reinterprets this buffer with the given count.
+    /// @param count the new count
+    /// @return the reinterpreted buffer
+    public VkSamplerCreateInfo reinterpret(long count) { return new VkSamplerCreateInfo(this.segment().reinterpret(LAYOUT.scale(0, count)), count); }
 
     /// {@return `sType` at the given index}
     /// @param segment the segment of the struct
@@ -807,189 +810,183 @@ public sealed class VkSamplerCreateInfo extends GroupType {
     /// @return `this`
     public VkSamplerCreateInfo unnormalizedCoordinates(int value) { unnormalizedCoordinates(this.segment(), 0L, value); return this; }
 
-    /// A buffer of [VkSamplerCreateInfo].
-    public static final class Buffer extends VkSamplerCreateInfo {
-        private final long elementCount;
+    /// Creates a slice of `VkSamplerCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @return the slice of `VkSamplerCreateInfo`
+    public VkSamplerCreateInfo asSlice(long index) { return new VkSamplerCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT), 1); }
 
-        /// Creates `VkSamplerCreateInfo.Buffer` with the given segment.
-        /// @param segment      the memory segment
-        /// @param elementCount the element count
-        public Buffer(MemorySegment segment, long elementCount) { super(segment); this.elementCount = elementCount; }
+    /// Creates a slice of `VkSamplerCreateInfo`.
+    /// @param index the index of the struct buffer
+    /// @param count the count
+    /// @return the slice of `VkSamplerCreateInfo`
+    public VkSamplerCreateInfo asSlice(long index, long count) { return new VkSamplerCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
 
-        @Override public long estimateCount() { return elementCount; }
+    /// Visits `VkSamplerCreateInfo` buffer at the given index.
+    /// @param index the index of this buffer
+    /// @param func  the function to run with the slice of this buffer
+    /// @return `this`
+    public VkSamplerCreateInfo at(long index, Consumer<VkSamplerCreateInfo> func) { func.accept(asSlice(index)); return this; }
 
-        /// Creates a slice of `VkSamplerCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @return the slice of `VkSamplerCreateInfo`
-        public VkSamplerCreateInfo asSlice(long index) { return new VkSamplerCreateInfo(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT)); }
+    /// {@return `sType` at the given index}
+    /// @param index the index of the struct buffer
+    public int sTypeAt(long index) { return sType(this.segment(), index); }
+    /// Sets `sType` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
 
-        /// Creates a slice of `VkSamplerCreateInfo`.
-        /// @param index the index of the struct buffer
-        /// @param count the count
-        /// @return the slice of `VkSamplerCreateInfo`
-        public Buffer asSlice(long index, long count) { return new Buffer(this.segment().asSlice(LAYOUT.scale(0L, index), LAYOUT.byteSize() * count), count); }
+    /// {@return `pNext` at the given index}
+    /// @param index the index of the struct buffer
+    public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
+    /// Sets `pNext` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
 
-        /// {@return `sType` at the given index}
-        /// @param index the index of the struct buffer
-        public int sTypeAt(long index) { return sType(this.segment(), index); }
-        /// Sets `sType` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer sTypeAt(long index, int value) { sType(this.segment(), index, value); return this; }
+    /// {@return `flags` at the given index}
+    /// @param index the index of the struct buffer
+    public int flagsAt(long index) { return flags(this.segment(), index); }
+    /// Sets `flags` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
 
-        /// {@return `pNext` at the given index}
-        /// @param index the index of the struct buffer
-        public MemorySegment pNextAt(long index) { return pNext(this.segment(), index); }
-        /// Sets `pNext` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer pNextAt(long index, MemorySegment value) { pNext(this.segment(), index, value); return this; }
+    /// {@return `magFilter` at the given index}
+    /// @param index the index of the struct buffer
+    public int magFilterAt(long index) { return magFilter(this.segment(), index); }
+    /// Sets `magFilter` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo magFilterAt(long index, int value) { magFilter(this.segment(), index, value); return this; }
 
-        /// {@return `flags` at the given index}
-        /// @param index the index of the struct buffer
-        public int flagsAt(long index) { return flags(this.segment(), index); }
-        /// Sets `flags` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer flagsAt(long index, int value) { flags(this.segment(), index, value); return this; }
+    /// {@return `minFilter` at the given index}
+    /// @param index the index of the struct buffer
+    public int minFilterAt(long index) { return minFilter(this.segment(), index); }
+    /// Sets `minFilter` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo minFilterAt(long index, int value) { minFilter(this.segment(), index, value); return this; }
 
-        /// {@return `magFilter` at the given index}
-        /// @param index the index of the struct buffer
-        public int magFilterAt(long index) { return magFilter(this.segment(), index); }
-        /// Sets `magFilter` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer magFilterAt(long index, int value) { magFilter(this.segment(), index, value); return this; }
+    /// {@return `mipmapMode` at the given index}
+    /// @param index the index of the struct buffer
+    public int mipmapModeAt(long index) { return mipmapMode(this.segment(), index); }
+    /// Sets `mipmapMode` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo mipmapModeAt(long index, int value) { mipmapMode(this.segment(), index, value); return this; }
 
-        /// {@return `minFilter` at the given index}
-        /// @param index the index of the struct buffer
-        public int minFilterAt(long index) { return minFilter(this.segment(), index); }
-        /// Sets `minFilter` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minFilterAt(long index, int value) { minFilter(this.segment(), index, value); return this; }
+    /// {@return `addressModeU` at the given index}
+    /// @param index the index of the struct buffer
+    public int addressModeUAt(long index) { return addressModeU(this.segment(), index); }
+    /// Sets `addressModeU` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo addressModeUAt(long index, int value) { addressModeU(this.segment(), index, value); return this; }
 
-        /// {@return `mipmapMode` at the given index}
-        /// @param index the index of the struct buffer
-        public int mipmapModeAt(long index) { return mipmapMode(this.segment(), index); }
-        /// Sets `mipmapMode` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer mipmapModeAt(long index, int value) { mipmapMode(this.segment(), index, value); return this; }
+    /// {@return `addressModeV` at the given index}
+    /// @param index the index of the struct buffer
+    public int addressModeVAt(long index) { return addressModeV(this.segment(), index); }
+    /// Sets `addressModeV` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo addressModeVAt(long index, int value) { addressModeV(this.segment(), index, value); return this; }
 
-        /// {@return `addressModeU` at the given index}
-        /// @param index the index of the struct buffer
-        public int addressModeUAt(long index) { return addressModeU(this.segment(), index); }
-        /// Sets `addressModeU` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer addressModeUAt(long index, int value) { addressModeU(this.segment(), index, value); return this; }
+    /// {@return `addressModeW` at the given index}
+    /// @param index the index of the struct buffer
+    public int addressModeWAt(long index) { return addressModeW(this.segment(), index); }
+    /// Sets `addressModeW` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo addressModeWAt(long index, int value) { addressModeW(this.segment(), index, value); return this; }
 
-        /// {@return `addressModeV` at the given index}
-        /// @param index the index of the struct buffer
-        public int addressModeVAt(long index) { return addressModeV(this.segment(), index); }
-        /// Sets `addressModeV` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer addressModeVAt(long index, int value) { addressModeV(this.segment(), index, value); return this; }
+    /// {@return `mipLodBias` at the given index}
+    /// @param index the index of the struct buffer
+    public float mipLodBiasAt(long index) { return mipLodBias(this.segment(), index); }
+    /// Sets `mipLodBias` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo mipLodBiasAt(long index, float value) { mipLodBias(this.segment(), index, value); return this; }
 
-        /// {@return `addressModeW` at the given index}
-        /// @param index the index of the struct buffer
-        public int addressModeWAt(long index) { return addressModeW(this.segment(), index); }
-        /// Sets `addressModeW` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer addressModeWAt(long index, int value) { addressModeW(this.segment(), index, value); return this; }
+    /// {@return `anisotropyEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int anisotropyEnableAt(long index) { return anisotropyEnable(this.segment(), index); }
+    /// Sets `anisotropyEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo anisotropyEnableAt(long index, int value) { anisotropyEnable(this.segment(), index, value); return this; }
 
-        /// {@return `mipLodBias` at the given index}
-        /// @param index the index of the struct buffer
-        public float mipLodBiasAt(long index) { return mipLodBias(this.segment(), index); }
-        /// Sets `mipLodBias` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer mipLodBiasAt(long index, float value) { mipLodBias(this.segment(), index, value); return this; }
+    /// {@return `maxAnisotropy` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxAnisotropyAt(long index) { return maxAnisotropy(this.segment(), index); }
+    /// Sets `maxAnisotropy` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo maxAnisotropyAt(long index, float value) { maxAnisotropy(this.segment(), index, value); return this; }
 
-        /// {@return `anisotropyEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int anisotropyEnableAt(long index) { return anisotropyEnable(this.segment(), index); }
-        /// Sets `anisotropyEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer anisotropyEnableAt(long index, int value) { anisotropyEnable(this.segment(), index, value); return this; }
+    /// {@return `compareEnable` at the given index}
+    /// @param index the index of the struct buffer
+    public int compareEnableAt(long index) { return compareEnable(this.segment(), index); }
+    /// Sets `compareEnable` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo compareEnableAt(long index, int value) { compareEnable(this.segment(), index, value); return this; }
 
-        /// {@return `maxAnisotropy` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxAnisotropyAt(long index) { return maxAnisotropy(this.segment(), index); }
-        /// Sets `maxAnisotropy` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxAnisotropyAt(long index, float value) { maxAnisotropy(this.segment(), index, value); return this; }
+    /// {@return `compareOp` at the given index}
+    /// @param index the index of the struct buffer
+    public int compareOpAt(long index) { return compareOp(this.segment(), index); }
+    /// Sets `compareOp` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo compareOpAt(long index, int value) { compareOp(this.segment(), index, value); return this; }
 
-        /// {@return `compareEnable` at the given index}
-        /// @param index the index of the struct buffer
-        public int compareEnableAt(long index) { return compareEnable(this.segment(), index); }
-        /// Sets `compareEnable` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer compareEnableAt(long index, int value) { compareEnable(this.segment(), index, value); return this; }
+    /// {@return `minLod` at the given index}
+    /// @param index the index of the struct buffer
+    public float minLodAt(long index) { return minLod(this.segment(), index); }
+    /// Sets `minLod` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo minLodAt(long index, float value) { minLod(this.segment(), index, value); return this; }
 
-        /// {@return `compareOp` at the given index}
-        /// @param index the index of the struct buffer
-        public int compareOpAt(long index) { return compareOp(this.segment(), index); }
-        /// Sets `compareOp` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer compareOpAt(long index, int value) { compareOp(this.segment(), index, value); return this; }
+    /// {@return `maxLod` at the given index}
+    /// @param index the index of the struct buffer
+    public float maxLodAt(long index) { return maxLod(this.segment(), index); }
+    /// Sets `maxLod` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo maxLodAt(long index, float value) { maxLod(this.segment(), index, value); return this; }
 
-        /// {@return `minLod` at the given index}
-        /// @param index the index of the struct buffer
-        public float minLodAt(long index) { return minLod(this.segment(), index); }
-        /// Sets `minLod` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer minLodAt(long index, float value) { minLod(this.segment(), index, value); return this; }
+    /// {@return `borderColor` at the given index}
+    /// @param index the index of the struct buffer
+    public int borderColorAt(long index) { return borderColor(this.segment(), index); }
+    /// Sets `borderColor` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo borderColorAt(long index, int value) { borderColor(this.segment(), index, value); return this; }
 
-        /// {@return `maxLod` at the given index}
-        /// @param index the index of the struct buffer
-        public float maxLodAt(long index) { return maxLod(this.segment(), index); }
-        /// Sets `maxLod` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer maxLodAt(long index, float value) { maxLod(this.segment(), index, value); return this; }
+    /// {@return `unnormalizedCoordinates` at the given index}
+    /// @param index the index of the struct buffer
+    public int unnormalizedCoordinatesAt(long index) { return unnormalizedCoordinates(this.segment(), index); }
+    /// Sets `unnormalizedCoordinates` with the given value at the given index.
+    /// @param index the index of the struct buffer
+    /// @param value the value
+    /// @return `this`
+    public VkSamplerCreateInfo unnormalizedCoordinatesAt(long index, int value) { unnormalizedCoordinates(this.segment(), index, value); return this; }
 
-        /// {@return `borderColor` at the given index}
-        /// @param index the index of the struct buffer
-        public int borderColorAt(long index) { return borderColor(this.segment(), index); }
-        /// Sets `borderColor` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer borderColorAt(long index, int value) { borderColor(this.segment(), index, value); return this; }
-
-        /// {@return `unnormalizedCoordinates` at the given index}
-        /// @param index the index of the struct buffer
-        public int unnormalizedCoordinatesAt(long index) { return unnormalizedCoordinates(this.segment(), index); }
-        /// Sets `unnormalizedCoordinates` with the given value at the given index.
-        /// @param index the index of the struct buffer
-        /// @param value the value
-        /// @return `this`
-        public Buffer unnormalizedCoordinatesAt(long index, int value) { unnormalizedCoordinates(this.segment(), index, value); return this; }
-
-    }
 }
