@@ -18,7 +18,6 @@ package overrungl;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.jar.Manifest;
@@ -37,7 +36,7 @@ public final class OverrunGL {
     /**
      * The version of GLFW native libraries.
      */
-    public static final String GLFW_VERSION = "3.5.0.1";
+    public static final String GLFW_VERSION = "3.5.0.2";
     /**
      * The version of NFD native libraries.
      */
@@ -51,7 +50,7 @@ public final class OverrunGL {
      */
     public static final String STB_VERSION = "0.1.0.6";
     /// The version of Vulkan Memory Allocator native libraries.
-    public static final String VMA_VERSION = "3.2.1.0";
+    public static final String VMA_VERSION = "3.3.0.0";
     private static final Consumer<String> DEFAULT_LOGGER = System.err::println;
     private static Consumer<String> apiLogger = DEFAULT_LOGGER;
 
