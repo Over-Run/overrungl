@@ -18,7 +18,7 @@
 package overrungl.vulkan.qcom;
 import overrungl.vulkan.*;
 public final class VKQCOMRenderPassTransform {
-    public static final int VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 4;
+    public static final int VK_QCOM_RENDER_PASS_TRANSFORM_SPEC_VERSION = 5;
     public static final String VK_QCOM_RENDER_PASS_TRANSFORM_EXTENSION_NAME = "VK_QCOM_render_pass_transform";
     public static final int VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_RENDER_PASS_TRANSFORM_INFO_QCOM = 1000282000;
     public static final int VK_STRUCTURE_TYPE_RENDER_PASS_TRANSFORM_BEGIN_INFO_QCOM = 1000282001;

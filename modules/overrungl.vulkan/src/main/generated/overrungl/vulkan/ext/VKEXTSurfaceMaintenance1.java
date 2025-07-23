@@ -18,17 +18,11 @@
 package overrungl.vulkan.ext;
 import overrungl.vulkan.*;
 public final class VKEXTSurfaceMaintenance1 {
-    public static final int VK_PRESENT_SCALING_ONE_TO_ONE_BIT_EXT = 0x00000001;
-    public static final int VK_PRESENT_SCALING_ASPECT_RATIO_STRETCH_BIT_EXT = 0x00000002;
-    public static final int VK_PRESENT_SCALING_STRETCH_BIT_EXT = 0x00000004;
-    public static final int VK_PRESENT_GRAVITY_MIN_BIT_EXT = 0x00000001;
-    public static final int VK_PRESENT_GRAVITY_MAX_BIT_EXT = 0x00000002;
-    public static final int VK_PRESENT_GRAVITY_CENTERED_BIT_EXT = 0x00000004;
     public static final int VK_EXT_SURFACE_MAINTENANCE_1_SPEC_VERSION = 1;
     public static final String VK_EXT_SURFACE_MAINTENANCE_1_EXTENSION_NAME = "VK_EXT_surface_maintenance1";
-    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_EXT = 1000274000;
-    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_EXT = 1000274001;
-    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_EXT = 1000274002;
+    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_EXT = 1000486000;
+    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_SCALING_CAPABILITIES_EXT = 1000486001;
+    public static final int VK_STRUCTURE_TYPE_SURFACE_PRESENT_MODE_COMPATIBILITY_EXT = 1000486002;
 
     private VKEXTSurfaceMaintenance1() {}
 
