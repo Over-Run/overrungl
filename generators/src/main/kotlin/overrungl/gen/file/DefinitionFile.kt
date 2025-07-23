@@ -938,9 +938,10 @@ fun writeFunction(
         if (func.optional) {
             sb.appendLine("""        if (MemoryUtil.isNullPointer($handlesInstance.PFN_${func.entrypoint})) throw new ${func.symbolNotFoundError}("Symbol not found: ${func.entrypoint}");""")
         }
-        sb.appendLine("        try { if (TRACE_DOWNCALLS) { traceDowncall(\"${func.entrypoint}\"${
-            func.parameters.joinToString("") { ", ${it.name}" }
-        }); }")
+        sb.append("        try { if (TRACE_DOWNCALLS) { traceDowncall(\"${func.entrypoint}\"")
+        if (func.requireAllocator) sb.append(", __allocator")
+        sb.append(func.parameters.joinToString("") { ", ${it.name}" })
+        sb.appendLine("); }")
         sb.append("        ")
         if (func.returnType !is VoidType) {
             sb.append("return ")

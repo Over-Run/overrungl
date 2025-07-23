@@ -208,7 +208,7 @@ public final class STBVorbis {
     /// (struct STBVorbisInfo) stb_vorbis_info stb_vorbis_get_info(stb_vorbis* f);
     /// ```
     public static MemorySegment stb_vorbis_get_info(SegmentAllocator __allocator, MemorySegment f) {
-        try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_info", f); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_info", __allocator, f); }
         return (MemorySegment) Handles.MH_stb_vorbis_get_info.invokeExact(Handles.get().PFN_stb_vorbis_get_info, __allocator, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_info", e); }
     }
@@ -217,7 +217,7 @@ public final class STBVorbis {
     /// (struct STBVorbisComment) stb_vorbis_comment stb_vorbis_get_comment(stb_vorbis* f);
     /// ```
     public static MemorySegment stb_vorbis_get_comment(SegmentAllocator __allocator, MemorySegment f) {
-        try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_comment", f); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stb_vorbis_get_comment", __allocator, f); }
         return (MemorySegment) Handles.MH_stb_vorbis_get_comment.invokeExact(Handles.get().PFN_stb_vorbis_get_comment, __allocator, f); }
         catch (Throwable e) { throw new RuntimeException("error in stb_vorbis_get_comment", e); }
     }
