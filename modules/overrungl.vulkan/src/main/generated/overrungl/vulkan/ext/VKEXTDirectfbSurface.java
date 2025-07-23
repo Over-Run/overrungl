@@ -18,7 +18,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTDirectfbSurface {
@@ -26,8 +26,8 @@ public final class VKEXTDirectfbSurface {
     public static final String VK_EXT_DIRECTFB_SURFACE_EXTENSION_NAME = "VK_EXT_directfb_surface";
     public static final int VK_STRUCTURE_TYPE_DIRECTFB_SURFACE_CREATE_INFO_EXT = 1000346000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateDirectFBSurfaceEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetPhysicalDeviceDirectFBPresentationSupportEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateDirectFBSurfaceEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceDirectFBPresentationSupportEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -38,7 +38,8 @@ public final class VKEXTDirectfbSurface {
     /// ```
     public static int vkCreateDirectFBSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateDirectFBSurfaceEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDirectFBSurfaceEXT");
-        try { return (int) Handles.MH_vkCreateDirectFBSurfaceEXT.invokeExact(instance.capabilities().PFN_vkCreateDirectFBSurfaceEXT, instance.segment(), pCreateInfo, pAllocator, pSurface); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateDirectFBSurfaceEXT", instance, pCreateInfo, pAllocator, pSurface); }
+        return (int) Handles.MH_vkCreateDirectFBSurfaceEXT.invokeExact(instance.capabilities().PFN_vkCreateDirectFBSurfaceEXT, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDirectFBSurfaceEXT", e); }
     }
 
@@ -47,7 +48,8 @@ public final class VKEXTDirectfbSurface {
     /// ```
     public static int vkGetPhysicalDeviceDirectFBPresentationSupportEXT(VkPhysicalDevice physicalDevice, int queueFamilyIndex, MemorySegment dfb) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceDirectFBPresentationSupportEXT");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceDirectFBPresentationSupportEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT, physicalDevice.segment(), queueFamilyIndex, dfb); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceDirectFBPresentationSupportEXT", physicalDevice, queueFamilyIndex, dfb); }
+        return (int) Handles.MH_vkGetPhysicalDeviceDirectFBPresentationSupportEXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceDirectFBPresentationSupportEXT, physicalDevice.segment(), queueFamilyIndex, dfb); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceDirectFBPresentationSupportEXT", e); }
     }
 

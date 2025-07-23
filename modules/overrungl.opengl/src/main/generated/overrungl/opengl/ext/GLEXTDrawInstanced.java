@@ -19,15 +19,15 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLEXTDrawInstanced {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDrawArraysInstancedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawElementsInstancedEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawArraysInstancedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawElementsInstancedEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glDrawArraysInstancedEXT;
         public final MemorySegment PFN_glDrawElementsInstancedEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -45,7 +45,8 @@ public final class GLEXTDrawInstanced {
     /// ```
     public void DrawArraysInstancedEXT(int mode, int start, int count, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawArraysInstancedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDrawArraysInstancedEXT");
-        try { Handles.MH_glDrawArraysInstancedEXT.invokeExact(handles.PFN_glDrawArraysInstancedEXT, mode, start, count, primcount); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawArraysInstancedEXT", mode, start, count, primcount); }
+        Handles.MH_glDrawArraysInstancedEXT.invokeExact(handles.PFN_glDrawArraysInstancedEXT, mode, start, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in DrawArraysInstancedEXT", e); }
     }
 
@@ -54,7 +55,8 @@ public final class GLEXTDrawInstanced {
     /// ```
     public void DrawElementsInstancedEXT(int mode, int count, int type, MemorySegment indices, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementsInstancedEXT)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementsInstancedEXT");
-        try { Handles.MH_glDrawElementsInstancedEXT.invokeExact(handles.PFN_glDrawElementsInstancedEXT, mode, count, type, indices, primcount); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementsInstancedEXT", mode, count, type, indices, primcount); }
+        Handles.MH_glDrawElementsInstancedEXT.invokeExact(handles.PFN_glDrawElementsInstancedEXT, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementsInstancedEXT", e); }
     }
 

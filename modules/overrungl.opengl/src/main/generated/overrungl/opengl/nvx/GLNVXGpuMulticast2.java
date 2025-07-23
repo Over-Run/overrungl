@@ -19,7 +19,7 @@ package overrungl.opengl.nvx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,12 +27,12 @@ public final class GLNVXGpuMulticast2 {
     public static final int GL_UPLOAD_GPU_MASK_NVX = 0x954A;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glUploadGpuMaskNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMulticastViewportArrayvNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMulticastViewportPositionWScaleNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glMulticastScissorArrayvNVX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glAsyncCopyBufferSubDataNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glAsyncCopyImageSubDataNVX = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUploadGpuMaskNVX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMulticastViewportArrayvNVX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMulticastViewportPositionWScaleNVX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glMulticastScissorArrayvNVX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glAsyncCopyBufferSubDataNVX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glAsyncCopyImageSubDataNVX = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glUploadGpuMaskNVX;
         public final MemorySegment PFN_glMulticastViewportArrayvNVX;
         public final MemorySegment PFN_glMulticastViewportPositionWScaleNVX;
@@ -58,7 +58,8 @@ public final class GLNVXGpuMulticast2 {
     /// ```
     public void UploadGpuMaskNVX(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUploadGpuMaskNVX)) throw new GLSymbolNotFoundError("Symbol not found: glUploadGpuMaskNVX");
-        try { Handles.MH_glUploadGpuMaskNVX.invokeExact(handles.PFN_glUploadGpuMaskNVX, mask); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUploadGpuMaskNVX", mask); }
+        Handles.MH_glUploadGpuMaskNVX.invokeExact(handles.PFN_glUploadGpuMaskNVX, mask); }
         catch (Throwable e) { throw new RuntimeException("error in UploadGpuMaskNVX", e); }
     }
 
@@ -67,7 +68,8 @@ public final class GLNVXGpuMulticast2 {
     /// ```
     public void MulticastViewportArrayvNVX(int gpu, int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastViewportArrayvNVX)) throw new GLSymbolNotFoundError("Symbol not found: glMulticastViewportArrayvNVX");
-        try { Handles.MH_glMulticastViewportArrayvNVX.invokeExact(handles.PFN_glMulticastViewportArrayvNVX, gpu, first, count, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMulticastViewportArrayvNVX", gpu, first, count, v); }
+        Handles.MH_glMulticastViewportArrayvNVX.invokeExact(handles.PFN_glMulticastViewportArrayvNVX, gpu, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in MulticastViewportArrayvNVX", e); }
     }
 
@@ -76,7 +78,8 @@ public final class GLNVXGpuMulticast2 {
     /// ```
     public void MulticastViewportPositionWScaleNVX(int gpu, int index, float xcoeff, float ycoeff) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastViewportPositionWScaleNVX)) throw new GLSymbolNotFoundError("Symbol not found: glMulticastViewportPositionWScaleNVX");
-        try { Handles.MH_glMulticastViewportPositionWScaleNVX.invokeExact(handles.PFN_glMulticastViewportPositionWScaleNVX, gpu, index, xcoeff, ycoeff); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMulticastViewportPositionWScaleNVX", gpu, index, xcoeff, ycoeff); }
+        Handles.MH_glMulticastViewportPositionWScaleNVX.invokeExact(handles.PFN_glMulticastViewportPositionWScaleNVX, gpu, index, xcoeff, ycoeff); }
         catch (Throwable e) { throw new RuntimeException("error in MulticastViewportPositionWScaleNVX", e); }
     }
 
@@ -85,7 +88,8 @@ public final class GLNVXGpuMulticast2 {
     /// ```
     public void MulticastScissorArrayvNVX(int gpu, int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMulticastScissorArrayvNVX)) throw new GLSymbolNotFoundError("Symbol not found: glMulticastScissorArrayvNVX");
-        try { Handles.MH_glMulticastScissorArrayvNVX.invokeExact(handles.PFN_glMulticastScissorArrayvNVX, gpu, first, count, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMulticastScissorArrayvNVX", gpu, first, count, v); }
+        Handles.MH_glMulticastScissorArrayvNVX.invokeExact(handles.PFN_glMulticastScissorArrayvNVX, gpu, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in MulticastScissorArrayvNVX", e); }
     }
 
@@ -94,7 +98,8 @@ public final class GLNVXGpuMulticast2 {
     /// ```
     public int AsyncCopyBufferSubDataNVX(int waitSemaphoreCount, MemorySegment waitSemaphoreArray, MemorySegment fenceValueArray, int readGpu, int writeGpuMask, int readBuffer, int writeBuffer, long readOffset, long writeOffset, long size, int signalSemaphoreCount, MemorySegment signalSemaphoreArray, MemorySegment signalValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAsyncCopyBufferSubDataNVX)) throw new GLSymbolNotFoundError("Symbol not found: glAsyncCopyBufferSubDataNVX");
-        try { return (int) Handles.MH_glAsyncCopyBufferSubDataNVX.invokeExact(handles.PFN_glAsyncCopyBufferSubDataNVX, waitSemaphoreCount, waitSemaphoreArray, fenceValueArray, readGpu, writeGpuMask, readBuffer, writeBuffer, readOffset, writeOffset, size, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glAsyncCopyBufferSubDataNVX", waitSemaphoreCount, waitSemaphoreArray, fenceValueArray, readGpu, writeGpuMask, readBuffer, writeBuffer, readOffset, writeOffset, size, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
+        return (int) Handles.MH_glAsyncCopyBufferSubDataNVX.invokeExact(handles.PFN_glAsyncCopyBufferSubDataNVX, waitSemaphoreCount, waitSemaphoreArray, fenceValueArray, readGpu, writeGpuMask, readBuffer, writeBuffer, readOffset, writeOffset, size, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in AsyncCopyBufferSubDataNVX", e); }
     }
 
@@ -103,7 +108,8 @@ public final class GLNVXGpuMulticast2 {
     /// ```
     public int AsyncCopyImageSubDataNVX(int waitSemaphoreCount, MemorySegment waitSemaphoreArray, MemorySegment waitValueArray, int srcGpu, int dstGpuMask, int srcName, int srcTarget, int srcLevel, int srcX, int srcY, int srcZ, int dstName, int dstTarget, int dstLevel, int dstX, int dstY, int dstZ, int srcWidth, int srcHeight, int srcDepth, int signalSemaphoreCount, MemorySegment signalSemaphoreArray, MemorySegment signalValueArray) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAsyncCopyImageSubDataNVX)) throw new GLSymbolNotFoundError("Symbol not found: glAsyncCopyImageSubDataNVX");
-        try { return (int) Handles.MH_glAsyncCopyImageSubDataNVX.invokeExact(handles.PFN_glAsyncCopyImageSubDataNVX, waitSemaphoreCount, waitSemaphoreArray, waitValueArray, srcGpu, dstGpuMask, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glAsyncCopyImageSubDataNVX", waitSemaphoreCount, waitSemaphoreArray, waitValueArray, srcGpu, dstGpuMask, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
+        return (int) Handles.MH_glAsyncCopyImageSubDataNVX.invokeExact(handles.PFN_glAsyncCopyImageSubDataNVX, waitSemaphoreCount, waitSemaphoreArray, waitValueArray, srcGpu, dstGpuMask, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth, signalSemaphoreCount, signalSemaphoreArray, signalValueArray); }
         catch (Throwable e) { throw new RuntimeException("error in AsyncCopyImageSubDataNVX", e); }
     }
 

@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRMaintenance4 {
@@ -30,9 +30,9 @@ public final class VKKHRMaintenance4 {
     public static final int VK_STRUCTURE_TYPE_DEVICE_IMAGE_MEMORY_REQUIREMENTS_KHR = 1000413003;
     public static final int VK_IMAGE_ASPECT_NONE_KHR = 0;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDeviceBufferMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDeviceImageMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDeviceImageSparseMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceBufferMemoryRequirementsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceImageMemoryRequirementsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceImageSparseMemoryRequirementsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -43,7 +43,8 @@ public final class VKKHRMaintenance4 {
     /// ```
     public static void vkGetDeviceBufferMemoryRequirementsKHR(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceBufferMemoryRequirementsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceBufferMemoryRequirementsKHR");
-        try { Handles.MH_vkGetDeviceBufferMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetDeviceBufferMemoryRequirementsKHR, device.segment(), pInfo, pMemoryRequirements); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceBufferMemoryRequirementsKHR", device, pInfo, pMemoryRequirements); }
+        Handles.MH_vkGetDeviceBufferMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetDeviceBufferMemoryRequirementsKHR, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceBufferMemoryRequirementsKHR", e); }
     }
 
@@ -52,7 +53,8 @@ public final class VKKHRMaintenance4 {
     /// ```
     public static void vkGetDeviceImageMemoryRequirementsKHR(VkDevice device, MemorySegment pInfo, MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageMemoryRequirementsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceImageMemoryRequirementsKHR");
-        try { Handles.MH_vkGetDeviceImageMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetDeviceImageMemoryRequirementsKHR, device.segment(), pInfo, pMemoryRequirements); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceImageMemoryRequirementsKHR", device, pInfo, pMemoryRequirements); }
+        Handles.MH_vkGetDeviceImageMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetDeviceImageMemoryRequirementsKHR, device.segment(), pInfo, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageMemoryRequirementsKHR", e); }
     }
 
@@ -61,7 +63,8 @@ public final class VKKHRMaintenance4 {
     /// ```
     public static void vkGetDeviceImageSparseMemoryRequirementsKHR(VkDevice device, MemorySegment pInfo, MemorySegment pSparseMemoryRequirementCount, MemorySegment pSparseMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageSparseMemoryRequirementsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceImageSparseMemoryRequirementsKHR");
-        try { Handles.MH_vkGetDeviceImageSparseMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetDeviceImageSparseMemoryRequirementsKHR, device.segment(), pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceImageSparseMemoryRequirementsKHR", device, pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements); }
+        Handles.MH_vkGetDeviceImageSparseMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetDeviceImageSparseMemoryRequirementsKHR, device.segment(), pInfo, pSparseMemoryRequirementCount, pSparseMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageSparseMemoryRequirementsKHR", e); }
     }
 

@@ -19,7 +19,7 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -30,12 +30,12 @@ public final class GLSGISPixelTexture {
     public static final int GL_PIXEL_GROUP_COLOR_SGIS = 0x8356;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glPixelTexGenParameteriSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPixelTexGenParameterivSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glPixelTexGenParameterfSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glPixelTexGenParameterfvSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPixelTexGenParameterivSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPixelTexGenParameterfvSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPixelTexGenParameteriSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelTexGenParameterivSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPixelTexGenParameterfSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPixelTexGenParameterfvSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPixelTexGenParameterivSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPixelTexGenParameterfvSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPixelTexGenParameteriSGIS;
         public final MemorySegment PFN_glPixelTexGenParameterivSGIS;
         public final MemorySegment PFN_glPixelTexGenParameterfSGIS;
@@ -61,7 +61,8 @@ public final class GLSGISPixelTexture {
     /// ```
     public void PixelTexGenParameteriSGIS(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameteriSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glPixelTexGenParameteriSGIS");
-        try { Handles.MH_glPixelTexGenParameteriSGIS.invokeExact(handles.PFN_glPixelTexGenParameteriSGIS, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelTexGenParameteriSGIS", pname, param); }
+        Handles.MH_glPixelTexGenParameteriSGIS.invokeExact(handles.PFN_glPixelTexGenParameteriSGIS, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PixelTexGenParameteriSGIS", e); }
     }
 
@@ -70,7 +71,8 @@ public final class GLSGISPixelTexture {
     /// ```
     public void PixelTexGenParameterivSGIS(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameterivSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glPixelTexGenParameterivSGIS");
-        try { Handles.MH_glPixelTexGenParameterivSGIS.invokeExact(handles.PFN_glPixelTexGenParameterivSGIS, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelTexGenParameterivSGIS", pname, params); }
+        Handles.MH_glPixelTexGenParameterivSGIS.invokeExact(handles.PFN_glPixelTexGenParameterivSGIS, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PixelTexGenParameterivSGIS", e); }
     }
 
@@ -79,7 +81,8 @@ public final class GLSGISPixelTexture {
     /// ```
     public void PixelTexGenParameterfSGIS(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameterfSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glPixelTexGenParameterfSGIS");
-        try { Handles.MH_glPixelTexGenParameterfSGIS.invokeExact(handles.PFN_glPixelTexGenParameterfSGIS, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelTexGenParameterfSGIS", pname, param); }
+        Handles.MH_glPixelTexGenParameterfSGIS.invokeExact(handles.PFN_glPixelTexGenParameterfSGIS, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PixelTexGenParameterfSGIS", e); }
     }
 
@@ -88,7 +91,8 @@ public final class GLSGISPixelTexture {
     /// ```
     public void PixelTexGenParameterfvSGIS(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenParameterfvSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glPixelTexGenParameterfvSGIS");
-        try { Handles.MH_glPixelTexGenParameterfvSGIS.invokeExact(handles.PFN_glPixelTexGenParameterfvSGIS, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelTexGenParameterfvSGIS", pname, params); }
+        Handles.MH_glPixelTexGenParameterfvSGIS.invokeExact(handles.PFN_glPixelTexGenParameterfvSGIS, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PixelTexGenParameterfvSGIS", e); }
     }
 
@@ -97,7 +101,8 @@ public final class GLSGISPixelTexture {
     /// ```
     public void GetPixelTexGenParameterivSGIS(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTexGenParameterivSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterivSGIS");
-        try { Handles.MH_glGetPixelTexGenParameterivSGIS.invokeExact(handles.PFN_glGetPixelTexGenParameterivSGIS, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPixelTexGenParameterivSGIS", pname, params); }
+        Handles.MH_glGetPixelTexGenParameterivSGIS.invokeExact(handles.PFN_glGetPixelTexGenParameterivSGIS, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetPixelTexGenParameterivSGIS", e); }
     }
 
@@ -106,7 +111,8 @@ public final class GLSGISPixelTexture {
     /// ```
     public void GetPixelTexGenParameterfvSGIS(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPixelTexGenParameterfvSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glGetPixelTexGenParameterfvSGIS");
-        try { Handles.MH_glGetPixelTexGenParameterfvSGIS.invokeExact(handles.PFN_glGetPixelTexGenParameterfvSGIS, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPixelTexGenParameterfvSGIS", pname, params); }
+        Handles.MH_glGetPixelTexGenParameterfvSGIS.invokeExact(handles.PFN_glGetPixelTexGenParameterfvSGIS, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetPixelTexGenParameterfvSGIS", e); }
     }
 

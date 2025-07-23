@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -29,7 +29,7 @@ public final class GLEXTFramebufferMultisample {
     public static final int GL_MAX_SAMPLES_EXT = 0x8D57;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glRenderbufferStorageMultisampleEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glRenderbufferStorageMultisampleEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glRenderbufferStorageMultisampleEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glRenderbufferStorageMultisampleEXT = func.invoke("glRenderbufferStorageMultisampleEXT", "glRenderbufferStorageMultisample");
@@ -45,7 +45,8 @@ public final class GLEXTFramebufferMultisample {
     /// ```
     public void RenderbufferStorageMultisampleEXT(int target, int samples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleEXT)) throw new GLSymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleEXT");
-        try { Handles.MH_glRenderbufferStorageMultisampleEXT.invokeExact(handles.PFN_glRenderbufferStorageMultisampleEXT, target, samples, internalformat, width, height); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glRenderbufferStorageMultisampleEXT", target, samples, internalformat, width, height); }
+        Handles.MH_glRenderbufferStorageMultisampleEXT.invokeExact(handles.PFN_glRenderbufferStorageMultisampleEXT, target, samples, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageMultisampleEXT", e); }
     }
 

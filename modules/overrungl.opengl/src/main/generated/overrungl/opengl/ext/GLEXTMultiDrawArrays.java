@@ -19,15 +19,15 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLEXTMultiDrawArrays {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glMultiDrawArraysEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiDrawElementsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawArraysEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiDrawElementsEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMultiDrawArraysEXT;
         public final MemorySegment PFN_glMultiDrawElementsEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -45,7 +45,8 @@ public final class GLEXTMultiDrawArrays {
     /// ```
     public void MultiDrawArraysEXT(int mode, MemorySegment first, MemorySegment count, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawArraysEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawArraysEXT");
-        try { Handles.MH_glMultiDrawArraysEXT.invokeExact(handles.PFN_glMultiDrawArraysEXT, mode, first, count, primcount); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawArraysEXT", mode, first, count, primcount); }
+        Handles.MH_glMultiDrawArraysEXT.invokeExact(handles.PFN_glMultiDrawArraysEXT, mode, first, count, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawArraysEXT", e); }
     }
 
@@ -54,7 +55,8 @@ public final class GLEXTMultiDrawArrays {
     /// ```
     public void MultiDrawElementsEXT(int mode, MemorySegment count, int type, MemorySegment indices, int primcount) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiDrawElementsEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMultiDrawElementsEXT");
-        try { Handles.MH_glMultiDrawElementsEXT.invokeExact(handles.PFN_glMultiDrawElementsEXT, mode, count, type, indices, primcount); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiDrawElementsEXT", mode, count, type, indices, primcount); }
+        Handles.MH_glMultiDrawElementsEXT.invokeExact(handles.PFN_glMultiDrawElementsEXT, mode, count, type, indices, primcount); }
         catch (Throwable e) { throw new RuntimeException("error in MultiDrawElementsEXT", e); }
     }
 

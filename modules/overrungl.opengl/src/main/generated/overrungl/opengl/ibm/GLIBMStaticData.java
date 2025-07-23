@@ -19,7 +19,7 @@ package overrungl.opengl.ibm;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,7 +28,7 @@ public final class GLIBMStaticData {
     public static final int GL_STATIC_VERTEX_ARRAY_IBM = 103061;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFlushStaticDataIBM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFlushStaticDataIBM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFlushStaticDataIBM;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFlushStaticDataIBM = func.invoke("glFlushStaticDataIBM");
@@ -44,7 +44,8 @@ public final class GLIBMStaticData {
     /// ```
     public void FlushStaticDataIBM(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushStaticDataIBM)) throw new GLSymbolNotFoundError("Symbol not found: glFlushStaticDataIBM");
-        try { Handles.MH_glFlushStaticDataIBM.invokeExact(handles.PFN_glFlushStaticDataIBM, target); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFlushStaticDataIBM", target); }
+        Handles.MH_glFlushStaticDataIBM.invokeExact(handles.PFN_glFlushStaticDataIBM, target); }
         catch (Throwable e) { throw new RuntimeException("error in FlushStaticDataIBM", e); }
     }
 

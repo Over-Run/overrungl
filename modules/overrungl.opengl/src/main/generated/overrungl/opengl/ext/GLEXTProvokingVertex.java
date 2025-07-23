@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -30,7 +30,7 @@ public final class GLEXTProvokingVertex {
     public static final int GL_PROVOKING_VERTEX_EXT = 0x8E4F;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glProvokingVertexEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProvokingVertexEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProvokingVertexEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glProvokingVertexEXT = func.invoke("glProvokingVertexEXT", "glProvokingVertex");
@@ -46,7 +46,8 @@ public final class GLEXTProvokingVertex {
     /// ```
     public void ProvokingVertexEXT(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProvokingVertexEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProvokingVertexEXT");
-        try { Handles.MH_glProvokingVertexEXT.invokeExact(handles.PFN_glProvokingVertexEXT, mode); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProvokingVertexEXT", mode); }
+        Handles.MH_glProvokingVertexEXT.invokeExact(handles.PFN_glProvokingVertexEXT, mode); }
         catch (Throwable e) { throw new RuntimeException("error in ProvokingVertexEXT", e); }
     }
 

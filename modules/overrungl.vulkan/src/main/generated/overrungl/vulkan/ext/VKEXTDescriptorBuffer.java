@@ -18,7 +18,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTDescriptorBuffer {
@@ -50,17 +50,17 @@ public final class VKEXTDescriptorBuffer {
     public static final int VK_PIPELINE_CREATE_DESCRIPTOR_BUFFER_BIT_EXT = 0x20000000;
     public static final int VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT = 1000316009;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDescriptorSetLayoutSizeEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDescriptorSetLayoutBindingOffsetEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDescriptorEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBindDescriptorBuffersEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdSetDescriptorBufferOffsetsEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBindDescriptorBufferEmbeddedSamplersEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkGetBufferOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetImageOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetImageViewOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetSamplerOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDescriptorSetLayoutSizeEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDescriptorSetLayoutBindingOffsetEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDescriptorEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBindDescriptorBuffersEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetDescriptorBufferOffsetsEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBindDescriptorBufferEmbeddedSamplersEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkGetBufferOpaqueCaptureDescriptorDataEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageOpaqueCaptureDescriptorDataEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageViewOpaqueCaptureDescriptorDataEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSamplerOpaqueCaptureDescriptorDataEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -71,7 +71,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static void vkGetDescriptorSetLayoutSizeEXT(VkDevice device, long layout, MemorySegment pLayoutSizeInBytes) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutSizeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutSizeEXT");
-        try { Handles.MH_vkGetDescriptorSetLayoutSizeEXT.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutSizeEXT, device.segment(), layout, pLayoutSizeInBytes); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDescriptorSetLayoutSizeEXT", device, layout, pLayoutSizeInBytes); }
+        Handles.MH_vkGetDescriptorSetLayoutSizeEXT.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutSizeEXT, device.segment(), layout, pLayoutSizeInBytes); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetLayoutSizeEXT", e); }
     }
 
@@ -80,7 +81,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static void vkGetDescriptorSetLayoutBindingOffsetEXT(VkDevice device, long layout, int binding, MemorySegment pOffset) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutBindingOffsetEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutBindingOffsetEXT");
-        try { Handles.MH_vkGetDescriptorSetLayoutBindingOffsetEXT.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutBindingOffsetEXT, device.segment(), layout, binding, pOffset); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDescriptorSetLayoutBindingOffsetEXT", device, layout, binding, pOffset); }
+        Handles.MH_vkGetDescriptorSetLayoutBindingOffsetEXT.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutBindingOffsetEXT, device.segment(), layout, binding, pOffset); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetLayoutBindingOffsetEXT", e); }
     }
 
@@ -89,7 +91,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static void vkGetDescriptorEXT(VkDevice device, MemorySegment pDescriptorInfo, long dataSize, MemorySegment pDescriptor) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorEXT");
-        try { Handles.MH_vkGetDescriptorEXT.invoke(device.capabilities().PFN_vkGetDescriptorEXT, device.segment(), pDescriptorInfo, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pDescriptor); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDescriptorEXT", device, pDescriptorInfo, dataSize, pDescriptor); }
+        Handles.MH_vkGetDescriptorEXT.invoke(device.capabilities().PFN_vkGetDescriptorEXT, device.segment(), pDescriptorInfo, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pDescriptor); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorEXT", e); }
     }
 
@@ -98,7 +101,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static void vkCmdBindDescriptorBuffersEXT(VkCommandBuffer commandBuffer, int bufferCount, MemorySegment pBindingInfos) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBuffersEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorBuffersEXT");
-        try { Handles.MH_vkCmdBindDescriptorBuffersEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBuffersEXT, commandBuffer.segment(), bufferCount, pBindingInfos); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindDescriptorBuffersEXT", commandBuffer, bufferCount, pBindingInfos); }
+        Handles.MH_vkCmdBindDescriptorBuffersEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBuffersEXT, commandBuffer.segment(), bufferCount, pBindingInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindDescriptorBuffersEXT", e); }
     }
 
@@ -107,7 +111,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static void vkCmdSetDescriptorBufferOffsetsEXT(VkCommandBuffer commandBuffer, int pipelineBindPoint, long layout, int firstSet, int setCount, MemorySegment pBufferIndices, MemorySegment pOffsets) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsetsEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetDescriptorBufferOffsetsEXT");
-        try { Handles.MH_vkCmdSetDescriptorBufferOffsetsEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsetsEXT, commandBuffer.segment(), pipelineBindPoint, layout, firstSet, setCount, pBufferIndices, pOffsets); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetDescriptorBufferOffsetsEXT", commandBuffer, pipelineBindPoint, layout, firstSet, setCount, pBufferIndices, pOffsets); }
+        Handles.MH_vkCmdSetDescriptorBufferOffsetsEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetDescriptorBufferOffsetsEXT, commandBuffer.segment(), pipelineBindPoint, layout, firstSet, setCount, pBufferIndices, pOffsets); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetDescriptorBufferOffsetsEXT", e); }
     }
 
@@ -116,7 +121,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static void vkCmdBindDescriptorBufferEmbeddedSamplersEXT(VkCommandBuffer commandBuffer, int pipelineBindPoint, long layout, int set) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplersEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindDescriptorBufferEmbeddedSamplersEXT");
-        try { Handles.MH_vkCmdBindDescriptorBufferEmbeddedSamplersEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplersEXT, commandBuffer.segment(), pipelineBindPoint, layout, set); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindDescriptorBufferEmbeddedSamplersEXT", commandBuffer, pipelineBindPoint, layout, set); }
+        Handles.MH_vkCmdBindDescriptorBufferEmbeddedSamplersEXT.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindDescriptorBufferEmbeddedSamplersEXT, commandBuffer.segment(), pipelineBindPoint, layout, set); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindDescriptorBufferEmbeddedSamplersEXT", e); }
     }
 
@@ -125,7 +131,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static int vkGetBufferOpaqueCaptureDescriptorDataEXT(VkDevice device, MemorySegment pInfo, MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferOpaqueCaptureDescriptorDataEXT");
-        try { return (int) Handles.MH_vkGetBufferOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetBufferOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetBufferOpaqueCaptureDescriptorDataEXT", device, pInfo, pData); }
+        return (int) Handles.MH_vkGetBufferOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetBufferOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferOpaqueCaptureDescriptorDataEXT", e); }
     }
 
@@ -134,7 +141,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static int vkGetImageOpaqueCaptureDescriptorDataEXT(VkDevice device, MemorySegment pInfo, MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageOpaqueCaptureDescriptorDataEXT");
-        try { return (int) Handles.MH_vkGetImageOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetImageOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetImageOpaqueCaptureDescriptorDataEXT", device, pInfo, pData); }
+        return (int) Handles.MH_vkGetImageOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetImageOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageOpaqueCaptureDescriptorDataEXT", e); }
     }
 
@@ -143,7 +151,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static int vkGetImageViewOpaqueCaptureDescriptorDataEXT(VkDevice device, MemorySegment pInfo, MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageViewOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageViewOpaqueCaptureDescriptorDataEXT");
-        try { return (int) Handles.MH_vkGetImageViewOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetImageViewOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetImageViewOpaqueCaptureDescriptorDataEXT", device, pInfo, pData); }
+        return (int) Handles.MH_vkGetImageViewOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetImageViewOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageViewOpaqueCaptureDescriptorDataEXT", e); }
     }
 
@@ -152,7 +161,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static int vkGetSamplerOpaqueCaptureDescriptorDataEXT(VkDevice device, MemorySegment pInfo, MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSamplerOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSamplerOpaqueCaptureDescriptorDataEXT");
-        try { return (int) Handles.MH_vkGetSamplerOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetSamplerOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSamplerOpaqueCaptureDescriptorDataEXT", device, pInfo, pData); }
+        return (int) Handles.MH_vkGetSamplerOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetSamplerOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSamplerOpaqueCaptureDescriptorDataEXT", e); }
     }
 
@@ -161,7 +171,8 @@ public final class VKEXTDescriptorBuffer {
     /// ```
     public static int vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT(VkDevice device, MemorySegment pInfo, MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT");
-        try { return (int) Handles.MH_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT", device, pInfo, pData); }
+        return (int) Handles.MH_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT.invokeExact(device.capabilities().PFN_vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT, device.segment(), pInfo, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetAccelerationStructureOpaqueCaptureDescriptorDataEXT", e); }
     }
 

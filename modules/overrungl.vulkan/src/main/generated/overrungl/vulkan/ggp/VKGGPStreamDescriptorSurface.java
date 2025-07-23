@@ -18,7 +18,7 @@
 package overrungl.vulkan.ggp;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKGGPStreamDescriptorSurface {
@@ -26,7 +26,7 @@ public final class VKGGPStreamDescriptorSurface {
     public static final String VK_GGP_STREAM_DESCRIPTOR_SURFACE_EXTENSION_NAME = "VK_GGP_stream_descriptor_surface";
     public static final int VK_STRUCTURE_TYPE_STREAM_DESCRIPTOR_SURFACE_CREATE_INFO_GGP = 1000049000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateStreamDescriptorSurfaceGGP = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateStreamDescriptorSurfaceGGP = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -37,7 +37,8 @@ public final class VKGGPStreamDescriptorSurface {
     /// ```
     public static int vkCreateStreamDescriptorSurfaceGGP(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateStreamDescriptorSurfaceGGP)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateStreamDescriptorSurfaceGGP");
-        try { return (int) Handles.MH_vkCreateStreamDescriptorSurfaceGGP.invokeExact(instance.capabilities().PFN_vkCreateStreamDescriptorSurfaceGGP, instance.segment(), pCreateInfo, pAllocator, pSurface); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateStreamDescriptorSurfaceGGP", instance, pCreateInfo, pAllocator, pSurface); }
+        return (int) Handles.MH_vkCreateStreamDescriptorSurfaceGGP.invokeExact(instance.capabilities().PFN_vkCreateStreamDescriptorSurfaceGGP, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateStreamDescriptorSurfaceGGP", e); }
     }
 

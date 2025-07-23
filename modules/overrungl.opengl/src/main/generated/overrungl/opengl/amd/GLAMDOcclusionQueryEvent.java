@@ -19,7 +19,7 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -32,7 +32,7 @@ public final class GLAMDOcclusionQueryEvent {
     public static final int GL_QUERY_ALL_EVENT_BITS_AMD = 0xFFFFFFFF;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glQueryObjectParameteruiAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glQueryObjectParameteruiAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glQueryObjectParameteruiAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glQueryObjectParameteruiAMD = func.invoke("glQueryObjectParameteruiAMD");
@@ -48,7 +48,8 @@ public final class GLAMDOcclusionQueryEvent {
     /// ```
     public void QueryObjectParameteruiAMD(int target, int id, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glQueryObjectParameteruiAMD)) throw new GLSymbolNotFoundError("Symbol not found: glQueryObjectParameteruiAMD");
-        try { Handles.MH_glQueryObjectParameteruiAMD.invokeExact(handles.PFN_glQueryObjectParameteruiAMD, target, id, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glQueryObjectParameteruiAMD", target, id, pname, param); }
+        Handles.MH_glQueryObjectParameteruiAMD.invokeExact(handles.PFN_glQueryObjectParameteruiAMD, target, id, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in QueryObjectParameteruiAMD", e); }
     }
 

@@ -86,7 +86,7 @@ public final class OverrunGL {
     }
 
     /**
-     * {@return the API logger} Defaults to {@link System#err}.
+     * {@return the API logger} Defaults to {@link System#err System.err::println}.
      */
     public static Consumer<String> apiLogger() {
         return apiLogger;

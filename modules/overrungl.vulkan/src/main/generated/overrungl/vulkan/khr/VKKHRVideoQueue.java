@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRVideoQueue {
@@ -69,18 +69,18 @@ public final class VKKHRVideoQueue {
     public static final int VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR = -1000023004;
     public static final int VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR = -1000023005;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceVideoCapabilitiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetPhysicalDeviceVideoFormatPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCreateVideoSessionKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyVideoSessionKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetVideoSessionMemoryRequirementsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkBindVideoSessionMemoryKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCreateVideoSessionParametersKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkUpdateVideoSessionParametersKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyVideoSessionParametersKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBeginVideoCodingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdEndVideoCodingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdControlVideoCodingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceVideoCapabilitiesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceVideoFormatPropertiesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateVideoSessionKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyVideoSessionKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetVideoSessionMemoryRequirementsKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkBindVideoSessionMemoryKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateVideoSessionParametersKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUpdateVideoSessionParametersKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyVideoSessionParametersKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBeginVideoCodingKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndVideoCodingKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdControlVideoCodingKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -91,7 +91,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static int vkGetPhysicalDeviceVideoCapabilitiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pVideoProfile, MemorySegment pCapabilities) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoCapabilitiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceVideoCapabilitiesKHR");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceVideoCapabilitiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoCapabilitiesKHR, physicalDevice.segment(), pVideoProfile, pCapabilities); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceVideoCapabilitiesKHR", physicalDevice, pVideoProfile, pCapabilities); }
+        return (int) Handles.MH_vkGetPhysicalDeviceVideoCapabilitiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoCapabilitiesKHR, physicalDevice.segment(), pVideoProfile, pCapabilities); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceVideoCapabilitiesKHR", e); }
     }
 
@@ -100,7 +101,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static int vkGetPhysicalDeviceVideoFormatPropertiesKHR(VkPhysicalDevice physicalDevice, MemorySegment pVideoFormatInfo, MemorySegment pVideoFormatPropertyCount, MemorySegment pVideoFormatProperties) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoFormatPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceVideoFormatPropertiesKHR");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceVideoFormatPropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoFormatPropertiesKHR, physicalDevice.segment(), pVideoFormatInfo, pVideoFormatPropertyCount, pVideoFormatProperties); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceVideoFormatPropertiesKHR", physicalDevice, pVideoFormatInfo, pVideoFormatPropertyCount, pVideoFormatProperties); }
+        return (int) Handles.MH_vkGetPhysicalDeviceVideoFormatPropertiesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceVideoFormatPropertiesKHR, physicalDevice.segment(), pVideoFormatInfo, pVideoFormatPropertyCount, pVideoFormatProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceVideoFormatPropertiesKHR", e); }
     }
 
@@ -109,7 +111,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static int vkCreateVideoSessionKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pVideoSession) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateVideoSessionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateVideoSessionKHR");
-        try { return (int) Handles.MH_vkCreateVideoSessionKHR.invokeExact(device.capabilities().PFN_vkCreateVideoSessionKHR, device.segment(), pCreateInfo, pAllocator, pVideoSession); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateVideoSessionKHR", device, pCreateInfo, pAllocator, pVideoSession); }
+        return (int) Handles.MH_vkCreateVideoSessionKHR.invokeExact(device.capabilities().PFN_vkCreateVideoSessionKHR, device.segment(), pCreateInfo, pAllocator, pVideoSession); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateVideoSessionKHR", e); }
     }
 
@@ -118,7 +121,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static void vkDestroyVideoSessionKHR(VkDevice device, long videoSession, MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyVideoSessionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyVideoSessionKHR");
-        try { Handles.MH_vkDestroyVideoSessionKHR.invokeExact(device.capabilities().PFN_vkDestroyVideoSessionKHR, device.segment(), videoSession, pAllocator); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyVideoSessionKHR", device, videoSession, pAllocator); }
+        Handles.MH_vkDestroyVideoSessionKHR.invokeExact(device.capabilities().PFN_vkDestroyVideoSessionKHR, device.segment(), videoSession, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyVideoSessionKHR", e); }
     }
 
@@ -127,7 +131,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static int vkGetVideoSessionMemoryRequirementsKHR(VkDevice device, long videoSession, MemorySegment pMemoryRequirementsCount, MemorySegment pMemoryRequirements) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetVideoSessionMemoryRequirementsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetVideoSessionMemoryRequirementsKHR");
-        try { return (int) Handles.MH_vkGetVideoSessionMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetVideoSessionMemoryRequirementsKHR, device.segment(), videoSession, pMemoryRequirementsCount, pMemoryRequirements); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetVideoSessionMemoryRequirementsKHR", device, videoSession, pMemoryRequirementsCount, pMemoryRequirements); }
+        return (int) Handles.MH_vkGetVideoSessionMemoryRequirementsKHR.invokeExact(device.capabilities().PFN_vkGetVideoSessionMemoryRequirementsKHR, device.segment(), videoSession, pMemoryRequirementsCount, pMemoryRequirements); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetVideoSessionMemoryRequirementsKHR", e); }
     }
 
@@ -136,7 +141,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static int vkBindVideoSessionMemoryKHR(VkDevice device, long videoSession, int bindSessionMemoryInfoCount, MemorySegment pBindSessionMemoryInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBindVideoSessionMemoryKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkBindVideoSessionMemoryKHR");
-        try { return (int) Handles.MH_vkBindVideoSessionMemoryKHR.invokeExact(device.capabilities().PFN_vkBindVideoSessionMemoryKHR, device.segment(), videoSession, bindSessionMemoryInfoCount, pBindSessionMemoryInfos); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkBindVideoSessionMemoryKHR", device, videoSession, bindSessionMemoryInfoCount, pBindSessionMemoryInfos); }
+        return (int) Handles.MH_vkBindVideoSessionMemoryKHR.invokeExact(device.capabilities().PFN_vkBindVideoSessionMemoryKHR, device.segment(), videoSession, bindSessionMemoryInfoCount, pBindSessionMemoryInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBindVideoSessionMemoryKHR", e); }
     }
 
@@ -145,7 +151,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static int vkCreateVideoSessionParametersKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pVideoSessionParameters) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateVideoSessionParametersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateVideoSessionParametersKHR");
-        try { return (int) Handles.MH_vkCreateVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkCreateVideoSessionParametersKHR, device.segment(), pCreateInfo, pAllocator, pVideoSessionParameters); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateVideoSessionParametersKHR", device, pCreateInfo, pAllocator, pVideoSessionParameters); }
+        return (int) Handles.MH_vkCreateVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkCreateVideoSessionParametersKHR, device.segment(), pCreateInfo, pAllocator, pVideoSessionParameters); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateVideoSessionParametersKHR", e); }
     }
 
@@ -154,7 +161,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static int vkUpdateVideoSessionParametersKHR(VkDevice device, long videoSessionParameters, MemorySegment pUpdateInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUpdateVideoSessionParametersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkUpdateVideoSessionParametersKHR");
-        try { return (int) Handles.MH_vkUpdateVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkUpdateVideoSessionParametersKHR, device.segment(), videoSessionParameters, pUpdateInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkUpdateVideoSessionParametersKHR", device, videoSessionParameters, pUpdateInfo); }
+        return (int) Handles.MH_vkUpdateVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkUpdateVideoSessionParametersKHR, device.segment(), videoSessionParameters, pUpdateInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkUpdateVideoSessionParametersKHR", e); }
     }
 
@@ -163,7 +171,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static void vkDestroyVideoSessionParametersKHR(VkDevice device, long videoSessionParameters, MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyVideoSessionParametersKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyVideoSessionParametersKHR");
-        try { Handles.MH_vkDestroyVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkDestroyVideoSessionParametersKHR, device.segment(), videoSessionParameters, pAllocator); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyVideoSessionParametersKHR", device, videoSessionParameters, pAllocator); }
+        Handles.MH_vkDestroyVideoSessionParametersKHR.invokeExact(device.capabilities().PFN_vkDestroyVideoSessionParametersKHR, device.segment(), videoSessionParameters, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyVideoSessionParametersKHR", e); }
     }
 
@@ -172,7 +181,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static void vkCmdBeginVideoCodingKHR(VkCommandBuffer commandBuffer, MemorySegment pBeginInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginVideoCodingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginVideoCodingKHR");
-        try { Handles.MH_vkCmdBeginVideoCodingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginVideoCodingKHR, commandBuffer.segment(), pBeginInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginVideoCodingKHR", commandBuffer, pBeginInfo); }
+        Handles.MH_vkCmdBeginVideoCodingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginVideoCodingKHR, commandBuffer.segment(), pBeginInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginVideoCodingKHR", e); }
     }
 
@@ -181,7 +191,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static void vkCmdEndVideoCodingKHR(VkCommandBuffer commandBuffer, MemorySegment pEndCodingInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndVideoCodingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndVideoCodingKHR");
-        try { Handles.MH_vkCmdEndVideoCodingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndVideoCodingKHR, commandBuffer.segment(), pEndCodingInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndVideoCodingKHR", commandBuffer, pEndCodingInfo); }
+        Handles.MH_vkCmdEndVideoCodingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndVideoCodingKHR, commandBuffer.segment(), pEndCodingInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndVideoCodingKHR", e); }
     }
 
@@ -190,7 +201,8 @@ public final class VKKHRVideoQueue {
     /// ```
     public static void vkCmdControlVideoCodingKHR(VkCommandBuffer commandBuffer, MemorySegment pCodingControlInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdControlVideoCodingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdControlVideoCodingKHR");
-        try { Handles.MH_vkCmdControlVideoCodingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdControlVideoCodingKHR, commandBuffer.segment(), pCodingControlInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdControlVideoCodingKHR", commandBuffer, pCodingControlInfo); }
+        Handles.MH_vkCmdControlVideoCodingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdControlVideoCodingKHR, commandBuffer.segment(), pCodingControlInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdControlVideoCodingKHR", e); }
     }
 

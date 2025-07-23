@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -29,7 +29,7 @@ public final class GLNVConservativeRasterPreSnapTriangles {
     public static final int GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV = 0x954F;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glConservativeRasterParameteriNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glConservativeRasterParameteriNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glConservativeRasterParameteriNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glConservativeRasterParameteriNV = func.invoke("glConservativeRasterParameteriNV");
@@ -45,7 +45,8 @@ public final class GLNVConservativeRasterPreSnapTriangles {
     /// ```
     public void ConservativeRasterParameteriNV(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glConservativeRasterParameteriNV)) throw new GLSymbolNotFoundError("Symbol not found: glConservativeRasterParameteriNV");
-        try { Handles.MH_glConservativeRasterParameteriNV.invokeExact(handles.PFN_glConservativeRasterParameteriNV, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glConservativeRasterParameteriNV", pname, param); }
+        Handles.MH_glConservativeRasterParameteriNV.invokeExact(handles.PFN_glConservativeRasterParameteriNV, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in ConservativeRasterParameteriNV", e); }
     }
 

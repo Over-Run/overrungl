@@ -19,7 +19,7 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -43,7 +43,7 @@ public final class GLATIDrawBuffers {
     public static final int GL_DRAW_BUFFER15_ATI = 0x8834;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDrawBuffersATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDrawBuffersATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDrawBuffersATI;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDrawBuffersATI = func.invoke("glDrawBuffersATI", "glDrawBuffers");
@@ -59,7 +59,8 @@ public final class GLATIDrawBuffers {
     /// ```
     public void DrawBuffersATI(int n, MemorySegment bufs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffersATI)) throw new GLSymbolNotFoundError("Symbol not found: glDrawBuffersATI");
-        try { Handles.MH_glDrawBuffersATI.invokeExact(handles.PFN_glDrawBuffersATI, n, bufs); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawBuffersATI", n, bufs); }
+        Handles.MH_glDrawBuffersATI.invokeExact(handles.PFN_glDrawBuffersATI, n, bufs); }
         catch (Throwable e) { throw new RuntimeException("error in DrawBuffersATI", e); }
     }
 

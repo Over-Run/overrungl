@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -44,8 +44,8 @@ public final class GLARBComputeShader {
     public static final int GL_COMPUTE_SHADER_BIT = 0x00000020;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDispatchCompute = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDispatchComputeIndirect = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glDispatchCompute = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDispatchComputeIndirect = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glDispatchCompute;
         public final MemorySegment PFN_glDispatchComputeIndirect;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -63,7 +63,8 @@ public final class GLARBComputeShader {
     /// ```
     public void DispatchCompute(int num_groups_x, int num_groups_y, int num_groups_z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDispatchCompute)) throw new GLSymbolNotFoundError("Symbol not found: glDispatchCompute");
-        try { Handles.MH_glDispatchCompute.invokeExact(handles.PFN_glDispatchCompute, num_groups_x, num_groups_y, num_groups_z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDispatchCompute", num_groups_x, num_groups_y, num_groups_z); }
+        Handles.MH_glDispatchCompute.invokeExact(handles.PFN_glDispatchCompute, num_groups_x, num_groups_y, num_groups_z); }
         catch (Throwable e) { throw new RuntimeException("error in DispatchCompute", e); }
     }
 
@@ -72,7 +73,8 @@ public final class GLARBComputeShader {
     /// ```
     public void DispatchComputeIndirect(long indirect) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDispatchComputeIndirect)) throw new GLSymbolNotFoundError("Symbol not found: glDispatchComputeIndirect");
-        try { Handles.MH_glDispatchComputeIndirect.invokeExact(handles.PFN_glDispatchComputeIndirect, indirect); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDispatchComputeIndirect", indirect); }
+        Handles.MH_glDispatchComputeIndirect.invokeExact(handles.PFN_glDispatchComputeIndirect, indirect); }
         catch (Throwable e) { throw new RuntimeException("error in DispatchComputeIndirect", e); }
     }
 

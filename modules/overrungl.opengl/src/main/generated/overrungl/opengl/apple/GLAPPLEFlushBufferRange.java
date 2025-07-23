@@ -19,7 +19,7 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,8 +28,8 @@ public final class GLAPPLEFlushBufferRange {
     public static final int GL_BUFFER_FLUSHING_UNMAP_APPLE = 0x8A13;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBufferParameteriAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFlushMappedBufferRangeAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBufferParameteriAPPLE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFlushMappedBufferRangeAPPLE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glBufferParameteriAPPLE;
         public final MemorySegment PFN_glFlushMappedBufferRangeAPPLE;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -47,7 +47,8 @@ public final class GLAPPLEFlushBufferRange {
     /// ```
     public void BufferParameteriAPPLE(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferParameteriAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glBufferParameteriAPPLE");
-        try { Handles.MH_glBufferParameteriAPPLE.invokeExact(handles.PFN_glBufferParameteriAPPLE, target, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBufferParameteriAPPLE", target, pname, param); }
+        Handles.MH_glBufferParameteriAPPLE.invokeExact(handles.PFN_glBufferParameteriAPPLE, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in BufferParameteriAPPLE", e); }
     }
 
@@ -56,7 +57,8 @@ public final class GLAPPLEFlushBufferRange {
     /// ```
     public void FlushMappedBufferRangeAPPLE(int target, long offset, long size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushMappedBufferRangeAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glFlushMappedBufferRangeAPPLE");
-        try { Handles.MH_glFlushMappedBufferRangeAPPLE.invokeExact(handles.PFN_glFlushMappedBufferRangeAPPLE, target, offset, size); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFlushMappedBufferRangeAPPLE", target, offset, size); }
+        Handles.MH_glFlushMappedBufferRangeAPPLE.invokeExact(handles.PFN_glFlushMappedBufferRangeAPPLE, target, offset, size); }
         catch (Throwable e) { throw new RuntimeException("error in FlushMappedBufferRangeAPPLE", e); }
     }
 

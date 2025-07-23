@@ -19,7 +19,7 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -30,7 +30,7 @@ public final class GLAMDStencilOperationExtended {
     public static final int GL_STENCIL_BACK_OP_VALUE_AMD = 0x874D;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glStencilOpValueAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glStencilOpValueAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glStencilOpValueAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glStencilOpValueAMD = func.invoke("glStencilOpValueAMD");
@@ -46,7 +46,8 @@ public final class GLAMDStencilOperationExtended {
     /// ```
     public void StencilOpValueAMD(int face, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilOpValueAMD)) throw new GLSymbolNotFoundError("Symbol not found: glStencilOpValueAMD");
-        try { Handles.MH_glStencilOpValueAMD.invokeExact(handles.PFN_glStencilOpValueAMD, face, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glStencilOpValueAMD", face, value); }
+        Handles.MH_glStencilOpValueAMD.invokeExact(handles.PFN_glStencilOpValueAMD, face, value); }
         catch (Throwable e) { throw new RuntimeException("error in StencilOpValueAMD", e); }
     }
 

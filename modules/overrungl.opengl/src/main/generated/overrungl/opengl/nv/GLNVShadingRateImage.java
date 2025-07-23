@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -47,13 +47,13 @@ public final class GLNVShadingRateImage {
     public static final int GL_SHADING_RATE_SAMPLE_ORDER_SAMPLE_MAJOR_NV = 0x95B0;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBindShadingRateImageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetShadingRateImagePaletteNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetShadingRateSampleLocationivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glShadingRateImageBarrierNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glShadingRateImagePaletteNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glShadingRateSampleOrderNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glShadingRateSampleOrderCustomNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBindShadingRateImageNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetShadingRateImagePaletteNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetShadingRateSampleLocationivNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glShadingRateImageBarrierNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glShadingRateImagePaletteNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glShadingRateSampleOrderNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glShadingRateSampleOrderCustomNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBindShadingRateImageNV;
         public final MemorySegment PFN_glGetShadingRateImagePaletteNV;
         public final MemorySegment PFN_glGetShadingRateSampleLocationivNV;
@@ -81,7 +81,8 @@ public final class GLNVShadingRateImage {
     /// ```
     public void BindShadingRateImageNV(int texture) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindShadingRateImageNV)) throw new GLSymbolNotFoundError("Symbol not found: glBindShadingRateImageNV");
-        try { Handles.MH_glBindShadingRateImageNV.invokeExact(handles.PFN_glBindShadingRateImageNV, texture); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBindShadingRateImageNV", texture); }
+        Handles.MH_glBindShadingRateImageNV.invokeExact(handles.PFN_glBindShadingRateImageNV, texture); }
         catch (Throwable e) { throw new RuntimeException("error in BindShadingRateImageNV", e); }
     }
 
@@ -90,7 +91,8 @@ public final class GLNVShadingRateImage {
     /// ```
     public void GetShadingRateImagePaletteNV(int viewport, int entry, MemorySegment rate) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShadingRateImagePaletteNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetShadingRateImagePaletteNV");
-        try { Handles.MH_glGetShadingRateImagePaletteNV.invokeExact(handles.PFN_glGetShadingRateImagePaletteNV, viewport, entry, rate); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetShadingRateImagePaletteNV", viewport, entry, rate); }
+        Handles.MH_glGetShadingRateImagePaletteNV.invokeExact(handles.PFN_glGetShadingRateImagePaletteNV, viewport, entry, rate); }
         catch (Throwable e) { throw new RuntimeException("error in GetShadingRateImagePaletteNV", e); }
     }
 
@@ -99,7 +101,8 @@ public final class GLNVShadingRateImage {
     /// ```
     public void GetShadingRateSampleLocationivNV(int rate, int samples, int index, MemorySegment location) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShadingRateSampleLocationivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetShadingRateSampleLocationivNV");
-        try { Handles.MH_glGetShadingRateSampleLocationivNV.invokeExact(handles.PFN_glGetShadingRateSampleLocationivNV, rate, samples, index, location); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetShadingRateSampleLocationivNV", rate, samples, index, location); }
+        Handles.MH_glGetShadingRateSampleLocationivNV.invokeExact(handles.PFN_glGetShadingRateSampleLocationivNV, rate, samples, index, location); }
         catch (Throwable e) { throw new RuntimeException("error in GetShadingRateSampleLocationivNV", e); }
     }
 
@@ -108,7 +111,8 @@ public final class GLNVShadingRateImage {
     /// ```
     public void ShadingRateImageBarrierNV(boolean synchronize) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateImageBarrierNV)) throw new GLSymbolNotFoundError("Symbol not found: glShadingRateImageBarrierNV");
-        try { Handles.MH_glShadingRateImageBarrierNV.invokeExact(handles.PFN_glShadingRateImageBarrierNV, ((synchronize) ? (byte)1 : (byte)0)); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glShadingRateImageBarrierNV", synchronize); }
+        Handles.MH_glShadingRateImageBarrierNV.invokeExact(handles.PFN_glShadingRateImageBarrierNV, ((synchronize) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in ShadingRateImageBarrierNV", e); }
     }
 
@@ -117,7 +121,8 @@ public final class GLNVShadingRateImage {
     /// ```
     public void ShadingRateImagePaletteNV(int viewport, int first, int count, MemorySegment rates) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateImagePaletteNV)) throw new GLSymbolNotFoundError("Symbol not found: glShadingRateImagePaletteNV");
-        try { Handles.MH_glShadingRateImagePaletteNV.invokeExact(handles.PFN_glShadingRateImagePaletteNV, viewport, first, count, rates); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glShadingRateImagePaletteNV", viewport, first, count, rates); }
+        Handles.MH_glShadingRateImagePaletteNV.invokeExact(handles.PFN_glShadingRateImagePaletteNV, viewport, first, count, rates); }
         catch (Throwable e) { throw new RuntimeException("error in ShadingRateImagePaletteNV", e); }
     }
 
@@ -126,7 +131,8 @@ public final class GLNVShadingRateImage {
     /// ```
     public void ShadingRateSampleOrderNV(int order) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateSampleOrderNV)) throw new GLSymbolNotFoundError("Symbol not found: glShadingRateSampleOrderNV");
-        try { Handles.MH_glShadingRateSampleOrderNV.invokeExact(handles.PFN_glShadingRateSampleOrderNV, order); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glShadingRateSampleOrderNV", order); }
+        Handles.MH_glShadingRateSampleOrderNV.invokeExact(handles.PFN_glShadingRateSampleOrderNV, order); }
         catch (Throwable e) { throw new RuntimeException("error in ShadingRateSampleOrderNV", e); }
     }
 
@@ -135,7 +141,8 @@ public final class GLNVShadingRateImage {
     /// ```
     public void ShadingRateSampleOrderCustomNV(int rate, int samples, MemorySegment locations) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShadingRateSampleOrderCustomNV)) throw new GLSymbolNotFoundError("Symbol not found: glShadingRateSampleOrderCustomNV");
-        try { Handles.MH_glShadingRateSampleOrderCustomNV.invokeExact(handles.PFN_glShadingRateSampleOrderCustomNV, rate, samples, locations); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glShadingRateSampleOrderCustomNV", rate, samples, locations); }
+        Handles.MH_glShadingRateSampleOrderCustomNV.invokeExact(handles.PFN_glShadingRateSampleOrderCustomNV, rate, samples, locations); }
         catch (Throwable e) { throw new RuntimeException("error in ShadingRateSampleOrderCustomNV", e); }
     }
 

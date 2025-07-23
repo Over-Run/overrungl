@@ -19,7 +19,7 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -30,8 +30,8 @@ public final class GLSGISSharpenTexture {
     public static final int GL_SHARPEN_TEXTURE_FUNC_POINTS_SGIS = 0x80B0;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glSharpenTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetSharpenTexFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSharpenTexFuncSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetSharpenTexFuncSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glSharpenTexFuncSGIS;
         public final MemorySegment PFN_glGetSharpenTexFuncSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -49,7 +49,8 @@ public final class GLSGISSharpenTexture {
     /// ```
     public void SharpenTexFuncSGIS(int target, int n, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSharpenTexFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glSharpenTexFuncSGIS");
-        try { Handles.MH_glSharpenTexFuncSGIS.invokeExact(handles.PFN_glSharpenTexFuncSGIS, target, n, points); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glSharpenTexFuncSGIS", target, n, points); }
+        Handles.MH_glSharpenTexFuncSGIS.invokeExact(handles.PFN_glSharpenTexFuncSGIS, target, n, points); }
         catch (Throwable e) { throw new RuntimeException("error in SharpenTexFuncSGIS", e); }
     }
 
@@ -58,7 +59,8 @@ public final class GLSGISSharpenTexture {
     /// ```
     public void GetSharpenTexFuncSGIS(int target, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetSharpenTexFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glGetSharpenTexFuncSGIS");
-        try { Handles.MH_glGetSharpenTexFuncSGIS.invokeExact(handles.PFN_glGetSharpenTexFuncSGIS, target, points); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetSharpenTexFuncSGIS", target, points); }
+        Handles.MH_glGetSharpenTexFuncSGIS.invokeExact(handles.PFN_glGetSharpenTexFuncSGIS, target, points); }
         catch (Throwable e) { throw new RuntimeException("error in GetSharpenTexFuncSGIS", e); }
     }
 

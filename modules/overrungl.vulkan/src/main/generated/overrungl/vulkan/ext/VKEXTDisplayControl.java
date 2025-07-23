@@ -18,7 +18,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTDisplayControl {
@@ -34,10 +34,10 @@ public final class VKEXTDisplayControl {
     public static final int VK_STRUCTURE_TYPE_DISPLAY_EVENT_INFO_EXT = 1000091002;
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_COUNTER_CREATE_INFO_EXT = 1000091003;
     public static final class Handles {
-        public static final MethodHandle MH_vkDisplayPowerControlEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkRegisterDeviceEventEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkRegisterDisplayEventEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetSwapchainCounterEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDisplayPowerControlEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkRegisterDeviceEventEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkRegisterDisplayEventEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSwapchainCounterEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -48,7 +48,8 @@ public final class VKEXTDisplayControl {
     /// ```
     public static int vkDisplayPowerControlEXT(VkDevice device, long display, MemorySegment pDisplayPowerInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDisplayPowerControlEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkDisplayPowerControlEXT");
-        try { return (int) Handles.MH_vkDisplayPowerControlEXT.invokeExact(device.capabilities().PFN_vkDisplayPowerControlEXT, device.segment(), display, pDisplayPowerInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkDisplayPowerControlEXT", device, display, pDisplayPowerInfo); }
+        return (int) Handles.MH_vkDisplayPowerControlEXT.invokeExact(device.capabilities().PFN_vkDisplayPowerControlEXT, device.segment(), display, pDisplayPowerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkDisplayPowerControlEXT", e); }
     }
 
@@ -57,7 +58,8 @@ public final class VKEXTDisplayControl {
     /// ```
     public static int vkRegisterDeviceEventEXT(VkDevice device, MemorySegment pDeviceEventInfo, MemorySegment pAllocator, MemorySegment pFence) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDeviceEventEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkRegisterDeviceEventEXT");
-        try { return (int) Handles.MH_vkRegisterDeviceEventEXT.invokeExact(device.capabilities().PFN_vkRegisterDeviceEventEXT, device.segment(), pDeviceEventInfo, pAllocator, pFence); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkRegisterDeviceEventEXT", device, pDeviceEventInfo, pAllocator, pFence); }
+        return (int) Handles.MH_vkRegisterDeviceEventEXT.invokeExact(device.capabilities().PFN_vkRegisterDeviceEventEXT, device.segment(), pDeviceEventInfo, pAllocator, pFence); }
         catch (Throwable e) { throw new RuntimeException("error in vkRegisterDeviceEventEXT", e); }
     }
 
@@ -66,7 +68,8 @@ public final class VKEXTDisplayControl {
     /// ```
     public static int vkRegisterDisplayEventEXT(VkDevice device, long display, MemorySegment pDisplayEventInfo, MemorySegment pAllocator, MemorySegment pFence) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkRegisterDisplayEventEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkRegisterDisplayEventEXT");
-        try { return (int) Handles.MH_vkRegisterDisplayEventEXT.invokeExact(device.capabilities().PFN_vkRegisterDisplayEventEXT, device.segment(), display, pDisplayEventInfo, pAllocator, pFence); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkRegisterDisplayEventEXT", device, display, pDisplayEventInfo, pAllocator, pFence); }
+        return (int) Handles.MH_vkRegisterDisplayEventEXT.invokeExact(device.capabilities().PFN_vkRegisterDisplayEventEXT, device.segment(), display, pDisplayEventInfo, pAllocator, pFence); }
         catch (Throwable e) { throw new RuntimeException("error in vkRegisterDisplayEventEXT", e); }
     }
 
@@ -75,7 +78,8 @@ public final class VKEXTDisplayControl {
     /// ```
     public static int vkGetSwapchainCounterEXT(VkDevice device, long swapchain, int counter, MemorySegment pCounterValue) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainCounterEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSwapchainCounterEXT");
-        try { return (int) Handles.MH_vkGetSwapchainCounterEXT.invokeExact(device.capabilities().PFN_vkGetSwapchainCounterEXT, device.segment(), swapchain, counter, pCounterValue); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSwapchainCounterEXT", device, swapchain, counter, pCounterValue); }
+        return (int) Handles.MH_vkGetSwapchainCounterEXT.invokeExact(device.capabilities().PFN_vkGetSwapchainCounterEXT, device.segment(), swapchain, counter, pCounterValue); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSwapchainCounterEXT", e); }
     }
 

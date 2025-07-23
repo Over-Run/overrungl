@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRMaintenance5 {
@@ -93,10 +93,10 @@ public final class VKKHRMaintenance5 {
     public static final long VK_BUFFER_USAGE_2_MICROMAP_STORAGE_BIT_EXT = 0x01000000L;
     public static final long VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM = 0x2000000000L;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindIndexBuffer2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkGetRenderingAreaGranularityKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDeviceImageSubresourceLayoutKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetImageSubresourceLayout2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBindIndexBuffer2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkGetRenderingAreaGranularityKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceImageSubresourceLayoutKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageSubresourceLayout2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -107,7 +107,8 @@ public final class VKKHRMaintenance5 {
     /// ```
     public static void vkCmdBindIndexBuffer2KHR(VkCommandBuffer commandBuffer, long buffer, long offset, long size, int indexType) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindIndexBuffer2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindIndexBuffer2KHR");
-        try { Handles.MH_vkCmdBindIndexBuffer2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindIndexBuffer2KHR, commandBuffer.segment(), buffer, offset, size, indexType); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindIndexBuffer2KHR", commandBuffer, buffer, offset, size, indexType); }
+        Handles.MH_vkCmdBindIndexBuffer2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindIndexBuffer2KHR, commandBuffer.segment(), buffer, offset, size, indexType); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindIndexBuffer2KHR", e); }
     }
 
@@ -116,7 +117,8 @@ public final class VKKHRMaintenance5 {
     /// ```
     public static void vkGetRenderingAreaGranularityKHR(VkDevice device, MemorySegment pRenderingAreaInfo, MemorySegment pGranularity) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetRenderingAreaGranularityKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetRenderingAreaGranularityKHR");
-        try { Handles.MH_vkGetRenderingAreaGranularityKHR.invokeExact(device.capabilities().PFN_vkGetRenderingAreaGranularityKHR, device.segment(), pRenderingAreaInfo, pGranularity); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetRenderingAreaGranularityKHR", device, pRenderingAreaInfo, pGranularity); }
+        Handles.MH_vkGetRenderingAreaGranularityKHR.invokeExact(device.capabilities().PFN_vkGetRenderingAreaGranularityKHR, device.segment(), pRenderingAreaInfo, pGranularity); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRenderingAreaGranularityKHR", e); }
     }
 
@@ -125,7 +127,8 @@ public final class VKKHRMaintenance5 {
     /// ```
     public static void vkGetDeviceImageSubresourceLayoutKHR(VkDevice device, MemorySegment pInfo, MemorySegment pLayout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceImageSubresourceLayoutKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceImageSubresourceLayoutKHR");
-        try { Handles.MH_vkGetDeviceImageSubresourceLayoutKHR.invokeExact(device.capabilities().PFN_vkGetDeviceImageSubresourceLayoutKHR, device.segment(), pInfo, pLayout); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceImageSubresourceLayoutKHR", device, pInfo, pLayout); }
+        Handles.MH_vkGetDeviceImageSubresourceLayoutKHR.invokeExact(device.capabilities().PFN_vkGetDeviceImageSubresourceLayoutKHR, device.segment(), pInfo, pLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceImageSubresourceLayoutKHR", e); }
     }
 
@@ -134,7 +137,8 @@ public final class VKKHRMaintenance5 {
     /// ```
     public static void vkGetImageSubresourceLayout2KHR(VkDevice device, long image, MemorySegment pSubresource, MemorySegment pLayout) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageSubresourceLayout2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageSubresourceLayout2KHR");
-        try { Handles.MH_vkGetImageSubresourceLayout2KHR.invokeExact(device.capabilities().PFN_vkGetImageSubresourceLayout2KHR, device.segment(), image, pSubresource, pLayout); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetImageSubresourceLayout2KHR", device, image, pSubresource, pLayout); }
+        Handles.MH_vkGetImageSubresourceLayout2KHR.invokeExact(device.capabilities().PFN_vkGetImageSubresourceLayout2KHR, device.segment(), image, pSubresource, pLayout); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageSubresourceLayout2KHR", e); }
     }
 

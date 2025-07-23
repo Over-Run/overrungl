@@ -19,7 +19,7 @@ package overrungl.opengl.sunx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,7 +28,7 @@ public final class GLSUNXConstantData {
     public static final int GL_TEXTURE_CONSTANT_DATA_SUNX = 0x81D6;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFinishTextureSUNX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glFinishTextureSUNX = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFinishTextureSUNX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFinishTextureSUNX = func.invoke("glFinishTextureSUNX");
@@ -44,7 +44,8 @@ public final class GLSUNXConstantData {
     /// ```
     public void FinishTextureSUNX() {
         if (MemoryUtil.isNullPointer(handles.PFN_glFinishTextureSUNX)) throw new GLSymbolNotFoundError("Symbol not found: glFinishTextureSUNX");
-        try { Handles.MH_glFinishTextureSUNX.invokeExact(handles.PFN_glFinishTextureSUNX); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFinishTextureSUNX"); }
+        Handles.MH_glFinishTextureSUNX.invokeExact(handles.PFN_glFinishTextureSUNX); }
         catch (Throwable e) { throw new RuntimeException("error in FinishTextureSUNX", e); }
     }
 

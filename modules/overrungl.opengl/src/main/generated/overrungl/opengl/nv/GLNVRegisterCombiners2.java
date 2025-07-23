@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,8 +27,8 @@ public final class GLNVRegisterCombiners2 {
     public static final int GL_PER_STAGE_CONSTANTS_NV = 0x8535;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glCombinerStageParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetCombinerStageParameterfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCombinerStageParameterfvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetCombinerStageParameterfvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glCombinerStageParameterfvNV;
         public final MemorySegment PFN_glGetCombinerStageParameterfvNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -46,7 +46,8 @@ public final class GLNVRegisterCombiners2 {
     /// ```
     public void CombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCombinerStageParameterfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glCombinerStageParameterfvNV");
-        try { Handles.MH_glCombinerStageParameterfvNV.invokeExact(handles.PFN_glCombinerStageParameterfvNV, stage, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glCombinerStageParameterfvNV", stage, pname, params); }
+        Handles.MH_glCombinerStageParameterfvNV.invokeExact(handles.PFN_glCombinerStageParameterfvNV, stage, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in CombinerStageParameterfvNV", e); }
     }
 
@@ -55,7 +56,8 @@ public final class GLNVRegisterCombiners2 {
     /// ```
     public void GetCombinerStageParameterfvNV(int stage, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetCombinerStageParameterfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetCombinerStageParameterfvNV");
-        try { Handles.MH_glGetCombinerStageParameterfvNV.invokeExact(handles.PFN_glGetCombinerStageParameterfvNV, stage, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetCombinerStageParameterfvNV", stage, pname, params); }
+        Handles.MH_glGetCombinerStageParameterfvNV.invokeExact(handles.PFN_glGetCombinerStageParameterfvNV, stage, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetCombinerStageParameterfvNV", e); }
     }
 

@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,7 +28,7 @@ public final class GLEXTStencilClearTag {
     public static final int GL_STENCIL_CLEAR_TAG_VALUE_EXT = 0x88F3;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glStencilClearTagEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glStencilClearTagEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glStencilClearTagEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glStencilClearTagEXT = func.invoke("glStencilClearTagEXT");
@@ -44,7 +44,8 @@ public final class GLEXTStencilClearTag {
     /// ```
     public void StencilClearTagEXT(int stencilTagBits, int stencilClearTag) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilClearTagEXT)) throw new GLSymbolNotFoundError("Symbol not found: glStencilClearTagEXT");
-        try { Handles.MH_glStencilClearTagEXT.invokeExact(handles.PFN_glStencilClearTagEXT, stencilTagBits, stencilClearTag); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glStencilClearTagEXT", stencilTagBits, stencilClearTag); }
+        Handles.MH_glStencilClearTagEXT.invokeExact(handles.PFN_glStencilClearTagEXT, stencilTagBits, stencilClearTag); }
         catch (Throwable e) { throw new RuntimeException("error in StencilClearTagEXT", e); }
     }
 

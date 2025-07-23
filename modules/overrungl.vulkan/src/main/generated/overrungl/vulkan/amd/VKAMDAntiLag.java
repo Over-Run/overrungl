@@ -18,7 +18,7 @@
 package overrungl.vulkan.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKAMDAntiLag {
@@ -33,7 +33,7 @@ public final class VKAMDAntiLag {
     public static final int VK_STRUCTURE_TYPE_ANTI_LAG_DATA_AMD = 1000476001;
     public static final int VK_STRUCTURE_TYPE_ANTI_LAG_PRESENTATION_INFO_AMD = 1000476002;
     public static final class Handles {
-        public static final MethodHandle MH_vkAntiLagUpdateAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkAntiLagUpdateAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -44,7 +44,8 @@ public final class VKAMDAntiLag {
     /// ```
     public static void vkAntiLagUpdateAMD(VkDevice device, MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAntiLagUpdateAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkAntiLagUpdateAMD");
-        try { Handles.MH_vkAntiLagUpdateAMD.invokeExact(device.capabilities().PFN_vkAntiLagUpdateAMD, device.segment(), pData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkAntiLagUpdateAMD", device, pData); }
+        Handles.MH_vkAntiLagUpdateAMD.invokeExact(device.capabilities().PFN_vkAntiLagUpdateAMD, device.segment(), pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkAntiLagUpdateAMD", e); }
     }
 

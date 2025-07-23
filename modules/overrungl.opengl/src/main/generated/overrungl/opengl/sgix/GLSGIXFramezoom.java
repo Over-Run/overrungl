@@ -19,7 +19,7 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -29,7 +29,7 @@ public final class GLSGIXFramezoom {
     public static final int GL_MAX_FRAMEZOOM_FACTOR_SGIX = 0x818D;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFrameZoomSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFrameZoomSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFrameZoomSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFrameZoomSGIX = func.invoke("glFrameZoomSGIX");
@@ -45,7 +45,8 @@ public final class GLSGIXFramezoom {
     /// ```
     public void FrameZoomSGIX(int factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFrameZoomSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glFrameZoomSGIX");
-        try { Handles.MH_glFrameZoomSGIX.invokeExact(handles.PFN_glFrameZoomSGIX, factor); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFrameZoomSGIX", factor); }
+        Handles.MH_glFrameZoomSGIX.invokeExact(handles.PFN_glFrameZoomSGIX, factor); }
         catch (Throwable e) { throw new RuntimeException("error in FrameZoomSGIX", e); }
     }
 

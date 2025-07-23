@@ -19,15 +19,15 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLARBClearBufferObject {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glClearBufferData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glClearBufferSubData = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glClearBufferData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glClearBufferSubData = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glClearBufferData;
         public final MemorySegment PFN_glClearBufferSubData;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -45,7 +45,8 @@ public final class GLARBClearBufferObject {
     /// ```
     public void ClearBufferData(int target, int internalformat, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearBufferData)) throw new GLSymbolNotFoundError("Symbol not found: glClearBufferData");
-        try { Handles.MH_glClearBufferData.invokeExact(handles.PFN_glClearBufferData, target, internalformat, format, type, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClearBufferData", target, internalformat, format, type, data); }
+        Handles.MH_glClearBufferData.invokeExact(handles.PFN_glClearBufferData, target, internalformat, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearBufferData", e); }
     }
 
@@ -54,7 +55,8 @@ public final class GLARBClearBufferObject {
     /// ```
     public void ClearBufferSubData(int target, int internalformat, long offset, long size, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearBufferSubData)) throw new GLSymbolNotFoundError("Symbol not found: glClearBufferSubData");
-        try { Handles.MH_glClearBufferSubData.invokeExact(handles.PFN_glClearBufferSubData, target, internalformat, offset, size, format, type, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClearBufferSubData", target, internalformat, offset, size, format, type, data); }
+        Handles.MH_glClearBufferSubData.invokeExact(handles.PFN_glClearBufferSubData, target, internalformat, offset, size, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ClearBufferSubData", e); }
     }
 

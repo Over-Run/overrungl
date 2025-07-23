@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRRayTracingMaintenance1 {
@@ -31,7 +31,7 @@ public final class VKKHRRayTracingMaintenance1 {
     public static final long VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR = 0x10000000000L;
     public static final int VK_INDIRECT_COMMANDS_TOKEN_TYPE_TRACE_RAYS2_EXT = 1000386004;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdTraceRaysIndirect2KHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkCmdTraceRaysIndirect2KHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         private Handles() {}
     }
 
@@ -42,7 +42,8 @@ public final class VKKHRRayTracingMaintenance1 {
     /// ```
     public static void vkCmdTraceRaysIndirect2KHR(VkCommandBuffer commandBuffer, long indirectDeviceAddress) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdTraceRaysIndirect2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdTraceRaysIndirect2KHR");
-        try { Handles.MH_vkCmdTraceRaysIndirect2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdTraceRaysIndirect2KHR, commandBuffer.segment(), indirectDeviceAddress); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdTraceRaysIndirect2KHR", commandBuffer, indirectDeviceAddress); }
+        Handles.MH_vkCmdTraceRaysIndirect2KHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdTraceRaysIndirect2KHR, commandBuffer.segment(), indirectDeviceAddress); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdTraceRaysIndirect2KHR", e); }
     }
 

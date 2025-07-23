@@ -19,7 +19,7 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,7 +27,7 @@ public final class GLAMDSamplePositions {
     public static final int GL_SUBSAMPLE_DISTANCE_AMD = 0x883F;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glSetMultisamplefvAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSetMultisamplefvAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glSetMultisamplefvAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glSetMultisamplefvAMD = func.invoke("glSetMultisamplefvAMD");
@@ -43,7 +43,8 @@ public final class GLAMDSamplePositions {
     /// ```
     public void SetMultisamplefvAMD(int pname, int index, MemorySegment val) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSetMultisamplefvAMD)) throw new GLSymbolNotFoundError("Symbol not found: glSetMultisamplefvAMD");
-        try { Handles.MH_glSetMultisamplefvAMD.invokeExact(handles.PFN_glSetMultisamplefvAMD, pname, index, val); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glSetMultisamplefvAMD", pname, index, val); }
+        Handles.MH_glSetMultisamplefvAMD.invokeExact(handles.PFN_glSetMultisamplefvAMD, pname, index, val); }
         catch (Throwable e) { throw new RuntimeException("error in SetMultisamplefvAMD", e); }
     }
 

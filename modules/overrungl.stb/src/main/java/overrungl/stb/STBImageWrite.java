@@ -16,10 +16,12 @@
 
 package overrungl.stb;
 
-import overrungl.internal.RuntimeHelper;
-
-import java.lang.foreign.*;
+import java.lang.foreign.FunctionDescriptor;
+import java.lang.foreign.MemorySegment;
+import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+
+import static overrungl.internal.RuntimeHelper.*;
 
 /// [stb_image_write.h](https://github.com/nothings/stb/blob/master/stb_image_write.h)
 ///
@@ -33,27 +35,27 @@ public final class STBImageWrite {
     /// Method handles.
     public static final class Handles {
         /// The method handle of `stbi_write_png`.
-        public static final MethodHandle MH_stbi_write_png = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_png = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_write_bmp`.
-        public static final MethodHandle MH_stbi_write_bmp = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_bmp = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_tga`.
-        public static final MethodHandle MH_stbi_write_tga = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_tga = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_hdr`.
-        public static final MethodHandle MH_stbi_write_hdr = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_hdr = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_jpg`.
-        public static final MethodHandle MH_stbi_write_jpg = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_jpg = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_write_png_to_func`.
-        public static final MethodHandle MH_stbi_write_png_to_func = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_png_to_func = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_write_bmp_to_func`.
-        public static final MethodHandle MH_stbi_write_bmp_to_func = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_bmp_to_func = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_tga_to_func`.
-        public static final MethodHandle MH_stbi_write_tga_to_func = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_tga_to_func = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_hdr_to_func`.
-        public static final MethodHandle MH_stbi_write_hdr_to_func = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_stbi_write_hdr_to_func = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `stbi_write_jpg_to_func`.
-        public static final MethodHandle MH_stbi_write_jpg_to_func = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_write_jpg_to_func = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `stbi_flip_vertically_on_write`.
-        public static final MethodHandle MH_stbi_flip_vertically_on_write = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_stbi_flip_vertically_on_write = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         /// The function address of `stbi_write_png`.
         public final MemorySegment PFN_stbi_write_png;
         /// The function address of `stbi_write_bmp`.
@@ -104,7 +106,8 @@ public final class STBImageWrite {
     /// int stbi_write_png(char const * filename, int w, int h, int comp, const void* data, int stride_in_bytes);
     /// ```
     public static int stbi_write_png(MemorySegment filename, int w, int h, int comp, MemorySegment data, int stride_in_bytes) {
-        try { return (int) Handles.MH_stbi_write_png.invokeExact(Handles.get().PFN_stbi_write_png, filename, w, h, comp, data, stride_in_bytes); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_png", filename, w, h, comp, data, stride_in_bytes); }
+        return (int) Handles.MH_stbi_write_png.invokeExact(Handles.get().PFN_stbi_write_png, filename, w, h, comp, data, stride_in_bytes); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_png", e); }
     }
 
@@ -112,7 +115,8 @@ public final class STBImageWrite {
     /// int stbi_write_bmp(char const * filename, int w, int h, int comp, const void* data);
     /// ```
     public static int stbi_write_bmp(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
-        try { return (int) Handles.MH_stbi_write_bmp.invokeExact(Handles.get().PFN_stbi_write_bmp, filename, w, h, comp, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_bmp", filename, w, h, comp, data); }
+        return (int) Handles.MH_stbi_write_bmp.invokeExact(Handles.get().PFN_stbi_write_bmp, filename, w, h, comp, data); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp", e); }
     }
 
@@ -120,7 +124,8 @@ public final class STBImageWrite {
     /// int stbi_write_tga(char const * filename, int w, int h, int comp, const void* data);
     /// ```
     public static int stbi_write_tga(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
-        try { return (int) Handles.MH_stbi_write_tga.invokeExact(Handles.get().PFN_stbi_write_tga, filename, w, h, comp, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_tga", filename, w, h, comp, data); }
+        return (int) Handles.MH_stbi_write_tga.invokeExact(Handles.get().PFN_stbi_write_tga, filename, w, h, comp, data); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga", e); }
     }
 
@@ -128,7 +133,8 @@ public final class STBImageWrite {
     /// int stbi_write_hdr(char const * filename, int w, int h, int comp, const float* data);
     /// ```
     public static int stbi_write_hdr(MemorySegment filename, int w, int h, int comp, MemorySegment data) {
-        try { return (int) Handles.MH_stbi_write_hdr.invokeExact(Handles.get().PFN_stbi_write_hdr, filename, w, h, comp, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_hdr", filename, w, h, comp, data); }
+        return (int) Handles.MH_stbi_write_hdr.invokeExact(Handles.get().PFN_stbi_write_hdr, filename, w, h, comp, data); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr", e); }
     }
 
@@ -136,7 +142,8 @@ public final class STBImageWrite {
     /// int stbi_write_jpg(char const * filename, int x, int y, int comp, const void* data, int quality);
     /// ```
     public static int stbi_write_jpg(MemorySegment filename, int x, int y, int comp, MemorySegment data, int quality) {
-        try { return (int) Handles.MH_stbi_write_jpg.invokeExact(Handles.get().PFN_stbi_write_jpg, filename, x, y, comp, data, quality); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_jpg", filename, x, y, comp, data, quality); }
+        return (int) Handles.MH_stbi_write_jpg.invokeExact(Handles.get().PFN_stbi_write_jpg, filename, x, y, comp, data, quality); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg", e); }
     }
 
@@ -144,7 +151,8 @@ public final class STBImageWrite {
     /// int stbi_write_png_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const void* data, int stride_in_bytes);
     /// ```
     public static int stbi_write_png_to_func(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data, int stride_in_bytes) {
-        try { return (int) Handles.MH_stbi_write_png_to_func.invokeExact(Handles.get().PFN_stbi_write_png_to_func, func, context, w, h, comp, data, stride_in_bytes); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_png_to_func", func, context, w, h, comp, data, stride_in_bytes); }
+        return (int) Handles.MH_stbi_write_png_to_func.invokeExact(Handles.get().PFN_stbi_write_png_to_func, func, context, w, h, comp, data, stride_in_bytes); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_png_to_func", e); }
     }
 
@@ -152,7 +160,8 @@ public final class STBImageWrite {
     /// int stbi_write_bmp_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const void* data);
     /// ```
     public static int stbi_write_bmp_to_func(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        try { return (int) Handles.MH_stbi_write_bmp_to_func.invokeExact(Handles.get().PFN_stbi_write_bmp_to_func, func, context, w, h, comp, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_bmp_to_func", func, context, w, h, comp, data); }
+        return (int) Handles.MH_stbi_write_bmp_to_func.invokeExact(Handles.get().PFN_stbi_write_bmp_to_func, func, context, w, h, comp, data); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_bmp_to_func", e); }
     }
 
@@ -160,7 +169,8 @@ public final class STBImageWrite {
     /// int stbi_write_tga_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const void* data);
     /// ```
     public static int stbi_write_tga_to_func(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        try { return (int) Handles.MH_stbi_write_tga_to_func.invokeExact(Handles.get().PFN_stbi_write_tga_to_func, func, context, w, h, comp, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_tga_to_func", func, context, w, h, comp, data); }
+        return (int) Handles.MH_stbi_write_tga_to_func.invokeExact(Handles.get().PFN_stbi_write_tga_to_func, func, context, w, h, comp, data); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_tga_to_func", e); }
     }
 
@@ -168,7 +178,8 @@ public final class STBImageWrite {
     /// int stbi_write_hdr_to_func(stbi_write_func* func, void* context, int w, int h, int comp, const float* data);
     /// ```
     public static int stbi_write_hdr_to_func(MemorySegment func, MemorySegment context, int w, int h, int comp, MemorySegment data) {
-        try { return (int) Handles.MH_stbi_write_hdr_to_func.invokeExact(Handles.get().PFN_stbi_write_hdr_to_func, func, context, w, h, comp, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_hdr_to_func", func, context, w, h, comp, data); }
+        return (int) Handles.MH_stbi_write_hdr_to_func.invokeExact(Handles.get().PFN_stbi_write_hdr_to_func, func, context, w, h, comp, data); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_hdr_to_func", e); }
     }
 
@@ -176,7 +187,8 @@ public final class STBImageWrite {
     /// int stbi_write_jpg_to_func(stbi_write_func* func, void* context, int x, int y, int comp, const void* data, int quality);
     /// ```
     public static int stbi_write_jpg_to_func(MemorySegment func, MemorySegment context, int x, int y, int comp, MemorySegment data, int quality) {
-        try { return (int) Handles.MH_stbi_write_jpg_to_func.invokeExact(Handles.get().PFN_stbi_write_jpg_to_func, func, context, x, y, comp, data, quality); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_write_jpg_to_func", func, context, x, y, comp, data, quality); }
+        return (int) Handles.MH_stbi_write_jpg_to_func.invokeExact(Handles.get().PFN_stbi_write_jpg_to_func, func, context, x, y, comp, data, quality); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_write_jpg_to_func", e); }
     }
 
@@ -184,7 +196,8 @@ public final class STBImageWrite {
     /// void stbi_flip_vertically_on_write(int flip_boolean);
     /// ```
     public static void stbi_flip_vertically_on_write(int flip_boolean) {
-        try { Handles.MH_stbi_flip_vertically_on_write.invokeExact(Handles.get().PFN_stbi_flip_vertically_on_write, flip_boolean); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("stbi_flip_vertically_on_write", flip_boolean); }
+        Handles.MH_stbi_flip_vertically_on_write.invokeExact(Handles.get().PFN_stbi_flip_vertically_on_write, flip_boolean); }
         catch (Throwable e) { throw new RuntimeException("error in stbi_flip_vertically_on_write", e); }
     }
 

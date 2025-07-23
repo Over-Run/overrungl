@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRDynamicRenderingLocalRead {
@@ -29,8 +29,8 @@ public final class VKKHRDynamicRenderingLocalRead {
     public static final int VK_STRUCTURE_TYPE_RENDERING_ATTACHMENT_LOCATION_INFO_KHR = 1000232001;
     public static final int VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO_KHR = 1000232002;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetRenderingAttachmentLocationsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdSetRenderingInputAttachmentIndicesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetRenderingAttachmentLocationsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetRenderingInputAttachmentIndicesKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -41,7 +41,8 @@ public final class VKKHRDynamicRenderingLocalRead {
     /// ```
     public static void vkCmdSetRenderingAttachmentLocationsKHR(VkCommandBuffer commandBuffer, MemorySegment pLocationInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocationsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRenderingAttachmentLocationsKHR");
-        try { Handles.MH_vkCmdSetRenderingAttachmentLocationsKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocationsKHR, commandBuffer.segment(), pLocationInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetRenderingAttachmentLocationsKHR", commandBuffer, pLocationInfo); }
+        Handles.MH_vkCmdSetRenderingAttachmentLocationsKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingAttachmentLocationsKHR, commandBuffer.segment(), pLocationInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRenderingAttachmentLocationsKHR", e); }
     }
 
@@ -50,7 +51,8 @@ public final class VKKHRDynamicRenderingLocalRead {
     /// ```
     public static void vkCmdSetRenderingInputAttachmentIndicesKHR(VkCommandBuffer commandBuffer, MemorySegment pInputAttachmentIndexInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndicesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetRenderingInputAttachmentIndicesKHR");
-        try { Handles.MH_vkCmdSetRenderingInputAttachmentIndicesKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndicesKHR, commandBuffer.segment(), pInputAttachmentIndexInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetRenderingInputAttachmentIndicesKHR", commandBuffer, pInputAttachmentIndexInfo); }
+        Handles.MH_vkCmdSetRenderingInputAttachmentIndicesKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetRenderingInputAttachmentIndicesKHR, commandBuffer.segment(), pInputAttachmentIndexInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetRenderingInputAttachmentIndicesKHR", e); }
     }
 

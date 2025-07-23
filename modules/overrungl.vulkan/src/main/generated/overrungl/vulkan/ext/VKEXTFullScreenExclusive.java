@@ -18,7 +18,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTFullScreenExclusive {
@@ -33,10 +33,10 @@ public final class VKEXTFullScreenExclusive {
     public static final int VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT = -1000255000;
     public static final int VK_STRUCTURE_TYPE_SURFACE_FULL_SCREEN_EXCLUSIVE_WIN32_INFO_EXT = 1000255001;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetPhysicalDeviceSurfacePresentModes2EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkAcquireFullScreenExclusiveModeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_vkReleaseFullScreenExclusiveModeEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_vkGetDeviceGroupSurfacePresentModes2EXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDeviceSurfacePresentModes2EXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkAcquireFullScreenExclusiveModeEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkReleaseFullScreenExclusiveModeEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkGetDeviceGroupSurfacePresentModes2EXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -47,7 +47,8 @@ public final class VKEXTFullScreenExclusive {
     /// ```
     public static int vkGetPhysicalDeviceSurfacePresentModes2EXT(VkPhysicalDevice physicalDevice, MemorySegment pSurfaceInfo, MemorySegment pPresentModeCount, MemorySegment pPresentModes) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDeviceSurfacePresentModes2EXT");
-        try { return (int) Handles.MH_vkGetPhysicalDeviceSurfacePresentModes2EXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT, physicalDevice.segment(), pSurfaceInfo, pPresentModeCount, pPresentModes); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDeviceSurfacePresentModes2EXT", physicalDevice, pSurfaceInfo, pPresentModeCount, pPresentModes); }
+        return (int) Handles.MH_vkGetPhysicalDeviceSurfacePresentModes2EXT.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDeviceSurfacePresentModes2EXT, physicalDevice.segment(), pSurfaceInfo, pPresentModeCount, pPresentModes); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDeviceSurfacePresentModes2EXT", e); }
     }
 
@@ -56,7 +57,8 @@ public final class VKEXTFullScreenExclusive {
     /// ```
     public static int vkAcquireFullScreenExclusiveModeEXT(VkDevice device, long swapchain) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquireFullScreenExclusiveModeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireFullScreenExclusiveModeEXT");
-        try { return (int) Handles.MH_vkAcquireFullScreenExclusiveModeEXT.invokeExact(device.capabilities().PFN_vkAcquireFullScreenExclusiveModeEXT, device.segment(), swapchain); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkAcquireFullScreenExclusiveModeEXT", device, swapchain); }
+        return (int) Handles.MH_vkAcquireFullScreenExclusiveModeEXT.invokeExact(device.capabilities().PFN_vkAcquireFullScreenExclusiveModeEXT, device.segment(), swapchain); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireFullScreenExclusiveModeEXT", e); }
     }
 
@@ -65,7 +67,8 @@ public final class VKEXTFullScreenExclusive {
     /// ```
     public static int vkReleaseFullScreenExclusiveModeEXT(VkDevice device, long swapchain) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkReleaseFullScreenExclusiveModeEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkReleaseFullScreenExclusiveModeEXT");
-        try { return (int) Handles.MH_vkReleaseFullScreenExclusiveModeEXT.invokeExact(device.capabilities().PFN_vkReleaseFullScreenExclusiveModeEXT, device.segment(), swapchain); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkReleaseFullScreenExclusiveModeEXT", device, swapchain); }
+        return (int) Handles.MH_vkReleaseFullScreenExclusiveModeEXT.invokeExact(device.capabilities().PFN_vkReleaseFullScreenExclusiveModeEXT, device.segment(), swapchain); }
         catch (Throwable e) { throw new RuntimeException("error in vkReleaseFullScreenExclusiveModeEXT", e); }
     }
 
@@ -74,7 +77,8 @@ public final class VKEXTFullScreenExclusive {
     /// ```
     public static int vkGetDeviceGroupSurfacePresentModes2EXT(VkDevice device, MemorySegment pSurfaceInfo, MemorySegment pModes) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceGroupSurfacePresentModes2EXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceGroupSurfacePresentModes2EXT");
-        try { return (int) Handles.MH_vkGetDeviceGroupSurfacePresentModes2EXT.invokeExact(device.capabilities().PFN_vkGetDeviceGroupSurfacePresentModes2EXT, device.segment(), pSurfaceInfo, pModes); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceGroupSurfacePresentModes2EXT", device, pSurfaceInfo, pModes); }
+        return (int) Handles.MH_vkGetDeviceGroupSurfacePresentModes2EXT.invokeExact(device.capabilities().PFN_vkGetDeviceGroupSurfacePresentModes2EXT, device.segment(), pSurfaceInfo, pModes); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupSurfacePresentModes2EXT", e); }
     }
 

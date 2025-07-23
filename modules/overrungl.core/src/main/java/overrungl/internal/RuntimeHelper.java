@@ -27,7 +27,9 @@ import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 /**
  * The runtime helper, for internal use.
@@ -39,6 +41,8 @@ public final class RuntimeHelper {
     private static final Path tmpdir = Path.of(System.getProperty("java.io.tmpdir"))
         .resolve("overrungl-" + System.getProperty("user.name"));
     private static final Linker LINKER = Linker.nativeLinker();
+    /// Trace downcall invocation and print a debug message with [OverrunGL#apiLogger()].
+    public static final boolean TRACE_DOWNCALLS = Boolean.getBoolean("overrungl.trace.downcalls");
 
     /**
      * constructor
@@ -141,7 +145,7 @@ public final class RuntimeHelper {
     ///
     /// @param descriptor the function descriptor
     /// @return the method handle
-    public static MethodHandle downcall(FunctionDescriptor descriptor) {
+    public static MethodHandle downcallHandle(FunctionDescriptor descriptor) {
         return LINKER.downcallHandle(descriptor);
     }
 
@@ -175,5 +179,13 @@ public final class RuntimeHelper {
             case ValueLayout.OfFloat _ -> 'F';
             case ValueLayout.OfDouble _ -> 'D';
         };
+    }
+
+    /// Prints a message indicating that a downcall method is being invoked.
+    ///
+    /// @param name the name of the downcall method
+    /// @param args the arguments passed to the method
+    public static void traceDowncall(String name, Object... args) {
+        OverrunGL.apiLog(name + "(" + Arrays.stream(args).map(String::valueOf).collect(Collectors.joining(", ")) + ")");
     }
 }

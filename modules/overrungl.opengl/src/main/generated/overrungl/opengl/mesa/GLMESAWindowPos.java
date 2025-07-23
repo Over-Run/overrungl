@@ -19,37 +19,37 @@ package overrungl.opengl.mesa;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLMESAWindowPos {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glWindowPos2dMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glWindowPos2dvMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos2fMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glWindowPos2fvMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos2iMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glWindowPos2ivMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos2sMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glWindowPos2svMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos3dMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glWindowPos3dvMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos3fMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glWindowPos3fvMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos3iMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glWindowPos3ivMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos3sMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glWindowPos3svMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos4dMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glWindowPos4dvMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos4fMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glWindowPos4fvMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos4iMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glWindowPos4ivMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glWindowPos4sMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glWindowPos4svMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2dMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glWindowPos2dvMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2fMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glWindowPos2fvMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2iMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glWindowPos2ivMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos2sMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glWindowPos2svMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3dMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glWindowPos3dvMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3fMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glWindowPos3fvMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3iMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glWindowPos3ivMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos3sMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glWindowPos3svMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos4dMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glWindowPos4dvMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos4fMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glWindowPos4fvMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos4iMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glWindowPos4ivMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glWindowPos4sMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glWindowPos4svMESA = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glWindowPos2dMESA;
         public final MemorySegment PFN_glWindowPos2dvMESA;
         public final MemorySegment PFN_glWindowPos2fMESA;
@@ -111,7 +111,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos2dMESA(double x, double y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2dMESA");
-        try { Handles.MH_glWindowPos2dMESA.invokeExact(handles.PFN_glWindowPos2dMESA, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos2dMESA", x, y); }
+        Handles.MH_glWindowPos2dMESA.invokeExact(handles.PFN_glWindowPos2dMESA, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2dMESA", e); }
     }
 
@@ -120,7 +121,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos2dvMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2dvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2dvMESA");
-        try { Handles.MH_glWindowPos2dvMESA.invokeExact(handles.PFN_glWindowPos2dvMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos2dvMESA", v); }
+        Handles.MH_glWindowPos2dvMESA.invokeExact(handles.PFN_glWindowPos2dvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2dvMESA", e); }
     }
 
@@ -129,7 +131,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos2fMESA(float x, float y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2fMESA");
-        try { Handles.MH_glWindowPos2fMESA.invokeExact(handles.PFN_glWindowPos2fMESA, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos2fMESA", x, y); }
+        Handles.MH_glWindowPos2fMESA.invokeExact(handles.PFN_glWindowPos2fMESA, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2fMESA", e); }
     }
 
@@ -138,7 +141,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos2fvMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2fvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2fvMESA");
-        try { Handles.MH_glWindowPos2fvMESA.invokeExact(handles.PFN_glWindowPos2fvMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos2fvMESA", v); }
+        Handles.MH_glWindowPos2fvMESA.invokeExact(handles.PFN_glWindowPos2fvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2fvMESA", e); }
     }
 
@@ -147,7 +151,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos2iMESA(int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2iMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2iMESA");
-        try { Handles.MH_glWindowPos2iMESA.invokeExact(handles.PFN_glWindowPos2iMESA, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos2iMESA", x, y); }
+        Handles.MH_glWindowPos2iMESA.invokeExact(handles.PFN_glWindowPos2iMESA, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2iMESA", e); }
     }
 
@@ -156,7 +161,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos2ivMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2ivMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2ivMESA");
-        try { Handles.MH_glWindowPos2ivMESA.invokeExact(handles.PFN_glWindowPos2ivMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos2ivMESA", v); }
+        Handles.MH_glWindowPos2ivMESA.invokeExact(handles.PFN_glWindowPos2ivMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2ivMESA", e); }
     }
 
@@ -165,7 +171,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos2sMESA(short x, short y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2sMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2sMESA");
-        try { Handles.MH_glWindowPos2sMESA.invokeExact(handles.PFN_glWindowPos2sMESA, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos2sMESA", x, y); }
+        Handles.MH_glWindowPos2sMESA.invokeExact(handles.PFN_glWindowPos2sMESA, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2sMESA", e); }
     }
 
@@ -174,7 +181,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos2svMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos2svMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos2svMESA");
-        try { Handles.MH_glWindowPos2svMESA.invokeExact(handles.PFN_glWindowPos2svMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos2svMESA", v); }
+        Handles.MH_glWindowPos2svMESA.invokeExact(handles.PFN_glWindowPos2svMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos2svMESA", e); }
     }
 
@@ -183,7 +191,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos3dMESA(double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3dMESA");
-        try { Handles.MH_glWindowPos3dMESA.invokeExact(handles.PFN_glWindowPos3dMESA, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos3dMESA", x, y, z); }
+        Handles.MH_glWindowPos3dMESA.invokeExact(handles.PFN_glWindowPos3dMESA, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3dMESA", e); }
     }
 
@@ -192,7 +201,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos3dvMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3dvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3dvMESA");
-        try { Handles.MH_glWindowPos3dvMESA.invokeExact(handles.PFN_glWindowPos3dvMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos3dvMESA", v); }
+        Handles.MH_glWindowPos3dvMESA.invokeExact(handles.PFN_glWindowPos3dvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3dvMESA", e); }
     }
 
@@ -201,7 +211,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos3fMESA(float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3fMESA");
-        try { Handles.MH_glWindowPos3fMESA.invokeExact(handles.PFN_glWindowPos3fMESA, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos3fMESA", x, y, z); }
+        Handles.MH_glWindowPos3fMESA.invokeExact(handles.PFN_glWindowPos3fMESA, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3fMESA", e); }
     }
 
@@ -210,7 +221,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos3fvMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3fvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3fvMESA");
-        try { Handles.MH_glWindowPos3fvMESA.invokeExact(handles.PFN_glWindowPos3fvMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos3fvMESA", v); }
+        Handles.MH_glWindowPos3fvMESA.invokeExact(handles.PFN_glWindowPos3fvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3fvMESA", e); }
     }
 
@@ -219,7 +231,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos3iMESA(int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3iMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3iMESA");
-        try { Handles.MH_glWindowPos3iMESA.invokeExact(handles.PFN_glWindowPos3iMESA, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos3iMESA", x, y, z); }
+        Handles.MH_glWindowPos3iMESA.invokeExact(handles.PFN_glWindowPos3iMESA, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3iMESA", e); }
     }
 
@@ -228,7 +241,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos3ivMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3ivMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3ivMESA");
-        try { Handles.MH_glWindowPos3ivMESA.invokeExact(handles.PFN_glWindowPos3ivMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos3ivMESA", v); }
+        Handles.MH_glWindowPos3ivMESA.invokeExact(handles.PFN_glWindowPos3ivMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3ivMESA", e); }
     }
 
@@ -237,7 +251,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos3sMESA(short x, short y, short z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3sMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3sMESA");
-        try { Handles.MH_glWindowPos3sMESA.invokeExact(handles.PFN_glWindowPos3sMESA, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos3sMESA", x, y, z); }
+        Handles.MH_glWindowPos3sMESA.invokeExact(handles.PFN_glWindowPos3sMESA, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3sMESA", e); }
     }
 
@@ -246,7 +261,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos3svMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos3svMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos3svMESA");
-        try { Handles.MH_glWindowPos3svMESA.invokeExact(handles.PFN_glWindowPos3svMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos3svMESA", v); }
+        Handles.MH_glWindowPos3svMESA.invokeExact(handles.PFN_glWindowPos3svMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos3svMESA", e); }
     }
 
@@ -255,7 +271,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos4dMESA(double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4dMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4dMESA");
-        try { Handles.MH_glWindowPos4dMESA.invokeExact(handles.PFN_glWindowPos4dMESA, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos4dMESA", x, y, z, w); }
+        Handles.MH_glWindowPos4dMESA.invokeExact(handles.PFN_glWindowPos4dMESA, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4dMESA", e); }
     }
 
@@ -264,7 +281,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos4dvMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4dvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4dvMESA");
-        try { Handles.MH_glWindowPos4dvMESA.invokeExact(handles.PFN_glWindowPos4dvMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos4dvMESA", v); }
+        Handles.MH_glWindowPos4dvMESA.invokeExact(handles.PFN_glWindowPos4dvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4dvMESA", e); }
     }
 
@@ -273,7 +291,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos4fMESA(float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4fMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4fMESA");
-        try { Handles.MH_glWindowPos4fMESA.invokeExact(handles.PFN_glWindowPos4fMESA, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos4fMESA", x, y, z, w); }
+        Handles.MH_glWindowPos4fMESA.invokeExact(handles.PFN_glWindowPos4fMESA, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4fMESA", e); }
     }
 
@@ -282,7 +301,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos4fvMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4fvMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4fvMESA");
-        try { Handles.MH_glWindowPos4fvMESA.invokeExact(handles.PFN_glWindowPos4fvMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos4fvMESA", v); }
+        Handles.MH_glWindowPos4fvMESA.invokeExact(handles.PFN_glWindowPos4fvMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4fvMESA", e); }
     }
 
@@ -291,7 +311,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos4iMESA(int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4iMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4iMESA");
-        try { Handles.MH_glWindowPos4iMESA.invokeExact(handles.PFN_glWindowPos4iMESA, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos4iMESA", x, y, z, w); }
+        Handles.MH_glWindowPos4iMESA.invokeExact(handles.PFN_glWindowPos4iMESA, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4iMESA", e); }
     }
 
@@ -300,7 +321,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos4ivMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4ivMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4ivMESA");
-        try { Handles.MH_glWindowPos4ivMESA.invokeExact(handles.PFN_glWindowPos4ivMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos4ivMESA", v); }
+        Handles.MH_glWindowPos4ivMESA.invokeExact(handles.PFN_glWindowPos4ivMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4ivMESA", e); }
     }
 
@@ -309,7 +331,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos4sMESA(short x, short y, short z, short w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4sMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4sMESA");
-        try { Handles.MH_glWindowPos4sMESA.invokeExact(handles.PFN_glWindowPos4sMESA, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos4sMESA", x, y, z, w); }
+        Handles.MH_glWindowPos4sMESA.invokeExact(handles.PFN_glWindowPos4sMESA, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4sMESA", e); }
     }
 
@@ -318,7 +341,8 @@ public final class GLMESAWindowPos {
     /// ```
     public void WindowPos4svMESA(MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glWindowPos4svMESA)) throw new GLSymbolNotFoundError("Symbol not found: glWindowPos4svMESA");
-        try { Handles.MH_glWindowPos4svMESA.invokeExact(handles.PFN_glWindowPos4svMESA, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glWindowPos4svMESA", v); }
+        Handles.MH_glWindowPos4svMESA.invokeExact(handles.PFN_glWindowPos4svMESA, v); }
         catch (Throwable e) { throw new RuntimeException("error in WindowPos4svMESA", e); }
     }
 

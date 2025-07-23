@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,7 +27,7 @@ public final class GLARBInstancedArrays {
     public static final int GL_VERTEX_ATTRIB_ARRAY_DIVISOR_ARB = 0x88FE;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glVertexAttribDivisorARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribDivisorARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glVertexAttribDivisorARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glVertexAttribDivisorARB = func.invoke("glVertexAttribDivisorARB", "glVertexAttribDivisor");
@@ -43,7 +43,8 @@ public final class GLARBInstancedArrays {
     /// ```
     public void VertexAttribDivisorARB(int index, int divisor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribDivisorARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribDivisorARB");
-        try { Handles.MH_glVertexAttribDivisorARB.invokeExact(handles.PFN_glVertexAttribDivisorARB, index, divisor); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribDivisorARB", index, divisor); }
+        Handles.MH_glVertexAttribDivisorARB.invokeExact(handles.PFN_glVertexAttribDivisorARB, index, divisor); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribDivisorARB", e); }
     }
 

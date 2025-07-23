@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRMaintenance1 {
@@ -31,7 +31,7 @@ public final class VKKHRMaintenance1 {
     public static final int VK_FORMAT_FEATURE_TRANSFER_DST_BIT_KHR = 0x00008000;
     public static final int VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT_KHR = 0x00000020;
     public static final class Handles {
-        public static final MethodHandle MH_vkTrimCommandPoolKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkTrimCommandPoolKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
@@ -42,7 +42,8 @@ public final class VKKHRMaintenance1 {
     /// ```
     public static void vkTrimCommandPoolKHR(VkDevice device, long commandPool, int flags) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkTrimCommandPoolKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkTrimCommandPoolKHR");
-        try { Handles.MH_vkTrimCommandPoolKHR.invokeExact(device.capabilities().PFN_vkTrimCommandPoolKHR, device.segment(), commandPool, flags); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkTrimCommandPoolKHR", device, commandPool, flags); }
+        Handles.MH_vkTrimCommandPoolKHR.invokeExact(device.capabilities().PFN_vkTrimCommandPoolKHR, device.segment(), commandPool, flags); }
         catch (Throwable e) { throw new RuntimeException("error in vkTrimCommandPoolKHR", e); }
     }
 

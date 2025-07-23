@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -30,8 +30,8 @@ public final class GLEXTPointParameters {
     public static final int GL_DISTANCE_ATTENUATION_EXT = 0x8129;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glPointParameterfEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glPointParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPointParameterfEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPointParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPointParameterfEXT;
         public final MemorySegment PFN_glPointParameterfvEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -49,7 +49,8 @@ public final class GLEXTPointParameters {
     /// ```
     public void PointParameterfEXT(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfEXT");
-        try { Handles.MH_glPointParameterfEXT.invokeExact(handles.PFN_glPointParameterfEXT, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterfEXT", pname, param); }
+        Handles.MH_glPointParameterfEXT.invokeExact(handles.PFN_glPointParameterfEXT, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfEXT", e); }
     }
 
@@ -58,7 +59,8 @@ public final class GLEXTPointParameters {
     /// ```
     public void PointParameterfvEXT(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterfvEXT");
-        try { Handles.MH_glPointParameterfvEXT.invokeExact(handles.PFN_glPointParameterfvEXT, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterfvEXT", pname, params); }
+        Handles.MH_glPointParameterfvEXT.invokeExact(handles.PFN_glPointParameterfvEXT, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterfvEXT", e); }
     }
 

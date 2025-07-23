@@ -18,7 +18,7 @@
 package overrungl.vulkan.qcom;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKQCOMTileMemoryHeap {
@@ -34,7 +34,7 @@ public final class VKQCOMTileMemoryHeap {
     public static final int VK_STRUCTURE_TYPE_TILE_MEMORY_BIND_INFO_QCOM = 1000547003;
     public static final int VK_STRUCTURE_TYPE_TILE_MEMORY_SIZE_INFO_QCOM = 1000547004;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBindTileMemoryQCOM = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBindTileMemoryQCOM = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -45,7 +45,8 @@ public final class VKQCOMTileMemoryHeap {
     /// ```
     public static void vkCmdBindTileMemoryQCOM(VkCommandBuffer commandBuffer, MemorySegment pTileMemoryBindInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBindTileMemoryQCOM)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBindTileMemoryQCOM");
-        try { Handles.MH_vkCmdBindTileMemoryQCOM.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindTileMemoryQCOM, commandBuffer.segment(), pTileMemoryBindInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBindTileMemoryQCOM", commandBuffer, pTileMemoryBindInfo); }
+        Handles.MH_vkCmdBindTileMemoryQCOM.invokeExact(commandBuffer.capabilities().PFN_vkCmdBindTileMemoryQCOM, commandBuffer.segment(), pTileMemoryBindInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBindTileMemoryQCOM", e); }
     }
 

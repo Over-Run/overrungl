@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -31,8 +31,8 @@ public final class GLARBBlendFuncExtended {
     public static final int GL_MAX_DUAL_SOURCE_DRAW_BUFFERS = 0x88FC;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBindFragDataLocationIndexed = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetFragDataIndex = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBindFragDataLocationIndexed = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetFragDataIndex = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glBindFragDataLocationIndexed;
         public final MemorySegment PFN_glGetFragDataIndex;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -50,7 +50,8 @@ public final class GLARBBlendFuncExtended {
     /// ```
     public void BindFragDataLocationIndexed(int program, int colorNumber, int index, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindFragDataLocationIndexed)) throw new GLSymbolNotFoundError("Symbol not found: glBindFragDataLocationIndexed");
-        try { Handles.MH_glBindFragDataLocationIndexed.invokeExact(handles.PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBindFragDataLocationIndexed", program, colorNumber, index, name); }
+        Handles.MH_glBindFragDataLocationIndexed.invokeExact(handles.PFN_glBindFragDataLocationIndexed, program, colorNumber, index, name); }
         catch (Throwable e) { throw new RuntimeException("error in BindFragDataLocationIndexed", e); }
     }
 
@@ -59,7 +60,8 @@ public final class GLARBBlendFuncExtended {
     /// ```
     public int GetFragDataIndex(int program, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFragDataIndex)) throw new GLSymbolNotFoundError("Symbol not found: glGetFragDataIndex");
-        try { return (int) Handles.MH_glGetFragDataIndex.invokeExact(handles.PFN_glGetFragDataIndex, program, name); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFragDataIndex", program, name); }
+        return (int) Handles.MH_glGetFragDataIndex.invokeExact(handles.PFN_glGetFragDataIndex, program, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetFragDataIndex", e); }
     }
 

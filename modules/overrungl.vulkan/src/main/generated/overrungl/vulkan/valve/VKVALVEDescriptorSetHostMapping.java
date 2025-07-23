@@ -18,7 +18,7 @@
 package overrungl.vulkan.valve;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKVALVEDescriptorSetHostMapping {
@@ -28,8 +28,8 @@ public final class VKVALVEDescriptorSetHostMapping {
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_BINDING_REFERENCE_VALVE = 1000420001;
     public static final int VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_HOST_MAPPING_INFO_VALVE = 1000420002;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDescriptorSetHostMappingVALVE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDescriptorSetHostMappingVALVE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -40,7 +40,8 @@ public final class VKVALVEDescriptorSetHostMapping {
     /// ```
     public static void vkGetDescriptorSetLayoutHostMappingInfoVALVE(VkDevice device, MemorySegment pBindingReference, MemorySegment pHostMapping) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetLayoutHostMappingInfoVALVE");
-        try { Handles.MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE, device.segment(), pBindingReference, pHostMapping); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDescriptorSetLayoutHostMappingInfoVALVE", device, pBindingReference, pHostMapping); }
+        Handles.MH_vkGetDescriptorSetLayoutHostMappingInfoVALVE.invokeExact(device.capabilities().PFN_vkGetDescriptorSetLayoutHostMappingInfoVALVE, device.segment(), pBindingReference, pHostMapping); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetLayoutHostMappingInfoVALVE", e); }
     }
 
@@ -49,7 +50,8 @@ public final class VKVALVEDescriptorSetHostMapping {
     /// ```
     public static void vkGetDescriptorSetHostMappingVALVE(VkDevice device, long descriptorSet, MemorySegment ppData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDescriptorSetHostMappingVALVE)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDescriptorSetHostMappingVALVE");
-        try { Handles.MH_vkGetDescriptorSetHostMappingVALVE.invokeExact(device.capabilities().PFN_vkGetDescriptorSetHostMappingVALVE, device.segment(), descriptorSet, ppData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDescriptorSetHostMappingVALVE", device, descriptorSet, ppData); }
+        Handles.MH_vkGetDescriptorSetHostMappingVALVE.invokeExact(device.capabilities().PFN_vkGetDescriptorSetHostMappingVALVE, device.segment(), descriptorSet, ppData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDescriptorSetHostMappingVALVE", e); }
     }
 

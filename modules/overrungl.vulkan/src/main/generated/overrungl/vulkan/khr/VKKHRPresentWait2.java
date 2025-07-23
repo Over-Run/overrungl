@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRPresentWait2 {
@@ -29,7 +29,7 @@ public final class VKKHRPresentWait2 {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_WAIT_2_FEATURES_KHR = 1000480001;
     public static final int VK_STRUCTURE_TYPE_PRESENT_WAIT_2_INFO_KHR = 1000480002;
     public static final class Handles {
-        public static final MethodHandle MH_vkWaitForPresent2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkWaitForPresent2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -40,7 +40,8 @@ public final class VKKHRPresentWait2 {
     /// ```
     public static int vkWaitForPresent2KHR(VkDevice device, long swapchain, MemorySegment pPresentWait2Info) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWaitForPresent2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkWaitForPresent2KHR");
-        try { return (int) Handles.MH_vkWaitForPresent2KHR.invokeExact(device.capabilities().PFN_vkWaitForPresent2KHR, device.segment(), swapchain, pPresentWait2Info); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkWaitForPresent2KHR", device, swapchain, pPresentWait2Info); }
+        return (int) Handles.MH_vkWaitForPresent2KHR.invokeExact(device.capabilities().PFN_vkWaitForPresent2KHR, device.segment(), swapchain, pPresentWait2Info); }
         catch (Throwable e) { throw new RuntimeException("error in vkWaitForPresent2KHR", e); }
     }
 

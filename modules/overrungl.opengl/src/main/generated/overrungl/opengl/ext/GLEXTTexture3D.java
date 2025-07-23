@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -35,8 +35,8 @@ public final class GLEXTTexture3D {
     public static final int GL_MAX_3D_TEXTURE_SIZE_EXT = 0x8073;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTexImage3DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexSubImage3DEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexSubImage3DEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glTexImage3DEXT;
         public final MemorySegment PFN_glTexSubImage3DEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -54,7 +54,8 @@ public final class GLEXTTexture3D {
     /// ```
     public void TexImage3DEXT(int target, int level, int internalformat, int width, int height, int depth, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexImage3DEXT");
-        try { Handles.MH_glTexImage3DEXT.invokeExact(handles.PFN_glTexImage3DEXT, target, level, internalformat, width, height, depth, border, format, type, pixels); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexImage3DEXT", target, level, internalformat, width, height, depth, border, format, type, pixels); }
+        Handles.MH_glTexImage3DEXT.invokeExact(handles.PFN_glTexImage3DEXT, target, level, internalformat, width, height, depth, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexImage3DEXT", e); }
     }
 
@@ -63,7 +64,8 @@ public final class GLEXTTexture3D {
     /// ```
     public void TexSubImage3DEXT(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexSubImage3DEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexSubImage3DEXT");
-        try { Handles.MH_glTexSubImage3DEXT.invokeExact(handles.PFN_glTexSubImage3DEXT, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexSubImage3DEXT", target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
+        Handles.MH_glTexSubImage3DEXT.invokeExact(handles.PFN_glTexSubImage3DEXT, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexSubImage3DEXT", e); }
     }
 

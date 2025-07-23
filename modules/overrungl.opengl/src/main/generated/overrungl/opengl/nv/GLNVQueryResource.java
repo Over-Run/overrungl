@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -32,7 +32,7 @@ public final class GLNVQueryResource {
     public static final int GL_QUERY_RESOURCE_BUFFEROBJECT_NV = 0x9547;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glQueryResourceNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glQueryResourceNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glQueryResourceNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glQueryResourceNV = func.invoke("glQueryResourceNV");
@@ -48,7 +48,8 @@ public final class GLNVQueryResource {
     /// ```
     public int QueryResourceNV(int queryType, int tagId, int count, MemorySegment buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glQueryResourceNV)) throw new GLSymbolNotFoundError("Symbol not found: glQueryResourceNV");
-        try { return (int) Handles.MH_glQueryResourceNV.invokeExact(handles.PFN_glQueryResourceNV, queryType, tagId, count, buffer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glQueryResourceNV", queryType, tagId, count, buffer); }
+        return (int) Handles.MH_glQueryResourceNV.invokeExact(handles.PFN_glQueryResourceNV, queryType, tagId, count, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in QueryResourceNV", e); }
     }
 

@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -36,12 +36,12 @@ public final class GLNVMemoryAttachment {
     public static final int GL_MAX_DETACHED_BUFFERS_NV = 0x95AD;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetMemoryObjectDetachedResourcesuivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glResetMemoryObjectParameterNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexAttachMemoryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glBufferAttachMemoryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glTextureAttachMemoryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glNamedBufferAttachMemoryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glGetMemoryObjectDetachedResourcesuivNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glResetMemoryObjectParameterNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexAttachMemoryNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glBufferAttachMemoryNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glTextureAttachMemoryNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glNamedBufferAttachMemoryNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
         public final MemorySegment PFN_glGetMemoryObjectDetachedResourcesuivNV;
         public final MemorySegment PFN_glResetMemoryObjectParameterNV;
         public final MemorySegment PFN_glTexAttachMemoryNV;
@@ -66,7 +66,8 @@ public final class GLNVMemoryAttachment {
     /// ```
     public void GetMemoryObjectDetachedResourcesuivNV(int memory, int pname, int first, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetMemoryObjectDetachedResourcesuivNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetMemoryObjectDetachedResourcesuivNV");
-        try { Handles.MH_glGetMemoryObjectDetachedResourcesuivNV.invokeExact(handles.PFN_glGetMemoryObjectDetachedResourcesuivNV, memory, pname, first, count, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetMemoryObjectDetachedResourcesuivNV", memory, pname, first, count, params); }
+        Handles.MH_glGetMemoryObjectDetachedResourcesuivNV.invokeExact(handles.PFN_glGetMemoryObjectDetachedResourcesuivNV, memory, pname, first, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetMemoryObjectDetachedResourcesuivNV", e); }
     }
 
@@ -75,7 +76,8 @@ public final class GLNVMemoryAttachment {
     /// ```
     public void ResetMemoryObjectParameterNV(int memory, int pname) {
         if (MemoryUtil.isNullPointer(handles.PFN_glResetMemoryObjectParameterNV)) throw new GLSymbolNotFoundError("Symbol not found: glResetMemoryObjectParameterNV");
-        try { Handles.MH_glResetMemoryObjectParameterNV.invokeExact(handles.PFN_glResetMemoryObjectParameterNV, memory, pname); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glResetMemoryObjectParameterNV", memory, pname); }
+        Handles.MH_glResetMemoryObjectParameterNV.invokeExact(handles.PFN_glResetMemoryObjectParameterNV, memory, pname); }
         catch (Throwable e) { throw new RuntimeException("error in ResetMemoryObjectParameterNV", e); }
     }
 
@@ -84,7 +86,8 @@ public final class GLNVMemoryAttachment {
     /// ```
     public void TexAttachMemoryNV(int target, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexAttachMemoryNV)) throw new GLSymbolNotFoundError("Symbol not found: glTexAttachMemoryNV");
-        try { Handles.MH_glTexAttachMemoryNV.invokeExact(handles.PFN_glTexAttachMemoryNV, target, memory, offset); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexAttachMemoryNV", target, memory, offset); }
+        Handles.MH_glTexAttachMemoryNV.invokeExact(handles.PFN_glTexAttachMemoryNV, target, memory, offset); }
         catch (Throwable e) { throw new RuntimeException("error in TexAttachMemoryNV", e); }
     }
 
@@ -93,7 +96,8 @@ public final class GLNVMemoryAttachment {
     /// ```
     public void BufferAttachMemoryNV(int target, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBufferAttachMemoryNV)) throw new GLSymbolNotFoundError("Symbol not found: glBufferAttachMemoryNV");
-        try { Handles.MH_glBufferAttachMemoryNV.invokeExact(handles.PFN_glBufferAttachMemoryNV, target, memory, offset); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBufferAttachMemoryNV", target, memory, offset); }
+        Handles.MH_glBufferAttachMemoryNV.invokeExact(handles.PFN_glBufferAttachMemoryNV, target, memory, offset); }
         catch (Throwable e) { throw new RuntimeException("error in BufferAttachMemoryNV", e); }
     }
 
@@ -102,7 +106,8 @@ public final class GLNVMemoryAttachment {
     /// ```
     public void TextureAttachMemoryNV(int texture, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureAttachMemoryNV)) throw new GLSymbolNotFoundError("Symbol not found: glTextureAttachMemoryNV");
-        try { Handles.MH_glTextureAttachMemoryNV.invokeExact(handles.PFN_glTextureAttachMemoryNV, texture, memory, offset); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureAttachMemoryNV", texture, memory, offset); }
+        Handles.MH_glTextureAttachMemoryNV.invokeExact(handles.PFN_glTextureAttachMemoryNV, texture, memory, offset); }
         catch (Throwable e) { throw new RuntimeException("error in TextureAttachMemoryNV", e); }
     }
 
@@ -111,7 +116,8 @@ public final class GLNVMemoryAttachment {
     /// ```
     public void NamedBufferAttachMemoryNV(int buffer, int memory, long offset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedBufferAttachMemoryNV)) throw new GLSymbolNotFoundError("Symbol not found: glNamedBufferAttachMemoryNV");
-        try { Handles.MH_glNamedBufferAttachMemoryNV.invokeExact(handles.PFN_glNamedBufferAttachMemoryNV, buffer, memory, offset); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedBufferAttachMemoryNV", buffer, memory, offset); }
+        Handles.MH_glNamedBufferAttachMemoryNV.invokeExact(handles.PFN_glNamedBufferAttachMemoryNV, buffer, memory, offset); }
         catch (Throwable e) { throw new RuntimeException("error in NamedBufferAttachMemoryNV", e); }
     }
 

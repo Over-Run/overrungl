@@ -19,7 +19,7 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,7 +28,7 @@ public final class GLSGIXPixelTexture {
     public static final int GL_PIXEL_TEX_GEN_MODE_SGIX = 0x832B;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glPixelTexGenSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelTexGenSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glPixelTexGenSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glPixelTexGenSGIX = func.invoke("glPixelTexGenSGIX");
@@ -44,7 +44,8 @@ public final class GLSGIXPixelTexture {
     /// ```
     public void PixelTexGenSGIX(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelTexGenSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glPixelTexGenSGIX");
-        try { Handles.MH_glPixelTexGenSGIX.invokeExact(handles.PFN_glPixelTexGenSGIX, mode); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelTexGenSGIX", mode); }
+        Handles.MH_glPixelTexGenSGIX.invokeExact(handles.PFN_glPixelTexGenSGIX, mode); }
         catch (Throwable e) { throw new RuntimeException("error in PixelTexGenSGIX", e); }
     }
 

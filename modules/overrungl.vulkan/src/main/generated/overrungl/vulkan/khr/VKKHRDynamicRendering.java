@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRDynamicRendering {
@@ -34,8 +34,8 @@ public final class VKKHRDynamicRendering {
     public static final int VK_RENDERING_SUSPENDING_BIT_KHR = 0x00000002;
     public static final int VK_RENDERING_RESUMING_BIT_KHR = 0x00000004;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdBeginRenderingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdEndRenderingKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBeginRenderingKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdEndRenderingKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -46,7 +46,8 @@ public final class VKKHRDynamicRendering {
     /// ```
     public static void vkCmdBeginRenderingKHR(VkCommandBuffer commandBuffer, MemorySegment pRenderingInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBeginRenderingKHR");
-        try { Handles.MH_vkCmdBeginRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR, commandBuffer.segment(), pRenderingInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBeginRenderingKHR", commandBuffer, pRenderingInfo); }
+        Handles.MH_vkCmdBeginRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBeginRenderingKHR, commandBuffer.segment(), pRenderingInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBeginRenderingKHR", e); }
     }
 
@@ -55,7 +56,8 @@ public final class VKKHRDynamicRendering {
     /// ```
     public static void vkCmdEndRenderingKHR(VkCommandBuffer commandBuffer) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdEndRenderingKHR");
-        try { Handles.MH_vkCmdEndRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR, commandBuffer.segment()); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdEndRenderingKHR", commandBuffer); }
+        Handles.MH_vkCmdEndRenderingKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdEndRenderingKHR, commandBuffer.segment()); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdEndRenderingKHR", e); }
     }
 

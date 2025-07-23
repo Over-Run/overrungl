@@ -19,7 +19,7 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,12 +27,12 @@ public final class GLSGIXListPriority {
     public static final int GL_LIST_PRIORITY_SGIX = 0x8182;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetListParameterfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetListParameterivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glListParameterfSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glListParameterfvSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glListParameteriSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glListParameterivSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetListParameterfvSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetListParameterivSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glListParameterfSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glListParameterfvSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glListParameteriSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glListParameterivSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetListParameterfvSGIX;
         public final MemorySegment PFN_glGetListParameterivSGIX;
         public final MemorySegment PFN_glListParameterfSGIX;
@@ -58,7 +58,8 @@ public final class GLSGIXListPriority {
     /// ```
     public void GetListParameterfvSGIX(int list, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetListParameterfvSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glGetListParameterfvSGIX");
-        try { Handles.MH_glGetListParameterfvSGIX.invokeExact(handles.PFN_glGetListParameterfvSGIX, list, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetListParameterfvSGIX", list, pname, params); }
+        Handles.MH_glGetListParameterfvSGIX.invokeExact(handles.PFN_glGetListParameterfvSGIX, list, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetListParameterfvSGIX", e); }
     }
 
@@ -67,7 +68,8 @@ public final class GLSGIXListPriority {
     /// ```
     public void GetListParameterivSGIX(int list, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetListParameterivSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glGetListParameterivSGIX");
-        try { Handles.MH_glGetListParameterivSGIX.invokeExact(handles.PFN_glGetListParameterivSGIX, list, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetListParameterivSGIX", list, pname, params); }
+        Handles.MH_glGetListParameterivSGIX.invokeExact(handles.PFN_glGetListParameterivSGIX, list, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetListParameterivSGIX", e); }
     }
 
@@ -76,7 +78,8 @@ public final class GLSGIXListPriority {
     /// ```
     public void ListParameterfSGIX(int list, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListParameterfSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glListParameterfSGIX");
-        try { Handles.MH_glListParameterfSGIX.invokeExact(handles.PFN_glListParameterfSGIX, list, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glListParameterfSGIX", list, pname, param); }
+        Handles.MH_glListParameterfSGIX.invokeExact(handles.PFN_glListParameterfSGIX, list, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in ListParameterfSGIX", e); }
     }
 
@@ -85,7 +88,8 @@ public final class GLSGIXListPriority {
     /// ```
     public void ListParameterfvSGIX(int list, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListParameterfvSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glListParameterfvSGIX");
-        try { Handles.MH_glListParameterfvSGIX.invokeExact(handles.PFN_glListParameterfvSGIX, list, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glListParameterfvSGIX", list, pname, params); }
+        Handles.MH_glListParameterfvSGIX.invokeExact(handles.PFN_glListParameterfvSGIX, list, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ListParameterfvSGIX", e); }
     }
 
@@ -94,7 +98,8 @@ public final class GLSGIXListPriority {
     /// ```
     public void ListParameteriSGIX(int list, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListParameteriSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glListParameteriSGIX");
-        try { Handles.MH_glListParameteriSGIX.invokeExact(handles.PFN_glListParameteriSGIX, list, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glListParameteriSGIX", list, pname, param); }
+        Handles.MH_glListParameteriSGIX.invokeExact(handles.PFN_glListParameteriSGIX, list, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in ListParameteriSGIX", e); }
     }
 
@@ -103,7 +108,8 @@ public final class GLSGIXListPriority {
     /// ```
     public void ListParameterivSGIX(int list, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glListParameterivSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glListParameterivSGIX");
-        try { Handles.MH_glListParameterivSGIX.invokeExact(handles.PFN_glListParameterivSGIX, list, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glListParameterivSGIX", list, pname, params); }
+        Handles.MH_glListParameterivSGIX.invokeExact(handles.PFN_glListParameterivSGIX, list, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ListParameterivSGIX", e); }
     }
 

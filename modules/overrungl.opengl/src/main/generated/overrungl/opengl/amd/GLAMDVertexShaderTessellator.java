@@ -19,7 +19,7 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -33,8 +33,8 @@ public final class GLAMDVertexShaderTessellator {
     public static final int GL_CONTINUOUS_AMD = 0x9007;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTessellationFactorAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glTessellationModeAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTessellationFactorAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glTessellationModeAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTessellationFactorAMD;
         public final MemorySegment PFN_glTessellationModeAMD;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -52,7 +52,8 @@ public final class GLAMDVertexShaderTessellator {
     /// ```
     public void TessellationFactorAMD(float factor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTessellationFactorAMD)) throw new GLSymbolNotFoundError("Symbol not found: glTessellationFactorAMD");
-        try { Handles.MH_glTessellationFactorAMD.invokeExact(handles.PFN_glTessellationFactorAMD, factor); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTessellationFactorAMD", factor); }
+        Handles.MH_glTessellationFactorAMD.invokeExact(handles.PFN_glTessellationFactorAMD, factor); }
         catch (Throwable e) { throw new RuntimeException("error in TessellationFactorAMD", e); }
     }
 
@@ -61,7 +62,8 @@ public final class GLAMDVertexShaderTessellator {
     /// ```
     public void TessellationModeAMD(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTessellationModeAMD)) throw new GLSymbolNotFoundError("Symbol not found: glTessellationModeAMD");
-        try { Handles.MH_glTessellationModeAMD.invokeExact(handles.PFN_glTessellationModeAMD, mode); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTessellationModeAMD", mode); }
+        Handles.MH_glTessellationModeAMD.invokeExact(handles.PFN_glTessellationModeAMD, mode); }
         catch (Throwable e) { throw new RuntimeException("error in TessellationModeAMD", e); }
     }
 

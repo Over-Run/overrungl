@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -60,45 +60,45 @@ public final class GLARBShaderObjects {
     public static final int GL_OBJECT_SHADER_SOURCE_LENGTH_ARB = 0x8B88;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDeleteObjectARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetHandleARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDetachObjectARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCreateShaderObjectARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glShaderSourceARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompileShaderARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glCreateProgramObjectARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glAttachObjectARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glLinkProgramARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUseProgramObjectARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glValidateProgramARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUniform1fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glUniform2fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glUniform3fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glUniform4fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glUniform1iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUniform2iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUniform3iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUniform4iARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glUniform1fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniform2fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniform3fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniform4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniform1ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniform2ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniform3ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniform4ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniformMatrix2fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniformMatrix3fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniformMatrix4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetObjectParameterfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetObjectParameterivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetInfoLogARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetAttachedObjectsARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetUniformLocationARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetActiveUniformARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetUniformfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetUniformivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetShaderSourceARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteObjectARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetHandleARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDetachObjectARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glCreateShaderObjectARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glShaderSourceARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCompileShaderARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glCreateProgramObjectARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glAttachObjectARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glLinkProgramARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUseProgramObjectARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glValidateProgramARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform1fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glUniform2fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glUniform3fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glUniform4fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glUniform1iARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform2iARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform3iARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform4iARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glUniform1fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform2fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform3fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform4fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform1ivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform2ivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform3ivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniform4ivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix2fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix3fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformMatrix4fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetObjectParameterfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetObjectParameterivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetInfoLogARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetAttachedObjectsARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUniformLocationARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetActiveUniformARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUniformfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUniformivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetShaderSourceARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glDeleteObjectARB;
         public final MemorySegment PFN_glGetHandleARB;
         public final MemorySegment PFN_glDetachObjectARB;
@@ -190,7 +190,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void DeleteObjectARB(int obj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteObjectARB)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteObjectARB");
-        try { Handles.MH_glDeleteObjectARB.invokeExact(handles.PFN_glDeleteObjectARB, obj); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteObjectARB", obj); }
+        Handles.MH_glDeleteObjectARB.invokeExact(handles.PFN_glDeleteObjectARB, obj); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteObjectARB", e); }
     }
 
@@ -199,7 +200,8 @@ public final class GLARBShaderObjects {
     /// ```
     public int GetHandleARB(int pname) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetHandleARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetHandleARB");
-        try { return (int) Handles.MH_glGetHandleARB.invokeExact(handles.PFN_glGetHandleARB, pname); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetHandleARB", pname); }
+        return (int) Handles.MH_glGetHandleARB.invokeExact(handles.PFN_glGetHandleARB, pname); }
         catch (Throwable e) { throw new RuntimeException("error in GetHandleARB", e); }
     }
 
@@ -208,7 +210,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void DetachObjectARB(int containerObj, int attachedObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDetachObjectARB)) throw new GLSymbolNotFoundError("Symbol not found: glDetachObjectARB");
-        try { Handles.MH_glDetachObjectARB.invokeExact(handles.PFN_glDetachObjectARB, containerObj, attachedObj); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDetachObjectARB", containerObj, attachedObj); }
+        Handles.MH_glDetachObjectARB.invokeExact(handles.PFN_glDetachObjectARB, containerObj, attachedObj); }
         catch (Throwable e) { throw new RuntimeException("error in DetachObjectARB", e); }
     }
 
@@ -217,7 +220,8 @@ public final class GLARBShaderObjects {
     /// ```
     public int CreateShaderObjectARB(int shaderType) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateShaderObjectARB)) throw new GLSymbolNotFoundError("Symbol not found: glCreateShaderObjectARB");
-        try { return (int) Handles.MH_glCreateShaderObjectARB.invokeExact(handles.PFN_glCreateShaderObjectARB, shaderType); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateShaderObjectARB", shaderType); }
+        return (int) Handles.MH_glCreateShaderObjectARB.invokeExact(handles.PFN_glCreateShaderObjectARB, shaderType); }
         catch (Throwable e) { throw new RuntimeException("error in CreateShaderObjectARB", e); }
     }
 
@@ -226,7 +230,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void ShaderSourceARB(int shaderObj, int count, MemorySegment string, MemorySegment length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderSourceARB)) throw new GLSymbolNotFoundError("Symbol not found: glShaderSourceARB");
-        try { Handles.MH_glShaderSourceARB.invokeExact(handles.PFN_glShaderSourceARB, shaderObj, count, string, length); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glShaderSourceARB", shaderObj, count, string, length); }
+        Handles.MH_glShaderSourceARB.invokeExact(handles.PFN_glShaderSourceARB, shaderObj, count, string, length); }
         catch (Throwable e) { throw new RuntimeException("error in ShaderSourceARB", e); }
     }
 
@@ -235,7 +240,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void CompileShaderARB(int shaderObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompileShaderARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompileShaderARB");
-        try { Handles.MH_glCompileShaderARB.invokeExact(handles.PFN_glCompileShaderARB, shaderObj); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glCompileShaderARB", shaderObj); }
+        Handles.MH_glCompileShaderARB.invokeExact(handles.PFN_glCompileShaderARB, shaderObj); }
         catch (Throwable e) { throw new RuntimeException("error in CompileShaderARB", e); }
     }
 
@@ -244,7 +250,8 @@ public final class GLARBShaderObjects {
     /// ```
     public int CreateProgramObjectARB() {
         if (MemoryUtil.isNullPointer(handles.PFN_glCreateProgramObjectARB)) throw new GLSymbolNotFoundError("Symbol not found: glCreateProgramObjectARB");
-        try { return (int) Handles.MH_glCreateProgramObjectARB.invokeExact(handles.PFN_glCreateProgramObjectARB); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glCreateProgramObjectARB"); }
+        return (int) Handles.MH_glCreateProgramObjectARB.invokeExact(handles.PFN_glCreateProgramObjectARB); }
         catch (Throwable e) { throw new RuntimeException("error in CreateProgramObjectARB", e); }
     }
 
@@ -253,7 +260,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void AttachObjectARB(int containerObj, int obj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glAttachObjectARB)) throw new GLSymbolNotFoundError("Symbol not found: glAttachObjectARB");
-        try { Handles.MH_glAttachObjectARB.invokeExact(handles.PFN_glAttachObjectARB, containerObj, obj); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glAttachObjectARB", containerObj, obj); }
+        Handles.MH_glAttachObjectARB.invokeExact(handles.PFN_glAttachObjectARB, containerObj, obj); }
         catch (Throwable e) { throw new RuntimeException("error in AttachObjectARB", e); }
     }
 
@@ -262,7 +270,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void LinkProgramARB(int programObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLinkProgramARB)) throw new GLSymbolNotFoundError("Symbol not found: glLinkProgramARB");
-        try { Handles.MH_glLinkProgramARB.invokeExact(handles.PFN_glLinkProgramARB, programObj); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glLinkProgramARB", programObj); }
+        Handles.MH_glLinkProgramARB.invokeExact(handles.PFN_glLinkProgramARB, programObj); }
         catch (Throwable e) { throw new RuntimeException("error in LinkProgramARB", e); }
     }
 
@@ -271,7 +280,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void UseProgramObjectARB(int programObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUseProgramObjectARB)) throw new GLSymbolNotFoundError("Symbol not found: glUseProgramObjectARB");
-        try { Handles.MH_glUseProgramObjectARB.invokeExact(handles.PFN_glUseProgramObjectARB, programObj); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUseProgramObjectARB", programObj); }
+        Handles.MH_glUseProgramObjectARB.invokeExact(handles.PFN_glUseProgramObjectARB, programObj); }
         catch (Throwable e) { throw new RuntimeException("error in UseProgramObjectARB", e); }
     }
 
@@ -280,7 +290,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void ValidateProgramARB(int programObj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glValidateProgramARB)) throw new GLSymbolNotFoundError("Symbol not found: glValidateProgramARB");
-        try { Handles.MH_glValidateProgramARB.invokeExact(handles.PFN_glValidateProgramARB, programObj); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glValidateProgramARB", programObj); }
+        Handles.MH_glValidateProgramARB.invokeExact(handles.PFN_glValidateProgramARB, programObj); }
         catch (Throwable e) { throw new RuntimeException("error in ValidateProgramARB", e); }
     }
 
@@ -289,7 +300,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform1fARB(int location, float v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1fARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform1fARB");
-        try { Handles.MH_glUniform1fARB.invokeExact(handles.PFN_glUniform1fARB, location, v0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform1fARB", location, v0); }
+        Handles.MH_glUniform1fARB.invokeExact(handles.PFN_glUniform1fARB, location, v0); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform1fARB", e); }
     }
 
@@ -298,7 +310,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform2fARB(int location, float v0, float v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2fARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform2fARB");
-        try { Handles.MH_glUniform2fARB.invokeExact(handles.PFN_glUniform2fARB, location, v0, v1); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform2fARB", location, v0, v1); }
+        Handles.MH_glUniform2fARB.invokeExact(handles.PFN_glUniform2fARB, location, v0, v1); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform2fARB", e); }
     }
 
@@ -307,7 +320,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform3fARB(int location, float v0, float v1, float v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3fARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform3fARB");
-        try { Handles.MH_glUniform3fARB.invokeExact(handles.PFN_glUniform3fARB, location, v0, v1, v2); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform3fARB", location, v0, v1, v2); }
+        Handles.MH_glUniform3fARB.invokeExact(handles.PFN_glUniform3fARB, location, v0, v1, v2); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform3fARB", e); }
     }
 
@@ -316,7 +330,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform4fARB(int location, float v0, float v1, float v2, float v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4fARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform4fARB");
-        try { Handles.MH_glUniform4fARB.invokeExact(handles.PFN_glUniform4fARB, location, v0, v1, v2, v3); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform4fARB", location, v0, v1, v2, v3); }
+        Handles.MH_glUniform4fARB.invokeExact(handles.PFN_glUniform4fARB, location, v0, v1, v2, v3); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform4fARB", e); }
     }
 
@@ -325,7 +340,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform1iARB(int location, int v0) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1iARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform1iARB");
-        try { Handles.MH_glUniform1iARB.invokeExact(handles.PFN_glUniform1iARB, location, v0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform1iARB", location, v0); }
+        Handles.MH_glUniform1iARB.invokeExact(handles.PFN_glUniform1iARB, location, v0); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform1iARB", e); }
     }
 
@@ -334,7 +350,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform2iARB(int location, int v0, int v1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2iARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform2iARB");
-        try { Handles.MH_glUniform2iARB.invokeExact(handles.PFN_glUniform2iARB, location, v0, v1); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform2iARB", location, v0, v1); }
+        Handles.MH_glUniform2iARB.invokeExact(handles.PFN_glUniform2iARB, location, v0, v1); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform2iARB", e); }
     }
 
@@ -343,7 +360,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform3iARB(int location, int v0, int v1, int v2) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3iARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform3iARB");
-        try { Handles.MH_glUniform3iARB.invokeExact(handles.PFN_glUniform3iARB, location, v0, v1, v2); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform3iARB", location, v0, v1, v2); }
+        Handles.MH_glUniform3iARB.invokeExact(handles.PFN_glUniform3iARB, location, v0, v1, v2); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform3iARB", e); }
     }
 
@@ -352,7 +370,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform4iARB(int location, int v0, int v1, int v2, int v3) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4iARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform4iARB");
-        try { Handles.MH_glUniform4iARB.invokeExact(handles.PFN_glUniform4iARB, location, v0, v1, v2, v3); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform4iARB", location, v0, v1, v2, v3); }
+        Handles.MH_glUniform4iARB.invokeExact(handles.PFN_glUniform4iARB, location, v0, v1, v2, v3); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform4iARB", e); }
     }
 
@@ -361,7 +380,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform1fvARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform1fvARB");
-        try { Handles.MH_glUniform1fvARB.invokeExact(handles.PFN_glUniform1fvARB, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform1fvARB", location, count, value); }
+        Handles.MH_glUniform1fvARB.invokeExact(handles.PFN_glUniform1fvARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform1fvARB", e); }
     }
 
@@ -370,7 +390,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform2fvARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform2fvARB");
-        try { Handles.MH_glUniform2fvARB.invokeExact(handles.PFN_glUniform2fvARB, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform2fvARB", location, count, value); }
+        Handles.MH_glUniform2fvARB.invokeExact(handles.PFN_glUniform2fvARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform2fvARB", e); }
     }
 
@@ -379,7 +400,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform3fvARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform3fvARB");
-        try { Handles.MH_glUniform3fvARB.invokeExact(handles.PFN_glUniform3fvARB, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform3fvARB", location, count, value); }
+        Handles.MH_glUniform3fvARB.invokeExact(handles.PFN_glUniform3fvARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform3fvARB", e); }
     }
 
@@ -388,7 +410,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform4fvARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform4fvARB");
-        try { Handles.MH_glUniform4fvARB.invokeExact(handles.PFN_glUniform4fvARB, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform4fvARB", location, count, value); }
+        Handles.MH_glUniform4fvARB.invokeExact(handles.PFN_glUniform4fvARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform4fvARB", e); }
     }
 
@@ -397,7 +420,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform1ivARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform1ivARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform1ivARB");
-        try { Handles.MH_glUniform1ivARB.invokeExact(handles.PFN_glUniform1ivARB, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform1ivARB", location, count, value); }
+        Handles.MH_glUniform1ivARB.invokeExact(handles.PFN_glUniform1ivARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform1ivARB", e); }
     }
 
@@ -406,7 +430,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform2ivARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform2ivARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform2ivARB");
-        try { Handles.MH_glUniform2ivARB.invokeExact(handles.PFN_glUniform2ivARB, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform2ivARB", location, count, value); }
+        Handles.MH_glUniform2ivARB.invokeExact(handles.PFN_glUniform2ivARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform2ivARB", e); }
     }
 
@@ -415,7 +440,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform3ivARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform3ivARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform3ivARB");
-        try { Handles.MH_glUniform3ivARB.invokeExact(handles.PFN_glUniform3ivARB, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform3ivARB", location, count, value); }
+        Handles.MH_glUniform3ivARB.invokeExact(handles.PFN_glUniform3ivARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform3ivARB", e); }
     }
 
@@ -424,7 +450,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void Uniform4ivARB(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniform4ivARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniform4ivARB");
-        try { Handles.MH_glUniform4ivARB.invokeExact(handles.PFN_glUniform4ivARB, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniform4ivARB", location, count, value); }
+        Handles.MH_glUniform4ivARB.invokeExact(handles.PFN_glUniform4ivARB, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniform4ivARB", e); }
     }
 
@@ -433,7 +460,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void UniformMatrix2fvARB(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix2fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix2fvARB");
-        try { Handles.MH_glUniformMatrix2fvARB.invokeExact(handles.PFN_glUniformMatrix2fvARB, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix2fvARB", location, count, transpose, value); }
+        Handles.MH_glUniformMatrix2fvARB.invokeExact(handles.PFN_glUniformMatrix2fvARB, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix2fvARB", e); }
     }
 
@@ -442,7 +470,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void UniformMatrix3fvARB(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix3fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix3fvARB");
-        try { Handles.MH_glUniformMatrix3fvARB.invokeExact(handles.PFN_glUniformMatrix3fvARB, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix3fvARB", location, count, transpose, value); }
+        Handles.MH_glUniformMatrix3fvARB.invokeExact(handles.PFN_glUniformMatrix3fvARB, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix3fvARB", e); }
     }
 
@@ -451,7 +480,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void UniformMatrix4fvARB(int location, int count, boolean transpose, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformMatrix4fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glUniformMatrix4fvARB");
-        try { Handles.MH_glUniformMatrix4fvARB.invokeExact(handles.PFN_glUniformMatrix4fvARB, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformMatrix4fvARB", location, count, transpose, value); }
+        Handles.MH_glUniformMatrix4fvARB.invokeExact(handles.PFN_glUniformMatrix4fvARB, location, count, ((transpose) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in UniformMatrix4fvARB", e); }
     }
 
@@ -460,7 +490,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void GetObjectParameterfvARB(int obj, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectParameterfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectParameterfvARB");
-        try { Handles.MH_glGetObjectParameterfvARB.invokeExact(handles.PFN_glGetObjectParameterfvARB, obj, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetObjectParameterfvARB", obj, pname, params); }
+        Handles.MH_glGetObjectParameterfvARB.invokeExact(handles.PFN_glGetObjectParameterfvARB, obj, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectParameterfvARB", e); }
     }
 
@@ -469,7 +500,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void GetObjectParameterivARB(int obj, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectParameterivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectParameterivARB");
-        try { Handles.MH_glGetObjectParameterivARB.invokeExact(handles.PFN_glGetObjectParameterivARB, obj, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetObjectParameterivARB", obj, pname, params); }
+        Handles.MH_glGetObjectParameterivARB.invokeExact(handles.PFN_glGetObjectParameterivARB, obj, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectParameterivARB", e); }
     }
 
@@ -478,7 +510,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void GetInfoLogARB(int obj, int maxLength, MemorySegment length, MemorySegment infoLog) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInfoLogARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetInfoLogARB");
-        try { Handles.MH_glGetInfoLogARB.invokeExact(handles.PFN_glGetInfoLogARB, obj, maxLength, length, infoLog); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInfoLogARB", obj, maxLength, length, infoLog); }
+        Handles.MH_glGetInfoLogARB.invokeExact(handles.PFN_glGetInfoLogARB, obj, maxLength, length, infoLog); }
         catch (Throwable e) { throw new RuntimeException("error in GetInfoLogARB", e); }
     }
 
@@ -487,7 +520,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void GetAttachedObjectsARB(int containerObj, int maxCount, MemorySegment count, MemorySegment obj) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetAttachedObjectsARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetAttachedObjectsARB");
-        try { Handles.MH_glGetAttachedObjectsARB.invokeExact(handles.PFN_glGetAttachedObjectsARB, containerObj, maxCount, count, obj); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetAttachedObjectsARB", containerObj, maxCount, count, obj); }
+        Handles.MH_glGetAttachedObjectsARB.invokeExact(handles.PFN_glGetAttachedObjectsARB, containerObj, maxCount, count, obj); }
         catch (Throwable e) { throw new RuntimeException("error in GetAttachedObjectsARB", e); }
     }
 
@@ -496,7 +530,8 @@ public final class GLARBShaderObjects {
     /// ```
     public int GetUniformLocationARB(int programObj, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformLocationARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetUniformLocationARB");
-        try { return (int) Handles.MH_glGetUniformLocationARB.invokeExact(handles.PFN_glGetUniformLocationARB, programObj, name); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetUniformLocationARB", programObj, name); }
+        return (int) Handles.MH_glGetUniformLocationARB.invokeExact(handles.PFN_glGetUniformLocationARB, programObj, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetUniformLocationARB", e); }
     }
 
@@ -505,7 +540,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void GetActiveUniformARB(int programObj, int index, int maxLength, MemorySegment length, MemorySegment size, MemorySegment type, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetActiveUniformARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetActiveUniformARB");
-        try { Handles.MH_glGetActiveUniformARB.invokeExact(handles.PFN_glGetActiveUniformARB, programObj, index, maxLength, length, size, type, name); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetActiveUniformARB", programObj, index, maxLength, length, size, type, name); }
+        Handles.MH_glGetActiveUniformARB.invokeExact(handles.PFN_glGetActiveUniformARB, programObj, index, maxLength, length, size, type, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetActiveUniformARB", e); }
     }
 
@@ -514,7 +550,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void GetUniformfvARB(int programObj, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetUniformfvARB");
-        try { Handles.MH_glGetUniformfvARB.invokeExact(handles.PFN_glGetUniformfvARB, programObj, location, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetUniformfvARB", programObj, location, params); }
+        Handles.MH_glGetUniformfvARB.invokeExact(handles.PFN_glGetUniformfvARB, programObj, location, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetUniformfvARB", e); }
     }
 
@@ -523,7 +560,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void GetUniformivARB(int programObj, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetUniformivARB");
-        try { Handles.MH_glGetUniformivARB.invokeExact(handles.PFN_glGetUniformivARB, programObj, location, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetUniformivARB", programObj, location, params); }
+        Handles.MH_glGetUniformivARB.invokeExact(handles.PFN_glGetUniformivARB, programObj, location, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetUniformivARB", e); }
     }
 
@@ -532,7 +570,8 @@ public final class GLARBShaderObjects {
     /// ```
     public void GetShaderSourceARB(int obj, int maxLength, MemorySegment length, MemorySegment source) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShaderSourceARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetShaderSourceARB");
-        try { Handles.MH_glGetShaderSourceARB.invokeExact(handles.PFN_glGetShaderSourceARB, obj, maxLength, length, source); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetShaderSourceARB", obj, maxLength, length, source); }
+        Handles.MH_glGetShaderSourceARB.invokeExact(handles.PFN_glGetShaderSourceARB, obj, maxLength, length, source); }
         catch (Throwable e) { throw new RuntimeException("error in GetShaderSourceARB", e); }
     }
 

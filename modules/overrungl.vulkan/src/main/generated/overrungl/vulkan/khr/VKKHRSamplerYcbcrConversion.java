@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRSamplerYcbcrConversion {
@@ -88,8 +88,8 @@ public final class VKKHRSamplerYcbcrConversion {
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_EXT = 1000156000;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION_KHR_EXT = 1000156000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateSamplerYcbcrConversionKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroySamplerYcbcrConversionKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateSamplerYcbcrConversionKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroySamplerYcbcrConversionKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -100,7 +100,8 @@ public final class VKKHRSamplerYcbcrConversion {
     /// ```
     public static int vkCreateSamplerYcbcrConversionKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pYcbcrConversion) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSamplerYcbcrConversionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateSamplerYcbcrConversionKHR");
-        try { return (int) Handles.MH_vkCreateSamplerYcbcrConversionKHR.invokeExact(device.capabilities().PFN_vkCreateSamplerYcbcrConversionKHR, device.segment(), pCreateInfo, pAllocator, pYcbcrConversion); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateSamplerYcbcrConversionKHR", device, pCreateInfo, pAllocator, pYcbcrConversion); }
+        return (int) Handles.MH_vkCreateSamplerYcbcrConversionKHR.invokeExact(device.capabilities().PFN_vkCreateSamplerYcbcrConversionKHR, device.segment(), pCreateInfo, pAllocator, pYcbcrConversion); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateSamplerYcbcrConversionKHR", e); }
     }
 
@@ -109,7 +110,8 @@ public final class VKKHRSamplerYcbcrConversion {
     /// ```
     public static void vkDestroySamplerYcbcrConversionKHR(VkDevice device, long ycbcrConversion, MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroySamplerYcbcrConversionKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroySamplerYcbcrConversionKHR");
-        try { Handles.MH_vkDestroySamplerYcbcrConversionKHR.invokeExact(device.capabilities().PFN_vkDestroySamplerYcbcrConversionKHR, device.segment(), ycbcrConversion, pAllocator); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroySamplerYcbcrConversionKHR", device, ycbcrConversion, pAllocator); }
+        Handles.MH_vkDestroySamplerYcbcrConversionKHR.invokeExact(device.capabilities().PFN_vkDestroySamplerYcbcrConversionKHR, device.segment(), ycbcrConversion, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroySamplerYcbcrConversionKHR", e); }
     }
 

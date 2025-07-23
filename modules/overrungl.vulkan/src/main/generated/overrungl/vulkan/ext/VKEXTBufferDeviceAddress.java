@@ -18,7 +18,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTBufferDeviceAddress {
@@ -32,7 +32,7 @@ public final class VKEXTBufferDeviceAddress {
     public static final int VK_BUFFER_CREATE_DEVICE_ADDRESS_CAPTURE_REPLAY_BIT_EXT = 0x00000010;
     public static final int VK_ERROR_INVALID_DEVICE_ADDRESS_EXT = -1000257000;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetBufferDeviceAddressEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetBufferDeviceAddressEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -43,7 +43,8 @@ public final class VKEXTBufferDeviceAddress {
     /// ```
     public static long vkGetBufferDeviceAddressEXT(VkDevice device, MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetBufferDeviceAddressEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetBufferDeviceAddressEXT");
-        try { return (long) Handles.MH_vkGetBufferDeviceAddressEXT.invokeExact(device.capabilities().PFN_vkGetBufferDeviceAddressEXT, device.segment(), pInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetBufferDeviceAddressEXT", device, pInfo); }
+        return (long) Handles.MH_vkGetBufferDeviceAddressEXT.invokeExact(device.capabilities().PFN_vkGetBufferDeviceAddressEXT, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetBufferDeviceAddressEXT", e); }
     }
 

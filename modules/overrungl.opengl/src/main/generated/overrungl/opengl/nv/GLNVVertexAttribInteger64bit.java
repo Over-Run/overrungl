@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,25 +28,25 @@ public final class GLNVVertexAttribInteger64bit {
     public static final int GL_UNSIGNED_INT64_NV = 0x140F;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glVertexAttribL1i64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexAttribL2i64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexAttribL3i64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexAttribL4i64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexAttribL1i64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribL2i64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribL3i64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribL4i64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribL1ui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexAttribL2ui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexAttribL3ui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexAttribL4ui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glVertexAttribL1ui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribL2ui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribL3ui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribL4ui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVertexAttribLi64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVertexAttribLui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribLFormatNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribL1i64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL2i64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL3i64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL4i64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL1i64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribL2i64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribL3i64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribL4i64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribL1ui64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL2ui64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL3ui64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL4ui64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glVertexAttribL1ui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribL2ui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribL3ui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribL4ui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribLi64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribLui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribLFormatNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glVertexAttribL1i64NV;
         public final MemorySegment PFN_glVertexAttribL2i64NV;
         public final MemorySegment PFN_glVertexAttribL3i64NV;
@@ -98,7 +98,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL1i64NV(int index, long x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1i64NV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL1i64NV");
-        try { Handles.MH_glVertexAttribL1i64NV.invokeExact(handles.PFN_glVertexAttribL1i64NV, index, x); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL1i64NV", index, x); }
+        Handles.MH_glVertexAttribL1i64NV.invokeExact(handles.PFN_glVertexAttribL1i64NV, index, x); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1i64NV", e); }
     }
 
@@ -107,7 +108,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL2i64NV(int index, long x, long y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL2i64NV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL2i64NV");
-        try { Handles.MH_glVertexAttribL2i64NV.invokeExact(handles.PFN_glVertexAttribL2i64NV, index, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL2i64NV", index, x, y); }
+        Handles.MH_glVertexAttribL2i64NV.invokeExact(handles.PFN_glVertexAttribL2i64NV, index, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL2i64NV", e); }
     }
 
@@ -116,7 +118,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL3i64NV(int index, long x, long y, long z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL3i64NV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL3i64NV");
-        try { Handles.MH_glVertexAttribL3i64NV.invokeExact(handles.PFN_glVertexAttribL3i64NV, index, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL3i64NV", index, x, y, z); }
+        Handles.MH_glVertexAttribL3i64NV.invokeExact(handles.PFN_glVertexAttribL3i64NV, index, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL3i64NV", e); }
     }
 
@@ -125,7 +128,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL4i64NV(int index, long x, long y, long z, long w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL4i64NV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL4i64NV");
-        try { Handles.MH_glVertexAttribL4i64NV.invokeExact(handles.PFN_glVertexAttribL4i64NV, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL4i64NV", index, x, y, z, w); }
+        Handles.MH_glVertexAttribL4i64NV.invokeExact(handles.PFN_glVertexAttribL4i64NV, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL4i64NV", e); }
     }
 
@@ -134,7 +138,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL1i64vNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1i64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL1i64vNV");
-        try { Handles.MH_glVertexAttribL1i64vNV.invokeExact(handles.PFN_glVertexAttribL1i64vNV, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL1i64vNV", index, v); }
+        Handles.MH_glVertexAttribL1i64vNV.invokeExact(handles.PFN_glVertexAttribL1i64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1i64vNV", e); }
     }
 
@@ -143,7 +148,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL2i64vNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL2i64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL2i64vNV");
-        try { Handles.MH_glVertexAttribL2i64vNV.invokeExact(handles.PFN_glVertexAttribL2i64vNV, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL2i64vNV", index, v); }
+        Handles.MH_glVertexAttribL2i64vNV.invokeExact(handles.PFN_glVertexAttribL2i64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL2i64vNV", e); }
     }
 
@@ -152,7 +158,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL3i64vNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL3i64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL3i64vNV");
-        try { Handles.MH_glVertexAttribL3i64vNV.invokeExact(handles.PFN_glVertexAttribL3i64vNV, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL3i64vNV", index, v); }
+        Handles.MH_glVertexAttribL3i64vNV.invokeExact(handles.PFN_glVertexAttribL3i64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL3i64vNV", e); }
     }
 
@@ -161,7 +168,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL4i64vNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL4i64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL4i64vNV");
-        try { Handles.MH_glVertexAttribL4i64vNV.invokeExact(handles.PFN_glVertexAttribL4i64vNV, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL4i64vNV", index, v); }
+        Handles.MH_glVertexAttribL4i64vNV.invokeExact(handles.PFN_glVertexAttribL4i64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL4i64vNV", e); }
     }
 
@@ -170,7 +178,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL1ui64NV(int index, long x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1ui64NV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL1ui64NV");
-        try { Handles.MH_glVertexAttribL1ui64NV.invokeExact(handles.PFN_glVertexAttribL1ui64NV, index, x); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL1ui64NV", index, x); }
+        Handles.MH_glVertexAttribL1ui64NV.invokeExact(handles.PFN_glVertexAttribL1ui64NV, index, x); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1ui64NV", e); }
     }
 
@@ -179,7 +188,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL2ui64NV(int index, long x, long y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL2ui64NV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL2ui64NV");
-        try { Handles.MH_glVertexAttribL2ui64NV.invokeExact(handles.PFN_glVertexAttribL2ui64NV, index, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL2ui64NV", index, x, y); }
+        Handles.MH_glVertexAttribL2ui64NV.invokeExact(handles.PFN_glVertexAttribL2ui64NV, index, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL2ui64NV", e); }
     }
 
@@ -188,7 +198,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL3ui64NV(int index, long x, long y, long z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL3ui64NV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL3ui64NV");
-        try { Handles.MH_glVertexAttribL3ui64NV.invokeExact(handles.PFN_glVertexAttribL3ui64NV, index, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL3ui64NV", index, x, y, z); }
+        Handles.MH_glVertexAttribL3ui64NV.invokeExact(handles.PFN_glVertexAttribL3ui64NV, index, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL3ui64NV", e); }
     }
 
@@ -197,7 +208,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL4ui64NV(int index, long x, long y, long z, long w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL4ui64NV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL4ui64NV");
-        try { Handles.MH_glVertexAttribL4ui64NV.invokeExact(handles.PFN_glVertexAttribL4ui64NV, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL4ui64NV", index, x, y, z, w); }
+        Handles.MH_glVertexAttribL4ui64NV.invokeExact(handles.PFN_glVertexAttribL4ui64NV, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL4ui64NV", e); }
     }
 
@@ -206,7 +218,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL1ui64vNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL1ui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL1ui64vNV");
-        try { Handles.MH_glVertexAttribL1ui64vNV.invokeExact(handles.PFN_glVertexAttribL1ui64vNV, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL1ui64vNV", index, v); }
+        Handles.MH_glVertexAttribL1ui64vNV.invokeExact(handles.PFN_glVertexAttribL1ui64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL1ui64vNV", e); }
     }
 
@@ -215,7 +228,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL2ui64vNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL2ui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL2ui64vNV");
-        try { Handles.MH_glVertexAttribL2ui64vNV.invokeExact(handles.PFN_glVertexAttribL2ui64vNV, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL2ui64vNV", index, v); }
+        Handles.MH_glVertexAttribL2ui64vNV.invokeExact(handles.PFN_glVertexAttribL2ui64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL2ui64vNV", e); }
     }
 
@@ -224,7 +238,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL3ui64vNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL3ui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL3ui64vNV");
-        try { Handles.MH_glVertexAttribL3ui64vNV.invokeExact(handles.PFN_glVertexAttribL3ui64vNV, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL3ui64vNV", index, v); }
+        Handles.MH_glVertexAttribL3ui64vNV.invokeExact(handles.PFN_glVertexAttribL3ui64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL3ui64vNV", e); }
     }
 
@@ -233,7 +248,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribL4ui64vNV(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribL4ui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribL4ui64vNV");
-        try { Handles.MH_glVertexAttribL4ui64vNV.invokeExact(handles.PFN_glVertexAttribL4ui64vNV, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribL4ui64vNV", index, v); }
+        Handles.MH_glVertexAttribL4ui64vNV.invokeExact(handles.PFN_glVertexAttribL4ui64vNV, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribL4ui64vNV", e); }
     }
 
@@ -242,7 +258,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void GetVertexAttribLi64vNV(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribLi64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribLi64vNV");
-        try { Handles.MH_glGetVertexAttribLi64vNV.invokeExact(handles.PFN_glGetVertexAttribLi64vNV, index, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribLi64vNV", index, pname, params); }
+        Handles.MH_glGetVertexAttribLi64vNV.invokeExact(handles.PFN_glGetVertexAttribLi64vNV, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribLi64vNV", e); }
     }
 
@@ -251,7 +268,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void GetVertexAttribLui64vNV(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribLui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribLui64vNV");
-        try { Handles.MH_glGetVertexAttribLui64vNV.invokeExact(handles.PFN_glGetVertexAttribLui64vNV, index, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribLui64vNV", index, pname, params); }
+        Handles.MH_glGetVertexAttribLui64vNV.invokeExact(handles.PFN_glGetVertexAttribLui64vNV, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribLui64vNV", e); }
     }
 
@@ -260,7 +278,8 @@ public final class GLNVVertexAttribInteger64bit {
     /// ```
     public void VertexAttribLFormatNV(int index, int size, int type, int stride) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribLFormatNV)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribLFormatNV");
-        try { Handles.MH_glVertexAttribLFormatNV.invokeExact(handles.PFN_glVertexAttribLFormatNV, index, size, type, stride); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribLFormatNV", index, size, type, stride); }
+        Handles.MH_glVertexAttribLFormatNV.invokeExact(handles.PFN_glVertexAttribLFormatNV, index, size, type, stride); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribLFormatNV", e); }
     }
 

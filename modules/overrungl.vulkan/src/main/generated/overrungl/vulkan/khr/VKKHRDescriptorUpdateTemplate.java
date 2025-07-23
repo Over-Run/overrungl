@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRDescriptorUpdateTemplate {
@@ -30,10 +30,10 @@ public final class VKKHRDescriptorUpdateTemplate {
     public static final int VK_DESCRIPTOR_UPDATE_TEMPLATE_TYPE_PUSH_DESCRIPTORS_KHR = 1;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE_KHR_EXT = 1000011000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateDescriptorUpdateTemplateKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyDescriptorUpdateTemplateKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkUpdateDescriptorSetWithTemplateKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdPushDescriptorSetWithTemplateKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateDescriptorUpdateTemplateKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyDescriptorUpdateTemplateKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUpdateDescriptorSetWithTemplateKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdPushDescriptorSetWithTemplateKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -44,7 +44,8 @@ public final class VKKHRDescriptorUpdateTemplate {
     /// ```
     public static int vkCreateDescriptorUpdateTemplateKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pDescriptorUpdateTemplate) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateDescriptorUpdateTemplateKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateDescriptorUpdateTemplateKHR");
-        try { return (int) Handles.MH_vkCreateDescriptorUpdateTemplateKHR.invokeExact(device.capabilities().PFN_vkCreateDescriptorUpdateTemplateKHR, device.segment(), pCreateInfo, pAllocator, pDescriptorUpdateTemplate); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateDescriptorUpdateTemplateKHR", device, pCreateInfo, pAllocator, pDescriptorUpdateTemplate); }
+        return (int) Handles.MH_vkCreateDescriptorUpdateTemplateKHR.invokeExact(device.capabilities().PFN_vkCreateDescriptorUpdateTemplateKHR, device.segment(), pCreateInfo, pAllocator, pDescriptorUpdateTemplate); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateDescriptorUpdateTemplateKHR", e); }
     }
 
@@ -53,7 +54,8 @@ public final class VKKHRDescriptorUpdateTemplate {
     /// ```
     public static void vkDestroyDescriptorUpdateTemplateKHR(VkDevice device, long descriptorUpdateTemplate, MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyDescriptorUpdateTemplateKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyDescriptorUpdateTemplateKHR");
-        try { Handles.MH_vkDestroyDescriptorUpdateTemplateKHR.invokeExact(device.capabilities().PFN_vkDestroyDescriptorUpdateTemplateKHR, device.segment(), descriptorUpdateTemplate, pAllocator); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyDescriptorUpdateTemplateKHR", device, descriptorUpdateTemplate, pAllocator); }
+        Handles.MH_vkDestroyDescriptorUpdateTemplateKHR.invokeExact(device.capabilities().PFN_vkDestroyDescriptorUpdateTemplateKHR, device.segment(), descriptorUpdateTemplate, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyDescriptorUpdateTemplateKHR", e); }
     }
 
@@ -62,7 +64,8 @@ public final class VKKHRDescriptorUpdateTemplate {
     /// ```
     public static void vkUpdateDescriptorSetWithTemplateKHR(VkDevice device, long descriptorSet, long descriptorUpdateTemplate, MemorySegment pData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUpdateDescriptorSetWithTemplateKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkUpdateDescriptorSetWithTemplateKHR");
-        try { Handles.MH_vkUpdateDescriptorSetWithTemplateKHR.invokeExact(device.capabilities().PFN_vkUpdateDescriptorSetWithTemplateKHR, device.segment(), descriptorSet, descriptorUpdateTemplate, pData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkUpdateDescriptorSetWithTemplateKHR", device, descriptorSet, descriptorUpdateTemplate, pData); }
+        Handles.MH_vkUpdateDescriptorSetWithTemplateKHR.invokeExact(device.capabilities().PFN_vkUpdateDescriptorSetWithTemplateKHR, device.segment(), descriptorSet, descriptorUpdateTemplate, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkUpdateDescriptorSetWithTemplateKHR", e); }
     }
 
@@ -71,7 +74,8 @@ public final class VKKHRDescriptorUpdateTemplate {
     /// ```
     public static void vkCmdPushDescriptorSetWithTemplateKHR(VkCommandBuffer commandBuffer, long descriptorUpdateTemplate, long layout, int set, MemorySegment pData) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplateKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdPushDescriptorSetWithTemplateKHR");
-        try { Handles.MH_vkCmdPushDescriptorSetWithTemplateKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplateKHR, commandBuffer.segment(), descriptorUpdateTemplate, layout, set, pData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdPushDescriptorSetWithTemplateKHR", commandBuffer, descriptorUpdateTemplate, layout, set, pData); }
+        Handles.MH_vkCmdPushDescriptorSetWithTemplateKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdPushDescriptorSetWithTemplateKHR, commandBuffer.segment(), descriptorUpdateTemplate, layout, set, pData); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdPushDescriptorSetWithTemplateKHR", e); }
     }
 

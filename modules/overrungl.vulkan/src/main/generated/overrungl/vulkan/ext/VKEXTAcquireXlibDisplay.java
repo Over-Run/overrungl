@@ -18,15 +18,15 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTAcquireXlibDisplay {
     public static final int VK_EXT_ACQUIRE_XLIB_DISPLAY_SPEC_VERSION = 1;
     public static final String VK_EXT_ACQUIRE_XLIB_DISPLAY_EXTENSION_NAME = "VK_EXT_acquire_xlib_display";
     public static final class Handles {
-        public static final MethodHandle MH_vkAcquireXlibDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_vkGetRandROutputDisplayEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.C_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkAcquireXlibDisplayEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkGetRandROutputDisplayEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, CanonicalTypes.C_LONG, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -37,7 +37,8 @@ public final class VKEXTAcquireXlibDisplay {
     /// ```
     public static int vkAcquireXlibDisplayEXT(VkPhysicalDevice physicalDevice, MemorySegment dpy, long display) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkAcquireXlibDisplayEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireXlibDisplayEXT");
-        try { return (int) Handles.MH_vkAcquireXlibDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkAcquireXlibDisplayEXT, physicalDevice.segment(), dpy, display); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkAcquireXlibDisplayEXT", physicalDevice, dpy, display); }
+        return (int) Handles.MH_vkAcquireXlibDisplayEXT.invokeExact(physicalDevice.capabilities().PFN_vkAcquireXlibDisplayEXT, physicalDevice.segment(), dpy, display); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireXlibDisplayEXT", e); }
     }
 
@@ -46,7 +47,8 @@ public final class VKEXTAcquireXlibDisplay {
     /// ```
     public static int vkGetRandROutputDisplayEXT(VkPhysicalDevice physicalDevice, MemorySegment dpy, long rrOutput, MemorySegment pDisplay) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetRandROutputDisplayEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetRandROutputDisplayEXT");
-        try { return (int) Handles.MH_vkGetRandROutputDisplayEXT.invoke(physicalDevice.capabilities().PFN_vkGetRandROutputDisplayEXT, physicalDevice.segment(), dpy, MemoryUtil.narrowingLong(CanonicalTypes.C_LONG, rrOutput), pDisplay); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetRandROutputDisplayEXT", physicalDevice, dpy, rrOutput, pDisplay); }
+        return (int) Handles.MH_vkGetRandROutputDisplayEXT.invoke(physicalDevice.capabilities().PFN_vkGetRandROutputDisplayEXT, physicalDevice.segment(), dpy, MemoryUtil.narrowingLong(CanonicalTypes.C_LONG, rrOutput), pDisplay); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetRandROutputDisplayEXT", e); }
     }
 

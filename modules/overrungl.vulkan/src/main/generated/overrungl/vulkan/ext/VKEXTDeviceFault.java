@@ -18,7 +18,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTDeviceFault {
@@ -36,7 +36,7 @@ public final class VKEXTDeviceFault {
     public static final int VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT = 1000341001;
     public static final int VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT = 1000341002;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetDeviceFaultInfoEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceFaultInfoEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -47,7 +47,8 @@ public final class VKEXTDeviceFault {
     /// ```
     public static int vkGetDeviceFaultInfoEXT(VkDevice device, MemorySegment pFaultCounts, MemorySegment pFaultInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceFaultInfoEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceFaultInfoEXT");
-        try { return (int) Handles.MH_vkGetDeviceFaultInfoEXT.invokeExact(device.capabilities().PFN_vkGetDeviceFaultInfoEXT, device.segment(), pFaultCounts, pFaultInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceFaultInfoEXT", device, pFaultCounts, pFaultInfo); }
+        return (int) Handles.MH_vkGetDeviceFaultInfoEXT.invokeExact(device.capabilities().PFN_vkGetDeviceFaultInfoEXT, device.segment(), pFaultCounts, pFaultInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceFaultInfoEXT", e); }
     }
 

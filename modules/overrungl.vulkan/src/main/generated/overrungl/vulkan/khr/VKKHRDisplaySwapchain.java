@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRDisplaySwapchain {
@@ -27,7 +27,7 @@ public final class VKKHRDisplaySwapchain {
     public static final int VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR = 1000003000;
     public static final int VK_ERROR_INCOMPATIBLE_DISPLAY_KHR = -1000003001;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateSharedSwapchainsKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateSharedSwapchainsKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -38,7 +38,8 @@ public final class VKKHRDisplaySwapchain {
     /// ```
     public static int vkCreateSharedSwapchainsKHR(VkDevice device, int swapchainCount, MemorySegment pCreateInfos, MemorySegment pAllocator, MemorySegment pSwapchains) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSharedSwapchainsKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateSharedSwapchainsKHR");
-        try { return (int) Handles.MH_vkCreateSharedSwapchainsKHR.invokeExact(device.capabilities().PFN_vkCreateSharedSwapchainsKHR, device.segment(), swapchainCount, pCreateInfos, pAllocator, pSwapchains); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateSharedSwapchainsKHR", device, swapchainCount, pCreateInfos, pAllocator, pSwapchains); }
+        return (int) Handles.MH_vkCreateSharedSwapchainsKHR.invokeExact(device.capabilities().PFN_vkCreateSharedSwapchainsKHR, device.segment(), swapchainCount, pCreateInfos, pAllocator, pSwapchains); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateSharedSwapchainsKHR", e); }
     }
 

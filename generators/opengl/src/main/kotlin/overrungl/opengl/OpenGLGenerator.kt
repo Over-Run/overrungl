@@ -225,7 +225,7 @@ fun main() {
                 modifier = "public static final",
                 type = "MethodHandle",
                 name = "MH_${command.name}",
-                value = "RuntimeHelper.downcall($descriptor)"
+                value = "downcallHandle($descriptor)"
             )
         )
 

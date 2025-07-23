@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,7 +28,7 @@ public final class GLNVFragmentCoverageToColor {
     public static final int GL_FRAGMENT_COVERAGE_COLOR_NV = 0x92DE;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFragmentCoverageColorNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFragmentCoverageColorNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glFragmentCoverageColorNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFragmentCoverageColorNV = func.invoke("glFragmentCoverageColorNV");
@@ -44,7 +44,8 @@ public final class GLNVFragmentCoverageToColor {
     /// ```
     public void FragmentCoverageColorNV(int color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFragmentCoverageColorNV)) throw new GLSymbolNotFoundError("Symbol not found: glFragmentCoverageColorNV");
-        try { Handles.MH_glFragmentCoverageColorNV.invokeExact(handles.PFN_glFragmentCoverageColorNV, color); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFragmentCoverageColorNV", color); }
+        Handles.MH_glFragmentCoverageColorNV.invokeExact(handles.PFN_glFragmentCoverageColorNV, color); }
         catch (Throwable e) { throw new RuntimeException("error in FragmentCoverageColorNV", e); }
     }
 

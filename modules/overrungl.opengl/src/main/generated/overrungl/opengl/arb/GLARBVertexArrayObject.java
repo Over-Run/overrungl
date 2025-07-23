@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,10 +27,10 @@ public final class GLARBVertexArrayObject {
     public static final int GL_VERTEX_ARRAY_BINDING = 0x85B5;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBindVertexArray = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDeleteVertexArrays = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenVertexArrays = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsVertexArray = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindVertexArray = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteVertexArrays = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenVertexArrays = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsVertexArray = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindVertexArray;
         public final MemorySegment PFN_glDeleteVertexArrays;
         public final MemorySegment PFN_glGenVertexArrays;
@@ -52,7 +52,8 @@ public final class GLARBVertexArrayObject {
     /// ```
     public void BindVertexArray(int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindVertexArray)) throw new GLSymbolNotFoundError("Symbol not found: glBindVertexArray");
-        try { Handles.MH_glBindVertexArray.invokeExact(handles.PFN_glBindVertexArray, array); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBindVertexArray", array); }
+        Handles.MH_glBindVertexArray.invokeExact(handles.PFN_glBindVertexArray, array); }
         catch (Throwable e) { throw new RuntimeException("error in BindVertexArray", e); }
     }
 
@@ -61,7 +62,8 @@ public final class GLARBVertexArrayObject {
     /// ```
     public void DeleteVertexArrays(int n, MemorySegment arrays) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteVertexArrays)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteVertexArrays");
-        try { Handles.MH_glDeleteVertexArrays.invokeExact(handles.PFN_glDeleteVertexArrays, n, arrays); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteVertexArrays", n, arrays); }
+        Handles.MH_glDeleteVertexArrays.invokeExact(handles.PFN_glDeleteVertexArrays, n, arrays); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteVertexArrays", e); }
     }
 
@@ -70,7 +72,8 @@ public final class GLARBVertexArrayObject {
     /// ```
     public void GenVertexArrays(int n, MemorySegment arrays) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenVertexArrays)) throw new GLSymbolNotFoundError("Symbol not found: glGenVertexArrays");
-        try { Handles.MH_glGenVertexArrays.invokeExact(handles.PFN_glGenVertexArrays, n, arrays); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGenVertexArrays", n, arrays); }
+        Handles.MH_glGenVertexArrays.invokeExact(handles.PFN_glGenVertexArrays, n, arrays); }
         catch (Throwable e) { throw new RuntimeException("error in GenVertexArrays", e); }
     }
 
@@ -79,7 +82,8 @@ public final class GLARBVertexArrayObject {
     /// ```
     public boolean IsVertexArray(int array) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsVertexArray)) throw new GLSymbolNotFoundError("Symbol not found: glIsVertexArray");
-        try { return (((byte) Handles.MH_glIsVertexArray.invokeExact(handles.PFN_glIsVertexArray, array)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIsVertexArray", array); }
+        return (((byte) Handles.MH_glIsVertexArray.invokeExact(handles.PFN_glIsVertexArray, array)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsVertexArray", e); }
     }
 

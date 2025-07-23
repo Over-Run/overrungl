@@ -19,7 +19,7 @@ package overrungl.opengl.khr;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,7 +28,7 @@ public final class GLKHRParallelShaderCompile {
     public static final int GL_COMPLETION_STATUS_KHR = 0x91B1;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glMaxShaderCompilerThreadsKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMaxShaderCompilerThreadsKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glMaxShaderCompilerThreadsKHR;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glMaxShaderCompilerThreadsKHR = func.invoke("glMaxShaderCompilerThreadsKHR");
@@ -44,7 +44,8 @@ public final class GLKHRParallelShaderCompile {
     /// ```
     public void MaxShaderCompilerThreadsKHR(int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMaxShaderCompilerThreadsKHR)) throw new GLSymbolNotFoundError("Symbol not found: glMaxShaderCompilerThreadsKHR");
-        try { Handles.MH_glMaxShaderCompilerThreadsKHR.invokeExact(handles.PFN_glMaxShaderCompilerThreadsKHR, count); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMaxShaderCompilerThreadsKHR", count); }
+        Handles.MH_glMaxShaderCompilerThreadsKHR.invokeExact(handles.PFN_glMaxShaderCompilerThreadsKHR, count); }
         catch (Throwable e) { throw new RuntimeException("error in MaxShaderCompilerThreadsKHR", e); }
     }
 

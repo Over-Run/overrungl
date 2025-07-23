@@ -796,7 +796,7 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             if (func.body == null) {
                 sb.appendLine("        /// The method handle of `$entrypoint`.")
                 val functionDescriptor = functionDescriptor(func)
-                sb.appendLine("        public static final MethodHandle MH_$entrypoint = RuntimeHelper.downcall($functionDescriptor);")
+                sb.appendLine("        public static final MethodHandle MH_$entrypoint = downcallHandle($functionDescriptor);")
                 nativeImageDowncallDescriptors.add(functionDescriptor)
             }
         }
@@ -938,7 +938,10 @@ fun writeFunction(
         if (func.optional) {
             sb.appendLine("""        if (MemoryUtil.isNullPointer($handlesInstance.PFN_${func.entrypoint})) throw new ${func.symbolNotFoundError}("Symbol not found: ${func.entrypoint}");""")
         }
-        sb.append("        try { ")
+        sb.appendLine("        try { if (TRACE_DOWNCALLS) { traceDowncall(\"${func.entrypoint}\"${
+            func.parameters.joinToString("") { ", ${it.name}" }
+        }); }")
+        sb.append("        ")
         if (func.returnType !is VoidType) {
             sb.append("return ")
         }

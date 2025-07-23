@@ -19,7 +19,7 @@ package overrungl.opengl.sgi;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -42,13 +42,13 @@ public final class GLSGIColorTable {
     public static final int GL_COLOR_TABLE_INTENSITY_SIZE_SGI = 0x80DF;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glColorTableSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glColorTableParameterfvSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glColorTableParameterivSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCopyColorTableSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetColorTableSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetColorTableParameterfvSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetColorTableParameterivSGI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorTableSGI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorTableParameterfvSGI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorTableParameterivSGI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCopyColorTableSGI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetColorTableSGI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableParameterfvSGI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableParameterivSGI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glColorTableSGI;
         public final MemorySegment PFN_glColorTableParameterfvSGI;
         public final MemorySegment PFN_glColorTableParameterivSGI;
@@ -76,7 +76,8 @@ public final class GLSGIColorTable {
     /// ```
     public void ColorTableSGI(int target, int internalformat, int width, int format, int type, MemorySegment table) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorTableSGI)) throw new GLSymbolNotFoundError("Symbol not found: glColorTableSGI");
-        try { Handles.MH_glColorTableSGI.invokeExact(handles.PFN_glColorTableSGI, target, internalformat, width, format, type, table); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorTableSGI", target, internalformat, width, format, type, table); }
+        Handles.MH_glColorTableSGI.invokeExact(handles.PFN_glColorTableSGI, target, internalformat, width, format, type, table); }
         catch (Throwable e) { throw new RuntimeException("error in ColorTableSGI", e); }
     }
 
@@ -85,7 +86,8 @@ public final class GLSGIColorTable {
     /// ```
     public void ColorTableParameterfvSGI(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorTableParameterfvSGI)) throw new GLSymbolNotFoundError("Symbol not found: glColorTableParameterfvSGI");
-        try { Handles.MH_glColorTableParameterfvSGI.invokeExact(handles.PFN_glColorTableParameterfvSGI, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorTableParameterfvSGI", target, pname, params); }
+        Handles.MH_glColorTableParameterfvSGI.invokeExact(handles.PFN_glColorTableParameterfvSGI, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ColorTableParameterfvSGI", e); }
     }
 
@@ -94,7 +96,8 @@ public final class GLSGIColorTable {
     /// ```
     public void ColorTableParameterivSGI(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorTableParameterivSGI)) throw new GLSymbolNotFoundError("Symbol not found: glColorTableParameterivSGI");
-        try { Handles.MH_glColorTableParameterivSGI.invokeExact(handles.PFN_glColorTableParameterivSGI, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorTableParameterivSGI", target, pname, params); }
+        Handles.MH_glColorTableParameterivSGI.invokeExact(handles.PFN_glColorTableParameterivSGI, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ColorTableParameterivSGI", e); }
     }
 
@@ -103,7 +106,8 @@ public final class GLSGIColorTable {
     /// ```
     public void CopyColorTableSGI(int target, int internalformat, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyColorTableSGI)) throw new GLSymbolNotFoundError("Symbol not found: glCopyColorTableSGI");
-        try { Handles.MH_glCopyColorTableSGI.invokeExact(handles.PFN_glCopyColorTableSGI, target, internalformat, x, y, width); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyColorTableSGI", target, internalformat, x, y, width); }
+        Handles.MH_glCopyColorTableSGI.invokeExact(handles.PFN_glCopyColorTableSGI, target, internalformat, x, y, width); }
         catch (Throwable e) { throw new RuntimeException("error in CopyColorTableSGI", e); }
     }
 
@@ -112,7 +116,8 @@ public final class GLSGIColorTable {
     /// ```
     public void GetColorTableSGI(int target, int format, int type, MemorySegment table) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableSGI)) throw new GLSymbolNotFoundError("Symbol not found: glGetColorTableSGI");
-        try { Handles.MH_glGetColorTableSGI.invokeExact(handles.PFN_glGetColorTableSGI, target, format, type, table); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetColorTableSGI", target, format, type, table); }
+        Handles.MH_glGetColorTableSGI.invokeExact(handles.PFN_glGetColorTableSGI, target, format, type, table); }
         catch (Throwable e) { throw new RuntimeException("error in GetColorTableSGI", e); }
     }
 
@@ -121,7 +126,8 @@ public final class GLSGIColorTable {
     /// ```
     public void GetColorTableParameterfvSGI(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableParameterfvSGI)) throw new GLSymbolNotFoundError("Symbol not found: glGetColorTableParameterfvSGI");
-        try { Handles.MH_glGetColorTableParameterfvSGI.invokeExact(handles.PFN_glGetColorTableParameterfvSGI, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetColorTableParameterfvSGI", target, pname, params); }
+        Handles.MH_glGetColorTableParameterfvSGI.invokeExact(handles.PFN_glGetColorTableParameterfvSGI, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetColorTableParameterfvSGI", e); }
     }
 
@@ -130,7 +136,8 @@ public final class GLSGIColorTable {
     /// ```
     public void GetColorTableParameterivSGI(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableParameterivSGI)) throw new GLSymbolNotFoundError("Symbol not found: glGetColorTableParameterivSGI");
-        try { Handles.MH_glGetColorTableParameterivSGI.invokeExact(handles.PFN_glGetColorTableParameterivSGI, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetColorTableParameterivSGI", target, pname, params); }
+        Handles.MH_glGetColorTableParameterivSGI.invokeExact(handles.PFN_glGetColorTableParameterivSGI, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetColorTableParameterivSGI", e); }
     }
 

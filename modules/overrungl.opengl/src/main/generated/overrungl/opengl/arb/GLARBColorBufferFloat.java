@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -31,7 +31,7 @@ public final class GLARBColorBufferFloat {
     public static final int GL_FIXED_ONLY_ARB = 0x891D;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glClampColorARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClampColorARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glClampColorARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glClampColorARB = func.invoke("glClampColorARB", "glClampColor");
@@ -47,7 +47,8 @@ public final class GLARBColorBufferFloat {
     /// ```
     public void ClampColorARB(int target, int clamp) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClampColorARB)) throw new GLSymbolNotFoundError("Symbol not found: glClampColorARB");
-        try { Handles.MH_glClampColorARB.invokeExact(handles.PFN_glClampColorARB, target, clamp); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClampColorARB", target, clamp); }
+        Handles.MH_glClampColorARB.invokeExact(handles.PFN_glClampColorARB, target, clamp); }
         catch (Throwable e) { throw new RuntimeException("error in ClampColorARB", e); }
     }
 
