@@ -165,42 +165,40 @@ public final class STBVorbis {
         /// The function address of `stb_vorbis_get_samples_short`.
         public final MemorySegment PFN_stb_vorbis_get_samples_short;
         private Handles() {
-            PFN_stb_vorbis_get_info = STBInternal.lookup().findOrThrow("stb_vorbis_get_info");
-            PFN_stb_vorbis_get_comment = STBInternal.lookup().findOrThrow("stb_vorbis_get_comment");
-            PFN_stb_vorbis_get_error = STBInternal.lookup().findOrThrow("stb_vorbis_get_error");
-            PFN_stb_vorbis_close = STBInternal.lookup().findOrThrow("stb_vorbis_close");
-            PFN_stb_vorbis_get_sample_offset = STBInternal.lookup().findOrThrow("stb_vorbis_get_sample_offset");
-            PFN_stb_vorbis_get_file_offset = STBInternal.lookup().findOrThrow("stb_vorbis_get_file_offset");
-            PFN_stb_vorbis_open_pushdata = STBInternal.lookup().findOrThrow("stb_vorbis_open_pushdata");
-            PFN_stb_vorbis_decode_frame_pushdata = STBInternal.lookup().findOrThrow("stb_vorbis_decode_frame_pushdata");
-            PFN_stb_vorbis_flush_pushdata = STBInternal.lookup().findOrThrow("stb_vorbis_flush_pushdata");
-            PFN_stb_vorbis_decode_filename = STBInternal.lookup().findOrThrow("stb_vorbis_decode_filename");
-            PFN_stb_vorbis_decode_memory = STBInternal.lookup().findOrThrow("stb_vorbis_decode_memory");
-            PFN_stb_vorbis_open_memory = STBInternal.lookup().findOrThrow("stb_vorbis_open_memory");
-            PFN_stb_vorbis_open_filename = STBInternal.lookup().findOrThrow("stb_vorbis_open_filename");
-            PFN_stb_vorbis_open_file = STBInternal.lookup().findOrThrow("stb_vorbis_open_file");
-            PFN_stb_vorbis_open_file_section = STBInternal.lookup().findOrThrow("stb_vorbis_open_file_section");
-            PFN_stb_vorbis_seek_frame = STBInternal.lookup().findOrThrow("stb_vorbis_seek_frame");
-            PFN_stb_vorbis_seek = STBInternal.lookup().findOrThrow("stb_vorbis_seek");
-            PFN_stb_vorbis_seek_start = STBInternal.lookup().findOrThrow("stb_vorbis_seek_start");
-            PFN_stb_vorbis_stream_length_in_samples = STBInternal.lookup().findOrThrow("stb_vorbis_stream_length_in_samples");
-            PFN_stb_vorbis_stream_length_in_seconds = STBInternal.lookup().findOrThrow("stb_vorbis_stream_length_in_seconds");
-            PFN_stb_vorbis_get_frame_float = STBInternal.lookup().findOrThrow("stb_vorbis_get_frame_float");
-            PFN_stb_vorbis_get_frame_short_interleaved = STBInternal.lookup().findOrThrow("stb_vorbis_get_frame_short_interleaved");
-            PFN_stb_vorbis_get_frame_short = STBInternal.lookup().findOrThrow("stb_vorbis_get_frame_short");
-            PFN_stb_vorbis_get_samples_float_interleaved = STBInternal.lookup().findOrThrow("stb_vorbis_get_samples_float_interleaved");
-            PFN_stb_vorbis_get_samples_float = STBInternal.lookup().findOrThrow("stb_vorbis_get_samples_float");
-            PFN_stb_vorbis_get_samples_short_interleaved = STBInternal.lookup().findOrThrow("stb_vorbis_get_samples_short_interleaved");
-            PFN_stb_vorbis_get_samples_short = STBInternal.lookup().findOrThrow("stb_vorbis_get_samples_short");
+            var _lookup = STBLibrary.lookup();
+            PFN_stb_vorbis_get_info = _lookup.findOrThrow("stb_vorbis_get_info");
+            PFN_stb_vorbis_get_comment = _lookup.findOrThrow("stb_vorbis_get_comment");
+            PFN_stb_vorbis_get_error = _lookup.findOrThrow("stb_vorbis_get_error");
+            PFN_stb_vorbis_close = _lookup.findOrThrow("stb_vorbis_close");
+            PFN_stb_vorbis_get_sample_offset = _lookup.findOrThrow("stb_vorbis_get_sample_offset");
+            PFN_stb_vorbis_get_file_offset = _lookup.findOrThrow("stb_vorbis_get_file_offset");
+            PFN_stb_vorbis_open_pushdata = _lookup.findOrThrow("stb_vorbis_open_pushdata");
+            PFN_stb_vorbis_decode_frame_pushdata = _lookup.findOrThrow("stb_vorbis_decode_frame_pushdata");
+            PFN_stb_vorbis_flush_pushdata = _lookup.findOrThrow("stb_vorbis_flush_pushdata");
+            PFN_stb_vorbis_decode_filename = _lookup.findOrThrow("stb_vorbis_decode_filename");
+            PFN_stb_vorbis_decode_memory = _lookup.findOrThrow("stb_vorbis_decode_memory");
+            PFN_stb_vorbis_open_memory = _lookup.findOrThrow("stb_vorbis_open_memory");
+            PFN_stb_vorbis_open_filename = _lookup.findOrThrow("stb_vorbis_open_filename");
+            PFN_stb_vorbis_open_file = _lookup.findOrThrow("stb_vorbis_open_file");
+            PFN_stb_vorbis_open_file_section = _lookup.findOrThrow("stb_vorbis_open_file_section");
+            PFN_stb_vorbis_seek_frame = _lookup.findOrThrow("stb_vorbis_seek_frame");
+            PFN_stb_vorbis_seek = _lookup.findOrThrow("stb_vorbis_seek");
+            PFN_stb_vorbis_seek_start = _lookup.findOrThrow("stb_vorbis_seek_start");
+            PFN_stb_vorbis_stream_length_in_samples = _lookup.findOrThrow("stb_vorbis_stream_length_in_samples");
+            PFN_stb_vorbis_stream_length_in_seconds = _lookup.findOrThrow("stb_vorbis_stream_length_in_seconds");
+            PFN_stb_vorbis_get_frame_float = _lookup.findOrThrow("stb_vorbis_get_frame_float");
+            PFN_stb_vorbis_get_frame_short_interleaved = _lookup.findOrThrow("stb_vorbis_get_frame_short_interleaved");
+            PFN_stb_vorbis_get_frame_short = _lookup.findOrThrow("stb_vorbis_get_frame_short");
+            PFN_stb_vorbis_get_samples_float_interleaved = _lookup.findOrThrow("stb_vorbis_get_samples_float_interleaved");
+            PFN_stb_vorbis_get_samples_float = _lookup.findOrThrow("stb_vorbis_get_samples_float");
+            PFN_stb_vorbis_get_samples_short_interleaved = _lookup.findOrThrow("stb_vorbis_get_samples_short_interleaved");
+            PFN_stb_vorbis_get_samples_short = _lookup.findOrThrow("stb_vorbis_get_samples_short");
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 

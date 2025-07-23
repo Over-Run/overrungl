@@ -142,35 +142,33 @@ public final class ALC {
         /// The function address of `alcCaptureSamples`.
         public final MemorySegment PFN_alcCaptureSamples;
         private Handles() {
-            PFN_alcCreateContext = ALInternal.lookup().findOrThrow("alcCreateContext");
-            PFN_alcMakeContextCurrent = ALInternal.lookup().findOrThrow("alcMakeContextCurrent");
-            PFN_alcProcessContext = ALInternal.lookup().findOrThrow("alcProcessContext");
-            PFN_alcSuspendContext = ALInternal.lookup().findOrThrow("alcSuspendContext");
-            PFN_alcDestroyContext = ALInternal.lookup().findOrThrow("alcDestroyContext");
-            PFN_alcGetCurrentContext = ALInternal.lookup().findOrThrow("alcGetCurrentContext");
-            PFN_alcGetContextsDevice = ALInternal.lookup().findOrThrow("alcGetContextsDevice");
-            PFN_alcOpenDevice = ALInternal.lookup().findOrThrow("alcOpenDevice");
-            PFN_alcCloseDevice = ALInternal.lookup().findOrThrow("alcCloseDevice");
-            PFN_alcGetError = ALInternal.lookup().findOrThrow("alcGetError");
-            PFN_alcIsExtensionPresent = ALInternal.lookup().findOrThrow("alcIsExtensionPresent");
-            PFN_alcGetProcAddress = ALInternal.lookup().findOrThrow("alcGetProcAddress");
-            PFN_alcGetEnumValue = ALInternal.lookup().findOrThrow("alcGetEnumValue");
-            PFN_alcGetString = ALInternal.lookup().findOrThrow("alcGetString");
-            PFN_alcGetIntegerv = ALInternal.lookup().findOrThrow("alcGetIntegerv");
-            PFN_alcCaptureOpenDevice = ALInternal.lookup().findOrThrow("alcCaptureOpenDevice");
-            PFN_alcCaptureCloseDevice = ALInternal.lookup().findOrThrow("alcCaptureCloseDevice");
-            PFN_alcCaptureStart = ALInternal.lookup().findOrThrow("alcCaptureStart");
-            PFN_alcCaptureStop = ALInternal.lookup().findOrThrow("alcCaptureStop");
-            PFN_alcCaptureSamples = ALInternal.lookup().findOrThrow("alcCaptureSamples");
+            var _lookup = OpenALLibrary.lookup();
+            PFN_alcCreateContext = _lookup.findOrThrow("alcCreateContext");
+            PFN_alcMakeContextCurrent = _lookup.findOrThrow("alcMakeContextCurrent");
+            PFN_alcProcessContext = _lookup.findOrThrow("alcProcessContext");
+            PFN_alcSuspendContext = _lookup.findOrThrow("alcSuspendContext");
+            PFN_alcDestroyContext = _lookup.findOrThrow("alcDestroyContext");
+            PFN_alcGetCurrentContext = _lookup.findOrThrow("alcGetCurrentContext");
+            PFN_alcGetContextsDevice = _lookup.findOrThrow("alcGetContextsDevice");
+            PFN_alcOpenDevice = _lookup.findOrThrow("alcOpenDevice");
+            PFN_alcCloseDevice = _lookup.findOrThrow("alcCloseDevice");
+            PFN_alcGetError = _lookup.findOrThrow("alcGetError");
+            PFN_alcIsExtensionPresent = _lookup.findOrThrow("alcIsExtensionPresent");
+            PFN_alcGetProcAddress = _lookup.findOrThrow("alcGetProcAddress");
+            PFN_alcGetEnumValue = _lookup.findOrThrow("alcGetEnumValue");
+            PFN_alcGetString = _lookup.findOrThrow("alcGetString");
+            PFN_alcGetIntegerv = _lookup.findOrThrow("alcGetIntegerv");
+            PFN_alcCaptureOpenDevice = _lookup.findOrThrow("alcCaptureOpenDevice");
+            PFN_alcCaptureCloseDevice = _lookup.findOrThrow("alcCaptureCloseDevice");
+            PFN_alcCaptureStart = _lookup.findOrThrow("alcCaptureStart");
+            PFN_alcCaptureStop = _lookup.findOrThrow("alcCaptureStop");
+            PFN_alcCaptureSamples = _lookup.findOrThrow("alcCaptureSamples");
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 

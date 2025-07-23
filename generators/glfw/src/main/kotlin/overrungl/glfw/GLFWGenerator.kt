@@ -19,10 +19,11 @@ package overrungl.glfw
 import overrungl.gen.file.DefinitionFile
 import overrungl.gen.file.int_boolean
 import overrungl.gen.file.registerDefType
+import overrungl.gen.generateLookupAccessor
 import overrungl.gen.writeNativeImageRegistration
 
 const val glfwPackage = "overrungl.glfw"
-const val glfwLookup = "GLFWInternal.lookup()"
+const val glfwLookup = "GLFWLibrary.lookup()"
 
 fun main() {
     registerDefType("GLFWboolean", int_boolean)
@@ -30,4 +31,11 @@ fun main() {
     DefinitionFile("glfw3native.gen").compile(glfwPackage, "GLFWNative", glfwLookup)
 
     writeNativeImageRegistration(glfwPackage)
+    generateLookupAccessor(
+        packageName = "glfw",
+        className = "GLFWLibrary",
+        moduleName = "glfw",
+        basename = "glfw",
+        versionRef = "GLFW_VERSION"
+    )
 }

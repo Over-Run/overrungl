@@ -336,74 +336,72 @@ public final class STBTrueType {
         /// The function address of `stbtt_GetFontNameString`.
         public final MemorySegment PFN_stbtt_GetFontNameString;
         private Handles() {
-            PFN_stbtt_BakeFontBitmap = STBInternal.lookup().findOrThrow("stbtt_BakeFontBitmap");
-            PFN_stbtt_GetBakedQuad = STBInternal.lookup().findOrThrow("stbtt_GetBakedQuad");
-            PFN_stbtt_GetScaledFontVMetrics = STBInternal.lookup().findOrThrow("stbtt_GetScaledFontVMetrics");
-            PFN_stbtt_PackBegin = STBInternal.lookup().findOrThrow("stbtt_PackBegin");
-            PFN_stbtt_PackEnd = STBInternal.lookup().findOrThrow("stbtt_PackEnd");
-            PFN_stbtt_PackFontRange = STBInternal.lookup().findOrThrow("stbtt_PackFontRange");
-            PFN_stbtt_PackFontRanges = STBInternal.lookup().findOrThrow("stbtt_PackFontRanges");
-            PFN_stbtt_PackSetOversampling = STBInternal.lookup().findOrThrow("stbtt_PackSetOversampling");
-            PFN_stbtt_PackSetSkipMissingCodepoints = STBInternal.lookup().findOrThrow("stbtt_PackSetSkipMissingCodepoints");
-            PFN_stbtt_GetPackedQuad = STBInternal.lookup().findOrThrow("stbtt_GetPackedQuad");
-            PFN_stbtt_PackFontRangesGatherRects = STBInternal.lookup().findOrThrow("stbtt_PackFontRangesGatherRects");
-            PFN_stbtt_PackFontRangesPackRects = STBInternal.lookup().findOrThrow("stbtt_PackFontRangesPackRects");
-            PFN_stbtt_PackFontRangesRenderIntoRects = STBInternal.lookup().findOrThrow("stbtt_PackFontRangesRenderIntoRects");
-            PFN_stbtt_GetNumberOfFonts = STBInternal.lookup().findOrThrow("stbtt_GetNumberOfFonts");
-            PFN_stbtt_GetFontOffsetForIndex = STBInternal.lookup().findOrThrow("stbtt_GetFontOffsetForIndex");
-            PFN_stbtt_InitFont = STBInternal.lookup().findOrThrow("stbtt_InitFont");
-            PFN_stbtt_FindGlyphIndex = STBInternal.lookup().findOrThrow("stbtt_FindGlyphIndex");
-            PFN_stbtt_ScaleForPixelHeight = STBInternal.lookup().findOrThrow("stbtt_ScaleForPixelHeight");
-            PFN_stbtt_ScaleForMappingEmToPixels = STBInternal.lookup().findOrThrow("stbtt_ScaleForMappingEmToPixels");
-            PFN_stbtt_GetFontVMetrics = STBInternal.lookup().findOrThrow("stbtt_GetFontVMetrics");
-            PFN_stbtt_GetFontVMetricsOS2 = STBInternal.lookup().findOrThrow("stbtt_GetFontVMetricsOS2");
-            PFN_stbtt_GetFontBoundingBox = STBInternal.lookup().findOrThrow("stbtt_GetFontBoundingBox");
-            PFN_stbtt_GetCodepointHMetrics = STBInternal.lookup().findOrThrow("stbtt_GetCodepointHMetrics");
-            PFN_stbtt_GetCodepointKernAdvance = STBInternal.lookup().findOrThrow("stbtt_GetCodepointKernAdvance");
-            PFN_stbtt_GetCodepointBox = STBInternal.lookup().findOrThrow("stbtt_GetCodepointBox");
-            PFN_stbtt_GetGlyphHMetrics = STBInternal.lookup().findOrThrow("stbtt_GetGlyphHMetrics");
-            PFN_stbtt_GetGlyphKernAdvance = STBInternal.lookup().findOrThrow("stbtt_GetGlyphKernAdvance");
-            PFN_stbtt_GetGlyphBox = STBInternal.lookup().findOrThrow("stbtt_GetGlyphBox");
-            PFN_stbtt_GetKerningTableLength = STBInternal.lookup().findOrThrow("stbtt_GetKerningTableLength");
-            PFN_stbtt_GetKerningTable = STBInternal.lookup().findOrThrow("stbtt_GetKerningTable");
-            PFN_stbtt_IsGlyphEmpty = STBInternal.lookup().findOrThrow("stbtt_IsGlyphEmpty");
-            PFN_stbtt_GetCodepointShape = STBInternal.lookup().findOrThrow("stbtt_GetCodepointShape");
-            PFN_stbtt_GetGlyphShape = STBInternal.lookup().findOrThrow("stbtt_GetGlyphShape");
-            PFN_stbtt_FreeShape = STBInternal.lookup().findOrThrow("stbtt_FreeShape");
-            PFN_stbtt_FindSVGDoc = STBInternal.lookup().findOrThrow("stbtt_FindSVGDoc");
-            PFN_stbtt_GetCodepointSVG = STBInternal.lookup().findOrThrow("stbtt_GetCodepointSVG");
-            PFN_stbtt_GetGlyphSVG = STBInternal.lookup().findOrThrow("stbtt_GetGlyphSVG");
-            PFN_stbtt_FreeBitmap = STBInternal.lookup().findOrThrow("stbtt_FreeBitmap");
-            PFN_stbtt_GetCodepointBitmap = STBInternal.lookup().findOrThrow("stbtt_GetCodepointBitmap");
-            PFN_stbtt_GetCodepointBitmapSubpixel = STBInternal.lookup().findOrThrow("stbtt_GetCodepointBitmapSubpixel");
-            PFN_stbtt_MakeCodepointBitmap = STBInternal.lookup().findOrThrow("stbtt_MakeCodepointBitmap");
-            PFN_stbtt_MakeCodepointBitmapSubpixel = STBInternal.lookup().findOrThrow("stbtt_MakeCodepointBitmapSubpixel");
-            PFN_stbtt_MakeCodepointBitmapSubpixelPrefilter = STBInternal.lookup().findOrThrow("stbtt_MakeCodepointBitmapSubpixelPrefilter");
-            PFN_stbtt_GetCodepointBitmapBox = STBInternal.lookup().findOrThrow("stbtt_GetCodepointBitmapBox");
-            PFN_stbtt_GetCodepointBitmapBoxSubpixel = STBInternal.lookup().findOrThrow("stbtt_GetCodepointBitmapBoxSubpixel");
-            PFN_stbtt_GetGlyphBitmap = STBInternal.lookup().findOrThrow("stbtt_GetGlyphBitmap");
-            PFN_stbtt_GetGlyphBitmapSubpixel = STBInternal.lookup().findOrThrow("stbtt_GetGlyphBitmapSubpixel");
-            PFN_stbtt_MakeGlyphBitmap = STBInternal.lookup().findOrThrow("stbtt_MakeGlyphBitmap");
-            PFN_stbtt_MakeGlyphBitmapSubpixel = STBInternal.lookup().findOrThrow("stbtt_MakeGlyphBitmapSubpixel");
-            PFN_stbtt_MakeGlyphBitmapSubpixelPrefilter = STBInternal.lookup().findOrThrow("stbtt_MakeGlyphBitmapSubpixelPrefilter");
-            PFN_stbtt_GetGlyphBitmapBox = STBInternal.lookup().findOrThrow("stbtt_GetGlyphBitmapBox");
-            PFN_stbtt_GetGlyphBitmapBoxSubpixel = STBInternal.lookup().findOrThrow("stbtt_GetGlyphBitmapBoxSubpixel");
-            PFN_stbtt_Rasterize = STBInternal.lookup().findOrThrow("stbtt_Rasterize");
-            PFN_stbtt_FreeSDF = STBInternal.lookup().findOrThrow("stbtt_FreeSDF");
-            PFN_stbtt_GetGlyphSDF = STBInternal.lookup().findOrThrow("stbtt_GetGlyphSDF");
-            PFN_stbtt_GetCodepointSDF = STBInternal.lookup().findOrThrow("stbtt_GetCodepointSDF");
-            PFN_stbtt_FindMatchingFont = STBInternal.lookup().findOrThrow("stbtt_FindMatchingFont");
-            PFN_stbtt_CompareUTF8toUTF16_bigendian = STBInternal.lookup().findOrThrow("stbtt_CompareUTF8toUTF16_bigendian");
-            PFN_stbtt_GetFontNameString = STBInternal.lookup().findOrThrow("stbtt_GetFontNameString");
+            var _lookup = STBLibrary.lookup();
+            PFN_stbtt_BakeFontBitmap = _lookup.findOrThrow("stbtt_BakeFontBitmap");
+            PFN_stbtt_GetBakedQuad = _lookup.findOrThrow("stbtt_GetBakedQuad");
+            PFN_stbtt_GetScaledFontVMetrics = _lookup.findOrThrow("stbtt_GetScaledFontVMetrics");
+            PFN_stbtt_PackBegin = _lookup.findOrThrow("stbtt_PackBegin");
+            PFN_stbtt_PackEnd = _lookup.findOrThrow("stbtt_PackEnd");
+            PFN_stbtt_PackFontRange = _lookup.findOrThrow("stbtt_PackFontRange");
+            PFN_stbtt_PackFontRanges = _lookup.findOrThrow("stbtt_PackFontRanges");
+            PFN_stbtt_PackSetOversampling = _lookup.findOrThrow("stbtt_PackSetOversampling");
+            PFN_stbtt_PackSetSkipMissingCodepoints = _lookup.findOrThrow("stbtt_PackSetSkipMissingCodepoints");
+            PFN_stbtt_GetPackedQuad = _lookup.findOrThrow("stbtt_GetPackedQuad");
+            PFN_stbtt_PackFontRangesGatherRects = _lookup.findOrThrow("stbtt_PackFontRangesGatherRects");
+            PFN_stbtt_PackFontRangesPackRects = _lookup.findOrThrow("stbtt_PackFontRangesPackRects");
+            PFN_stbtt_PackFontRangesRenderIntoRects = _lookup.findOrThrow("stbtt_PackFontRangesRenderIntoRects");
+            PFN_stbtt_GetNumberOfFonts = _lookup.findOrThrow("stbtt_GetNumberOfFonts");
+            PFN_stbtt_GetFontOffsetForIndex = _lookup.findOrThrow("stbtt_GetFontOffsetForIndex");
+            PFN_stbtt_InitFont = _lookup.findOrThrow("stbtt_InitFont");
+            PFN_stbtt_FindGlyphIndex = _lookup.findOrThrow("stbtt_FindGlyphIndex");
+            PFN_stbtt_ScaleForPixelHeight = _lookup.findOrThrow("stbtt_ScaleForPixelHeight");
+            PFN_stbtt_ScaleForMappingEmToPixels = _lookup.findOrThrow("stbtt_ScaleForMappingEmToPixels");
+            PFN_stbtt_GetFontVMetrics = _lookup.findOrThrow("stbtt_GetFontVMetrics");
+            PFN_stbtt_GetFontVMetricsOS2 = _lookup.findOrThrow("stbtt_GetFontVMetricsOS2");
+            PFN_stbtt_GetFontBoundingBox = _lookup.findOrThrow("stbtt_GetFontBoundingBox");
+            PFN_stbtt_GetCodepointHMetrics = _lookup.findOrThrow("stbtt_GetCodepointHMetrics");
+            PFN_stbtt_GetCodepointKernAdvance = _lookup.findOrThrow("stbtt_GetCodepointKernAdvance");
+            PFN_stbtt_GetCodepointBox = _lookup.findOrThrow("stbtt_GetCodepointBox");
+            PFN_stbtt_GetGlyphHMetrics = _lookup.findOrThrow("stbtt_GetGlyphHMetrics");
+            PFN_stbtt_GetGlyphKernAdvance = _lookup.findOrThrow("stbtt_GetGlyphKernAdvance");
+            PFN_stbtt_GetGlyphBox = _lookup.findOrThrow("stbtt_GetGlyphBox");
+            PFN_stbtt_GetKerningTableLength = _lookup.findOrThrow("stbtt_GetKerningTableLength");
+            PFN_stbtt_GetKerningTable = _lookup.findOrThrow("stbtt_GetKerningTable");
+            PFN_stbtt_IsGlyphEmpty = _lookup.findOrThrow("stbtt_IsGlyphEmpty");
+            PFN_stbtt_GetCodepointShape = _lookup.findOrThrow("stbtt_GetCodepointShape");
+            PFN_stbtt_GetGlyphShape = _lookup.findOrThrow("stbtt_GetGlyphShape");
+            PFN_stbtt_FreeShape = _lookup.findOrThrow("stbtt_FreeShape");
+            PFN_stbtt_FindSVGDoc = _lookup.findOrThrow("stbtt_FindSVGDoc");
+            PFN_stbtt_GetCodepointSVG = _lookup.findOrThrow("stbtt_GetCodepointSVG");
+            PFN_stbtt_GetGlyphSVG = _lookup.findOrThrow("stbtt_GetGlyphSVG");
+            PFN_stbtt_FreeBitmap = _lookup.findOrThrow("stbtt_FreeBitmap");
+            PFN_stbtt_GetCodepointBitmap = _lookup.findOrThrow("stbtt_GetCodepointBitmap");
+            PFN_stbtt_GetCodepointBitmapSubpixel = _lookup.findOrThrow("stbtt_GetCodepointBitmapSubpixel");
+            PFN_stbtt_MakeCodepointBitmap = _lookup.findOrThrow("stbtt_MakeCodepointBitmap");
+            PFN_stbtt_MakeCodepointBitmapSubpixel = _lookup.findOrThrow("stbtt_MakeCodepointBitmapSubpixel");
+            PFN_stbtt_MakeCodepointBitmapSubpixelPrefilter = _lookup.findOrThrow("stbtt_MakeCodepointBitmapSubpixelPrefilter");
+            PFN_stbtt_GetCodepointBitmapBox = _lookup.findOrThrow("stbtt_GetCodepointBitmapBox");
+            PFN_stbtt_GetCodepointBitmapBoxSubpixel = _lookup.findOrThrow("stbtt_GetCodepointBitmapBoxSubpixel");
+            PFN_stbtt_GetGlyphBitmap = _lookup.findOrThrow("stbtt_GetGlyphBitmap");
+            PFN_stbtt_GetGlyphBitmapSubpixel = _lookup.findOrThrow("stbtt_GetGlyphBitmapSubpixel");
+            PFN_stbtt_MakeGlyphBitmap = _lookup.findOrThrow("stbtt_MakeGlyphBitmap");
+            PFN_stbtt_MakeGlyphBitmapSubpixel = _lookup.findOrThrow("stbtt_MakeGlyphBitmapSubpixel");
+            PFN_stbtt_MakeGlyphBitmapSubpixelPrefilter = _lookup.findOrThrow("stbtt_MakeGlyphBitmapSubpixelPrefilter");
+            PFN_stbtt_GetGlyphBitmapBox = _lookup.findOrThrow("stbtt_GetGlyphBitmapBox");
+            PFN_stbtt_GetGlyphBitmapBoxSubpixel = _lookup.findOrThrow("stbtt_GetGlyphBitmapBoxSubpixel");
+            PFN_stbtt_Rasterize = _lookup.findOrThrow("stbtt_Rasterize");
+            PFN_stbtt_FreeSDF = _lookup.findOrThrow("stbtt_FreeSDF");
+            PFN_stbtt_GetGlyphSDF = _lookup.findOrThrow("stbtt_GetGlyphSDF");
+            PFN_stbtt_GetCodepointSDF = _lookup.findOrThrow("stbtt_GetCodepointSDF");
+            PFN_stbtt_FindMatchingFont = _lookup.findOrThrow("stbtt_FindMatchingFont");
+            PFN_stbtt_CompareUTF8toUTF16_bigendian = _lookup.findOrThrow("stbtt_CompareUTF8toUTF16_bigendian");
+            PFN_stbtt_GetFontNameString = _lookup.findOrThrow("stbtt_GetFontNameString");
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 

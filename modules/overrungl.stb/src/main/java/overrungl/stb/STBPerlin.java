@@ -59,21 +59,19 @@ public final class STBPerlin {
         /// The function address of `stb_perlin_noise3_wrap_nonpow2`.
         public final MemorySegment PFN_stb_perlin_noise3_wrap_nonpow2;
         private Handles() {
-            PFN_stb_perlin_noise3 = STBInternal.lookup().findOrThrow("stb_perlin_noise3");
-            PFN_stb_perlin_noise3_seed = STBInternal.lookup().findOrThrow("stb_perlin_noise3_seed");
-            PFN_stb_perlin_ridge_noise3 = STBInternal.lookup().findOrThrow("stb_perlin_ridge_noise3");
-            PFN_stb_perlin_fbm_noise3 = STBInternal.lookup().findOrThrow("stb_perlin_fbm_noise3");
-            PFN_stb_perlin_turbulence_noise3 = STBInternal.lookup().findOrThrow("stb_perlin_turbulence_noise3");
-            PFN_stb_perlin_noise3_wrap_nonpow2 = STBInternal.lookup().findOrThrow("stb_perlin_noise3_wrap_nonpow2");
+            var _lookup = STBLibrary.lookup();
+            PFN_stb_perlin_noise3 = _lookup.findOrThrow("stb_perlin_noise3");
+            PFN_stb_perlin_noise3_seed = _lookup.findOrThrow("stb_perlin_noise3_seed");
+            PFN_stb_perlin_ridge_noise3 = _lookup.findOrThrow("stb_perlin_ridge_noise3");
+            PFN_stb_perlin_fbm_noise3 = _lookup.findOrThrow("stb_perlin_fbm_noise3");
+            PFN_stb_perlin_turbulence_noise3 = _lookup.findOrThrow("stb_perlin_turbulence_noise3");
+            PFN_stb_perlin_noise3_wrap_nonpow2 = _lookup.findOrThrow("stb_perlin_noise3_wrap_nonpow2");
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 

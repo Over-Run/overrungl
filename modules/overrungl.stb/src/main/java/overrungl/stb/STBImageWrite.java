@@ -79,26 +79,24 @@ public final class STBImageWrite {
         /// The function address of `stbi_flip_vertically_on_write`.
         public final MemorySegment PFN_stbi_flip_vertically_on_write;
         private Handles() {
-            PFN_stbi_write_png = STBInternal.lookup().findOrThrow("stbi_write_png");
-            PFN_stbi_write_bmp = STBInternal.lookup().findOrThrow("stbi_write_bmp");
-            PFN_stbi_write_tga = STBInternal.lookup().findOrThrow("stbi_write_tga");
-            PFN_stbi_write_hdr = STBInternal.lookup().findOrThrow("stbi_write_hdr");
-            PFN_stbi_write_jpg = STBInternal.lookup().findOrThrow("stbi_write_jpg");
-            PFN_stbi_write_png_to_func = STBInternal.lookup().findOrThrow("stbi_write_png_to_func");
-            PFN_stbi_write_bmp_to_func = STBInternal.lookup().findOrThrow("stbi_write_bmp_to_func");
-            PFN_stbi_write_tga_to_func = STBInternal.lookup().findOrThrow("stbi_write_tga_to_func");
-            PFN_stbi_write_hdr_to_func = STBInternal.lookup().findOrThrow("stbi_write_hdr_to_func");
-            PFN_stbi_write_jpg_to_func = STBInternal.lookup().findOrThrow("stbi_write_jpg_to_func");
-            PFN_stbi_flip_vertically_on_write = STBInternal.lookup().findOrThrow("stbi_flip_vertically_on_write");
+            var _lookup = STBLibrary.lookup();
+            PFN_stbi_write_png = _lookup.findOrThrow("stbi_write_png");
+            PFN_stbi_write_bmp = _lookup.findOrThrow("stbi_write_bmp");
+            PFN_stbi_write_tga = _lookup.findOrThrow("stbi_write_tga");
+            PFN_stbi_write_hdr = _lookup.findOrThrow("stbi_write_hdr");
+            PFN_stbi_write_jpg = _lookup.findOrThrow("stbi_write_jpg");
+            PFN_stbi_write_png_to_func = _lookup.findOrThrow("stbi_write_png_to_func");
+            PFN_stbi_write_bmp_to_func = _lookup.findOrThrow("stbi_write_bmp_to_func");
+            PFN_stbi_write_tga_to_func = _lookup.findOrThrow("stbi_write_tga_to_func");
+            PFN_stbi_write_hdr_to_func = _lookup.findOrThrow("stbi_write_hdr_to_func");
+            PFN_stbi_write_jpg_to_func = _lookup.findOrThrow("stbi_write_jpg_to_func");
+            PFN_stbi_flip_vertically_on_write = _lookup.findOrThrow("stbi_flip_vertically_on_write");
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 

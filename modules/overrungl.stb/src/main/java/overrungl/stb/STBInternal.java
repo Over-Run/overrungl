@@ -16,14 +16,8 @@
 
 package overrungl.stb;
 
-import overrungl.OverrunGLConfigurations;
-import overrungl.OverrunGL;
-import overrungl.internal.RuntimeHelper;
-
 import java.lang.foreign.MemorySegment;
-import java.lang.foreign.SymbolLookup;
 import java.lang.foreign.ValueLayout;
-import java.util.function.Supplier;
 
 /**
  * The STB method handles.
@@ -32,26 +26,11 @@ import java.util.function.Supplier;
  * @since 0.1.0
  */
 final class STBInternal {
-    private static volatile SymbolLookup lookup;
-
     private STBInternal() {
         //no instance
     }
 
     static MemorySegment findIntOrThrow(String name) {
-        return lookup().findOrThrow(name).reinterpret(ValueLayout.JAVA_INT.byteSize());
-    }
-
-    static SymbolLookup lookup() {
-        if (lookup == null) {
-            synchronized (STBInternal.class) {
-                if (lookup == null) {
-                    final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("stb", "stb", OverrunGL.STB_VERSION);
-                    final var function = OverrunGLConfigurations.STB_SYMBOL_LOOKUP.get();
-                    lookup = function != null ? function.apply(lib) : lib.get();
-                }
-            }
-        }
-        return lookup;
+        return STBLibrary.lookup().findOrThrow(name).reinterpret(ValueLayout.JAVA_INT.byteSize());
     }
 }

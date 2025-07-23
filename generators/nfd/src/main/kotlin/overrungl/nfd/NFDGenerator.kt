@@ -17,10 +17,11 @@
 package overrungl.nfd
 
 import overrungl.gen.file.*
+import overrungl.gen.generateLookupAccessor
 import overrungl.gen.writeNativeImageRegistration
 
 const val nfdPackage = "overrungl.nfd"
-const val nfdLookup = "NFDInternal.lookup()"
+const val nfdLookup = "NFDLibrary.lookup()"
 const val nfdnchar_t_LAYOUT = "NFDInternal.nfdnchar_t"
 const val nfdpathsetsize_t_LAYOUT = "NFDInternal.nfdpathsetsize_t"
 
@@ -49,4 +50,11 @@ fun main() {
     DefinitionFile("nfd.gen").compile(nfdPackage, "NFD", nfdLookup)
 
     writeNativeImageRegistration(nfdPackage)
+    generateLookupAccessor(
+        packageName = "nfd",
+        className = "NFDLibrary",
+        moduleName = "nfd",
+        basename = "nfd",
+        versionRef = "NFD_VERSION"
+    )
 }

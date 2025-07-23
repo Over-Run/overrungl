@@ -808,9 +808,10 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
             }
         }
         sb.appendLine("        private Handles() {")
+        sb.appendLine("            var _lookup = $symbolLookup;")
         interpreter.functions.forEach { (entrypoint, func) ->
             if (func.body == null) {
-                sb.append("            PFN_$entrypoint = $symbolLookup.")
+                sb.append("            PFN_$entrypoint = _lookup.")
                 if (func.optional) {
                     sb.appendLine("""find("$entrypoint").orElse(MemorySegment.NULL);""")
                 } else {
@@ -821,14 +822,11 @@ class DefinitionFile(filename: String? = null, rawSourceString: String? = null) 
         sb.appendLine("        }")
         sb.appendLine(
             """
-                |        private static volatile Handles instance;
                 |        private static Handles get() {
-                |            if (instance == null) {
-                |                synchronized (Handles.class) {
-                |                    if (instance == null) { instance = new Handles(); }
-                |                }
+                |            final class Holder {
+                |                static final Handles instance = new Handles();
                 |            }
-                |            return instance;
+                |            return Holder.instance;
                 |        }
             """.trimMargin()
         )

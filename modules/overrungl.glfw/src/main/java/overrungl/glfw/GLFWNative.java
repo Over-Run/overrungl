@@ -143,40 +143,38 @@ public final class GLFWNative {
         /// The function address of `glfwGetOSMesaContext`.
         public final MemorySegment PFN_glfwGetOSMesaContext;
         private Handles() {
-            PFN_glfwGetWin32Adapter = GLFWInternal.lookup().find("glfwGetWin32Adapter").orElse(MemorySegment.NULL);
-            PFN_glfwGetWin32Monitor = GLFWInternal.lookup().find("glfwGetWin32Monitor").orElse(MemorySegment.NULL);
-            PFN_glfwGetWin32Window = GLFWInternal.lookup().find("glfwGetWin32Window").orElse(MemorySegment.NULL);
-            PFN_glfwGetWGLContext = GLFWInternal.lookup().find("glfwGetWGLContext").orElse(MemorySegment.NULL);
-            PFN_glfwGetCocoaMonitor = GLFWInternal.lookup().find("glfwGetCocoaMonitor").orElse(MemorySegment.NULL);
-            PFN_glfwGetCocoaWindow = GLFWInternal.lookup().find("glfwGetCocoaWindow").orElse(MemorySegment.NULL);
-            PFN_glfwGetCocoaView = GLFWInternal.lookup().find("glfwGetCocoaView").orElse(MemorySegment.NULL);
-            PFN_glfwGetNSGLContext = GLFWInternal.lookup().find("glfwGetNSGLContext").orElse(MemorySegment.NULL);
-            PFN_glfwGetX11Display = GLFWInternal.lookup().find("glfwGetX11Display").orElse(MemorySegment.NULL);
-            PFN_glfwGetX11Adapter = GLFWInternal.lookup().find("glfwGetX11Adapter").orElse(MemorySegment.NULL);
-            PFN_glfwGetX11Monitor = GLFWInternal.lookup().find("glfwGetX11Monitor").orElse(MemorySegment.NULL);
-            PFN_glfwGetX11Window = GLFWInternal.lookup().find("glfwGetX11Window").orElse(MemorySegment.NULL);
-            PFN_glfwSetX11SelectionString = GLFWInternal.lookup().find("glfwSetX11SelectionString").orElse(MemorySegment.NULL);
-            PFN_glfwGetX11SelectionString = GLFWInternal.lookup().find("glfwGetX11SelectionString").orElse(MemorySegment.NULL);
-            PFN_glfwGetGLXContext = GLFWInternal.lookup().find("glfwGetGLXContext").orElse(MemorySegment.NULL);
-            PFN_glfwGetGLXWindow = GLFWInternal.lookup().find("glfwGetGLXWindow").orElse(MemorySegment.NULL);
-            PFN_glfwGetWaylandDisplay = GLFWInternal.lookup().find("glfwGetWaylandDisplay").orElse(MemorySegment.NULL);
-            PFN_glfwGetWaylandMonitor = GLFWInternal.lookup().find("glfwGetWaylandMonitor").orElse(MemorySegment.NULL);
-            PFN_glfwGetWaylandWindow = GLFWInternal.lookup().find("glfwGetWaylandWindow").orElse(MemorySegment.NULL);
-            PFN_glfwGetEGLDisplay = GLFWInternal.lookup().find("glfwGetEGLDisplay").orElse(MemorySegment.NULL);
-            PFN_glfwGetEGLContext = GLFWInternal.lookup().find("glfwGetEGLContext").orElse(MemorySegment.NULL);
-            PFN_glfwGetEGLSurface = GLFWInternal.lookup().find("glfwGetEGLSurface").orElse(MemorySegment.NULL);
-            PFN_glfwGetOSMesaColorBuffer = GLFWInternal.lookup().find("glfwGetOSMesaColorBuffer").orElse(MemorySegment.NULL);
-            PFN_glfwGetOSMesaDepthBuffer = GLFWInternal.lookup().find("glfwGetOSMesaDepthBuffer").orElse(MemorySegment.NULL);
-            PFN_glfwGetOSMesaContext = GLFWInternal.lookup().find("glfwGetOSMesaContext").orElse(MemorySegment.NULL);
+            var _lookup = GLFWLibrary.lookup();
+            PFN_glfwGetWin32Adapter = _lookup.find("glfwGetWin32Adapter").orElse(MemorySegment.NULL);
+            PFN_glfwGetWin32Monitor = _lookup.find("glfwGetWin32Monitor").orElse(MemorySegment.NULL);
+            PFN_glfwGetWin32Window = _lookup.find("glfwGetWin32Window").orElse(MemorySegment.NULL);
+            PFN_glfwGetWGLContext = _lookup.find("glfwGetWGLContext").orElse(MemorySegment.NULL);
+            PFN_glfwGetCocoaMonitor = _lookup.find("glfwGetCocoaMonitor").orElse(MemorySegment.NULL);
+            PFN_glfwGetCocoaWindow = _lookup.find("glfwGetCocoaWindow").orElse(MemorySegment.NULL);
+            PFN_glfwGetCocoaView = _lookup.find("glfwGetCocoaView").orElse(MemorySegment.NULL);
+            PFN_glfwGetNSGLContext = _lookup.find("glfwGetNSGLContext").orElse(MemorySegment.NULL);
+            PFN_glfwGetX11Display = _lookup.find("glfwGetX11Display").orElse(MemorySegment.NULL);
+            PFN_glfwGetX11Adapter = _lookup.find("glfwGetX11Adapter").orElse(MemorySegment.NULL);
+            PFN_glfwGetX11Monitor = _lookup.find("glfwGetX11Monitor").orElse(MemorySegment.NULL);
+            PFN_glfwGetX11Window = _lookup.find("glfwGetX11Window").orElse(MemorySegment.NULL);
+            PFN_glfwSetX11SelectionString = _lookup.find("glfwSetX11SelectionString").orElse(MemorySegment.NULL);
+            PFN_glfwGetX11SelectionString = _lookup.find("glfwGetX11SelectionString").orElse(MemorySegment.NULL);
+            PFN_glfwGetGLXContext = _lookup.find("glfwGetGLXContext").orElse(MemorySegment.NULL);
+            PFN_glfwGetGLXWindow = _lookup.find("glfwGetGLXWindow").orElse(MemorySegment.NULL);
+            PFN_glfwGetWaylandDisplay = _lookup.find("glfwGetWaylandDisplay").orElse(MemorySegment.NULL);
+            PFN_glfwGetWaylandMonitor = _lookup.find("glfwGetWaylandMonitor").orElse(MemorySegment.NULL);
+            PFN_glfwGetWaylandWindow = _lookup.find("glfwGetWaylandWindow").orElse(MemorySegment.NULL);
+            PFN_glfwGetEGLDisplay = _lookup.find("glfwGetEGLDisplay").orElse(MemorySegment.NULL);
+            PFN_glfwGetEGLContext = _lookup.find("glfwGetEGLContext").orElse(MemorySegment.NULL);
+            PFN_glfwGetEGLSurface = _lookup.find("glfwGetEGLSurface").orElse(MemorySegment.NULL);
+            PFN_glfwGetOSMesaColorBuffer = _lookup.find("glfwGetOSMesaColorBuffer").orElse(MemorySegment.NULL);
+            PFN_glfwGetOSMesaDepthBuffer = _lookup.find("glfwGetOSMesaDepthBuffer").orElse(MemorySegment.NULL);
+            PFN_glfwGetOSMesaContext = _lookup.find("glfwGetOSMesaContext").orElse(MemorySegment.NULL);
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 

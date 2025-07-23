@@ -55,20 +55,18 @@ public final class STBEasyFont {
         /// The function address of `stb_easy_font_height`.
         public final MemorySegment PFN_stb_easy_font_height;
         private Handles() {
-            PFN_stb_easy_font_get_spacing = STBInternal.lookup().findOrThrow("stb_easy_font_get_spacing");
-            PFN_stb_easy_font_spacing = STBInternal.lookup().findOrThrow("stb_easy_font_spacing");
-            PFN_stb_easy_font_print = STBInternal.lookup().findOrThrow("stb_easy_font_print");
-            PFN_stb_easy_font_width = STBInternal.lookup().findOrThrow("stb_easy_font_width");
-            PFN_stb_easy_font_height = STBInternal.lookup().findOrThrow("stb_easy_font_height");
+            var _lookup = STBLibrary.lookup();
+            PFN_stb_easy_font_get_spacing = _lookup.findOrThrow("stb_easy_font_get_spacing");
+            PFN_stb_easy_font_spacing = _lookup.findOrThrow("stb_easy_font_spacing");
+            PFN_stb_easy_font_print = _lookup.findOrThrow("stb_easy_font_print");
+            PFN_stb_easy_font_width = _lookup.findOrThrow("stb_easy_font_width");
+            PFN_stb_easy_font_height = _lookup.findOrThrow("stb_easy_font_height");
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 

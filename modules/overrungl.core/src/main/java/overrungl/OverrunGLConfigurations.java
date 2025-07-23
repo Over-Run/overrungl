@@ -48,6 +48,7 @@ public final class OverrunGLConfigurations {
      * <p>
      * The default value is {@code null}.
      */
+    @Deprecated
     public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> GLFW_SYMBOL_LOOKUP = new Entry<>(() -> null);
     /**
      * The symbol lookup of NFD.
@@ -55,10 +56,12 @@ public final class OverrunGLConfigurations {
      * <p>
      * The default value is {@code null}.
      */
+    @Deprecated
     public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> NFD_SYMBOL_LOOKUP = new Entry<>(() -> null);
     /// The symbol lookup of OpenAL. The returned value must not be null.
     ///
     /// The default value is `null`.
+    @Deprecated
     public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> OPENAL_SYMBOL_LOOKUP = new Entry<>(() -> null);
     /**
      * The symbol lookup of stb.
@@ -66,10 +69,12 @@ public final class OverrunGLConfigurations {
      * <p>
      * The default value is {@code null}.
      */
+    @Deprecated
     public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> STB_SYMBOL_LOOKUP = new Entry<>(() -> null);
     /// The symbol lookup of Vulkan Memory Allocator. The returned value must not be null.
     ///
     /// The default value is `null`.
+    @Deprecated
     public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> VMA_SYMBOL_LOOKUP = new Entry<>(() -> null);
 
     private OverrunGLConfigurations() {
