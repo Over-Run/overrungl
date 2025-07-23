@@ -615,6 +615,7 @@ public final class VKCapabilitiesDevice {
     public final MemorySegment PFN_vkReleaseCapturedPipelineDataKHR;
     public final MemorySegment PFN_vkGetFramebufferTilePropertiesQCOM;
     public final MemorySegment PFN_vkGetDynamicRenderingTilePropertiesQCOM;
+    public final MemorySegment PFN_vkReleaseSwapchainImagesKHR;
     public final MemorySegment PFN_vkConvertCooperativeVectorMatrixNV;
     public final MemorySegment PFN_vkCmdConvertCooperativeVectorMatrixNV;
     public final MemorySegment PFN_vkSetLatencySleepModeNV;
@@ -1089,7 +1090,7 @@ public final class VKCapabilitiesDevice {
         PFN_vkGetImageSubresourceLayout2EXT = func.invoke(device, "vkGetImageSubresourceLayout2EXT", "vkGetImageSubresourceLayout2");
         PFN_vkMapMemory2KHR = func.invoke(device, "vkMapMemory2KHR", "vkMapMemory2");
         PFN_vkUnmapMemory2KHR = func.invoke(device, "vkUnmapMemory2KHR", "vkUnmapMemory2");
-        PFN_vkReleaseSwapchainImagesEXT = func.invoke(device, "vkReleaseSwapchainImagesEXT");
+        PFN_vkReleaseSwapchainImagesEXT = func.invoke(device, "vkReleaseSwapchainImagesEXT", "vkReleaseSwapchainImagesKHR");
         PFN_vkGetGeneratedCommandsMemoryRequirementsNV = func.invoke(device, "vkGetGeneratedCommandsMemoryRequirementsNV");
         PFN_vkCmdPreprocessGeneratedCommandsNV = func.invoke(device, "vkCmdPreprocessGeneratedCommandsNV");
         PFN_vkCmdExecuteGeneratedCommandsNV = func.invoke(device, "vkCmdExecuteGeneratedCommandsNV");
@@ -1259,6 +1260,7 @@ public final class VKCapabilitiesDevice {
         PFN_vkReleaseCapturedPipelineDataKHR = func.invoke(device, "vkReleaseCapturedPipelineDataKHR");
         PFN_vkGetFramebufferTilePropertiesQCOM = func.invoke(device, "vkGetFramebufferTilePropertiesQCOM");
         PFN_vkGetDynamicRenderingTilePropertiesQCOM = func.invoke(device, "vkGetDynamicRenderingTilePropertiesQCOM");
+        PFN_vkReleaseSwapchainImagesKHR = func.invoke(device, "vkReleaseSwapchainImagesKHR", "vkReleaseSwapchainImagesEXT");
         PFN_vkConvertCooperativeVectorMatrixNV = func.invoke(device, "vkConvertCooperativeVectorMatrixNV");
         PFN_vkCmdConvertCooperativeVectorMatrixNV = func.invoke(device, "vkCmdConvertCooperativeVectorMatrixNV");
         PFN_vkSetLatencySleepModeNV = func.invoke(device, "vkSetLatencySleepModeNV");

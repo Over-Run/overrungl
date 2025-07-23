@@ -28,8 +28,8 @@ import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.io.path.Path
 import kotlin.io.path.createParentDirectories
 
-// vk.xml: 2025-06-29
-// video.xml: 2025-06-29
+// vk.xml: 2025-07-23
+// video.xml: 2025-07-23
 
 const val vulkanPackage = "overrungl.vulkan"
 
@@ -288,6 +288,10 @@ fun main() {
     val defineVkVersion = mutableMapOf<String, String>()
     val addedStructPackages = mutableSetOf<String>()
     val typeNodeList = (root.getElementsByTagName("types").item(0) as Element).getElementsByTagName("type")
+    val appendedStructContent = mutableMapOf<String, String>() // struct content without braces
+    val aliasedStruct = mutableMapOf<String, String>()
+    val aliasedStructPackageName = mutableMapOf<String, String>()
+    val aliasedStructCategory = mutableMapOf<String, String>()
     for (i in 0 until typeNodeList.length) {
         val typeNode = typeNodeList.item(i) as Element
         when (val category = typeNode.getAttribute("category")) {
@@ -351,21 +355,23 @@ fun main() {
             }
 
             "struct", "union" -> {
+                val structContent = StringBuilder()
                 val name = typeNode.getAttribute("name")
+                val vendor = vendors.find { name.endsWith(it) }
+                val packageName: String
+                if (vendor != null) {
+                    val lowercase = vendor.lowercase()
+                    packageName = "$vulkanPackage.$lowercase.$category"
+                } else {
+                    packageName = "$vulkanPackage.$category"
+                }
+                addedStructPackages.add(packageName)
                 if (typeNode.hasAttribute("alias")) {
                     val alias = typeNode.getAttribute("alias")
-                    structBuilder.appendLine("using $name = $alias;")
+                    aliasedStruct[name] = alias
+                    aliasedStructPackageName[name] = packageName
+                    aliasedStructCategory[name] = category
                 } else {
-                    val vendor = vendors.find { name.endsWith(it) }
-                    val packageName: String
-                    if (vendor != null) {
-                        val lowercase = vendor.lowercase()
-                        packageName = "$vulkanPackage.$lowercase.$category"
-                    } else {
-                        packageName = "$vulkanPackage.$category"
-                    }
-                    addedStructPackages.add(packageName)
-                    structBuilder.appendLine("""using $name = $category $name { package "$packageName";""")
                     val memberNodeList = typeNode.getElementsByTagName("member")
                     for (i1 in 0 until memberNodeList.length) {
                         val memberNode = memberNodeList.item(i1) as Element
@@ -373,18 +379,22 @@ fun main() {
                             continue
                         }
                         val childNodeList = memberNode.childNodes
-                        structBuilder.append("  ")
+                        structContent.append("  ")
                         for (i2 in 0 until childNodeList.length) {
                             when (val node = childNodeList.item(i2)) {
-                                is Text -> structBuilder.append(node.wholeText)
+                                is Text -> structContent.append(node.wholeText)
                                 is Element -> if (node.tagName != "comment") {
-                                    structBuilder.append(node.textContent)
+                                    structContent.append(node.textContent)
                                 }
                             }
                         }
-                        structBuilder.appendLine(";")
+                        structContent.appendLine(";")
                     }
+
+                    structBuilder.appendLine("""using $name = $category $name { package "$packageName";""")
+                    structBuilder.append(structContent)
                     structBuilder.appendLine("};")
+                    appendedStructContent[name] = structContent.toString()
                 }
             }
 
@@ -431,6 +441,13 @@ fun main() {
 
             else -> error(category)
         }
+    }
+
+    // aliased struct
+    aliasedStruct.forEach { (name, alias) ->
+        structBuilder.appendLine("""using $name = ${aliasedStructCategory[name]} $name { package "${aliasedStructPackageName[name]}";""")
+        structBuilder.append(appendedStructContent[alias] ?: throw IllegalStateException("$name -> $alias"))
+        structBuilder.appendLine("};")
     }
 
     // enums

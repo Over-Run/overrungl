@@ -30,9 +30,9 @@ import overrungl.util.*;
 /// struct VkSurfacePresentScalingCapabilitiesEXT {
 ///     (int) VkStructureType sType;
 ///     void* pNext;
-///     ((uint32_t) VkFlags) VkPresentScalingFlagsEXT supportedPresentScaling;
-///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT supportedPresentGravityX;
-///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT supportedPresentGravityY;
+///     ((uint32_t) VkFlags) VkPresentScalingFlagsKHR supportedPresentScaling;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsKHR supportedPresentGravityX;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsKHR supportedPresentGravityY;
 ///     (struct VkExtent2D) VkExtent2D minScaledImageExtent;
 ///     (struct VkExtent2D) VkExtent2D maxScaledImageExtent;
 /// };

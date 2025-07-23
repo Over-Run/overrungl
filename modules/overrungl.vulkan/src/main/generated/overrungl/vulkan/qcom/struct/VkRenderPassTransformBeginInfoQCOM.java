@@ -29,7 +29,7 @@ import overrungl.util.*;
 /// ```
 /// struct VkRenderPassTransformBeginInfoQCOM {
 ///     (int) VkStructureType sType;
-///     void* pNext;
+///     const void* pNext;
 ///     (int) VkSurfaceTransformFlagBitsKHR transform;
 /// };
 /// ```

@@ -105,7 +105,6 @@ internal class Lexer(private val source: String) {
                 while (!isAtEnd() && peek() != '\n'.code) {
                     advance()
                 }
-                line++
                 addToken(PREPROCESSOR)
             }
 

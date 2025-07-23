@@ -641,6 +641,7 @@ public final class VK10 {
     public static final int VK_MAX_EXTENSION_NAME_SIZE = 256;
     public static final int VK_MAX_DESCRIPTION_SIZE = 256;
     public static final int VK_MAX_MEMORY_HEAPS = 16;
+    public static final int VK_ERROR_VALIDATION_FAILED = -1000011001;
     public static final class Handles {
         public static final MethodHandle MH_vkCreateInstance = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public static final MethodHandle MH_vkDestroyInstance = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
