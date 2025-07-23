@@ -18,10 +18,9 @@ package overrungl.internal;
 
 import io.github.overrun.platform.Architecture;
 import io.github.overrun.platform.Platform;
-import overrungl.OverrunGLConfigurations;
 import overrungl.OverrunGL;
+import overrungl.OverrunGLConfigurations;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.foreign.*;
 import java.lang.invoke.MethodHandle;
@@ -84,61 +83,58 @@ public final class RuntimeHelper {
      */
     public static SymbolLookup load(String module, String basename, String version)
         throws IllegalStateException {
+        boolean debug = OverrunGLConfigurations.DEBUG.get();
         final Platform os = Platform.current();
         final var suffix = os.sharedLibrarySuffix();
         final var path = os.sharedLibraryName(basename);
-        Path uri;
+
         // 1. Load from natives directory
         var localFile = Path.of(System.getProperty("overrungl.natives", "."), path);
         if (Files.exists(localFile)) {
-            uri = localFile;
-        } else {
-            // 2. Load from java.library.path
-            boolean found = false;
-            Path jlpPath = null;
-            for (String s : System.getProperty("java.library.path").split(File.pathSeparator)) {
-                var path1 = Path.of(s, path);
-                if (Files.exists(path1)) {
-                    jlpPath = path1;
-                    found = true;
-                    break;
-                }
+            if (debug) {
+                OverrunGL.apiLog("[OverrunGL] Loading native library from overrungl.natives: " + localFile);
             }
-            if (found) {
-                uri = jlpPath;
-            } else {
-                // 3. Load from classpath
-                try {
-                    if (!Files.exists(tmpdir)) {
-                        // Create directory
-                        Files.createDirectories(tmpdir);
-                    } else if (!Files.isDirectory(tmpdir)) {
-                        // Remove
-                        Files.delete(tmpdir);
-                        // Create directory
-                        Files.createDirectories(tmpdir);
-                    }
-                } catch (IOException e) {
-                    throw new IllegalStateException("Couldn't create directory: " + tmpdir + "; try setting -Doverrungl.natives or -Djava.library.path to a valid path", e);
-                }
-                var libFile = tmpdir.resolve(basename + "-" + version + suffix);
-                if (!Files.exists(libFile)) {
-                    // Extract
-                    final String fromPath = "overrungl." + module + "/" + os.familyName() + "-" + Architecture.current() + "/" + path;
-                    try (var is = ClassLoader.getSystemResourceAsStream(fromPath)) {
-                        Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
-                    } catch (Exception e) {
-                        throw new IllegalStateException("Couldn't load file: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives or -Djava.library.path to a valid path", e);
-                    }
-                }
-                uri = libFile;
+            return SymbolLookup.libraryLookup(localFile, Arena.global());
+        }
+
+        // 2. Load from java.library.path with System::loadLibrary
+        try {
+            System.loadLibrary(basename);
+            if (debug) {
+                OverrunGL.apiLog("[OverrunGL] Loading native library from java.library.path: " + System.mapLibraryName(basename));
+            }
+            return SymbolLookup.loaderLookup();
+        } catch (UnsatisfiedLinkError _) {
+        }
+
+        // 3. Load from classpath (copy)
+        try {
+            if (!Files.exists(tmpdir)) {
+                // Create directory
+                Files.createDirectories(tmpdir);
+            } else if (!Files.isDirectory(tmpdir)) {
+                // Remove
+                Files.delete(tmpdir);
+                // Create directory
+                Files.createDirectories(tmpdir);
+            }
+        } catch (IOException e) {
+            throw new IllegalStateException("Couldn't create temporary directory to store native libraries: " + tmpdir + "; try setting -Doverrungl.natives or -Djava.library.path to a valid path", e);
+        }
+        var libFile = tmpdir.resolve(basename + "-" + version + suffix);
+        if (!Files.exists(libFile)) {
+            // Extract
+            final String fromPath = "overrungl." + module + "/" + os.familyName() + "-" + Architecture.current() + "/" + path;
+            try (var is = ClassLoader.getSystemResourceAsStream(fromPath)) {
+                Files.copy(Objects.requireNonNull(is, "File not found in classpath: " + fromPath), libFile);
+            } catch (Exception e) {
+                throw new IllegalStateException("Couldn't load native library from: " + libFile.toAbsolutePath().normalize() + " or " + localFile.toAbsolutePath().normalize() + "; try setting -Doverrungl.natives or -Djava.library.path to a valid path", e);
             }
         }
-        if (OverrunGLConfigurations.DEBUG.get()) {
-            OverrunGL.apiLog("[OverrunGL] Loading native library from: " + uri);
+        if (debug) {
+            OverrunGL.apiLog("[OverrunGL] Loading native library from classpath: " + libFile);
         }
-        // Load the library by the path with the global arena
-        return SymbolLookup.libraryLookup(uri, Arena.global());
+        return SymbolLookup.libraryLookup(libFile, Arena.global());
     }
 
     /// Creates a method handle without binding to a specific address.
