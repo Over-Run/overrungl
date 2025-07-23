@@ -164,37 +164,35 @@ public final class STBImageResize2 {
         /// The function address of `stbir_resize_extended_split`.
         public final MemorySegment PFN_stbir_resize_extended_split;
         private Handles() {
-            PFN_stbir_resize_uint8_srgb = STBInternal.lookup().findOrThrow("stbir_resize_uint8_srgb");
-            PFN_stbir_resize_uint8_linear = STBInternal.lookup().findOrThrow("stbir_resize_uint8_linear");
-            PFN_stbir_resize_float_linear = STBInternal.lookup().findOrThrow("stbir_resize_float_linear");
-            PFN_stbir_resize = STBInternal.lookup().findOrThrow("stbir_resize");
-            PFN_stbir_resize_init = STBInternal.lookup().findOrThrow("stbir_resize_init");
-            PFN_stbir_set_datatypes = STBInternal.lookup().findOrThrow("stbir_set_datatypes");
-            PFN_stbir_set_pixel_callbacks = STBInternal.lookup().findOrThrow("stbir_set_pixel_callbacks");
-            PFN_stbir_set_user_data = STBInternal.lookup().findOrThrow("stbir_set_user_data");
-            PFN_stbir_set_buffer_ptrs = STBInternal.lookup().findOrThrow("stbir_set_buffer_ptrs");
-            PFN_stbir_set_pixel_layouts = STBInternal.lookup().findOrThrow("stbir_set_pixel_layouts");
-            PFN_stbir_set_edgemodes = STBInternal.lookup().findOrThrow("stbir_set_edgemodes");
-            PFN_stbir_set_filters = STBInternal.lookup().findOrThrow("stbir_set_filters");
-            PFN_stbir_set_filter_callbacks = STBInternal.lookup().findOrThrow("stbir_set_filter_callbacks");
-            PFN_stbir_set_pixel_subrect = STBInternal.lookup().findOrThrow("stbir_set_pixel_subrect");
-            PFN_stbir_set_input_subrect = STBInternal.lookup().findOrThrow("stbir_set_input_subrect");
-            PFN_stbir_set_output_pixel_subrect = STBInternal.lookup().findOrThrow("stbir_set_output_pixel_subrect");
-            PFN_stbir_set_non_pm_alpha_speed_over_quality = STBInternal.lookup().findOrThrow("stbir_set_non_pm_alpha_speed_over_quality");
-            PFN_stbir_build_samplers = STBInternal.lookup().findOrThrow("stbir_build_samplers");
-            PFN_stbir_free_samplers = STBInternal.lookup().findOrThrow("stbir_free_samplers");
-            PFN_stbir_resize_extended = STBInternal.lookup().findOrThrow("stbir_resize_extended");
-            PFN_stbir_build_samplers_with_splits = STBInternal.lookup().findOrThrow("stbir_build_samplers_with_splits");
-            PFN_stbir_resize_extended_split = STBInternal.lookup().findOrThrow("stbir_resize_extended_split");
+            var _lookup = STBLibrary.lookup();
+            PFN_stbir_resize_uint8_srgb = _lookup.findOrThrow("stbir_resize_uint8_srgb");
+            PFN_stbir_resize_uint8_linear = _lookup.findOrThrow("stbir_resize_uint8_linear");
+            PFN_stbir_resize_float_linear = _lookup.findOrThrow("stbir_resize_float_linear");
+            PFN_stbir_resize = _lookup.findOrThrow("stbir_resize");
+            PFN_stbir_resize_init = _lookup.findOrThrow("stbir_resize_init");
+            PFN_stbir_set_datatypes = _lookup.findOrThrow("stbir_set_datatypes");
+            PFN_stbir_set_pixel_callbacks = _lookup.findOrThrow("stbir_set_pixel_callbacks");
+            PFN_stbir_set_user_data = _lookup.findOrThrow("stbir_set_user_data");
+            PFN_stbir_set_buffer_ptrs = _lookup.findOrThrow("stbir_set_buffer_ptrs");
+            PFN_stbir_set_pixel_layouts = _lookup.findOrThrow("stbir_set_pixel_layouts");
+            PFN_stbir_set_edgemodes = _lookup.findOrThrow("stbir_set_edgemodes");
+            PFN_stbir_set_filters = _lookup.findOrThrow("stbir_set_filters");
+            PFN_stbir_set_filter_callbacks = _lookup.findOrThrow("stbir_set_filter_callbacks");
+            PFN_stbir_set_pixel_subrect = _lookup.findOrThrow("stbir_set_pixel_subrect");
+            PFN_stbir_set_input_subrect = _lookup.findOrThrow("stbir_set_input_subrect");
+            PFN_stbir_set_output_pixel_subrect = _lookup.findOrThrow("stbir_set_output_pixel_subrect");
+            PFN_stbir_set_non_pm_alpha_speed_over_quality = _lookup.findOrThrow("stbir_set_non_pm_alpha_speed_over_quality");
+            PFN_stbir_build_samplers = _lookup.findOrThrow("stbir_build_samplers");
+            PFN_stbir_free_samplers = _lookup.findOrThrow("stbir_free_samplers");
+            PFN_stbir_resize_extended = _lookup.findOrThrow("stbir_resize_extended");
+            PFN_stbir_build_samplers_with_splits = _lookup.findOrThrow("stbir_build_samplers_with_splits");
+            PFN_stbir_resize_extended_split = _lookup.findOrThrow("stbir_resize_extended_split");
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 

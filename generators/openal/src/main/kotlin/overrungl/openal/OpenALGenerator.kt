@@ -19,10 +19,11 @@ package overrungl.openal
 import overrungl.gen.file.DefinitionFile
 import overrungl.gen.file.char_boolean
 import overrungl.gen.file.registerDefType
+import overrungl.gen.generateLookupAccessor
 import overrungl.gen.writeNativeImageRegistration
 
 const val alPackage = "overrungl.openal"
-const val alLookup = "ALInternal.lookup()"
+const val alLookup = "OpenALLibrary.lookup()"
 
 fun main() {
     registerDefType("ALboolean", char_boolean.copy(originalName = "ALboolean"))
@@ -36,4 +37,11 @@ fun main() {
     alext.compile(alPackage, "ALExt", alLookup)
 
     writeNativeImageRegistration(alPackage)
+    generateLookupAccessor(
+        packageName = "openal",
+        className = "OpenALLibrary",
+        moduleName = "openal",
+        basename = "openal",
+        versionRef = "OPENAL_VERSION"
+    )
 }

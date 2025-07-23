@@ -19,10 +19,11 @@ package overrungl.stb
 import overrungl.gen.file.DefinitionFile
 import overrungl.gen.file.int_boolean
 import overrungl.gen.file.registerDefType
+import overrungl.gen.generateLookupAccessor
 import overrungl.gen.writeNativeImageRegistration
 
 const val stbPackage = "overrungl.stb"
-const val stbLookup = "STBInternal.lookup()"
+const val stbLookup = "STBLibrary.lookup()"
 
 fun main() {
     registerDefType("STBbool", int_boolean)
@@ -36,4 +37,11 @@ fun main() {
     DefinitionFile("stb_vorbis.gen").compile(stbPackage, "STBVorbis", stbLookup)
 
     writeNativeImageRegistration(stbPackage)
+    generateLookupAccessor(
+        packageName = "stb",
+        className = "STBLibrary",
+        moduleName = "stb",
+        basename = "stb",
+        versionRef = "STB_VERSION"
+    )
 }

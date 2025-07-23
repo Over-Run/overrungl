@@ -17,15 +17,11 @@
 package overrungl.nfd;
 
 import io.github.overrun.platform.Platform;
-import overrungl.OverrunGLConfigurations;
-import overrungl.OverrunGL;
-import overrungl.internal.RuntimeHelper;
 import overrungl.util.CanonicalTypes;
 
 import java.lang.foreign.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.util.function.Supplier;
 
 /**
  * internal
@@ -34,8 +30,6 @@ import java.util.function.Supplier;
  * @since 0.1.0
  */
 final class NFDInternal {
-    private static volatile SymbolLookup lookup;
-
     static final Platform os = Platform.current();
     static final boolean isOsWin = os instanceof Platform.Windows;
     static final Charset nfdCharset = isOsWin ? StandardCharsets.UTF_16LE : StandardCharsets.UTF_8;
@@ -45,18 +39,5 @@ final class NFDInternal {
         : ValueLayout.JAVA_INT;
 
     private NFDInternal() {
-    }
-
-    static SymbolLookup lookup() {
-        if (lookup == null) {
-            synchronized (NFDInternal.class) {
-                if (lookup == null) {
-                    final Supplier<SymbolLookup> lib = () -> RuntimeHelper.load("nfd", "nfd", OverrunGL.NFD_VERSION);
-                    final var function = OverrunGLConfigurations.NFD_SYMBOL_LOOKUP.get();
-                    lookup = function != null ? function.apply(lib) : lib.get();
-                }
-            }
-        }
-        return lookup;
     }
 }

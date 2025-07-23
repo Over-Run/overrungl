@@ -212,58 +212,56 @@ public final class STBImage {
         /// The function address of `stbi_zlib_decode_noheader_buffer`.
         public final MemorySegment PFN_stbi_zlib_decode_noheader_buffer;
         private Handles() {
-            PFN_stbi_load_from_memory = STBInternal.lookup().findOrThrow("stbi_load_from_memory");
-            PFN_stbi_load_from_callbacks = STBInternal.lookup().findOrThrow("stbi_load_from_callbacks");
-            PFN_stbi_load = STBInternal.lookup().findOrThrow("stbi_load");
-            PFN_stbi_load_from_file = STBInternal.lookup().findOrThrow("stbi_load_from_file");
-            PFN_stbi_load_gif_from_memory = STBInternal.lookup().findOrThrow("stbi_load_gif_from_memory");
-            PFN_stbi_load_16_from_memory = STBInternal.lookup().findOrThrow("stbi_load_16_from_memory");
-            PFN_stbi_load_16_from_callbacks = STBInternal.lookup().findOrThrow("stbi_load_16_from_callbacks");
-            PFN_stbi_load_16 = STBInternal.lookup().findOrThrow("stbi_load_16");
-            PFN_stbi_load_from_file_16 = STBInternal.lookup().findOrThrow("stbi_load_from_file_16");
-            PFN_stbi_loadf_from_memory = STBInternal.lookup().findOrThrow("stbi_loadf_from_memory");
-            PFN_stbi_loadf_from_callbacks = STBInternal.lookup().findOrThrow("stbi_loadf_from_callbacks");
-            PFN_stbi_loadf = STBInternal.lookup().findOrThrow("stbi_loadf");
-            PFN_stbi_loadf_from_file = STBInternal.lookup().findOrThrow("stbi_loadf_from_file");
-            PFN_stbi_hdr_to_ldr_gamma = STBInternal.lookup().findOrThrow("stbi_hdr_to_ldr_gamma");
-            PFN_stbi_hdr_to_ldr_scale = STBInternal.lookup().findOrThrow("stbi_hdr_to_ldr_scale");
-            PFN_stbi_ldr_to_hdr_gamma = STBInternal.lookup().findOrThrow("stbi_ldr_to_hdr_gamma");
-            PFN_stbi_ldr_to_hdr_scale = STBInternal.lookup().findOrThrow("stbi_ldr_to_hdr_scale");
-            PFN_stbi_is_hdr_from_callbacks = STBInternal.lookup().findOrThrow("stbi_is_hdr_from_callbacks");
-            PFN_stbi_is_hdr_from_memory = STBInternal.lookup().findOrThrow("stbi_is_hdr_from_memory");
-            PFN_stbi_is_hdr = STBInternal.lookup().findOrThrow("stbi_is_hdr");
-            PFN_stbi_is_hdr_from_file = STBInternal.lookup().findOrThrow("stbi_is_hdr_from_file");
-            PFN_stbi_failure_reason = STBInternal.lookup().findOrThrow("stbi_failure_reason");
-            PFN_stbi_image_free = STBInternal.lookup().findOrThrow("stbi_image_free");
-            PFN_stbi_info_from_memory = STBInternal.lookup().findOrThrow("stbi_info_from_memory");
-            PFN_stbi_info_from_callbacks = STBInternal.lookup().findOrThrow("stbi_info_from_callbacks");
-            PFN_stbi_is_16_bit_from_memory = STBInternal.lookup().findOrThrow("stbi_is_16_bit_from_memory");
-            PFN_stbi_is_16_bit_from_callbacks = STBInternal.lookup().findOrThrow("stbi_is_16_bit_from_callbacks");
-            PFN_stbi_info = STBInternal.lookup().findOrThrow("stbi_info");
-            PFN_stbi_info_from_file = STBInternal.lookup().findOrThrow("stbi_info_from_file");
-            PFN_stbi_is_16_bit = STBInternal.lookup().findOrThrow("stbi_is_16_bit");
-            PFN_stbi_is_16_bit_from_file = STBInternal.lookup().findOrThrow("stbi_is_16_bit_from_file");
-            PFN_stbi_set_unpremultiply_on_load = STBInternal.lookup().findOrThrow("stbi_set_unpremultiply_on_load");
-            PFN_stbi_convert_iphone_png_to_rgb = STBInternal.lookup().findOrThrow("stbi_convert_iphone_png_to_rgb");
-            PFN_stbi_set_flip_vertically_on_load = STBInternal.lookup().findOrThrow("stbi_set_flip_vertically_on_load");
-            PFN_stbi_set_unpremultiply_on_load_thread = STBInternal.lookup().findOrThrow("stbi_set_unpremultiply_on_load_thread");
-            PFN_stbi_convert_iphone_png_to_rgb_thread = STBInternal.lookup().findOrThrow("stbi_convert_iphone_png_to_rgb_thread");
-            PFN_stbi_set_flip_vertically_on_load_thread = STBInternal.lookup().findOrThrow("stbi_set_flip_vertically_on_load_thread");
-            PFN_stbi_zlib_decode_malloc_guesssize = STBInternal.lookup().findOrThrow("stbi_zlib_decode_malloc_guesssize");
-            PFN_stbi_zlib_decode_malloc_guesssize_headerflag = STBInternal.lookup().findOrThrow("stbi_zlib_decode_malloc_guesssize_headerflag");
-            PFN_stbi_zlib_decode_malloc = STBInternal.lookup().findOrThrow("stbi_zlib_decode_malloc");
-            PFN_stbi_zlib_decode_buffer = STBInternal.lookup().findOrThrow("stbi_zlib_decode_buffer");
-            PFN_stbi_zlib_decode_noheader_malloc = STBInternal.lookup().findOrThrow("stbi_zlib_decode_noheader_malloc");
-            PFN_stbi_zlib_decode_noheader_buffer = STBInternal.lookup().findOrThrow("stbi_zlib_decode_noheader_buffer");
+            var _lookup = STBLibrary.lookup();
+            PFN_stbi_load_from_memory = _lookup.findOrThrow("stbi_load_from_memory");
+            PFN_stbi_load_from_callbacks = _lookup.findOrThrow("stbi_load_from_callbacks");
+            PFN_stbi_load = _lookup.findOrThrow("stbi_load");
+            PFN_stbi_load_from_file = _lookup.findOrThrow("stbi_load_from_file");
+            PFN_stbi_load_gif_from_memory = _lookup.findOrThrow("stbi_load_gif_from_memory");
+            PFN_stbi_load_16_from_memory = _lookup.findOrThrow("stbi_load_16_from_memory");
+            PFN_stbi_load_16_from_callbacks = _lookup.findOrThrow("stbi_load_16_from_callbacks");
+            PFN_stbi_load_16 = _lookup.findOrThrow("stbi_load_16");
+            PFN_stbi_load_from_file_16 = _lookup.findOrThrow("stbi_load_from_file_16");
+            PFN_stbi_loadf_from_memory = _lookup.findOrThrow("stbi_loadf_from_memory");
+            PFN_stbi_loadf_from_callbacks = _lookup.findOrThrow("stbi_loadf_from_callbacks");
+            PFN_stbi_loadf = _lookup.findOrThrow("stbi_loadf");
+            PFN_stbi_loadf_from_file = _lookup.findOrThrow("stbi_loadf_from_file");
+            PFN_stbi_hdr_to_ldr_gamma = _lookup.findOrThrow("stbi_hdr_to_ldr_gamma");
+            PFN_stbi_hdr_to_ldr_scale = _lookup.findOrThrow("stbi_hdr_to_ldr_scale");
+            PFN_stbi_ldr_to_hdr_gamma = _lookup.findOrThrow("stbi_ldr_to_hdr_gamma");
+            PFN_stbi_ldr_to_hdr_scale = _lookup.findOrThrow("stbi_ldr_to_hdr_scale");
+            PFN_stbi_is_hdr_from_callbacks = _lookup.findOrThrow("stbi_is_hdr_from_callbacks");
+            PFN_stbi_is_hdr_from_memory = _lookup.findOrThrow("stbi_is_hdr_from_memory");
+            PFN_stbi_is_hdr = _lookup.findOrThrow("stbi_is_hdr");
+            PFN_stbi_is_hdr_from_file = _lookup.findOrThrow("stbi_is_hdr_from_file");
+            PFN_stbi_failure_reason = _lookup.findOrThrow("stbi_failure_reason");
+            PFN_stbi_image_free = _lookup.findOrThrow("stbi_image_free");
+            PFN_stbi_info_from_memory = _lookup.findOrThrow("stbi_info_from_memory");
+            PFN_stbi_info_from_callbacks = _lookup.findOrThrow("stbi_info_from_callbacks");
+            PFN_stbi_is_16_bit_from_memory = _lookup.findOrThrow("stbi_is_16_bit_from_memory");
+            PFN_stbi_is_16_bit_from_callbacks = _lookup.findOrThrow("stbi_is_16_bit_from_callbacks");
+            PFN_stbi_info = _lookup.findOrThrow("stbi_info");
+            PFN_stbi_info_from_file = _lookup.findOrThrow("stbi_info_from_file");
+            PFN_stbi_is_16_bit = _lookup.findOrThrow("stbi_is_16_bit");
+            PFN_stbi_is_16_bit_from_file = _lookup.findOrThrow("stbi_is_16_bit_from_file");
+            PFN_stbi_set_unpremultiply_on_load = _lookup.findOrThrow("stbi_set_unpremultiply_on_load");
+            PFN_stbi_convert_iphone_png_to_rgb = _lookup.findOrThrow("stbi_convert_iphone_png_to_rgb");
+            PFN_stbi_set_flip_vertically_on_load = _lookup.findOrThrow("stbi_set_flip_vertically_on_load");
+            PFN_stbi_set_unpremultiply_on_load_thread = _lookup.findOrThrow("stbi_set_unpremultiply_on_load_thread");
+            PFN_stbi_convert_iphone_png_to_rgb_thread = _lookup.findOrThrow("stbi_convert_iphone_png_to_rgb_thread");
+            PFN_stbi_set_flip_vertically_on_load_thread = _lookup.findOrThrow("stbi_set_flip_vertically_on_load_thread");
+            PFN_stbi_zlib_decode_malloc_guesssize = _lookup.findOrThrow("stbi_zlib_decode_malloc_guesssize");
+            PFN_stbi_zlib_decode_malloc_guesssize_headerflag = _lookup.findOrThrow("stbi_zlib_decode_malloc_guesssize_headerflag");
+            PFN_stbi_zlib_decode_malloc = _lookup.findOrThrow("stbi_zlib_decode_malloc");
+            PFN_stbi_zlib_decode_buffer = _lookup.findOrThrow("stbi_zlib_decode_buffer");
+            PFN_stbi_zlib_decode_noheader_malloc = _lookup.findOrThrow("stbi_zlib_decode_noheader_malloc");
+            PFN_stbi_zlib_decode_noheader_buffer = _lookup.findOrThrow("stbi_zlib_decode_noheader_buffer");
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 

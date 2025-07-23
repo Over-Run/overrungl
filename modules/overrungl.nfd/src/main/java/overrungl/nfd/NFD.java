@@ -142,37 +142,35 @@ public final class NFD {
         /// The function address of `NFD_PathSet_Free`.
         public final MemorySegment PFN_NFD_PathSet_Free;
         private Handles() {
-            PFN_NFD_FreePathN = NFDInternal.lookup().findOrThrow("NFD_FreePathN");
-            PFN_NFD_Init = NFDInternal.lookup().findOrThrow("NFD_Init");
-            PFN_NFD_Quit = NFDInternal.lookup().findOrThrow("NFD_Quit");
-            PFN_NFD_OpenDialogN = NFDInternal.lookup().findOrThrow("NFD_OpenDialogN");
-            PFN_NFD_OpenDialogN_With_Impl = NFDInternal.lookup().findOrThrow("NFD_OpenDialogN_With_Impl");
-            PFN_NFD_OpenDialogMultipleN = NFDInternal.lookup().findOrThrow("NFD_OpenDialogMultipleN");
-            PFN_NFD_OpenDialogMultipleN_With_Impl = NFDInternal.lookup().findOrThrow("NFD_OpenDialogMultipleN_With_Impl");
-            PFN_NFD_SaveDialogN = NFDInternal.lookup().findOrThrow("NFD_SaveDialogN");
-            PFN_NFD_SaveDialogN_With_Impl = NFDInternal.lookup().findOrThrow("NFD_SaveDialogN_With_Impl");
-            PFN_NFD_PickFolderN = NFDInternal.lookup().findOrThrow("NFD_PickFolderN");
-            PFN_NFD_PickFolderN_With_Impl = NFDInternal.lookup().findOrThrow("NFD_PickFolderN_With_Impl");
-            PFN_NFD_PickFolderMultipleN = NFDInternal.lookup().findOrThrow("NFD_PickFolderMultipleN");
-            PFN_NFD_PickFolderMultipleN_With_Impl = NFDInternal.lookup().findOrThrow("NFD_PickFolderMultipleN_With_Impl");
-            PFN_NFD_GetError = NFDInternal.lookup().findOrThrow("NFD_GetError");
-            PFN_NFD_ClearError = NFDInternal.lookup().findOrThrow("NFD_ClearError");
-            PFN_NFD_PathSet_GetCount = NFDInternal.lookup().findOrThrow("NFD_PathSet_GetCount");
-            PFN_NFD_PathSet_GetPathN = NFDInternal.lookup().findOrThrow("NFD_PathSet_GetPathN");
-            PFN_NFD_PathSet_FreePathN = NFDInternal.lookup().findOrThrow("NFD_PathSet_FreePathN");
-            PFN_NFD_PathSet_GetEnum = NFDInternal.lookup().findOrThrow("NFD_PathSet_GetEnum");
-            PFN_NFD_PathSet_FreeEnum = NFDInternal.lookup().findOrThrow("NFD_PathSet_FreeEnum");
-            PFN_NFD_PathSet_EnumNextN = NFDInternal.lookup().findOrThrow("NFD_PathSet_EnumNextN");
-            PFN_NFD_PathSet_Free = NFDInternal.lookup().findOrThrow("NFD_PathSet_Free");
+            var _lookup = NFDLibrary.lookup();
+            PFN_NFD_FreePathN = _lookup.findOrThrow("NFD_FreePathN");
+            PFN_NFD_Init = _lookup.findOrThrow("NFD_Init");
+            PFN_NFD_Quit = _lookup.findOrThrow("NFD_Quit");
+            PFN_NFD_OpenDialogN = _lookup.findOrThrow("NFD_OpenDialogN");
+            PFN_NFD_OpenDialogN_With_Impl = _lookup.findOrThrow("NFD_OpenDialogN_With_Impl");
+            PFN_NFD_OpenDialogMultipleN = _lookup.findOrThrow("NFD_OpenDialogMultipleN");
+            PFN_NFD_OpenDialogMultipleN_With_Impl = _lookup.findOrThrow("NFD_OpenDialogMultipleN_With_Impl");
+            PFN_NFD_SaveDialogN = _lookup.findOrThrow("NFD_SaveDialogN");
+            PFN_NFD_SaveDialogN_With_Impl = _lookup.findOrThrow("NFD_SaveDialogN_With_Impl");
+            PFN_NFD_PickFolderN = _lookup.findOrThrow("NFD_PickFolderN");
+            PFN_NFD_PickFolderN_With_Impl = _lookup.findOrThrow("NFD_PickFolderN_With_Impl");
+            PFN_NFD_PickFolderMultipleN = _lookup.findOrThrow("NFD_PickFolderMultipleN");
+            PFN_NFD_PickFolderMultipleN_With_Impl = _lookup.findOrThrow("NFD_PickFolderMultipleN_With_Impl");
+            PFN_NFD_GetError = _lookup.findOrThrow("NFD_GetError");
+            PFN_NFD_ClearError = _lookup.findOrThrow("NFD_ClearError");
+            PFN_NFD_PathSet_GetCount = _lookup.findOrThrow("NFD_PathSet_GetCount");
+            PFN_NFD_PathSet_GetPathN = _lookup.findOrThrow("NFD_PathSet_GetPathN");
+            PFN_NFD_PathSet_FreePathN = _lookup.findOrThrow("NFD_PathSet_FreePathN");
+            PFN_NFD_PathSet_GetEnum = _lookup.findOrThrow("NFD_PathSet_GetEnum");
+            PFN_NFD_PathSet_FreeEnum = _lookup.findOrThrow("NFD_PathSet_FreeEnum");
+            PFN_NFD_PathSet_EnumNextN = _lookup.findOrThrow("NFD_PathSet_EnumNextN");
+            PFN_NFD_PathSet_Free = _lookup.findOrThrow("NFD_PathSet_Free");
         }
-        private static volatile Handles instance;
         private static Handles get() {
-            if (instance == null) {
-                synchronized (Handles.class) {
-                    if (instance == null) { instance = new Handles(); }
-                }
+            final class Holder {
+                static final Handles instance = new Handles();
             }
-            return instance;
+            return Holder.instance;
         }
     }
 
