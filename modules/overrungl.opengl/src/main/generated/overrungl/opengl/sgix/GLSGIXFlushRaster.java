@@ -19,14 +19,14 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLSGIXFlushRaster {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFlushRasterSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glFlushRasterSGIX = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFlushRasterSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glFlushRasterSGIX = func.invoke("glFlushRasterSGIX");
@@ -42,7 +42,8 @@ public final class GLSGIXFlushRaster {
     /// ```
     public void FlushRasterSGIX() {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushRasterSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glFlushRasterSGIX");
-        try { Handles.MH_glFlushRasterSGIX.invokeExact(handles.PFN_glFlushRasterSGIX); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFlushRasterSGIX"); }
+        Handles.MH_glFlushRasterSGIX.invokeExact(handles.PFN_glFlushRasterSGIX); }
         catch (Throwable e) { throw new RuntimeException("error in FlushRasterSGIX", e); }
     }
 

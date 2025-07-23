@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -30,7 +30,7 @@ public final class GLNVConservativeRaster {
     public static final int GL_MAX_SUBPIXEL_PRECISION_BIAS_BITS_NV = 0x9349;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glSubpixelPrecisionBiasNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSubpixelPrecisionBiasNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glSubpixelPrecisionBiasNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glSubpixelPrecisionBiasNV = func.invoke("glSubpixelPrecisionBiasNV");
@@ -46,7 +46,8 @@ public final class GLNVConservativeRaster {
     /// ```
     public void SubpixelPrecisionBiasNV(int xbits, int ybits) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSubpixelPrecisionBiasNV)) throw new GLSymbolNotFoundError("Symbol not found: glSubpixelPrecisionBiasNV");
-        try { Handles.MH_glSubpixelPrecisionBiasNV.invokeExact(handles.PFN_glSubpixelPrecisionBiasNV, xbits, ybits); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glSubpixelPrecisionBiasNV", xbits, ybits); }
+        Handles.MH_glSubpixelPrecisionBiasNV.invokeExact(handles.PFN_glSubpixelPrecisionBiasNV, xbits, ybits); }
         catch (Throwable e) { throw new RuntimeException("error in SubpixelPrecisionBiasNV", e); }
     }
 

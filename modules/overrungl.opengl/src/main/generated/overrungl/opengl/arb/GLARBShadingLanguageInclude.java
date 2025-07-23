@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -29,12 +29,12 @@ public final class GLARBShadingLanguageInclude {
     public static final int GL_NAMED_STRING_TYPE_ARB = 0x8DEA;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glNamedStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDeleteNamedStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCompileShaderIncludeARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsNamedStringARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedStringivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNamedStringARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeleteNamedStringARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCompileShaderIncludeARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsNamedStringARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetNamedStringARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetNamedStringivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glNamedStringARB;
         public final MemorySegment PFN_glDeleteNamedStringARB;
         public final MemorySegment PFN_glCompileShaderIncludeARB;
@@ -60,7 +60,8 @@ public final class GLARBShadingLanguageInclude {
     /// ```
     public void NamedStringARB(int type, int namelen, MemorySegment name, int stringlen, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedStringARB)) throw new GLSymbolNotFoundError("Symbol not found: glNamedStringARB");
-        try { Handles.MH_glNamedStringARB.invokeExact(handles.PFN_glNamedStringARB, type, namelen, name, stringlen, string); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedStringARB", type, namelen, name, stringlen, string); }
+        Handles.MH_glNamedStringARB.invokeExact(handles.PFN_glNamedStringARB, type, namelen, name, stringlen, string); }
         catch (Throwable e) { throw new RuntimeException("error in NamedStringARB", e); }
     }
 
@@ -69,7 +70,8 @@ public final class GLARBShadingLanguageInclude {
     /// ```
     public void DeleteNamedStringARB(int namelen, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteNamedStringARB)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteNamedStringARB");
-        try { Handles.MH_glDeleteNamedStringARB.invokeExact(handles.PFN_glDeleteNamedStringARB, namelen, name); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteNamedStringARB", namelen, name); }
+        Handles.MH_glDeleteNamedStringARB.invokeExact(handles.PFN_glDeleteNamedStringARB, namelen, name); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteNamedStringARB", e); }
     }
 
@@ -78,7 +80,8 @@ public final class GLARBShadingLanguageInclude {
     /// ```
     public void CompileShaderIncludeARB(int shader, int count, MemorySegment path, MemorySegment length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCompileShaderIncludeARB)) throw new GLSymbolNotFoundError("Symbol not found: glCompileShaderIncludeARB");
-        try { Handles.MH_glCompileShaderIncludeARB.invokeExact(handles.PFN_glCompileShaderIncludeARB, shader, count, path, length); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glCompileShaderIncludeARB", shader, count, path, length); }
+        Handles.MH_glCompileShaderIncludeARB.invokeExact(handles.PFN_glCompileShaderIncludeARB, shader, count, path, length); }
         catch (Throwable e) { throw new RuntimeException("error in CompileShaderIncludeARB", e); }
     }
 
@@ -87,7 +90,8 @@ public final class GLARBShadingLanguageInclude {
     /// ```
     public boolean IsNamedStringARB(int namelen, MemorySegment name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsNamedStringARB)) throw new GLSymbolNotFoundError("Symbol not found: glIsNamedStringARB");
-        try { return (((byte) Handles.MH_glIsNamedStringARB.invokeExact(handles.PFN_glIsNamedStringARB, namelen, name)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIsNamedStringARB", namelen, name); }
+        return (((byte) Handles.MH_glIsNamedStringARB.invokeExact(handles.PFN_glIsNamedStringARB, namelen, name)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsNamedStringARB", e); }
     }
 
@@ -96,7 +100,8 @@ public final class GLARBShadingLanguageInclude {
     /// ```
     public void GetNamedStringARB(int namelen, MemorySegment name, int bufSize, MemorySegment stringlen, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedStringARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedStringARB");
-        try { Handles.MH_glGetNamedStringARB.invokeExact(handles.PFN_glGetNamedStringARB, namelen, name, bufSize, stringlen, string); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedStringARB", namelen, name, bufSize, stringlen, string); }
+        Handles.MH_glGetNamedStringARB.invokeExact(handles.PFN_glGetNamedStringARB, namelen, name, bufSize, stringlen, string); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedStringARB", e); }
     }
 
@@ -105,7 +110,8 @@ public final class GLARBShadingLanguageInclude {
     /// ```
     public void GetNamedStringivARB(int namelen, MemorySegment name, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedStringivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedStringivARB");
-        try { Handles.MH_glGetNamedStringivARB.invokeExact(handles.PFN_glGetNamedStringivARB, namelen, name, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedStringivARB", namelen, name, pname, params); }
+        Handles.MH_glGetNamedStringivARB.invokeExact(handles.PFN_glGetNamedStringivARB, namelen, name, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedStringivARB", e); }
     }
 

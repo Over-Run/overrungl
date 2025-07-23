@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRVideoDecodeQueue {
@@ -50,7 +50,7 @@ public final class VKKHRVideoDecodeQueue {
     public static final long VK_FORMAT_FEATURE_2_VIDEO_DECODE_OUTPUT_BIT_KHR = 0x02000000L;
     public static final long VK_FORMAT_FEATURE_2_VIDEO_DECODE_DPB_BIT_KHR = 0x04000000L;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDecodeVideoKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdDecodeVideoKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -61,7 +61,8 @@ public final class VKKHRVideoDecodeQueue {
     /// ```
     public static void vkCmdDecodeVideoKHR(VkCommandBuffer commandBuffer, MemorySegment pDecodeInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecodeVideoKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDecodeVideoKHR");
-        try { Handles.MH_vkCmdDecodeVideoKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecodeVideoKHR, commandBuffer.segment(), pDecodeInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDecodeVideoKHR", commandBuffer, pDecodeInfo); }
+        Handles.MH_vkCmdDecodeVideoKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecodeVideoKHR, commandBuffer.segment(), pDecodeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDecodeVideoKHR", e); }
     }
 

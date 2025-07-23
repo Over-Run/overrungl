@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -29,20 +29,20 @@ public final class GLNVShaderBufferLoad {
     public static final int GL_MAX_SHADER_BUFFER_ADDRESS_NV = 0x8F35;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glMakeBufferResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMakeBufferNonResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glIsBufferResidentNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMakeNamedBufferResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMakeNamedBufferNonResidentNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glIsNamedBufferResidentNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetBufferParameterui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetNamedBufferParameterui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetIntegerui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glUniformui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glUniformui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetUniformui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramUniformui64NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
-        public static final MethodHandle MH_glProgramUniformui64vNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMakeBufferResidentNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeBufferNonResidentNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsBufferResidentNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeNamedBufferResidentNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMakeNamedBufferNonResidentNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsNamedBufferResidentNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetBufferParameterui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetNamedBufferParameterui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetIntegerui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glUniformui64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glUniformui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetUniformui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramUniformui64NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_glProgramUniformui64vNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glMakeBufferResidentNV;
         public final MemorySegment PFN_glMakeBufferNonResidentNV;
         public final MemorySegment PFN_glIsBufferResidentNV;
@@ -84,7 +84,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void MakeBufferResidentNV(int target, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeBufferResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glMakeBufferResidentNV");
-        try { Handles.MH_glMakeBufferResidentNV.invokeExact(handles.PFN_glMakeBufferResidentNV, target, access); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMakeBufferResidentNV", target, access); }
+        Handles.MH_glMakeBufferResidentNV.invokeExact(handles.PFN_glMakeBufferResidentNV, target, access); }
         catch (Throwable e) { throw new RuntimeException("error in MakeBufferResidentNV", e); }
     }
 
@@ -93,7 +94,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void MakeBufferNonResidentNV(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeBufferNonResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glMakeBufferNonResidentNV");
-        try { Handles.MH_glMakeBufferNonResidentNV.invokeExact(handles.PFN_glMakeBufferNonResidentNV, target); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMakeBufferNonResidentNV", target); }
+        Handles.MH_glMakeBufferNonResidentNV.invokeExact(handles.PFN_glMakeBufferNonResidentNV, target); }
         catch (Throwable e) { throw new RuntimeException("error in MakeBufferNonResidentNV", e); }
     }
 
@@ -102,7 +104,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public boolean IsBufferResidentNV(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsBufferResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glIsBufferResidentNV");
-        try { return (((byte) Handles.MH_glIsBufferResidentNV.invokeExact(handles.PFN_glIsBufferResidentNV, target)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIsBufferResidentNV", target); }
+        return (((byte) Handles.MH_glIsBufferResidentNV.invokeExact(handles.PFN_glIsBufferResidentNV, target)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsBufferResidentNV", e); }
     }
 
@@ -111,7 +114,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void MakeNamedBufferResidentNV(int buffer, int access) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeNamedBufferResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glMakeNamedBufferResidentNV");
-        try { Handles.MH_glMakeNamedBufferResidentNV.invokeExact(handles.PFN_glMakeNamedBufferResidentNV, buffer, access); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMakeNamedBufferResidentNV", buffer, access); }
+        Handles.MH_glMakeNamedBufferResidentNV.invokeExact(handles.PFN_glMakeNamedBufferResidentNV, buffer, access); }
         catch (Throwable e) { throw new RuntimeException("error in MakeNamedBufferResidentNV", e); }
     }
 
@@ -120,7 +124,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void MakeNamedBufferNonResidentNV(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMakeNamedBufferNonResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glMakeNamedBufferNonResidentNV");
-        try { Handles.MH_glMakeNamedBufferNonResidentNV.invokeExact(handles.PFN_glMakeNamedBufferNonResidentNV, buffer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMakeNamedBufferNonResidentNV", buffer); }
+        Handles.MH_glMakeNamedBufferNonResidentNV.invokeExact(handles.PFN_glMakeNamedBufferNonResidentNV, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in MakeNamedBufferNonResidentNV", e); }
     }
 
@@ -129,7 +134,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public boolean IsNamedBufferResidentNV(int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsNamedBufferResidentNV)) throw new GLSymbolNotFoundError("Symbol not found: glIsNamedBufferResidentNV");
-        try { return (((byte) Handles.MH_glIsNamedBufferResidentNV.invokeExact(handles.PFN_glIsNamedBufferResidentNV, buffer)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIsNamedBufferResidentNV", buffer); }
+        return (((byte) Handles.MH_glIsNamedBufferResidentNV.invokeExact(handles.PFN_glIsNamedBufferResidentNV, buffer)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsNamedBufferResidentNV", e); }
     }
 
@@ -138,7 +144,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void GetBufferParameterui64vNV(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBufferParameterui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetBufferParameterui64vNV");
-        try { Handles.MH_glGetBufferParameterui64vNV.invokeExact(handles.PFN_glGetBufferParameterui64vNV, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBufferParameterui64vNV", target, pname, params); }
+        Handles.MH_glGetBufferParameterui64vNV.invokeExact(handles.PFN_glGetBufferParameterui64vNV, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetBufferParameterui64vNV", e); }
     }
 
@@ -147,7 +154,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void GetNamedBufferParameterui64vNV(int buffer, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetNamedBufferParameterui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetNamedBufferParameterui64vNV");
-        try { Handles.MH_glGetNamedBufferParameterui64vNV.invokeExact(handles.PFN_glGetNamedBufferParameterui64vNV, buffer, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetNamedBufferParameterui64vNV", buffer, pname, params); }
+        Handles.MH_glGetNamedBufferParameterui64vNV.invokeExact(handles.PFN_glGetNamedBufferParameterui64vNV, buffer, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetNamedBufferParameterui64vNV", e); }
     }
 
@@ -156,7 +164,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void GetIntegerui64vNV(int value, MemorySegment result) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetIntegerui64vNV");
-        try { Handles.MH_glGetIntegerui64vNV.invokeExact(handles.PFN_glGetIntegerui64vNV, value, result); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetIntegerui64vNV", value, result); }
+        Handles.MH_glGetIntegerui64vNV.invokeExact(handles.PFN_glGetIntegerui64vNV, value, result); }
         catch (Throwable e) { throw new RuntimeException("error in GetIntegerui64vNV", e); }
     }
 
@@ -165,7 +174,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void Uniformui64NV(int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformui64NV)) throw new GLSymbolNotFoundError("Symbol not found: glUniformui64NV");
-        try { Handles.MH_glUniformui64NV.invokeExact(handles.PFN_glUniformui64NV, location, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformui64NV", location, value); }
+        Handles.MH_glUniformui64NV.invokeExact(handles.PFN_glUniformui64NV, location, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniformui64NV", e); }
     }
 
@@ -174,7 +184,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void Uniformui64vNV(int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glUniformui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glUniformui64vNV");
-        try { Handles.MH_glUniformui64vNV.invokeExact(handles.PFN_glUniformui64vNV, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glUniformui64vNV", location, count, value); }
+        Handles.MH_glUniformui64vNV.invokeExact(handles.PFN_glUniformui64vNV, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in Uniformui64vNV", e); }
     }
 
@@ -183,7 +194,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void GetUniformui64vNV(int program, int location, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetUniformui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glGetUniformui64vNV");
-        try { Handles.MH_glGetUniformui64vNV.invokeExact(handles.PFN_glGetUniformui64vNV, program, location, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetUniformui64vNV", program, location, params); }
+        Handles.MH_glGetUniformui64vNV.invokeExact(handles.PFN_glGetUniformui64vNV, program, location, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetUniformui64vNV", e); }
     }
 
@@ -192,7 +204,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void ProgramUniformui64NV(int program, int location, long value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformui64NV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformui64NV");
-        try { Handles.MH_glProgramUniformui64NV.invokeExact(handles.PFN_glProgramUniformui64NV, program, location, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformui64NV", program, location, value); }
+        Handles.MH_glProgramUniformui64NV.invokeExact(handles.PFN_glProgramUniformui64NV, program, location, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformui64NV", e); }
     }
 
@@ -201,7 +214,8 @@ public final class GLNVShaderBufferLoad {
     /// ```
     public void ProgramUniformui64vNV(int program, int location, int count, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramUniformui64vNV)) throw new GLSymbolNotFoundError("Symbol not found: glProgramUniformui64vNV");
-        try { Handles.MH_glProgramUniformui64vNV.invokeExact(handles.PFN_glProgramUniformui64vNV, program, location, count, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramUniformui64vNV", program, location, count, value); }
+        Handles.MH_glProgramUniformui64vNV.invokeExact(handles.PFN_glProgramUniformui64vNV, program, location, count, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramUniformui64vNV", e); }
     }
 

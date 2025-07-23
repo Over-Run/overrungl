@@ -19,7 +19,7 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,8 +28,8 @@ public final class GLSGISTextureFilter4 {
     public static final int GL_TEXTURE_FILTER4_SIZE_SGIS = 0x8147;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetTexFilterFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexFilterFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexFilterFuncSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexFilterFuncSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetTexFilterFuncSGIS;
         public final MemorySegment PFN_glTexFilterFuncSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -47,7 +47,8 @@ public final class GLSGISTextureFilter4 {
     /// ```
     public void GetTexFilterFuncSGIS(int target, int filter, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexFilterFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexFilterFuncSGIS");
-        try { Handles.MH_glGetTexFilterFuncSGIS.invokeExact(handles.PFN_glGetTexFilterFuncSGIS, target, filter, weights); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexFilterFuncSGIS", target, filter, weights); }
+        Handles.MH_glGetTexFilterFuncSGIS.invokeExact(handles.PFN_glGetTexFilterFuncSGIS, target, filter, weights); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexFilterFuncSGIS", e); }
     }
 
@@ -56,7 +57,8 @@ public final class GLSGISTextureFilter4 {
     /// ```
     public void TexFilterFuncSGIS(int target, int filter, int n, MemorySegment weights) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexFilterFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glTexFilterFuncSGIS");
-        try { Handles.MH_glTexFilterFuncSGIS.invokeExact(handles.PFN_glTexFilterFuncSGIS, target, filter, n, weights); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexFilterFuncSGIS", target, filter, n, weights); }
+        Handles.MH_glTexFilterFuncSGIS.invokeExact(handles.PFN_glTexFilterFuncSGIS, target, filter, n, weights); }
         catch (Throwable e) { throw new RuntimeException("error in TexFilterFuncSGIS", e); }
     }
 

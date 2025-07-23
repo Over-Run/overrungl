@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -35,7 +35,7 @@ public final class GLARBMultisample {
     public static final int GL_MULTISAMPLE_BIT_ARB = 0x20000000;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glSampleCoverageARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glSampleCoverageARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glSampleCoverageARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glSampleCoverageARB = func.invoke("glSampleCoverageARB", "glSampleCoverage");
@@ -51,7 +51,8 @@ public final class GLARBMultisample {
     /// ```
     public void SampleCoverageARB(float value, boolean invert) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSampleCoverageARB)) throw new GLSymbolNotFoundError("Symbol not found: glSampleCoverageARB");
-        try { Handles.MH_glSampleCoverageARB.invokeExact(handles.PFN_glSampleCoverageARB, value, ((invert) ? (byte)1 : (byte)0)); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glSampleCoverageARB", value, invert); }
+        Handles.MH_glSampleCoverageARB.invokeExact(handles.PFN_glSampleCoverageARB, value, ((invert) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in SampleCoverageARB", e); }
     }
 

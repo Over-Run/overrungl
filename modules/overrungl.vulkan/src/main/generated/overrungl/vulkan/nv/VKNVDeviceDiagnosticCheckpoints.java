@@ -18,7 +18,7 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVDeviceDiagnosticCheckpoints {
@@ -29,9 +29,9 @@ public final class VKNVDeviceDiagnosticCheckpoints {
     public static final int VK_STRUCTURE_TYPE_QUEUE_FAMILY_CHECKPOINT_PROPERTIES_2_NV = 1000206008;
     public static final int VK_STRUCTURE_TYPE_CHECKPOINT_DATA_2_NV = 1000206009;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetCheckpointNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetQueueCheckpointDataNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetQueueCheckpointData2NV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetCheckpointNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetQueueCheckpointDataNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetQueueCheckpointData2NV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -42,7 +42,8 @@ public final class VKNVDeviceDiagnosticCheckpoints {
     /// ```
     public static void vkCmdSetCheckpointNV(VkCommandBuffer commandBuffer, MemorySegment pCheckpointMarker) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetCheckpointNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetCheckpointNV");
-        try { Handles.MH_vkCmdSetCheckpointNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCheckpointNV, commandBuffer.segment(), pCheckpointMarker); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetCheckpointNV", commandBuffer, pCheckpointMarker); }
+        Handles.MH_vkCmdSetCheckpointNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetCheckpointNV, commandBuffer.segment(), pCheckpointMarker); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetCheckpointNV", e); }
     }
 
@@ -51,7 +52,8 @@ public final class VKNVDeviceDiagnosticCheckpoints {
     /// ```
     public static void vkGetQueueCheckpointDataNV(VkQueue queue, MemorySegment pCheckpointDataCount, MemorySegment pCheckpointData) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkGetQueueCheckpointDataNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetQueueCheckpointDataNV");
-        try { Handles.MH_vkGetQueueCheckpointDataNV.invokeExact(queue.capabilities().PFN_vkGetQueueCheckpointDataNV, queue.segment(), pCheckpointDataCount, pCheckpointData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetQueueCheckpointDataNV", queue, pCheckpointDataCount, pCheckpointData); }
+        Handles.MH_vkGetQueueCheckpointDataNV.invokeExact(queue.capabilities().PFN_vkGetQueueCheckpointDataNV, queue.segment(), pCheckpointDataCount, pCheckpointData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetQueueCheckpointDataNV", e); }
     }
 
@@ -60,7 +62,8 @@ public final class VKNVDeviceDiagnosticCheckpoints {
     /// ```
     public static void vkGetQueueCheckpointData2NV(VkQueue queue, MemorySegment pCheckpointDataCount, MemorySegment pCheckpointData) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkGetQueueCheckpointData2NV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetQueueCheckpointData2NV");
-        try { Handles.MH_vkGetQueueCheckpointData2NV.invokeExact(queue.capabilities().PFN_vkGetQueueCheckpointData2NV, queue.segment(), pCheckpointDataCount, pCheckpointData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetQueueCheckpointData2NV", queue, pCheckpointDataCount, pCheckpointData); }
+        Handles.MH_vkGetQueueCheckpointData2NV.invokeExact(queue.capabilities().PFN_vkGetQueueCheckpointData2NV, queue.segment(), pCheckpointDataCount, pCheckpointData); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetQueueCheckpointData2NV", e); }
     }
 

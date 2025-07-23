@@ -19,14 +19,14 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLNVDrawTexture {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glDrawTextureNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glDrawTextureNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glDrawTextureNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glDrawTextureNV = func.invoke("glDrawTextureNV");
@@ -42,7 +42,8 @@ public final class GLNVDrawTexture {
     /// ```
     public void DrawTextureNV(int texture, int sampler, float x0, float y0, float x1, float y1, float z, float s0, float t0, float s1, float t1) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawTextureNV)) throw new GLSymbolNotFoundError("Symbol not found: glDrawTextureNV");
-        try { Handles.MH_glDrawTextureNV.invokeExact(handles.PFN_glDrawTextureNV, texture, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawTextureNV", texture, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1); }
+        Handles.MH_glDrawTextureNV.invokeExact(handles.PFN_glDrawTextureNV, texture, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1); }
         catch (Throwable e) { throw new RuntimeException("error in DrawTextureNV", e); }
     }
 

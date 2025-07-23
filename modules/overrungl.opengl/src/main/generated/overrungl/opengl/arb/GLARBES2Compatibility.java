@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -42,11 +42,11 @@ public final class GLARBES2Compatibility {
     public static final int GL_RGB565 = 0x8D62;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glReleaseShaderCompiler = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-        public static final MethodHandle MH_glShaderBinary = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetShaderPrecisionFormat = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDepthRangef = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glClearDepthf = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glReleaseShaderCompiler = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glShaderBinary = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetShaderPrecisionFormat = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDepthRangef = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glClearDepthf = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glReleaseShaderCompiler;
         public final MemorySegment PFN_glShaderBinary;
         public final MemorySegment PFN_glGetShaderPrecisionFormat;
@@ -70,7 +70,8 @@ public final class GLARBES2Compatibility {
     /// ```
     public void ReleaseShaderCompiler() {
         if (MemoryUtil.isNullPointer(handles.PFN_glReleaseShaderCompiler)) throw new GLSymbolNotFoundError("Symbol not found: glReleaseShaderCompiler");
-        try { Handles.MH_glReleaseShaderCompiler.invokeExact(handles.PFN_glReleaseShaderCompiler); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glReleaseShaderCompiler"); }
+        Handles.MH_glReleaseShaderCompiler.invokeExact(handles.PFN_glReleaseShaderCompiler); }
         catch (Throwable e) { throw new RuntimeException("error in ReleaseShaderCompiler", e); }
     }
 
@@ -79,7 +80,8 @@ public final class GLARBES2Compatibility {
     /// ```
     public void ShaderBinary(int count, MemorySegment shaders, int binaryFormat, MemorySegment binary, int length) {
         if (MemoryUtil.isNullPointer(handles.PFN_glShaderBinary)) throw new GLSymbolNotFoundError("Symbol not found: glShaderBinary");
-        try { Handles.MH_glShaderBinary.invokeExact(handles.PFN_glShaderBinary, count, shaders, binaryFormat, binary, length); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glShaderBinary", count, shaders, binaryFormat, binary, length); }
+        Handles.MH_glShaderBinary.invokeExact(handles.PFN_glShaderBinary, count, shaders, binaryFormat, binary, length); }
         catch (Throwable e) { throw new RuntimeException("error in ShaderBinary", e); }
     }
 
@@ -88,7 +90,8 @@ public final class GLARBES2Compatibility {
     /// ```
     public void GetShaderPrecisionFormat(int shadertype, int precisiontype, MemorySegment range, MemorySegment precision) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetShaderPrecisionFormat)) throw new GLSymbolNotFoundError("Symbol not found: glGetShaderPrecisionFormat");
-        try { Handles.MH_glGetShaderPrecisionFormat.invokeExact(handles.PFN_glGetShaderPrecisionFormat, shadertype, precisiontype, range, precision); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetShaderPrecisionFormat", shadertype, precisiontype, range, precision); }
+        Handles.MH_glGetShaderPrecisionFormat.invokeExact(handles.PFN_glGetShaderPrecisionFormat, shadertype, precisiontype, range, precision); }
         catch (Throwable e) { throw new RuntimeException("error in GetShaderPrecisionFormat", e); }
     }
 
@@ -97,7 +100,8 @@ public final class GLARBES2Compatibility {
     /// ```
     public void DepthRangef(float n, float f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRangef)) throw new GLSymbolNotFoundError("Symbol not found: glDepthRangef");
-        try { Handles.MH_glDepthRangef.invokeExact(handles.PFN_glDepthRangef, n, f); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDepthRangef", n, f); }
+        Handles.MH_glDepthRangef.invokeExact(handles.PFN_glDepthRangef, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in DepthRangef", e); }
     }
 
@@ -106,7 +110,8 @@ public final class GLARBES2Compatibility {
     /// ```
     public void ClearDepthf(float d) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearDepthf)) throw new GLSymbolNotFoundError("Symbol not found: glClearDepthf");
-        try { Handles.MH_glClearDepthf.invokeExact(handles.PFN_glClearDepthf, d); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClearDepthf", d); }
+        Handles.MH_glClearDepthf.invokeExact(handles.PFN_glClearDepthf, d); }
         catch (Throwable e) { throw new RuntimeException("error in ClearDepthf", e); }
     }
 

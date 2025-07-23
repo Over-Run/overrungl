@@ -19,7 +19,7 @@ package overrungl.opengl.hp;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -41,12 +41,12 @@ public final class GLHPImageTransform {
     public static final int GL_PROXY_POST_IMAGE_TRANSFORM_COLOR_TABLE_HP = 0x8163;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glImageTransformParameteriHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glImageTransformParameterfHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glImageTransformParameterivHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glImageTransformParameterfvHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetImageTransformParameterivHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetImageTransformParameterfvHP = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glImageTransformParameteriHP = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glImageTransformParameterfHP = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glImageTransformParameterivHP = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glImageTransformParameterfvHP = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetImageTransformParameterivHP = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetImageTransformParameterfvHP = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glImageTransformParameteriHP;
         public final MemorySegment PFN_glImageTransformParameterfHP;
         public final MemorySegment PFN_glImageTransformParameterivHP;
@@ -72,7 +72,8 @@ public final class GLHPImageTransform {
     /// ```
     public void ImageTransformParameteriHP(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImageTransformParameteriHP)) throw new GLSymbolNotFoundError("Symbol not found: glImageTransformParameteriHP");
-        try { Handles.MH_glImageTransformParameteriHP.invokeExact(handles.PFN_glImageTransformParameteriHP, target, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glImageTransformParameteriHP", target, pname, param); }
+        Handles.MH_glImageTransformParameteriHP.invokeExact(handles.PFN_glImageTransformParameteriHP, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in ImageTransformParameteriHP", e); }
     }
 
@@ -81,7 +82,8 @@ public final class GLHPImageTransform {
     /// ```
     public void ImageTransformParameterfHP(int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImageTransformParameterfHP)) throw new GLSymbolNotFoundError("Symbol not found: glImageTransformParameterfHP");
-        try { Handles.MH_glImageTransformParameterfHP.invokeExact(handles.PFN_glImageTransformParameterfHP, target, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glImageTransformParameterfHP", target, pname, param); }
+        Handles.MH_glImageTransformParameterfHP.invokeExact(handles.PFN_glImageTransformParameterfHP, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in ImageTransformParameterfHP", e); }
     }
 
@@ -90,7 +92,8 @@ public final class GLHPImageTransform {
     /// ```
     public void ImageTransformParameterivHP(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImageTransformParameterivHP)) throw new GLSymbolNotFoundError("Symbol not found: glImageTransformParameterivHP");
-        try { Handles.MH_glImageTransformParameterivHP.invokeExact(handles.PFN_glImageTransformParameterivHP, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glImageTransformParameterivHP", target, pname, params); }
+        Handles.MH_glImageTransformParameterivHP.invokeExact(handles.PFN_glImageTransformParameterivHP, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ImageTransformParameterivHP", e); }
     }
 
@@ -99,7 +102,8 @@ public final class GLHPImageTransform {
     /// ```
     public void ImageTransformParameterfvHP(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImageTransformParameterfvHP)) throw new GLSymbolNotFoundError("Symbol not found: glImageTransformParameterfvHP");
-        try { Handles.MH_glImageTransformParameterfvHP.invokeExact(handles.PFN_glImageTransformParameterfvHP, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glImageTransformParameterfvHP", target, pname, params); }
+        Handles.MH_glImageTransformParameterfvHP.invokeExact(handles.PFN_glImageTransformParameterfvHP, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in ImageTransformParameterfvHP", e); }
     }
 
@@ -108,7 +112,8 @@ public final class GLHPImageTransform {
     /// ```
     public void GetImageTransformParameterivHP(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetImageTransformParameterivHP)) throw new GLSymbolNotFoundError("Symbol not found: glGetImageTransformParameterivHP");
-        try { Handles.MH_glGetImageTransformParameterivHP.invokeExact(handles.PFN_glGetImageTransformParameterivHP, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetImageTransformParameterivHP", target, pname, params); }
+        Handles.MH_glGetImageTransformParameterivHP.invokeExact(handles.PFN_glGetImageTransformParameterivHP, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetImageTransformParameterivHP", e); }
     }
 
@@ -117,7 +122,8 @@ public final class GLHPImageTransform {
     /// ```
     public void GetImageTransformParameterfvHP(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetImageTransformParameterfvHP)) throw new GLSymbolNotFoundError("Symbol not found: glGetImageTransformParameterfvHP");
-        try { Handles.MH_glGetImageTransformParameterfvHP.invokeExact(handles.PFN_glGetImageTransformParameterfvHP, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetImageTransformParameterfvHP", target, pname, params); }
+        Handles.MH_glGetImageTransformParameterfvHP.invokeExact(handles.PFN_glGetImageTransformParameterfvHP, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetImageTransformParameterfvHP", e); }
     }
 

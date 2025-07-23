@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -34,9 +34,9 @@ public final class GLNVSampleLocations {
     public static final int GL_FRAMEBUFFER_SAMPLE_LOCATION_PIXEL_GRID_NV = 0x9343;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glResolveDepthValuesNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glFramebufferSampleLocationsfvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNamedFramebufferSampleLocationsfvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glResolveDepthValuesNV = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glFramebufferSampleLocationsfvNV;
         public final MemorySegment PFN_glNamedFramebufferSampleLocationsfvNV;
         public final MemorySegment PFN_glResolveDepthValuesNV;
@@ -56,7 +56,8 @@ public final class GLNVSampleLocations {
     /// ```
     public void FramebufferSampleLocationsfvNV(int target, int start, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferSampleLocationsfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferSampleLocationsfvNV");
-        try { Handles.MH_glFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glFramebufferSampleLocationsfvNV, target, start, count, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferSampleLocationsfvNV", target, start, count, v); }
+        Handles.MH_glFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glFramebufferSampleLocationsfvNV, target, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferSampleLocationsfvNV", e); }
     }
 
@@ -65,7 +66,8 @@ public final class GLNVSampleLocations {
     /// ```
     public void NamedFramebufferSampleLocationsfvNV(int framebuffer, int start, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNamedFramebufferSampleLocationsfvNV)) throw new GLSymbolNotFoundError("Symbol not found: glNamedFramebufferSampleLocationsfvNV");
-        try { Handles.MH_glNamedFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glNamedFramebufferSampleLocationsfvNV, framebuffer, start, count, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNamedFramebufferSampleLocationsfvNV", framebuffer, start, count, v); }
+        Handles.MH_glNamedFramebufferSampleLocationsfvNV.invokeExact(handles.PFN_glNamedFramebufferSampleLocationsfvNV, framebuffer, start, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in NamedFramebufferSampleLocationsfvNV", e); }
     }
 
@@ -74,7 +76,8 @@ public final class GLNVSampleLocations {
     /// ```
     public void ResolveDepthValuesNV() {
         if (MemoryUtil.isNullPointer(handles.PFN_glResolveDepthValuesNV)) throw new GLSymbolNotFoundError("Symbol not found: glResolveDepthValuesNV");
-        try { Handles.MH_glResolveDepthValuesNV.invokeExact(handles.PFN_glResolveDepthValuesNV); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glResolveDepthValuesNV"); }
+        Handles.MH_glResolveDepthValuesNV.invokeExact(handles.PFN_glResolveDepthValuesNV); }
         catch (Throwable e) { throw new RuntimeException("error in ResolveDepthValuesNV", e); }
     }
 

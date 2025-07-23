@@ -19,14 +19,14 @@ package overrungl.opengl.oes;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLOESQueryMatrix {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glQueryMatrixxOES = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glQueryMatrixxOES = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glQueryMatrixxOES;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glQueryMatrixxOES = func.invoke("glQueryMatrixxOES");
@@ -42,7 +42,8 @@ public final class GLOESQueryMatrix {
     /// ```
     public int QueryMatrixxOES(MemorySegment mantissa, MemorySegment exponent) {
         if (MemoryUtil.isNullPointer(handles.PFN_glQueryMatrixxOES)) throw new GLSymbolNotFoundError("Symbol not found: glQueryMatrixxOES");
-        try { return (int) Handles.MH_glQueryMatrixxOES.invokeExact(handles.PFN_glQueryMatrixxOES, mantissa, exponent); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glQueryMatrixxOES", mantissa, exponent); }
+        return (int) Handles.MH_glQueryMatrixxOES.invokeExact(handles.PFN_glQueryMatrixxOES, mantissa, exponent); }
         catch (Throwable e) { throw new RuntimeException("error in QueryMatrixxOES", e); }
     }
 

@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -34,11 +34,11 @@ public final class GLEXTFogCoord {
     public static final int GL_FOG_COORDINATE_ARRAY_EXT = 0x8457;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFogCoordfEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glFogCoordfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glFogCoorddEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glFogCoorddvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glFogCoordPointerEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFogCoordfEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glFogCoordfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFogCoorddEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glFogCoorddvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFogCoordPointerEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFogCoordfEXT;
         public final MemorySegment PFN_glFogCoordfvEXT;
         public final MemorySegment PFN_glFogCoorddEXT;
@@ -62,7 +62,8 @@ public final class GLEXTFogCoord {
     /// ```
     public void FogCoordfEXT(float coord) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoordfEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFogCoordfEXT");
-        try { Handles.MH_glFogCoordfEXT.invokeExact(handles.PFN_glFogCoordfEXT, coord); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFogCoordfEXT", coord); }
+        Handles.MH_glFogCoordfEXT.invokeExact(handles.PFN_glFogCoordfEXT, coord); }
         catch (Throwable e) { throw new RuntimeException("error in FogCoordfEXT", e); }
     }
 
@@ -71,7 +72,8 @@ public final class GLEXTFogCoord {
     /// ```
     public void FogCoordfvEXT(MemorySegment coord) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoordfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFogCoordfvEXT");
-        try { Handles.MH_glFogCoordfvEXT.invokeExact(handles.PFN_glFogCoordfvEXT, coord); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFogCoordfvEXT", coord); }
+        Handles.MH_glFogCoordfvEXT.invokeExact(handles.PFN_glFogCoordfvEXT, coord); }
         catch (Throwable e) { throw new RuntimeException("error in FogCoordfvEXT", e); }
     }
 
@@ -80,7 +82,8 @@ public final class GLEXTFogCoord {
     /// ```
     public void FogCoorddEXT(double coord) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoorddEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFogCoorddEXT");
-        try { Handles.MH_glFogCoorddEXT.invokeExact(handles.PFN_glFogCoorddEXT, coord); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFogCoorddEXT", coord); }
+        Handles.MH_glFogCoorddEXT.invokeExact(handles.PFN_glFogCoorddEXT, coord); }
         catch (Throwable e) { throw new RuntimeException("error in FogCoorddEXT", e); }
     }
 
@@ -89,7 +92,8 @@ public final class GLEXTFogCoord {
     /// ```
     public void FogCoorddvEXT(MemorySegment coord) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoorddvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFogCoorddvEXT");
-        try { Handles.MH_glFogCoorddvEXT.invokeExact(handles.PFN_glFogCoorddvEXT, coord); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFogCoorddvEXT", coord); }
+        Handles.MH_glFogCoorddvEXT.invokeExact(handles.PFN_glFogCoorddvEXT, coord); }
         catch (Throwable e) { throw new RuntimeException("error in FogCoorddvEXT", e); }
     }
 
@@ -98,7 +102,8 @@ public final class GLEXTFogCoord {
     /// ```
     public void FogCoordPointerEXT(int type, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogCoordPointerEXT)) throw new GLSymbolNotFoundError("Symbol not found: glFogCoordPointerEXT");
-        try { Handles.MH_glFogCoordPointerEXT.invokeExact(handles.PFN_glFogCoordPointerEXT, type, stride, pointer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFogCoordPointerEXT", type, stride, pointer); }
+        Handles.MH_glFogCoordPointerEXT.invokeExact(handles.PFN_glFogCoordPointerEXT, type, stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in FogCoordPointerEXT", e); }
     }
 

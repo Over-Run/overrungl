@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,44 +28,44 @@ public final class GLARBVertexType2101010Rev {
     public static final int GL_INT_2_10_10_10_REV = 0x8D9F;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glVertexAttribP1ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribP1uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexAttribP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoordP1ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexCoordP1uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoordP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexCoordP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoordP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexCoordP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexCoordP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexCoordP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoordP1ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexCoordP1uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoordP2ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexCoordP2uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoordP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexCoordP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glMultiTexCoordP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMultiTexCoordP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNormalP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNormalP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glColorP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glColorP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glColorP4ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glColorP4uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glSecondaryColorP3ui = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glSecondaryColorP3uiv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP1ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP1uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP2ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP2uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP3ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP3uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribP4ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttribP4uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexP2ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexP2uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexP3ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexP3uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexP4ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexP4uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoordP1ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordP1uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoordP2ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordP2uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoordP3ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordP3uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexCoordP4ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexCoordP4uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoordP1ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoordP1uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoordP2ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoordP2uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoordP3ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoordP3uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glMultiTexCoordP4ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMultiTexCoordP4uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNormalP3ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glNormalP3uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorP3ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorP3uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorP4ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorP4uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSecondaryColorP3ui = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glSecondaryColorP3uiv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glVertexAttribP1ui;
         public final MemorySegment PFN_glVertexAttribP1uiv;
         public final MemorySegment PFN_glVertexAttribP2ui;
@@ -154,7 +154,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexAttribP1ui(int index, int type, boolean normalized, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP1ui)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribP1ui");
-        try { Handles.MH_glVertexAttribP1ui.invokeExact(handles.PFN_glVertexAttribP1ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribP1ui", index, type, normalized, value); }
+        Handles.MH_glVertexAttribP1ui.invokeExact(handles.PFN_glVertexAttribP1ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribP1ui", e); }
     }
 
@@ -163,7 +164,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexAttribP1uiv(int index, int type, boolean normalized, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP1uiv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribP1uiv");
-        try { Handles.MH_glVertexAttribP1uiv.invokeExact(handles.PFN_glVertexAttribP1uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribP1uiv", index, type, normalized, value); }
+        Handles.MH_glVertexAttribP1uiv.invokeExact(handles.PFN_glVertexAttribP1uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribP1uiv", e); }
     }
 
@@ -172,7 +174,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexAttribP2ui(int index, int type, boolean normalized, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP2ui)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribP2ui");
-        try { Handles.MH_glVertexAttribP2ui.invokeExact(handles.PFN_glVertexAttribP2ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribP2ui", index, type, normalized, value); }
+        Handles.MH_glVertexAttribP2ui.invokeExact(handles.PFN_glVertexAttribP2ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribP2ui", e); }
     }
 
@@ -181,7 +184,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexAttribP2uiv(int index, int type, boolean normalized, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP2uiv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribP2uiv");
-        try { Handles.MH_glVertexAttribP2uiv.invokeExact(handles.PFN_glVertexAttribP2uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribP2uiv", index, type, normalized, value); }
+        Handles.MH_glVertexAttribP2uiv.invokeExact(handles.PFN_glVertexAttribP2uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribP2uiv", e); }
     }
 
@@ -190,7 +194,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexAttribP3ui(int index, int type, boolean normalized, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP3ui)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribP3ui");
-        try { Handles.MH_glVertexAttribP3ui.invokeExact(handles.PFN_glVertexAttribP3ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribP3ui", index, type, normalized, value); }
+        Handles.MH_glVertexAttribP3ui.invokeExact(handles.PFN_glVertexAttribP3ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribP3ui", e); }
     }
 
@@ -199,7 +204,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexAttribP3uiv(int index, int type, boolean normalized, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP3uiv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribP3uiv");
-        try { Handles.MH_glVertexAttribP3uiv.invokeExact(handles.PFN_glVertexAttribP3uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribP3uiv", index, type, normalized, value); }
+        Handles.MH_glVertexAttribP3uiv.invokeExact(handles.PFN_glVertexAttribP3uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribP3uiv", e); }
     }
 
@@ -208,7 +214,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexAttribP4ui(int index, int type, boolean normalized, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP4ui)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribP4ui");
-        try { Handles.MH_glVertexAttribP4ui.invokeExact(handles.PFN_glVertexAttribP4ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribP4ui", index, type, normalized, value); }
+        Handles.MH_glVertexAttribP4ui.invokeExact(handles.PFN_glVertexAttribP4ui, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribP4ui", e); }
     }
 
@@ -217,7 +224,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexAttribP4uiv(int index, int type, boolean normalized, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribP4uiv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribP4uiv");
-        try { Handles.MH_glVertexAttribP4uiv.invokeExact(handles.PFN_glVertexAttribP4uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribP4uiv", index, type, normalized, value); }
+        Handles.MH_glVertexAttribP4uiv.invokeExact(handles.PFN_glVertexAttribP4uiv, index, type, ((normalized) ? (byte)1 : (byte)0), value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribP4uiv", e); }
     }
 
@@ -226,7 +234,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexP2ui(int type, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP2ui)) throw new GLSymbolNotFoundError("Symbol not found: glVertexP2ui");
-        try { Handles.MH_glVertexP2ui.invokeExact(handles.PFN_glVertexP2ui, type, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexP2ui", type, value); }
+        Handles.MH_glVertexP2ui.invokeExact(handles.PFN_glVertexP2ui, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexP2ui", e); }
     }
 
@@ -235,7 +244,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexP2uiv(int type, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP2uiv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexP2uiv");
-        try { Handles.MH_glVertexP2uiv.invokeExact(handles.PFN_glVertexP2uiv, type, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexP2uiv", type, value); }
+        Handles.MH_glVertexP2uiv.invokeExact(handles.PFN_glVertexP2uiv, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexP2uiv", e); }
     }
 
@@ -244,7 +254,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexP3ui(int type, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP3ui)) throw new GLSymbolNotFoundError("Symbol not found: glVertexP3ui");
-        try { Handles.MH_glVertexP3ui.invokeExact(handles.PFN_glVertexP3ui, type, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexP3ui", type, value); }
+        Handles.MH_glVertexP3ui.invokeExact(handles.PFN_glVertexP3ui, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexP3ui", e); }
     }
 
@@ -253,7 +264,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexP3uiv(int type, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP3uiv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexP3uiv");
-        try { Handles.MH_glVertexP3uiv.invokeExact(handles.PFN_glVertexP3uiv, type, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexP3uiv", type, value); }
+        Handles.MH_glVertexP3uiv.invokeExact(handles.PFN_glVertexP3uiv, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexP3uiv", e); }
     }
 
@@ -262,7 +274,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexP4ui(int type, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP4ui)) throw new GLSymbolNotFoundError("Symbol not found: glVertexP4ui");
-        try { Handles.MH_glVertexP4ui.invokeExact(handles.PFN_glVertexP4ui, type, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexP4ui", type, value); }
+        Handles.MH_glVertexP4ui.invokeExact(handles.PFN_glVertexP4ui, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexP4ui", e); }
     }
 
@@ -271,7 +284,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void VertexP4uiv(int type, MemorySegment value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexP4uiv)) throw new GLSymbolNotFoundError("Symbol not found: glVertexP4uiv");
-        try { Handles.MH_glVertexP4uiv.invokeExact(handles.PFN_glVertexP4uiv, type, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexP4uiv", type, value); }
+        Handles.MH_glVertexP4uiv.invokeExact(handles.PFN_glVertexP4uiv, type, value); }
         catch (Throwable e) { throw new RuntimeException("error in VertexP4uiv", e); }
     }
 
@@ -280,7 +294,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void TexCoordP1ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP1ui)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordP1ui");
-        try { Handles.MH_glTexCoordP1ui.invokeExact(handles.PFN_glTexCoordP1ui, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordP1ui", type, coords); }
+        Handles.MH_glTexCoordP1ui.invokeExact(handles.PFN_glTexCoordP1ui, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordP1ui", e); }
     }
 
@@ -289,7 +304,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void TexCoordP1uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP1uiv)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordP1uiv");
-        try { Handles.MH_glTexCoordP1uiv.invokeExact(handles.PFN_glTexCoordP1uiv, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordP1uiv", type, coords); }
+        Handles.MH_glTexCoordP1uiv.invokeExact(handles.PFN_glTexCoordP1uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordP1uiv", e); }
     }
 
@@ -298,7 +314,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void TexCoordP2ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP2ui)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordP2ui");
-        try { Handles.MH_glTexCoordP2ui.invokeExact(handles.PFN_glTexCoordP2ui, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordP2ui", type, coords); }
+        Handles.MH_glTexCoordP2ui.invokeExact(handles.PFN_glTexCoordP2ui, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordP2ui", e); }
     }
 
@@ -307,7 +324,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void TexCoordP2uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP2uiv)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordP2uiv");
-        try { Handles.MH_glTexCoordP2uiv.invokeExact(handles.PFN_glTexCoordP2uiv, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordP2uiv", type, coords); }
+        Handles.MH_glTexCoordP2uiv.invokeExact(handles.PFN_glTexCoordP2uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordP2uiv", e); }
     }
 
@@ -316,7 +334,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void TexCoordP3ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP3ui)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordP3ui");
-        try { Handles.MH_glTexCoordP3ui.invokeExact(handles.PFN_glTexCoordP3ui, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordP3ui", type, coords); }
+        Handles.MH_glTexCoordP3ui.invokeExact(handles.PFN_glTexCoordP3ui, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordP3ui", e); }
     }
 
@@ -325,7 +344,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void TexCoordP3uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP3uiv)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordP3uiv");
-        try { Handles.MH_glTexCoordP3uiv.invokeExact(handles.PFN_glTexCoordP3uiv, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordP3uiv", type, coords); }
+        Handles.MH_glTexCoordP3uiv.invokeExact(handles.PFN_glTexCoordP3uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordP3uiv", e); }
     }
 
@@ -334,7 +354,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void TexCoordP4ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP4ui)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordP4ui");
-        try { Handles.MH_glTexCoordP4ui.invokeExact(handles.PFN_glTexCoordP4ui, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordP4ui", type, coords); }
+        Handles.MH_glTexCoordP4ui.invokeExact(handles.PFN_glTexCoordP4ui, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordP4ui", e); }
     }
 
@@ -343,7 +364,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void TexCoordP4uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexCoordP4uiv)) throw new GLSymbolNotFoundError("Symbol not found: glTexCoordP4uiv");
-        try { Handles.MH_glTexCoordP4uiv.invokeExact(handles.PFN_glTexCoordP4uiv, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexCoordP4uiv", type, coords); }
+        Handles.MH_glTexCoordP4uiv.invokeExact(handles.PFN_glTexCoordP4uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in TexCoordP4uiv", e); }
     }
 
@@ -352,7 +374,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void MultiTexCoordP1ui(int texture, int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP1ui)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordP1ui");
-        try { Handles.MH_glMultiTexCoordP1ui.invokeExact(handles.PFN_glMultiTexCoordP1ui, texture, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordP1ui", texture, type, coords); }
+        Handles.MH_glMultiTexCoordP1ui.invokeExact(handles.PFN_glMultiTexCoordP1ui, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordP1ui", e); }
     }
 
@@ -361,7 +384,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void MultiTexCoordP1uiv(int texture, int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP1uiv)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordP1uiv");
-        try { Handles.MH_glMultiTexCoordP1uiv.invokeExact(handles.PFN_glMultiTexCoordP1uiv, texture, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordP1uiv", texture, type, coords); }
+        Handles.MH_glMultiTexCoordP1uiv.invokeExact(handles.PFN_glMultiTexCoordP1uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordP1uiv", e); }
     }
 
@@ -370,7 +394,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void MultiTexCoordP2ui(int texture, int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP2ui)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordP2ui");
-        try { Handles.MH_glMultiTexCoordP2ui.invokeExact(handles.PFN_glMultiTexCoordP2ui, texture, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordP2ui", texture, type, coords); }
+        Handles.MH_glMultiTexCoordP2ui.invokeExact(handles.PFN_glMultiTexCoordP2ui, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordP2ui", e); }
     }
 
@@ -379,7 +404,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void MultiTexCoordP2uiv(int texture, int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP2uiv)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordP2uiv");
-        try { Handles.MH_glMultiTexCoordP2uiv.invokeExact(handles.PFN_glMultiTexCoordP2uiv, texture, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordP2uiv", texture, type, coords); }
+        Handles.MH_glMultiTexCoordP2uiv.invokeExact(handles.PFN_glMultiTexCoordP2uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordP2uiv", e); }
     }
 
@@ -388,7 +414,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void MultiTexCoordP3ui(int texture, int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP3ui)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordP3ui");
-        try { Handles.MH_glMultiTexCoordP3ui.invokeExact(handles.PFN_glMultiTexCoordP3ui, texture, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordP3ui", texture, type, coords); }
+        Handles.MH_glMultiTexCoordP3ui.invokeExact(handles.PFN_glMultiTexCoordP3ui, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordP3ui", e); }
     }
 
@@ -397,7 +424,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void MultiTexCoordP3uiv(int texture, int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP3uiv)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordP3uiv");
-        try { Handles.MH_glMultiTexCoordP3uiv.invokeExact(handles.PFN_glMultiTexCoordP3uiv, texture, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordP3uiv", texture, type, coords); }
+        Handles.MH_glMultiTexCoordP3uiv.invokeExact(handles.PFN_glMultiTexCoordP3uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordP3uiv", e); }
     }
 
@@ -406,7 +434,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void MultiTexCoordP4ui(int texture, int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP4ui)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordP4ui");
-        try { Handles.MH_glMultiTexCoordP4ui.invokeExact(handles.PFN_glMultiTexCoordP4ui, texture, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordP4ui", texture, type, coords); }
+        Handles.MH_glMultiTexCoordP4ui.invokeExact(handles.PFN_glMultiTexCoordP4ui, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordP4ui", e); }
     }
 
@@ -415,7 +444,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void MultiTexCoordP4uiv(int texture, int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMultiTexCoordP4uiv)) throw new GLSymbolNotFoundError("Symbol not found: glMultiTexCoordP4uiv");
-        try { Handles.MH_glMultiTexCoordP4uiv.invokeExact(handles.PFN_glMultiTexCoordP4uiv, texture, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMultiTexCoordP4uiv", texture, type, coords); }
+        Handles.MH_glMultiTexCoordP4uiv.invokeExact(handles.PFN_glMultiTexCoordP4uiv, texture, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in MultiTexCoordP4uiv", e); }
     }
 
@@ -424,7 +454,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void NormalP3ui(int type, int coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalP3ui)) throw new GLSymbolNotFoundError("Symbol not found: glNormalP3ui");
-        try { Handles.MH_glNormalP3ui.invokeExact(handles.PFN_glNormalP3ui, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalP3ui", type, coords); }
+        Handles.MH_glNormalP3ui.invokeExact(handles.PFN_glNormalP3ui, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in NormalP3ui", e); }
     }
 
@@ -433,7 +464,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void NormalP3uiv(int type, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalP3uiv)) throw new GLSymbolNotFoundError("Symbol not found: glNormalP3uiv");
-        try { Handles.MH_glNormalP3uiv.invokeExact(handles.PFN_glNormalP3uiv, type, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalP3uiv", type, coords); }
+        Handles.MH_glNormalP3uiv.invokeExact(handles.PFN_glNormalP3uiv, type, coords); }
         catch (Throwable e) { throw new RuntimeException("error in NormalP3uiv", e); }
     }
 
@@ -442,7 +474,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void ColorP3ui(int type, int color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorP3ui)) throw new GLSymbolNotFoundError("Symbol not found: glColorP3ui");
-        try { Handles.MH_glColorP3ui.invokeExact(handles.PFN_glColorP3ui, type, color); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorP3ui", type, color); }
+        Handles.MH_glColorP3ui.invokeExact(handles.PFN_glColorP3ui, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in ColorP3ui", e); }
     }
 
@@ -451,7 +484,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void ColorP3uiv(int type, MemorySegment color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorP3uiv)) throw new GLSymbolNotFoundError("Symbol not found: glColorP3uiv");
-        try { Handles.MH_glColorP3uiv.invokeExact(handles.PFN_glColorP3uiv, type, color); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorP3uiv", type, color); }
+        Handles.MH_glColorP3uiv.invokeExact(handles.PFN_glColorP3uiv, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in ColorP3uiv", e); }
     }
 
@@ -460,7 +494,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void ColorP4ui(int type, int color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorP4ui)) throw new GLSymbolNotFoundError("Symbol not found: glColorP4ui");
-        try { Handles.MH_glColorP4ui.invokeExact(handles.PFN_glColorP4ui, type, color); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorP4ui", type, color); }
+        Handles.MH_glColorP4ui.invokeExact(handles.PFN_glColorP4ui, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in ColorP4ui", e); }
     }
 
@@ -469,7 +504,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void ColorP4uiv(int type, MemorySegment color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorP4uiv)) throw new GLSymbolNotFoundError("Symbol not found: glColorP4uiv");
-        try { Handles.MH_glColorP4uiv.invokeExact(handles.PFN_glColorP4uiv, type, color); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorP4uiv", type, color); }
+        Handles.MH_glColorP4uiv.invokeExact(handles.PFN_glColorP4uiv, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in ColorP4uiv", e); }
     }
 
@@ -478,7 +514,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void SecondaryColorP3ui(int type, int color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorP3ui)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColorP3ui");
-        try { Handles.MH_glSecondaryColorP3ui.invokeExact(handles.PFN_glSecondaryColorP3ui, type, color); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glSecondaryColorP3ui", type, color); }
+        Handles.MH_glSecondaryColorP3ui.invokeExact(handles.PFN_glSecondaryColorP3ui, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColorP3ui", e); }
     }
 
@@ -487,7 +524,8 @@ public final class GLARBVertexType2101010Rev {
     /// ```
     public void SecondaryColorP3uiv(int type, MemorySegment color) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSecondaryColorP3uiv)) throw new GLSymbolNotFoundError("Symbol not found: glSecondaryColorP3uiv");
-        try { Handles.MH_glSecondaryColorP3uiv.invokeExact(handles.PFN_glSecondaryColorP3uiv, type, color); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glSecondaryColorP3uiv", type, color); }
+        Handles.MH_glSecondaryColorP3uiv.invokeExact(handles.PFN_glSecondaryColorP3uiv, type, color); }
         catch (Throwable e) { throw new RuntimeException("error in SecondaryColorP3uiv", e); }
     }
 

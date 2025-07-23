@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,7 +27,7 @@ public final class GLEXTSemaphoreFd {
     public static final int GL_HANDLE_TYPE_OPAQUE_FD_EXT = 0x9586;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glImportSemaphoreFdEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glImportSemaphoreFdEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glImportSemaphoreFdEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glImportSemaphoreFdEXT = func.invoke("glImportSemaphoreFdEXT");
@@ -43,7 +43,8 @@ public final class GLEXTSemaphoreFd {
     /// ```
     public void ImportSemaphoreFdEXT(int semaphore, int handleType, int fd) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportSemaphoreFdEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportSemaphoreFdEXT");
-        try { Handles.MH_glImportSemaphoreFdEXT.invokeExact(handles.PFN_glImportSemaphoreFdEXT, semaphore, handleType, fd); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glImportSemaphoreFdEXT", semaphore, handleType, fd); }
+        Handles.MH_glImportSemaphoreFdEXT.invokeExact(handles.PFN_glImportSemaphoreFdEXT, semaphore, handleType, fd); }
         catch (Throwable e) { throw new RuntimeException("error in ImportSemaphoreFdEXT", e); }
     }
 

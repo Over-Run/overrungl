@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRSwapchain {
@@ -43,15 +43,15 @@ public final class VKKHRSwapchain {
     public static final int VK_SWAPCHAIN_CREATE_SPLIT_INSTANCE_BIND_REGIONS_BIT_KHR = 0x00000001;
     public static final int VK_SWAPCHAIN_CREATE_PROTECTED_BIT_KHR = 0x00000002;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateSwapchainKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroySwapchainKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetSwapchainImagesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkAcquireNextImageKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkQueuePresentKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDeviceGroupPresentCapabilitiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetDeviceGroupSurfacePresentModesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetPhysicalDevicePresentRectanglesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkAcquireNextImage2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateSwapchainKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroySwapchainKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSwapchainImagesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkAcquireNextImageKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkQueuePresentKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceGroupPresentCapabilitiesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetDeviceGroupSurfacePresentModesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetPhysicalDevicePresentRectanglesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkAcquireNextImage2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -62,7 +62,8 @@ public final class VKKHRSwapchain {
     /// ```
     public static int vkCreateSwapchainKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSwapchain) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateSwapchainKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateSwapchainKHR");
-        try { return (int) Handles.MH_vkCreateSwapchainKHR.invokeExact(device.capabilities().PFN_vkCreateSwapchainKHR, device.segment(), pCreateInfo, pAllocator, pSwapchain); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateSwapchainKHR", device, pCreateInfo, pAllocator, pSwapchain); }
+        return (int) Handles.MH_vkCreateSwapchainKHR.invokeExact(device.capabilities().PFN_vkCreateSwapchainKHR, device.segment(), pCreateInfo, pAllocator, pSwapchain); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateSwapchainKHR", e); }
     }
 
@@ -71,7 +72,8 @@ public final class VKKHRSwapchain {
     /// ```
     public static void vkDestroySwapchainKHR(VkDevice device, long swapchain, MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroySwapchainKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroySwapchainKHR");
-        try { Handles.MH_vkDestroySwapchainKHR.invokeExact(device.capabilities().PFN_vkDestroySwapchainKHR, device.segment(), swapchain, pAllocator); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroySwapchainKHR", device, swapchain, pAllocator); }
+        Handles.MH_vkDestroySwapchainKHR.invokeExact(device.capabilities().PFN_vkDestroySwapchainKHR, device.segment(), swapchain, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroySwapchainKHR", e); }
     }
 
@@ -80,7 +82,8 @@ public final class VKKHRSwapchain {
     /// ```
     public static int vkGetSwapchainImagesKHR(VkDevice device, long swapchain, MemorySegment pSwapchainImageCount, MemorySegment pSwapchainImages) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainImagesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSwapchainImagesKHR");
-        try { return (int) Handles.MH_vkGetSwapchainImagesKHR.invokeExact(device.capabilities().PFN_vkGetSwapchainImagesKHR, device.segment(), swapchain, pSwapchainImageCount, pSwapchainImages); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSwapchainImagesKHR", device, swapchain, pSwapchainImageCount, pSwapchainImages); }
+        return (int) Handles.MH_vkGetSwapchainImagesKHR.invokeExact(device.capabilities().PFN_vkGetSwapchainImagesKHR, device.segment(), swapchain, pSwapchainImageCount, pSwapchainImages); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSwapchainImagesKHR", e); }
     }
 
@@ -89,7 +92,8 @@ public final class VKKHRSwapchain {
     /// ```
     public static int vkAcquireNextImageKHR(VkDevice device, long swapchain, long timeout, long semaphore, long fence, MemorySegment pImageIndex) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquireNextImageKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireNextImageKHR");
-        try { return (int) Handles.MH_vkAcquireNextImageKHR.invokeExact(device.capabilities().PFN_vkAcquireNextImageKHR, device.segment(), swapchain, timeout, semaphore, fence, pImageIndex); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkAcquireNextImageKHR", device, swapchain, timeout, semaphore, fence, pImageIndex); }
+        return (int) Handles.MH_vkAcquireNextImageKHR.invokeExact(device.capabilities().PFN_vkAcquireNextImageKHR, device.segment(), swapchain, timeout, semaphore, fence, pImageIndex); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireNextImageKHR", e); }
     }
 
@@ -98,7 +102,8 @@ public final class VKKHRSwapchain {
     /// ```
     public static int vkQueuePresentKHR(VkQueue queue, MemorySegment pPresentInfo) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueuePresentKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkQueuePresentKHR");
-        try { return (int) Handles.MH_vkQueuePresentKHR.invokeExact(queue.capabilities().PFN_vkQueuePresentKHR, queue.segment(), pPresentInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkQueuePresentKHR", queue, pPresentInfo); }
+        return (int) Handles.MH_vkQueuePresentKHR.invokeExact(queue.capabilities().PFN_vkQueuePresentKHR, queue.segment(), pPresentInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueuePresentKHR", e); }
     }
 
@@ -107,7 +112,8 @@ public final class VKKHRSwapchain {
     /// ```
     public static int vkGetDeviceGroupPresentCapabilitiesKHR(VkDevice device, MemorySegment pDeviceGroupPresentCapabilities) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceGroupPresentCapabilitiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceGroupPresentCapabilitiesKHR");
-        try { return (int) Handles.MH_vkGetDeviceGroupPresentCapabilitiesKHR.invokeExact(device.capabilities().PFN_vkGetDeviceGroupPresentCapabilitiesKHR, device.segment(), pDeviceGroupPresentCapabilities); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceGroupPresentCapabilitiesKHR", device, pDeviceGroupPresentCapabilities); }
+        return (int) Handles.MH_vkGetDeviceGroupPresentCapabilitiesKHR.invokeExact(device.capabilities().PFN_vkGetDeviceGroupPresentCapabilitiesKHR, device.segment(), pDeviceGroupPresentCapabilities); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupPresentCapabilitiesKHR", e); }
     }
 
@@ -116,7 +122,8 @@ public final class VKKHRSwapchain {
     /// ```
     public static int vkGetDeviceGroupSurfacePresentModesKHR(VkDevice device, long surface, MemorySegment pModes) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceGroupSurfacePresentModesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceGroupSurfacePresentModesKHR");
-        try { return (int) Handles.MH_vkGetDeviceGroupSurfacePresentModesKHR.invokeExact(device.capabilities().PFN_vkGetDeviceGroupSurfacePresentModesKHR, device.segment(), surface, pModes); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceGroupSurfacePresentModesKHR", device, surface, pModes); }
+        return (int) Handles.MH_vkGetDeviceGroupSurfacePresentModesKHR.invokeExact(device.capabilities().PFN_vkGetDeviceGroupSurfacePresentModesKHR, device.segment(), surface, pModes); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceGroupSurfacePresentModesKHR", e); }
     }
 
@@ -125,7 +132,8 @@ public final class VKKHRSwapchain {
     /// ```
     public static int vkGetPhysicalDevicePresentRectanglesKHR(VkPhysicalDevice physicalDevice, long surface, MemorySegment pRectCount, MemorySegment pRects) {
         if (MemoryUtil.isNullPointer(physicalDevice.capabilities().PFN_vkGetPhysicalDevicePresentRectanglesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetPhysicalDevicePresentRectanglesKHR");
-        try { return (int) Handles.MH_vkGetPhysicalDevicePresentRectanglesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDevicePresentRectanglesKHR, physicalDevice.segment(), surface, pRectCount, pRects); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetPhysicalDevicePresentRectanglesKHR", physicalDevice, surface, pRectCount, pRects); }
+        return (int) Handles.MH_vkGetPhysicalDevicePresentRectanglesKHR.invokeExact(physicalDevice.capabilities().PFN_vkGetPhysicalDevicePresentRectanglesKHR, physicalDevice.segment(), surface, pRectCount, pRects); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetPhysicalDevicePresentRectanglesKHR", e); }
     }
 
@@ -134,7 +142,8 @@ public final class VKKHRSwapchain {
     /// ```
     public static int vkAcquireNextImage2KHR(VkDevice device, MemorySegment pAcquireInfo, MemorySegment pImageIndex) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkAcquireNextImage2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkAcquireNextImage2KHR");
-        try { return (int) Handles.MH_vkAcquireNextImage2KHR.invokeExact(device.capabilities().PFN_vkAcquireNextImage2KHR, device.segment(), pAcquireInfo, pImageIndex); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkAcquireNextImage2KHR", device, pAcquireInfo, pImageIndex); }
+        return (int) Handles.MH_vkAcquireNextImage2KHR.invokeExact(device.capabilities().PFN_vkAcquireNextImage2KHR, device.segment(), pAcquireInfo, pImageIndex); }
         catch (Throwable e) { throw new RuntimeException("error in vkAcquireNextImage2KHR", e); }
     }
 

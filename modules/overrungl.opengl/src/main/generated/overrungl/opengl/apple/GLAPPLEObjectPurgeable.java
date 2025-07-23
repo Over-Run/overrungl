@@ -19,7 +19,7 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -32,9 +32,9 @@ public final class GLAPPLEObjectPurgeable {
     public static final int GL_PURGEABLE_APPLE = 0x8A1D;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glObjectPurgeableAPPLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glObjectUnpurgeableAPPLE = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetObjectParameterivAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glObjectPurgeableAPPLE = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glObjectUnpurgeableAPPLE = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetObjectParameterivAPPLE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glObjectPurgeableAPPLE;
         public final MemorySegment PFN_glObjectUnpurgeableAPPLE;
         public final MemorySegment PFN_glGetObjectParameterivAPPLE;
@@ -54,7 +54,8 @@ public final class GLAPPLEObjectPurgeable {
     /// ```
     public int ObjectPurgeableAPPLE(int objectType, int name, int option) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectPurgeableAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glObjectPurgeableAPPLE");
-        try { return (int) Handles.MH_glObjectPurgeableAPPLE.invokeExact(handles.PFN_glObjectPurgeableAPPLE, objectType, name, option); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glObjectPurgeableAPPLE", objectType, name, option); }
+        return (int) Handles.MH_glObjectPurgeableAPPLE.invokeExact(handles.PFN_glObjectPurgeableAPPLE, objectType, name, option); }
         catch (Throwable e) { throw new RuntimeException("error in ObjectPurgeableAPPLE", e); }
     }
 
@@ -63,7 +64,8 @@ public final class GLAPPLEObjectPurgeable {
     /// ```
     public int ObjectUnpurgeableAPPLE(int objectType, int name, int option) {
         if (MemoryUtil.isNullPointer(handles.PFN_glObjectUnpurgeableAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glObjectUnpurgeableAPPLE");
-        try { return (int) Handles.MH_glObjectUnpurgeableAPPLE.invokeExact(handles.PFN_glObjectUnpurgeableAPPLE, objectType, name, option); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glObjectUnpurgeableAPPLE", objectType, name, option); }
+        return (int) Handles.MH_glObjectUnpurgeableAPPLE.invokeExact(handles.PFN_glObjectUnpurgeableAPPLE, objectType, name, option); }
         catch (Throwable e) { throw new RuntimeException("error in ObjectUnpurgeableAPPLE", e); }
     }
 
@@ -72,7 +74,8 @@ public final class GLAPPLEObjectPurgeable {
     /// ```
     public void GetObjectParameterivAPPLE(int objectType, int name, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetObjectParameterivAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glGetObjectParameterivAPPLE");
-        try { Handles.MH_glGetObjectParameterivAPPLE.invokeExact(handles.PFN_glGetObjectParameterivAPPLE, objectType, name, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetObjectParameterivAPPLE", objectType, name, pname, params); }
+        Handles.MH_glGetObjectParameterivAPPLE.invokeExact(handles.PFN_glGetObjectParameterivAPPLE, objectType, name, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetObjectParameterivAPPLE", e); }
     }
 

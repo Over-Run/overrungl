@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRMapMemory2 {
@@ -27,8 +27,8 @@ public final class VKKHRMapMemory2 {
     public static final int VK_STRUCTURE_TYPE_MEMORY_MAP_INFO_KHR = 1000271000;
     public static final int VK_STRUCTURE_TYPE_MEMORY_UNMAP_INFO_KHR = 1000271001;
     public static final class Handles {
-        public static final MethodHandle MH_vkMapMemory2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkUnmapMemory2KHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkMapMemory2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkUnmapMemory2KHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -39,7 +39,8 @@ public final class VKKHRMapMemory2 {
     /// ```
     public static int vkMapMemory2KHR(VkDevice device, MemorySegment pMemoryMapInfo, MemorySegment ppData) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkMapMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkMapMemory2KHR");
-        try { return (int) Handles.MH_vkMapMemory2KHR.invokeExact(device.capabilities().PFN_vkMapMemory2KHR, device.segment(), pMemoryMapInfo, ppData); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkMapMemory2KHR", device, pMemoryMapInfo, ppData); }
+        return (int) Handles.MH_vkMapMemory2KHR.invokeExact(device.capabilities().PFN_vkMapMemory2KHR, device.segment(), pMemoryMapInfo, ppData); }
         catch (Throwable e) { throw new RuntimeException("error in vkMapMemory2KHR", e); }
     }
 
@@ -48,7 +49,8 @@ public final class VKKHRMapMemory2 {
     /// ```
     public static int vkUnmapMemory2KHR(VkDevice device, MemorySegment pMemoryUnmapInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkUnmapMemory2KHR)) throw new VKSymbolNotFoundError("Symbol not found: vkUnmapMemory2KHR");
-        try { return (int) Handles.MH_vkUnmapMemory2KHR.invokeExact(device.capabilities().PFN_vkUnmapMemory2KHR, device.segment(), pMemoryUnmapInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkUnmapMemory2KHR", device, pMemoryUnmapInfo); }
+        return (int) Handles.MH_vkUnmapMemory2KHR.invokeExact(device.capabilities().PFN_vkUnmapMemory2KHR, device.segment(), pMemoryUnmapInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkUnmapMemory2KHR", e); }
     }
 

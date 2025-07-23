@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,7 +27,7 @@ public final class GLARBInternalformatQuery {
     public static final int GL_NUM_SAMPLE_COUNTS = 0x9380;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetInternalformativ = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetInternalformativ = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetInternalformativ;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glGetInternalformativ = func.invoke("glGetInternalformativ");
@@ -43,7 +43,8 @@ public final class GLARBInternalformatQuery {
     /// ```
     public void GetInternalformativ(int target, int internalformat, int pname, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetInternalformativ)) throw new GLSymbolNotFoundError("Symbol not found: glGetInternalformativ");
-        try { Handles.MH_glGetInternalformativ.invokeExact(handles.PFN_glGetInternalformativ, target, internalformat, pname, count, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetInternalformativ", target, internalformat, pname, count, params); }
+        Handles.MH_glGetInternalformativ.invokeExact(handles.PFN_glGetInternalformativ, target, internalformat, pname, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetInternalformativ", e); }
     }
 

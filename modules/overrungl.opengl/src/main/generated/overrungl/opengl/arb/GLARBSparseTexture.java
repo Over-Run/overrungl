@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -37,7 +37,7 @@ public final class GLARBSparseTexture {
     public static final int GL_SPARSE_TEXTURE_FULL_ARRAY_CUBE_MIPMAPS_ARB = 0x91A9;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTexPageCommitmentARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glTexPageCommitmentARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE));
         public final MemorySegment PFN_glTexPageCommitmentARB;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTexPageCommitmentARB = func.invoke("glTexPageCommitmentARB");
@@ -53,7 +53,8 @@ public final class GLARBSparseTexture {
     /// ```
     public void TexPageCommitmentARB(int target, int level, int xoffset, int yoffset, int zoffset, int width, int height, int depth, boolean commit) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexPageCommitmentARB)) throw new GLSymbolNotFoundError("Symbol not found: glTexPageCommitmentARB");
-        try { Handles.MH_glTexPageCommitmentARB.invokeExact(handles.PFN_glTexPageCommitmentARB, target, level, xoffset, yoffset, zoffset, width, height, depth, ((commit) ? (byte)1 : (byte)0)); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexPageCommitmentARB", target, level, xoffset, yoffset, zoffset, width, height, depth, commit); }
+        Handles.MH_glTexPageCommitmentARB.invokeExact(handles.PFN_glTexPageCommitmentARB, target, level, xoffset, yoffset, zoffset, width, height, depth, ((commit) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in TexPageCommitmentARB", e); }
     }
 

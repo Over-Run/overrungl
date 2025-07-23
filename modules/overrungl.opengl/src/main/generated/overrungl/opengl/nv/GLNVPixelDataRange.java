@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -32,8 +32,8 @@ public final class GLNVPixelDataRange {
     public static final int GL_READ_PIXEL_DATA_RANGE_POINTER_NV = 0x887D;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glPixelDataRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glFlushPixelDataRangeNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelDataRangeNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFlushPixelDataRangeNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glPixelDataRangeNV;
         public final MemorySegment PFN_glFlushPixelDataRangeNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -51,7 +51,8 @@ public final class GLNVPixelDataRange {
     /// ```
     public void PixelDataRangeNV(int target, int length, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelDataRangeNV)) throw new GLSymbolNotFoundError("Symbol not found: glPixelDataRangeNV");
-        try { Handles.MH_glPixelDataRangeNV.invokeExact(handles.PFN_glPixelDataRangeNV, target, length, pointer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelDataRangeNV", target, length, pointer); }
+        Handles.MH_glPixelDataRangeNV.invokeExact(handles.PFN_glPixelDataRangeNV, target, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in PixelDataRangeNV", e); }
     }
 
@@ -60,7 +61,8 @@ public final class GLNVPixelDataRange {
     /// ```
     public void FlushPixelDataRangeNV(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlushPixelDataRangeNV)) throw new GLSymbolNotFoundError("Symbol not found: glFlushPixelDataRangeNV");
-        try { Handles.MH_glFlushPixelDataRangeNV.invokeExact(handles.PFN_glFlushPixelDataRangeNV, target); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFlushPixelDataRangeNV", target); }
+        Handles.MH_glFlushPixelDataRangeNV.invokeExact(handles.PFN_glFlushPixelDataRangeNV, target); }
         catch (Throwable e) { throw new RuntimeException("error in FlushPixelDataRangeNV", e); }
     }
 

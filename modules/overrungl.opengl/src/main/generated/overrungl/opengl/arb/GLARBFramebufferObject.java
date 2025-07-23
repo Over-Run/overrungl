@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -99,26 +99,26 @@ public final class GLARBFramebufferObject {
     public static final int GL_INDEX = 0x8222;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glIsRenderbuffer = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBindRenderbuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDeleteRenderbuffers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenRenderbuffers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glRenderbufferStorage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetRenderbufferParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsFramebuffer = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBindFramebuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDeleteFramebuffers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenFramebuffers = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCheckFramebufferStatus = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTexture1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTexture2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTexture3D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferRenderbuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetFramebufferAttachmentParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenerateMipmap = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBlitFramebuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glRenderbufferStorageMultisample = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFramebufferTextureLayer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIsRenderbuffer = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindRenderbuffer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteRenderbuffers = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenRenderbuffers = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glRenderbufferStorage = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetRenderbufferParameteriv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsFramebuffer = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindFramebuffer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteFramebuffers = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenFramebuffers = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCheckFramebufferStatus = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTexture1D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTexture2D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTexture3D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferRenderbuffer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetFramebufferAttachmentParameteriv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenerateMipmap = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlitFramebuffer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glRenderbufferStorageMultisample = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFramebufferTextureLayer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glIsRenderbuffer;
         public final MemorySegment PFN_glBindRenderbuffer;
         public final MemorySegment PFN_glDeleteRenderbuffers;
@@ -172,7 +172,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public boolean IsRenderbuffer(int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsRenderbuffer)) throw new GLSymbolNotFoundError("Symbol not found: glIsRenderbuffer");
-        try { return (((byte) Handles.MH_glIsRenderbuffer.invokeExact(handles.PFN_glIsRenderbuffer, renderbuffer)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIsRenderbuffer", renderbuffer); }
+        return (((byte) Handles.MH_glIsRenderbuffer.invokeExact(handles.PFN_glIsRenderbuffer, renderbuffer)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsRenderbuffer", e); }
     }
 
@@ -181,7 +182,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void BindRenderbuffer(int target, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindRenderbuffer)) throw new GLSymbolNotFoundError("Symbol not found: glBindRenderbuffer");
-        try { Handles.MH_glBindRenderbuffer.invokeExact(handles.PFN_glBindRenderbuffer, target, renderbuffer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBindRenderbuffer", target, renderbuffer); }
+        Handles.MH_glBindRenderbuffer.invokeExact(handles.PFN_glBindRenderbuffer, target, renderbuffer); }
         catch (Throwable e) { throw new RuntimeException("error in BindRenderbuffer", e); }
     }
 
@@ -190,7 +192,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void DeleteRenderbuffers(int n, MemorySegment renderbuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteRenderbuffers)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteRenderbuffers");
-        try { Handles.MH_glDeleteRenderbuffers.invokeExact(handles.PFN_glDeleteRenderbuffers, n, renderbuffers); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteRenderbuffers", n, renderbuffers); }
+        Handles.MH_glDeleteRenderbuffers.invokeExact(handles.PFN_glDeleteRenderbuffers, n, renderbuffers); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteRenderbuffers", e); }
     }
 
@@ -199,7 +202,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void GenRenderbuffers(int n, MemorySegment renderbuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenRenderbuffers)) throw new GLSymbolNotFoundError("Symbol not found: glGenRenderbuffers");
-        try { Handles.MH_glGenRenderbuffers.invokeExact(handles.PFN_glGenRenderbuffers, n, renderbuffers); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGenRenderbuffers", n, renderbuffers); }
+        Handles.MH_glGenRenderbuffers.invokeExact(handles.PFN_glGenRenderbuffers, n, renderbuffers); }
         catch (Throwable e) { throw new RuntimeException("error in GenRenderbuffers", e); }
     }
 
@@ -208,7 +212,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void RenderbufferStorage(int target, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorage)) throw new GLSymbolNotFoundError("Symbol not found: glRenderbufferStorage");
-        try { Handles.MH_glRenderbufferStorage.invokeExact(handles.PFN_glRenderbufferStorage, target, internalformat, width, height); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glRenderbufferStorage", target, internalformat, width, height); }
+        Handles.MH_glRenderbufferStorage.invokeExact(handles.PFN_glRenderbufferStorage, target, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorage", e); }
     }
 
@@ -217,7 +222,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void GetRenderbufferParameteriv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetRenderbufferParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetRenderbufferParameteriv");
-        try { Handles.MH_glGetRenderbufferParameteriv.invokeExact(handles.PFN_glGetRenderbufferParameteriv, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetRenderbufferParameteriv", target, pname, params); }
+        Handles.MH_glGetRenderbufferParameteriv.invokeExact(handles.PFN_glGetRenderbufferParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetRenderbufferParameteriv", e); }
     }
 
@@ -226,7 +232,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public boolean IsFramebuffer(int framebuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsFramebuffer)) throw new GLSymbolNotFoundError("Symbol not found: glIsFramebuffer");
-        try { return (((byte) Handles.MH_glIsFramebuffer.invokeExact(handles.PFN_glIsFramebuffer, framebuffer)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIsFramebuffer", framebuffer); }
+        return (((byte) Handles.MH_glIsFramebuffer.invokeExact(handles.PFN_glIsFramebuffer, framebuffer)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsFramebuffer", e); }
     }
 
@@ -235,7 +242,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void BindFramebuffer(int target, int framebuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindFramebuffer)) throw new GLSymbolNotFoundError("Symbol not found: glBindFramebuffer");
-        try { Handles.MH_glBindFramebuffer.invokeExact(handles.PFN_glBindFramebuffer, target, framebuffer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBindFramebuffer", target, framebuffer); }
+        Handles.MH_glBindFramebuffer.invokeExact(handles.PFN_glBindFramebuffer, target, framebuffer); }
         catch (Throwable e) { throw new RuntimeException("error in BindFramebuffer", e); }
     }
 
@@ -244,7 +252,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void DeleteFramebuffers(int n, MemorySegment framebuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteFramebuffers)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteFramebuffers");
-        try { Handles.MH_glDeleteFramebuffers.invokeExact(handles.PFN_glDeleteFramebuffers, n, framebuffers); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteFramebuffers", n, framebuffers); }
+        Handles.MH_glDeleteFramebuffers.invokeExact(handles.PFN_glDeleteFramebuffers, n, framebuffers); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteFramebuffers", e); }
     }
 
@@ -253,7 +262,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void GenFramebuffers(int n, MemorySegment framebuffers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenFramebuffers)) throw new GLSymbolNotFoundError("Symbol not found: glGenFramebuffers");
-        try { Handles.MH_glGenFramebuffers.invokeExact(handles.PFN_glGenFramebuffers, n, framebuffers); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGenFramebuffers", n, framebuffers); }
+        Handles.MH_glGenFramebuffers.invokeExact(handles.PFN_glGenFramebuffers, n, framebuffers); }
         catch (Throwable e) { throw new RuntimeException("error in GenFramebuffers", e); }
     }
 
@@ -262,7 +272,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public int CheckFramebufferStatus(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCheckFramebufferStatus)) throw new GLSymbolNotFoundError("Symbol not found: glCheckFramebufferStatus");
-        try { return (int) Handles.MH_glCheckFramebufferStatus.invokeExact(handles.PFN_glCheckFramebufferStatus, target); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glCheckFramebufferStatus", target); }
+        return (int) Handles.MH_glCheckFramebufferStatus.invokeExact(handles.PFN_glCheckFramebufferStatus, target); }
         catch (Throwable e) { throw new RuntimeException("error in CheckFramebufferStatus", e); }
     }
 
@@ -271,7 +282,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void FramebufferTexture1D(int target, int attachment, int textarget, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture1D)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTexture1D");
-        try { Handles.MH_glFramebufferTexture1D.invokeExact(handles.PFN_glFramebufferTexture1D, target, attachment, textarget, texture, level); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTexture1D", target, attachment, textarget, texture, level); }
+        Handles.MH_glFramebufferTexture1D.invokeExact(handles.PFN_glFramebufferTexture1D, target, attachment, textarget, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture1D", e); }
     }
 
@@ -280,7 +292,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void FramebufferTexture2D(int target, int attachment, int textarget, int texture, int level) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture2D)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTexture2D");
-        try { Handles.MH_glFramebufferTexture2D.invokeExact(handles.PFN_glFramebufferTexture2D, target, attachment, textarget, texture, level); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTexture2D", target, attachment, textarget, texture, level); }
+        Handles.MH_glFramebufferTexture2D.invokeExact(handles.PFN_glFramebufferTexture2D, target, attachment, textarget, texture, level); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture2D", e); }
     }
 
@@ -289,7 +302,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void FramebufferTexture3D(int target, int attachment, int textarget, int texture, int level, int zoffset) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTexture3D)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTexture3D");
-        try { Handles.MH_glFramebufferTexture3D.invokeExact(handles.PFN_glFramebufferTexture3D, target, attachment, textarget, texture, level, zoffset); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTexture3D", target, attachment, textarget, texture, level, zoffset); }
+        Handles.MH_glFramebufferTexture3D.invokeExact(handles.PFN_glFramebufferTexture3D, target, attachment, textarget, texture, level, zoffset); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTexture3D", e); }
     }
 
@@ -298,7 +312,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void FramebufferRenderbuffer(int target, int attachment, int renderbuffertarget, int renderbuffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferRenderbuffer)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferRenderbuffer");
-        try { Handles.MH_glFramebufferRenderbuffer.invokeExact(handles.PFN_glFramebufferRenderbuffer, target, attachment, renderbuffertarget, renderbuffer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferRenderbuffer", target, attachment, renderbuffertarget, renderbuffer); }
+        Handles.MH_glFramebufferRenderbuffer.invokeExact(handles.PFN_glFramebufferRenderbuffer, target, attachment, renderbuffertarget, renderbuffer); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferRenderbuffer", e); }
     }
 
@@ -307,7 +322,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void GetFramebufferAttachmentParameteriv(int target, int attachment, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFramebufferAttachmentParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetFramebufferAttachmentParameteriv");
-        try { Handles.MH_glGetFramebufferAttachmentParameteriv.invokeExact(handles.PFN_glGetFramebufferAttachmentParameteriv, target, attachment, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFramebufferAttachmentParameteriv", target, attachment, pname, params); }
+        Handles.MH_glGetFramebufferAttachmentParameteriv.invokeExact(handles.PFN_glGetFramebufferAttachmentParameteriv, target, attachment, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetFramebufferAttachmentParameteriv", e); }
     }
 
@@ -316,7 +332,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void GenerateMipmap(int target) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenerateMipmap)) throw new GLSymbolNotFoundError("Symbol not found: glGenerateMipmap");
-        try { Handles.MH_glGenerateMipmap.invokeExact(handles.PFN_glGenerateMipmap, target); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGenerateMipmap", target); }
+        Handles.MH_glGenerateMipmap.invokeExact(handles.PFN_glGenerateMipmap, target); }
         catch (Throwable e) { throw new RuntimeException("error in GenerateMipmap", e); }
     }
 
@@ -325,7 +342,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void BlitFramebuffer(int srcX0, int srcY0, int srcX1, int srcY1, int dstX0, int dstY0, int dstX1, int dstY1, int mask, int filter) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlitFramebuffer)) throw new GLSymbolNotFoundError("Symbol not found: glBlitFramebuffer");
-        try { Handles.MH_glBlitFramebuffer.invokeExact(handles.PFN_glBlitFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBlitFramebuffer", srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter); }
+        Handles.MH_glBlitFramebuffer.invokeExact(handles.PFN_glBlitFramebuffer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter); }
         catch (Throwable e) { throw new RuntimeException("error in BlitFramebuffer", e); }
     }
 
@@ -334,7 +352,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void RenderbufferStorageMultisample(int target, int samples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisample)) throw new GLSymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisample");
-        try { Handles.MH_glRenderbufferStorageMultisample.invokeExact(handles.PFN_glRenderbufferStorageMultisample, target, samples, internalformat, width, height); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glRenderbufferStorageMultisample", target, samples, internalformat, width, height); }
+        Handles.MH_glRenderbufferStorageMultisample.invokeExact(handles.PFN_glRenderbufferStorageMultisample, target, samples, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageMultisample", e); }
     }
 
@@ -343,7 +362,8 @@ public final class GLARBFramebufferObject {
     /// ```
     public void FramebufferTextureLayer(int target, int attachment, int texture, int level, int layer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFramebufferTextureLayer)) throw new GLSymbolNotFoundError("Symbol not found: glFramebufferTextureLayer");
-        try { Handles.MH_glFramebufferTextureLayer.invokeExact(handles.PFN_glFramebufferTextureLayer, target, attachment, texture, level, layer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFramebufferTextureLayer", target, attachment, texture, level, layer); }
+        Handles.MH_glFramebufferTextureLayer.invokeExact(handles.PFN_glFramebufferTextureLayer, target, attachment, texture, level, layer); }
         catch (Throwable e) { throw new RuntimeException("error in FramebufferTextureLayer", e); }
     }
 

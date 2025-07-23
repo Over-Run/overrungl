@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,8 +28,8 @@ public final class GLNVScissorExclusive {
     public static final int GL_SCISSOR_BOX_EXCLUSIVE_NV = 0x9556;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glScissorExclusiveNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glScissorExclusiveArrayvNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glScissorExclusiveNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glScissorExclusiveArrayvNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glScissorExclusiveNV;
         public final MemorySegment PFN_glScissorExclusiveArrayvNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -47,7 +47,8 @@ public final class GLNVScissorExclusive {
     /// ```
     public void ScissorExclusiveNV(int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorExclusiveNV)) throw new GLSymbolNotFoundError("Symbol not found: glScissorExclusiveNV");
-        try { Handles.MH_glScissorExclusiveNV.invokeExact(handles.PFN_glScissorExclusiveNV, x, y, width, height); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glScissorExclusiveNV", x, y, width, height); }
+        Handles.MH_glScissorExclusiveNV.invokeExact(handles.PFN_glScissorExclusiveNV, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in ScissorExclusiveNV", e); }
     }
 
@@ -56,7 +57,8 @@ public final class GLNVScissorExclusive {
     /// ```
     public void ScissorExclusiveArrayvNV(int first, int count, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissorExclusiveArrayvNV)) throw new GLSymbolNotFoundError("Symbol not found: glScissorExclusiveArrayvNV");
-        try { Handles.MH_glScissorExclusiveArrayvNV.invokeExact(handles.PFN_glScissorExclusiveArrayvNV, first, count, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glScissorExclusiveArrayvNV", first, count, v); }
+        Handles.MH_glScissorExclusiveArrayvNV.invokeExact(handles.PFN_glScissorExclusiveArrayvNV, first, count, v); }
         catch (Throwable e) { throw new RuntimeException("error in ScissorExclusiveArrayvNV", e); }
     }
 

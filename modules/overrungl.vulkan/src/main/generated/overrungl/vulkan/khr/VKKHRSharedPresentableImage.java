@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRSharedPresentableImage {
@@ -29,7 +29,7 @@ public final class VKKHRSharedPresentableImage {
     public static final int VK_PRESENT_MODE_SHARED_CONTINUOUS_REFRESH_KHR = 1000111001;
     public static final int VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR = 1000111000;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetSwapchainStatusKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
+        public static final MethodHandle MH_vkGetSwapchainStatusKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG));
         private Handles() {}
     }
 
@@ -40,7 +40,8 @@ public final class VKKHRSharedPresentableImage {
     /// ```
     public static int vkGetSwapchainStatusKHR(VkDevice device, long swapchain) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSwapchainStatusKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSwapchainStatusKHR");
-        try { return (int) Handles.MH_vkGetSwapchainStatusKHR.invokeExact(device.capabilities().PFN_vkGetSwapchainStatusKHR, device.segment(), swapchain); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSwapchainStatusKHR", device, swapchain); }
+        return (int) Handles.MH_vkGetSwapchainStatusKHR.invokeExact(device.capabilities().PFN_vkGetSwapchainStatusKHR, device.segment(), swapchain); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSwapchainStatusKHR", e); }
     }
 

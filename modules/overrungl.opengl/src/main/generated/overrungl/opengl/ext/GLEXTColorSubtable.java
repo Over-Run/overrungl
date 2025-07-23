@@ -19,15 +19,15 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLEXTColorSubtable {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glColorSubTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glCopyColorSubTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorSubTableEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glCopyColorSubTableEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glColorSubTableEXT;
         public final MemorySegment PFN_glCopyColorSubTableEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -45,7 +45,8 @@ public final class GLEXTColorSubtable {
     /// ```
     public void ColorSubTableEXT(int target, int start, int count, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorSubTableEXT)) throw new GLSymbolNotFoundError("Symbol not found: glColorSubTableEXT");
-        try { Handles.MH_glColorSubTableEXT.invokeExact(handles.PFN_glColorSubTableEXT, target, start, count, format, type, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorSubTableEXT", target, start, count, format, type, data); }
+        Handles.MH_glColorSubTableEXT.invokeExact(handles.PFN_glColorSubTableEXT, target, start, count, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in ColorSubTableEXT", e); }
     }
 
@@ -54,7 +55,8 @@ public final class GLEXTColorSubtable {
     /// ```
     public void CopyColorSubTableEXT(int target, int start, int x, int y, int width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCopyColorSubTableEXT)) throw new GLSymbolNotFoundError("Symbol not found: glCopyColorSubTableEXT");
-        try { Handles.MH_glCopyColorSubTableEXT.invokeExact(handles.PFN_glCopyColorSubTableEXT, target, start, x, y, width); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glCopyColorSubTableEXT", target, start, x, y, width); }
+        Handles.MH_glCopyColorSubTableEXT.invokeExact(handles.PFN_glCopyColorSubTableEXT, target, start, x, y, width); }
         catch (Throwable e) { throw new RuntimeException("error in CopyColorSubTableEXT", e); }
     }
 

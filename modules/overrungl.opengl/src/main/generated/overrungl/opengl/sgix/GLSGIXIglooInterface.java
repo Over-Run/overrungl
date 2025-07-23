@@ -19,14 +19,14 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLSGIXIglooInterface {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glIglooInterfaceSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIglooInterfaceSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glIglooInterfaceSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glIglooInterfaceSGIX = func.invoke("glIglooInterfaceSGIX");
@@ -42,7 +42,8 @@ public final class GLSGIXIglooInterface {
     /// ```
     public void IglooInterfaceSGIX(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIglooInterfaceSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glIglooInterfaceSGIX");
-        try { Handles.MH_glIglooInterfaceSGIX.invokeExact(handles.PFN_glIglooInterfaceSGIX, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIglooInterfaceSGIX", pname, params); }
+        Handles.MH_glIglooInterfaceSGIX.invokeExact(handles.PFN_glIglooInterfaceSGIX, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in IglooInterfaceSGIX", e); }
     }
 

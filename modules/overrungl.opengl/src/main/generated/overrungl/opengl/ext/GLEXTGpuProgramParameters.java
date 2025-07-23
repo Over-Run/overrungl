@@ -19,15 +19,15 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLEXTGpuProgramParameters {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glProgramEnvParameters4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramLocalParameters4fvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParameters4fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParameters4fvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glProgramEnvParameters4fvEXT;
         public final MemorySegment PFN_glProgramLocalParameters4fvEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -45,7 +45,8 @@ public final class GLEXTGpuProgramParameters {
     /// ```
     public void ProgramEnvParameters4fvEXT(int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameters4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramEnvParameters4fvEXT");
-        try { Handles.MH_glProgramEnvParameters4fvEXT.invokeExact(handles.PFN_glProgramEnvParameters4fvEXT, target, index, count, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramEnvParameters4fvEXT", target, index, count, params); }
+        Handles.MH_glProgramEnvParameters4fvEXT.invokeExact(handles.PFN_glProgramEnvParameters4fvEXT, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameters4fvEXT", e); }
     }
 
@@ -54,7 +55,8 @@ public final class GLEXTGpuProgramParameters {
     /// ```
     public void ProgramLocalParameters4fvEXT(int target, int index, int count, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameters4fvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramLocalParameters4fvEXT");
-        try { Handles.MH_glProgramLocalParameters4fvEXT.invokeExact(handles.PFN_glProgramLocalParameters4fvEXT, target, index, count, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramLocalParameters4fvEXT", target, index, count, params); }
+        Handles.MH_glProgramLocalParameters4fvEXT.invokeExact(handles.PFN_glProgramLocalParameters4fvEXT, target, index, count, params); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameters4fvEXT", e); }
     }
 

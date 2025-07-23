@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -29,8 +29,8 @@ public final class GLNVPointSprite {
     public static final int GL_POINT_SPRITE_R_MODE_NV = 0x8863;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glPointParameteriNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPointParameterivNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glPointParameteriNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPointParameterivNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glPointParameteriNV;
         public final MemorySegment PFN_glPointParameterivNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -48,7 +48,8 @@ public final class GLNVPointSprite {
     /// ```
     public void PointParameteriNV(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameteriNV)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameteriNV");
-        try { Handles.MH_glPointParameteriNV.invokeExact(handles.PFN_glPointParameteriNV, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameteriNV", pname, param); }
+        Handles.MH_glPointParameteriNV.invokeExact(handles.PFN_glPointParameteriNV, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameteriNV", e); }
     }
 
@@ -57,7 +58,8 @@ public final class GLNVPointSprite {
     /// ```
     public void PointParameterivNV(int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointParameterivNV)) throw new GLSymbolNotFoundError("Symbol not found: glPointParameterivNV");
-        try { Handles.MH_glPointParameterivNV.invokeExact(handles.PFN_glPointParameterivNV, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPointParameterivNV", pname, params); }
+        Handles.MH_glPointParameterivNV.invokeExact(handles.PFN_glPointParameterivNV, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in PointParameterivNV", e); }
     }
 

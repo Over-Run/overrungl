@@ -19,7 +19,7 @@ package overrungl.opengl.sgix;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -28,7 +28,7 @@ public final class GLSGIXReferencePlane {
     public static final int GL_REFERENCE_PLANE_EQUATION_SGIX = 0x817E;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glReferencePlaneSGIX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glReferencePlaneSGIX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glReferencePlaneSGIX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glReferencePlaneSGIX = func.invoke("glReferencePlaneSGIX");
@@ -44,7 +44,8 @@ public final class GLSGIXReferencePlane {
     /// ```
     public void ReferencePlaneSGIX(MemorySegment equation) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReferencePlaneSGIX)) throw new GLSymbolNotFoundError("Symbol not found: glReferencePlaneSGIX");
-        try { Handles.MH_glReferencePlaneSGIX.invokeExact(handles.PFN_glReferencePlaneSGIX, equation); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glReferencePlaneSGIX", equation); }
+        Handles.MH_glReferencePlaneSGIX.invokeExact(handles.PFN_glReferencePlaneSGIX, equation); }
         catch (Throwable e) { throw new RuntimeException("error in ReferencePlaneSGIX", e); }
     }
 

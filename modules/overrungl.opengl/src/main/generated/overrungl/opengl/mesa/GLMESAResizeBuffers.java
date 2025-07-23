@@ -19,14 +19,14 @@ package overrungl.opengl.mesa;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GLMESAResizeBuffers {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glResizeBuffersMESA = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glResizeBuffersMESA = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glResizeBuffersMESA;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glResizeBuffersMESA = func.invoke("glResizeBuffersMESA");
@@ -42,7 +42,8 @@ public final class GLMESAResizeBuffers {
     /// ```
     public void ResizeBuffersMESA() {
         if (MemoryUtil.isNullPointer(handles.PFN_glResizeBuffersMESA)) throw new GLSymbolNotFoundError("Symbol not found: glResizeBuffersMESA");
-        try { Handles.MH_glResizeBuffersMESA.invokeExact(handles.PFN_glResizeBuffersMESA); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glResizeBuffersMESA"); }
+        Handles.MH_glResizeBuffersMESA.invokeExact(handles.PFN_glResizeBuffersMESA); }
         catch (Throwable e) { throw new RuntimeException("error in ResizeBuffersMESA", e); }
     }
 

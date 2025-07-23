@@ -19,7 +19,7 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -29,9 +29,9 @@ public final class GLATIElementArray {
     public static final int GL_ELEMENT_ARRAY_POINTER_ATI = 0x876A;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glElementPointerATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDrawElementArrayATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDrawRangeElementArrayATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glElementPointerATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDrawElementArrayATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDrawRangeElementArrayATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glElementPointerATI;
         public final MemorySegment PFN_glDrawElementArrayATI;
         public final MemorySegment PFN_glDrawRangeElementArrayATI;
@@ -51,7 +51,8 @@ public final class GLATIElementArray {
     /// ```
     public void ElementPointerATI(int type, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glElementPointerATI)) throw new GLSymbolNotFoundError("Symbol not found: glElementPointerATI");
-        try { Handles.MH_glElementPointerATI.invokeExact(handles.PFN_glElementPointerATI, type, pointer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glElementPointerATI", type, pointer); }
+        Handles.MH_glElementPointerATI.invokeExact(handles.PFN_glElementPointerATI, type, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in ElementPointerATI", e); }
     }
 
@@ -60,7 +61,8 @@ public final class GLATIElementArray {
     /// ```
     public void DrawElementArrayATI(int mode, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawElementArrayATI)) throw new GLSymbolNotFoundError("Symbol not found: glDrawElementArrayATI");
-        try { Handles.MH_glDrawElementArrayATI.invokeExact(handles.PFN_glDrawElementArrayATI, mode, count); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawElementArrayATI", mode, count); }
+        Handles.MH_glDrawElementArrayATI.invokeExact(handles.PFN_glDrawElementArrayATI, mode, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawElementArrayATI", e); }
     }
 
@@ -69,7 +71,8 @@ public final class GLATIElementArray {
     /// ```
     public void DrawRangeElementArrayATI(int mode, int start, int end, int count) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawRangeElementArrayATI)) throw new GLSymbolNotFoundError("Symbol not found: glDrawRangeElementArrayATI");
-        try { Handles.MH_glDrawRangeElementArrayATI.invokeExact(handles.PFN_glDrawRangeElementArrayATI, mode, start, end, count); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawRangeElementArrayATI", mode, start, end, count); }
+        Handles.MH_glDrawRangeElementArrayATI.invokeExact(handles.PFN_glDrawRangeElementArrayATI, mode, start, end, count); }
         catch (Throwable e) { throw new RuntimeException("error in DrawRangeElementArrayATI", e); }
     }
 

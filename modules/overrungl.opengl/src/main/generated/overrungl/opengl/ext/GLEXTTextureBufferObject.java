@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -31,7 +31,7 @@ public final class GLEXTTextureBufferObject {
     public static final int GL_TEXTURE_BUFFER_FORMAT_EXT = 0x8C2E;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTexBufferEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexBufferEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTexBufferEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTexBufferEXT = func.invoke("glTexBufferEXT", "glTexBuffer");
@@ -47,7 +47,8 @@ public final class GLEXTTextureBufferObject {
     /// ```
     public void TexBufferEXT(int target, int internalformat, int buffer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexBufferEXT)) throw new GLSymbolNotFoundError("Symbol not found: glTexBufferEXT");
-        try { Handles.MH_glTexBufferEXT.invokeExact(handles.PFN_glTexBufferEXT, target, internalformat, buffer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexBufferEXT", target, internalformat, buffer); }
+        Handles.MH_glTexBufferEXT.invokeExact(handles.PFN_glTexBufferEXT, target, internalformat, buffer); }
         catch (Throwable e) { throw new RuntimeException("error in TexBufferEXT", e); }
     }
 

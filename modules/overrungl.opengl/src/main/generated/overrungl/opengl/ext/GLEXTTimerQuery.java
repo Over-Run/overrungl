@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,8 +27,8 @@ public final class GLEXTTimerQuery {
     public static final int GL_TIME_ELAPSED_EXT = 0x88BF;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetQueryObjecti64vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetQueryObjectui64vEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetQueryObjecti64vEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetQueryObjectui64vEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetQueryObjecti64vEXT;
         public final MemorySegment PFN_glGetQueryObjectui64vEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -46,7 +46,8 @@ public final class GLEXTTimerQuery {
     /// ```
     public void GetQueryObjecti64vEXT(int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjecti64vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryObjecti64vEXT");
-        try { Handles.MH_glGetQueryObjecti64vEXT.invokeExact(handles.PFN_glGetQueryObjecti64vEXT, id, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetQueryObjecti64vEXT", id, pname, params); }
+        Handles.MH_glGetQueryObjecti64vEXT.invokeExact(handles.PFN_glGetQueryObjecti64vEXT, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryObjecti64vEXT", e); }
     }
 
@@ -55,7 +56,8 @@ public final class GLEXTTimerQuery {
     /// ```
     public void GetQueryObjectui64vEXT(int id, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetQueryObjectui64vEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetQueryObjectui64vEXT");
-        try { Handles.MH_glGetQueryObjectui64vEXT.invokeExact(handles.PFN_glGetQueryObjectui64vEXT, id, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetQueryObjectui64vEXT", id, pname, params); }
+        Handles.MH_glGetQueryObjectui64vEXT.invokeExact(handles.PFN_glGetQueryObjectui64vEXT, id, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetQueryObjectui64vEXT", e); }
     }
 

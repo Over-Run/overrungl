@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -81,8 +81,8 @@ public final class GLEXTShaderImageLoadStore {
     public static final int GL_ALL_BARRIER_BITS_EXT = 0xFFFFFFFF;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBindImageTextureEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glMemoryBarrierEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBindImageTextureEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glMemoryBarrierEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glBindImageTextureEXT;
         public final MemorySegment PFN_glMemoryBarrierEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -100,7 +100,8 @@ public final class GLEXTShaderImageLoadStore {
     /// ```
     public void BindImageTextureEXT(int index, int texture, int level, boolean layered, int layer, int access, int format) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindImageTextureEXT)) throw new GLSymbolNotFoundError("Symbol not found: glBindImageTextureEXT");
-        try { Handles.MH_glBindImageTextureEXT.invokeExact(handles.PFN_glBindImageTextureEXT, index, texture, level, ((layered) ? (byte)1 : (byte)0), layer, access, format); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBindImageTextureEXT", index, texture, level, layered, layer, access, format); }
+        Handles.MH_glBindImageTextureEXT.invokeExact(handles.PFN_glBindImageTextureEXT, index, texture, level, ((layered) ? (byte)1 : (byte)0), layer, access, format); }
         catch (Throwable e) { throw new RuntimeException("error in BindImageTextureEXT", e); }
     }
 
@@ -109,7 +110,8 @@ public final class GLEXTShaderImageLoadStore {
     /// ```
     public void MemoryBarrierEXT(int barriers) {
         if (MemoryUtil.isNullPointer(handles.PFN_glMemoryBarrierEXT)) throw new GLSymbolNotFoundError("Symbol not found: glMemoryBarrierEXT");
-        try { Handles.MH_glMemoryBarrierEXT.invokeExact(handles.PFN_glMemoryBarrierEXT, barriers); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glMemoryBarrierEXT", barriers); }
+        Handles.MH_glMemoryBarrierEXT.invokeExact(handles.PFN_glMemoryBarrierEXT, barriers); }
         catch (Throwable e) { throw new RuntimeException("error in MemoryBarrierEXT", e); }
     }
 

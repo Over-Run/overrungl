@@ -20,12 +20,10 @@ import java.lang.foreign.SymbolLookup;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-/**
- * The configurations for game library.
- *
- * @author squid233
- * @since 0.1.0
- */
+/// The configurations for OverrunGL.
+///
+/// @author squid233
+/// @since 0.1.0
 public final class OverrunGLConfigurations {
     /**
      * Enable debug messages and prints to {@link OverrunGL#apiLogger()}.
@@ -43,6 +41,7 @@ public final class OverrunGLConfigurations {
      * Default value: 8
      */
     public static final Entry<Integer> STACK_FRAME_COUNT = new Entry<>(() -> 8);
+
     /**
      * The symbol lookup of GLFW.
      * The returned value must not be null.

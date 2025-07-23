@@ -18,7 +18,7 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVScissorExclusive {
@@ -29,8 +29,8 @@ public final class VKNVScissorExclusive {
     public static final int VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_ENABLE_NV = 1000205000;
     public static final int VK_DYNAMIC_STATE_EXCLUSIVE_SCISSOR_NV = 1000205001;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetExclusiveScissorEnableNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdSetExclusiveScissorNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetExclusiveScissorEnableNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdSetExclusiveScissorNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -41,7 +41,8 @@ public final class VKNVScissorExclusive {
     /// ```
     public static void vkCmdSetExclusiveScissorEnableNV(VkCommandBuffer commandBuffer, int firstExclusiveScissor, int exclusiveScissorCount, MemorySegment pExclusiveScissorEnables) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorEnableNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorEnableNV");
-        try { Handles.MH_vkCmdSetExclusiveScissorEnableNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorEnableNV, commandBuffer.segment(), firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissorEnables); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetExclusiveScissorEnableNV", commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissorEnables); }
+        Handles.MH_vkCmdSetExclusiveScissorEnableNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorEnableNV, commandBuffer.segment(), firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissorEnables); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetExclusiveScissorEnableNV", e); }
     }
 
@@ -50,7 +51,8 @@ public final class VKNVScissorExclusive {
     /// ```
     public static void vkCmdSetExclusiveScissorNV(VkCommandBuffer commandBuffer, int firstExclusiveScissor, int exclusiveScissorCount, MemorySegment pExclusiveScissors) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetExclusiveScissorNV");
-        try { Handles.MH_vkCmdSetExclusiveScissorNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorNV, commandBuffer.segment(), firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetExclusiveScissorNV", commandBuffer, firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors); }
+        Handles.MH_vkCmdSetExclusiveScissorNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetExclusiveScissorNV, commandBuffer.segment(), firstExclusiveScissor, exclusiveScissorCount, pExclusiveScissors); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetExclusiveScissorNV", e); }
     }
 

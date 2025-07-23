@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -33,10 +33,10 @@ public final class GLEXTPalettedTexture {
     public static final int GL_TEXTURE_INDEX_SIZE_EXT = 0x80ED;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glColorTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetColorTableEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetColorTableParameterivEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetColorTableParameterfvEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glColorTableEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableParameterivEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetColorTableParameterfvEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glColorTableEXT;
         public final MemorySegment PFN_glGetColorTableEXT;
         public final MemorySegment PFN_glGetColorTableParameterivEXT;
@@ -58,7 +58,8 @@ public final class GLEXTPalettedTexture {
     /// ```
     public void ColorTableEXT(int target, int internalFormat, int width, int format, int type, MemorySegment table) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorTableEXT)) throw new GLSymbolNotFoundError("Symbol not found: glColorTableEXT");
-        try { Handles.MH_glColorTableEXT.invokeExact(handles.PFN_glColorTableEXT, target, internalFormat, width, format, type, table); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorTableEXT", target, internalFormat, width, format, type, table); }
+        Handles.MH_glColorTableEXT.invokeExact(handles.PFN_glColorTableEXT, target, internalFormat, width, format, type, table); }
         catch (Throwable e) { throw new RuntimeException("error in ColorTableEXT", e); }
     }
 
@@ -67,7 +68,8 @@ public final class GLEXTPalettedTexture {
     /// ```
     public void GetColorTableEXT(int target, int format, int type, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetColorTableEXT");
-        try { Handles.MH_glGetColorTableEXT.invokeExact(handles.PFN_glGetColorTableEXT, target, format, type, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetColorTableEXT", target, format, type, data); }
+        Handles.MH_glGetColorTableEXT.invokeExact(handles.PFN_glGetColorTableEXT, target, format, type, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetColorTableEXT", e); }
     }
 
@@ -76,7 +78,8 @@ public final class GLEXTPalettedTexture {
     /// ```
     public void GetColorTableParameterivEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableParameterivEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetColorTableParameterivEXT");
-        try { Handles.MH_glGetColorTableParameterivEXT.invokeExact(handles.PFN_glGetColorTableParameterivEXT, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetColorTableParameterivEXT", target, pname, params); }
+        Handles.MH_glGetColorTableParameterivEXT.invokeExact(handles.PFN_glGetColorTableParameterivEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetColorTableParameterivEXT", e); }
     }
 
@@ -85,7 +88,8 @@ public final class GLEXTPalettedTexture {
     /// ```
     public void GetColorTableParameterfvEXT(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetColorTableParameterfvEXT)) throw new GLSymbolNotFoundError("Symbol not found: glGetColorTableParameterfvEXT");
-        try { Handles.MH_glGetColorTableParameterfvEXT.invokeExact(handles.PFN_glGetColorTableParameterfvEXT, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetColorTableParameterfvEXT", target, pname, params); }
+        Handles.MH_glGetColorTableParameterfvEXT.invokeExact(handles.PFN_glGetColorTableParameterfvEXT, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetColorTableParameterfvEXT", e); }
     }
 

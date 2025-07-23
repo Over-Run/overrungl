@@ -18,7 +18,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTImageDrmFormatModifier {
@@ -37,7 +37,7 @@ public final class VKEXTImageDrmFormatModifier {
     public static final int VK_IMAGE_ASPECT_MEMORY_PLANE_3_BIT_EXT = 0x00000400;
     public static final int VK_STRUCTURE_TYPE_DRM_FORMAT_MODIFIER_PROPERTIES_LIST_2_EXT = 1000158006;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetImageDrmFormatModifierPropertiesEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetImageDrmFormatModifierPropertiesEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -48,7 +48,8 @@ public final class VKEXTImageDrmFormatModifier {
     /// ```
     public static int vkGetImageDrmFormatModifierPropertiesEXT(VkDevice device, long image, MemorySegment pProperties) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetImageDrmFormatModifierPropertiesEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetImageDrmFormatModifierPropertiesEXT");
-        try { return (int) Handles.MH_vkGetImageDrmFormatModifierPropertiesEXT.invokeExact(device.capabilities().PFN_vkGetImageDrmFormatModifierPropertiesEXT, device.segment(), image, pProperties); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetImageDrmFormatModifierPropertiesEXT", device, image, pProperties); }
+        return (int) Handles.MH_vkGetImageDrmFormatModifierPropertiesEXT.invokeExact(device.capabilities().PFN_vkGetImageDrmFormatModifierPropertiesEXT, device.segment(), image, pProperties); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetImageDrmFormatModifierPropertiesEXT", e); }
     }
 

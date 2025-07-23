@@ -18,7 +18,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTShaderModuleIdentifier {
@@ -30,8 +30,8 @@ public final class VKEXTShaderModuleIdentifier {
     public static final int VK_STRUCTURE_TYPE_SHADER_MODULE_IDENTIFIER_EXT = 1000462003;
     public static final int VK_MAX_SHADER_MODULE_IDENTIFIER_SIZE_EXT = 32;
     public static final class Handles {
-        public static final MethodHandle MH_vkGetShaderModuleIdentifierEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetShaderModuleCreateInfoIdentifierEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetShaderModuleIdentifierEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetShaderModuleCreateInfoIdentifierEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -42,7 +42,8 @@ public final class VKEXTShaderModuleIdentifier {
     /// ```
     public static void vkGetShaderModuleIdentifierEXT(VkDevice device, long shaderModule, MemorySegment pIdentifier) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderModuleIdentifierEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetShaderModuleIdentifierEXT");
-        try { Handles.MH_vkGetShaderModuleIdentifierEXT.invokeExact(device.capabilities().PFN_vkGetShaderModuleIdentifierEXT, device.segment(), shaderModule, pIdentifier); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetShaderModuleIdentifierEXT", device, shaderModule, pIdentifier); }
+        Handles.MH_vkGetShaderModuleIdentifierEXT.invokeExact(device.capabilities().PFN_vkGetShaderModuleIdentifierEXT, device.segment(), shaderModule, pIdentifier); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetShaderModuleIdentifierEXT", e); }
     }
 
@@ -51,7 +52,8 @@ public final class VKEXTShaderModuleIdentifier {
     /// ```
     public static void vkGetShaderModuleCreateInfoIdentifierEXT(VkDevice device, MemorySegment pCreateInfo, MemorySegment pIdentifier) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetShaderModuleCreateInfoIdentifierEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkGetShaderModuleCreateInfoIdentifierEXT");
-        try { Handles.MH_vkGetShaderModuleCreateInfoIdentifierEXT.invokeExact(device.capabilities().PFN_vkGetShaderModuleCreateInfoIdentifierEXT, device.segment(), pCreateInfo, pIdentifier); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetShaderModuleCreateInfoIdentifierEXT", device, pCreateInfo, pIdentifier); }
+        Handles.MH_vkGetShaderModuleCreateInfoIdentifierEXT.invokeExact(device.capabilities().PFN_vkGetShaderModuleCreateInfoIdentifierEXT, device.segment(), pCreateInfo, pIdentifier); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetShaderModuleCreateInfoIdentifierEXT", e); }
     }
 

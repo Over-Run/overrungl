@@ -19,7 +19,7 @@ package overrungl.opengl.amd;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -33,17 +33,17 @@ public final class GLAMDPerformanceMonitor {
     public static final int GL_PERFMON_RESULT_AMD = 0x8BC6;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glGetPerfMonitorGroupsAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPerfMonitorCountersAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPerfMonitorGroupStringAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPerfMonitorCounterStringAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetPerfMonitorCounterInfoAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenPerfMonitorsAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDeletePerfMonitorsAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glSelectPerfMonitorCountersAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glBeginPerfMonitorAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEndPerfMonitorAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetPerfMonitorCounterDataAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfMonitorGroupsAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfMonitorCountersAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfMonitorGroupStringAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfMonitorCounterStringAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetPerfMonitorCounterInfoAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenPerfMonitorsAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDeletePerfMonitorsAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glSelectPerfMonitorCountersAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBeginPerfMonitorAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEndPerfMonitorAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetPerfMonitorCounterDataAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glGetPerfMonitorGroupsAMD;
         public final MemorySegment PFN_glGetPerfMonitorCountersAMD;
         public final MemorySegment PFN_glGetPerfMonitorGroupStringAMD;
@@ -79,7 +79,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void GetPerfMonitorGroupsAMD(MemorySegment numGroups, int groupsSize, MemorySegment groups) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorGroupsAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfMonitorGroupsAMD");
-        try { Handles.MH_glGetPerfMonitorGroupsAMD.invokeExact(handles.PFN_glGetPerfMonitorGroupsAMD, numGroups, groupsSize, groups); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfMonitorGroupsAMD", numGroups, groupsSize, groups); }
+        Handles.MH_glGetPerfMonitorGroupsAMD.invokeExact(handles.PFN_glGetPerfMonitorGroupsAMD, numGroups, groupsSize, groups); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfMonitorGroupsAMD", e); }
     }
 
@@ -88,7 +89,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void GetPerfMonitorCountersAMD(int group, MemorySegment numCounters, MemorySegment maxActiveCounters, int counterSize, MemorySegment counters) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorCountersAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfMonitorCountersAMD");
-        try { Handles.MH_glGetPerfMonitorCountersAMD.invokeExact(handles.PFN_glGetPerfMonitorCountersAMD, group, numCounters, maxActiveCounters, counterSize, counters); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfMonitorCountersAMD", group, numCounters, maxActiveCounters, counterSize, counters); }
+        Handles.MH_glGetPerfMonitorCountersAMD.invokeExact(handles.PFN_glGetPerfMonitorCountersAMD, group, numCounters, maxActiveCounters, counterSize, counters); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfMonitorCountersAMD", e); }
     }
 
@@ -97,7 +99,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void GetPerfMonitorGroupStringAMD(int group, int bufSize, MemorySegment length, MemorySegment groupString) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorGroupStringAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfMonitorGroupStringAMD");
-        try { Handles.MH_glGetPerfMonitorGroupStringAMD.invokeExact(handles.PFN_glGetPerfMonitorGroupStringAMD, group, bufSize, length, groupString); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfMonitorGroupStringAMD", group, bufSize, length, groupString); }
+        Handles.MH_glGetPerfMonitorGroupStringAMD.invokeExact(handles.PFN_glGetPerfMonitorGroupStringAMD, group, bufSize, length, groupString); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfMonitorGroupStringAMD", e); }
     }
 
@@ -106,7 +109,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void GetPerfMonitorCounterStringAMD(int group, int counter, int bufSize, MemorySegment length, MemorySegment counterString) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorCounterStringAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfMonitorCounterStringAMD");
-        try { Handles.MH_glGetPerfMonitorCounterStringAMD.invokeExact(handles.PFN_glGetPerfMonitorCounterStringAMD, group, counter, bufSize, length, counterString); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfMonitorCounterStringAMD", group, counter, bufSize, length, counterString); }
+        Handles.MH_glGetPerfMonitorCounterStringAMD.invokeExact(handles.PFN_glGetPerfMonitorCounterStringAMD, group, counter, bufSize, length, counterString); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfMonitorCounterStringAMD", e); }
     }
 
@@ -115,7 +119,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void GetPerfMonitorCounterInfoAMD(int group, int counter, int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorCounterInfoAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfMonitorCounterInfoAMD");
-        try { Handles.MH_glGetPerfMonitorCounterInfoAMD.invokeExact(handles.PFN_glGetPerfMonitorCounterInfoAMD, group, counter, pname, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfMonitorCounterInfoAMD", group, counter, pname, data); }
+        Handles.MH_glGetPerfMonitorCounterInfoAMD.invokeExact(handles.PFN_glGetPerfMonitorCounterInfoAMD, group, counter, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfMonitorCounterInfoAMD", e); }
     }
 
@@ -124,7 +129,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void GenPerfMonitorsAMD(int n, MemorySegment monitors) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenPerfMonitorsAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGenPerfMonitorsAMD");
-        try { Handles.MH_glGenPerfMonitorsAMD.invokeExact(handles.PFN_glGenPerfMonitorsAMD, n, monitors); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGenPerfMonitorsAMD", n, monitors); }
+        Handles.MH_glGenPerfMonitorsAMD.invokeExact(handles.PFN_glGenPerfMonitorsAMD, n, monitors); }
         catch (Throwable e) { throw new RuntimeException("error in GenPerfMonitorsAMD", e); }
     }
 
@@ -133,7 +139,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void DeletePerfMonitorsAMD(int n, MemorySegment monitors) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeletePerfMonitorsAMD)) throw new GLSymbolNotFoundError("Symbol not found: glDeletePerfMonitorsAMD");
-        try { Handles.MH_glDeletePerfMonitorsAMD.invokeExact(handles.PFN_glDeletePerfMonitorsAMD, n, monitors); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDeletePerfMonitorsAMD", n, monitors); }
+        Handles.MH_glDeletePerfMonitorsAMD.invokeExact(handles.PFN_glDeletePerfMonitorsAMD, n, monitors); }
         catch (Throwable e) { throw new RuntimeException("error in DeletePerfMonitorsAMD", e); }
     }
 
@@ -142,7 +149,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void SelectPerfMonitorCountersAMD(int monitor, boolean enable, int group, int numCounters, MemorySegment counterList) {
         if (MemoryUtil.isNullPointer(handles.PFN_glSelectPerfMonitorCountersAMD)) throw new GLSymbolNotFoundError("Symbol not found: glSelectPerfMonitorCountersAMD");
-        try { Handles.MH_glSelectPerfMonitorCountersAMD.invokeExact(handles.PFN_glSelectPerfMonitorCountersAMD, monitor, ((enable) ? (byte)1 : (byte)0), group, numCounters, counterList); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glSelectPerfMonitorCountersAMD", monitor, enable, group, numCounters, counterList); }
+        Handles.MH_glSelectPerfMonitorCountersAMD.invokeExact(handles.PFN_glSelectPerfMonitorCountersAMD, monitor, ((enable) ? (byte)1 : (byte)0), group, numCounters, counterList); }
         catch (Throwable e) { throw new RuntimeException("error in SelectPerfMonitorCountersAMD", e); }
     }
 
@@ -151,7 +159,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void BeginPerfMonitorAMD(int monitor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBeginPerfMonitorAMD)) throw new GLSymbolNotFoundError("Symbol not found: glBeginPerfMonitorAMD");
-        try { Handles.MH_glBeginPerfMonitorAMD.invokeExact(handles.PFN_glBeginPerfMonitorAMD, monitor); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBeginPerfMonitorAMD", monitor); }
+        Handles.MH_glBeginPerfMonitorAMD.invokeExact(handles.PFN_glBeginPerfMonitorAMD, monitor); }
         catch (Throwable e) { throw new RuntimeException("error in BeginPerfMonitorAMD", e); }
     }
 
@@ -160,7 +169,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void EndPerfMonitorAMD(int monitor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEndPerfMonitorAMD)) throw new GLSymbolNotFoundError("Symbol not found: glEndPerfMonitorAMD");
-        try { Handles.MH_glEndPerfMonitorAMD.invokeExact(handles.PFN_glEndPerfMonitorAMD, monitor); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glEndPerfMonitorAMD", monitor); }
+        Handles.MH_glEndPerfMonitorAMD.invokeExact(handles.PFN_glEndPerfMonitorAMD, monitor); }
         catch (Throwable e) { throw new RuntimeException("error in EndPerfMonitorAMD", e); }
     }
 
@@ -169,7 +179,8 @@ public final class GLAMDPerformanceMonitor {
     /// ```
     public void GetPerfMonitorCounterDataAMD(int monitor, int pname, int dataSize, MemorySegment data, MemorySegment bytesWritten) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetPerfMonitorCounterDataAMD)) throw new GLSymbolNotFoundError("Symbol not found: glGetPerfMonitorCounterDataAMD");
-        try { Handles.MH_glGetPerfMonitorCounterDataAMD.invokeExact(handles.PFN_glGetPerfMonitorCounterDataAMD, monitor, pname, dataSize, data, bytesWritten); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetPerfMonitorCounterDataAMD", monitor, pname, dataSize, data, bytesWritten); }
+        Handles.MH_glGetPerfMonitorCounterDataAMD.invokeExact(handles.PFN_glGetPerfMonitorCounterDataAMD, monitor, pname, dataSize, data, bytesWritten); }
         catch (Throwable e) { throw new RuntimeException("error in GetPerfMonitorCounterDataAMD", e); }
     }
 

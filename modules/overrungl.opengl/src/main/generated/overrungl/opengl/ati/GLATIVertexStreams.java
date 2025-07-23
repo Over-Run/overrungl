@@ -19,7 +19,7 @@ package overrungl.opengl.ati;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -36,51 +36,51 @@ public final class GLATIVertexStreams {
     public static final int GL_VERTEX_SOURCE_ATI = 0x8774;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glVertexStream1sATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glVertexStream1svATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream1iATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexStream1ivATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream1fATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glVertexStream1fvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream1dATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glVertexStream1dvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream2sATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glVertexStream2svATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream2iATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexStream2ivATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream2fATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glVertexStream2fvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream2dATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glVertexStream2dvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream3sATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glVertexStream3svATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream3iATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexStream3ivATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream3fATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glVertexStream3fvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream3dATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glVertexStream3dvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream4sATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glVertexStream4svATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream4iATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexStream4ivATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream4fATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glVertexStream4fvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexStream4dATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glVertexStream4dvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNormalStream3bATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glNormalStream3bvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNormalStream3sATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glNormalStream3svATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNormalStream3iATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glNormalStream3ivATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNormalStream3fATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glNormalStream3fvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glNormalStream3dATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glNormalStream3dvATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glClientActiveVertexStreamATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexBlendEnviATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glVertexBlendEnvfATI = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexStream1sATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexStream1svATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream1iATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexStream1ivATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream1fATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexStream1fvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream1dATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexStream1dvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream2sATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexStream2svATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream2iATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexStream2ivATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream2fATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexStream2fvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream2dATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexStream2dvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream3sATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexStream3svATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream3iATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexStream3ivATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream3fATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexStream3fvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream3dATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexStream3dvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream4sATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexStream4svATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream4iATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexStream4ivATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream4fATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexStream4fvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexStream4dATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexStream4dvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNormalStream3bATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glNormalStream3bvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNormalStream3sATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glNormalStream3svATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNormalStream3iATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glNormalStream3ivATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNormalStream3fATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glNormalStream3fvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glNormalStream3dATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glNormalStream3dvATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glClientActiveVertexStreamATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexBlendEnviATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexBlendEnvfATI = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glVertexStream1sATI;
         public final MemorySegment PFN_glVertexStream1svATI;
         public final MemorySegment PFN_glVertexStream1iATI;
@@ -184,7 +184,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream1sATI(int stream, short x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1sATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream1sATI");
-        try { Handles.MH_glVertexStream1sATI.invokeExact(handles.PFN_glVertexStream1sATI, stream, x); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream1sATI", stream, x); }
+        Handles.MH_glVertexStream1sATI.invokeExact(handles.PFN_glVertexStream1sATI, stream, x); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream1sATI", e); }
     }
 
@@ -193,7 +194,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream1svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1svATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream1svATI");
-        try { Handles.MH_glVertexStream1svATI.invokeExact(handles.PFN_glVertexStream1svATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream1svATI", stream, coords); }
+        Handles.MH_glVertexStream1svATI.invokeExact(handles.PFN_glVertexStream1svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream1svATI", e); }
     }
 
@@ -202,7 +204,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream1iATI(int stream, int x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1iATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream1iATI");
-        try { Handles.MH_glVertexStream1iATI.invokeExact(handles.PFN_glVertexStream1iATI, stream, x); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream1iATI", stream, x); }
+        Handles.MH_glVertexStream1iATI.invokeExact(handles.PFN_glVertexStream1iATI, stream, x); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream1iATI", e); }
     }
 
@@ -211,7 +214,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream1ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1ivATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream1ivATI");
-        try { Handles.MH_glVertexStream1ivATI.invokeExact(handles.PFN_glVertexStream1ivATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream1ivATI", stream, coords); }
+        Handles.MH_glVertexStream1ivATI.invokeExact(handles.PFN_glVertexStream1ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream1ivATI", e); }
     }
 
@@ -220,7 +224,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream1fATI(int stream, float x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1fATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream1fATI");
-        try { Handles.MH_glVertexStream1fATI.invokeExact(handles.PFN_glVertexStream1fATI, stream, x); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream1fATI", stream, x); }
+        Handles.MH_glVertexStream1fATI.invokeExact(handles.PFN_glVertexStream1fATI, stream, x); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream1fATI", e); }
     }
 
@@ -229,7 +234,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream1fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1fvATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream1fvATI");
-        try { Handles.MH_glVertexStream1fvATI.invokeExact(handles.PFN_glVertexStream1fvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream1fvATI", stream, coords); }
+        Handles.MH_glVertexStream1fvATI.invokeExact(handles.PFN_glVertexStream1fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream1fvATI", e); }
     }
 
@@ -238,7 +244,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream1dATI(int stream, double x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1dATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream1dATI");
-        try { Handles.MH_glVertexStream1dATI.invokeExact(handles.PFN_glVertexStream1dATI, stream, x); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream1dATI", stream, x); }
+        Handles.MH_glVertexStream1dATI.invokeExact(handles.PFN_glVertexStream1dATI, stream, x); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream1dATI", e); }
     }
 
@@ -247,7 +254,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream1dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream1dvATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream1dvATI");
-        try { Handles.MH_glVertexStream1dvATI.invokeExact(handles.PFN_glVertexStream1dvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream1dvATI", stream, coords); }
+        Handles.MH_glVertexStream1dvATI.invokeExact(handles.PFN_glVertexStream1dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream1dvATI", e); }
     }
 
@@ -256,7 +264,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream2sATI(int stream, short x, short y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2sATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream2sATI");
-        try { Handles.MH_glVertexStream2sATI.invokeExact(handles.PFN_glVertexStream2sATI, stream, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream2sATI", stream, x, y); }
+        Handles.MH_glVertexStream2sATI.invokeExact(handles.PFN_glVertexStream2sATI, stream, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream2sATI", e); }
     }
 
@@ -265,7 +274,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream2svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2svATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream2svATI");
-        try { Handles.MH_glVertexStream2svATI.invokeExact(handles.PFN_glVertexStream2svATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream2svATI", stream, coords); }
+        Handles.MH_glVertexStream2svATI.invokeExact(handles.PFN_glVertexStream2svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream2svATI", e); }
     }
 
@@ -274,7 +284,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream2iATI(int stream, int x, int y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2iATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream2iATI");
-        try { Handles.MH_glVertexStream2iATI.invokeExact(handles.PFN_glVertexStream2iATI, stream, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream2iATI", stream, x, y); }
+        Handles.MH_glVertexStream2iATI.invokeExact(handles.PFN_glVertexStream2iATI, stream, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream2iATI", e); }
     }
 
@@ -283,7 +294,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream2ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2ivATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream2ivATI");
-        try { Handles.MH_glVertexStream2ivATI.invokeExact(handles.PFN_glVertexStream2ivATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream2ivATI", stream, coords); }
+        Handles.MH_glVertexStream2ivATI.invokeExact(handles.PFN_glVertexStream2ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream2ivATI", e); }
     }
 
@@ -292,7 +304,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream2fATI(int stream, float x, float y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2fATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream2fATI");
-        try { Handles.MH_glVertexStream2fATI.invokeExact(handles.PFN_glVertexStream2fATI, stream, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream2fATI", stream, x, y); }
+        Handles.MH_glVertexStream2fATI.invokeExact(handles.PFN_glVertexStream2fATI, stream, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream2fATI", e); }
     }
 
@@ -301,7 +314,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream2fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2fvATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream2fvATI");
-        try { Handles.MH_glVertexStream2fvATI.invokeExact(handles.PFN_glVertexStream2fvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream2fvATI", stream, coords); }
+        Handles.MH_glVertexStream2fvATI.invokeExact(handles.PFN_glVertexStream2fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream2fvATI", e); }
     }
 
@@ -310,7 +324,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream2dATI(int stream, double x, double y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2dATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream2dATI");
-        try { Handles.MH_glVertexStream2dATI.invokeExact(handles.PFN_glVertexStream2dATI, stream, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream2dATI", stream, x, y); }
+        Handles.MH_glVertexStream2dATI.invokeExact(handles.PFN_glVertexStream2dATI, stream, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream2dATI", e); }
     }
 
@@ -319,7 +334,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream2dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream2dvATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream2dvATI");
-        try { Handles.MH_glVertexStream2dvATI.invokeExact(handles.PFN_glVertexStream2dvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream2dvATI", stream, coords); }
+        Handles.MH_glVertexStream2dvATI.invokeExact(handles.PFN_glVertexStream2dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream2dvATI", e); }
     }
 
@@ -328,7 +344,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream3sATI(int stream, short x, short y, short z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3sATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream3sATI");
-        try { Handles.MH_glVertexStream3sATI.invokeExact(handles.PFN_glVertexStream3sATI, stream, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream3sATI", stream, x, y, z); }
+        Handles.MH_glVertexStream3sATI.invokeExact(handles.PFN_glVertexStream3sATI, stream, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream3sATI", e); }
     }
 
@@ -337,7 +354,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream3svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3svATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream3svATI");
-        try { Handles.MH_glVertexStream3svATI.invokeExact(handles.PFN_glVertexStream3svATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream3svATI", stream, coords); }
+        Handles.MH_glVertexStream3svATI.invokeExact(handles.PFN_glVertexStream3svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream3svATI", e); }
     }
 
@@ -346,7 +364,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream3iATI(int stream, int x, int y, int z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3iATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream3iATI");
-        try { Handles.MH_glVertexStream3iATI.invokeExact(handles.PFN_glVertexStream3iATI, stream, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream3iATI", stream, x, y, z); }
+        Handles.MH_glVertexStream3iATI.invokeExact(handles.PFN_glVertexStream3iATI, stream, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream3iATI", e); }
     }
 
@@ -355,7 +374,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream3ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3ivATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream3ivATI");
-        try { Handles.MH_glVertexStream3ivATI.invokeExact(handles.PFN_glVertexStream3ivATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream3ivATI", stream, coords); }
+        Handles.MH_glVertexStream3ivATI.invokeExact(handles.PFN_glVertexStream3ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream3ivATI", e); }
     }
 
@@ -364,7 +384,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream3fATI(int stream, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3fATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream3fATI");
-        try { Handles.MH_glVertexStream3fATI.invokeExact(handles.PFN_glVertexStream3fATI, stream, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream3fATI", stream, x, y, z); }
+        Handles.MH_glVertexStream3fATI.invokeExact(handles.PFN_glVertexStream3fATI, stream, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream3fATI", e); }
     }
 
@@ -373,7 +394,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream3fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3fvATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream3fvATI");
-        try { Handles.MH_glVertexStream3fvATI.invokeExact(handles.PFN_glVertexStream3fvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream3fvATI", stream, coords); }
+        Handles.MH_glVertexStream3fvATI.invokeExact(handles.PFN_glVertexStream3fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream3fvATI", e); }
     }
 
@@ -382,7 +404,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream3dATI(int stream, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3dATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream3dATI");
-        try { Handles.MH_glVertexStream3dATI.invokeExact(handles.PFN_glVertexStream3dATI, stream, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream3dATI", stream, x, y, z); }
+        Handles.MH_glVertexStream3dATI.invokeExact(handles.PFN_glVertexStream3dATI, stream, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream3dATI", e); }
     }
 
@@ -391,7 +414,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream3dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream3dvATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream3dvATI");
-        try { Handles.MH_glVertexStream3dvATI.invokeExact(handles.PFN_glVertexStream3dvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream3dvATI", stream, coords); }
+        Handles.MH_glVertexStream3dvATI.invokeExact(handles.PFN_glVertexStream3dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream3dvATI", e); }
     }
 
@@ -400,7 +424,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream4sATI(int stream, short x, short y, short z, short w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4sATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream4sATI");
-        try { Handles.MH_glVertexStream4sATI.invokeExact(handles.PFN_glVertexStream4sATI, stream, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream4sATI", stream, x, y, z, w); }
+        Handles.MH_glVertexStream4sATI.invokeExact(handles.PFN_glVertexStream4sATI, stream, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream4sATI", e); }
     }
 
@@ -409,7 +434,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream4svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4svATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream4svATI");
-        try { Handles.MH_glVertexStream4svATI.invokeExact(handles.PFN_glVertexStream4svATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream4svATI", stream, coords); }
+        Handles.MH_glVertexStream4svATI.invokeExact(handles.PFN_glVertexStream4svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream4svATI", e); }
     }
 
@@ -418,7 +444,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream4iATI(int stream, int x, int y, int z, int w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4iATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream4iATI");
-        try { Handles.MH_glVertexStream4iATI.invokeExact(handles.PFN_glVertexStream4iATI, stream, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream4iATI", stream, x, y, z, w); }
+        Handles.MH_glVertexStream4iATI.invokeExact(handles.PFN_glVertexStream4iATI, stream, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream4iATI", e); }
     }
 
@@ -427,7 +454,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream4ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4ivATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream4ivATI");
-        try { Handles.MH_glVertexStream4ivATI.invokeExact(handles.PFN_glVertexStream4ivATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream4ivATI", stream, coords); }
+        Handles.MH_glVertexStream4ivATI.invokeExact(handles.PFN_glVertexStream4ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream4ivATI", e); }
     }
 
@@ -436,7 +464,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream4fATI(int stream, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4fATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream4fATI");
-        try { Handles.MH_glVertexStream4fATI.invokeExact(handles.PFN_glVertexStream4fATI, stream, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream4fATI", stream, x, y, z, w); }
+        Handles.MH_glVertexStream4fATI.invokeExact(handles.PFN_glVertexStream4fATI, stream, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream4fATI", e); }
     }
 
@@ -445,7 +474,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream4fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4fvATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream4fvATI");
-        try { Handles.MH_glVertexStream4fvATI.invokeExact(handles.PFN_glVertexStream4fvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream4fvATI", stream, coords); }
+        Handles.MH_glVertexStream4fvATI.invokeExact(handles.PFN_glVertexStream4fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream4fvATI", e); }
     }
 
@@ -454,7 +484,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream4dATI(int stream, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4dATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream4dATI");
-        try { Handles.MH_glVertexStream4dATI.invokeExact(handles.PFN_glVertexStream4dATI, stream, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream4dATI", stream, x, y, z, w); }
+        Handles.MH_glVertexStream4dATI.invokeExact(handles.PFN_glVertexStream4dATI, stream, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream4dATI", e); }
     }
 
@@ -463,7 +494,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexStream4dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexStream4dvATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexStream4dvATI");
-        try { Handles.MH_glVertexStream4dvATI.invokeExact(handles.PFN_glVertexStream4dvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexStream4dvATI", stream, coords); }
+        Handles.MH_glVertexStream4dvATI.invokeExact(handles.PFN_glVertexStream4dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in VertexStream4dvATI", e); }
     }
 
@@ -472,7 +504,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3bATI(int stream, byte nx, byte ny, byte nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3bATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3bATI");
-        try { Handles.MH_glNormalStream3bATI.invokeExact(handles.PFN_glNormalStream3bATI, stream, nx, ny, nz); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3bATI", stream, nx, ny, nz); }
+        Handles.MH_glNormalStream3bATI.invokeExact(handles.PFN_glNormalStream3bATI, stream, nx, ny, nz); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3bATI", e); }
     }
 
@@ -481,7 +514,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3bvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3bvATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3bvATI");
-        try { Handles.MH_glNormalStream3bvATI.invokeExact(handles.PFN_glNormalStream3bvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3bvATI", stream, coords); }
+        Handles.MH_glNormalStream3bvATI.invokeExact(handles.PFN_glNormalStream3bvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3bvATI", e); }
     }
 
@@ -490,7 +524,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3sATI(int stream, short nx, short ny, short nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3sATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3sATI");
-        try { Handles.MH_glNormalStream3sATI.invokeExact(handles.PFN_glNormalStream3sATI, stream, nx, ny, nz); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3sATI", stream, nx, ny, nz); }
+        Handles.MH_glNormalStream3sATI.invokeExact(handles.PFN_glNormalStream3sATI, stream, nx, ny, nz); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3sATI", e); }
     }
 
@@ -499,7 +534,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3svATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3svATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3svATI");
-        try { Handles.MH_glNormalStream3svATI.invokeExact(handles.PFN_glNormalStream3svATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3svATI", stream, coords); }
+        Handles.MH_glNormalStream3svATI.invokeExact(handles.PFN_glNormalStream3svATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3svATI", e); }
     }
 
@@ -508,7 +544,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3iATI(int stream, int nx, int ny, int nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3iATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3iATI");
-        try { Handles.MH_glNormalStream3iATI.invokeExact(handles.PFN_glNormalStream3iATI, stream, nx, ny, nz); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3iATI", stream, nx, ny, nz); }
+        Handles.MH_glNormalStream3iATI.invokeExact(handles.PFN_glNormalStream3iATI, stream, nx, ny, nz); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3iATI", e); }
     }
 
@@ -517,7 +554,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3ivATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3ivATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3ivATI");
-        try { Handles.MH_glNormalStream3ivATI.invokeExact(handles.PFN_glNormalStream3ivATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3ivATI", stream, coords); }
+        Handles.MH_glNormalStream3ivATI.invokeExact(handles.PFN_glNormalStream3ivATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3ivATI", e); }
     }
 
@@ -526,7 +564,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3fATI(int stream, float nx, float ny, float nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3fATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3fATI");
-        try { Handles.MH_glNormalStream3fATI.invokeExact(handles.PFN_glNormalStream3fATI, stream, nx, ny, nz); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3fATI", stream, nx, ny, nz); }
+        Handles.MH_glNormalStream3fATI.invokeExact(handles.PFN_glNormalStream3fATI, stream, nx, ny, nz); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3fATI", e); }
     }
 
@@ -535,7 +574,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3fvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3fvATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3fvATI");
-        try { Handles.MH_glNormalStream3fvATI.invokeExact(handles.PFN_glNormalStream3fvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3fvATI", stream, coords); }
+        Handles.MH_glNormalStream3fvATI.invokeExact(handles.PFN_glNormalStream3fvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3fvATI", e); }
     }
 
@@ -544,7 +584,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3dATI(int stream, double nx, double ny, double nz) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3dATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3dATI");
-        try { Handles.MH_glNormalStream3dATI.invokeExact(handles.PFN_glNormalStream3dATI, stream, nx, ny, nz); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3dATI", stream, nx, ny, nz); }
+        Handles.MH_glNormalStream3dATI.invokeExact(handles.PFN_glNormalStream3dATI, stream, nx, ny, nz); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3dATI", e); }
     }
 
@@ -553,7 +594,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void NormalStream3dvATI(int stream, MemorySegment coords) {
         if (MemoryUtil.isNullPointer(handles.PFN_glNormalStream3dvATI)) throw new GLSymbolNotFoundError("Symbol not found: glNormalStream3dvATI");
-        try { Handles.MH_glNormalStream3dvATI.invokeExact(handles.PFN_glNormalStream3dvATI, stream, coords); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glNormalStream3dvATI", stream, coords); }
+        Handles.MH_glNormalStream3dvATI.invokeExact(handles.PFN_glNormalStream3dvATI, stream, coords); }
         catch (Throwable e) { throw new RuntimeException("error in NormalStream3dvATI", e); }
     }
 
@@ -562,7 +604,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void ClientActiveVertexStreamATI(int stream) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClientActiveVertexStreamATI)) throw new GLSymbolNotFoundError("Symbol not found: glClientActiveVertexStreamATI");
-        try { Handles.MH_glClientActiveVertexStreamATI.invokeExact(handles.PFN_glClientActiveVertexStreamATI, stream); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClientActiveVertexStreamATI", stream); }
+        Handles.MH_glClientActiveVertexStreamATI.invokeExact(handles.PFN_glClientActiveVertexStreamATI, stream); }
         catch (Throwable e) { throw new RuntimeException("error in ClientActiveVertexStreamATI", e); }
     }
 
@@ -571,7 +614,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexBlendEnviATI(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexBlendEnviATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexBlendEnviATI");
-        try { Handles.MH_glVertexBlendEnviATI.invokeExact(handles.PFN_glVertexBlendEnviATI, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexBlendEnviATI", pname, param); }
+        Handles.MH_glVertexBlendEnviATI.invokeExact(handles.PFN_glVertexBlendEnviATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in VertexBlendEnviATI", e); }
     }
 
@@ -580,7 +624,8 @@ public final class GLATIVertexStreams {
     /// ```
     public void VertexBlendEnvfATI(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexBlendEnvfATI)) throw new GLSymbolNotFoundError("Symbol not found: glVertexBlendEnvfATI");
-        try { Handles.MH_glVertexBlendEnvfATI.invokeExact(handles.PFN_glVertexBlendEnvfATI, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexBlendEnvfATI", pname, param); }
+        Handles.MH_glVertexBlendEnvfATI.invokeExact(handles.PFN_glVertexBlendEnvfATI, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in VertexBlendEnvfATI", e); }
     }
 

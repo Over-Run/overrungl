@@ -19,7 +19,7 @@ package overrungl.opengl.sgis;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -29,8 +29,8 @@ public final class GLSGISFogFunction {
     public static final int GL_MAX_FOG_FUNC_POINTS_SGIS = 0x812C;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glFogFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetFogFuncSGIS = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glFogFuncSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetFogFuncSGIS = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         public final MemorySegment PFN_glFogFuncSGIS;
         public final MemorySegment PFN_glGetFogFuncSGIS;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -48,7 +48,8 @@ public final class GLSGISFogFunction {
     /// ```
     public void FogFuncSGIS(int n, MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFogFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glFogFuncSGIS");
-        try { Handles.MH_glFogFuncSGIS.invokeExact(handles.PFN_glFogFuncSGIS, n, points); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFogFuncSGIS", n, points); }
+        Handles.MH_glFogFuncSGIS.invokeExact(handles.PFN_glFogFuncSGIS, n, points); }
         catch (Throwable e) { throw new RuntimeException("error in FogFuncSGIS", e); }
     }
 
@@ -57,7 +58,8 @@ public final class GLSGISFogFunction {
     /// ```
     public void GetFogFuncSGIS(MemorySegment points) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFogFuncSGIS)) throw new GLSymbolNotFoundError("Symbol not found: glGetFogFuncSGIS");
-        try { Handles.MH_glGetFogFuncSGIS.invokeExact(handles.PFN_glGetFogFuncSGIS, points); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFogFuncSGIS", points); }
+        Handles.MH_glGetFogFuncSGIS.invokeExact(handles.PFN_glGetFogFuncSGIS, points); }
         catch (Throwable e) { throw new RuntimeException("error in GetFogFuncSGIS", e); }
     }
 

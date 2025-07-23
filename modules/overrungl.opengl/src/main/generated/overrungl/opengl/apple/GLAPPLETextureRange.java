@@ -19,7 +19,7 @@ package overrungl.opengl.apple;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -32,8 +32,8 @@ public final class GLAPPLETextureRange {
     public static final int GL_STORAGE_SHARED_APPLE = 0x85BF;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTextureRangeAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexParameterPointervAPPLE = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTextureRangeAPPLE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexParameterPointervAPPLE = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         public final MemorySegment PFN_glTextureRangeAPPLE;
         public final MemorySegment PFN_glGetTexParameterPointervAPPLE;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -51,7 +51,8 @@ public final class GLAPPLETextureRange {
     /// ```
     public void TextureRangeAPPLE(int target, int length, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTextureRangeAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glTextureRangeAPPLE");
-        try { Handles.MH_glTextureRangeAPPLE.invokeExact(handles.PFN_glTextureRangeAPPLE, target, length, pointer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTextureRangeAPPLE", target, length, pointer); }
+        Handles.MH_glTextureRangeAPPLE.invokeExact(handles.PFN_glTextureRangeAPPLE, target, length, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in TextureRangeAPPLE", e); }
     }
 
@@ -60,7 +61,8 @@ public final class GLAPPLETextureRange {
     /// ```
     public void GetTexParameterPointervAPPLE(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterPointervAPPLE)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexParameterPointervAPPLE");
-        try { Handles.MH_glGetTexParameterPointervAPPLE.invokeExact(handles.PFN_glGetTexParameterPointervAPPLE, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexParameterPointervAPPLE", target, pname, params); }
+        Handles.MH_glGetTexParameterPointervAPPLE.invokeExact(handles.PFN_glGetTexParameterPointervAPPLE, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexParameterPointervAPPLE", e); }
     }
 

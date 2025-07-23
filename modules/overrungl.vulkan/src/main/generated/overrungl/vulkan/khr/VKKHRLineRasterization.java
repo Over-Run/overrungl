@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRLineRasterization {
@@ -33,7 +33,7 @@ public final class VKKHRLineRasterization {
     public static final int VK_LINE_RASTERIZATION_MODE_BRESENHAM_KHR = 2;
     public static final int VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH_KHR = 3;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdSetLineStippleKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_vkCmdSetLineStippleKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
         private Handles() {}
     }
 
@@ -44,7 +44,8 @@ public final class VKKHRLineRasterization {
     /// ```
     public static void vkCmdSetLineStippleKHR(VkCommandBuffer commandBuffer, int lineStippleFactor, short lineStipplePattern) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdSetLineStippleKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdSetLineStippleKHR");
-        try { Handles.MH_vkCmdSetLineStippleKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLineStippleKHR, commandBuffer.segment(), lineStippleFactor, lineStipplePattern); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdSetLineStippleKHR", commandBuffer, lineStippleFactor, lineStipplePattern); }
+        Handles.MH_vkCmdSetLineStippleKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdSetLineStippleKHR, commandBuffer.segment(), lineStippleFactor, lineStipplePattern); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdSetLineStippleKHR", e); }
     }
 

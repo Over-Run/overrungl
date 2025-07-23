@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -32,7 +32,7 @@ public final class GLARBClipControl {
     public static final int GL_CLIP_DEPTH_MODE = 0x935D;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glClipControl = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClipControl = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glClipControl;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glClipControl = func.invoke("glClipControl");
@@ -48,7 +48,8 @@ public final class GLARBClipControl {
     /// ```
     public void ClipControl(int origin, int depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClipControl)) throw new GLSymbolNotFoundError("Symbol not found: glClipControl");
-        try { Handles.MH_glClipControl.invokeExact(handles.PFN_glClipControl, origin, depth); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClipControl", origin, depth); }
+        Handles.MH_glClipControl.invokeExact(handles.PFN_glClipControl, origin, depth); }
         catch (Throwable e) { throw new RuntimeException("error in ClipControl", e); }
     }
 

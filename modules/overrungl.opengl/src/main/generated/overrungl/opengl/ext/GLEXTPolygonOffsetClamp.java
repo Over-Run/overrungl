@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,7 +27,7 @@ public final class GLEXTPolygonOffsetClamp {
     public static final int GL_POLYGON_OFFSET_CLAMP_EXT = 0x8E1B;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glPolygonOffsetClampEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPolygonOffsetClampEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
         public final MemorySegment PFN_glPolygonOffsetClampEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glPolygonOffsetClampEXT = func.invoke("glPolygonOffsetClampEXT", "glPolygonOffsetClamp");
@@ -43,7 +43,8 @@ public final class GLEXTPolygonOffsetClamp {
     /// ```
     public void PolygonOffsetClampEXT(float factor, float units, float clamp) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPolygonOffsetClampEXT)) throw new GLSymbolNotFoundError("Symbol not found: glPolygonOffsetClampEXT");
-        try { Handles.MH_glPolygonOffsetClampEXT.invokeExact(handles.PFN_glPolygonOffsetClampEXT, factor, units, clamp); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPolygonOffsetClampEXT", factor, units, clamp); }
+        Handles.MH_glPolygonOffsetClampEXT.invokeExact(handles.PFN_glPolygonOffsetClampEXT, factor, units, clamp); }
         catch (Throwable e) { throw new RuntimeException("error in PolygonOffsetClampEXT", e); }
     }
 

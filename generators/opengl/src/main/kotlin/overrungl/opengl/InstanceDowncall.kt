@@ -70,7 +70,7 @@ class InstanceDowncall(
                 """
                     import java.lang.foreign.*;
                     import java.lang.invoke.*;
-                    import overrungl.internal.RuntimeHelper;
+                    import static overrungl.internal.RuntimeHelper.*;
                     import overrungl.util.*;
                 """.trimIndent()
             )

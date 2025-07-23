@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -27,7 +27,7 @@ public final class GLEXTX11SyncObject {
     public static final int GL_SYNC_X11_FENCE_EXT = 0x90E1;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glImportSyncEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glImportSyncEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glImportSyncEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glImportSyncEXT = func.invoke("glImportSyncEXT");
@@ -43,7 +43,8 @@ public final class GLEXTX11SyncObject {
     /// ```
     public MemorySegment ImportSyncEXT(int external_sync_type, long external_sync, int flags) {
         if (MemoryUtil.isNullPointer(handles.PFN_glImportSyncEXT)) throw new GLSymbolNotFoundError("Symbol not found: glImportSyncEXT");
-        try { return (MemorySegment) Handles.MH_glImportSyncEXT.invokeExact(handles.PFN_glImportSyncEXT, external_sync_type, external_sync, flags); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glImportSyncEXT", external_sync_type, external_sync, flags); }
+        return (MemorySegment) Handles.MH_glImportSyncEXT.invokeExact(handles.PFN_glImportSyncEXT, external_sync_type, external_sync, flags); }
         catch (Throwable e) { throw new RuntimeException("error in ImportSyncEXT", e); }
     }
 

@@ -16,12 +16,12 @@
 
 package overrungl.openal;
 
-import overrungl.internal.RuntimeHelper;
-
 import java.lang.foreign.FunctionDescriptor;
 import java.lang.foreign.MemorySegment;
 import java.lang.foreign.ValueLayout;
 import java.lang.invoke.MethodHandle;
+
+import static overrungl.internal.RuntimeHelper.*;
 
 /**
  * The OpenAL context related functions.
@@ -62,45 +62,45 @@ public final class ALC {
     /// Method handles.
     public static final class Handles {
         /// The method handle of `alcCreateContext`.
-        public static final MethodHandle MH_alcCreateContext = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCreateContext = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alcMakeContextCurrent`.
-        public static final MethodHandle MH_alcMakeContextCurrent = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcMakeContextCurrent = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
         /// The method handle of `alcProcessContext`.
-        public static final MethodHandle MH_alcProcessContext = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcProcessContext = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `alcSuspendContext`.
-        public static final MethodHandle MH_alcSuspendContext = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcSuspendContext = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `alcDestroyContext`.
-        public static final MethodHandle MH_alcDestroyContext = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcDestroyContext = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `alcGetCurrentContext`.
-        public static final MethodHandle MH_alcGetCurrentContext = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetCurrentContext = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS));
         /// The method handle of `alcGetContextsDevice`.
-        public static final MethodHandle MH_alcGetContextsDevice = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetContextsDevice = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alcOpenDevice`.
-        public static final MethodHandle MH_alcOpenDevice = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcOpenDevice = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alcCloseDevice`.
-        public static final MethodHandle MH_alcCloseDevice = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCloseDevice = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
         /// The method handle of `alcGetError`.
-        public static final MethodHandle MH_alcGetError = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetError = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alcIsExtensionPresent`.
-        public static final MethodHandle MH_alcIsExtensionPresent = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcIsExtensionPresent = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alcGetProcAddress`.
-        public static final MethodHandle MH_alcGetProcAddress = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetProcAddress = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alcGetEnumValue`.
-        public static final MethodHandle MH_alcGetEnumValue = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetEnumValue = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         /// The method handle of `alcGetString`.
-        public static final MethodHandle MH_alcGetString = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcGetString = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The method handle of `alcGetIntegerv`.
-        public static final MethodHandle MH_alcGetIntegerv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcGetIntegerv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
         /// The method handle of `alcCaptureOpenDevice`.
-        public static final MethodHandle MH_alcCaptureOpenDevice = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcCaptureOpenDevice = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         /// The method handle of `alcCaptureCloseDevice`.
-        public static final MethodHandle MH_alcCaptureCloseDevice = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCaptureCloseDevice = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.ADDRESS));
         /// The method handle of `alcCaptureStart`.
-        public static final MethodHandle MH_alcCaptureStart = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCaptureStart = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `alcCaptureStop`.
-        public static final MethodHandle MH_alcCaptureStop = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
+        public static final MethodHandle MH_alcCaptureStop = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS));
         /// The method handle of `alcCaptureSamples`.
-        public static final MethodHandle MH_alcCaptureSamples = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_alcCaptureSamples = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
         /// The function address of `alcCreateContext`.
         public final MemorySegment PFN_alcCreateContext;
         /// The function address of `alcMakeContextCurrent`.
@@ -178,7 +178,8 @@ public final class ALC {
     /// ALCcontext* alcCreateContext(ALCdevice* device, const ALCint* attrlist);
     /// ```
     public static MemorySegment alcCreateContext(MemorySegment device, MemorySegment attrlist) {
-        try { return (MemorySegment) Handles.MH_alcCreateContext.invokeExact(Handles.get().PFN_alcCreateContext, device, attrlist); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcCreateContext", device, attrlist); }
+        return (MemorySegment) Handles.MH_alcCreateContext.invokeExact(Handles.get().PFN_alcCreateContext, device, attrlist); }
         catch (Throwable e) { throw new RuntimeException("error in alcCreateContext", e); }
     }
 
@@ -186,7 +187,8 @@ public final class ALC {
     /// ALCboolean alcMakeContextCurrent(ALCcontext* context);
     /// ```
     public static boolean alcMakeContextCurrent(MemorySegment context) {
-        try { return (((byte) Handles.MH_alcMakeContextCurrent.invokeExact(Handles.get().PFN_alcMakeContextCurrent, context)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcMakeContextCurrent", context); }
+        return (((byte) Handles.MH_alcMakeContextCurrent.invokeExact(Handles.get().PFN_alcMakeContextCurrent, context)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in alcMakeContextCurrent", e); }
     }
 
@@ -194,7 +196,8 @@ public final class ALC {
     /// void alcProcessContext(ALCcontext* context);
     /// ```
     public static void alcProcessContext(MemorySegment context) {
-        try { Handles.MH_alcProcessContext.invokeExact(Handles.get().PFN_alcProcessContext, context); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcProcessContext", context); }
+        Handles.MH_alcProcessContext.invokeExact(Handles.get().PFN_alcProcessContext, context); }
         catch (Throwable e) { throw new RuntimeException("error in alcProcessContext", e); }
     }
 
@@ -202,7 +205,8 @@ public final class ALC {
     /// void alcSuspendContext(ALCcontext* context);
     /// ```
     public static void alcSuspendContext(MemorySegment context) {
-        try { Handles.MH_alcSuspendContext.invokeExact(Handles.get().PFN_alcSuspendContext, context); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcSuspendContext", context); }
+        Handles.MH_alcSuspendContext.invokeExact(Handles.get().PFN_alcSuspendContext, context); }
         catch (Throwable e) { throw new RuntimeException("error in alcSuspendContext", e); }
     }
 
@@ -210,7 +214,8 @@ public final class ALC {
     /// void alcDestroyContext(ALCcontext* context);
     /// ```
     public static void alcDestroyContext(MemorySegment context) {
-        try { Handles.MH_alcDestroyContext.invokeExact(Handles.get().PFN_alcDestroyContext, context); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcDestroyContext", context); }
+        Handles.MH_alcDestroyContext.invokeExact(Handles.get().PFN_alcDestroyContext, context); }
         catch (Throwable e) { throw new RuntimeException("error in alcDestroyContext", e); }
     }
 
@@ -218,7 +223,8 @@ public final class ALC {
     /// ALCcontext* alcGetCurrentContext();
     /// ```
     public static MemorySegment alcGetCurrentContext() {
-        try { return (MemorySegment) Handles.MH_alcGetCurrentContext.invokeExact(Handles.get().PFN_alcGetCurrentContext); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcGetCurrentContext"); }
+        return (MemorySegment) Handles.MH_alcGetCurrentContext.invokeExact(Handles.get().PFN_alcGetCurrentContext); }
         catch (Throwable e) { throw new RuntimeException("error in alcGetCurrentContext", e); }
     }
 
@@ -226,7 +232,8 @@ public final class ALC {
     /// ALCdevice* alcGetContextsDevice(ALCcontext* context);
     /// ```
     public static MemorySegment alcGetContextsDevice(MemorySegment context) {
-        try { return (MemorySegment) Handles.MH_alcGetContextsDevice.invokeExact(Handles.get().PFN_alcGetContextsDevice, context); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcGetContextsDevice", context); }
+        return (MemorySegment) Handles.MH_alcGetContextsDevice.invokeExact(Handles.get().PFN_alcGetContextsDevice, context); }
         catch (Throwable e) { throw new RuntimeException("error in alcGetContextsDevice", e); }
     }
 
@@ -234,7 +241,8 @@ public final class ALC {
     /// ALCdevice* alcOpenDevice(const ALCchar* devicename);
     /// ```
     public static MemorySegment alcOpenDevice(MemorySegment devicename) {
-        try { return (MemorySegment) Handles.MH_alcOpenDevice.invokeExact(Handles.get().PFN_alcOpenDevice, devicename); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcOpenDevice", devicename); }
+        return (MemorySegment) Handles.MH_alcOpenDevice.invokeExact(Handles.get().PFN_alcOpenDevice, devicename); }
         catch (Throwable e) { throw new RuntimeException("error in alcOpenDevice", e); }
     }
 
@@ -242,7 +250,8 @@ public final class ALC {
     /// ALCboolean alcCloseDevice(ALCdevice* device);
     /// ```
     public static boolean alcCloseDevice(MemorySegment device) {
-        try { return (((byte) Handles.MH_alcCloseDevice.invokeExact(Handles.get().PFN_alcCloseDevice, device)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcCloseDevice", device); }
+        return (((byte) Handles.MH_alcCloseDevice.invokeExact(Handles.get().PFN_alcCloseDevice, device)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in alcCloseDevice", e); }
     }
 
@@ -250,7 +259,8 @@ public final class ALC {
     /// (int) ALCenum alcGetError(ALCdevice* device);
     /// ```
     public static int alcGetError(MemorySegment device) {
-        try { return (int) Handles.MH_alcGetError.invokeExact(Handles.get().PFN_alcGetError, device); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcGetError", device); }
+        return (int) Handles.MH_alcGetError.invokeExact(Handles.get().PFN_alcGetError, device); }
         catch (Throwable e) { throw new RuntimeException("error in alcGetError", e); }
     }
 
@@ -258,7 +268,8 @@ public final class ALC {
     /// ALCboolean alcIsExtensionPresent(ALCdevice* device, const ALCchar* extname);
     /// ```
     public static boolean alcIsExtensionPresent(MemorySegment device, MemorySegment extname) {
-        try { return (((byte) Handles.MH_alcIsExtensionPresent.invokeExact(Handles.get().PFN_alcIsExtensionPresent, device, extname)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcIsExtensionPresent", device, extname); }
+        return (((byte) Handles.MH_alcIsExtensionPresent.invokeExact(Handles.get().PFN_alcIsExtensionPresent, device, extname)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in alcIsExtensionPresent", e); }
     }
 
@@ -266,7 +277,8 @@ public final class ALC {
     /// ALCvoid* alcGetProcAddress(ALCdevice* device, const ALCchar* funcname);
     /// ```
     public static MemorySegment alcGetProcAddress(MemorySegment device, MemorySegment funcname) {
-        try { return (MemorySegment) Handles.MH_alcGetProcAddress.invokeExact(Handles.get().PFN_alcGetProcAddress, device, funcname); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcGetProcAddress", device, funcname); }
+        return (MemorySegment) Handles.MH_alcGetProcAddress.invokeExact(Handles.get().PFN_alcGetProcAddress, device, funcname); }
         catch (Throwable e) { throw new RuntimeException("error in alcGetProcAddress", e); }
     }
 
@@ -274,7 +286,8 @@ public final class ALC {
     /// (int) ALCenum alcGetEnumValue(ALCdevice* device, const ALCchar* enumname);
     /// ```
     public static int alcGetEnumValue(MemorySegment device, MemorySegment enumname) {
-        try { return (int) Handles.MH_alcGetEnumValue.invokeExact(Handles.get().PFN_alcGetEnumValue, device, enumname); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcGetEnumValue", device, enumname); }
+        return (int) Handles.MH_alcGetEnumValue.invokeExact(Handles.get().PFN_alcGetEnumValue, device, enumname); }
         catch (Throwable e) { throw new RuntimeException("error in alcGetEnumValue", e); }
     }
 
@@ -282,7 +295,8 @@ public final class ALC {
     /// const ALCchar* alcGetString(ALCdevice* device, (int) ALCenum param);
     /// ```
     public static MemorySegment alcGetString(MemorySegment device, int param) {
-        try { return (MemorySegment) Handles.MH_alcGetString.invokeExact(Handles.get().PFN_alcGetString, device, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcGetString", device, param); }
+        return (MemorySegment) Handles.MH_alcGetString.invokeExact(Handles.get().PFN_alcGetString, device, param); }
         catch (Throwable e) { throw new RuntimeException("error in alcGetString", e); }
     }
 
@@ -290,7 +304,8 @@ public final class ALC {
     /// void alcGetIntegerv(ALCdevice* device, (int) ALCenum param, (int) ALCsizei size, ALCint* values);
     /// ```
     public static void alcGetIntegerv(MemorySegment device, int param, int size, MemorySegment values) {
-        try { Handles.MH_alcGetIntegerv.invokeExact(Handles.get().PFN_alcGetIntegerv, device, param, size, values); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcGetIntegerv", device, param, size, values); }
+        Handles.MH_alcGetIntegerv.invokeExact(Handles.get().PFN_alcGetIntegerv, device, param, size, values); }
         catch (Throwable e) { throw new RuntimeException("error in alcGetIntegerv", e); }
     }
 
@@ -298,7 +313,8 @@ public final class ALC {
     /// ALCdevice* alcCaptureOpenDevice(const ALCchar* devicename, (unsigned int) ALCuint frequency, (int) ALCenum format, (int) ALCsizei buffersize);
     /// ```
     public static MemorySegment alcCaptureOpenDevice(MemorySegment devicename, int frequency, int format, int buffersize) {
-        try { return (MemorySegment) Handles.MH_alcCaptureOpenDevice.invokeExact(Handles.get().PFN_alcCaptureOpenDevice, devicename, frequency, format, buffersize); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcCaptureOpenDevice", devicename, frequency, format, buffersize); }
+        return (MemorySegment) Handles.MH_alcCaptureOpenDevice.invokeExact(Handles.get().PFN_alcCaptureOpenDevice, devicename, frequency, format, buffersize); }
         catch (Throwable e) { throw new RuntimeException("error in alcCaptureOpenDevice", e); }
     }
 
@@ -306,7 +322,8 @@ public final class ALC {
     /// ALCboolean alcCaptureCloseDevice(ALCdevice* device);
     /// ```
     public static boolean alcCaptureCloseDevice(MemorySegment device) {
-        try { return (((byte) Handles.MH_alcCaptureCloseDevice.invokeExact(Handles.get().PFN_alcCaptureCloseDevice, device)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcCaptureCloseDevice", device); }
+        return (((byte) Handles.MH_alcCaptureCloseDevice.invokeExact(Handles.get().PFN_alcCaptureCloseDevice, device)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in alcCaptureCloseDevice", e); }
     }
 
@@ -314,7 +331,8 @@ public final class ALC {
     /// void alcCaptureStart(ALCdevice* device);
     /// ```
     public static void alcCaptureStart(MemorySegment device) {
-        try { Handles.MH_alcCaptureStart.invokeExact(Handles.get().PFN_alcCaptureStart, device); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcCaptureStart", device); }
+        Handles.MH_alcCaptureStart.invokeExact(Handles.get().PFN_alcCaptureStart, device); }
         catch (Throwable e) { throw new RuntimeException("error in alcCaptureStart", e); }
     }
 
@@ -322,7 +340,8 @@ public final class ALC {
     /// void alcCaptureStop(ALCdevice* device);
     /// ```
     public static void alcCaptureStop(MemorySegment device) {
-        try { Handles.MH_alcCaptureStop.invokeExact(Handles.get().PFN_alcCaptureStop, device); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcCaptureStop", device); }
+        Handles.MH_alcCaptureStop.invokeExact(Handles.get().PFN_alcCaptureStop, device); }
         catch (Throwable e) { throw new RuntimeException("error in alcCaptureStop", e); }
     }
 
@@ -330,7 +349,8 @@ public final class ALC {
     /// void alcCaptureSamples(ALCdevice* device, ALCvoid* buffer, (int) ALCsizei samples);
     /// ```
     public static void alcCaptureSamples(MemorySegment device, MemorySegment buffer, int samples) {
-        try { Handles.MH_alcCaptureSamples.invokeExact(Handles.get().PFN_alcCaptureSamples, device, buffer, samples); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("alcCaptureSamples", device, buffer, samples); }
+        Handles.MH_alcCaptureSamples.invokeExact(Handles.get().PFN_alcCaptureSamples, device, buffer, samples); }
         catch (Throwable e) { throw new RuntimeException("error in alcCaptureSamples", e); }
     }
 

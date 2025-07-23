@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRAccelerationStructure {
@@ -83,22 +83,22 @@ public final class VKKHRAccelerationStructure {
     public static final long VK_FORMAT_FEATURE_2_ACCELERATION_STRUCTURE_VERTEX_BUFFER_BIT_KHR = 0x20000000L;
     public static final int VK_DEBUG_REPORT_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR_EXT = 1000150000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateAccelerationStructureKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkDestroyAccelerationStructureKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBuildAccelerationStructuresKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdBuildAccelerationStructuresIndirectKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkBuildAccelerationStructuresKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCopyAccelerationStructureKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCopyAccelerationStructureToMemoryKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCopyMemoryToAccelerationStructureKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkWriteAccelerationStructuresPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T));
-        public static final MethodHandle MH_vkCmdCopyAccelerationStructureKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdCopyAccelerationStructureToMemoryKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdCopyMemoryToAccelerationStructureKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetAccelerationStructureDeviceAddressKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdWriteAccelerationStructuresPropertiesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_vkGetDeviceAccelerationStructureCompatibilityKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetAccelerationStructureBuildSizesKHR = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateAccelerationStructureKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkDestroyAccelerationStructureKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBuildAccelerationStructuresKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdBuildAccelerationStructuresIndirectKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkBuildAccelerationStructuresKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyAccelerationStructureKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyAccelerationStructureToMemoryKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCopyMemoryToAccelerationStructureKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkWriteAccelerationStructuresPropertiesKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, CanonicalTypes.SIZE_T, ValueLayout.ADDRESS, CanonicalTypes.SIZE_T));
+        public static final MethodHandle MH_vkCmdCopyAccelerationStructureKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCopyAccelerationStructureToMemoryKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdCopyMemoryToAccelerationStructureKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetAccelerationStructureDeviceAddressKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdWriteAccelerationStructuresPropertiesKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkGetDeviceAccelerationStructureCompatibilityKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetAccelerationStructureBuildSizesKHR = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -109,7 +109,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static int vkCreateAccelerationStructureKHR(VkDevice device, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pAccelerationStructure) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCreateAccelerationStructureKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateAccelerationStructureKHR");
-        try { return (int) Handles.MH_vkCreateAccelerationStructureKHR.invokeExact(device.capabilities().PFN_vkCreateAccelerationStructureKHR, device.segment(), pCreateInfo, pAllocator, pAccelerationStructure); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateAccelerationStructureKHR", device, pCreateInfo, pAllocator, pAccelerationStructure); }
+        return (int) Handles.MH_vkCreateAccelerationStructureKHR.invokeExact(device.capabilities().PFN_vkCreateAccelerationStructureKHR, device.segment(), pCreateInfo, pAllocator, pAccelerationStructure); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateAccelerationStructureKHR", e); }
     }
 
@@ -118,7 +119,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static void vkDestroyAccelerationStructureKHR(VkDevice device, long accelerationStructure, MemorySegment pAllocator) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkDestroyAccelerationStructureKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkDestroyAccelerationStructureKHR");
-        try { Handles.MH_vkDestroyAccelerationStructureKHR.invokeExact(device.capabilities().PFN_vkDestroyAccelerationStructureKHR, device.segment(), accelerationStructure, pAllocator); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkDestroyAccelerationStructureKHR", device, accelerationStructure, pAllocator); }
+        Handles.MH_vkDestroyAccelerationStructureKHR.invokeExact(device.capabilities().PFN_vkDestroyAccelerationStructureKHR, device.segment(), accelerationStructure, pAllocator); }
         catch (Throwable e) { throw new RuntimeException("error in vkDestroyAccelerationStructureKHR", e); }
     }
 
@@ -127,7 +129,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static void vkCmdBuildAccelerationStructuresKHR(VkCommandBuffer commandBuffer, int infoCount, MemorySegment pInfos, MemorySegment ppBuildRangeInfos) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildAccelerationStructuresKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildAccelerationStructuresKHR");
-        try { Handles.MH_vkCmdBuildAccelerationStructuresKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildAccelerationStructuresKHR, commandBuffer.segment(), infoCount, pInfos, ppBuildRangeInfos); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBuildAccelerationStructuresKHR", commandBuffer, infoCount, pInfos, ppBuildRangeInfos); }
+        Handles.MH_vkCmdBuildAccelerationStructuresKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildAccelerationStructuresKHR, commandBuffer.segment(), infoCount, pInfos, ppBuildRangeInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBuildAccelerationStructuresKHR", e); }
     }
 
@@ -136,7 +139,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static void vkCmdBuildAccelerationStructuresIndirectKHR(VkCommandBuffer commandBuffer, int infoCount, MemorySegment pInfos, MemorySegment pIndirectDeviceAddresses, MemorySegment pIndirectStrides, MemorySegment ppMaxPrimitiveCounts) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdBuildAccelerationStructuresIndirectKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdBuildAccelerationStructuresIndirectKHR");
-        try { Handles.MH_vkCmdBuildAccelerationStructuresIndirectKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildAccelerationStructuresIndirectKHR, commandBuffer.segment(), infoCount, pInfos, pIndirectDeviceAddresses, pIndirectStrides, ppMaxPrimitiveCounts); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdBuildAccelerationStructuresIndirectKHR", commandBuffer, infoCount, pInfos, pIndirectDeviceAddresses, pIndirectStrides, ppMaxPrimitiveCounts); }
+        Handles.MH_vkCmdBuildAccelerationStructuresIndirectKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdBuildAccelerationStructuresIndirectKHR, commandBuffer.segment(), infoCount, pInfos, pIndirectDeviceAddresses, pIndirectStrides, ppMaxPrimitiveCounts); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdBuildAccelerationStructuresIndirectKHR", e); }
     }
 
@@ -145,7 +149,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static int vkBuildAccelerationStructuresKHR(VkDevice device, long deferredOperation, int infoCount, MemorySegment pInfos, MemorySegment ppBuildRangeInfos) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkBuildAccelerationStructuresKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkBuildAccelerationStructuresKHR");
-        try { return (int) Handles.MH_vkBuildAccelerationStructuresKHR.invokeExact(device.capabilities().PFN_vkBuildAccelerationStructuresKHR, device.segment(), deferredOperation, infoCount, pInfos, ppBuildRangeInfos); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkBuildAccelerationStructuresKHR", device, deferredOperation, infoCount, pInfos, ppBuildRangeInfos); }
+        return (int) Handles.MH_vkBuildAccelerationStructuresKHR.invokeExact(device.capabilities().PFN_vkBuildAccelerationStructuresKHR, device.segment(), deferredOperation, infoCount, pInfos, ppBuildRangeInfos); }
         catch (Throwable e) { throw new RuntimeException("error in vkBuildAccelerationStructuresKHR", e); }
     }
 
@@ -154,7 +159,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static int vkCopyAccelerationStructureKHR(VkDevice device, long deferredOperation, MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyAccelerationStructureKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCopyAccelerationStructureKHR");
-        try { return (int) Handles.MH_vkCopyAccelerationStructureKHR.invokeExact(device.capabilities().PFN_vkCopyAccelerationStructureKHR, device.segment(), deferredOperation, pInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCopyAccelerationStructureKHR", device, deferredOperation, pInfo); }
+        return (int) Handles.MH_vkCopyAccelerationStructureKHR.invokeExact(device.capabilities().PFN_vkCopyAccelerationStructureKHR, device.segment(), deferredOperation, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCopyAccelerationStructureKHR", e); }
     }
 
@@ -163,7 +169,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static int vkCopyAccelerationStructureToMemoryKHR(VkDevice device, long deferredOperation, MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyAccelerationStructureToMemoryKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCopyAccelerationStructureToMemoryKHR");
-        try { return (int) Handles.MH_vkCopyAccelerationStructureToMemoryKHR.invokeExact(device.capabilities().PFN_vkCopyAccelerationStructureToMemoryKHR, device.segment(), deferredOperation, pInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCopyAccelerationStructureToMemoryKHR", device, deferredOperation, pInfo); }
+        return (int) Handles.MH_vkCopyAccelerationStructureToMemoryKHR.invokeExact(device.capabilities().PFN_vkCopyAccelerationStructureToMemoryKHR, device.segment(), deferredOperation, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCopyAccelerationStructureToMemoryKHR", e); }
     }
 
@@ -172,7 +179,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static int vkCopyMemoryToAccelerationStructureKHR(VkDevice device, long deferredOperation, MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkCopyMemoryToAccelerationStructureKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCopyMemoryToAccelerationStructureKHR");
-        try { return (int) Handles.MH_vkCopyMemoryToAccelerationStructureKHR.invokeExact(device.capabilities().PFN_vkCopyMemoryToAccelerationStructureKHR, device.segment(), deferredOperation, pInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCopyMemoryToAccelerationStructureKHR", device, deferredOperation, pInfo); }
+        return (int) Handles.MH_vkCopyMemoryToAccelerationStructureKHR.invokeExact(device.capabilities().PFN_vkCopyMemoryToAccelerationStructureKHR, device.segment(), deferredOperation, pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCopyMemoryToAccelerationStructureKHR", e); }
     }
 
@@ -181,7 +189,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static int vkWriteAccelerationStructuresPropertiesKHR(VkDevice device, int accelerationStructureCount, MemorySegment pAccelerationStructures, int queryType, long dataSize, MemorySegment pData, long stride) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkWriteAccelerationStructuresPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkWriteAccelerationStructuresPropertiesKHR");
-        try { return (int) Handles.MH_vkWriteAccelerationStructuresPropertiesKHR.invoke(device.capabilities().PFN_vkWriteAccelerationStructuresPropertiesKHR, device.segment(), accelerationStructureCount, pAccelerationStructures, queryType, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pData, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, stride)); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkWriteAccelerationStructuresPropertiesKHR", device, accelerationStructureCount, pAccelerationStructures, queryType, dataSize, pData, stride); }
+        return (int) Handles.MH_vkWriteAccelerationStructuresPropertiesKHR.invoke(device.capabilities().PFN_vkWriteAccelerationStructuresPropertiesKHR, device.segment(), accelerationStructureCount, pAccelerationStructures, queryType, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, dataSize), pData, MemoryUtil.narrowingLong(CanonicalTypes.SIZE_T, stride)); }
         catch (Throwable e) { throw new RuntimeException("error in vkWriteAccelerationStructuresPropertiesKHR", e); }
     }
 
@@ -190,7 +199,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static void vkCmdCopyAccelerationStructureKHR(VkCommandBuffer commandBuffer, MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyAccelerationStructureKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyAccelerationStructureKHR");
-        try { Handles.MH_vkCmdCopyAccelerationStructureKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyAccelerationStructureKHR, commandBuffer.segment(), pInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyAccelerationStructureKHR", commandBuffer, pInfo); }
+        Handles.MH_vkCmdCopyAccelerationStructureKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyAccelerationStructureKHR, commandBuffer.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyAccelerationStructureKHR", e); }
     }
 
@@ -199,7 +209,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static void vkCmdCopyAccelerationStructureToMemoryKHR(VkCommandBuffer commandBuffer, MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyAccelerationStructureToMemoryKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyAccelerationStructureToMemoryKHR");
-        try { Handles.MH_vkCmdCopyAccelerationStructureToMemoryKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyAccelerationStructureToMemoryKHR, commandBuffer.segment(), pInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyAccelerationStructureToMemoryKHR", commandBuffer, pInfo); }
+        Handles.MH_vkCmdCopyAccelerationStructureToMemoryKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyAccelerationStructureToMemoryKHR, commandBuffer.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyAccelerationStructureToMemoryKHR", e); }
     }
 
@@ -208,7 +219,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static void vkCmdCopyMemoryToAccelerationStructureKHR(VkCommandBuffer commandBuffer, MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToAccelerationStructureKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdCopyMemoryToAccelerationStructureKHR");
-        try { Handles.MH_vkCmdCopyMemoryToAccelerationStructureKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToAccelerationStructureKHR, commandBuffer.segment(), pInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdCopyMemoryToAccelerationStructureKHR", commandBuffer, pInfo); }
+        Handles.MH_vkCmdCopyMemoryToAccelerationStructureKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdCopyMemoryToAccelerationStructureKHR, commandBuffer.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdCopyMemoryToAccelerationStructureKHR", e); }
     }
 
@@ -217,7 +229,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static long vkGetAccelerationStructureDeviceAddressKHR(VkDevice device, MemorySegment pInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAccelerationStructureDeviceAddressKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAccelerationStructureDeviceAddressKHR");
-        try { return (long) Handles.MH_vkGetAccelerationStructureDeviceAddressKHR.invokeExact(device.capabilities().PFN_vkGetAccelerationStructureDeviceAddressKHR, device.segment(), pInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetAccelerationStructureDeviceAddressKHR", device, pInfo); }
+        return (long) Handles.MH_vkGetAccelerationStructureDeviceAddressKHR.invokeExact(device.capabilities().PFN_vkGetAccelerationStructureDeviceAddressKHR, device.segment(), pInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetAccelerationStructureDeviceAddressKHR", e); }
     }
 
@@ -226,7 +239,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static void vkCmdWriteAccelerationStructuresPropertiesKHR(VkCommandBuffer commandBuffer, int accelerationStructureCount, MemorySegment pAccelerationStructures, int queryType, long queryPool, int firstQuery) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdWriteAccelerationStructuresPropertiesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdWriteAccelerationStructuresPropertiesKHR");
-        try { Handles.MH_vkCmdWriteAccelerationStructuresPropertiesKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdWriteAccelerationStructuresPropertiesKHR, commandBuffer.segment(), accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdWriteAccelerationStructuresPropertiesKHR", commandBuffer, accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery); }
+        Handles.MH_vkCmdWriteAccelerationStructuresPropertiesKHR.invokeExact(commandBuffer.capabilities().PFN_vkCmdWriteAccelerationStructuresPropertiesKHR, commandBuffer.segment(), accelerationStructureCount, pAccelerationStructures, queryType, queryPool, firstQuery); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdWriteAccelerationStructuresPropertiesKHR", e); }
     }
 
@@ -235,7 +249,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static void vkGetDeviceAccelerationStructureCompatibilityKHR(VkDevice device, MemorySegment pVersionInfo, MemorySegment pCompatibility) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetDeviceAccelerationStructureCompatibilityKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetDeviceAccelerationStructureCompatibilityKHR");
-        try { Handles.MH_vkGetDeviceAccelerationStructureCompatibilityKHR.invokeExact(device.capabilities().PFN_vkGetDeviceAccelerationStructureCompatibilityKHR, device.segment(), pVersionInfo, pCompatibility); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetDeviceAccelerationStructureCompatibilityKHR", device, pVersionInfo, pCompatibility); }
+        Handles.MH_vkGetDeviceAccelerationStructureCompatibilityKHR.invokeExact(device.capabilities().PFN_vkGetDeviceAccelerationStructureCompatibilityKHR, device.segment(), pVersionInfo, pCompatibility); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetDeviceAccelerationStructureCompatibilityKHR", e); }
     }
 
@@ -244,7 +259,8 @@ public final class VKKHRAccelerationStructure {
     /// ```
     public static void vkGetAccelerationStructureBuildSizesKHR(VkDevice device, int buildType, MemorySegment pBuildInfo, MemorySegment pMaxPrimitiveCounts, MemorySegment pSizeInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetAccelerationStructureBuildSizesKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetAccelerationStructureBuildSizesKHR");
-        try { Handles.MH_vkGetAccelerationStructureBuildSizesKHR.invokeExact(device.capabilities().PFN_vkGetAccelerationStructureBuildSizesKHR, device.segment(), buildType, pBuildInfo, pMaxPrimitiveCounts, pSizeInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetAccelerationStructureBuildSizesKHR", device, buildType, pBuildInfo, pMaxPrimitiveCounts, pSizeInfo); }
+        Handles.MH_vkGetAccelerationStructureBuildSizesKHR.invokeExact(device.capabilities().PFN_vkGetAccelerationStructureBuildSizesKHR, device.segment(), buildType, pBuildInfo, pMaxPrimitiveCounts, pSizeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetAccelerationStructureBuildSizesKHR", e); }
     }
 

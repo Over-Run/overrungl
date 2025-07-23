@@ -18,7 +18,7 @@
 package overrungl.vulkan.khr;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKKHRExternalSemaphoreFd {
@@ -27,8 +27,8 @@ public final class VKKHRExternalSemaphoreFd {
     public static final int VK_STRUCTURE_TYPE_IMPORT_SEMAPHORE_FD_INFO_KHR = 1000079000;
     public static final int VK_STRUCTURE_TYPE_SEMAPHORE_GET_FD_INFO_KHR = 1000079001;
     public static final class Handles {
-        public static final MethodHandle MH_vkImportSemaphoreFdKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetSemaphoreFdKHR = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkImportSemaphoreFdKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetSemaphoreFdKHR = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -39,7 +39,8 @@ public final class VKKHRExternalSemaphoreFd {
     /// ```
     public static int vkImportSemaphoreFdKHR(VkDevice device, MemorySegment pImportSemaphoreFdInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkImportSemaphoreFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkImportSemaphoreFdKHR");
-        try { return (int) Handles.MH_vkImportSemaphoreFdKHR.invokeExact(device.capabilities().PFN_vkImportSemaphoreFdKHR, device.segment(), pImportSemaphoreFdInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkImportSemaphoreFdKHR", device, pImportSemaphoreFdInfo); }
+        return (int) Handles.MH_vkImportSemaphoreFdKHR.invokeExact(device.capabilities().PFN_vkImportSemaphoreFdKHR, device.segment(), pImportSemaphoreFdInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkImportSemaphoreFdKHR", e); }
     }
 
@@ -48,7 +49,8 @@ public final class VKKHRExternalSemaphoreFd {
     /// ```
     public static int vkGetSemaphoreFdKHR(VkDevice device, MemorySegment pGetFdInfo, MemorySegment pFd) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetSemaphoreFdKHR)) throw new VKSymbolNotFoundError("Symbol not found: vkGetSemaphoreFdKHR");
-        try { return (int) Handles.MH_vkGetSemaphoreFdKHR.invokeExact(device.capabilities().PFN_vkGetSemaphoreFdKHR, device.segment(), pGetFdInfo, pFd); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetSemaphoreFdKHR", device, pGetFdInfo, pFd); }
+        return (int) Handles.MH_vkGetSemaphoreFdKHR.invokeExact(device.capabilities().PFN_vkGetSemaphoreFdKHR, device.segment(), pGetFdInfo, pFd); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetSemaphoreFdKHR", e); }
     }
 

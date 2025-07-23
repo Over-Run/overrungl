@@ -18,7 +18,7 @@
 package overrungl.vulkan.amd;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKAMDDisplayNativeHdr {
@@ -28,7 +28,7 @@ public final class VKAMDDisplayNativeHdr {
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_DISPLAY_NATIVE_HDR_CREATE_INFO_AMD = 1000213001;
     public static final int VK_COLOR_SPACE_DISPLAY_NATIVE_AMD = 1000213000;
     public static final class Handles {
-        public static final MethodHandle MH_vkSetLocalDimmingAMD = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkSetLocalDimmingAMD = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
@@ -39,7 +39,8 @@ public final class VKAMDDisplayNativeHdr {
     /// ```
     public static void vkSetLocalDimmingAMD(VkDevice device, long swapChain, int localDimmingEnable) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLocalDimmingAMD)) throw new VKSymbolNotFoundError("Symbol not found: vkSetLocalDimmingAMD");
-        try { Handles.MH_vkSetLocalDimmingAMD.invokeExact(device.capabilities().PFN_vkSetLocalDimmingAMD, device.segment(), swapChain, localDimmingEnable); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkSetLocalDimmingAMD", device, swapChain, localDimmingEnable); }
+        Handles.MH_vkSetLocalDimmingAMD.invokeExact(device.capabilities().PFN_vkSetLocalDimmingAMD, device.segment(), swapChain, localDimmingEnable); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetLocalDimmingAMD", e); }
     }
 

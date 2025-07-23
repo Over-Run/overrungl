@@ -18,7 +18,7 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVMemoryDecompression {
@@ -28,8 +28,8 @@ public final class VKNVMemoryDecompression {
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_FEATURES_NV = 1000427000;
     public static final int VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_DECOMPRESSION_PROPERTIES_NV = 1000427001;
     public static final class Handles {
-        public static final MethodHandle MH_vkCmdDecompressMemoryNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkCmdDecompressMemoryIndirectCountNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_vkCmdDecompressMemoryNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCmdDecompressMemoryIndirectCountNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.JAVA_LONG, ValueLayout.JAVA_INT));
         private Handles() {}
     }
 
@@ -40,7 +40,8 @@ public final class VKNVMemoryDecompression {
     /// ```
     public static void vkCmdDecompressMemoryNV(VkCommandBuffer commandBuffer, int decompressRegionCount, MemorySegment pDecompressMemoryRegions) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDecompressMemoryNV");
-        try { Handles.MH_vkCmdDecompressMemoryNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryNV, commandBuffer.segment(), decompressRegionCount, pDecompressMemoryRegions); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDecompressMemoryNV", commandBuffer, decompressRegionCount, pDecompressMemoryRegions); }
+        Handles.MH_vkCmdDecompressMemoryNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryNV, commandBuffer.segment(), decompressRegionCount, pDecompressMemoryRegions); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDecompressMemoryNV", e); }
     }
 
@@ -49,7 +50,8 @@ public final class VKNVMemoryDecompression {
     /// ```
     public static void vkCmdDecompressMemoryIndirectCountNV(VkCommandBuffer commandBuffer, long indirectCommandsAddress, long indirectCommandsCountAddress, int stride) {
         if (MemoryUtil.isNullPointer(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryIndirectCountNV)) throw new VKSymbolNotFoundError("Symbol not found: vkCmdDecompressMemoryIndirectCountNV");
-        try { Handles.MH_vkCmdDecompressMemoryIndirectCountNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryIndirectCountNV, commandBuffer.segment(), indirectCommandsAddress, indirectCommandsCountAddress, stride); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCmdDecompressMemoryIndirectCountNV", commandBuffer, indirectCommandsAddress, indirectCommandsCountAddress, stride); }
+        Handles.MH_vkCmdDecompressMemoryIndirectCountNV.invokeExact(commandBuffer.capabilities().PFN_vkCmdDecompressMemoryIndirectCountNV, commandBuffer.segment(), indirectCommandsAddress, indirectCommandsCountAddress, stride); }
         catch (Throwable e) { throw new RuntimeException("error in vkCmdDecompressMemoryIndirectCountNV", e); }
     }
 

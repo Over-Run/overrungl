@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -29,7 +29,7 @@ public final class GLEXTIndexMaterial {
     public static final int GL_INDEX_MATERIAL_FACE_EXT = 0x81BA;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glIndexMaterialEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glIndexMaterialEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glIndexMaterialEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glIndexMaterialEXT = func.invoke("glIndexMaterialEXT");
@@ -45,7 +45,8 @@ public final class GLEXTIndexMaterial {
     /// ```
     public void IndexMaterialEXT(int face, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIndexMaterialEXT)) throw new GLSymbolNotFoundError("Symbol not found: glIndexMaterialEXT");
-        try { Handles.MH_glIndexMaterialEXT.invokeExact(handles.PFN_glIndexMaterialEXT, face, mode); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIndexMaterialEXT", face, mode); }
+        Handles.MH_glIndexMaterialEXT.invokeExact(handles.PFN_glIndexMaterialEXT, face, mode); }
         catch (Throwable e) { throw new RuntimeException("error in IndexMaterialEXT", e); }
     }
 

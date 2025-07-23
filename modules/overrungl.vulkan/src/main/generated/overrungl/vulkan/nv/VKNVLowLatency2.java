@@ -18,7 +18,7 @@
 package overrungl.vulkan.nv;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKNVLowLatency2 {
@@ -48,11 +48,11 @@ public final class VKNVLowLatency2 {
     public static final int VK_STRUCTURE_TYPE_SWAPCHAIN_LATENCY_CREATE_INFO_NV = 1000505007;
     public static final int VK_STRUCTURE_TYPE_LATENCY_SURFACE_CAPABILITIES_NV = 1000505008;
     public static final class Handles {
-        public static final MethodHandle MH_vkSetLatencySleepModeNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkLatencySleepNV = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkSetLatencyMarkerNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkGetLatencyTimingsNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_vkQueueNotifyOutOfBandNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetLatencySleepModeNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkLatencySleepNV = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkSetLatencyMarkerNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkGetLatencyTimingsNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.JAVA_LONG, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkQueueNotifyOutOfBandNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -63,7 +63,8 @@ public final class VKNVLowLatency2 {
     /// ```
     public static int vkSetLatencySleepModeNV(VkDevice device, long swapchain, MemorySegment pSleepModeInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLatencySleepModeNV)) throw new VKSymbolNotFoundError("Symbol not found: vkSetLatencySleepModeNV");
-        try { return (int) Handles.MH_vkSetLatencySleepModeNV.invokeExact(device.capabilities().PFN_vkSetLatencySleepModeNV, device.segment(), swapchain, pSleepModeInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkSetLatencySleepModeNV", device, swapchain, pSleepModeInfo); }
+        return (int) Handles.MH_vkSetLatencySleepModeNV.invokeExact(device.capabilities().PFN_vkSetLatencySleepModeNV, device.segment(), swapchain, pSleepModeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetLatencySleepModeNV", e); }
     }
 
@@ -72,7 +73,8 @@ public final class VKNVLowLatency2 {
     /// ```
     public static int vkLatencySleepNV(VkDevice device, long swapchain, MemorySegment pSleepInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkLatencySleepNV)) throw new VKSymbolNotFoundError("Symbol not found: vkLatencySleepNV");
-        try { return (int) Handles.MH_vkLatencySleepNV.invokeExact(device.capabilities().PFN_vkLatencySleepNV, device.segment(), swapchain, pSleepInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkLatencySleepNV", device, swapchain, pSleepInfo); }
+        return (int) Handles.MH_vkLatencySleepNV.invokeExact(device.capabilities().PFN_vkLatencySleepNV, device.segment(), swapchain, pSleepInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkLatencySleepNV", e); }
     }
 
@@ -81,7 +83,8 @@ public final class VKNVLowLatency2 {
     /// ```
     public static void vkSetLatencyMarkerNV(VkDevice device, long swapchain, MemorySegment pLatencyMarkerInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkSetLatencyMarkerNV)) throw new VKSymbolNotFoundError("Symbol not found: vkSetLatencyMarkerNV");
-        try { Handles.MH_vkSetLatencyMarkerNV.invokeExact(device.capabilities().PFN_vkSetLatencyMarkerNV, device.segment(), swapchain, pLatencyMarkerInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkSetLatencyMarkerNV", device, swapchain, pLatencyMarkerInfo); }
+        Handles.MH_vkSetLatencyMarkerNV.invokeExact(device.capabilities().PFN_vkSetLatencyMarkerNV, device.segment(), swapchain, pLatencyMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkSetLatencyMarkerNV", e); }
     }
 
@@ -90,7 +93,8 @@ public final class VKNVLowLatency2 {
     /// ```
     public static void vkGetLatencyTimingsNV(VkDevice device, long swapchain, MemorySegment pLatencyMarkerInfo) {
         if (MemoryUtil.isNullPointer(device.capabilities().PFN_vkGetLatencyTimingsNV)) throw new VKSymbolNotFoundError("Symbol not found: vkGetLatencyTimingsNV");
-        try { Handles.MH_vkGetLatencyTimingsNV.invokeExact(device.capabilities().PFN_vkGetLatencyTimingsNV, device.segment(), swapchain, pLatencyMarkerInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkGetLatencyTimingsNV", device, swapchain, pLatencyMarkerInfo); }
+        Handles.MH_vkGetLatencyTimingsNV.invokeExact(device.capabilities().PFN_vkGetLatencyTimingsNV, device.segment(), swapchain, pLatencyMarkerInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkGetLatencyTimingsNV", e); }
     }
 
@@ -99,7 +103,8 @@ public final class VKNVLowLatency2 {
     /// ```
     public static void vkQueueNotifyOutOfBandNV(VkQueue queue, MemorySegment pQueueTypeInfo) {
         if (MemoryUtil.isNullPointer(queue.capabilities().PFN_vkQueueNotifyOutOfBandNV)) throw new VKSymbolNotFoundError("Symbol not found: vkQueueNotifyOutOfBandNV");
-        try { Handles.MH_vkQueueNotifyOutOfBandNV.invokeExact(queue.capabilities().PFN_vkQueueNotifyOutOfBandNV, queue.segment(), pQueueTypeInfo); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkQueueNotifyOutOfBandNV", queue, pQueueTypeInfo); }
+        Handles.MH_vkQueueNotifyOutOfBandNV.invokeExact(queue.capabilities().PFN_vkQueueNotifyOutOfBandNV, queue.segment(), pQueueTypeInfo); }
         catch (Throwable e) { throw new RuntimeException("error in vkQueueNotifyOutOfBandNV", e); }
     }
 

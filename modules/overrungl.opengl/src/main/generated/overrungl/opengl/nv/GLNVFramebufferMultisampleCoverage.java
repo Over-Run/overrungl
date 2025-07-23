@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -30,7 +30,7 @@ public final class GLNVFramebufferMultisampleCoverage {
     public static final int GL_MULTISAMPLE_COVERAGE_MODES_NV = 0x8E12;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glRenderbufferStorageMultisampleCoverageNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glRenderbufferStorageMultisampleCoverageNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glRenderbufferStorageMultisampleCoverageNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glRenderbufferStorageMultisampleCoverageNV = func.invoke("glRenderbufferStorageMultisampleCoverageNV");
@@ -46,7 +46,8 @@ public final class GLNVFramebufferMultisampleCoverage {
     /// ```
     public void RenderbufferStorageMultisampleCoverageNV(int target, int coverageSamples, int colorSamples, int internalformat, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glRenderbufferStorageMultisampleCoverageNV)) throw new GLSymbolNotFoundError("Symbol not found: glRenderbufferStorageMultisampleCoverageNV");
-        try { Handles.MH_glRenderbufferStorageMultisampleCoverageNV.invokeExact(handles.PFN_glRenderbufferStorageMultisampleCoverageNV, target, coverageSamples, colorSamples, internalformat, width, height); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glRenderbufferStorageMultisampleCoverageNV", target, coverageSamples, colorSamples, internalformat, width, height); }
+        Handles.MH_glRenderbufferStorageMultisampleCoverageNV.invokeExact(handles.PFN_glRenderbufferStorageMultisampleCoverageNV, target, coverageSamples, colorSamples, internalformat, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in RenderbufferStorageMultisampleCoverageNV", e); }
     }
 

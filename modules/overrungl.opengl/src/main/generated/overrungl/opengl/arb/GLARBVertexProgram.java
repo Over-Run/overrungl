@@ -19,7 +19,7 @@ package overrungl.opengl.arb;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -105,68 +105,68 @@ public final class GLARBVertexProgram {
     public static final int GL_MATRIX31_ARB = 0x88DF;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glVertexAttrib1dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glVertexAttrib1dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib1fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glVertexAttrib1fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib1sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glVertexAttrib1svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib2dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glVertexAttrib2dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib2fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glVertexAttrib2fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib2sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glVertexAttrib2svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib3dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glVertexAttrib3dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib3fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glVertexAttrib3fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib3sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glVertexAttrib3svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4NbvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4NivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4NsvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4NubARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glVertexAttrib4NubvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4NuivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4NusvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4bvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glVertexAttrib4dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glVertexAttrib4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4ivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4sARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
-        public static final MethodHandle MH_glVertexAttrib4svARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4ubvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4uivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttrib4usvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glVertexAttribPointerARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glEnableVertexAttribArrayARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDisableVertexAttribArrayARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glProgramStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glBindProgramARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDeleteProgramsARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGenProgramsARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramEnvParameter4dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glProgramEnvParameter4dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramEnvParameter4fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glProgramEnvParameter4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramLocalParameter4dARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glProgramLocalParameter4dvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glProgramLocalParameter4fARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glProgramLocalParameter4fvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetProgramEnvParameterdvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetProgramEnvParameterfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetProgramLocalParameterdvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetProgramLocalParameterfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetProgramivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetProgramStringARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVertexAttribdvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVertexAttribfvARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVertexAttribivARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetVertexAttribPointervARB = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsProgramARB = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glVertexAttrib1dARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexAttrib1dvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib1fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexAttrib1fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib1sARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexAttrib1svARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib2dARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexAttrib2dvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib2fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexAttrib2fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib2sARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexAttrib2svARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib3dARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexAttrib3dvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib3fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexAttrib3fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib3sARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexAttrib3svARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NbvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NsvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NubARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glVertexAttrib4NubvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NuivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4NusvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4bvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4dARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glVertexAttrib4dvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glVertexAttrib4fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4ivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4sARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT, ValueLayout.JAVA_SHORT));
+        public static final MethodHandle MH_glVertexAttrib4svARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4ubvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4uivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttrib4usvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glVertexAttribPointerARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glEnableVertexAttribArrayARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDisableVertexAttribArrayARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramStringARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glBindProgramARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDeleteProgramsARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGenProgramsARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParameter4dARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glProgramEnvParameter4dvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramEnvParameter4fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glProgramEnvParameter4fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParameter4dARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glProgramLocalParameter4dvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glProgramLocalParameter4fARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glProgramLocalParameter4fvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramEnvParameterdvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramEnvParameterfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramLocalParameterdvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramLocalParameterfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetProgramStringARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribdvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribfvARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribivARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetVertexAttribPointervARB = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsProgramARB = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glVertexAttrib1dARB;
         public final MemorySegment PFN_glVertexAttrib1dvARB;
         public final MemorySegment PFN_glVertexAttrib1fARB;
@@ -304,7 +304,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib1dARB(int index, double x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1dARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib1dARB");
-        try { Handles.MH_glVertexAttrib1dARB.invokeExact(handles.PFN_glVertexAttrib1dARB, index, x); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib1dARB", index, x); }
+        Handles.MH_glVertexAttrib1dARB.invokeExact(handles.PFN_glVertexAttrib1dARB, index, x); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib1dARB", e); }
     }
 
@@ -313,7 +314,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib1dvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1dvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib1dvARB");
-        try { Handles.MH_glVertexAttrib1dvARB.invokeExact(handles.PFN_glVertexAttrib1dvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib1dvARB", index, v); }
+        Handles.MH_glVertexAttrib1dvARB.invokeExact(handles.PFN_glVertexAttrib1dvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib1dvARB", e); }
     }
 
@@ -322,7 +324,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib1fARB(int index, float x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1fARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib1fARB");
-        try { Handles.MH_glVertexAttrib1fARB.invokeExact(handles.PFN_glVertexAttrib1fARB, index, x); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib1fARB", index, x); }
+        Handles.MH_glVertexAttrib1fARB.invokeExact(handles.PFN_glVertexAttrib1fARB, index, x); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib1fARB", e); }
     }
 
@@ -331,7 +334,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib1fvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib1fvARB");
-        try { Handles.MH_glVertexAttrib1fvARB.invokeExact(handles.PFN_glVertexAttrib1fvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib1fvARB", index, v); }
+        Handles.MH_glVertexAttrib1fvARB.invokeExact(handles.PFN_glVertexAttrib1fvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib1fvARB", e); }
     }
 
@@ -340,7 +344,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib1sARB(int index, short x) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1sARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib1sARB");
-        try { Handles.MH_glVertexAttrib1sARB.invokeExact(handles.PFN_glVertexAttrib1sARB, index, x); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib1sARB", index, x); }
+        Handles.MH_glVertexAttrib1sARB.invokeExact(handles.PFN_glVertexAttrib1sARB, index, x); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib1sARB", e); }
     }
 
@@ -349,7 +354,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib1svARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib1svARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib1svARB");
-        try { Handles.MH_glVertexAttrib1svARB.invokeExact(handles.PFN_glVertexAttrib1svARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib1svARB", index, v); }
+        Handles.MH_glVertexAttrib1svARB.invokeExact(handles.PFN_glVertexAttrib1svARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib1svARB", e); }
     }
 
@@ -358,7 +364,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib2dARB(int index, double x, double y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2dARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib2dARB");
-        try { Handles.MH_glVertexAttrib2dARB.invokeExact(handles.PFN_glVertexAttrib2dARB, index, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib2dARB", index, x, y); }
+        Handles.MH_glVertexAttrib2dARB.invokeExact(handles.PFN_glVertexAttrib2dARB, index, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib2dARB", e); }
     }
 
@@ -367,7 +374,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib2dvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2dvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib2dvARB");
-        try { Handles.MH_glVertexAttrib2dvARB.invokeExact(handles.PFN_glVertexAttrib2dvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib2dvARB", index, v); }
+        Handles.MH_glVertexAttrib2dvARB.invokeExact(handles.PFN_glVertexAttrib2dvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib2dvARB", e); }
     }
 
@@ -376,7 +384,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib2fARB(int index, float x, float y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2fARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib2fARB");
-        try { Handles.MH_glVertexAttrib2fARB.invokeExact(handles.PFN_glVertexAttrib2fARB, index, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib2fARB", index, x, y); }
+        Handles.MH_glVertexAttrib2fARB.invokeExact(handles.PFN_glVertexAttrib2fARB, index, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib2fARB", e); }
     }
 
@@ -385,7 +394,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib2fvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib2fvARB");
-        try { Handles.MH_glVertexAttrib2fvARB.invokeExact(handles.PFN_glVertexAttrib2fvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib2fvARB", index, v); }
+        Handles.MH_glVertexAttrib2fvARB.invokeExact(handles.PFN_glVertexAttrib2fvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib2fvARB", e); }
     }
 
@@ -394,7 +404,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib2sARB(int index, short x, short y) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2sARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib2sARB");
-        try { Handles.MH_glVertexAttrib2sARB.invokeExact(handles.PFN_glVertexAttrib2sARB, index, x, y); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib2sARB", index, x, y); }
+        Handles.MH_glVertexAttrib2sARB.invokeExact(handles.PFN_glVertexAttrib2sARB, index, x, y); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib2sARB", e); }
     }
 
@@ -403,7 +414,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib2svARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib2svARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib2svARB");
-        try { Handles.MH_glVertexAttrib2svARB.invokeExact(handles.PFN_glVertexAttrib2svARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib2svARB", index, v); }
+        Handles.MH_glVertexAttrib2svARB.invokeExact(handles.PFN_glVertexAttrib2svARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib2svARB", e); }
     }
 
@@ -412,7 +424,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib3dARB(int index, double x, double y, double z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3dARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib3dARB");
-        try { Handles.MH_glVertexAttrib3dARB.invokeExact(handles.PFN_glVertexAttrib3dARB, index, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib3dARB", index, x, y, z); }
+        Handles.MH_glVertexAttrib3dARB.invokeExact(handles.PFN_glVertexAttrib3dARB, index, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib3dARB", e); }
     }
 
@@ -421,7 +434,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib3dvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3dvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib3dvARB");
-        try { Handles.MH_glVertexAttrib3dvARB.invokeExact(handles.PFN_glVertexAttrib3dvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib3dvARB", index, v); }
+        Handles.MH_glVertexAttrib3dvARB.invokeExact(handles.PFN_glVertexAttrib3dvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib3dvARB", e); }
     }
 
@@ -430,7 +444,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib3fARB(int index, float x, float y, float z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3fARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib3fARB");
-        try { Handles.MH_glVertexAttrib3fARB.invokeExact(handles.PFN_glVertexAttrib3fARB, index, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib3fARB", index, x, y, z); }
+        Handles.MH_glVertexAttrib3fARB.invokeExact(handles.PFN_glVertexAttrib3fARB, index, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib3fARB", e); }
     }
 
@@ -439,7 +454,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib3fvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib3fvARB");
-        try { Handles.MH_glVertexAttrib3fvARB.invokeExact(handles.PFN_glVertexAttrib3fvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib3fvARB", index, v); }
+        Handles.MH_glVertexAttrib3fvARB.invokeExact(handles.PFN_glVertexAttrib3fvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib3fvARB", e); }
     }
 
@@ -448,7 +464,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib3sARB(int index, short x, short y, short z) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3sARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib3sARB");
-        try { Handles.MH_glVertexAttrib3sARB.invokeExact(handles.PFN_glVertexAttrib3sARB, index, x, y, z); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib3sARB", index, x, y, z); }
+        Handles.MH_glVertexAttrib3sARB.invokeExact(handles.PFN_glVertexAttrib3sARB, index, x, y, z); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib3sARB", e); }
     }
 
@@ -457,7 +474,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib3svARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib3svARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib3svARB");
-        try { Handles.MH_glVertexAttrib3svARB.invokeExact(handles.PFN_glVertexAttrib3svARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib3svARB", index, v); }
+        Handles.MH_glVertexAttrib3svARB.invokeExact(handles.PFN_glVertexAttrib3svARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib3svARB", e); }
     }
 
@@ -466,7 +484,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4NbvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NbvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4NbvARB");
-        try { Handles.MH_glVertexAttrib4NbvARB.invokeExact(handles.PFN_glVertexAttrib4NbvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4NbvARB", index, v); }
+        Handles.MH_glVertexAttrib4NbvARB.invokeExact(handles.PFN_glVertexAttrib4NbvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4NbvARB", e); }
     }
 
@@ -475,7 +494,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4NivARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NivARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4NivARB");
-        try { Handles.MH_glVertexAttrib4NivARB.invokeExact(handles.PFN_glVertexAttrib4NivARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4NivARB", index, v); }
+        Handles.MH_glVertexAttrib4NivARB.invokeExact(handles.PFN_glVertexAttrib4NivARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4NivARB", e); }
     }
 
@@ -484,7 +504,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4NsvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NsvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4NsvARB");
-        try { Handles.MH_glVertexAttrib4NsvARB.invokeExact(handles.PFN_glVertexAttrib4NsvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4NsvARB", index, v); }
+        Handles.MH_glVertexAttrib4NsvARB.invokeExact(handles.PFN_glVertexAttrib4NsvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4NsvARB", e); }
     }
 
@@ -493,7 +514,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4NubARB(int index, byte x, byte y, byte z, byte w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NubARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4NubARB");
-        try { Handles.MH_glVertexAttrib4NubARB.invokeExact(handles.PFN_glVertexAttrib4NubARB, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4NubARB", index, x, y, z, w); }
+        Handles.MH_glVertexAttrib4NubARB.invokeExact(handles.PFN_glVertexAttrib4NubARB, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4NubARB", e); }
     }
 
@@ -502,7 +524,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4NubvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NubvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4NubvARB");
-        try { Handles.MH_glVertexAttrib4NubvARB.invokeExact(handles.PFN_glVertexAttrib4NubvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4NubvARB", index, v); }
+        Handles.MH_glVertexAttrib4NubvARB.invokeExact(handles.PFN_glVertexAttrib4NubvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4NubvARB", e); }
     }
 
@@ -511,7 +534,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4NuivARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NuivARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4NuivARB");
-        try { Handles.MH_glVertexAttrib4NuivARB.invokeExact(handles.PFN_glVertexAttrib4NuivARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4NuivARB", index, v); }
+        Handles.MH_glVertexAttrib4NuivARB.invokeExact(handles.PFN_glVertexAttrib4NuivARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4NuivARB", e); }
     }
 
@@ -520,7 +544,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4NusvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4NusvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4NusvARB");
-        try { Handles.MH_glVertexAttrib4NusvARB.invokeExact(handles.PFN_glVertexAttrib4NusvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4NusvARB", index, v); }
+        Handles.MH_glVertexAttrib4NusvARB.invokeExact(handles.PFN_glVertexAttrib4NusvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4NusvARB", e); }
     }
 
@@ -529,7 +554,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4bvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4bvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4bvARB");
-        try { Handles.MH_glVertexAttrib4bvARB.invokeExact(handles.PFN_glVertexAttrib4bvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4bvARB", index, v); }
+        Handles.MH_glVertexAttrib4bvARB.invokeExact(handles.PFN_glVertexAttrib4bvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4bvARB", e); }
     }
 
@@ -538,7 +564,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4dARB(int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4dARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4dARB");
-        try { Handles.MH_glVertexAttrib4dARB.invokeExact(handles.PFN_glVertexAttrib4dARB, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4dARB", index, x, y, z, w); }
+        Handles.MH_glVertexAttrib4dARB.invokeExact(handles.PFN_glVertexAttrib4dARB, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4dARB", e); }
     }
 
@@ -547,7 +574,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4dvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4dvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4dvARB");
-        try { Handles.MH_glVertexAttrib4dvARB.invokeExact(handles.PFN_glVertexAttrib4dvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4dvARB", index, v); }
+        Handles.MH_glVertexAttrib4dvARB.invokeExact(handles.PFN_glVertexAttrib4dvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4dvARB", e); }
     }
 
@@ -556,7 +584,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4fARB(int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4fARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4fARB");
-        try { Handles.MH_glVertexAttrib4fARB.invokeExact(handles.PFN_glVertexAttrib4fARB, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4fARB", index, x, y, z, w); }
+        Handles.MH_glVertexAttrib4fARB.invokeExact(handles.PFN_glVertexAttrib4fARB, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4fARB", e); }
     }
 
@@ -565,7 +594,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4fvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4fvARB");
-        try { Handles.MH_glVertexAttrib4fvARB.invokeExact(handles.PFN_glVertexAttrib4fvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4fvARB", index, v); }
+        Handles.MH_glVertexAttrib4fvARB.invokeExact(handles.PFN_glVertexAttrib4fvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4fvARB", e); }
     }
 
@@ -574,7 +604,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4ivARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4ivARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4ivARB");
-        try { Handles.MH_glVertexAttrib4ivARB.invokeExact(handles.PFN_glVertexAttrib4ivARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4ivARB", index, v); }
+        Handles.MH_glVertexAttrib4ivARB.invokeExact(handles.PFN_glVertexAttrib4ivARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4ivARB", e); }
     }
 
@@ -583,7 +614,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4sARB(int index, short x, short y, short z, short w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4sARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4sARB");
-        try { Handles.MH_glVertexAttrib4sARB.invokeExact(handles.PFN_glVertexAttrib4sARB, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4sARB", index, x, y, z, w); }
+        Handles.MH_glVertexAttrib4sARB.invokeExact(handles.PFN_glVertexAttrib4sARB, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4sARB", e); }
     }
 
@@ -592,7 +624,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4svARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4svARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4svARB");
-        try { Handles.MH_glVertexAttrib4svARB.invokeExact(handles.PFN_glVertexAttrib4svARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4svARB", index, v); }
+        Handles.MH_glVertexAttrib4svARB.invokeExact(handles.PFN_glVertexAttrib4svARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4svARB", e); }
     }
 
@@ -601,7 +634,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4ubvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4ubvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4ubvARB");
-        try { Handles.MH_glVertexAttrib4ubvARB.invokeExact(handles.PFN_glVertexAttrib4ubvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4ubvARB", index, v); }
+        Handles.MH_glVertexAttrib4ubvARB.invokeExact(handles.PFN_glVertexAttrib4ubvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4ubvARB", e); }
     }
 
@@ -610,7 +644,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4uivARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4uivARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4uivARB");
-        try { Handles.MH_glVertexAttrib4uivARB.invokeExact(handles.PFN_glVertexAttrib4uivARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4uivARB", index, v); }
+        Handles.MH_glVertexAttrib4uivARB.invokeExact(handles.PFN_glVertexAttrib4uivARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4uivARB", e); }
     }
 
@@ -619,7 +654,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttrib4usvARB(int index, MemorySegment v) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttrib4usvARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttrib4usvARB");
-        try { Handles.MH_glVertexAttrib4usvARB.invokeExact(handles.PFN_glVertexAttrib4usvARB, index, v); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttrib4usvARB", index, v); }
+        Handles.MH_glVertexAttrib4usvARB.invokeExact(handles.PFN_glVertexAttrib4usvARB, index, v); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttrib4usvARB", e); }
     }
 
@@ -628,7 +664,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void VertexAttribPointerARB(int index, int size, int type, boolean normalized, int stride, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glVertexAttribPointerARB)) throw new GLSymbolNotFoundError("Symbol not found: glVertexAttribPointerARB");
-        try { Handles.MH_glVertexAttribPointerARB.invokeExact(handles.PFN_glVertexAttribPointerARB, index, size, type, ((normalized) ? (byte)1 : (byte)0), stride, pointer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glVertexAttribPointerARB", index, size, type, normalized, stride, pointer); }
+        Handles.MH_glVertexAttribPointerARB.invokeExact(handles.PFN_glVertexAttribPointerARB, index, size, type, ((normalized) ? (byte)1 : (byte)0), stride, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in VertexAttribPointerARB", e); }
     }
 
@@ -637,7 +674,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void EnableVertexAttribArrayARB(int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnableVertexAttribArrayARB)) throw new GLSymbolNotFoundError("Symbol not found: glEnableVertexAttribArrayARB");
-        try { Handles.MH_glEnableVertexAttribArrayARB.invokeExact(handles.PFN_glEnableVertexAttribArrayARB, index); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glEnableVertexAttribArrayARB", index); }
+        Handles.MH_glEnableVertexAttribArrayARB.invokeExact(handles.PFN_glEnableVertexAttribArrayARB, index); }
         catch (Throwable e) { throw new RuntimeException("error in EnableVertexAttribArrayARB", e); }
     }
 
@@ -646,7 +684,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void DisableVertexAttribArrayARB(int index) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisableVertexAttribArrayARB)) throw new GLSymbolNotFoundError("Symbol not found: glDisableVertexAttribArrayARB");
-        try { Handles.MH_glDisableVertexAttribArrayARB.invokeExact(handles.PFN_glDisableVertexAttribArrayARB, index); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDisableVertexAttribArrayARB", index); }
+        Handles.MH_glDisableVertexAttribArrayARB.invokeExact(handles.PFN_glDisableVertexAttribArrayARB, index); }
         catch (Throwable e) { throw new RuntimeException("error in DisableVertexAttribArrayARB", e); }
     }
 
@@ -655,7 +694,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void ProgramStringARB(int target, int format, int len, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramStringARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramStringARB");
-        try { Handles.MH_glProgramStringARB.invokeExact(handles.PFN_glProgramStringARB, target, format, len, string); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramStringARB", target, format, len, string); }
+        Handles.MH_glProgramStringARB.invokeExact(handles.PFN_glProgramStringARB, target, format, len, string); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramStringARB", e); }
     }
 
@@ -664,7 +704,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void BindProgramARB(int target, int program) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBindProgramARB)) throw new GLSymbolNotFoundError("Symbol not found: glBindProgramARB");
-        try { Handles.MH_glBindProgramARB.invokeExact(handles.PFN_glBindProgramARB, target, program); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBindProgramARB", target, program); }
+        Handles.MH_glBindProgramARB.invokeExact(handles.PFN_glBindProgramARB, target, program); }
         catch (Throwable e) { throw new RuntimeException("error in BindProgramARB", e); }
     }
 
@@ -673,7 +714,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void DeleteProgramsARB(int n, MemorySegment programs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDeleteProgramsARB)) throw new GLSymbolNotFoundError("Symbol not found: glDeleteProgramsARB");
-        try { Handles.MH_glDeleteProgramsARB.invokeExact(handles.PFN_glDeleteProgramsARB, n, programs); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDeleteProgramsARB", n, programs); }
+        Handles.MH_glDeleteProgramsARB.invokeExact(handles.PFN_glDeleteProgramsARB, n, programs); }
         catch (Throwable e) { throw new RuntimeException("error in DeleteProgramsARB", e); }
     }
 
@@ -682,7 +724,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GenProgramsARB(int n, MemorySegment programs) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGenProgramsARB)) throw new GLSymbolNotFoundError("Symbol not found: glGenProgramsARB");
-        try { Handles.MH_glGenProgramsARB.invokeExact(handles.PFN_glGenProgramsARB, n, programs); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGenProgramsARB", n, programs); }
+        Handles.MH_glGenProgramsARB.invokeExact(handles.PFN_glGenProgramsARB, n, programs); }
         catch (Throwable e) { throw new RuntimeException("error in GenProgramsARB", e); }
     }
 
@@ -691,7 +734,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void ProgramEnvParameter4dARB(int target, int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4dARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramEnvParameter4dARB");
-        try { Handles.MH_glProgramEnvParameter4dARB.invokeExact(handles.PFN_glProgramEnvParameter4dARB, target, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramEnvParameter4dARB", target, index, x, y, z, w); }
+        Handles.MH_glProgramEnvParameter4dARB.invokeExact(handles.PFN_glProgramEnvParameter4dARB, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameter4dARB", e); }
     }
 
@@ -700,7 +744,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void ProgramEnvParameter4dvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4dvARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramEnvParameter4dvARB");
-        try { Handles.MH_glProgramEnvParameter4dvARB.invokeExact(handles.PFN_glProgramEnvParameter4dvARB, target, index, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramEnvParameter4dvARB", target, index, params); }
+        Handles.MH_glProgramEnvParameter4dvARB.invokeExact(handles.PFN_glProgramEnvParameter4dvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameter4dvARB", e); }
     }
 
@@ -709,7 +754,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void ProgramEnvParameter4fARB(int target, int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4fARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramEnvParameter4fARB");
-        try { Handles.MH_glProgramEnvParameter4fARB.invokeExact(handles.PFN_glProgramEnvParameter4fARB, target, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramEnvParameter4fARB", target, index, x, y, z, w); }
+        Handles.MH_glProgramEnvParameter4fARB.invokeExact(handles.PFN_glProgramEnvParameter4fARB, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameter4fARB", e); }
     }
 
@@ -718,7 +764,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void ProgramEnvParameter4fvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramEnvParameter4fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramEnvParameter4fvARB");
-        try { Handles.MH_glProgramEnvParameter4fvARB.invokeExact(handles.PFN_glProgramEnvParameter4fvARB, target, index, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramEnvParameter4fvARB", target, index, params); }
+        Handles.MH_glProgramEnvParameter4fvARB.invokeExact(handles.PFN_glProgramEnvParameter4fvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramEnvParameter4fvARB", e); }
     }
 
@@ -727,7 +774,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void ProgramLocalParameter4dARB(int target, int index, double x, double y, double z, double w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4dARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramLocalParameter4dARB");
-        try { Handles.MH_glProgramLocalParameter4dARB.invokeExact(handles.PFN_glProgramLocalParameter4dARB, target, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramLocalParameter4dARB", target, index, x, y, z, w); }
+        Handles.MH_glProgramLocalParameter4dARB.invokeExact(handles.PFN_glProgramLocalParameter4dARB, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameter4dARB", e); }
     }
 
@@ -736,7 +784,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void ProgramLocalParameter4dvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4dvARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramLocalParameter4dvARB");
-        try { Handles.MH_glProgramLocalParameter4dvARB.invokeExact(handles.PFN_glProgramLocalParameter4dvARB, target, index, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramLocalParameter4dvARB", target, index, params); }
+        Handles.MH_glProgramLocalParameter4dvARB.invokeExact(handles.PFN_glProgramLocalParameter4dvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameter4dvARB", e); }
     }
 
@@ -745,7 +794,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void ProgramLocalParameter4fARB(int target, int index, float x, float y, float z, float w) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4fARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramLocalParameter4fARB");
-        try { Handles.MH_glProgramLocalParameter4fARB.invokeExact(handles.PFN_glProgramLocalParameter4fARB, target, index, x, y, z, w); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramLocalParameter4fARB", target, index, x, y, z, w); }
+        Handles.MH_glProgramLocalParameter4fARB.invokeExact(handles.PFN_glProgramLocalParameter4fARB, target, index, x, y, z, w); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameter4fARB", e); }
     }
 
@@ -754,7 +804,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void ProgramLocalParameter4fvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramLocalParameter4fvARB)) throw new GLSymbolNotFoundError("Symbol not found: glProgramLocalParameter4fvARB");
-        try { Handles.MH_glProgramLocalParameter4fvARB.invokeExact(handles.PFN_glProgramLocalParameter4fvARB, target, index, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramLocalParameter4fvARB", target, index, params); }
+        Handles.MH_glProgramLocalParameter4fvARB.invokeExact(handles.PFN_glProgramLocalParameter4fvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramLocalParameter4fvARB", e); }
     }
 
@@ -763,7 +814,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetProgramEnvParameterdvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterdvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramEnvParameterdvARB");
-        try { Handles.MH_glGetProgramEnvParameterdvARB.invokeExact(handles.PFN_glGetProgramEnvParameterdvARB, target, index, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramEnvParameterdvARB", target, index, params); }
+        Handles.MH_glGetProgramEnvParameterdvARB.invokeExact(handles.PFN_glGetProgramEnvParameterdvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramEnvParameterdvARB", e); }
     }
 
@@ -772,7 +824,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetProgramEnvParameterfvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramEnvParameterfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramEnvParameterfvARB");
-        try { Handles.MH_glGetProgramEnvParameterfvARB.invokeExact(handles.PFN_glGetProgramEnvParameterfvARB, target, index, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramEnvParameterfvARB", target, index, params); }
+        Handles.MH_glGetProgramEnvParameterfvARB.invokeExact(handles.PFN_glGetProgramEnvParameterfvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramEnvParameterfvARB", e); }
     }
 
@@ -781,7 +834,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetProgramLocalParameterdvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterdvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramLocalParameterdvARB");
-        try { Handles.MH_glGetProgramLocalParameterdvARB.invokeExact(handles.PFN_glGetProgramLocalParameterdvARB, target, index, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramLocalParameterdvARB", target, index, params); }
+        Handles.MH_glGetProgramLocalParameterdvARB.invokeExact(handles.PFN_glGetProgramLocalParameterdvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramLocalParameterdvARB", e); }
     }
 
@@ -790,7 +844,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetProgramLocalParameterfvARB(int target, int index, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramLocalParameterfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramLocalParameterfvARB");
-        try { Handles.MH_glGetProgramLocalParameterfvARB.invokeExact(handles.PFN_glGetProgramLocalParameterfvARB, target, index, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramLocalParameterfvARB", target, index, params); }
+        Handles.MH_glGetProgramLocalParameterfvARB.invokeExact(handles.PFN_glGetProgramLocalParameterfvARB, target, index, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramLocalParameterfvARB", e); }
     }
 
@@ -799,7 +854,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetProgramivARB(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramivARB");
-        try { Handles.MH_glGetProgramivARB.invokeExact(handles.PFN_glGetProgramivARB, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramivARB", target, pname, params); }
+        Handles.MH_glGetProgramivARB.invokeExact(handles.PFN_glGetProgramivARB, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramivARB", e); }
     }
 
@@ -808,7 +864,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetProgramStringARB(int target, int pname, MemorySegment string) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetProgramStringARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetProgramStringARB");
-        try { Handles.MH_glGetProgramStringARB.invokeExact(handles.PFN_glGetProgramStringARB, target, pname, string); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetProgramStringARB", target, pname, string); }
+        Handles.MH_glGetProgramStringARB.invokeExact(handles.PFN_glGetProgramStringARB, target, pname, string); }
         catch (Throwable e) { throw new RuntimeException("error in GetProgramStringARB", e); }
     }
 
@@ -817,7 +874,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetVertexAttribdvARB(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribdvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribdvARB");
-        try { Handles.MH_glGetVertexAttribdvARB.invokeExact(handles.PFN_glGetVertexAttribdvARB, index, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribdvARB", index, pname, params); }
+        Handles.MH_glGetVertexAttribdvARB.invokeExact(handles.PFN_glGetVertexAttribdvARB, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribdvARB", e); }
     }
 
@@ -826,7 +884,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetVertexAttribfvARB(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribfvARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribfvARB");
-        try { Handles.MH_glGetVertexAttribfvARB.invokeExact(handles.PFN_glGetVertexAttribfvARB, index, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribfvARB", index, pname, params); }
+        Handles.MH_glGetVertexAttribfvARB.invokeExact(handles.PFN_glGetVertexAttribfvARB, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribfvARB", e); }
     }
 
@@ -835,7 +894,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetVertexAttribivARB(int index, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribivARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribivARB");
-        try { Handles.MH_glGetVertexAttribivARB.invokeExact(handles.PFN_glGetVertexAttribivARB, index, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribivARB", index, pname, params); }
+        Handles.MH_glGetVertexAttribivARB.invokeExact(handles.PFN_glGetVertexAttribivARB, index, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribivARB", e); }
     }
 
@@ -844,7 +904,8 @@ public final class GLARBVertexProgram {
     /// ```
     public void GetVertexAttribPointervARB(int index, int pname, MemorySegment pointer) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetVertexAttribPointervARB)) throw new GLSymbolNotFoundError("Symbol not found: glGetVertexAttribPointervARB");
-        try { Handles.MH_glGetVertexAttribPointervARB.invokeExact(handles.PFN_glGetVertexAttribPointervARB, index, pname, pointer); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetVertexAttribPointervARB", index, pname, pointer); }
+        Handles.MH_glGetVertexAttribPointervARB.invokeExact(handles.PFN_glGetVertexAttribPointervARB, index, pname, pointer); }
         catch (Throwable e) { throw new RuntimeException("error in GetVertexAttribPointervARB", e); }
     }
 
@@ -853,7 +914,8 @@ public final class GLARBVertexProgram {
     /// ```
     public boolean IsProgramARB(int program) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsProgramARB)) throw new GLSymbolNotFoundError("Symbol not found: glIsProgramARB");
-        try { return (((byte) Handles.MH_glIsProgramARB.invokeExact(handles.PFN_glIsProgramARB, program)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIsProgramARB", program); }
+        return (((byte) Handles.MH_glIsProgramARB.invokeExact(handles.PFN_glIsProgramARB, program)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsProgramARB", e); }
     }
 

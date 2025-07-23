@@ -18,7 +18,7 @@
 package overrungl.vulkan.ext;
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.vulkan.*;
 public final class VKEXTMetalSurface {
@@ -26,7 +26,7 @@ public final class VKEXTMetalSurface {
     public static final String VK_EXT_METAL_SURFACE_EXTENSION_NAME = "VK_EXT_metal_surface";
     public static final int VK_STRUCTURE_TYPE_METAL_SURFACE_CREATE_INFO_EXT = 1000217000;
     public static final class Handles {
-        public static final MethodHandle MH_vkCreateMetalSurfaceEXT = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_vkCreateMetalSurfaceEXT = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS, ValueLayout.ADDRESS));
         private Handles() {}
     }
 
@@ -37,7 +37,8 @@ public final class VKEXTMetalSurface {
     /// ```
     public static int vkCreateMetalSurfaceEXT(VkInstance instance, MemorySegment pCreateInfo, MemorySegment pAllocator, MemorySegment pSurface) {
         if (MemoryUtil.isNullPointer(instance.capabilities().PFN_vkCreateMetalSurfaceEXT)) throw new VKSymbolNotFoundError("Symbol not found: vkCreateMetalSurfaceEXT");
-        try { return (int) Handles.MH_vkCreateMetalSurfaceEXT.invokeExact(instance.capabilities().PFN_vkCreateMetalSurfaceEXT, instance.segment(), pCreateInfo, pAllocator, pSurface); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("vkCreateMetalSurfaceEXT", instance, pCreateInfo, pAllocator, pSurface); }
+        return (int) Handles.MH_vkCreateMetalSurfaceEXT.invokeExact(instance.capabilities().PFN_vkCreateMetalSurfaceEXT, instance.segment(), pCreateInfo, pAllocator, pSurface); }
         catch (Throwable e) { throw new RuntimeException("error in vkCreateMetalSurfaceEXT", e); }
     }
 

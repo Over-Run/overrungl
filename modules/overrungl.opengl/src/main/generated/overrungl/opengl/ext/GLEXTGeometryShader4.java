@@ -19,7 +19,7 @@ package overrungl.opengl.ext;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -46,7 +46,7 @@ public final class GLEXTGeometryShader4 {
     public static final int GL_PROGRAM_POINT_SIZE_EXT = 0x8642;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glProgramParameteriEXT = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glProgramParameteriEXT = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glProgramParameteriEXT;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glProgramParameteriEXT = func.invoke("glProgramParameteriEXT", "glProgramParameteri");
@@ -62,7 +62,8 @@ public final class GLEXTGeometryShader4 {
     /// ```
     public void ProgramParameteriEXT(int program, int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glProgramParameteriEXT)) throw new GLSymbolNotFoundError("Symbol not found: glProgramParameteriEXT");
-        try { Handles.MH_glProgramParameteriEXT.invokeExact(handles.PFN_glProgramParameteriEXT, program, pname, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glProgramParameteriEXT", program, pname, value); }
+        Handles.MH_glProgramParameteriEXT.invokeExact(handles.PFN_glProgramParameteriEXT, program, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in ProgramParameteriEXT", e); }
     }
 

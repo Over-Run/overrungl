@@ -19,7 +19,7 @@ package overrungl.opengl.nv;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
@@ -77,8 +77,8 @@ public final class GLNVBlendEquationAdvanced {
     public static final int GL_ZERO = 0;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glBlendParameteriNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glBlendBarrierNV = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glBlendParameteriNV = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glBlendBarrierNV = downcallHandle(FunctionDescriptor.ofVoid());
         public final MemorySegment PFN_glBlendParameteriNV;
         public final MemorySegment PFN_glBlendBarrierNV;
         private Handles(overrungl.opengl.GLLoadFunc func) {
@@ -96,7 +96,8 @@ public final class GLNVBlendEquationAdvanced {
     /// ```
     public void BlendParameteriNV(int pname, int value) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendParameteriNV)) throw new GLSymbolNotFoundError("Symbol not found: glBlendParameteriNV");
-        try { Handles.MH_glBlendParameteriNV.invokeExact(handles.PFN_glBlendParameteriNV, pname, value); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendParameteriNV", pname, value); }
+        Handles.MH_glBlendParameteriNV.invokeExact(handles.PFN_glBlendParameteriNV, pname, value); }
         catch (Throwable e) { throw new RuntimeException("error in BlendParameteriNV", e); }
     }
 
@@ -105,7 +106,8 @@ public final class GLNVBlendEquationAdvanced {
     /// ```
     public void BlendBarrierNV() {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendBarrierNV)) throw new GLSymbolNotFoundError("Symbol not found: glBlendBarrierNV");
-        try { Handles.MH_glBlendBarrierNV.invokeExact(handles.PFN_glBlendBarrierNV); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendBarrierNV"); }
+        Handles.MH_glBlendBarrierNV.invokeExact(handles.PFN_glBlendBarrierNV); }
         catch (Throwable e) { throw new RuntimeException("error in BlendBarrierNV", e); }
     }
 

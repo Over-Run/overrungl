@@ -19,14 +19,14 @@ package overrungl.opengl.threedfx;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 import overrungl.opengl.*;
 
 public final class GL3DFXTbuffer {
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glTbufferMask3DFX = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTbufferMask3DFX = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glTbufferMask3DFX;
         private Handles(overrungl.opengl.GLLoadFunc func) {
             PFN_glTbufferMask3DFX = func.invoke("glTbufferMask3DFX");
@@ -42,7 +42,8 @@ public final class GL3DFXTbuffer {
     /// ```
     public void TbufferMask3DFX(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTbufferMask3DFX)) throw new GLSymbolNotFoundError("Symbol not found: glTbufferMask3DFX");
-        try { Handles.MH_glTbufferMask3DFX.invokeExact(handles.PFN_glTbufferMask3DFX, mask); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTbufferMask3DFX", mask); }
+        Handles.MH_glTbufferMask3DFX.invokeExact(handles.PFN_glTbufferMask3DFX, mask); }
         catch (Throwable e) { throw new RuntimeException("error in TbufferMask3DFX", e); }
     }
 

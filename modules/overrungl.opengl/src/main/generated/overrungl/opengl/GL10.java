@@ -19,7 +19,7 @@ package overrungl.opengl;
 
 import java.lang.foreign.*;
 import java.lang.invoke.*;
-import overrungl.internal.RuntimeHelper;
+import static overrungl.internal.RuntimeHelper.*;
 import overrungl.util.*;
 
 public class GL10 {
@@ -195,54 +195,54 @@ public class GL10 {
     public static final int GL_REPEAT = 0x2901;
     private final Handles handles;
     public static final class Handles {
-        public static final MethodHandle MH_glCullFace = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFrontFace = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glHint = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glLineWidth = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glPointSize = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glPolygonMode = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glScissor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexParameterf = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glTexParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexParameteri = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glTexParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexImage1D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glTexImage2D = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glDrawBuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClear = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClearColor = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glClearStencil = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glClearDepth = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glStencilMask = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glColorMask = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glDepthMask = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
-        public static final MethodHandle MH_glDisable = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glEnable = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glFinish = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-        public static final MethodHandle MH_glFlush = RuntimeHelper.downcall(FunctionDescriptor.ofVoid());
-        public static final MethodHandle MH_glBlendFunc = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glLogicOp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glStencilFunc = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glStencilOp = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDepthFunc = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glPixelStoref = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
-        public static final MethodHandle MH_glPixelStorei = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glReadBuffer = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glReadPixels = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetBooleanv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetDoublev = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetError = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetFloatv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetIntegerv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetString = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glGetTexImage = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexLevelParameterfv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glGetTexLevelParameteriv = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
-        public static final MethodHandle MH_glIsEnabled = RuntimeHelper.downcall(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
-        public static final MethodHandle MH_glDepthRange = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
-        public static final MethodHandle MH_glViewport = RuntimeHelper.downcall(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glCullFace = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFrontFace = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glHint = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glLineWidth = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPointSize = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPolygonMode = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glScissor = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexParameterf = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glTexParameterfv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexParameteri = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glTexParameteriv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexImage1D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glTexImage2D = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glDrawBuffer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClear = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClearColor = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glClearStencil = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glClearDepth = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glStencilMask = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glColorMask = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE, ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glDepthMask = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_BYTE));
+        public static final MethodHandle MH_glDisable = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glEnable = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glFinish = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glFlush = downcallHandle(FunctionDescriptor.ofVoid());
+        public static final MethodHandle MH_glBlendFunc = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glLogicOp = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glStencilFunc = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glStencilOp = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDepthFunc = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glPixelStoref = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_FLOAT));
+        public static final MethodHandle MH_glPixelStorei = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glReadBuffer = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glReadPixels = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetBooleanv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetDoublev = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetError = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetFloatv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetIntegerv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetString = downcallHandle(FunctionDescriptor.of(ValueLayout.ADDRESS, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glGetTexImage = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexParameterfv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexParameteriv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexLevelParameterfv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glGetTexLevelParameteriv = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.ADDRESS));
+        public static final MethodHandle MH_glIsEnabled = downcallHandle(FunctionDescriptor.of(ValueLayout.JAVA_BYTE, ValueLayout.JAVA_INT));
+        public static final MethodHandle MH_glDepthRange = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_DOUBLE, ValueLayout.JAVA_DOUBLE));
+        public static final MethodHandle MH_glViewport = downcallHandle(FunctionDescriptor.ofVoid(ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT, ValueLayout.JAVA_INT));
         public final MemorySegment PFN_glCullFace;
         public final MemorySegment PFN_glFrontFace;
         public final MemorySegment PFN_glHint;
@@ -352,7 +352,8 @@ public class GL10 {
     /// ```
     public void CullFace(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glCullFace)) throw new GLSymbolNotFoundError("Symbol not found: glCullFace");
-        try { Handles.MH_glCullFace.invokeExact(handles.PFN_glCullFace, mode); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glCullFace", mode); }
+        Handles.MH_glCullFace.invokeExact(handles.PFN_glCullFace, mode); }
         catch (Throwable e) { throw new RuntimeException("error in CullFace", e); }
     }
 
@@ -361,7 +362,8 @@ public class GL10 {
     /// ```
     public void FrontFace(int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glFrontFace)) throw new GLSymbolNotFoundError("Symbol not found: glFrontFace");
-        try { Handles.MH_glFrontFace.invokeExact(handles.PFN_glFrontFace, mode); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFrontFace", mode); }
+        Handles.MH_glFrontFace.invokeExact(handles.PFN_glFrontFace, mode); }
         catch (Throwable e) { throw new RuntimeException("error in FrontFace", e); }
     }
 
@@ -370,7 +372,8 @@ public class GL10 {
     /// ```
     public void Hint(int target, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glHint)) throw new GLSymbolNotFoundError("Symbol not found: glHint");
-        try { Handles.MH_glHint.invokeExact(handles.PFN_glHint, target, mode); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glHint", target, mode); }
+        Handles.MH_glHint.invokeExact(handles.PFN_glHint, target, mode); }
         catch (Throwable e) { throw new RuntimeException("error in Hint", e); }
     }
 
@@ -379,7 +382,8 @@ public class GL10 {
     /// ```
     public void LineWidth(float width) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLineWidth)) throw new GLSymbolNotFoundError("Symbol not found: glLineWidth");
-        try { Handles.MH_glLineWidth.invokeExact(handles.PFN_glLineWidth, width); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glLineWidth", width); }
+        Handles.MH_glLineWidth.invokeExact(handles.PFN_glLineWidth, width); }
         catch (Throwable e) { throw new RuntimeException("error in LineWidth", e); }
     }
 
@@ -388,7 +392,8 @@ public class GL10 {
     /// ```
     public void PointSize(float size) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPointSize)) throw new GLSymbolNotFoundError("Symbol not found: glPointSize");
-        try { Handles.MH_glPointSize.invokeExact(handles.PFN_glPointSize, size); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPointSize", size); }
+        Handles.MH_glPointSize.invokeExact(handles.PFN_glPointSize, size); }
         catch (Throwable e) { throw new RuntimeException("error in PointSize", e); }
     }
 
@@ -397,7 +402,8 @@ public class GL10 {
     /// ```
     public void PolygonMode(int face, int mode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPolygonMode)) throw new GLSymbolNotFoundError("Symbol not found: glPolygonMode");
-        try { Handles.MH_glPolygonMode.invokeExact(handles.PFN_glPolygonMode, face, mode); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPolygonMode", face, mode); }
+        Handles.MH_glPolygonMode.invokeExact(handles.PFN_glPolygonMode, face, mode); }
         catch (Throwable e) { throw new RuntimeException("error in PolygonMode", e); }
     }
 
@@ -406,7 +412,8 @@ public class GL10 {
     /// ```
     public void Scissor(int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glScissor)) throw new GLSymbolNotFoundError("Symbol not found: glScissor");
-        try { Handles.MH_glScissor.invokeExact(handles.PFN_glScissor, x, y, width, height); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glScissor", x, y, width, height); }
+        Handles.MH_glScissor.invokeExact(handles.PFN_glScissor, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in Scissor", e); }
     }
 
@@ -415,7 +422,8 @@ public class GL10 {
     /// ```
     public void TexParameterf(int target, int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterf)) throw new GLSymbolNotFoundError("Symbol not found: glTexParameterf");
-        try { Handles.MH_glTexParameterf.invokeExact(handles.PFN_glTexParameterf, target, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexParameterf", target, pname, param); }
+        Handles.MH_glTexParameterf.invokeExact(handles.PFN_glTexParameterf, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TexParameterf", e); }
     }
 
@@ -424,7 +432,8 @@ public class GL10 {
     /// ```
     public void TexParameterfv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glTexParameterfv");
-        try { Handles.MH_glTexParameterfv.invokeExact(handles.PFN_glTexParameterfv, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexParameterfv", target, pname, params); }
+        Handles.MH_glTexParameterfv.invokeExact(handles.PFN_glTexParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexParameterfv", e); }
     }
 
@@ -433,7 +442,8 @@ public class GL10 {
     /// ```
     public void TexParameteri(int target, int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameteri)) throw new GLSymbolNotFoundError("Symbol not found: glTexParameteri");
-        try { Handles.MH_glTexParameteri.invokeExact(handles.PFN_glTexParameteri, target, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexParameteri", target, pname, param); }
+        Handles.MH_glTexParameteri.invokeExact(handles.PFN_glTexParameteri, target, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in TexParameteri", e); }
     }
 
@@ -442,7 +452,8 @@ public class GL10 {
     /// ```
     public void TexParameteriv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glTexParameteriv");
-        try { Handles.MH_glTexParameteriv.invokeExact(handles.PFN_glTexParameteriv, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexParameteriv", target, pname, params); }
+        Handles.MH_glTexParameteriv.invokeExact(handles.PFN_glTexParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in TexParameteriv", e); }
     }
 
@@ -451,7 +462,8 @@ public class GL10 {
     /// ```
     public void TexImage1D(int target, int level, int internalformat, int width, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage1D)) throw new GLSymbolNotFoundError("Symbol not found: glTexImage1D");
-        try { Handles.MH_glTexImage1D.invokeExact(handles.PFN_glTexImage1D, target, level, internalformat, width, border, format, type, pixels); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexImage1D", target, level, internalformat, width, border, format, type, pixels); }
+        Handles.MH_glTexImage1D.invokeExact(handles.PFN_glTexImage1D, target, level, internalformat, width, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexImage1D", e); }
     }
 
@@ -460,7 +472,8 @@ public class GL10 {
     /// ```
     public void TexImage2D(int target, int level, int internalformat, int width, int height, int border, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glTexImage2D)) throw new GLSymbolNotFoundError("Symbol not found: glTexImage2D");
-        try { Handles.MH_glTexImage2D.invokeExact(handles.PFN_glTexImage2D, target, level, internalformat, width, height, border, format, type, pixels); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glTexImage2D", target, level, internalformat, width, height, border, format, type, pixels); }
+        Handles.MH_glTexImage2D.invokeExact(handles.PFN_glTexImage2D, target, level, internalformat, width, height, border, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in TexImage2D", e); }
     }
 
@@ -469,7 +482,8 @@ public class GL10 {
     /// ```
     public void DrawBuffer(int buf) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDrawBuffer)) throw new GLSymbolNotFoundError("Symbol not found: glDrawBuffer");
-        try { Handles.MH_glDrawBuffer.invokeExact(handles.PFN_glDrawBuffer, buf); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDrawBuffer", buf); }
+        Handles.MH_glDrawBuffer.invokeExact(handles.PFN_glDrawBuffer, buf); }
         catch (Throwable e) { throw new RuntimeException("error in DrawBuffer", e); }
     }
 
@@ -478,7 +492,8 @@ public class GL10 {
     /// ```
     public void Clear(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClear)) throw new GLSymbolNotFoundError("Symbol not found: glClear");
-        try { Handles.MH_glClear.invokeExact(handles.PFN_glClear, mask); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClear", mask); }
+        Handles.MH_glClear.invokeExact(handles.PFN_glClear, mask); }
         catch (Throwable e) { throw new RuntimeException("error in Clear", e); }
     }
 
@@ -487,7 +502,8 @@ public class GL10 {
     /// ```
     public void ClearColor(float red, float green, float blue, float alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearColor)) throw new GLSymbolNotFoundError("Symbol not found: glClearColor");
-        try { Handles.MH_glClearColor.invokeExact(handles.PFN_glClearColor, red, green, blue, alpha); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClearColor", red, green, blue, alpha); }
+        Handles.MH_glClearColor.invokeExact(handles.PFN_glClearColor, red, green, blue, alpha); }
         catch (Throwable e) { throw new RuntimeException("error in ClearColor", e); }
     }
 
@@ -496,7 +512,8 @@ public class GL10 {
     /// ```
     public void ClearStencil(int s) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearStencil)) throw new GLSymbolNotFoundError("Symbol not found: glClearStencil");
-        try { Handles.MH_glClearStencil.invokeExact(handles.PFN_glClearStencil, s); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClearStencil", s); }
+        Handles.MH_glClearStencil.invokeExact(handles.PFN_glClearStencil, s); }
         catch (Throwable e) { throw new RuntimeException("error in ClearStencil", e); }
     }
 
@@ -505,7 +522,8 @@ public class GL10 {
     /// ```
     public void ClearDepth(double depth) {
         if (MemoryUtil.isNullPointer(handles.PFN_glClearDepth)) throw new GLSymbolNotFoundError("Symbol not found: glClearDepth");
-        try { Handles.MH_glClearDepth.invokeExact(handles.PFN_glClearDepth, depth); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glClearDepth", depth); }
+        Handles.MH_glClearDepth.invokeExact(handles.PFN_glClearDepth, depth); }
         catch (Throwable e) { throw new RuntimeException("error in ClearDepth", e); }
     }
 
@@ -514,7 +532,8 @@ public class GL10 {
     /// ```
     public void StencilMask(int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilMask)) throw new GLSymbolNotFoundError("Symbol not found: glStencilMask");
-        try { Handles.MH_glStencilMask.invokeExact(handles.PFN_glStencilMask, mask); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glStencilMask", mask); }
+        Handles.MH_glStencilMask.invokeExact(handles.PFN_glStencilMask, mask); }
         catch (Throwable e) { throw new RuntimeException("error in StencilMask", e); }
     }
 
@@ -523,7 +542,8 @@ public class GL10 {
     /// ```
     public void ColorMask(boolean red, boolean green, boolean blue, boolean alpha) {
         if (MemoryUtil.isNullPointer(handles.PFN_glColorMask)) throw new GLSymbolNotFoundError("Symbol not found: glColorMask");
-        try { Handles.MH_glColorMask.invokeExact(handles.PFN_glColorMask, ((red) ? (byte)1 : (byte)0), ((green) ? (byte)1 : (byte)0), ((blue) ? (byte)1 : (byte)0), ((alpha) ? (byte)1 : (byte)0)); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glColorMask", red, green, blue, alpha); }
+        Handles.MH_glColorMask.invokeExact(handles.PFN_glColorMask, ((red) ? (byte)1 : (byte)0), ((green) ? (byte)1 : (byte)0), ((blue) ? (byte)1 : (byte)0), ((alpha) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in ColorMask", e); }
     }
 
@@ -532,7 +552,8 @@ public class GL10 {
     /// ```
     public void DepthMask(boolean flag) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthMask)) throw new GLSymbolNotFoundError("Symbol not found: glDepthMask");
-        try { Handles.MH_glDepthMask.invokeExact(handles.PFN_glDepthMask, ((flag) ? (byte)1 : (byte)0)); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDepthMask", flag); }
+        Handles.MH_glDepthMask.invokeExact(handles.PFN_glDepthMask, ((flag) ? (byte)1 : (byte)0)); }
         catch (Throwable e) { throw new RuntimeException("error in DepthMask", e); }
     }
 
@@ -541,7 +562,8 @@ public class GL10 {
     /// ```
     public void Disable(int cap) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDisable)) throw new GLSymbolNotFoundError("Symbol not found: glDisable");
-        try { Handles.MH_glDisable.invokeExact(handles.PFN_glDisable, cap); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDisable", cap); }
+        Handles.MH_glDisable.invokeExact(handles.PFN_glDisable, cap); }
         catch (Throwable e) { throw new RuntimeException("error in Disable", e); }
     }
 
@@ -550,7 +572,8 @@ public class GL10 {
     /// ```
     public void Enable(int cap) {
         if (MemoryUtil.isNullPointer(handles.PFN_glEnable)) throw new GLSymbolNotFoundError("Symbol not found: glEnable");
-        try { Handles.MH_glEnable.invokeExact(handles.PFN_glEnable, cap); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glEnable", cap); }
+        Handles.MH_glEnable.invokeExact(handles.PFN_glEnable, cap); }
         catch (Throwable e) { throw new RuntimeException("error in Enable", e); }
     }
 
@@ -559,7 +582,8 @@ public class GL10 {
     /// ```
     public void Finish() {
         if (MemoryUtil.isNullPointer(handles.PFN_glFinish)) throw new GLSymbolNotFoundError("Symbol not found: glFinish");
-        try { Handles.MH_glFinish.invokeExact(handles.PFN_glFinish); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFinish"); }
+        Handles.MH_glFinish.invokeExact(handles.PFN_glFinish); }
         catch (Throwable e) { throw new RuntimeException("error in Finish", e); }
     }
 
@@ -568,7 +592,8 @@ public class GL10 {
     /// ```
     public void Flush() {
         if (MemoryUtil.isNullPointer(handles.PFN_glFlush)) throw new GLSymbolNotFoundError("Symbol not found: glFlush");
-        try { Handles.MH_glFlush.invokeExact(handles.PFN_glFlush); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glFlush"); }
+        Handles.MH_glFlush.invokeExact(handles.PFN_glFlush); }
         catch (Throwable e) { throw new RuntimeException("error in Flush", e); }
     }
 
@@ -577,7 +602,8 @@ public class GL10 {
     /// ```
     public void BlendFunc(int sfactor, int dfactor) {
         if (MemoryUtil.isNullPointer(handles.PFN_glBlendFunc)) throw new GLSymbolNotFoundError("Symbol not found: glBlendFunc");
-        try { Handles.MH_glBlendFunc.invokeExact(handles.PFN_glBlendFunc, sfactor, dfactor); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glBlendFunc", sfactor, dfactor); }
+        Handles.MH_glBlendFunc.invokeExact(handles.PFN_glBlendFunc, sfactor, dfactor); }
         catch (Throwable e) { throw new RuntimeException("error in BlendFunc", e); }
     }
 
@@ -586,7 +612,8 @@ public class GL10 {
     /// ```
     public void LogicOp(int opcode) {
         if (MemoryUtil.isNullPointer(handles.PFN_glLogicOp)) throw new GLSymbolNotFoundError("Symbol not found: glLogicOp");
-        try { Handles.MH_glLogicOp.invokeExact(handles.PFN_glLogicOp, opcode); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glLogicOp", opcode); }
+        Handles.MH_glLogicOp.invokeExact(handles.PFN_glLogicOp, opcode); }
         catch (Throwable e) { throw new RuntimeException("error in LogicOp", e); }
     }
 
@@ -595,7 +622,8 @@ public class GL10 {
     /// ```
     public void StencilFunc(int func, int ref, int mask) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilFunc)) throw new GLSymbolNotFoundError("Symbol not found: glStencilFunc");
-        try { Handles.MH_glStencilFunc.invokeExact(handles.PFN_glStencilFunc, func, ref, mask); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glStencilFunc", func, ref, mask); }
+        Handles.MH_glStencilFunc.invokeExact(handles.PFN_glStencilFunc, func, ref, mask); }
         catch (Throwable e) { throw new RuntimeException("error in StencilFunc", e); }
     }
 
@@ -604,7 +632,8 @@ public class GL10 {
     /// ```
     public void StencilOp(int fail, int zfail, int zpass) {
         if (MemoryUtil.isNullPointer(handles.PFN_glStencilOp)) throw new GLSymbolNotFoundError("Symbol not found: glStencilOp");
-        try { Handles.MH_glStencilOp.invokeExact(handles.PFN_glStencilOp, fail, zfail, zpass); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glStencilOp", fail, zfail, zpass); }
+        Handles.MH_glStencilOp.invokeExact(handles.PFN_glStencilOp, fail, zfail, zpass); }
         catch (Throwable e) { throw new RuntimeException("error in StencilOp", e); }
     }
 
@@ -613,7 +642,8 @@ public class GL10 {
     /// ```
     public void DepthFunc(int func) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthFunc)) throw new GLSymbolNotFoundError("Symbol not found: glDepthFunc");
-        try { Handles.MH_glDepthFunc.invokeExact(handles.PFN_glDepthFunc, func); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDepthFunc", func); }
+        Handles.MH_glDepthFunc.invokeExact(handles.PFN_glDepthFunc, func); }
         catch (Throwable e) { throw new RuntimeException("error in DepthFunc", e); }
     }
 
@@ -622,7 +652,8 @@ public class GL10 {
     /// ```
     public void PixelStoref(int pname, float param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelStoref)) throw new GLSymbolNotFoundError("Symbol not found: glPixelStoref");
-        try { Handles.MH_glPixelStoref.invokeExact(handles.PFN_glPixelStoref, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelStoref", pname, param); }
+        Handles.MH_glPixelStoref.invokeExact(handles.PFN_glPixelStoref, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PixelStoref", e); }
     }
 
@@ -631,7 +662,8 @@ public class GL10 {
     /// ```
     public void PixelStorei(int pname, int param) {
         if (MemoryUtil.isNullPointer(handles.PFN_glPixelStorei)) throw new GLSymbolNotFoundError("Symbol not found: glPixelStorei");
-        try { Handles.MH_glPixelStorei.invokeExact(handles.PFN_glPixelStorei, pname, param); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glPixelStorei", pname, param); }
+        Handles.MH_glPixelStorei.invokeExact(handles.PFN_glPixelStorei, pname, param); }
         catch (Throwable e) { throw new RuntimeException("error in PixelStorei", e); }
     }
 
@@ -640,7 +672,8 @@ public class GL10 {
     /// ```
     public void ReadBuffer(int src) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReadBuffer)) throw new GLSymbolNotFoundError("Symbol not found: glReadBuffer");
-        try { Handles.MH_glReadBuffer.invokeExact(handles.PFN_glReadBuffer, src); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glReadBuffer", src); }
+        Handles.MH_glReadBuffer.invokeExact(handles.PFN_glReadBuffer, src); }
         catch (Throwable e) { throw new RuntimeException("error in ReadBuffer", e); }
     }
 
@@ -649,7 +682,8 @@ public class GL10 {
     /// ```
     public void ReadPixels(int x, int y, int width, int height, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glReadPixels)) throw new GLSymbolNotFoundError("Symbol not found: glReadPixels");
-        try { Handles.MH_glReadPixels.invokeExact(handles.PFN_glReadPixels, x, y, width, height, format, type, pixels); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glReadPixels", x, y, width, height, format, type, pixels); }
+        Handles.MH_glReadPixels.invokeExact(handles.PFN_glReadPixels, x, y, width, height, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in ReadPixels", e); }
     }
 
@@ -658,7 +692,8 @@ public class GL10 {
     /// ```
     public void GetBooleanv(int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetBooleanv)) throw new GLSymbolNotFoundError("Symbol not found: glGetBooleanv");
-        try { Handles.MH_glGetBooleanv.invokeExact(handles.PFN_glGetBooleanv, pname, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetBooleanv", pname, data); }
+        Handles.MH_glGetBooleanv.invokeExact(handles.PFN_glGetBooleanv, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetBooleanv", e); }
     }
 
@@ -667,7 +702,8 @@ public class GL10 {
     /// ```
     public void GetDoublev(int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetDoublev)) throw new GLSymbolNotFoundError("Symbol not found: glGetDoublev");
-        try { Handles.MH_glGetDoublev.invokeExact(handles.PFN_glGetDoublev, pname, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetDoublev", pname, data); }
+        Handles.MH_glGetDoublev.invokeExact(handles.PFN_glGetDoublev, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetDoublev", e); }
     }
 
@@ -676,7 +712,8 @@ public class GL10 {
     /// ```
     public int GetError() {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetError)) throw new GLSymbolNotFoundError("Symbol not found: glGetError");
-        try { return (int) Handles.MH_glGetError.invokeExact(handles.PFN_glGetError); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetError"); }
+        return (int) Handles.MH_glGetError.invokeExact(handles.PFN_glGetError); }
         catch (Throwable e) { throw new RuntimeException("error in GetError", e); }
     }
 
@@ -685,7 +722,8 @@ public class GL10 {
     /// ```
     public void GetFloatv(int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetFloatv)) throw new GLSymbolNotFoundError("Symbol not found: glGetFloatv");
-        try { Handles.MH_glGetFloatv.invokeExact(handles.PFN_glGetFloatv, pname, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetFloatv", pname, data); }
+        Handles.MH_glGetFloatv.invokeExact(handles.PFN_glGetFloatv, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetFloatv", e); }
     }
 
@@ -694,7 +732,8 @@ public class GL10 {
     /// ```
     public void GetIntegerv(int pname, MemorySegment data) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetIntegerv)) throw new GLSymbolNotFoundError("Symbol not found: glGetIntegerv");
-        try { Handles.MH_glGetIntegerv.invokeExact(handles.PFN_glGetIntegerv, pname, data); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetIntegerv", pname, data); }
+        Handles.MH_glGetIntegerv.invokeExact(handles.PFN_glGetIntegerv, pname, data); }
         catch (Throwable e) { throw new RuntimeException("error in GetIntegerv", e); }
     }
 
@@ -703,7 +742,8 @@ public class GL10 {
     /// ```
     public MemorySegment GetString(int name) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetString)) throw new GLSymbolNotFoundError("Symbol not found: glGetString");
-        try { return (MemorySegment) Handles.MH_glGetString.invokeExact(handles.PFN_glGetString, name); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetString", name); }
+        return (MemorySegment) Handles.MH_glGetString.invokeExact(handles.PFN_glGetString, name); }
         catch (Throwable e) { throw new RuntimeException("error in GetString", e); }
     }
 
@@ -712,7 +752,8 @@ public class GL10 {
     /// ```
     public void GetTexImage(int target, int level, int format, int type, MemorySegment pixels) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexImage)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexImage");
-        try { Handles.MH_glGetTexImage.invokeExact(handles.PFN_glGetTexImage, target, level, format, type, pixels); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexImage", target, level, format, type, pixels); }
+        Handles.MH_glGetTexImage.invokeExact(handles.PFN_glGetTexImage, target, level, format, type, pixels); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexImage", e); }
     }
 
@@ -721,7 +762,8 @@ public class GL10 {
     /// ```
     public void GetTexParameterfv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexParameterfv");
-        try { Handles.MH_glGetTexParameterfv.invokeExact(handles.PFN_glGetTexParameterfv, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexParameterfv", target, pname, params); }
+        Handles.MH_glGetTexParameterfv.invokeExact(handles.PFN_glGetTexParameterfv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexParameterfv", e); }
     }
 
@@ -730,7 +772,8 @@ public class GL10 {
     /// ```
     public void GetTexParameteriv(int target, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexParameteriv");
-        try { Handles.MH_glGetTexParameteriv.invokeExact(handles.PFN_glGetTexParameteriv, target, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexParameteriv", target, pname, params); }
+        Handles.MH_glGetTexParameteriv.invokeExact(handles.PFN_glGetTexParameteriv, target, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexParameteriv", e); }
     }
 
@@ -739,7 +782,8 @@ public class GL10 {
     /// ```
     public void GetTexLevelParameterfv(int target, int level, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexLevelParameterfv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexLevelParameterfv");
-        try { Handles.MH_glGetTexLevelParameterfv.invokeExact(handles.PFN_glGetTexLevelParameterfv, target, level, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexLevelParameterfv", target, level, pname, params); }
+        Handles.MH_glGetTexLevelParameterfv.invokeExact(handles.PFN_glGetTexLevelParameterfv, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexLevelParameterfv", e); }
     }
 
@@ -748,7 +792,8 @@ public class GL10 {
     /// ```
     public void GetTexLevelParameteriv(int target, int level, int pname, MemorySegment params) {
         if (MemoryUtil.isNullPointer(handles.PFN_glGetTexLevelParameteriv)) throw new GLSymbolNotFoundError("Symbol not found: glGetTexLevelParameteriv");
-        try { Handles.MH_glGetTexLevelParameteriv.invokeExact(handles.PFN_glGetTexLevelParameteriv, target, level, pname, params); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glGetTexLevelParameteriv", target, level, pname, params); }
+        Handles.MH_glGetTexLevelParameteriv.invokeExact(handles.PFN_glGetTexLevelParameteriv, target, level, pname, params); }
         catch (Throwable e) { throw new RuntimeException("error in GetTexLevelParameteriv", e); }
     }
 
@@ -757,7 +802,8 @@ public class GL10 {
     /// ```
     public boolean IsEnabled(int cap) {
         if (MemoryUtil.isNullPointer(handles.PFN_glIsEnabled)) throw new GLSymbolNotFoundError("Symbol not found: glIsEnabled");
-        try { return (((byte) Handles.MH_glIsEnabled.invokeExact(handles.PFN_glIsEnabled, cap)) != 0); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glIsEnabled", cap); }
+        return (((byte) Handles.MH_glIsEnabled.invokeExact(handles.PFN_glIsEnabled, cap)) != 0); }
         catch (Throwable e) { throw new RuntimeException("error in IsEnabled", e); }
     }
 
@@ -766,7 +812,8 @@ public class GL10 {
     /// ```
     public void DepthRange(double n, double f) {
         if (MemoryUtil.isNullPointer(handles.PFN_glDepthRange)) throw new GLSymbolNotFoundError("Symbol not found: glDepthRange");
-        try { Handles.MH_glDepthRange.invokeExact(handles.PFN_glDepthRange, n, f); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glDepthRange", n, f); }
+        Handles.MH_glDepthRange.invokeExact(handles.PFN_glDepthRange, n, f); }
         catch (Throwable e) { throw new RuntimeException("error in DepthRange", e); }
     }
 
@@ -775,7 +822,8 @@ public class GL10 {
     /// ```
     public void Viewport(int x, int y, int width, int height) {
         if (MemoryUtil.isNullPointer(handles.PFN_glViewport)) throw new GLSymbolNotFoundError("Symbol not found: glViewport");
-        try { Handles.MH_glViewport.invokeExact(handles.PFN_glViewport, x, y, width, height); }
+        try { if (TRACE_DOWNCALLS) { traceDowncall("glViewport", x, y, width, height); }
+        Handles.MH_glViewport.invokeExact(handles.PFN_glViewport, x, y, width, height); }
         catch (Throwable e) { throw new RuntimeException("error in Viewport", e); }
     }
 
