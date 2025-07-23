@@ -30,9 +30,9 @@ import overrungl.util.*;
 /// struct VkSwapchainPresentScalingCreateInfoEXT {
 ///     (int) VkStructureType sType;
 ///     const void* pNext;
-///     ((uint32_t) VkFlags) VkPresentScalingFlagsEXT scalingBehavior;
-///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT presentGravityX;
-///     ((uint32_t) VkFlags) VkPresentGravityFlagsEXT presentGravityY;
+///     ((uint32_t) VkFlags) VkPresentScalingFlagsKHR scalingBehavior;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsKHR presentGravityX;
+///     ((uint32_t) VkFlags) VkPresentGravityFlagsKHR presentGravityY;
 /// };
 /// ```
 public final class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {
