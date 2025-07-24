@@ -36,7 +36,7 @@ public final class OpenALLibrary {
     /// Sets a custom symbol lookup for module `openal`.
     ///
     /// This doesn't take effect after `OpenALLibrary::lookup()` had invoked.
-    /// @param the custom symbol lookup
+    /// @param lookup the custom symbol lookup
     public static void useLookup(SymbolLookup lookup) { customLookup = lookup; }
 
     /// {@return the symbol lookup to be used for module `openal`}
