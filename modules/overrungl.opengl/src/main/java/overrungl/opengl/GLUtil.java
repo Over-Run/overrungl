@@ -16,7 +16,6 @@
 
 package overrungl.opengl;
 
-import org.jetbrains.annotations.Nullable;
 import overrungl.OverrunGL;
 import overrungl.opengl.amd.GLAMDDebugOutput;
 import overrungl.opengl.amd.GLDebugProcAMD;
@@ -50,38 +49,38 @@ public final class GLUtil {
      * Detects the best debug output functionality to use and creates a callback that prints information to
      * {@link OverrunGL#apiLogger() API Logger}.
      * <p>
-     * The callback function is returned as a {@link Arena}, that should be reset to NULL and
+     * The callback function is allocated with the given {@link Arena} that should be
      * {@link Arena#close() closed} when no longer needed, which is often after destroying GL context.
      *
+     * @param arena the arena to allocate the callback
      * @param gl    the OpenGL context.
      * @param flags the OpenGL flags.
      * @param func  the loading function
-     * @return the arena.
      */
-    @Nullable
-    public static Arena setupDebugMessageCallback(
+    public static void setupDebugMessageCallback(
+        Arena arena,
         GL43 gl,
         GLFlags flags,
         GLLoadFunc func
     ) {
-        return setupDebugMessageCallback(gl, flags, func, OverrunGL.apiLogger());
+        setupDebugMessageCallback(arena, gl, flags, func, OverrunGL.apiLogger());
     }
 
     /**
      * Detects the best debug output functionality to use and creates a callback that prints information to the specified
      * logger.
      * <p>
-     * The callback function is returned as a {@link Arena}, that should be reset to NULL and
+     * The callback function is allocated with the given {@link Arena} that should be
      * {@link Arena#close() closed} when no longer needed, which is often after destroying GL context.
      *
+     * @param arena  the arena to allocate the callback
      * @param gl     the OpenGL context.
      * @param flags  the OpenGL flags.
      * @param func   the loading function
      * @param logger the output logger.
-     * @return the arena.
      */
-    @Nullable
-    public static Arena setupDebugMessageCallback(
+    public static void setupDebugMessageCallback(
+        Arena arena,
         GL43 gl,
         GLFlags flags,
         GLLoadFunc func,
@@ -93,7 +92,6 @@ public final class GLUtil {
             } else {
                 apiLog("[GL] Using KHR_debug for error logging.");
             }
-            var arena = Arena.ofConfined();
             gl.DebugMessageCallback(GLDebugProc.alloc(arena, (source, type, id, severity, _, message, _) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] OpenGL debug message\n");
@@ -121,12 +119,10 @@ public final class GLUtil {
                     gl.Enable(GL_DEBUG_OUTPUT);
                 }
             }
-            return arena;
         }
 
         if (flags.GL_ARB_debug_output) {
             apiLog("[GL] Using ARB_debug_output for error logging.");
-            var arena = Arena.ofConfined();
             new GLARBDebugOutput(func).DebugMessageCallbackARB(GLDebugProc.alloc(arena, (source, type, id, severity, _, message, _) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] ARB_debug_output message\n");
@@ -141,12 +137,10 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             }), MemorySegment.NULL);
-            return arena;
         }
 
         if (flags.GL_AMD_debug_output) {
             apiLog("[GL] Using AMD_debug_output for error logging.");
-            var arena = Arena.ofConfined();
             new GLAMDDebugOutput(func).DebugMessageCallbackAMD(GLDebugProcAMD.alloc(arena, (id, category, severity, _, message, _) -> {
                 var sb = new StringBuilder(768);
                 sb.append("[OverrunGL] AMD_debug_output message\n");
@@ -160,11 +154,9 @@ public final class GLUtil {
                 }
                 logger.accept(sb.toString());
             }), MemorySegment.NULL);
-            return arena;
         }
 
         apiLog("[GL] No debug output implementation is available.");
-        return null;
     }
 
     private static void printDetail(StringBuilder sb, String type, String message) {
