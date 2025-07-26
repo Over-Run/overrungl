@@ -50,7 +50,6 @@ public class GL33Test {
     private int program;
     private int rotationMat;
     private int vao, vbo, ebo, mbo;
-    private Arena debugProc;
 
     private static int square(int x) {
         return x * x;
@@ -71,7 +70,6 @@ public class GL33Test {
 
         glfwDestroyWindow(window);
         windowArena.close();
-        debugProc.close();
 
         glfwTerminate();
         glfwSetErrorCallback(MemorySegment.NULL);
@@ -122,7 +120,7 @@ public class GL33Test {
         gl = new GL(glLoadFunc);
 
         var flags = new GLFlags(glLoadFunc);
-        debugProc = GLUtil.setupDebugMessageCallback(gl, flags, glLoadFunc);
+        GLUtil.setupDebugMessageCallback(Arena.global(), gl, flags, glLoadFunc);
         gl.ClearColor(0.4f, 0.6f, 0.9f, 1.0f);
         program = gl.CreateProgram();
         int vsh = gl.CreateShader(GL_VERTEX_SHADER);
