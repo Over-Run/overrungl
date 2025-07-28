@@ -51,6 +51,8 @@ class VkDowncall(
                 if (!addedField.contains(macro.name)) {
                     fields.add(VkDowncallField(macro.type, macro.name, macro.value))
                     addedField.add(macro.name)
+                    vkEnumDefineClassMap.getOrPut(reqType) { mutableListOf() }
+                        .add("$packageName.$className" to macro.name)
                 }
             }
         }

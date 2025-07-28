@@ -1,0 +1,217 @@
+/*
+ * MIT License
+ *
+ * Copyright (c) 2022-2025 Overrun Organization
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ */
+
+// This file is auto-generated. DO NOT EDIT!
+package overrungl.vulkan;
+import static overrungl.vulkan.VK10.*;
+import static overrungl.vulkan.VK11.*;
+import static overrungl.vulkan.VK12.*;
+import static overrungl.vulkan.VK13.*;
+import static overrungl.vulkan.VK14.*;
+import static overrungl.vulkan.arm.VKARMDataGraph.*;
+import static overrungl.vulkan.arm.VKARMTensors.*;
+import static overrungl.vulkan.ext.VKEXTAttachmentFeedbackLoopLayout.*;
+import static overrungl.vulkan.ext.VKEXTDebugReport.*;
+import static overrungl.vulkan.ext.VKEXTDebugUtils.*;
+import static overrungl.vulkan.ext.VKEXTDeviceGeneratedCommands.*;
+import static overrungl.vulkan.ext.VKEXTFragmentDensityMap.*;
+import static overrungl.vulkan.ext.VKEXTFullScreenExclusive.*;
+import static overrungl.vulkan.ext.VKEXTImageCompressionControl.*;
+import static overrungl.vulkan.ext.VKEXTImageDrmFormatModifier.*;
+import static overrungl.vulkan.ext.VKEXTOpacityMicromap.*;
+import static overrungl.vulkan.ext.VKEXTShaderObject.*;
+import static overrungl.vulkan.ext.VKEXTValidationCache.*;
+import static overrungl.vulkan.ext.VKEXTZeroInitializeDeviceMemory.*;
+import static overrungl.vulkan.fuchsia.VKFUCHSIABufferCollection.*;
+import static overrungl.vulkan.intel.VKINTELPerformanceQuery.*;
+import static overrungl.vulkan.khr.VKKHRAccelerationStructure.*;
+import static overrungl.vulkan.khr.VKKHRDeferredHostOperations.*;
+import static overrungl.vulkan.khr.VKKHRDisplay.*;
+import static overrungl.vulkan.khr.VKKHRDisplaySwapchain.*;
+import static overrungl.vulkan.khr.VKKHRFragmentShadingRate.*;
+import static overrungl.vulkan.khr.VKKHRPipelineBinary.*;
+import static overrungl.vulkan.khr.VKKHRSharedPresentableImage.*;
+import static overrungl.vulkan.khr.VKKHRSurface.*;
+import static overrungl.vulkan.khr.VKKHRSwapchain.*;
+import static overrungl.vulkan.khr.VKKHRVideoDecodeQueue.*;
+import static overrungl.vulkan.khr.VKKHRVideoEncodeQuantizationMap.*;
+import static overrungl.vulkan.khr.VKKHRVideoEncodeQueue.*;
+import static overrungl.vulkan.khr.VKKHRVideoQueue.*;
+import static overrungl.vulkan.nv.VKNVCudaKernelLaunch.*;
+import static overrungl.vulkan.nv.VKNVDeviceGeneratedCommands.*;
+import static overrungl.vulkan.nv.VKNVExternalComputeQueue.*;
+import static overrungl.vulkan.nv.VKNVGlslShader.*;
+import static overrungl.vulkan.nv.VKNVOpticalFlow.*;
+import static overrungl.vulkan.nv.VKNVRayTracing.*;
+import static overrungl.vulkan.nvx.VKNVXBinaryImport.*;
+
+/// This class provides methods to convert Vulkan enum to string.
+/// @since 0.1.0
+public final class VKUtil {
+    private VKUtil() {}
+
+    public static String getImageLayoutString(int value) { return switch (value) {
+        case VK_IMAGE_LAYOUT_UNDEFINED -> "UNDEFINED";
+        case VK_IMAGE_LAYOUT_GENERAL -> "GENERAL";
+        case VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL -> "COLOR_ATTACHMENT_OPTIMAL";
+        case VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL -> "DEPTH_STENCIL_ATTACHMENT_OPTIMAL";
+        case VK_IMAGE_LAYOUT_DEPTH_STENCIL_READ_ONLY_OPTIMAL -> "DEPTH_STENCIL_READ_ONLY_OPTIMAL";
+        case VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL -> "SHADER_READ_ONLY_OPTIMAL";
+        case VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL -> "TRANSFER_SRC_OPTIMAL";
+        case VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL -> "TRANSFER_DST_OPTIMAL";
+        case VK_IMAGE_LAYOUT_PREINITIALIZED -> "PREINITIALIZED";
+        case VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL -> "DEPTH_READ_ONLY_STENCIL_ATTACHMENT_OPTIMAL";
+        case VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL -> "DEPTH_ATTACHMENT_STENCIL_READ_ONLY_OPTIMAL";
+        case VK_IMAGE_LAYOUT_DEPTH_ATTACHMENT_OPTIMAL -> "DEPTH_ATTACHMENT_OPTIMAL";
+        case VK_IMAGE_LAYOUT_DEPTH_READ_ONLY_OPTIMAL -> "DEPTH_READ_ONLY_OPTIMAL";
+        case VK_IMAGE_LAYOUT_STENCIL_ATTACHMENT_OPTIMAL -> "STENCIL_ATTACHMENT_OPTIMAL";
+        case VK_IMAGE_LAYOUT_STENCIL_READ_ONLY_OPTIMAL -> "STENCIL_READ_ONLY_OPTIMAL";
+        case VK_IMAGE_LAYOUT_READ_ONLY_OPTIMAL -> "READ_ONLY_OPTIMAL";
+        case VK_IMAGE_LAYOUT_ATTACHMENT_OPTIMAL -> "ATTACHMENT_OPTIMAL";
+        case VK_IMAGE_LAYOUT_RENDERING_LOCAL_READ -> "RENDERING_LOCAL_READ";
+        case VK_IMAGE_LAYOUT_PRESENT_SRC_KHR -> "PRESENT_SRC_KHR";
+        case VK_IMAGE_LAYOUT_VIDEO_DECODE_DST_KHR -> "VIDEO_DECODE_DST_KHR";
+        case VK_IMAGE_LAYOUT_VIDEO_DECODE_SRC_KHR -> "VIDEO_DECODE_SRC_KHR";
+        case VK_IMAGE_LAYOUT_VIDEO_DECODE_DPB_KHR -> "VIDEO_DECODE_DPB_KHR";
+        case VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR -> "SHARED_PRESENT_KHR";
+        case VK_IMAGE_LAYOUT_FRAGMENT_DENSITY_MAP_OPTIMAL_EXT -> "FRAGMENT_DENSITY_MAP_OPTIMAL_EXT";
+        case VK_IMAGE_LAYOUT_FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR -> "FRAGMENT_SHADING_RATE_ATTACHMENT_OPTIMAL_KHR";
+        case VK_IMAGE_LAYOUT_VIDEO_ENCODE_DST_KHR -> "VIDEO_ENCODE_DST_KHR";
+        case VK_IMAGE_LAYOUT_VIDEO_ENCODE_SRC_KHR -> "VIDEO_ENCODE_SRC_KHR";
+        case VK_IMAGE_LAYOUT_VIDEO_ENCODE_DPB_KHR -> "VIDEO_ENCODE_DPB_KHR";
+        case VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT -> "ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT";
+        case VK_IMAGE_LAYOUT_TENSOR_ALIASING_ARM -> "TENSOR_ALIASING_ARM";
+        case VK_IMAGE_LAYOUT_VIDEO_ENCODE_QUANTIZATION_MAP_KHR -> "VIDEO_ENCODE_QUANTIZATION_MAP_KHR";
+        case VK_IMAGE_LAYOUT_ZERO_INITIALIZED_EXT -> "ZERO_INITIALIZED_EXT";
+        default -> "VkImageLayout(" + value + ")";
+    }; }
+
+    public static String getObjectTypeString(int value) { return switch (value) {
+        case VK_OBJECT_TYPE_UNKNOWN -> "VK_OBJECT_TYPE_UNKNOWN";
+        case VK_OBJECT_TYPE_INSTANCE -> "VkInstance";
+        case VK_OBJECT_TYPE_PHYSICAL_DEVICE -> "VkPhysicalDevice";
+        case VK_OBJECT_TYPE_DEVICE -> "VkDevice";
+        case VK_OBJECT_TYPE_QUEUE -> "VkQueue";
+        case VK_OBJECT_TYPE_SEMAPHORE -> "VkSemaphore";
+        case VK_OBJECT_TYPE_COMMAND_BUFFER -> "VkCommandBuffer";
+        case VK_OBJECT_TYPE_FENCE -> "VkFence";
+        case VK_OBJECT_TYPE_DEVICE_MEMORY -> "VkDeviceMemory";
+        case VK_OBJECT_TYPE_BUFFER -> "VkBuffer";
+        case VK_OBJECT_TYPE_IMAGE -> "VkImage";
+        case VK_OBJECT_TYPE_EVENT -> "VkEvent";
+        case VK_OBJECT_TYPE_QUERY_POOL -> "VkQueryPool";
+        case VK_OBJECT_TYPE_BUFFER_VIEW -> "VkBufferView";
+        case VK_OBJECT_TYPE_IMAGE_VIEW -> "VkImageView";
+        case VK_OBJECT_TYPE_SHADER_MODULE -> "VkShaderModule";
+        case VK_OBJECT_TYPE_PIPELINE_CACHE -> "VkPipelineCache";
+        case VK_OBJECT_TYPE_PIPELINE_LAYOUT -> "VkPipelineLayout";
+        case VK_OBJECT_TYPE_RENDER_PASS -> "VkRenderPass";
+        case VK_OBJECT_TYPE_PIPELINE -> "VkPipeline";
+        case VK_OBJECT_TYPE_DESCRIPTOR_SET_LAYOUT -> "VkDescriptorSetLayout";
+        case VK_OBJECT_TYPE_SAMPLER -> "VkSampler";
+        case VK_OBJECT_TYPE_DESCRIPTOR_POOL -> "VkDescriptorPool";
+        case VK_OBJECT_TYPE_DESCRIPTOR_SET -> "VkDescriptorSet";
+        case VK_OBJECT_TYPE_FRAMEBUFFER -> "VkFramebuffer";
+        case VK_OBJECT_TYPE_COMMAND_POOL -> "VkCommandPool";
+        case VK_OBJECT_TYPE_SAMPLER_YCBCR_CONVERSION -> "VkSamplerYcbcrConversion";
+        case VK_OBJECT_TYPE_DESCRIPTOR_UPDATE_TEMPLATE -> "VkDescriptorUpdateTemplate";
+        case VK_OBJECT_TYPE_PRIVATE_DATA_SLOT -> "VkPrivateDataSlot";
+        case VK_OBJECT_TYPE_SURFACE_KHR -> "VkSurfaceKHR";
+        case VK_OBJECT_TYPE_SWAPCHAIN_KHR -> "VkSwapchainKHR";
+        case VK_OBJECT_TYPE_DISPLAY_KHR -> "VkDisplayKHR";
+        case VK_OBJECT_TYPE_DISPLAY_MODE_KHR -> "VkDisplayModeKHR";
+        case VK_OBJECT_TYPE_DEBUG_REPORT_CALLBACK_EXT -> "VkDebugReportCallbackEXT";
+        case VK_OBJECT_TYPE_VIDEO_SESSION_KHR -> "VkVideoSessionKHR";
+        case VK_OBJECT_TYPE_VIDEO_SESSION_PARAMETERS_KHR -> "VkVideoSessionParametersKHR";
+        case VK_OBJECT_TYPE_CU_MODULE_NVX -> "VkCuModuleNVX";
+        case VK_OBJECT_TYPE_CU_FUNCTION_NVX -> "VkCuFunctionNVX";
+        case VK_OBJECT_TYPE_DEBUG_UTILS_MESSENGER_EXT -> "VkDebugUtilsMessengerEXT";
+        case VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_KHR -> "VkAccelerationStructureKHR";
+        case VK_OBJECT_TYPE_VALIDATION_CACHE_EXT -> "VkValidationCacheEXT";
+        case VK_OBJECT_TYPE_ACCELERATION_STRUCTURE_NV -> "VkAccelerationStructureNV";
+        case VK_OBJECT_TYPE_PERFORMANCE_CONFIGURATION_INTEL -> "VkPerformanceConfigurationINTEL";
+        case VK_OBJECT_TYPE_DEFERRED_OPERATION_KHR -> "VkDeferredOperationKHR";
+        case VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_NV -> "VkIndirectCommandsLayoutNV";
+        case VK_OBJECT_TYPE_CUDA_MODULE_NV -> "VkCudaModuleNV";
+        case VK_OBJECT_TYPE_CUDA_FUNCTION_NV -> "VkCudaFunctionNV";
+        case VK_OBJECT_TYPE_BUFFER_COLLECTION_FUCHSIA -> "VkBufferCollectionFUCHSIA";
+        case VK_OBJECT_TYPE_MICROMAP_EXT -> "VkMicromapEXT";
+        case VK_OBJECT_TYPE_TENSOR_ARM -> "VkTensorARM";
+        case VK_OBJECT_TYPE_TENSOR_VIEW_ARM -> "VkTensorViewARM";
+        case VK_OBJECT_TYPE_OPTICAL_FLOW_SESSION_NV -> "VkOpticalFlowSessionNV";
+        case VK_OBJECT_TYPE_SHADER_EXT -> "VkShaderEXT";
+        case VK_OBJECT_TYPE_PIPELINE_BINARY_KHR -> "VkPipelineBinaryKHR";
+        case VK_OBJECT_TYPE_DATA_GRAPH_PIPELINE_SESSION_ARM -> "VkDataGraphPipelineSessionARM";
+        case VK_OBJECT_TYPE_EXTERNAL_COMPUTE_QUEUE_NV -> "VkExternalComputeQueueNV";
+        case VK_OBJECT_TYPE_INDIRECT_COMMANDS_LAYOUT_EXT -> "VkIndirectCommandsLayoutEXT";
+        case VK_OBJECT_TYPE_INDIRECT_EXECUTION_SET_EXT -> "VkIndirectExecutionSetEXT";
+        default -> "VkObjectType(" + value + ")";
+    }; }
+
+    public static String getResultString(int value) { return switch (value) {
+        case VK_ERROR_VALIDATION_FAILED -> "VK_ERROR_VALIDATION_FAILED";
+        case VK_SUCCESS -> "VK_SUCCESS";
+        case VK_NOT_READY -> "VK_NOT_READY";
+        case VK_TIMEOUT -> "VK_TIMEOUT";
+        case VK_EVENT_SET -> "VK_EVENT_SET";
+        case VK_EVENT_RESET -> "VK_EVENT_RESET";
+        case VK_INCOMPLETE -> "VK_INCOMPLETE";
+        case VK_ERROR_OUT_OF_HOST_MEMORY -> "VK_ERROR_OUT_OF_HOST_MEMORY";
+        case VK_ERROR_OUT_OF_DEVICE_MEMORY -> "VK_ERROR_OUT_OF_DEVICE_MEMORY";
+        case VK_ERROR_INITIALIZATION_FAILED -> "VK_ERROR_INITIALIZATION_FAILED";
+        case VK_ERROR_DEVICE_LOST -> "VK_ERROR_DEVICE_LOST";
+        case VK_ERROR_MEMORY_MAP_FAILED -> "VK_ERROR_MEMORY_MAP_FAILED";
+        case VK_ERROR_LAYER_NOT_PRESENT -> "VK_ERROR_LAYER_NOT_PRESENT";
+        case VK_ERROR_EXTENSION_NOT_PRESENT -> "VK_ERROR_EXTENSION_NOT_PRESENT";
+        case VK_ERROR_FEATURE_NOT_PRESENT -> "VK_ERROR_FEATURE_NOT_PRESENT";
+        case VK_ERROR_INCOMPATIBLE_DRIVER -> "VK_ERROR_INCOMPATIBLE_DRIVER";
+        case VK_ERROR_TOO_MANY_OBJECTS -> "VK_ERROR_TOO_MANY_OBJECTS";
+        case VK_ERROR_FORMAT_NOT_SUPPORTED -> "VK_ERROR_FORMAT_NOT_SUPPORTED";
+        case VK_ERROR_FRAGMENTED_POOL -> "VK_ERROR_FRAGMENTED_POOL";
+        case VK_ERROR_UNKNOWN -> "VK_ERROR_UNKNOWN";
+        case VK_ERROR_OUT_OF_POOL_MEMORY -> "VK_ERROR_OUT_OF_POOL_MEMORY";
+        case VK_ERROR_INVALID_EXTERNAL_HANDLE -> "VK_ERROR_INVALID_EXTERNAL_HANDLE";
+        case VK_ERROR_FRAGMENTATION -> "VK_ERROR_FRAGMENTATION";
+        case VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS -> "VK_ERROR_INVALID_OPAQUE_CAPTURE_ADDRESS";
+        case VK_PIPELINE_COMPILE_REQUIRED -> "VK_PIPELINE_COMPILE_REQUIRED";
+        case VK_ERROR_NOT_PERMITTED -> "VK_ERROR_NOT_PERMITTED";
+        case VK_ERROR_SURFACE_LOST_KHR -> "VK_ERROR_SURFACE_LOST_KHR";
+        case VK_ERROR_NATIVE_WINDOW_IN_USE_KHR -> "VK_ERROR_NATIVE_WINDOW_IN_USE_KHR";
+        case VK_SUBOPTIMAL_KHR -> "VK_SUBOPTIMAL_KHR";
+        case VK_ERROR_OUT_OF_DATE_KHR -> "VK_ERROR_OUT_OF_DATE_KHR";
+        case VK_ERROR_INCOMPATIBLE_DISPLAY_KHR -> "VK_ERROR_INCOMPATIBLE_DISPLAY_KHR";
+        case VK_ERROR_INVALID_SHADER_NV -> "VK_ERROR_INVALID_SHADER_NV";
+        case VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR -> "VK_ERROR_IMAGE_USAGE_NOT_SUPPORTED_KHR";
+        case VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR -> "VK_ERROR_VIDEO_PICTURE_LAYOUT_NOT_SUPPORTED_KHR";
+        case VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR -> "VK_ERROR_VIDEO_PROFILE_OPERATION_NOT_SUPPORTED_KHR";
+        case VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR -> "VK_ERROR_VIDEO_PROFILE_FORMAT_NOT_SUPPORTED_KHR";
+        case VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR -> "VK_ERROR_VIDEO_PROFILE_CODEC_NOT_SUPPORTED_KHR";
+        case VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR -> "VK_ERROR_VIDEO_STD_VERSION_NOT_SUPPORTED_KHR";
+        case VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT -> "VK_ERROR_INVALID_DRM_FORMAT_MODIFIER_PLANE_LAYOUT_EXT";
+        case VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT -> "VK_ERROR_FULL_SCREEN_EXCLUSIVE_MODE_LOST_EXT";
+        case VK_THREAD_IDLE_KHR -> "VK_THREAD_IDLE_KHR";
+        case VK_THREAD_DONE_KHR -> "VK_THREAD_DONE_KHR";
+        case VK_OPERATION_DEFERRED_KHR -> "VK_OPERATION_DEFERRED_KHR";
+        case VK_OPERATION_NOT_DEFERRED_KHR -> "VK_OPERATION_NOT_DEFERRED_KHR";
+        case VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR -> "VK_ERROR_INVALID_VIDEO_STD_PARAMETERS_KHR";
+        case VK_ERROR_COMPRESSION_EXHAUSTED_EXT -> "VK_ERROR_COMPRESSION_EXHAUSTED_EXT";
+        case VK_INCOMPATIBLE_SHADER_BINARY_EXT -> "VK_INCOMPATIBLE_SHADER_BINARY_EXT";
+        case VK_PIPELINE_BINARY_MISSING_KHR -> "VK_PIPELINE_BINARY_MISSING_KHR";
+        case VK_ERROR_NOT_ENOUGH_SPACE_KHR -> "VK_ERROR_NOT_ENOUGH_SPACE_KHR";
+        default -> "VkResult(" + value + ")";
+    }; }
+
+}
