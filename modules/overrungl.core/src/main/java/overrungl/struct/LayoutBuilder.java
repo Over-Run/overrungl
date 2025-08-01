@@ -16,7 +16,7 @@
 
 package overrungl.struct;
 
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 import java.lang.foreign.MemoryLayout;
 import java.lang.foreign.StructLayout;
@@ -61,7 +61,7 @@ public final class LayoutBuilder {
     ///
     /// @param elements the element arranged with order: `MemoryLayout`, `int`...
     /// @return the struct layout
-    public static StructLayout bitfields(Object @NotNull ... elements) {
+    public static StructLayout bitfields(Object @NonNull ... elements) {
         if (elements.length % 2 != 0)
             throw new IllegalArgumentException("Not multiple of 2: " + elements.length);
         List<MemoryLayout> list = new ArrayList<>();

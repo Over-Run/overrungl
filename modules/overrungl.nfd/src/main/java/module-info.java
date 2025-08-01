@@ -24,6 +24,6 @@ module overrungl.nfd {
     exports overrungl.nfd;
 
     requires transitive overrungl.core;
-    requires static org.jetbrains.annotations;
+    requires static org.jspecify;
     requires static org.graalvm.nativeimage;
 }

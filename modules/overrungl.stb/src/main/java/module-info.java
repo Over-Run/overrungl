@@ -24,6 +24,5 @@ module overrungl.stb {
     exports overrungl.stb;
 
     requires transitive overrungl.core;
-    requires static org.jetbrains.annotations;
     requires static org.graalvm.nativeimage;
 }

@@ -26,6 +26,5 @@ module overrungl.glfw {
     exports overrungl.glfw;
 
     requires transitive overrungl.core;
-    requires static org.jetbrains.annotations;
     requires static org.graalvm.nativeimage;
 }

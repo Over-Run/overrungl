@@ -33,6 +33,6 @@ module overrungl.core {
         overrungl.vulkan;
 
     requires transitive io.github.overrun.platform;
-    requires static org.jetbrains.annotations;
+    requires static org.jspecify;
     requires static org.graalvm.nativeimage;
 }
