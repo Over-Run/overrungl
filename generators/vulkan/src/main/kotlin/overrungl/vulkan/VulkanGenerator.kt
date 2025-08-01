@@ -38,13 +38,26 @@ const val extBlockSize = 1000
 
 val vkApiVersionRegex = Regex("VK_API_VERSION_\\d+_\\d+")
 
+// VkImageLayout=[VK_IMAGE_LAYOUT_UNDEFINED, ...]
 val vkEnumTypeMapping = mutableMapOf<String, MutableList<String>>()
+
+// VkImageLayout=int
 val vkEnumTypeRawType = mutableMapOf<String, String>()
+
+// VK_IMAGE_LAYOUT_UNDEFINED=int
 val vkEnumRawType = mutableMapOf<String, String>()
+
+// VK_IMAGE_LAYOUT_UNDEFINED=0
 val vkEnumValueMap = mutableMapOf<String, String>()
+
+// VkImageLayout=[(overrungl.vulkan.VK10, VK_IMAGE_LAYOUT_UNDEFINED)]
+// this map contains only enums without alias
+val vkEnumDefineClassMap = mutableMapOf<String, MutableList<Pair<String, String>>>()
 
 val instanceCommands = mutableListOf<String>()
 val deviceCommands = mutableListOf<String>()
+
+val vulkanVendors = mutableListOf<String>()
 
 data class VkDispatchableHandleIntermediate(
     val name: String,
@@ -171,9 +184,9 @@ fun videoXML(xmlBuilder: DocumentBuilder): String {
             Path("src/main/generated/overrungl/vulkan/video/$className.java").createParentDirectories(),
             buildString {
                 appendLine(commentedFileHeader)
-                appendLine("package overrungl.vulkan.video;")
+                appendLine("package $vulkanPackage.video;")
                 if (className != "VulkanVideoCodecsCommon") {
-                    appendLine("import static overrungl.vulkan.video.VulkanVideoCodecsCommon.*;")
+                    appendLine("import static $vulkanPackage.video.VulkanVideoCodecsCommon.*;")
                 }
                 appendLine("public final class $className {")
                 val requireNodeList = extensionNode.getElementsByTagName("require")
@@ -235,11 +248,9 @@ fun main() {
     val root = document.documentElement
 
     // vendors
-    val vendors = buildList {
-        (root.getElementsByTagName("tags").item(0) as Element).getElementsByTagName("tag").also {
-            for (i in 0 until it.length) {
-                add((it.item(i) as Element).getAttribute("name"))
-            }
+    (root.getElementsByTagName("tags").item(0) as Element).getElementsByTagName("tag").also {
+        for (i in 0 until it.length) {
+            vulkanVendors.add((it.item(i) as Element).getAttribute("name"))
         }
     }
 
@@ -357,7 +368,7 @@ fun main() {
             "struct", "union" -> {
                 val structContent = StringBuilder()
                 val name = typeNode.getAttribute("name")
-                val vendor = vendors.find { name.endsWith(it) }
+                val vendor = vulkanVendors.find { name.endsWith(it) }
                 val packageName: String
                 if (vendor != null) {
                     val lowercase = vendor.lowercase()
@@ -654,8 +665,8 @@ fun main() {
     val definitionFile: DefinitionFile
     try {
         definitionFile = DefinitionFile(rawSourceString = typesFile)
-        definitionFile.compileUpcalls("overrungl.vulkan.upcall")
-        definitionFile.compileStructs("overrungl.vulkan.struct")
+        definitionFile.compileUpcalls("$vulkanPackage.upcall")
+        definitionFile.compileStructs("$vulkanPackage.struct")
     } catch (e: Exception) {
         writeString(Path("run/types.gen").createParentDirectories(), typesFile)
         throw e
@@ -671,6 +682,7 @@ fun main() {
             val featureReqCommands = mutableListOf<String>()
             val featureReqEnums = mutableListOf<String>()
             val requireNodeList = featureNode.getElementsByTagName("require")
+            val className = "VK${featureNumber.replace(".", "")}"
             for (i1 in 0 until requireNodeList.length) {
                 val requireNode = requireNodeList.item(i1) as Element
                 val childNodeList = requireNode.childNodes
@@ -683,14 +695,19 @@ fun main() {
                             "enum" -> {
                                 if (childNode.hasAttribute("api") && childNode.getAttribute("api") == "vulkansc")
                                     continue
-                                featureReqEnums.add(childNode.getAttribute("name"))
+                                val name = childNode.getAttribute("name")
+                                featureReqEnums.add(name)
+                                if (childNode.hasAttribute("extends") && !childNode.hasAttribute("alias")) {
+                                    val extends = childNode.getAttribute("extends")
+                                    vkEnumDefineClassMap.getOrPut(extends) { mutableListOf() }
+                                        .add("$vulkanPackage.$className" to name)
+                                }
                             }
                         }
                     }
                 }
             }
 
-            val className = "VK${featureNumber.replace(".", "")}"
             vkDowncalls += VkDowncall(vulkanPackage, className) {
                 if (featureNumber == "1.0") {
                     defineVkVersion.forEach { (k, v) ->
@@ -736,6 +753,7 @@ fun main() {
                 .substringBefore('_')
                 .lowercase()
             extensionVendors.add(extVendor)
+            val packageName = "$vulkanPackage.$extVendor"
 
             val extReqTypes = mutableListOf<String>()
             val extReqCommands = mutableListOf<String>()
@@ -749,13 +767,21 @@ fun main() {
                         when (childNode.tagName) {
                             "type" -> extReqTypes.add(childNode.getAttribute("name"))
                             "command" -> extReqCommands.add(childNode.getAttribute("name"))
-                            "enum" -> extReqEnums.add(childNode.getAttribute("name"))
+                            "enum" -> {
+                                val name = childNode.getAttribute("name")
+                                extReqEnums.add(name)
+                                if (childNode.hasAttribute("extends") && !childNode.hasAttribute("alias")) {
+                                    val extends = childNode.getAttribute("extends")
+                                    vkEnumDefineClassMap.getOrPut(extends) { mutableListOf() }
+                                        .add("$packageName.$extName" to name)
+                                }
+                            }
                         }
                     }
                 }
             }
 
-            val downcall = VkDowncall("$vulkanPackage.$extVendor", extName) {
+            val downcall = VkDowncall(packageName, extName) {
                 addReqTypes(interpreter = definitionFile.interpreter, extReqTypes)
                 addReqEnums(interpreter = definitionFile.interpreter, extReqEnums)
                 addReqCommand(interpreter = definitionFile.interpreter, extReqCommands, commandAliasMap)
@@ -825,6 +851,7 @@ fun main() {
     writeNativeImageRegistration(vulkanPackage)
 
     formatTraits(root.getElementsByTagName("formats").item(0) as Element)
+    vkUtil()
 }
 
 fun formatTraits(formatsNode: Element) {
@@ -908,21 +935,20 @@ fun formatTraits(formatsNode: Element) {
     writeString(Path("src/main/generated/overrungl/vulkan/VkFormat.java"), buildString {
         appendLine(commentedFileHeader)
         appendLine()
-        appendLine(
-            """
-                package overrungl.vulkan;
-
-                import java.util.*;
-                import static overrungl.vulkan.VK10.*;
-                import static overrungl.vulkan.VK11.*;
-                import static overrungl.vulkan.VK13.*;
-                import static overrungl.vulkan.VK14.*;
-                import static overrungl.vulkan.arm.VKARMFormatPack.*;
-                import static overrungl.vulkan.arm.VKARMTensors.*;
-                import static overrungl.vulkan.img.VKIMGFormatPvrtc.*;
-                import static overrungl.vulkan.nv.VKNVOpticalFlow.*;
-            """.trimIndent()
-        )
+        appendLine("package $vulkanPackage;")
+        appendLine()
+        appendLine("import java.util.*;")
+        val imports = mutableListOf<String>()
+        vkEnumDefineClassMap.forEach { (type, pairs) ->
+            if (type == "VkFormat") {
+                pairs.forEach { (className, _) ->
+                    if (!imports.contains(className)) {
+                        imports.add(className)
+                    }
+                }
+            }
+        }
+        imports.sorted().forEach { appendLine("import static $it.*;") }
         appendLine()
         appendLine("/// `VkFormat` adapted from [vulkan_format_traits.hpp](https://github.com/KhronosGroup/Vulkan-Hpp/blob/32f2957efcb552aebcfca3a6e66675ead4d1a240/vulkan/vulkan_format_traits.hpp)")
         appendLine("public enum VkFormat {")
@@ -1305,6 +1331,65 @@ fun formatTraits(formatsNode: Element) {
                 |    public int texelsPerBlock() { return texelsPerBlock; }
             """.trimMargin()
         )
+
+        appendLine("}")
+    })
+}
+
+fun vkUtil() {
+    writeString(Path("src/main/generated/overrungl/vulkan/VKUtil.java"), buildString {
+        appendLine(commentedFileHeader)
+        appendLine("package $vulkanPackage;")
+        val imports = mutableListOf<String>()
+        val typeList = listOf("VkImageLayout", "VkObjectType", "VkResult")
+        vkEnumDefineClassMap.forEach { (type, pairs) ->
+            if (typeList.contains(type)) {
+                pairs.forEach { (className, _) ->
+                    if (!imports.contains(className)) {
+                        imports.add(className)
+                    }
+                }
+            }
+        }
+        imports.sorted().forEach { appendLine("import static $it.*;") }
+        appendLine()
+
+        appendLine(
+            """
+                /// This class provides methods to convert Vulkan enum to string.
+                /// @since 0.1.0
+                public final class VKUtil {
+                    private VKUtil() {}
+            """.trimIndent()
+        )
+        appendLine()
+
+        fun getString(typeName: String, function: (String) -> String = { it }) {
+            appendLine("    public static String get${typeName}String(int value) { return switch (value) {")
+            vkEnumDefineClassMap.forEach { (type, pairs) ->
+                if (type == "Vk$typeName") {
+                    pairs.forEach { (_, enumName) ->
+                        appendLine("""        case $enumName -> "${function(enumName)}";""")
+                    }
+                }
+            }
+            appendLine("""        default -> "Vk$typeName(" + value + ")";""")
+            appendLine("    }; }")
+            appendLine()
+        }
+
+        getString("ImageLayout") { it.substringAfter("VK_IMAGE_LAYOUT_") }
+        getString("ObjectType") {
+            if (it == "VK_OBJECT_TYPE_UNKNOWN") return@getString it
+            it.split('_')
+                .joinToString("") { s ->
+                    if (vulkanVendors.contains(s)) {
+                        s
+                    } else s.lowercase().replaceFirstChar(Char::uppercaseChar)
+                }
+                .replace("VkObjectType", "Vk")
+        }
+        getString("Result")
 
         appendLine("}")
     })

@@ -1,5 +1,4 @@
 import org.gradle.api.provider.Property
-import org.gradle.api.provider.Provider
 
 /**
  * @author squid233

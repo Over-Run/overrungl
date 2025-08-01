@@ -1,4 +1,5 @@
 import org.jreleaser.model.Active
+import java.time.LocalDate
 
 /*
  * MIT License
@@ -24,7 +25,6 @@ plugins {
 
 val projGroupId: String by rootProject
 val projVersion: String by rootProject
-val projLicenseYear: String by rootProject
 
 val jdkVersion: String by rootProject
 val jdkEnablePreview: String by rootProject
@@ -55,7 +55,7 @@ allprojects {
 
                     bottom =
                         """<a href="https://github.com/Over-Run/overrungl/issues">Report a bug or suggest an enhancement</a><br>""" +
-                            "Copyright © $projLicenseYear Overrun Organization<br>" +
+                            "Copyright © 2022-${LocalDate.now().year} Overrun Organization<br>" +
                             "<b>$projVersion (env ${Runtime.version()})</b>"
 
                     // shut up the javadoc
