@@ -16,7 +16,7 @@
 
 package overrungl.nfd;
 
-import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 import overrungl.util.MemoryStack;
 
 import java.lang.foreign.MemorySegment;
@@ -122,7 +122,7 @@ public final class NFDEnumerator implements Iterable<String>, AutoCloseable {
         return new IllegalStateException("Error iterating: " + NFD_GetError());
     }
 
-    @NotNull
+    @NonNull
     @Override
     public Iterator<String> iterator() {
         // TODO: 2023/7/6 Value object

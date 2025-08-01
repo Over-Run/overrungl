@@ -33,7 +33,7 @@ val jdkEnablePreview: String by rootProject
 val targetJavaVersion = jdkVersion.toInt()
 
 val graalvmVersion: String by rootProject
-val jetbrainsAnnotationsVersion: String by rootProject
+val jspecifyVersion: String by rootProject
 val junitVersion: String by rootProject
 
 group = projGroupId
@@ -47,7 +47,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("org.jetbrains:annotations:$jetbrainsAnnotationsVersion")
+    compileOnly("org.jspecify:jspecify:$jspecifyVersion")
     compileOnly("org.graalvm.sdk:nativeimage:$graalvmVersion")
     //compileOnly("org.graalvm.nativeimage:svm:$graalvmVersion")
     testImplementation("org.junit.jupiter:junit-jupiter:$junitVersion")

@@ -52,6 +52,5 @@ module overrungl.opengl {
     exports overrungl.opengl.win;
 
     requires transitive overrungl.core;
-    requires static org.jetbrains.annotations;
     requires static org.graalvm.nativeimage;
 }
