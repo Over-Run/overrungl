@@ -15,7 +15,7 @@
  */
 
 plugins {
-    id("me.champeau.jmh") version "0.7.2"
+    id("me.champeau.jmh") version "0.7.3"
     id("module.conventions")
     id("submodule.conventions")
 }
@@ -28,7 +28,7 @@ val jmhVersion: String by rootProject
 val timerVersion: String by rootProject
 
 dependencies {
-    Artifact.values().forEach {
+    Artifact.entries.forEach {
         implementation(project(it.subprojectName))
     }
     implementation("io.github.over-run:timer:$timerVersion")

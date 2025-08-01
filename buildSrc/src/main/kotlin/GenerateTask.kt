@@ -25,7 +25,7 @@ import org.gradle.kotlin.dsl.provideDelegate
  * @author squid233
  * @since 0.1.0
  */
-open class GenerateTask : JavaExec() {
+abstract class GenerateTask : JavaExec() {
     private val jdkVersion: String by project
     private val jdkEnablePreview: String by project
 

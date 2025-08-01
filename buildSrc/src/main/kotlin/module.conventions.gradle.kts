@@ -89,20 +89,21 @@ tasks.named<Jar>("jar") {
         "Implementation-Vendor" to "Overrun Organization",
         "Implementation-Version" to projVersion
     )
-    archiveBaseName.set(overrunglModule.artifactName)
+    val artifactName = overrunglModule.artifactName
+    archiveBaseName.set(artifactName)
     from(rootProject.file("LICENSE")) {
-        rename { "${it}_${overrunglModule.artifactName.get()}" }
+        rename { "${it}_${artifactName.get()}" }
     }
 }
 
-tasks.named<Jar>("sourcesJar") {
-    dependsOn(tasks["classes"])
+val sourcesJar by tasks.getting(Jar::class) {
+    dependsOn(tasks.classes)
     archiveBaseName.set(overrunglModule.artifactName)
     archiveClassifier.set("sources")
-    from(sourceSets["main"].allSource)
+    from(sourceSets.main.get().allSource)
 }
 
-tasks.named<Jar>("javadocJar") {
+val javadocJar by tasks.getting(Jar::class) {
     val javadoc by tasks
     dependsOn(javadoc)
     archiveBaseName.set(overrunglModule.artifactName)
@@ -110,9 +111,28 @@ tasks.named<Jar>("javadocJar") {
     from(javadoc)
 }
 
+val instrumentedJar by tasks.registering(Jar::class) {
+    archiveBaseName.set(overrunglModule.artifactName)
+    archiveClassifier.set("instrumented")
+    from(sourceSets.main.get().output)
+}
+
+configurations {
+    create("instrumentedJars") {
+        isCanBeConsumed = true
+        isCanBeResolved = false
+        attributes {
+            attribute(Category.CATEGORY_ATTRIBUTE, objects.named(Category.LIBRARY))
+            attribute(Usage.USAGE_ATTRIBUTE, objects.named(Usage.JAVA_API))
+            attribute(LibraryElements.LIBRARY_ELEMENTS_ATTRIBUTE, objects.named("instrumented-jar"))
+        }
+    }
+}
+
 artifacts {
-    add("archives", tasks["sourcesJar"])
-    add("archives", tasks["javadocJar"])
+    add("archives", sourcesJar)
+    add("archives", javadocJar)
+    add("instrumentedJars", instrumentedJar)
 }
 
 the<IdeaModel>().module {
@@ -145,6 +165,9 @@ afterEvaluate {
                                     from(file) { into("overrungl.${File(nativeFileName).parent}") }
                                 })
 
+                                val projGroupId1 = projGroupId
+                                val artifactName1 = overrunglModule.artifactName
+                                val projVersion1 = projVersion
                                 getByName<MavenPublication>("overrunglBOM") {
                                     pom {
                                         withXml {
@@ -155,17 +178,17 @@ afterEvaluate {
                                                             appendChild(
                                                                 ownerDocument.createElement("groupId")
                                                                     .also(::appendChild)
-                                                                    .apply { textContent = projGroupId })
+                                                                    .apply { textContent = projGroupId1 })
                                                             appendChild(
                                                                 ownerDocument.createElement("artifactId")
                                                                     .also(::appendChild)
                                                                     .apply {
-                                                                        textContent = overrunglModule.artifactName.get()
+                                                                        textContent = artifactName1.get()
                                                                     })
                                                             appendChild(
                                                                 ownerDocument.createElement("version")
                                                                     .also(::appendChild)
-                                                                    .apply { textContent = projVersion })
+                                                                    .apply { textContent = projVersion1 })
                                                             appendChild(
                                                                 ownerDocument.createElement("classifier")
                                                                     .also(::appendChild)

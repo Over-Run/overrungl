@@ -43,3 +43,5 @@ include(
     "generators:vma",
     "generators:vulkan"
 )
+
+include("javadocAggregator")
