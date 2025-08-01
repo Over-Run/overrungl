@@ -64,6 +64,7 @@ tasks.withType<JavaCompile> {
 tasks.withType<Test> {
     if (jdkEnablePreview.toBoolean()) jvmArgs("--enable-preview")
     useJUnitPlatform()
+    failOnNoDiscoveredTests = false
 }
 
 extensions.configure<JavaPluginExtension>("java") {
