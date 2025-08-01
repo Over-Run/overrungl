@@ -63,6 +63,7 @@ tasks.withType<JavaCompile> {
 
 tasks.withType<Test> {
     if (jdkEnablePreview.toBoolean()) jvmArgs("--enable-preview")
+    jvmArgs("--enable-native-access=ALL-UNNAMED")
     useJUnitPlatform()
     failOnNoDiscoveredTests = false
 }
