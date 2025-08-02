@@ -53,10 +53,14 @@ allprojects {
                         links("https://download.java.net/java/early_access/$jdkEarlyAccessDoc/docs/api/")
                     }
 
+                    // javadoc does not accept multiline string, thus we must use concatenation
                     bottom =
-                        """<a href="https://github.com/Over-Run/overrungl/issues">Report a bug or suggest an enhancement</a><br>""" +
-                            "Copyright © 2022-${LocalDate.now().year} Overrun Organization<br>" +
-                            "<b>$projVersion (env ${Runtime.version()})</b>"
+                        """<a href="https://github.com/Over-Run/overrungl">Sources</a> &bull; """ +
+                            """<a href="https://github.com/Over-Run/overrungl/issues">Issues</a> &bull; """ +
+                            """<a href="https://github.com/Over-Run/overrungl/discussions">Discussions</a><br>""" +
+                            """Copyright © 2022-${LocalDate.now().year} Overrun Organization<br>""" +
+                            """<b>$projVersion (JVM ${Runtime.version()})</b>"""
+
 
                     // shut up the javadoc
                     addStringOption("Xdoclint:all,-missing", "-quiet") // the value is required for no reason!!
