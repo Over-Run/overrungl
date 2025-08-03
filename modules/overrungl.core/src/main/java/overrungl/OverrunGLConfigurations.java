@@ -16,8 +16,6 @@
 
 package overrungl;
 
-import java.lang.foreign.SymbolLookup;
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 /// The configurations for OverrunGL.
@@ -41,41 +39,6 @@ public final class OverrunGLConfigurations {
      * Default value: 8
      */
     public static final Entry<Integer> STACK_FRAME_COUNT = new Entry<>(() -> 8);
-
-    /**
-     * The symbol lookup of GLFW.
-     * The returned value must not be null.
-     * <p>
-     * The default value is {@code null}.
-     */
-    @Deprecated
-    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> GLFW_SYMBOL_LOOKUP = new Entry<>(() -> null);
-    /**
-     * The symbol lookup of NFD.
-     * The returned value must not be null.
-     * <p>
-     * The default value is {@code null}.
-     */
-    @Deprecated
-    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> NFD_SYMBOL_LOOKUP = new Entry<>(() -> null);
-    /// The symbol lookup of OpenAL. The returned value must not be null.
-    ///
-    /// The default value is `null`.
-    @Deprecated
-    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> OPENAL_SYMBOL_LOOKUP = new Entry<>(() -> null);
-    /**
-     * The symbol lookup of stb.
-     * The returned value must not be null.
-     * <p>
-     * The default value is {@code null}.
-     */
-    @Deprecated
-    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> STB_SYMBOL_LOOKUP = new Entry<>(() -> null);
-    /// The symbol lookup of Vulkan Memory Allocator. The returned value must not be null.
-    ///
-    /// The default value is `null`.
-    @Deprecated
-    public static final Entry<Function<Supplier<SymbolLookup>, SymbolLookup>> VMA_SYMBOL_LOOKUP = new Entry<>(() -> null);
 
     private OverrunGLConfigurations() {
         //no instance
