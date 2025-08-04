@@ -111,56 +111,6 @@ public final class VkXlibSurfaceCreateInfoKHR extends GroupType {
     /// @return the allocated `VkXlibSurfaceCreateInfoKHR`
     public static VkXlibSurfaceCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkXlibSurfaceCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkXlibSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param dpy `dpy`
-    /// @param window `window`
-    /// @return the allocated `VkXlibSurfaceCreateInfoKHR`
-    public static VkXlibSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment dpy, long window) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).dpy(dpy).window(window);
-    }
-
-    /// Allocates a `VkXlibSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param dpy `dpy`
-    /// @return the allocated `VkXlibSurfaceCreateInfoKHR`
-    public static VkXlibSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment dpy) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).dpy(dpy);
-    }
-
-    /// Allocates a `VkXlibSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkXlibSurfaceCreateInfoKHR`
-    public static VkXlibSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkXlibSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkXlibSurfaceCreateInfoKHR`
-    public static VkXlibSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkXlibSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkXlibSurfaceCreateInfoKHR`
-    public static VkXlibSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

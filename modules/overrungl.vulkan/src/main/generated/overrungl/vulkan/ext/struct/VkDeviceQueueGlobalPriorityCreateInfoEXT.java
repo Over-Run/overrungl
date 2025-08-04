@@ -95,33 +95,6 @@ public final class VkDeviceQueueGlobalPriorityCreateInfoEXT extends GroupType {
     /// @return the allocated `VkDeviceQueueGlobalPriorityCreateInfoEXT`
     public static VkDeviceQueueGlobalPriorityCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDeviceQueueGlobalPriorityCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceQueueGlobalPriorityCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param globalPriority `globalPriority`
-    /// @return the allocated `VkDeviceQueueGlobalPriorityCreateInfoEXT`
-    public static VkDeviceQueueGlobalPriorityCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriority) {
-        return alloc(allocator).sType(sType).pNext(pNext).globalPriority(globalPriority);
-    }
-
-    /// Allocates a `VkDeviceQueueGlobalPriorityCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceQueueGlobalPriorityCreateInfoEXT`
-    public static VkDeviceQueueGlobalPriorityCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceQueueGlobalPriorityCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceQueueGlobalPriorityCreateInfoEXT`
-    public static VkDeviceQueueGlobalPriorityCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

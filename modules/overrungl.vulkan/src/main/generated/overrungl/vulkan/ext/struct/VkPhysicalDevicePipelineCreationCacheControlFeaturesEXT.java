@@ -95,33 +95,6 @@ public final class VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT exten
     /// @return the allocated `VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT`
     public static VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
-    /// @return the allocated `VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT`
-    public static VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineCreationCacheControl) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineCreationCacheControl(pipelineCreationCacheControl);
-    }
-
-    /// Allocates a `VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT`
-    public static VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT`
-    public static VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

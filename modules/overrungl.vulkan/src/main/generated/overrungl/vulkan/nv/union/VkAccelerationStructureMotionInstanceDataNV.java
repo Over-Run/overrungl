@@ -89,30 +89,6 @@ public final class VkAccelerationStructureMotionInstanceDataNV extends GroupType
     /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
     public static VkAccelerationStructureMotionInstanceDataNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureMotionInstanceDataNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator and `staticInstance`.
-    /// @param allocator the segment allocator
-    /// @param staticInstance `staticInstance`
-    /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
-    public static VkAccelerationStructureMotionInstanceDataNV allocWith_staticInstance(SegmentAllocator allocator, MemorySegment staticInstance) {
-        return alloc(allocator).staticInstance(staticInstance);
-    }
-
-    /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator and `matrixMotionInstance`.
-    /// @param allocator the segment allocator
-    /// @param matrixMotionInstance `matrixMotionInstance`
-    /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
-    public static VkAccelerationStructureMotionInstanceDataNV allocWith_matrixMotionInstance(SegmentAllocator allocator, MemorySegment matrixMotionInstance) {
-        return alloc(allocator).matrixMotionInstance(matrixMotionInstance);
-    }
-
-    /// Allocates a `VkAccelerationStructureMotionInstanceDataNV` with the given segment allocator and `srtMotionInstance`.
-    /// @param allocator the segment allocator
-    /// @param srtMotionInstance `srtMotionInstance`
-    /// @return the allocated `VkAccelerationStructureMotionInstanceDataNV`
-    public static VkAccelerationStructureMotionInstanceDataNV allocWith_srtMotionInstance(SegmentAllocator allocator, MemorySegment srtMotionInstance) {
-        return alloc(allocator).srtMotionInstance(srtMotionInstance);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

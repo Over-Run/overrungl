@@ -95,44 +95,6 @@ public final class VkImageBlit extends GroupType {
     /// @return the allocated `VkImageBlit`
     public static VkImageBlit alloc(SegmentAllocator allocator, long count) { return new VkImageBlit(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageBlit` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffsets `srcOffsets`
-    /// @param dstSubresource `dstSubresource`
-    /// @param dstOffsets `dstOffsets`
-    /// @return the allocated `VkImageBlit`
-    public static VkImageBlit allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffsets, MemorySegment dstSubresource, MemorySegment dstOffsets) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffsets(srcOffsets).dstSubresource(dstSubresource).dstOffsets(dstOffsets);
-    }
-
-    /// Allocates a `VkImageBlit` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffsets `srcOffsets`
-    /// @param dstSubresource `dstSubresource`
-    /// @return the allocated `VkImageBlit`
-    public static VkImageBlit allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffsets, MemorySegment dstSubresource) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffsets(srcOffsets).dstSubresource(dstSubresource);
-    }
-
-    /// Allocates a `VkImageBlit` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffsets `srcOffsets`
-    /// @return the allocated `VkImageBlit`
-    public static VkImageBlit allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffsets) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffsets(srcOffsets);
-    }
-
-    /// Allocates a `VkImageBlit` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @return the allocated `VkImageBlit`
-    public static VkImageBlit allocInit(SegmentAllocator allocator, MemorySegment srcSubresource) {
-        return alloc(allocator).srcSubresource(srcSubresource);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

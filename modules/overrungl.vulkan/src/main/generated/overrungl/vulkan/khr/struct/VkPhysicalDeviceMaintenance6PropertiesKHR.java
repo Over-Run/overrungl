@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceMaintenance6PropertiesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMaintenance6PropertiesKHR`
     public static VkPhysicalDeviceMaintenance6PropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMaintenance6PropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMaintenance6PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param blockTexelViewCompatibleMultipleLayers `blockTexelViewCompatibleMultipleLayers`
-    /// @param maxCombinedImageSamplerDescriptorCount `maxCombinedImageSamplerDescriptorCount`
-    /// @param fragmentShadingRateClampCombinerInputs `fragmentShadingRateClampCombinerInputs`
-    /// @return the allocated `VkPhysicalDeviceMaintenance6PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance6PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int blockTexelViewCompatibleMultipleLayers, int maxCombinedImageSamplerDescriptorCount, int fragmentShadingRateClampCombinerInputs) {
-        return alloc(allocator).sType(sType).pNext(pNext).blockTexelViewCompatibleMultipleLayers(blockTexelViewCompatibleMultipleLayers).maxCombinedImageSamplerDescriptorCount(maxCombinedImageSamplerDescriptorCount).fragmentShadingRateClampCombinerInputs(fragmentShadingRateClampCombinerInputs);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance6PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param blockTexelViewCompatibleMultipleLayers `blockTexelViewCompatibleMultipleLayers`
-    /// @param maxCombinedImageSamplerDescriptorCount `maxCombinedImageSamplerDescriptorCount`
-    /// @return the allocated `VkPhysicalDeviceMaintenance6PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance6PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int blockTexelViewCompatibleMultipleLayers, int maxCombinedImageSamplerDescriptorCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).blockTexelViewCompatibleMultipleLayers(blockTexelViewCompatibleMultipleLayers).maxCombinedImageSamplerDescriptorCount(maxCombinedImageSamplerDescriptorCount);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance6PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param blockTexelViewCompatibleMultipleLayers `blockTexelViewCompatibleMultipleLayers`
-    /// @return the allocated `VkPhysicalDeviceMaintenance6PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance6PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int blockTexelViewCompatibleMultipleLayers) {
-        return alloc(allocator).sType(sType).pNext(pNext).blockTexelViewCompatibleMultipleLayers(blockTexelViewCompatibleMultipleLayers);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance6PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceMaintenance6PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance6PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance6PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceMaintenance6PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance6PropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

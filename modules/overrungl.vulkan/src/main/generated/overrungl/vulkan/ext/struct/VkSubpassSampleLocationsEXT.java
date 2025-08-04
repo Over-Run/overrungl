@@ -85,23 +85,6 @@ public final class VkSubpassSampleLocationsEXT extends GroupType {
     /// @return the allocated `VkSubpassSampleLocationsEXT`
     public static VkSubpassSampleLocationsEXT alloc(SegmentAllocator allocator, long count) { return new VkSubpassSampleLocationsEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSubpassSampleLocationsEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subpassIndex `subpassIndex`
-    /// @param sampleLocationsInfo `sampleLocationsInfo`
-    /// @return the allocated `VkSubpassSampleLocationsEXT`
-    public static VkSubpassSampleLocationsEXT allocInit(SegmentAllocator allocator, int subpassIndex, MemorySegment sampleLocationsInfo) {
-        return alloc(allocator).subpassIndex(subpassIndex).sampleLocationsInfo(sampleLocationsInfo);
-    }
-
-    /// Allocates a `VkSubpassSampleLocationsEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subpassIndex `subpassIndex`
-    /// @return the allocated `VkSubpassSampleLocationsEXT`
-    public static VkSubpassSampleLocationsEXT allocInit(SegmentAllocator allocator, int subpassIndex) {
-        return alloc(allocator).subpassIndex(subpassIndex);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

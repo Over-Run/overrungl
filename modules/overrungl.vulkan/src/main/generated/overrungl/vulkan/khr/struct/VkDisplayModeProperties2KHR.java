@@ -93,33 +93,6 @@ public final class VkDisplayModeProperties2KHR extends GroupType {
     /// @return the allocated `VkDisplayModeProperties2KHR`
     public static VkDisplayModeProperties2KHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayModeProperties2KHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDisplayModeProperties2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param displayModeProperties `displayModeProperties`
-    /// @return the allocated `VkDisplayModeProperties2KHR`
-    public static VkDisplayModeProperties2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment displayModeProperties) {
-        return alloc(allocator).sType(sType).pNext(pNext).displayModeProperties(displayModeProperties);
-    }
-
-    /// Allocates a `VkDisplayModeProperties2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDisplayModeProperties2KHR`
-    public static VkDisplayModeProperties2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDisplayModeProperties2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDisplayModeProperties2KHR`
-    public static VkDisplayModeProperties2KHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

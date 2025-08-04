@@ -119,69 +119,6 @@ public final class VkMemoryBarrier2KHR extends GroupType {
     /// @return the allocated `VkMemoryBarrier2KHR`
     public static VkMemoryBarrier2KHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryBarrier2KHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryBarrier2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcStageMask `srcStageMask`
-    /// @param srcAccessMask `srcAccessMask`
-    /// @param dstStageMask `dstStageMask`
-    /// @param dstAccessMask `dstAccessMask`
-    /// @return the allocated `VkMemoryBarrier2KHR`
-    public static VkMemoryBarrier2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcStageMask, long srcAccessMask, long dstStageMask, long dstAccessMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcStageMask(srcStageMask).srcAccessMask(srcAccessMask).dstStageMask(dstStageMask).dstAccessMask(dstAccessMask);
-    }
-
-    /// Allocates a `VkMemoryBarrier2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcStageMask `srcStageMask`
-    /// @param srcAccessMask `srcAccessMask`
-    /// @param dstStageMask `dstStageMask`
-    /// @return the allocated `VkMemoryBarrier2KHR`
-    public static VkMemoryBarrier2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcStageMask, long srcAccessMask, long dstStageMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcStageMask(srcStageMask).srcAccessMask(srcAccessMask).dstStageMask(dstStageMask);
-    }
-
-    /// Allocates a `VkMemoryBarrier2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcStageMask `srcStageMask`
-    /// @param srcAccessMask `srcAccessMask`
-    /// @return the allocated `VkMemoryBarrier2KHR`
-    public static VkMemoryBarrier2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcStageMask, long srcAccessMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcStageMask(srcStageMask).srcAccessMask(srcAccessMask);
-    }
-
-    /// Allocates a `VkMemoryBarrier2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcStageMask `srcStageMask`
-    /// @return the allocated `VkMemoryBarrier2KHR`
-    public static VkMemoryBarrier2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcStageMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcStageMask(srcStageMask);
-    }
-
-    /// Allocates a `VkMemoryBarrier2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryBarrier2KHR`
-    public static VkMemoryBarrier2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryBarrier2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryBarrier2KHR`
-    public static VkMemoryBarrier2KHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

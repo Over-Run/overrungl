@@ -103,44 +103,6 @@ public final class GLFWGammaRamp extends GroupType {
     /// @return the allocated `GLFWGammaRamp`
     public static GLFWGammaRamp alloc(SegmentAllocator allocator, long count) { return new GLFWGammaRamp(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `GLFWGammaRamp` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param red `red`
-    /// @param green `green`
-    /// @param blue `blue`
-    /// @param size `size`
-    /// @return the allocated `GLFWGammaRamp`
-    public static GLFWGammaRamp allocInit(SegmentAllocator allocator, MemorySegment red, MemorySegment green, MemorySegment blue, int size) {
-        return alloc(allocator).red(red).green(green).blue(blue).size(size);
-    }
-
-    /// Allocates a `GLFWGammaRamp` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param red `red`
-    /// @param green `green`
-    /// @param blue `blue`
-    /// @return the allocated `GLFWGammaRamp`
-    public static GLFWGammaRamp allocInit(SegmentAllocator allocator, MemorySegment red, MemorySegment green, MemorySegment blue) {
-        return alloc(allocator).red(red).green(green).blue(blue);
-    }
-
-    /// Allocates a `GLFWGammaRamp` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param red `red`
-    /// @param green `green`
-    /// @return the allocated `GLFWGammaRamp`
-    public static GLFWGammaRamp allocInit(SegmentAllocator allocator, MemorySegment red, MemorySegment green) {
-        return alloc(allocator).red(red).green(green);
-    }
-
-    /// Allocates a `GLFWGammaRamp` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param red `red`
-    /// @return the allocated `GLFWGammaRamp`
-    public static GLFWGammaRamp allocInit(SegmentAllocator allocator, MemorySegment red) {
-        return alloc(allocator).red(red);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

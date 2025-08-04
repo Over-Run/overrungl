@@ -95,33 +95,6 @@ public final class GLFWImage extends GroupType {
     /// @return the allocated `GLFWImage`
     public static GLFWImage alloc(SegmentAllocator allocator, long count) { return new GLFWImage(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `GLFWImage` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param width `width`
-    /// @param height `height`
-    /// @param pixels `pixels`
-    /// @return the allocated `GLFWImage`
-    public static GLFWImage allocInit(SegmentAllocator allocator, int width, int height, MemorySegment pixels) {
-        return alloc(allocator).width(width).height(height).pixels(pixels);
-    }
-
-    /// Allocates a `GLFWImage` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param width `width`
-    /// @param height `height`
-    /// @return the allocated `GLFWImage`
-    public static GLFWImage allocInit(SegmentAllocator allocator, int width, int height) {
-        return alloc(allocator).width(width).height(height);
-    }
-
-    /// Allocates a `GLFWImage` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param width `width`
-    /// @return the allocated `GLFWImage`
-    public static GLFWImage allocInit(SegmentAllocator allocator, int width) {
-        return alloc(allocator).width(width);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

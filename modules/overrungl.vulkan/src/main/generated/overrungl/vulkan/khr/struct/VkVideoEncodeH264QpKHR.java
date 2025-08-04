@@ -95,33 +95,6 @@ public final class VkVideoEncodeH264QpKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeH264QpKHR`
     public static VkVideoEncodeH264QpKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH264QpKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeH264QpKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param qpI `qpI`
-    /// @param qpP `qpP`
-    /// @param qpB `qpB`
-    /// @return the allocated `VkVideoEncodeH264QpKHR`
-    public static VkVideoEncodeH264QpKHR allocInit(SegmentAllocator allocator, int qpI, int qpP, int qpB) {
-        return alloc(allocator).qpI(qpI).qpP(qpP).qpB(qpB);
-    }
-
-    /// Allocates a `VkVideoEncodeH264QpKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param qpI `qpI`
-    /// @param qpP `qpP`
-    /// @return the allocated `VkVideoEncodeH264QpKHR`
-    public static VkVideoEncodeH264QpKHR allocInit(SegmentAllocator allocator, int qpI, int qpP) {
-        return alloc(allocator).qpI(qpI).qpP(qpP);
-    }
-
-    /// Allocates a `VkVideoEncodeH264QpKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param qpI `qpI`
-    /// @return the allocated `VkVideoEncodeH264QpKHR`
-    public static VkVideoEncodeH264QpKHR allocInit(SegmentAllocator allocator, int qpI) {
-        return alloc(allocator).qpI(qpI);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

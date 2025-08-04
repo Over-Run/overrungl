@@ -103,44 +103,6 @@ public final class VkShaderModuleIdentifierEXT extends GroupType {
     /// @return the allocated `VkShaderModuleIdentifierEXT`
     public static VkShaderModuleIdentifierEXT alloc(SegmentAllocator allocator, long count) { return new VkShaderModuleIdentifierEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkShaderModuleIdentifierEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param identifierSize `identifierSize`
-    /// @param identifier `identifier`
-    /// @return the allocated `VkShaderModuleIdentifierEXT`
-    public static VkShaderModuleIdentifierEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int identifierSize, MemorySegment identifier) {
-        return alloc(allocator).sType(sType).pNext(pNext).identifierSize(identifierSize).identifier(identifier);
-    }
-
-    /// Allocates a `VkShaderModuleIdentifierEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param identifierSize `identifierSize`
-    /// @return the allocated `VkShaderModuleIdentifierEXT`
-    public static VkShaderModuleIdentifierEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int identifierSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).identifierSize(identifierSize);
-    }
-
-    /// Allocates a `VkShaderModuleIdentifierEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkShaderModuleIdentifierEXT`
-    public static VkShaderModuleIdentifierEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkShaderModuleIdentifierEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkShaderModuleIdentifierEXT`
-    public static VkShaderModuleIdentifierEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

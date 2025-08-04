@@ -103,44 +103,6 @@ public final class VkPresentWait2InfoKHR extends GroupType {
     /// @return the allocated `VkPresentWait2InfoKHR`
     public static VkPresentWait2InfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPresentWait2InfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPresentWait2InfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param presentId `presentId`
-    /// @param timeout `timeout`
-    /// @return the allocated `VkPresentWait2InfoKHR`
-    public static VkPresentWait2InfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long presentId, long timeout) {
-        return alloc(allocator).sType(sType).pNext(pNext).presentId(presentId).timeout(timeout);
-    }
-
-    /// Allocates a `VkPresentWait2InfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param presentId `presentId`
-    /// @return the allocated `VkPresentWait2InfoKHR`
-    public static VkPresentWait2InfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long presentId) {
-        return alloc(allocator).sType(sType).pNext(pNext).presentId(presentId);
-    }
-
-    /// Allocates a `VkPresentWait2InfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPresentWait2InfoKHR`
-    public static VkPresentWait2InfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPresentWait2InfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPresentWait2InfoKHR`
-    public static VkPresentWait2InfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

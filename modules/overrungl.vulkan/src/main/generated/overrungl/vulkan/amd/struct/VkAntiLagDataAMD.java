@@ -111,56 +111,6 @@ public final class VkAntiLagDataAMD extends GroupType {
     /// @return the allocated `VkAntiLagDataAMD`
     public static VkAntiLagDataAMD alloc(SegmentAllocator allocator, long count) { return new VkAntiLagDataAMD(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAntiLagDataAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param mode `mode`
-    /// @param maxFPS `maxFPS`
-    /// @param pPresentationInfo `pPresentationInfo`
-    /// @return the allocated `VkAntiLagDataAMD`
-    public static VkAntiLagDataAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int mode, int maxFPS, MemorySegment pPresentationInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).mode(mode).maxFPS(maxFPS).pPresentationInfo(pPresentationInfo);
-    }
-
-    /// Allocates a `VkAntiLagDataAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param mode `mode`
-    /// @param maxFPS `maxFPS`
-    /// @return the allocated `VkAntiLagDataAMD`
-    public static VkAntiLagDataAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int mode, int maxFPS) {
-        return alloc(allocator).sType(sType).pNext(pNext).mode(mode).maxFPS(maxFPS);
-    }
-
-    /// Allocates a `VkAntiLagDataAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param mode `mode`
-    /// @return the allocated `VkAntiLagDataAMD`
-    public static VkAntiLagDataAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int mode) {
-        return alloc(allocator).sType(sType).pNext(pNext).mode(mode);
-    }
-
-    /// Allocates a `VkAntiLagDataAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAntiLagDataAMD`
-    public static VkAntiLagDataAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAntiLagDataAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAntiLagDataAMD`
-    public static VkAntiLagDataAMD allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

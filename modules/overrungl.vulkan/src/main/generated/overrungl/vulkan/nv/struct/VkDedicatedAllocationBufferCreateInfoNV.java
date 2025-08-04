@@ -95,33 +95,6 @@ public final class VkDedicatedAllocationBufferCreateInfoNV extends GroupType {
     /// @return the allocated `VkDedicatedAllocationBufferCreateInfoNV`
     public static VkDedicatedAllocationBufferCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkDedicatedAllocationBufferCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDedicatedAllocationBufferCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dedicatedAllocation `dedicatedAllocation`
-    /// @return the allocated `VkDedicatedAllocationBufferCreateInfoNV`
-    public static VkDedicatedAllocationBufferCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dedicatedAllocation) {
-        return alloc(allocator).sType(sType).pNext(pNext).dedicatedAllocation(dedicatedAllocation);
-    }
-
-    /// Allocates a `VkDedicatedAllocationBufferCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDedicatedAllocationBufferCreateInfoNV`
-    public static VkDedicatedAllocationBufferCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDedicatedAllocationBufferCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDedicatedAllocationBufferCreateInfoNV`
-    public static VkDedicatedAllocationBufferCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

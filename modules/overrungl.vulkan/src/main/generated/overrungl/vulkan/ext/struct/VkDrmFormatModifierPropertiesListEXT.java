@@ -103,44 +103,6 @@ public final class VkDrmFormatModifierPropertiesListEXT extends GroupType {
     /// @return the allocated `VkDrmFormatModifierPropertiesListEXT`
     public static VkDrmFormatModifierPropertiesListEXT alloc(SegmentAllocator allocator, long count) { return new VkDrmFormatModifierPropertiesListEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDrmFormatModifierPropertiesListEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param drmFormatModifierCount `drmFormatModifierCount`
-    /// @param pDrmFormatModifierProperties `pDrmFormatModifierProperties`
-    /// @return the allocated `VkDrmFormatModifierPropertiesListEXT`
-    public static VkDrmFormatModifierPropertiesListEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int drmFormatModifierCount, MemorySegment pDrmFormatModifierProperties) {
-        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifierCount(drmFormatModifierCount).pDrmFormatModifierProperties(pDrmFormatModifierProperties);
-    }
-
-    /// Allocates a `VkDrmFormatModifierPropertiesListEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param drmFormatModifierCount `drmFormatModifierCount`
-    /// @return the allocated `VkDrmFormatModifierPropertiesListEXT`
-    public static VkDrmFormatModifierPropertiesListEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int drmFormatModifierCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifierCount(drmFormatModifierCount);
-    }
-
-    /// Allocates a `VkDrmFormatModifierPropertiesListEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDrmFormatModifierPropertiesListEXT`
-    public static VkDrmFormatModifierPropertiesListEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDrmFormatModifierPropertiesListEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDrmFormatModifierPropertiesListEXT`
-    public static VkDrmFormatModifierPropertiesListEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

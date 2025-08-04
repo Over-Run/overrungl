@@ -95,33 +95,6 @@ public final class VkVideoEncodeAV1FrameSizeKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeAV1FrameSizeKHR`
     public static VkVideoEncodeAV1FrameSizeKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1FrameSizeKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeAV1FrameSizeKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param intraFrameSize `intraFrameSize`
-    /// @param predictiveFrameSize `predictiveFrameSize`
-    /// @param bipredictiveFrameSize `bipredictiveFrameSize`
-    /// @return the allocated `VkVideoEncodeAV1FrameSizeKHR`
-    public static VkVideoEncodeAV1FrameSizeKHR allocInit(SegmentAllocator allocator, int intraFrameSize, int predictiveFrameSize, int bipredictiveFrameSize) {
-        return alloc(allocator).intraFrameSize(intraFrameSize).predictiveFrameSize(predictiveFrameSize).bipredictiveFrameSize(bipredictiveFrameSize);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1FrameSizeKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param intraFrameSize `intraFrameSize`
-    /// @param predictiveFrameSize `predictiveFrameSize`
-    /// @return the allocated `VkVideoEncodeAV1FrameSizeKHR`
-    public static VkVideoEncodeAV1FrameSizeKHR allocInit(SegmentAllocator allocator, int intraFrameSize, int predictiveFrameSize) {
-        return alloc(allocator).intraFrameSize(intraFrameSize).predictiveFrameSize(predictiveFrameSize);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1FrameSizeKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param intraFrameSize `intraFrameSize`
-    /// @return the allocated `VkVideoEncodeAV1FrameSizeKHR`
-    public static VkVideoEncodeAV1FrameSizeKHR allocInit(SegmentAllocator allocator, int intraFrameSize) {
-        return alloc(allocator).intraFrameSize(intraFrameSize);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

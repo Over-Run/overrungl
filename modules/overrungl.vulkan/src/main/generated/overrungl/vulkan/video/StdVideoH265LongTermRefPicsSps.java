@@ -87,23 +87,6 @@ public final class StdVideoH265LongTermRefPicsSps extends GroupType {
     /// @return the allocated `StdVideoH265LongTermRefPicsSps`
     public static StdVideoH265LongTermRefPicsSps alloc(SegmentAllocator allocator, long count) { return new StdVideoH265LongTermRefPicsSps(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoH265LongTermRefPicsSps` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param used_by_curr_pic_lt_sps_flag `used_by_curr_pic_lt_sps_flag`
-    /// @param lt_ref_pic_poc_lsb_sps `lt_ref_pic_poc_lsb_sps`
-    /// @return the allocated `StdVideoH265LongTermRefPicsSps`
-    public static StdVideoH265LongTermRefPicsSps allocInit(SegmentAllocator allocator, int used_by_curr_pic_lt_sps_flag, MemorySegment lt_ref_pic_poc_lsb_sps) {
-        return alloc(allocator).used_by_curr_pic_lt_sps_flag(used_by_curr_pic_lt_sps_flag).lt_ref_pic_poc_lsb_sps(lt_ref_pic_poc_lsb_sps);
-    }
-
-    /// Allocates a `StdVideoH265LongTermRefPicsSps` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param used_by_curr_pic_lt_sps_flag `used_by_curr_pic_lt_sps_flag`
-    /// @return the allocated `StdVideoH265LongTermRefPicsSps`
-    public static StdVideoH265LongTermRefPicsSps allocInit(SegmentAllocator allocator, int used_by_curr_pic_lt_sps_flag) {
-        return alloc(allocator).used_by_curr_pic_lt_sps_flag(used_by_curr_pic_lt_sps_flag);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

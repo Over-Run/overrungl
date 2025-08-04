@@ -111,56 +111,6 @@ public final class VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoAR
     /// @return the allocated `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM`
     public static VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dimension `dimension`
-    /// @param zeroCount `zeroCount`
-    /// @param groupSize `groupSize`
-    /// @return the allocated `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM`
-    public static VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dimension, int zeroCount, int groupSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).dimension(dimension).zeroCount(zeroCount).groupSize(groupSize);
-    }
-
-    /// Allocates a `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dimension `dimension`
-    /// @param zeroCount `zeroCount`
-    /// @return the allocated `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM`
-    public static VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dimension, int zeroCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).dimension(dimension).zeroCount(zeroCount);
-    }
-
-    /// Allocates a `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dimension `dimension`
-    /// @return the allocated `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM`
-    public static VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dimension) {
-        return alloc(allocator).sType(sType).pNext(pNext).dimension(dimension);
-    }
-
-    /// Allocates a `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM`
-    public static VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM`
-    public static VkDataGraphPipelineConstantTensorSemiStructuredSparsityInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

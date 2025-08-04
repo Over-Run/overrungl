@@ -111,56 +111,6 @@ public final class VkShaderResourceUsageAMD extends GroupType {
     /// @return the allocated `VkShaderResourceUsageAMD`
     public static VkShaderResourceUsageAMD alloc(SegmentAllocator allocator, long count) { return new VkShaderResourceUsageAMD(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkShaderResourceUsageAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param numUsedVgprs `numUsedVgprs`
-    /// @param numUsedSgprs `numUsedSgprs`
-    /// @param ldsSizePerLocalWorkGroup `ldsSizePerLocalWorkGroup`
-    /// @param ldsUsageSizeInBytes `ldsUsageSizeInBytes`
-    /// @param scratchMemUsageInBytes `scratchMemUsageInBytes`
-    /// @return the allocated `VkShaderResourceUsageAMD`
-    public static VkShaderResourceUsageAMD allocInit(SegmentAllocator allocator, int numUsedVgprs, int numUsedSgprs, int ldsSizePerLocalWorkGroup, long ldsUsageSizeInBytes, long scratchMemUsageInBytes) {
-        return alloc(allocator).numUsedVgprs(numUsedVgprs).numUsedSgprs(numUsedSgprs).ldsSizePerLocalWorkGroup(ldsSizePerLocalWorkGroup).ldsUsageSizeInBytes(ldsUsageSizeInBytes).scratchMemUsageInBytes(scratchMemUsageInBytes);
-    }
-
-    /// Allocates a `VkShaderResourceUsageAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param numUsedVgprs `numUsedVgprs`
-    /// @param numUsedSgprs `numUsedSgprs`
-    /// @param ldsSizePerLocalWorkGroup `ldsSizePerLocalWorkGroup`
-    /// @param ldsUsageSizeInBytes `ldsUsageSizeInBytes`
-    /// @return the allocated `VkShaderResourceUsageAMD`
-    public static VkShaderResourceUsageAMD allocInit(SegmentAllocator allocator, int numUsedVgprs, int numUsedSgprs, int ldsSizePerLocalWorkGroup, long ldsUsageSizeInBytes) {
-        return alloc(allocator).numUsedVgprs(numUsedVgprs).numUsedSgprs(numUsedSgprs).ldsSizePerLocalWorkGroup(ldsSizePerLocalWorkGroup).ldsUsageSizeInBytes(ldsUsageSizeInBytes);
-    }
-
-    /// Allocates a `VkShaderResourceUsageAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param numUsedVgprs `numUsedVgprs`
-    /// @param numUsedSgprs `numUsedSgprs`
-    /// @param ldsSizePerLocalWorkGroup `ldsSizePerLocalWorkGroup`
-    /// @return the allocated `VkShaderResourceUsageAMD`
-    public static VkShaderResourceUsageAMD allocInit(SegmentAllocator allocator, int numUsedVgprs, int numUsedSgprs, int ldsSizePerLocalWorkGroup) {
-        return alloc(allocator).numUsedVgprs(numUsedVgprs).numUsedSgprs(numUsedSgprs).ldsSizePerLocalWorkGroup(ldsSizePerLocalWorkGroup);
-    }
-
-    /// Allocates a `VkShaderResourceUsageAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param numUsedVgprs `numUsedVgprs`
-    /// @param numUsedSgprs `numUsedSgprs`
-    /// @return the allocated `VkShaderResourceUsageAMD`
-    public static VkShaderResourceUsageAMD allocInit(SegmentAllocator allocator, int numUsedVgprs, int numUsedSgprs) {
-        return alloc(allocator).numUsedVgprs(numUsedVgprs).numUsedSgprs(numUsedSgprs);
-    }
-
-    /// Allocates a `VkShaderResourceUsageAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param numUsedVgprs `numUsedVgprs`
-    /// @return the allocated `VkShaderResourceUsageAMD`
-    public static VkShaderResourceUsageAMD allocInit(SegmentAllocator allocator, int numUsedVgprs) {
-        return alloc(allocator).numUsedVgprs(numUsedVgprs);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

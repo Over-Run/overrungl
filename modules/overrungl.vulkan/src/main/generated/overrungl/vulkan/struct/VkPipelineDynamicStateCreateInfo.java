@@ -111,56 +111,6 @@ public final class VkPipelineDynamicStateCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineDynamicStateCreateInfo`
     public static VkPipelineDynamicStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineDynamicStateCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineDynamicStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param dynamicStateCount `dynamicStateCount`
-    /// @param pDynamicStates `pDynamicStates`
-    /// @return the allocated `VkPipelineDynamicStateCreateInfo`
-    public static VkPipelineDynamicStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int dynamicStateCount, MemorySegment pDynamicStates) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).dynamicStateCount(dynamicStateCount).pDynamicStates(pDynamicStates);
-    }
-
-    /// Allocates a `VkPipelineDynamicStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param dynamicStateCount `dynamicStateCount`
-    /// @return the allocated `VkPipelineDynamicStateCreateInfo`
-    public static VkPipelineDynamicStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int dynamicStateCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).dynamicStateCount(dynamicStateCount);
-    }
-
-    /// Allocates a `VkPipelineDynamicStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkPipelineDynamicStateCreateInfo`
-    public static VkPipelineDynamicStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkPipelineDynamicStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineDynamicStateCreateInfo`
-    public static VkPipelineDynamicStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineDynamicStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineDynamicStateCreateInfo`
-    public static VkPipelineDynamicStateCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

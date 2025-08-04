@@ -101,56 +101,6 @@ public final class VkImageResolve extends GroupType {
     /// @return the allocated `VkImageResolve`
     public static VkImageResolve alloc(SegmentAllocator allocator, long count) { return new VkImageResolve(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffset `srcOffset`
-    /// @param dstSubresource `dstSubresource`
-    /// @param dstOffset `dstOffset`
-    /// @param extent `extent`
-    /// @return the allocated `VkImageResolve`
-    public static VkImageResolve allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffset, MemorySegment dstSubresource, MemorySegment dstOffset, MemorySegment extent) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource).dstOffset(dstOffset).extent(extent);
-    }
-
-    /// Allocates a `VkImageResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffset `srcOffset`
-    /// @param dstSubresource `dstSubresource`
-    /// @param dstOffset `dstOffset`
-    /// @return the allocated `VkImageResolve`
-    public static VkImageResolve allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffset, MemorySegment dstSubresource, MemorySegment dstOffset) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource).dstOffset(dstOffset);
-    }
-
-    /// Allocates a `VkImageResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffset `srcOffset`
-    /// @param dstSubresource `dstSubresource`
-    /// @return the allocated `VkImageResolve`
-    public static VkImageResolve allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffset, MemorySegment dstSubresource) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource);
-    }
-
-    /// Allocates a `VkImageResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffset `srcOffset`
-    /// @return the allocated `VkImageResolve`
-    public static VkImageResolve allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffset) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffset(srcOffset);
-    }
-
-    /// Allocates a `VkImageResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @return the allocated `VkImageResolve`
-    public static VkImageResolve allocInit(SegmentAllocator allocator, MemorySegment srcSubresource) {
-        return alloc(allocator).srcSubresource(srcSubresource);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -111,56 +111,6 @@ public final class VkAttachmentReference2KHR extends GroupType {
     /// @return the allocated `VkAttachmentReference2KHR`
     public static VkAttachmentReference2KHR alloc(SegmentAllocator allocator, long count) { return new VkAttachmentReference2KHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAttachmentReference2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param attachment `attachment`
-    /// @param layout `layout`
-    /// @param aspectMask `aspectMask`
-    /// @return the allocated `VkAttachmentReference2KHR`
-    public static VkAttachmentReference2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachment, int layout, int aspectMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).attachment(attachment).layout(layout).aspectMask(aspectMask);
-    }
-
-    /// Allocates a `VkAttachmentReference2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param attachment `attachment`
-    /// @param layout `layout`
-    /// @return the allocated `VkAttachmentReference2KHR`
-    public static VkAttachmentReference2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachment, int layout) {
-        return alloc(allocator).sType(sType).pNext(pNext).attachment(attachment).layout(layout);
-    }
-
-    /// Allocates a `VkAttachmentReference2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param attachment `attachment`
-    /// @return the allocated `VkAttachmentReference2KHR`
-    public static VkAttachmentReference2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachment) {
-        return alloc(allocator).sType(sType).pNext(pNext).attachment(attachment);
-    }
-
-    /// Allocates a `VkAttachmentReference2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAttachmentReference2KHR`
-    public static VkAttachmentReference2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAttachmentReference2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAttachmentReference2KHR`
-    public static VkAttachmentReference2KHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

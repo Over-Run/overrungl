@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceExternalBufferInfoKHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceExternalBufferInfoKHR`
     public static VkPhysicalDeviceExternalBufferInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalBufferInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExternalBufferInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param usage `usage`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkPhysicalDeviceExternalBufferInfoKHR`
-    public static VkPhysicalDeviceExternalBufferInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int usage, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).usage(usage).handleType(handleType);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalBufferInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param usage `usage`
-    /// @return the allocated `VkPhysicalDeviceExternalBufferInfoKHR`
-    public static VkPhysicalDeviceExternalBufferInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int usage) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).usage(usage);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalBufferInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkPhysicalDeviceExternalBufferInfoKHR`
-    public static VkPhysicalDeviceExternalBufferInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalBufferInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceExternalBufferInfoKHR`
-    public static VkPhysicalDeviceExternalBufferInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalBufferInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceExternalBufferInfoKHR`
-    public static VkPhysicalDeviceExternalBufferInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

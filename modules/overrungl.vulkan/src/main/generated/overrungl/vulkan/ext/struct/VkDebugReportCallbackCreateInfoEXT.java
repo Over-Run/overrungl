@@ -111,56 +111,6 @@ public final class VkDebugReportCallbackCreateInfoEXT extends GroupType {
     /// @return the allocated `VkDebugReportCallbackCreateInfoEXT`
     public static VkDebugReportCallbackCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDebugReportCallbackCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDebugReportCallbackCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param pfnCallback `pfnCallback`
-    /// @param pUserData `pUserData`
-    /// @return the allocated `VkDebugReportCallbackCreateInfoEXT`
-    public static VkDebugReportCallbackCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pfnCallback, MemorySegment pUserData) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pfnCallback(pfnCallback).pUserData(pUserData);
-    }
-
-    /// Allocates a `VkDebugReportCallbackCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param pfnCallback `pfnCallback`
-    /// @return the allocated `VkDebugReportCallbackCreateInfoEXT`
-    public static VkDebugReportCallbackCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pfnCallback) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pfnCallback(pfnCallback);
-    }
-
-    /// Allocates a `VkDebugReportCallbackCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkDebugReportCallbackCreateInfoEXT`
-    public static VkDebugReportCallbackCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkDebugReportCallbackCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDebugReportCallbackCreateInfoEXT`
-    public static VkDebugReportCallbackCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDebugReportCallbackCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDebugReportCallbackCreateInfoEXT`
-    public static VkDebugReportCallbackCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

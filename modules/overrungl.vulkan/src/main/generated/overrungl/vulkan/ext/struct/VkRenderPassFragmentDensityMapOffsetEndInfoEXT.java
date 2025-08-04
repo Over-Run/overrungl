@@ -103,44 +103,6 @@ public final class VkRenderPassFragmentDensityMapOffsetEndInfoEXT extends GroupT
     /// @return the allocated `VkRenderPassFragmentDensityMapOffsetEndInfoEXT`
     public static VkRenderPassFragmentDensityMapOffsetEndInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkRenderPassFragmentDensityMapOffsetEndInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderPassFragmentDensityMapOffsetEndInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fragmentDensityOffsetCount `fragmentDensityOffsetCount`
-    /// @param pFragmentDensityOffsets `pFragmentDensityOffsets`
-    /// @return the allocated `VkRenderPassFragmentDensityMapOffsetEndInfoEXT`
-    public static VkRenderPassFragmentDensityMapOffsetEndInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentDensityOffsetCount, MemorySegment pFragmentDensityOffsets) {
-        return alloc(allocator).sType(sType).pNext(pNext).fragmentDensityOffsetCount(fragmentDensityOffsetCount).pFragmentDensityOffsets(pFragmentDensityOffsets);
-    }
-
-    /// Allocates a `VkRenderPassFragmentDensityMapOffsetEndInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fragmentDensityOffsetCount `fragmentDensityOffsetCount`
-    /// @return the allocated `VkRenderPassFragmentDensityMapOffsetEndInfoEXT`
-    public static VkRenderPassFragmentDensityMapOffsetEndInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentDensityOffsetCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).fragmentDensityOffsetCount(fragmentDensityOffsetCount);
-    }
-
-    /// Allocates a `VkRenderPassFragmentDensityMapOffsetEndInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkRenderPassFragmentDensityMapOffsetEndInfoEXT`
-    public static VkRenderPassFragmentDensityMapOffsetEndInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkRenderPassFragmentDensityMapOffsetEndInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkRenderPassFragmentDensityMapOffsetEndInfoEXT`
-    public static VkRenderPassFragmentDensityMapOffsetEndInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

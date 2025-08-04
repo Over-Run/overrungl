@@ -95,33 +95,6 @@ public final class STBTT__buf extends GroupType {
     /// @return the allocated `STBTT__buf`
     public static STBTT__buf alloc(SegmentAllocator allocator, long count) { return new STBTT__buf(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `STBTT__buf` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param data `data`
-    /// @param cursor `cursor`
-    /// @param size `size`
-    /// @return the allocated `STBTT__buf`
-    public static STBTT__buf allocInit(SegmentAllocator allocator, MemorySegment data, int cursor, int size) {
-        return alloc(allocator).data(data).cursor(cursor).size(size);
-    }
-
-    /// Allocates a `STBTT__buf` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param data `data`
-    /// @param cursor `cursor`
-    /// @return the allocated `STBTT__buf`
-    public static STBTT__buf allocInit(SegmentAllocator allocator, MemorySegment data, int cursor) {
-        return alloc(allocator).data(data).cursor(cursor);
-    }
-
-    /// Allocates a `STBTT__buf` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param data `data`
-    /// @return the allocated `STBTT__buf`
-    public static STBTT__buf allocInit(SegmentAllocator allocator, MemorySegment data) {
-        return alloc(allocator).data(data);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

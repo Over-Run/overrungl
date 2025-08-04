@@ -79,14 +79,6 @@ public final class LongPtr extends GroupType {
     /// @return the allocated `LongPtr`
     public static LongPtr alloc(SegmentAllocator allocator, long count) { return new LongPtr(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `LongPtr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param value `value`
-    /// @return the allocated `LongPtr`
-    public static LongPtr allocInit(SegmentAllocator allocator, long value) {
-        return alloc(allocator).value(value);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

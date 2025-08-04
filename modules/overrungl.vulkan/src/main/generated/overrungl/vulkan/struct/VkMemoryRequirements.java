@@ -95,33 +95,6 @@ public final class VkMemoryRequirements extends GroupType {
     /// @return the allocated `VkMemoryRequirements`
     public static VkMemoryRequirements alloc(SegmentAllocator allocator, long count) { return new VkMemoryRequirements(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryRequirements` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param size `size`
-    /// @param alignment `alignment`
-    /// @param memoryTypeBits `memoryTypeBits`
-    /// @return the allocated `VkMemoryRequirements`
-    public static VkMemoryRequirements allocInit(SegmentAllocator allocator, long size, long alignment, int memoryTypeBits) {
-        return alloc(allocator).size(size).alignment(alignment).memoryTypeBits(memoryTypeBits);
-    }
-
-    /// Allocates a `VkMemoryRequirements` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param size `size`
-    /// @param alignment `alignment`
-    /// @return the allocated `VkMemoryRequirements`
-    public static VkMemoryRequirements allocInit(SegmentAllocator allocator, long size, long alignment) {
-        return alloc(allocator).size(size).alignment(alignment);
-    }
-
-    /// Allocates a `VkMemoryRequirements` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param size `size`
-    /// @return the allocated `VkMemoryRequirements`
-    public static VkMemoryRequirements allocInit(SegmentAllocator allocator, long size) {
-        return alloc(allocator).size(size);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

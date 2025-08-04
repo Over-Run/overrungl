@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV extend
     /// @return the allocated `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV`
     public static VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param spheres `spheres`
-    /// @param linearSweptSpheres `linearSweptSpheres`
-    /// @return the allocated `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV`
-    public static VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int spheres, int linearSweptSpheres) {
-        return alloc(allocator).sType(sType).pNext(pNext).spheres(spheres).linearSweptSpheres(linearSweptSpheres);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param spheres `spheres`
-    /// @return the allocated `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV`
-    public static VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int spheres) {
-        return alloc(allocator).sType(sType).pNext(pNext).spheres(spheres);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV`
-    public static VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV`
-    public static VkPhysicalDeviceRayTracingLinearSweptSpheresFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

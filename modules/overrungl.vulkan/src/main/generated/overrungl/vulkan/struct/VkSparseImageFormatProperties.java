@@ -93,33 +93,6 @@ public final class VkSparseImageFormatProperties extends GroupType {
     /// @return the allocated `VkSparseImageFormatProperties`
     public static VkSparseImageFormatProperties alloc(SegmentAllocator allocator, long count) { return new VkSparseImageFormatProperties(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSparseImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @param imageGranularity `imageGranularity`
-    /// @param flags `flags`
-    /// @return the allocated `VkSparseImageFormatProperties`
-    public static VkSparseImageFormatProperties allocInit(SegmentAllocator allocator, int aspectMask, MemorySegment imageGranularity, int flags) {
-        return alloc(allocator).aspectMask(aspectMask).imageGranularity(imageGranularity).flags(flags);
-    }
-
-    /// Allocates a `VkSparseImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @param imageGranularity `imageGranularity`
-    /// @return the allocated `VkSparseImageFormatProperties`
-    public static VkSparseImageFormatProperties allocInit(SegmentAllocator allocator, int aspectMask, MemorySegment imageGranularity) {
-        return alloc(allocator).aspectMask(aspectMask).imageGranularity(imageGranularity);
-    }
-
-    /// Allocates a `VkSparseImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @return the allocated `VkSparseImageFormatProperties`
-    public static VkSparseImageFormatProperties allocInit(SegmentAllocator allocator, int aspectMask) {
-        return alloc(allocator).aspectMask(aspectMask);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

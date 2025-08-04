@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceLayeredApiPropertiesListKHR extends GroupType
     /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesListKHR`
     public static VkPhysicalDeviceLayeredApiPropertiesListKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceLayeredApiPropertiesListKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesListKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param layeredApiCount `layeredApiCount`
-    /// @param pLayeredApis `pLayeredApis`
-    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesListKHR`
-    public static VkPhysicalDeviceLayeredApiPropertiesListKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int layeredApiCount, MemorySegment pLayeredApis) {
-        return alloc(allocator).sType(sType).pNext(pNext).layeredApiCount(layeredApiCount).pLayeredApis(pLayeredApis);
-    }
-
-    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesListKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param layeredApiCount `layeredApiCount`
-    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesListKHR`
-    public static VkPhysicalDeviceLayeredApiPropertiesListKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int layeredApiCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).layeredApiCount(layeredApiCount);
-    }
-
-    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesListKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesListKHR`
-    public static VkPhysicalDeviceLayeredApiPropertiesListKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceLayeredApiPropertiesListKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceLayeredApiPropertiesListKHR`
-    public static VkPhysicalDeviceLayeredApiPropertiesListKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

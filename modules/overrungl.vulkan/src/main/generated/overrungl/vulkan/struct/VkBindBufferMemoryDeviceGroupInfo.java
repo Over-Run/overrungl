@@ -103,44 +103,6 @@ public final class VkBindBufferMemoryDeviceGroupInfo extends GroupType {
     /// @return the allocated `VkBindBufferMemoryDeviceGroupInfo`
     public static VkBindBufferMemoryDeviceGroupInfo alloc(SegmentAllocator allocator, long count) { return new VkBindBufferMemoryDeviceGroupInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBindBufferMemoryDeviceGroupInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceIndexCount `deviceIndexCount`
-    /// @param pDeviceIndices `pDeviceIndices`
-    /// @return the allocated `VkBindBufferMemoryDeviceGroupInfo`
-    public static VkBindBufferMemoryDeviceGroupInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceIndexCount, MemorySegment pDeviceIndices) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceIndexCount(deviceIndexCount).pDeviceIndices(pDeviceIndices);
-    }
-
-    /// Allocates a `VkBindBufferMemoryDeviceGroupInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceIndexCount `deviceIndexCount`
-    /// @return the allocated `VkBindBufferMemoryDeviceGroupInfo`
-    public static VkBindBufferMemoryDeviceGroupInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceIndexCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceIndexCount(deviceIndexCount);
-    }
-
-    /// Allocates a `VkBindBufferMemoryDeviceGroupInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkBindBufferMemoryDeviceGroupInfo`
-    public static VkBindBufferMemoryDeviceGroupInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkBindBufferMemoryDeviceGroupInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkBindBufferMemoryDeviceGroupInfo`
-    public static VkBindBufferMemoryDeviceGroupInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

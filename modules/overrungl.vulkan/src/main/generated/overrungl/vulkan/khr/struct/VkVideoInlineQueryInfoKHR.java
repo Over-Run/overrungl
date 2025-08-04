@@ -111,56 +111,6 @@ public final class VkVideoInlineQueryInfoKHR extends GroupType {
     /// @return the allocated `VkVideoInlineQueryInfoKHR`
     public static VkVideoInlineQueryInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoInlineQueryInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoInlineQueryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param queryPool `queryPool`
-    /// @param firstQuery `firstQuery`
-    /// @param queryCount `queryCount`
-    /// @return the allocated `VkVideoInlineQueryInfoKHR`
-    public static VkVideoInlineQueryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long queryPool, int firstQuery, int queryCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).queryPool(queryPool).firstQuery(firstQuery).queryCount(queryCount);
-    }
-
-    /// Allocates a `VkVideoInlineQueryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param queryPool `queryPool`
-    /// @param firstQuery `firstQuery`
-    /// @return the allocated `VkVideoInlineQueryInfoKHR`
-    public static VkVideoInlineQueryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long queryPool, int firstQuery) {
-        return alloc(allocator).sType(sType).pNext(pNext).queryPool(queryPool).firstQuery(firstQuery);
-    }
-
-    /// Allocates a `VkVideoInlineQueryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param queryPool `queryPool`
-    /// @return the allocated `VkVideoInlineQueryInfoKHR`
-    public static VkVideoInlineQueryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long queryPool) {
-        return alloc(allocator).sType(sType).pNext(pNext).queryPool(queryPool);
-    }
-
-    /// Allocates a `VkVideoInlineQueryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoInlineQueryInfoKHR`
-    public static VkVideoInlineQueryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoInlineQueryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoInlineQueryInfoKHR`
-    public static VkVideoInlineQueryInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

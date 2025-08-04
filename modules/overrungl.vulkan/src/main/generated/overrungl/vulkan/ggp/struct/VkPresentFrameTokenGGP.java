@@ -95,33 +95,6 @@ public final class VkPresentFrameTokenGGP extends GroupType {
     /// @return the allocated `VkPresentFrameTokenGGP`
     public static VkPresentFrameTokenGGP alloc(SegmentAllocator allocator, long count) { return new VkPresentFrameTokenGGP(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPresentFrameTokenGGP` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param frameToken `frameToken`
-    /// @return the allocated `VkPresentFrameTokenGGP`
-    public static VkPresentFrameTokenGGP allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long frameToken) {
-        return alloc(allocator).sType(sType).pNext(pNext).frameToken(frameToken);
-    }
-
-    /// Allocates a `VkPresentFrameTokenGGP` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPresentFrameTokenGGP`
-    public static VkPresentFrameTokenGGP allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPresentFrameTokenGGP` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPresentFrameTokenGGP`
-    public static VkPresentFrameTokenGGP allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

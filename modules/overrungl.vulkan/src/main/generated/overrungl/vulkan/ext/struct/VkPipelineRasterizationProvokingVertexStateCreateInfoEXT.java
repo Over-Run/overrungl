@@ -95,33 +95,6 @@ public final class VkPipelineRasterizationProvokingVertexStateCreateInfoEXT exte
     /// @return the allocated `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
     public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationProvokingVertexStateCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param provokingVertexMode `provokingVertexMode`
-    /// @return the allocated `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
-    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int provokingVertexMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).provokingVertexMode(provokingVertexMode);
-    }
-
-    /// Allocates a `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
-    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineRasterizationProvokingVertexStateCreateInfoEXT`
-    public static VkPipelineRasterizationProvokingVertexStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

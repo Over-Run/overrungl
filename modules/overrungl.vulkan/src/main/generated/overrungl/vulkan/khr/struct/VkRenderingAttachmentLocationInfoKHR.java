@@ -103,44 +103,6 @@ public final class VkRenderingAttachmentLocationInfoKHR extends GroupType {
     /// @return the allocated `VkRenderingAttachmentLocationInfoKHR`
     public static VkRenderingAttachmentLocationInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkRenderingAttachmentLocationInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderingAttachmentLocationInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @param pColorAttachmentLocations `pColorAttachmentLocations`
-    /// @return the allocated `VkRenderingAttachmentLocationInfoKHR`
-    public static VkRenderingAttachmentLocationInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount, MemorySegment pColorAttachmentLocations) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentLocations(pColorAttachmentLocations);
-    }
-
-    /// Allocates a `VkRenderingAttachmentLocationInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @return the allocated `VkRenderingAttachmentLocationInfoKHR`
-    public static VkRenderingAttachmentLocationInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount);
-    }
-
-    /// Allocates a `VkRenderingAttachmentLocationInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkRenderingAttachmentLocationInfoKHR`
-    public static VkRenderingAttachmentLocationInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkRenderingAttachmentLocationInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkRenderingAttachmentLocationInfoKHR`
-    public static VkRenderingAttachmentLocationInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

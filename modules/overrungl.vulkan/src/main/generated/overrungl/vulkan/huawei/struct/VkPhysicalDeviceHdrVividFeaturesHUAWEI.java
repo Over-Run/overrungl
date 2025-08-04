@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceHdrVividFeaturesHUAWEI extends GroupType {
     /// @return the allocated `VkPhysicalDeviceHdrVividFeaturesHUAWEI`
     public static VkPhysicalDeviceHdrVividFeaturesHUAWEI alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceHdrVividFeaturesHUAWEI(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceHdrVividFeaturesHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param hdrVivid `hdrVivid`
-    /// @return the allocated `VkPhysicalDeviceHdrVividFeaturesHUAWEI`
-    public static VkPhysicalDeviceHdrVividFeaturesHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hdrVivid) {
-        return alloc(allocator).sType(sType).pNext(pNext).hdrVivid(hdrVivid);
-    }
-
-    /// Allocates a `VkPhysicalDeviceHdrVividFeaturesHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceHdrVividFeaturesHUAWEI`
-    public static VkPhysicalDeviceHdrVividFeaturesHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceHdrVividFeaturesHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceHdrVividFeaturesHUAWEI`
-    public static VkPhysicalDeviceHdrVividFeaturesHUAWEI allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

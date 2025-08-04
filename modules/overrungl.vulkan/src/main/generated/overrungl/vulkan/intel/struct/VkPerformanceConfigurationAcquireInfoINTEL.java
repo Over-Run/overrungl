@@ -95,33 +95,6 @@ public final class VkPerformanceConfigurationAcquireInfoINTEL extends GroupType 
     /// @return the allocated `VkPerformanceConfigurationAcquireInfoINTEL`
     public static VkPerformanceConfigurationAcquireInfoINTEL alloc(SegmentAllocator allocator, long count) { return new VkPerformanceConfigurationAcquireInfoINTEL(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPerformanceConfigurationAcquireInfoINTEL` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param type `type`
-    /// @return the allocated `VkPerformanceConfigurationAcquireInfoINTEL`
-    public static VkPerformanceConfigurationAcquireInfoINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int type) {
-        return alloc(allocator).sType(sType).pNext(pNext).type(type);
-    }
-
-    /// Allocates a `VkPerformanceConfigurationAcquireInfoINTEL` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPerformanceConfigurationAcquireInfoINTEL`
-    public static VkPerformanceConfigurationAcquireInfoINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPerformanceConfigurationAcquireInfoINTEL` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPerformanceConfigurationAcquireInfoINTEL`
-    public static VkPerformanceConfigurationAcquireInfoINTEL allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

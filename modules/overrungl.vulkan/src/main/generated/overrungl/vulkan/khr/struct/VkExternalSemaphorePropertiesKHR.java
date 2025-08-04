@@ -111,56 +111,6 @@ public final class VkExternalSemaphorePropertiesKHR extends GroupType {
     /// @return the allocated `VkExternalSemaphorePropertiesKHR`
     public static VkExternalSemaphorePropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkExternalSemaphorePropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExternalSemaphorePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param exportFromImportedHandleTypes `exportFromImportedHandleTypes`
-    /// @param compatibleHandleTypes `compatibleHandleTypes`
-    /// @param externalSemaphoreFeatures `externalSemaphoreFeatures`
-    /// @return the allocated `VkExternalSemaphorePropertiesKHR`
-    public static VkExternalSemaphorePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int exportFromImportedHandleTypes, int compatibleHandleTypes, int externalSemaphoreFeatures) {
-        return alloc(allocator).sType(sType).pNext(pNext).exportFromImportedHandleTypes(exportFromImportedHandleTypes).compatibleHandleTypes(compatibleHandleTypes).externalSemaphoreFeatures(externalSemaphoreFeatures);
-    }
-
-    /// Allocates a `VkExternalSemaphorePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param exportFromImportedHandleTypes `exportFromImportedHandleTypes`
-    /// @param compatibleHandleTypes `compatibleHandleTypes`
-    /// @return the allocated `VkExternalSemaphorePropertiesKHR`
-    public static VkExternalSemaphorePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int exportFromImportedHandleTypes, int compatibleHandleTypes) {
-        return alloc(allocator).sType(sType).pNext(pNext).exportFromImportedHandleTypes(exportFromImportedHandleTypes).compatibleHandleTypes(compatibleHandleTypes);
-    }
-
-    /// Allocates a `VkExternalSemaphorePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param exportFromImportedHandleTypes `exportFromImportedHandleTypes`
-    /// @return the allocated `VkExternalSemaphorePropertiesKHR`
-    public static VkExternalSemaphorePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int exportFromImportedHandleTypes) {
-        return alloc(allocator).sType(sType).pNext(pNext).exportFromImportedHandleTypes(exportFromImportedHandleTypes);
-    }
-
-    /// Allocates a `VkExternalSemaphorePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExternalSemaphorePropertiesKHR`
-    public static VkExternalSemaphorePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExternalSemaphorePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExternalSemaphorePropertiesKHR`
-    public static VkExternalSemaphorePropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

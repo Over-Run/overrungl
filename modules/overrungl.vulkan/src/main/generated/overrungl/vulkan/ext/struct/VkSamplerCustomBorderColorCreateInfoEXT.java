@@ -101,44 +101,6 @@ public final class VkSamplerCustomBorderColorCreateInfoEXT extends GroupType {
     /// @return the allocated `VkSamplerCustomBorderColorCreateInfoEXT`
     public static VkSamplerCustomBorderColorCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSamplerCustomBorderColorCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSamplerCustomBorderColorCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param customBorderColor `customBorderColor`
-    /// @param format `format`
-    /// @return the allocated `VkSamplerCustomBorderColorCreateInfoEXT`
-    public static VkSamplerCustomBorderColorCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment customBorderColor, int format) {
-        return alloc(allocator).sType(sType).pNext(pNext).customBorderColor(customBorderColor).format(format);
-    }
-
-    /// Allocates a `VkSamplerCustomBorderColorCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param customBorderColor `customBorderColor`
-    /// @return the allocated `VkSamplerCustomBorderColorCreateInfoEXT`
-    public static VkSamplerCustomBorderColorCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment customBorderColor) {
-        return alloc(allocator).sType(sType).pNext(pNext).customBorderColor(customBorderColor);
-    }
-
-    /// Allocates a `VkSamplerCustomBorderColorCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSamplerCustomBorderColorCreateInfoEXT`
-    public static VkSamplerCustomBorderColorCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSamplerCustomBorderColorCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSamplerCustomBorderColorCreateInfoEXT`
-    public static VkSamplerCustomBorderColorCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

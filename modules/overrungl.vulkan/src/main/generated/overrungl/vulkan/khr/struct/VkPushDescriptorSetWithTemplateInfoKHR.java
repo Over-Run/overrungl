@@ -119,69 +119,6 @@ public final class VkPushDescriptorSetWithTemplateInfoKHR extends GroupType {
     /// @return the allocated `VkPushDescriptorSetWithTemplateInfoKHR`
     public static VkPushDescriptorSetWithTemplateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPushDescriptorSetWithTemplateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPushDescriptorSetWithTemplateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorUpdateTemplate `descriptorUpdateTemplate`
-    /// @param layout `layout`
-    /// @param set `set`
-    /// @param pData `pData`
-    /// @return the allocated `VkPushDescriptorSetWithTemplateInfoKHR`
-    public static VkPushDescriptorSetWithTemplateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorUpdateTemplate, long layout, int set, MemorySegment pData) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorUpdateTemplate(descriptorUpdateTemplate).layout(layout).set(set).pData(pData);
-    }
-
-    /// Allocates a `VkPushDescriptorSetWithTemplateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorUpdateTemplate `descriptorUpdateTemplate`
-    /// @param layout `layout`
-    /// @param set `set`
-    /// @return the allocated `VkPushDescriptorSetWithTemplateInfoKHR`
-    public static VkPushDescriptorSetWithTemplateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorUpdateTemplate, long layout, int set) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorUpdateTemplate(descriptorUpdateTemplate).layout(layout).set(set);
-    }
-
-    /// Allocates a `VkPushDescriptorSetWithTemplateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorUpdateTemplate `descriptorUpdateTemplate`
-    /// @param layout `layout`
-    /// @return the allocated `VkPushDescriptorSetWithTemplateInfoKHR`
-    public static VkPushDescriptorSetWithTemplateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorUpdateTemplate, long layout) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorUpdateTemplate(descriptorUpdateTemplate).layout(layout);
-    }
-
-    /// Allocates a `VkPushDescriptorSetWithTemplateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorUpdateTemplate `descriptorUpdateTemplate`
-    /// @return the allocated `VkPushDescriptorSetWithTemplateInfoKHR`
-    public static VkPushDescriptorSetWithTemplateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorUpdateTemplate) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorUpdateTemplate(descriptorUpdateTemplate);
-    }
-
-    /// Allocates a `VkPushDescriptorSetWithTemplateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPushDescriptorSetWithTemplateInfoKHR`
-    public static VkPushDescriptorSetWithTemplateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPushDescriptorSetWithTemplateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPushDescriptorSetWithTemplateInfoKHR`
-    public static VkPushDescriptorSetWithTemplateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

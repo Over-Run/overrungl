@@ -95,33 +95,6 @@ public final class VkImportAndroidHardwareBufferInfoANDROID extends GroupType {
     /// @return the allocated `VkImportAndroidHardwareBufferInfoANDROID`
     public static VkImportAndroidHardwareBufferInfoANDROID alloc(SegmentAllocator allocator, long count) { return new VkImportAndroidHardwareBufferInfoANDROID(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImportAndroidHardwareBufferInfoANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param buffer `buffer`
-    /// @return the allocated `VkImportAndroidHardwareBufferInfoANDROID`
-    public static VkImportAndroidHardwareBufferInfoANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment buffer) {
-        return alloc(allocator).sType(sType).pNext(pNext).buffer(buffer);
-    }
-
-    /// Allocates a `VkImportAndroidHardwareBufferInfoANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImportAndroidHardwareBufferInfoANDROID`
-    public static VkImportAndroidHardwareBufferInfoANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImportAndroidHardwareBufferInfoANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImportAndroidHardwareBufferInfoANDROID`
-    public static VkImportAndroidHardwareBufferInfoANDROID allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

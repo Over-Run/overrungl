@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR extends GroupT
     /// @return the allocated `VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR`
     public static VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param globalPriorityQuery `globalPriorityQuery`
-    /// @return the allocated `VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR`
-    public static VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int globalPriorityQuery) {
-        return alloc(allocator).sType(sType).pNext(pNext).globalPriorityQuery(globalPriorityQuery);
-    }
-
-    /// Allocates a `VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR`
-    public static VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR`
-    public static VkPhysicalDeviceGlobalPriorityQueryFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

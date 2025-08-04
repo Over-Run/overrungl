@@ -103,44 +103,6 @@ public final class DrawArraysIndirectCommand extends GroupType {
     /// @return the allocated `DrawArraysIndirectCommand`
     public static DrawArraysIndirectCommand alloc(SegmentAllocator allocator, long count) { return new DrawArraysIndirectCommand(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `DrawArraysIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param count `count`
-    /// @param instanceCount `instanceCount`
-    /// @param first `first`
-    /// @param baseInstance `baseInstance`
-    /// @return the allocated `DrawArraysIndirectCommand`
-    public static DrawArraysIndirectCommand allocInit(SegmentAllocator allocator, int count, int instanceCount, int first, int baseInstance) {
-        return alloc(allocator).count(count).instanceCount(instanceCount).first(first).baseInstance(baseInstance);
-    }
-
-    /// Allocates a `DrawArraysIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param count `count`
-    /// @param instanceCount `instanceCount`
-    /// @param first `first`
-    /// @return the allocated `DrawArraysIndirectCommand`
-    public static DrawArraysIndirectCommand allocInit(SegmentAllocator allocator, int count, int instanceCount, int first) {
-        return alloc(allocator).count(count).instanceCount(instanceCount).first(first);
-    }
-
-    /// Allocates a `DrawArraysIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param count `count`
-    /// @param instanceCount `instanceCount`
-    /// @return the allocated `DrawArraysIndirectCommand`
-    public static DrawArraysIndirectCommand allocInit(SegmentAllocator allocator, int count, int instanceCount) {
-        return alloc(allocator).count(count).instanceCount(instanceCount);
-    }
-
-    /// Allocates a `DrawArraysIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param count `count`
-    /// @return the allocated `DrawArraysIndirectCommand`
-    public static DrawArraysIndirectCommand allocInit(SegmentAllocator allocator, int count) {
-        return alloc(allocator).count(count);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

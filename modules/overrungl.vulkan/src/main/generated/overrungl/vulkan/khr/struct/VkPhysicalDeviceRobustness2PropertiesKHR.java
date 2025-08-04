@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceRobustness2PropertiesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceRobustness2PropertiesKHR`
     public static VkPhysicalDeviceRobustness2PropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRobustness2PropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRobustness2PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param robustStorageBufferAccessSizeAlignment `robustStorageBufferAccessSizeAlignment`
-    /// @param robustUniformBufferAccessSizeAlignment `robustUniformBufferAccessSizeAlignment`
-    /// @return the allocated `VkPhysicalDeviceRobustness2PropertiesKHR`
-    public static VkPhysicalDeviceRobustness2PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long robustStorageBufferAccessSizeAlignment, long robustUniformBufferAccessSizeAlignment) {
-        return alloc(allocator).sType(sType).pNext(pNext).robustStorageBufferAccessSizeAlignment(robustStorageBufferAccessSizeAlignment).robustUniformBufferAccessSizeAlignment(robustUniformBufferAccessSizeAlignment);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRobustness2PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param robustStorageBufferAccessSizeAlignment `robustStorageBufferAccessSizeAlignment`
-    /// @return the allocated `VkPhysicalDeviceRobustness2PropertiesKHR`
-    public static VkPhysicalDeviceRobustness2PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long robustStorageBufferAccessSizeAlignment) {
-        return alloc(allocator).sType(sType).pNext(pNext).robustStorageBufferAccessSizeAlignment(robustStorageBufferAccessSizeAlignment);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRobustness2PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRobustness2PropertiesKHR`
-    public static VkPhysicalDeviceRobustness2PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRobustness2PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRobustness2PropertiesKHR`
-    public static VkPhysicalDeviceRobustness2PropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

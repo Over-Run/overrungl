@@ -103,44 +103,6 @@ public final class VkAccelerationStructureMemoryRequirementsInfoNV extends Group
     /// @return the allocated `VkAccelerationStructureMemoryRequirementsInfoNV`
     public static VkAccelerationStructureMemoryRequirementsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureMemoryRequirementsInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param type `type`
-    /// @param accelerationStructure `accelerationStructure`
-    /// @return the allocated `VkAccelerationStructureMemoryRequirementsInfoNV`
-    public static VkAccelerationStructureMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int type, long accelerationStructure) {
-        return alloc(allocator).sType(sType).pNext(pNext).type(type).accelerationStructure(accelerationStructure);
-    }
-
-    /// Allocates a `VkAccelerationStructureMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param type `type`
-    /// @return the allocated `VkAccelerationStructureMemoryRequirementsInfoNV`
-    public static VkAccelerationStructureMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int type) {
-        return alloc(allocator).sType(sType).pNext(pNext).type(type);
-    }
-
-    /// Allocates a `VkAccelerationStructureMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAccelerationStructureMemoryRequirementsInfoNV`
-    public static VkAccelerationStructureMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAccelerationStructureMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAccelerationStructureMemoryRequirementsInfoNV`
-    public static VkAccelerationStructureMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

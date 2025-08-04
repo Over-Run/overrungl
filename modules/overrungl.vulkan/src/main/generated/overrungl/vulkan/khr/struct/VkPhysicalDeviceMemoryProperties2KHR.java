@@ -93,33 +93,6 @@ public final class VkPhysicalDeviceMemoryProperties2KHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMemoryProperties2KHR`
     public static VkPhysicalDeviceMemoryProperties2KHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMemoryProperties2KHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMemoryProperties2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memoryProperties `memoryProperties`
-    /// @return the allocated `VkPhysicalDeviceMemoryProperties2KHR`
-    public static VkPhysicalDeviceMemoryProperties2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment memoryProperties) {
-        return alloc(allocator).sType(sType).pNext(pNext).memoryProperties(memoryProperties);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMemoryProperties2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceMemoryProperties2KHR`
-    public static VkPhysicalDeviceMemoryProperties2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMemoryProperties2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceMemoryProperties2KHR`
-    public static VkPhysicalDeviceMemoryProperties2KHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

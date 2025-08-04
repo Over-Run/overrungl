@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceNestedCommandBufferFeaturesEXT extends GroupT
     /// @return the allocated `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
     public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceNestedCommandBufferFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param nestedCommandBuffer `nestedCommandBuffer`
-    /// @param nestedCommandBufferRendering `nestedCommandBufferRendering`
-    /// @param nestedCommandBufferSimultaneousUse `nestedCommandBufferSimultaneousUse`
-    /// @return the allocated `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
-    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int nestedCommandBuffer, int nestedCommandBufferRendering, int nestedCommandBufferSimultaneousUse) {
-        return alloc(allocator).sType(sType).pNext(pNext).nestedCommandBuffer(nestedCommandBuffer).nestedCommandBufferRendering(nestedCommandBufferRendering).nestedCommandBufferSimultaneousUse(nestedCommandBufferSimultaneousUse);
-    }
-
-    /// Allocates a `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param nestedCommandBuffer `nestedCommandBuffer`
-    /// @param nestedCommandBufferRendering `nestedCommandBufferRendering`
-    /// @return the allocated `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
-    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int nestedCommandBuffer, int nestedCommandBufferRendering) {
-        return alloc(allocator).sType(sType).pNext(pNext).nestedCommandBuffer(nestedCommandBuffer).nestedCommandBufferRendering(nestedCommandBufferRendering);
-    }
-
-    /// Allocates a `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param nestedCommandBuffer `nestedCommandBuffer`
-    /// @return the allocated `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
-    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int nestedCommandBuffer) {
-        return alloc(allocator).sType(sType).pNext(pNext).nestedCommandBuffer(nestedCommandBuffer);
-    }
-
-    /// Allocates a `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
-    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceNestedCommandBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceNestedCommandBufferFeaturesEXT`
-    public static VkPhysicalDeviceNestedCommandBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -103,44 +103,6 @@ public final class VkRenderPassStripeSubmitInfoARM extends GroupType {
     /// @return the allocated `VkRenderPassStripeSubmitInfoARM`
     public static VkRenderPassStripeSubmitInfoARM alloc(SegmentAllocator allocator, long count) { return new VkRenderPassStripeSubmitInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderPassStripeSubmitInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param stripeSemaphoreInfoCount `stripeSemaphoreInfoCount`
-    /// @param pStripeSemaphoreInfos `pStripeSemaphoreInfos`
-    /// @return the allocated `VkRenderPassStripeSubmitInfoARM`
-    public static VkRenderPassStripeSubmitInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stripeSemaphoreInfoCount, MemorySegment pStripeSemaphoreInfos) {
-        return alloc(allocator).sType(sType).pNext(pNext).stripeSemaphoreInfoCount(stripeSemaphoreInfoCount).pStripeSemaphoreInfos(pStripeSemaphoreInfos);
-    }
-
-    /// Allocates a `VkRenderPassStripeSubmitInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param stripeSemaphoreInfoCount `stripeSemaphoreInfoCount`
-    /// @return the allocated `VkRenderPassStripeSubmitInfoARM`
-    public static VkRenderPassStripeSubmitInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stripeSemaphoreInfoCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).stripeSemaphoreInfoCount(stripeSemaphoreInfoCount);
-    }
-
-    /// Allocates a `VkRenderPassStripeSubmitInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkRenderPassStripeSubmitInfoARM`
-    public static VkRenderPassStripeSubmitInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkRenderPassStripeSubmitInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkRenderPassStripeSubmitInfoARM`
-    public static VkRenderPassStripeSubmitInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

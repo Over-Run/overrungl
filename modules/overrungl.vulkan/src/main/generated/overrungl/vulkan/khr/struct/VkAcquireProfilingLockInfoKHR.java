@@ -103,44 +103,6 @@ public final class VkAcquireProfilingLockInfoKHR extends GroupType {
     /// @return the allocated `VkAcquireProfilingLockInfoKHR`
     public static VkAcquireProfilingLockInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAcquireProfilingLockInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAcquireProfilingLockInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param timeout `timeout`
-    /// @return the allocated `VkAcquireProfilingLockInfoKHR`
-    public static VkAcquireProfilingLockInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long timeout) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).timeout(timeout);
-    }
-
-    /// Allocates a `VkAcquireProfilingLockInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkAcquireProfilingLockInfoKHR`
-    public static VkAcquireProfilingLockInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkAcquireProfilingLockInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAcquireProfilingLockInfoKHR`
-    public static VkAcquireProfilingLockInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAcquireProfilingLockInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAcquireProfilingLockInfoKHR`
-    public static VkAcquireProfilingLockInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

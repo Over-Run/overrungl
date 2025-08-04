@@ -103,44 +103,6 @@ public final class VkCoarseSampleOrderCustomNV extends GroupType {
     /// @return the allocated `VkCoarseSampleOrderCustomNV`
     public static VkCoarseSampleOrderCustomNV alloc(SegmentAllocator allocator, long count) { return new VkCoarseSampleOrderCustomNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCoarseSampleOrderCustomNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param shadingRate `shadingRate`
-    /// @param sampleCount `sampleCount`
-    /// @param sampleLocationCount `sampleLocationCount`
-    /// @param pSampleLocations `pSampleLocations`
-    /// @return the allocated `VkCoarseSampleOrderCustomNV`
-    public static VkCoarseSampleOrderCustomNV allocInit(SegmentAllocator allocator, int shadingRate, int sampleCount, int sampleLocationCount, MemorySegment pSampleLocations) {
-        return alloc(allocator).shadingRate(shadingRate).sampleCount(sampleCount).sampleLocationCount(sampleLocationCount).pSampleLocations(pSampleLocations);
-    }
-
-    /// Allocates a `VkCoarseSampleOrderCustomNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param shadingRate `shadingRate`
-    /// @param sampleCount `sampleCount`
-    /// @param sampleLocationCount `sampleLocationCount`
-    /// @return the allocated `VkCoarseSampleOrderCustomNV`
-    public static VkCoarseSampleOrderCustomNV allocInit(SegmentAllocator allocator, int shadingRate, int sampleCount, int sampleLocationCount) {
-        return alloc(allocator).shadingRate(shadingRate).sampleCount(sampleCount).sampleLocationCount(sampleLocationCount);
-    }
-
-    /// Allocates a `VkCoarseSampleOrderCustomNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param shadingRate `shadingRate`
-    /// @param sampleCount `sampleCount`
-    /// @return the allocated `VkCoarseSampleOrderCustomNV`
-    public static VkCoarseSampleOrderCustomNV allocInit(SegmentAllocator allocator, int shadingRate, int sampleCount) {
-        return alloc(allocator).shadingRate(shadingRate).sampleCount(sampleCount);
-    }
-
-    /// Allocates a `VkCoarseSampleOrderCustomNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param shadingRate `shadingRate`
-    /// @return the allocated `VkCoarseSampleOrderCustomNV`
-    public static VkCoarseSampleOrderCustomNV allocInit(SegmentAllocator allocator, int shadingRate) {
-        return alloc(allocator).shadingRate(shadingRate);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

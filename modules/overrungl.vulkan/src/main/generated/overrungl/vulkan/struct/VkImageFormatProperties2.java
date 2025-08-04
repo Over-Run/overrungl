@@ -93,33 +93,6 @@ public final class VkImageFormatProperties2 extends GroupType {
     /// @return the allocated `VkImageFormatProperties2`
     public static VkImageFormatProperties2 alloc(SegmentAllocator allocator, long count) { return new VkImageFormatProperties2(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageFormatProperties2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imageFormatProperties `imageFormatProperties`
-    /// @return the allocated `VkImageFormatProperties2`
-    public static VkImageFormatProperties2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment imageFormatProperties) {
-        return alloc(allocator).sType(sType).pNext(pNext).imageFormatProperties(imageFormatProperties);
-    }
-
-    /// Allocates a `VkImageFormatProperties2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImageFormatProperties2`
-    public static VkImageFormatProperties2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImageFormatProperties2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImageFormatProperties2`
-    public static VkImageFormatProperties2 allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

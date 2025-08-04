@@ -103,44 +103,6 @@ public final class VkDataGraphPipelineSessionCreateInfoARM extends GroupType {
     /// @return the allocated `VkDataGraphPipelineSessionCreateInfoARM`
     public static VkDataGraphPipelineSessionCreateInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineSessionCreateInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDataGraphPipelineSessionCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param dataGraphPipeline `dataGraphPipeline`
-    /// @return the allocated `VkDataGraphPipelineSessionCreateInfoARM`
-    public static VkDataGraphPipelineSessionCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long flags, long dataGraphPipeline) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).dataGraphPipeline(dataGraphPipeline);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkDataGraphPipelineSessionCreateInfoARM`
-    public static VkDataGraphPipelineSessionCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDataGraphPipelineSessionCreateInfoARM`
-    public static VkDataGraphPipelineSessionCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDataGraphPipelineSessionCreateInfoARM`
-    public static VkDataGraphPipelineSessionCreateInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

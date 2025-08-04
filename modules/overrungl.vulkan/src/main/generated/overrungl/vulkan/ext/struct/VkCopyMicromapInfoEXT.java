@@ -111,56 +111,6 @@ public final class VkCopyMicromapInfoEXT extends GroupType {
     /// @return the allocated `VkCopyMicromapInfoEXT`
     public static VkCopyMicromapInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkCopyMicromapInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCopyMicromapInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param src `src`
-    /// @param dst `dst`
-    /// @param mode `mode`
-    /// @return the allocated `VkCopyMicromapInfoEXT`
-    public static VkCopyMicromapInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long src, long dst, int mode) {
-        return alloc(allocator).sType(sType).pNext(pNext).src(src).dst(dst).mode(mode);
-    }
-
-    /// Allocates a `VkCopyMicromapInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param src `src`
-    /// @param dst `dst`
-    /// @return the allocated `VkCopyMicromapInfoEXT`
-    public static VkCopyMicromapInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long src, long dst) {
-        return alloc(allocator).sType(sType).pNext(pNext).src(src).dst(dst);
-    }
-
-    /// Allocates a `VkCopyMicromapInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param src `src`
-    /// @return the allocated `VkCopyMicromapInfoEXT`
-    public static VkCopyMicromapInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long src) {
-        return alloc(allocator).sType(sType).pNext(pNext).src(src);
-    }
-
-    /// Allocates a `VkCopyMicromapInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkCopyMicromapInfoEXT`
-    public static VkCopyMicromapInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkCopyMicromapInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkCopyMicromapInfoEXT`
-    public static VkCopyMicromapInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

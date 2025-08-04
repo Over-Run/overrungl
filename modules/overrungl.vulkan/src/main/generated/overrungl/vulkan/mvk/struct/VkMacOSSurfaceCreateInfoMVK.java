@@ -103,44 +103,6 @@ public final class VkMacOSSurfaceCreateInfoMVK extends GroupType {
     /// @return the allocated `VkMacOSSurfaceCreateInfoMVK`
     public static VkMacOSSurfaceCreateInfoMVK alloc(SegmentAllocator allocator, long count) { return new VkMacOSSurfaceCreateInfoMVK(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMacOSSurfaceCreateInfoMVK` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param pView `pView`
-    /// @return the allocated `VkMacOSSurfaceCreateInfoMVK`
-    public static VkMacOSSurfaceCreateInfoMVK allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pView) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pView(pView);
-    }
-
-    /// Allocates a `VkMacOSSurfaceCreateInfoMVK` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkMacOSSurfaceCreateInfoMVK`
-    public static VkMacOSSurfaceCreateInfoMVK allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkMacOSSurfaceCreateInfoMVK` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMacOSSurfaceCreateInfoMVK`
-    public static VkMacOSSurfaceCreateInfoMVK allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMacOSSurfaceCreateInfoMVK` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMacOSSurfaceCreateInfoMVK`
-    public static VkMacOSSurfaceCreateInfoMVK allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

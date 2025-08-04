@@ -119,69 +119,6 @@ public final class VkRenderingInputAttachmentIndexInfoKHR extends GroupType {
     /// @return the allocated `VkRenderingInputAttachmentIndexInfoKHR`
     public static VkRenderingInputAttachmentIndexInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkRenderingInputAttachmentIndexInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderingInputAttachmentIndexInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @param pColorAttachmentInputIndices `pColorAttachmentInputIndices`
-    /// @param pDepthInputAttachmentIndex `pDepthInputAttachmentIndex`
-    /// @param pStencilInputAttachmentIndex `pStencilInputAttachmentIndex`
-    /// @return the allocated `VkRenderingInputAttachmentIndexInfoKHR`
-    public static VkRenderingInputAttachmentIndexInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount, MemorySegment pColorAttachmentInputIndices, MemorySegment pDepthInputAttachmentIndex, MemorySegment pStencilInputAttachmentIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentInputIndices(pColorAttachmentInputIndices).pDepthInputAttachmentIndex(pDepthInputAttachmentIndex).pStencilInputAttachmentIndex(pStencilInputAttachmentIndex);
-    }
-
-    /// Allocates a `VkRenderingInputAttachmentIndexInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @param pColorAttachmentInputIndices `pColorAttachmentInputIndices`
-    /// @param pDepthInputAttachmentIndex `pDepthInputAttachmentIndex`
-    /// @return the allocated `VkRenderingInputAttachmentIndexInfoKHR`
-    public static VkRenderingInputAttachmentIndexInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount, MemorySegment pColorAttachmentInputIndices, MemorySegment pDepthInputAttachmentIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentInputIndices(pColorAttachmentInputIndices).pDepthInputAttachmentIndex(pDepthInputAttachmentIndex);
-    }
-
-    /// Allocates a `VkRenderingInputAttachmentIndexInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @param pColorAttachmentInputIndices `pColorAttachmentInputIndices`
-    /// @return the allocated `VkRenderingInputAttachmentIndexInfoKHR`
-    public static VkRenderingInputAttachmentIndexInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount, MemorySegment pColorAttachmentInputIndices) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentInputIndices(pColorAttachmentInputIndices);
-    }
-
-    /// Allocates a `VkRenderingInputAttachmentIndexInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @return the allocated `VkRenderingInputAttachmentIndexInfoKHR`
-    public static VkRenderingInputAttachmentIndexInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount);
-    }
-
-    /// Allocates a `VkRenderingInputAttachmentIndexInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkRenderingInputAttachmentIndexInfoKHR`
-    public static VkRenderingInputAttachmentIndexInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkRenderingInputAttachmentIndexInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkRenderingInputAttachmentIndexInfoKHR`
-    public static VkRenderingInputAttachmentIndexInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

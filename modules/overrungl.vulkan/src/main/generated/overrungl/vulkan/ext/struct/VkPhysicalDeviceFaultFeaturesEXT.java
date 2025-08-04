@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceFaultFeaturesEXT extends GroupType {
     /// @return the allocated `VkPhysicalDeviceFaultFeaturesEXT`
     public static VkPhysicalDeviceFaultFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFaultFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceFaultFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceFault `deviceFault`
-    /// @param deviceFaultVendorBinary `deviceFaultVendorBinary`
-    /// @return the allocated `VkPhysicalDeviceFaultFeaturesEXT`
-    public static VkPhysicalDeviceFaultFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceFault, int deviceFaultVendorBinary) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceFault(deviceFault).deviceFaultVendorBinary(deviceFaultVendorBinary);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFaultFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceFault `deviceFault`
-    /// @return the allocated `VkPhysicalDeviceFaultFeaturesEXT`
-    public static VkPhysicalDeviceFaultFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceFault) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceFault(deviceFault);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFaultFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceFaultFeaturesEXT`
-    public static VkPhysicalDeviceFaultFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFaultFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceFaultFeaturesEXT`
-    public static VkPhysicalDeviceFaultFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

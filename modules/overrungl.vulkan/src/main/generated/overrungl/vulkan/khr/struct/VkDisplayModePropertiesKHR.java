@@ -85,23 +85,6 @@ public final class VkDisplayModePropertiesKHR extends GroupType {
     /// @return the allocated `VkDisplayModePropertiesKHR`
     public static VkDisplayModePropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayModePropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDisplayModePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param displayMode `displayMode`
-    /// @param parameters `parameters`
-    /// @return the allocated `VkDisplayModePropertiesKHR`
-    public static VkDisplayModePropertiesKHR allocInit(SegmentAllocator allocator, long displayMode, MemorySegment parameters) {
-        return alloc(allocator).displayMode(displayMode).parameters(parameters);
-    }
-
-    /// Allocates a `VkDisplayModePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param displayMode `displayMode`
-    /// @return the allocated `VkDisplayModePropertiesKHR`
-    public static VkDisplayModePropertiesKHR allocInit(SegmentAllocator allocator, long displayMode) {
-        return alloc(allocator).displayMode(displayMode);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

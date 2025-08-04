@@ -79,14 +79,6 @@ public final class VkClusterAccelerationStructureGetTemplateIndicesInfoNV extend
     /// @return the allocated `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`
     public static VkClusterAccelerationStructureGetTemplateIndicesInfoNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureGetTemplateIndicesInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkClusterAccelerationStructureGetTemplateIndicesInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param clusterTemplateAddress `clusterTemplateAddress`
-    /// @return the allocated `VkClusterAccelerationStructureGetTemplateIndicesInfoNV`
-    public static VkClusterAccelerationStructureGetTemplateIndicesInfoNV allocInit(SegmentAllocator allocator, long clusterTemplateAddress) {
-        return alloc(allocator).clusterTemplateAddress(clusterTemplateAddress);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

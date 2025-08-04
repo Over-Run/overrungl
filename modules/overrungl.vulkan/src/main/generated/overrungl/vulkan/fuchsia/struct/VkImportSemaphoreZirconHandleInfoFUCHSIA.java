@@ -119,69 +119,6 @@ public final class VkImportSemaphoreZirconHandleInfoFUCHSIA extends GroupType {
     /// @return the allocated `VkImportSemaphoreZirconHandleInfoFUCHSIA`
     public static VkImportSemaphoreZirconHandleInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImportSemaphoreZirconHandleInfoFUCHSIA(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImportSemaphoreZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @param flags `flags`
-    /// @param handleType `handleType`
-    /// @param zirconHandle `zirconHandle`
-    /// @return the allocated `VkImportSemaphoreZirconHandleInfoFUCHSIA`
-    public static VkImportSemaphoreZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, int flags, int handleType, int zirconHandle) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).flags(flags).handleType(handleType).zirconHandle(zirconHandle);
-    }
-
-    /// Allocates a `VkImportSemaphoreZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @param flags `flags`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkImportSemaphoreZirconHandleInfoFUCHSIA`
-    public static VkImportSemaphoreZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, int flags, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).flags(flags).handleType(handleType);
-    }
-
-    /// Allocates a `VkImportSemaphoreZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @param flags `flags`
-    /// @return the allocated `VkImportSemaphoreZirconHandleInfoFUCHSIA`
-    public static VkImportSemaphoreZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).flags(flags);
-    }
-
-    /// Allocates a `VkImportSemaphoreZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @return the allocated `VkImportSemaphoreZirconHandleInfoFUCHSIA`
-    public static VkImportSemaphoreZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore);
-    }
-
-    /// Allocates a `VkImportSemaphoreZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImportSemaphoreZirconHandleInfoFUCHSIA`
-    public static VkImportSemaphoreZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImportSemaphoreZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImportSemaphoreZirconHandleInfoFUCHSIA`
-    public static VkImportSemaphoreZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

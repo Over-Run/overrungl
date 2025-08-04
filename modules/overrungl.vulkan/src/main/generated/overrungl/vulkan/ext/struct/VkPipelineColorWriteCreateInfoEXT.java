@@ -103,44 +103,6 @@ public final class VkPipelineColorWriteCreateInfoEXT extends GroupType {
     /// @return the allocated `VkPipelineColorWriteCreateInfoEXT`
     public static VkPipelineColorWriteCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineColorWriteCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineColorWriteCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param attachmentCount `attachmentCount`
-    /// @param pColorWriteEnables `pColorWriteEnables`
-    /// @return the allocated `VkPipelineColorWriteCreateInfoEXT`
-    public static VkPipelineColorWriteCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachmentCount, MemorySegment pColorWriteEnables) {
-        return alloc(allocator).sType(sType).pNext(pNext).attachmentCount(attachmentCount).pColorWriteEnables(pColorWriteEnables);
-    }
-
-    /// Allocates a `VkPipelineColorWriteCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param attachmentCount `attachmentCount`
-    /// @return the allocated `VkPipelineColorWriteCreateInfoEXT`
-    public static VkPipelineColorWriteCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachmentCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).attachmentCount(attachmentCount);
-    }
-
-    /// Allocates a `VkPipelineColorWriteCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineColorWriteCreateInfoEXT`
-    public static VkPipelineColorWriteCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineColorWriteCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineColorWriteCreateInfoEXT`
-    public static VkPipelineColorWriteCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkVideoSessionParametersUpdateInfoKHR extends GroupType {
     /// @return the allocated `VkVideoSessionParametersUpdateInfoKHR`
     public static VkVideoSessionParametersUpdateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoSessionParametersUpdateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoSessionParametersUpdateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param updateSequenceCount `updateSequenceCount`
-    /// @return the allocated `VkVideoSessionParametersUpdateInfoKHR`
-    public static VkVideoSessionParametersUpdateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int updateSequenceCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).updateSequenceCount(updateSequenceCount);
-    }
-
-    /// Allocates a `VkVideoSessionParametersUpdateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoSessionParametersUpdateInfoKHR`
-    public static VkVideoSessionParametersUpdateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoSessionParametersUpdateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoSessionParametersUpdateInfoKHR`
-    public static VkVideoSessionParametersUpdateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

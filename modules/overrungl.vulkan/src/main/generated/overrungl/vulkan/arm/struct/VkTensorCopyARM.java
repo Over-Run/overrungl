@@ -119,69 +119,6 @@ public final class VkTensorCopyARM extends GroupType {
     /// @return the allocated `VkTensorCopyARM`
     public static VkTensorCopyARM alloc(SegmentAllocator allocator, long count) { return new VkTensorCopyARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkTensorCopyARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dimensionCount `dimensionCount`
-    /// @param pSrcOffset `pSrcOffset`
-    /// @param pDstOffset `pDstOffset`
-    /// @param pExtent `pExtent`
-    /// @return the allocated `VkTensorCopyARM`
-    public static VkTensorCopyARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dimensionCount, MemorySegment pSrcOffset, MemorySegment pDstOffset, MemorySegment pExtent) {
-        return alloc(allocator).sType(sType).pNext(pNext).dimensionCount(dimensionCount).pSrcOffset(pSrcOffset).pDstOffset(pDstOffset).pExtent(pExtent);
-    }
-
-    /// Allocates a `VkTensorCopyARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dimensionCount `dimensionCount`
-    /// @param pSrcOffset `pSrcOffset`
-    /// @param pDstOffset `pDstOffset`
-    /// @return the allocated `VkTensorCopyARM`
-    public static VkTensorCopyARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dimensionCount, MemorySegment pSrcOffset, MemorySegment pDstOffset) {
-        return alloc(allocator).sType(sType).pNext(pNext).dimensionCount(dimensionCount).pSrcOffset(pSrcOffset).pDstOffset(pDstOffset);
-    }
-
-    /// Allocates a `VkTensorCopyARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dimensionCount `dimensionCount`
-    /// @param pSrcOffset `pSrcOffset`
-    /// @return the allocated `VkTensorCopyARM`
-    public static VkTensorCopyARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dimensionCount, MemorySegment pSrcOffset) {
-        return alloc(allocator).sType(sType).pNext(pNext).dimensionCount(dimensionCount).pSrcOffset(pSrcOffset);
-    }
-
-    /// Allocates a `VkTensorCopyARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dimensionCount `dimensionCount`
-    /// @return the allocated `VkTensorCopyARM`
-    public static VkTensorCopyARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dimensionCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).dimensionCount(dimensionCount);
-    }
-
-    /// Allocates a `VkTensorCopyARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkTensorCopyARM`
-    public static VkTensorCopyARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkTensorCopyARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkTensorCopyARM`
-    public static VkTensorCopyARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

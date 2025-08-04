@@ -87,23 +87,6 @@ public final class VkVertexInputBindingDivisorDescription extends GroupType {
     /// @return the allocated `VkVertexInputBindingDivisorDescription`
     public static VkVertexInputBindingDivisorDescription alloc(SegmentAllocator allocator, long count) { return new VkVertexInputBindingDivisorDescription(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVertexInputBindingDivisorDescription` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @param divisor `divisor`
-    /// @return the allocated `VkVertexInputBindingDivisorDescription`
-    public static VkVertexInputBindingDivisorDescription allocInit(SegmentAllocator allocator, int binding, int divisor) {
-        return alloc(allocator).binding(binding).divisor(divisor);
-    }
-
-    /// Allocates a `VkVertexInputBindingDivisorDescription` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @return the allocated `VkVertexInputBindingDivisorDescription`
-    public static VkVertexInputBindingDivisorDescription allocInit(SegmentAllocator allocator, int binding) {
-        return alloc(allocator).binding(binding);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

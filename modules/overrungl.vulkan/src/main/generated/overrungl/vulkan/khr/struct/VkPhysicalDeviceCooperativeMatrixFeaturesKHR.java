@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceCooperativeMatrixFeaturesKHR extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceCooperativeMatrixFeaturesKHR`
     public static VkPhysicalDeviceCooperativeMatrixFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCooperativeMatrixFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param cooperativeMatrix `cooperativeMatrix`
-    /// @param cooperativeMatrixRobustBufferAccess `cooperativeMatrixRobustBufferAccess`
-    /// @return the allocated `VkPhysicalDeviceCooperativeMatrixFeaturesKHR`
-    public static VkPhysicalDeviceCooperativeMatrixFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeMatrix, int cooperativeMatrixRobustBufferAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).cooperativeMatrix(cooperativeMatrix).cooperativeMatrixRobustBufferAccess(cooperativeMatrixRobustBufferAccess);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param cooperativeMatrix `cooperativeMatrix`
-    /// @return the allocated `VkPhysicalDeviceCooperativeMatrixFeaturesKHR`
-    public static VkPhysicalDeviceCooperativeMatrixFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cooperativeMatrix) {
-        return alloc(allocator).sType(sType).pNext(pNext).cooperativeMatrix(cooperativeMatrix);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceCooperativeMatrixFeaturesKHR`
-    public static VkPhysicalDeviceCooperativeMatrixFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCooperativeMatrixFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceCooperativeMatrixFeaturesKHR`
-    public static VkPhysicalDeviceCooperativeMatrixFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

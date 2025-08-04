@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceTimelineSemaphorePropertiesKHR extends GroupT
     /// @return the allocated `VkPhysicalDeviceTimelineSemaphorePropertiesKHR`
     public static VkPhysicalDeviceTimelineSemaphorePropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTimelineSemaphorePropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceTimelineSemaphorePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxTimelineSemaphoreValueDifference `maxTimelineSemaphoreValueDifference`
-    /// @return the allocated `VkPhysicalDeviceTimelineSemaphorePropertiesKHR`
-    public static VkPhysicalDeviceTimelineSemaphorePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long maxTimelineSemaphoreValueDifference) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxTimelineSemaphoreValueDifference(maxTimelineSemaphoreValueDifference);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTimelineSemaphorePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceTimelineSemaphorePropertiesKHR`
-    public static VkPhysicalDeviceTimelineSemaphorePropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTimelineSemaphorePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceTimelineSemaphorePropertiesKHR`
-    public static VkPhysicalDeviceTimelineSemaphorePropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

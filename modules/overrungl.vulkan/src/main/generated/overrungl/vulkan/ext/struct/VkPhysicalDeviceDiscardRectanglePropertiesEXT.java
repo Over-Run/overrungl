@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceDiscardRectanglePropertiesEXT extends GroupTy
     /// @return the allocated `VkPhysicalDeviceDiscardRectanglePropertiesEXT`
     public static VkPhysicalDeviceDiscardRectanglePropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDiscardRectanglePropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDiscardRectanglePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxDiscardRectangles `maxDiscardRectangles`
-    /// @return the allocated `VkPhysicalDeviceDiscardRectanglePropertiesEXT`
-    public static VkPhysicalDeviceDiscardRectanglePropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxDiscardRectangles) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxDiscardRectangles(maxDiscardRectangles);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDiscardRectanglePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceDiscardRectanglePropertiesEXT`
-    public static VkPhysicalDeviceDiscardRectanglePropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDiscardRectanglePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceDiscardRectanglePropertiesEXT`
-    public static VkPhysicalDeviceDiscardRectanglePropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

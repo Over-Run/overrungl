@@ -111,56 +111,6 @@ public final class VkPipelineCacheHeaderVersionOne extends GroupType {
     /// @return the allocated `VkPipelineCacheHeaderVersionOne`
     public static VkPipelineCacheHeaderVersionOne alloc(SegmentAllocator allocator, long count) { return new VkPipelineCacheHeaderVersionOne(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCacheHeaderVersionOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerSize `headerSize`
-    /// @param headerVersion `headerVersion`
-    /// @param vendorID `vendorID`
-    /// @param deviceID `deviceID`
-    /// @param pipelineCacheUUID `pipelineCacheUUID`
-    /// @return the allocated `VkPipelineCacheHeaderVersionOne`
-    public static VkPipelineCacheHeaderVersionOne allocInit(SegmentAllocator allocator, int headerSize, int headerVersion, int vendorID, int deviceID, MemorySegment pipelineCacheUUID) {
-        return alloc(allocator).headerSize(headerSize).headerVersion(headerVersion).vendorID(vendorID).deviceID(deviceID).pipelineCacheUUID(pipelineCacheUUID);
-    }
-
-    /// Allocates a `VkPipelineCacheHeaderVersionOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerSize `headerSize`
-    /// @param headerVersion `headerVersion`
-    /// @param vendorID `vendorID`
-    /// @param deviceID `deviceID`
-    /// @return the allocated `VkPipelineCacheHeaderVersionOne`
-    public static VkPipelineCacheHeaderVersionOne allocInit(SegmentAllocator allocator, int headerSize, int headerVersion, int vendorID, int deviceID) {
-        return alloc(allocator).headerSize(headerSize).headerVersion(headerVersion).vendorID(vendorID).deviceID(deviceID);
-    }
-
-    /// Allocates a `VkPipelineCacheHeaderVersionOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerSize `headerSize`
-    /// @param headerVersion `headerVersion`
-    /// @param vendorID `vendorID`
-    /// @return the allocated `VkPipelineCacheHeaderVersionOne`
-    public static VkPipelineCacheHeaderVersionOne allocInit(SegmentAllocator allocator, int headerSize, int headerVersion, int vendorID) {
-        return alloc(allocator).headerSize(headerSize).headerVersion(headerVersion).vendorID(vendorID);
-    }
-
-    /// Allocates a `VkPipelineCacheHeaderVersionOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerSize `headerSize`
-    /// @param headerVersion `headerVersion`
-    /// @return the allocated `VkPipelineCacheHeaderVersionOne`
-    public static VkPipelineCacheHeaderVersionOne allocInit(SegmentAllocator allocator, int headerSize, int headerVersion) {
-        return alloc(allocator).headerSize(headerSize).headerVersion(headerVersion);
-    }
-
-    /// Allocates a `VkPipelineCacheHeaderVersionOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerSize `headerSize`
-    /// @return the allocated `VkPipelineCacheHeaderVersionOne`
-    public static VkPipelineCacheHeaderVersionOne allocInit(SegmentAllocator allocator, int headerSize) {
-        return alloc(allocator).headerSize(headerSize);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

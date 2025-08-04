@@ -95,33 +95,6 @@ public final class VmaAllocatorInfo extends GroupType {
     /// @return the allocated `VmaAllocatorInfo`
     public static VmaAllocatorInfo alloc(SegmentAllocator allocator, long count) { return new VmaAllocatorInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VmaAllocatorInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param instance `instance`
-    /// @param physicalDevice `physicalDevice`
-    /// @param device `device`
-    /// @return the allocated `VmaAllocatorInfo`
-    public static VmaAllocatorInfo allocInit(SegmentAllocator allocator, MemorySegment instance, MemorySegment physicalDevice, MemorySegment device) {
-        return alloc(allocator).instance(instance).physicalDevice(physicalDevice).device(device);
-    }
-
-    /// Allocates a `VmaAllocatorInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param instance `instance`
-    /// @param physicalDevice `physicalDevice`
-    /// @return the allocated `VmaAllocatorInfo`
-    public static VmaAllocatorInfo allocInit(SegmentAllocator allocator, MemorySegment instance, MemorySegment physicalDevice) {
-        return alloc(allocator).instance(instance).physicalDevice(physicalDevice);
-    }
-
-    /// Allocates a `VmaAllocatorInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param instance `instance`
-    /// @return the allocated `VmaAllocatorInfo`
-    public static VmaAllocatorInfo allocInit(SegmentAllocator allocator, MemorySegment instance) {
-        return alloc(allocator).instance(instance);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

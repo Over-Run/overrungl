@@ -95,33 +95,6 @@ public final class VkInputAttachmentAspectReferenceKHR extends GroupType {
     /// @return the allocated `VkInputAttachmentAspectReferenceKHR`
     public static VkInputAttachmentAspectReferenceKHR alloc(SegmentAllocator allocator, long count) { return new VkInputAttachmentAspectReferenceKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkInputAttachmentAspectReferenceKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subpass `subpass`
-    /// @param inputAttachmentIndex `inputAttachmentIndex`
-    /// @param aspectMask `aspectMask`
-    /// @return the allocated `VkInputAttachmentAspectReferenceKHR`
-    public static VkInputAttachmentAspectReferenceKHR allocInit(SegmentAllocator allocator, int subpass, int inputAttachmentIndex, int aspectMask) {
-        return alloc(allocator).subpass(subpass).inputAttachmentIndex(inputAttachmentIndex).aspectMask(aspectMask);
-    }
-
-    /// Allocates a `VkInputAttachmentAspectReferenceKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subpass `subpass`
-    /// @param inputAttachmentIndex `inputAttachmentIndex`
-    /// @return the allocated `VkInputAttachmentAspectReferenceKHR`
-    public static VkInputAttachmentAspectReferenceKHR allocInit(SegmentAllocator allocator, int subpass, int inputAttachmentIndex) {
-        return alloc(allocator).subpass(subpass).inputAttachmentIndex(inputAttachmentIndex);
-    }
-
-    /// Allocates a `VkInputAttachmentAspectReferenceKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subpass `subpass`
-    /// @return the allocated `VkInputAttachmentAspectReferenceKHR`
-    public static VkInputAttachmentAspectReferenceKHR allocInit(SegmentAllocator allocator, int subpass) {
-        return alloc(allocator).subpass(subpass);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

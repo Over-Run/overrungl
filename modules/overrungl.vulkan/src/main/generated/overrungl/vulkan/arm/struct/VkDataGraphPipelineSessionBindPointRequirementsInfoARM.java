@@ -95,33 +95,6 @@ public final class VkDataGraphPipelineSessionBindPointRequirementsInfoARM extend
     /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
     public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineSessionBindPointRequirementsInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param session `session`
-    /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
-    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long session) {
-        return alloc(allocator).sType(sType).pNext(pNext).session(session);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
-    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementsInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementsInfoARM`
-    public static VkDataGraphPipelineSessionBindPointRequirementsInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

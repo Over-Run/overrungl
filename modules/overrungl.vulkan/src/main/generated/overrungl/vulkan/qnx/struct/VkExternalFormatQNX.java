@@ -95,33 +95,6 @@ public final class VkExternalFormatQNX extends GroupType {
     /// @return the allocated `VkExternalFormatQNX`
     public static VkExternalFormatQNX alloc(SegmentAllocator allocator, long count) { return new VkExternalFormatQNX(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExternalFormatQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param externalFormat `externalFormat`
-    /// @return the allocated `VkExternalFormatQNX`
-    public static VkExternalFormatQNX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long externalFormat) {
-        return alloc(allocator).sType(sType).pNext(pNext).externalFormat(externalFormat);
-    }
-
-    /// Allocates a `VkExternalFormatQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExternalFormatQNX`
-    public static VkExternalFormatQNX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExternalFormatQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExternalFormatQNX`
-    public static VkExternalFormatQNX allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

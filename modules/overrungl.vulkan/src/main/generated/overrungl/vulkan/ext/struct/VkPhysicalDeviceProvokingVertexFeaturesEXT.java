@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceProvokingVertexFeaturesEXT extends GroupType 
     /// @return the allocated `VkPhysicalDeviceProvokingVertexFeaturesEXT`
     public static VkPhysicalDeviceProvokingVertexFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceProvokingVertexFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param provokingVertexLast `provokingVertexLast`
-    /// @param transformFeedbackPreservesProvokingVertex `transformFeedbackPreservesProvokingVertex`
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexFeaturesEXT`
-    public static VkPhysicalDeviceProvokingVertexFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int provokingVertexLast, int transformFeedbackPreservesProvokingVertex) {
-        return alloc(allocator).sType(sType).pNext(pNext).provokingVertexLast(provokingVertexLast).transformFeedbackPreservesProvokingVertex(transformFeedbackPreservesProvokingVertex);
-    }
-
-    /// Allocates a `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param provokingVertexLast `provokingVertexLast`
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexFeaturesEXT`
-    public static VkPhysicalDeviceProvokingVertexFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int provokingVertexLast) {
-        return alloc(allocator).sType(sType).pNext(pNext).provokingVertexLast(provokingVertexLast);
-    }
-
-    /// Allocates a `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexFeaturesEXT`
-    public static VkPhysicalDeviceProvokingVertexFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceProvokingVertexFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexFeaturesEXT`
-    public static VkPhysicalDeviceProvokingVertexFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkSparseBufferMemoryBindInfo extends GroupType {
     /// @return the allocated `VkSparseBufferMemoryBindInfo`
     public static VkSparseBufferMemoryBindInfo alloc(SegmentAllocator allocator, long count) { return new VkSparseBufferMemoryBindInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSparseBufferMemoryBindInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer `buffer`
-    /// @param bindCount `bindCount`
-    /// @param pBinds `pBinds`
-    /// @return the allocated `VkSparseBufferMemoryBindInfo`
-    public static VkSparseBufferMemoryBindInfo allocInit(SegmentAllocator allocator, long buffer, int bindCount, MemorySegment pBinds) {
-        return alloc(allocator).buffer(buffer).bindCount(bindCount).pBinds(pBinds);
-    }
-
-    /// Allocates a `VkSparseBufferMemoryBindInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer `buffer`
-    /// @param bindCount `bindCount`
-    /// @return the allocated `VkSparseBufferMemoryBindInfo`
-    public static VkSparseBufferMemoryBindInfo allocInit(SegmentAllocator allocator, long buffer, int bindCount) {
-        return alloc(allocator).buffer(buffer).bindCount(bindCount);
-    }
-
-    /// Allocates a `VkSparseBufferMemoryBindInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer `buffer`
-    /// @return the allocated `VkSparseBufferMemoryBindInfo`
-    public static VkSparseBufferMemoryBindInfo allocInit(SegmentAllocator allocator, long buffer) {
-        return alloc(allocator).buffer(buffer);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

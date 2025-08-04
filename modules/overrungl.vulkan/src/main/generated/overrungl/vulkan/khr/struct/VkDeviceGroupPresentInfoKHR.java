@@ -111,56 +111,6 @@ public final class VkDeviceGroupPresentInfoKHR extends GroupType {
     /// @return the allocated `VkDeviceGroupPresentInfoKHR`
     public static VkDeviceGroupPresentInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceGroupPresentInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceGroupPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchainCount `swapchainCount`
-    /// @param pDeviceMasks `pDeviceMasks`
-    /// @param mode `mode`
-    /// @return the allocated `VkDeviceGroupPresentInfoKHR`
-    public static VkDeviceGroupPresentInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainCount, MemorySegment pDeviceMasks, int mode) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pDeviceMasks(pDeviceMasks).mode(mode);
-    }
-
-    /// Allocates a `VkDeviceGroupPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchainCount `swapchainCount`
-    /// @param pDeviceMasks `pDeviceMasks`
-    /// @return the allocated `VkDeviceGroupPresentInfoKHR`
-    public static VkDeviceGroupPresentInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainCount, MemorySegment pDeviceMasks) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pDeviceMasks(pDeviceMasks);
-    }
-
-    /// Allocates a `VkDeviceGroupPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchainCount `swapchainCount`
-    /// @return the allocated `VkDeviceGroupPresentInfoKHR`
-    public static VkDeviceGroupPresentInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount);
-    }
-
-    /// Allocates a `VkDeviceGroupPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceGroupPresentInfoKHR`
-    public static VkDeviceGroupPresentInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceGroupPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceGroupPresentInfoKHR`
-    public static VkDeviceGroupPresentInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

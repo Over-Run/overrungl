@@ -111,56 +111,6 @@ public final class VkAttachmentSampleCountInfoAMD extends GroupType {
     /// @return the allocated `VkAttachmentSampleCountInfoAMD`
     public static VkAttachmentSampleCountInfoAMD alloc(SegmentAllocator allocator, long count) { return new VkAttachmentSampleCountInfoAMD(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAttachmentSampleCountInfoAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @param pColorAttachmentSamples `pColorAttachmentSamples`
-    /// @param depthStencilAttachmentSamples `depthStencilAttachmentSamples`
-    /// @return the allocated `VkAttachmentSampleCountInfoAMD`
-    public static VkAttachmentSampleCountInfoAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount, MemorySegment pColorAttachmentSamples, int depthStencilAttachmentSamples) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentSamples(pColorAttachmentSamples).depthStencilAttachmentSamples(depthStencilAttachmentSamples);
-    }
-
-    /// Allocates a `VkAttachmentSampleCountInfoAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @param pColorAttachmentSamples `pColorAttachmentSamples`
-    /// @return the allocated `VkAttachmentSampleCountInfoAMD`
-    public static VkAttachmentSampleCountInfoAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount, MemorySegment pColorAttachmentSamples) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentSamples(pColorAttachmentSamples);
-    }
-
-    /// Allocates a `VkAttachmentSampleCountInfoAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @return the allocated `VkAttachmentSampleCountInfoAMD`
-    public static VkAttachmentSampleCountInfoAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount);
-    }
-
-    /// Allocates a `VkAttachmentSampleCountInfoAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAttachmentSampleCountInfoAMD`
-    public static VkAttachmentSampleCountInfoAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAttachmentSampleCountInfoAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAttachmentSampleCountInfoAMD`
-    public static VkAttachmentSampleCountInfoAMD allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

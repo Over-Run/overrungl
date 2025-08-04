@@ -119,69 +119,6 @@ public final class VkGraphicsPipelineShaderGroupsCreateInfoNV extends GroupType 
     /// @return the allocated `VkGraphicsPipelineShaderGroupsCreateInfoNV`
     public static VkGraphicsPipelineShaderGroupsCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkGraphicsPipelineShaderGroupsCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkGraphicsPipelineShaderGroupsCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param groupCount `groupCount`
-    /// @param pGroups `pGroups`
-    /// @param pipelineCount `pipelineCount`
-    /// @param pPipelines `pPipelines`
-    /// @return the allocated `VkGraphicsPipelineShaderGroupsCreateInfoNV`
-    public static VkGraphicsPipelineShaderGroupsCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int groupCount, MemorySegment pGroups, int pipelineCount, MemorySegment pPipelines) {
-        return alloc(allocator).sType(sType).pNext(pNext).groupCount(groupCount).pGroups(pGroups).pipelineCount(pipelineCount).pPipelines(pPipelines);
-    }
-
-    /// Allocates a `VkGraphicsPipelineShaderGroupsCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param groupCount `groupCount`
-    /// @param pGroups `pGroups`
-    /// @param pipelineCount `pipelineCount`
-    /// @return the allocated `VkGraphicsPipelineShaderGroupsCreateInfoNV`
-    public static VkGraphicsPipelineShaderGroupsCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int groupCount, MemorySegment pGroups, int pipelineCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).groupCount(groupCount).pGroups(pGroups).pipelineCount(pipelineCount);
-    }
-
-    /// Allocates a `VkGraphicsPipelineShaderGroupsCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param groupCount `groupCount`
-    /// @param pGroups `pGroups`
-    /// @return the allocated `VkGraphicsPipelineShaderGroupsCreateInfoNV`
-    public static VkGraphicsPipelineShaderGroupsCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int groupCount, MemorySegment pGroups) {
-        return alloc(allocator).sType(sType).pNext(pNext).groupCount(groupCount).pGroups(pGroups);
-    }
-
-    /// Allocates a `VkGraphicsPipelineShaderGroupsCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param groupCount `groupCount`
-    /// @return the allocated `VkGraphicsPipelineShaderGroupsCreateInfoNV`
-    public static VkGraphicsPipelineShaderGroupsCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int groupCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).groupCount(groupCount);
-    }
-
-    /// Allocates a `VkGraphicsPipelineShaderGroupsCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkGraphicsPipelineShaderGroupsCreateInfoNV`
-    public static VkGraphicsPipelineShaderGroupsCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkGraphicsPipelineShaderGroupsCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkGraphicsPipelineShaderGroupsCreateInfoNV`
-    public static VkGraphicsPipelineShaderGroupsCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

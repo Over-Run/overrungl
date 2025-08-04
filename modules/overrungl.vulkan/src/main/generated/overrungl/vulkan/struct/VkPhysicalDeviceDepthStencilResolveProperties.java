@@ -119,69 +119,6 @@ public final class VkPhysicalDeviceDepthStencilResolveProperties extends GroupTy
     /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
     public static VkPhysicalDeviceDepthStencilResolveProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDepthStencilResolveProperties(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param supportedDepthResolveModes `supportedDepthResolveModes`
-    /// @param supportedStencilResolveModes `supportedStencilResolveModes`
-    /// @param independentResolveNone `independentResolveNone`
-    /// @param independentResolve `independentResolve`
-    /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
-    public static VkPhysicalDeviceDepthStencilResolveProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportedDepthResolveModes, int supportedStencilResolveModes, int independentResolveNone, int independentResolve) {
-        return alloc(allocator).sType(sType).pNext(pNext).supportedDepthResolveModes(supportedDepthResolveModes).supportedStencilResolveModes(supportedStencilResolveModes).independentResolveNone(independentResolveNone).independentResolve(independentResolve);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param supportedDepthResolveModes `supportedDepthResolveModes`
-    /// @param supportedStencilResolveModes `supportedStencilResolveModes`
-    /// @param independentResolveNone `independentResolveNone`
-    /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
-    public static VkPhysicalDeviceDepthStencilResolveProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportedDepthResolveModes, int supportedStencilResolveModes, int independentResolveNone) {
-        return alloc(allocator).sType(sType).pNext(pNext).supportedDepthResolveModes(supportedDepthResolveModes).supportedStencilResolveModes(supportedStencilResolveModes).independentResolveNone(independentResolveNone);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param supportedDepthResolveModes `supportedDepthResolveModes`
-    /// @param supportedStencilResolveModes `supportedStencilResolveModes`
-    /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
-    public static VkPhysicalDeviceDepthStencilResolveProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportedDepthResolveModes, int supportedStencilResolveModes) {
-        return alloc(allocator).sType(sType).pNext(pNext).supportedDepthResolveModes(supportedDepthResolveModes).supportedStencilResolveModes(supportedStencilResolveModes);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param supportedDepthResolveModes `supportedDepthResolveModes`
-    /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
-    public static VkPhysicalDeviceDepthStencilResolveProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportedDepthResolveModes) {
-        return alloc(allocator).sType(sType).pNext(pNext).supportedDepthResolveModes(supportedDepthResolveModes);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
-    public static VkPhysicalDeviceDepthStencilResolveProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDepthStencilResolveProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceDepthStencilResolveProperties`
-    public static VkPhysicalDeviceDepthStencilResolveProperties allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

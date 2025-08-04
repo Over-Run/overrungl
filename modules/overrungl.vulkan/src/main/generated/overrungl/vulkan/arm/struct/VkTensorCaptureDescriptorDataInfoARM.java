@@ -95,33 +95,6 @@ public final class VkTensorCaptureDescriptorDataInfoARM extends GroupType {
     /// @return the allocated `VkTensorCaptureDescriptorDataInfoARM`
     public static VkTensorCaptureDescriptorDataInfoARM alloc(SegmentAllocator allocator, long count) { return new VkTensorCaptureDescriptorDataInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkTensorCaptureDescriptorDataInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensor `tensor`
-    /// @return the allocated `VkTensorCaptureDescriptorDataInfoARM`
-    public static VkTensorCaptureDescriptorDataInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long tensor) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensor(tensor);
-    }
-
-    /// Allocates a `VkTensorCaptureDescriptorDataInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkTensorCaptureDescriptorDataInfoARM`
-    public static VkTensorCaptureDescriptorDataInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkTensorCaptureDescriptorDataInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkTensorCaptureDescriptorDataInfoARM`
-    public static VkTensorCaptureDescriptorDataInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

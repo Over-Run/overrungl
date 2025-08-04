@@ -93,33 +93,6 @@ public final class StdVideoH265ProfileTierLevel extends GroupType {
     /// @return the allocated `StdVideoH265ProfileTierLevel`
     public static StdVideoH265ProfileTierLevel alloc(SegmentAllocator allocator, long count) { return new StdVideoH265ProfileTierLevel(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoH265ProfileTierLevel` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param general_profile_idc `general_profile_idc`
-    /// @param general_level_idc `general_level_idc`
-    /// @return the allocated `StdVideoH265ProfileTierLevel`
-    public static StdVideoH265ProfileTierLevel allocInit(SegmentAllocator allocator, MemorySegment flags, int general_profile_idc, int general_level_idc) {
-        return alloc(allocator).flags(flags).general_profile_idc(general_profile_idc).general_level_idc(general_level_idc);
-    }
-
-    /// Allocates a `StdVideoH265ProfileTierLevel` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param general_profile_idc `general_profile_idc`
-    /// @return the allocated `StdVideoH265ProfileTierLevel`
-    public static StdVideoH265ProfileTierLevel allocInit(SegmentAllocator allocator, MemorySegment flags, int general_profile_idc) {
-        return alloc(allocator).flags(flags).general_profile_idc(general_profile_idc);
-    }
-
-    /// Allocates a `StdVideoH265ProfileTierLevel` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @return the allocated `StdVideoH265ProfileTierLevel`
-    public static StdVideoH265ProfileTierLevel allocInit(SegmentAllocator allocator, MemorySegment flags) {
-        return alloc(allocator).flags(flags);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkImageViewMinLodCreateInfoEXT extends GroupType {
     /// @return the allocated `VkImageViewMinLodCreateInfoEXT`
     public static VkImageViewMinLodCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkImageViewMinLodCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageViewMinLodCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param minLod `minLod`
-    /// @return the allocated `VkImageViewMinLodCreateInfoEXT`
-    public static VkImageViewMinLodCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, float minLod) {
-        return alloc(allocator).sType(sType).pNext(pNext).minLod(minLod);
-    }
-
-    /// Allocates a `VkImageViewMinLodCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImageViewMinLodCreateInfoEXT`
-    public static VkImageViewMinLodCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImageViewMinLodCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImageViewMinLodCreateInfoEXT`
-    public static VkImageViewMinLodCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

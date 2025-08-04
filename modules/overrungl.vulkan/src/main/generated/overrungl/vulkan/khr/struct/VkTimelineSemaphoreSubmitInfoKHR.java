@@ -119,69 +119,6 @@ public final class VkTimelineSemaphoreSubmitInfoKHR extends GroupType {
     /// @return the allocated `VkTimelineSemaphoreSubmitInfoKHR`
     public static VkTimelineSemaphoreSubmitInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkTimelineSemaphoreSubmitInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkTimelineSemaphoreSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param waitSemaphoreValueCount `waitSemaphoreValueCount`
-    /// @param pWaitSemaphoreValues `pWaitSemaphoreValues`
-    /// @param signalSemaphoreValueCount `signalSemaphoreValueCount`
-    /// @param pSignalSemaphoreValues `pSignalSemaphoreValues`
-    /// @return the allocated `VkTimelineSemaphoreSubmitInfoKHR`
-    public static VkTimelineSemaphoreSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreValueCount, MemorySegment pWaitSemaphoreValues, int signalSemaphoreValueCount, MemorySegment pSignalSemaphoreValues) {
-        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreValueCount(waitSemaphoreValueCount).pWaitSemaphoreValues(pWaitSemaphoreValues).signalSemaphoreValueCount(signalSemaphoreValueCount).pSignalSemaphoreValues(pSignalSemaphoreValues);
-    }
-
-    /// Allocates a `VkTimelineSemaphoreSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param waitSemaphoreValueCount `waitSemaphoreValueCount`
-    /// @param pWaitSemaphoreValues `pWaitSemaphoreValues`
-    /// @param signalSemaphoreValueCount `signalSemaphoreValueCount`
-    /// @return the allocated `VkTimelineSemaphoreSubmitInfoKHR`
-    public static VkTimelineSemaphoreSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreValueCount, MemorySegment pWaitSemaphoreValues, int signalSemaphoreValueCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreValueCount(waitSemaphoreValueCount).pWaitSemaphoreValues(pWaitSemaphoreValues).signalSemaphoreValueCount(signalSemaphoreValueCount);
-    }
-
-    /// Allocates a `VkTimelineSemaphoreSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param waitSemaphoreValueCount `waitSemaphoreValueCount`
-    /// @param pWaitSemaphoreValues `pWaitSemaphoreValues`
-    /// @return the allocated `VkTimelineSemaphoreSubmitInfoKHR`
-    public static VkTimelineSemaphoreSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreValueCount, MemorySegment pWaitSemaphoreValues) {
-        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreValueCount(waitSemaphoreValueCount).pWaitSemaphoreValues(pWaitSemaphoreValues);
-    }
-
-    /// Allocates a `VkTimelineSemaphoreSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param waitSemaphoreValueCount `waitSemaphoreValueCount`
-    /// @return the allocated `VkTimelineSemaphoreSubmitInfoKHR`
-    public static VkTimelineSemaphoreSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreValueCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreValueCount(waitSemaphoreValueCount);
-    }
-
-    /// Allocates a `VkTimelineSemaphoreSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkTimelineSemaphoreSubmitInfoKHR`
-    public static VkTimelineSemaphoreSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkTimelineSemaphoreSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkTimelineSemaphoreSubmitInfoKHR`
-    public static VkTimelineSemaphoreSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

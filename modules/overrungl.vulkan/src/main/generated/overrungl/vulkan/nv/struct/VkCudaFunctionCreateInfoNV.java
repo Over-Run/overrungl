@@ -103,44 +103,6 @@ public final class VkCudaFunctionCreateInfoNV extends GroupType {
     /// @return the allocated `VkCudaFunctionCreateInfoNV`
     public static VkCudaFunctionCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkCudaFunctionCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCudaFunctionCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param module `module`
-    /// @param pName `pName`
-    /// @return the allocated `VkCudaFunctionCreateInfoNV`
-    public static VkCudaFunctionCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long module, MemorySegment pName) {
-        return alloc(allocator).sType(sType).pNext(pNext).module(module).pName(pName);
-    }
-
-    /// Allocates a `VkCudaFunctionCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param module `module`
-    /// @return the allocated `VkCudaFunctionCreateInfoNV`
-    public static VkCudaFunctionCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long module) {
-        return alloc(allocator).sType(sType).pNext(pNext).module(module);
-    }
-
-    /// Allocates a `VkCudaFunctionCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkCudaFunctionCreateInfoNV`
-    public static VkCudaFunctionCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkCudaFunctionCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkCudaFunctionCreateInfoNV`
-    public static VkCudaFunctionCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

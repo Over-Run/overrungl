@@ -95,33 +95,6 @@ public final class VkDeviceGroupCommandBufferBeginInfoKHR extends GroupType {
     /// @return the allocated `VkDeviceGroupCommandBufferBeginInfoKHR`
     public static VkDeviceGroupCommandBufferBeginInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceGroupCommandBufferBeginInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceGroupCommandBufferBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceMask `deviceMask`
-    /// @return the allocated `VkDeviceGroupCommandBufferBeginInfoKHR`
-    public static VkDeviceGroupCommandBufferBeginInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceMask(deviceMask);
-    }
-
-    /// Allocates a `VkDeviceGroupCommandBufferBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceGroupCommandBufferBeginInfoKHR`
-    public static VkDeviceGroupCommandBufferBeginInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceGroupCommandBufferBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceGroupCommandBufferBeginInfoKHR`
-    public static VkDeviceGroupCommandBufferBeginInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

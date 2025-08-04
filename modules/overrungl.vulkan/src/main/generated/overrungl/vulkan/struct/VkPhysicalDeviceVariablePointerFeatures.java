@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceVariablePointerFeatures extends GroupType {
     /// @return the allocated `VkPhysicalDeviceVariablePointerFeatures`
     public static VkPhysicalDeviceVariablePointerFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVariablePointerFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVariablePointerFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param variablePointersStorageBuffer `variablePointersStorageBuffer`
-    /// @param variablePointers `variablePointers`
-    /// @return the allocated `VkPhysicalDeviceVariablePointerFeatures`
-    public static VkPhysicalDeviceVariablePointerFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int variablePointersStorageBuffer, int variablePointers) {
-        return alloc(allocator).sType(sType).pNext(pNext).variablePointersStorageBuffer(variablePointersStorageBuffer).variablePointers(variablePointers);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVariablePointerFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param variablePointersStorageBuffer `variablePointersStorageBuffer`
-    /// @return the allocated `VkPhysicalDeviceVariablePointerFeatures`
-    public static VkPhysicalDeviceVariablePointerFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int variablePointersStorageBuffer) {
-        return alloc(allocator).sType(sType).pNext(pNext).variablePointersStorageBuffer(variablePointersStorageBuffer);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVariablePointerFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceVariablePointerFeatures`
-    public static VkPhysicalDeviceVariablePointerFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVariablePointerFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceVariablePointerFeatures`
-    public static VkPhysicalDeviceVariablePointerFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

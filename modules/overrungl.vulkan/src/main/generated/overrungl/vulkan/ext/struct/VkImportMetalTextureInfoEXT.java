@@ -103,44 +103,6 @@ public final class VkImportMetalTextureInfoEXT extends GroupType {
     /// @return the allocated `VkImportMetalTextureInfoEXT`
     public static VkImportMetalTextureInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkImportMetalTextureInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImportMetalTextureInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param plane `plane`
-    /// @param mtlTexture `mtlTexture`
-    /// @return the allocated `VkImportMetalTextureInfoEXT`
-    public static VkImportMetalTextureInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int plane, MemorySegment mtlTexture) {
-        return alloc(allocator).sType(sType).pNext(pNext).plane(plane).mtlTexture(mtlTexture);
-    }
-
-    /// Allocates a `VkImportMetalTextureInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param plane `plane`
-    /// @return the allocated `VkImportMetalTextureInfoEXT`
-    public static VkImportMetalTextureInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int plane) {
-        return alloc(allocator).sType(sType).pNext(pNext).plane(plane);
-    }
-
-    /// Allocates a `VkImportMetalTextureInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImportMetalTextureInfoEXT`
-    public static VkImportMetalTextureInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImportMetalTextureInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImportMetalTextureInfoEXT`
-    public static VkImportMetalTextureInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -115,69 +115,6 @@ public final class VkVideoPictureResourceInfoKHR extends GroupType {
     /// @return the allocated `VkVideoPictureResourceInfoKHR`
     public static VkVideoPictureResourceInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoPictureResourceInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoPictureResourceInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param codedOffset `codedOffset`
-    /// @param codedExtent `codedExtent`
-    /// @param baseArrayLayer `baseArrayLayer`
-    /// @param imageViewBinding `imageViewBinding`
-    /// @return the allocated `VkVideoPictureResourceInfoKHR`
-    public static VkVideoPictureResourceInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment codedOffset, MemorySegment codedExtent, int baseArrayLayer, long imageViewBinding) {
-        return alloc(allocator).sType(sType).pNext(pNext).codedOffset(codedOffset).codedExtent(codedExtent).baseArrayLayer(baseArrayLayer).imageViewBinding(imageViewBinding);
-    }
-
-    /// Allocates a `VkVideoPictureResourceInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param codedOffset `codedOffset`
-    /// @param codedExtent `codedExtent`
-    /// @param baseArrayLayer `baseArrayLayer`
-    /// @return the allocated `VkVideoPictureResourceInfoKHR`
-    public static VkVideoPictureResourceInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment codedOffset, MemorySegment codedExtent, int baseArrayLayer) {
-        return alloc(allocator).sType(sType).pNext(pNext).codedOffset(codedOffset).codedExtent(codedExtent).baseArrayLayer(baseArrayLayer);
-    }
-
-    /// Allocates a `VkVideoPictureResourceInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param codedOffset `codedOffset`
-    /// @param codedExtent `codedExtent`
-    /// @return the allocated `VkVideoPictureResourceInfoKHR`
-    public static VkVideoPictureResourceInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment codedOffset, MemorySegment codedExtent) {
-        return alloc(allocator).sType(sType).pNext(pNext).codedOffset(codedOffset).codedExtent(codedExtent);
-    }
-
-    /// Allocates a `VkVideoPictureResourceInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param codedOffset `codedOffset`
-    /// @return the allocated `VkVideoPictureResourceInfoKHR`
-    public static VkVideoPictureResourceInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment codedOffset) {
-        return alloc(allocator).sType(sType).pNext(pNext).codedOffset(codedOffset);
-    }
-
-    /// Allocates a `VkVideoPictureResourceInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoPictureResourceInfoKHR`
-    public static VkVideoPictureResourceInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoPictureResourceInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoPictureResourceInfoKHR`
-    public static VkVideoPictureResourceInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

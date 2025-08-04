@@ -103,44 +103,6 @@ public final class VkMemoryAllocateInfo extends GroupType {
     /// @return the allocated `VkMemoryAllocateInfo`
     public static VkMemoryAllocateInfo alloc(SegmentAllocator allocator, long count) { return new VkMemoryAllocateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryAllocateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param allocationSize `allocationSize`
-    /// @param memoryTypeIndex `memoryTypeIndex`
-    /// @return the allocated `VkMemoryAllocateInfo`
-    public static VkMemoryAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long allocationSize, int memoryTypeIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).allocationSize(allocationSize).memoryTypeIndex(memoryTypeIndex);
-    }
-
-    /// Allocates a `VkMemoryAllocateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param allocationSize `allocationSize`
-    /// @return the allocated `VkMemoryAllocateInfo`
-    public static VkMemoryAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long allocationSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).allocationSize(allocationSize);
-    }
-
-    /// Allocates a `VkMemoryAllocateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryAllocateInfo`
-    public static VkMemoryAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryAllocateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryAllocateInfo`
-    public static VkMemoryAllocateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

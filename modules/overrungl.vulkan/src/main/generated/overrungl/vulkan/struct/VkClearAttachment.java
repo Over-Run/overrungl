@@ -93,33 +93,6 @@ public final class VkClearAttachment extends GroupType {
     /// @return the allocated `VkClearAttachment`
     public static VkClearAttachment alloc(SegmentAllocator allocator, long count) { return new VkClearAttachment(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkClearAttachment` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @param colorAttachment `colorAttachment`
-    /// @param clearValue `clearValue`
-    /// @return the allocated `VkClearAttachment`
-    public static VkClearAttachment allocInit(SegmentAllocator allocator, int aspectMask, int colorAttachment, MemorySegment clearValue) {
-        return alloc(allocator).aspectMask(aspectMask).colorAttachment(colorAttachment).clearValue(clearValue);
-    }
-
-    /// Allocates a `VkClearAttachment` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @param colorAttachment `colorAttachment`
-    /// @return the allocated `VkClearAttachment`
-    public static VkClearAttachment allocInit(SegmentAllocator allocator, int aspectMask, int colorAttachment) {
-        return alloc(allocator).aspectMask(aspectMask).colorAttachment(colorAttachment);
-    }
-
-    /// Allocates a `VkClearAttachment` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @return the allocated `VkClearAttachment`
-    public static VkClearAttachment allocInit(SegmentAllocator allocator, int aspectMask) {
-        return alloc(allocator).aspectMask(aspectMask);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

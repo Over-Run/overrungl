@@ -111,56 +111,6 @@ public final class VkPipelineCreationFeedbackCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineCreationFeedbackCreateInfo`
     public static VkPipelineCreationFeedbackCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineCreationFeedbackCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCreationFeedbackCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pPipelineCreationFeedback `pPipelineCreationFeedback`
-    /// @param pipelineStageCreationFeedbackCount `pipelineStageCreationFeedbackCount`
-    /// @param pPipelineStageCreationFeedbacks `pPipelineStageCreationFeedbacks`
-    /// @return the allocated `VkPipelineCreationFeedbackCreateInfo`
-    public static VkPipelineCreationFeedbackCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pPipelineCreationFeedback, int pipelineStageCreationFeedbackCount, MemorySegment pPipelineStageCreationFeedbacks) {
-        return alloc(allocator).sType(sType).pNext(pNext).pPipelineCreationFeedback(pPipelineCreationFeedback).pipelineStageCreationFeedbackCount(pipelineStageCreationFeedbackCount).pPipelineStageCreationFeedbacks(pPipelineStageCreationFeedbacks);
-    }
-
-    /// Allocates a `VkPipelineCreationFeedbackCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pPipelineCreationFeedback `pPipelineCreationFeedback`
-    /// @param pipelineStageCreationFeedbackCount `pipelineStageCreationFeedbackCount`
-    /// @return the allocated `VkPipelineCreationFeedbackCreateInfo`
-    public static VkPipelineCreationFeedbackCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pPipelineCreationFeedback, int pipelineStageCreationFeedbackCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).pPipelineCreationFeedback(pPipelineCreationFeedback).pipelineStageCreationFeedbackCount(pipelineStageCreationFeedbackCount);
-    }
-
-    /// Allocates a `VkPipelineCreationFeedbackCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pPipelineCreationFeedback `pPipelineCreationFeedback`
-    /// @return the allocated `VkPipelineCreationFeedbackCreateInfo`
-    public static VkPipelineCreationFeedbackCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pPipelineCreationFeedback) {
-        return alloc(allocator).sType(sType).pNext(pNext).pPipelineCreationFeedback(pPipelineCreationFeedback);
-    }
-
-    /// Allocates a `VkPipelineCreationFeedbackCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineCreationFeedbackCreateInfo`
-    public static VkPipelineCreationFeedbackCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineCreationFeedbackCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineCreationFeedbackCreateInfo`
-    public static VkPipelineCreationFeedbackCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

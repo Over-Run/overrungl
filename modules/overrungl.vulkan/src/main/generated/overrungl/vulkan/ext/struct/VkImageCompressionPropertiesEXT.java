@@ -103,44 +103,6 @@ public final class VkImageCompressionPropertiesEXT extends GroupType {
     /// @return the allocated `VkImageCompressionPropertiesEXT`
     public static VkImageCompressionPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkImageCompressionPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageCompressionPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imageCompressionFlags `imageCompressionFlags`
-    /// @param imageCompressionFixedRateFlags `imageCompressionFixedRateFlags`
-    /// @return the allocated `VkImageCompressionPropertiesEXT`
-    public static VkImageCompressionPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int imageCompressionFlags, int imageCompressionFixedRateFlags) {
-        return alloc(allocator).sType(sType).pNext(pNext).imageCompressionFlags(imageCompressionFlags).imageCompressionFixedRateFlags(imageCompressionFixedRateFlags);
-    }
-
-    /// Allocates a `VkImageCompressionPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imageCompressionFlags `imageCompressionFlags`
-    /// @return the allocated `VkImageCompressionPropertiesEXT`
-    public static VkImageCompressionPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int imageCompressionFlags) {
-        return alloc(allocator).sType(sType).pNext(pNext).imageCompressionFlags(imageCompressionFlags);
-    }
-
-    /// Allocates a `VkImageCompressionPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImageCompressionPropertiesEXT`
-    public static VkImageCompressionPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImageCompressionPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImageCompressionPropertiesEXT`
-    public static VkImageCompressionPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

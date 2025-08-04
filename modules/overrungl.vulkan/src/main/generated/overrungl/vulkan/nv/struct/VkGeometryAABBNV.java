@@ -119,69 +119,6 @@ public final class VkGeometryAABBNV extends GroupType {
     /// @return the allocated `VkGeometryAABBNV`
     public static VkGeometryAABBNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryAABBNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkGeometryAABBNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param aabbData `aabbData`
-    /// @param numAABBs `numAABBs`
-    /// @param stride `stride`
-    /// @param offset `offset`
-    /// @return the allocated `VkGeometryAABBNV`
-    public static VkGeometryAABBNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long aabbData, int numAABBs, int stride, long offset) {
-        return alloc(allocator).sType(sType).pNext(pNext).aabbData(aabbData).numAABBs(numAABBs).stride(stride).offset(offset);
-    }
-
-    /// Allocates a `VkGeometryAABBNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param aabbData `aabbData`
-    /// @param numAABBs `numAABBs`
-    /// @param stride `stride`
-    /// @return the allocated `VkGeometryAABBNV`
-    public static VkGeometryAABBNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long aabbData, int numAABBs, int stride) {
-        return alloc(allocator).sType(sType).pNext(pNext).aabbData(aabbData).numAABBs(numAABBs).stride(stride);
-    }
-
-    /// Allocates a `VkGeometryAABBNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param aabbData `aabbData`
-    /// @param numAABBs `numAABBs`
-    /// @return the allocated `VkGeometryAABBNV`
-    public static VkGeometryAABBNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long aabbData, int numAABBs) {
-        return alloc(allocator).sType(sType).pNext(pNext).aabbData(aabbData).numAABBs(numAABBs);
-    }
-
-    /// Allocates a `VkGeometryAABBNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param aabbData `aabbData`
-    /// @return the allocated `VkGeometryAABBNV`
-    public static VkGeometryAABBNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long aabbData) {
-        return alloc(allocator).sType(sType).pNext(pNext).aabbData(aabbData);
-    }
-
-    /// Allocates a `VkGeometryAABBNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkGeometryAABBNV`
-    public static VkGeometryAABBNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkGeometryAABBNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkGeometryAABBNV`
-    public static VkGeometryAABBNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

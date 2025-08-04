@@ -117,69 +117,6 @@ public final class VkPipelineExecutableStatisticKHR extends GroupType {
     /// @return the allocated `VkPipelineExecutableStatisticKHR`
     public static VkPipelineExecutableStatisticKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineExecutableStatisticKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineExecutableStatisticKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param name `name`
-    /// @param description `description`
-    /// @param format `format`
-    /// @param value `value`
-    /// @return the allocated `VkPipelineExecutableStatisticKHR`
-    public static VkPipelineExecutableStatisticKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment name, MemorySegment description, int format, MemorySegment value) {
-        return alloc(allocator).sType(sType).pNext(pNext).name(name).description(description).format(format).value(value);
-    }
-
-    /// Allocates a `VkPipelineExecutableStatisticKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param name `name`
-    /// @param description `description`
-    /// @param format `format`
-    /// @return the allocated `VkPipelineExecutableStatisticKHR`
-    public static VkPipelineExecutableStatisticKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment name, MemorySegment description, int format) {
-        return alloc(allocator).sType(sType).pNext(pNext).name(name).description(description).format(format);
-    }
-
-    /// Allocates a `VkPipelineExecutableStatisticKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param name `name`
-    /// @param description `description`
-    /// @return the allocated `VkPipelineExecutableStatisticKHR`
-    public static VkPipelineExecutableStatisticKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment name, MemorySegment description) {
-        return alloc(allocator).sType(sType).pNext(pNext).name(name).description(description);
-    }
-
-    /// Allocates a `VkPipelineExecutableStatisticKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param name `name`
-    /// @return the allocated `VkPipelineExecutableStatisticKHR`
-    public static VkPipelineExecutableStatisticKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment name) {
-        return alloc(allocator).sType(sType).pNext(pNext).name(name);
-    }
-
-    /// Allocates a `VkPipelineExecutableStatisticKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineExecutableStatisticKHR`
-    public static VkPipelineExecutableStatisticKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineExecutableStatisticKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineExecutableStatisticKHR`
-    public static VkPipelineExecutableStatisticKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

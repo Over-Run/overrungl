@@ -79,14 +79,6 @@ public final class VkClusterAccelerationStructureMoveObjectsInfoNV extends Group
     /// @return the allocated `VkClusterAccelerationStructureMoveObjectsInfoNV`
     public static VkClusterAccelerationStructureMoveObjectsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureMoveObjectsInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkClusterAccelerationStructureMoveObjectsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcAccelerationStructure `srcAccelerationStructure`
-    /// @return the allocated `VkClusterAccelerationStructureMoveObjectsInfoNV`
-    public static VkClusterAccelerationStructureMoveObjectsInfoNV allocInit(SegmentAllocator allocator, long srcAccelerationStructure) {
-        return alloc(allocator).srcAccelerationStructure(srcAccelerationStructure);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

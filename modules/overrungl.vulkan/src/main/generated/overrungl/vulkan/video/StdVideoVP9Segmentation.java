@@ -109,56 +109,6 @@ public final class StdVideoVP9Segmentation extends GroupType {
     /// @return the allocated `StdVideoVP9Segmentation`
     public static StdVideoVP9Segmentation alloc(SegmentAllocator allocator, long count) { return new StdVideoVP9Segmentation(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoVP9Segmentation` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param segmentation_tree_probs `segmentation_tree_probs`
-    /// @param segmentation_pred_prob `segmentation_pred_prob`
-    /// @param FeatureEnabled `FeatureEnabled`
-    /// @param FeatureData `FeatureData`
-    /// @return the allocated `StdVideoVP9Segmentation`
-    public static StdVideoVP9Segmentation allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment segmentation_tree_probs, MemorySegment segmentation_pred_prob, MemorySegment FeatureEnabled, MemorySegment FeatureData) {
-        return alloc(allocator).flags(flags).segmentation_tree_probs(segmentation_tree_probs).segmentation_pred_prob(segmentation_pred_prob).FeatureEnabled(FeatureEnabled).FeatureData(FeatureData);
-    }
-
-    /// Allocates a `StdVideoVP9Segmentation` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param segmentation_tree_probs `segmentation_tree_probs`
-    /// @param segmentation_pred_prob `segmentation_pred_prob`
-    /// @param FeatureEnabled `FeatureEnabled`
-    /// @return the allocated `StdVideoVP9Segmentation`
-    public static StdVideoVP9Segmentation allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment segmentation_tree_probs, MemorySegment segmentation_pred_prob, MemorySegment FeatureEnabled) {
-        return alloc(allocator).flags(flags).segmentation_tree_probs(segmentation_tree_probs).segmentation_pred_prob(segmentation_pred_prob).FeatureEnabled(FeatureEnabled);
-    }
-
-    /// Allocates a `StdVideoVP9Segmentation` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param segmentation_tree_probs `segmentation_tree_probs`
-    /// @param segmentation_pred_prob `segmentation_pred_prob`
-    /// @return the allocated `StdVideoVP9Segmentation`
-    public static StdVideoVP9Segmentation allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment segmentation_tree_probs, MemorySegment segmentation_pred_prob) {
-        return alloc(allocator).flags(flags).segmentation_tree_probs(segmentation_tree_probs).segmentation_pred_prob(segmentation_pred_prob);
-    }
-
-    /// Allocates a `StdVideoVP9Segmentation` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param segmentation_tree_probs `segmentation_tree_probs`
-    /// @return the allocated `StdVideoVP9Segmentation`
-    public static StdVideoVP9Segmentation allocInit(SegmentAllocator allocator, MemorySegment flags, MemorySegment segmentation_tree_probs) {
-        return alloc(allocator).flags(flags).segmentation_tree_probs(segmentation_tree_probs);
-    }
-
-    /// Allocates a `StdVideoVP9Segmentation` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @return the allocated `StdVideoVP9Segmentation`
-    public static StdVideoVP9Segmentation allocInit(SegmentAllocator allocator, MemorySegment flags) {
-        return alloc(allocator).flags(flags);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -85,23 +85,6 @@ public final class VkDisplayModeParametersKHR extends GroupType {
     /// @return the allocated `VkDisplayModeParametersKHR`
     public static VkDisplayModeParametersKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayModeParametersKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDisplayModeParametersKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param visibleRegion `visibleRegion`
-    /// @param refreshRate `refreshRate`
-    /// @return the allocated `VkDisplayModeParametersKHR`
-    public static VkDisplayModeParametersKHR allocInit(SegmentAllocator allocator, MemorySegment visibleRegion, int refreshRate) {
-        return alloc(allocator).visibleRegion(visibleRegion).refreshRate(refreshRate);
-    }
-
-    /// Allocates a `VkDisplayModeParametersKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param visibleRegion `visibleRegion`
-    /// @return the allocated `VkDisplayModeParametersKHR`
-    public static VkDisplayModeParametersKHR allocInit(SegmentAllocator allocator, MemorySegment visibleRegion) {
-        return alloc(allocator).visibleRegion(visibleRegion);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

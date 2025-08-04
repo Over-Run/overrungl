@@ -101,44 +101,6 @@ public final class StdVideoEncodeH265ReferenceInfo extends GroupType {
     /// @return the allocated `StdVideoEncodeH265ReferenceInfo`
     public static StdVideoEncodeH265ReferenceInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH265ReferenceInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoEncodeH265ReferenceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param pic_type `pic_type`
-    /// @param PicOrderCntVal `PicOrderCntVal`
-    /// @param TemporalId `TemporalId`
-    /// @return the allocated `StdVideoEncodeH265ReferenceInfo`
-    public static StdVideoEncodeH265ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, int PicOrderCntVal, byte TemporalId) {
-        return alloc(allocator).flags(flags).pic_type(pic_type).PicOrderCntVal(PicOrderCntVal).TemporalId(TemporalId);
-    }
-
-    /// Allocates a `StdVideoEncodeH265ReferenceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param pic_type `pic_type`
-    /// @param PicOrderCntVal `PicOrderCntVal`
-    /// @return the allocated `StdVideoEncodeH265ReferenceInfo`
-    public static StdVideoEncodeH265ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type, int PicOrderCntVal) {
-        return alloc(allocator).flags(flags).pic_type(pic_type).PicOrderCntVal(PicOrderCntVal);
-    }
-
-    /// Allocates a `StdVideoEncodeH265ReferenceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param pic_type `pic_type`
-    /// @return the allocated `StdVideoEncodeH265ReferenceInfo`
-    public static StdVideoEncodeH265ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int pic_type) {
-        return alloc(allocator).flags(flags).pic_type(pic_type);
-    }
-
-    /// Allocates a `StdVideoEncodeH265ReferenceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @return the allocated `StdVideoEncodeH265ReferenceInfo`
-    public static StdVideoEncodeH265ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
-        return alloc(allocator).flags(flags);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

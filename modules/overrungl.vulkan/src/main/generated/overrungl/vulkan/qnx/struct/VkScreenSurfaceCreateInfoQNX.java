@@ -111,56 +111,6 @@ public final class VkScreenSurfaceCreateInfoQNX extends GroupType {
     /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
     public static VkScreenSurfaceCreateInfoQNX alloc(SegmentAllocator allocator, long count) { return new VkScreenSurfaceCreateInfoQNX(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param context `context`
-    /// @param window `window`
-    /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
-    public static VkScreenSurfaceCreateInfoQNX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment context, MemorySegment window) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).context(context).window(window);
-    }
-
-    /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param context `context`
-    /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
-    public static VkScreenSurfaceCreateInfoQNX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment context) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).context(context);
-    }
-
-    /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
-    public static VkScreenSurfaceCreateInfoQNX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
-    public static VkScreenSurfaceCreateInfoQNX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkScreenSurfaceCreateInfoQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkScreenSurfaceCreateInfoQNX`
-    public static VkScreenSurfaceCreateInfoQNX allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

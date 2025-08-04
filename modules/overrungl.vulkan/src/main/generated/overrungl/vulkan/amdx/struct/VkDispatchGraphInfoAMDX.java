@@ -101,44 +101,6 @@ public final class VkDispatchGraphInfoAMDX extends GroupType {
     /// @return the allocated `VkDispatchGraphInfoAMDX`
     public static VkDispatchGraphInfoAMDX alloc(SegmentAllocator allocator, long count) { return new VkDispatchGraphInfoAMDX(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDispatchGraphInfoAMDX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param nodeIndex `nodeIndex`
-    /// @param payloadCount `payloadCount`
-    /// @param payloads `payloads`
-    /// @param payloadStride `payloadStride`
-    /// @return the allocated `VkDispatchGraphInfoAMDX`
-    public static VkDispatchGraphInfoAMDX allocInit(SegmentAllocator allocator, int nodeIndex, int payloadCount, MemorySegment payloads, long payloadStride) {
-        return alloc(allocator).nodeIndex(nodeIndex).payloadCount(payloadCount).payloads(payloads).payloadStride(payloadStride);
-    }
-
-    /// Allocates a `VkDispatchGraphInfoAMDX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param nodeIndex `nodeIndex`
-    /// @param payloadCount `payloadCount`
-    /// @param payloads `payloads`
-    /// @return the allocated `VkDispatchGraphInfoAMDX`
-    public static VkDispatchGraphInfoAMDX allocInit(SegmentAllocator allocator, int nodeIndex, int payloadCount, MemorySegment payloads) {
-        return alloc(allocator).nodeIndex(nodeIndex).payloadCount(payloadCount).payloads(payloads);
-    }
-
-    /// Allocates a `VkDispatchGraphInfoAMDX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param nodeIndex `nodeIndex`
-    /// @param payloadCount `payloadCount`
-    /// @return the allocated `VkDispatchGraphInfoAMDX`
-    public static VkDispatchGraphInfoAMDX allocInit(SegmentAllocator allocator, int nodeIndex, int payloadCount) {
-        return alloc(allocator).nodeIndex(nodeIndex).payloadCount(payloadCount);
-    }
-
-    /// Allocates a `VkDispatchGraphInfoAMDX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param nodeIndex `nodeIndex`
-    /// @return the allocated `VkDispatchGraphInfoAMDX`
-    public static VkDispatchGraphInfoAMDX allocInit(SegmentAllocator allocator, int nodeIndex) {
-        return alloc(allocator).nodeIndex(nodeIndex);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

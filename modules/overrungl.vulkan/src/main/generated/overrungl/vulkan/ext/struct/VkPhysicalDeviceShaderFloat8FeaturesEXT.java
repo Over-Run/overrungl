@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceShaderFloat8FeaturesEXT extends GroupType {
     /// @return the allocated `VkPhysicalDeviceShaderFloat8FeaturesEXT`
     public static VkPhysicalDeviceShaderFloat8FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderFloat8FeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderFloat8FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderFloat8 `shaderFloat8`
-    /// @param shaderFloat8CooperativeMatrix `shaderFloat8CooperativeMatrix`
-    /// @return the allocated `VkPhysicalDeviceShaderFloat8FeaturesEXT`
-    public static VkPhysicalDeviceShaderFloat8FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderFloat8, int shaderFloat8CooperativeMatrix) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderFloat8(shaderFloat8).shaderFloat8CooperativeMatrix(shaderFloat8CooperativeMatrix);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderFloat8FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderFloat8 `shaderFloat8`
-    /// @return the allocated `VkPhysicalDeviceShaderFloat8FeaturesEXT`
-    public static VkPhysicalDeviceShaderFloat8FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderFloat8) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderFloat8(shaderFloat8);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderFloat8FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceShaderFloat8FeaturesEXT`
-    public static VkPhysicalDeviceShaderFloat8FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderFloat8FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceShaderFloat8FeaturesEXT`
-    public static VkPhysicalDeviceShaderFloat8FeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

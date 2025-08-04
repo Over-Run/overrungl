@@ -103,44 +103,6 @@ public final class VkVideoReferenceSlotInfoKHR extends GroupType {
     /// @return the allocated `VkVideoReferenceSlotInfoKHR`
     public static VkVideoReferenceSlotInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoReferenceSlotInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoReferenceSlotInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param slotIndex `slotIndex`
-    /// @param pPictureResource `pPictureResource`
-    /// @return the allocated `VkVideoReferenceSlotInfoKHR`
-    public static VkVideoReferenceSlotInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int slotIndex, MemorySegment pPictureResource) {
-        return alloc(allocator).sType(sType).pNext(pNext).slotIndex(slotIndex).pPictureResource(pPictureResource);
-    }
-
-    /// Allocates a `VkVideoReferenceSlotInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param slotIndex `slotIndex`
-    /// @return the allocated `VkVideoReferenceSlotInfoKHR`
-    public static VkVideoReferenceSlotInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int slotIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).slotIndex(slotIndex);
-    }
-
-    /// Allocates a `VkVideoReferenceSlotInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoReferenceSlotInfoKHR`
-    public static VkVideoReferenceSlotInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoReferenceSlotInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoReferenceSlotInfoKHR`
-    public static VkVideoReferenceSlotInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

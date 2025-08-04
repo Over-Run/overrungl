@@ -117,69 +117,6 @@ public final class VkPipelineCacheHeaderVersionSafetyCriticalOne extends GroupTy
     /// @return the allocated `VkPipelineCacheHeaderVersionSafetyCriticalOne`
     public static VkPipelineCacheHeaderVersionSafetyCriticalOne alloc(SegmentAllocator allocator, long count) { return new VkPipelineCacheHeaderVersionSafetyCriticalOne(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerVersionOne `headerVersionOne`
-    /// @param validationVersion `validationVersion`
-    /// @param implementationData `implementationData`
-    /// @param pipelineIndexCount `pipelineIndexCount`
-    /// @param pipelineIndexStride `pipelineIndexStride`
-    /// @param pipelineIndexOffset `pipelineIndexOffset`
-    /// @return the allocated `VkPipelineCacheHeaderVersionSafetyCriticalOne`
-    public static VkPipelineCacheHeaderVersionSafetyCriticalOne allocInit(SegmentAllocator allocator, MemorySegment headerVersionOne, int validationVersion, int implementationData, int pipelineIndexCount, int pipelineIndexStride, long pipelineIndexOffset) {
-        return alloc(allocator).headerVersionOne(headerVersionOne).validationVersion(validationVersion).implementationData(implementationData).pipelineIndexCount(pipelineIndexCount).pipelineIndexStride(pipelineIndexStride).pipelineIndexOffset(pipelineIndexOffset);
-    }
-
-    /// Allocates a `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerVersionOne `headerVersionOne`
-    /// @param validationVersion `validationVersion`
-    /// @param implementationData `implementationData`
-    /// @param pipelineIndexCount `pipelineIndexCount`
-    /// @param pipelineIndexStride `pipelineIndexStride`
-    /// @return the allocated `VkPipelineCacheHeaderVersionSafetyCriticalOne`
-    public static VkPipelineCacheHeaderVersionSafetyCriticalOne allocInit(SegmentAllocator allocator, MemorySegment headerVersionOne, int validationVersion, int implementationData, int pipelineIndexCount, int pipelineIndexStride) {
-        return alloc(allocator).headerVersionOne(headerVersionOne).validationVersion(validationVersion).implementationData(implementationData).pipelineIndexCount(pipelineIndexCount).pipelineIndexStride(pipelineIndexStride);
-    }
-
-    /// Allocates a `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerVersionOne `headerVersionOne`
-    /// @param validationVersion `validationVersion`
-    /// @param implementationData `implementationData`
-    /// @param pipelineIndexCount `pipelineIndexCount`
-    /// @return the allocated `VkPipelineCacheHeaderVersionSafetyCriticalOne`
-    public static VkPipelineCacheHeaderVersionSafetyCriticalOne allocInit(SegmentAllocator allocator, MemorySegment headerVersionOne, int validationVersion, int implementationData, int pipelineIndexCount) {
-        return alloc(allocator).headerVersionOne(headerVersionOne).validationVersion(validationVersion).implementationData(implementationData).pipelineIndexCount(pipelineIndexCount);
-    }
-
-    /// Allocates a `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerVersionOne `headerVersionOne`
-    /// @param validationVersion `validationVersion`
-    /// @param implementationData `implementationData`
-    /// @return the allocated `VkPipelineCacheHeaderVersionSafetyCriticalOne`
-    public static VkPipelineCacheHeaderVersionSafetyCriticalOne allocInit(SegmentAllocator allocator, MemorySegment headerVersionOne, int validationVersion, int implementationData) {
-        return alloc(allocator).headerVersionOne(headerVersionOne).validationVersion(validationVersion).implementationData(implementationData);
-    }
-
-    /// Allocates a `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerVersionOne `headerVersionOne`
-    /// @param validationVersion `validationVersion`
-    /// @return the allocated `VkPipelineCacheHeaderVersionSafetyCriticalOne`
-    public static VkPipelineCacheHeaderVersionSafetyCriticalOne allocInit(SegmentAllocator allocator, MemorySegment headerVersionOne, int validationVersion) {
-        return alloc(allocator).headerVersionOne(headerVersionOne).validationVersion(validationVersion);
-    }
-
-    /// Allocates a `VkPipelineCacheHeaderVersionSafetyCriticalOne` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param headerVersionOne `headerVersionOne`
-    /// @return the allocated `VkPipelineCacheHeaderVersionSafetyCriticalOne`
-    public static VkPipelineCacheHeaderVersionSafetyCriticalOne allocInit(SegmentAllocator allocator, MemorySegment headerVersionOne) {
-        return alloc(allocator).headerVersionOne(headerVersionOne);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

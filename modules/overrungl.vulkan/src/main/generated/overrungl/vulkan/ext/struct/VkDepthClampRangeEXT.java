@@ -87,23 +87,6 @@ public final class VkDepthClampRangeEXT extends GroupType {
     /// @return the allocated `VkDepthClampRangeEXT`
     public static VkDepthClampRangeEXT alloc(SegmentAllocator allocator, long count) { return new VkDepthClampRangeEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDepthClampRangeEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param minDepthClamp `minDepthClamp`
-    /// @param maxDepthClamp `maxDepthClamp`
-    /// @return the allocated `VkDepthClampRangeEXT`
-    public static VkDepthClampRangeEXT allocInit(SegmentAllocator allocator, float minDepthClamp, float maxDepthClamp) {
-        return alloc(allocator).minDepthClamp(minDepthClamp).maxDepthClamp(maxDepthClamp);
-    }
-
-    /// Allocates a `VkDepthClampRangeEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param minDepthClamp `minDepthClamp`
-    /// @return the allocated `VkDepthClampRangeEXT`
-    public static VkDepthClampRangeEXT allocInit(SegmentAllocator allocator, float minDepthClamp) {
-        return alloc(allocator).minDepthClamp(minDepthClamp);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

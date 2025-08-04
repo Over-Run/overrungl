@@ -103,44 +103,6 @@ public final class VkRenderPassAttachmentBeginInfoKHR extends GroupType {
     /// @return the allocated `VkRenderPassAttachmentBeginInfoKHR`
     public static VkRenderPassAttachmentBeginInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkRenderPassAttachmentBeginInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderPassAttachmentBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param attachmentCount `attachmentCount`
-    /// @param pAttachments `pAttachments`
-    /// @return the allocated `VkRenderPassAttachmentBeginInfoKHR`
-    public static VkRenderPassAttachmentBeginInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachmentCount, MemorySegment pAttachments) {
-        return alloc(allocator).sType(sType).pNext(pNext).attachmentCount(attachmentCount).pAttachments(pAttachments);
-    }
-
-    /// Allocates a `VkRenderPassAttachmentBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param attachmentCount `attachmentCount`
-    /// @return the allocated `VkRenderPassAttachmentBeginInfoKHR`
-    public static VkRenderPassAttachmentBeginInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int attachmentCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).attachmentCount(attachmentCount);
-    }
-
-    /// Allocates a `VkRenderPassAttachmentBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkRenderPassAttachmentBeginInfoKHR`
-    public static VkRenderPassAttachmentBeginInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkRenderPassAttachmentBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkRenderPassAttachmentBeginInfoKHR`
-    public static VkRenderPassAttachmentBeginInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

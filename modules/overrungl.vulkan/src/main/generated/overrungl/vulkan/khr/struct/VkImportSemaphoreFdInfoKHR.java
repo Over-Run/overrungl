@@ -119,69 +119,6 @@ public final class VkImportSemaphoreFdInfoKHR extends GroupType {
     /// @return the allocated `VkImportSemaphoreFdInfoKHR`
     public static VkImportSemaphoreFdInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkImportSemaphoreFdInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImportSemaphoreFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @param flags `flags`
-    /// @param handleType `handleType`
-    /// @param fd `fd`
-    /// @return the allocated `VkImportSemaphoreFdInfoKHR`
-    public static VkImportSemaphoreFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, int flags, int handleType, int fd) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).flags(flags).handleType(handleType).fd(fd);
-    }
-
-    /// Allocates a `VkImportSemaphoreFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @param flags `flags`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkImportSemaphoreFdInfoKHR`
-    public static VkImportSemaphoreFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, int flags, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).flags(flags).handleType(handleType);
-    }
-
-    /// Allocates a `VkImportSemaphoreFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @param flags `flags`
-    /// @return the allocated `VkImportSemaphoreFdInfoKHR`
-    public static VkImportSemaphoreFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).flags(flags);
-    }
-
-    /// Allocates a `VkImportSemaphoreFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @return the allocated `VkImportSemaphoreFdInfoKHR`
-    public static VkImportSemaphoreFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore);
-    }
-
-    /// Allocates a `VkImportSemaphoreFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImportSemaphoreFdInfoKHR`
-    public static VkImportSemaphoreFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImportSemaphoreFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImportSemaphoreFdInfoKHR`
-    public static VkImportSemaphoreFdInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

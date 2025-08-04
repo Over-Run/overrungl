@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV extends Gr
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
     public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fragmentShadingRateEnums `fragmentShadingRateEnums`
-    /// @param supersampleFragmentShadingRates `supersampleFragmentShadingRates`
-    /// @param noInvocationFragmentShadingRates `noInvocationFragmentShadingRates`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentShadingRateEnums, int supersampleFragmentShadingRates, int noInvocationFragmentShadingRates) {
-        return alloc(allocator).sType(sType).pNext(pNext).fragmentShadingRateEnums(fragmentShadingRateEnums).supersampleFragmentShadingRates(supersampleFragmentShadingRates).noInvocationFragmentShadingRates(noInvocationFragmentShadingRates);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fragmentShadingRateEnums `fragmentShadingRateEnums`
-    /// @param supersampleFragmentShadingRates `supersampleFragmentShadingRates`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentShadingRateEnums, int supersampleFragmentShadingRates) {
-        return alloc(allocator).sType(sType).pNext(pNext).fragmentShadingRateEnums(fragmentShadingRateEnums).supersampleFragmentShadingRates(supersampleFragmentShadingRates);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fragmentShadingRateEnums `fragmentShadingRateEnums`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentShadingRateEnums) {
-        return alloc(allocator).sType(sType).pNext(pNext).fragmentShadingRateEnums(fragmentShadingRateEnums);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

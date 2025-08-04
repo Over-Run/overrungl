@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV extends 
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`
     public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxFragmentShadingRateInvocationCount `maxFragmentShadingRateInvocationCount`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxFragmentShadingRateInvocationCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxFragmentShadingRateInvocationCount(maxFragmentShadingRateInvocationCount);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV`
-    public static VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

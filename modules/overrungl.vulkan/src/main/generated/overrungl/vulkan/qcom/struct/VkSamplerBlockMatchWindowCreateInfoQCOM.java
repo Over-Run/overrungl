@@ -101,44 +101,6 @@ public final class VkSamplerBlockMatchWindowCreateInfoQCOM extends GroupType {
     /// @return the allocated `VkSamplerBlockMatchWindowCreateInfoQCOM`
     public static VkSamplerBlockMatchWindowCreateInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkSamplerBlockMatchWindowCreateInfoQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSamplerBlockMatchWindowCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param windowExtent `windowExtent`
-    /// @param windowCompareMode `windowCompareMode`
-    /// @return the allocated `VkSamplerBlockMatchWindowCreateInfoQCOM`
-    public static VkSamplerBlockMatchWindowCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment windowExtent, int windowCompareMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).windowExtent(windowExtent).windowCompareMode(windowCompareMode);
-    }
-
-    /// Allocates a `VkSamplerBlockMatchWindowCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param windowExtent `windowExtent`
-    /// @return the allocated `VkSamplerBlockMatchWindowCreateInfoQCOM`
-    public static VkSamplerBlockMatchWindowCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment windowExtent) {
-        return alloc(allocator).sType(sType).pNext(pNext).windowExtent(windowExtent);
-    }
-
-    /// Allocates a `VkSamplerBlockMatchWindowCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSamplerBlockMatchWindowCreateInfoQCOM`
-    public static VkSamplerBlockMatchWindowCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSamplerBlockMatchWindowCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSamplerBlockMatchWindowCreateInfoQCOM`
-    public static VkSamplerBlockMatchWindowCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

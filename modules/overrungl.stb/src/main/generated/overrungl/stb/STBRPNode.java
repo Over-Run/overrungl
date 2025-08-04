@@ -95,33 +95,6 @@ public final class STBRPNode extends GroupType {
     /// @return the allocated `STBRPNode`
     public static STBRPNode alloc(SegmentAllocator allocator, long count) { return new STBRPNode(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `STBRPNode` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @param y `y`
-    /// @param next `next`
-    /// @return the allocated `STBRPNode`
-    public static STBRPNode allocInit(SegmentAllocator allocator, int x, int y, MemorySegment next) {
-        return alloc(allocator).x(x).y(y).next(next);
-    }
-
-    /// Allocates a `STBRPNode` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @param y `y`
-    /// @return the allocated `STBRPNode`
-    public static STBRPNode allocInit(SegmentAllocator allocator, int x, int y) {
-        return alloc(allocator).x(x).y(y);
-    }
-
-    /// Allocates a `STBRPNode` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @return the allocated `STBRPNode`
-    public static STBRPNode allocInit(SegmentAllocator allocator, int x) {
-        return alloc(allocator).x(x);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

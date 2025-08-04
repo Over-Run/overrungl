@@ -95,33 +95,6 @@ public final class VkVideoDecodeAV1SessionParametersCreateInfoKHR extends GroupT
     /// @return the allocated `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
     public static VkVideoDecodeAV1SessionParametersCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeAV1SessionParametersCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pStdSequenceHeader `pStdSequenceHeader`
-    /// @return the allocated `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pStdSequenceHeader) {
-        return alloc(allocator).sType(sType).pNext(pNext).pStdSequenceHeader(pStdSequenceHeader);
-    }
-
-    /// Allocates a `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoDecodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoDecodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

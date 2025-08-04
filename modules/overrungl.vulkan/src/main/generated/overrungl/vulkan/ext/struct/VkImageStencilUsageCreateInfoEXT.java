@@ -95,33 +95,6 @@ public final class VkImageStencilUsageCreateInfoEXT extends GroupType {
     /// @return the allocated `VkImageStencilUsageCreateInfoEXT`
     public static VkImageStencilUsageCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkImageStencilUsageCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageStencilUsageCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param stencilUsage `stencilUsage`
-    /// @return the allocated `VkImageStencilUsageCreateInfoEXT`
-    public static VkImageStencilUsageCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stencilUsage) {
-        return alloc(allocator).sType(sType).pNext(pNext).stencilUsage(stencilUsage);
-    }
-
-    /// Allocates a `VkImageStencilUsageCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImageStencilUsageCreateInfoEXT`
-    public static VkImageStencilUsageCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImageStencilUsageCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImageStencilUsageCreateInfoEXT`
-    public static VkImageStencilUsageCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

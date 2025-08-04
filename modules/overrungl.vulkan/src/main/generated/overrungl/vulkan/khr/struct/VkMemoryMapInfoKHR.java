@@ -119,69 +119,6 @@ public final class VkMemoryMapInfoKHR extends GroupType {
     /// @return the allocated `VkMemoryMapInfoKHR`
     public static VkMemoryMapInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryMapInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryMapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param memory `memory`
-    /// @param offset `offset`
-    /// @param size `size`
-    /// @return the allocated `VkMemoryMapInfoKHR`
-    public static VkMemoryMapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long memory, long offset, long size) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).memory(memory).offset(offset).size(size);
-    }
-
-    /// Allocates a `VkMemoryMapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param memory `memory`
-    /// @param offset `offset`
-    /// @return the allocated `VkMemoryMapInfoKHR`
-    public static VkMemoryMapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long memory, long offset) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).memory(memory).offset(offset);
-    }
-
-    /// Allocates a `VkMemoryMapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param memory `memory`
-    /// @return the allocated `VkMemoryMapInfoKHR`
-    public static VkMemoryMapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long memory) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).memory(memory);
-    }
-
-    /// Allocates a `VkMemoryMapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkMemoryMapInfoKHR`
-    public static VkMemoryMapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkMemoryMapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryMapInfoKHR`
-    public static VkMemoryMapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryMapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryMapInfoKHR`
-    public static VkMemoryMapInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

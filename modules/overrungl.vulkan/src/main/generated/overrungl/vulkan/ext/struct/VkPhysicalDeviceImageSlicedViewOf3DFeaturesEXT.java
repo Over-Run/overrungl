@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT extends GroupT
     /// @return the allocated `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`
     public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imageSlicedViewOf3D `imageSlicedViewOf3D`
-    /// @return the allocated `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`
-    public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int imageSlicedViewOf3D) {
-        return alloc(allocator).sType(sType).pNext(pNext).imageSlicedViewOf3D(imageSlicedViewOf3D);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`
-    public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT`
-    public static VkPhysicalDeviceImageSlicedViewOf3DFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

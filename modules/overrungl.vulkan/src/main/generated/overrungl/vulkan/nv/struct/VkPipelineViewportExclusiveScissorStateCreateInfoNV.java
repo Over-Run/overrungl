@@ -103,44 +103,6 @@ public final class VkPipelineViewportExclusiveScissorStateCreateInfoNV extends G
     /// @return the allocated `VkPipelineViewportExclusiveScissorStateCreateInfoNV`
     public static VkPipelineViewportExclusiveScissorStateCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineViewportExclusiveScissorStateCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineViewportExclusiveScissorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param exclusiveScissorCount `exclusiveScissorCount`
-    /// @param pExclusiveScissors `pExclusiveScissors`
-    /// @return the allocated `VkPipelineViewportExclusiveScissorStateCreateInfoNV`
-    public static VkPipelineViewportExclusiveScissorStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int exclusiveScissorCount, MemorySegment pExclusiveScissors) {
-        return alloc(allocator).sType(sType).pNext(pNext).exclusiveScissorCount(exclusiveScissorCount).pExclusiveScissors(pExclusiveScissors);
-    }
-
-    /// Allocates a `VkPipelineViewportExclusiveScissorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param exclusiveScissorCount `exclusiveScissorCount`
-    /// @return the allocated `VkPipelineViewportExclusiveScissorStateCreateInfoNV`
-    public static VkPipelineViewportExclusiveScissorStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int exclusiveScissorCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).exclusiveScissorCount(exclusiveScissorCount);
-    }
-
-    /// Allocates a `VkPipelineViewportExclusiveScissorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineViewportExclusiveScissorStateCreateInfoNV`
-    public static VkPipelineViewportExclusiveScissorStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineViewportExclusiveScissorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineViewportExclusiveScissorStateCreateInfoNV`
-    public static VkPipelineViewportExclusiveScissorStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

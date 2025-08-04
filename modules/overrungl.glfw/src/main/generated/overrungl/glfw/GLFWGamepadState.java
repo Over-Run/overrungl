@@ -87,23 +87,6 @@ public final class GLFWGamepadState extends GroupType {
     /// @return the allocated `GLFWGamepadState`
     public static GLFWGamepadState alloc(SegmentAllocator allocator, long count) { return new GLFWGamepadState(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `GLFWGamepadState` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buttons `buttons`
-    /// @param axes `axes`
-    /// @return the allocated `GLFWGamepadState`
-    public static GLFWGamepadState allocInit(SegmentAllocator allocator, MemorySegment buttons, MemorySegment axes) {
-        return alloc(allocator).buttons(buttons).axes(axes);
-    }
-
-    /// Allocates a `GLFWGamepadState` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buttons `buttons`
-    /// @return the allocated `GLFWGamepadState`
-    public static GLFWGamepadState allocInit(SegmentAllocator allocator, MemorySegment buttons) {
-        return alloc(allocator).buttons(buttons);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

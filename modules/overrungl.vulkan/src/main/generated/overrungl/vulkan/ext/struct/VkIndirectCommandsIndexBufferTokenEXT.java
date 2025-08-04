@@ -79,14 +79,6 @@ public final class VkIndirectCommandsIndexBufferTokenEXT extends GroupType {
     /// @return the allocated `VkIndirectCommandsIndexBufferTokenEXT`
     public static VkIndirectCommandsIndexBufferTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsIndexBufferTokenEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkIndirectCommandsIndexBufferTokenEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param mode `mode`
-    /// @return the allocated `VkIndirectCommandsIndexBufferTokenEXT`
-    public static VkIndirectCommandsIndexBufferTokenEXT allocInit(SegmentAllocator allocator, int mode) {
-        return alloc(allocator).mode(mode);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

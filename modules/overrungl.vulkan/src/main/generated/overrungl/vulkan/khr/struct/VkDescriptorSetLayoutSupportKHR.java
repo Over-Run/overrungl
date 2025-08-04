@@ -95,33 +95,6 @@ public final class VkDescriptorSetLayoutSupportKHR extends GroupType {
     /// @return the allocated `VkDescriptorSetLayoutSupportKHR`
     public static VkDescriptorSetLayoutSupportKHR alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetLayoutSupportKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorSetLayoutSupportKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param supported `supported`
-    /// @return the allocated `VkDescriptorSetLayoutSupportKHR`
-    public static VkDescriptorSetLayoutSupportKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supported) {
-        return alloc(allocator).sType(sType).pNext(pNext).supported(supported);
-    }
-
-    /// Allocates a `VkDescriptorSetLayoutSupportKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDescriptorSetLayoutSupportKHR`
-    public static VkDescriptorSetLayoutSupportKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDescriptorSetLayoutSupportKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDescriptorSetLayoutSupportKHR`
-    public static VkDescriptorSetLayoutSupportKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

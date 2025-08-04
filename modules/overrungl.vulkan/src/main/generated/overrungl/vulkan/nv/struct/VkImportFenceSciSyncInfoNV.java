@@ -111,56 +111,6 @@ public final class VkImportFenceSciSyncInfoNV extends GroupType {
     /// @return the allocated `VkImportFenceSciSyncInfoNV`
     public static VkImportFenceSciSyncInfoNV alloc(SegmentAllocator allocator, long count) { return new VkImportFenceSciSyncInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImportFenceSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fence `fence`
-    /// @param handleType `handleType`
-    /// @param handle `handle`
-    /// @return the allocated `VkImportFenceSciSyncInfoNV`
-    public static VkImportFenceSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int handleType, MemorySegment handle) {
-        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).handleType(handleType).handle(handle);
-    }
-
-    /// Allocates a `VkImportFenceSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fence `fence`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkImportFenceSciSyncInfoNV`
-    public static VkImportFenceSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).handleType(handleType);
-    }
-
-    /// Allocates a `VkImportFenceSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fence `fence`
-    /// @return the allocated `VkImportFenceSciSyncInfoNV`
-    public static VkImportFenceSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence) {
-        return alloc(allocator).sType(sType).pNext(pNext).fence(fence);
-    }
-
-    /// Allocates a `VkImportFenceSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImportFenceSciSyncInfoNV`
-    public static VkImportFenceSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImportFenceSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImportFenceSciSyncInfoNV`
-    public static VkImportFenceSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

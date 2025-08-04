@@ -103,44 +103,6 @@ public final class VmaStatistics extends GroupType {
     /// @return the allocated `VmaStatistics`
     public static VmaStatistics alloc(SegmentAllocator allocator, long count) { return new VmaStatistics(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VmaStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param blockCount `blockCount`
-    /// @param allocationCount `allocationCount`
-    /// @param blockBytes `blockBytes`
-    /// @param allocationBytes `allocationBytes`
-    /// @return the allocated `VmaStatistics`
-    public static VmaStatistics allocInit(SegmentAllocator allocator, int blockCount, int allocationCount, long blockBytes, long allocationBytes) {
-        return alloc(allocator).blockCount(blockCount).allocationCount(allocationCount).blockBytes(blockBytes).allocationBytes(allocationBytes);
-    }
-
-    /// Allocates a `VmaStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param blockCount `blockCount`
-    /// @param allocationCount `allocationCount`
-    /// @param blockBytes `blockBytes`
-    /// @return the allocated `VmaStatistics`
-    public static VmaStatistics allocInit(SegmentAllocator allocator, int blockCount, int allocationCount, long blockBytes) {
-        return alloc(allocator).blockCount(blockCount).allocationCount(allocationCount).blockBytes(blockBytes);
-    }
-
-    /// Allocates a `VmaStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param blockCount `blockCount`
-    /// @param allocationCount `allocationCount`
-    /// @return the allocated `VmaStatistics`
-    public static VmaStatistics allocInit(SegmentAllocator allocator, int blockCount, int allocationCount) {
-        return alloc(allocator).blockCount(blockCount).allocationCount(allocationCount);
-    }
-
-    /// Allocates a `VmaStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param blockCount `blockCount`
-    /// @return the allocated `VmaStatistics`
-    public static VmaStatistics allocInit(SegmentAllocator allocator, int blockCount) {
-        return alloc(allocator).blockCount(blockCount);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

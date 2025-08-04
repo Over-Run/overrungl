@@ -119,69 +119,6 @@ public final class VkBindVideoSessionMemoryInfoKHR extends GroupType {
     /// @return the allocated `VkBindVideoSessionMemoryInfoKHR`
     public static VkBindVideoSessionMemoryInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkBindVideoSessionMemoryInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBindVideoSessionMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memoryBindIndex `memoryBindIndex`
-    /// @param memory `memory`
-    /// @param memoryOffset `memoryOffset`
-    /// @param memorySize `memorySize`
-    /// @return the allocated `VkBindVideoSessionMemoryInfoKHR`
-    public static VkBindVideoSessionMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryBindIndex, long memory, long memoryOffset, long memorySize) {
-        return alloc(allocator).sType(sType).pNext(pNext).memoryBindIndex(memoryBindIndex).memory(memory).memoryOffset(memoryOffset).memorySize(memorySize);
-    }
-
-    /// Allocates a `VkBindVideoSessionMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memoryBindIndex `memoryBindIndex`
-    /// @param memory `memory`
-    /// @param memoryOffset `memoryOffset`
-    /// @return the allocated `VkBindVideoSessionMemoryInfoKHR`
-    public static VkBindVideoSessionMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryBindIndex, long memory, long memoryOffset) {
-        return alloc(allocator).sType(sType).pNext(pNext).memoryBindIndex(memoryBindIndex).memory(memory).memoryOffset(memoryOffset);
-    }
-
-    /// Allocates a `VkBindVideoSessionMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memoryBindIndex `memoryBindIndex`
-    /// @param memory `memory`
-    /// @return the allocated `VkBindVideoSessionMemoryInfoKHR`
-    public static VkBindVideoSessionMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryBindIndex, long memory) {
-        return alloc(allocator).sType(sType).pNext(pNext).memoryBindIndex(memoryBindIndex).memory(memory);
-    }
-
-    /// Allocates a `VkBindVideoSessionMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memoryBindIndex `memoryBindIndex`
-    /// @return the allocated `VkBindVideoSessionMemoryInfoKHR`
-    public static VkBindVideoSessionMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryBindIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).memoryBindIndex(memoryBindIndex);
-    }
-
-    /// Allocates a `VkBindVideoSessionMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkBindVideoSessionMemoryInfoKHR`
-    public static VkBindVideoSessionMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkBindVideoSessionMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkBindVideoSessionMemoryInfoKHR`
-    public static VkBindVideoSessionMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

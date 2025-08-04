@@ -87,23 +87,6 @@ public final class VkPresentRegionKHR extends GroupType {
     /// @return the allocated `VkPresentRegionKHR`
     public static VkPresentRegionKHR alloc(SegmentAllocator allocator, long count) { return new VkPresentRegionKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPresentRegionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param rectangleCount `rectangleCount`
-    /// @param pRectangles `pRectangles`
-    /// @return the allocated `VkPresentRegionKHR`
-    public static VkPresentRegionKHR allocInit(SegmentAllocator allocator, int rectangleCount, MemorySegment pRectangles) {
-        return alloc(allocator).rectangleCount(rectangleCount).pRectangles(pRectangles);
-    }
-
-    /// Allocates a `VkPresentRegionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param rectangleCount `rectangleCount`
-    /// @return the allocated `VkPresentRegionKHR`
-    public static VkPresentRegionKHR allocInit(SegmentAllocator allocator, int rectangleCount) {
-        return alloc(allocator).rectangleCount(rectangleCount);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

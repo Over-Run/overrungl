@@ -87,23 +87,6 @@ public final class VkExtent2D extends GroupType {
     /// @return the allocated `VkExtent2D`
     public static VkExtent2D alloc(SegmentAllocator allocator, long count) { return new VkExtent2D(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExtent2D` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param width `width`
-    /// @param height `height`
-    /// @return the allocated `VkExtent2D`
-    public static VkExtent2D allocInit(SegmentAllocator allocator, int width, int height) {
-        return alloc(allocator).width(width).height(height);
-    }
-
-    /// Allocates a `VkExtent2D` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param width `width`
-    /// @return the allocated `VkExtent2D`
-    public static VkExtent2D allocInit(SegmentAllocator allocator, int width) {
-        return alloc(allocator).width(width);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

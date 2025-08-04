@@ -119,69 +119,6 @@ public final class VkVertexInputAttributeDescription2EXT extends GroupType {
     /// @return the allocated `VkVertexInputAttributeDescription2EXT`
     public static VkVertexInputAttributeDescription2EXT alloc(SegmentAllocator allocator, long count) { return new VkVertexInputAttributeDescription2EXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVertexInputAttributeDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param location `location`
-    /// @param binding `binding`
-    /// @param format `format`
-    /// @param offset `offset`
-    /// @return the allocated `VkVertexInputAttributeDescription2EXT`
-    public static VkVertexInputAttributeDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int location, int binding, int format, int offset) {
-        return alloc(allocator).sType(sType).pNext(pNext).location(location).binding(binding).format(format).offset(offset);
-    }
-
-    /// Allocates a `VkVertexInputAttributeDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param location `location`
-    /// @param binding `binding`
-    /// @param format `format`
-    /// @return the allocated `VkVertexInputAttributeDescription2EXT`
-    public static VkVertexInputAttributeDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int location, int binding, int format) {
-        return alloc(allocator).sType(sType).pNext(pNext).location(location).binding(binding).format(format);
-    }
-
-    /// Allocates a `VkVertexInputAttributeDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param location `location`
-    /// @param binding `binding`
-    /// @return the allocated `VkVertexInputAttributeDescription2EXT`
-    public static VkVertexInputAttributeDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int location, int binding) {
-        return alloc(allocator).sType(sType).pNext(pNext).location(location).binding(binding);
-    }
-
-    /// Allocates a `VkVertexInputAttributeDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param location `location`
-    /// @return the allocated `VkVertexInputAttributeDescription2EXT`
-    public static VkVertexInputAttributeDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int location) {
-        return alloc(allocator).sType(sType).pNext(pNext).location(location);
-    }
-
-    /// Allocates a `VkVertexInputAttributeDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVertexInputAttributeDescription2EXT`
-    public static VkVertexInputAttributeDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVertexInputAttributeDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVertexInputAttributeDescription2EXT`
-    public static VkVertexInputAttributeDescription2EXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

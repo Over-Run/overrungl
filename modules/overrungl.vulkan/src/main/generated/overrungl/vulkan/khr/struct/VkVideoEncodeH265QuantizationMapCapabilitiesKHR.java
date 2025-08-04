@@ -103,44 +103,6 @@ public final class VkVideoEncodeH265QuantizationMapCapabilitiesKHR extends Group
     /// @return the allocated `VkVideoEncodeH265QuantizationMapCapabilitiesKHR`
     public static VkVideoEncodeH265QuantizationMapCapabilitiesKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265QuantizationMapCapabilitiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param minQpDelta `minQpDelta`
-    /// @param maxQpDelta `maxQpDelta`
-    /// @return the allocated `VkVideoEncodeH265QuantizationMapCapabilitiesKHR`
-    public static VkVideoEncodeH265QuantizationMapCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minQpDelta, int maxQpDelta) {
-        return alloc(allocator).sType(sType).pNext(pNext).minQpDelta(minQpDelta).maxQpDelta(maxQpDelta);
-    }
-
-    /// Allocates a `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param minQpDelta `minQpDelta`
-    /// @return the allocated `VkVideoEncodeH265QuantizationMapCapabilitiesKHR`
-    public static VkVideoEncodeH265QuantizationMapCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int minQpDelta) {
-        return alloc(allocator).sType(sType).pNext(pNext).minQpDelta(minQpDelta);
-    }
-
-    /// Allocates a `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoEncodeH265QuantizationMapCapabilitiesKHR`
-    public static VkVideoEncodeH265QuantizationMapCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoEncodeH265QuantizationMapCapabilitiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoEncodeH265QuantizationMapCapabilitiesKHR`
-    public static VkVideoEncodeH265QuantizationMapCapabilitiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

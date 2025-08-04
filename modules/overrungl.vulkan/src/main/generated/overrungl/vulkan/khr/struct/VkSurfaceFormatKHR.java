@@ -87,23 +87,6 @@ public final class VkSurfaceFormatKHR extends GroupType {
     /// @return the allocated `VkSurfaceFormatKHR`
     public static VkSurfaceFormatKHR alloc(SegmentAllocator allocator, long count) { return new VkSurfaceFormatKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSurfaceFormatKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param format `format`
-    /// @param colorSpace `colorSpace`
-    /// @return the allocated `VkSurfaceFormatKHR`
-    public static VkSurfaceFormatKHR allocInit(SegmentAllocator allocator, int format, int colorSpace) {
-        return alloc(allocator).format(format).colorSpace(colorSpace);
-    }
-
-    /// Allocates a `VkSurfaceFormatKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param format `format`
-    /// @return the allocated `VkSurfaceFormatKHR`
-    public static VkSurfaceFormatKHR allocInit(SegmentAllocator allocator, int format) {
-        return alloc(allocator).format(format);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

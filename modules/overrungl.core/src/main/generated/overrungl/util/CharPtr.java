@@ -79,14 +79,6 @@ public final class CharPtr extends GroupType {
     /// @return the allocated `CharPtr`
     public static CharPtr alloc(SegmentAllocator allocator, long count) { return new CharPtr(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `CharPtr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param value `value`
-    /// @return the allocated `CharPtr`
-    public static CharPtr allocInit(SegmentAllocator allocator, char value) {
-        return alloc(allocator).value(value);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkBufferCopy extends GroupType {
     /// @return the allocated `VkBufferCopy`
     public static VkBufferCopy alloc(SegmentAllocator allocator, long count) { return new VkBufferCopy(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBufferCopy` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcOffset `srcOffset`
-    /// @param dstOffset `dstOffset`
-    /// @param size `size`
-    /// @return the allocated `VkBufferCopy`
-    public static VkBufferCopy allocInit(SegmentAllocator allocator, long srcOffset, long dstOffset, long size) {
-        return alloc(allocator).srcOffset(srcOffset).dstOffset(dstOffset).size(size);
-    }
-
-    /// Allocates a `VkBufferCopy` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcOffset `srcOffset`
-    /// @param dstOffset `dstOffset`
-    /// @return the allocated `VkBufferCopy`
-    public static VkBufferCopy allocInit(SegmentAllocator allocator, long srcOffset, long dstOffset) {
-        return alloc(allocator).srcOffset(srcOffset).dstOffset(dstOffset);
-    }
-
-    /// Allocates a `VkBufferCopy` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcOffset `srcOffset`
-    /// @return the allocated `VkBufferCopy`
-    public static VkBufferCopy allocInit(SegmentAllocator allocator, long srcOffset) {
-        return alloc(allocator).srcOffset(srcOffset);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

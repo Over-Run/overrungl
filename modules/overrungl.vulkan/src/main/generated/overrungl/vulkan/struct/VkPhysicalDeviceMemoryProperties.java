@@ -99,44 +99,6 @@ public final class VkPhysicalDeviceMemoryProperties extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMemoryProperties`
     public static VkPhysicalDeviceMemoryProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMemoryProperties(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMemoryProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param memoryTypeCount `memoryTypeCount`
-    /// @param memoryTypes `memoryTypes`
-    /// @param memoryHeapCount `memoryHeapCount`
-    /// @param memoryHeaps `memoryHeaps`
-    /// @return the allocated `VkPhysicalDeviceMemoryProperties`
-    public static VkPhysicalDeviceMemoryProperties allocInit(SegmentAllocator allocator, int memoryTypeCount, MemorySegment memoryTypes, int memoryHeapCount, MemorySegment memoryHeaps) {
-        return alloc(allocator).memoryTypeCount(memoryTypeCount).memoryTypes(memoryTypes).memoryHeapCount(memoryHeapCount).memoryHeaps(memoryHeaps);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMemoryProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param memoryTypeCount `memoryTypeCount`
-    /// @param memoryTypes `memoryTypes`
-    /// @param memoryHeapCount `memoryHeapCount`
-    /// @return the allocated `VkPhysicalDeviceMemoryProperties`
-    public static VkPhysicalDeviceMemoryProperties allocInit(SegmentAllocator allocator, int memoryTypeCount, MemorySegment memoryTypes, int memoryHeapCount) {
-        return alloc(allocator).memoryTypeCount(memoryTypeCount).memoryTypes(memoryTypes).memoryHeapCount(memoryHeapCount);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMemoryProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param memoryTypeCount `memoryTypeCount`
-    /// @param memoryTypes `memoryTypes`
-    /// @return the allocated `VkPhysicalDeviceMemoryProperties`
-    public static VkPhysicalDeviceMemoryProperties allocInit(SegmentAllocator allocator, int memoryTypeCount, MemorySegment memoryTypes) {
-        return alloc(allocator).memoryTypeCount(memoryTypeCount).memoryTypes(memoryTypes);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMemoryProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param memoryTypeCount `memoryTypeCount`
-    /// @return the allocated `VkPhysicalDeviceMemoryProperties`
-    public static VkPhysicalDeviceMemoryProperties allocInit(SegmentAllocator allocator, int memoryTypeCount) {
-        return alloc(allocator).memoryTypeCount(memoryTypeCount);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

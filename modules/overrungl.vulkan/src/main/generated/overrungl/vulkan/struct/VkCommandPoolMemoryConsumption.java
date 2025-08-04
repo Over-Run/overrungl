@@ -111,56 +111,6 @@ public final class VkCommandPoolMemoryConsumption extends GroupType {
     /// @return the allocated `VkCommandPoolMemoryConsumption`
     public static VkCommandPoolMemoryConsumption alloc(SegmentAllocator allocator, long count) { return new VkCommandPoolMemoryConsumption(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCommandPoolMemoryConsumption` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param commandPoolAllocated `commandPoolAllocated`
-    /// @param commandPoolReservedSize `commandPoolReservedSize`
-    /// @param commandBufferAllocated `commandBufferAllocated`
-    /// @return the allocated `VkCommandPoolMemoryConsumption`
-    public static VkCommandPoolMemoryConsumption allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long commandPoolAllocated, long commandPoolReservedSize, long commandBufferAllocated) {
-        return alloc(allocator).sType(sType).pNext(pNext).commandPoolAllocated(commandPoolAllocated).commandPoolReservedSize(commandPoolReservedSize).commandBufferAllocated(commandBufferAllocated);
-    }
-
-    /// Allocates a `VkCommandPoolMemoryConsumption` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param commandPoolAllocated `commandPoolAllocated`
-    /// @param commandPoolReservedSize `commandPoolReservedSize`
-    /// @return the allocated `VkCommandPoolMemoryConsumption`
-    public static VkCommandPoolMemoryConsumption allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long commandPoolAllocated, long commandPoolReservedSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).commandPoolAllocated(commandPoolAllocated).commandPoolReservedSize(commandPoolReservedSize);
-    }
-
-    /// Allocates a `VkCommandPoolMemoryConsumption` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param commandPoolAllocated `commandPoolAllocated`
-    /// @return the allocated `VkCommandPoolMemoryConsumption`
-    public static VkCommandPoolMemoryConsumption allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long commandPoolAllocated) {
-        return alloc(allocator).sType(sType).pNext(pNext).commandPoolAllocated(commandPoolAllocated);
-    }
-
-    /// Allocates a `VkCommandPoolMemoryConsumption` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkCommandPoolMemoryConsumption`
-    public static VkCommandPoolMemoryConsumption allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkCommandPoolMemoryConsumption` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkCommandPoolMemoryConsumption`
-    public static VkCommandPoolMemoryConsumption allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

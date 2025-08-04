@@ -111,56 +111,6 @@ public final class VkAttachmentSampleCountInfoNV extends GroupType {
     /// @return the allocated `VkAttachmentSampleCountInfoNV`
     public static VkAttachmentSampleCountInfoNV alloc(SegmentAllocator allocator, long count) { return new VkAttachmentSampleCountInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAttachmentSampleCountInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @param pColorAttachmentSamples `pColorAttachmentSamples`
-    /// @param depthStencilAttachmentSamples `depthStencilAttachmentSamples`
-    /// @return the allocated `VkAttachmentSampleCountInfoNV`
-    public static VkAttachmentSampleCountInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount, MemorySegment pColorAttachmentSamples, int depthStencilAttachmentSamples) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentSamples(pColorAttachmentSamples).depthStencilAttachmentSamples(depthStencilAttachmentSamples);
-    }
-
-    /// Allocates a `VkAttachmentSampleCountInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @param pColorAttachmentSamples `pColorAttachmentSamples`
-    /// @return the allocated `VkAttachmentSampleCountInfoNV`
-    public static VkAttachmentSampleCountInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount, MemorySegment pColorAttachmentSamples) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount).pColorAttachmentSamples(pColorAttachmentSamples);
-    }
-
-    /// Allocates a `VkAttachmentSampleCountInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentCount `colorAttachmentCount`
-    /// @return the allocated `VkAttachmentSampleCountInfoNV`
-    public static VkAttachmentSampleCountInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentCount(colorAttachmentCount);
-    }
-
-    /// Allocates a `VkAttachmentSampleCountInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAttachmentSampleCountInfoNV`
-    public static VkAttachmentSampleCountInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAttachmentSampleCountInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAttachmentSampleCountInfoNV`
-    public static VkAttachmentSampleCountInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

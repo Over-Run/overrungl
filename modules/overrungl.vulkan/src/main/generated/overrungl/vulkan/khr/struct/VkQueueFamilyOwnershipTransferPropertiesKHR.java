@@ -95,33 +95,6 @@ public final class VkQueueFamilyOwnershipTransferPropertiesKHR extends GroupType
     /// @return the allocated `VkQueueFamilyOwnershipTransferPropertiesKHR`
     public static VkQueueFamilyOwnershipTransferPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyOwnershipTransferPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkQueueFamilyOwnershipTransferPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param optimalImageTransferToQueueFamilies `optimalImageTransferToQueueFamilies`
-    /// @return the allocated `VkQueueFamilyOwnershipTransferPropertiesKHR`
-    public static VkQueueFamilyOwnershipTransferPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int optimalImageTransferToQueueFamilies) {
-        return alloc(allocator).sType(sType).pNext(pNext).optimalImageTransferToQueueFamilies(optimalImageTransferToQueueFamilies);
-    }
-
-    /// Allocates a `VkQueueFamilyOwnershipTransferPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkQueueFamilyOwnershipTransferPropertiesKHR`
-    public static VkQueueFamilyOwnershipTransferPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkQueueFamilyOwnershipTransferPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkQueueFamilyOwnershipTransferPropertiesKHR`
-    public static VkQueueFamilyOwnershipTransferPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

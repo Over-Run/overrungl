@@ -111,56 +111,6 @@ public final class VkVideoEncodeH265SessionParametersFeedbackInfoKHR extends Gro
     /// @return the allocated `VkVideoEncodeH265SessionParametersFeedbackInfoKHR`
     public static VkVideoEncodeH265SessionParametersFeedbackInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265SessionParametersFeedbackInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeH265SessionParametersFeedbackInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param hasStdVPSOverrides `hasStdVPSOverrides`
-    /// @param hasStdSPSOverrides `hasStdSPSOverrides`
-    /// @param hasStdPPSOverrides `hasStdPPSOverrides`
-    /// @return the allocated `VkVideoEncodeH265SessionParametersFeedbackInfoKHR`
-    public static VkVideoEncodeH265SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hasStdVPSOverrides, int hasStdSPSOverrides, int hasStdPPSOverrides) {
-        return alloc(allocator).sType(sType).pNext(pNext).hasStdVPSOverrides(hasStdVPSOverrides).hasStdSPSOverrides(hasStdSPSOverrides).hasStdPPSOverrides(hasStdPPSOverrides);
-    }
-
-    /// Allocates a `VkVideoEncodeH265SessionParametersFeedbackInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param hasStdVPSOverrides `hasStdVPSOverrides`
-    /// @param hasStdSPSOverrides `hasStdSPSOverrides`
-    /// @return the allocated `VkVideoEncodeH265SessionParametersFeedbackInfoKHR`
-    public static VkVideoEncodeH265SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hasStdVPSOverrides, int hasStdSPSOverrides) {
-        return alloc(allocator).sType(sType).pNext(pNext).hasStdVPSOverrides(hasStdVPSOverrides).hasStdSPSOverrides(hasStdSPSOverrides);
-    }
-
-    /// Allocates a `VkVideoEncodeH265SessionParametersFeedbackInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param hasStdVPSOverrides `hasStdVPSOverrides`
-    /// @return the allocated `VkVideoEncodeH265SessionParametersFeedbackInfoKHR`
-    public static VkVideoEncodeH265SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hasStdVPSOverrides) {
-        return alloc(allocator).sType(sType).pNext(pNext).hasStdVPSOverrides(hasStdVPSOverrides);
-    }
-
-    /// Allocates a `VkVideoEncodeH265SessionParametersFeedbackInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoEncodeH265SessionParametersFeedbackInfoKHR`
-    public static VkVideoEncodeH265SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoEncodeH265SessionParametersFeedbackInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoEncodeH265SessionParametersFeedbackInfoKHR`
-    public static VkVideoEncodeH265SessionParametersFeedbackInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

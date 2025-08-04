@@ -87,23 +87,6 @@ public final class StdVideoEncodeAV1ExtensionHeader extends GroupType {
     /// @return the allocated `StdVideoEncodeAV1ExtensionHeader`
     public static StdVideoEncodeAV1ExtensionHeader alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeAV1ExtensionHeader(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoEncodeAV1ExtensionHeader` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param temporal_id `temporal_id`
-    /// @param spatial_id `spatial_id`
-    /// @return the allocated `StdVideoEncodeAV1ExtensionHeader`
-    public static StdVideoEncodeAV1ExtensionHeader allocInit(SegmentAllocator allocator, byte temporal_id, byte spatial_id) {
-        return alloc(allocator).temporal_id(temporal_id).spatial_id(spatial_id);
-    }
-
-    /// Allocates a `StdVideoEncodeAV1ExtensionHeader` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param temporal_id `temporal_id`
-    /// @return the allocated `StdVideoEncodeAV1ExtensionHeader`
-    public static StdVideoEncodeAV1ExtensionHeader allocInit(SegmentAllocator allocator, byte temporal_id) {
-        return alloc(allocator).temporal_id(temporal_id);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

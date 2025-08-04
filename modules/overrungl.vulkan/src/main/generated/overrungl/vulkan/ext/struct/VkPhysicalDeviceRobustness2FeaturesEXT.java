@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceRobustness2FeaturesEXT extends GroupType {
     /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesEXT`
     public static VkPhysicalDeviceRobustness2FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRobustness2FeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRobustness2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param robustBufferAccess2 `robustBufferAccess2`
-    /// @param robustImageAccess2 `robustImageAccess2`
-    /// @param nullDescriptor `nullDescriptor`
-    /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesEXT`
-    public static VkPhysicalDeviceRobustness2FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustBufferAccess2, int robustImageAccess2, int nullDescriptor) {
-        return alloc(allocator).sType(sType).pNext(pNext).robustBufferAccess2(robustBufferAccess2).robustImageAccess2(robustImageAccess2).nullDescriptor(nullDescriptor);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRobustness2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param robustBufferAccess2 `robustBufferAccess2`
-    /// @param robustImageAccess2 `robustImageAccess2`
-    /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesEXT`
-    public static VkPhysicalDeviceRobustness2FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustBufferAccess2, int robustImageAccess2) {
-        return alloc(allocator).sType(sType).pNext(pNext).robustBufferAccess2(robustBufferAccess2).robustImageAccess2(robustImageAccess2);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRobustness2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param robustBufferAccess2 `robustBufferAccess2`
-    /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesEXT`
-    public static VkPhysicalDeviceRobustness2FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int robustBufferAccess2) {
-        return alloc(allocator).sType(sType).pNext(pNext).robustBufferAccess2(robustBufferAccess2);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRobustness2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesEXT`
-    public static VkPhysicalDeviceRobustness2FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRobustness2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRobustness2FeaturesEXT`
-    public static VkPhysicalDeviceRobustness2FeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

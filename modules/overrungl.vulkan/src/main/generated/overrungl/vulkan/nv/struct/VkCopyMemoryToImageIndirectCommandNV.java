@@ -113,69 +113,6 @@ public final class VkCopyMemoryToImageIndirectCommandNV extends GroupType {
     /// @return the allocated `VkCopyMemoryToImageIndirectCommandNV`
     public static VkCopyMemoryToImageIndirectCommandNV alloc(SegmentAllocator allocator, long count) { return new VkCopyMemoryToImageIndirectCommandNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCopyMemoryToImageIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcAddress `srcAddress`
-    /// @param bufferRowLength `bufferRowLength`
-    /// @param bufferImageHeight `bufferImageHeight`
-    /// @param imageSubresource `imageSubresource`
-    /// @param imageOffset `imageOffset`
-    /// @param imageExtent `imageExtent`
-    /// @return the allocated `VkCopyMemoryToImageIndirectCommandNV`
-    public static VkCopyMemoryToImageIndirectCommandNV allocInit(SegmentAllocator allocator, long srcAddress, int bufferRowLength, int bufferImageHeight, MemorySegment imageSubresource, MemorySegment imageOffset, MemorySegment imageExtent) {
-        return alloc(allocator).srcAddress(srcAddress).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight).imageSubresource(imageSubresource).imageOffset(imageOffset).imageExtent(imageExtent);
-    }
-
-    /// Allocates a `VkCopyMemoryToImageIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcAddress `srcAddress`
-    /// @param bufferRowLength `bufferRowLength`
-    /// @param bufferImageHeight `bufferImageHeight`
-    /// @param imageSubresource `imageSubresource`
-    /// @param imageOffset `imageOffset`
-    /// @return the allocated `VkCopyMemoryToImageIndirectCommandNV`
-    public static VkCopyMemoryToImageIndirectCommandNV allocInit(SegmentAllocator allocator, long srcAddress, int bufferRowLength, int bufferImageHeight, MemorySegment imageSubresource, MemorySegment imageOffset) {
-        return alloc(allocator).srcAddress(srcAddress).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight).imageSubresource(imageSubresource).imageOffset(imageOffset);
-    }
-
-    /// Allocates a `VkCopyMemoryToImageIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcAddress `srcAddress`
-    /// @param bufferRowLength `bufferRowLength`
-    /// @param bufferImageHeight `bufferImageHeight`
-    /// @param imageSubresource `imageSubresource`
-    /// @return the allocated `VkCopyMemoryToImageIndirectCommandNV`
-    public static VkCopyMemoryToImageIndirectCommandNV allocInit(SegmentAllocator allocator, long srcAddress, int bufferRowLength, int bufferImageHeight, MemorySegment imageSubresource) {
-        return alloc(allocator).srcAddress(srcAddress).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight).imageSubresource(imageSubresource);
-    }
-
-    /// Allocates a `VkCopyMemoryToImageIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcAddress `srcAddress`
-    /// @param bufferRowLength `bufferRowLength`
-    /// @param bufferImageHeight `bufferImageHeight`
-    /// @return the allocated `VkCopyMemoryToImageIndirectCommandNV`
-    public static VkCopyMemoryToImageIndirectCommandNV allocInit(SegmentAllocator allocator, long srcAddress, int bufferRowLength, int bufferImageHeight) {
-        return alloc(allocator).srcAddress(srcAddress).bufferRowLength(bufferRowLength).bufferImageHeight(bufferImageHeight);
-    }
-
-    /// Allocates a `VkCopyMemoryToImageIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcAddress `srcAddress`
-    /// @param bufferRowLength `bufferRowLength`
-    /// @return the allocated `VkCopyMemoryToImageIndirectCommandNV`
-    public static VkCopyMemoryToImageIndirectCommandNV allocInit(SegmentAllocator allocator, long srcAddress, int bufferRowLength) {
-        return alloc(allocator).srcAddress(srcAddress).bufferRowLength(bufferRowLength);
-    }
-
-    /// Allocates a `VkCopyMemoryToImageIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcAddress `srcAddress`
-    /// @return the allocated `VkCopyMemoryToImageIndirectCommandNV`
-    public static VkCopyMemoryToImageIndirectCommandNV allocInit(SegmentAllocator allocator, long srcAddress) {
-        return alloc(allocator).srcAddress(srcAddress);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

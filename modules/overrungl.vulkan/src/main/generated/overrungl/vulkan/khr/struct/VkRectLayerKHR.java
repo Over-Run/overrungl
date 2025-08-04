@@ -91,33 +91,6 @@ public final class VkRectLayerKHR extends GroupType {
     /// @return the allocated `VkRectLayerKHR`
     public static VkRectLayerKHR alloc(SegmentAllocator allocator, long count) { return new VkRectLayerKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRectLayerKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @param extent `extent`
-    /// @param layer `layer`
-    /// @return the allocated `VkRectLayerKHR`
-    public static VkRectLayerKHR allocInit(SegmentAllocator allocator, MemorySegment offset, MemorySegment extent, int layer) {
-        return alloc(allocator).offset(offset).extent(extent).layer(layer);
-    }
-
-    /// Allocates a `VkRectLayerKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @param extent `extent`
-    /// @return the allocated `VkRectLayerKHR`
-    public static VkRectLayerKHR allocInit(SegmentAllocator allocator, MemorySegment offset, MemorySegment extent) {
-        return alloc(allocator).offset(offset).extent(extent);
-    }
-
-    /// Allocates a `VkRectLayerKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @return the allocated `VkRectLayerKHR`
-    public static VkRectLayerKHR allocInit(SegmentAllocator allocator, MemorySegment offset) {
-        return alloc(allocator).offset(offset);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

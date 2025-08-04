@@ -103,44 +103,6 @@ public final class VkWriteDescriptorSetTensorARM extends GroupType {
     /// @return the allocated `VkWriteDescriptorSetTensorARM`
     public static VkWriteDescriptorSetTensorARM alloc(SegmentAllocator allocator, long count) { return new VkWriteDescriptorSetTensorARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkWriteDescriptorSetTensorARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensorViewCount `tensorViewCount`
-    /// @param pTensorViews `pTensorViews`
-    /// @return the allocated `VkWriteDescriptorSetTensorARM`
-    public static VkWriteDescriptorSetTensorARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tensorViewCount, MemorySegment pTensorViews) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensorViewCount(tensorViewCount).pTensorViews(pTensorViews);
-    }
-
-    /// Allocates a `VkWriteDescriptorSetTensorARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensorViewCount `tensorViewCount`
-    /// @return the allocated `VkWriteDescriptorSetTensorARM`
-    public static VkWriteDescriptorSetTensorARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tensorViewCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensorViewCount(tensorViewCount);
-    }
-
-    /// Allocates a `VkWriteDescriptorSetTensorARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkWriteDescriptorSetTensorARM`
-    public static VkWriteDescriptorSetTensorARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkWriteDescriptorSetTensorARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkWriteDescriptorSetTensorARM`
-    public static VkWriteDescriptorSetTensorARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

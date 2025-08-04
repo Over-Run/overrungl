@@ -95,33 +95,6 @@ public final class VkPipelineCreateFlags2CreateInfoKHR extends GroupType {
     /// @return the allocated `VkPipelineCreateFlags2CreateInfoKHR`
     public static VkPipelineCreateFlags2CreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineCreateFlags2CreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCreateFlags2CreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkPipelineCreateFlags2CreateInfoKHR`
-    public static VkPipelineCreateFlags2CreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkPipelineCreateFlags2CreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineCreateFlags2CreateInfoKHR`
-    public static VkPipelineCreateFlags2CreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineCreateFlags2CreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineCreateFlags2CreateInfoKHR`
-    public static VkPipelineCreateFlags2CreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

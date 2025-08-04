@@ -95,33 +95,6 @@ public final class VkRenderPassCreationControlEXT extends GroupType {
     /// @return the allocated `VkRenderPassCreationControlEXT`
     public static VkRenderPassCreationControlEXT alloc(SegmentAllocator allocator, long count) { return new VkRenderPassCreationControlEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderPassCreationControlEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param disallowMerging `disallowMerging`
-    /// @return the allocated `VkRenderPassCreationControlEXT`
-    public static VkRenderPassCreationControlEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int disallowMerging) {
-        return alloc(allocator).sType(sType).pNext(pNext).disallowMerging(disallowMerging);
-    }
-
-    /// Allocates a `VkRenderPassCreationControlEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkRenderPassCreationControlEXT`
-    public static VkRenderPassCreationControlEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkRenderPassCreationControlEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkRenderPassCreationControlEXT`
-    public static VkRenderPassCreationControlEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures extends G
     /// @return the allocated `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`
     public static VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param separateDepthStencilLayouts `separateDepthStencilLayouts`
-    /// @return the allocated `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`
-    public static VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int separateDepthStencilLayouts) {
-        return alloc(allocator).sType(sType).pNext(pNext).separateDepthStencilLayouts(separateDepthStencilLayouts);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`
-    public static VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures`
-    public static VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

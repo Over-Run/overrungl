@@ -111,56 +111,6 @@ public final class VkDescriptorSetAllocateInfo extends GroupType {
     /// @return the allocated `VkDescriptorSetAllocateInfo`
     public static VkDescriptorSetAllocateInfo alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetAllocateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorSetAllocateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorPool `descriptorPool`
-    /// @param descriptorSetCount `descriptorSetCount`
-    /// @param pSetLayouts `pSetLayouts`
-    /// @return the allocated `VkDescriptorSetAllocateInfo`
-    public static VkDescriptorSetAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorPool, int descriptorSetCount, MemorySegment pSetLayouts) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorPool(descriptorPool).descriptorSetCount(descriptorSetCount).pSetLayouts(pSetLayouts);
-    }
-
-    /// Allocates a `VkDescriptorSetAllocateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorPool `descriptorPool`
-    /// @param descriptorSetCount `descriptorSetCount`
-    /// @return the allocated `VkDescriptorSetAllocateInfo`
-    public static VkDescriptorSetAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorPool, int descriptorSetCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorPool(descriptorPool).descriptorSetCount(descriptorSetCount);
-    }
-
-    /// Allocates a `VkDescriptorSetAllocateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorPool `descriptorPool`
-    /// @return the allocated `VkDescriptorSetAllocateInfo`
-    public static VkDescriptorSetAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorPool) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorPool(descriptorPool);
-    }
-
-    /// Allocates a `VkDescriptorSetAllocateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDescriptorSetAllocateInfo`
-    public static VkDescriptorSetAllocateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDescriptorSetAllocateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDescriptorSetAllocateInfo`
-    public static VkDescriptorSetAllocateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

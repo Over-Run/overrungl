@@ -103,44 +103,6 @@ public final class VkPipelineIndirectDeviceAddressInfoNV extends GroupType {
     /// @return the allocated `VkPipelineIndirectDeviceAddressInfoNV`
     public static VkPipelineIndirectDeviceAddressInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineIndirectDeviceAddressInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineIndirectDeviceAddressInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineBindPoint `pipelineBindPoint`
-    /// @param pipeline `pipeline`
-    /// @return the allocated `VkPipelineIndirectDeviceAddressInfoNV`
-    public static VkPipelineIndirectDeviceAddressInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBindPoint, long pipeline) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineBindPoint(pipelineBindPoint).pipeline(pipeline);
-    }
-
-    /// Allocates a `VkPipelineIndirectDeviceAddressInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineBindPoint `pipelineBindPoint`
-    /// @return the allocated `VkPipelineIndirectDeviceAddressInfoNV`
-    public static VkPipelineIndirectDeviceAddressInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBindPoint) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineBindPoint(pipelineBindPoint);
-    }
-
-    /// Allocates a `VkPipelineIndirectDeviceAddressInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineIndirectDeviceAddressInfoNV`
-    public static VkPipelineIndirectDeviceAddressInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineIndirectDeviceAddressInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineIndirectDeviceAddressInfoNV`
-    public static VkPipelineIndirectDeviceAddressInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

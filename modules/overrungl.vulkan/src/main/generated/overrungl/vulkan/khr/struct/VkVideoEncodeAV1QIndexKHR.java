@@ -95,33 +95,6 @@ public final class VkVideoEncodeAV1QIndexKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeAV1QIndexKHR`
     public static VkVideoEncodeAV1QIndexKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1QIndexKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeAV1QIndexKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param intraQIndex `intraQIndex`
-    /// @param predictiveQIndex `predictiveQIndex`
-    /// @param bipredictiveQIndex `bipredictiveQIndex`
-    /// @return the allocated `VkVideoEncodeAV1QIndexKHR`
-    public static VkVideoEncodeAV1QIndexKHR allocInit(SegmentAllocator allocator, int intraQIndex, int predictiveQIndex, int bipredictiveQIndex) {
-        return alloc(allocator).intraQIndex(intraQIndex).predictiveQIndex(predictiveQIndex).bipredictiveQIndex(bipredictiveQIndex);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1QIndexKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param intraQIndex `intraQIndex`
-    /// @param predictiveQIndex `predictiveQIndex`
-    /// @return the allocated `VkVideoEncodeAV1QIndexKHR`
-    public static VkVideoEncodeAV1QIndexKHR allocInit(SegmentAllocator allocator, int intraQIndex, int predictiveQIndex) {
-        return alloc(allocator).intraQIndex(intraQIndex).predictiveQIndex(predictiveQIndex);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1QIndexKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param intraQIndex `intraQIndex`
-    /// @return the allocated `VkVideoEncodeAV1QIndexKHR`
-    public static VkVideoEncodeAV1QIndexKHR allocInit(SegmentAllocator allocator, int intraQIndex) {
-        return alloc(allocator).intraQIndex(intraQIndex);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

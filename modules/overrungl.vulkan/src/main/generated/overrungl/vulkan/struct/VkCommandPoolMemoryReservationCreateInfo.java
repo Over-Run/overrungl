@@ -103,44 +103,6 @@ public final class VkCommandPoolMemoryReservationCreateInfo extends GroupType {
     /// @return the allocated `VkCommandPoolMemoryReservationCreateInfo`
     public static VkCommandPoolMemoryReservationCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkCommandPoolMemoryReservationCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCommandPoolMemoryReservationCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param commandPoolReservedSize `commandPoolReservedSize`
-    /// @param commandPoolMaxCommandBuffers `commandPoolMaxCommandBuffers`
-    /// @return the allocated `VkCommandPoolMemoryReservationCreateInfo`
-    public static VkCommandPoolMemoryReservationCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long commandPoolReservedSize, int commandPoolMaxCommandBuffers) {
-        return alloc(allocator).sType(sType).pNext(pNext).commandPoolReservedSize(commandPoolReservedSize).commandPoolMaxCommandBuffers(commandPoolMaxCommandBuffers);
-    }
-
-    /// Allocates a `VkCommandPoolMemoryReservationCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param commandPoolReservedSize `commandPoolReservedSize`
-    /// @return the allocated `VkCommandPoolMemoryReservationCreateInfo`
-    public static VkCommandPoolMemoryReservationCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long commandPoolReservedSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).commandPoolReservedSize(commandPoolReservedSize);
-    }
-
-    /// Allocates a `VkCommandPoolMemoryReservationCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkCommandPoolMemoryReservationCreateInfo`
-    public static VkCommandPoolMemoryReservationCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkCommandPoolMemoryReservationCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkCommandPoolMemoryReservationCreateInfo`
-    public static VkCommandPoolMemoryReservationCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

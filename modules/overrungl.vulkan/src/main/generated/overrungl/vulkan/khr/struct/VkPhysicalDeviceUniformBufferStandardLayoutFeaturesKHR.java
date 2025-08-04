@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR extend
     /// @return the allocated `VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR`
     public static VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param uniformBufferStandardLayout `uniformBufferStandardLayout`
-    /// @return the allocated `VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR`
-    public static VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int uniformBufferStandardLayout) {
-        return alloc(allocator).sType(sType).pNext(pNext).uniformBufferStandardLayout(uniformBufferStandardLayout);
-    }
-
-    /// Allocates a `VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR`
-    public static VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR`
-    public static VkPhysicalDeviceUniformBufferStandardLayoutFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

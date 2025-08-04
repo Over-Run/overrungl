@@ -93,33 +93,6 @@ public final class VkAccelerationStructureGeometryMotionTrianglesDataNV extends 
     /// @return the allocated `VkAccelerationStructureGeometryMotionTrianglesDataNV`
     public static VkAccelerationStructureGeometryMotionTrianglesDataNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureGeometryMotionTrianglesDataNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureGeometryMotionTrianglesDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param vertexData `vertexData`
-    /// @return the allocated `VkAccelerationStructureGeometryMotionTrianglesDataNV`
-    public static VkAccelerationStructureGeometryMotionTrianglesDataNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment vertexData) {
-        return alloc(allocator).sType(sType).pNext(pNext).vertexData(vertexData);
-    }
-
-    /// Allocates a `VkAccelerationStructureGeometryMotionTrianglesDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAccelerationStructureGeometryMotionTrianglesDataNV`
-    public static VkAccelerationStructureGeometryMotionTrianglesDataNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAccelerationStructureGeometryMotionTrianglesDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAccelerationStructureGeometryMotionTrianglesDataNV`
-    public static VkAccelerationStructureGeometryMotionTrianglesDataNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

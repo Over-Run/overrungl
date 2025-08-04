@@ -111,56 +111,6 @@ public final class VkPipelineBinaryCreateInfoKHR extends GroupType {
     /// @return the allocated `VkPipelineBinaryCreateInfoKHR`
     public static VkPipelineBinaryCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineBinaryCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineBinaryCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pKeysAndDataInfo `pKeysAndDataInfo`
-    /// @param pipeline `pipeline`
-    /// @param pPipelineCreateInfo `pPipelineCreateInfo`
-    /// @return the allocated `VkPipelineBinaryCreateInfoKHR`
-    public static VkPipelineBinaryCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pKeysAndDataInfo, long pipeline, MemorySegment pPipelineCreateInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).pKeysAndDataInfo(pKeysAndDataInfo).pipeline(pipeline).pPipelineCreateInfo(pPipelineCreateInfo);
-    }
-
-    /// Allocates a `VkPipelineBinaryCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pKeysAndDataInfo `pKeysAndDataInfo`
-    /// @param pipeline `pipeline`
-    /// @return the allocated `VkPipelineBinaryCreateInfoKHR`
-    public static VkPipelineBinaryCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pKeysAndDataInfo, long pipeline) {
-        return alloc(allocator).sType(sType).pNext(pNext).pKeysAndDataInfo(pKeysAndDataInfo).pipeline(pipeline);
-    }
-
-    /// Allocates a `VkPipelineBinaryCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pKeysAndDataInfo `pKeysAndDataInfo`
-    /// @return the allocated `VkPipelineBinaryCreateInfoKHR`
-    public static VkPipelineBinaryCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pKeysAndDataInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).pKeysAndDataInfo(pKeysAndDataInfo);
-    }
-
-    /// Allocates a `VkPipelineBinaryCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineBinaryCreateInfoKHR`
-    public static VkPipelineBinaryCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineBinaryCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineBinaryCreateInfoKHR`
-    public static VkPipelineBinaryCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

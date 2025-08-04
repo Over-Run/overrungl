@@ -103,44 +103,6 @@ public final class VkImportMemoryFdInfoKHR extends GroupType {
     /// @return the allocated `VkImportMemoryFdInfoKHR`
     public static VkImportMemoryFdInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkImportMemoryFdInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImportMemoryFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param handleType `handleType`
-    /// @param fd `fd`
-    /// @return the allocated `VkImportMemoryFdInfoKHR`
-    public static VkImportMemoryFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleType, int fd) {
-        return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType).fd(fd);
-    }
-
-    /// Allocates a `VkImportMemoryFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkImportMemoryFdInfoKHR`
-    public static VkImportMemoryFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType);
-    }
-
-    /// Allocates a `VkImportMemoryFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImportMemoryFdInfoKHR`
-    public static VkImportMemoryFdInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImportMemoryFdInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImportMemoryFdInfoKHR`
-    public static VkImportMemoryFdInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -77,14 +77,6 @@ public final class VkIndirectCommandsPushConstantTokenEXT extends GroupType {
     /// @return the allocated `VkIndirectCommandsPushConstantTokenEXT`
     public static VkIndirectCommandsPushConstantTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsPushConstantTokenEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkIndirectCommandsPushConstantTokenEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param updateRange `updateRange`
-    /// @return the allocated `VkIndirectCommandsPushConstantTokenEXT`
-    public static VkIndirectCommandsPushConstantTokenEXT allocInit(SegmentAllocator allocator, MemorySegment updateRange) {
-        return alloc(allocator).updateRange(updateRange);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

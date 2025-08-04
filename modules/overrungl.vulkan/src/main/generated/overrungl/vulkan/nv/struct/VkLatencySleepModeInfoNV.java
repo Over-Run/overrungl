@@ -111,56 +111,6 @@ public final class VkLatencySleepModeInfoNV extends GroupType {
     /// @return the allocated `VkLatencySleepModeInfoNV`
     public static VkLatencySleepModeInfoNV alloc(SegmentAllocator allocator, long count) { return new VkLatencySleepModeInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkLatencySleepModeInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param lowLatencyMode `lowLatencyMode`
-    /// @param lowLatencyBoost `lowLatencyBoost`
-    /// @param minimumIntervalUs `minimumIntervalUs`
-    /// @return the allocated `VkLatencySleepModeInfoNV`
-    public static VkLatencySleepModeInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int lowLatencyMode, int lowLatencyBoost, int minimumIntervalUs) {
-        return alloc(allocator).sType(sType).pNext(pNext).lowLatencyMode(lowLatencyMode).lowLatencyBoost(lowLatencyBoost).minimumIntervalUs(minimumIntervalUs);
-    }
-
-    /// Allocates a `VkLatencySleepModeInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param lowLatencyMode `lowLatencyMode`
-    /// @param lowLatencyBoost `lowLatencyBoost`
-    /// @return the allocated `VkLatencySleepModeInfoNV`
-    public static VkLatencySleepModeInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int lowLatencyMode, int lowLatencyBoost) {
-        return alloc(allocator).sType(sType).pNext(pNext).lowLatencyMode(lowLatencyMode).lowLatencyBoost(lowLatencyBoost);
-    }
-
-    /// Allocates a `VkLatencySleepModeInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param lowLatencyMode `lowLatencyMode`
-    /// @return the allocated `VkLatencySleepModeInfoNV`
-    public static VkLatencySleepModeInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int lowLatencyMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).lowLatencyMode(lowLatencyMode);
-    }
-
-    /// Allocates a `VkLatencySleepModeInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkLatencySleepModeInfoNV`
-    public static VkLatencySleepModeInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkLatencySleepModeInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkLatencySleepModeInfoNV`
-    public static VkLatencySleepModeInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

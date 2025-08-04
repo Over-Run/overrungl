@@ -119,69 +119,6 @@ public final class VkVideoProfileInfoKHR extends GroupType {
     /// @return the allocated `VkVideoProfileInfoKHR`
     public static VkVideoProfileInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoProfileInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param videoCodecOperation `videoCodecOperation`
-    /// @param chromaSubsampling `chromaSubsampling`
-    /// @param lumaBitDepth `lumaBitDepth`
-    /// @param chromaBitDepth `chromaBitDepth`
-    /// @return the allocated `VkVideoProfileInfoKHR`
-    public static VkVideoProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int videoCodecOperation, int chromaSubsampling, int lumaBitDepth, int chromaBitDepth) {
-        return alloc(allocator).sType(sType).pNext(pNext).videoCodecOperation(videoCodecOperation).chromaSubsampling(chromaSubsampling).lumaBitDepth(lumaBitDepth).chromaBitDepth(chromaBitDepth);
-    }
-
-    /// Allocates a `VkVideoProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param videoCodecOperation `videoCodecOperation`
-    /// @param chromaSubsampling `chromaSubsampling`
-    /// @param lumaBitDepth `lumaBitDepth`
-    /// @return the allocated `VkVideoProfileInfoKHR`
-    public static VkVideoProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int videoCodecOperation, int chromaSubsampling, int lumaBitDepth) {
-        return alloc(allocator).sType(sType).pNext(pNext).videoCodecOperation(videoCodecOperation).chromaSubsampling(chromaSubsampling).lumaBitDepth(lumaBitDepth);
-    }
-
-    /// Allocates a `VkVideoProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param videoCodecOperation `videoCodecOperation`
-    /// @param chromaSubsampling `chromaSubsampling`
-    /// @return the allocated `VkVideoProfileInfoKHR`
-    public static VkVideoProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int videoCodecOperation, int chromaSubsampling) {
-        return alloc(allocator).sType(sType).pNext(pNext).videoCodecOperation(videoCodecOperation).chromaSubsampling(chromaSubsampling);
-    }
-
-    /// Allocates a `VkVideoProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param videoCodecOperation `videoCodecOperation`
-    /// @return the allocated `VkVideoProfileInfoKHR`
-    public static VkVideoProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int videoCodecOperation) {
-        return alloc(allocator).sType(sType).pNext(pNext).videoCodecOperation(videoCodecOperation);
-    }
-
-    /// Allocates a `VkVideoProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoProfileInfoKHR`
-    public static VkVideoProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoProfileInfoKHR`
-    public static VkVideoProfileInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

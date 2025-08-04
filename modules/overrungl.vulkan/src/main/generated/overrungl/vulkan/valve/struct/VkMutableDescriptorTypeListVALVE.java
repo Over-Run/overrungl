@@ -87,23 +87,6 @@ public final class VkMutableDescriptorTypeListVALVE extends GroupType {
     /// @return the allocated `VkMutableDescriptorTypeListVALVE`
     public static VkMutableDescriptorTypeListVALVE alloc(SegmentAllocator allocator, long count) { return new VkMutableDescriptorTypeListVALVE(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMutableDescriptorTypeListVALVE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param descriptorTypeCount `descriptorTypeCount`
-    /// @param pDescriptorTypes `pDescriptorTypes`
-    /// @return the allocated `VkMutableDescriptorTypeListVALVE`
-    public static VkMutableDescriptorTypeListVALVE allocInit(SegmentAllocator allocator, int descriptorTypeCount, MemorySegment pDescriptorTypes) {
-        return alloc(allocator).descriptorTypeCount(descriptorTypeCount).pDescriptorTypes(pDescriptorTypes);
-    }
-
-    /// Allocates a `VkMutableDescriptorTypeListVALVE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param descriptorTypeCount `descriptorTypeCount`
-    /// @return the allocated `VkMutableDescriptorTypeListVALVE`
-    public static VkMutableDescriptorTypeListVALVE allocInit(SegmentAllocator allocator, int descriptorTypeCount) {
-        return alloc(allocator).descriptorTypeCount(descriptorTypeCount);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

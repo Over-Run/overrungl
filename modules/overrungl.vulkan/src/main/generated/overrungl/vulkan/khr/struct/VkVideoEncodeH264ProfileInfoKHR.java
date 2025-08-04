@@ -95,33 +95,6 @@ public final class VkVideoEncodeH264ProfileInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeH264ProfileInfoKHR`
     public static VkVideoEncodeH264ProfileInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH264ProfileInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeH264ProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param stdProfileIdc `stdProfileIdc`
-    /// @return the allocated `VkVideoEncodeH264ProfileInfoKHR`
-    public static VkVideoEncodeH264ProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stdProfileIdc) {
-        return alloc(allocator).sType(sType).pNext(pNext).stdProfileIdc(stdProfileIdc);
-    }
-
-    /// Allocates a `VkVideoEncodeH264ProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoEncodeH264ProfileInfoKHR`
-    public static VkVideoEncodeH264ProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoEncodeH264ProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoEncodeH264ProfileInfoKHR`
-    public static VkVideoEncodeH264ProfileInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

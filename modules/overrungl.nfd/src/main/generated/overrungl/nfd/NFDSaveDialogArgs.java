@@ -109,56 +109,6 @@ public final class NFDSaveDialogArgs extends GroupType {
     /// @return the allocated `NFDSaveDialogArgs`
     public static NFDSaveDialogArgs alloc(SegmentAllocator allocator, long count) { return new NFDSaveDialogArgs(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `NFDSaveDialogArgs` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param filterList `filterList`
-    /// @param filterCount `filterCount`
-    /// @param defaultPath `defaultPath`
-    /// @param defaultName `defaultName`
-    /// @param parentWindow `parentWindow`
-    /// @return the allocated `NFDSaveDialogArgs`
-    public static NFDSaveDialogArgs allocInit(SegmentAllocator allocator, MemorySegment filterList, int filterCount, MemorySegment defaultPath, MemorySegment defaultName, MemorySegment parentWindow) {
-        return alloc(allocator).filterList(filterList).filterCount(filterCount).defaultPath(defaultPath).defaultName(defaultName).parentWindow(parentWindow);
-    }
-
-    /// Allocates a `NFDSaveDialogArgs` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param filterList `filterList`
-    /// @param filterCount `filterCount`
-    /// @param defaultPath `defaultPath`
-    /// @param defaultName `defaultName`
-    /// @return the allocated `NFDSaveDialogArgs`
-    public static NFDSaveDialogArgs allocInit(SegmentAllocator allocator, MemorySegment filterList, int filterCount, MemorySegment defaultPath, MemorySegment defaultName) {
-        return alloc(allocator).filterList(filterList).filterCount(filterCount).defaultPath(defaultPath).defaultName(defaultName);
-    }
-
-    /// Allocates a `NFDSaveDialogArgs` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param filterList `filterList`
-    /// @param filterCount `filterCount`
-    /// @param defaultPath `defaultPath`
-    /// @return the allocated `NFDSaveDialogArgs`
-    public static NFDSaveDialogArgs allocInit(SegmentAllocator allocator, MemorySegment filterList, int filterCount, MemorySegment defaultPath) {
-        return alloc(allocator).filterList(filterList).filterCount(filterCount).defaultPath(defaultPath);
-    }
-
-    /// Allocates a `NFDSaveDialogArgs` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param filterList `filterList`
-    /// @param filterCount `filterCount`
-    /// @return the allocated `NFDSaveDialogArgs`
-    public static NFDSaveDialogArgs allocInit(SegmentAllocator allocator, MemorySegment filterList, int filterCount) {
-        return alloc(allocator).filterList(filterList).filterCount(filterCount);
-    }
-
-    /// Allocates a `NFDSaveDialogArgs` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param filterList `filterList`
-    /// @return the allocated `NFDSaveDialogArgs`
-    public static NFDSaveDialogArgs allocInit(SegmentAllocator allocator, MemorySegment filterList) {
-        return alloc(allocator).filterList(filterList);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

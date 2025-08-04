@@ -95,33 +95,6 @@ public final class VkSamplerCaptureDescriptorDataInfoEXT extends GroupType {
     /// @return the allocated `VkSamplerCaptureDescriptorDataInfoEXT`
     public static VkSamplerCaptureDescriptorDataInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSamplerCaptureDescriptorDataInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSamplerCaptureDescriptorDataInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sampler `sampler`
-    /// @return the allocated `VkSamplerCaptureDescriptorDataInfoEXT`
-    public static VkSamplerCaptureDescriptorDataInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long sampler) {
-        return alloc(allocator).sType(sType).pNext(pNext).sampler(sampler);
-    }
-
-    /// Allocates a `VkSamplerCaptureDescriptorDataInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSamplerCaptureDescriptorDataInfoEXT`
-    public static VkSamplerCaptureDescriptorDataInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSamplerCaptureDescriptorDataInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSamplerCaptureDescriptorDataInfoEXT`
-    public static VkSamplerCaptureDescriptorDataInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

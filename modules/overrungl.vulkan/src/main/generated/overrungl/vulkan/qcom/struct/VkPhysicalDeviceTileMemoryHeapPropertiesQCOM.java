@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceTileMemoryHeapPropertiesQCOM extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM`
     public static VkPhysicalDeviceTileMemoryHeapPropertiesQCOM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTileMemoryHeapPropertiesQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param queueSubmitBoundary `queueSubmitBoundary`
-    /// @param tileBufferTransfers `tileBufferTransfers`
-    /// @return the allocated `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM`
-    public static VkPhysicalDeviceTileMemoryHeapPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int queueSubmitBoundary, int tileBufferTransfers) {
-        return alloc(allocator).sType(sType).pNext(pNext).queueSubmitBoundary(queueSubmitBoundary).tileBufferTransfers(tileBufferTransfers);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param queueSubmitBoundary `queueSubmitBoundary`
-    /// @return the allocated `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM`
-    public static VkPhysicalDeviceTileMemoryHeapPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int queueSubmitBoundary) {
-        return alloc(allocator).sType(sType).pNext(pNext).queueSubmitBoundary(queueSubmitBoundary);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM`
-    public static VkPhysicalDeviceTileMemoryHeapPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceTileMemoryHeapPropertiesQCOM`
-    public static VkPhysicalDeviceTileMemoryHeapPropertiesQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceExtendedDynamicState2FeaturesEXT extends Grou
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
     public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExtendedDynamicState2FeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param extendedDynamicState2 `extendedDynamicState2`
-    /// @param extendedDynamicState2LogicOp `extendedDynamicState2LogicOp`
-    /// @param extendedDynamicState2PatchControlPoints `extendedDynamicState2PatchControlPoints`
-    /// @return the allocated `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int extendedDynamicState2, int extendedDynamicState2LogicOp, int extendedDynamicState2PatchControlPoints) {
-        return alloc(allocator).sType(sType).pNext(pNext).extendedDynamicState2(extendedDynamicState2).extendedDynamicState2LogicOp(extendedDynamicState2LogicOp).extendedDynamicState2PatchControlPoints(extendedDynamicState2PatchControlPoints);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param extendedDynamicState2 `extendedDynamicState2`
-    /// @param extendedDynamicState2LogicOp `extendedDynamicState2LogicOp`
-    /// @return the allocated `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int extendedDynamicState2, int extendedDynamicState2LogicOp) {
-        return alloc(allocator).sType(sType).pNext(pNext).extendedDynamicState2(extendedDynamicState2).extendedDynamicState2LogicOp(extendedDynamicState2LogicOp);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param extendedDynamicState2 `extendedDynamicState2`
-    /// @return the allocated `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int extendedDynamicState2) {
-        return alloc(allocator).sType(sType).pNext(pNext).extendedDynamicState2(extendedDynamicState2);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceExtendedDynamicState2FeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicState2FeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

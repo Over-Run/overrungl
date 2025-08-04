@@ -103,44 +103,6 @@ public final class VkPipelineVertexInputDivisorStateCreateInfoKHR extends GroupT
     /// @return the allocated `VkPipelineVertexInputDivisorStateCreateInfoKHR`
     public static VkPipelineVertexInputDivisorStateCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineVertexInputDivisorStateCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineVertexInputDivisorStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param vertexBindingDivisorCount `vertexBindingDivisorCount`
-    /// @param pVertexBindingDivisors `pVertexBindingDivisors`
-    /// @return the allocated `VkPipelineVertexInputDivisorStateCreateInfoKHR`
-    public static VkPipelineVertexInputDivisorStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexBindingDivisorCount, MemorySegment pVertexBindingDivisors) {
-        return alloc(allocator).sType(sType).pNext(pNext).vertexBindingDivisorCount(vertexBindingDivisorCount).pVertexBindingDivisors(pVertexBindingDivisors);
-    }
-
-    /// Allocates a `VkPipelineVertexInputDivisorStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param vertexBindingDivisorCount `vertexBindingDivisorCount`
-    /// @return the allocated `VkPipelineVertexInputDivisorStateCreateInfoKHR`
-    public static VkPipelineVertexInputDivisorStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vertexBindingDivisorCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).vertexBindingDivisorCount(vertexBindingDivisorCount);
-    }
-
-    /// Allocates a `VkPipelineVertexInputDivisorStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineVertexInputDivisorStateCreateInfoKHR`
-    public static VkPipelineVertexInputDivisorStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineVertexInputDivisorStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineVertexInputDivisorStateCreateInfoKHR`
-    public static VkPipelineVertexInputDivisorStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

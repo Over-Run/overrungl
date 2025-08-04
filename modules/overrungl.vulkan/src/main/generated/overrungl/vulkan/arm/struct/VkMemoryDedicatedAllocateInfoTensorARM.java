@@ -95,33 +95,6 @@ public final class VkMemoryDedicatedAllocateInfoTensorARM extends GroupType {
     /// @return the allocated `VkMemoryDedicatedAllocateInfoTensorARM`
     public static VkMemoryDedicatedAllocateInfoTensorARM alloc(SegmentAllocator allocator, long count) { return new VkMemoryDedicatedAllocateInfoTensorARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryDedicatedAllocateInfoTensorARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensor `tensor`
-    /// @return the allocated `VkMemoryDedicatedAllocateInfoTensorARM`
-    public static VkMemoryDedicatedAllocateInfoTensorARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long tensor) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensor(tensor);
-    }
-
-    /// Allocates a `VkMemoryDedicatedAllocateInfoTensorARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryDedicatedAllocateInfoTensorARM`
-    public static VkMemoryDedicatedAllocateInfoTensorARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryDedicatedAllocateInfoTensorARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryDedicatedAllocateInfoTensorARM`
-    public static VkMemoryDedicatedAllocateInfoTensorARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

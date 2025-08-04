@@ -95,33 +95,6 @@ public final class VkPhysicalDevicePrivateDataFeatures extends GroupType {
     /// @return the allocated `VkPhysicalDevicePrivateDataFeatures`
     public static VkPhysicalDevicePrivateDataFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePrivateDataFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePrivateDataFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param privateData `privateData`
-    /// @return the allocated `VkPhysicalDevicePrivateDataFeatures`
-    public static VkPhysicalDevicePrivateDataFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int privateData) {
-        return alloc(allocator).sType(sType).pNext(pNext).privateData(privateData);
-    }
-
-    /// Allocates a `VkPhysicalDevicePrivateDataFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevicePrivateDataFeatures`
-    public static VkPhysicalDevicePrivateDataFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevicePrivateDataFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevicePrivateDataFeatures`
-    public static VkPhysicalDevicePrivateDataFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

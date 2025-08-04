@@ -79,14 +79,6 @@ public final class BytePtr extends GroupType {
     /// @return the allocated `BytePtr`
     public static BytePtr alloc(SegmentAllocator allocator, long count) { return new BytePtr(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `BytePtr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param value `value`
-    /// @return the allocated `BytePtr`
-    public static BytePtr allocInit(SegmentAllocator allocator, byte value) {
-        return alloc(allocator).value(value);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

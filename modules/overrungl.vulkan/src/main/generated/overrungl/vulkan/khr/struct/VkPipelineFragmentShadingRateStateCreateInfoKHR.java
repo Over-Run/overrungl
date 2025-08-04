@@ -101,44 +101,6 @@ public final class VkPipelineFragmentShadingRateStateCreateInfoKHR extends Group
     /// @return the allocated `VkPipelineFragmentShadingRateStateCreateInfoKHR`
     public static VkPipelineFragmentShadingRateStateCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineFragmentShadingRateStateCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineFragmentShadingRateStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fragmentSize `fragmentSize`
-    /// @param combinerOps `combinerOps`
-    /// @return the allocated `VkPipelineFragmentShadingRateStateCreateInfoKHR`
-    public static VkPipelineFragmentShadingRateStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment fragmentSize, MemorySegment combinerOps) {
-        return alloc(allocator).sType(sType).pNext(pNext).fragmentSize(fragmentSize).combinerOps(combinerOps);
-    }
-
-    /// Allocates a `VkPipelineFragmentShadingRateStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fragmentSize `fragmentSize`
-    /// @return the allocated `VkPipelineFragmentShadingRateStateCreateInfoKHR`
-    public static VkPipelineFragmentShadingRateStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment fragmentSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).fragmentSize(fragmentSize);
-    }
-
-    /// Allocates a `VkPipelineFragmentShadingRateStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineFragmentShadingRateStateCreateInfoKHR`
-    public static VkPipelineFragmentShadingRateStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineFragmentShadingRateStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineFragmentShadingRateStateCreateInfoKHR`
-    public static VkPipelineFragmentShadingRateStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -111,56 +111,6 @@ public final class StdVideoEncodeH264RefPicMarkingEntry extends GroupType {
     /// @return the allocated `StdVideoEncodeH264RefPicMarkingEntry`
     public static StdVideoEncodeH264RefPicMarkingEntry alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264RefPicMarkingEntry(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoEncodeH264RefPicMarkingEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param memory_management_control_operation `memory_management_control_operation`
-    /// @param difference_of_pic_nums_minus1 `difference_of_pic_nums_minus1`
-    /// @param long_term_pic_num `long_term_pic_num`
-    /// @param long_term_frame_idx `long_term_frame_idx`
-    /// @param max_long_term_frame_idx_plus1 `max_long_term_frame_idx_plus1`
-    /// @return the allocated `StdVideoEncodeH264RefPicMarkingEntry`
-    public static StdVideoEncodeH264RefPicMarkingEntry allocInit(SegmentAllocator allocator, int memory_management_control_operation, short difference_of_pic_nums_minus1, short long_term_pic_num, short long_term_frame_idx, short max_long_term_frame_idx_plus1) {
-        return alloc(allocator).memory_management_control_operation(memory_management_control_operation).difference_of_pic_nums_minus1(difference_of_pic_nums_minus1).long_term_pic_num(long_term_pic_num).long_term_frame_idx(long_term_frame_idx).max_long_term_frame_idx_plus1(max_long_term_frame_idx_plus1);
-    }
-
-    /// Allocates a `StdVideoEncodeH264RefPicMarkingEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param memory_management_control_operation `memory_management_control_operation`
-    /// @param difference_of_pic_nums_minus1 `difference_of_pic_nums_minus1`
-    /// @param long_term_pic_num `long_term_pic_num`
-    /// @param long_term_frame_idx `long_term_frame_idx`
-    /// @return the allocated `StdVideoEncodeH264RefPicMarkingEntry`
-    public static StdVideoEncodeH264RefPicMarkingEntry allocInit(SegmentAllocator allocator, int memory_management_control_operation, short difference_of_pic_nums_minus1, short long_term_pic_num, short long_term_frame_idx) {
-        return alloc(allocator).memory_management_control_operation(memory_management_control_operation).difference_of_pic_nums_minus1(difference_of_pic_nums_minus1).long_term_pic_num(long_term_pic_num).long_term_frame_idx(long_term_frame_idx);
-    }
-
-    /// Allocates a `StdVideoEncodeH264RefPicMarkingEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param memory_management_control_operation `memory_management_control_operation`
-    /// @param difference_of_pic_nums_minus1 `difference_of_pic_nums_minus1`
-    /// @param long_term_pic_num `long_term_pic_num`
-    /// @return the allocated `StdVideoEncodeH264RefPicMarkingEntry`
-    public static StdVideoEncodeH264RefPicMarkingEntry allocInit(SegmentAllocator allocator, int memory_management_control_operation, short difference_of_pic_nums_minus1, short long_term_pic_num) {
-        return alloc(allocator).memory_management_control_operation(memory_management_control_operation).difference_of_pic_nums_minus1(difference_of_pic_nums_minus1).long_term_pic_num(long_term_pic_num);
-    }
-
-    /// Allocates a `StdVideoEncodeH264RefPicMarkingEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param memory_management_control_operation `memory_management_control_operation`
-    /// @param difference_of_pic_nums_minus1 `difference_of_pic_nums_minus1`
-    /// @return the allocated `StdVideoEncodeH264RefPicMarkingEntry`
-    public static StdVideoEncodeH264RefPicMarkingEntry allocInit(SegmentAllocator allocator, int memory_management_control_operation, short difference_of_pic_nums_minus1) {
-        return alloc(allocator).memory_management_control_operation(memory_management_control_operation).difference_of_pic_nums_minus1(difference_of_pic_nums_minus1);
-    }
-
-    /// Allocates a `StdVideoEncodeH264RefPicMarkingEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param memory_management_control_operation `memory_management_control_operation`
-    /// @return the allocated `StdVideoEncodeH264RefPicMarkingEntry`
-    public static StdVideoEncodeH264RefPicMarkingEntry allocInit(SegmentAllocator allocator, int memory_management_control_operation) {
-        return alloc(allocator).memory_management_control_operation(memory_management_control_operation);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

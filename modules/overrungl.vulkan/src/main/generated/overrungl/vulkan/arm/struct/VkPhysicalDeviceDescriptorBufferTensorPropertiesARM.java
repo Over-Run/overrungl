@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceDescriptorBufferTensorPropertiesARM extends G
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
     public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorBufferTensorPropertiesARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensorCaptureReplayDescriptorDataSize `tensorCaptureReplayDescriptorDataSize`
-    /// @param tensorViewCaptureReplayDescriptorDataSize `tensorViewCaptureReplayDescriptorDataSize`
-    /// @param tensorDescriptorSize `tensorDescriptorSize`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
-    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long tensorCaptureReplayDescriptorDataSize, long tensorViewCaptureReplayDescriptorDataSize, long tensorDescriptorSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensorCaptureReplayDescriptorDataSize(tensorCaptureReplayDescriptorDataSize).tensorViewCaptureReplayDescriptorDataSize(tensorViewCaptureReplayDescriptorDataSize).tensorDescriptorSize(tensorDescriptorSize);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensorCaptureReplayDescriptorDataSize `tensorCaptureReplayDescriptorDataSize`
-    /// @param tensorViewCaptureReplayDescriptorDataSize `tensorViewCaptureReplayDescriptorDataSize`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
-    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long tensorCaptureReplayDescriptorDataSize, long tensorViewCaptureReplayDescriptorDataSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensorCaptureReplayDescriptorDataSize(tensorCaptureReplayDescriptorDataSize).tensorViewCaptureReplayDescriptorDataSize(tensorViewCaptureReplayDescriptorDataSize);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensorCaptureReplayDescriptorDataSize `tensorCaptureReplayDescriptorDataSize`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
-    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long tensorCaptureReplayDescriptorDataSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensorCaptureReplayDescriptorDataSize(tensorCaptureReplayDescriptorDataSize);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
-    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferTensorPropertiesARM`
-    public static VkPhysicalDeviceDescriptorBufferTensorPropertiesARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

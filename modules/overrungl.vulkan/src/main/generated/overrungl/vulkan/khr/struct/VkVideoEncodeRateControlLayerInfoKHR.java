@@ -119,69 +119,6 @@ public final class VkVideoEncodeRateControlLayerInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeRateControlLayerInfoKHR`
     public static VkVideoEncodeRateControlLayerInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeRateControlLayerInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeRateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param averageBitrate `averageBitrate`
-    /// @param maxBitrate `maxBitrate`
-    /// @param frameRateNumerator `frameRateNumerator`
-    /// @param frameRateDenominator `frameRateDenominator`
-    /// @return the allocated `VkVideoEncodeRateControlLayerInfoKHR`
-    public static VkVideoEncodeRateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long averageBitrate, long maxBitrate, int frameRateNumerator, int frameRateDenominator) {
-        return alloc(allocator).sType(sType).pNext(pNext).averageBitrate(averageBitrate).maxBitrate(maxBitrate).frameRateNumerator(frameRateNumerator).frameRateDenominator(frameRateDenominator);
-    }
-
-    /// Allocates a `VkVideoEncodeRateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param averageBitrate `averageBitrate`
-    /// @param maxBitrate `maxBitrate`
-    /// @param frameRateNumerator `frameRateNumerator`
-    /// @return the allocated `VkVideoEncodeRateControlLayerInfoKHR`
-    public static VkVideoEncodeRateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long averageBitrate, long maxBitrate, int frameRateNumerator) {
-        return alloc(allocator).sType(sType).pNext(pNext).averageBitrate(averageBitrate).maxBitrate(maxBitrate).frameRateNumerator(frameRateNumerator);
-    }
-
-    /// Allocates a `VkVideoEncodeRateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param averageBitrate `averageBitrate`
-    /// @param maxBitrate `maxBitrate`
-    /// @return the allocated `VkVideoEncodeRateControlLayerInfoKHR`
-    public static VkVideoEncodeRateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long averageBitrate, long maxBitrate) {
-        return alloc(allocator).sType(sType).pNext(pNext).averageBitrate(averageBitrate).maxBitrate(maxBitrate);
-    }
-
-    /// Allocates a `VkVideoEncodeRateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param averageBitrate `averageBitrate`
-    /// @return the allocated `VkVideoEncodeRateControlLayerInfoKHR`
-    public static VkVideoEncodeRateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long averageBitrate) {
-        return alloc(allocator).sType(sType).pNext(pNext).averageBitrate(averageBitrate);
-    }
-
-    /// Allocates a `VkVideoEncodeRateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoEncodeRateControlLayerInfoKHR`
-    public static VkVideoEncodeRateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoEncodeRateControlLayerInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoEncodeRateControlLayerInfoKHR`
-    public static VkVideoEncodeRateControlLayerInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

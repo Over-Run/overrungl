@@ -111,56 +111,6 @@ public final class VkShaderModuleCreateInfo extends GroupType {
     /// @return the allocated `VkShaderModuleCreateInfo`
     public static VkShaderModuleCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkShaderModuleCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkShaderModuleCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param codeSize `codeSize`
-    /// @param pCode `pCode`
-    /// @return the allocated `VkShaderModuleCreateInfo`
-    public static VkShaderModuleCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long codeSize, MemorySegment pCode) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).codeSize(codeSize).pCode(pCode);
-    }
-
-    /// Allocates a `VkShaderModuleCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param codeSize `codeSize`
-    /// @return the allocated `VkShaderModuleCreateInfo`
-    public static VkShaderModuleCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long codeSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).codeSize(codeSize);
-    }
-
-    /// Allocates a `VkShaderModuleCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkShaderModuleCreateInfo`
-    public static VkShaderModuleCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkShaderModuleCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkShaderModuleCreateInfo`
-    public static VkShaderModuleCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkShaderModuleCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkShaderModuleCreateInfo`
-    public static VkShaderModuleCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

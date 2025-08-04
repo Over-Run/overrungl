@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceSamplerFilterMinmaxProperties extends GroupTy
     /// @return the allocated `VkPhysicalDeviceSamplerFilterMinmaxProperties`
     public static VkPhysicalDeviceSamplerFilterMinmaxProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSamplerFilterMinmaxProperties(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceSamplerFilterMinmaxProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param filterMinmaxSingleComponentFormats `filterMinmaxSingleComponentFormats`
-    /// @param filterMinmaxImageComponentMapping `filterMinmaxImageComponentMapping`
-    /// @return the allocated `VkPhysicalDeviceSamplerFilterMinmaxProperties`
-    public static VkPhysicalDeviceSamplerFilterMinmaxProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int filterMinmaxSingleComponentFormats, int filterMinmaxImageComponentMapping) {
-        return alloc(allocator).sType(sType).pNext(pNext).filterMinmaxSingleComponentFormats(filterMinmaxSingleComponentFormats).filterMinmaxImageComponentMapping(filterMinmaxImageComponentMapping);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSamplerFilterMinmaxProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param filterMinmaxSingleComponentFormats `filterMinmaxSingleComponentFormats`
-    /// @return the allocated `VkPhysicalDeviceSamplerFilterMinmaxProperties`
-    public static VkPhysicalDeviceSamplerFilterMinmaxProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int filterMinmaxSingleComponentFormats) {
-        return alloc(allocator).sType(sType).pNext(pNext).filterMinmaxSingleComponentFormats(filterMinmaxSingleComponentFormats);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSamplerFilterMinmaxProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceSamplerFilterMinmaxProperties`
-    public static VkPhysicalDeviceSamplerFilterMinmaxProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSamplerFilterMinmaxProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceSamplerFilterMinmaxProperties`
-    public static VkPhysicalDeviceSamplerFilterMinmaxProperties allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

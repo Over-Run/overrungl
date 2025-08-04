@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT extends G
     /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT`
     public static VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxVertexAttribDivisor `maxVertexAttribDivisor`
-    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT`
-    public static VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVertexAttribDivisor) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxVertexAttribDivisor(maxVertexAttribDivisor);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT`
-    public static VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT`
-    public static VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

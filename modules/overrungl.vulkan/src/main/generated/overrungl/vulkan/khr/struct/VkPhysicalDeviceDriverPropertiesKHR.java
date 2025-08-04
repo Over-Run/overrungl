@@ -117,69 +117,6 @@ public final class VkPhysicalDeviceDriverPropertiesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceDriverPropertiesKHR`
     public static VkPhysicalDeviceDriverPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDriverPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDriverPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param driverID `driverID`
-    /// @param driverName `driverName`
-    /// @param driverInfo `driverInfo`
-    /// @param conformanceVersion `conformanceVersion`
-    /// @return the allocated `VkPhysicalDeviceDriverPropertiesKHR`
-    public static VkPhysicalDeviceDriverPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int driverID, MemorySegment driverName, MemorySegment driverInfo, MemorySegment conformanceVersion) {
-        return alloc(allocator).sType(sType).pNext(pNext).driverID(driverID).driverName(driverName).driverInfo(driverInfo).conformanceVersion(conformanceVersion);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDriverPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param driverID `driverID`
-    /// @param driverName `driverName`
-    /// @param driverInfo `driverInfo`
-    /// @return the allocated `VkPhysicalDeviceDriverPropertiesKHR`
-    public static VkPhysicalDeviceDriverPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int driverID, MemorySegment driverName, MemorySegment driverInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).driverID(driverID).driverName(driverName).driverInfo(driverInfo);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDriverPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param driverID `driverID`
-    /// @param driverName `driverName`
-    /// @return the allocated `VkPhysicalDeviceDriverPropertiesKHR`
-    public static VkPhysicalDeviceDriverPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int driverID, MemorySegment driverName) {
-        return alloc(allocator).sType(sType).pNext(pNext).driverID(driverID).driverName(driverName);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDriverPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param driverID `driverID`
-    /// @return the allocated `VkPhysicalDeviceDriverPropertiesKHR`
-    public static VkPhysicalDeviceDriverPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int driverID) {
-        return alloc(allocator).sType(sType).pNext(pNext).driverID(driverID);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDriverPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceDriverPropertiesKHR`
-    public static VkPhysicalDeviceDriverPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDriverPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceDriverPropertiesKHR`
-    public static VkPhysicalDeviceDriverPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

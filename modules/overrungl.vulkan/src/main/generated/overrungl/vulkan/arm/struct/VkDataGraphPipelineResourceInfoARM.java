@@ -111,56 +111,6 @@ public final class VkDataGraphPipelineResourceInfoARM extends GroupType {
     /// @return the allocated `VkDataGraphPipelineResourceInfoARM`
     public static VkDataGraphPipelineResourceInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineResourceInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDataGraphPipelineResourceInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorSet `descriptorSet`
-    /// @param binding `binding`
-    /// @param arrayElement `arrayElement`
-    /// @return the allocated `VkDataGraphPipelineResourceInfoARM`
-    public static VkDataGraphPipelineResourceInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int descriptorSet, int binding, int arrayElement) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorSet(descriptorSet).binding(binding).arrayElement(arrayElement);
-    }
-
-    /// Allocates a `VkDataGraphPipelineResourceInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorSet `descriptorSet`
-    /// @param binding `binding`
-    /// @return the allocated `VkDataGraphPipelineResourceInfoARM`
-    public static VkDataGraphPipelineResourceInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int descriptorSet, int binding) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorSet(descriptorSet).binding(binding);
-    }
-
-    /// Allocates a `VkDataGraphPipelineResourceInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorSet `descriptorSet`
-    /// @return the allocated `VkDataGraphPipelineResourceInfoARM`
-    public static VkDataGraphPipelineResourceInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int descriptorSet) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorSet(descriptorSet);
-    }
-
-    /// Allocates a `VkDataGraphPipelineResourceInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDataGraphPipelineResourceInfoARM`
-    public static VkDataGraphPipelineResourceInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDataGraphPipelineResourceInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDataGraphPipelineResourceInfoARM`
-    public static VkDataGraphPipelineResourceInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

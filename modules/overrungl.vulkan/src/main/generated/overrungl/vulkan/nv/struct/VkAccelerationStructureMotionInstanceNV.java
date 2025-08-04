@@ -93,33 +93,6 @@ public final class VkAccelerationStructureMotionInstanceNV extends GroupType {
     /// @return the allocated `VkAccelerationStructureMotionInstanceNV`
     public static VkAccelerationStructureMotionInstanceNV alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureMotionInstanceNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureMotionInstanceNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param type `type`
-    /// @param flags `flags`
-    /// @param data `data`
-    /// @return the allocated `VkAccelerationStructureMotionInstanceNV`
-    public static VkAccelerationStructureMotionInstanceNV allocInit(SegmentAllocator allocator, int type, int flags, MemorySegment data) {
-        return alloc(allocator).type(type).flags(flags).data(data);
-    }
-
-    /// Allocates a `VkAccelerationStructureMotionInstanceNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param type `type`
-    /// @param flags `flags`
-    /// @return the allocated `VkAccelerationStructureMotionInstanceNV`
-    public static VkAccelerationStructureMotionInstanceNV allocInit(SegmentAllocator allocator, int type, int flags) {
-        return alloc(allocator).type(type).flags(flags);
-    }
-
-    /// Allocates a `VkAccelerationStructureMotionInstanceNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param type `type`
-    /// @return the allocated `VkAccelerationStructureMotionInstanceNV`
-    public static VkAccelerationStructureMotionInstanceNV allocInit(SegmentAllocator allocator, int type) {
-        return alloc(allocator).type(type);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV extends
     /// @return the allocated `VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV`
     public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param rayTracingInvocationReorder `rayTracingInvocationReorder`
-    /// @return the allocated `VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV`
-    public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingInvocationReorder) {
-        return alloc(allocator).sType(sType).pNext(pNext).rayTracingInvocationReorder(rayTracingInvocationReorder);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV`
-    public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV`
-    public static VkPhysicalDeviceRayTracingInvocationReorderFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceMultiDrawPropertiesEXT extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMultiDrawPropertiesEXT`
     public static VkPhysicalDeviceMultiDrawPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMultiDrawPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMultiDrawPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxMultiDrawCount `maxMultiDrawCount`
-    /// @return the allocated `VkPhysicalDeviceMultiDrawPropertiesEXT`
-    public static VkPhysicalDeviceMultiDrawPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxMultiDrawCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxMultiDrawCount(maxMultiDrawCount);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMultiDrawPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceMultiDrawPropertiesEXT`
-    public static VkPhysicalDeviceMultiDrawPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMultiDrawPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceMultiDrawPropertiesEXT`
-    public static VkPhysicalDeviceMultiDrawPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

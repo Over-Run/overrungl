@@ -93,33 +93,6 @@ public final class VkExternalTensorPropertiesARM extends GroupType {
     /// @return the allocated `VkExternalTensorPropertiesARM`
     public static VkExternalTensorPropertiesARM alloc(SegmentAllocator allocator, long count) { return new VkExternalTensorPropertiesARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExternalTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param externalMemoryProperties `externalMemoryProperties`
-    /// @return the allocated `VkExternalTensorPropertiesARM`
-    public static VkExternalTensorPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment externalMemoryProperties) {
-        return alloc(allocator).sType(sType).pNext(pNext).externalMemoryProperties(externalMemoryProperties);
-    }
-
-    /// Allocates a `VkExternalTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExternalTensorPropertiesARM`
-    public static VkExternalTensorPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExternalTensorPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExternalTensorPropertiesARM`
-    public static VkExternalTensorPropertiesARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

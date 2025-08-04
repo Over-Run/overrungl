@@ -103,44 +103,6 @@ public final class VkTensorFormatPropertiesARM extends GroupType {
     /// @return the allocated `VkTensorFormatPropertiesARM`
     public static VkTensorFormatPropertiesARM alloc(SegmentAllocator allocator, long count) { return new VkTensorFormatPropertiesARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkTensorFormatPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param optimalTilingTensorFeatures `optimalTilingTensorFeatures`
-    /// @param linearTilingTensorFeatures `linearTilingTensorFeatures`
-    /// @return the allocated `VkTensorFormatPropertiesARM`
-    public static VkTensorFormatPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long optimalTilingTensorFeatures, long linearTilingTensorFeatures) {
-        return alloc(allocator).sType(sType).pNext(pNext).optimalTilingTensorFeatures(optimalTilingTensorFeatures).linearTilingTensorFeatures(linearTilingTensorFeatures);
-    }
-
-    /// Allocates a `VkTensorFormatPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param optimalTilingTensorFeatures `optimalTilingTensorFeatures`
-    /// @return the allocated `VkTensorFormatPropertiesARM`
-    public static VkTensorFormatPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long optimalTilingTensorFeatures) {
-        return alloc(allocator).sType(sType).pNext(pNext).optimalTilingTensorFeatures(optimalTilingTensorFeatures);
-    }
-
-    /// Allocates a `VkTensorFormatPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkTensorFormatPropertiesARM`
-    public static VkTensorFormatPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkTensorFormatPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkTensorFormatPropertiesARM`
-    public static VkTensorFormatPropertiesARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

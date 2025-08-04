@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceExternalComputeQueuePropertiesNV extends Grou
     /// @return the allocated `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
     public static VkPhysicalDeviceExternalComputeQueuePropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalComputeQueuePropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param externalDataSize `externalDataSize`
-    /// @param maxExternalQueues `maxExternalQueues`
-    /// @return the allocated `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
-    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int externalDataSize, int maxExternalQueues) {
-        return alloc(allocator).sType(sType).pNext(pNext).externalDataSize(externalDataSize).maxExternalQueues(maxExternalQueues);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param externalDataSize `externalDataSize`
-    /// @return the allocated `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
-    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int externalDataSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).externalDataSize(externalDataSize);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
-    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalComputeQueuePropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceExternalComputeQueuePropertiesNV`
-    public static VkPhysicalDeviceExternalComputeQueuePropertiesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -111,56 +111,6 @@ public final class VkWaylandSurfaceCreateInfoKHR extends GroupType {
     /// @return the allocated `VkWaylandSurfaceCreateInfoKHR`
     public static VkWaylandSurfaceCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkWaylandSurfaceCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkWaylandSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param display `display`
-    /// @param surface `surface`
-    /// @return the allocated `VkWaylandSurfaceCreateInfoKHR`
-    public static VkWaylandSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment display, MemorySegment surface) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).display(display).surface(surface);
-    }
-
-    /// Allocates a `VkWaylandSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param display `display`
-    /// @return the allocated `VkWaylandSurfaceCreateInfoKHR`
-    public static VkWaylandSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment display) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).display(display);
-    }
-
-    /// Allocates a `VkWaylandSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkWaylandSurfaceCreateInfoKHR`
-    public static VkWaylandSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkWaylandSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkWaylandSurfaceCreateInfoKHR`
-    public static VkWaylandSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkWaylandSurfaceCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkWaylandSurfaceCreateInfoKHR`
-    public static VkWaylandSurfaceCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

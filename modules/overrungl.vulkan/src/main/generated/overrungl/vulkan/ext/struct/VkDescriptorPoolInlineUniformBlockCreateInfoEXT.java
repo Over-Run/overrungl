@@ -95,33 +95,6 @@ public final class VkDescriptorPoolInlineUniformBlockCreateInfoEXT extends Group
     /// @return the allocated `VkDescriptorPoolInlineUniformBlockCreateInfoEXT`
     public static VkDescriptorPoolInlineUniformBlockCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDescriptorPoolInlineUniformBlockCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorPoolInlineUniformBlockCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxInlineUniformBlockBindings `maxInlineUniformBlockBindings`
-    /// @return the allocated `VkDescriptorPoolInlineUniformBlockCreateInfoEXT`
-    public static VkDescriptorPoolInlineUniformBlockCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxInlineUniformBlockBindings) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxInlineUniformBlockBindings(maxInlineUniformBlockBindings);
-    }
-
-    /// Allocates a `VkDescriptorPoolInlineUniformBlockCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDescriptorPoolInlineUniformBlockCreateInfoEXT`
-    public static VkDescriptorPoolInlineUniformBlockCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDescriptorPoolInlineUniformBlockCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDescriptorPoolInlineUniformBlockCreateInfoEXT`
-    public static VkDescriptorPoolInlineUniformBlockCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

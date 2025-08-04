@@ -119,69 +119,6 @@ public final class VkVertexInputBindingDescription2EXT extends GroupType {
     /// @return the allocated `VkVertexInputBindingDescription2EXT`
     public static VkVertexInputBindingDescription2EXT alloc(SegmentAllocator allocator, long count) { return new VkVertexInputBindingDescription2EXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVertexInputBindingDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param binding `binding`
-    /// @param stride `stride`
-    /// @param inputRate `inputRate`
-    /// @param divisor `divisor`
-    /// @return the allocated `VkVertexInputBindingDescription2EXT`
-    public static VkVertexInputBindingDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int binding, int stride, int inputRate, int divisor) {
-        return alloc(allocator).sType(sType).pNext(pNext).binding(binding).stride(stride).inputRate(inputRate).divisor(divisor);
-    }
-
-    /// Allocates a `VkVertexInputBindingDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param binding `binding`
-    /// @param stride `stride`
-    /// @param inputRate `inputRate`
-    /// @return the allocated `VkVertexInputBindingDescription2EXT`
-    public static VkVertexInputBindingDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int binding, int stride, int inputRate) {
-        return alloc(allocator).sType(sType).pNext(pNext).binding(binding).stride(stride).inputRate(inputRate);
-    }
-
-    /// Allocates a `VkVertexInputBindingDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param binding `binding`
-    /// @param stride `stride`
-    /// @return the allocated `VkVertexInputBindingDescription2EXT`
-    public static VkVertexInputBindingDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int binding, int stride) {
-        return alloc(allocator).sType(sType).pNext(pNext).binding(binding).stride(stride);
-    }
-
-    /// Allocates a `VkVertexInputBindingDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param binding `binding`
-    /// @return the allocated `VkVertexInputBindingDescription2EXT`
-    public static VkVertexInputBindingDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int binding) {
-        return alloc(allocator).sType(sType).pNext(pNext).binding(binding);
-    }
-
-    /// Allocates a `VkVertexInputBindingDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVertexInputBindingDescription2EXT`
-    public static VkVertexInputBindingDescription2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVertexInputBindingDescription2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVertexInputBindingDescription2EXT`
-    public static VkVertexInputBindingDescription2EXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

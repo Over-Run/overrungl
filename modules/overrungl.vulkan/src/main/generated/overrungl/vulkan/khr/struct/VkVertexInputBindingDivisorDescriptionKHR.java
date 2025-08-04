@@ -87,23 +87,6 @@ public final class VkVertexInputBindingDivisorDescriptionKHR extends GroupType {
     /// @return the allocated `VkVertexInputBindingDivisorDescriptionKHR`
     public static VkVertexInputBindingDivisorDescriptionKHR alloc(SegmentAllocator allocator, long count) { return new VkVertexInputBindingDivisorDescriptionKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVertexInputBindingDivisorDescriptionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @param divisor `divisor`
-    /// @return the allocated `VkVertexInputBindingDivisorDescriptionKHR`
-    public static VkVertexInputBindingDivisorDescriptionKHR allocInit(SegmentAllocator allocator, int binding, int divisor) {
-        return alloc(allocator).binding(binding).divisor(divisor);
-    }
-
-    /// Allocates a `VkVertexInputBindingDivisorDescriptionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @return the allocated `VkVertexInputBindingDivisorDescriptionKHR`
-    public static VkVertexInputBindingDivisorDescriptionKHR allocInit(SegmentAllocator allocator, int binding) {
-        return alloc(allocator).binding(binding);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

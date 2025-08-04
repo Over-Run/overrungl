@@ -119,69 +119,6 @@ public final class VkDeviceQueueCreateInfo extends GroupType {
     /// @return the allocated `VkDeviceQueueCreateInfo`
     public static VkDeviceQueueCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceQueueCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceQueueCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param queueFamilyIndex `queueFamilyIndex`
-    /// @param queueCount `queueCount`
-    /// @param pQueuePriorities `pQueuePriorities`
-    /// @return the allocated `VkDeviceQueueCreateInfo`
-    public static VkDeviceQueueCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueFamilyIndex, int queueCount, MemorySegment pQueuePriorities) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueFamilyIndex(queueFamilyIndex).queueCount(queueCount).pQueuePriorities(pQueuePriorities);
-    }
-
-    /// Allocates a `VkDeviceQueueCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param queueFamilyIndex `queueFamilyIndex`
-    /// @param queueCount `queueCount`
-    /// @return the allocated `VkDeviceQueueCreateInfo`
-    public static VkDeviceQueueCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueFamilyIndex, int queueCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueFamilyIndex(queueFamilyIndex).queueCount(queueCount);
-    }
-
-    /// Allocates a `VkDeviceQueueCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param queueFamilyIndex `queueFamilyIndex`
-    /// @return the allocated `VkDeviceQueueCreateInfo`
-    public static VkDeviceQueueCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int queueFamilyIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).queueFamilyIndex(queueFamilyIndex);
-    }
-
-    /// Allocates a `VkDeviceQueueCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkDeviceQueueCreateInfo`
-    public static VkDeviceQueueCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkDeviceQueueCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceQueueCreateInfo`
-    public static VkDeviceQueueCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceQueueCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceQueueCreateInfo`
-    public static VkDeviceQueueCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

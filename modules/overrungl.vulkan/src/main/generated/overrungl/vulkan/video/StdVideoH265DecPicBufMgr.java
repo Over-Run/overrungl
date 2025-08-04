@@ -95,33 +95,6 @@ public final class StdVideoH265DecPicBufMgr extends GroupType {
     /// @return the allocated `StdVideoH265DecPicBufMgr`
     public static StdVideoH265DecPicBufMgr alloc(SegmentAllocator allocator, long count) { return new StdVideoH265DecPicBufMgr(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoH265DecPicBufMgr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param max_latency_increase_plus1 `max_latency_increase_plus1`
-    /// @param max_dec_pic_buffering_minus1 `max_dec_pic_buffering_minus1`
-    /// @param max_num_reorder_pics `max_num_reorder_pics`
-    /// @return the allocated `StdVideoH265DecPicBufMgr`
-    public static StdVideoH265DecPicBufMgr allocInit(SegmentAllocator allocator, MemorySegment max_latency_increase_plus1, MemorySegment max_dec_pic_buffering_minus1, MemorySegment max_num_reorder_pics) {
-        return alloc(allocator).max_latency_increase_plus1(max_latency_increase_plus1).max_dec_pic_buffering_minus1(max_dec_pic_buffering_minus1).max_num_reorder_pics(max_num_reorder_pics);
-    }
-
-    /// Allocates a `StdVideoH265DecPicBufMgr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param max_latency_increase_plus1 `max_latency_increase_plus1`
-    /// @param max_dec_pic_buffering_minus1 `max_dec_pic_buffering_minus1`
-    /// @return the allocated `StdVideoH265DecPicBufMgr`
-    public static StdVideoH265DecPicBufMgr allocInit(SegmentAllocator allocator, MemorySegment max_latency_increase_plus1, MemorySegment max_dec_pic_buffering_minus1) {
-        return alloc(allocator).max_latency_increase_plus1(max_latency_increase_plus1).max_dec_pic_buffering_minus1(max_dec_pic_buffering_minus1);
-    }
-
-    /// Allocates a `StdVideoH265DecPicBufMgr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param max_latency_increase_plus1 `max_latency_increase_plus1`
-    /// @return the allocated `StdVideoH265DecPicBufMgr`
-    public static StdVideoH265DecPicBufMgr allocInit(SegmentAllocator allocator, MemorySegment max_latency_increase_plus1) {
-        return alloc(allocator).max_latency_increase_plus1(max_latency_increase_plus1);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

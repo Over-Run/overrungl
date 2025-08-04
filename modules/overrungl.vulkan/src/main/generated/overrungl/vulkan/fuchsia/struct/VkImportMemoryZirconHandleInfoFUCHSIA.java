@@ -103,44 +103,6 @@ public final class VkImportMemoryZirconHandleInfoFUCHSIA extends GroupType {
     /// @return the allocated `VkImportMemoryZirconHandleInfoFUCHSIA`
     public static VkImportMemoryZirconHandleInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImportMemoryZirconHandleInfoFUCHSIA(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param handleType `handleType`
-    /// @param handle `handle`
-    /// @return the allocated `VkImportMemoryZirconHandleInfoFUCHSIA`
-    public static VkImportMemoryZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleType, int handle) {
-        return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType).handle(handle);
-    }
-
-    /// Allocates a `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkImportMemoryZirconHandleInfoFUCHSIA`
-    public static VkImportMemoryZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).handleType(handleType);
-    }
-
-    /// Allocates a `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImportMemoryZirconHandleInfoFUCHSIA`
-    public static VkImportMemoryZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImportMemoryZirconHandleInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImportMemoryZirconHandleInfoFUCHSIA`
-    public static VkImportMemoryZirconHandleInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

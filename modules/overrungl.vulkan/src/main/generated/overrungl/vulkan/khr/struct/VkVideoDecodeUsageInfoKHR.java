@@ -95,33 +95,6 @@ public final class VkVideoDecodeUsageInfoKHR extends GroupType {
     /// @return the allocated `VkVideoDecodeUsageInfoKHR`
     public static VkVideoDecodeUsageInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeUsageInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoDecodeUsageInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param videoUsageHints `videoUsageHints`
-    /// @return the allocated `VkVideoDecodeUsageInfoKHR`
-    public static VkVideoDecodeUsageInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int videoUsageHints) {
-        return alloc(allocator).sType(sType).pNext(pNext).videoUsageHints(videoUsageHints);
-    }
-
-    /// Allocates a `VkVideoDecodeUsageInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoDecodeUsageInfoKHR`
-    public static VkVideoDecodeUsageInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoDecodeUsageInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoDecodeUsageInfoKHR`
-    public static VkVideoDecodeUsageInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkOpticalFlowImageFormatPropertiesNV extends GroupType {
     /// @return the allocated `VkOpticalFlowImageFormatPropertiesNV`
     public static VkOpticalFlowImageFormatPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkOpticalFlowImageFormatPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkOpticalFlowImageFormatPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param format `format`
-    /// @return the allocated `VkOpticalFlowImageFormatPropertiesNV`
-    public static VkOpticalFlowImageFormatPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int format) {
-        return alloc(allocator).sType(sType).pNext(pNext).format(format);
-    }
-
-    /// Allocates a `VkOpticalFlowImageFormatPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkOpticalFlowImageFormatPropertiesNV`
-    public static VkOpticalFlowImageFormatPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkOpticalFlowImageFormatPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkOpticalFlowImageFormatPropertiesNV`
-    public static VkOpticalFlowImageFormatPropertiesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

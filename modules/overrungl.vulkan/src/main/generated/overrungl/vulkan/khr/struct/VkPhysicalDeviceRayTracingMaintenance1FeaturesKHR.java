@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR extends Gro
     /// @return the allocated `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR`
     public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param rayTracingMaintenance1 `rayTracingMaintenance1`
-    /// @param rayTracingPipelineTraceRaysIndirect2 `rayTracingPipelineTraceRaysIndirect2`
-    /// @return the allocated `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR`
-    public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingMaintenance1, int rayTracingPipelineTraceRaysIndirect2) {
-        return alloc(allocator).sType(sType).pNext(pNext).rayTracingMaintenance1(rayTracingMaintenance1).rayTracingPipelineTraceRaysIndirect2(rayTracingPipelineTraceRaysIndirect2);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param rayTracingMaintenance1 `rayTracingMaintenance1`
-    /// @return the allocated `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR`
-    public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingMaintenance1) {
-        return alloc(allocator).sType(sType).pNext(pNext).rayTracingMaintenance1(rayTracingMaintenance1);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR`
-    public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR`
-    public static VkPhysicalDeviceRayTracingMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

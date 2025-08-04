@@ -87,23 +87,6 @@ public final class STBVorbisAlloc extends GroupType {
     /// @return the allocated `STBVorbisAlloc`
     public static STBVorbisAlloc alloc(SegmentAllocator allocator, long count) { return new STBVorbisAlloc(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `STBVorbisAlloc` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param alloc_buffer `alloc_buffer`
-    /// @param alloc_buffer_length_in_bytes `alloc_buffer_length_in_bytes`
-    /// @return the allocated `STBVorbisAlloc`
-    public static STBVorbisAlloc allocInit(SegmentAllocator allocator, MemorySegment alloc_buffer, int alloc_buffer_length_in_bytes) {
-        return alloc(allocator).alloc_buffer(alloc_buffer).alloc_buffer_length_in_bytes(alloc_buffer_length_in_bytes);
-    }
-
-    /// Allocates a `STBVorbisAlloc` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param alloc_buffer `alloc_buffer`
-    /// @return the allocated `STBVorbisAlloc`
-    public static STBVorbisAlloc allocInit(SegmentAllocator allocator, MemorySegment alloc_buffer) {
-        return alloc(allocator).alloc_buffer(alloc_buffer);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

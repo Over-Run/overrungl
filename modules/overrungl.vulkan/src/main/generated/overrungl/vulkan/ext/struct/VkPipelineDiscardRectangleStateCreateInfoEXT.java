@@ -119,69 +119,6 @@ public final class VkPipelineDiscardRectangleStateCreateInfoEXT extends GroupTyp
     /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
     public static VkPipelineDiscardRectangleStateCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineDiscardRectangleStateCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param discardRectangleMode `discardRectangleMode`
-    /// @param discardRectangleCount `discardRectangleCount`
-    /// @param pDiscardRectangles `pDiscardRectangles`
-    /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
-    public static VkPipelineDiscardRectangleStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int discardRectangleMode, int discardRectangleCount, MemorySegment pDiscardRectangles) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).discardRectangleMode(discardRectangleMode).discardRectangleCount(discardRectangleCount).pDiscardRectangles(pDiscardRectangles);
-    }
-
-    /// Allocates a `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param discardRectangleMode `discardRectangleMode`
-    /// @param discardRectangleCount `discardRectangleCount`
-    /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
-    public static VkPipelineDiscardRectangleStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int discardRectangleMode, int discardRectangleCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).discardRectangleMode(discardRectangleMode).discardRectangleCount(discardRectangleCount);
-    }
-
-    /// Allocates a `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param discardRectangleMode `discardRectangleMode`
-    /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
-    public static VkPipelineDiscardRectangleStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int discardRectangleMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).discardRectangleMode(discardRectangleMode);
-    }
-
-    /// Allocates a `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
-    public static VkPipelineDiscardRectangleStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
-    public static VkPipelineDiscardRectangleStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineDiscardRectangleStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineDiscardRectangleStateCreateInfoEXT`
-    public static VkPipelineDiscardRectangleStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

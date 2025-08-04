@@ -103,44 +103,6 @@ public final class VkQueueFamilyGlobalPriorityPropertiesKHR extends GroupType {
     /// @return the allocated `VkQueueFamilyGlobalPriorityPropertiesKHR`
     public static VkQueueFamilyGlobalPriorityPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyGlobalPriorityPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkQueueFamilyGlobalPriorityPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param priorityCount `priorityCount`
-    /// @param priorities `priorities`
-    /// @return the allocated `VkQueueFamilyGlobalPriorityPropertiesKHR`
-    public static VkQueueFamilyGlobalPriorityPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int priorityCount, MemorySegment priorities) {
-        return alloc(allocator).sType(sType).pNext(pNext).priorityCount(priorityCount).priorities(priorities);
-    }
-
-    /// Allocates a `VkQueueFamilyGlobalPriorityPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param priorityCount `priorityCount`
-    /// @return the allocated `VkQueueFamilyGlobalPriorityPropertiesKHR`
-    public static VkQueueFamilyGlobalPriorityPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int priorityCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).priorityCount(priorityCount);
-    }
-
-    /// Allocates a `VkQueueFamilyGlobalPriorityPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkQueueFamilyGlobalPriorityPropertiesKHR`
-    public static VkQueueFamilyGlobalPriorityPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkQueueFamilyGlobalPriorityPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkQueueFamilyGlobalPriorityPropertiesKHR`
-    public static VkQueueFamilyGlobalPriorityPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

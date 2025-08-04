@@ -79,14 +79,6 @@ public final class VoidPtr extends GroupType {
     /// @return the allocated `VoidPtr`
     public static VoidPtr alloc(SegmentAllocator allocator, long count) { return new VoidPtr(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VoidPtr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param value `value`
-    /// @return the allocated `VoidPtr`
-    public static VoidPtr allocInit(SegmentAllocator allocator, MemorySegment value) {
-        return alloc(allocator).value(value);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

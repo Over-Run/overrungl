@@ -103,44 +103,6 @@ public final class VkDisplayPlaneInfo2KHR extends GroupType {
     /// @return the allocated `VkDisplayPlaneInfo2KHR`
     public static VkDisplayPlaneInfo2KHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPlaneInfo2KHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDisplayPlaneInfo2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param mode `mode`
-    /// @param planeIndex `planeIndex`
-    /// @return the allocated `VkDisplayPlaneInfo2KHR`
-    public static VkDisplayPlaneInfo2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long mode, int planeIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).mode(mode).planeIndex(planeIndex);
-    }
-
-    /// Allocates a `VkDisplayPlaneInfo2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param mode `mode`
-    /// @return the allocated `VkDisplayPlaneInfo2KHR`
-    public static VkDisplayPlaneInfo2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long mode) {
-        return alloc(allocator).sType(sType).pNext(pNext).mode(mode);
-    }
-
-    /// Allocates a `VkDisplayPlaneInfo2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDisplayPlaneInfo2KHR`
-    public static VkDisplayPlaneInfo2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDisplayPlaneInfo2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDisplayPlaneInfo2KHR`
-    public static VkDisplayPlaneInfo2KHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

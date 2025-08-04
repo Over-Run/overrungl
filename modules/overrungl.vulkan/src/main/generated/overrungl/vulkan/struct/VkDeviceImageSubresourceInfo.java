@@ -103,44 +103,6 @@ public final class VkDeviceImageSubresourceInfo extends GroupType {
     /// @return the allocated `VkDeviceImageSubresourceInfo`
     public static VkDeviceImageSubresourceInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceImageSubresourceInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceImageSubresourceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pCreateInfo `pCreateInfo`
-    /// @param pSubresource `pSubresource`
-    /// @return the allocated `VkDeviceImageSubresourceInfo`
-    public static VkDeviceImageSubresourceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pCreateInfo, MemorySegment pSubresource) {
-        return alloc(allocator).sType(sType).pNext(pNext).pCreateInfo(pCreateInfo).pSubresource(pSubresource);
-    }
-
-    /// Allocates a `VkDeviceImageSubresourceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pCreateInfo `pCreateInfo`
-    /// @return the allocated `VkDeviceImageSubresourceInfo`
-    public static VkDeviceImageSubresourceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pCreateInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).pCreateInfo(pCreateInfo);
-    }
-
-    /// Allocates a `VkDeviceImageSubresourceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceImageSubresourceInfo`
-    public static VkDeviceImageSubresourceInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceImageSubresourceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceImageSubresourceInfo`
-    public static VkDeviceImageSubresourceInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

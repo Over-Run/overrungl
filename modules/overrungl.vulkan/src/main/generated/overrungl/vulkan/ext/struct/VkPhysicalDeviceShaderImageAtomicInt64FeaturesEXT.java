@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT extends Gro
     /// @return the allocated `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`
     public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderImageInt64Atomics `shaderImageInt64Atomics`
-    /// @param sparseImageInt64Atomics `sparseImageInt64Atomics`
-    /// @return the allocated `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`
-    public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderImageInt64Atomics, int sparseImageInt64Atomics) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderImageInt64Atomics(shaderImageInt64Atomics).sparseImageInt64Atomics(sparseImageInt64Atomics);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderImageInt64Atomics `shaderImageInt64Atomics`
-    /// @return the allocated `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`
-    public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderImageInt64Atomics) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderImageInt64Atomics(shaderImageInt64Atomics);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`
-    public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT`
-    public static VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

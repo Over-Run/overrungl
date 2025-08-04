@@ -79,14 +79,6 @@ public final class FloatPtr extends GroupType {
     /// @return the allocated `FloatPtr`
     public static FloatPtr alloc(SegmentAllocator allocator, long count) { return new FloatPtr(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `FloatPtr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param value `value`
-    /// @return the allocated `FloatPtr`
-    public static FloatPtr allocInit(SegmentAllocator allocator, float value) {
-        return alloc(allocator).value(value);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -87,23 +87,6 @@ public final class VkDrawMeshTasksIndirectCommandNV extends GroupType {
     /// @return the allocated `VkDrawMeshTasksIndirectCommandNV`
     public static VkDrawMeshTasksIndirectCommandNV alloc(SegmentAllocator allocator, long count) { return new VkDrawMeshTasksIndirectCommandNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDrawMeshTasksIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param taskCount `taskCount`
-    /// @param firstTask `firstTask`
-    /// @return the allocated `VkDrawMeshTasksIndirectCommandNV`
-    public static VkDrawMeshTasksIndirectCommandNV allocInit(SegmentAllocator allocator, int taskCount, int firstTask) {
-        return alloc(allocator).taskCount(taskCount).firstTask(firstTask);
-    }
-
-    /// Allocates a `VkDrawMeshTasksIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param taskCount `taskCount`
-    /// @return the allocated `VkDrawMeshTasksIndirectCommandNV`
-    public static VkDrawMeshTasksIndirectCommandNV allocInit(SegmentAllocator allocator, int taskCount) {
-        return alloc(allocator).taskCount(taskCount);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

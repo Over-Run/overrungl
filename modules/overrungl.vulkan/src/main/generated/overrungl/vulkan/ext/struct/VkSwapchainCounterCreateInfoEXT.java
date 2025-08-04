@@ -95,33 +95,6 @@ public final class VkSwapchainCounterCreateInfoEXT extends GroupType {
     /// @return the allocated `VkSwapchainCounterCreateInfoEXT`
     public static VkSwapchainCounterCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSwapchainCounterCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSwapchainCounterCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param surfaceCounters `surfaceCounters`
-    /// @return the allocated `VkSwapchainCounterCreateInfoEXT`
-    public static VkSwapchainCounterCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int surfaceCounters) {
-        return alloc(allocator).sType(sType).pNext(pNext).surfaceCounters(surfaceCounters);
-    }
-
-    /// Allocates a `VkSwapchainCounterCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSwapchainCounterCreateInfoEXT`
-    public static VkSwapchainCounterCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSwapchainCounterCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSwapchainCounterCreateInfoEXT`
-    public static VkSwapchainCounterCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

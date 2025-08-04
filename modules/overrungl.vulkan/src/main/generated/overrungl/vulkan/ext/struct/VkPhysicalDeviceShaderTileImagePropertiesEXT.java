@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceShaderTileImagePropertiesEXT extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceShaderTileImagePropertiesEXT`
     public static VkPhysicalDeviceShaderTileImagePropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderTileImagePropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderTileImageCoherentReadAccelerated `shaderTileImageCoherentReadAccelerated`
-    /// @param shaderTileImageReadSampleFromPixelRateInvocation `shaderTileImageReadSampleFromPixelRateInvocation`
-    /// @param shaderTileImageReadFromHelperInvocation `shaderTileImageReadFromHelperInvocation`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImagePropertiesEXT`
-    public static VkPhysicalDeviceShaderTileImagePropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderTileImageCoherentReadAccelerated, int shaderTileImageReadSampleFromPixelRateInvocation, int shaderTileImageReadFromHelperInvocation) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderTileImageCoherentReadAccelerated(shaderTileImageCoherentReadAccelerated).shaderTileImageReadSampleFromPixelRateInvocation(shaderTileImageReadSampleFromPixelRateInvocation).shaderTileImageReadFromHelperInvocation(shaderTileImageReadFromHelperInvocation);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderTileImageCoherentReadAccelerated `shaderTileImageCoherentReadAccelerated`
-    /// @param shaderTileImageReadSampleFromPixelRateInvocation `shaderTileImageReadSampleFromPixelRateInvocation`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImagePropertiesEXT`
-    public static VkPhysicalDeviceShaderTileImagePropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderTileImageCoherentReadAccelerated, int shaderTileImageReadSampleFromPixelRateInvocation) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderTileImageCoherentReadAccelerated(shaderTileImageCoherentReadAccelerated).shaderTileImageReadSampleFromPixelRateInvocation(shaderTileImageReadSampleFromPixelRateInvocation);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderTileImageCoherentReadAccelerated `shaderTileImageCoherentReadAccelerated`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImagePropertiesEXT`
-    public static VkPhysicalDeviceShaderTileImagePropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderTileImageCoherentReadAccelerated) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderTileImageCoherentReadAccelerated(shaderTileImageCoherentReadAccelerated);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImagePropertiesEXT`
-    public static VkPhysicalDeviceShaderTileImagePropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImagePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImagePropertiesEXT`
-    public static VkPhysicalDeviceShaderTileImagePropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkDrawMeshTasksIndirectCommandEXT extends GroupType {
     /// @return the allocated `VkDrawMeshTasksIndirectCommandEXT`
     public static VkDrawMeshTasksIndirectCommandEXT alloc(SegmentAllocator allocator, long count) { return new VkDrawMeshTasksIndirectCommandEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDrawMeshTasksIndirectCommandEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param groupCountX `groupCountX`
-    /// @param groupCountY `groupCountY`
-    /// @param groupCountZ `groupCountZ`
-    /// @return the allocated `VkDrawMeshTasksIndirectCommandEXT`
-    public static VkDrawMeshTasksIndirectCommandEXT allocInit(SegmentAllocator allocator, int groupCountX, int groupCountY, int groupCountZ) {
-        return alloc(allocator).groupCountX(groupCountX).groupCountY(groupCountY).groupCountZ(groupCountZ);
-    }
-
-    /// Allocates a `VkDrawMeshTasksIndirectCommandEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param groupCountX `groupCountX`
-    /// @param groupCountY `groupCountY`
-    /// @return the allocated `VkDrawMeshTasksIndirectCommandEXT`
-    public static VkDrawMeshTasksIndirectCommandEXT allocInit(SegmentAllocator allocator, int groupCountX, int groupCountY) {
-        return alloc(allocator).groupCountX(groupCountX).groupCountY(groupCountY);
-    }
-
-    /// Allocates a `VkDrawMeshTasksIndirectCommandEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param groupCountX `groupCountX`
-    /// @return the allocated `VkDrawMeshTasksIndirectCommandEXT`
-    public static VkDrawMeshTasksIndirectCommandEXT allocInit(SegmentAllocator allocator, int groupCountX) {
-        return alloc(allocator).groupCountX(groupCountX);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

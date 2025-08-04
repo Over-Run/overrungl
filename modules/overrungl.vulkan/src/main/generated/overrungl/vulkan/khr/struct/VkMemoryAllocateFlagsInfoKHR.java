@@ -103,44 +103,6 @@ public final class VkMemoryAllocateFlagsInfoKHR extends GroupType {
     /// @return the allocated `VkMemoryAllocateFlagsInfoKHR`
     public static VkMemoryAllocateFlagsInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryAllocateFlagsInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryAllocateFlagsInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param deviceMask `deviceMask`
-    /// @return the allocated `VkMemoryAllocateFlagsInfoKHR`
-    public static VkMemoryAllocateFlagsInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int deviceMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).deviceMask(deviceMask);
-    }
-
-    /// Allocates a `VkMemoryAllocateFlagsInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkMemoryAllocateFlagsInfoKHR`
-    public static VkMemoryAllocateFlagsInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkMemoryAllocateFlagsInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryAllocateFlagsInfoKHR`
-    public static VkMemoryAllocateFlagsInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryAllocateFlagsInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryAllocateFlagsInfoKHR`
-    public static VkMemoryAllocateFlagsInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

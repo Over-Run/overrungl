@@ -103,44 +103,6 @@ public final class VkLayerSettingsCreateInfoEXT extends GroupType {
     /// @return the allocated `VkLayerSettingsCreateInfoEXT`
     public static VkLayerSettingsCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkLayerSettingsCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkLayerSettingsCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param settingCount `settingCount`
-    /// @param pSettings `pSettings`
-    /// @return the allocated `VkLayerSettingsCreateInfoEXT`
-    public static VkLayerSettingsCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int settingCount, MemorySegment pSettings) {
-        return alloc(allocator).sType(sType).pNext(pNext).settingCount(settingCount).pSettings(pSettings);
-    }
-
-    /// Allocates a `VkLayerSettingsCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param settingCount `settingCount`
-    /// @return the allocated `VkLayerSettingsCreateInfoEXT`
-    public static VkLayerSettingsCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int settingCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).settingCount(settingCount);
-    }
-
-    /// Allocates a `VkLayerSettingsCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkLayerSettingsCreateInfoEXT`
-    public static VkLayerSettingsCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkLayerSettingsCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkLayerSettingsCreateInfoEXT`
-    public static VkLayerSettingsCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

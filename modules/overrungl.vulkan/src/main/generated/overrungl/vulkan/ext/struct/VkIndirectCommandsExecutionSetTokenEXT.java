@@ -87,23 +87,6 @@ public final class VkIndirectCommandsExecutionSetTokenEXT extends GroupType {
     /// @return the allocated `VkIndirectCommandsExecutionSetTokenEXT`
     public static VkIndirectCommandsExecutionSetTokenEXT alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsExecutionSetTokenEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkIndirectCommandsExecutionSetTokenEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param type `type`
-    /// @param shaderStages `shaderStages`
-    /// @return the allocated `VkIndirectCommandsExecutionSetTokenEXT`
-    public static VkIndirectCommandsExecutionSetTokenEXT allocInit(SegmentAllocator allocator, int type, int shaderStages) {
-        return alloc(allocator).type(type).shaderStages(shaderStages);
-    }
-
-    /// Allocates a `VkIndirectCommandsExecutionSetTokenEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param type `type`
-    /// @return the allocated `VkIndirectCommandsExecutionSetTokenEXT`
-    public static VkIndirectCommandsExecutionSetTokenEXT allocInit(SegmentAllocator allocator, int type) {
-        return alloc(allocator).type(type);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

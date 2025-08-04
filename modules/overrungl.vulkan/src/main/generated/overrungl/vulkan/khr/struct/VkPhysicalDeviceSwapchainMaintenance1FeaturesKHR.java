@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR extends Grou
     /// @return the allocated `VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR`
     public static VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchainMaintenance1 `swapchainMaintenance1`
-    /// @return the allocated `VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR`
-    public static VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainMaintenance1) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchainMaintenance1(swapchainMaintenance1);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR`
-    public static VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR`
-    public static VkPhysicalDeviceSwapchainMaintenance1FeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

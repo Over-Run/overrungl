@@ -103,44 +103,6 @@ public final class VkPresentTimesInfoGOOGLE extends GroupType {
     /// @return the allocated `VkPresentTimesInfoGOOGLE`
     public static VkPresentTimesInfoGOOGLE alloc(SegmentAllocator allocator, long count) { return new VkPresentTimesInfoGOOGLE(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPresentTimesInfoGOOGLE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchainCount `swapchainCount`
-    /// @param pTimes `pTimes`
-    /// @return the allocated `VkPresentTimesInfoGOOGLE`
-    public static VkPresentTimesInfoGOOGLE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainCount, MemorySegment pTimes) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pTimes(pTimes);
-    }
-
-    /// Allocates a `VkPresentTimesInfoGOOGLE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchainCount `swapchainCount`
-    /// @return the allocated `VkPresentTimesInfoGOOGLE`
-    public static VkPresentTimesInfoGOOGLE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount);
-    }
-
-    /// Allocates a `VkPresentTimesInfoGOOGLE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPresentTimesInfoGOOGLE`
-    public static VkPresentTimesInfoGOOGLE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPresentTimesInfoGOOGLE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPresentTimesInfoGOOGLE`
-    public static VkPresentTimesInfoGOOGLE allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

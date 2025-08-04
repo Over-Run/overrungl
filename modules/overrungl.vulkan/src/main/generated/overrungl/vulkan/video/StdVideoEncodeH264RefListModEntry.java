@@ -95,33 +95,6 @@ public final class StdVideoEncodeH264RefListModEntry extends GroupType {
     /// @return the allocated `StdVideoEncodeH264RefListModEntry`
     public static StdVideoEncodeH264RefListModEntry alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264RefListModEntry(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoEncodeH264RefListModEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param modification_of_pic_nums_idc `modification_of_pic_nums_idc`
-    /// @param abs_diff_pic_num_minus1 `abs_diff_pic_num_minus1`
-    /// @param long_term_pic_num `long_term_pic_num`
-    /// @return the allocated `StdVideoEncodeH264RefListModEntry`
-    public static StdVideoEncodeH264RefListModEntry allocInit(SegmentAllocator allocator, int modification_of_pic_nums_idc, short abs_diff_pic_num_minus1, short long_term_pic_num) {
-        return alloc(allocator).modification_of_pic_nums_idc(modification_of_pic_nums_idc).abs_diff_pic_num_minus1(abs_diff_pic_num_minus1).long_term_pic_num(long_term_pic_num);
-    }
-
-    /// Allocates a `StdVideoEncodeH264RefListModEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param modification_of_pic_nums_idc `modification_of_pic_nums_idc`
-    /// @param abs_diff_pic_num_minus1 `abs_diff_pic_num_minus1`
-    /// @return the allocated `StdVideoEncodeH264RefListModEntry`
-    public static StdVideoEncodeH264RefListModEntry allocInit(SegmentAllocator allocator, int modification_of_pic_nums_idc, short abs_diff_pic_num_minus1) {
-        return alloc(allocator).modification_of_pic_nums_idc(modification_of_pic_nums_idc).abs_diff_pic_num_minus1(abs_diff_pic_num_minus1);
-    }
-
-    /// Allocates a `StdVideoEncodeH264RefListModEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param modification_of_pic_nums_idc `modification_of_pic_nums_idc`
-    /// @return the allocated `StdVideoEncodeH264RefListModEntry`
-    public static StdVideoEncodeH264RefListModEntry allocInit(SegmentAllocator allocator, int modification_of_pic_nums_idc) {
-        return alloc(allocator).modification_of_pic_nums_idc(modification_of_pic_nums_idc);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

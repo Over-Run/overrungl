@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceExternalSciBufFeaturesNV extends GroupType {
     /// @return the allocated `VkPhysicalDeviceExternalSciBufFeaturesNV`
     public static VkPhysicalDeviceExternalSciBufFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalSciBufFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExternalSciBufFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sciBufImport `sciBufImport`
-    /// @param sciBufExport `sciBufExport`
-    /// @return the allocated `VkPhysicalDeviceExternalSciBufFeaturesNV`
-    public static VkPhysicalDeviceExternalSciBufFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sciBufImport, int sciBufExport) {
-        return alloc(allocator).sType(sType).pNext(pNext).sciBufImport(sciBufImport).sciBufExport(sciBufExport);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalSciBufFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sciBufImport `sciBufImport`
-    /// @return the allocated `VkPhysicalDeviceExternalSciBufFeaturesNV`
-    public static VkPhysicalDeviceExternalSciBufFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sciBufImport) {
-        return alloc(allocator).sType(sType).pNext(pNext).sciBufImport(sciBufImport);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalSciBufFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceExternalSciBufFeaturesNV`
-    public static VkPhysicalDeviceExternalSciBufFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalSciBufFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceExternalSciBufFeaturesNV`
-    public static VkPhysicalDeviceExternalSciBufFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

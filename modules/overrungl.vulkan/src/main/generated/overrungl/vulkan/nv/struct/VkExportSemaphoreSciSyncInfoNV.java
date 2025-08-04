@@ -95,33 +95,6 @@ public final class VkExportSemaphoreSciSyncInfoNV extends GroupType {
     /// @return the allocated `VkExportSemaphoreSciSyncInfoNV`
     public static VkExportSemaphoreSciSyncInfoNV alloc(SegmentAllocator allocator, long count) { return new VkExportSemaphoreSciSyncInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExportSemaphoreSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pAttributes `pAttributes`
-    /// @return the allocated `VkExportSemaphoreSciSyncInfoNV`
-    public static VkExportSemaphoreSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pAttributes) {
-        return alloc(allocator).sType(sType).pNext(pNext).pAttributes(pAttributes);
-    }
-
-    /// Allocates a `VkExportSemaphoreSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExportSemaphoreSciSyncInfoNV`
-    public static VkExportSemaphoreSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExportSemaphoreSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExportSemaphoreSciSyncInfoNV`
-    public static VkExportSemaphoreSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

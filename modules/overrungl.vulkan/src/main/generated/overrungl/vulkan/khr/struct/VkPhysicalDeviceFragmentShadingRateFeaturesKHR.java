@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceFragmentShadingRateFeaturesKHR extends GroupT
     /// @return the allocated `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
     public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShadingRateFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineFragmentShadingRate `pipelineFragmentShadingRate`
-    /// @param primitiveFragmentShadingRate `primitiveFragmentShadingRate`
-    /// @param attachmentFragmentShadingRate `attachmentFragmentShadingRate`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
-    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineFragmentShadingRate, int primitiveFragmentShadingRate, int attachmentFragmentShadingRate) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineFragmentShadingRate(pipelineFragmentShadingRate).primitiveFragmentShadingRate(primitiveFragmentShadingRate).attachmentFragmentShadingRate(attachmentFragmentShadingRate);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineFragmentShadingRate `pipelineFragmentShadingRate`
-    /// @param primitiveFragmentShadingRate `primitiveFragmentShadingRate`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
-    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineFragmentShadingRate, int primitiveFragmentShadingRate) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineFragmentShadingRate(pipelineFragmentShadingRate).primitiveFragmentShadingRate(primitiveFragmentShadingRate);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineFragmentShadingRate `pipelineFragmentShadingRate`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
-    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineFragmentShadingRate) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineFragmentShadingRate(pipelineFragmentShadingRate);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
-    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShadingRateFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceFragmentShadingRateFeaturesKHR`
-    public static VkPhysicalDeviceFragmentShadingRateFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -103,44 +103,6 @@ public final class VkImageSubresourceLayers extends GroupType {
     /// @return the allocated `VkImageSubresourceLayers`
     public static VkImageSubresourceLayers alloc(SegmentAllocator allocator, long count) { return new VkImageSubresourceLayers(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageSubresourceLayers` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @param mipLevel `mipLevel`
-    /// @param baseArrayLayer `baseArrayLayer`
-    /// @param layerCount `layerCount`
-    /// @return the allocated `VkImageSubresourceLayers`
-    public static VkImageSubresourceLayers allocInit(SegmentAllocator allocator, int aspectMask, int mipLevel, int baseArrayLayer, int layerCount) {
-        return alloc(allocator).aspectMask(aspectMask).mipLevel(mipLevel).baseArrayLayer(baseArrayLayer).layerCount(layerCount);
-    }
-
-    /// Allocates a `VkImageSubresourceLayers` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @param mipLevel `mipLevel`
-    /// @param baseArrayLayer `baseArrayLayer`
-    /// @return the allocated `VkImageSubresourceLayers`
-    public static VkImageSubresourceLayers allocInit(SegmentAllocator allocator, int aspectMask, int mipLevel, int baseArrayLayer) {
-        return alloc(allocator).aspectMask(aspectMask).mipLevel(mipLevel).baseArrayLayer(baseArrayLayer);
-    }
-
-    /// Allocates a `VkImageSubresourceLayers` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @param mipLevel `mipLevel`
-    /// @return the allocated `VkImageSubresourceLayers`
-    public static VkImageSubresourceLayers allocInit(SegmentAllocator allocator, int aspectMask, int mipLevel) {
-        return alloc(allocator).aspectMask(aspectMask).mipLevel(mipLevel);
-    }
-
-    /// Allocates a `VkImageSubresourceLayers` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param aspectMask `aspectMask`
-    /// @return the allocated `VkImageSubresourceLayers`
-    public static VkImageSubresourceLayers allocInit(SegmentAllocator allocator, int aspectMask) {
-        return alloc(allocator).aspectMask(aspectMask);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

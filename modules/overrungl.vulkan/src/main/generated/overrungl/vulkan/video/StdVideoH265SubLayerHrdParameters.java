@@ -111,56 +111,6 @@ public final class StdVideoH265SubLayerHrdParameters extends GroupType {
     /// @return the allocated `StdVideoH265SubLayerHrdParameters`
     public static StdVideoH265SubLayerHrdParameters alloc(SegmentAllocator allocator, long count) { return new StdVideoH265SubLayerHrdParameters(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoH265SubLayerHrdParameters` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
-    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
-    /// @param cpb_size_du_value_minus1 `cpb_size_du_value_minus1`
-    /// @param bit_rate_du_value_minus1 `bit_rate_du_value_minus1`
-    /// @param cbr_flag `cbr_flag`
-    /// @return the allocated `StdVideoH265SubLayerHrdParameters`
-    public static StdVideoH265SubLayerHrdParameters allocInit(SegmentAllocator allocator, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1, MemorySegment cpb_size_du_value_minus1, MemorySegment bit_rate_du_value_minus1, int cbr_flag) {
-        return alloc(allocator).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1).cpb_size_du_value_minus1(cpb_size_du_value_minus1).bit_rate_du_value_minus1(bit_rate_du_value_minus1).cbr_flag(cbr_flag);
-    }
-
-    /// Allocates a `StdVideoH265SubLayerHrdParameters` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
-    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
-    /// @param cpb_size_du_value_minus1 `cpb_size_du_value_minus1`
-    /// @param bit_rate_du_value_minus1 `bit_rate_du_value_minus1`
-    /// @return the allocated `StdVideoH265SubLayerHrdParameters`
-    public static StdVideoH265SubLayerHrdParameters allocInit(SegmentAllocator allocator, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1, MemorySegment cpb_size_du_value_minus1, MemorySegment bit_rate_du_value_minus1) {
-        return alloc(allocator).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1).cpb_size_du_value_minus1(cpb_size_du_value_minus1).bit_rate_du_value_minus1(bit_rate_du_value_minus1);
-    }
-
-    /// Allocates a `StdVideoH265SubLayerHrdParameters` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
-    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
-    /// @param cpb_size_du_value_minus1 `cpb_size_du_value_minus1`
-    /// @return the allocated `StdVideoH265SubLayerHrdParameters`
-    public static StdVideoH265SubLayerHrdParameters allocInit(SegmentAllocator allocator, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1, MemorySegment cpb_size_du_value_minus1) {
-        return alloc(allocator).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1).cpb_size_du_value_minus1(cpb_size_du_value_minus1);
-    }
-
-    /// Allocates a `StdVideoH265SubLayerHrdParameters` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
-    /// @param cpb_size_value_minus1 `cpb_size_value_minus1`
-    /// @return the allocated `StdVideoH265SubLayerHrdParameters`
-    public static StdVideoH265SubLayerHrdParameters allocInit(SegmentAllocator allocator, MemorySegment bit_rate_value_minus1, MemorySegment cpb_size_value_minus1) {
-        return alloc(allocator).bit_rate_value_minus1(bit_rate_value_minus1).cpb_size_value_minus1(cpb_size_value_minus1);
-    }
-
-    /// Allocates a `StdVideoH265SubLayerHrdParameters` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bit_rate_value_minus1 `bit_rate_value_minus1`
-    /// @return the allocated `StdVideoH265SubLayerHrdParameters`
-    public static StdVideoH265SubLayerHrdParameters allocInit(SegmentAllocator allocator, MemorySegment bit_rate_value_minus1) {
-        return alloc(allocator).bit_rate_value_minus1(bit_rate_value_minus1);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

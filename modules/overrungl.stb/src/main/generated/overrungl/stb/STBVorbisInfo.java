@@ -119,69 +119,6 @@ public final class STBVorbisInfo extends GroupType {
     /// @return the allocated `STBVorbisInfo`
     public static STBVorbisInfo alloc(SegmentAllocator allocator, long count) { return new STBVorbisInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `STBVorbisInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sample_rate `sample_rate`
-    /// @param channels `channels`
-    /// @param setup_memory_required `setup_memory_required`
-    /// @param setup_temp_memory_required `setup_temp_memory_required`
-    /// @param temp_memory_required `temp_memory_required`
-    /// @param max_frame_size `max_frame_size`
-    /// @return the allocated `STBVorbisInfo`
-    public static STBVorbisInfo allocInit(SegmentAllocator allocator, int sample_rate, int channels, int setup_memory_required, int setup_temp_memory_required, int temp_memory_required, int max_frame_size) {
-        return alloc(allocator).sample_rate(sample_rate).channels(channels).setup_memory_required(setup_memory_required).setup_temp_memory_required(setup_temp_memory_required).temp_memory_required(temp_memory_required).max_frame_size(max_frame_size);
-    }
-
-    /// Allocates a `STBVorbisInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sample_rate `sample_rate`
-    /// @param channels `channels`
-    /// @param setup_memory_required `setup_memory_required`
-    /// @param setup_temp_memory_required `setup_temp_memory_required`
-    /// @param temp_memory_required `temp_memory_required`
-    /// @return the allocated `STBVorbisInfo`
-    public static STBVorbisInfo allocInit(SegmentAllocator allocator, int sample_rate, int channels, int setup_memory_required, int setup_temp_memory_required, int temp_memory_required) {
-        return alloc(allocator).sample_rate(sample_rate).channels(channels).setup_memory_required(setup_memory_required).setup_temp_memory_required(setup_temp_memory_required).temp_memory_required(temp_memory_required);
-    }
-
-    /// Allocates a `STBVorbisInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sample_rate `sample_rate`
-    /// @param channels `channels`
-    /// @param setup_memory_required `setup_memory_required`
-    /// @param setup_temp_memory_required `setup_temp_memory_required`
-    /// @return the allocated `STBVorbisInfo`
-    public static STBVorbisInfo allocInit(SegmentAllocator allocator, int sample_rate, int channels, int setup_memory_required, int setup_temp_memory_required) {
-        return alloc(allocator).sample_rate(sample_rate).channels(channels).setup_memory_required(setup_memory_required).setup_temp_memory_required(setup_temp_memory_required);
-    }
-
-    /// Allocates a `STBVorbisInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sample_rate `sample_rate`
-    /// @param channels `channels`
-    /// @param setup_memory_required `setup_memory_required`
-    /// @return the allocated `STBVorbisInfo`
-    public static STBVorbisInfo allocInit(SegmentAllocator allocator, int sample_rate, int channels, int setup_memory_required) {
-        return alloc(allocator).sample_rate(sample_rate).channels(channels).setup_memory_required(setup_memory_required);
-    }
-
-    /// Allocates a `STBVorbisInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sample_rate `sample_rate`
-    /// @param channels `channels`
-    /// @return the allocated `STBVorbisInfo`
-    public static STBVorbisInfo allocInit(SegmentAllocator allocator, int sample_rate, int channels) {
-        return alloc(allocator).sample_rate(sample_rate).channels(channels);
-    }
-
-    /// Allocates a `STBVorbisInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sample_rate `sample_rate`
-    /// @return the allocated `STBVorbisInfo`
-    public static STBVorbisInfo allocInit(SegmentAllocator allocator, int sample_rate) {
-        return alloc(allocator).sample_rate(sample_rate);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

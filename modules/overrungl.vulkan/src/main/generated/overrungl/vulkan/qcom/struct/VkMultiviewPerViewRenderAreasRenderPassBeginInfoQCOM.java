@@ -103,44 +103,6 @@ public final class VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM extends 
     /// @return the allocated `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`
     public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param perViewRenderAreaCount `perViewRenderAreaCount`
-    /// @param pPerViewRenderAreas `pPerViewRenderAreas`
-    /// @return the allocated `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`
-    public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int perViewRenderAreaCount, MemorySegment pPerViewRenderAreas) {
-        return alloc(allocator).sType(sType).pNext(pNext).perViewRenderAreaCount(perViewRenderAreaCount).pPerViewRenderAreas(pPerViewRenderAreas);
-    }
-
-    /// Allocates a `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param perViewRenderAreaCount `perViewRenderAreaCount`
-    /// @return the allocated `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`
-    public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int perViewRenderAreaCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).perViewRenderAreaCount(perViewRenderAreaCount);
-    }
-
-    /// Allocates a `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`
-    public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM`
-    public static VkMultiviewPerViewRenderAreasRenderPassBeginInfoQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

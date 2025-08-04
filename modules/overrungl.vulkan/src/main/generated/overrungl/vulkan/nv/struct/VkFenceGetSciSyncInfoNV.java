@@ -103,44 +103,6 @@ public final class VkFenceGetSciSyncInfoNV extends GroupType {
     /// @return the allocated `VkFenceGetSciSyncInfoNV`
     public static VkFenceGetSciSyncInfoNV alloc(SegmentAllocator allocator, long count) { return new VkFenceGetSciSyncInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkFenceGetSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fence `fence`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkFenceGetSciSyncInfoNV`
-    public static VkFenceGetSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).handleType(handleType);
-    }
-
-    /// Allocates a `VkFenceGetSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fence `fence`
-    /// @return the allocated `VkFenceGetSciSyncInfoNV`
-    public static VkFenceGetSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence) {
-        return alloc(allocator).sType(sType).pNext(pNext).fence(fence);
-    }
-
-    /// Allocates a `VkFenceGetSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkFenceGetSciSyncInfoNV`
-    public static VkFenceGetSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkFenceGetSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkFenceGetSciSyncInfoNV`
-    public static VkFenceGetSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceCopyMemoryIndirectFeaturesNV extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceCopyMemoryIndirectFeaturesNV`
     public static VkPhysicalDeviceCopyMemoryIndirectFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCopyMemoryIndirectFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceCopyMemoryIndirectFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param indirectCopy `indirectCopy`
-    /// @return the allocated `VkPhysicalDeviceCopyMemoryIndirectFeaturesNV`
-    public static VkPhysicalDeviceCopyMemoryIndirectFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int indirectCopy) {
-        return alloc(allocator).sType(sType).pNext(pNext).indirectCopy(indirectCopy);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCopyMemoryIndirectFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceCopyMemoryIndirectFeaturesNV`
-    public static VkPhysicalDeviceCopyMemoryIndirectFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCopyMemoryIndirectFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceCopyMemoryIndirectFeaturesNV`
-    public static VkPhysicalDeviceCopyMemoryIndirectFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

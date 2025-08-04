@@ -119,69 +119,6 @@ public final class VkVideoDecodeH265SessionParametersCreateInfoKHR extends Group
     /// @return the allocated `VkVideoDecodeH265SessionParametersCreateInfoKHR`
     public static VkVideoDecodeH265SessionParametersCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeH265SessionParametersCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoDecodeH265SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxStdVPSCount `maxStdVPSCount`
-    /// @param maxStdSPSCount `maxStdSPSCount`
-    /// @param maxStdPPSCount `maxStdPPSCount`
-    /// @param pParametersAddInfo `pParametersAddInfo`
-    /// @return the allocated `VkVideoDecodeH265SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeH265SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxStdVPSCount, int maxStdSPSCount, int maxStdPPSCount, MemorySegment pParametersAddInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxStdVPSCount(maxStdVPSCount).maxStdSPSCount(maxStdSPSCount).maxStdPPSCount(maxStdPPSCount).pParametersAddInfo(pParametersAddInfo);
-    }
-
-    /// Allocates a `VkVideoDecodeH265SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxStdVPSCount `maxStdVPSCount`
-    /// @param maxStdSPSCount `maxStdSPSCount`
-    /// @param maxStdPPSCount `maxStdPPSCount`
-    /// @return the allocated `VkVideoDecodeH265SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeH265SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxStdVPSCount, int maxStdSPSCount, int maxStdPPSCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxStdVPSCount(maxStdVPSCount).maxStdSPSCount(maxStdSPSCount).maxStdPPSCount(maxStdPPSCount);
-    }
-
-    /// Allocates a `VkVideoDecodeH265SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxStdVPSCount `maxStdVPSCount`
-    /// @param maxStdSPSCount `maxStdSPSCount`
-    /// @return the allocated `VkVideoDecodeH265SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeH265SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxStdVPSCount, int maxStdSPSCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxStdVPSCount(maxStdVPSCount).maxStdSPSCount(maxStdSPSCount);
-    }
-
-    /// Allocates a `VkVideoDecodeH265SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxStdVPSCount `maxStdVPSCount`
-    /// @return the allocated `VkVideoDecodeH265SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeH265SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxStdVPSCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxStdVPSCount(maxStdVPSCount);
-    }
-
-    /// Allocates a `VkVideoDecodeH265SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoDecodeH265SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeH265SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoDecodeH265SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoDecodeH265SessionParametersCreateInfoKHR`
-    public static VkVideoDecodeH265SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

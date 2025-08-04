@@ -95,33 +95,6 @@ public final class VkPhysicalDevicePipelineBinaryFeaturesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDevicePipelineBinaryFeaturesKHR`
     public static VkPhysicalDevicePipelineBinaryFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePipelineBinaryFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePipelineBinaryFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineBinaries `pipelineBinaries`
-    /// @return the allocated `VkPhysicalDevicePipelineBinaryFeaturesKHR`
-    public static VkPhysicalDevicePipelineBinaryFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBinaries) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineBinaries(pipelineBinaries);
-    }
-
-    /// Allocates a `VkPhysicalDevicePipelineBinaryFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevicePipelineBinaryFeaturesKHR`
-    public static VkPhysicalDevicePipelineBinaryFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevicePipelineBinaryFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevicePipelineBinaryFeaturesKHR`
-    public static VkPhysicalDevicePipelineBinaryFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

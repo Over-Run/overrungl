@@ -119,69 +119,6 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoEXT extends GroupTyp
     /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoEXT`
     public static VkGeneratedCommandsMemoryRequirementsInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkGeneratedCommandsMemoryRequirementsInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param indirectExecutionSet `indirectExecutionSet`
-    /// @param indirectCommandsLayout `indirectCommandsLayout`
-    /// @param maxSequenceCount `maxSequenceCount`
-    /// @param maxDrawCount `maxDrawCount`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoEXT`
-    public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long indirectExecutionSet, long indirectCommandsLayout, int maxSequenceCount, int maxDrawCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).indirectExecutionSet(indirectExecutionSet).indirectCommandsLayout(indirectCommandsLayout).maxSequenceCount(maxSequenceCount).maxDrawCount(maxDrawCount);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param indirectExecutionSet `indirectExecutionSet`
-    /// @param indirectCommandsLayout `indirectCommandsLayout`
-    /// @param maxSequenceCount `maxSequenceCount`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoEXT`
-    public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long indirectExecutionSet, long indirectCommandsLayout, int maxSequenceCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).indirectExecutionSet(indirectExecutionSet).indirectCommandsLayout(indirectCommandsLayout).maxSequenceCount(maxSequenceCount);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param indirectExecutionSet `indirectExecutionSet`
-    /// @param indirectCommandsLayout `indirectCommandsLayout`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoEXT`
-    public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long indirectExecutionSet, long indirectCommandsLayout) {
-        return alloc(allocator).sType(sType).pNext(pNext).indirectExecutionSet(indirectExecutionSet).indirectCommandsLayout(indirectCommandsLayout);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param indirectExecutionSet `indirectExecutionSet`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoEXT`
-    public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long indirectExecutionSet) {
-        return alloc(allocator).sType(sType).pNext(pNext).indirectExecutionSet(indirectExecutionSet);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoEXT`
-    public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoEXT`
-    public static VkGeneratedCommandsMemoryRequirementsInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

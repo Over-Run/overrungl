@@ -103,44 +103,6 @@ public final class VkExportMetalBufferInfoEXT extends GroupType {
     /// @return the allocated `VkExportMetalBufferInfoEXT`
     public static VkExportMetalBufferInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalBufferInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExportMetalBufferInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memory `memory`
-    /// @param mtlBuffer `mtlBuffer`
-    /// @return the allocated `VkExportMetalBufferInfoEXT`
-    public static VkExportMetalBufferInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long memory, MemorySegment mtlBuffer) {
-        return alloc(allocator).sType(sType).pNext(pNext).memory(memory).mtlBuffer(mtlBuffer);
-    }
-
-    /// Allocates a `VkExportMetalBufferInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memory `memory`
-    /// @return the allocated `VkExportMetalBufferInfoEXT`
-    public static VkExportMetalBufferInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long memory) {
-        return alloc(allocator).sType(sType).pNext(pNext).memory(memory);
-    }
-
-    /// Allocates a `VkExportMetalBufferInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExportMetalBufferInfoEXT`
-    public static VkExportMetalBufferInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExportMetalBufferInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExportMetalBufferInfoEXT`
-    public static VkExportMetalBufferInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

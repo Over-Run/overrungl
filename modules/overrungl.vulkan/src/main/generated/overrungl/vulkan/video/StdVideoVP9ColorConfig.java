@@ -117,69 +117,6 @@ public final class StdVideoVP9ColorConfig extends GroupType {
     /// @return the allocated `StdVideoVP9ColorConfig`
     public static StdVideoVP9ColorConfig alloc(SegmentAllocator allocator, long count) { return new StdVideoVP9ColorConfig(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoVP9ColorConfig` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param BitDepth `BitDepth`
-    /// @param subsampling_x `subsampling_x`
-    /// @param subsampling_y `subsampling_y`
-    /// @param reserved1 `reserved1`
-    /// @param color_space `color_space`
-    /// @return the allocated `StdVideoVP9ColorConfig`
-    public static StdVideoVP9ColorConfig allocInit(SegmentAllocator allocator, MemorySegment flags, byte BitDepth, byte subsampling_x, byte subsampling_y, byte reserved1, int color_space) {
-        return alloc(allocator).flags(flags).BitDepth(BitDepth).subsampling_x(subsampling_x).subsampling_y(subsampling_y).reserved1(reserved1).color_space(color_space);
-    }
-
-    /// Allocates a `StdVideoVP9ColorConfig` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param BitDepth `BitDepth`
-    /// @param subsampling_x `subsampling_x`
-    /// @param subsampling_y `subsampling_y`
-    /// @param reserved1 `reserved1`
-    /// @return the allocated `StdVideoVP9ColorConfig`
-    public static StdVideoVP9ColorConfig allocInit(SegmentAllocator allocator, MemorySegment flags, byte BitDepth, byte subsampling_x, byte subsampling_y, byte reserved1) {
-        return alloc(allocator).flags(flags).BitDepth(BitDepth).subsampling_x(subsampling_x).subsampling_y(subsampling_y).reserved1(reserved1);
-    }
-
-    /// Allocates a `StdVideoVP9ColorConfig` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param BitDepth `BitDepth`
-    /// @param subsampling_x `subsampling_x`
-    /// @param subsampling_y `subsampling_y`
-    /// @return the allocated `StdVideoVP9ColorConfig`
-    public static StdVideoVP9ColorConfig allocInit(SegmentAllocator allocator, MemorySegment flags, byte BitDepth, byte subsampling_x, byte subsampling_y) {
-        return alloc(allocator).flags(flags).BitDepth(BitDepth).subsampling_x(subsampling_x).subsampling_y(subsampling_y);
-    }
-
-    /// Allocates a `StdVideoVP9ColorConfig` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param BitDepth `BitDepth`
-    /// @param subsampling_x `subsampling_x`
-    /// @return the allocated `StdVideoVP9ColorConfig`
-    public static StdVideoVP9ColorConfig allocInit(SegmentAllocator allocator, MemorySegment flags, byte BitDepth, byte subsampling_x) {
-        return alloc(allocator).flags(flags).BitDepth(BitDepth).subsampling_x(subsampling_x);
-    }
-
-    /// Allocates a `StdVideoVP9ColorConfig` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param BitDepth `BitDepth`
-    /// @return the allocated `StdVideoVP9ColorConfig`
-    public static StdVideoVP9ColorConfig allocInit(SegmentAllocator allocator, MemorySegment flags, byte BitDepth) {
-        return alloc(allocator).flags(flags).BitDepth(BitDepth);
-    }
-
-    /// Allocates a `StdVideoVP9ColorConfig` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @return the allocated `StdVideoVP9ColorConfig`
-    public static StdVideoVP9ColorConfig allocInit(SegmentAllocator allocator, MemorySegment flags) {
-        return alloc(allocator).flags(flags);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

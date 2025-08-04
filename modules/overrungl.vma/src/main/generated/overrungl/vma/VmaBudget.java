@@ -93,33 +93,6 @@ public final class VmaBudget extends GroupType {
     /// @return the allocated `VmaBudget`
     public static VmaBudget alloc(SegmentAllocator allocator, long count) { return new VmaBudget(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VmaBudget` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param statistics `statistics`
-    /// @param usage `usage`
-    /// @param budget `budget`
-    /// @return the allocated `VmaBudget`
-    public static VmaBudget allocInit(SegmentAllocator allocator, MemorySegment statistics, long usage, long budget) {
-        return alloc(allocator).statistics(statistics).usage(usage).budget(budget);
-    }
-
-    /// Allocates a `VmaBudget` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param statistics `statistics`
-    /// @param usage `usage`
-    /// @return the allocated `VmaBudget`
-    public static VmaBudget allocInit(SegmentAllocator allocator, MemorySegment statistics, long usage) {
-        return alloc(allocator).statistics(statistics).usage(usage);
-    }
-
-    /// Allocates a `VmaBudget` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param statistics `statistics`
-    /// @return the allocated `VmaBudget`
-    public static VmaBudget allocInit(SegmentAllocator allocator, MemorySegment statistics) {
-        return alloc(allocator).statistics(statistics);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

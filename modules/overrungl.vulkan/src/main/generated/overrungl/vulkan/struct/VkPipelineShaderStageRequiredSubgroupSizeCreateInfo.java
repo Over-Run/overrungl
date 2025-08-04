@@ -95,33 +95,6 @@ public final class VkPipelineShaderStageRequiredSubgroupSizeCreateInfo extends G
     /// @return the allocated `VkPipelineShaderStageRequiredSubgroupSizeCreateInfo`
     public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineShaderStageRequiredSubgroupSizeCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineShaderStageRequiredSubgroupSizeCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param requiredSubgroupSize `requiredSubgroupSize`
-    /// @return the allocated `VkPipelineShaderStageRequiredSubgroupSizeCreateInfo`
-    public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int requiredSubgroupSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).requiredSubgroupSize(requiredSubgroupSize);
-    }
-
-    /// Allocates a `VkPipelineShaderStageRequiredSubgroupSizeCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineShaderStageRequiredSubgroupSizeCreateInfo`
-    public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineShaderStageRequiredSubgroupSizeCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineShaderStageRequiredSubgroupSizeCreateInfo`
-    public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

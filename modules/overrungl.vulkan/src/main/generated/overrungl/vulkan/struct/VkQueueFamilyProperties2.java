@@ -93,33 +93,6 @@ public final class VkQueueFamilyProperties2 extends GroupType {
     /// @return the allocated `VkQueueFamilyProperties2`
     public static VkQueueFamilyProperties2 alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyProperties2(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkQueueFamilyProperties2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param queueFamilyProperties `queueFamilyProperties`
-    /// @return the allocated `VkQueueFamilyProperties2`
-    public static VkQueueFamilyProperties2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment queueFamilyProperties) {
-        return alloc(allocator).sType(sType).pNext(pNext).queueFamilyProperties(queueFamilyProperties);
-    }
-
-    /// Allocates a `VkQueueFamilyProperties2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkQueueFamilyProperties2`
-    public static VkQueueFamilyProperties2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkQueueFamilyProperties2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkQueueFamilyProperties2`
-    public static VkQueueFamilyProperties2 allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

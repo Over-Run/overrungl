@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceDataGraphOperationSupportARM extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceDataGraphOperationSupportARM`
     public static VkPhysicalDeviceDataGraphOperationSupportARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDataGraphOperationSupportARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param operationType `operationType`
-    /// @param name `name`
-    /// @param version `version`
-    /// @return the allocated `VkPhysicalDeviceDataGraphOperationSupportARM`
-    public static VkPhysicalDeviceDataGraphOperationSupportARM allocInit(SegmentAllocator allocator, int operationType, MemorySegment name, int version) {
-        return alloc(allocator).operationType(operationType).name(name).version(version);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param operationType `operationType`
-    /// @param name `name`
-    /// @return the allocated `VkPhysicalDeviceDataGraphOperationSupportARM`
-    public static VkPhysicalDeviceDataGraphOperationSupportARM allocInit(SegmentAllocator allocator, int operationType, MemorySegment name) {
-        return alloc(allocator).operationType(operationType).name(name);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDataGraphOperationSupportARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param operationType `operationType`
-    /// @return the allocated `VkPhysicalDeviceDataGraphOperationSupportARM`
-    public static VkPhysicalDeviceDataGraphOperationSupportARM allocInit(SegmentAllocator allocator, int operationType) {
-        return alloc(allocator).operationType(operationType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

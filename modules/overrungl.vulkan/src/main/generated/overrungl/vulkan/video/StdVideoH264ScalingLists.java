@@ -103,44 +103,6 @@ public final class StdVideoH264ScalingLists extends GroupType {
     /// @return the allocated `StdVideoH264ScalingLists`
     public static StdVideoH264ScalingLists alloc(SegmentAllocator allocator, long count) { return new StdVideoH264ScalingLists(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoH264ScalingLists` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param scaling_list_present_mask `scaling_list_present_mask`
-    /// @param use_default_scaling_matrix_mask `use_default_scaling_matrix_mask`
-    /// @param ScalingList4x4 `ScalingList4x4`
-    /// @param ScalingList8x8 `ScalingList8x8`
-    /// @return the allocated `StdVideoH264ScalingLists`
-    public static StdVideoH264ScalingLists allocInit(SegmentAllocator allocator, short scaling_list_present_mask, short use_default_scaling_matrix_mask, MemorySegment ScalingList4x4, MemorySegment ScalingList8x8) {
-        return alloc(allocator).scaling_list_present_mask(scaling_list_present_mask).use_default_scaling_matrix_mask(use_default_scaling_matrix_mask).ScalingList4x4(ScalingList4x4).ScalingList8x8(ScalingList8x8);
-    }
-
-    /// Allocates a `StdVideoH264ScalingLists` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param scaling_list_present_mask `scaling_list_present_mask`
-    /// @param use_default_scaling_matrix_mask `use_default_scaling_matrix_mask`
-    /// @param ScalingList4x4 `ScalingList4x4`
-    /// @return the allocated `StdVideoH264ScalingLists`
-    public static StdVideoH264ScalingLists allocInit(SegmentAllocator allocator, short scaling_list_present_mask, short use_default_scaling_matrix_mask, MemorySegment ScalingList4x4) {
-        return alloc(allocator).scaling_list_present_mask(scaling_list_present_mask).use_default_scaling_matrix_mask(use_default_scaling_matrix_mask).ScalingList4x4(ScalingList4x4);
-    }
-
-    /// Allocates a `StdVideoH264ScalingLists` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param scaling_list_present_mask `scaling_list_present_mask`
-    /// @param use_default_scaling_matrix_mask `use_default_scaling_matrix_mask`
-    /// @return the allocated `StdVideoH264ScalingLists`
-    public static StdVideoH264ScalingLists allocInit(SegmentAllocator allocator, short scaling_list_present_mask, short use_default_scaling_matrix_mask) {
-        return alloc(allocator).scaling_list_present_mask(scaling_list_present_mask).use_default_scaling_matrix_mask(use_default_scaling_matrix_mask);
-    }
-
-    /// Allocates a `StdVideoH264ScalingLists` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param scaling_list_present_mask `scaling_list_present_mask`
-    /// @return the allocated `StdVideoH264ScalingLists`
-    public static StdVideoH264ScalingLists allocInit(SegmentAllocator allocator, short scaling_list_present_mask) {
-        return alloc(allocator).scaling_list_present_mask(scaling_list_present_mask);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

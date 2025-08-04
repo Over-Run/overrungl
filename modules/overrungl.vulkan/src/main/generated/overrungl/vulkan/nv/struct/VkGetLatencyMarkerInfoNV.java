@@ -103,44 +103,6 @@ public final class VkGetLatencyMarkerInfoNV extends GroupType {
     /// @return the allocated `VkGetLatencyMarkerInfoNV`
     public static VkGetLatencyMarkerInfoNV alloc(SegmentAllocator allocator, long count) { return new VkGetLatencyMarkerInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkGetLatencyMarkerInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param timingCount `timingCount`
-    /// @param pTimings `pTimings`
-    /// @return the allocated `VkGetLatencyMarkerInfoNV`
-    public static VkGetLatencyMarkerInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int timingCount, MemorySegment pTimings) {
-        return alloc(allocator).sType(sType).pNext(pNext).timingCount(timingCount).pTimings(pTimings);
-    }
-
-    /// Allocates a `VkGetLatencyMarkerInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param timingCount `timingCount`
-    /// @return the allocated `VkGetLatencyMarkerInfoNV`
-    public static VkGetLatencyMarkerInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int timingCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).timingCount(timingCount);
-    }
-
-    /// Allocates a `VkGetLatencyMarkerInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkGetLatencyMarkerInfoNV`
-    public static VkGetLatencyMarkerInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkGetLatencyMarkerInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkGetLatencyMarkerInfoNV`
-    public static VkGetLatencyMarkerInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

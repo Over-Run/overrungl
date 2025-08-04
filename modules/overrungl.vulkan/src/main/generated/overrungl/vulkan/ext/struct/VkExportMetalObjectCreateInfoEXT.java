@@ -95,33 +95,6 @@ public final class VkExportMetalObjectCreateInfoEXT extends GroupType {
     /// @return the allocated `VkExportMetalObjectCreateInfoEXT`
     public static VkExportMetalObjectCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalObjectCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExportMetalObjectCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param exportObjectType `exportObjectType`
-    /// @return the allocated `VkExportMetalObjectCreateInfoEXT`
-    public static VkExportMetalObjectCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int exportObjectType) {
-        return alloc(allocator).sType(sType).pNext(pNext).exportObjectType(exportObjectType);
-    }
-
-    /// Allocates a `VkExportMetalObjectCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExportMetalObjectCreateInfoEXT`
-    public static VkExportMetalObjectCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExportMetalObjectCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExportMetalObjectCreateInfoEXT`
-    public static VkExportMetalObjectCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

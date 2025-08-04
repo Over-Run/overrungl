@@ -95,33 +95,6 @@ public final class VkTileMemorySizeInfoQCOM extends GroupType {
     /// @return the allocated `VkTileMemorySizeInfoQCOM`
     public static VkTileMemorySizeInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkTileMemorySizeInfoQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkTileMemorySizeInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param size `size`
-    /// @return the allocated `VkTileMemorySizeInfoQCOM`
-    public static VkTileMemorySizeInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long size) {
-        return alloc(allocator).sType(sType).pNext(pNext).size(size);
-    }
-
-    /// Allocates a `VkTileMemorySizeInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkTileMemorySizeInfoQCOM`
-    public static VkTileMemorySizeInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkTileMemorySizeInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkTileMemorySizeInfoQCOM`
-    public static VkTileMemorySizeInfoQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -119,69 +119,6 @@ public final class VkFramebufferMixedSamplesCombinationNV extends GroupType {
     /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
     public static VkFramebufferMixedSamplesCombinationNV alloc(SegmentAllocator allocator, long count) { return new VkFramebufferMixedSamplesCombinationNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param coverageReductionMode `coverageReductionMode`
-    /// @param rasterizationSamples `rasterizationSamples`
-    /// @param depthStencilSamples `depthStencilSamples`
-    /// @param colorSamples `colorSamples`
-    /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
-    public static VkFramebufferMixedSamplesCombinationNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int coverageReductionMode, int rasterizationSamples, int depthStencilSamples, int colorSamples) {
-        return alloc(allocator).sType(sType).pNext(pNext).coverageReductionMode(coverageReductionMode).rasterizationSamples(rasterizationSamples).depthStencilSamples(depthStencilSamples).colorSamples(colorSamples);
-    }
-
-    /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param coverageReductionMode `coverageReductionMode`
-    /// @param rasterizationSamples `rasterizationSamples`
-    /// @param depthStencilSamples `depthStencilSamples`
-    /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
-    public static VkFramebufferMixedSamplesCombinationNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int coverageReductionMode, int rasterizationSamples, int depthStencilSamples) {
-        return alloc(allocator).sType(sType).pNext(pNext).coverageReductionMode(coverageReductionMode).rasterizationSamples(rasterizationSamples).depthStencilSamples(depthStencilSamples);
-    }
-
-    /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param coverageReductionMode `coverageReductionMode`
-    /// @param rasterizationSamples `rasterizationSamples`
-    /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
-    public static VkFramebufferMixedSamplesCombinationNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int coverageReductionMode, int rasterizationSamples) {
-        return alloc(allocator).sType(sType).pNext(pNext).coverageReductionMode(coverageReductionMode).rasterizationSamples(rasterizationSamples);
-    }
-
-    /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param coverageReductionMode `coverageReductionMode`
-    /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
-    public static VkFramebufferMixedSamplesCombinationNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int coverageReductionMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).coverageReductionMode(coverageReductionMode);
-    }
-
-    /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
-    public static VkFramebufferMixedSamplesCombinationNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkFramebufferMixedSamplesCombinationNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkFramebufferMixedSamplesCombinationNV`
-    public static VkFramebufferMixedSamplesCombinationNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

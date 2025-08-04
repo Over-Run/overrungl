@@ -95,33 +95,6 @@ public final class VkDeviceMemoryOpaqueCaptureAddressInfoKHR extends GroupType {
     /// @return the allocated `VkDeviceMemoryOpaqueCaptureAddressInfoKHR`
     public static VkDeviceMemoryOpaqueCaptureAddressInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceMemoryOpaqueCaptureAddressInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceMemoryOpaqueCaptureAddressInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memory `memory`
-    /// @return the allocated `VkDeviceMemoryOpaqueCaptureAddressInfoKHR`
-    public static VkDeviceMemoryOpaqueCaptureAddressInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long memory) {
-        return alloc(allocator).sType(sType).pNext(pNext).memory(memory);
-    }
-
-    /// Allocates a `VkDeviceMemoryOpaqueCaptureAddressInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceMemoryOpaqueCaptureAddressInfoKHR`
-    public static VkDeviceMemoryOpaqueCaptureAddressInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceMemoryOpaqueCaptureAddressInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceMemoryOpaqueCaptureAddressInfoKHR`
-    public static VkDeviceMemoryOpaqueCaptureAddressInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

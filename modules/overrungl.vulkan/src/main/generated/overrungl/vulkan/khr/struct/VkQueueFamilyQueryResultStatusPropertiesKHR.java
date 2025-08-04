@@ -95,33 +95,6 @@ public final class VkQueueFamilyQueryResultStatusPropertiesKHR extends GroupType
     /// @return the allocated `VkQueueFamilyQueryResultStatusPropertiesKHR`
     public static VkQueueFamilyQueryResultStatusPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyQueryResultStatusPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkQueueFamilyQueryResultStatusPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param queryResultStatusSupport `queryResultStatusSupport`
-    /// @return the allocated `VkQueueFamilyQueryResultStatusPropertiesKHR`
-    public static VkQueueFamilyQueryResultStatusPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int queryResultStatusSupport) {
-        return alloc(allocator).sType(sType).pNext(pNext).queryResultStatusSupport(queryResultStatusSupport);
-    }
-
-    /// Allocates a `VkQueueFamilyQueryResultStatusPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkQueueFamilyQueryResultStatusPropertiesKHR`
-    public static VkQueueFamilyQueryResultStatusPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkQueueFamilyQueryResultStatusPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkQueueFamilyQueryResultStatusPropertiesKHR`
-    public static VkQueueFamilyQueryResultStatusPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

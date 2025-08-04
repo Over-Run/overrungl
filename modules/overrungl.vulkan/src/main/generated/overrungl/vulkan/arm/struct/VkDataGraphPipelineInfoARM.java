@@ -95,33 +95,6 @@ public final class VkDataGraphPipelineInfoARM extends GroupType {
     /// @return the allocated `VkDataGraphPipelineInfoARM`
     public static VkDataGraphPipelineInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDataGraphPipelineInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dataGraphPipeline `dataGraphPipeline`
-    /// @return the allocated `VkDataGraphPipelineInfoARM`
-    public static VkDataGraphPipelineInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long dataGraphPipeline) {
-        return alloc(allocator).sType(sType).pNext(pNext).dataGraphPipeline(dataGraphPipeline);
-    }
-
-    /// Allocates a `VkDataGraphPipelineInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDataGraphPipelineInfoARM`
-    public static VkDataGraphPipelineInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDataGraphPipelineInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDataGraphPipelineInfoARM`
-    public static VkDataGraphPipelineInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

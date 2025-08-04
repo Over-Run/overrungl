@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceMultiviewFeatures extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMultiviewFeatures`
     public static VkPhysicalDeviceMultiviewFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMultiviewFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMultiviewFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param multiview `multiview`
-    /// @param multiviewGeometryShader `multiviewGeometryShader`
-    /// @param multiviewTessellationShader `multiviewTessellationShader`
-    /// @return the allocated `VkPhysicalDeviceMultiviewFeatures`
-    public static VkPhysicalDeviceMultiviewFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int multiview, int multiviewGeometryShader, int multiviewTessellationShader) {
-        return alloc(allocator).sType(sType).pNext(pNext).multiview(multiview).multiviewGeometryShader(multiviewGeometryShader).multiviewTessellationShader(multiviewTessellationShader);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMultiviewFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param multiview `multiview`
-    /// @param multiviewGeometryShader `multiviewGeometryShader`
-    /// @return the allocated `VkPhysicalDeviceMultiviewFeatures`
-    public static VkPhysicalDeviceMultiviewFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int multiview, int multiviewGeometryShader) {
-        return alloc(allocator).sType(sType).pNext(pNext).multiview(multiview).multiviewGeometryShader(multiviewGeometryShader);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMultiviewFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param multiview `multiview`
-    /// @return the allocated `VkPhysicalDeviceMultiviewFeatures`
-    public static VkPhysicalDeviceMultiviewFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int multiview) {
-        return alloc(allocator).sType(sType).pNext(pNext).multiview(multiview);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMultiviewFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceMultiviewFeatures`
-    public static VkPhysicalDeviceMultiviewFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMultiviewFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceMultiviewFeatures`
-    public static VkPhysicalDeviceMultiviewFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

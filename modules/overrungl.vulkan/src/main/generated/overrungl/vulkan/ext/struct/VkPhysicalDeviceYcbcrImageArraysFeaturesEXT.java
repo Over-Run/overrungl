@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceYcbcrImageArraysFeaturesEXT extends GroupType
     /// @return the allocated `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT`
     public static VkPhysicalDeviceYcbcrImageArraysFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceYcbcrImageArraysFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param ycbcrImageArrays `ycbcrImageArrays`
-    /// @return the allocated `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT`
-    public static VkPhysicalDeviceYcbcrImageArraysFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int ycbcrImageArrays) {
-        return alloc(allocator).sType(sType).pNext(pNext).ycbcrImageArrays(ycbcrImageArrays);
-    }
-
-    /// Allocates a `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT`
-    public static VkPhysicalDeviceYcbcrImageArraysFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceYcbcrImageArraysFeaturesEXT`
-    public static VkPhysicalDeviceYcbcrImageArraysFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

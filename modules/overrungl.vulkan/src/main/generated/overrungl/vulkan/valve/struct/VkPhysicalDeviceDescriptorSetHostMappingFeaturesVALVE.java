@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE extends
     /// @return the allocated `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE`
     public static VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorSetHostMapping `descriptorSetHostMapping`
-    /// @return the allocated `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE`
-    public static VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int descriptorSetHostMapping) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorSetHostMapping(descriptorSetHostMapping);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE`
-    public static VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE`
-    public static VkPhysicalDeviceDescriptorSetHostMappingFeaturesVALVE allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

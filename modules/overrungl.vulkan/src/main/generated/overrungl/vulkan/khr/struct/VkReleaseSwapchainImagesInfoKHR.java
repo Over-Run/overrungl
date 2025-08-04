@@ -111,56 +111,6 @@ public final class VkReleaseSwapchainImagesInfoKHR extends GroupType {
     /// @return the allocated `VkReleaseSwapchainImagesInfoKHR`
     public static VkReleaseSwapchainImagesInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkReleaseSwapchainImagesInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkReleaseSwapchainImagesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchain `swapchain`
-    /// @param imageIndexCount `imageIndexCount`
-    /// @param pImageIndices `pImageIndices`
-    /// @return the allocated `VkReleaseSwapchainImagesInfoKHR`
-    public static VkReleaseSwapchainImagesInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long swapchain, int imageIndexCount, MemorySegment pImageIndices) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchain(swapchain).imageIndexCount(imageIndexCount).pImageIndices(pImageIndices);
-    }
-
-    /// Allocates a `VkReleaseSwapchainImagesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchain `swapchain`
-    /// @param imageIndexCount `imageIndexCount`
-    /// @return the allocated `VkReleaseSwapchainImagesInfoKHR`
-    public static VkReleaseSwapchainImagesInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long swapchain, int imageIndexCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchain(swapchain).imageIndexCount(imageIndexCount);
-    }
-
-    /// Allocates a `VkReleaseSwapchainImagesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchain `swapchain`
-    /// @return the allocated `VkReleaseSwapchainImagesInfoKHR`
-    public static VkReleaseSwapchainImagesInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long swapchain) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchain(swapchain);
-    }
-
-    /// Allocates a `VkReleaseSwapchainImagesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkReleaseSwapchainImagesInfoKHR`
-    public static VkReleaseSwapchainImagesInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkReleaseSwapchainImagesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkReleaseSwapchainImagesInfoKHR`
-    public static VkReleaseSwapchainImagesInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

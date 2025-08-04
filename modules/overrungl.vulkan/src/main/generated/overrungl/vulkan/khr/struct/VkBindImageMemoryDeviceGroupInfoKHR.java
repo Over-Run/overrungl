@@ -119,69 +119,6 @@ public final class VkBindImageMemoryDeviceGroupInfoKHR extends GroupType {
     /// @return the allocated `VkBindImageMemoryDeviceGroupInfoKHR`
     public static VkBindImageMemoryDeviceGroupInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkBindImageMemoryDeviceGroupInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBindImageMemoryDeviceGroupInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceIndexCount `deviceIndexCount`
-    /// @param pDeviceIndices `pDeviceIndices`
-    /// @param splitInstanceBindRegionCount `splitInstanceBindRegionCount`
-    /// @param pSplitInstanceBindRegions `pSplitInstanceBindRegions`
-    /// @return the allocated `VkBindImageMemoryDeviceGroupInfoKHR`
-    public static VkBindImageMemoryDeviceGroupInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceIndexCount, MemorySegment pDeviceIndices, int splitInstanceBindRegionCount, MemorySegment pSplitInstanceBindRegions) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceIndexCount(deviceIndexCount).pDeviceIndices(pDeviceIndices).splitInstanceBindRegionCount(splitInstanceBindRegionCount).pSplitInstanceBindRegions(pSplitInstanceBindRegions);
-    }
-
-    /// Allocates a `VkBindImageMemoryDeviceGroupInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceIndexCount `deviceIndexCount`
-    /// @param pDeviceIndices `pDeviceIndices`
-    /// @param splitInstanceBindRegionCount `splitInstanceBindRegionCount`
-    /// @return the allocated `VkBindImageMemoryDeviceGroupInfoKHR`
-    public static VkBindImageMemoryDeviceGroupInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceIndexCount, MemorySegment pDeviceIndices, int splitInstanceBindRegionCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceIndexCount(deviceIndexCount).pDeviceIndices(pDeviceIndices).splitInstanceBindRegionCount(splitInstanceBindRegionCount);
-    }
-
-    /// Allocates a `VkBindImageMemoryDeviceGroupInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceIndexCount `deviceIndexCount`
-    /// @param pDeviceIndices `pDeviceIndices`
-    /// @return the allocated `VkBindImageMemoryDeviceGroupInfoKHR`
-    public static VkBindImageMemoryDeviceGroupInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceIndexCount, MemorySegment pDeviceIndices) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceIndexCount(deviceIndexCount).pDeviceIndices(pDeviceIndices);
-    }
-
-    /// Allocates a `VkBindImageMemoryDeviceGroupInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceIndexCount `deviceIndexCount`
-    /// @return the allocated `VkBindImageMemoryDeviceGroupInfoKHR`
-    public static VkBindImageMemoryDeviceGroupInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceIndexCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceIndexCount(deviceIndexCount);
-    }
-
-    /// Allocates a `VkBindImageMemoryDeviceGroupInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkBindImageMemoryDeviceGroupInfoKHR`
-    public static VkBindImageMemoryDeviceGroupInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkBindImageMemoryDeviceGroupInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkBindImageMemoryDeviceGroupInfoKHR`
-    public static VkBindImageMemoryDeviceGroupInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

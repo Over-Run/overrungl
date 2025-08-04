@@ -119,69 +119,6 @@ public final class VkSemaphoreWaitInfoKHR extends GroupType {
     /// @return the allocated `VkSemaphoreWaitInfoKHR`
     public static VkSemaphoreWaitInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkSemaphoreWaitInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSemaphoreWaitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param semaphoreCount `semaphoreCount`
-    /// @param pSemaphores `pSemaphores`
-    /// @param pValues `pValues`
-    /// @return the allocated `VkSemaphoreWaitInfoKHR`
-    public static VkSemaphoreWaitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int semaphoreCount, MemorySegment pSemaphores, MemorySegment pValues) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).semaphoreCount(semaphoreCount).pSemaphores(pSemaphores).pValues(pValues);
-    }
-
-    /// Allocates a `VkSemaphoreWaitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param semaphoreCount `semaphoreCount`
-    /// @param pSemaphores `pSemaphores`
-    /// @return the allocated `VkSemaphoreWaitInfoKHR`
-    public static VkSemaphoreWaitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int semaphoreCount, MemorySegment pSemaphores) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).semaphoreCount(semaphoreCount).pSemaphores(pSemaphores);
-    }
-
-    /// Allocates a `VkSemaphoreWaitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param semaphoreCount `semaphoreCount`
-    /// @return the allocated `VkSemaphoreWaitInfoKHR`
-    public static VkSemaphoreWaitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int semaphoreCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).semaphoreCount(semaphoreCount);
-    }
-
-    /// Allocates a `VkSemaphoreWaitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkSemaphoreWaitInfoKHR`
-    public static VkSemaphoreWaitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkSemaphoreWaitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSemaphoreWaitInfoKHR`
-    public static VkSemaphoreWaitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSemaphoreWaitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSemaphoreWaitInfoKHR`
-    public static VkSemaphoreWaitInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

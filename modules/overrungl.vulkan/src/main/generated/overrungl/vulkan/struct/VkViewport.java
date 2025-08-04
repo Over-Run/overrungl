@@ -119,69 +119,6 @@ public final class VkViewport extends GroupType {
     /// @return the allocated `VkViewport`
     public static VkViewport alloc(SegmentAllocator allocator, long count) { return new VkViewport(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkViewport` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @param y `y`
-    /// @param width `width`
-    /// @param height `height`
-    /// @param minDepth `minDepth`
-    /// @param maxDepth `maxDepth`
-    /// @return the allocated `VkViewport`
-    public static VkViewport allocInit(SegmentAllocator allocator, float x, float y, float width, float height, float minDepth, float maxDepth) {
-        return alloc(allocator).x(x).y(y).width(width).height(height).minDepth(minDepth).maxDepth(maxDepth);
-    }
-
-    /// Allocates a `VkViewport` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @param y `y`
-    /// @param width `width`
-    /// @param height `height`
-    /// @param minDepth `minDepth`
-    /// @return the allocated `VkViewport`
-    public static VkViewport allocInit(SegmentAllocator allocator, float x, float y, float width, float height, float minDepth) {
-        return alloc(allocator).x(x).y(y).width(width).height(height).minDepth(minDepth);
-    }
-
-    /// Allocates a `VkViewport` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @param y `y`
-    /// @param width `width`
-    /// @param height `height`
-    /// @return the allocated `VkViewport`
-    public static VkViewport allocInit(SegmentAllocator allocator, float x, float y, float width, float height) {
-        return alloc(allocator).x(x).y(y).width(width).height(height);
-    }
-
-    /// Allocates a `VkViewport` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @param y `y`
-    /// @param width `width`
-    /// @return the allocated `VkViewport`
-    public static VkViewport allocInit(SegmentAllocator allocator, float x, float y, float width) {
-        return alloc(allocator).x(x).y(y).width(width);
-    }
-
-    /// Allocates a `VkViewport` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @param y `y`
-    /// @return the allocated `VkViewport`
-    public static VkViewport allocInit(SegmentAllocator allocator, float x, float y) {
-        return alloc(allocator).x(x).y(y);
-    }
-
-    /// Allocates a `VkViewport` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @return the allocated `VkViewport`
-    public static VkViewport allocInit(SegmentAllocator allocator, float x) {
-        return alloc(allocator).x(x);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

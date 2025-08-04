@@ -93,33 +93,6 @@ public final class VkSubresourceLayout2EXT extends GroupType {
     /// @return the allocated `VkSubresourceLayout2EXT`
     public static VkSubresourceLayout2EXT alloc(SegmentAllocator allocator, long count) { return new VkSubresourceLayout2EXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSubresourceLayout2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param subresourceLayout `subresourceLayout`
-    /// @return the allocated `VkSubresourceLayout2EXT`
-    public static VkSubresourceLayout2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment subresourceLayout) {
-        return alloc(allocator).sType(sType).pNext(pNext).subresourceLayout(subresourceLayout);
-    }
-
-    /// Allocates a `VkSubresourceLayout2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSubresourceLayout2EXT`
-    public static VkSubresourceLayout2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSubresourceLayout2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSubresourceLayout2EXT`
-    public static VkSubresourceLayout2EXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

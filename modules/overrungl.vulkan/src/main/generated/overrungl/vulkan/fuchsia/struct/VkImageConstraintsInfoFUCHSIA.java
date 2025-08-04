@@ -117,69 +117,6 @@ public final class VkImageConstraintsInfoFUCHSIA extends GroupType {
     /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
     public static VkImageConstraintsInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImageConstraintsInfoFUCHSIA(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param formatConstraintsCount `formatConstraintsCount`
-    /// @param pFormatConstraints `pFormatConstraints`
-    /// @param bufferCollectionConstraints `bufferCollectionConstraints`
-    /// @param flags `flags`
-    /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
-    public static VkImageConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int formatConstraintsCount, MemorySegment pFormatConstraints, MemorySegment bufferCollectionConstraints, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).formatConstraintsCount(formatConstraintsCount).pFormatConstraints(pFormatConstraints).bufferCollectionConstraints(bufferCollectionConstraints).flags(flags);
-    }
-
-    /// Allocates a `VkImageConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param formatConstraintsCount `formatConstraintsCount`
-    /// @param pFormatConstraints `pFormatConstraints`
-    /// @param bufferCollectionConstraints `bufferCollectionConstraints`
-    /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
-    public static VkImageConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int formatConstraintsCount, MemorySegment pFormatConstraints, MemorySegment bufferCollectionConstraints) {
-        return alloc(allocator).sType(sType).pNext(pNext).formatConstraintsCount(formatConstraintsCount).pFormatConstraints(pFormatConstraints).bufferCollectionConstraints(bufferCollectionConstraints);
-    }
-
-    /// Allocates a `VkImageConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param formatConstraintsCount `formatConstraintsCount`
-    /// @param pFormatConstraints `pFormatConstraints`
-    /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
-    public static VkImageConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int formatConstraintsCount, MemorySegment pFormatConstraints) {
-        return alloc(allocator).sType(sType).pNext(pNext).formatConstraintsCount(formatConstraintsCount).pFormatConstraints(pFormatConstraints);
-    }
-
-    /// Allocates a `VkImageConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param formatConstraintsCount `formatConstraintsCount`
-    /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
-    public static VkImageConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int formatConstraintsCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).formatConstraintsCount(formatConstraintsCount);
-    }
-
-    /// Allocates a `VkImageConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
-    public static VkImageConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImageConstraintsInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImageConstraintsInfoFUCHSIA`
-    public static VkImageConstraintsInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

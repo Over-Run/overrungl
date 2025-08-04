@@ -95,33 +95,6 @@ public final class VkMicromapVersionInfoEXT extends GroupType {
     /// @return the allocated `VkMicromapVersionInfoEXT`
     public static VkMicromapVersionInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMicromapVersionInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMicromapVersionInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pVersionData `pVersionData`
-    /// @return the allocated `VkMicromapVersionInfoEXT`
-    public static VkMicromapVersionInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pVersionData) {
-        return alloc(allocator).sType(sType).pNext(pNext).pVersionData(pVersionData);
-    }
-
-    /// Allocates a `VkMicromapVersionInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMicromapVersionInfoEXT`
-    public static VkMicromapVersionInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMicromapVersionInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMicromapVersionInfoEXT`
-    public static VkMicromapVersionInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

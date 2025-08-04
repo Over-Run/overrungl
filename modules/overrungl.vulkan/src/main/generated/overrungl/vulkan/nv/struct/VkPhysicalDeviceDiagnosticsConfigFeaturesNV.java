@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceDiagnosticsConfigFeaturesNV extends GroupType
     /// @return the allocated `VkPhysicalDeviceDiagnosticsConfigFeaturesNV`
     public static VkPhysicalDeviceDiagnosticsConfigFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDiagnosticsConfigFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDiagnosticsConfigFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param diagnosticsConfig `diagnosticsConfig`
-    /// @return the allocated `VkPhysicalDeviceDiagnosticsConfigFeaturesNV`
-    public static VkPhysicalDeviceDiagnosticsConfigFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int diagnosticsConfig) {
-        return alloc(allocator).sType(sType).pNext(pNext).diagnosticsConfig(diagnosticsConfig);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDiagnosticsConfigFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceDiagnosticsConfigFeaturesNV`
-    public static VkPhysicalDeviceDiagnosticsConfigFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDiagnosticsConfigFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceDiagnosticsConfigFeaturesNV`
-    public static VkPhysicalDeviceDiagnosticsConfigFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

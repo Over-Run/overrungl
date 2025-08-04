@@ -87,23 +87,6 @@ public final class VkMemoryHeap extends GroupType {
     /// @return the allocated `VkMemoryHeap`
     public static VkMemoryHeap alloc(SegmentAllocator allocator, long count) { return new VkMemoryHeap(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryHeap` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param size `size`
-    /// @param flags `flags`
-    /// @return the allocated `VkMemoryHeap`
-    public static VkMemoryHeap allocInit(SegmentAllocator allocator, long size, int flags) {
-        return alloc(allocator).size(size).flags(flags);
-    }
-
-    /// Allocates a `VkMemoryHeap` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param size `size`
-    /// @return the allocated `VkMemoryHeap`
-    public static VkMemoryHeap allocInit(SegmentAllocator allocator, long size) {
-        return alloc(allocator).size(size);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

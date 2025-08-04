@@ -95,33 +95,6 @@ public final class VkPipelineTessellationDomainOriginStateCreateInfoKHR extends 
     /// @return the allocated `VkPipelineTessellationDomainOriginStateCreateInfoKHR`
     public static VkPipelineTessellationDomainOriginStateCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkPipelineTessellationDomainOriginStateCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineTessellationDomainOriginStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param domainOrigin `domainOrigin`
-    /// @return the allocated `VkPipelineTessellationDomainOriginStateCreateInfoKHR`
-    public static VkPipelineTessellationDomainOriginStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int domainOrigin) {
-        return alloc(allocator).sType(sType).pNext(pNext).domainOrigin(domainOrigin);
-    }
-
-    /// Allocates a `VkPipelineTessellationDomainOriginStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineTessellationDomainOriginStateCreateInfoKHR`
-    public static VkPipelineTessellationDomainOriginStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineTessellationDomainOriginStateCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineTessellationDomainOriginStateCreateInfoKHR`
-    public static VkPipelineTessellationDomainOriginStateCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkSurfaceCapabilitiesPresentWait2KHR extends GroupType {
     /// @return the allocated `VkSurfaceCapabilitiesPresentWait2KHR`
     public static VkSurfaceCapabilitiesPresentWait2KHR alloc(SegmentAllocator allocator, long count) { return new VkSurfaceCapabilitiesPresentWait2KHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSurfaceCapabilitiesPresentWait2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param presentWait2Supported `presentWait2Supported`
-    /// @return the allocated `VkSurfaceCapabilitiesPresentWait2KHR`
-    public static VkSurfaceCapabilitiesPresentWait2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int presentWait2Supported) {
-        return alloc(allocator).sType(sType).pNext(pNext).presentWait2Supported(presentWait2Supported);
-    }
-
-    /// Allocates a `VkSurfaceCapabilitiesPresentWait2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSurfaceCapabilitiesPresentWait2KHR`
-    public static VkSurfaceCapabilitiesPresentWait2KHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSurfaceCapabilitiesPresentWait2KHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSurfaceCapabilitiesPresentWait2KHR`
-    public static VkSurfaceCapabilitiesPresentWait2KHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

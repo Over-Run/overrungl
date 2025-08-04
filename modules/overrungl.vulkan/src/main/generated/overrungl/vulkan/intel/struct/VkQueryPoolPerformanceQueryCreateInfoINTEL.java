@@ -95,33 +95,6 @@ public final class VkQueryPoolPerformanceQueryCreateInfoINTEL extends GroupType 
     /// @return the allocated `VkQueryPoolPerformanceQueryCreateInfoINTEL`
     public static VkQueryPoolPerformanceQueryCreateInfoINTEL alloc(SegmentAllocator allocator, long count) { return new VkQueryPoolPerformanceQueryCreateInfoINTEL(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkQueryPoolPerformanceQueryCreateInfoINTEL` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param performanceCountersSampling `performanceCountersSampling`
-    /// @return the allocated `VkQueryPoolPerformanceQueryCreateInfoINTEL`
-    public static VkQueryPoolPerformanceQueryCreateInfoINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int performanceCountersSampling) {
-        return alloc(allocator).sType(sType).pNext(pNext).performanceCountersSampling(performanceCountersSampling);
-    }
-
-    /// Allocates a `VkQueryPoolPerformanceQueryCreateInfoINTEL` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkQueryPoolPerformanceQueryCreateInfoINTEL`
-    public static VkQueryPoolPerformanceQueryCreateInfoINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkQueryPoolPerformanceQueryCreateInfoINTEL` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkQueryPoolPerformanceQueryCreateInfoINTEL`
-    public static VkQueryPoolPerformanceQueryCreateInfoINTEL allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

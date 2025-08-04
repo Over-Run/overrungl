@@ -103,44 +103,6 @@ public final class VkAccelerationStructureBuildRangeInfoKHR extends GroupType {
     /// @return the allocated `VkAccelerationStructureBuildRangeInfoKHR`
     public static VkAccelerationStructureBuildRangeInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureBuildRangeInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureBuildRangeInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param primitiveCount `primitiveCount`
-    /// @param primitiveOffset `primitiveOffset`
-    /// @param firstVertex `firstVertex`
-    /// @param transformOffset `transformOffset`
-    /// @return the allocated `VkAccelerationStructureBuildRangeInfoKHR`
-    public static VkAccelerationStructureBuildRangeInfoKHR allocInit(SegmentAllocator allocator, int primitiveCount, int primitiveOffset, int firstVertex, int transformOffset) {
-        return alloc(allocator).primitiveCount(primitiveCount).primitiveOffset(primitiveOffset).firstVertex(firstVertex).transformOffset(transformOffset);
-    }
-
-    /// Allocates a `VkAccelerationStructureBuildRangeInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param primitiveCount `primitiveCount`
-    /// @param primitiveOffset `primitiveOffset`
-    /// @param firstVertex `firstVertex`
-    /// @return the allocated `VkAccelerationStructureBuildRangeInfoKHR`
-    public static VkAccelerationStructureBuildRangeInfoKHR allocInit(SegmentAllocator allocator, int primitiveCount, int primitiveOffset, int firstVertex) {
-        return alloc(allocator).primitiveCount(primitiveCount).primitiveOffset(primitiveOffset).firstVertex(firstVertex);
-    }
-
-    /// Allocates a `VkAccelerationStructureBuildRangeInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param primitiveCount `primitiveCount`
-    /// @param primitiveOffset `primitiveOffset`
-    /// @return the allocated `VkAccelerationStructureBuildRangeInfoKHR`
-    public static VkAccelerationStructureBuildRangeInfoKHR allocInit(SegmentAllocator allocator, int primitiveCount, int primitiveOffset) {
-        return alloc(allocator).primitiveCount(primitiveCount).primitiveOffset(primitiveOffset);
-    }
-
-    /// Allocates a `VkAccelerationStructureBuildRangeInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param primitiveCount `primitiveCount`
-    /// @return the allocated `VkAccelerationStructureBuildRangeInfoKHR`
-    public static VkAccelerationStructureBuildRangeInfoKHR allocInit(SegmentAllocator allocator, int primitiveCount) {
-        return alloc(allocator).primitiveCount(primitiveCount);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -119,69 +119,6 @@ public final class VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR exte
     /// @return the allocated `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`
     public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param workgroupMemoryExplicitLayout `workgroupMemoryExplicitLayout`
-    /// @param workgroupMemoryExplicitLayoutScalarBlockLayout `workgroupMemoryExplicitLayoutScalarBlockLayout`
-    /// @param workgroupMemoryExplicitLayout8BitAccess `workgroupMemoryExplicitLayout8BitAccess`
-    /// @param workgroupMemoryExplicitLayout16BitAccess `workgroupMemoryExplicitLayout16BitAccess`
-    /// @return the allocated `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`
-    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int workgroupMemoryExplicitLayout, int workgroupMemoryExplicitLayoutScalarBlockLayout, int workgroupMemoryExplicitLayout8BitAccess, int workgroupMemoryExplicitLayout16BitAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).workgroupMemoryExplicitLayout(workgroupMemoryExplicitLayout).workgroupMemoryExplicitLayoutScalarBlockLayout(workgroupMemoryExplicitLayoutScalarBlockLayout).workgroupMemoryExplicitLayout8BitAccess(workgroupMemoryExplicitLayout8BitAccess).workgroupMemoryExplicitLayout16BitAccess(workgroupMemoryExplicitLayout16BitAccess);
-    }
-
-    /// Allocates a `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param workgroupMemoryExplicitLayout `workgroupMemoryExplicitLayout`
-    /// @param workgroupMemoryExplicitLayoutScalarBlockLayout `workgroupMemoryExplicitLayoutScalarBlockLayout`
-    /// @param workgroupMemoryExplicitLayout8BitAccess `workgroupMemoryExplicitLayout8BitAccess`
-    /// @return the allocated `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`
-    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int workgroupMemoryExplicitLayout, int workgroupMemoryExplicitLayoutScalarBlockLayout, int workgroupMemoryExplicitLayout8BitAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).workgroupMemoryExplicitLayout(workgroupMemoryExplicitLayout).workgroupMemoryExplicitLayoutScalarBlockLayout(workgroupMemoryExplicitLayoutScalarBlockLayout).workgroupMemoryExplicitLayout8BitAccess(workgroupMemoryExplicitLayout8BitAccess);
-    }
-
-    /// Allocates a `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param workgroupMemoryExplicitLayout `workgroupMemoryExplicitLayout`
-    /// @param workgroupMemoryExplicitLayoutScalarBlockLayout `workgroupMemoryExplicitLayoutScalarBlockLayout`
-    /// @return the allocated `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`
-    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int workgroupMemoryExplicitLayout, int workgroupMemoryExplicitLayoutScalarBlockLayout) {
-        return alloc(allocator).sType(sType).pNext(pNext).workgroupMemoryExplicitLayout(workgroupMemoryExplicitLayout).workgroupMemoryExplicitLayoutScalarBlockLayout(workgroupMemoryExplicitLayoutScalarBlockLayout);
-    }
-
-    /// Allocates a `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param workgroupMemoryExplicitLayout `workgroupMemoryExplicitLayout`
-    /// @return the allocated `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`
-    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int workgroupMemoryExplicitLayout) {
-        return alloc(allocator).sType(sType).pNext(pNext).workgroupMemoryExplicitLayout(workgroupMemoryExplicitLayout);
-    }
-
-    /// Allocates a `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`
-    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR`
-    public static VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

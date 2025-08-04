@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceVulkanMemoryModelFeaturesKHR extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR`
     public static VkPhysicalDeviceVulkanMemoryModelFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkanMemoryModelFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param vulkanMemoryModel `vulkanMemoryModel`
-    /// @param vulkanMemoryModelDeviceScope `vulkanMemoryModelDeviceScope`
-    /// @param vulkanMemoryModelAvailabilityVisibilityChains `vulkanMemoryModelAvailabilityVisibilityChains`
-    /// @return the allocated `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR`
-    public static VkPhysicalDeviceVulkanMemoryModelFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vulkanMemoryModel, int vulkanMemoryModelDeviceScope, int vulkanMemoryModelAvailabilityVisibilityChains) {
-        return alloc(allocator).sType(sType).pNext(pNext).vulkanMemoryModel(vulkanMemoryModel).vulkanMemoryModelDeviceScope(vulkanMemoryModelDeviceScope).vulkanMemoryModelAvailabilityVisibilityChains(vulkanMemoryModelAvailabilityVisibilityChains);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param vulkanMemoryModel `vulkanMemoryModel`
-    /// @param vulkanMemoryModelDeviceScope `vulkanMemoryModelDeviceScope`
-    /// @return the allocated `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR`
-    public static VkPhysicalDeviceVulkanMemoryModelFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vulkanMemoryModel, int vulkanMemoryModelDeviceScope) {
-        return alloc(allocator).sType(sType).pNext(pNext).vulkanMemoryModel(vulkanMemoryModel).vulkanMemoryModelDeviceScope(vulkanMemoryModelDeviceScope);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param vulkanMemoryModel `vulkanMemoryModel`
-    /// @return the allocated `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR`
-    public static VkPhysicalDeviceVulkanMemoryModelFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int vulkanMemoryModel) {
-        return alloc(allocator).sType(sType).pNext(pNext).vulkanMemoryModel(vulkanMemoryModel);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR`
-    public static VkPhysicalDeviceVulkanMemoryModelFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceVulkanMemoryModelFeaturesKHR`
-    public static VkPhysicalDeviceVulkanMemoryModelFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

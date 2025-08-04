@@ -111,56 +111,6 @@ public final class VkAccelerationStructureBuildSizesInfoKHR extends GroupType {
     /// @return the allocated `VkAccelerationStructureBuildSizesInfoKHR`
     public static VkAccelerationStructureBuildSizesInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureBuildSizesInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureBuildSizesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param accelerationStructureSize `accelerationStructureSize`
-    /// @param updateScratchSize `updateScratchSize`
-    /// @param buildScratchSize `buildScratchSize`
-    /// @return the allocated `VkAccelerationStructureBuildSizesInfoKHR`
-    public static VkAccelerationStructureBuildSizesInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long accelerationStructureSize, long updateScratchSize, long buildScratchSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructureSize(accelerationStructureSize).updateScratchSize(updateScratchSize).buildScratchSize(buildScratchSize);
-    }
-
-    /// Allocates a `VkAccelerationStructureBuildSizesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param accelerationStructureSize `accelerationStructureSize`
-    /// @param updateScratchSize `updateScratchSize`
-    /// @return the allocated `VkAccelerationStructureBuildSizesInfoKHR`
-    public static VkAccelerationStructureBuildSizesInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long accelerationStructureSize, long updateScratchSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructureSize(accelerationStructureSize).updateScratchSize(updateScratchSize);
-    }
-
-    /// Allocates a `VkAccelerationStructureBuildSizesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param accelerationStructureSize `accelerationStructureSize`
-    /// @return the allocated `VkAccelerationStructureBuildSizesInfoKHR`
-    public static VkAccelerationStructureBuildSizesInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long accelerationStructureSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructureSize(accelerationStructureSize);
-    }
-
-    /// Allocates a `VkAccelerationStructureBuildSizesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAccelerationStructureBuildSizesInfoKHR`
-    public static VkAccelerationStructureBuildSizesInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAccelerationStructureBuildSizesInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAccelerationStructureBuildSizesInfoKHR`
-    public static VkAccelerationStructureBuildSizesInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

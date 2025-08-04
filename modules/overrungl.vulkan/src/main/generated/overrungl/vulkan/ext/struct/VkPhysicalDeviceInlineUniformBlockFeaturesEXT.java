@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceInlineUniformBlockFeaturesEXT extends GroupTy
     /// @return the allocated `VkPhysicalDeviceInlineUniformBlockFeaturesEXT`
     public static VkPhysicalDeviceInlineUniformBlockFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceInlineUniformBlockFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceInlineUniformBlockFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param inlineUniformBlock `inlineUniformBlock`
-    /// @param descriptorBindingInlineUniformBlockUpdateAfterBind `descriptorBindingInlineUniformBlockUpdateAfterBind`
-    /// @return the allocated `VkPhysicalDeviceInlineUniformBlockFeaturesEXT`
-    public static VkPhysicalDeviceInlineUniformBlockFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int inlineUniformBlock, int descriptorBindingInlineUniformBlockUpdateAfterBind) {
-        return alloc(allocator).sType(sType).pNext(pNext).inlineUniformBlock(inlineUniformBlock).descriptorBindingInlineUniformBlockUpdateAfterBind(descriptorBindingInlineUniformBlockUpdateAfterBind);
-    }
-
-    /// Allocates a `VkPhysicalDeviceInlineUniformBlockFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param inlineUniformBlock `inlineUniformBlock`
-    /// @return the allocated `VkPhysicalDeviceInlineUniformBlockFeaturesEXT`
-    public static VkPhysicalDeviceInlineUniformBlockFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int inlineUniformBlock) {
-        return alloc(allocator).sType(sType).pNext(pNext).inlineUniformBlock(inlineUniformBlock);
-    }
-
-    /// Allocates a `VkPhysicalDeviceInlineUniformBlockFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceInlineUniformBlockFeaturesEXT`
-    public static VkPhysicalDeviceInlineUniformBlockFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceInlineUniformBlockFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceInlineUniformBlockFeaturesEXT`
-    public static VkPhysicalDeviceInlineUniformBlockFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

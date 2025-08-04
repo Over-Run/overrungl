@@ -95,33 +95,6 @@ public final class VkLatencySubmissionPresentIdNV extends GroupType {
     /// @return the allocated `VkLatencySubmissionPresentIdNV`
     public static VkLatencySubmissionPresentIdNV alloc(SegmentAllocator allocator, long count) { return new VkLatencySubmissionPresentIdNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkLatencySubmissionPresentIdNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param presentID `presentID`
-    /// @return the allocated `VkLatencySubmissionPresentIdNV`
-    public static VkLatencySubmissionPresentIdNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long presentID) {
-        return alloc(allocator).sType(sType).pNext(pNext).presentID(presentID);
-    }
-
-    /// Allocates a `VkLatencySubmissionPresentIdNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkLatencySubmissionPresentIdNV`
-    public static VkLatencySubmissionPresentIdNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkLatencySubmissionPresentIdNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkLatencySubmissionPresentIdNV`
-    public static VkLatencySubmissionPresentIdNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

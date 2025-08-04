@@ -119,69 +119,6 @@ public final class VkDataGraphPipelinePropertyQueryResultARM extends GroupType {
     /// @return the allocated `VkDataGraphPipelinePropertyQueryResultARM`
     public static VkDataGraphPipelinePropertyQueryResultARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelinePropertyQueryResultARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDataGraphPipelinePropertyQueryResultARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param property `property`
-    /// @param isText `isText`
-    /// @param dataSize `dataSize`
-    /// @param pData `pData`
-    /// @return the allocated `VkDataGraphPipelinePropertyQueryResultARM`
-    public static VkDataGraphPipelinePropertyQueryResultARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int property, int isText, long dataSize, MemorySegment pData) {
-        return alloc(allocator).sType(sType).pNext(pNext).property(property).isText(isText).dataSize(dataSize).pData(pData);
-    }
-
-    /// Allocates a `VkDataGraphPipelinePropertyQueryResultARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param property `property`
-    /// @param isText `isText`
-    /// @param dataSize `dataSize`
-    /// @return the allocated `VkDataGraphPipelinePropertyQueryResultARM`
-    public static VkDataGraphPipelinePropertyQueryResultARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int property, int isText, long dataSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).property(property).isText(isText).dataSize(dataSize);
-    }
-
-    /// Allocates a `VkDataGraphPipelinePropertyQueryResultARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param property `property`
-    /// @param isText `isText`
-    /// @return the allocated `VkDataGraphPipelinePropertyQueryResultARM`
-    public static VkDataGraphPipelinePropertyQueryResultARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int property, int isText) {
-        return alloc(allocator).sType(sType).pNext(pNext).property(property).isText(isText);
-    }
-
-    /// Allocates a `VkDataGraphPipelinePropertyQueryResultARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param property `property`
-    /// @return the allocated `VkDataGraphPipelinePropertyQueryResultARM`
-    public static VkDataGraphPipelinePropertyQueryResultARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int property) {
-        return alloc(allocator).sType(sType).pNext(pNext).property(property);
-    }
-
-    /// Allocates a `VkDataGraphPipelinePropertyQueryResultARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDataGraphPipelinePropertyQueryResultARM`
-    public static VkDataGraphPipelinePropertyQueryResultARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDataGraphPipelinePropertyQueryResultARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDataGraphPipelinePropertyQueryResultARM`
-    public static VkDataGraphPipelinePropertyQueryResultARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

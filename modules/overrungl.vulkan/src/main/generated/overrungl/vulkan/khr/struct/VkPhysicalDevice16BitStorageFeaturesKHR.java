@@ -119,69 +119,6 @@ public final class VkPhysicalDevice16BitStorageFeaturesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDevice16BitStorageFeaturesKHR`
     public static VkPhysicalDevice16BitStorageFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevice16BitStorageFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevice16BitStorageFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffer16BitAccess `storageBuffer16BitAccess`
-    /// @param uniformAndStorageBuffer16BitAccess `uniformAndStorageBuffer16BitAccess`
-    /// @param storagePushConstant16 `storagePushConstant16`
-    /// @param storageInputOutput16 `storageInputOutput16`
-    /// @return the allocated `VkPhysicalDevice16BitStorageFeaturesKHR`
-    public static VkPhysicalDevice16BitStorageFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffer16BitAccess, int uniformAndStorageBuffer16BitAccess, int storagePushConstant16, int storageInputOutput16) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffer16BitAccess(storageBuffer16BitAccess).uniformAndStorageBuffer16BitAccess(uniformAndStorageBuffer16BitAccess).storagePushConstant16(storagePushConstant16).storageInputOutput16(storageInputOutput16);
-    }
-
-    /// Allocates a `VkPhysicalDevice16BitStorageFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffer16BitAccess `storageBuffer16BitAccess`
-    /// @param uniformAndStorageBuffer16BitAccess `uniformAndStorageBuffer16BitAccess`
-    /// @param storagePushConstant16 `storagePushConstant16`
-    /// @return the allocated `VkPhysicalDevice16BitStorageFeaturesKHR`
-    public static VkPhysicalDevice16BitStorageFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffer16BitAccess, int uniformAndStorageBuffer16BitAccess, int storagePushConstant16) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffer16BitAccess(storageBuffer16BitAccess).uniformAndStorageBuffer16BitAccess(uniformAndStorageBuffer16BitAccess).storagePushConstant16(storagePushConstant16);
-    }
-
-    /// Allocates a `VkPhysicalDevice16BitStorageFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffer16BitAccess `storageBuffer16BitAccess`
-    /// @param uniformAndStorageBuffer16BitAccess `uniformAndStorageBuffer16BitAccess`
-    /// @return the allocated `VkPhysicalDevice16BitStorageFeaturesKHR`
-    public static VkPhysicalDevice16BitStorageFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffer16BitAccess, int uniformAndStorageBuffer16BitAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffer16BitAccess(storageBuffer16BitAccess).uniformAndStorageBuffer16BitAccess(uniformAndStorageBuffer16BitAccess);
-    }
-
-    /// Allocates a `VkPhysicalDevice16BitStorageFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffer16BitAccess `storageBuffer16BitAccess`
-    /// @return the allocated `VkPhysicalDevice16BitStorageFeaturesKHR`
-    public static VkPhysicalDevice16BitStorageFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffer16BitAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffer16BitAccess(storageBuffer16BitAccess);
-    }
-
-    /// Allocates a `VkPhysicalDevice16BitStorageFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevice16BitStorageFeaturesKHR`
-    public static VkPhysicalDevice16BitStorageFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevice16BitStorageFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevice16BitStorageFeaturesKHR`
-    public static VkPhysicalDevice16BitStorageFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

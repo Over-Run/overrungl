@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceYcbcrDegammaFeaturesQCOM extends GroupType {
     /// @return the allocated `VkPhysicalDeviceYcbcrDegammaFeaturesQCOM`
     public static VkPhysicalDeviceYcbcrDegammaFeaturesQCOM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceYcbcrDegammaFeaturesQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceYcbcrDegammaFeaturesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param ycbcrDegamma `ycbcrDegamma`
-    /// @return the allocated `VkPhysicalDeviceYcbcrDegammaFeaturesQCOM`
-    public static VkPhysicalDeviceYcbcrDegammaFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int ycbcrDegamma) {
-        return alloc(allocator).sType(sType).pNext(pNext).ycbcrDegamma(ycbcrDegamma);
-    }
-
-    /// Allocates a `VkPhysicalDeviceYcbcrDegammaFeaturesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceYcbcrDegammaFeaturesQCOM`
-    public static VkPhysicalDeviceYcbcrDegammaFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceYcbcrDegammaFeaturesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceYcbcrDegammaFeaturesQCOM`
-    public static VkPhysicalDeviceYcbcrDegammaFeaturesQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

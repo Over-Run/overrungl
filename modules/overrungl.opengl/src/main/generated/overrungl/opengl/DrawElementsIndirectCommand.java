@@ -111,56 +111,6 @@ public final class DrawElementsIndirectCommand extends GroupType {
     /// @return the allocated `DrawElementsIndirectCommand`
     public static DrawElementsIndirectCommand alloc(SegmentAllocator allocator, long count) { return new DrawElementsIndirectCommand(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param count `count`
-    /// @param instanceCount `instanceCount`
-    /// @param firstIndex `firstIndex`
-    /// @param baseVertex `baseVertex`
-    /// @param baseInstance `baseInstance`
-    /// @return the allocated `DrawElementsIndirectCommand`
-    public static DrawElementsIndirectCommand allocInit(SegmentAllocator allocator, int count, int instanceCount, int firstIndex, int baseVertex, int baseInstance) {
-        return alloc(allocator).count(count).instanceCount(instanceCount).firstIndex(firstIndex).baseVertex(baseVertex).baseInstance(baseInstance);
-    }
-
-    /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param count `count`
-    /// @param instanceCount `instanceCount`
-    /// @param firstIndex `firstIndex`
-    /// @param baseVertex `baseVertex`
-    /// @return the allocated `DrawElementsIndirectCommand`
-    public static DrawElementsIndirectCommand allocInit(SegmentAllocator allocator, int count, int instanceCount, int firstIndex, int baseVertex) {
-        return alloc(allocator).count(count).instanceCount(instanceCount).firstIndex(firstIndex).baseVertex(baseVertex);
-    }
-
-    /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param count `count`
-    /// @param instanceCount `instanceCount`
-    /// @param firstIndex `firstIndex`
-    /// @return the allocated `DrawElementsIndirectCommand`
-    public static DrawElementsIndirectCommand allocInit(SegmentAllocator allocator, int count, int instanceCount, int firstIndex) {
-        return alloc(allocator).count(count).instanceCount(instanceCount).firstIndex(firstIndex);
-    }
-
-    /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param count `count`
-    /// @param instanceCount `instanceCount`
-    /// @return the allocated `DrawElementsIndirectCommand`
-    public static DrawElementsIndirectCommand allocInit(SegmentAllocator allocator, int count, int instanceCount) {
-        return alloc(allocator).count(count).instanceCount(instanceCount);
-    }
-
-    /// Allocates a `DrawElementsIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param count `count`
-    /// @return the allocated `DrawElementsIndirectCommand`
-    public static DrawElementsIndirectCommand allocInit(SegmentAllocator allocator, int count) {
-        return alloc(allocator).count(count);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

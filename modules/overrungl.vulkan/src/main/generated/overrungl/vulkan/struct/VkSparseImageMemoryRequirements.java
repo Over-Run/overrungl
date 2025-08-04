@@ -109,56 +109,6 @@ public final class VkSparseImageMemoryRequirements extends GroupType {
     /// @return the allocated `VkSparseImageMemoryRequirements`
     public static VkSparseImageMemoryRequirements alloc(SegmentAllocator allocator, long count) { return new VkSparseImageMemoryRequirements(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSparseImageMemoryRequirements` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param formatProperties `formatProperties`
-    /// @param imageMipTailFirstLod `imageMipTailFirstLod`
-    /// @param imageMipTailSize `imageMipTailSize`
-    /// @param imageMipTailOffset `imageMipTailOffset`
-    /// @param imageMipTailStride `imageMipTailStride`
-    /// @return the allocated `VkSparseImageMemoryRequirements`
-    public static VkSparseImageMemoryRequirements allocInit(SegmentAllocator allocator, MemorySegment formatProperties, int imageMipTailFirstLod, long imageMipTailSize, long imageMipTailOffset, long imageMipTailStride) {
-        return alloc(allocator).formatProperties(formatProperties).imageMipTailFirstLod(imageMipTailFirstLod).imageMipTailSize(imageMipTailSize).imageMipTailOffset(imageMipTailOffset).imageMipTailStride(imageMipTailStride);
-    }
-
-    /// Allocates a `VkSparseImageMemoryRequirements` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param formatProperties `formatProperties`
-    /// @param imageMipTailFirstLod `imageMipTailFirstLod`
-    /// @param imageMipTailSize `imageMipTailSize`
-    /// @param imageMipTailOffset `imageMipTailOffset`
-    /// @return the allocated `VkSparseImageMemoryRequirements`
-    public static VkSparseImageMemoryRequirements allocInit(SegmentAllocator allocator, MemorySegment formatProperties, int imageMipTailFirstLod, long imageMipTailSize, long imageMipTailOffset) {
-        return alloc(allocator).formatProperties(formatProperties).imageMipTailFirstLod(imageMipTailFirstLod).imageMipTailSize(imageMipTailSize).imageMipTailOffset(imageMipTailOffset);
-    }
-
-    /// Allocates a `VkSparseImageMemoryRequirements` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param formatProperties `formatProperties`
-    /// @param imageMipTailFirstLod `imageMipTailFirstLod`
-    /// @param imageMipTailSize `imageMipTailSize`
-    /// @return the allocated `VkSparseImageMemoryRequirements`
-    public static VkSparseImageMemoryRequirements allocInit(SegmentAllocator allocator, MemorySegment formatProperties, int imageMipTailFirstLod, long imageMipTailSize) {
-        return alloc(allocator).formatProperties(formatProperties).imageMipTailFirstLod(imageMipTailFirstLod).imageMipTailSize(imageMipTailSize);
-    }
-
-    /// Allocates a `VkSparseImageMemoryRequirements` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param formatProperties `formatProperties`
-    /// @param imageMipTailFirstLod `imageMipTailFirstLod`
-    /// @return the allocated `VkSparseImageMemoryRequirements`
-    public static VkSparseImageMemoryRequirements allocInit(SegmentAllocator allocator, MemorySegment formatProperties, int imageMipTailFirstLod) {
-        return alloc(allocator).formatProperties(formatProperties).imageMipTailFirstLod(imageMipTailFirstLod);
-    }
-
-    /// Allocates a `VkSparseImageMemoryRequirements` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param formatProperties `formatProperties`
-    /// @return the allocated `VkSparseImageMemoryRequirements`
-    public static VkSparseImageMemoryRequirements allocInit(SegmentAllocator allocator, MemorySegment formatProperties) {
-        return alloc(allocator).formatProperties(formatProperties);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

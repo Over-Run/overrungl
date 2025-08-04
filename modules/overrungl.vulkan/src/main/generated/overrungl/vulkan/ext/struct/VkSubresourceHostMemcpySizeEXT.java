@@ -95,33 +95,6 @@ public final class VkSubresourceHostMemcpySizeEXT extends GroupType {
     /// @return the allocated `VkSubresourceHostMemcpySizeEXT`
     public static VkSubresourceHostMemcpySizeEXT alloc(SegmentAllocator allocator, long count) { return new VkSubresourceHostMemcpySizeEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSubresourceHostMemcpySizeEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param size `size`
-    /// @return the allocated `VkSubresourceHostMemcpySizeEXT`
-    public static VkSubresourceHostMemcpySizeEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long size) {
-        return alloc(allocator).sType(sType).pNext(pNext).size(size);
-    }
-
-    /// Allocates a `VkSubresourceHostMemcpySizeEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSubresourceHostMemcpySizeEXT`
-    public static VkSubresourceHostMemcpySizeEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSubresourceHostMemcpySizeEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSubresourceHostMemcpySizeEXT`
-    public static VkSubresourceHostMemcpySizeEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

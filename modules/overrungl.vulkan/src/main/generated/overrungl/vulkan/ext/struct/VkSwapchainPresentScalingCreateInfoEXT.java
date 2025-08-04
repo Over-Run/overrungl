@@ -111,56 +111,6 @@ public final class VkSwapchainPresentScalingCreateInfoEXT extends GroupType {
     /// @return the allocated `VkSwapchainPresentScalingCreateInfoEXT`
     public static VkSwapchainPresentScalingCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSwapchainPresentScalingCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSwapchainPresentScalingCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param scalingBehavior `scalingBehavior`
-    /// @param presentGravityX `presentGravityX`
-    /// @param presentGravityY `presentGravityY`
-    /// @return the allocated `VkSwapchainPresentScalingCreateInfoEXT`
-    public static VkSwapchainPresentScalingCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int scalingBehavior, int presentGravityX, int presentGravityY) {
-        return alloc(allocator).sType(sType).pNext(pNext).scalingBehavior(scalingBehavior).presentGravityX(presentGravityX).presentGravityY(presentGravityY);
-    }
-
-    /// Allocates a `VkSwapchainPresentScalingCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param scalingBehavior `scalingBehavior`
-    /// @param presentGravityX `presentGravityX`
-    /// @return the allocated `VkSwapchainPresentScalingCreateInfoEXT`
-    public static VkSwapchainPresentScalingCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int scalingBehavior, int presentGravityX) {
-        return alloc(allocator).sType(sType).pNext(pNext).scalingBehavior(scalingBehavior).presentGravityX(presentGravityX);
-    }
-
-    /// Allocates a `VkSwapchainPresentScalingCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param scalingBehavior `scalingBehavior`
-    /// @return the allocated `VkSwapchainPresentScalingCreateInfoEXT`
-    public static VkSwapchainPresentScalingCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int scalingBehavior) {
-        return alloc(allocator).sType(sType).pNext(pNext).scalingBehavior(scalingBehavior);
-    }
-
-    /// Allocates a `VkSwapchainPresentScalingCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSwapchainPresentScalingCreateInfoEXT`
-    public static VkSwapchainPresentScalingCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSwapchainPresentScalingCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSwapchainPresentScalingCreateInfoEXT`
-    public static VkSwapchainPresentScalingCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

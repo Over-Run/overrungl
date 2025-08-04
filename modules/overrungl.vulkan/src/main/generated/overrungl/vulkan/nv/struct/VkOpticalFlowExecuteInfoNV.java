@@ -111,56 +111,6 @@ public final class VkOpticalFlowExecuteInfoNV extends GroupType {
     /// @return the allocated `VkOpticalFlowExecuteInfoNV`
     public static VkOpticalFlowExecuteInfoNV alloc(SegmentAllocator allocator, long count) { return new VkOpticalFlowExecuteInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkOpticalFlowExecuteInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param regionCount `regionCount`
-    /// @param pRegions `pRegions`
-    /// @return the allocated `VkOpticalFlowExecuteInfoNV`
-    public static VkOpticalFlowExecuteInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int regionCount, MemorySegment pRegions) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).regionCount(regionCount).pRegions(pRegions);
-    }
-
-    /// Allocates a `VkOpticalFlowExecuteInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param regionCount `regionCount`
-    /// @return the allocated `VkOpticalFlowExecuteInfoNV`
-    public static VkOpticalFlowExecuteInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int regionCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).regionCount(regionCount);
-    }
-
-    /// Allocates a `VkOpticalFlowExecuteInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkOpticalFlowExecuteInfoNV`
-    public static VkOpticalFlowExecuteInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkOpticalFlowExecuteInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkOpticalFlowExecuteInfoNV`
-    public static VkOpticalFlowExecuteInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkOpticalFlowExecuteInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkOpticalFlowExecuteInfoNV`
-    public static VkOpticalFlowExecuteInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

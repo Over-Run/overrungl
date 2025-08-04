@@ -111,56 +111,6 @@ public final class VkSparseMemoryBind extends GroupType {
     /// @return the allocated `VkSparseMemoryBind`
     public static VkSparseMemoryBind alloc(SegmentAllocator allocator, long count) { return new VkSparseMemoryBind(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSparseMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param resourceOffset `resourceOffset`
-    /// @param size `size`
-    /// @param memory `memory`
-    /// @param memoryOffset `memoryOffset`
-    /// @param flags `flags`
-    /// @return the allocated `VkSparseMemoryBind`
-    public static VkSparseMemoryBind allocInit(SegmentAllocator allocator, long resourceOffset, long size, long memory, long memoryOffset, int flags) {
-        return alloc(allocator).resourceOffset(resourceOffset).size(size).memory(memory).memoryOffset(memoryOffset).flags(flags);
-    }
-
-    /// Allocates a `VkSparseMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param resourceOffset `resourceOffset`
-    /// @param size `size`
-    /// @param memory `memory`
-    /// @param memoryOffset `memoryOffset`
-    /// @return the allocated `VkSparseMemoryBind`
-    public static VkSparseMemoryBind allocInit(SegmentAllocator allocator, long resourceOffset, long size, long memory, long memoryOffset) {
-        return alloc(allocator).resourceOffset(resourceOffset).size(size).memory(memory).memoryOffset(memoryOffset);
-    }
-
-    /// Allocates a `VkSparseMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param resourceOffset `resourceOffset`
-    /// @param size `size`
-    /// @param memory `memory`
-    /// @return the allocated `VkSparseMemoryBind`
-    public static VkSparseMemoryBind allocInit(SegmentAllocator allocator, long resourceOffset, long size, long memory) {
-        return alloc(allocator).resourceOffset(resourceOffset).size(size).memory(memory);
-    }
-
-    /// Allocates a `VkSparseMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param resourceOffset `resourceOffset`
-    /// @param size `size`
-    /// @return the allocated `VkSparseMemoryBind`
-    public static VkSparseMemoryBind allocInit(SegmentAllocator allocator, long resourceOffset, long size) {
-        return alloc(allocator).resourceOffset(resourceOffset).size(size);
-    }
-
-    /// Allocates a `VkSparseMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param resourceOffset `resourceOffset`
-    /// @return the allocated `VkSparseMemoryBind`
-    public static VkSparseMemoryBind allocInit(SegmentAllocator allocator, long resourceOffset) {
-        return alloc(allocator).resourceOffset(resourceOffset);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

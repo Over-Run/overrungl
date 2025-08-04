@@ -93,33 +93,6 @@ public final class VmaAllocationInfo2 extends GroupType {
     /// @return the allocated `VmaAllocationInfo2`
     public static VmaAllocationInfo2 alloc(SegmentAllocator allocator, long count) { return new VmaAllocationInfo2(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VmaAllocationInfo2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param allocationInfo `allocationInfo`
-    /// @param blockSize `blockSize`
-    /// @param dedicatedMemory `dedicatedMemory`
-    /// @return the allocated `VmaAllocationInfo2`
-    public static VmaAllocationInfo2 allocInit(SegmentAllocator allocator, MemorySegment allocationInfo, long blockSize, int dedicatedMemory) {
-        return alloc(allocator).allocationInfo(allocationInfo).blockSize(blockSize).dedicatedMemory(dedicatedMemory);
-    }
-
-    /// Allocates a `VmaAllocationInfo2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param allocationInfo `allocationInfo`
-    /// @param blockSize `blockSize`
-    /// @return the allocated `VmaAllocationInfo2`
-    public static VmaAllocationInfo2 allocInit(SegmentAllocator allocator, MemorySegment allocationInfo, long blockSize) {
-        return alloc(allocator).allocationInfo(allocationInfo).blockSize(blockSize);
-    }
-
-    /// Allocates a `VmaAllocationInfo2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param allocationInfo `allocationInfo`
-    /// @return the allocated `VmaAllocationInfo2`
-    public static VmaAllocationInfo2 allocInit(SegmentAllocator allocator, MemorySegment allocationInfo) {
-        return alloc(allocator).allocationInfo(allocationInfo);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

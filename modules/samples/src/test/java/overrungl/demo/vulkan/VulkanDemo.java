@@ -27,7 +27,6 @@ import overrungl.vulkan.khr.struct.VkSurfaceCapabilitiesKHR;
 import overrungl.vulkan.khr.struct.VkSurfaceFormatKHR;
 import overrungl.vulkan.khr.struct.VkSwapchainCreateInfoKHR;
 import overrungl.vulkan.struct.*;
-import overrungl.vulkan.union.VkClearColorValue;
 import overrungl.vulkan.union.VkClearValue;
 
 import java.io.IOException;
@@ -428,12 +427,13 @@ public class VulkanDemo {
                         .g(VK_COMPONENT_SWIZZLE_IDENTITY)
                         .b(VK_COMPONENT_SWIZZLE_IDENTITY)
                         .a(VK_COMPONENT_SWIZZLE_IDENTITY))
-                    .subresourceRange(VkImageSubresourceRange.allocInit(stack,
-                        VK_IMAGE_ASPECT_COLOR_BIT,
-                        0,
-                        1,
-                        0,
-                        1).segment());
+                    .subresourceRange(VkImageSubresourceRange.alloc(stack)
+                        .aspectMask(VK_IMAGE_ASPECT_COLOR_BIT)
+                        .baseMipLevel(0)
+                        .levelCount(1)
+                        .baseArrayLayer(0)
+                        .layerCount(1)
+                        .segment());
                 LongPtr pView = stack.allocLongPtr();
                 vkCreateImageView(device, createInfo.segment(), MemorySegment.NULL, pView.segment());
                 swapChainImageViews.add(pView.value());
@@ -442,7 +442,7 @@ public class VulkanDemo {
 
         try (MemoryStack stack = MemoryStack.pushLocal()) {
             LongPtr p = stack.allocLongPtr();
-            var semaphoreCreateInfo = VkSemaphoreCreateInfo.allocInit(stack, VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO);
+            var semaphoreCreateInfo = VkSemaphoreCreateInfo.alloc(stack).sType(VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO);
             for (int i = 0; i < swapChainImages.size(); i++) {
                 check(vkCreateSemaphore(device, semaphoreCreateInfo.segment(), MemorySegment.NULL, p.segment()), "failed to create render finished semaphore");
                 renderFinishedSemaphores.add(p.value());
@@ -686,11 +686,13 @@ public class VulkanDemo {
                     .offset(vkOffset2D -> vkOffset2D.x(0).y(0))
                     .extent(vkExtent2D -> vkExtent2D.width(swapChainWidth).height(swapChainHeight)))
                 .clearValueCount(1)
-                .pClearValues(VkClearValue.allocWith_color(stack,
-                    VkClearColorValue.allocWith_float32(stack,
-                        stack.floats(0.0f, 0.0f, 0.0f, 1.0f)
-                    ).segment()
-                ).segment());
+                .pClearValues(VkClearValue.alloc(stack)
+                    .color(clearColorValue -> clearColorValue
+                        .float32(0, 0.0f)
+                        .float32(1, 0.0f)
+                        .float32(2, 0.0f)
+                        .float32(3, 1.0f)
+                    ).segment());
             vkCmdBeginRenderPass(commandBuffer, beginInfo.segment(), VK_SUBPASS_CONTENTS_INLINE);
         }
         vkCmdBindPipeline(commandBuffer, VK_PIPELINE_BIND_POINT_GRAPHICS, graphicsPipeline);

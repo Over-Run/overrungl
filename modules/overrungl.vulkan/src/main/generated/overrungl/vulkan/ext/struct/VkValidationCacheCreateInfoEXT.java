@@ -111,56 +111,6 @@ public final class VkValidationCacheCreateInfoEXT extends GroupType {
     /// @return the allocated `VkValidationCacheCreateInfoEXT`
     public static VkValidationCacheCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkValidationCacheCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkValidationCacheCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param initialDataSize `initialDataSize`
-    /// @param pInitialData `pInitialData`
-    /// @return the allocated `VkValidationCacheCreateInfoEXT`
-    public static VkValidationCacheCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long initialDataSize, MemorySegment pInitialData) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).initialDataSize(initialDataSize).pInitialData(pInitialData);
-    }
-
-    /// Allocates a `VkValidationCacheCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param initialDataSize `initialDataSize`
-    /// @return the allocated `VkValidationCacheCreateInfoEXT`
-    public static VkValidationCacheCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long initialDataSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).initialDataSize(initialDataSize);
-    }
-
-    /// Allocates a `VkValidationCacheCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkValidationCacheCreateInfoEXT`
-    public static VkValidationCacheCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkValidationCacheCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkValidationCacheCreateInfoEXT`
-    public static VkValidationCacheCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkValidationCacheCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkValidationCacheCreateInfoEXT`
-    public static VkValidationCacheCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

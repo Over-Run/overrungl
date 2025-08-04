@@ -119,69 +119,6 @@ public final class VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT extends Gro
     /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT`
     public static VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageTexelBufferOffsetAlignmentBytes `storageTexelBufferOffsetAlignmentBytes`
-    /// @param storageTexelBufferOffsetSingleTexelAlignment `storageTexelBufferOffsetSingleTexelAlignment`
-    /// @param uniformTexelBufferOffsetAlignmentBytes `uniformTexelBufferOffsetAlignmentBytes`
-    /// @param uniformTexelBufferOffsetSingleTexelAlignment `uniformTexelBufferOffsetSingleTexelAlignment`
-    /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT`
-    public static VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long storageTexelBufferOffsetAlignmentBytes, int storageTexelBufferOffsetSingleTexelAlignment, long uniformTexelBufferOffsetAlignmentBytes, int uniformTexelBufferOffsetSingleTexelAlignment) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageTexelBufferOffsetAlignmentBytes(storageTexelBufferOffsetAlignmentBytes).storageTexelBufferOffsetSingleTexelAlignment(storageTexelBufferOffsetSingleTexelAlignment).uniformTexelBufferOffsetAlignmentBytes(uniformTexelBufferOffsetAlignmentBytes).uniformTexelBufferOffsetSingleTexelAlignment(uniformTexelBufferOffsetSingleTexelAlignment);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageTexelBufferOffsetAlignmentBytes `storageTexelBufferOffsetAlignmentBytes`
-    /// @param storageTexelBufferOffsetSingleTexelAlignment `storageTexelBufferOffsetSingleTexelAlignment`
-    /// @param uniformTexelBufferOffsetAlignmentBytes `uniformTexelBufferOffsetAlignmentBytes`
-    /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT`
-    public static VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long storageTexelBufferOffsetAlignmentBytes, int storageTexelBufferOffsetSingleTexelAlignment, long uniformTexelBufferOffsetAlignmentBytes) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageTexelBufferOffsetAlignmentBytes(storageTexelBufferOffsetAlignmentBytes).storageTexelBufferOffsetSingleTexelAlignment(storageTexelBufferOffsetSingleTexelAlignment).uniformTexelBufferOffsetAlignmentBytes(uniformTexelBufferOffsetAlignmentBytes);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageTexelBufferOffsetAlignmentBytes `storageTexelBufferOffsetAlignmentBytes`
-    /// @param storageTexelBufferOffsetSingleTexelAlignment `storageTexelBufferOffsetSingleTexelAlignment`
-    /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT`
-    public static VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long storageTexelBufferOffsetAlignmentBytes, int storageTexelBufferOffsetSingleTexelAlignment) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageTexelBufferOffsetAlignmentBytes(storageTexelBufferOffsetAlignmentBytes).storageTexelBufferOffsetSingleTexelAlignment(storageTexelBufferOffsetSingleTexelAlignment);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageTexelBufferOffsetAlignmentBytes `storageTexelBufferOffsetAlignmentBytes`
-    /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT`
-    public static VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long storageTexelBufferOffsetAlignmentBytes) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageTexelBufferOffsetAlignmentBytes(storageTexelBufferOffsetAlignmentBytes);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT`
-    public static VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT`
-    public static VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

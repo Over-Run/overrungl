@@ -103,44 +103,6 @@ public final class VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM extends Gr
     /// @return the allocated `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM`
     public static VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param enableYDegamma `enableYDegamma`
-    /// @param enableCbCrDegamma `enableCbCrDegamma`
-    /// @return the allocated `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM`
-    public static VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int enableYDegamma, int enableCbCrDegamma) {
-        return alloc(allocator).sType(sType).pNext(pNext).enableYDegamma(enableYDegamma).enableCbCrDegamma(enableCbCrDegamma);
-    }
-
-    /// Allocates a `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param enableYDegamma `enableYDegamma`
-    /// @return the allocated `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM`
-    public static VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int enableYDegamma) {
-        return alloc(allocator).sType(sType).pNext(pNext).enableYDegamma(enableYDegamma);
-    }
-
-    /// Allocates a `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM`
-    public static VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM`
-    public static VkSamplerYcbcrConversionYcbcrDegammaCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

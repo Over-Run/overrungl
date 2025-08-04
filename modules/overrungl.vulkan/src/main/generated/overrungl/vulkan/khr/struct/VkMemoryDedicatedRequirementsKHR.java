@@ -103,44 +103,6 @@ public final class VkMemoryDedicatedRequirementsKHR extends GroupType {
     /// @return the allocated `VkMemoryDedicatedRequirementsKHR`
     public static VkMemoryDedicatedRequirementsKHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryDedicatedRequirementsKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryDedicatedRequirementsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param prefersDedicatedAllocation `prefersDedicatedAllocation`
-    /// @param requiresDedicatedAllocation `requiresDedicatedAllocation`
-    /// @return the allocated `VkMemoryDedicatedRequirementsKHR`
-    public static VkMemoryDedicatedRequirementsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int prefersDedicatedAllocation, int requiresDedicatedAllocation) {
-        return alloc(allocator).sType(sType).pNext(pNext).prefersDedicatedAllocation(prefersDedicatedAllocation).requiresDedicatedAllocation(requiresDedicatedAllocation);
-    }
-
-    /// Allocates a `VkMemoryDedicatedRequirementsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param prefersDedicatedAllocation `prefersDedicatedAllocation`
-    /// @return the allocated `VkMemoryDedicatedRequirementsKHR`
-    public static VkMemoryDedicatedRequirementsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int prefersDedicatedAllocation) {
-        return alloc(allocator).sType(sType).pNext(pNext).prefersDedicatedAllocation(prefersDedicatedAllocation);
-    }
-
-    /// Allocates a `VkMemoryDedicatedRequirementsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryDedicatedRequirementsKHR`
-    public static VkMemoryDedicatedRequirementsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryDedicatedRequirementsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryDedicatedRequirementsKHR`
-    public static VkMemoryDedicatedRequirementsKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

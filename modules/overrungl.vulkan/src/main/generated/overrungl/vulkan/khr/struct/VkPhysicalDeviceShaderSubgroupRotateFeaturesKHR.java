@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR extends Group
     /// @return the allocated `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR`
     public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
-    /// @param shaderSubgroupRotateClustered `shaderSubgroupRotateClustered`
-    /// @return the allocated `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR`
-    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderSubgroupRotate, int shaderSubgroupRotateClustered) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderSubgroupRotate(shaderSubgroupRotate).shaderSubgroupRotateClustered(shaderSubgroupRotateClustered);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderSubgroupRotate `shaderSubgroupRotate`
-    /// @return the allocated `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR`
-    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderSubgroupRotate) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderSubgroupRotate(shaderSubgroupRotate);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR`
-    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR`
-    public static VkPhysicalDeviceShaderSubgroupRotateFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

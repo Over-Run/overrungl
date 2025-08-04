@@ -111,56 +111,6 @@ public final class VkDataGraphPipelineSessionMemoryRequirementsInfoARM extends G
     /// @return the allocated `VkDataGraphPipelineSessionMemoryRequirementsInfoARM`
     public static VkDataGraphPipelineSessionMemoryRequirementsInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineSessionMemoryRequirementsInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDataGraphPipelineSessionMemoryRequirementsInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param session `session`
-    /// @param bindPoint `bindPoint`
-    /// @param objectIndex `objectIndex`
-    /// @return the allocated `VkDataGraphPipelineSessionMemoryRequirementsInfoARM`
-    public static VkDataGraphPipelineSessionMemoryRequirementsInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long session, int bindPoint, int objectIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).session(session).bindPoint(bindPoint).objectIndex(objectIndex);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionMemoryRequirementsInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param session `session`
-    /// @param bindPoint `bindPoint`
-    /// @return the allocated `VkDataGraphPipelineSessionMemoryRequirementsInfoARM`
-    public static VkDataGraphPipelineSessionMemoryRequirementsInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long session, int bindPoint) {
-        return alloc(allocator).sType(sType).pNext(pNext).session(session).bindPoint(bindPoint);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionMemoryRequirementsInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param session `session`
-    /// @return the allocated `VkDataGraphPipelineSessionMemoryRequirementsInfoARM`
-    public static VkDataGraphPipelineSessionMemoryRequirementsInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long session) {
-        return alloc(allocator).sType(sType).pNext(pNext).session(session);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionMemoryRequirementsInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDataGraphPipelineSessionMemoryRequirementsInfoARM`
-    public static VkDataGraphPipelineSessionMemoryRequirementsInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionMemoryRequirementsInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDataGraphPipelineSessionMemoryRequirementsInfoARM`
-    public static VkDataGraphPipelineSessionMemoryRequirementsInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

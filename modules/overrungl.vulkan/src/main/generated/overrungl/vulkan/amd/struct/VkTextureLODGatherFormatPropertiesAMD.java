@@ -95,33 +95,6 @@ public final class VkTextureLODGatherFormatPropertiesAMD extends GroupType {
     /// @return the allocated `VkTextureLODGatherFormatPropertiesAMD`
     public static VkTextureLODGatherFormatPropertiesAMD alloc(SegmentAllocator allocator, long count) { return new VkTextureLODGatherFormatPropertiesAMD(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkTextureLODGatherFormatPropertiesAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param supportsTextureGatherLODBiasAMD `supportsTextureGatherLODBiasAMD`
-    /// @return the allocated `VkTextureLODGatherFormatPropertiesAMD`
-    public static VkTextureLODGatherFormatPropertiesAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int supportsTextureGatherLODBiasAMD) {
-        return alloc(allocator).sType(sType).pNext(pNext).supportsTextureGatherLODBiasAMD(supportsTextureGatherLODBiasAMD);
-    }
-
-    /// Allocates a `VkTextureLODGatherFormatPropertiesAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkTextureLODGatherFormatPropertiesAMD`
-    public static VkTextureLODGatherFormatPropertiesAMD allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkTextureLODGatherFormatPropertiesAMD` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkTextureLODGatherFormatPropertiesAMD`
-    public static VkTextureLODGatherFormatPropertiesAMD allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

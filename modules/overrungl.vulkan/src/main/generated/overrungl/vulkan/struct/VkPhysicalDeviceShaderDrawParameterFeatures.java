@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceShaderDrawParameterFeatures extends GroupType
     /// @return the allocated `VkPhysicalDeviceShaderDrawParameterFeatures`
     public static VkPhysicalDeviceShaderDrawParameterFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderDrawParameterFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderDrawParameterFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderDrawParameters `shaderDrawParameters`
-    /// @return the allocated `VkPhysicalDeviceShaderDrawParameterFeatures`
-    public static VkPhysicalDeviceShaderDrawParameterFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderDrawParameters) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderDrawParameters(shaderDrawParameters);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderDrawParameterFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceShaderDrawParameterFeatures`
-    public static VkPhysicalDeviceShaderDrawParameterFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderDrawParameterFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceShaderDrawParameterFeatures`
-    public static VkPhysicalDeviceShaderDrawParameterFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

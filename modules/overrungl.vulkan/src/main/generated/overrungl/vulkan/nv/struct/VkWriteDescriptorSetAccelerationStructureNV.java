@@ -103,44 +103,6 @@ public final class VkWriteDescriptorSetAccelerationStructureNV extends GroupType
     /// @return the allocated `VkWriteDescriptorSetAccelerationStructureNV`
     public static VkWriteDescriptorSetAccelerationStructureNV alloc(SegmentAllocator allocator, long count) { return new VkWriteDescriptorSetAccelerationStructureNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkWriteDescriptorSetAccelerationStructureNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param accelerationStructureCount `accelerationStructureCount`
-    /// @param pAccelerationStructures `pAccelerationStructures`
-    /// @return the allocated `VkWriteDescriptorSetAccelerationStructureNV`
-    public static VkWriteDescriptorSetAccelerationStructureNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int accelerationStructureCount, MemorySegment pAccelerationStructures) {
-        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructureCount(accelerationStructureCount).pAccelerationStructures(pAccelerationStructures);
-    }
-
-    /// Allocates a `VkWriteDescriptorSetAccelerationStructureNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param accelerationStructureCount `accelerationStructureCount`
-    /// @return the allocated `VkWriteDescriptorSetAccelerationStructureNV`
-    public static VkWriteDescriptorSetAccelerationStructureNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int accelerationStructureCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).accelerationStructureCount(accelerationStructureCount);
-    }
-
-    /// Allocates a `VkWriteDescriptorSetAccelerationStructureNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkWriteDescriptorSetAccelerationStructureNV`
-    public static VkWriteDescriptorSetAccelerationStructureNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkWriteDescriptorSetAccelerationStructureNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkWriteDescriptorSetAccelerationStructureNV`
-    public static VkWriteDescriptorSetAccelerationStructureNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

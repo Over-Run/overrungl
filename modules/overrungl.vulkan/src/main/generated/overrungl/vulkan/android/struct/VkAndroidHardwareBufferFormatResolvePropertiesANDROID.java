@@ -95,33 +95,6 @@ public final class VkAndroidHardwareBufferFormatResolvePropertiesANDROID extends
     /// @return the allocated `VkAndroidHardwareBufferFormatResolvePropertiesANDROID`
     public static VkAndroidHardwareBufferFormatResolvePropertiesANDROID alloc(SegmentAllocator allocator, long count) { return new VkAndroidHardwareBufferFormatResolvePropertiesANDROID(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAndroidHardwareBufferFormatResolvePropertiesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param colorAttachmentFormat `colorAttachmentFormat`
-    /// @return the allocated `VkAndroidHardwareBufferFormatResolvePropertiesANDROID`
-    public static VkAndroidHardwareBufferFormatResolvePropertiesANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int colorAttachmentFormat) {
-        return alloc(allocator).sType(sType).pNext(pNext).colorAttachmentFormat(colorAttachmentFormat);
-    }
-
-    /// Allocates a `VkAndroidHardwareBufferFormatResolvePropertiesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAndroidHardwareBufferFormatResolvePropertiesANDROID`
-    public static VkAndroidHardwareBufferFormatResolvePropertiesANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAndroidHardwareBufferFormatResolvePropertiesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAndroidHardwareBufferFormatResolvePropertiesANDROID`
-    public static VkAndroidHardwareBufferFormatResolvePropertiesANDROID allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

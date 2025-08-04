@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceExternalFormatResolveFeaturesANDROID extends 
     /// @return the allocated `VkPhysicalDeviceExternalFormatResolveFeaturesANDROID`
     public static VkPhysicalDeviceExternalFormatResolveFeaturesANDROID alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalFormatResolveFeaturesANDROID(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExternalFormatResolveFeaturesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param externalFormatResolve `externalFormatResolve`
-    /// @return the allocated `VkPhysicalDeviceExternalFormatResolveFeaturesANDROID`
-    public static VkPhysicalDeviceExternalFormatResolveFeaturesANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int externalFormatResolve) {
-        return alloc(allocator).sType(sType).pNext(pNext).externalFormatResolve(externalFormatResolve);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalFormatResolveFeaturesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceExternalFormatResolveFeaturesANDROID`
-    public static VkPhysicalDeviceExternalFormatResolveFeaturesANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalFormatResolveFeaturesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceExternalFormatResolveFeaturesANDROID`
-    public static VkPhysicalDeviceExternalFormatResolveFeaturesANDROID allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT extends 
     /// @return the allocated `VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT`
     public static VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pageableDeviceLocalMemory `pageableDeviceLocalMemory`
-    /// @return the allocated `VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT`
-    public static VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pageableDeviceLocalMemory) {
-        return alloc(allocator).sType(sType).pNext(pNext).pageableDeviceLocalMemory(pageableDeviceLocalMemory);
-    }
-
-    /// Allocates a `VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT`
-    public static VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT`
-    public static VkPhysicalDevicePageableDeviceLocalMemoryFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

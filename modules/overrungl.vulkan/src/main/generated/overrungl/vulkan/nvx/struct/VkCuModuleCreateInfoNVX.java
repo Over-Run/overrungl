@@ -103,44 +103,6 @@ public final class VkCuModuleCreateInfoNVX extends GroupType {
     /// @return the allocated `VkCuModuleCreateInfoNVX`
     public static VkCuModuleCreateInfoNVX alloc(SegmentAllocator allocator, long count) { return new VkCuModuleCreateInfoNVX(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCuModuleCreateInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dataSize `dataSize`
-    /// @param pData `pData`
-    /// @return the allocated `VkCuModuleCreateInfoNVX`
-    public static VkCuModuleCreateInfoNVX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long dataSize, MemorySegment pData) {
-        return alloc(allocator).sType(sType).pNext(pNext).dataSize(dataSize).pData(pData);
-    }
-
-    /// Allocates a `VkCuModuleCreateInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dataSize `dataSize`
-    /// @return the allocated `VkCuModuleCreateInfoNVX`
-    public static VkCuModuleCreateInfoNVX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long dataSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).dataSize(dataSize);
-    }
-
-    /// Allocates a `VkCuModuleCreateInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkCuModuleCreateInfoNVX`
-    public static VkCuModuleCreateInfoNVX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkCuModuleCreateInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkCuModuleCreateInfoNVX`
-    public static VkCuModuleCreateInfoNVX allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

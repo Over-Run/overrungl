@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceImageAlignmentControlFeaturesMESA extends Gro
     /// @return the allocated `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`
     public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageAlignmentControlFeaturesMESA(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imageAlignmentControl `imageAlignmentControl`
-    /// @return the allocated `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`
-    public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int imageAlignmentControl) {
-        return alloc(allocator).sType(sType).pNext(pNext).imageAlignmentControl(imageAlignmentControl);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`
-    public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImageAlignmentControlFeaturesMESA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceImageAlignmentControlFeaturesMESA`
-    public static VkPhysicalDeviceImageAlignmentControlFeaturesMESA allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

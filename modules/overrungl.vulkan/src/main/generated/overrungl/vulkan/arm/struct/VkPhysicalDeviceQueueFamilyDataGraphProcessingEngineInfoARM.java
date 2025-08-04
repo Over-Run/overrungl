@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM e
     /// @return the allocated `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM`
     public static VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param queueFamilyIndex `queueFamilyIndex`
-    /// @param engineType `engineType`
-    /// @return the allocated `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM`
-    public static VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int queueFamilyIndex, int engineType) {
-        return alloc(allocator).sType(sType).pNext(pNext).queueFamilyIndex(queueFamilyIndex).engineType(engineType);
-    }
-
-    /// Allocates a `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param queueFamilyIndex `queueFamilyIndex`
-    /// @return the allocated `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM`
-    public static VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int queueFamilyIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).queueFamilyIndex(queueFamilyIndex);
-    }
-
-    /// Allocates a `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM`
-    public static VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM`
-    public static VkPhysicalDeviceQueueFamilyDataGraphProcessingEngineInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

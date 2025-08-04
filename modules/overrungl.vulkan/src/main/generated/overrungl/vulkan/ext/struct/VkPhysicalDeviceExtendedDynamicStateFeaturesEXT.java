@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceExtendedDynamicStateFeaturesEXT extends Group
     /// @return the allocated `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT`
     public static VkPhysicalDeviceExtendedDynamicStateFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExtendedDynamicStateFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param extendedDynamicState `extendedDynamicState`
-    /// @return the allocated `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicStateFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int extendedDynamicState) {
-        return alloc(allocator).sType(sType).pNext(pNext).extendedDynamicState(extendedDynamicState);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicStateFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceExtendedDynamicStateFeaturesEXT`
-    public static VkPhysicalDeviceExtendedDynamicStateFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

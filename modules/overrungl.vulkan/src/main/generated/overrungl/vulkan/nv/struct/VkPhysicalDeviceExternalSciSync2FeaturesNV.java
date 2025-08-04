@@ -119,69 +119,6 @@ public final class VkPhysicalDeviceExternalSciSync2FeaturesNV extends GroupType 
     /// @return the allocated `VkPhysicalDeviceExternalSciSync2FeaturesNV`
     public static VkPhysicalDeviceExternalSciSync2FeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalSciSync2FeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sciSyncFence `sciSyncFence`
-    /// @param sciSyncSemaphore2 `sciSyncSemaphore2`
-    /// @param sciSyncImport `sciSyncImport`
-    /// @param sciSyncExport `sciSyncExport`
-    /// @return the allocated `VkPhysicalDeviceExternalSciSync2FeaturesNV`
-    public static VkPhysicalDeviceExternalSciSync2FeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sciSyncFence, int sciSyncSemaphore2, int sciSyncImport, int sciSyncExport) {
-        return alloc(allocator).sType(sType).pNext(pNext).sciSyncFence(sciSyncFence).sciSyncSemaphore2(sciSyncSemaphore2).sciSyncImport(sciSyncImport).sciSyncExport(sciSyncExport);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sciSyncFence `sciSyncFence`
-    /// @param sciSyncSemaphore2 `sciSyncSemaphore2`
-    /// @param sciSyncImport `sciSyncImport`
-    /// @return the allocated `VkPhysicalDeviceExternalSciSync2FeaturesNV`
-    public static VkPhysicalDeviceExternalSciSync2FeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sciSyncFence, int sciSyncSemaphore2, int sciSyncImport) {
-        return alloc(allocator).sType(sType).pNext(pNext).sciSyncFence(sciSyncFence).sciSyncSemaphore2(sciSyncSemaphore2).sciSyncImport(sciSyncImport);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sciSyncFence `sciSyncFence`
-    /// @param sciSyncSemaphore2 `sciSyncSemaphore2`
-    /// @return the allocated `VkPhysicalDeviceExternalSciSync2FeaturesNV`
-    public static VkPhysicalDeviceExternalSciSync2FeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sciSyncFence, int sciSyncSemaphore2) {
-        return alloc(allocator).sType(sType).pNext(pNext).sciSyncFence(sciSyncFence).sciSyncSemaphore2(sciSyncSemaphore2);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sciSyncFence `sciSyncFence`
-    /// @return the allocated `VkPhysicalDeviceExternalSciSync2FeaturesNV`
-    public static VkPhysicalDeviceExternalSciSync2FeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sciSyncFence) {
-        return alloc(allocator).sType(sType).pNext(pNext).sciSyncFence(sciSyncFence);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceExternalSciSync2FeaturesNV`
-    public static VkPhysicalDeviceExternalSciSync2FeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalSciSync2FeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceExternalSciSync2FeaturesNV`
-    public static VkPhysicalDeviceExternalSciSync2FeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

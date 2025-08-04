@@ -95,33 +95,6 @@ public final class VkExternalComputeQueueDataParamsNV extends GroupType {
     /// @return the allocated `VkExternalComputeQueueDataParamsNV`
     public static VkExternalComputeQueueDataParamsNV alloc(SegmentAllocator allocator, long count) { return new VkExternalComputeQueueDataParamsNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExternalComputeQueueDataParamsNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceIndex `deviceIndex`
-    /// @return the allocated `VkExternalComputeQueueDataParamsNV`
-    public static VkExternalComputeQueueDataParamsNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int deviceIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceIndex(deviceIndex);
-    }
-
-    /// Allocates a `VkExternalComputeQueueDataParamsNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExternalComputeQueueDataParamsNV`
-    public static VkExternalComputeQueueDataParamsNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExternalComputeQueueDataParamsNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExternalComputeQueueDataParamsNV`
-    public static VkExternalComputeQueueDataParamsNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

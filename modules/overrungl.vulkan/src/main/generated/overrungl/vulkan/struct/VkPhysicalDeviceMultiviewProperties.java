@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceMultiviewProperties extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMultiviewProperties`
     public static VkPhysicalDeviceMultiviewProperties alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMultiviewProperties(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMultiviewProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxMultiviewViewCount `maxMultiviewViewCount`
-    /// @param maxMultiviewInstanceIndex `maxMultiviewInstanceIndex`
-    /// @return the allocated `VkPhysicalDeviceMultiviewProperties`
-    public static VkPhysicalDeviceMultiviewProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxMultiviewViewCount, int maxMultiviewInstanceIndex) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxMultiviewViewCount(maxMultiviewViewCount).maxMultiviewInstanceIndex(maxMultiviewInstanceIndex);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMultiviewProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxMultiviewViewCount `maxMultiviewViewCount`
-    /// @return the allocated `VkPhysicalDeviceMultiviewProperties`
-    public static VkPhysicalDeviceMultiviewProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxMultiviewViewCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxMultiviewViewCount(maxMultiviewViewCount);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMultiviewProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceMultiviewProperties`
-    public static VkPhysicalDeviceMultiviewProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMultiviewProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceMultiviewProperties`
-    public static VkPhysicalDeviceMultiviewProperties allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

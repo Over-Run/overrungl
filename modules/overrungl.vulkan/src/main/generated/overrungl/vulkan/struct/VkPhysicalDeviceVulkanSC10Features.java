@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceVulkanSC10Features extends GroupType {
     /// @return the allocated `VkPhysicalDeviceVulkanSC10Features`
     public static VkPhysicalDeviceVulkanSC10Features alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVulkanSC10Features(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVulkanSC10Features` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderAtomicInstructions `shaderAtomicInstructions`
-    /// @return the allocated `VkPhysicalDeviceVulkanSC10Features`
-    public static VkPhysicalDeviceVulkanSC10Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderAtomicInstructions) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderAtomicInstructions(shaderAtomicInstructions);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVulkanSC10Features` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceVulkanSC10Features`
-    public static VkPhysicalDeviceVulkanSC10Features allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVulkanSC10Features` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceVulkanSC10Features`
-    public static VkPhysicalDeviceVulkanSC10Features allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

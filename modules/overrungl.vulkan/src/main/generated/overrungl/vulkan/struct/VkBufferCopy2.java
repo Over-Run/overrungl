@@ -111,56 +111,6 @@ public final class VkBufferCopy2 extends GroupType {
     /// @return the allocated `VkBufferCopy2`
     public static VkBufferCopy2 alloc(SegmentAllocator allocator, long count) { return new VkBufferCopy2(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBufferCopy2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcOffset `srcOffset`
-    /// @param dstOffset `dstOffset`
-    /// @param size `size`
-    /// @return the allocated `VkBufferCopy2`
-    public static VkBufferCopy2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcOffset, long dstOffset, long size) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcOffset(srcOffset).dstOffset(dstOffset).size(size);
-    }
-
-    /// Allocates a `VkBufferCopy2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcOffset `srcOffset`
-    /// @param dstOffset `dstOffset`
-    /// @return the allocated `VkBufferCopy2`
-    public static VkBufferCopy2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcOffset, long dstOffset) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcOffset(srcOffset).dstOffset(dstOffset);
-    }
-
-    /// Allocates a `VkBufferCopy2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcOffset `srcOffset`
-    /// @return the allocated `VkBufferCopy2`
-    public static VkBufferCopy2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long srcOffset) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcOffset(srcOffset);
-    }
-
-    /// Allocates a `VkBufferCopy2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkBufferCopy2`
-    public static VkBufferCopy2 allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkBufferCopy2` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkBufferCopy2`
-    public static VkBufferCopy2 allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

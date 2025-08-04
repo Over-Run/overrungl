@@ -103,44 +103,6 @@ public final class VkMemoryUnmapInfoKHR extends GroupType {
     /// @return the allocated `VkMemoryUnmapInfoKHR`
     public static VkMemoryUnmapInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryUnmapInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryUnmapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param memory `memory`
-    /// @return the allocated `VkMemoryUnmapInfoKHR`
-    public static VkMemoryUnmapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long memory) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).memory(memory);
-    }
-
-    /// Allocates a `VkMemoryUnmapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkMemoryUnmapInfoKHR`
-    public static VkMemoryUnmapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkMemoryUnmapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryUnmapInfoKHR`
-    public static VkMemoryUnmapInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryUnmapInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryUnmapInfoKHR`
-    public static VkMemoryUnmapInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

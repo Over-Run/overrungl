@@ -111,56 +111,6 @@ public final class StdVideoEncodeAV1DecoderModelInfo extends GroupType {
     /// @return the allocated `StdVideoEncodeAV1DecoderModelInfo`
     public static StdVideoEncodeAV1DecoderModelInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeAV1DecoderModelInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoEncodeAV1DecoderModelInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer_delay_length_minus_1 `buffer_delay_length_minus_1`
-    /// @param buffer_removal_time_length_minus_1 `buffer_removal_time_length_minus_1`
-    /// @param frame_presentation_time_length_minus_1 `frame_presentation_time_length_minus_1`
-    /// @param reserved1 `reserved1`
-    /// @param num_units_in_decoding_tick `num_units_in_decoding_tick`
-    /// @return the allocated `StdVideoEncodeAV1DecoderModelInfo`
-    public static StdVideoEncodeAV1DecoderModelInfo allocInit(SegmentAllocator allocator, byte buffer_delay_length_minus_1, byte buffer_removal_time_length_minus_1, byte frame_presentation_time_length_minus_1, byte reserved1, int num_units_in_decoding_tick) {
-        return alloc(allocator).buffer_delay_length_minus_1(buffer_delay_length_minus_1).buffer_removal_time_length_minus_1(buffer_removal_time_length_minus_1).frame_presentation_time_length_minus_1(frame_presentation_time_length_minus_1).reserved1(reserved1).num_units_in_decoding_tick(num_units_in_decoding_tick);
-    }
-
-    /// Allocates a `StdVideoEncodeAV1DecoderModelInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer_delay_length_minus_1 `buffer_delay_length_minus_1`
-    /// @param buffer_removal_time_length_minus_1 `buffer_removal_time_length_minus_1`
-    /// @param frame_presentation_time_length_minus_1 `frame_presentation_time_length_minus_1`
-    /// @param reserved1 `reserved1`
-    /// @return the allocated `StdVideoEncodeAV1DecoderModelInfo`
-    public static StdVideoEncodeAV1DecoderModelInfo allocInit(SegmentAllocator allocator, byte buffer_delay_length_minus_1, byte buffer_removal_time_length_minus_1, byte frame_presentation_time_length_minus_1, byte reserved1) {
-        return alloc(allocator).buffer_delay_length_minus_1(buffer_delay_length_minus_1).buffer_removal_time_length_minus_1(buffer_removal_time_length_minus_1).frame_presentation_time_length_minus_1(frame_presentation_time_length_minus_1).reserved1(reserved1);
-    }
-
-    /// Allocates a `StdVideoEncodeAV1DecoderModelInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer_delay_length_minus_1 `buffer_delay_length_minus_1`
-    /// @param buffer_removal_time_length_minus_1 `buffer_removal_time_length_minus_1`
-    /// @param frame_presentation_time_length_minus_1 `frame_presentation_time_length_minus_1`
-    /// @return the allocated `StdVideoEncodeAV1DecoderModelInfo`
-    public static StdVideoEncodeAV1DecoderModelInfo allocInit(SegmentAllocator allocator, byte buffer_delay_length_minus_1, byte buffer_removal_time_length_minus_1, byte frame_presentation_time_length_minus_1) {
-        return alloc(allocator).buffer_delay_length_minus_1(buffer_delay_length_minus_1).buffer_removal_time_length_minus_1(buffer_removal_time_length_minus_1).frame_presentation_time_length_minus_1(frame_presentation_time_length_minus_1);
-    }
-
-    /// Allocates a `StdVideoEncodeAV1DecoderModelInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer_delay_length_minus_1 `buffer_delay_length_minus_1`
-    /// @param buffer_removal_time_length_minus_1 `buffer_removal_time_length_minus_1`
-    /// @return the allocated `StdVideoEncodeAV1DecoderModelInfo`
-    public static StdVideoEncodeAV1DecoderModelInfo allocInit(SegmentAllocator allocator, byte buffer_delay_length_minus_1, byte buffer_removal_time_length_minus_1) {
-        return alloc(allocator).buffer_delay_length_minus_1(buffer_delay_length_minus_1).buffer_removal_time_length_minus_1(buffer_removal_time_length_minus_1);
-    }
-
-    /// Allocates a `StdVideoEncodeAV1DecoderModelInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer_delay_length_minus_1 `buffer_delay_length_minus_1`
-    /// @return the allocated `StdVideoEncodeAV1DecoderModelInfo`
-    public static StdVideoEncodeAV1DecoderModelInfo allocInit(SegmentAllocator allocator, byte buffer_delay_length_minus_1) {
-        return alloc(allocator).buffer_delay_length_minus_1(buffer_delay_length_minus_1);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

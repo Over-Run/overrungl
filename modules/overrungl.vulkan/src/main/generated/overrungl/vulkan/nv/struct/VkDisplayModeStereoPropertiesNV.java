@@ -95,33 +95,6 @@ public final class VkDisplayModeStereoPropertiesNV extends GroupType {
     /// @return the allocated `VkDisplayModeStereoPropertiesNV`
     public static VkDisplayModeStereoPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkDisplayModeStereoPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDisplayModeStereoPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param hdmi3DSupported `hdmi3DSupported`
-    /// @return the allocated `VkDisplayModeStereoPropertiesNV`
-    public static VkDisplayModeStereoPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hdmi3DSupported) {
-        return alloc(allocator).sType(sType).pNext(pNext).hdmi3DSupported(hdmi3DSupported);
-    }
-
-    /// Allocates a `VkDisplayModeStereoPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDisplayModeStereoPropertiesNV`
-    public static VkDisplayModeStereoPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDisplayModeStereoPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDisplayModeStereoPropertiesNV`
-    public static VkDisplayModeStereoPropertiesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

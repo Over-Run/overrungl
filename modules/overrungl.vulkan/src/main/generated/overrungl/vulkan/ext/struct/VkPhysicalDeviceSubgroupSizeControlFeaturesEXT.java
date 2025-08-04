@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceSubgroupSizeControlFeaturesEXT extends GroupT
     /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlFeaturesEXT`
     public static VkPhysicalDeviceSubgroupSizeControlFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceSubgroupSizeControlFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param subgroupSizeControl `subgroupSizeControl`
-    /// @param computeFullSubgroups `computeFullSubgroups`
-    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlFeaturesEXT`
-    public static VkPhysicalDeviceSubgroupSizeControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subgroupSizeControl, int computeFullSubgroups) {
-        return alloc(allocator).sType(sType).pNext(pNext).subgroupSizeControl(subgroupSizeControl).computeFullSubgroups(computeFullSubgroups);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param subgroupSizeControl `subgroupSizeControl`
-    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlFeaturesEXT`
-    public static VkPhysicalDeviceSubgroupSizeControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int subgroupSizeControl) {
-        return alloc(allocator).sType(sType).pNext(pNext).subgroupSizeControl(subgroupSizeControl);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlFeaturesEXT`
-    public static VkPhysicalDeviceSubgroupSizeControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceSubgroupSizeControlFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceSubgroupSizeControlFeaturesEXT`
-    public static VkPhysicalDeviceSubgroupSizeControlFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

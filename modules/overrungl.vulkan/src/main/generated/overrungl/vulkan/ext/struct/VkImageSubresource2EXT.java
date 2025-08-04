@@ -93,33 +93,6 @@ public final class VkImageSubresource2EXT extends GroupType {
     /// @return the allocated `VkImageSubresource2EXT`
     public static VkImageSubresource2EXT alloc(SegmentAllocator allocator, long count) { return new VkImageSubresource2EXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageSubresource2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imageSubresource `imageSubresource`
-    /// @return the allocated `VkImageSubresource2EXT`
-    public static VkImageSubresource2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment imageSubresource) {
-        return alloc(allocator).sType(sType).pNext(pNext).imageSubresource(imageSubresource);
-    }
-
-    /// Allocates a `VkImageSubresource2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImageSubresource2EXT`
-    public static VkImageSubresource2EXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImageSubresource2EXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImageSubresource2EXT`
-    public static VkImageSubresource2EXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

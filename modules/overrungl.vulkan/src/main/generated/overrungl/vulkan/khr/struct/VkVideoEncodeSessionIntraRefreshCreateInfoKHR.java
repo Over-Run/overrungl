@@ -95,33 +95,6 @@ public final class VkVideoEncodeSessionIntraRefreshCreateInfoKHR extends GroupTy
     /// @return the allocated `VkVideoEncodeSessionIntraRefreshCreateInfoKHR`
     public static VkVideoEncodeSessionIntraRefreshCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeSessionIntraRefreshCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeSessionIntraRefreshCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param intraRefreshMode `intraRefreshMode`
-    /// @return the allocated `VkVideoEncodeSessionIntraRefreshCreateInfoKHR`
-    public static VkVideoEncodeSessionIntraRefreshCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int intraRefreshMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).intraRefreshMode(intraRefreshMode);
-    }
-
-    /// Allocates a `VkVideoEncodeSessionIntraRefreshCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoEncodeSessionIntraRefreshCreateInfoKHR`
-    public static VkVideoEncodeSessionIntraRefreshCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoEncodeSessionIntraRefreshCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoEncodeSessionIntraRefreshCreateInfoKHR`
-    public static VkVideoEncodeSessionIntraRefreshCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

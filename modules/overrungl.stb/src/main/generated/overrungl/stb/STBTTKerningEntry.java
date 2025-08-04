@@ -95,33 +95,6 @@ public final class STBTTKerningEntry extends GroupType {
     /// @return the allocated `STBTTKerningEntry`
     public static STBTTKerningEntry alloc(SegmentAllocator allocator, long count) { return new STBTTKerningEntry(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `STBTTKerningEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param glyph1 `glyph1`
-    /// @param glyph2 `glyph2`
-    /// @param advance `advance`
-    /// @return the allocated `STBTTKerningEntry`
-    public static STBTTKerningEntry allocInit(SegmentAllocator allocator, int glyph1, int glyph2, int advance) {
-        return alloc(allocator).glyph1(glyph1).glyph2(glyph2).advance(advance);
-    }
-
-    /// Allocates a `STBTTKerningEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param glyph1 `glyph1`
-    /// @param glyph2 `glyph2`
-    /// @return the allocated `STBTTKerningEntry`
-    public static STBTTKerningEntry allocInit(SegmentAllocator allocator, int glyph1, int glyph2) {
-        return alloc(allocator).glyph1(glyph1).glyph2(glyph2);
-    }
-
-    /// Allocates a `STBTTKerningEntry` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param glyph1 `glyph1`
-    /// @return the allocated `STBTTKerningEntry`
-    public static STBTTKerningEntry allocInit(SegmentAllocator allocator, int glyph1) {
-        return alloc(allocator).glyph1(glyph1);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

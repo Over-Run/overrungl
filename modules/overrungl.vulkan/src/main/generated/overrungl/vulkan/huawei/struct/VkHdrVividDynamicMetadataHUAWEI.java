@@ -103,44 +103,6 @@ public final class VkHdrVividDynamicMetadataHUAWEI extends GroupType {
     /// @return the allocated `VkHdrVividDynamicMetadataHUAWEI`
     public static VkHdrVividDynamicMetadataHUAWEI alloc(SegmentAllocator allocator, long count) { return new VkHdrVividDynamicMetadataHUAWEI(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkHdrVividDynamicMetadataHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dynamicMetadataSize `dynamicMetadataSize`
-    /// @param pDynamicMetadata `pDynamicMetadata`
-    /// @return the allocated `VkHdrVividDynamicMetadataHUAWEI`
-    public static VkHdrVividDynamicMetadataHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long dynamicMetadataSize, MemorySegment pDynamicMetadata) {
-        return alloc(allocator).sType(sType).pNext(pNext).dynamicMetadataSize(dynamicMetadataSize).pDynamicMetadata(pDynamicMetadata);
-    }
-
-    /// Allocates a `VkHdrVividDynamicMetadataHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dynamicMetadataSize `dynamicMetadataSize`
-    /// @return the allocated `VkHdrVividDynamicMetadataHUAWEI`
-    public static VkHdrVividDynamicMetadataHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long dynamicMetadataSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).dynamicMetadataSize(dynamicMetadataSize);
-    }
-
-    /// Allocates a `VkHdrVividDynamicMetadataHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkHdrVividDynamicMetadataHUAWEI`
-    public static VkHdrVividDynamicMetadataHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkHdrVividDynamicMetadataHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkHdrVividDynamicMetadataHUAWEI`
-    public static VkHdrVividDynamicMetadataHUAWEI allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -103,44 +103,6 @@ public final class VkConformanceVersionKHR extends GroupType {
     /// @return the allocated `VkConformanceVersionKHR`
     public static VkConformanceVersionKHR alloc(SegmentAllocator allocator, long count) { return new VkConformanceVersionKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkConformanceVersionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param major `major`
-    /// @param minor `minor`
-    /// @param subminor `subminor`
-    /// @param patch `patch`
-    /// @return the allocated `VkConformanceVersionKHR`
-    public static VkConformanceVersionKHR allocInit(SegmentAllocator allocator, byte major, byte minor, byte subminor, byte patch) {
-        return alloc(allocator).major(major).minor(minor).subminor(subminor).patch(patch);
-    }
-
-    /// Allocates a `VkConformanceVersionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param major `major`
-    /// @param minor `minor`
-    /// @param subminor `subminor`
-    /// @return the allocated `VkConformanceVersionKHR`
-    public static VkConformanceVersionKHR allocInit(SegmentAllocator allocator, byte major, byte minor, byte subminor) {
-        return alloc(allocator).major(major).minor(minor).subminor(subminor);
-    }
-
-    /// Allocates a `VkConformanceVersionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param major `major`
-    /// @param minor `minor`
-    /// @return the allocated `VkConformanceVersionKHR`
-    public static VkConformanceVersionKHR allocInit(SegmentAllocator allocator, byte major, byte minor) {
-        return alloc(allocator).major(major).minor(minor);
-    }
-
-    /// Allocates a `VkConformanceVersionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param major `major`
-    /// @return the allocated `VkConformanceVersionKHR`
-    public static VkConformanceVersionKHR allocInit(SegmentAllocator allocator, byte major) {
-        return alloc(allocator).major(major);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

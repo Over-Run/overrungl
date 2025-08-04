@@ -111,56 +111,6 @@ public final class VkDescriptorSetLayoutBinding extends GroupType {
     /// @return the allocated `VkDescriptorSetLayoutBinding`
     public static VkDescriptorSetLayoutBinding alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetLayoutBinding(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorSetLayoutBinding` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @param descriptorType `descriptorType`
-    /// @param descriptorCount `descriptorCount`
-    /// @param stageFlags `stageFlags`
-    /// @param pImmutableSamplers `pImmutableSamplers`
-    /// @return the allocated `VkDescriptorSetLayoutBinding`
-    public static VkDescriptorSetLayoutBinding allocInit(SegmentAllocator allocator, int binding, int descriptorType, int descriptorCount, int stageFlags, MemorySegment pImmutableSamplers) {
-        return alloc(allocator).binding(binding).descriptorType(descriptorType).descriptorCount(descriptorCount).stageFlags(stageFlags).pImmutableSamplers(pImmutableSamplers);
-    }
-
-    /// Allocates a `VkDescriptorSetLayoutBinding` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @param descriptorType `descriptorType`
-    /// @param descriptorCount `descriptorCount`
-    /// @param stageFlags `stageFlags`
-    /// @return the allocated `VkDescriptorSetLayoutBinding`
-    public static VkDescriptorSetLayoutBinding allocInit(SegmentAllocator allocator, int binding, int descriptorType, int descriptorCount, int stageFlags) {
-        return alloc(allocator).binding(binding).descriptorType(descriptorType).descriptorCount(descriptorCount).stageFlags(stageFlags);
-    }
-
-    /// Allocates a `VkDescriptorSetLayoutBinding` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @param descriptorType `descriptorType`
-    /// @param descriptorCount `descriptorCount`
-    /// @return the allocated `VkDescriptorSetLayoutBinding`
-    public static VkDescriptorSetLayoutBinding allocInit(SegmentAllocator allocator, int binding, int descriptorType, int descriptorCount) {
-        return alloc(allocator).binding(binding).descriptorType(descriptorType).descriptorCount(descriptorCount);
-    }
-
-    /// Allocates a `VkDescriptorSetLayoutBinding` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @param descriptorType `descriptorType`
-    /// @return the allocated `VkDescriptorSetLayoutBinding`
-    public static VkDescriptorSetLayoutBinding allocInit(SegmentAllocator allocator, int binding, int descriptorType) {
-        return alloc(allocator).binding(binding).descriptorType(descriptorType);
-    }
-
-    /// Allocates a `VkDescriptorSetLayoutBinding` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @return the allocated `VkDescriptorSetLayoutBinding`
-    public static VkDescriptorSetLayoutBinding allocInit(SegmentAllocator allocator, int binding) {
-        return alloc(allocator).binding(binding);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

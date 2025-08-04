@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV exten
     /// @return the allocated `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV`
     public static VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param rayTracingInvocationReorderReorderingHint `rayTracingInvocationReorderReorderingHint`
-    /// @return the allocated `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV`
-    public static VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingInvocationReorderReorderingHint) {
-        return alloc(allocator).sType(sType).pNext(pNext).rayTracingInvocationReorderReorderingHint(rayTracingInvocationReorderReorderingHint);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV`
-    public static VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV`
-    public static VkPhysicalDeviceRayTracingInvocationReorderPropertiesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

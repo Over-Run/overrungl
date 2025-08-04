@@ -95,33 +95,6 @@ public final class VkCoarseSampleLocationNV extends GroupType {
     /// @return the allocated `VkCoarseSampleLocationNV`
     public static VkCoarseSampleLocationNV alloc(SegmentAllocator allocator, long count) { return new VkCoarseSampleLocationNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCoarseSampleLocationNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pixelX `pixelX`
-    /// @param pixelY `pixelY`
-    /// @param sample `sample`
-    /// @return the allocated `VkCoarseSampleLocationNV`
-    public static VkCoarseSampleLocationNV allocInit(SegmentAllocator allocator, int pixelX, int pixelY, int sample) {
-        return alloc(allocator).pixelX(pixelX).pixelY(pixelY).sample(sample);
-    }
-
-    /// Allocates a `VkCoarseSampleLocationNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pixelX `pixelX`
-    /// @param pixelY `pixelY`
-    /// @return the allocated `VkCoarseSampleLocationNV`
-    public static VkCoarseSampleLocationNV allocInit(SegmentAllocator allocator, int pixelX, int pixelY) {
-        return alloc(allocator).pixelX(pixelX).pixelY(pixelY);
-    }
-
-    /// Allocates a `VkCoarseSampleLocationNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pixelX `pixelX`
-    /// @return the allocated `VkCoarseSampleLocationNV`
-    public static VkCoarseSampleLocationNV allocInit(SegmentAllocator allocator, int pixelX) {
-        return alloc(allocator).pixelX(pixelX);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

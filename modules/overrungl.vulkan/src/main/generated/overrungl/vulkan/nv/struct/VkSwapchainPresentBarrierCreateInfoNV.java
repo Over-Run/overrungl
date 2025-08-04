@@ -95,33 +95,6 @@ public final class VkSwapchainPresentBarrierCreateInfoNV extends GroupType {
     /// @return the allocated `VkSwapchainPresentBarrierCreateInfoNV`
     public static VkSwapchainPresentBarrierCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkSwapchainPresentBarrierCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSwapchainPresentBarrierCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param presentBarrierEnable `presentBarrierEnable`
-    /// @return the allocated `VkSwapchainPresentBarrierCreateInfoNV`
-    public static VkSwapchainPresentBarrierCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int presentBarrierEnable) {
-        return alloc(allocator).sType(sType).pNext(pNext).presentBarrierEnable(presentBarrierEnable);
-    }
-
-    /// Allocates a `VkSwapchainPresentBarrierCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSwapchainPresentBarrierCreateInfoNV`
-    public static VkSwapchainPresentBarrierCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSwapchainPresentBarrierCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSwapchainPresentBarrierCreateInfoNV`
-    public static VkSwapchainPresentBarrierCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

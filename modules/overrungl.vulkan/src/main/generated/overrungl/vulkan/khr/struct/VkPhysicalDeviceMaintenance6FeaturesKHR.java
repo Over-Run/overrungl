@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceMaintenance6FeaturesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMaintenance6FeaturesKHR`
     public static VkPhysicalDeviceMaintenance6FeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMaintenance6FeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMaintenance6FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maintenance6 `maintenance6`
-    /// @return the allocated `VkPhysicalDeviceMaintenance6FeaturesKHR`
-    public static VkPhysicalDeviceMaintenance6FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maintenance6) {
-        return alloc(allocator).sType(sType).pNext(pNext).maintenance6(maintenance6);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance6FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceMaintenance6FeaturesKHR`
-    public static VkPhysicalDeviceMaintenance6FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance6FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceMaintenance6FeaturesKHR`
-    public static VkPhysicalDeviceMaintenance6FeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

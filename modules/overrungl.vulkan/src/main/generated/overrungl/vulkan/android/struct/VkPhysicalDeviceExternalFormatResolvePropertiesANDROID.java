@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceExternalFormatResolvePropertiesANDROID extend
     /// @return the allocated `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
     public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalFormatResolvePropertiesANDROID(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param nullColorAttachmentWithExternalFormatResolve `nullColorAttachmentWithExternalFormatResolve`
-    /// @param externalFormatResolveChromaOffsetX `externalFormatResolveChromaOffsetX`
-    /// @param externalFormatResolveChromaOffsetY `externalFormatResolveChromaOffsetY`
-    /// @return the allocated `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
-    public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int nullColorAttachmentWithExternalFormatResolve, int externalFormatResolveChromaOffsetX, int externalFormatResolveChromaOffsetY) {
-        return alloc(allocator).sType(sType).pNext(pNext).nullColorAttachmentWithExternalFormatResolve(nullColorAttachmentWithExternalFormatResolve).externalFormatResolveChromaOffsetX(externalFormatResolveChromaOffsetX).externalFormatResolveChromaOffsetY(externalFormatResolveChromaOffsetY);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param nullColorAttachmentWithExternalFormatResolve `nullColorAttachmentWithExternalFormatResolve`
-    /// @param externalFormatResolveChromaOffsetX `externalFormatResolveChromaOffsetX`
-    /// @return the allocated `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
-    public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int nullColorAttachmentWithExternalFormatResolve, int externalFormatResolveChromaOffsetX) {
-        return alloc(allocator).sType(sType).pNext(pNext).nullColorAttachmentWithExternalFormatResolve(nullColorAttachmentWithExternalFormatResolve).externalFormatResolveChromaOffsetX(externalFormatResolveChromaOffsetX);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param nullColorAttachmentWithExternalFormatResolve `nullColorAttachmentWithExternalFormatResolve`
-    /// @return the allocated `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
-    public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int nullColorAttachmentWithExternalFormatResolve) {
-        return alloc(allocator).sType(sType).pNext(pNext).nullColorAttachmentWithExternalFormatResolve(nullColorAttachmentWithExternalFormatResolve);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
-    public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceExternalFormatResolvePropertiesANDROID`
-    public static VkPhysicalDeviceExternalFormatResolvePropertiesANDROID allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

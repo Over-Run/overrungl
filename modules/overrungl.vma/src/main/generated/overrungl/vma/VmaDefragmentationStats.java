@@ -103,44 +103,6 @@ public final class VmaDefragmentationStats extends GroupType {
     /// @return the allocated `VmaDefragmentationStats`
     public static VmaDefragmentationStats alloc(SegmentAllocator allocator, long count) { return new VmaDefragmentationStats(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VmaDefragmentationStats` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bytesMoved `bytesMoved`
-    /// @param bytesFreed `bytesFreed`
-    /// @param allocationsMoved `allocationsMoved`
-    /// @param deviceMemoryBlocksFreed `deviceMemoryBlocksFreed`
-    /// @return the allocated `VmaDefragmentationStats`
-    public static VmaDefragmentationStats allocInit(SegmentAllocator allocator, long bytesMoved, long bytesFreed, int allocationsMoved, int deviceMemoryBlocksFreed) {
-        return alloc(allocator).bytesMoved(bytesMoved).bytesFreed(bytesFreed).allocationsMoved(allocationsMoved).deviceMemoryBlocksFreed(deviceMemoryBlocksFreed);
-    }
-
-    /// Allocates a `VmaDefragmentationStats` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bytesMoved `bytesMoved`
-    /// @param bytesFreed `bytesFreed`
-    /// @param allocationsMoved `allocationsMoved`
-    /// @return the allocated `VmaDefragmentationStats`
-    public static VmaDefragmentationStats allocInit(SegmentAllocator allocator, long bytesMoved, long bytesFreed, int allocationsMoved) {
-        return alloc(allocator).bytesMoved(bytesMoved).bytesFreed(bytesFreed).allocationsMoved(allocationsMoved);
-    }
-
-    /// Allocates a `VmaDefragmentationStats` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bytesMoved `bytesMoved`
-    /// @param bytesFreed `bytesFreed`
-    /// @return the allocated `VmaDefragmentationStats`
-    public static VmaDefragmentationStats allocInit(SegmentAllocator allocator, long bytesMoved, long bytesFreed) {
-        return alloc(allocator).bytesMoved(bytesMoved).bytesFreed(bytesFreed);
-    }
-
-    /// Allocates a `VmaDefragmentationStats` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bytesMoved `bytesMoved`
-    /// @return the allocated `VmaDefragmentationStats`
-    public static VmaDefragmentationStats allocInit(SegmentAllocator allocator, long bytesMoved) {
-        return alloc(allocator).bytesMoved(bytesMoved);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

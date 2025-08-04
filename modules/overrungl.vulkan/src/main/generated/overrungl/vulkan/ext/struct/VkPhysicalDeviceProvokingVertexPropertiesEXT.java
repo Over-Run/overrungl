@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceProvokingVertexPropertiesEXT extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceProvokingVertexPropertiesEXT`
     public static VkPhysicalDeviceProvokingVertexPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceProvokingVertexPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param provokingVertexModePerPipeline `provokingVertexModePerPipeline`
-    /// @param transformFeedbackPreservesTriangleFanProvokingVertex `transformFeedbackPreservesTriangleFanProvokingVertex`
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexPropertiesEXT`
-    public static VkPhysicalDeviceProvokingVertexPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int provokingVertexModePerPipeline, int transformFeedbackPreservesTriangleFanProvokingVertex) {
-        return alloc(allocator).sType(sType).pNext(pNext).provokingVertexModePerPipeline(provokingVertexModePerPipeline).transformFeedbackPreservesTriangleFanProvokingVertex(transformFeedbackPreservesTriangleFanProvokingVertex);
-    }
-
-    /// Allocates a `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param provokingVertexModePerPipeline `provokingVertexModePerPipeline`
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexPropertiesEXT`
-    public static VkPhysicalDeviceProvokingVertexPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int provokingVertexModePerPipeline) {
-        return alloc(allocator).sType(sType).pNext(pNext).provokingVertexModePerPipeline(provokingVertexModePerPipeline);
-    }
-
-    /// Allocates a `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexPropertiesEXT`
-    public static VkPhysicalDeviceProvokingVertexPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceProvokingVertexPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceProvokingVertexPropertiesEXT`
-    public static VkPhysicalDeviceProvokingVertexPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

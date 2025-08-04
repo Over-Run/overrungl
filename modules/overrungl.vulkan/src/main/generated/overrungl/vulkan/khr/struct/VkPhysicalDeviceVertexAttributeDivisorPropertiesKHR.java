@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR extends G
     /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR`
     public static VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxVertexAttribDivisor `maxVertexAttribDivisor`
-    /// @param supportsNonZeroFirstInstance `supportsNonZeroFirstInstance`
-    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR`
-    public static VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVertexAttribDivisor, int supportsNonZeroFirstInstance) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxVertexAttribDivisor(maxVertexAttribDivisor).supportsNonZeroFirstInstance(supportsNonZeroFirstInstance);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxVertexAttribDivisor `maxVertexAttribDivisor`
-    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR`
-    public static VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVertexAttribDivisor) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxVertexAttribDivisor(maxVertexAttribDivisor);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR`
-    public static VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR`
-    public static VkPhysicalDeviceVertexAttributeDivisorPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

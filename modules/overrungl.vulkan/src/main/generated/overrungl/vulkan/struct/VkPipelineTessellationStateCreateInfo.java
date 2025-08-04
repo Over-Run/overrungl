@@ -103,44 +103,6 @@ public final class VkPipelineTessellationStateCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineTessellationStateCreateInfo`
     public static VkPipelineTessellationStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineTessellationStateCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineTessellationStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param patchControlPoints `patchControlPoints`
-    /// @return the allocated `VkPipelineTessellationStateCreateInfo`
-    public static VkPipelineTessellationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int patchControlPoints) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).patchControlPoints(patchControlPoints);
-    }
-
-    /// Allocates a `VkPipelineTessellationStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkPipelineTessellationStateCreateInfo`
-    public static VkPipelineTessellationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkPipelineTessellationStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineTessellationStateCreateInfo`
-    public static VkPipelineTessellationStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineTessellationStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineTessellationStateCreateInfo`
-    public static VkPipelineTessellationStateCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

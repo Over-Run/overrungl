@@ -103,44 +103,6 @@ public final class VkMultisampledRenderToSingleSampledInfoEXT extends GroupType 
     /// @return the allocated `VkMultisampledRenderToSingleSampledInfoEXT`
     public static VkMultisampledRenderToSingleSampledInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMultisampledRenderToSingleSampledInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMultisampledRenderToSingleSampledInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param multisampledRenderToSingleSampledEnable `multisampledRenderToSingleSampledEnable`
-    /// @param rasterizationSamples `rasterizationSamples`
-    /// @return the allocated `VkMultisampledRenderToSingleSampledInfoEXT`
-    public static VkMultisampledRenderToSingleSampledInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int multisampledRenderToSingleSampledEnable, int rasterizationSamples) {
-        return alloc(allocator).sType(sType).pNext(pNext).multisampledRenderToSingleSampledEnable(multisampledRenderToSingleSampledEnable).rasterizationSamples(rasterizationSamples);
-    }
-
-    /// Allocates a `VkMultisampledRenderToSingleSampledInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param multisampledRenderToSingleSampledEnable `multisampledRenderToSingleSampledEnable`
-    /// @return the allocated `VkMultisampledRenderToSingleSampledInfoEXT`
-    public static VkMultisampledRenderToSingleSampledInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int multisampledRenderToSingleSampledEnable) {
-        return alloc(allocator).sType(sType).pNext(pNext).multisampledRenderToSingleSampledEnable(multisampledRenderToSingleSampledEnable);
-    }
-
-    /// Allocates a `VkMultisampledRenderToSingleSampledInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMultisampledRenderToSingleSampledInfoEXT`
-    public static VkMultisampledRenderToSingleSampledInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMultisampledRenderToSingleSampledInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMultisampledRenderToSingleSampledInfoEXT`
-    public static VkMultisampledRenderToSingleSampledInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

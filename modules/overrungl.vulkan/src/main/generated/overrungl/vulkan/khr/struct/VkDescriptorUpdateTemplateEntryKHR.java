@@ -119,69 +119,6 @@ public final class VkDescriptorUpdateTemplateEntryKHR extends GroupType {
     /// @return the allocated `VkDescriptorUpdateTemplateEntryKHR`
     public static VkDescriptorUpdateTemplateEntryKHR alloc(SegmentAllocator allocator, long count) { return new VkDescriptorUpdateTemplateEntryKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorUpdateTemplateEntryKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param dstBinding `dstBinding`
-    /// @param dstArrayElement `dstArrayElement`
-    /// @param descriptorCount `descriptorCount`
-    /// @param descriptorType `descriptorType`
-    /// @param offset `offset`
-    /// @param stride `stride`
-    /// @return the allocated `VkDescriptorUpdateTemplateEntryKHR`
-    public static VkDescriptorUpdateTemplateEntryKHR allocInit(SegmentAllocator allocator, int dstBinding, int dstArrayElement, int descriptorCount, int descriptorType, long offset, long stride) {
-        return alloc(allocator).dstBinding(dstBinding).dstArrayElement(dstArrayElement).descriptorCount(descriptorCount).descriptorType(descriptorType).offset(offset).stride(stride);
-    }
-
-    /// Allocates a `VkDescriptorUpdateTemplateEntryKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param dstBinding `dstBinding`
-    /// @param dstArrayElement `dstArrayElement`
-    /// @param descriptorCount `descriptorCount`
-    /// @param descriptorType `descriptorType`
-    /// @param offset `offset`
-    /// @return the allocated `VkDescriptorUpdateTemplateEntryKHR`
-    public static VkDescriptorUpdateTemplateEntryKHR allocInit(SegmentAllocator allocator, int dstBinding, int dstArrayElement, int descriptorCount, int descriptorType, long offset) {
-        return alloc(allocator).dstBinding(dstBinding).dstArrayElement(dstArrayElement).descriptorCount(descriptorCount).descriptorType(descriptorType).offset(offset);
-    }
-
-    /// Allocates a `VkDescriptorUpdateTemplateEntryKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param dstBinding `dstBinding`
-    /// @param dstArrayElement `dstArrayElement`
-    /// @param descriptorCount `descriptorCount`
-    /// @param descriptorType `descriptorType`
-    /// @return the allocated `VkDescriptorUpdateTemplateEntryKHR`
-    public static VkDescriptorUpdateTemplateEntryKHR allocInit(SegmentAllocator allocator, int dstBinding, int dstArrayElement, int descriptorCount, int descriptorType) {
-        return alloc(allocator).dstBinding(dstBinding).dstArrayElement(dstArrayElement).descriptorCount(descriptorCount).descriptorType(descriptorType);
-    }
-
-    /// Allocates a `VkDescriptorUpdateTemplateEntryKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param dstBinding `dstBinding`
-    /// @param dstArrayElement `dstArrayElement`
-    /// @param descriptorCount `descriptorCount`
-    /// @return the allocated `VkDescriptorUpdateTemplateEntryKHR`
-    public static VkDescriptorUpdateTemplateEntryKHR allocInit(SegmentAllocator allocator, int dstBinding, int dstArrayElement, int descriptorCount) {
-        return alloc(allocator).dstBinding(dstBinding).dstArrayElement(dstArrayElement).descriptorCount(descriptorCount);
-    }
-
-    /// Allocates a `VkDescriptorUpdateTemplateEntryKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param dstBinding `dstBinding`
-    /// @param dstArrayElement `dstArrayElement`
-    /// @return the allocated `VkDescriptorUpdateTemplateEntryKHR`
-    public static VkDescriptorUpdateTemplateEntryKHR allocInit(SegmentAllocator allocator, int dstBinding, int dstArrayElement) {
-        return alloc(allocator).dstBinding(dstBinding).dstArrayElement(dstArrayElement);
-    }
-
-    /// Allocates a `VkDescriptorUpdateTemplateEntryKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param dstBinding `dstBinding`
-    /// @return the allocated `VkDescriptorUpdateTemplateEntryKHR`
-    public static VkDescriptorUpdateTemplateEntryKHR allocInit(SegmentAllocator allocator, int dstBinding) {
-        return alloc(allocator).dstBinding(dstBinding);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceShaderFloatControls2FeaturesKHR extends Group
     /// @return the allocated `VkPhysicalDeviceShaderFloatControls2FeaturesKHR`
     public static VkPhysicalDeviceShaderFloatControls2FeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderFloatControls2FeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderFloatControls2FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderFloatControls2 `shaderFloatControls2`
-    /// @return the allocated `VkPhysicalDeviceShaderFloatControls2FeaturesKHR`
-    public static VkPhysicalDeviceShaderFloatControls2FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderFloatControls2) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderFloatControls2(shaderFloatControls2);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderFloatControls2FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceShaderFloatControls2FeaturesKHR`
-    public static VkPhysicalDeviceShaderFloatControls2FeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderFloatControls2FeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceShaderFloatControls2FeaturesKHR`
-    public static VkPhysicalDeviceShaderFloatControls2FeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

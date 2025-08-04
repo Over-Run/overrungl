@@ -103,44 +103,6 @@ public final class VkDrawIndirectCommand extends GroupType {
     /// @return the allocated `VkDrawIndirectCommand`
     public static VkDrawIndirectCommand alloc(SegmentAllocator allocator, long count) { return new VkDrawIndirectCommand(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDrawIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param vertexCount `vertexCount`
-    /// @param instanceCount `instanceCount`
-    /// @param firstVertex `firstVertex`
-    /// @param firstInstance `firstInstance`
-    /// @return the allocated `VkDrawIndirectCommand`
-    public static VkDrawIndirectCommand allocInit(SegmentAllocator allocator, int vertexCount, int instanceCount, int firstVertex, int firstInstance) {
-        return alloc(allocator).vertexCount(vertexCount).instanceCount(instanceCount).firstVertex(firstVertex).firstInstance(firstInstance);
-    }
-
-    /// Allocates a `VkDrawIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param vertexCount `vertexCount`
-    /// @param instanceCount `instanceCount`
-    /// @param firstVertex `firstVertex`
-    /// @return the allocated `VkDrawIndirectCommand`
-    public static VkDrawIndirectCommand allocInit(SegmentAllocator allocator, int vertexCount, int instanceCount, int firstVertex) {
-        return alloc(allocator).vertexCount(vertexCount).instanceCount(instanceCount).firstVertex(firstVertex);
-    }
-
-    /// Allocates a `VkDrawIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param vertexCount `vertexCount`
-    /// @param instanceCount `instanceCount`
-    /// @return the allocated `VkDrawIndirectCommand`
-    public static VkDrawIndirectCommand allocInit(SegmentAllocator allocator, int vertexCount, int instanceCount) {
-        return alloc(allocator).vertexCount(vertexCount).instanceCount(instanceCount);
-    }
-
-    /// Allocates a `VkDrawIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param vertexCount `vertexCount`
-    /// @return the allocated `VkDrawIndirectCommand`
-    public static VkDrawIndirectCommand allocInit(SegmentAllocator allocator, int vertexCount) {
-        return alloc(allocator).vertexCount(vertexCount);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

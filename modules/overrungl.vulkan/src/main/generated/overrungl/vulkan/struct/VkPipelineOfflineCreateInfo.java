@@ -111,56 +111,6 @@ public final class VkPipelineOfflineCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineOfflineCreateInfo`
     public static VkPipelineOfflineCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineOfflineCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineIdentifier `pipelineIdentifier`
-    /// @param matchControl `matchControl`
-    /// @param poolEntrySize `poolEntrySize`
-    /// @return the allocated `VkPipelineOfflineCreateInfo`
-    public static VkPipelineOfflineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pipelineIdentifier, int matchControl, long poolEntrySize) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineIdentifier(pipelineIdentifier).matchControl(matchControl).poolEntrySize(poolEntrySize);
-    }
-
-    /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineIdentifier `pipelineIdentifier`
-    /// @param matchControl `matchControl`
-    /// @return the allocated `VkPipelineOfflineCreateInfo`
-    public static VkPipelineOfflineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pipelineIdentifier, int matchControl) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineIdentifier(pipelineIdentifier).matchControl(matchControl);
-    }
-
-    /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineIdentifier `pipelineIdentifier`
-    /// @return the allocated `VkPipelineOfflineCreateInfo`
-    public static VkPipelineOfflineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pipelineIdentifier) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineIdentifier(pipelineIdentifier);
-    }
-
-    /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineOfflineCreateInfo`
-    public static VkPipelineOfflineCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineOfflineCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineOfflineCreateInfo`
-    public static VkPipelineOfflineCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

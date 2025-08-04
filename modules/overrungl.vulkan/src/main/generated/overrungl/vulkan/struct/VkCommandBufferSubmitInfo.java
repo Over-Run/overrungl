@@ -103,44 +103,6 @@ public final class VkCommandBufferSubmitInfo extends GroupType {
     /// @return the allocated `VkCommandBufferSubmitInfo`
     public static VkCommandBufferSubmitInfo alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferSubmitInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCommandBufferSubmitInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param commandBuffer `commandBuffer`
-    /// @param deviceMask `deviceMask`
-    /// @return the allocated `VkCommandBufferSubmitInfo`
-    public static VkCommandBufferSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment commandBuffer, int deviceMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).commandBuffer(commandBuffer).deviceMask(deviceMask);
-    }
-
-    /// Allocates a `VkCommandBufferSubmitInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param commandBuffer `commandBuffer`
-    /// @return the allocated `VkCommandBufferSubmitInfo`
-    public static VkCommandBufferSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment commandBuffer) {
-        return alloc(allocator).sType(sType).pNext(pNext).commandBuffer(commandBuffer);
-    }
-
-    /// Allocates a `VkCommandBufferSubmitInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkCommandBufferSubmitInfo`
-    public static VkCommandBufferSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkCommandBufferSubmitInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkCommandBufferSubmitInfo`
-    public static VkCommandBufferSubmitInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

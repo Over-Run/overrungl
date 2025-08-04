@@ -111,56 +111,6 @@ public final class VkImageViewHandleInfoNVX extends GroupType {
     /// @return the allocated `VkImageViewHandleInfoNVX`
     public static VkImageViewHandleInfoNVX alloc(SegmentAllocator allocator, long count) { return new VkImageViewHandleInfoNVX(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageViewHandleInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imageView `imageView`
-    /// @param descriptorType `descriptorType`
-    /// @param sampler `sampler`
-    /// @return the allocated `VkImageViewHandleInfoNVX`
-    public static VkImageViewHandleInfoNVX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long imageView, int descriptorType, long sampler) {
-        return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView).descriptorType(descriptorType).sampler(sampler);
-    }
-
-    /// Allocates a `VkImageViewHandleInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imageView `imageView`
-    /// @param descriptorType `descriptorType`
-    /// @return the allocated `VkImageViewHandleInfoNVX`
-    public static VkImageViewHandleInfoNVX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long imageView, int descriptorType) {
-        return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView).descriptorType(descriptorType);
-    }
-
-    /// Allocates a `VkImageViewHandleInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imageView `imageView`
-    /// @return the allocated `VkImageViewHandleInfoNVX`
-    public static VkImageViewHandleInfoNVX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long imageView) {
-        return alloc(allocator).sType(sType).pNext(pNext).imageView(imageView);
-    }
-
-    /// Allocates a `VkImageViewHandleInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImageViewHandleInfoNVX`
-    public static VkImageViewHandleInfoNVX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImageViewHandleInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImageViewHandleInfoNVX`
-    public static VkImageViewHandleInfoNVX allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

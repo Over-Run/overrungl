@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV extends G
     /// @return the allocated `VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV`
     public static VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fragmentShaderBarycentric `fragmentShaderBarycentric`
-    /// @return the allocated `VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV`
-    public static VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int fragmentShaderBarycentric) {
-        return alloc(allocator).sType(sType).pNext(pNext).fragmentShaderBarycentric(fragmentShaderBarycentric);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV`
-    public static VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV`
-    public static VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

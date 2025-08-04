@@ -95,33 +95,6 @@ public final class VkBindImagePlaneMemoryInfoKHR extends GroupType {
     /// @return the allocated `VkBindImagePlaneMemoryInfoKHR`
     public static VkBindImagePlaneMemoryInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkBindImagePlaneMemoryInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBindImagePlaneMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param planeAspect `planeAspect`
-    /// @return the allocated `VkBindImagePlaneMemoryInfoKHR`
-    public static VkBindImagePlaneMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int planeAspect) {
-        return alloc(allocator).sType(sType).pNext(pNext).planeAspect(planeAspect);
-    }
-
-    /// Allocates a `VkBindImagePlaneMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkBindImagePlaneMemoryInfoKHR`
-    public static VkBindImagePlaneMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkBindImagePlaneMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkBindImagePlaneMemoryInfoKHR`
-    public static VkBindImagePlaneMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

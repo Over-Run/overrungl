@@ -119,69 +119,6 @@ public final class VkGeneratedCommandsMemoryRequirementsInfoNV extends GroupType
     /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoNV`
     public static VkGeneratedCommandsMemoryRequirementsInfoNV alloc(SegmentAllocator allocator, long count) { return new VkGeneratedCommandsMemoryRequirementsInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineBindPoint `pipelineBindPoint`
-    /// @param pipeline `pipeline`
-    /// @param indirectCommandsLayout `indirectCommandsLayout`
-    /// @param maxSequencesCount `maxSequencesCount`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoNV`
-    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBindPoint, long pipeline, long indirectCommandsLayout, int maxSequencesCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineBindPoint(pipelineBindPoint).pipeline(pipeline).indirectCommandsLayout(indirectCommandsLayout).maxSequencesCount(maxSequencesCount);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineBindPoint `pipelineBindPoint`
-    /// @param pipeline `pipeline`
-    /// @param indirectCommandsLayout `indirectCommandsLayout`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoNV`
-    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBindPoint, long pipeline, long indirectCommandsLayout) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineBindPoint(pipelineBindPoint).pipeline(pipeline).indirectCommandsLayout(indirectCommandsLayout);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineBindPoint `pipelineBindPoint`
-    /// @param pipeline `pipeline`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoNV`
-    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBindPoint, long pipeline) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineBindPoint(pipelineBindPoint).pipeline(pipeline);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineBindPoint `pipelineBindPoint`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoNV`
-    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineBindPoint) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineBindPoint(pipelineBindPoint);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoNV`
-    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkGeneratedCommandsMemoryRequirementsInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkGeneratedCommandsMemoryRequirementsInfoNV`
-    public static VkGeneratedCommandsMemoryRequirementsInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

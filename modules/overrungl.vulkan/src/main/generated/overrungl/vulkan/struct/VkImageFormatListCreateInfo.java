@@ -103,44 +103,6 @@ public final class VkImageFormatListCreateInfo extends GroupType {
     /// @return the allocated `VkImageFormatListCreateInfo`
     public static VkImageFormatListCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkImageFormatListCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageFormatListCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param viewFormatCount `viewFormatCount`
-    /// @param pViewFormats `pViewFormats`
-    /// @return the allocated `VkImageFormatListCreateInfo`
-    public static VkImageFormatListCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewFormatCount, MemorySegment pViewFormats) {
-        return alloc(allocator).sType(sType).pNext(pNext).viewFormatCount(viewFormatCount).pViewFormats(pViewFormats);
-    }
-
-    /// Allocates a `VkImageFormatListCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param viewFormatCount `viewFormatCount`
-    /// @return the allocated `VkImageFormatListCreateInfo`
-    public static VkImageFormatListCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int viewFormatCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).viewFormatCount(viewFormatCount);
-    }
-
-    /// Allocates a `VkImageFormatListCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImageFormatListCreateInfo`
-    public static VkImageFormatListCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImageFormatListCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImageFormatListCreateInfo`
-    public static VkImageFormatListCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

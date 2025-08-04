@@ -95,33 +95,6 @@ public final class VkExternalMemoryPropertiesKHR extends GroupType {
     /// @return the allocated `VkExternalMemoryPropertiesKHR`
     public static VkExternalMemoryPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkExternalMemoryPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExternalMemoryPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param externalMemoryFeatures `externalMemoryFeatures`
-    /// @param exportFromImportedHandleTypes `exportFromImportedHandleTypes`
-    /// @param compatibleHandleTypes `compatibleHandleTypes`
-    /// @return the allocated `VkExternalMemoryPropertiesKHR`
-    public static VkExternalMemoryPropertiesKHR allocInit(SegmentAllocator allocator, int externalMemoryFeatures, int exportFromImportedHandleTypes, int compatibleHandleTypes) {
-        return alloc(allocator).externalMemoryFeatures(externalMemoryFeatures).exportFromImportedHandleTypes(exportFromImportedHandleTypes).compatibleHandleTypes(compatibleHandleTypes);
-    }
-
-    /// Allocates a `VkExternalMemoryPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param externalMemoryFeatures `externalMemoryFeatures`
-    /// @param exportFromImportedHandleTypes `exportFromImportedHandleTypes`
-    /// @return the allocated `VkExternalMemoryPropertiesKHR`
-    public static VkExternalMemoryPropertiesKHR allocInit(SegmentAllocator allocator, int externalMemoryFeatures, int exportFromImportedHandleTypes) {
-        return alloc(allocator).externalMemoryFeatures(externalMemoryFeatures).exportFromImportedHandleTypes(exportFromImportedHandleTypes);
-    }
-
-    /// Allocates a `VkExternalMemoryPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param externalMemoryFeatures `externalMemoryFeatures`
-    /// @return the allocated `VkExternalMemoryPropertiesKHR`
-    public static VkExternalMemoryPropertiesKHR allocInit(SegmentAllocator allocator, int externalMemoryFeatures) {
-        return alloc(allocator).externalMemoryFeatures(externalMemoryFeatures);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

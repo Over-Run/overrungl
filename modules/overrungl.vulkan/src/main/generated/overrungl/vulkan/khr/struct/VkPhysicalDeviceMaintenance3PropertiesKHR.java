@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceMaintenance3PropertiesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMaintenance3PropertiesKHR`
     public static VkPhysicalDeviceMaintenance3PropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMaintenance3PropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMaintenance3PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxPerSetDescriptors `maxPerSetDescriptors`
-    /// @param maxMemoryAllocationSize `maxMemoryAllocationSize`
-    /// @return the allocated `VkPhysicalDeviceMaintenance3PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance3PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxPerSetDescriptors, long maxMemoryAllocationSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxPerSetDescriptors(maxPerSetDescriptors).maxMemoryAllocationSize(maxMemoryAllocationSize);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance3PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxPerSetDescriptors `maxPerSetDescriptors`
-    /// @return the allocated `VkPhysicalDeviceMaintenance3PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance3PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxPerSetDescriptors) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxPerSetDescriptors(maxPerSetDescriptors);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance3PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceMaintenance3PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance3PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance3PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceMaintenance3PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance3PropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

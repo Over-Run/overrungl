@@ -83,23 +83,6 @@ public final class VkRect2D extends GroupType {
     /// @return the allocated `VkRect2D`
     public static VkRect2D alloc(SegmentAllocator allocator, long count) { return new VkRect2D(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRect2D` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @param extent `extent`
-    /// @return the allocated `VkRect2D`
-    public static VkRect2D allocInit(SegmentAllocator allocator, MemorySegment offset, MemorySegment extent) {
-        return alloc(allocator).offset(offset).extent(extent);
-    }
-
-    /// Allocates a `VkRect2D` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @return the allocated `VkRect2D`
-    public static VkRect2D allocInit(SegmentAllocator allocator, MemorySegment offset) {
-        return alloc(allocator).offset(offset);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -103,44 +103,6 @@ public final class VkFenceGetWin32HandleInfoKHR extends GroupType {
     /// @return the allocated `VkFenceGetWin32HandleInfoKHR`
     public static VkFenceGetWin32HandleInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkFenceGetWin32HandleInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkFenceGetWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fence `fence`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkFenceGetWin32HandleInfoKHR`
-    public static VkFenceGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).fence(fence).handleType(handleType);
-    }
-
-    /// Allocates a `VkFenceGetWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fence `fence`
-    /// @return the allocated `VkFenceGetWin32HandleInfoKHR`
-    public static VkFenceGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long fence) {
-        return alloc(allocator).sType(sType).pNext(pNext).fence(fence);
-    }
-
-    /// Allocates a `VkFenceGetWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkFenceGetWin32HandleInfoKHR`
-    public static VkFenceGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkFenceGetWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkFenceGetWin32HandleInfoKHR`
-    public static VkFenceGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

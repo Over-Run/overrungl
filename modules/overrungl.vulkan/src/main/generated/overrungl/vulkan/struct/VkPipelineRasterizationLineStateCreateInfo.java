@@ -119,69 +119,6 @@ public final class VkPipelineRasterizationLineStateCreateInfo extends GroupType 
     /// @return the allocated `VkPipelineRasterizationLineStateCreateInfo`
     public static VkPipelineRasterizationLineStateCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineRasterizationLineStateCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineRasterizationLineStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param lineRasterizationMode `lineRasterizationMode`
-    /// @param stippledLineEnable `stippledLineEnable`
-    /// @param lineStippleFactor `lineStippleFactor`
-    /// @param lineStipplePattern `lineStipplePattern`
-    /// @return the allocated `VkPipelineRasterizationLineStateCreateInfo`
-    public static VkPipelineRasterizationLineStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int lineRasterizationMode, int stippledLineEnable, int lineStippleFactor, short lineStipplePattern) {
-        return alloc(allocator).sType(sType).pNext(pNext).lineRasterizationMode(lineRasterizationMode).stippledLineEnable(stippledLineEnable).lineStippleFactor(lineStippleFactor).lineStipplePattern(lineStipplePattern);
-    }
-
-    /// Allocates a `VkPipelineRasterizationLineStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param lineRasterizationMode `lineRasterizationMode`
-    /// @param stippledLineEnable `stippledLineEnable`
-    /// @param lineStippleFactor `lineStippleFactor`
-    /// @return the allocated `VkPipelineRasterizationLineStateCreateInfo`
-    public static VkPipelineRasterizationLineStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int lineRasterizationMode, int stippledLineEnable, int lineStippleFactor) {
-        return alloc(allocator).sType(sType).pNext(pNext).lineRasterizationMode(lineRasterizationMode).stippledLineEnable(stippledLineEnable).lineStippleFactor(lineStippleFactor);
-    }
-
-    /// Allocates a `VkPipelineRasterizationLineStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param lineRasterizationMode `lineRasterizationMode`
-    /// @param stippledLineEnable `stippledLineEnable`
-    /// @return the allocated `VkPipelineRasterizationLineStateCreateInfo`
-    public static VkPipelineRasterizationLineStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int lineRasterizationMode, int stippledLineEnable) {
-        return alloc(allocator).sType(sType).pNext(pNext).lineRasterizationMode(lineRasterizationMode).stippledLineEnable(stippledLineEnable);
-    }
-
-    /// Allocates a `VkPipelineRasterizationLineStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param lineRasterizationMode `lineRasterizationMode`
-    /// @return the allocated `VkPipelineRasterizationLineStateCreateInfo`
-    public static VkPipelineRasterizationLineStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int lineRasterizationMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).lineRasterizationMode(lineRasterizationMode);
-    }
-
-    /// Allocates a `VkPipelineRasterizationLineStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineRasterizationLineStateCreateInfo`
-    public static VkPipelineRasterizationLineStateCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineRasterizationLineStateCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineRasterizationLineStateCreateInfo`
-    public static VkPipelineRasterizationLineStateCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

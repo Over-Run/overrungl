@@ -111,56 +111,6 @@ public final class VkVideoSessionParametersCreateInfoKHR extends GroupType {
     /// @return the allocated `VkVideoSessionParametersCreateInfoKHR`
     public static VkVideoSessionParametersCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoSessionParametersCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoSessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param videoSessionParametersTemplate `videoSessionParametersTemplate`
-    /// @param videoSession `videoSession`
-    /// @return the allocated `VkVideoSessionParametersCreateInfoKHR`
-    public static VkVideoSessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long videoSessionParametersTemplate, long videoSession) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).videoSessionParametersTemplate(videoSessionParametersTemplate).videoSession(videoSession);
-    }
-
-    /// Allocates a `VkVideoSessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param videoSessionParametersTemplate `videoSessionParametersTemplate`
-    /// @return the allocated `VkVideoSessionParametersCreateInfoKHR`
-    public static VkVideoSessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long videoSessionParametersTemplate) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).videoSessionParametersTemplate(videoSessionParametersTemplate);
-    }
-
-    /// Allocates a `VkVideoSessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkVideoSessionParametersCreateInfoKHR`
-    public static VkVideoSessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkVideoSessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoSessionParametersCreateInfoKHR`
-    public static VkVideoSessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoSessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoSessionParametersCreateInfoKHR`
-    public static VkVideoSessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

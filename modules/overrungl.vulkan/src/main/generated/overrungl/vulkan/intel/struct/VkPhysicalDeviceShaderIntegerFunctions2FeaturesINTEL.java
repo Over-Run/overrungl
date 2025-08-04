@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL extends 
     /// @return the allocated `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`
     public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderIntegerFunctions2 `shaderIntegerFunctions2`
-    /// @return the allocated `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`
-    public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderIntegerFunctions2) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderIntegerFunctions2(shaderIntegerFunctions2);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`
-    public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL`
-    public static VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

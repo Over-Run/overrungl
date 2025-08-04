@@ -103,44 +103,6 @@ public final class VkSurfacePresentModeCompatibilityEXT extends GroupType {
     /// @return the allocated `VkSurfacePresentModeCompatibilityEXT`
     public static VkSurfacePresentModeCompatibilityEXT alloc(SegmentAllocator allocator, long count) { return new VkSurfacePresentModeCompatibilityEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSurfacePresentModeCompatibilityEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param presentModeCount `presentModeCount`
-    /// @param pPresentModes `pPresentModes`
-    /// @return the allocated `VkSurfacePresentModeCompatibilityEXT`
-    public static VkSurfacePresentModeCompatibilityEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int presentModeCount, MemorySegment pPresentModes) {
-        return alloc(allocator).sType(sType).pNext(pNext).presentModeCount(presentModeCount).pPresentModes(pPresentModes);
-    }
-
-    /// Allocates a `VkSurfacePresentModeCompatibilityEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param presentModeCount `presentModeCount`
-    /// @return the allocated `VkSurfacePresentModeCompatibilityEXT`
-    public static VkSurfacePresentModeCompatibilityEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int presentModeCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).presentModeCount(presentModeCount);
-    }
-
-    /// Allocates a `VkSurfacePresentModeCompatibilityEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSurfacePresentModeCompatibilityEXT`
-    public static VkSurfacePresentModeCompatibilityEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSurfacePresentModeCompatibilityEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSurfacePresentModeCompatibilityEXT`
-    public static VkSurfacePresentModeCompatibilityEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -83,23 +83,6 @@ public final class VkGeometryDataNV extends GroupType {
     /// @return the allocated `VkGeometryDataNV`
     public static VkGeometryDataNV alloc(SegmentAllocator allocator, long count) { return new VkGeometryDataNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkGeometryDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param triangles `triangles`
-    /// @param aabbs `aabbs`
-    /// @return the allocated `VkGeometryDataNV`
-    public static VkGeometryDataNV allocInit(SegmentAllocator allocator, MemorySegment triangles, MemorySegment aabbs) {
-        return alloc(allocator).triangles(triangles).aabbs(aabbs);
-    }
-
-    /// Allocates a `VkGeometryDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param triangles `triangles`
-    /// @return the allocated `VkGeometryDataNV`
-    public static VkGeometryDataNV allocInit(SegmentAllocator allocator, MemorySegment triangles) {
-        return alloc(allocator).triangles(triangles);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

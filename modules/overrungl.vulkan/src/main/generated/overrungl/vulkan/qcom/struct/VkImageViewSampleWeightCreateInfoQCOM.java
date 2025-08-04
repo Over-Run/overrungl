@@ -107,56 +107,6 @@ public final class VkImageViewSampleWeightCreateInfoQCOM extends GroupType {
     /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
     public static VkImageViewSampleWeightCreateInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkImageViewSampleWeightCreateInfoQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param filterCenter `filterCenter`
-    /// @param filterSize `filterSize`
-    /// @param numPhases `numPhases`
-    /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
-    public static VkImageViewSampleWeightCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment filterCenter, MemorySegment filterSize, int numPhases) {
-        return alloc(allocator).sType(sType).pNext(pNext).filterCenter(filterCenter).filterSize(filterSize).numPhases(numPhases);
-    }
-
-    /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param filterCenter `filterCenter`
-    /// @param filterSize `filterSize`
-    /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
-    public static VkImageViewSampleWeightCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment filterCenter, MemorySegment filterSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).filterCenter(filterCenter).filterSize(filterSize);
-    }
-
-    /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param filterCenter `filterCenter`
-    /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
-    public static VkImageViewSampleWeightCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment filterCenter) {
-        return alloc(allocator).sType(sType).pNext(pNext).filterCenter(filterCenter);
-    }
-
-    /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
-    public static VkImageViewSampleWeightCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImageViewSampleWeightCreateInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImageViewSampleWeightCreateInfoQCOM`
-    public static VkImageViewSampleWeightCreateInfoQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceAddressBindingReportFeaturesEXT extends Group
     /// @return the allocated `VkPhysicalDeviceAddressBindingReportFeaturesEXT`
     public static VkPhysicalDeviceAddressBindingReportFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceAddressBindingReportFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceAddressBindingReportFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param reportAddressBinding `reportAddressBinding`
-    /// @return the allocated `VkPhysicalDeviceAddressBindingReportFeaturesEXT`
-    public static VkPhysicalDeviceAddressBindingReportFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int reportAddressBinding) {
-        return alloc(allocator).sType(sType).pNext(pNext).reportAddressBinding(reportAddressBinding);
-    }
-
-    /// Allocates a `VkPhysicalDeviceAddressBindingReportFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceAddressBindingReportFeaturesEXT`
-    public static VkPhysicalDeviceAddressBindingReportFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceAddressBindingReportFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceAddressBindingReportFeaturesEXT`
-    public static VkPhysicalDeviceAddressBindingReportFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

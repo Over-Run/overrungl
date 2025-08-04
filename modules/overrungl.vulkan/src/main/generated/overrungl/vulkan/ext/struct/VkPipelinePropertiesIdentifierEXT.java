@@ -95,33 +95,6 @@ public final class VkPipelinePropertiesIdentifierEXT extends GroupType {
     /// @return the allocated `VkPipelinePropertiesIdentifierEXT`
     public static VkPipelinePropertiesIdentifierEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelinePropertiesIdentifierEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelinePropertiesIdentifierEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineIdentifier `pipelineIdentifier`
-    /// @return the allocated `VkPipelinePropertiesIdentifierEXT`
-    public static VkPipelinePropertiesIdentifierEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pipelineIdentifier) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineIdentifier(pipelineIdentifier);
-    }
-
-    /// Allocates a `VkPipelinePropertiesIdentifierEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelinePropertiesIdentifierEXT`
-    public static VkPipelinePropertiesIdentifierEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelinePropertiesIdentifierEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelinePropertiesIdentifierEXT`
-    public static VkPipelinePropertiesIdentifierEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

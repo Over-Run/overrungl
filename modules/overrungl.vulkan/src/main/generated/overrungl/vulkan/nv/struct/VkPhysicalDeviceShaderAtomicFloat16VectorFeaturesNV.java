@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV extends G
     /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
     public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderFloat16VectorAtomics `shaderFloat16VectorAtomics`
-    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
-    public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderFloat16VectorAtomics) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderFloat16VectorAtomics(shaderFloat16VectorAtomics);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
-    public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV`
-    public static VkPhysicalDeviceShaderAtomicFloat16VectorFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

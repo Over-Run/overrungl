@@ -95,33 +95,6 @@ public final class VkMemoryMetalHandlePropertiesEXT extends GroupType {
     /// @return the allocated `VkMemoryMetalHandlePropertiesEXT`
     public static VkMemoryMetalHandlePropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkMemoryMetalHandlePropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryMetalHandlePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memoryTypeBits `memoryTypeBits`
-    /// @return the allocated `VkMemoryMetalHandlePropertiesEXT`
-    public static VkMemoryMetalHandlePropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits) {
-        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits);
-    }
-
-    /// Allocates a `VkMemoryMetalHandlePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryMetalHandlePropertiesEXT`
-    public static VkMemoryMetalHandlePropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryMetalHandlePropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryMetalHandlePropertiesEXT`
-    public static VkMemoryMetalHandlePropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

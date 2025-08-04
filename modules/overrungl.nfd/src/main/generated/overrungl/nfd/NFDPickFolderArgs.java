@@ -85,23 +85,6 @@ public final class NFDPickFolderArgs extends GroupType {
     /// @return the allocated `NFDPickFolderArgs`
     public static NFDPickFolderArgs alloc(SegmentAllocator allocator, long count) { return new NFDPickFolderArgs(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `NFDPickFolderArgs` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param defaultPath `defaultPath`
-    /// @param parentWindow `parentWindow`
-    /// @return the allocated `NFDPickFolderArgs`
-    public static NFDPickFolderArgs allocInit(SegmentAllocator allocator, MemorySegment defaultPath, MemorySegment parentWindow) {
-        return alloc(allocator).defaultPath(defaultPath).parentWindow(parentWindow);
-    }
-
-    /// Allocates a `NFDPickFolderArgs` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param defaultPath `defaultPath`
-    /// @return the allocated `NFDPickFolderArgs`
-    public static NFDPickFolderArgs allocInit(SegmentAllocator allocator, MemorySegment defaultPath) {
-        return alloc(allocator).defaultPath(defaultPath);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

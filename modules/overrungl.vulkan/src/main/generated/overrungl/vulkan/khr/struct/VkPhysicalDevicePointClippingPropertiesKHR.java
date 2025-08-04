@@ -95,33 +95,6 @@ public final class VkPhysicalDevicePointClippingPropertiesKHR extends GroupType 
     /// @return the allocated `VkPhysicalDevicePointClippingPropertiesKHR`
     public static VkPhysicalDevicePointClippingPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePointClippingPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePointClippingPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pointClippingBehavior `pointClippingBehavior`
-    /// @return the allocated `VkPhysicalDevicePointClippingPropertiesKHR`
-    public static VkPhysicalDevicePointClippingPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pointClippingBehavior) {
-        return alloc(allocator).sType(sType).pNext(pNext).pointClippingBehavior(pointClippingBehavior);
-    }
-
-    /// Allocates a `VkPhysicalDevicePointClippingPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevicePointClippingPropertiesKHR`
-    public static VkPhysicalDevicePointClippingPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevicePointClippingPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevicePointClippingPropertiesKHR`
-    public static VkPhysicalDevicePointClippingPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

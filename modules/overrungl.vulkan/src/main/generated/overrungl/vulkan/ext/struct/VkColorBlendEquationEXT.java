@@ -119,69 +119,6 @@ public final class VkColorBlendEquationEXT extends GroupType {
     /// @return the allocated `VkColorBlendEquationEXT`
     public static VkColorBlendEquationEXT alloc(SegmentAllocator allocator, long count) { return new VkColorBlendEquationEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkColorBlendEquationEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcColorBlendFactor `srcColorBlendFactor`
-    /// @param dstColorBlendFactor `dstColorBlendFactor`
-    /// @param colorBlendOp `colorBlendOp`
-    /// @param srcAlphaBlendFactor `srcAlphaBlendFactor`
-    /// @param dstAlphaBlendFactor `dstAlphaBlendFactor`
-    /// @param alphaBlendOp `alphaBlendOp`
-    /// @return the allocated `VkColorBlendEquationEXT`
-    public static VkColorBlendEquationEXT allocInit(SegmentAllocator allocator, int srcColorBlendFactor, int dstColorBlendFactor, int colorBlendOp, int srcAlphaBlendFactor, int dstAlphaBlendFactor, int alphaBlendOp) {
-        return alloc(allocator).srcColorBlendFactor(srcColorBlendFactor).dstColorBlendFactor(dstColorBlendFactor).colorBlendOp(colorBlendOp).srcAlphaBlendFactor(srcAlphaBlendFactor).dstAlphaBlendFactor(dstAlphaBlendFactor).alphaBlendOp(alphaBlendOp);
-    }
-
-    /// Allocates a `VkColorBlendEquationEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcColorBlendFactor `srcColorBlendFactor`
-    /// @param dstColorBlendFactor `dstColorBlendFactor`
-    /// @param colorBlendOp `colorBlendOp`
-    /// @param srcAlphaBlendFactor `srcAlphaBlendFactor`
-    /// @param dstAlphaBlendFactor `dstAlphaBlendFactor`
-    /// @return the allocated `VkColorBlendEquationEXT`
-    public static VkColorBlendEquationEXT allocInit(SegmentAllocator allocator, int srcColorBlendFactor, int dstColorBlendFactor, int colorBlendOp, int srcAlphaBlendFactor, int dstAlphaBlendFactor) {
-        return alloc(allocator).srcColorBlendFactor(srcColorBlendFactor).dstColorBlendFactor(dstColorBlendFactor).colorBlendOp(colorBlendOp).srcAlphaBlendFactor(srcAlphaBlendFactor).dstAlphaBlendFactor(dstAlphaBlendFactor);
-    }
-
-    /// Allocates a `VkColorBlendEquationEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcColorBlendFactor `srcColorBlendFactor`
-    /// @param dstColorBlendFactor `dstColorBlendFactor`
-    /// @param colorBlendOp `colorBlendOp`
-    /// @param srcAlphaBlendFactor `srcAlphaBlendFactor`
-    /// @return the allocated `VkColorBlendEquationEXT`
-    public static VkColorBlendEquationEXT allocInit(SegmentAllocator allocator, int srcColorBlendFactor, int dstColorBlendFactor, int colorBlendOp, int srcAlphaBlendFactor) {
-        return alloc(allocator).srcColorBlendFactor(srcColorBlendFactor).dstColorBlendFactor(dstColorBlendFactor).colorBlendOp(colorBlendOp).srcAlphaBlendFactor(srcAlphaBlendFactor);
-    }
-
-    /// Allocates a `VkColorBlendEquationEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcColorBlendFactor `srcColorBlendFactor`
-    /// @param dstColorBlendFactor `dstColorBlendFactor`
-    /// @param colorBlendOp `colorBlendOp`
-    /// @return the allocated `VkColorBlendEquationEXT`
-    public static VkColorBlendEquationEXT allocInit(SegmentAllocator allocator, int srcColorBlendFactor, int dstColorBlendFactor, int colorBlendOp) {
-        return alloc(allocator).srcColorBlendFactor(srcColorBlendFactor).dstColorBlendFactor(dstColorBlendFactor).colorBlendOp(colorBlendOp);
-    }
-
-    /// Allocates a `VkColorBlendEquationEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcColorBlendFactor `srcColorBlendFactor`
-    /// @param dstColorBlendFactor `dstColorBlendFactor`
-    /// @return the allocated `VkColorBlendEquationEXT`
-    public static VkColorBlendEquationEXT allocInit(SegmentAllocator allocator, int srcColorBlendFactor, int dstColorBlendFactor) {
-        return alloc(allocator).srcColorBlendFactor(srcColorBlendFactor).dstColorBlendFactor(dstColorBlendFactor);
-    }
-
-    /// Allocates a `VkColorBlendEquationEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcColorBlendFactor `srcColorBlendFactor`
-    /// @return the allocated `VkColorBlendEquationEXT`
-    public static VkColorBlendEquationEXT allocInit(SegmentAllocator allocator, int srcColorBlendFactor) {
-        return alloc(allocator).srcColorBlendFactor(srcColorBlendFactor);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

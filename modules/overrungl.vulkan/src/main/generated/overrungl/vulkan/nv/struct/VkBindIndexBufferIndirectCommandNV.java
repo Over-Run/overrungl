@@ -95,33 +95,6 @@ public final class VkBindIndexBufferIndirectCommandNV extends GroupType {
     /// @return the allocated `VkBindIndexBufferIndirectCommandNV`
     public static VkBindIndexBufferIndirectCommandNV alloc(SegmentAllocator allocator, long count) { return new VkBindIndexBufferIndirectCommandNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBindIndexBufferIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bufferAddress `bufferAddress`
-    /// @param size `size`
-    /// @param indexType `indexType`
-    /// @return the allocated `VkBindIndexBufferIndirectCommandNV`
-    public static VkBindIndexBufferIndirectCommandNV allocInit(SegmentAllocator allocator, long bufferAddress, int size, int indexType) {
-        return alloc(allocator).bufferAddress(bufferAddress).size(size).indexType(indexType);
-    }
-
-    /// Allocates a `VkBindIndexBufferIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bufferAddress `bufferAddress`
-    /// @param size `size`
-    /// @return the allocated `VkBindIndexBufferIndirectCommandNV`
-    public static VkBindIndexBufferIndirectCommandNV allocInit(SegmentAllocator allocator, long bufferAddress, int size) {
-        return alloc(allocator).bufferAddress(bufferAddress).size(size);
-    }
-
-    /// Allocates a `VkBindIndexBufferIndirectCommandNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param bufferAddress `bufferAddress`
-    /// @return the allocated `VkBindIndexBufferIndirectCommandNV`
-    public static VkBindIndexBufferIndirectCommandNV allocInit(SegmentAllocator allocator, long bufferAddress) {
-        return alloc(allocator).bufferAddress(bufferAddress);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

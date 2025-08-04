@@ -95,33 +95,6 @@ public final class VkProtectedSubmitInfo extends GroupType {
     /// @return the allocated `VkProtectedSubmitInfo`
     public static VkProtectedSubmitInfo alloc(SegmentAllocator allocator, long count) { return new VkProtectedSubmitInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkProtectedSubmitInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param protectedSubmit `protectedSubmit`
-    /// @return the allocated `VkProtectedSubmitInfo`
-    public static VkProtectedSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int protectedSubmit) {
-        return alloc(allocator).sType(sType).pNext(pNext).protectedSubmit(protectedSubmit);
-    }
-
-    /// Allocates a `VkProtectedSubmitInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkProtectedSubmitInfo`
-    public static VkProtectedSubmitInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkProtectedSubmitInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkProtectedSubmitInfo`
-    public static VkProtectedSubmitInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkExternalMemoryBufferCreateInfoKHR extends GroupType {
     /// @return the allocated `VkExternalMemoryBufferCreateInfoKHR`
     public static VkExternalMemoryBufferCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkExternalMemoryBufferCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExternalMemoryBufferCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param handleTypes `handleTypes`
-    /// @return the allocated `VkExternalMemoryBufferCreateInfoKHR`
-    public static VkExternalMemoryBufferCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleTypes) {
-        return alloc(allocator).sType(sType).pNext(pNext).handleTypes(handleTypes);
-    }
-
-    /// Allocates a `VkExternalMemoryBufferCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExternalMemoryBufferCreateInfoKHR`
-    public static VkExternalMemoryBufferCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExternalMemoryBufferCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExternalMemoryBufferCreateInfoKHR`
-    public static VkExternalMemoryBufferCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

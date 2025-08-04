@@ -111,56 +111,6 @@ public final class VkOpticalFlowSessionCreatePrivateDataInfoNV extends GroupType
     /// @return the allocated `VkOpticalFlowSessionCreatePrivateDataInfoNV`
     public static VkOpticalFlowSessionCreatePrivateDataInfoNV alloc(SegmentAllocator allocator, long count) { return new VkOpticalFlowSessionCreatePrivateDataInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkOpticalFlowSessionCreatePrivateDataInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param id `id`
-    /// @param size `size`
-    /// @param pPrivateData `pPrivateData`
-    /// @return the allocated `VkOpticalFlowSessionCreatePrivateDataInfoNV`
-    public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int id, int size, MemorySegment pPrivateData) {
-        return alloc(allocator).sType(sType).pNext(pNext).id(id).size(size).pPrivateData(pPrivateData);
-    }
-
-    /// Allocates a `VkOpticalFlowSessionCreatePrivateDataInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param id `id`
-    /// @param size `size`
-    /// @return the allocated `VkOpticalFlowSessionCreatePrivateDataInfoNV`
-    public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int id, int size) {
-        return alloc(allocator).sType(sType).pNext(pNext).id(id).size(size);
-    }
-
-    /// Allocates a `VkOpticalFlowSessionCreatePrivateDataInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param id `id`
-    /// @return the allocated `VkOpticalFlowSessionCreatePrivateDataInfoNV`
-    public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int id) {
-        return alloc(allocator).sType(sType).pNext(pNext).id(id);
-    }
-
-    /// Allocates a `VkOpticalFlowSessionCreatePrivateDataInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkOpticalFlowSessionCreatePrivateDataInfoNV`
-    public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkOpticalFlowSessionCreatePrivateDataInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkOpticalFlowSessionCreatePrivateDataInfoNV`
-    public static VkOpticalFlowSessionCreatePrivateDataInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR extends Gr
     /// @return the allocated `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR`
     public static VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param rayTracingPositionFetch `rayTracingPositionFetch`
-    /// @return the allocated `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR`
-    public static VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rayTracingPositionFetch) {
-        return alloc(allocator).sType(sType).pNext(pNext).rayTracingPositionFetch(rayTracingPositionFetch);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR`
-    public static VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR`
-    public static VkPhysicalDeviceRayTracingPositionFetchFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

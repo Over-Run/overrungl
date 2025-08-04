@@ -95,33 +95,6 @@ public final class VkDispatchIndirectCommand extends GroupType {
     /// @return the allocated `VkDispatchIndirectCommand`
     public static VkDispatchIndirectCommand alloc(SegmentAllocator allocator, long count) { return new VkDispatchIndirectCommand(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDispatchIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @param y `y`
-    /// @param z `z`
-    /// @return the allocated `VkDispatchIndirectCommand`
-    public static VkDispatchIndirectCommand allocInit(SegmentAllocator allocator, int x, int y, int z) {
-        return alloc(allocator).x(x).y(y).z(z);
-    }
-
-    /// Allocates a `VkDispatchIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @param y `y`
-    /// @return the allocated `VkDispatchIndirectCommand`
-    public static VkDispatchIndirectCommand allocInit(SegmentAllocator allocator, int x, int y) {
-        return alloc(allocator).x(x).y(y);
-    }
-
-    /// Allocates a `VkDispatchIndirectCommand` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param x `x`
-    /// @return the allocated `VkDispatchIndirectCommand`
-    public static VkDispatchIndirectCommand allocInit(SegmentAllocator allocator, int x) {
-        return alloc(allocator).x(x);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

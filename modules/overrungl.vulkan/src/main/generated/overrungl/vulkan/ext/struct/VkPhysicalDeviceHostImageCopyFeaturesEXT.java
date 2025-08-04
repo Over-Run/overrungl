@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceHostImageCopyFeaturesEXT extends GroupType {
     /// @return the allocated `VkPhysicalDeviceHostImageCopyFeaturesEXT`
     public static VkPhysicalDeviceHostImageCopyFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceHostImageCopyFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceHostImageCopyFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param hostImageCopy `hostImageCopy`
-    /// @return the allocated `VkPhysicalDeviceHostImageCopyFeaturesEXT`
-    public static VkPhysicalDeviceHostImageCopyFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hostImageCopy) {
-        return alloc(allocator).sType(sType).pNext(pNext).hostImageCopy(hostImageCopy);
-    }
-
-    /// Allocates a `VkPhysicalDeviceHostImageCopyFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceHostImageCopyFeaturesEXT`
-    public static VkPhysicalDeviceHostImageCopyFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceHostImageCopyFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceHostImageCopyFeaturesEXT`
-    public static VkPhysicalDeviceHostImageCopyFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

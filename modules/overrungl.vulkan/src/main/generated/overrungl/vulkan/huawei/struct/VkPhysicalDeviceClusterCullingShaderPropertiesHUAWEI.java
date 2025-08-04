@@ -119,69 +119,6 @@ public final class VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI extends 
     /// @return the allocated `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
     public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxWorkGroupCount `maxWorkGroupCount`
-    /// @param maxWorkGroupSize `maxWorkGroupSize`
-    /// @param maxOutputClusterCount `maxOutputClusterCount`
-    /// @param indirectBufferOffsetAlignment `indirectBufferOffsetAlignment`
-    /// @return the allocated `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
-    public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment maxWorkGroupCount, MemorySegment maxWorkGroupSize, int maxOutputClusterCount, long indirectBufferOffsetAlignment) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxWorkGroupCount(maxWorkGroupCount).maxWorkGroupSize(maxWorkGroupSize).maxOutputClusterCount(maxOutputClusterCount).indirectBufferOffsetAlignment(indirectBufferOffsetAlignment);
-    }
-
-    /// Allocates a `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxWorkGroupCount `maxWorkGroupCount`
-    /// @param maxWorkGroupSize `maxWorkGroupSize`
-    /// @param maxOutputClusterCount `maxOutputClusterCount`
-    /// @return the allocated `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
-    public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment maxWorkGroupCount, MemorySegment maxWorkGroupSize, int maxOutputClusterCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxWorkGroupCount(maxWorkGroupCount).maxWorkGroupSize(maxWorkGroupSize).maxOutputClusterCount(maxOutputClusterCount);
-    }
-
-    /// Allocates a `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxWorkGroupCount `maxWorkGroupCount`
-    /// @param maxWorkGroupSize `maxWorkGroupSize`
-    /// @return the allocated `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
-    public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment maxWorkGroupCount, MemorySegment maxWorkGroupSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxWorkGroupCount(maxWorkGroupCount).maxWorkGroupSize(maxWorkGroupSize);
-    }
-
-    /// Allocates a `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxWorkGroupCount `maxWorkGroupCount`
-    /// @return the allocated `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
-    public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment maxWorkGroupCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxWorkGroupCount(maxWorkGroupCount);
-    }
-
-    /// Allocates a `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
-    public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI`
-    public static VkPhysicalDeviceClusterCullingShaderPropertiesHUAWEI allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

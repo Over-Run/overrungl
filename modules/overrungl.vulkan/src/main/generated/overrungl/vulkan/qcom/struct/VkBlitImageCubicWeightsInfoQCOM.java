@@ -95,33 +95,6 @@ public final class VkBlitImageCubicWeightsInfoQCOM extends GroupType {
     /// @return the allocated `VkBlitImageCubicWeightsInfoQCOM`
     public static VkBlitImageCubicWeightsInfoQCOM alloc(SegmentAllocator allocator, long count) { return new VkBlitImageCubicWeightsInfoQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBlitImageCubicWeightsInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param cubicWeights `cubicWeights`
-    /// @return the allocated `VkBlitImageCubicWeightsInfoQCOM`
-    public static VkBlitImageCubicWeightsInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cubicWeights) {
-        return alloc(allocator).sType(sType).pNext(pNext).cubicWeights(cubicWeights);
-    }
-
-    /// Allocates a `VkBlitImageCubicWeightsInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkBlitImageCubicWeightsInfoQCOM`
-    public static VkBlitImageCubicWeightsInfoQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkBlitImageCubicWeightsInfoQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkBlitImageCubicWeightsInfoQCOM`
-    public static VkBlitImageCubicWeightsInfoQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

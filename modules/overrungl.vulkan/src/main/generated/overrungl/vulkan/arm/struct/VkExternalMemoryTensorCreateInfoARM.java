@@ -95,33 +95,6 @@ public final class VkExternalMemoryTensorCreateInfoARM extends GroupType {
     /// @return the allocated `VkExternalMemoryTensorCreateInfoARM`
     public static VkExternalMemoryTensorCreateInfoARM alloc(SegmentAllocator allocator, long count) { return new VkExternalMemoryTensorCreateInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExternalMemoryTensorCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param handleTypes `handleTypes`
-    /// @return the allocated `VkExternalMemoryTensorCreateInfoARM`
-    public static VkExternalMemoryTensorCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int handleTypes) {
-        return alloc(allocator).sType(sType).pNext(pNext).handleTypes(handleTypes);
-    }
-
-    /// Allocates a `VkExternalMemoryTensorCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExternalMemoryTensorCreateInfoARM`
-    public static VkExternalMemoryTensorCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExternalMemoryTensorCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExternalMemoryTensorCreateInfoARM`
-    public static VkExternalMemoryTensorCreateInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

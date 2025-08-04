@@ -103,44 +103,6 @@ public final class VkCheckpointDataNV extends GroupType {
     /// @return the allocated `VkCheckpointDataNV`
     public static VkCheckpointDataNV alloc(SegmentAllocator allocator, long count) { return new VkCheckpointDataNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCheckpointDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param stage `stage`
-    /// @param pCheckpointMarker `pCheckpointMarker`
-    /// @return the allocated `VkCheckpointDataNV`
-    public static VkCheckpointDataNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stage, MemorySegment pCheckpointMarker) {
-        return alloc(allocator).sType(sType).pNext(pNext).stage(stage).pCheckpointMarker(pCheckpointMarker);
-    }
-
-    /// Allocates a `VkCheckpointDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param stage `stage`
-    /// @return the allocated `VkCheckpointDataNV`
-    public static VkCheckpointDataNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stage) {
-        return alloc(allocator).sType(sType).pNext(pNext).stage(stage);
-    }
-
-    /// Allocates a `VkCheckpointDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkCheckpointDataNV`
-    public static VkCheckpointDataNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkCheckpointDataNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkCheckpointDataNV`
-    public static VkCheckpointDataNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

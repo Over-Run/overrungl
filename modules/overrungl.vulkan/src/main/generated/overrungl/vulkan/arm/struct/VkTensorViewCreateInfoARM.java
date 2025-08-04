@@ -111,56 +111,6 @@ public final class VkTensorViewCreateInfoARM extends GroupType {
     /// @return the allocated `VkTensorViewCreateInfoARM`
     public static VkTensorViewCreateInfoARM alloc(SegmentAllocator allocator, long count) { return new VkTensorViewCreateInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkTensorViewCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param tensor `tensor`
-    /// @param format `format`
-    /// @return the allocated `VkTensorViewCreateInfoARM`
-    public static VkTensorViewCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long flags, long tensor, int format) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).tensor(tensor).format(format);
-    }
-
-    /// Allocates a `VkTensorViewCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param tensor `tensor`
-    /// @return the allocated `VkTensorViewCreateInfoARM`
-    public static VkTensorViewCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long flags, long tensor) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).tensor(tensor);
-    }
-
-    /// Allocates a `VkTensorViewCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkTensorViewCreateInfoARM`
-    public static VkTensorViewCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkTensorViewCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkTensorViewCreateInfoARM`
-    public static VkTensorViewCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkTensorViewCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkTensorViewCreateInfoARM`
-    public static VkTensorViewCreateInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

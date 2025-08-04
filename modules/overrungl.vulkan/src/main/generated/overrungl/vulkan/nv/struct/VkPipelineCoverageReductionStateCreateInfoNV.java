@@ -103,44 +103,6 @@ public final class VkPipelineCoverageReductionStateCreateInfoNV extends GroupTyp
     /// @return the allocated `VkPipelineCoverageReductionStateCreateInfoNV`
     public static VkPipelineCoverageReductionStateCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineCoverageReductionStateCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCoverageReductionStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param coverageReductionMode `coverageReductionMode`
-    /// @return the allocated `VkPipelineCoverageReductionStateCreateInfoNV`
-    public static VkPipelineCoverageReductionStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int coverageReductionMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).coverageReductionMode(coverageReductionMode);
-    }
-
-    /// Allocates a `VkPipelineCoverageReductionStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkPipelineCoverageReductionStateCreateInfoNV`
-    public static VkPipelineCoverageReductionStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkPipelineCoverageReductionStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineCoverageReductionStateCreateInfoNV`
-    public static VkPipelineCoverageReductionStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineCoverageReductionStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineCoverageReductionStateCreateInfoNV`
-    public static VkPipelineCoverageReductionStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

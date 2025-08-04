@@ -95,33 +95,6 @@ public final class VkCuModuleTexturingModeCreateInfoNVX extends GroupType {
     /// @return the allocated `VkCuModuleTexturingModeCreateInfoNVX`
     public static VkCuModuleTexturingModeCreateInfoNVX alloc(SegmentAllocator allocator, long count) { return new VkCuModuleTexturingModeCreateInfoNVX(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCuModuleTexturingModeCreateInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param use64bitTexturing `use64bitTexturing`
-    /// @return the allocated `VkCuModuleTexturingModeCreateInfoNVX`
-    public static VkCuModuleTexturingModeCreateInfoNVX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int use64bitTexturing) {
-        return alloc(allocator).sType(sType).pNext(pNext).use64bitTexturing(use64bitTexturing);
-    }
-
-    /// Allocates a `VkCuModuleTexturingModeCreateInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkCuModuleTexturingModeCreateInfoNVX`
-    public static VkCuModuleTexturingModeCreateInfoNVX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkCuModuleTexturingModeCreateInfoNVX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkCuModuleTexturingModeCreateInfoNVX`
-    public static VkCuModuleTexturingModeCreateInfoNVX allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

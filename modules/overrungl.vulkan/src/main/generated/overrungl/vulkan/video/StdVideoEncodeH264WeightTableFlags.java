@@ -103,44 +103,6 @@ public final class StdVideoEncodeH264WeightTableFlags extends GroupType {
     /// @return the allocated `StdVideoEncodeH264WeightTableFlags`
     public static StdVideoEncodeH264WeightTableFlags alloc(SegmentAllocator allocator, long count) { return new StdVideoEncodeH264WeightTableFlags(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoEncodeH264WeightTableFlags` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param luma_weight_l0_flag `luma_weight_l0_flag`
-    /// @param chroma_weight_l0_flag `chroma_weight_l0_flag`
-    /// @param luma_weight_l1_flag `luma_weight_l1_flag`
-    /// @param chroma_weight_l1_flag `chroma_weight_l1_flag`
-    /// @return the allocated `StdVideoEncodeH264WeightTableFlags`
-    public static StdVideoEncodeH264WeightTableFlags allocInit(SegmentAllocator allocator, int luma_weight_l0_flag, int chroma_weight_l0_flag, int luma_weight_l1_flag, int chroma_weight_l1_flag) {
-        return alloc(allocator).luma_weight_l0_flag(luma_weight_l0_flag).chroma_weight_l0_flag(chroma_weight_l0_flag).luma_weight_l1_flag(luma_weight_l1_flag).chroma_weight_l1_flag(chroma_weight_l1_flag);
-    }
-
-    /// Allocates a `StdVideoEncodeH264WeightTableFlags` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param luma_weight_l0_flag `luma_weight_l0_flag`
-    /// @param chroma_weight_l0_flag `chroma_weight_l0_flag`
-    /// @param luma_weight_l1_flag `luma_weight_l1_flag`
-    /// @return the allocated `StdVideoEncodeH264WeightTableFlags`
-    public static StdVideoEncodeH264WeightTableFlags allocInit(SegmentAllocator allocator, int luma_weight_l0_flag, int chroma_weight_l0_flag, int luma_weight_l1_flag) {
-        return alloc(allocator).luma_weight_l0_flag(luma_weight_l0_flag).chroma_weight_l0_flag(chroma_weight_l0_flag).luma_weight_l1_flag(luma_weight_l1_flag);
-    }
-
-    /// Allocates a `StdVideoEncodeH264WeightTableFlags` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param luma_weight_l0_flag `luma_weight_l0_flag`
-    /// @param chroma_weight_l0_flag `chroma_weight_l0_flag`
-    /// @return the allocated `StdVideoEncodeH264WeightTableFlags`
-    public static StdVideoEncodeH264WeightTableFlags allocInit(SegmentAllocator allocator, int luma_weight_l0_flag, int chroma_weight_l0_flag) {
-        return alloc(allocator).luma_weight_l0_flag(luma_weight_l0_flag).chroma_weight_l0_flag(chroma_weight_l0_flag);
-    }
-
-    /// Allocates a `StdVideoEncodeH264WeightTableFlags` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param luma_weight_l0_flag `luma_weight_l0_flag`
-    /// @return the allocated `StdVideoEncodeH264WeightTableFlags`
-    public static StdVideoEncodeH264WeightTableFlags allocInit(SegmentAllocator allocator, int luma_weight_l0_flag) {
-        return alloc(allocator).luma_weight_l0_flag(luma_weight_l0_flag);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

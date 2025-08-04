@@ -87,23 +87,6 @@ public final class VkIndirectCommandsStreamNV extends GroupType {
     /// @return the allocated `VkIndirectCommandsStreamNV`
     public static VkIndirectCommandsStreamNV alloc(SegmentAllocator allocator, long count) { return new VkIndirectCommandsStreamNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkIndirectCommandsStreamNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer `buffer`
-    /// @param offset `offset`
-    /// @return the allocated `VkIndirectCommandsStreamNV`
-    public static VkIndirectCommandsStreamNV allocInit(SegmentAllocator allocator, long buffer, long offset) {
-        return alloc(allocator).buffer(buffer).offset(offset);
-    }
-
-    /// Allocates a `VkIndirectCommandsStreamNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param buffer `buffer`
-    /// @return the allocated `VkIndirectCommandsStreamNV`
-    public static VkIndirectCommandsStreamNV allocInit(SegmentAllocator allocator, long buffer) {
-        return alloc(allocator).buffer(buffer);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

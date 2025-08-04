@@ -119,69 +119,6 @@ public final class VkPhysicalDevicePCIBusInfoPropertiesEXT extends GroupType {
     /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
     public static VkPhysicalDevicePCIBusInfoPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePCIBusInfoPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pciDomain `pciDomain`
-    /// @param pciBus `pciBus`
-    /// @param pciDevice `pciDevice`
-    /// @param pciFunction `pciFunction`
-    /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-    public static VkPhysicalDevicePCIBusInfoPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pciDomain, int pciBus, int pciDevice, int pciFunction) {
-        return alloc(allocator).sType(sType).pNext(pNext).pciDomain(pciDomain).pciBus(pciBus).pciDevice(pciDevice).pciFunction(pciFunction);
-    }
-
-    /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pciDomain `pciDomain`
-    /// @param pciBus `pciBus`
-    /// @param pciDevice `pciDevice`
-    /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-    public static VkPhysicalDevicePCIBusInfoPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pciDomain, int pciBus, int pciDevice) {
-        return alloc(allocator).sType(sType).pNext(pNext).pciDomain(pciDomain).pciBus(pciBus).pciDevice(pciDevice);
-    }
-
-    /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pciDomain `pciDomain`
-    /// @param pciBus `pciBus`
-    /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-    public static VkPhysicalDevicePCIBusInfoPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pciDomain, int pciBus) {
-        return alloc(allocator).sType(sType).pNext(pNext).pciDomain(pciDomain).pciBus(pciBus);
-    }
-
-    /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pciDomain `pciDomain`
-    /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-    public static VkPhysicalDevicePCIBusInfoPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pciDomain) {
-        return alloc(allocator).sType(sType).pNext(pNext).pciDomain(pciDomain);
-    }
-
-    /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-    public static VkPhysicalDevicePCIBusInfoPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevicePCIBusInfoPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevicePCIBusInfoPropertiesEXT`
-    public static VkPhysicalDevicePCIBusInfoPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

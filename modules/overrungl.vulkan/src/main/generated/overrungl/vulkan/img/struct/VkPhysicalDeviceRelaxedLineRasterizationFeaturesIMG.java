@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG extends G
     /// @return the allocated `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`
     public static VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param relaxedLineRasterization `relaxedLineRasterization`
-    /// @return the allocated `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`
-    public static VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int relaxedLineRasterization) {
-        return alloc(allocator).sType(sType).pNext(pNext).relaxedLineRasterization(relaxedLineRasterization);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`
-    public static VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG`
-    public static VkPhysicalDeviceRelaxedLineRasterizationFeaturesIMG allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

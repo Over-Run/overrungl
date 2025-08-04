@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceMaintenance9PropertiesKHR extends GroupType {
     /// @return the allocated `VkPhysicalDeviceMaintenance9PropertiesKHR`
     public static VkPhysicalDeviceMaintenance9PropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMaintenance9PropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMaintenance9PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param image2DViewOf3DSparse `image2DViewOf3DSparse`
-    /// @param defaultVertexAttributeValue `defaultVertexAttributeValue`
-    /// @return the allocated `VkPhysicalDeviceMaintenance9PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance9PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int image2DViewOf3DSparse, int defaultVertexAttributeValue) {
-        return alloc(allocator).sType(sType).pNext(pNext).image2DViewOf3DSparse(image2DViewOf3DSparse).defaultVertexAttributeValue(defaultVertexAttributeValue);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance9PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param image2DViewOf3DSparse `image2DViewOf3DSparse`
-    /// @return the allocated `VkPhysicalDeviceMaintenance9PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance9PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int image2DViewOf3DSparse) {
-        return alloc(allocator).sType(sType).pNext(pNext).image2DViewOf3DSparse(image2DViewOf3DSparse);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance9PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceMaintenance9PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance9PropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMaintenance9PropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceMaintenance9PropertiesKHR`
-    public static VkPhysicalDeviceMaintenance9PropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

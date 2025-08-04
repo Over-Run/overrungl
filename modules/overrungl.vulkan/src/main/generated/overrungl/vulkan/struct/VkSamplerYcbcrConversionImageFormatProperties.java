@@ -95,33 +95,6 @@ public final class VkSamplerYcbcrConversionImageFormatProperties extends GroupTy
     /// @return the allocated `VkSamplerYcbcrConversionImageFormatProperties`
     public static VkSamplerYcbcrConversionImageFormatProperties alloc(SegmentAllocator allocator, long count) { return new VkSamplerYcbcrConversionImageFormatProperties(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSamplerYcbcrConversionImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param combinedImageSamplerDescriptorCount `combinedImageSamplerDescriptorCount`
-    /// @return the allocated `VkSamplerYcbcrConversionImageFormatProperties`
-    public static VkSamplerYcbcrConversionImageFormatProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int combinedImageSamplerDescriptorCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).combinedImageSamplerDescriptorCount(combinedImageSamplerDescriptorCount);
-    }
-
-    /// Allocates a `VkSamplerYcbcrConversionImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSamplerYcbcrConversionImageFormatProperties`
-    public static VkSamplerYcbcrConversionImageFormatProperties allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSamplerYcbcrConversionImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSamplerYcbcrConversionImageFormatProperties`
-    public static VkSamplerYcbcrConversionImageFormatProperties allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -101,56 +101,6 @@ public final class VkImageCopy extends GroupType {
     /// @return the allocated `VkImageCopy`
     public static VkImageCopy alloc(SegmentAllocator allocator, long count) { return new VkImageCopy(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageCopy` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffset `srcOffset`
-    /// @param dstSubresource `dstSubresource`
-    /// @param dstOffset `dstOffset`
-    /// @param extent `extent`
-    /// @return the allocated `VkImageCopy`
-    public static VkImageCopy allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffset, MemorySegment dstSubresource, MemorySegment dstOffset, MemorySegment extent) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource).dstOffset(dstOffset).extent(extent);
-    }
-
-    /// Allocates a `VkImageCopy` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffset `srcOffset`
-    /// @param dstSubresource `dstSubresource`
-    /// @param dstOffset `dstOffset`
-    /// @return the allocated `VkImageCopy`
-    public static VkImageCopy allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffset, MemorySegment dstSubresource, MemorySegment dstOffset) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource).dstOffset(dstOffset);
-    }
-
-    /// Allocates a `VkImageCopy` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffset `srcOffset`
-    /// @param dstSubresource `dstSubresource`
-    /// @return the allocated `VkImageCopy`
-    public static VkImageCopy allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffset, MemorySegment dstSubresource) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffset(srcOffset).dstSubresource(dstSubresource);
-    }
-
-    /// Allocates a `VkImageCopy` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @param srcOffset `srcOffset`
-    /// @return the allocated `VkImageCopy`
-    public static VkImageCopy allocInit(SegmentAllocator allocator, MemorySegment srcSubresource, MemorySegment srcOffset) {
-        return alloc(allocator).srcSubresource(srcSubresource).srcOffset(srcOffset);
-    }
-
-    /// Allocates a `VkImageCopy` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param srcSubresource `srcSubresource`
-    /// @return the allocated `VkImageCopy`
-    public static VkImageCopy allocInit(SegmentAllocator allocator, MemorySegment srcSubresource) {
-        return alloc(allocator).srcSubresource(srcSubresource);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -109,56 +109,6 @@ public final class VkImageFormatProperties extends GroupType {
     /// @return the allocated `VkImageFormatProperties`
     public static VkImageFormatProperties alloc(SegmentAllocator allocator, long count) { return new VkImageFormatProperties(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param maxExtent `maxExtent`
-    /// @param maxMipLevels `maxMipLevels`
-    /// @param maxArrayLayers `maxArrayLayers`
-    /// @param sampleCounts `sampleCounts`
-    /// @param maxResourceSize `maxResourceSize`
-    /// @return the allocated `VkImageFormatProperties`
-    public static VkImageFormatProperties allocInit(SegmentAllocator allocator, MemorySegment maxExtent, int maxMipLevels, int maxArrayLayers, int sampleCounts, long maxResourceSize) {
-        return alloc(allocator).maxExtent(maxExtent).maxMipLevels(maxMipLevels).maxArrayLayers(maxArrayLayers).sampleCounts(sampleCounts).maxResourceSize(maxResourceSize);
-    }
-
-    /// Allocates a `VkImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param maxExtent `maxExtent`
-    /// @param maxMipLevels `maxMipLevels`
-    /// @param maxArrayLayers `maxArrayLayers`
-    /// @param sampleCounts `sampleCounts`
-    /// @return the allocated `VkImageFormatProperties`
-    public static VkImageFormatProperties allocInit(SegmentAllocator allocator, MemorySegment maxExtent, int maxMipLevels, int maxArrayLayers, int sampleCounts) {
-        return alloc(allocator).maxExtent(maxExtent).maxMipLevels(maxMipLevels).maxArrayLayers(maxArrayLayers).sampleCounts(sampleCounts);
-    }
-
-    /// Allocates a `VkImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param maxExtent `maxExtent`
-    /// @param maxMipLevels `maxMipLevels`
-    /// @param maxArrayLayers `maxArrayLayers`
-    /// @return the allocated `VkImageFormatProperties`
-    public static VkImageFormatProperties allocInit(SegmentAllocator allocator, MemorySegment maxExtent, int maxMipLevels, int maxArrayLayers) {
-        return alloc(allocator).maxExtent(maxExtent).maxMipLevels(maxMipLevels).maxArrayLayers(maxArrayLayers);
-    }
-
-    /// Allocates a `VkImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param maxExtent `maxExtent`
-    /// @param maxMipLevels `maxMipLevels`
-    /// @return the allocated `VkImageFormatProperties`
-    public static VkImageFormatProperties allocInit(SegmentAllocator allocator, MemorySegment maxExtent, int maxMipLevels) {
-        return alloc(allocator).maxExtent(maxExtent).maxMipLevels(maxMipLevels);
-    }
-
-    /// Allocates a `VkImageFormatProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param maxExtent `maxExtent`
-    /// @return the allocated `VkImageFormatProperties`
-    public static VkImageFormatProperties allocInit(SegmentAllocator allocator, MemorySegment maxExtent) {
-        return alloc(allocator).maxExtent(maxExtent);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -111,56 +111,6 @@ public final class VkSubpassDescriptionDepthStencilResolve extends GroupType {
     /// @return the allocated `VkSubpassDescriptionDepthStencilResolve`
     public static VkSubpassDescriptionDepthStencilResolve alloc(SegmentAllocator allocator, long count) { return new VkSubpassDescriptionDepthStencilResolve(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSubpassDescriptionDepthStencilResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param depthResolveMode `depthResolveMode`
-    /// @param stencilResolveMode `stencilResolveMode`
-    /// @param pDepthStencilResolveAttachment `pDepthStencilResolveAttachment`
-    /// @return the allocated `VkSubpassDescriptionDepthStencilResolve`
-    public static VkSubpassDescriptionDepthStencilResolve allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthResolveMode, int stencilResolveMode, MemorySegment pDepthStencilResolveAttachment) {
-        return alloc(allocator).sType(sType).pNext(pNext).depthResolveMode(depthResolveMode).stencilResolveMode(stencilResolveMode).pDepthStencilResolveAttachment(pDepthStencilResolveAttachment);
-    }
-
-    /// Allocates a `VkSubpassDescriptionDepthStencilResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param depthResolveMode `depthResolveMode`
-    /// @param stencilResolveMode `stencilResolveMode`
-    /// @return the allocated `VkSubpassDescriptionDepthStencilResolve`
-    public static VkSubpassDescriptionDepthStencilResolve allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthResolveMode, int stencilResolveMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).depthResolveMode(depthResolveMode).stencilResolveMode(stencilResolveMode);
-    }
-
-    /// Allocates a `VkSubpassDescriptionDepthStencilResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param depthResolveMode `depthResolveMode`
-    /// @return the allocated `VkSubpassDescriptionDepthStencilResolve`
-    public static VkSubpassDescriptionDepthStencilResolve allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthResolveMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).depthResolveMode(depthResolveMode);
-    }
-
-    /// Allocates a `VkSubpassDescriptionDepthStencilResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSubpassDescriptionDepthStencilResolve`
-    public static VkSubpassDescriptionDepthStencilResolve allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSubpassDescriptionDepthStencilResolve` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSubpassDescriptionDepthStencilResolve`
-    public static VkSubpassDescriptionDepthStencilResolve allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

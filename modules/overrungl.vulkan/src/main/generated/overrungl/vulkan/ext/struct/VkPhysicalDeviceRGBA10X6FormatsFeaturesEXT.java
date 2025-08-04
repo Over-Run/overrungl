@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT extends GroupType 
     /// @return the allocated `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`
     public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param formatRgba10x6WithoutYCbCrSampler `formatRgba10x6WithoutYCbCrSampler`
-    /// @return the allocated `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`
-    public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int formatRgba10x6WithoutYCbCrSampler) {
-        return alloc(allocator).sType(sType).pNext(pNext).formatRgba10x6WithoutYCbCrSampler(formatRgba10x6WithoutYCbCrSampler);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`
-    public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT`
-    public static VkPhysicalDeviceRGBA10X6FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

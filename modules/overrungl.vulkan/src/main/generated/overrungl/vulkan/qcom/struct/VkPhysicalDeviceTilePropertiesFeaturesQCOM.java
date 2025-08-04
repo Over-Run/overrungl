@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceTilePropertiesFeaturesQCOM extends GroupType 
     /// @return the allocated `VkPhysicalDeviceTilePropertiesFeaturesQCOM`
     public static VkPhysicalDeviceTilePropertiesFeaturesQCOM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceTilePropertiesFeaturesQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceTilePropertiesFeaturesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tileProperties `tileProperties`
-    /// @return the allocated `VkPhysicalDeviceTilePropertiesFeaturesQCOM`
-    public static VkPhysicalDeviceTilePropertiesFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tileProperties) {
-        return alloc(allocator).sType(sType).pNext(pNext).tileProperties(tileProperties);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTilePropertiesFeaturesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceTilePropertiesFeaturesQCOM`
-    public static VkPhysicalDeviceTilePropertiesFeaturesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceTilePropertiesFeaturesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceTilePropertiesFeaturesQCOM`
-    public static VkPhysicalDeviceTilePropertiesFeaturesQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

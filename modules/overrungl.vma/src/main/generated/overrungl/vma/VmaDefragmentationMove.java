@@ -95,33 +95,6 @@ public final class VmaDefragmentationMove extends GroupType {
     /// @return the allocated `VmaDefragmentationMove`
     public static VmaDefragmentationMove alloc(SegmentAllocator allocator, long count) { return new VmaDefragmentationMove(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VmaDefragmentationMove` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param operation `operation`
-    /// @param srcAllocation `srcAllocation`
-    /// @param dstTmpAllocation `dstTmpAllocation`
-    /// @return the allocated `VmaDefragmentationMove`
-    public static VmaDefragmentationMove allocInit(SegmentAllocator allocator, int operation, MemorySegment srcAllocation, MemorySegment dstTmpAllocation) {
-        return alloc(allocator).operation(operation).srcAllocation(srcAllocation).dstTmpAllocation(dstTmpAllocation);
-    }
-
-    /// Allocates a `VmaDefragmentationMove` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param operation `operation`
-    /// @param srcAllocation `srcAllocation`
-    /// @return the allocated `VmaDefragmentationMove`
-    public static VmaDefragmentationMove allocInit(SegmentAllocator allocator, int operation, MemorySegment srcAllocation) {
-        return alloc(allocator).operation(operation).srcAllocation(srcAllocation);
-    }
-
-    /// Allocates a `VmaDefragmentationMove` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param operation `operation`
-    /// @return the allocated `VmaDefragmentationMove`
-    public static VmaDefragmentationMove allocInit(SegmentAllocator allocator, int operation) {
-        return alloc(allocator).operation(operation);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

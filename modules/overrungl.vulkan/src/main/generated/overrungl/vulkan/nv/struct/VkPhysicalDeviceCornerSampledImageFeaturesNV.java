@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceCornerSampledImageFeaturesNV extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceCornerSampledImageFeaturesNV`
     public static VkPhysicalDeviceCornerSampledImageFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCornerSampledImageFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceCornerSampledImageFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param cornerSampledImage `cornerSampledImage`
-    /// @return the allocated `VkPhysicalDeviceCornerSampledImageFeaturesNV`
-    public static VkPhysicalDeviceCornerSampledImageFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cornerSampledImage) {
-        return alloc(allocator).sType(sType).pNext(pNext).cornerSampledImage(cornerSampledImage);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCornerSampledImageFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceCornerSampledImageFeaturesNV`
-    public static VkPhysicalDeviceCornerSampledImageFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCornerSampledImageFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceCornerSampledImageFeaturesNV`
-    public static VkPhysicalDeviceCornerSampledImageFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

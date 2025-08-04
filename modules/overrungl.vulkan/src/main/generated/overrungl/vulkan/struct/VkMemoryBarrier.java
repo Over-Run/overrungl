@@ -103,44 +103,6 @@ public final class VkMemoryBarrier extends GroupType {
     /// @return the allocated `VkMemoryBarrier`
     public static VkMemoryBarrier alloc(SegmentAllocator allocator, long count) { return new VkMemoryBarrier(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryBarrier` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcAccessMask `srcAccessMask`
-    /// @param dstAccessMask `dstAccessMask`
-    /// @return the allocated `VkMemoryBarrier`
-    public static VkMemoryBarrier allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcAccessMask, int dstAccessMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcAccessMask(srcAccessMask).dstAccessMask(dstAccessMask);
-    }
-
-    /// Allocates a `VkMemoryBarrier` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcAccessMask `srcAccessMask`
-    /// @return the allocated `VkMemoryBarrier`
-    public static VkMemoryBarrier allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int srcAccessMask) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcAccessMask(srcAccessMask);
-    }
-
-    /// Allocates a `VkMemoryBarrier` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryBarrier`
-    public static VkMemoryBarrier allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryBarrier` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryBarrier`
-    public static VkMemoryBarrier allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

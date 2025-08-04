@@ -111,56 +111,6 @@ public final class VkDeviceFaultCountsEXT extends GroupType {
     /// @return the allocated `VkDeviceFaultCountsEXT`
     public static VkDeviceFaultCountsEXT alloc(SegmentAllocator allocator, long count) { return new VkDeviceFaultCountsEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceFaultCountsEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param addressInfoCount `addressInfoCount`
-    /// @param vendorInfoCount `vendorInfoCount`
-    /// @param vendorBinarySize `vendorBinarySize`
-    /// @return the allocated `VkDeviceFaultCountsEXT`
-    public static VkDeviceFaultCountsEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int addressInfoCount, int vendorInfoCount, long vendorBinarySize) {
-        return alloc(allocator).sType(sType).pNext(pNext).addressInfoCount(addressInfoCount).vendorInfoCount(vendorInfoCount).vendorBinarySize(vendorBinarySize);
-    }
-
-    /// Allocates a `VkDeviceFaultCountsEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param addressInfoCount `addressInfoCount`
-    /// @param vendorInfoCount `vendorInfoCount`
-    /// @return the allocated `VkDeviceFaultCountsEXT`
-    public static VkDeviceFaultCountsEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int addressInfoCount, int vendorInfoCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).addressInfoCount(addressInfoCount).vendorInfoCount(vendorInfoCount);
-    }
-
-    /// Allocates a `VkDeviceFaultCountsEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param addressInfoCount `addressInfoCount`
-    /// @return the allocated `VkDeviceFaultCountsEXT`
-    public static VkDeviceFaultCountsEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int addressInfoCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).addressInfoCount(addressInfoCount);
-    }
-
-    /// Allocates a `VkDeviceFaultCountsEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceFaultCountsEXT`
-    public static VkDeviceFaultCountsEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceFaultCountsEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceFaultCountsEXT`
-    public static VkDeviceFaultCountsEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

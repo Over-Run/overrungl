@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceShaderTileImageFeaturesEXT extends GroupType 
     /// @return the allocated `VkPhysicalDeviceShaderTileImageFeaturesEXT`
     public static VkPhysicalDeviceShaderTileImageFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceShaderTileImageFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderTileImageColorReadAccess `shaderTileImageColorReadAccess`
-    /// @param shaderTileImageDepthReadAccess `shaderTileImageDepthReadAccess`
-    /// @param shaderTileImageStencilReadAccess `shaderTileImageStencilReadAccess`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImageFeaturesEXT`
-    public static VkPhysicalDeviceShaderTileImageFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderTileImageColorReadAccess, int shaderTileImageDepthReadAccess, int shaderTileImageStencilReadAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderTileImageColorReadAccess(shaderTileImageColorReadAccess).shaderTileImageDepthReadAccess(shaderTileImageDepthReadAccess).shaderTileImageStencilReadAccess(shaderTileImageStencilReadAccess);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderTileImageColorReadAccess `shaderTileImageColorReadAccess`
-    /// @param shaderTileImageDepthReadAccess `shaderTileImageDepthReadAccess`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImageFeaturesEXT`
-    public static VkPhysicalDeviceShaderTileImageFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderTileImageColorReadAccess, int shaderTileImageDepthReadAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderTileImageColorReadAccess(shaderTileImageColorReadAccess).shaderTileImageDepthReadAccess(shaderTileImageDepthReadAccess);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderTileImageColorReadAccess `shaderTileImageColorReadAccess`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImageFeaturesEXT`
-    public static VkPhysicalDeviceShaderTileImageFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderTileImageColorReadAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderTileImageColorReadAccess(shaderTileImageColorReadAccess);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImageFeaturesEXT`
-    public static VkPhysicalDeviceShaderTileImageFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceShaderTileImageFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceShaderTileImageFeaturesEXT`
-    public static VkPhysicalDeviceShaderTileImageFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

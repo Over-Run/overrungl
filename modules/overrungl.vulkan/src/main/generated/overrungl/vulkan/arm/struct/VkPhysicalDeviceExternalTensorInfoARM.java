@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceExternalTensorInfoARM extends GroupType {
     /// @return the allocated `VkPhysicalDeviceExternalTensorInfoARM`
     public static VkPhysicalDeviceExternalTensorInfoARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceExternalTensorInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceExternalTensorInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param pDescription `pDescription`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkPhysicalDeviceExternalTensorInfoARM`
-    public static VkPhysicalDeviceExternalTensorInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long flags, MemorySegment pDescription, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pDescription(pDescription).handleType(handleType);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalTensorInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param pDescription `pDescription`
-    /// @return the allocated `VkPhysicalDeviceExternalTensorInfoARM`
-    public static VkPhysicalDeviceExternalTensorInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long flags, MemorySegment pDescription) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pDescription(pDescription);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalTensorInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkPhysicalDeviceExternalTensorInfoARM`
-    public static VkPhysicalDeviceExternalTensorInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalTensorInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceExternalTensorInfoARM`
-    public static VkPhysicalDeviceExternalTensorInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceExternalTensorInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceExternalTensorInfoARM`
-    public static VkPhysicalDeviceExternalTensorInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

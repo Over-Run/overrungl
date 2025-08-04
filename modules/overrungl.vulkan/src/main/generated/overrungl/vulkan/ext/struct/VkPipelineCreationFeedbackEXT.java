@@ -87,23 +87,6 @@ public final class VkPipelineCreationFeedbackEXT extends GroupType {
     /// @return the allocated `VkPipelineCreationFeedbackEXT`
     public static VkPipelineCreationFeedbackEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineCreationFeedbackEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCreationFeedbackEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param duration `duration`
-    /// @return the allocated `VkPipelineCreationFeedbackEXT`
-    public static VkPipelineCreationFeedbackEXT allocInit(SegmentAllocator allocator, int flags, long duration) {
-        return alloc(allocator).flags(flags).duration(duration);
-    }
-
-    /// Allocates a `VkPipelineCreationFeedbackEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @return the allocated `VkPipelineCreationFeedbackEXT`
-    public static VkPipelineCreationFeedbackEXT allocInit(SegmentAllocator allocator, int flags) {
-        return alloc(allocator).flags(flags);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

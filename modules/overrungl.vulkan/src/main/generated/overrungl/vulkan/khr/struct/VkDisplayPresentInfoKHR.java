@@ -107,56 +107,6 @@ public final class VkDisplayPresentInfoKHR extends GroupType {
     /// @return the allocated `VkDisplayPresentInfoKHR`
     public static VkDisplayPresentInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPresentInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDisplayPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcRect `srcRect`
-    /// @param dstRect `dstRect`
-    /// @param persistent `persistent`
-    /// @return the allocated `VkDisplayPresentInfoKHR`
-    public static VkDisplayPresentInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcRect, MemorySegment dstRect, int persistent) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcRect(srcRect).dstRect(dstRect).persistent(persistent);
-    }
-
-    /// Allocates a `VkDisplayPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcRect `srcRect`
-    /// @param dstRect `dstRect`
-    /// @return the allocated `VkDisplayPresentInfoKHR`
-    public static VkDisplayPresentInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcRect, MemorySegment dstRect) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcRect(srcRect).dstRect(dstRect);
-    }
-
-    /// Allocates a `VkDisplayPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param srcRect `srcRect`
-    /// @return the allocated `VkDisplayPresentInfoKHR`
-    public static VkDisplayPresentInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment srcRect) {
-        return alloc(allocator).sType(sType).pNext(pNext).srcRect(srcRect);
-    }
-
-    /// Allocates a `VkDisplayPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDisplayPresentInfoKHR`
-    public static VkDisplayPresentInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDisplayPresentInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDisplayPresentInfoKHR`
-    public static VkDisplayPresentInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -111,56 +111,6 @@ public final class VkPipelineCoverageToColorStateCreateInfoNV extends GroupType 
     /// @return the allocated `VkPipelineCoverageToColorStateCreateInfoNV`
     public static VkPipelineCoverageToColorStateCreateInfoNV alloc(SegmentAllocator allocator, long count) { return new VkPipelineCoverageToColorStateCreateInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param coverageToColorEnable `coverageToColorEnable`
-    /// @param coverageToColorLocation `coverageToColorLocation`
-    /// @return the allocated `VkPipelineCoverageToColorStateCreateInfoNV`
-    public static VkPipelineCoverageToColorStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int coverageToColorEnable, int coverageToColorLocation) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).coverageToColorEnable(coverageToColorEnable).coverageToColorLocation(coverageToColorLocation);
-    }
-
-    /// Allocates a `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param coverageToColorEnable `coverageToColorEnable`
-    /// @return the allocated `VkPipelineCoverageToColorStateCreateInfoNV`
-    public static VkPipelineCoverageToColorStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int coverageToColorEnable) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).coverageToColorEnable(coverageToColorEnable);
-    }
-
-    /// Allocates a `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkPipelineCoverageToColorStateCreateInfoNV`
-    public static VkPipelineCoverageToColorStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineCoverageToColorStateCreateInfoNV`
-    public static VkPipelineCoverageToColorStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineCoverageToColorStateCreateInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineCoverageToColorStateCreateInfoNV`
-    public static VkPipelineCoverageToColorStateCreateInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

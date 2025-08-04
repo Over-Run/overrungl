@@ -95,33 +95,6 @@ public final class VkDeviceQueueShaderCoreControlCreateInfoARM extends GroupType
     /// @return the allocated `VkDeviceQueueShaderCoreControlCreateInfoARM`
     public static VkDeviceQueueShaderCoreControlCreateInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDeviceQueueShaderCoreControlCreateInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderCoreCount `shaderCoreCount`
-    /// @return the allocated `VkDeviceQueueShaderCoreControlCreateInfoARM`
-    public static VkDeviceQueueShaderCoreControlCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderCoreCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderCoreCount(shaderCoreCount);
-    }
-
-    /// Allocates a `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceQueueShaderCoreControlCreateInfoARM`
-    public static VkDeviceQueueShaderCoreControlCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceQueueShaderCoreControlCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceQueueShaderCoreControlCreateInfoARM`
-    public static VkDeviceQueueShaderCoreControlCreateInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -111,56 +111,6 @@ public final class VkFaultCallbackInfo extends GroupType {
     /// @return the allocated `VkFaultCallbackInfo`
     public static VkFaultCallbackInfo alloc(SegmentAllocator allocator, long count) { return new VkFaultCallbackInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkFaultCallbackInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param faultCount `faultCount`
-    /// @param pFaults `pFaults`
-    /// @param pfnFaultCallback `pfnFaultCallback`
-    /// @return the allocated `VkFaultCallbackInfo`
-    public static VkFaultCallbackInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int faultCount, MemorySegment pFaults, MemorySegment pfnFaultCallback) {
-        return alloc(allocator).sType(sType).pNext(pNext).faultCount(faultCount).pFaults(pFaults).pfnFaultCallback(pfnFaultCallback);
-    }
-
-    /// Allocates a `VkFaultCallbackInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param faultCount `faultCount`
-    /// @param pFaults `pFaults`
-    /// @return the allocated `VkFaultCallbackInfo`
-    public static VkFaultCallbackInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int faultCount, MemorySegment pFaults) {
-        return alloc(allocator).sType(sType).pNext(pNext).faultCount(faultCount).pFaults(pFaults);
-    }
-
-    /// Allocates a `VkFaultCallbackInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param faultCount `faultCount`
-    /// @return the allocated `VkFaultCallbackInfo`
-    public static VkFaultCallbackInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int faultCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).faultCount(faultCount);
-    }
-
-    /// Allocates a `VkFaultCallbackInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkFaultCallbackInfo`
-    public static VkFaultCallbackInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkFaultCallbackInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkFaultCallbackInfo`
-    public static VkFaultCallbackInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

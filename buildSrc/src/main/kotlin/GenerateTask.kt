@@ -19,15 +19,14 @@ import org.gradle.api.tasks.SourceSetContainer
 import org.gradle.jvm.toolchain.JavaLanguageVersion
 import org.gradle.kotlin.dsl.get
 import org.gradle.kotlin.dsl.getByName
-import org.gradle.kotlin.dsl.provideDelegate
 
 /**
  * @author squid233
  * @since 0.1.0
  */
 abstract class GenerateTask : JavaExec() {
-    private val jdkVersion: String by project
-    private val jdkEnablePreview: String by project
+    private val jdkVersion: String = project.property("jdkVersion") as String
+    private val jdkEnablePreview: String = project.property("jdkEnablePreview") as String
 
     init {
         classpath(project.extensions.getByName<SourceSetContainer>("sourceSets")["main"].runtimeClasspath)

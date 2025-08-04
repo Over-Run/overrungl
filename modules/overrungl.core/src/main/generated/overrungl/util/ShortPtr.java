@@ -79,14 +79,6 @@ public final class ShortPtr extends GroupType {
     /// @return the allocated `ShortPtr`
     public static ShortPtr alloc(SegmentAllocator allocator, long count) { return new ShortPtr(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `ShortPtr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param value `value`
-    /// @return the allocated `ShortPtr`
-    public static ShortPtr allocInit(SegmentAllocator allocator, short value) {
-        return alloc(allocator).value(value);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

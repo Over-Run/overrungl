@@ -87,23 +87,6 @@ public final class VkShadingRatePaletteNV extends GroupType {
     /// @return the allocated `VkShadingRatePaletteNV`
     public static VkShadingRatePaletteNV alloc(SegmentAllocator allocator, long count) { return new VkShadingRatePaletteNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkShadingRatePaletteNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param shadingRatePaletteEntryCount `shadingRatePaletteEntryCount`
-    /// @param pShadingRatePaletteEntries `pShadingRatePaletteEntries`
-    /// @return the allocated `VkShadingRatePaletteNV`
-    public static VkShadingRatePaletteNV allocInit(SegmentAllocator allocator, int shadingRatePaletteEntryCount, MemorySegment pShadingRatePaletteEntries) {
-        return alloc(allocator).shadingRatePaletteEntryCount(shadingRatePaletteEntryCount).pShadingRatePaletteEntries(pShadingRatePaletteEntries);
-    }
-
-    /// Allocates a `VkShadingRatePaletteNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param shadingRatePaletteEntryCount `shadingRatePaletteEntryCount`
-    /// @return the allocated `VkShadingRatePaletteNV`
-    public static VkShadingRatePaletteNV allocInit(SegmentAllocator allocator, int shadingRatePaletteEntryCount) {
-        return alloc(allocator).shadingRatePaletteEntryCount(shadingRatePaletteEntryCount);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

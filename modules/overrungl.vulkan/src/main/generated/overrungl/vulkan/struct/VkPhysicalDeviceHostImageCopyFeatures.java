@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceHostImageCopyFeatures extends GroupType {
     /// @return the allocated `VkPhysicalDeviceHostImageCopyFeatures`
     public static VkPhysicalDeviceHostImageCopyFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceHostImageCopyFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceHostImageCopyFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param hostImageCopy `hostImageCopy`
-    /// @return the allocated `VkPhysicalDeviceHostImageCopyFeatures`
-    public static VkPhysicalDeviceHostImageCopyFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hostImageCopy) {
-        return alloc(allocator).sType(sType).pNext(pNext).hostImageCopy(hostImageCopy);
-    }
-
-    /// Allocates a `VkPhysicalDeviceHostImageCopyFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceHostImageCopyFeatures`
-    public static VkPhysicalDeviceHostImageCopyFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceHostImageCopyFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceHostImageCopyFeatures`
-    public static VkPhysicalDeviceHostImageCopyFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

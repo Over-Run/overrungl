@@ -103,44 +103,6 @@ public final class VkPhysicalDevice4444FormatsFeaturesEXT extends GroupType {
     /// @return the allocated `VkPhysicalDevice4444FormatsFeaturesEXT`
     public static VkPhysicalDevice4444FormatsFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevice4444FormatsFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevice4444FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param formatA4R4G4B4 `formatA4R4G4B4`
-    /// @param formatA4B4G4R4 `formatA4B4G4R4`
-    /// @return the allocated `VkPhysicalDevice4444FormatsFeaturesEXT`
-    public static VkPhysicalDevice4444FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int formatA4R4G4B4, int formatA4B4G4R4) {
-        return alloc(allocator).sType(sType).pNext(pNext).formatA4R4G4B4(formatA4R4G4B4).formatA4B4G4R4(formatA4B4G4R4);
-    }
-
-    /// Allocates a `VkPhysicalDevice4444FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param formatA4R4G4B4 `formatA4R4G4B4`
-    /// @return the allocated `VkPhysicalDevice4444FormatsFeaturesEXT`
-    public static VkPhysicalDevice4444FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int formatA4R4G4B4) {
-        return alloc(allocator).sType(sType).pNext(pNext).formatA4R4G4B4(formatA4R4G4B4);
-    }
-
-    /// Allocates a `VkPhysicalDevice4444FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevice4444FormatsFeaturesEXT`
-    public static VkPhysicalDevice4444FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevice4444FormatsFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevice4444FormatsFeaturesEXT`
-    public static VkPhysicalDevice4444FormatsFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

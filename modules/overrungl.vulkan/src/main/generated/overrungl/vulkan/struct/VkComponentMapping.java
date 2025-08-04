@@ -103,44 +103,6 @@ public final class VkComponentMapping extends GroupType {
     /// @return the allocated `VkComponentMapping`
     public static VkComponentMapping alloc(SegmentAllocator allocator, long count) { return new VkComponentMapping(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkComponentMapping` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param r `r`
-    /// @param g `g`
-    /// @param b `b`
-    /// @param a `a`
-    /// @return the allocated `VkComponentMapping`
-    public static VkComponentMapping allocInit(SegmentAllocator allocator, int r, int g, int b, int a) {
-        return alloc(allocator).r(r).g(g).b(b).a(a);
-    }
-
-    /// Allocates a `VkComponentMapping` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param r `r`
-    /// @param g `g`
-    /// @param b `b`
-    /// @return the allocated `VkComponentMapping`
-    public static VkComponentMapping allocInit(SegmentAllocator allocator, int r, int g, int b) {
-        return alloc(allocator).r(r).g(g).b(b);
-    }
-
-    /// Allocates a `VkComponentMapping` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param r `r`
-    /// @param g `g`
-    /// @return the allocated `VkComponentMapping`
-    public static VkComponentMapping allocInit(SegmentAllocator allocator, int r, int g) {
-        return alloc(allocator).r(r).g(g);
-    }
-
-    /// Allocates a `VkComponentMapping` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param r `r`
-    /// @return the allocated `VkComponentMapping`
-    public static VkComponentMapping allocInit(SegmentAllocator allocator, int r) {
-        return alloc(allocator).r(r);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

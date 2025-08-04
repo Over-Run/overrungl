@@ -103,44 +103,6 @@ public final class VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT exten
     /// @return the allocated `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`
     public static VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param primitiveTopologyListRestart `primitiveTopologyListRestart`
-    /// @param primitiveTopologyPatchListRestart `primitiveTopologyPatchListRestart`
-    /// @return the allocated `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`
-    public static VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int primitiveTopologyListRestart, int primitiveTopologyPatchListRestart) {
-        return alloc(allocator).sType(sType).pNext(pNext).primitiveTopologyListRestart(primitiveTopologyListRestart).primitiveTopologyPatchListRestart(primitiveTopologyPatchListRestart);
-    }
-
-    /// Allocates a `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param primitiveTopologyListRestart `primitiveTopologyListRestart`
-    /// @return the allocated `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`
-    public static VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int primitiveTopologyListRestart) {
-        return alloc(allocator).sType(sType).pNext(pNext).primitiveTopologyListRestart(primitiveTopologyListRestart);
-    }
-
-    /// Allocates a `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`
-    public static VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT`
-    public static VkPhysicalDevicePrimitiveTopologyListRestartFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

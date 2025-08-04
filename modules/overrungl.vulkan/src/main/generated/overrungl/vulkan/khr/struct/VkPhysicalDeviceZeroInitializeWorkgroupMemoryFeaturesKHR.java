@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR exte
     /// @return the allocated `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR`
     public static VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param shaderZeroInitializeWorkgroupMemory `shaderZeroInitializeWorkgroupMemory`
-    /// @return the allocated `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR`
-    public static VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int shaderZeroInitializeWorkgroupMemory) {
-        return alloc(allocator).sType(sType).pNext(pNext).shaderZeroInitializeWorkgroupMemory(shaderZeroInitializeWorkgroupMemory);
-    }
-
-    /// Allocates a `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR`
-    public static VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR`
-    public static VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

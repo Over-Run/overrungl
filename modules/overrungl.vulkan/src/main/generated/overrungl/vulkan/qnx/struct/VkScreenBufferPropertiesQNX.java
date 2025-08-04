@@ -103,44 +103,6 @@ public final class VkScreenBufferPropertiesQNX extends GroupType {
     /// @return the allocated `VkScreenBufferPropertiesQNX`
     public static VkScreenBufferPropertiesQNX alloc(SegmentAllocator allocator, long count) { return new VkScreenBufferPropertiesQNX(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkScreenBufferPropertiesQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param allocationSize `allocationSize`
-    /// @param memoryTypeBits `memoryTypeBits`
-    /// @return the allocated `VkScreenBufferPropertiesQNX`
-    public static VkScreenBufferPropertiesQNX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long allocationSize, int memoryTypeBits) {
-        return alloc(allocator).sType(sType).pNext(pNext).allocationSize(allocationSize).memoryTypeBits(memoryTypeBits);
-    }
-
-    /// Allocates a `VkScreenBufferPropertiesQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param allocationSize `allocationSize`
-    /// @return the allocated `VkScreenBufferPropertiesQNX`
-    public static VkScreenBufferPropertiesQNX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long allocationSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).allocationSize(allocationSize);
-    }
-
-    /// Allocates a `VkScreenBufferPropertiesQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkScreenBufferPropertiesQNX`
-    public static VkScreenBufferPropertiesQNX allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkScreenBufferPropertiesQNX` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkScreenBufferPropertiesQNX`
-    public static VkScreenBufferPropertiesQNX allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkVertexInputBindingDescription extends GroupType {
     /// @return the allocated `VkVertexInputBindingDescription`
     public static VkVertexInputBindingDescription alloc(SegmentAllocator allocator, long count) { return new VkVertexInputBindingDescription(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVertexInputBindingDescription` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @param stride `stride`
-    /// @param inputRate `inputRate`
-    /// @return the allocated `VkVertexInputBindingDescription`
-    public static VkVertexInputBindingDescription allocInit(SegmentAllocator allocator, int binding, int stride, int inputRate) {
-        return alloc(allocator).binding(binding).stride(stride).inputRate(inputRate);
-    }
-
-    /// Allocates a `VkVertexInputBindingDescription` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @param stride `stride`
-    /// @return the allocated `VkVertexInputBindingDescription`
-    public static VkVertexInputBindingDescription allocInit(SegmentAllocator allocator, int binding, int stride) {
-        return alloc(allocator).binding(binding).stride(stride);
-    }
-
-    /// Allocates a `VkVertexInputBindingDescription` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param binding `binding`
-    /// @return the allocated `VkVertexInputBindingDescription`
-    public static VkVertexInputBindingDescription allocInit(SegmentAllocator allocator, int binding) {
-        return alloc(allocator).binding(binding);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

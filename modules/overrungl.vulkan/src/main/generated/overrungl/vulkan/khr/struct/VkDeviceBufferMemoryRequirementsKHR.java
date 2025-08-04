@@ -95,33 +95,6 @@ public final class VkDeviceBufferMemoryRequirementsKHR extends GroupType {
     /// @return the allocated `VkDeviceBufferMemoryRequirementsKHR`
     public static VkDeviceBufferMemoryRequirementsKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceBufferMemoryRequirementsKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceBufferMemoryRequirementsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pCreateInfo `pCreateInfo`
-    /// @return the allocated `VkDeviceBufferMemoryRequirementsKHR`
-    public static VkDeviceBufferMemoryRequirementsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pCreateInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).pCreateInfo(pCreateInfo);
-    }
-
-    /// Allocates a `VkDeviceBufferMemoryRequirementsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceBufferMemoryRequirementsKHR`
-    public static VkDeviceBufferMemoryRequirementsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceBufferMemoryRequirementsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceBufferMemoryRequirementsKHR`
-    public static VkDeviceBufferMemoryRequirementsKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

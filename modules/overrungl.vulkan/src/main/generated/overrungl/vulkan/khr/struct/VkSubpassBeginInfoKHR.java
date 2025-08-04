@@ -95,33 +95,6 @@ public final class VkSubpassBeginInfoKHR extends GroupType {
     /// @return the allocated `VkSubpassBeginInfoKHR`
     public static VkSubpassBeginInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkSubpassBeginInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSubpassBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param contents `contents`
-    /// @return the allocated `VkSubpassBeginInfoKHR`
-    public static VkSubpassBeginInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int contents) {
-        return alloc(allocator).sType(sType).pNext(pNext).contents(contents);
-    }
-
-    /// Allocates a `VkSubpassBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSubpassBeginInfoKHR`
-    public static VkSubpassBeginInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSubpassBeginInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSubpassBeginInfoKHR`
-    public static VkSubpassBeginInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

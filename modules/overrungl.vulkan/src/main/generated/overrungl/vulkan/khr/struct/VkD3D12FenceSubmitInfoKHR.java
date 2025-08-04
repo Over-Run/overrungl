@@ -119,69 +119,6 @@ public final class VkD3D12FenceSubmitInfoKHR extends GroupType {
     /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
     public static VkD3D12FenceSubmitInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkD3D12FenceSubmitInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkD3D12FenceSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param waitSemaphoreValuesCount `waitSemaphoreValuesCount`
-    /// @param pWaitSemaphoreValues `pWaitSemaphoreValues`
-    /// @param signalSemaphoreValuesCount `signalSemaphoreValuesCount`
-    /// @param pSignalSemaphoreValues `pSignalSemaphoreValues`
-    /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
-    public static VkD3D12FenceSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreValuesCount, MemorySegment pWaitSemaphoreValues, int signalSemaphoreValuesCount, MemorySegment pSignalSemaphoreValues) {
-        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreValuesCount(waitSemaphoreValuesCount).pWaitSemaphoreValues(pWaitSemaphoreValues).signalSemaphoreValuesCount(signalSemaphoreValuesCount).pSignalSemaphoreValues(pSignalSemaphoreValues);
-    }
-
-    /// Allocates a `VkD3D12FenceSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param waitSemaphoreValuesCount `waitSemaphoreValuesCount`
-    /// @param pWaitSemaphoreValues `pWaitSemaphoreValues`
-    /// @param signalSemaphoreValuesCount `signalSemaphoreValuesCount`
-    /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
-    public static VkD3D12FenceSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreValuesCount, MemorySegment pWaitSemaphoreValues, int signalSemaphoreValuesCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreValuesCount(waitSemaphoreValuesCount).pWaitSemaphoreValues(pWaitSemaphoreValues).signalSemaphoreValuesCount(signalSemaphoreValuesCount);
-    }
-
-    /// Allocates a `VkD3D12FenceSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param waitSemaphoreValuesCount `waitSemaphoreValuesCount`
-    /// @param pWaitSemaphoreValues `pWaitSemaphoreValues`
-    /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
-    public static VkD3D12FenceSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreValuesCount, MemorySegment pWaitSemaphoreValues) {
-        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreValuesCount(waitSemaphoreValuesCount).pWaitSemaphoreValues(pWaitSemaphoreValues);
-    }
-
-    /// Allocates a `VkD3D12FenceSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param waitSemaphoreValuesCount `waitSemaphoreValuesCount`
-    /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
-    public static VkD3D12FenceSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int waitSemaphoreValuesCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).waitSemaphoreValuesCount(waitSemaphoreValuesCount);
-    }
-
-    /// Allocates a `VkD3D12FenceSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
-    public static VkD3D12FenceSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkD3D12FenceSubmitInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkD3D12FenceSubmitInfoKHR`
-    public static VkD3D12FenceSubmitInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceCudaKernelLaunchPropertiesNV extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceCudaKernelLaunchPropertiesNV`
     public static VkPhysicalDeviceCudaKernelLaunchPropertiesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCudaKernelLaunchPropertiesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceCudaKernelLaunchPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param computeCapabilityMinor `computeCapabilityMinor`
-    /// @param computeCapabilityMajor `computeCapabilityMajor`
-    /// @return the allocated `VkPhysicalDeviceCudaKernelLaunchPropertiesNV`
-    public static VkPhysicalDeviceCudaKernelLaunchPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int computeCapabilityMinor, int computeCapabilityMajor) {
-        return alloc(allocator).sType(sType).pNext(pNext).computeCapabilityMinor(computeCapabilityMinor).computeCapabilityMajor(computeCapabilityMajor);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCudaKernelLaunchPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param computeCapabilityMinor `computeCapabilityMinor`
-    /// @return the allocated `VkPhysicalDeviceCudaKernelLaunchPropertiesNV`
-    public static VkPhysicalDeviceCudaKernelLaunchPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int computeCapabilityMinor) {
-        return alloc(allocator).sType(sType).pNext(pNext).computeCapabilityMinor(computeCapabilityMinor);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCudaKernelLaunchPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceCudaKernelLaunchPropertiesNV`
-    public static VkPhysicalDeviceCudaKernelLaunchPropertiesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCudaKernelLaunchPropertiesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceCudaKernelLaunchPropertiesNV`
-    public static VkPhysicalDeviceCudaKernelLaunchPropertiesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

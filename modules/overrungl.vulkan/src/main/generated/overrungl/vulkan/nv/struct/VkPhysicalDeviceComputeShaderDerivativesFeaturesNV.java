@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceComputeShaderDerivativesFeaturesNV extends Gr
     /// @return the allocated `VkPhysicalDeviceComputeShaderDerivativesFeaturesNV`
     public static VkPhysicalDeviceComputeShaderDerivativesFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceComputeShaderDerivativesFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceComputeShaderDerivativesFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param computeDerivativeGroupQuads `computeDerivativeGroupQuads`
-    /// @param computeDerivativeGroupLinear `computeDerivativeGroupLinear`
-    /// @return the allocated `VkPhysicalDeviceComputeShaderDerivativesFeaturesNV`
-    public static VkPhysicalDeviceComputeShaderDerivativesFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int computeDerivativeGroupQuads, int computeDerivativeGroupLinear) {
-        return alloc(allocator).sType(sType).pNext(pNext).computeDerivativeGroupQuads(computeDerivativeGroupQuads).computeDerivativeGroupLinear(computeDerivativeGroupLinear);
-    }
-
-    /// Allocates a `VkPhysicalDeviceComputeShaderDerivativesFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param computeDerivativeGroupQuads `computeDerivativeGroupQuads`
-    /// @return the allocated `VkPhysicalDeviceComputeShaderDerivativesFeaturesNV`
-    public static VkPhysicalDeviceComputeShaderDerivativesFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int computeDerivativeGroupQuads) {
-        return alloc(allocator).sType(sType).pNext(pNext).computeDerivativeGroupQuads(computeDerivativeGroupQuads);
-    }
-
-    /// Allocates a `VkPhysicalDeviceComputeShaderDerivativesFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceComputeShaderDerivativesFeaturesNV`
-    public static VkPhysicalDeviceComputeShaderDerivativesFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceComputeShaderDerivativesFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceComputeShaderDerivativesFeaturesNV`
-    public static VkPhysicalDeviceComputeShaderDerivativesFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

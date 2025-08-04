@@ -95,33 +95,6 @@ public final class VkStridedDeviceAddressRegionKHR extends GroupType {
     /// @return the allocated `VkStridedDeviceAddressRegionKHR`
     public static VkStridedDeviceAddressRegionKHR alloc(SegmentAllocator allocator, long count) { return new VkStridedDeviceAddressRegionKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkStridedDeviceAddressRegionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param deviceAddress `deviceAddress`
-    /// @param stride `stride`
-    /// @param size `size`
-    /// @return the allocated `VkStridedDeviceAddressRegionKHR`
-    public static VkStridedDeviceAddressRegionKHR allocInit(SegmentAllocator allocator, long deviceAddress, long stride, long size) {
-        return alloc(allocator).deviceAddress(deviceAddress).stride(stride).size(size);
-    }
-
-    /// Allocates a `VkStridedDeviceAddressRegionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param deviceAddress `deviceAddress`
-    /// @param stride `stride`
-    /// @return the allocated `VkStridedDeviceAddressRegionKHR`
-    public static VkStridedDeviceAddressRegionKHR allocInit(SegmentAllocator allocator, long deviceAddress, long stride) {
-        return alloc(allocator).deviceAddress(deviceAddress).stride(stride);
-    }
-
-    /// Allocates a `VkStridedDeviceAddressRegionKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param deviceAddress `deviceAddress`
-    /// @return the allocated `VkStridedDeviceAddressRegionKHR`
-    public static VkStridedDeviceAddressRegionKHR allocInit(SegmentAllocator allocator, long deviceAddress) {
-        return alloc(allocator).deviceAddress(deviceAddress);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

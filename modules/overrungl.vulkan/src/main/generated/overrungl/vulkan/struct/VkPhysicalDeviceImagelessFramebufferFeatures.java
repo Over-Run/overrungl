@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceImagelessFramebufferFeatures extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceImagelessFramebufferFeatures`
     public static VkPhysicalDeviceImagelessFramebufferFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImagelessFramebufferFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceImagelessFramebufferFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param imagelessFramebuffer `imagelessFramebuffer`
-    /// @return the allocated `VkPhysicalDeviceImagelessFramebufferFeatures`
-    public static VkPhysicalDeviceImagelessFramebufferFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int imagelessFramebuffer) {
-        return alloc(allocator).sType(sType).pNext(pNext).imagelessFramebuffer(imagelessFramebuffer);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImagelessFramebufferFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceImagelessFramebufferFeatures`
-    public static VkPhysicalDeviceImagelessFramebufferFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImagelessFramebufferFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceImagelessFramebufferFeatures`
-    public static VkPhysicalDeviceImagelessFramebufferFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

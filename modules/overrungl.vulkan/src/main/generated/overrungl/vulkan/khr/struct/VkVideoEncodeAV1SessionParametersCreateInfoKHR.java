@@ -119,69 +119,6 @@ public final class VkVideoEncodeAV1SessionParametersCreateInfoKHR extends GroupT
     /// @return the allocated `VkVideoEncodeAV1SessionParametersCreateInfoKHR`
     public static VkVideoEncodeAV1SessionParametersCreateInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1SessionParametersCreateInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pStdSequenceHeader `pStdSequenceHeader`
-    /// @param pStdDecoderModelInfo `pStdDecoderModelInfo`
-    /// @param stdOperatingPointCount `stdOperatingPointCount`
-    /// @param pStdOperatingPoints `pStdOperatingPoints`
-    /// @return the allocated `VkVideoEncodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoEncodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pStdSequenceHeader, MemorySegment pStdDecoderModelInfo, int stdOperatingPointCount, MemorySegment pStdOperatingPoints) {
-        return alloc(allocator).sType(sType).pNext(pNext).pStdSequenceHeader(pStdSequenceHeader).pStdDecoderModelInfo(pStdDecoderModelInfo).stdOperatingPointCount(stdOperatingPointCount).pStdOperatingPoints(pStdOperatingPoints);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pStdSequenceHeader `pStdSequenceHeader`
-    /// @param pStdDecoderModelInfo `pStdDecoderModelInfo`
-    /// @param stdOperatingPointCount `stdOperatingPointCount`
-    /// @return the allocated `VkVideoEncodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoEncodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pStdSequenceHeader, MemorySegment pStdDecoderModelInfo, int stdOperatingPointCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).pStdSequenceHeader(pStdSequenceHeader).pStdDecoderModelInfo(pStdDecoderModelInfo).stdOperatingPointCount(stdOperatingPointCount);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pStdSequenceHeader `pStdSequenceHeader`
-    /// @param pStdDecoderModelInfo `pStdDecoderModelInfo`
-    /// @return the allocated `VkVideoEncodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoEncodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pStdSequenceHeader, MemorySegment pStdDecoderModelInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).pStdSequenceHeader(pStdSequenceHeader).pStdDecoderModelInfo(pStdDecoderModelInfo);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pStdSequenceHeader `pStdSequenceHeader`
-    /// @return the allocated `VkVideoEncodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoEncodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pStdSequenceHeader) {
-        return alloc(allocator).sType(sType).pNext(pNext).pStdSequenceHeader(pStdSequenceHeader);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoEncodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoEncodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1SessionParametersCreateInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoEncodeAV1SessionParametersCreateInfoKHR`
-    public static VkVideoEncodeAV1SessionParametersCreateInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

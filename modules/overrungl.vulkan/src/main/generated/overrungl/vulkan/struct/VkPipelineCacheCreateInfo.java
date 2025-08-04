@@ -111,56 +111,6 @@ public final class VkPipelineCacheCreateInfo extends GroupType {
     /// @return the allocated `VkPipelineCacheCreateInfo`
     public static VkPipelineCacheCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkPipelineCacheCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineCacheCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param initialDataSize `initialDataSize`
-    /// @param pInitialData `pInitialData`
-    /// @return the allocated `VkPipelineCacheCreateInfo`
-    public static VkPipelineCacheCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long initialDataSize, MemorySegment pInitialData) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).initialDataSize(initialDataSize).pInitialData(pInitialData);
-    }
-
-    /// Allocates a `VkPipelineCacheCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param initialDataSize `initialDataSize`
-    /// @return the allocated `VkPipelineCacheCreateInfo`
-    public static VkPipelineCacheCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, long initialDataSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).initialDataSize(initialDataSize);
-    }
-
-    /// Allocates a `VkPipelineCacheCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkPipelineCacheCreateInfo`
-    public static VkPipelineCacheCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkPipelineCacheCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineCacheCreateInfo`
-    public static VkPipelineCacheCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineCacheCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineCacheCreateInfo`
-    public static VkPipelineCacheCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -111,56 +111,6 @@ public final class VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT
     /// @return the allocated `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`
     public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param rasterizationOrderColorAttachmentAccess `rasterizationOrderColorAttachmentAccess`
-    /// @param rasterizationOrderDepthAttachmentAccess `rasterizationOrderDepthAttachmentAccess`
-    /// @param rasterizationOrderStencilAttachmentAccess `rasterizationOrderStencilAttachmentAccess`
-    /// @return the allocated `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`
-    public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rasterizationOrderColorAttachmentAccess, int rasterizationOrderDepthAttachmentAccess, int rasterizationOrderStencilAttachmentAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).rasterizationOrderColorAttachmentAccess(rasterizationOrderColorAttachmentAccess).rasterizationOrderDepthAttachmentAccess(rasterizationOrderDepthAttachmentAccess).rasterizationOrderStencilAttachmentAccess(rasterizationOrderStencilAttachmentAccess);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param rasterizationOrderColorAttachmentAccess `rasterizationOrderColorAttachmentAccess`
-    /// @param rasterizationOrderDepthAttachmentAccess `rasterizationOrderDepthAttachmentAccess`
-    /// @return the allocated `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`
-    public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rasterizationOrderColorAttachmentAccess, int rasterizationOrderDepthAttachmentAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).rasterizationOrderColorAttachmentAccess(rasterizationOrderColorAttachmentAccess).rasterizationOrderDepthAttachmentAccess(rasterizationOrderDepthAttachmentAccess);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param rasterizationOrderColorAttachmentAccess `rasterizationOrderColorAttachmentAccess`
-    /// @return the allocated `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`
-    public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int rasterizationOrderColorAttachmentAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).rasterizationOrderColorAttachmentAccess(rasterizationOrderColorAttachmentAccess);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`
-    public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT`
-    public static VkPhysicalDeviceRasterizationOrderAttachmentAccessFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

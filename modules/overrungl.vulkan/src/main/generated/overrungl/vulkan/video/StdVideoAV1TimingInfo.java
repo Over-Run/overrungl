@@ -101,44 +101,6 @@ public final class StdVideoAV1TimingInfo extends GroupType {
     /// @return the allocated `StdVideoAV1TimingInfo`
     public static StdVideoAV1TimingInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1TimingInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoAV1TimingInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param num_units_in_display_tick `num_units_in_display_tick`
-    /// @param time_scale `time_scale`
-    /// @param num_ticks_per_picture_minus_1 `num_ticks_per_picture_minus_1`
-    /// @return the allocated `StdVideoAV1TimingInfo`
-    public static StdVideoAV1TimingInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int num_units_in_display_tick, int time_scale, int num_ticks_per_picture_minus_1) {
-        return alloc(allocator).flags(flags).num_units_in_display_tick(num_units_in_display_tick).time_scale(time_scale).num_ticks_per_picture_minus_1(num_ticks_per_picture_minus_1);
-    }
-
-    /// Allocates a `StdVideoAV1TimingInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param num_units_in_display_tick `num_units_in_display_tick`
-    /// @param time_scale `time_scale`
-    /// @return the allocated `StdVideoAV1TimingInfo`
-    public static StdVideoAV1TimingInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int num_units_in_display_tick, int time_scale) {
-        return alloc(allocator).flags(flags).num_units_in_display_tick(num_units_in_display_tick).time_scale(time_scale);
-    }
-
-    /// Allocates a `StdVideoAV1TimingInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param num_units_in_display_tick `num_units_in_display_tick`
-    /// @return the allocated `StdVideoAV1TimingInfo`
-    public static StdVideoAV1TimingInfo allocInit(SegmentAllocator allocator, MemorySegment flags, int num_units_in_display_tick) {
-        return alloc(allocator).flags(flags).num_units_in_display_tick(num_units_in_display_tick);
-    }
-
-    /// Allocates a `StdVideoAV1TimingInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @return the allocated `StdVideoAV1TimingInfo`
-    public static StdVideoAV1TimingInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
-        return alloc(allocator).flags(flags);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

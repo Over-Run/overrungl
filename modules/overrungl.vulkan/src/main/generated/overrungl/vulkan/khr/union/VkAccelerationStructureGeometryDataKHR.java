@@ -89,30 +89,6 @@ public final class VkAccelerationStructureGeometryDataKHR extends GroupType {
     /// @return the allocated `VkAccelerationStructureGeometryDataKHR`
     public static VkAccelerationStructureGeometryDataKHR alloc(SegmentAllocator allocator, long count) { return new VkAccelerationStructureGeometryDataKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAccelerationStructureGeometryDataKHR` with the given segment allocator and `triangles`.
-    /// @param allocator the segment allocator
-    /// @param triangles `triangles`
-    /// @return the allocated `VkAccelerationStructureGeometryDataKHR`
-    public static VkAccelerationStructureGeometryDataKHR allocWith_triangles(SegmentAllocator allocator, MemorySegment triangles) {
-        return alloc(allocator).triangles(triangles);
-    }
-
-    /// Allocates a `VkAccelerationStructureGeometryDataKHR` with the given segment allocator and `aabbs`.
-    /// @param allocator the segment allocator
-    /// @param aabbs `aabbs`
-    /// @return the allocated `VkAccelerationStructureGeometryDataKHR`
-    public static VkAccelerationStructureGeometryDataKHR allocWith_aabbs(SegmentAllocator allocator, MemorySegment aabbs) {
-        return alloc(allocator).aabbs(aabbs);
-    }
-
-    /// Allocates a `VkAccelerationStructureGeometryDataKHR` with the given segment allocator and `instances`.
-    /// @param allocator the segment allocator
-    /// @param instances `instances`
-    /// @return the allocated `VkAccelerationStructureGeometryDataKHR`
-    public static VkAccelerationStructureGeometryDataKHR allocWith_instances(SegmentAllocator allocator, MemorySegment instances) {
-        return alloc(allocator).instances(instances);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

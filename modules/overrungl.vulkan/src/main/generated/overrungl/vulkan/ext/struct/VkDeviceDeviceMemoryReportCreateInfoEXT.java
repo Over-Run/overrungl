@@ -111,56 +111,6 @@ public final class VkDeviceDeviceMemoryReportCreateInfoEXT extends GroupType {
     /// @return the allocated `VkDeviceDeviceMemoryReportCreateInfoEXT`
     public static VkDeviceDeviceMemoryReportCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDeviceDeviceMemoryReportCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceDeviceMemoryReportCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param pfnUserCallback `pfnUserCallback`
-    /// @param pUserData `pUserData`
-    /// @return the allocated `VkDeviceDeviceMemoryReportCreateInfoEXT`
-    public static VkDeviceDeviceMemoryReportCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pfnUserCallback, MemorySegment pUserData) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pfnUserCallback(pfnUserCallback).pUserData(pUserData);
-    }
-
-    /// Allocates a `VkDeviceDeviceMemoryReportCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param pfnUserCallback `pfnUserCallback`
-    /// @return the allocated `VkDeviceDeviceMemoryReportCreateInfoEXT`
-    public static VkDeviceDeviceMemoryReportCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, MemorySegment pfnUserCallback) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).pfnUserCallback(pfnUserCallback);
-    }
-
-    /// Allocates a `VkDeviceDeviceMemoryReportCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkDeviceDeviceMemoryReportCreateInfoEXT`
-    public static VkDeviceDeviceMemoryReportCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkDeviceDeviceMemoryReportCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceDeviceMemoryReportCreateInfoEXT`
-    public static VkDeviceDeviceMemoryReportCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceDeviceMemoryReportCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceDeviceMemoryReportCreateInfoEXT`
-    public static VkDeviceDeviceMemoryReportCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

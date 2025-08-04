@@ -117,69 +117,6 @@ public final class VkSampleLocationsInfoEXT extends GroupType {
     /// @return the allocated `VkSampleLocationsInfoEXT`
     public static VkSampleLocationsInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkSampleLocationsInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSampleLocationsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sampleLocationsPerPixel `sampleLocationsPerPixel`
-    /// @param sampleLocationGridSize `sampleLocationGridSize`
-    /// @param sampleLocationsCount `sampleLocationsCount`
-    /// @param pSampleLocations `pSampleLocations`
-    /// @return the allocated `VkSampleLocationsInfoEXT`
-    public static VkSampleLocationsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sampleLocationsPerPixel, MemorySegment sampleLocationGridSize, int sampleLocationsCount, MemorySegment pSampleLocations) {
-        return alloc(allocator).sType(sType).pNext(pNext).sampleLocationsPerPixel(sampleLocationsPerPixel).sampleLocationGridSize(sampleLocationGridSize).sampleLocationsCount(sampleLocationsCount).pSampleLocations(pSampleLocations);
-    }
-
-    /// Allocates a `VkSampleLocationsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sampleLocationsPerPixel `sampleLocationsPerPixel`
-    /// @param sampleLocationGridSize `sampleLocationGridSize`
-    /// @param sampleLocationsCount `sampleLocationsCount`
-    /// @return the allocated `VkSampleLocationsInfoEXT`
-    public static VkSampleLocationsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sampleLocationsPerPixel, MemorySegment sampleLocationGridSize, int sampleLocationsCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).sampleLocationsPerPixel(sampleLocationsPerPixel).sampleLocationGridSize(sampleLocationGridSize).sampleLocationsCount(sampleLocationsCount);
-    }
-
-    /// Allocates a `VkSampleLocationsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sampleLocationsPerPixel `sampleLocationsPerPixel`
-    /// @param sampleLocationGridSize `sampleLocationGridSize`
-    /// @return the allocated `VkSampleLocationsInfoEXT`
-    public static VkSampleLocationsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sampleLocationsPerPixel, MemorySegment sampleLocationGridSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).sampleLocationsPerPixel(sampleLocationsPerPixel).sampleLocationGridSize(sampleLocationGridSize);
-    }
-
-    /// Allocates a `VkSampleLocationsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sampleLocationsPerPixel `sampleLocationsPerPixel`
-    /// @return the allocated `VkSampleLocationsInfoEXT`
-    public static VkSampleLocationsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sampleLocationsPerPixel) {
-        return alloc(allocator).sType(sType).pNext(pNext).sampleLocationsPerPixel(sampleLocationsPerPixel);
-    }
-
-    /// Allocates a `VkSampleLocationsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkSampleLocationsInfoEXT`
-    public static VkSampleLocationsInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkSampleLocationsInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkSampleLocationsInfoEXT`
-    public static VkSampleLocationsInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

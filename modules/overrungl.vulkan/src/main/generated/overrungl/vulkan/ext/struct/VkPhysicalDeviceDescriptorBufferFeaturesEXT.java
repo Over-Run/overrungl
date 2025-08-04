@@ -119,69 +119,6 @@ public final class VkPhysicalDeviceDescriptorBufferFeaturesEXT extends GroupType
     /// @return the allocated `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
     public static VkPhysicalDeviceDescriptorBufferFeaturesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDescriptorBufferFeaturesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorBuffer `descriptorBuffer`
-    /// @param descriptorBufferCaptureReplay `descriptorBufferCaptureReplay`
-    /// @param descriptorBufferImageLayoutIgnored `descriptorBufferImageLayoutIgnored`
-    /// @param descriptorBufferPushDescriptors `descriptorBufferPushDescriptors`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
-    public static VkPhysicalDeviceDescriptorBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int descriptorBuffer, int descriptorBufferCaptureReplay, int descriptorBufferImageLayoutIgnored, int descriptorBufferPushDescriptors) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorBuffer(descriptorBuffer).descriptorBufferCaptureReplay(descriptorBufferCaptureReplay).descriptorBufferImageLayoutIgnored(descriptorBufferImageLayoutIgnored).descriptorBufferPushDescriptors(descriptorBufferPushDescriptors);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorBuffer `descriptorBuffer`
-    /// @param descriptorBufferCaptureReplay `descriptorBufferCaptureReplay`
-    /// @param descriptorBufferImageLayoutIgnored `descriptorBufferImageLayoutIgnored`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
-    public static VkPhysicalDeviceDescriptorBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int descriptorBuffer, int descriptorBufferCaptureReplay, int descriptorBufferImageLayoutIgnored) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorBuffer(descriptorBuffer).descriptorBufferCaptureReplay(descriptorBufferCaptureReplay).descriptorBufferImageLayoutIgnored(descriptorBufferImageLayoutIgnored);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorBuffer `descriptorBuffer`
-    /// @param descriptorBufferCaptureReplay `descriptorBufferCaptureReplay`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
-    public static VkPhysicalDeviceDescriptorBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int descriptorBuffer, int descriptorBufferCaptureReplay) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorBuffer(descriptorBuffer).descriptorBufferCaptureReplay(descriptorBufferCaptureReplay);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorBuffer `descriptorBuffer`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
-    public static VkPhysicalDeviceDescriptorBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int descriptorBuffer) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorBuffer(descriptorBuffer);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
-    public static VkPhysicalDeviceDescriptorBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDescriptorBufferFeaturesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceDescriptorBufferFeaturesEXT`
-    public static VkPhysicalDeviceDescriptorBufferFeaturesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

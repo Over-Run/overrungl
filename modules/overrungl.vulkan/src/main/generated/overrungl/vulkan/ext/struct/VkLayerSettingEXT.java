@@ -111,56 +111,6 @@ public final class VkLayerSettingEXT extends GroupType {
     /// @return the allocated `VkLayerSettingEXT`
     public static VkLayerSettingEXT alloc(SegmentAllocator allocator, long count) { return new VkLayerSettingEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkLayerSettingEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pLayerName `pLayerName`
-    /// @param pSettingName `pSettingName`
-    /// @param type `type`
-    /// @param valueCount `valueCount`
-    /// @param pValues `pValues`
-    /// @return the allocated `VkLayerSettingEXT`
-    public static VkLayerSettingEXT allocInit(SegmentAllocator allocator, MemorySegment pLayerName, MemorySegment pSettingName, int type, int valueCount, MemorySegment pValues) {
-        return alloc(allocator).pLayerName(pLayerName).pSettingName(pSettingName).type(type).valueCount(valueCount).pValues(pValues);
-    }
-
-    /// Allocates a `VkLayerSettingEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pLayerName `pLayerName`
-    /// @param pSettingName `pSettingName`
-    /// @param type `type`
-    /// @param valueCount `valueCount`
-    /// @return the allocated `VkLayerSettingEXT`
-    public static VkLayerSettingEXT allocInit(SegmentAllocator allocator, MemorySegment pLayerName, MemorySegment pSettingName, int type, int valueCount) {
-        return alloc(allocator).pLayerName(pLayerName).pSettingName(pSettingName).type(type).valueCount(valueCount);
-    }
-
-    /// Allocates a `VkLayerSettingEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pLayerName `pLayerName`
-    /// @param pSettingName `pSettingName`
-    /// @param type `type`
-    /// @return the allocated `VkLayerSettingEXT`
-    public static VkLayerSettingEXT allocInit(SegmentAllocator allocator, MemorySegment pLayerName, MemorySegment pSettingName, int type) {
-        return alloc(allocator).pLayerName(pLayerName).pSettingName(pSettingName).type(type);
-    }
-
-    /// Allocates a `VkLayerSettingEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pLayerName `pLayerName`
-    /// @param pSettingName `pSettingName`
-    /// @return the allocated `VkLayerSettingEXT`
-    public static VkLayerSettingEXT allocInit(SegmentAllocator allocator, MemorySegment pLayerName, MemorySegment pSettingName) {
-        return alloc(allocator).pLayerName(pLayerName).pSettingName(pSettingName);
-    }
-
-    /// Allocates a `VkLayerSettingEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param pLayerName `pLayerName`
-    /// @return the allocated `VkLayerSettingEXT`
-    public static VkLayerSettingEXT allocInit(SegmentAllocator allocator, MemorySegment pLayerName) {
-        return alloc(allocator).pLayerName(pLayerName);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

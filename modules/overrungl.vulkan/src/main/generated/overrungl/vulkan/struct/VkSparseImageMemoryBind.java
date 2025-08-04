@@ -113,69 +113,6 @@ public final class VkSparseImageMemoryBind extends GroupType {
     /// @return the allocated `VkSparseImageMemoryBind`
     public static VkSparseImageMemoryBind alloc(SegmentAllocator allocator, long count) { return new VkSparseImageMemoryBind(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSparseImageMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subresource `subresource`
-    /// @param offset `offset`
-    /// @param extent `extent`
-    /// @param memory `memory`
-    /// @param memoryOffset `memoryOffset`
-    /// @param flags `flags`
-    /// @return the allocated `VkSparseImageMemoryBind`
-    public static VkSparseImageMemoryBind allocInit(SegmentAllocator allocator, MemorySegment subresource, MemorySegment offset, MemorySegment extent, long memory, long memoryOffset, int flags) {
-        return alloc(allocator).subresource(subresource).offset(offset).extent(extent).memory(memory).memoryOffset(memoryOffset).flags(flags);
-    }
-
-    /// Allocates a `VkSparseImageMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subresource `subresource`
-    /// @param offset `offset`
-    /// @param extent `extent`
-    /// @param memory `memory`
-    /// @param memoryOffset `memoryOffset`
-    /// @return the allocated `VkSparseImageMemoryBind`
-    public static VkSparseImageMemoryBind allocInit(SegmentAllocator allocator, MemorySegment subresource, MemorySegment offset, MemorySegment extent, long memory, long memoryOffset) {
-        return alloc(allocator).subresource(subresource).offset(offset).extent(extent).memory(memory).memoryOffset(memoryOffset);
-    }
-
-    /// Allocates a `VkSparseImageMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subresource `subresource`
-    /// @param offset `offset`
-    /// @param extent `extent`
-    /// @param memory `memory`
-    /// @return the allocated `VkSparseImageMemoryBind`
-    public static VkSparseImageMemoryBind allocInit(SegmentAllocator allocator, MemorySegment subresource, MemorySegment offset, MemorySegment extent, long memory) {
-        return alloc(allocator).subresource(subresource).offset(offset).extent(extent).memory(memory);
-    }
-
-    /// Allocates a `VkSparseImageMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subresource `subresource`
-    /// @param offset `offset`
-    /// @param extent `extent`
-    /// @return the allocated `VkSparseImageMemoryBind`
-    public static VkSparseImageMemoryBind allocInit(SegmentAllocator allocator, MemorySegment subresource, MemorySegment offset, MemorySegment extent) {
-        return alloc(allocator).subresource(subresource).offset(offset).extent(extent);
-    }
-
-    /// Allocates a `VkSparseImageMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subresource `subresource`
-    /// @param offset `offset`
-    /// @return the allocated `VkSparseImageMemoryBind`
-    public static VkSparseImageMemoryBind allocInit(SegmentAllocator allocator, MemorySegment subresource, MemorySegment offset) {
-        return alloc(allocator).subresource(subresource).offset(offset);
-    }
-
-    /// Allocates a `VkSparseImageMemoryBind` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param subresource `subresource`
-    /// @return the allocated `VkSparseImageMemoryBind`
-    public static VkSparseImageMemoryBind allocInit(SegmentAllocator allocator, MemorySegment subresource) {
-        return alloc(allocator).subresource(subresource);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

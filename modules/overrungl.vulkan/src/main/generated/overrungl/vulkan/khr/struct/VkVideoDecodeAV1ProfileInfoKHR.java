@@ -103,44 +103,6 @@ public final class VkVideoDecodeAV1ProfileInfoKHR extends GroupType {
     /// @return the allocated `VkVideoDecodeAV1ProfileInfoKHR`
     public static VkVideoDecodeAV1ProfileInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeAV1ProfileInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoDecodeAV1ProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param stdProfile `stdProfile`
-    /// @param filmGrainSupport `filmGrainSupport`
-    /// @return the allocated `VkVideoDecodeAV1ProfileInfoKHR`
-    public static VkVideoDecodeAV1ProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stdProfile, int filmGrainSupport) {
-        return alloc(allocator).sType(sType).pNext(pNext).stdProfile(stdProfile).filmGrainSupport(filmGrainSupport);
-    }
-
-    /// Allocates a `VkVideoDecodeAV1ProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param stdProfile `stdProfile`
-    /// @return the allocated `VkVideoDecodeAV1ProfileInfoKHR`
-    public static VkVideoDecodeAV1ProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stdProfile) {
-        return alloc(allocator).sType(sType).pNext(pNext).stdProfile(stdProfile);
-    }
-
-    /// Allocates a `VkVideoDecodeAV1ProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoDecodeAV1ProfileInfoKHR`
-    public static VkVideoDecodeAV1ProfileInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoDecodeAV1ProfileInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoDecodeAV1ProfileInfoKHR`
-    public static VkVideoDecodeAV1ProfileInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

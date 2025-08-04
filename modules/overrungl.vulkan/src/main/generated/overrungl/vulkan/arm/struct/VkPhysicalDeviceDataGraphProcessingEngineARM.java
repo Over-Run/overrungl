@@ -87,23 +87,6 @@ public final class VkPhysicalDeviceDataGraphProcessingEngineARM extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceDataGraphProcessingEngineARM`
     public static VkPhysicalDeviceDataGraphProcessingEngineARM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceDataGraphProcessingEngineARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceDataGraphProcessingEngineARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param type `type`
-    /// @param isForeign `isForeign`
-    /// @return the allocated `VkPhysicalDeviceDataGraphProcessingEngineARM`
-    public static VkPhysicalDeviceDataGraphProcessingEngineARM allocInit(SegmentAllocator allocator, int type, int isForeign) {
-        return alloc(allocator).type(type).isForeign(isForeign);
-    }
-
-    /// Allocates a `VkPhysicalDeviceDataGraphProcessingEngineARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param type `type`
-    /// @return the allocated `VkPhysicalDeviceDataGraphProcessingEngineARM`
-    public static VkPhysicalDeviceDataGraphProcessingEngineARM allocInit(SegmentAllocator allocator, int type) {
-        return alloc(allocator).type(type);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

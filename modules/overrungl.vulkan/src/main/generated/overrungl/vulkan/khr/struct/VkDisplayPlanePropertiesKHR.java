@@ -87,23 +87,6 @@ public final class VkDisplayPlanePropertiesKHR extends GroupType {
     /// @return the allocated `VkDisplayPlanePropertiesKHR`
     public static VkDisplayPlanePropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkDisplayPlanePropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDisplayPlanePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param currentDisplay `currentDisplay`
-    /// @param currentStackIndex `currentStackIndex`
-    /// @return the allocated `VkDisplayPlanePropertiesKHR`
-    public static VkDisplayPlanePropertiesKHR allocInit(SegmentAllocator allocator, long currentDisplay, int currentStackIndex) {
-        return alloc(allocator).currentDisplay(currentDisplay).currentStackIndex(currentStackIndex);
-    }
-
-    /// Allocates a `VkDisplayPlanePropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param currentDisplay `currentDisplay`
-    /// @return the allocated `VkDisplayPlanePropertiesKHR`
-    public static VkDisplayPlanePropertiesKHR allocInit(SegmentAllocator allocator, long currentDisplay) {
-        return alloc(allocator).currentDisplay(currentDisplay);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

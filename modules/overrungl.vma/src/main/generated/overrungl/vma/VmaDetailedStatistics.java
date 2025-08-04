@@ -117,69 +117,6 @@ public final class VmaDetailedStatistics extends GroupType {
     /// @return the allocated `VmaDetailedStatistics`
     public static VmaDetailedStatistics alloc(SegmentAllocator allocator, long count) { return new VmaDetailedStatistics(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VmaDetailedStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param statistics `statistics`
-    /// @param unusedRangeCount `unusedRangeCount`
-    /// @param allocationSizeMin `allocationSizeMin`
-    /// @param allocationSizeMax `allocationSizeMax`
-    /// @param unusedRangeSizeMin `unusedRangeSizeMin`
-    /// @param unusedRangeSizeMax `unusedRangeSizeMax`
-    /// @return the allocated `VmaDetailedStatistics`
-    public static VmaDetailedStatistics allocInit(SegmentAllocator allocator, MemorySegment statistics, int unusedRangeCount, long allocationSizeMin, long allocationSizeMax, long unusedRangeSizeMin, long unusedRangeSizeMax) {
-        return alloc(allocator).statistics(statistics).unusedRangeCount(unusedRangeCount).allocationSizeMin(allocationSizeMin).allocationSizeMax(allocationSizeMax).unusedRangeSizeMin(unusedRangeSizeMin).unusedRangeSizeMax(unusedRangeSizeMax);
-    }
-
-    /// Allocates a `VmaDetailedStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param statistics `statistics`
-    /// @param unusedRangeCount `unusedRangeCount`
-    /// @param allocationSizeMin `allocationSizeMin`
-    /// @param allocationSizeMax `allocationSizeMax`
-    /// @param unusedRangeSizeMin `unusedRangeSizeMin`
-    /// @return the allocated `VmaDetailedStatistics`
-    public static VmaDetailedStatistics allocInit(SegmentAllocator allocator, MemorySegment statistics, int unusedRangeCount, long allocationSizeMin, long allocationSizeMax, long unusedRangeSizeMin) {
-        return alloc(allocator).statistics(statistics).unusedRangeCount(unusedRangeCount).allocationSizeMin(allocationSizeMin).allocationSizeMax(allocationSizeMax).unusedRangeSizeMin(unusedRangeSizeMin);
-    }
-
-    /// Allocates a `VmaDetailedStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param statistics `statistics`
-    /// @param unusedRangeCount `unusedRangeCount`
-    /// @param allocationSizeMin `allocationSizeMin`
-    /// @param allocationSizeMax `allocationSizeMax`
-    /// @return the allocated `VmaDetailedStatistics`
-    public static VmaDetailedStatistics allocInit(SegmentAllocator allocator, MemorySegment statistics, int unusedRangeCount, long allocationSizeMin, long allocationSizeMax) {
-        return alloc(allocator).statistics(statistics).unusedRangeCount(unusedRangeCount).allocationSizeMin(allocationSizeMin).allocationSizeMax(allocationSizeMax);
-    }
-
-    /// Allocates a `VmaDetailedStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param statistics `statistics`
-    /// @param unusedRangeCount `unusedRangeCount`
-    /// @param allocationSizeMin `allocationSizeMin`
-    /// @return the allocated `VmaDetailedStatistics`
-    public static VmaDetailedStatistics allocInit(SegmentAllocator allocator, MemorySegment statistics, int unusedRangeCount, long allocationSizeMin) {
-        return alloc(allocator).statistics(statistics).unusedRangeCount(unusedRangeCount).allocationSizeMin(allocationSizeMin);
-    }
-
-    /// Allocates a `VmaDetailedStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param statistics `statistics`
-    /// @param unusedRangeCount `unusedRangeCount`
-    /// @return the allocated `VmaDetailedStatistics`
-    public static VmaDetailedStatistics allocInit(SegmentAllocator allocator, MemorySegment statistics, int unusedRangeCount) {
-        return alloc(allocator).statistics(statistics).unusedRangeCount(unusedRangeCount);
-    }
-
-    /// Allocates a `VmaDetailedStatistics` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param statistics `statistics`
-    /// @return the allocated `VmaDetailedStatistics`
-    public static VmaDetailedStatistics allocInit(SegmentAllocator allocator, MemorySegment statistics) {
-        return alloc(allocator).statistics(statistics);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

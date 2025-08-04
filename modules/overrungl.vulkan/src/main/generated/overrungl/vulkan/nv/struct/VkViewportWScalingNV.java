@@ -87,23 +87,6 @@ public final class VkViewportWScalingNV extends GroupType {
     /// @return the allocated `VkViewportWScalingNV`
     public static VkViewportWScalingNV alloc(SegmentAllocator allocator, long count) { return new VkViewportWScalingNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkViewportWScalingNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param xcoeff `xcoeff`
-    /// @param ycoeff `ycoeff`
-    /// @return the allocated `VkViewportWScalingNV`
-    public static VkViewportWScalingNV allocInit(SegmentAllocator allocator, float xcoeff, float ycoeff) {
-        return alloc(allocator).xcoeff(xcoeff).ycoeff(ycoeff);
-    }
-
-    /// Allocates a `VkViewportWScalingNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param xcoeff `xcoeff`
-    /// @return the allocated `VkViewportWScalingNV`
-    public static VkViewportWScalingNV allocInit(SegmentAllocator allocator, float xcoeff) {
-        return alloc(allocator).xcoeff(xcoeff);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

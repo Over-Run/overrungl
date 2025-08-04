@@ -95,33 +95,6 @@ public final class VkExternalMemoryProperties extends GroupType {
     /// @return the allocated `VkExternalMemoryProperties`
     public static VkExternalMemoryProperties alloc(SegmentAllocator allocator, long count) { return new VkExternalMemoryProperties(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExternalMemoryProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param externalMemoryFeatures `externalMemoryFeatures`
-    /// @param exportFromImportedHandleTypes `exportFromImportedHandleTypes`
-    /// @param compatibleHandleTypes `compatibleHandleTypes`
-    /// @return the allocated `VkExternalMemoryProperties`
-    public static VkExternalMemoryProperties allocInit(SegmentAllocator allocator, int externalMemoryFeatures, int exportFromImportedHandleTypes, int compatibleHandleTypes) {
-        return alloc(allocator).externalMemoryFeatures(externalMemoryFeatures).exportFromImportedHandleTypes(exportFromImportedHandleTypes).compatibleHandleTypes(compatibleHandleTypes);
-    }
-
-    /// Allocates a `VkExternalMemoryProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param externalMemoryFeatures `externalMemoryFeatures`
-    /// @param exportFromImportedHandleTypes `exportFromImportedHandleTypes`
-    /// @return the allocated `VkExternalMemoryProperties`
-    public static VkExternalMemoryProperties allocInit(SegmentAllocator allocator, int externalMemoryFeatures, int exportFromImportedHandleTypes) {
-        return alloc(allocator).externalMemoryFeatures(externalMemoryFeatures).exportFromImportedHandleTypes(exportFromImportedHandleTypes);
-    }
-
-    /// Allocates a `VkExternalMemoryProperties` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param externalMemoryFeatures `externalMemoryFeatures`
-    /// @return the allocated `VkExternalMemoryProperties`
-    public static VkExternalMemoryProperties allocInit(SegmentAllocator allocator, int externalMemoryFeatures) {
-        return alloc(allocator).externalMemoryFeatures(externalMemoryFeatures);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

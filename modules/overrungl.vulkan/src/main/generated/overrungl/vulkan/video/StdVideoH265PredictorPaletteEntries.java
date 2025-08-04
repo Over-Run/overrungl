@@ -79,14 +79,6 @@ public final class StdVideoH265PredictorPaletteEntries extends GroupType {
     /// @return the allocated `StdVideoH265PredictorPaletteEntries`
     public static StdVideoH265PredictorPaletteEntries alloc(SegmentAllocator allocator, long count) { return new StdVideoH265PredictorPaletteEntries(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoH265PredictorPaletteEntries` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param PredictorPaletteEntries `PredictorPaletteEntries`
-    /// @return the allocated `StdVideoH265PredictorPaletteEntries`
-    public static StdVideoH265PredictorPaletteEntries allocInit(SegmentAllocator allocator, MemorySegment PredictorPaletteEntries) {
-        return alloc(allocator).PredictorPaletteEntries(PredictorPaletteEntries);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

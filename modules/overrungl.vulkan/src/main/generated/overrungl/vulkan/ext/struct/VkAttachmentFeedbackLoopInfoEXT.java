@@ -95,33 +95,6 @@ public final class VkAttachmentFeedbackLoopInfoEXT extends GroupType {
     /// @return the allocated `VkAttachmentFeedbackLoopInfoEXT`
     public static VkAttachmentFeedbackLoopInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkAttachmentFeedbackLoopInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAttachmentFeedbackLoopInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param feedbackLoopEnable `feedbackLoopEnable`
-    /// @return the allocated `VkAttachmentFeedbackLoopInfoEXT`
-    public static VkAttachmentFeedbackLoopInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int feedbackLoopEnable) {
-        return alloc(allocator).sType(sType).pNext(pNext).feedbackLoopEnable(feedbackLoopEnable);
-    }
-
-    /// Allocates a `VkAttachmentFeedbackLoopInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAttachmentFeedbackLoopInfoEXT`
-    public static VkAttachmentFeedbackLoopInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAttachmentFeedbackLoopInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAttachmentFeedbackLoopInfoEXT`
-    public static VkAttachmentFeedbackLoopInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

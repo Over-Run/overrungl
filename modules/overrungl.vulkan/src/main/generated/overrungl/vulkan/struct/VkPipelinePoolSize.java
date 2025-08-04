@@ -103,44 +103,6 @@ public final class VkPipelinePoolSize extends GroupType {
     /// @return the allocated `VkPipelinePoolSize`
     public static VkPipelinePoolSize alloc(SegmentAllocator allocator, long count) { return new VkPipelinePoolSize(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelinePoolSize` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param poolEntrySize `poolEntrySize`
-    /// @param poolEntryCount `poolEntryCount`
-    /// @return the allocated `VkPipelinePoolSize`
-    public static VkPipelinePoolSize allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long poolEntrySize, int poolEntryCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).poolEntrySize(poolEntrySize).poolEntryCount(poolEntryCount);
-    }
-
-    /// Allocates a `VkPipelinePoolSize` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param poolEntrySize `poolEntrySize`
-    /// @return the allocated `VkPipelinePoolSize`
-    public static VkPipelinePoolSize allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long poolEntrySize) {
-        return alloc(allocator).sType(sType).pNext(pNext).poolEntrySize(poolEntrySize);
-    }
-
-    /// Allocates a `VkPipelinePoolSize` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelinePoolSize`
-    public static VkPipelinePoolSize allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelinePoolSize` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelinePoolSize`
-    public static VkPipelinePoolSize allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

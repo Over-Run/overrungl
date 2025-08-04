@@ -103,44 +103,6 @@ public final class VkDeviceGroupDeviceCreateInfo extends GroupType {
     /// @return the allocated `VkDeviceGroupDeviceCreateInfo`
     public static VkDeviceGroupDeviceCreateInfo alloc(SegmentAllocator allocator, long count) { return new VkDeviceGroupDeviceCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceGroupDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param physicalDeviceCount `physicalDeviceCount`
-    /// @param pPhysicalDevices `pPhysicalDevices`
-    /// @return the allocated `VkDeviceGroupDeviceCreateInfo`
-    public static VkDeviceGroupDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int physicalDeviceCount, MemorySegment pPhysicalDevices) {
-        return alloc(allocator).sType(sType).pNext(pNext).physicalDeviceCount(physicalDeviceCount).pPhysicalDevices(pPhysicalDevices);
-    }
-
-    /// Allocates a `VkDeviceGroupDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param physicalDeviceCount `physicalDeviceCount`
-    /// @return the allocated `VkDeviceGroupDeviceCreateInfo`
-    public static VkDeviceGroupDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int physicalDeviceCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).physicalDeviceCount(physicalDeviceCount);
-    }
-
-    /// Allocates a `VkDeviceGroupDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDeviceGroupDeviceCreateInfo`
-    public static VkDeviceGroupDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDeviceGroupDeviceCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDeviceGroupDeviceCreateInfo`
-    public static VkDeviceGroupDeviceCreateInfo allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

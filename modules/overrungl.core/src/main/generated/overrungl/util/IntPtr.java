@@ -79,14 +79,6 @@ public final class IntPtr extends GroupType {
     /// @return the allocated `IntPtr`
     public static IntPtr alloc(SegmentAllocator allocator, long count) { return new IntPtr(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `IntPtr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param value `value`
-    /// @return the allocated `IntPtr`
-    public static IntPtr allocInit(SegmentAllocator allocator, int value) {
-        return alloc(allocator).value(value);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

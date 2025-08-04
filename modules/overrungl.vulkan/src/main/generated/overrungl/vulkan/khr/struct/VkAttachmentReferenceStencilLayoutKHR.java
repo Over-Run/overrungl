@@ -95,33 +95,6 @@ public final class VkAttachmentReferenceStencilLayoutKHR extends GroupType {
     /// @return the allocated `VkAttachmentReferenceStencilLayoutKHR`
     public static VkAttachmentReferenceStencilLayoutKHR alloc(SegmentAllocator allocator, long count) { return new VkAttachmentReferenceStencilLayoutKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAttachmentReferenceStencilLayoutKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param stencilLayout `stencilLayout`
-    /// @return the allocated `VkAttachmentReferenceStencilLayoutKHR`
-    public static VkAttachmentReferenceStencilLayoutKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int stencilLayout) {
-        return alloc(allocator).sType(sType).pNext(pNext).stencilLayout(stencilLayout);
-    }
-
-    /// Allocates a `VkAttachmentReferenceStencilLayoutKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkAttachmentReferenceStencilLayoutKHR`
-    public static VkAttachmentReferenceStencilLayoutKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkAttachmentReferenceStencilLayoutKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkAttachmentReferenceStencilLayoutKHR`
-    public static VkAttachmentReferenceStencilLayoutKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

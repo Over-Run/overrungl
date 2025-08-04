@@ -99,44 +99,6 @@ public final class VkQueueFamilyDataGraphPropertiesARM extends GroupType {
     /// @return the allocated `VkQueueFamilyDataGraphPropertiesARM`
     public static VkQueueFamilyDataGraphPropertiesARM alloc(SegmentAllocator allocator, long count) { return new VkQueueFamilyDataGraphPropertiesARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkQueueFamilyDataGraphPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param engine `engine`
-    /// @param operation `operation`
-    /// @return the allocated `VkQueueFamilyDataGraphPropertiesARM`
-    public static VkQueueFamilyDataGraphPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment engine, MemorySegment operation) {
-        return alloc(allocator).sType(sType).pNext(pNext).engine(engine).operation(operation);
-    }
-
-    /// Allocates a `VkQueueFamilyDataGraphPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param engine `engine`
-    /// @return the allocated `VkQueueFamilyDataGraphPropertiesARM`
-    public static VkQueueFamilyDataGraphPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment engine) {
-        return alloc(allocator).sType(sType).pNext(pNext).engine(engine);
-    }
-
-    /// Allocates a `VkQueueFamilyDataGraphPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkQueueFamilyDataGraphPropertiesARM`
-    public static VkQueueFamilyDataGraphPropertiesARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkQueueFamilyDataGraphPropertiesARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkQueueFamilyDataGraphPropertiesARM`
-    public static VkQueueFamilyDataGraphPropertiesARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -119,69 +119,6 @@ public final class VkVideoEncodeAV1GopRemainingFrameInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeAV1GopRemainingFrameInfoKHR`
     public static VkVideoEncodeAV1GopRemainingFrameInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeAV1GopRemainingFrameInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeAV1GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param useGopRemainingFrames `useGopRemainingFrames`
-    /// @param gopRemainingIntra `gopRemainingIntra`
-    /// @param gopRemainingPredictive `gopRemainingPredictive`
-    /// @param gopRemainingBipredictive `gopRemainingBipredictive`
-    /// @return the allocated `VkVideoEncodeAV1GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeAV1GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useGopRemainingFrames, int gopRemainingIntra, int gopRemainingPredictive, int gopRemainingBipredictive) {
-        return alloc(allocator).sType(sType).pNext(pNext).useGopRemainingFrames(useGopRemainingFrames).gopRemainingIntra(gopRemainingIntra).gopRemainingPredictive(gopRemainingPredictive).gopRemainingBipredictive(gopRemainingBipredictive);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param useGopRemainingFrames `useGopRemainingFrames`
-    /// @param gopRemainingIntra `gopRemainingIntra`
-    /// @param gopRemainingPredictive `gopRemainingPredictive`
-    /// @return the allocated `VkVideoEncodeAV1GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeAV1GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useGopRemainingFrames, int gopRemainingIntra, int gopRemainingPredictive) {
-        return alloc(allocator).sType(sType).pNext(pNext).useGopRemainingFrames(useGopRemainingFrames).gopRemainingIntra(gopRemainingIntra).gopRemainingPredictive(gopRemainingPredictive);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param useGopRemainingFrames `useGopRemainingFrames`
-    /// @param gopRemainingIntra `gopRemainingIntra`
-    /// @return the allocated `VkVideoEncodeAV1GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeAV1GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useGopRemainingFrames, int gopRemainingIntra) {
-        return alloc(allocator).sType(sType).pNext(pNext).useGopRemainingFrames(useGopRemainingFrames).gopRemainingIntra(gopRemainingIntra);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param useGopRemainingFrames `useGopRemainingFrames`
-    /// @return the allocated `VkVideoEncodeAV1GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeAV1GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useGopRemainingFrames) {
-        return alloc(allocator).sType(sType).pNext(pNext).useGopRemainingFrames(useGopRemainingFrames);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoEncodeAV1GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeAV1GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoEncodeAV1GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoEncodeAV1GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeAV1GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

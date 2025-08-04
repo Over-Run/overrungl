@@ -103,44 +103,6 @@ public final class VkMemoryGetWin32HandleInfoKHR extends GroupType {
     /// @return the allocated `VkMemoryGetWin32HandleInfoKHR`
     public static VkMemoryGetWin32HandleInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryGetWin32HandleInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryGetWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memory `memory`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkMemoryGetWin32HandleInfoKHR`
-    public static VkMemoryGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long memory, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).memory(memory).handleType(handleType);
-    }
-
-    /// Allocates a `VkMemoryGetWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memory `memory`
-    /// @return the allocated `VkMemoryGetWin32HandleInfoKHR`
-    public static VkMemoryGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long memory) {
-        return alloc(allocator).sType(sType).pNext(pNext).memory(memory);
-    }
-
-    /// Allocates a `VkMemoryGetWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryGetWin32HandleInfoKHR`
-    public static VkMemoryGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryGetWin32HandleInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryGetWin32HandleInfoKHR`
-    public static VkMemoryGetWin32HandleInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

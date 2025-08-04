@@ -101,44 +101,6 @@ public final class VkPipelineSampleLocationsStateCreateInfoEXT extends GroupType
     /// @return the allocated `VkPipelineSampleLocationsStateCreateInfoEXT`
     public static VkPipelineSampleLocationsStateCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineSampleLocationsStateCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineSampleLocationsStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sampleLocationsEnable `sampleLocationsEnable`
-    /// @param sampleLocationsInfo `sampleLocationsInfo`
-    /// @return the allocated `VkPipelineSampleLocationsStateCreateInfoEXT`
-    public static VkPipelineSampleLocationsStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sampleLocationsEnable, MemorySegment sampleLocationsInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).sampleLocationsEnable(sampleLocationsEnable).sampleLocationsInfo(sampleLocationsInfo);
-    }
-
-    /// Allocates a `VkPipelineSampleLocationsStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param sampleLocationsEnable `sampleLocationsEnable`
-    /// @return the allocated `VkPipelineSampleLocationsStateCreateInfoEXT`
-    public static VkPipelineSampleLocationsStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int sampleLocationsEnable) {
-        return alloc(allocator).sType(sType).pNext(pNext).sampleLocationsEnable(sampleLocationsEnable);
-    }
-
-    /// Allocates a `VkPipelineSampleLocationsStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineSampleLocationsStateCreateInfoEXT`
-    public static VkPipelineSampleLocationsStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineSampleLocationsStateCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineSampleLocationsStateCreateInfoEXT`
-    public static VkPipelineSampleLocationsStateCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

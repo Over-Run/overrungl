@@ -95,33 +95,6 @@ public final class VkDataGraphPipelineCompilerControlCreateInfoARM extends Group
     /// @return the allocated `VkDataGraphPipelineCompilerControlCreateInfoARM`
     public static VkDataGraphPipelineCompilerControlCreateInfoARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineCompilerControlCreateInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDataGraphPipelineCompilerControlCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pVendorOptions `pVendorOptions`
-    /// @return the allocated `VkDataGraphPipelineCompilerControlCreateInfoARM`
-    public static VkDataGraphPipelineCompilerControlCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pVendorOptions) {
-        return alloc(allocator).sType(sType).pNext(pNext).pVendorOptions(pVendorOptions);
-    }
-
-    /// Allocates a `VkDataGraphPipelineCompilerControlCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDataGraphPipelineCompilerControlCreateInfoARM`
-    public static VkDataGraphPipelineCompilerControlCreateInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDataGraphPipelineCompilerControlCreateInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDataGraphPipelineCompilerControlCreateInfoARM`
-    public static VkDataGraphPipelineCompilerControlCreateInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

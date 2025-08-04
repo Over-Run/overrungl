@@ -103,44 +103,6 @@ public final class VkDescriptorSetLayoutHostMappingInfoVALVE extends GroupType {
     /// @return the allocated `VkDescriptorSetLayoutHostMappingInfoVALVE`
     public static VkDescriptorSetLayoutHostMappingInfoVALVE alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetLayoutHostMappingInfoVALVE(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorSetLayoutHostMappingInfoVALVE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorOffset `descriptorOffset`
-    /// @param descriptorSize `descriptorSize`
-    /// @return the allocated `VkDescriptorSetLayoutHostMappingInfoVALVE`
-    public static VkDescriptorSetLayoutHostMappingInfoVALVE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorOffset, int descriptorSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorOffset(descriptorOffset).descriptorSize(descriptorSize);
-    }
-
-    /// Allocates a `VkDescriptorSetLayoutHostMappingInfoVALVE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param descriptorOffset `descriptorOffset`
-    /// @return the allocated `VkDescriptorSetLayoutHostMappingInfoVALVE`
-    public static VkDescriptorSetLayoutHostMappingInfoVALVE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long descriptorOffset) {
-        return alloc(allocator).sType(sType).pNext(pNext).descriptorOffset(descriptorOffset);
-    }
-
-    /// Allocates a `VkDescriptorSetLayoutHostMappingInfoVALVE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDescriptorSetLayoutHostMappingInfoVALVE`
-    public static VkDescriptorSetLayoutHostMappingInfoVALVE allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDescriptorSetLayoutHostMappingInfoVALVE` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDescriptorSetLayoutHostMappingInfoVALVE`
-    public static VkDescriptorSetLayoutHostMappingInfoVALVE allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

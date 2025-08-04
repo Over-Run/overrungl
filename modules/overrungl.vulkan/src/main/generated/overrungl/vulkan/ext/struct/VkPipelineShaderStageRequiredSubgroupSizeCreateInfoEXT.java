@@ -95,33 +95,6 @@ public final class VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT extend
     /// @return the allocated `VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT`
     public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param requiredSubgroupSize `requiredSubgroupSize`
-    /// @return the allocated `VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT`
-    public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int requiredSubgroupSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).requiredSubgroupSize(requiredSubgroupSize);
-    }
-
-    /// Allocates a `VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT`
-    public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT`
-    public static VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

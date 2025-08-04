@@ -103,44 +103,6 @@ public final class VkExportMetalIOSurfaceInfoEXT extends GroupType {
     /// @return the allocated `VkExportMetalIOSurfaceInfoEXT`
     public static VkExportMetalIOSurfaceInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkExportMetalIOSurfaceInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkExportMetalIOSurfaceInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param image `image`
-    /// @param ioSurface `ioSurface`
-    /// @return the allocated `VkExportMetalIOSurfaceInfoEXT`
-    public static VkExportMetalIOSurfaceInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long image, MemorySegment ioSurface) {
-        return alloc(allocator).sType(sType).pNext(pNext).image(image).ioSurface(ioSurface);
-    }
-
-    /// Allocates a `VkExportMetalIOSurfaceInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param image `image`
-    /// @return the allocated `VkExportMetalIOSurfaceInfoEXT`
-    public static VkExportMetalIOSurfaceInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long image) {
-        return alloc(allocator).sType(sType).pNext(pNext).image(image);
-    }
-
-    /// Allocates a `VkExportMetalIOSurfaceInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkExportMetalIOSurfaceInfoEXT`
-    public static VkExportMetalIOSurfaceInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkExportMetalIOSurfaceInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkExportMetalIOSurfaceInfoEXT`
-    public static VkExportMetalIOSurfaceInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

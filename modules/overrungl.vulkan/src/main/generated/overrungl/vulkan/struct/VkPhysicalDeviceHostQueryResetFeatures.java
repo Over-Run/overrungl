@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceHostQueryResetFeatures extends GroupType {
     /// @return the allocated `VkPhysicalDeviceHostQueryResetFeatures`
     public static VkPhysicalDeviceHostQueryResetFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceHostQueryResetFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceHostQueryResetFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param hostQueryReset `hostQueryReset`
-    /// @return the allocated `VkPhysicalDeviceHostQueryResetFeatures`
-    public static VkPhysicalDeviceHostQueryResetFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int hostQueryReset) {
-        return alloc(allocator).sType(sType).pNext(pNext).hostQueryReset(hostQueryReset);
-    }
-
-    /// Allocates a `VkPhysicalDeviceHostQueryResetFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceHostQueryResetFeatures`
-    public static VkPhysicalDeviceHostQueryResetFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceHostQueryResetFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceHostQueryResetFeatures`
-    public static VkPhysicalDeviceHostQueryResetFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

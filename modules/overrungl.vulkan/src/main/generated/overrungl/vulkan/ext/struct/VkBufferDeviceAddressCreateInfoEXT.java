@@ -95,33 +95,6 @@ public final class VkBufferDeviceAddressCreateInfoEXT extends GroupType {
     /// @return the allocated `VkBufferDeviceAddressCreateInfoEXT`
     public static VkBufferDeviceAddressCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkBufferDeviceAddressCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBufferDeviceAddressCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param deviceAddress `deviceAddress`
-    /// @return the allocated `VkBufferDeviceAddressCreateInfoEXT`
-    public static VkBufferDeviceAddressCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long deviceAddress) {
-        return alloc(allocator).sType(sType).pNext(pNext).deviceAddress(deviceAddress);
-    }
-
-    /// Allocates a `VkBufferDeviceAddressCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkBufferDeviceAddressCreateInfoEXT`
-    public static VkBufferDeviceAddressCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkBufferDeviceAddressCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkBufferDeviceAddressCreateInfoEXT`
-    public static VkBufferDeviceAddressCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

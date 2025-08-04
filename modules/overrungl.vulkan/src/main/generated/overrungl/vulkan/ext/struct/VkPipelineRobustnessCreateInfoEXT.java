@@ -119,69 +119,6 @@ public final class VkPipelineRobustnessCreateInfoEXT extends GroupType {
     /// @return the allocated `VkPipelineRobustnessCreateInfoEXT`
     public static VkPipelineRobustnessCreateInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPipelineRobustnessCreateInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPipelineRobustnessCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffers `storageBuffers`
-    /// @param uniformBuffers `uniformBuffers`
-    /// @param vertexInputs `vertexInputs`
-    /// @param images `images`
-    /// @return the allocated `VkPipelineRobustnessCreateInfoEXT`
-    public static VkPipelineRobustnessCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffers, int uniformBuffers, int vertexInputs, int images) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffers(storageBuffers).uniformBuffers(uniformBuffers).vertexInputs(vertexInputs).images(images);
-    }
-
-    /// Allocates a `VkPipelineRobustnessCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffers `storageBuffers`
-    /// @param uniformBuffers `uniformBuffers`
-    /// @param vertexInputs `vertexInputs`
-    /// @return the allocated `VkPipelineRobustnessCreateInfoEXT`
-    public static VkPipelineRobustnessCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffers, int uniformBuffers, int vertexInputs) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffers(storageBuffers).uniformBuffers(uniformBuffers).vertexInputs(vertexInputs);
-    }
-
-    /// Allocates a `VkPipelineRobustnessCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffers `storageBuffers`
-    /// @param uniformBuffers `uniformBuffers`
-    /// @return the allocated `VkPipelineRobustnessCreateInfoEXT`
-    public static VkPipelineRobustnessCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffers, int uniformBuffers) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffers(storageBuffers).uniformBuffers(uniformBuffers);
-    }
-
-    /// Allocates a `VkPipelineRobustnessCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffers `storageBuffers`
-    /// @return the allocated `VkPipelineRobustnessCreateInfoEXT`
-    public static VkPipelineRobustnessCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffers) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffers(storageBuffers);
-    }
-
-    /// Allocates a `VkPipelineRobustnessCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPipelineRobustnessCreateInfoEXT`
-    public static VkPipelineRobustnessCreateInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPipelineRobustnessCreateInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPipelineRobustnessCreateInfoEXT`
-    public static VkPipelineRobustnessCreateInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

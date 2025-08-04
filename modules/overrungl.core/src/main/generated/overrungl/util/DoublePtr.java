@@ -79,14 +79,6 @@ public final class DoublePtr extends GroupType {
     /// @return the allocated `DoublePtr`
     public static DoublePtr alloc(SegmentAllocator allocator, long count) { return new DoublePtr(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `DoublePtr` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param value `value`
-    /// @return the allocated `DoublePtr`
-    public static DoublePtr allocInit(SegmentAllocator allocator, double value) {
-        return alloc(allocator).value(value);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

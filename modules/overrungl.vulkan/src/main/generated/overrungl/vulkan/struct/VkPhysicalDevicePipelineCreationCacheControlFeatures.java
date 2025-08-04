@@ -95,33 +95,6 @@ public final class VkPhysicalDevicePipelineCreationCacheControlFeatures extends 
     /// @return the allocated `VkPhysicalDevicePipelineCreationCacheControlFeatures`
     public static VkPhysicalDevicePipelineCreationCacheControlFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePipelineCreationCacheControlFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePipelineCreationCacheControlFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipelineCreationCacheControl `pipelineCreationCacheControl`
-    /// @return the allocated `VkPhysicalDevicePipelineCreationCacheControlFeatures`
-    public static VkPhysicalDevicePipelineCreationCacheControlFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int pipelineCreationCacheControl) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipelineCreationCacheControl(pipelineCreationCacheControl);
-    }
-
-    /// Allocates a `VkPhysicalDevicePipelineCreationCacheControlFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevicePipelineCreationCacheControlFeatures`
-    public static VkPhysicalDevicePipelineCreationCacheControlFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevicePipelineCreationCacheControlFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevicePipelineCreationCacheControlFeatures`
-    public static VkPhysicalDevicePipelineCreationCacheControlFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

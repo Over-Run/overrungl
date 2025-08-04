@@ -103,44 +103,6 @@ public final class VkPresentRegionsKHR extends GroupType {
     /// @return the allocated `VkPresentRegionsKHR`
     public static VkPresentRegionsKHR alloc(SegmentAllocator allocator, long count) { return new VkPresentRegionsKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPresentRegionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchainCount `swapchainCount`
-    /// @param pRegions `pRegions`
-    /// @return the allocated `VkPresentRegionsKHR`
-    public static VkPresentRegionsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainCount, MemorySegment pRegions) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount).pRegions(pRegions);
-    }
-
-    /// Allocates a `VkPresentRegionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param swapchainCount `swapchainCount`
-    /// @return the allocated `VkPresentRegionsKHR`
-    public static VkPresentRegionsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int swapchainCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).swapchainCount(swapchainCount);
-    }
-
-    /// Allocates a `VkPresentRegionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPresentRegionsKHR`
-    public static VkPresentRegionsKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPresentRegionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPresentRegionsKHR`
-    public static VkPresentRegionsKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

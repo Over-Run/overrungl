@@ -95,33 +95,6 @@ public final class VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR extends
     /// @return the allocated `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR`
     public static VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param presentModeFifoLatestReady `presentModeFifoLatestReady`
-    /// @return the allocated `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR`
-    public static VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int presentModeFifoLatestReady) {
-        return alloc(allocator).sType(sType).pNext(pNext).presentModeFifoLatestReady(presentModeFifoLatestReady);
-    }
-
-    /// Allocates a `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR`
-    public static VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR`
-    public static VkPhysicalDevicePresentModeFifoLatestReadyFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -95,33 +95,6 @@ public final class VkReleaseCapturedPipelineDataInfoKHR extends GroupType {
     /// @return the allocated `VkReleaseCapturedPipelineDataInfoKHR`
     public static VkReleaseCapturedPipelineDataInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkReleaseCapturedPipelineDataInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkReleaseCapturedPipelineDataInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pipeline `pipeline`
-    /// @return the allocated `VkReleaseCapturedPipelineDataInfoKHR`
-    public static VkReleaseCapturedPipelineDataInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long pipeline) {
-        return alloc(allocator).sType(sType).pNext(pNext).pipeline(pipeline);
-    }
-
-    /// Allocates a `VkReleaseCapturedPipelineDataInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkReleaseCapturedPipelineDataInfoKHR`
-    public static VkReleaseCapturedPipelineDataInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkReleaseCapturedPipelineDataInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkReleaseCapturedPipelineDataInfoKHR`
-    public static VkReleaseCapturedPipelineDataInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

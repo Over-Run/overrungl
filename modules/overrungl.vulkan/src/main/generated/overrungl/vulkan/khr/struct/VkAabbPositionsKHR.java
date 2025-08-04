@@ -119,69 +119,6 @@ public final class VkAabbPositionsKHR extends GroupType {
     /// @return the allocated `VkAabbPositionsKHR`
     public static VkAabbPositionsKHR alloc(SegmentAllocator allocator, long count) { return new VkAabbPositionsKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkAabbPositionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param minX `minX`
-    /// @param minY `minY`
-    /// @param minZ `minZ`
-    /// @param maxX `maxX`
-    /// @param maxY `maxY`
-    /// @param maxZ `maxZ`
-    /// @return the allocated `VkAabbPositionsKHR`
-    public static VkAabbPositionsKHR allocInit(SegmentAllocator allocator, float minX, float minY, float minZ, float maxX, float maxY, float maxZ) {
-        return alloc(allocator).minX(minX).minY(minY).minZ(minZ).maxX(maxX).maxY(maxY).maxZ(maxZ);
-    }
-
-    /// Allocates a `VkAabbPositionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param minX `minX`
-    /// @param minY `minY`
-    /// @param minZ `minZ`
-    /// @param maxX `maxX`
-    /// @param maxY `maxY`
-    /// @return the allocated `VkAabbPositionsKHR`
-    public static VkAabbPositionsKHR allocInit(SegmentAllocator allocator, float minX, float minY, float minZ, float maxX, float maxY) {
-        return alloc(allocator).minX(minX).minY(minY).minZ(minZ).maxX(maxX).maxY(maxY);
-    }
-
-    /// Allocates a `VkAabbPositionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param minX `minX`
-    /// @param minY `minY`
-    /// @param minZ `minZ`
-    /// @param maxX `maxX`
-    /// @return the allocated `VkAabbPositionsKHR`
-    public static VkAabbPositionsKHR allocInit(SegmentAllocator allocator, float minX, float minY, float minZ, float maxX) {
-        return alloc(allocator).minX(minX).minY(minY).minZ(minZ).maxX(maxX);
-    }
-
-    /// Allocates a `VkAabbPositionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param minX `minX`
-    /// @param minY `minY`
-    /// @param minZ `minZ`
-    /// @return the allocated `VkAabbPositionsKHR`
-    public static VkAabbPositionsKHR allocInit(SegmentAllocator allocator, float minX, float minY, float minZ) {
-        return alloc(allocator).minX(minX).minY(minY).minZ(minZ);
-    }
-
-    /// Allocates a `VkAabbPositionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param minX `minX`
-    /// @param minY `minY`
-    /// @return the allocated `VkAabbPositionsKHR`
-    public static VkAabbPositionsKHR allocInit(SegmentAllocator allocator, float minX, float minY) {
-        return alloc(allocator).minX(minX).minY(minY);
-    }
-
-    /// Allocates a `VkAabbPositionsKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param minX `minX`
-    /// @return the allocated `VkAabbPositionsKHR`
-    public static VkAabbPositionsKHR allocInit(SegmentAllocator allocator, float minX) {
-        return alloc(allocator).minX(minX);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

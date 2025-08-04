@@ -111,56 +111,6 @@ public final class VkSubresourceLayout extends GroupType {
     /// @return the allocated `VkSubresourceLayout`
     public static VkSubresourceLayout alloc(SegmentAllocator allocator, long count) { return new VkSubresourceLayout(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkSubresourceLayout` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @param size `size`
-    /// @param rowPitch `rowPitch`
-    /// @param arrayPitch `arrayPitch`
-    /// @param depthPitch `depthPitch`
-    /// @return the allocated `VkSubresourceLayout`
-    public static VkSubresourceLayout allocInit(SegmentAllocator allocator, long offset, long size, long rowPitch, long arrayPitch, long depthPitch) {
-        return alloc(allocator).offset(offset).size(size).rowPitch(rowPitch).arrayPitch(arrayPitch).depthPitch(depthPitch);
-    }
-
-    /// Allocates a `VkSubresourceLayout` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @param size `size`
-    /// @param rowPitch `rowPitch`
-    /// @param arrayPitch `arrayPitch`
-    /// @return the allocated `VkSubresourceLayout`
-    public static VkSubresourceLayout allocInit(SegmentAllocator allocator, long offset, long size, long rowPitch, long arrayPitch) {
-        return alloc(allocator).offset(offset).size(size).rowPitch(rowPitch).arrayPitch(arrayPitch);
-    }
-
-    /// Allocates a `VkSubresourceLayout` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @param size `size`
-    /// @param rowPitch `rowPitch`
-    /// @return the allocated `VkSubresourceLayout`
-    public static VkSubresourceLayout allocInit(SegmentAllocator allocator, long offset, long size, long rowPitch) {
-        return alloc(allocator).offset(offset).size(size).rowPitch(rowPitch);
-    }
-
-    /// Allocates a `VkSubresourceLayout` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @param size `size`
-    /// @return the allocated `VkSubresourceLayout`
-    public static VkSubresourceLayout allocInit(SegmentAllocator allocator, long offset, long size) {
-        return alloc(allocator).offset(offset).size(size);
-    }
-
-    /// Allocates a `VkSubresourceLayout` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param offset `offset`
-    /// @return the allocated `VkSubresourceLayout`
-    public static VkSubresourceLayout allocInit(SegmentAllocator allocator, long offset) {
-        return alloc(allocator).offset(offset);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

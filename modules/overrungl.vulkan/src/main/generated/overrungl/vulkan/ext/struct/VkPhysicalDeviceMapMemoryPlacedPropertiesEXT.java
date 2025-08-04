@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceMapMemoryPlacedPropertiesEXT extends GroupTyp
     /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`
     public static VkPhysicalDeviceMapMemoryPlacedPropertiesEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceMapMemoryPlacedPropertiesEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param minPlacedMemoryMapAlignment `minPlacedMemoryMapAlignment`
-    /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`
-    public static VkPhysicalDeviceMapMemoryPlacedPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long minPlacedMemoryMapAlignment) {
-        return alloc(allocator).sType(sType).pNext(pNext).minPlacedMemoryMapAlignment(minPlacedMemoryMapAlignment);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`
-    public static VkPhysicalDeviceMapMemoryPlacedPropertiesEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceMapMemoryPlacedPropertiesEXT`
-    public static VkPhysicalDeviceMapMemoryPlacedPropertiesEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

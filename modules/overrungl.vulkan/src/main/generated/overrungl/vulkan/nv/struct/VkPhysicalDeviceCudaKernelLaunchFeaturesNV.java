@@ -95,33 +95,6 @@ public final class VkPhysicalDeviceCudaKernelLaunchFeaturesNV extends GroupType 
     /// @return the allocated `VkPhysicalDeviceCudaKernelLaunchFeaturesNV`
     public static VkPhysicalDeviceCudaKernelLaunchFeaturesNV alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceCudaKernelLaunchFeaturesNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceCudaKernelLaunchFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param cudaKernelLaunchFeatures `cudaKernelLaunchFeatures`
-    /// @return the allocated `VkPhysicalDeviceCudaKernelLaunchFeaturesNV`
-    public static VkPhysicalDeviceCudaKernelLaunchFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int cudaKernelLaunchFeatures) {
-        return alloc(allocator).sType(sType).pNext(pNext).cudaKernelLaunchFeatures(cudaKernelLaunchFeatures);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCudaKernelLaunchFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceCudaKernelLaunchFeaturesNV`
-    public static VkPhysicalDeviceCudaKernelLaunchFeaturesNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceCudaKernelLaunchFeaturesNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceCudaKernelLaunchFeaturesNV`
-    public static VkPhysicalDeviceCudaKernelLaunchFeaturesNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

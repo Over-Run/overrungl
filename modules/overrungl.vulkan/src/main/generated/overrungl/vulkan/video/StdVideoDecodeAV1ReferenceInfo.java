@@ -109,56 +109,6 @@ public final class StdVideoDecodeAV1ReferenceInfo extends GroupType {
     /// @return the allocated `StdVideoDecodeAV1ReferenceInfo`
     public static StdVideoDecodeAV1ReferenceInfo alloc(SegmentAllocator allocator, long count) { return new StdVideoDecodeAV1ReferenceInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoDecodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param frame_type `frame_type`
-    /// @param RefFrameSignBias `RefFrameSignBias`
-    /// @param OrderHint `OrderHint`
-    /// @param SavedOrderHints `SavedOrderHints`
-    /// @return the allocated `StdVideoDecodeAV1ReferenceInfo`
-    public static StdVideoDecodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte frame_type, byte RefFrameSignBias, byte OrderHint, MemorySegment SavedOrderHints) {
-        return alloc(allocator).flags(flags).frame_type(frame_type).RefFrameSignBias(RefFrameSignBias).OrderHint(OrderHint).SavedOrderHints(SavedOrderHints);
-    }
-
-    /// Allocates a `StdVideoDecodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param frame_type `frame_type`
-    /// @param RefFrameSignBias `RefFrameSignBias`
-    /// @param OrderHint `OrderHint`
-    /// @return the allocated `StdVideoDecodeAV1ReferenceInfo`
-    public static StdVideoDecodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte frame_type, byte RefFrameSignBias, byte OrderHint) {
-        return alloc(allocator).flags(flags).frame_type(frame_type).RefFrameSignBias(RefFrameSignBias).OrderHint(OrderHint);
-    }
-
-    /// Allocates a `StdVideoDecodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param frame_type `frame_type`
-    /// @param RefFrameSignBias `RefFrameSignBias`
-    /// @return the allocated `StdVideoDecodeAV1ReferenceInfo`
-    public static StdVideoDecodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte frame_type, byte RefFrameSignBias) {
-        return alloc(allocator).flags(flags).frame_type(frame_type).RefFrameSignBias(RefFrameSignBias);
-    }
-
-    /// Allocates a `StdVideoDecodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @param frame_type `frame_type`
-    /// @return the allocated `StdVideoDecodeAV1ReferenceInfo`
-    public static StdVideoDecodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags, byte frame_type) {
-        return alloc(allocator).flags(flags).frame_type(frame_type);
-    }
-
-    /// Allocates a `StdVideoDecodeAV1ReferenceInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param flags `flags`
-    /// @return the allocated `StdVideoDecodeAV1ReferenceInfo`
-    public static StdVideoDecodeAV1ReferenceInfo allocInit(SegmentAllocator allocator, MemorySegment flags) {
-        return alloc(allocator).flags(flags);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

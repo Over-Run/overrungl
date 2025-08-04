@@ -95,33 +95,6 @@ public final class VkDescriptorSetVariableDescriptorCountLayoutSupport extends G
     /// @return the allocated `VkDescriptorSetVariableDescriptorCountLayoutSupport`
     public static VkDescriptorSetVariableDescriptorCountLayoutSupport alloc(SegmentAllocator allocator, long count) { return new VkDescriptorSetVariableDescriptorCountLayoutSupport(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDescriptorSetVariableDescriptorCountLayoutSupport` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param maxVariableDescriptorCount `maxVariableDescriptorCount`
-    /// @return the allocated `VkDescriptorSetVariableDescriptorCountLayoutSupport`
-    public static VkDescriptorSetVariableDescriptorCountLayoutSupport allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int maxVariableDescriptorCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).maxVariableDescriptorCount(maxVariableDescriptorCount);
-    }
-
-    /// Allocates a `VkDescriptorSetVariableDescriptorCountLayoutSupport` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDescriptorSetVariableDescriptorCountLayoutSupport`
-    public static VkDescriptorSetVariableDescriptorCountLayoutSupport allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDescriptorSetVariableDescriptorCountLayoutSupport` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDescriptorSetVariableDescriptorCountLayoutSupport`
-    public static VkDescriptorSetVariableDescriptorCountLayoutSupport allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

@@ -103,44 +103,6 @@ public final class VmaVirtualAllocationCreateInfo extends GroupType {
     /// @return the allocated `VmaVirtualAllocationCreateInfo`
     public static VmaVirtualAllocationCreateInfo alloc(SegmentAllocator allocator, long count) { return new VmaVirtualAllocationCreateInfo(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VmaVirtualAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param size `size`
-    /// @param alignment `alignment`
-    /// @param flags `flags`
-    /// @param pUserData `pUserData`
-    /// @return the allocated `VmaVirtualAllocationCreateInfo`
-    public static VmaVirtualAllocationCreateInfo allocInit(SegmentAllocator allocator, long size, long alignment, int flags, MemorySegment pUserData) {
-        return alloc(allocator).size(size).alignment(alignment).flags(flags).pUserData(pUserData);
-    }
-
-    /// Allocates a `VmaVirtualAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param size `size`
-    /// @param alignment `alignment`
-    /// @param flags `flags`
-    /// @return the allocated `VmaVirtualAllocationCreateInfo`
-    public static VmaVirtualAllocationCreateInfo allocInit(SegmentAllocator allocator, long size, long alignment, int flags) {
-        return alloc(allocator).size(size).alignment(alignment).flags(flags);
-    }
-
-    /// Allocates a `VmaVirtualAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param size `size`
-    /// @param alignment `alignment`
-    /// @return the allocated `VmaVirtualAllocationCreateInfo`
-    public static VmaVirtualAllocationCreateInfo allocInit(SegmentAllocator allocator, long size, long alignment) {
-        return alloc(allocator).size(size).alignment(alignment);
-    }
-
-    /// Allocates a `VmaVirtualAllocationCreateInfo` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param size `size`
-    /// @return the allocated `VmaVirtualAllocationCreateInfo`
-    public static VmaVirtualAllocationCreateInfo allocInit(SegmentAllocator allocator, long size) {
-        return alloc(allocator).size(size);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

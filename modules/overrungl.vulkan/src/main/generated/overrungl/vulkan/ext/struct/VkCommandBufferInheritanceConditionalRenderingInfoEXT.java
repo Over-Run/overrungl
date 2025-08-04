@@ -95,33 +95,6 @@ public final class VkCommandBufferInheritanceConditionalRenderingInfoEXT extends
     /// @return the allocated `VkCommandBufferInheritanceConditionalRenderingInfoEXT`
     public static VkCommandBufferInheritanceConditionalRenderingInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkCommandBufferInheritanceConditionalRenderingInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkCommandBufferInheritanceConditionalRenderingInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param conditionalRenderingEnable `conditionalRenderingEnable`
-    /// @return the allocated `VkCommandBufferInheritanceConditionalRenderingInfoEXT`
-    public static VkCommandBufferInheritanceConditionalRenderingInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int conditionalRenderingEnable) {
-        return alloc(allocator).sType(sType).pNext(pNext).conditionalRenderingEnable(conditionalRenderingEnable);
-    }
-
-    /// Allocates a `VkCommandBufferInheritanceConditionalRenderingInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkCommandBufferInheritanceConditionalRenderingInfoEXT`
-    public static VkCommandBufferInheritanceConditionalRenderingInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkCommandBufferInheritanceConditionalRenderingInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkCommandBufferInheritanceConditionalRenderingInfoEXT`
-    public static VkCommandBufferInheritanceConditionalRenderingInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

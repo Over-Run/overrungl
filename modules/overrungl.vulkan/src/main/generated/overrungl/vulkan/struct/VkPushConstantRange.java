@@ -95,33 +95,6 @@ public final class VkPushConstantRange extends GroupType {
     /// @return the allocated `VkPushConstantRange`
     public static VkPushConstantRange alloc(SegmentAllocator allocator, long count) { return new VkPushConstantRange(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPushConstantRange` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param stageFlags `stageFlags`
-    /// @param offset `offset`
-    /// @param size `size`
-    /// @return the allocated `VkPushConstantRange`
-    public static VkPushConstantRange allocInit(SegmentAllocator allocator, int stageFlags, int offset, int size) {
-        return alloc(allocator).stageFlags(stageFlags).offset(offset).size(size);
-    }
-
-    /// Allocates a `VkPushConstantRange` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param stageFlags `stageFlags`
-    /// @param offset `offset`
-    /// @return the allocated `VkPushConstantRange`
-    public static VkPushConstantRange allocInit(SegmentAllocator allocator, int stageFlags, int offset) {
-        return alloc(allocator).stageFlags(stageFlags).offset(offset);
-    }
-
-    /// Allocates a `VkPushConstantRange` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param stageFlags `stageFlags`
-    /// @return the allocated `VkPushConstantRange`
-    public static VkPushConstantRange allocInit(SegmentAllocator allocator, int stageFlags) {
-        return alloc(allocator).stageFlags(stageFlags);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

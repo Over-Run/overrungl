@@ -95,30 +95,6 @@ public final class VkClusterAccelerationStructureOpInputNV extends GroupType {
     /// @return the allocated `VkClusterAccelerationStructureOpInputNV`
     public static VkClusterAccelerationStructureOpInputNV alloc(SegmentAllocator allocator, long count) { return new VkClusterAccelerationStructureOpInputNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkClusterAccelerationStructureOpInputNV` with the given segment allocator and `pClustersBottomLevel`.
-    /// @param allocator the segment allocator
-    /// @param pClustersBottomLevel `pClustersBottomLevel`
-    /// @return the allocated `VkClusterAccelerationStructureOpInputNV`
-    public static VkClusterAccelerationStructureOpInputNV allocWith_pClustersBottomLevel(SegmentAllocator allocator, MemorySegment pClustersBottomLevel) {
-        return alloc(allocator).pClustersBottomLevel(pClustersBottomLevel);
-    }
-
-    /// Allocates a `VkClusterAccelerationStructureOpInputNV` with the given segment allocator and `pTriangleClusters`.
-    /// @param allocator the segment allocator
-    /// @param pTriangleClusters `pTriangleClusters`
-    /// @return the allocated `VkClusterAccelerationStructureOpInputNV`
-    public static VkClusterAccelerationStructureOpInputNV allocWith_pTriangleClusters(SegmentAllocator allocator, MemorySegment pTriangleClusters) {
-        return alloc(allocator).pTriangleClusters(pTriangleClusters);
-    }
-
-    /// Allocates a `VkClusterAccelerationStructureOpInputNV` with the given segment allocator and `pMoveObjects`.
-    /// @param allocator the segment allocator
-    /// @param pMoveObjects `pMoveObjects`
-    /// @return the allocated `VkClusterAccelerationStructureOpInputNV`
-    public static VkClusterAccelerationStructureOpInputNV allocWith_pMoveObjects(SegmentAllocator allocator, MemorySegment pMoveObjects) {
-        return alloc(allocator).pMoveObjects(pMoveObjects);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

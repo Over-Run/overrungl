@@ -103,44 +103,6 @@ public final class VkDepthBiasRepresentationInfoEXT extends GroupType {
     /// @return the allocated `VkDepthBiasRepresentationInfoEXT`
     public static VkDepthBiasRepresentationInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkDepthBiasRepresentationInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDepthBiasRepresentationInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param depthBiasRepresentation `depthBiasRepresentation`
-    /// @param depthBiasExact `depthBiasExact`
-    /// @return the allocated `VkDepthBiasRepresentationInfoEXT`
-    public static VkDepthBiasRepresentationInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthBiasRepresentation, int depthBiasExact) {
-        return alloc(allocator).sType(sType).pNext(pNext).depthBiasRepresentation(depthBiasRepresentation).depthBiasExact(depthBiasExact);
-    }
-
-    /// Allocates a `VkDepthBiasRepresentationInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param depthBiasRepresentation `depthBiasRepresentation`
-    /// @return the allocated `VkDepthBiasRepresentationInfoEXT`
-    public static VkDepthBiasRepresentationInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int depthBiasRepresentation) {
-        return alloc(allocator).sType(sType).pNext(pNext).depthBiasRepresentation(depthBiasRepresentation);
-    }
-
-    /// Allocates a `VkDepthBiasRepresentationInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDepthBiasRepresentationInfoEXT`
-    public static VkDepthBiasRepresentationInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDepthBiasRepresentationInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDepthBiasRepresentationInfoEXT`
-    public static VkDepthBiasRepresentationInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

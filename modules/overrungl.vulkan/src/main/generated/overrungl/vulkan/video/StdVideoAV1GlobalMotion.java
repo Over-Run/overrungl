@@ -87,23 +87,6 @@ public final class StdVideoAV1GlobalMotion extends GroupType {
     /// @return the allocated `StdVideoAV1GlobalMotion`
     public static StdVideoAV1GlobalMotion alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1GlobalMotion(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoAV1GlobalMotion` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param GmType `GmType`
-    /// @param gm_params `gm_params`
-    /// @return the allocated `StdVideoAV1GlobalMotion`
-    public static StdVideoAV1GlobalMotion allocInit(SegmentAllocator allocator, MemorySegment GmType, MemorySegment gm_params) {
-        return alloc(allocator).GmType(GmType).gm_params(gm_params);
-    }
-
-    /// Allocates a `StdVideoAV1GlobalMotion` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param GmType `GmType`
-    /// @return the allocated `StdVideoAV1GlobalMotion`
-    public static StdVideoAV1GlobalMotion allocInit(SegmentAllocator allocator, MemorySegment GmType) {
-        return alloc(allocator).GmType(GmType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

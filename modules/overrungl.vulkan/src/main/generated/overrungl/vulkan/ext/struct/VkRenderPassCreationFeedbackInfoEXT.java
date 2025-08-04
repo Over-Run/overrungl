@@ -79,14 +79,6 @@ public final class VkRenderPassCreationFeedbackInfoEXT extends GroupType {
     /// @return the allocated `VkRenderPassCreationFeedbackInfoEXT`
     public static VkRenderPassCreationFeedbackInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkRenderPassCreationFeedbackInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRenderPassCreationFeedbackInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param postMergeSubpassCount `postMergeSubpassCount`
-    /// @return the allocated `VkRenderPassCreationFeedbackInfoEXT`
-    public static VkRenderPassCreationFeedbackInfoEXT allocInit(SegmentAllocator allocator, int postMergeSubpassCount) {
-        return alloc(allocator).postMergeSubpassCount(postMergeSubpassCount);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

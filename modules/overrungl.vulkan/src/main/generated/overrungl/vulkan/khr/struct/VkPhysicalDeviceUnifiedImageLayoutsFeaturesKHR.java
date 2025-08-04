@@ -103,44 +103,6 @@ public final class VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR extends GroupT
     /// @return the allocated `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
     public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param unifiedImageLayouts `unifiedImageLayouts`
-    /// @param unifiedImageLayoutsVideo `unifiedImageLayoutsVideo`
-    /// @return the allocated `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
-    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int unifiedImageLayouts, int unifiedImageLayoutsVideo) {
-        return alloc(allocator).sType(sType).pNext(pNext).unifiedImageLayouts(unifiedImageLayouts).unifiedImageLayoutsVideo(unifiedImageLayoutsVideo);
-    }
-
-    /// Allocates a `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param unifiedImageLayouts `unifiedImageLayouts`
-    /// @return the allocated `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
-    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int unifiedImageLayouts) {
-        return alloc(allocator).sType(sType).pNext(pNext).unifiedImageLayouts(unifiedImageLayouts);
-    }
-
-    /// Allocates a `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
-    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR`
-    public static VkPhysicalDeviceUnifiedImageLayoutsFeaturesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

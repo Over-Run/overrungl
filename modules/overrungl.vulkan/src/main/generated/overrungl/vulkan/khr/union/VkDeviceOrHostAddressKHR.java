@@ -87,22 +87,6 @@ public final class VkDeviceOrHostAddressKHR extends GroupType {
     /// @return the allocated `VkDeviceOrHostAddressKHR`
     public static VkDeviceOrHostAddressKHR alloc(SegmentAllocator allocator, long count) { return new VkDeviceOrHostAddressKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDeviceOrHostAddressKHR` with the given segment allocator and `deviceAddress`.
-    /// @param allocator the segment allocator
-    /// @param deviceAddress `deviceAddress`
-    /// @return the allocated `VkDeviceOrHostAddressKHR`
-    public static VkDeviceOrHostAddressKHR allocWith_deviceAddress(SegmentAllocator allocator, long deviceAddress) {
-        return alloc(allocator).deviceAddress(deviceAddress);
-    }
-
-    /// Allocates a `VkDeviceOrHostAddressKHR` with the given segment allocator and `hostAddress`.
-    /// @param allocator the segment allocator
-    /// @param hostAddress `hostAddress`
-    /// @return the allocated `VkDeviceOrHostAddressKHR`
-    public static VkDeviceOrHostAddressKHR allocWith_hostAddress(SegmentAllocator allocator, MemorySegment hostAddress) {
-        return alloc(allocator).hostAddress(hostAddress);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

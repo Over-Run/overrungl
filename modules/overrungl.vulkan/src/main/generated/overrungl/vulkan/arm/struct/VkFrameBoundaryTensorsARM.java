@@ -103,44 +103,6 @@ public final class VkFrameBoundaryTensorsARM extends GroupType {
     /// @return the allocated `VkFrameBoundaryTensorsARM`
     public static VkFrameBoundaryTensorsARM alloc(SegmentAllocator allocator, long count) { return new VkFrameBoundaryTensorsARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkFrameBoundaryTensorsARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensorCount `tensorCount`
-    /// @param pTensors `pTensors`
-    /// @return the allocated `VkFrameBoundaryTensorsARM`
-    public static VkFrameBoundaryTensorsARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tensorCount, MemorySegment pTensors) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensorCount(tensorCount).pTensors(pTensors);
-    }
-
-    /// Allocates a `VkFrameBoundaryTensorsARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensorCount `tensorCount`
-    /// @return the allocated `VkFrameBoundaryTensorsARM`
-    public static VkFrameBoundaryTensorsARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tensorCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensorCount(tensorCount);
-    }
-
-    /// Allocates a `VkFrameBoundaryTensorsARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkFrameBoundaryTensorsARM`
-    public static VkFrameBoundaryTensorsARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkFrameBoundaryTensorsARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkFrameBoundaryTensorsARM`
-    public static VkFrameBoundaryTensorsARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

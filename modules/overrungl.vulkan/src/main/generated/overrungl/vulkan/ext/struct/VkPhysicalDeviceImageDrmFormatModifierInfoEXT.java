@@ -119,69 +119,6 @@ public final class VkPhysicalDeviceImageDrmFormatModifierInfoEXT extends GroupTy
     /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
     public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceImageDrmFormatModifierInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param drmFormatModifier `drmFormatModifier`
-    /// @param sharingMode `sharingMode`
-    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
-    /// @param pQueueFamilyIndices `pQueueFamilyIndices`
-    /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long drmFormatModifier, int sharingMode, int queueFamilyIndexCount, MemorySegment pQueueFamilyIndices) {
-        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount).pQueueFamilyIndices(pQueueFamilyIndices);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param drmFormatModifier `drmFormatModifier`
-    /// @param sharingMode `sharingMode`
-    /// @param queueFamilyIndexCount `queueFamilyIndexCount`
-    /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long drmFormatModifier, int sharingMode, int queueFamilyIndexCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier).sharingMode(sharingMode).queueFamilyIndexCount(queueFamilyIndexCount);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param drmFormatModifier `drmFormatModifier`
-    /// @param sharingMode `sharingMode`
-    /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long drmFormatModifier, int sharingMode) {
-        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier).sharingMode(sharingMode);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param drmFormatModifier `drmFormatModifier`
-    /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long drmFormatModifier) {
-        return alloc(allocator).sType(sType).pNext(pNext).drmFormatModifier(drmFormatModifier);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceImageDrmFormatModifierInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceImageDrmFormatModifierInfoEXT`
-    public static VkPhysicalDeviceImageDrmFormatModifierInfoEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

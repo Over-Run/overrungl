@@ -103,44 +103,6 @@ public final class VkHostImageCopyDevicePerformanceQueryEXT extends GroupType {
     /// @return the allocated `VkHostImageCopyDevicePerformanceQueryEXT`
     public static VkHostImageCopyDevicePerformanceQueryEXT alloc(SegmentAllocator allocator, long count) { return new VkHostImageCopyDevicePerformanceQueryEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkHostImageCopyDevicePerformanceQueryEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param optimalDeviceAccess `optimalDeviceAccess`
-    /// @param identicalMemoryLayout `identicalMemoryLayout`
-    /// @return the allocated `VkHostImageCopyDevicePerformanceQueryEXT`
-    public static VkHostImageCopyDevicePerformanceQueryEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int optimalDeviceAccess, int identicalMemoryLayout) {
-        return alloc(allocator).sType(sType).pNext(pNext).optimalDeviceAccess(optimalDeviceAccess).identicalMemoryLayout(identicalMemoryLayout);
-    }
-
-    /// Allocates a `VkHostImageCopyDevicePerformanceQueryEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param optimalDeviceAccess `optimalDeviceAccess`
-    /// @return the allocated `VkHostImageCopyDevicePerformanceQueryEXT`
-    public static VkHostImageCopyDevicePerformanceQueryEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int optimalDeviceAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).optimalDeviceAccess(optimalDeviceAccess);
-    }
-
-    /// Allocates a `VkHostImageCopyDevicePerformanceQueryEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkHostImageCopyDevicePerformanceQueryEXT`
-    public static VkHostImageCopyDevicePerformanceQueryEXT allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkHostImageCopyDevicePerformanceQueryEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkHostImageCopyDevicePerformanceQueryEXT`
-    public static VkHostImageCopyDevicePerformanceQueryEXT allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

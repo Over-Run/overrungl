@@ -93,33 +93,6 @@ public final class VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM extend
     /// @return the allocated `VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM`
     public static VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param fragmentDensityOffsetGranularity `fragmentDensityOffsetGranularity`
-    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM`
-    public static VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment fragmentDensityOffsetGranularity) {
-        return alloc(allocator).sType(sType).pNext(pNext).fragmentDensityOffsetGranularity(fragmentDensityOffsetGranularity);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM`
-    public static VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM`
-    public static VkPhysicalDeviceFragmentDensityMapOffsetPropertiesQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

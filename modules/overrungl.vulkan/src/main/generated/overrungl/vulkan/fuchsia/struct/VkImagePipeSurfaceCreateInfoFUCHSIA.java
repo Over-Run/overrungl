@@ -103,44 +103,6 @@ public final class VkImagePipeSurfaceCreateInfoFUCHSIA extends GroupType {
     /// @return the allocated `VkImagePipeSurfaceCreateInfoFUCHSIA`
     public static VkImagePipeSurfaceCreateInfoFUCHSIA alloc(SegmentAllocator allocator, long count) { return new VkImagePipeSurfaceCreateInfoFUCHSIA(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @param imagePipeHandle `imagePipeHandle`
-    /// @return the allocated `VkImagePipeSurfaceCreateInfoFUCHSIA`
-    public static VkImagePipeSurfaceCreateInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags, int imagePipeHandle) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags).imagePipeHandle(imagePipeHandle);
-    }
-
-    /// Allocates a `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param flags `flags`
-    /// @return the allocated `VkImagePipeSurfaceCreateInfoFUCHSIA`
-    public static VkImagePipeSurfaceCreateInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int flags) {
-        return alloc(allocator).sType(sType).pNext(pNext).flags(flags);
-    }
-
-    /// Allocates a `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImagePipeSurfaceCreateInfoFUCHSIA`
-    public static VkImagePipeSurfaceCreateInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImagePipeSurfaceCreateInfoFUCHSIA` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImagePipeSurfaceCreateInfoFUCHSIA`
-    public static VkImagePipeSurfaceCreateInfoFUCHSIA allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

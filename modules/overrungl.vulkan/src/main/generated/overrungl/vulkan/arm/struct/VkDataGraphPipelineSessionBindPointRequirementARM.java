@@ -111,56 +111,6 @@ public final class VkDataGraphPipelineSessionBindPointRequirementARM extends Gro
     /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementARM`
     public static VkDataGraphPipelineSessionBindPointRequirementARM alloc(SegmentAllocator allocator, long count) { return new VkDataGraphPipelineSessionBindPointRequirementARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param bindPoint `bindPoint`
-    /// @param bindPointType `bindPointType`
-    /// @param numObjects `numObjects`
-    /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementARM`
-    public static VkDataGraphPipelineSessionBindPointRequirementARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int bindPoint, int bindPointType, int numObjects) {
-        return alloc(allocator).sType(sType).pNext(pNext).bindPoint(bindPoint).bindPointType(bindPointType).numObjects(numObjects);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param bindPoint `bindPoint`
-    /// @param bindPointType `bindPointType`
-    /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementARM`
-    public static VkDataGraphPipelineSessionBindPointRequirementARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int bindPoint, int bindPointType) {
-        return alloc(allocator).sType(sType).pNext(pNext).bindPoint(bindPoint).bindPointType(bindPointType);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param bindPoint `bindPoint`
-    /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementARM`
-    public static VkDataGraphPipelineSessionBindPointRequirementARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int bindPoint) {
-        return alloc(allocator).sType(sType).pNext(pNext).bindPoint(bindPoint);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementARM`
-    public static VkDataGraphPipelineSessionBindPointRequirementARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkDataGraphPipelineSessionBindPointRequirementARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkDataGraphPipelineSessionBindPointRequirementARM`
-    public static VkDataGraphPipelineSessionBindPointRequirementARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

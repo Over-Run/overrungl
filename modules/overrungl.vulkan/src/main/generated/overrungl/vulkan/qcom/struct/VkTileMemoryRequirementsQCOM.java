@@ -103,44 +103,6 @@ public final class VkTileMemoryRequirementsQCOM extends GroupType {
     /// @return the allocated `VkTileMemoryRequirementsQCOM`
     public static VkTileMemoryRequirementsQCOM alloc(SegmentAllocator allocator, long count) { return new VkTileMemoryRequirementsQCOM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkTileMemoryRequirementsQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param size `size`
-    /// @param alignment `alignment`
-    /// @return the allocated `VkTileMemoryRequirementsQCOM`
-    public static VkTileMemoryRequirementsQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long size, long alignment) {
-        return alloc(allocator).sType(sType).pNext(pNext).size(size).alignment(alignment);
-    }
-
-    /// Allocates a `VkTileMemoryRequirementsQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param size `size`
-    /// @return the allocated `VkTileMemoryRequirementsQCOM`
-    public static VkTileMemoryRequirementsQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long size) {
-        return alloc(allocator).sType(sType).pNext(pNext).size(size);
-    }
-
-    /// Allocates a `VkTileMemoryRequirementsQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkTileMemoryRequirementsQCOM`
-    public static VkTileMemoryRequirementsQCOM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkTileMemoryRequirementsQCOM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkTileMemoryRequirementsQCOM`
-    public static VkTileMemoryRequirementsQCOM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

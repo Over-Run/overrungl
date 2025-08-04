@@ -119,69 +119,6 @@ public final class VkVideoEncodeH265GopRemainingFrameInfoKHR extends GroupType {
     /// @return the allocated `VkVideoEncodeH265GopRemainingFrameInfoKHR`
     public static VkVideoEncodeH265GopRemainingFrameInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoEncodeH265GopRemainingFrameInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoEncodeH265GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param useGopRemainingFrames `useGopRemainingFrames`
-    /// @param gopRemainingI `gopRemainingI`
-    /// @param gopRemainingP `gopRemainingP`
-    /// @param gopRemainingB `gopRemainingB`
-    /// @return the allocated `VkVideoEncodeH265GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeH265GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useGopRemainingFrames, int gopRemainingI, int gopRemainingP, int gopRemainingB) {
-        return alloc(allocator).sType(sType).pNext(pNext).useGopRemainingFrames(useGopRemainingFrames).gopRemainingI(gopRemainingI).gopRemainingP(gopRemainingP).gopRemainingB(gopRemainingB);
-    }
-
-    /// Allocates a `VkVideoEncodeH265GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param useGopRemainingFrames `useGopRemainingFrames`
-    /// @param gopRemainingI `gopRemainingI`
-    /// @param gopRemainingP `gopRemainingP`
-    /// @return the allocated `VkVideoEncodeH265GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeH265GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useGopRemainingFrames, int gopRemainingI, int gopRemainingP) {
-        return alloc(allocator).sType(sType).pNext(pNext).useGopRemainingFrames(useGopRemainingFrames).gopRemainingI(gopRemainingI).gopRemainingP(gopRemainingP);
-    }
-
-    /// Allocates a `VkVideoEncodeH265GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param useGopRemainingFrames `useGopRemainingFrames`
-    /// @param gopRemainingI `gopRemainingI`
-    /// @return the allocated `VkVideoEncodeH265GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeH265GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useGopRemainingFrames, int gopRemainingI) {
-        return alloc(allocator).sType(sType).pNext(pNext).useGopRemainingFrames(useGopRemainingFrames).gopRemainingI(gopRemainingI);
-    }
-
-    /// Allocates a `VkVideoEncodeH265GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param useGopRemainingFrames `useGopRemainingFrames`
-    /// @return the allocated `VkVideoEncodeH265GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeH265GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int useGopRemainingFrames) {
-        return alloc(allocator).sType(sType).pNext(pNext).useGopRemainingFrames(useGopRemainingFrames);
-    }
-
-    /// Allocates a `VkVideoEncodeH265GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoEncodeH265GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeH265GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoEncodeH265GopRemainingFrameInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoEncodeH265GopRemainingFrameInfoKHR`
-    public static VkVideoEncodeH265GopRemainingFrameInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

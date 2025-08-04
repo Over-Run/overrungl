@@ -95,33 +95,6 @@ public final class VkMultiDrawIndexedInfoEXT extends GroupType {
     /// @return the allocated `VkMultiDrawIndexedInfoEXT`
     public static VkMultiDrawIndexedInfoEXT alloc(SegmentAllocator allocator, long count) { return new VkMultiDrawIndexedInfoEXT(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMultiDrawIndexedInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param firstIndex `firstIndex`
-    /// @param indexCount `indexCount`
-    /// @param vertexOffset `vertexOffset`
-    /// @return the allocated `VkMultiDrawIndexedInfoEXT`
-    public static VkMultiDrawIndexedInfoEXT allocInit(SegmentAllocator allocator, int firstIndex, int indexCount, int vertexOffset) {
-        return alloc(allocator).firstIndex(firstIndex).indexCount(indexCount).vertexOffset(vertexOffset);
-    }
-
-    /// Allocates a `VkMultiDrawIndexedInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param firstIndex `firstIndex`
-    /// @param indexCount `indexCount`
-    /// @return the allocated `VkMultiDrawIndexedInfoEXT`
-    public static VkMultiDrawIndexedInfoEXT allocInit(SegmentAllocator allocator, int firstIndex, int indexCount) {
-        return alloc(allocator).firstIndex(firstIndex).indexCount(indexCount);
-    }
-
-    /// Allocates a `VkMultiDrawIndexedInfoEXT` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param firstIndex `firstIndex`
-    /// @return the allocated `VkMultiDrawIndexedInfoEXT`
-    public static VkMultiDrawIndexedInfoEXT allocInit(SegmentAllocator allocator, int firstIndex) {
-        return alloc(allocator).firstIndex(firstIndex);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

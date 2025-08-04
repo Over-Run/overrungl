@@ -87,23 +87,6 @@ public final class StdVideoAV1LoopRestoration extends GroupType {
     /// @return the allocated `StdVideoAV1LoopRestoration`
     public static StdVideoAV1LoopRestoration alloc(SegmentAllocator allocator, long count) { return new StdVideoAV1LoopRestoration(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `StdVideoAV1LoopRestoration` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param FrameRestorationType `FrameRestorationType`
-    /// @param LoopRestorationSize `LoopRestorationSize`
-    /// @return the allocated `StdVideoAV1LoopRestoration`
-    public static StdVideoAV1LoopRestoration allocInit(SegmentAllocator allocator, MemorySegment FrameRestorationType, MemorySegment LoopRestorationSize) {
-        return alloc(allocator).FrameRestorationType(FrameRestorationType).LoopRestorationSize(LoopRestorationSize);
-    }
-
-    /// Allocates a `StdVideoAV1LoopRestoration` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param FrameRestorationType `FrameRestorationType`
-    /// @return the allocated `StdVideoAV1LoopRestoration`
-    public static StdVideoAV1LoopRestoration allocInit(SegmentAllocator allocator, MemorySegment FrameRestorationType) {
-        return alloc(allocator).FrameRestorationType(FrameRestorationType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

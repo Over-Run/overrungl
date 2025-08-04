@@ -95,33 +95,6 @@ public final class VkVideoDecodeAV1DpbSlotInfoKHR extends GroupType {
     /// @return the allocated `VkVideoDecodeAV1DpbSlotInfoKHR`
     public static VkVideoDecodeAV1DpbSlotInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkVideoDecodeAV1DpbSlotInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkVideoDecodeAV1DpbSlotInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param pStdReferenceInfo `pStdReferenceInfo`
-    /// @return the allocated `VkVideoDecodeAV1DpbSlotInfoKHR`
-    public static VkVideoDecodeAV1DpbSlotInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, MemorySegment pStdReferenceInfo) {
-        return alloc(allocator).sType(sType).pNext(pNext).pStdReferenceInfo(pStdReferenceInfo);
-    }
-
-    /// Allocates a `VkVideoDecodeAV1DpbSlotInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkVideoDecodeAV1DpbSlotInfoKHR`
-    public static VkVideoDecodeAV1DpbSlotInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkVideoDecodeAV1DpbSlotInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkVideoDecodeAV1DpbSlotInfoKHR`
-    public static VkVideoDecodeAV1DpbSlotInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

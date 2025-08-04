@@ -103,44 +103,6 @@ public final class VkRefreshObjectListKHR extends GroupType {
     /// @return the allocated `VkRefreshObjectListKHR`
     public static VkRefreshObjectListKHR alloc(SegmentAllocator allocator, long count) { return new VkRefreshObjectListKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkRefreshObjectListKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param objectCount `objectCount`
-    /// @param pObjects `pObjects`
-    /// @return the allocated `VkRefreshObjectListKHR`
-    public static VkRefreshObjectListKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int objectCount, MemorySegment pObjects) {
-        return alloc(allocator).sType(sType).pNext(pNext).objectCount(objectCount).pObjects(pObjects);
-    }
-
-    /// Allocates a `VkRefreshObjectListKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param objectCount `objectCount`
-    /// @return the allocated `VkRefreshObjectListKHR`
-    public static VkRefreshObjectListKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int objectCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).objectCount(objectCount);
-    }
-
-    /// Allocates a `VkRefreshObjectListKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkRefreshObjectListKHR`
-    public static VkRefreshObjectListKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkRefreshObjectListKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkRefreshObjectListKHR`
-    public static VkRefreshObjectListKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

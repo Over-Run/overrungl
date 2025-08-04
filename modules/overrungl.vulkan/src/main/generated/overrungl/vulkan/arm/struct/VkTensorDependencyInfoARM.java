@@ -103,44 +103,6 @@ public final class VkTensorDependencyInfoARM extends GroupType {
     /// @return the allocated `VkTensorDependencyInfoARM`
     public static VkTensorDependencyInfoARM alloc(SegmentAllocator allocator, long count) { return new VkTensorDependencyInfoARM(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkTensorDependencyInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensorMemoryBarrierCount `tensorMemoryBarrierCount`
-    /// @param pTensorMemoryBarriers `pTensorMemoryBarriers`
-    /// @return the allocated `VkTensorDependencyInfoARM`
-    public static VkTensorDependencyInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tensorMemoryBarrierCount, MemorySegment pTensorMemoryBarriers) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensorMemoryBarrierCount(tensorMemoryBarrierCount).pTensorMemoryBarriers(pTensorMemoryBarriers);
-    }
-
-    /// Allocates a `VkTensorDependencyInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param tensorMemoryBarrierCount `tensorMemoryBarrierCount`
-    /// @return the allocated `VkTensorDependencyInfoARM`
-    public static VkTensorDependencyInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int tensorMemoryBarrierCount) {
-        return alloc(allocator).sType(sType).pNext(pNext).tensorMemoryBarrierCount(tensorMemoryBarrierCount);
-    }
-
-    /// Allocates a `VkTensorDependencyInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkTensorDependencyInfoARM`
-    public static VkTensorDependencyInfoARM allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkTensorDependencyInfoARM` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkTensorDependencyInfoARM`
-    public static VkTensorDependencyInfoARM allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

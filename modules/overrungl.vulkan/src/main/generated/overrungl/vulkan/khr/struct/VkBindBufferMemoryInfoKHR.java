@@ -111,56 +111,6 @@ public final class VkBindBufferMemoryInfoKHR extends GroupType {
     /// @return the allocated `VkBindBufferMemoryInfoKHR`
     public static VkBindBufferMemoryInfoKHR alloc(SegmentAllocator allocator, long count) { return new VkBindBufferMemoryInfoKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkBindBufferMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param buffer `buffer`
-    /// @param memory `memory`
-    /// @param memoryOffset `memoryOffset`
-    /// @return the allocated `VkBindBufferMemoryInfoKHR`
-    public static VkBindBufferMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long buffer, long memory, long memoryOffset) {
-        return alloc(allocator).sType(sType).pNext(pNext).buffer(buffer).memory(memory).memoryOffset(memoryOffset);
-    }
-
-    /// Allocates a `VkBindBufferMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param buffer `buffer`
-    /// @param memory `memory`
-    /// @return the allocated `VkBindBufferMemoryInfoKHR`
-    public static VkBindBufferMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long buffer, long memory) {
-        return alloc(allocator).sType(sType).pNext(pNext).buffer(buffer).memory(memory);
-    }
-
-    /// Allocates a `VkBindBufferMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param buffer `buffer`
-    /// @return the allocated `VkBindBufferMemoryInfoKHR`
-    public static VkBindBufferMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long buffer) {
-        return alloc(allocator).sType(sType).pNext(pNext).buffer(buffer);
-    }
-
-    /// Allocates a `VkBindBufferMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkBindBufferMemoryInfoKHR`
-    public static VkBindBufferMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkBindBufferMemoryInfoKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkBindBufferMemoryInfoKHR`
-    public static VkBindBufferMemoryInfoKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

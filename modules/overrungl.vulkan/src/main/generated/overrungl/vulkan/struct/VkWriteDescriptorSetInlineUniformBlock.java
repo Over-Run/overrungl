@@ -103,44 +103,6 @@ public final class VkWriteDescriptorSetInlineUniformBlock extends GroupType {
     /// @return the allocated `VkWriteDescriptorSetInlineUniformBlock`
     public static VkWriteDescriptorSetInlineUniformBlock alloc(SegmentAllocator allocator, long count) { return new VkWriteDescriptorSetInlineUniformBlock(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkWriteDescriptorSetInlineUniformBlock` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dataSize `dataSize`
-    /// @param pData `pData`
-    /// @return the allocated `VkWriteDescriptorSetInlineUniformBlock`
-    public static VkWriteDescriptorSetInlineUniformBlock allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dataSize, MemorySegment pData) {
-        return alloc(allocator).sType(sType).pNext(pNext).dataSize(dataSize).pData(pData);
-    }
-
-    /// Allocates a `VkWriteDescriptorSetInlineUniformBlock` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param dataSize `dataSize`
-    /// @return the allocated `VkWriteDescriptorSetInlineUniformBlock`
-    public static VkWriteDescriptorSetInlineUniformBlock allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int dataSize) {
-        return alloc(allocator).sType(sType).pNext(pNext).dataSize(dataSize);
-    }
-
-    /// Allocates a `VkWriteDescriptorSetInlineUniformBlock` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkWriteDescriptorSetInlineUniformBlock`
-    public static VkWriteDescriptorSetInlineUniformBlock allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkWriteDescriptorSetInlineUniformBlock` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkWriteDescriptorSetInlineUniformBlock`
-    public static VkWriteDescriptorSetInlineUniformBlock allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

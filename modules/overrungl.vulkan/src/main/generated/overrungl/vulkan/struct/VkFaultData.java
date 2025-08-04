@@ -103,44 +103,6 @@ public final class VkFaultData extends GroupType {
     /// @return the allocated `VkFaultData`
     public static VkFaultData alloc(SegmentAllocator allocator, long count) { return new VkFaultData(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkFaultData` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param faultLevel `faultLevel`
-    /// @param faultType `faultType`
-    /// @return the allocated `VkFaultData`
-    public static VkFaultData allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int faultLevel, int faultType) {
-        return alloc(allocator).sType(sType).pNext(pNext).faultLevel(faultLevel).faultType(faultType);
-    }
-
-    /// Allocates a `VkFaultData` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param faultLevel `faultLevel`
-    /// @return the allocated `VkFaultData`
-    public static VkFaultData allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int faultLevel) {
-        return alloc(allocator).sType(sType).pNext(pNext).faultLevel(faultLevel);
-    }
-
-    /// Allocates a `VkFaultData` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkFaultData`
-    public static VkFaultData allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkFaultData` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkFaultData`
-    public static VkFaultData allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

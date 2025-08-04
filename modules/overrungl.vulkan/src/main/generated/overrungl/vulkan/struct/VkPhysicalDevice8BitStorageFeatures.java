@@ -111,56 +111,6 @@ public final class VkPhysicalDevice8BitStorageFeatures extends GroupType {
     /// @return the allocated `VkPhysicalDevice8BitStorageFeatures`
     public static VkPhysicalDevice8BitStorageFeatures alloc(SegmentAllocator allocator, long count) { return new VkPhysicalDevice8BitStorageFeatures(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkPhysicalDevice8BitStorageFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffer8BitAccess `storageBuffer8BitAccess`
-    /// @param uniformAndStorageBuffer8BitAccess `uniformAndStorageBuffer8BitAccess`
-    /// @param storagePushConstant8 `storagePushConstant8`
-    /// @return the allocated `VkPhysicalDevice8BitStorageFeatures`
-    public static VkPhysicalDevice8BitStorageFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffer8BitAccess, int uniformAndStorageBuffer8BitAccess, int storagePushConstant8) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffer8BitAccess(storageBuffer8BitAccess).uniformAndStorageBuffer8BitAccess(uniformAndStorageBuffer8BitAccess).storagePushConstant8(storagePushConstant8);
-    }
-
-    /// Allocates a `VkPhysicalDevice8BitStorageFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffer8BitAccess `storageBuffer8BitAccess`
-    /// @param uniformAndStorageBuffer8BitAccess `uniformAndStorageBuffer8BitAccess`
-    /// @return the allocated `VkPhysicalDevice8BitStorageFeatures`
-    public static VkPhysicalDevice8BitStorageFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffer8BitAccess, int uniformAndStorageBuffer8BitAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffer8BitAccess(storageBuffer8BitAccess).uniformAndStorageBuffer8BitAccess(uniformAndStorageBuffer8BitAccess);
-    }
-
-    /// Allocates a `VkPhysicalDevice8BitStorageFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param storageBuffer8BitAccess `storageBuffer8BitAccess`
-    /// @return the allocated `VkPhysicalDevice8BitStorageFeatures`
-    public static VkPhysicalDevice8BitStorageFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int storageBuffer8BitAccess) {
-        return alloc(allocator).sType(sType).pNext(pNext).storageBuffer8BitAccess(storageBuffer8BitAccess);
-    }
-
-    /// Allocates a `VkPhysicalDevice8BitStorageFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkPhysicalDevice8BitStorageFeatures`
-    public static VkPhysicalDevice8BitStorageFeatures allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkPhysicalDevice8BitStorageFeatures` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkPhysicalDevice8BitStorageFeatures`
-    public static VkPhysicalDevice8BitStorageFeatures allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

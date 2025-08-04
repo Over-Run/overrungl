@@ -111,56 +111,6 @@ public final class VkImportSemaphoreSciSyncInfoNV extends GroupType {
     /// @return the allocated `VkImportSemaphoreSciSyncInfoNV`
     public static VkImportSemaphoreSciSyncInfoNV alloc(SegmentAllocator allocator, long count) { return new VkImportSemaphoreSciSyncInfoNV(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkImportSemaphoreSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @param handleType `handleType`
-    /// @param handle `handle`
-    /// @return the allocated `VkImportSemaphoreSciSyncInfoNV`
-    public static VkImportSemaphoreSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, int handleType, MemorySegment handle) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).handleType(handleType).handle(handle);
-    }
-
-    /// Allocates a `VkImportSemaphoreSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @param handleType `handleType`
-    /// @return the allocated `VkImportSemaphoreSciSyncInfoNV`
-    public static VkImportSemaphoreSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore, int handleType) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore).handleType(handleType);
-    }
-
-    /// Allocates a `VkImportSemaphoreSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param semaphore `semaphore`
-    /// @return the allocated `VkImportSemaphoreSciSyncInfoNV`
-    public static VkImportSemaphoreSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, long semaphore) {
-        return alloc(allocator).sType(sType).pNext(pNext).semaphore(semaphore);
-    }
-
-    /// Allocates a `VkImportSemaphoreSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkImportSemaphoreSciSyncInfoNV`
-    public static VkImportSemaphoreSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkImportSemaphoreSciSyncInfoNV` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkImportSemaphoreSciSyncInfoNV`
-    public static VkImportSemaphoreSciSyncInfoNV allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`

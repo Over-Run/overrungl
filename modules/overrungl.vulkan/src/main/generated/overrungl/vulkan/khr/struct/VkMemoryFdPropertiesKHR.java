@@ -95,33 +95,6 @@ public final class VkMemoryFdPropertiesKHR extends GroupType {
     /// @return the allocated `VkMemoryFdPropertiesKHR`
     public static VkMemoryFdPropertiesKHR alloc(SegmentAllocator allocator, long count) { return new VkMemoryFdPropertiesKHR(allocator.allocate(LAYOUT, count), count); }
 
-    /// Allocates a `VkMemoryFdPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @param memoryTypeBits `memoryTypeBits`
-    /// @return the allocated `VkMemoryFdPropertiesKHR`
-    public static VkMemoryFdPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext, int memoryTypeBits) {
-        return alloc(allocator).sType(sType).pNext(pNext).memoryTypeBits(memoryTypeBits);
-    }
-
-    /// Allocates a `VkMemoryFdPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @param pNext `pNext`
-    /// @return the allocated `VkMemoryFdPropertiesKHR`
-    public static VkMemoryFdPropertiesKHR allocInit(SegmentAllocator allocator, int sType, MemorySegment pNext) {
-        return alloc(allocator).sType(sType).pNext(pNext);
-    }
-
-    /// Allocates a `VkMemoryFdPropertiesKHR` with the given segment allocator and arguments like initializer list.
-    /// @param allocator the segment allocator
-    /// @param sType `sType`
-    /// @return the allocated `VkMemoryFdPropertiesKHR`
-    public static VkMemoryFdPropertiesKHR allocInit(SegmentAllocator allocator, int sType) {
-        return alloc(allocator).sType(sType);
-    }
-
     /// Copies from the given source.
     /// @param src the source
     /// @return `this`
