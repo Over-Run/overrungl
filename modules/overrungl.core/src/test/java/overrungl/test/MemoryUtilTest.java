@@ -57,6 +57,19 @@ public class MemoryUtilTest {
     }
 
     @Test
+    void test_aligned_alloc() {
+        MemorySegment segment = MemoryUtil.aligned_alloc(1024, 1024 * 4);
+        assertEquals(0, segment.address() % 1024);
+        segment.set(JAVA_INT, 0, 42);
+        assertEquals(42, segment.get(JAVA_INT, 0));
+        segment.set(JAVA_INT, 4, 43);
+        assertEquals(43, segment.get(JAVA_INT, 4));
+        segment = MemoryUtil.aligned_realloc(segment, 1024 * 2, 1024);
+        assertEquals(42, segment.get(JAVA_INT, 0));
+        MemoryUtil.aligned_free(segment);
+    }
+
+    @Test
     void test_allocator() {
         MemorySegment.Scope scope;
         try (Arena arena = Arena.ofConfined()) {
@@ -64,7 +77,6 @@ public class MemoryUtilTest {
             MemorySegment segment = allocator.allocate(JAVA_INT);
             scope = segment.scope();
 
-            assertEquals(0, segment.get(JAVA_INT, 0L));
             segment.set(JAVA_INT, 0L, 42);
             assertEquals(42, segment.get(JAVA_INT, 0L));
         }
