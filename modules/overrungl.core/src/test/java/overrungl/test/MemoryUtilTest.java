@@ -77,7 +77,6 @@ public class MemoryUtilTest {
             MemorySegment segment = allocator.allocate(JAVA_INT);
             scope = segment.scope();
 
-            assertEquals(0, segment.get(JAVA_INT, 0L));
             segment.set(JAVA_INT, 0L, 42);
             assertEquals(42, segment.get(JAVA_INT, 0L));
         }

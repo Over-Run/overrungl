@@ -40,7 +40,6 @@ jobs:
           cache-encryption-key: ${{ secrets.GRADLE_ENCRYPTION_KEY }}
       - name: Execute Gradle build
         run: ./gradlew build --parallel
-        continue-on-error: true
       - name: Upload build reports
         uses: actions/upload-artifact@v4
         with:
@@ -53,10 +52,3 @@ jobs:
           name: artifacts-${{ runner.os }}-jdk${{ matrix.java }}
           path: |
             modules/**/build/libs/
-      - name: Capture JVM crash log
-        uses: actions/upload-artifact@v4
-        with:
-          name: jvm-crash-log-${{ runner.os }}-jdk${{ matrix.java }}
-          path: |
-            modules/**/hs_err_pid*.log
-          if-no-files-found: ignore
