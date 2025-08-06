@@ -65,7 +65,11 @@ public final class MemoryUtil {
         FD_free = FunctionDescriptor.ofVoid(ADDRESS),
         FD_memcpy = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T),
         FD_memmove = FunctionDescriptor.of(ADDRESS, ADDRESS, ADDRESS, SIZE_T),
-        FD_memset = FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, SIZE_T);
+        FD_memset = FunctionDescriptor.of(ADDRESS, ADDRESS, JAVA_INT, SIZE_T),
+        FD_aligned_alloc = FunctionDescriptor.of(ADDRESS, SIZE_T, SIZE_T),
+        FD__aligned_malloc = FunctionDescriptor.of(ADDRESS, SIZE_T, SIZE_T),
+        FD__aligned_realloc = FunctionDescriptor.of(ADDRESS, ADDRESS, SIZE_T, SIZE_T),
+        FD__aligned_free = FunctionDescriptor.ofVoid(ADDRESS);
 
     private static final class Handles {
         private static final Linker LINKER = Linker.nativeLinker();
@@ -78,6 +82,14 @@ public final class MemoryUtil {
             m_memcpy = downcall("memcpy", FD_memcpy),
             m_memmove = downcall("memmove", FD_memmove),
             m_memset = downcall("memset", FD_memset);
+        private static final MethodHandle MH_aligned_alloc = LINKER.downcallHandle(FD_aligned_alloc);
+        private static final MethodHandle MH__aligned_malloc = LINKER.downcallHandle(FD__aligned_malloc);
+        private static final MethodHandle MH__aligned_realloc = LINKER.downcallHandle(FD__aligned_realloc);
+        private static final MethodHandle MH__aligned_free = LINKER.downcallHandle(FD__aligned_free);
+        private static final MemorySegment PFN_aligned_alloc = LOOKUP.find("aligned_alloc").orElse(MemorySegment.NULL);
+        private static final MemorySegment PFN__aligned_malloc = LOOKUP.find("_aligned_malloc").orElse(MemorySegment.NULL);
+        private static final MemorySegment PFN__aligned_realloc = LOOKUP.find("_aligned_realloc").orElse(MemorySegment.NULL);
+        private static final MemorySegment PFN__aligned_free = LOOKUP.find("_aligned_free").orElse(MemorySegment.NULL);
 
         private static MethodHandle downcall(String name, FunctionDescriptor function) {
             return LINKER.downcallHandle(LOOKUP.findOrThrow(name), function);
@@ -129,6 +141,7 @@ public final class MemoryUtil {
      * for storage of any type of object that has an alignment requirement less than or equal to that of the fundamental
      * alignment.
      * @see #malloc(MemoryLayout)
+     * @see #aligned_alloc(long, long)
      */
     public static MemorySegment malloc(long size) {
         try {
@@ -165,6 +178,7 @@ public final class MemoryUtil {
      * @return {@code calloc} returns a pointer to the allocated space. The storage space pointed to by the
      * return value is suitably aligned for storage of any type of object.
      * @see #calloc(long, MemoryLayout)
+     * @see #aligned_alloc(long, long)
      */
     public static MemorySegment calloc(long number, long size) {
         try {
@@ -224,6 +238,7 @@ public final class MemoryUtil {
      * the return value is {@code NULL}, and <i>{@code memblock}</i> is left pointing at a freed block.
      * <p>
      * The return value points to a storage space that is suitably aligned for storage of any type of object.
+     * @see #aligned_realloc(MemorySegment, long, long)
      */
     public static MemorySegment realloc(@Nullable MemorySegment memblock, long size) {
         try {
@@ -251,6 +266,7 @@ public final class MemoryUtil {
      * {@code malloc}, or {@code realloc}) may affect subsequent allocation requests and cause errors.
      *
      * @param memblock Previously allocated memory block to be freed.
+     * @see #aligned_free(MemorySegment)
      */
     public static void free(@Nullable MemorySegment memblock) {
         if (isNullPointer(memblock)) return;
@@ -348,17 +364,113 @@ public final class MemoryUtil {
     }
 
     /**
+     * Allocate {@code size} bytes of uninitialized storage whose alignment is specified by {@code alignment}.
+     * The {@code size} parameter must be an integral multiple of {@code alignment}.
+     *
+     * <h4>Reference</h4>
+     * <ul>
+     *     <li><a href="https://en.cppreference.com/w/c/memory/aligned_alloc">{@code aligned_alloc}</a></li>
+     *     <li><a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/aligned-malloc?view=msvc-170">{@code _aligned_malloc}</a> for Windows</li>
+     * </ul>
+     *
+     * @param alignment specifies the alignment. Must be a valid alignment supported by the implementation.
+     * @param size      number of bytes to allocate. An integral multiple of {@code alignment}
+     * @return On success, returns the pointer to the beginning of newly allocated memory.
+     * To avoid a memory leak, the returned pointer must be deallocated with {@link #aligned_free(MemorySegment)}
+     * or {@link #aligned_realloc(MemorySegment, long, long)}.
+     * <p>
+     * On failure, returns a {@linkplain MemorySegment#NULL null pointer}.
+     * @see #malloc(long)
+     * @see #calloc(long, long)
+     */
+    public static MemorySegment aligned_alloc(long alignment, long size) {
+        try {
+            MemorySegment segment = switch (SIZE_T) {
+                case ValueLayout.OfInt _ -> !isNullPointer(Handles.PFN_aligned_alloc)
+                    ? (MemorySegment) Handles.MH_aligned_alloc.invokeExact(Handles.PFN_aligned_alloc, Math.toIntExact(alignment), Math.toIntExact(size))
+                    : (MemorySegment) Handles.MH__aligned_malloc.invokeExact(Handles.PFN__aligned_malloc, Math.toIntExact(alignment), Math.toIntExact(size));
+                case ValueLayout.OfLong _ -> !isNullPointer(Handles.PFN_aligned_alloc)
+                    ? (MemorySegment) Handles.MH_aligned_alloc.invokeExact(Handles.PFN_aligned_alloc, alignment, size)
+                    : (MemorySegment) Handles.MH__aligned_malloc.invokeExact(Handles.PFN__aligned_malloc, alignment, size);
+                default -> throw new AssertionError();
+            };
+            return segment.reinterpret(size);
+        } catch (Throwable e) {
+            throw new RuntimeException("error in aligned_alloc", e);
+        }
+    }
+
+    /**
+     * Changes the size of a memory block that was allocated with {@linkplain #aligned_alloc(long, long) _aligned_malloc} or _aligned_offset_malloc.
+     *
+     * <h4>Reference</h4>
+     * <ul>
+     *     <li><a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/aligned-realloc?view=msvc-170">{@code _aligned_realloc}</a> for Windows</li>
+     * </ul>
+     *
+     * @param memblock  The current memory block pointer.
+     * @param size      The size of the requested memory allocation.
+     * @param alignment The alignment value, which must be an integer power of 2.
+     * @return {@code _aligned_realloc} returns a void pointer to the reallocated (and possibly moved) memory block.
+     * The return value is {@code NULL} if the size is zero and the buffer argument isn't {@code NULL},
+     * or if there isn't enough available memory to expand the block to the given size.
+     * In the first case, the original block is freed.
+     * In the second, the original block is unchanged.
+     * The return value points to a storage space that is suitably aligned for storage of any type of object.
+     * To get a pointer to a type other than void, use a type cast on the return value.
+     * <p>
+     * It's an error to reallocate memory and change the alignment of a block.
+     * @see #realloc(MemorySegment, long)
+     */
+    public static MemorySegment aligned_realloc(@Nullable MemorySegment memblock, long size, long alignment) {
+        try {
+            MemorySegment mem = memblock != null ? memblock : MemorySegment.NULL;
+            MemorySegment segment = !isNullPointer(Handles.PFN__aligned_realloc) ? switch (SIZE_T) {
+                case ValueLayout.OfInt _ ->
+                    (MemorySegment) Handles.MH__aligned_realloc.invokeExact(Handles.PFN__aligned_realloc, mem, Math.toIntExact(size), Math.toIntExact(alignment));
+                case ValueLayout.OfLong _ ->
+                    (MemorySegment) Handles.MH__aligned_realloc.invokeExact(Handles.PFN__aligned_realloc, mem, size, alignment);
+                default -> throw new AssertionError();
+            } : realloc(memblock, size);
+            return segment.reinterpret(size);
+        } catch (Throwable e) {
+            throw new RuntimeException("error in aligned_realloc", e);
+        }
+    }
+
+    /// Frees a block of memory that was allocated with [_aligned_malloc][#aligned_alloc(long, long)] or _aligned_offset_malloc.
+    ///
+    /// #### Reference
+    ///
+    /// - [`_aligned_free`](https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/aligned-free?view=msvc-170) for Windows
+    ///
+    /// @param memblock A pointer to the memory block that was returned to the `_aligned_malloc` or `_aligned_offset_malloc` function.
+    /// @see #free(MemorySegment)
+    public static void aligned_free(@Nullable MemorySegment memblock) {
+        if (isNullPointer(memblock)) return;
+        if (isNullPointer(Handles.PFN__aligned_free)) {
+            free(memblock);
+        } else {
+            try {
+                Handles.MH__aligned_free.invokeExact(Handles.PFN__aligned_free, memblock);
+            } catch (Throwable e) {
+                throw new RuntimeException("error in aligned_free", e);
+            }
+        }
+    }
+
+    /**
      * Creates a segment allocator associated with the given arena,
      * which automatically releases the allocated memory when the arena closes.
      *
      * @param arena the arena to be associated with
-     * @return the segment allocator
+     * @return the segment allocator which allocates <strong>uninitialized</strong> memory with {@link #aligned_alloc(long, long) aligned_alloc}
      */
     public static SegmentAllocator allocator(Arena arena) {
         return (byteSize, byteAlignment) -> {
             checkByteSize(byteSize);
             checkAlignment(byteAlignment);
-            return calloc(byteSize, 1).reinterpret(arena, MemoryUtil::free);
+            return aligned_alloc(byteAlignment, byteSize).reinterpret(arena, MemoryUtil::aligned_free);
         };
     }
 

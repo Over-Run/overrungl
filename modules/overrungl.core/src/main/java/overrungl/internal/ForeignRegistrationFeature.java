@@ -35,5 +35,9 @@ class ForeignRegistrationFeature implements Feature {
         RuntimeForeignAccess.registerForDowncall(FD_memcpy);
         RuntimeForeignAccess.registerForDowncall(FD_memmove);
         RuntimeForeignAccess.registerForDowncall(FD_memset);
+        RuntimeForeignAccess.registerForDowncall(FD_aligned_alloc);
+        RuntimeForeignAccess.registerForDowncall(FD__aligned_malloc);
+        RuntimeForeignAccess.registerForDowncall(FD__aligned_realloc);
+        RuntimeForeignAccess.registerForDowncall(FD__aligned_free);
     }
 }
