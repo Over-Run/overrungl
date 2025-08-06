@@ -388,10 +388,10 @@ public final class MemoryUtil {
             MemorySegment segment = switch (SIZE_T) {
                 case ValueLayout.OfInt _ -> !isNullPointer(Handles.PFN_aligned_alloc)
                     ? (MemorySegment) Handles.MH_aligned_alloc.invokeExact(Handles.PFN_aligned_alloc, Math.toIntExact(alignment), Math.toIntExact(size))
-                    : (MemorySegment) Handles.MH__aligned_malloc.invokeExact(Handles.PFN__aligned_malloc, Math.toIntExact(alignment), Math.toIntExact(size));
+                    : (MemorySegment) Handles.MH__aligned_malloc.invokeExact(Handles.PFN__aligned_malloc, Math.toIntExact(size), Math.toIntExact(alignment));
                 case ValueLayout.OfLong _ -> !isNullPointer(Handles.PFN_aligned_alloc)
                     ? (MemorySegment) Handles.MH_aligned_alloc.invokeExact(Handles.PFN_aligned_alloc, alignment, size)
-                    : (MemorySegment) Handles.MH__aligned_malloc.invokeExact(Handles.PFN__aligned_malloc, alignment, size);
+                    : (MemorySegment) Handles.MH__aligned_malloc.invokeExact(Handles.PFN__aligned_malloc, size, alignment);
                 default -> throw new AssertionError();
             };
             return segment.reinterpret(size);
