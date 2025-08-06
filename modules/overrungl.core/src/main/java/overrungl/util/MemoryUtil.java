@@ -389,6 +389,12 @@ public final class MemoryUtil {
      *     <li><a href="https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/aligned-malloc?view=msvc-170">{@code _aligned_malloc}</a> for Windows</li>
      * </ul>
      *
+     * <h4>Implementation Note</h4>
+     * As an example of the "supported by the implementation" requirement,
+     * POSIX function {@code posix_memalign} accepts any {@code alignment} that is a power of two and a multiple of {@code sizeof(void *)},
+     * and POSIX-based implementations of {@code aligned_alloc} inherit these requirements.
+     * For Windows, {@code alignment} must be an integer power of 2.
+     *
      * @param alignment specifies the alignment. Must be a valid alignment <strong>supported by the implementation</strong>.
      * @param size      number of bytes to allocate. An integral multiple of {@code alignment}
      * @return On success, returns the pointer to the beginning of newly allocated memory.
@@ -396,10 +402,6 @@ public final class MemoryUtil {
      * or {@link #aligned_realloc(MemorySegment, long, long)}.
      * <p>
      * On failure, returns a {@linkplain MemorySegment#NULL null pointer}.
-     * @implNote As an example of the "supported by the implementation" requirement,
-     * POSIX function {@code posix_memalign} accepts any {@code alignment} that is a power of two and a multiple of {@code sizeof(void *)},
-     * and POSIX-based implementations of {@code aligned_alloc} inherit these requirements.
-     * For Windows, {@code alignment} must be an integer power of 2.
      * @see #malloc(long)
      * @see #calloc(long, long)
      */
