@@ -40,8 +40,13 @@ abstract class VkDispatchableHandleInstance implements Addressable {
         return segment;
     }
 
-    /// @return the {@link VKCapabilitiesInstance} instance associated with this dispatchable handle.
+    /// {@return the {@link VKCapabilitiesInstance} instance associated with this dispatchable handle}
     public VKCapabilitiesInstance capabilities() {
         return capabilities;
+    }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName() + " 0x" + Long.toHexString(segment.address());
     }
 }

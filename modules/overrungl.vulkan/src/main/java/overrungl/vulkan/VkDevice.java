@@ -52,6 +52,11 @@ public class VkDevice extends VkDispatchableHandleDevice {
         });
     }
 
+    /// {@return the physical device on which this `VkDevice` was created}
+    public VkPhysicalDevice physicalDevice() {
+        return physicalDevice;
+    }
+
     @Override
     public VKCapabilitiesInstance capabilitiesInstance() {
         return physicalDevice.capabilities();

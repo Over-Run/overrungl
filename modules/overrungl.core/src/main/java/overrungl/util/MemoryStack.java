@@ -56,8 +56,8 @@ import java.util.Objects;
  * <h3>Segment allocator of method parameter</h3>
  * Do <strong>NOT</strong> use other {@link SegmentAllocator} provided by method parameter
  * within try-block of memory stack.
- * The method parameter might be a same instance as the memory stack,
- * thus causes memory segment allocated by {@link SegmentAllocator} invalid after method returns.
+ * The method parameter might be the same instance as the memory stack,
+ * causing memory segment allocated by {@link SegmentAllocator} invalid after method returns.
  *
  * <pre>{@code
  * void createSomething() {
@@ -73,7 +73,7 @@ import java.util.Objects;
  *         nativeFunction(seg);
  *         return allocator.allocate(LAYOUT).copyFrom(seg); // using "allocator" which is same as variable "stack"
  *     }
- *     // the allocated segment invalid before returning
+ *     // the allocated segment had become invalid before returning
  * }}</pre>
  *
  * <h3>Short-lived threads</h3>

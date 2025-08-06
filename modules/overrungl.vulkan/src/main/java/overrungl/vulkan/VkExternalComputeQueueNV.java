@@ -34,7 +34,7 @@ public class VkExternalComputeQueueNV extends VkDispatchableHandleDevice {
         this.device = device;
     }
 
-    /// @return the device on which this `VkExternalComputeQueueNV` was created.
+    /// {@return the device on which this `VkExternalComputeQueueNV` was created}
     public VkDevice device() {
         return device;
     }

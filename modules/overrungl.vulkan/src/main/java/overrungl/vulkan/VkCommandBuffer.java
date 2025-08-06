@@ -36,7 +36,7 @@ public class VkCommandBuffer extends VkDispatchableHandleDevice {
         this.device = device;
     }
 
-    /// @return the device on which this `VkCommandBuffer` was created.
+    /// {@return the device on which this `VkCommandBuffer` was created}
     public VkDevice device() {
         return device;
     }

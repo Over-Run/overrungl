@@ -36,7 +36,7 @@ public class VkPhysicalDevice extends VkDispatchableHandleInstance {
         this.instance = instance;
     }
 
-    /// @return the Vulkan instance from which this physical device was enumerated.
+    /// {@return the Vulkan instance from which this physical device was enumerated}
     public VkInstance instance() {
         return instance;
     }

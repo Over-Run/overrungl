@@ -78,6 +78,8 @@ public final class OverrunGL {
 
     /**
      * Sets the API logger.
+     * <h4>Example</h4>
+     * <pre><code>setApiLogger(msg -> logger.debug("{}", msg));</code></pre>
      *
      * @param logger the logger. pass {@code null} to reset to the default logger.
      */

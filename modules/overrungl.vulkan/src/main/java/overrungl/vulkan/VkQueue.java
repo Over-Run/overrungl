@@ -36,7 +36,7 @@ public class VkQueue extends VkDispatchableHandleDevice {
         this.device = device;
     }
 
-    /// @return the device from which this `VkQueue` was retrieved.
+    /// {@return the device from which this `VkQueue` was retrieved}
     public VkDevice device() {
         return device;
     }
