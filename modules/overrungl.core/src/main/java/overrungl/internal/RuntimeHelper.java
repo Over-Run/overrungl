@@ -41,6 +41,8 @@ public final class RuntimeHelper {
         .resolve("overrungl-" + System.getProperty("user.name"));
     private static final Linker LINKER = Linker.nativeLinker();
     /// Trace downcall invocation and print a debug message with [OverrunGL#apiLogger()].
+    ///
+    /// Specify with -D{@systemProperty overrungl.trace.downcalls}=true
     public static final boolean TRACE_DOWNCALLS = Boolean.getBoolean("overrungl.trace.downcalls");
 
     /**

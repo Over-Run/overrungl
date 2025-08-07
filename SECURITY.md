@@ -18,5 +18,3 @@ the Summer Update in July. Besides that, there is no active iteration.
 ## Reporting a Vulnerability
 
 You can report a vulnerability by [drafting advisory](https://github.com/Over-Run/overrungl/security/advisories/new).
-
-By reporting the vulnerability, you acknowledge that you have read and agree our [Code of Conduct](CODE_OF_CONDUCT.md).
