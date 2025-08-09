@@ -20,7 +20,7 @@ import java.time.LocalDate
 plugins {
     `java-platform`
     `maven-publish`
-    id("org.jreleaser") version "1.18.0"
+    id("org.jreleaser") version "1.19.0"
 }
 
 val projGroupId: String by rootProject
