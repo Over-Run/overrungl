@@ -17,7 +17,7 @@
 /// The Vulkan Memory Allocator binding.
 ///
 /// - [Source](https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator)
-/// - [Document](https://gpuopen-librariesandsdks.github.io/VulkanMemoryAllocator/html/)
+/// - [Documentation](https://gpuopen-librariesandsdks.github.io/VulkanMemoryAllocator/html/)
 ///
 /// @author squid233
 /// @since 0.1.0

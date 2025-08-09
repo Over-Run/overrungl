@@ -21,7 +21,6 @@ import overrungl.vulkan.VKCapabilitiesInstance;
 import overrungl.vulkan.VkDevice;
 import overrungl.vulkan.VkInstance;
 
-import java.lang.foreign.MemorySegment;
 import java.lang.foreign.SegmentAllocator;
 
 /// Useful utilities when creating memory allocator.
@@ -36,15 +35,12 @@ public final class VmaUtil {
     ///
     /// This method configures the `pVulkanFunctions` field of the create info structure by
     /// extracting necessary function pointers from the given Vulkan instance and device capabilities.
-    /// It handles both core Vulkan functions and KHR extensions automatically.
     ///
-    /// The provided _`allocator`_ must have a [scope][MemorySegment.Scope] equal to or larger than that of the _`createInfo`_.
-    ///
-    /// @param allocator the segment allocator used for memory allocation
-    /// @param createInfo the allocator create info structure to populate
+    /// @param allocator the segment allocator used to allocate _`createInfo`_
+    /// @param createInfo the [VmaAllocatorCreateInfo] to populate
     /// @param instance the Vulkan instance providing instance-level function pointers
     /// @param device the Vulkan device providing device-level function pointers
-    /// @return the populated `VmaAllocatorCreateInfo` structure (same as input parameter)
+    /// @return _`createInfo`_
     public static VmaAllocatorCreateInfo fillAllocatorCreateInfo(
         SegmentAllocator allocator,
         VmaAllocatorCreateInfo createInfo,
